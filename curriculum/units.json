@@ -1,0 +1,164 @@
+{
+  "units": [
+    {
+      "unit": 1,
+      "title": "Begrüßung und Vorstellung",
+      "description": "Grundlegende Begrüßungen und Vorstellung der eigenen Person",
+      "vocabulary": [
+        "hallo", "guten Tag", "ich", "bin", "heißen", "wie", "Name", 
+        "mein", "dein", "Sie", "du", "Herr", "Frau", "freut mich",
+        "auf Wiedersehen", "tschüss", "danke", "bitte"
+      ],
+      "phrases": [
+        "Hallo!",
+        "Guten Tag!",
+        "Ich heiße ___.",
+        "Ich bin ___.",
+        "Wie heißen Sie?",
+        "Wie heißt du?",
+        "Freut mich!",
+        "Auf Wiedersehen!",
+        "Danke!",
+        "Bitte!"
+      ],
+      "grammar": [
+        "Nur Präsens (Gegenwart)",
+        "Verben: sein, heißen",
+        "Personalpronomen: ich, du, Sie",
+        "W-Fragen mit 'wie'",
+        "Keine Nebensätze"
+      ],
+      "communicative_goals": [
+        "Sich begrüßen",
+        "Sich vorstellen",
+        "Nach dem Namen fragen",
+        "Sich verabschieden"
+      ]
+    },
+    {
+      "unit": 2,
+      "title": "Herkunft und Wohnort",
+      "description": "Fragen und Antworten zu Herkunft und Wohnort",
+      "vocabulary": [
+        "woher", "kommen", "aus", "Deutschland", "Österreich", "Schweiz",
+        "wohnen", "wo", "in", "Stadt", "Land", "hier", "dort",
+        "leben", "geboren", "jetzt"
+      ],
+      "phrases": [
+        "Woher kommen Sie?",
+        "Woher kommst du?",
+        "Ich komme aus ___.",
+        "Wo wohnen Sie?",
+        "Wo wohnst du?",
+        "Ich wohne in ___.",
+        "Ich lebe in ___."
+      ],
+      "grammar": [
+        "Präsens: kommen, wohnen, leben",
+        "Präpositionen: aus, in (nur mit Städten/Ländern)",
+        "W-Fragen: woher, wo",
+        "Akkusativ nach 'in' (ohne Erklärung der Fälle)"
+      ],
+      "communicative_goals": [
+        "Nach Herkunft fragen",
+        "Über Herkunft sprechen",
+        "Nach Wohnort fragen",
+        "Über Wohnort sprechen"
+      ]
+    },
+    {
+      "unit": 3,
+      "title": "Beruf und Tätigkeit",
+      "description": "Berufe nennen und über die eigene Tätigkeit sprechen",
+      "vocabulary": [
+        "Beruf", "arbeiten", "Arbeit", "Lehrer", "Lehrerin", "Student", "Studentin",
+        "Arzt", "Ärztin", "arbeiten", "studieren", "machen", "was",
+        "von Beruf", "als", "Ingenieur", "Krankenschwester", "Koch", "Verkäufer"
+      ],
+      "phrases": [
+        "Was sind Sie von Beruf?",
+        "Was bist du von Beruf?",
+        "Ich bin ___ von Beruf.",
+        "Ich arbeite als ___.",
+        "Ich bin ___.",
+        "Was machen Sie?",
+        "Ich studiere."
+      ],
+      "grammar": [
+        "Verben: sein, arbeiten, studieren, machen",
+        "Berufsbezeichnungen mit/ohne Artikel",
+        "W-Fragen: was"
+      ],
+      "communicative_goals": [
+        "Nach dem Beruf fragen",
+        "Den eigenen Beruf nennen",
+        "Über Tätigkeiten sprechen"
+      ]
+    },
+    {
+      "unit": 4,
+      "title": "Familie und Beziehungen",
+      "description": "Familienmitglieder vorstellen und über Beziehungen sprechen",
+      "vocabulary": [
+        "Familie", "Mutter", "Vater", "Eltern", "Bruder", "Schwester",
+        "Geschwister", "Sohn", "Tochter", "Kind", "Kinder", "verheiratet",
+        "ledig", "geschieden", "haben", "meine", "deine", "seine", "ihre"
+      ],
+      "phrases": [
+        "Ich habe einen Bruder.",
+        "Ich habe eine Schwester.",
+        "Ich habe ___ Kinder.",
+        "Ich bin verheiratet.",
+        "Ich bin ledig.",
+        "Das ist mein Vater.",
+        "Das ist meine Mutter."
+      ],
+      "grammar": [
+        "Verb: haben (Präsens)",
+        "Possessivpronomen: mein/meine, dein/deine (nur Nominativ)",
+        "Unbestimmter Artikel: ein/eine (Akkusativ)",
+        "Zahlen 0-10 für Anzahl der Kinder"
+      ],
+      "communicative_goals": [
+        "Familienmitglieder vorstellen",
+        "Über Familienstand sprechen",
+        "Einfache Aussagen über Familie machen"
+      ]
+    },
+    {
+      "unit": 5,
+      "title": "Zahlen und Alter",
+      "description": "Zahlen 1-100 und Altersangaben",
+      "vocabulary": [
+        "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn",
+        "elf", "zwölf", "zwanzig", "dreißig", "vierzig", "fünfzig",
+        "hundert", "Jahr", "Jahre", "alt", "wie alt", "Geburtstag"
+      ],
+      "phrases": [
+        "Wie alt sind Sie?",
+        "Wie alt bist du?",
+        "Ich bin ___ Jahre alt.",
+        "Mein Sohn ist ___ Jahre alt.",
+        "Wie viele ___?",
+        "___ Euro"
+      ],
+      "grammar": [
+        "Zahlen 1-100",
+        "Jahre/Jahr nach Zahlen",
+        "W-Frage: wie alt, wie viele"
+      ],
+      "communicative_goals": [
+        "Nach dem Alter fragen",
+        "Das eigene Alter nennen",
+        "Zahlen verwenden",
+        "Preise verstehen (einfach)"
+      ]
+    }
+  ],
+  "metadata": {
+    "total_units": 104,
+    "language": "German",
+    "target_level": "A1-C1",
+    "notes": "Diese Datei enthält derzeit nur die ersten 5 Einheiten als Beispiel. Die Einheiten 6-104 müssen basierend auf dem Curriculum-Dokument des Professors hinzugefügt werden."
+  }
+}

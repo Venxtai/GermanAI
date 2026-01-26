@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn German - Voice Practice with AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎓 Learn German with AI</h1>
+            <p class="subtitle">Practice Speaking Through Conversations</p>
+        </header>
+
+        <!-- Unit Selection Screen -->
+        <div id="unitSelection" class="screen active">
+            <div class="card">
+                <h2>Select Your Unit</h2>
+                <p class="instruction">Choose the unit you are currently learning (1-104)</p>
+                
+                <div class="unit-input-group">
+                    <label for="unitNumber">Unit:</label>
+                    <input type="number" id="unitNumber" min="1" max="104" value="1" />
+                </div>
+                
+                <div id="unitInfo" class="unit-info hidden">
+                    <h3 id="unitTitle"></h3>
+                    <p id="unitDescription"></p>
+                    <div class="unit-details">
+                        <div class="detail-section">
+                            <strong>Vocabulary:</strong>
+                            <div id="unitVocabulary" class="vocabulary-list"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="startButton" class="btn btn-primary">Start Conversation</button>
+            </div>
+        </div>
+
+        <!-- Conversation Screen -->
+        <div id="conversationScreen" class="screen">
+            <div class="conversation-header">
+                <div class="unit-badge">
+                    <span id="currentUnit">Unit 1</span>
+                </div>
+                <button id="endButton" class="btn btn-secondary">End Conversation</button>
+            </div>
+
+            <div class="conversation-container">
+                <div id="conversationHistory" class="conversation-history">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="recording-status">
+                    <div id="recordingIndicator" class="recording-indicator">
+                        <div class="pulse"></div>
+                    </div>
+                    <span id="statusText">Ready to speak</span>
+                </div>
+
+                <div class="button-group">
+                    <button id="recordButton" class="btn btn-record">
+                        <span class="icon">🎤</span>
+                        <span class="text">Hold to Speak</span>
+                    </button>
+                </div>
+
+                <div id="transcript" class="transcript hidden"></div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
