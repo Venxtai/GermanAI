@@ -5,6 +5,7 @@ const path = require('path');
 const multer = require('multer');
 const OpenAI = require('openai');
 const fs = require('fs');
+const https = require('https');
 
 // Load environment variables
 dotenv.config();
@@ -43,6 +44,58 @@ try {
 // Store active conversations (in production, use a database)
 const conversations = new Map();
 
+// Token endpoint for WebRTC Realtime API
+app.get('/token', async (req, res) => {
+  console.log('Token endpoint requested');
+  try {
+    const response = await new Promise((resolve, reject) => {
+      const data = JSON.stringify({
+        model: 'gpt-4o-realtime-preview-2024-12-17',
+        voice: 'verse'
+      });
+
+      const options = {
+        hostname: 'api.openai.com',
+        port: 443,
+        path: '/v1/realtime/sessions',
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Content-Length': data.length
+        }
+      };
+
+      const req = https.request(options, (res) => {
+        let body = '';
+        console.log('OpenAI response status:', res.statusCode);
+        res.on('data', (chunk) => body += chunk);
+        res.on('end', () => {
+          console.log('OpenAI response body:', body);
+          try {
+            resolve(JSON.parse(body));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      });
+
+      req.on('error', (err) => {
+        console.error('HTTPS request error:', err);
+        reject(err);
+      });
+      req.write(data);
+      req.end();
+    });
+
+    console.log('Session created successfully');
+    res.json({ value: response.client_secret.value });
+  } catch (error) {
+    console.error('Error creating session token:', error);
+    res.status(500).json({ error: 'Failed to create session token', details: error.message });
+  }
+});
+
 /**
  * Generate system prompt based on unit data
  */
@@ -57,32 +110,28 @@ function generateSystemPrompt(unitNumber) {
   const phrasesList = unit.phrases.join('\n- ');
   const grammarRules = unit.grammar.join('\n- ');
   
-  return `Du bist ein geduldiger und freundlicher Deutschlehrer für Anfänger.
+  return `Du bist ein freundlicher, natürlicher Gesprächspartner für Deutschlernende.
 
-WICHTIGE EINSCHRÄNKUNGEN:
-Der Lernende ist in Einheit ${unitNumber}. Du DARFST NUR die folgenden sprachlichen Elemente verwenden:
-
-ERLAUBTES VOKABULAR:
+Dein Vokabular für dieses Level:
 ${vocabularyList}
 
-ERLAUBTE SÄTZE/MUSTER:
-- ${phrasesList}
+Nützliche Sätze:
+${phrasesList}
 
-GRAMMATIKREGELN:
-- ${grammarRules}
+Grammatik-Level:
+${grammarRules}
 
-VERHALTENSREGELN:
-1. Verwende NUR Wörter und Strukturen aus dieser Einheit
-2. Halte deine Antworten kurz (1-3 Sätze)
-3. Sprich natürlich und freundlich
-4. Stelle Fragen, um das Gespräch am Laufen zu halten
-5. Korrigiere Fehler IMPLIZIT durch Wiederholung der richtigen Form
-6. Verwende NIEMALS Vokabular oder Grammatik aus höheren Einheiten
+Wie du sprechen sollst:
+- Sei natürlich und menschlich, nicht roboterhaft
+- Sprich kurz und klar (1-2 Sätze)
+- Verwende hauptsächlich das Vokabular von oben, aber sei nicht steif
+- Stelle einfache Fragen und reagiere authentisch
+- Zeige Interesse an den Antworten
+- Sprich wie ein echter Freund, der geduldig ist
 
-KOMMUNIKATIONSZIELE dieser Einheit:
-${unit.communicative_goals?.join(', ') || 'Grundlegende Kommunikation'}
+Gesprächsziel: ${unit.communicative_goals?.join(', ') || 'Natürliche Konversation'}
 
-Beginne das Gespräch mit einer einfachen Begrüßung oder Frage.`;
+Beginne warm und freundlich mit: "Hallo! Wie heißt du?"`;
 }
 
 /**
@@ -137,10 +186,10 @@ app.post('/api/conversation/start', async (req, res) => {
     
     // Get initial AI greeting
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4',
+      model: 'gpt-4-turbo',
       messages: messages,
-      temperature: 0.7,
-      max_tokens: 150
+      temperature: 0.8,
+      max_tokens: 100
     });
     
     const aiResponse = completion.choices[0].message.content;
@@ -174,14 +223,21 @@ app.post('/api/speech-to-text', upload.single('audio'), async (req, res) => {
     }
     
     // Transcribe audio using OpenAI Whisper
+    // Rename file to have proper extension for OpenAI
+    const audioPath = req.file.path;
+    const renamedPath = audioPath + '.webm';
+    fs.renameSync(audioPath, renamedPath);
+    
     const transcription = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(req.file.path),
+      file: fs.createReadStream(renamedPath),
       model: 'whisper-1',
       language: 'de' // German
     });
     
     // Clean up uploaded file
-    fs.unlinkSync(req.file.path);
+    if (fs.existsSync(renamedPath)) {
+      fs.unlinkSync(renamedPath);
+    }
     
     res.json({ text: transcription.text });
     
@@ -189,8 +245,14 @@ app.post('/api/speech-to-text', upload.single('audio'), async (req, res) => {
     console.error('Error transcribing audio:', error);
     
     // Clean up file on error
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
+    if (req.file) {
+      if (fs.existsSync(req.file.path)) {
+        fs.unlinkSync(req.file.path);
+      }
+      const cleanupPath = req.file.path + '.webm';
+      if (fs.existsSync(cleanupPath)) {
+        fs.unlinkSync(cleanupPath);
+      }
     }
     
     res.status(500).json({ error: 'Failed to transcribe audio' });
@@ -219,10 +281,12 @@ app.post('/api/conversation/message', async (req, res) => {
     
     // Get AI response
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4',
+      model: 'gpt-4-turbo',
       messages: conversation.messages,
-      temperature: 0.7,
-      max_tokens: 150
+      temperature: 0.8, // More natural, less robotic
+      max_tokens: 100, // Shorter, more conversational responses
+      presence_penalty: 0.6, // Encourage variety in responses
+      frequency_penalty: 0.3 // Reduce repetition
     });
     
     const aiResponse = completion.choices[0].message.content;
@@ -249,10 +313,11 @@ app.post('/api/text-to-speech', async (req, res) => {
     
     // Generate speech using OpenAI TTS
     const mp3 = await openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'nova', // Female voice, can be changed
+      model: 'tts-1-hd', // HD model for better quality
+      voice: 'onyx', // Deep, warm, very natural voice
       input: text,
-      speed: 0.9 // Slightly slower for language learners
+      speed: 1.0, // Completely natural conversational pace
+      response_format: 'mp3'
     });
     
     const buffer = Buffer.from(await mp3.arrayBuffer());

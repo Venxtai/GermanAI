@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
+    --primary-color: #0891b2;
+    --primary-dark: #0e7490;
     --secondary-color: #64748b;
     --success-color: #10b981;
     --danger-color: #ef4444;
@@ -44,11 +44,13 @@ header h1 {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 /* Screens */
@@ -242,10 +244,30 @@ header h1 {
 }
 
 .message {
+    display: flex;
+    gap: 12px;
     padding: 15px 20px;
     border-radius: 12px;
     max-width: 80%;
     animation: slideIn 0.3s ease-out;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0;
 }
 
 @keyframes slideIn {

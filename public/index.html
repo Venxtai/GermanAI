@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn German - Voice Practice with AI</title>
+    <title>German AI - Practice with AI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>🎓 Learn German with AI</h1>
-            <p class="subtitle">Practice Speaking Through Conversations</p>
+            <h1>💬 German AI Tutor</h1>
+            <p class="subtitle">Practice German Through AI Conversations</p>
         </header>
 
         <!-- Unit Selection Screen -->
         <div id="unitSelection" class="screen active">
             <div class="card">
                 <h2>Select Your Unit</h2>
-                <p class="instruction">Choose the unit you are currently learning (1-104)</p>
+                <p class="instruction">Choose the unit for your conversation (1-104)</p>
                 
                 <div class="unit-input-group">
                     <label for="unitNumber">Unit:</label>
@@ -27,13 +27,6 @@
                 
                 <div id="unitInfo" class="unit-info hidden">
                     <h3 id="unitTitle"></h3>
-                    <p id="unitDescription"></p>
-                    <div class="unit-details">
-                        <div class="detail-section">
-                            <strong>Vocabulary:</strong>
-                            <div id="unitVocabulary" class="vocabulary-list"></div>
-                        </div>
-                    </div>
                 </div>
                 
                 <button id="startButton" class="btn btn-primary">Start Conversation</button>
@@ -46,7 +39,7 @@
                 <div class="unit-badge">
                     <span id="currentUnit">Unit 1</span>
                 </div>
-                <button id="endButton" class="btn btn-secondary">End Conversation</button>
+                <button id="endButton" class="btn btn-secondary">End Assessment</button>
             </div>
 
             <div class="conversation-container">

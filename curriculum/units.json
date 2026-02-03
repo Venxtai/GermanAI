@@ -2,156 +2,231 @@
   "units": [
     {
       "unit": 1,
-      "title": "Begrüßung und Vorstellung",
-      "description": "Grundlegende Begrüßungen und Vorstellung der eigenen Person",
+      "title": "Greetings and Introductions",
+      "description": "Basic greetings, introductions, and classroom vocabulary",
       "vocabulary": [
-        "hallo", "guten Tag", "ich", "bin", "heißen", "wie", "Name", 
-        "mein", "dein", "Sie", "du", "Herr", "Frau", "freut mich",
-        "auf Wiedersehen", "tschüss", "danke", "bitte"
+        "Hallo", "Tschüss", "Auf Wiedersehen", "die Seite", "die Hausaufgabe",
+        "der Name", "die Lehrkraft", "deutsch", "wie", "heißt", "heißen", "du", "Sie",
+        "ich", "auf", "Englisch", "Deutsch", "geht's", "gut", "schlecht",
+        "Freut", "mich", "kennenzulernen", "danke", "auch", "und",
+        "fragen", "fragte", "hat", "gefragt", "lesen", "liest", "las", "gelesen"
       ],
       "phrases": [
         "Hallo!",
-        "Guten Tag!",
-        "Ich heiße ___.",
-        "Ich bin ___.",
-        "Wie heißen Sie?",
-        "Wie heißt du?",
-        "Freut mich!",
+        "Tschüss!",
         "Auf Wiedersehen!",
-        "Danke!",
-        "Bitte!"
+        "Wie heißt du?",
+        "Wie heißen Sie?",
+        "Wie heißt X auf Deutsch?",
+        "Wie geht's?",
+        "Freut mich, Sie kennenzulernen.",
+        "gut",
+        "schlecht",
+        "danke",
+        "auch",
+        "und"
       ],
       "grammar": [
-        "Nur Präsens (Gegenwart)",
-        "Verben: sein, heißen",
-        "Personalpronomen: ich, du, Sie",
-        "W-Fragen mit 'wie'",
-        "Keine Nebensätze"
+        "Present tense only (Präsens)",
+        "Verbs: heißen, fragen (fragte, hat gefragt), lesen (liest, las, hat gelesen)",
+        "Personal pronouns: ich, du, Sie",
+        "W-questions with 'wie'",
+        "No subordinate clauses"
       ],
       "communicative_goals": [
-        "Sich begrüßen",
-        "Sich vorstellen",
-        "Nach dem Namen fragen",
-        "Sich verabschieden"
+        "Greet people (formal and informal)",
+        "Introduce yourself",
+        "Ask for someone's name",
+        "Say goodbye",
+        "Ask how something is said in German/English",
+        "Ask how someone is doing"
       ]
     },
     {
       "unit": 2,
-      "title": "Herkunft und Wohnort",
-      "description": "Fragen und Antworten zu Herkunft und Wohnort",
+      "title": "Personal Information and Studies",
+      "description": "Talking about where you live, where you're from, pronouns, and what you study",
       "vocabulary": [
-        "woher", "kommen", "aus", "Deutschland", "Österreich", "Schweiz",
-        "wohnen", "wo", "in", "Stadt", "Land", "hier", "dort",
-        "leben", "geboren", "jetzt"
+        "heißen", "hieß", "hat", "geheißen",
+        "ich", "du", "Sie", "er", "es", "sie", "xier", "wir", "ihr",
+        "wohnen", "wohnte", "gewohnt", "in",
+        "kommen", "kam", "ist", "gekommen", "aus",
+        "studieren", "studierte", "studiert",
+        "lernen", "lernte", "gelernt",
+        "die Geschichte", "die Wirtschaft", "die Informatik", "die Germanistik",
+        "das Beispiel", "hören", "hörte", "gehört",
+        "ergänzen", "ergänzte", "ergänzt",
+        "präsentieren", "präsentierte", "präsentiert",
+        "die Person", "das Gespräch",
+        "Wo", "Woher", "Was", "dein", "Mein", "Pronomen"
       ],
       "phrases": [
-        "Woher kommen Sie?",
-        "Woher kommst du?",
-        "Ich komme aus ___.",
-        "Wo wohnen Sie?",
+        "Was ist dein Pronomen?",
+        "Mein Pronomen ist X.",
         "Wo wohnst du?",
-        "Ich wohne in ___.",
-        "Ich lebe in ___."
+        "Ich wohne in Berlin.",
+        "Woher kommst du?",
+        "Ich komme aus Berlin.",
+        "Was studierst du?",
+        "Ich studiere Germanistik."
       ],
       "grammar": [
-        "Präsens: kommen, wohnen, leben",
-        "Präpositionen: aus, in (nur mit Städten/Ländern)",
-        "W-Fragen: woher, wo",
-        "Akkusativ nach 'in' (ohne Erklärung der Fälle)"
+        "Present tense and past participles",
+        "Verbs: heißen, wohnen, kommen, studieren, lernen, hören, ergänzen, präsentieren",
+        "Personal pronouns: ich, du, Sie, er, es, sie, xier, wir, ihr",
+        "Prepositions: in + dative, aus + dative",
+        "W-questions: Wo, Woher, Was",
+        "Academic subjects vocabulary"
       ],
       "communicative_goals": [
-        "Nach Herkunft fragen",
-        "Über Herkunft sprechen",
-        "Nach Wohnort fragen",
-        "Über Wohnort sprechen"
-      ]
-    },
-    {
-      "unit": 3,
-      "title": "Beruf und Tätigkeit",
-      "description": "Berufe nennen und über die eigene Tätigkeit sprechen",
-      "vocabulary": [
-        "Beruf", "arbeiten", "Arbeit", "Lehrer", "Lehrerin", "Student", "Studentin",
-        "Arzt", "Ärztin", "arbeiten", "studieren", "machen", "was",
-        "von Beruf", "als", "Ingenieur", "Krankenschwester", "Koch", "Verkäufer"
-      ],
-      "phrases": [
-        "Was sind Sie von Beruf?",
-        "Was bist du von Beruf?",
-        "Ich bin ___ von Beruf.",
-        "Ich arbeite als ___.",
-        "Ich bin ___.",
-        "Was machen Sie?",
-        "Ich studiere."
-      ],
-      "grammar": [
-        "Verben: sein, arbeiten, studieren, machen",
-        "Berufsbezeichnungen mit/ohne Artikel",
-        "W-Fragen: was"
-      ],
-      "communicative_goals": [
-        "Nach dem Beruf fragen",
-        "Den eigenen Beruf nennen",
-        "Über Tätigkeiten sprechen"
+        "Ask and tell where someone lives",
+        "Ask and tell where someone is from",
+        "Ask and tell about pronouns",
+        "Ask and tell what someone studies",
+        "Talk about academic subjects",
+        "Use all personal pronouns correctly"
       ]
     },
     {
       "unit": 4,
-      "title": "Familie und Beziehungen",
-      "description": "Familienmitglieder vorstellen und über Beziehungen sprechen",
+      "title": "Spelling, Countries, and Preferences",
+      "description": "Learning to spell, talk about countries, and express preferences",
       "vocabulary": [
-        "Familie", "Mutter", "Vater", "Eltern", "Bruder", "Schwester",
-        "Geschwister", "Sohn", "Tochter", "Kind", "Kinder", "verheiratet",
-        "ledig", "geschieden", "haben", "meine", "deine", "seine", "ihre"
+        "schreiben", "schrieb", "hat", "geschrieben",
+        "nummerieren", "nummerierte", "nummeriert",
+        "markieren", "markierte", "markiert",
+        "der Buchstabe",
+        "die Abkürzung",
+        "das Lied",
+        "das Land",
+        "Deutschland", "Bundesrepublik Deutschland",
+        "Österreich",
+        "die Schweiz",
+        "von",
+        "welch",
+        "laut",
+        "beliebt",
+        "Lieblings",
+        "ja",
+        "nein"
       ],
       "phrases": [
-        "Ich habe einen Bruder.",
-        "Ich habe eine Schwester.",
-        "Ich habe ___ Kinder.",
-        "Ich bin verheiratet.",
-        "Ich bin ledig.",
-        "Das ist mein Vater.",
-        "Das ist meine Mutter."
+        "Wie schreibt man das?",
+        "Wie bitte?"
       ],
       "grammar": [
-        "Verb: haben (Präsens)",
-        "Possessivpronomen: mein/meine, dein/deine (nur Nominativ)",
-        "Unbestimmter Artikel: ein/eine (Akkusativ)",
-        "Zahlen 0-10 für Anzahl der Kinder"
+        "Present tense and past participles",
+        "Verbs: schreiben, nummerieren, markieren",
+        "Preposition: von + dative",
+        "Question word: welch-",
+        "Adjectives: laut, beliebt",
+        "Prefix: Lieblings-",
+        "Country names with articles"
       ],
       "communicative_goals": [
-        "Familienmitglieder vorstellen",
-        "Über Familienstand sprechen",
-        "Einfache Aussagen über Familie machen"
+        "Ask how to spell something",
+        "Ask for repetition or clarification",
+        "Talk about countries (Germany, Austria, Switzerland)",
+        "Express preferences using Lieblings-",
+        "Describe things as loud or popular",
+        "Use basic yes/no responses"
       ]
     },
     {
       "unit": 5,
-      "title": "Zahlen und Alter",
-      "description": "Zahlen 1-100 und Altersangaben",
+      "title": "Numbers, Age, and Personal Information",
+      "description": "Learning numbers, asking about age and size, and basic math",
       "vocabulary": [
-        "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn",
-        "elf", "zwölf", "zwanzig", "dreißig", "vierzig", "fünfzig",
-        "hundert", "Jahr", "Jahre", "alt", "wie alt", "Geburtstag"
+        "sein", "ist", "war", "gewesen",
+        "rechnen", "rechnete", "hat", "gerechnet",
+        "plus",
+        "zählen", "zählte", "gezählt",
+        "die Antwort",
+        "beantworten", "beantwortete", "beantwortet",
+        "das Alter",
+        "die Größe",
+        "das Auto",
+        "die Nummer",
+        "die Zahl",
+        "die Gruppe",
+        "die Frage",
+        "minus",
+        "bis",
+        "eins", "zwei", "drei", "vier", "fünf",
+        "sechs", "sieben", "acht", "neun", "zehn",
+        "elf", "zwölf",
+        "einhundert",
+        "eintausend",
+        "null",
+        "Jahre", "alt", "groß", "deine", "Handy"
       ],
       "phrases": [
-        "Wie alt sind Sie?",
         "Wie alt bist du?",
-        "Ich bin ___ Jahre alt.",
-        "Mein Sohn ist ___ Jahre alt.",
-        "Wie viele ___?",
-        "___ Euro"
+        "Ich bin 18 Jahre alt.",
+        "Wie groß bist du?",
+        "Wie ist deine HandyNummer?"
       ],
       "grammar": [
-        "Zahlen 1-100",
-        "Jahre/Jahr nach Zahlen",
-        "W-Frage: wie alt, wie viele"
+        "Verb sein (irregular): ist, war, ist gewesen",
+        "Verbs: rechnen, zählen, beantworten",
+        "Numbers 0-12, 100, 1000",
+        "Question words: Wie alt, Wie groß",
+        "Possessive: deine",
+        "Basic math vocabulary: plus, minus"
       ],
       "communicative_goals": [
-        "Nach dem Alter fragen",
-        "Das eigene Alter nennen",
-        "Zahlen verwenden",
-        "Preise verstehen (einfach)"
+        "Ask and tell age",
+        "Ask and tell height/size",
+        "Ask for and give phone numbers",
+        "Count from 0 to 12",
+        "Use hundreds and thousands",
+        "Do basic math in German",
+        "Ask and answer questions"
+      ]
+    },
+    {
+      "unit": 6,
+      "title": "Activities and Hobbies",
+      "description": "Talking about activities, hobbies, music, sports, and what you like to do",
+      "vocabulary": [
+        "sagen", "sagte", "hat", "gesagt",
+        "machen", "machte", "gemacht",
+        "spielen", "spielte", "gespielt",
+        "reisen", "reiste", "ist", "gereist",
+        "singen", "sang", "gesungen",
+        "kochen", "kochte", "gekocht",
+        "die Aktivität",
+        "die Musik",
+        "der Fußball",
+        "das Videospiel",
+        "das Foto",
+        "der Partner", "die Partnerin",
+        "schnell",
+        "langsam",
+        "leise",
+        "nicht",
+        "aber",
+        "gern", "gerne",
+        "wer"
+      ],
+      "phrases": [],
+      "grammar": [
+        "Present tense and past participles",
+        "Verbs: sagen, machen, spielen, reisen, singen, kochen",
+        "Irregular verb: singen (sang, hat gesungen)",
+        "Movement verb: reisen (ist gereist)",
+        "Adverbs: schnell, langsam, leise, nicht, gern(e)",
+        "Conjunction: aber",
+        "Question word: wer"
+      ],
+      "communicative_goals": [
+        "Talk about activities and hobbies",
+        "Express what you like to do (gern(e))",
+        "Talk about sports, music, and games",
+        "Describe how you do things (fast, slow, quiet)",
+        "Use negative form (nicht)",
+        "Connect ideas with 'aber'",
+        "Ask who does something"
       ]
     }
   ],
@@ -159,6 +234,6 @@
     "total_units": 104,
     "language": "German",
     "target_level": "A1-C1",
-    "notes": "Diese Datei enthält derzeit nur die ersten 5 Einheiten als Beispiel. Die Einheiten 6-104 müssen basierend auf dem Curriculum-Dokument des Professors hinzugefügt werden."
+    "notes": "Every unit contains actual curriculum vocabulary. Each unit has its own vocabulary list that the AI can ONLY use when talking to students for that specific unit."
   }
 }

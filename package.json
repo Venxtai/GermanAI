@@ -1,7 +1,7 @@
 {
-  "name": "german-voice-learning",
+  "name": "german-conversations",
   "version": "1.0.0",
-  "description": "Voice-based German language learning application with unit-constrained AI conversations",
+  "description": "AI-powered German conversation practice tool with unit-based vocabulary control",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
