@@ -1,0 +1,353 @@
+{
+    "unit": "59",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 59,
+        "prerequisite": "1-58"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Form dative possessive articles with -em for r-words and s-words, -er for e-words, and -en for plural (with -n on the noun): meinem Mann, meiner Frau, meinen Kindern."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Geschenke zuordnen und vergleichen",
+            "sagen, wem man etwas schenkt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Geschenke kaufen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "schenken",
+                "pos": "VERB",
+                "translation": "to give a gift",
+                "frequency": 1618,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Geschenk",
+                "pos": "NOUN",
+                "translation": "gift, present",
+                "frequency": 2595,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Anlass",
+                "pos": "NOUN",
+                "translation": "occasion",
+                "frequency": 2058,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Hochzeit",
+                "pos": "NOUN",
+                "translation": "wedding",
+                "frequency": 3281,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Abschluss",
+                "pos": "NOUN",
+                "translation": "degree; graduation",
+                "frequency": 1910,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Geld",
+                "pos": "NOUN",
+                "translation": "money",
+                "frequency": 235,
+                "cefr": "A1"
+            },
+            {
+                "word": "einfach so",
+                "pos": "PHRASE",
+                "translation": "offhanded(ly); just because"
+            },
+            {
+                "word": "religiös",
+                "pos": "ADJ",
+                "translation": "religious(ly), devout"
+            },
+            {
+                "word": "selbstgemacht",
+                "pos": "ADJ",
+                "translation": "homemade, DIY"
+            },
+            {
+                "word": "persönlich",
+                "pos": "ADJ",
+                "translation": "personal"
+            },
+            {
+                "word": "nun",
+                "pos": "ADV",
+                "translation": "now (alternative to jetzt)",
+                "frequency": 114,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Idee",
+                "pos": "NOUN",
+                "translation": "idea",
+                "frequency": 451,
+                "cefr": "A2"
+            },
+            {
+                "word": "wechseln",
+                "pos": "VERB",
+                "translation": "to switch; to change",
+                "frequency": 1084,
+                "cefr": "A2"
+            },
+            {
+                "word": "kennenlernen",
+                "pos": "VERB",
+                "translation": "to get to know, learn about",
+                "frequency": 2303,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Arbeitsleben",
+                "pos": "NOUN",
+                "translation": "working life, professional life",
+                "frequency": 19284,
+                "cefr": "B2"
+            },
+            {
+                "word": "planen",
+                "pos": "VERB",
+                "translation": "to plan",
+                "frequency": 579,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Persönliche",
+                "pos": "NOUN",
+                "frequency": 35322
+            },
+            {
+                "word": "die Selbstgemachte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Anlässe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Beförderung",
+                "pos": "NOUN",
+                "frequency": 10362
+            },
+            {
+                "word": "der Ruhestand",
+                "pos": "NOUN",
+                "frequency": 6664,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Bachelor",
+                "pos": "NOUN",
+                "frequency": 11215
+            },
+            {
+                "word": "die Wohnungseinweihung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Genesung",
+                "pos": "NOUN",
+                "frequency": 16139,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Fallschirmspringen",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schenken": {
+                "present": {
+                    "ich": "schenke",
+                    "du": "schenkst",
+                    "er": "schenkt",
+                    "es": "schenkt",
+                    "sie_singular": "schenkt",
+                    "xier": "schenkt",
+                    "wir": "schenken",
+                    "ihr": "schenkt",
+                    "sie_plural": "schenken",
+                    "Sie": "schenken"
+                }
+            },
+            "wechseln": {
+                "present": {
+                    "ich": "wechsle",
+                    "du": "wechselst",
+                    "er": "wechselt",
+                    "es": "wechselt",
+                    "sie_singular": "wechselt",
+                    "xier": "wechselt",
+                    "wir": "wechseln",
+                    "ihr": "wechselt",
+                    "sie_plural": "wechseln",
+                    "Sie": "wechseln"
+                }
+            },
+            "kennenlernen": {
+                "present": {
+                    "ich": "lerne kennen",
+                    "du": "lernst kennen",
+                    "er": "lernt kennen",
+                    "es": "lernt kennen",
+                    "sie_singular": "lernt kennen",
+                    "xier": "lernt kennen",
+                    "wir": "lernen kennen",
+                    "ihr": "lernt kennen",
+                    "sie_plural": "lernen kennen",
+                    "Sie": "lernen kennen"
+                }
+            },
+            "planen": {
+                "present": {
+                    "ich": "plane",
+                    "du": "planst",
+                    "er": "plant",
+                    "es": "plant",
+                    "sie_singular": "plant",
+                    "xier": "plant",
+                    "wir": "planen",
+                    "ihr": "plant",
+                    "sie_plural": "planen",
+                    "Sie": "planen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Zu welchem Anlass schenken Sie etwas (siehe Kasten)?",
+            "Schreiben Sie ein paar Sätze auf.",
+            "Ich schenke gern Socken.",
+            "Ich schenke gern zum Geburtstag.",
+            "Als Dankeschön {Danke schön, einfach so … Ich schenke gern X.",
+            "Fragen Sie andere Personen.",
+            "Was schenken die Personen gern?",
+            "Zu welchem Anlass schenken die Personen etwas?",
+            "Machen Sie sich Notizen und erzählen Sie dann im Kurs.",
+            "Zu Für welche Anlässe sind diese Geschenke gut?",
+            "Ich denke, dass Kinokarten ein gutes Geschenk zu Chanukkah sind.",
+            "Ich denke, dass Kinokarten ein gutes Geschenk",
+            "Ich denke, dass eine Autowäsche ein gutes Geschenk",
+            "Ich denke, dass Schweizer Schokolade ein gutes Geschenk",
+            "Ich denke, dass Musikunterricht ein gutes Geschenk ist",
+            "Ich denke, dass ein selbstgemachter Schal ein gutes Geschenk ist",
+            "Ich denke, dass Fallschirmspringen ein gutes Geschenk ist zum Geburtstag;",
+            "Zur schnellen Genesung (die Person ist krank); zur Hochzeit ist.",
+            "Wem schenken Sie normalerweise etwas?",
+            "Machen Sie eine Liste.",
+            "Meinem Stiefvater, meiner Mitbewohnerin, Dieses Jahr wollen Sie gut planen, was Sie den Personen schenken.",
+            "Machen Sie eine Liste mit Geschenkideen",
+            "Ein Buch über Wintersport, ein Paar Handschuhe, Zu zweit: Sagen Sie nun, welcher Person (von Liste 1) Sie was (von Liste 2) und wann (Anlässe in der Box links) schenken.",
+            "Person 1 stellt zuerst Fragen.",
+            "Dann fragt Person 2.",
+            "Was schenkst du deinem Stiefvater?",
+            "Ich schenke meinem Stiefvater ein Buch über Wintersport.",
+            "Ah, super, schenkst du deinem Stiefvater das Buch zu Ostern",
+            "Nein, Ich schenke meinem Stiefvater das Buch über Wintersport zum Geburtstag.",
+            "Und wem schenkst du ein Paar Handschuhe?",
+            "Ich schenke meiner Mitbewohnerin ein Paar selbstgemachte Handschuhe.",
+            "Toll, schenkst du deiner Mitbewohnerin die Handschuh e",
+            "Nein, ich schenke meiner Mitbewohnerin ein Paar Handschuh e",
+            "Sie gehen zum Einkaufszentrum in Oberhausen aus Aktivität 180.",
+            "Es gibt dort viele Geschäfte.",
+            "Sie wollen nun alle Geschenke aus Aktivität kaufen.",
+            "In welchem Geschäft finden Sie welches Geschenk Geschenk Geschäft ein Buch über Wintersport Thalia, Galeria",
+            "Erzählen Sie einer anderen Person im Kurs, wo Sie Ihre Geschenke kaufen.",
+            "Ich kaufe es bei Thalia oder Galeria.",
+            "Ich schenke X ein X.",
+            "Ich kaufe es bei X."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

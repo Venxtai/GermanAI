@@ -1,0 +1,594 @@
+{
+    "unit": "54",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 54,
+        "prerequisite": "1-53"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "der Tisch",
+                "pos": "NOUN",
+                "translation": "table",
+                "frequency": 529,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bett",
+                "pos": "NOUN",
+                "translation": "bed",
+                "frequency": 659,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Uhr",
+                "pos": "NOUN",
+                "translation": "clock; watch",
+                "frequency": 348,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fernseher",
+                "pos": "NOUN",
+                "translation": "TV",
+                "frequency": 2827,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Stuhl",
+                "pos": "NOUN",
+                "translation": "chair",
+                "frequency": 1661,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Regal",
+                "pos": "NOUN",
+                "translation": "shelf",
+                "frequency": 3179,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bad",
+                "pos": "NOUN",
+                "translation": "bath [bathroom, spa]",
+                "frequency": 1637,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Ort",
+                "pos": "NOUN",
+                "translation": "location; site; place",
+                "frequency": 341,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Lebensmittel",
+                "pos": "NOUN",
+                "translation": "food (item); groceries",
+                "frequency": 2317,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Obst",
+                "pos": "NOUN",
+                "translation": "fruit",
+                "frequency": 4980,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Paprika",
+                "pos": "NOUN",
+                "translation": "bell pepper",
+                "frequency": 22610,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kartoffel",
+                "pos": "NOUN",
+                "translation": "potato",
+                "frequency": 3837,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Flasche",
+                "pos": "NOUN",
+                "translation": "bottle",
+                "frequency": 1602,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wasser",
+                "pos": "NOUN",
+                "translation": "water",
+                "frequency": 245,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Kaffee",
+                "pos": "NOUN",
+                "translation": "coffee",
+                "frequency": 1299,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Schokolade",
+                "pos": "NOUN",
+                "translation": "chocolate",
+                "frequency": 4532,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Brot",
+                "pos": "NOUN",
+                "translation": "bread",
+                "frequency": 2095,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Keks",
+                "pos": "NOUN",
+                "translation": "cookie",
+                "frequency": 4083,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Kuchen",
+                "pos": "NOUN",
+                "translation": "cake",
+                "frequency": 4381,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Wurst",
+                "pos": "NOUN",
+                "translation": "sausage",
+                "frequency": 3923,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Käse",
+                "pos": "NOUN",
+                "translation": "cheese"
+            },
+            {
+                "word": "die Kleidung",
+                "pos": "NOUN",
+                "translation": "clothing",
+                "frequency": 2820,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Jacke",
+                "pos": "NOUN",
+                "translation": "jacket",
+                "frequency": 3287,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tasche",
+                "pos": "NOUN",
+                "translation": "purse; bag, pocket",
+                "frequency": 1804,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Hose",
+                "pos": "NOUN",
+                "translation": "pants",
+                "frequency": 2156,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kette",
+                "pos": "NOUN",
+                "translation": "necklace; chain",
+                "frequency": 2346,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Koffer",
+                "pos": "NOUN",
+                "translation": "suitcase",
+                "frequency": 2387,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Brille",
+                "pos": "NOUN",
+                "translation": "glasses",
+                "frequency": 2883,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Hemd",
+                "pos": "NOUN",
+                "translation": "shirt",
+                "frequency": 2657,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Mütze",
+                "pos": "NOUN",
+                "translation": "hat; beanie",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Mantel",
+                "pos": "NOUN",
+                "translation": "coat",
+                "frequency": 2983,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Rock",
+                "pos": "NOUN",
+                "translation": "skirt",
+                "frequency": 3551,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Anzug",
+                "pos": "NOUN",
+                "translation": "suit",
+                "frequency": 3377,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Ding",
+                "pos": "NOUN",
+                "translation": "thing",
+                "frequency": 370,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Buch",
+                "pos": "NOUN",
+                "translation": "book",
+                "frequency": 300,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Dose",
+                "pos": "NOUN",
+                "translation": "can",
+                "frequency": 4826,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Tag",
+                "pos": "NOUN",
+                "translation": "day",
+                "frequency": 111,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Arbeit",
+                "pos": "NOUN",
+                "translation": "work",
+                "frequency": 208,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Beruf",
+                "pos": "NOUN",
+                "translation": "profession, job, occupation",
+                "frequency": 1036,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kunst",
+                "pos": "NOUN",
+                "translation": "art, the arts",
+                "frequency": 554,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Umwelt",
+                "pos": "NOUN",
+                "translation": "environment",
+                "frequency": 1664,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wohnung",
+                "pos": "NOUN",
+                "translation": "apartment",
+                "frequency": 501,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bein",
+                "pos": "NOUN",
+                "translation": "leg",
+                "frequency": 884,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Auge",
+                "pos": "NOUN",
+                "translation": "eye",
+                "frequency": 222,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Zahn",
+                "pos": "NOUN",
+                "translation": "tooth",
+                "frequency": 1871,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Zeitung",
+                "pos": "NOUN",
+                "translation": "newspaper",
+                "frequency": 670,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Grund",
+                "pos": "NOUN",
+                "translation": "reason; ground",
+                "frequency": 249,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Aussage",
+                "pos": "NOUN",
+                "translation": "statement",
+                "frequency": 577,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Nomen",
+                "pos": "NOUN",
+                "frequency": 36474
+            },
+            {
+                "word": "wiederholen",
+                "pos": "VERB",
+                "frequency": 988,
+                "cefr": "A1"
+            },
+            {
+                "word": "vorher",
+                "pos": "ADV",
+                "frequency": 866,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Liter",
+                "pos": "NOUN",
+                "frequency": 2645,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Pronome",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Beschreibung",
+                "pos": "NOUN",
+                "frequency": 1666,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Nacht",
+                "pos": "NOUN",
+                "frequency": 325,
+                "cefr": "A1"
+            },
+            {
+                "word": "soßen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Nominativ",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Vorbereitung",
+                "pos": "NOUN",
+                "frequency": 2149,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Spielplan",
+                "pos": "NOUN",
+                "frequency": 11277
+            },
+            {
+                "word": "verteilen",
+                "pos": "VERB",
+                "frequency": 1162,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Objektkarte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "halten",
+                "pos": "VERB",
+                "frequency": 155,
+                "cefr": "A1"
+            },
+            {
+                "word": "fehlend",
+                "pos": "ADJ",
+                "frequency": 6161
+            },
+            {
+                "word": "antworten",
+                "pos": "VERB",
+                "frequency": 826,
+                "cefr": "A1"
+            },
+            {
+                "word": "negativ",
+                "pos": "ADJ",
+                "frequency": 817,
+                "cefr": "B1"
+            },
+            {
+                "word": "dran",
+                "pos": "ADV",
+                "frequency": 292
+            },
+            {
+                "word": "leid",
+                "pos": "ADV",
+                "frequency": 1300
+            },
+            {
+                "word": "die Kamera",
+                "pos": "NOUN",
+                "frequency": 1501,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {}
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schreiben Sie im viele Nomen bis Ihre Lehrkraft \"Stopp\" sagt.",
+            "Es zählen nur Wörter, die kein anderes Team hat.",
+            "Wie viele Punkte bekommen Sie?",
+            "Welches Essen mögen Sie (nicht)?",
+            "Welche Möbel brauchen Sie (nicht)?",
+            "Wählen Sie eine Kategorie und kaufen Sie ein.",
+            "Wiederholen Sie immer, was die Personen vorher sagen.",
+            "Ich kaufe eine Tomate.",
+            "Ich kaufe eine Tomate und einen Liter Milch.",
+            "Ich kaufe eine Tomate, einen Liter Milch und einen Apfel.",
+            "Was ist das?",
+            "Sehen Sie sich die Beschreibung an und raten Sie!",
+            "Er ist rot, gelb oder grün.",
+            "Ich esse ihn gern.",
+            "Ich kaufe ihn auf dem Markt oder im Supermarkt.",
+            "Es steht im Schlafzimmer.",
+            "Ich brauche es in der Nacht.",
+            "Es ist warm.",
+            "Sie ist warm.",
+            "Ich trage sie im Winter oder Herbst.",
+            "Ich trage sie über einem Pullover.",
+            "Sie sind rot.",
+            "Ich brauche sie für eine Spaghetti soße oder für einen Salat.",
+            "Er steht in der Küche, im Esszimmer, im Arbeitszimmer und im Wohnzimmer.",
+            "Ich lege Bücher auf ihn im Arbeitszimmer.",
+            "Ich stelle Teller auf ihn im Esszimmer.",
+            "Suchen Sie ein Wort aus der Liste links aus und beschreiben Sie es wie oben.",
+            "Sagen Sie nicht das Wort, sondern benutzen Sie Pronomen (z.B.",
+            "Achten Sie auf Nominativ und Akkusativ.",
+            "Die anderen raten.",
+            "Spielen Sie das Spiel.",
+            "Jede Person bekommt einen Spielplan.",
+            "Auf dem Spielplan steht, welche Objekte die Person braucht.",
+            "Verteilen Sie alle Objektkarten an alle Personen.",
+            "Haben Sie Objektkarten bekommen, die Sie für den Spielplan brauchen?",
+            "Dann legen Sie diese Objektkarten auf den Spielplan.",
+            "Die anderen Objektkarten halten Sie in der Hand.",
+            "Die anderen Personen sollen die Objektkarten in der Hand nicht sehen.",
+            "Finden Sie die fehlenden Objektkarten für Ihren Spielplan.",
+            "Die erste Person fragt eine andere nach einem Objekt.",
+            "Die Person antwortet.",
+            "Bei einer positiven Antwort bekommt die erste Person die Objektkarte und legt sie auf den Spielplan, bei einer negativen Antwort passiert nichts.",
+            "Die nächste Person ist dran.",
+            "Toni: Ich suche mein Handy.",
+            "Hast du mein Handy, Moni?",
+            "Ja, ich habe dein Handy.",
+            "Bitte schön.",
+            "Ich suche meinen Hund.",
+            "Hast du meinen Hund, Andi?",
+            "Nein, tut mir leid, ich habe deinen Hund nicht.",
+            "Ich suche meine Brille.",
+            "Hast du meine Brille, Moni?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

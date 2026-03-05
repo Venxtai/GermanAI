@@ -1,0 +1,738 @@
+{
+    "unit": "102",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 102,
+        "prerequisite": "1-101"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [
+            "Form new verbs from nouns or foreign words by adding -en and conjugate regularly: googeln → ich google, du googelst.",
+            "Form compound nouns (Komposita) by combining words; the last element determines the article and base meaning: Küche + Tisch → der Küchentisch."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Sprache im Wandel der Zeit"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "teilen",
+                "pos": "VERB",
+                "translation": "to share; divide",
+                "frequency": 906,
+                "cefr": "A2"
+            },
+            {
+                "word": "bestehen",
+                "pos": "VERB",
+                "translation": "to consist of",
+                "frequency": 246,
+                "cefr": "A2"
+            },
+            {
+                "word": "hinstellen",
+                "pos": "VERB",
+                "translation": "to situate; plant",
+                "frequency": 12787,
+                "cefr": "B2"
+            },
+            {
+                "word": "kennenlernen",
+                "pos": "VERB",
+                "translation": "to get to know, learn about",
+                "frequency": 2303,
+                "cefr": "A1"
+            },
+            {
+                "word": "kolonisieren",
+                "pos": "VERB",
+                "translation": "to colonize"
+            },
+            {
+                "word": "die Bedeutung",
+                "pos": "NOUN",
+                "translation": "meaning, significance",
+                "frequency": 484,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Erklärung",
+                "pos": "NOUN",
+                "translation": "explanation"
+            },
+            {
+                "word": "der Eindruck",
+                "pos": "NOUN",
+                "translation": "impression",
+                "frequency": 1012,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Runde, -n",
+                "pos": "ADJ",
+                "translation": "round; lap"
+            },
+            {
+                "word": "(das) Schach",
+                "pos": "NOUN",
+                "translation": "chess",
+                "frequency": 9521
+            },
+            {
+                "word": "der Fehler",
+                "pos": "NOUN",
+                "translation": "error, mistake",
+                "frequency": 861,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Ohrwurm",
+                "pos": "NOUN",
+                "translation": "earworm",
+                "frequency": 23114,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Pistazie",
+                "pos": "NOUN",
+                "translation": "pistachio",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Terrasse",
+                "pos": "NOUN",
+                "translation": "terrace; patio; deck",
+                "frequency": 4220,
+                "cefr": "B1"
+            },
+            {
+                "word": "zum Fremdschämen",
+                "pos": "PHRASE",
+                "translation": "cringeworthy"
+            },
+            {
+                "word": "jemand",
+                "pos": "PRON",
+                "translation": "someone",
+                "frequency": 330,
+                "cefr": "A2"
+            },
+            {
+                "word": "manch-",
+                "pos": "PRON",
+                "translation": "some"
+            },
+            {
+                "word": "hinzukommen",
+                "pos": "VERB",
+                "translation": "to come along; supervene",
+                "frequency": 3753
+            },
+            {
+                "word": "der Einfluss",
+                "pos": "NOUN",
+                "translation": "influence",
+                "frequency": 872,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "fremd",
+                "pos": "ADV",
+                "frequency": 859,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Sprachrat",
+                "pos": "NOUN"
+            },
+            {
+                "word": "eingewandert",
+                "pos": "ADJ",
+                "frequency": 40508
+            },
+            {
+                "word": "das Lieblingswort",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Mail",
+                "pos": "NOUN",
+                "frequency": 7831,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Fisimatente",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Tohuwabohu",
+                "pos": "NOUN",
+                "frequency": 43910
+            },
+            {
+                "word": "die Hängematte",
+                "pos": "NOUN",
+                "frequency": 39198
+            },
+            {
+                "word": "der Gulasch",
+                "pos": "NOUN",
+                "frequency": 32886
+            },
+            {
+                "word": "das Fitness-Training",
+                "pos": "NOUN"
+            },
+            {
+                "word": "chillen",
+                "pos": "VERB"
+            },
+            {
+                "word": "nett",
+                "pos": "ADJ",
+                "frequency": 1565,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Lounge",
+                "pos": "NOUN",
+                "frequency": 16879,
+                "cefr": "B2"
+            },
+            {
+                "word": "Persische",
+                "pos": "NOUN"
+            },
+            {
+                "word": "paradiesisch",
+                "pos": "ADV",
+                "frequency": 48369
+            },
+            {
+                "word": "das Aztekischen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Chili",
+                "pos": "NOUN",
+                "frequency": 22923
+            },
+            {
+                "word": "die Cousin",
+                "pos": "NOUN",
+                "frequency": 4837,
+                "cefr": "A2"
+            },
+            {
+                "word": "Aztekisch",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kiosk",
+                "pos": "NOUN",
+                "frequency": 11484,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Macher",
+                "pos": "NOUN",
+                "frequency": 9895
+            },
+            {
+                "word": "die cringe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "losen",
+                "pos": "ADV",
+                "frequency": 11167,
+                "cefr": "B2"
+            },
+            {
+                "word": "glucose-haltig",
+                "pos": "ADV"
+            },
+            {
+                "word": "verbuggen",
+                "pos": "VERB"
+            },
+            {
+                "word": "tinderjährig",
+                "pos": "ADV"
+            },
+            {
+                "word": "fly",
+                "pos": "ADV"
+            },
+            {
+                "word": "rumoxidieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Egosurfen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "googeln",
+                "pos": "VERB",
+                "frequency": 6251,
+                "cefr": "B1"
+            },
+            {
+                "word": "miderjärig",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Tinder",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Smartphone",
+                "pos": "NOUN",
+                "frequency": 3471,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Zombie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "relaxen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "passiv",
+                "pos": "ADV",
+                "frequency": 3763,
+                "cefr": "B1"
+            },
+            {
+                "word": "fehlerhaft",
+                "pos": "ADV",
+                "frequency": 10617
+            },
+            {
+                "word": "scrollen",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Reggae",
+                "pos": "NOUN",
+                "frequency": 17156,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Dancehall",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Patois",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Partyhit",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Beat",
+                "pos": "NOUN",
+                "frequency": 7407
+            },
+            {
+                "word": "der Anglizismus",
+                "pos": "NOUN",
+                "frequency": 36405
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "teilen": {
+                "present": {
+                    "ich": "teile",
+                    "du": "teilst",
+                    "er": "teilt",
+                    "es": "teilt",
+                    "sie_singular": "teilt",
+                    "xier": "teilt",
+                    "wir": "teilen",
+                    "ihr": "teilt",
+                    "sie_plural": "teilen",
+                    "Sie": "teilen"
+                },
+                "Perfekt": {
+                    "ich": "habe geteilt",
+                    "du": "hast geteilt",
+                    "er": "hat geteilt",
+                    "es": "hat geteilt",
+                    "sie_singular": "hat geteilt",
+                    "xier": "hat geteilt",
+                    "wir": "haben geteilt",
+                    "ihr": "habt geteilt",
+                    "sie_plural": "haben geteilt",
+                    "Sie": "haben geteilt"
+                },
+                "Futur_I": {
+                    "ich": "werde teilen",
+                    "du": "wirst teilen",
+                    "er": "wird teilen",
+                    "es": "wird teilen",
+                    "sie_singular": "wird teilen",
+                    "xier": "wird teilen",
+                    "wir": "werden teilen",
+                    "ihr": "werdet teilen",
+                    "sie_plural": "werden teilen",
+                    "Sie": "werden teilen"
+                },
+                "imperative": {
+                    "du": "teile",
+                    "ihr": "teilt",
+                    "Sie": "teilen Sie"
+                }
+            },
+            "bestehen": {
+                "present": {
+                    "ich": "bestehe",
+                    "du": "bestehst",
+                    "er": "besteht",
+                    "es": "besteht",
+                    "sie_singular": "besteht",
+                    "xier": "besteht",
+                    "wir": "bestehen",
+                    "ihr": "besteht",
+                    "sie_plural": "bestehen",
+                    "Sie": "bestehen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestanden",
+                    "du": "hast bestanden",
+                    "er": "hat bestanden",
+                    "es": "hat bestanden",
+                    "sie_singular": "hat bestanden",
+                    "xier": "hat bestanden",
+                    "wir": "haben bestanden",
+                    "ihr": "habt bestanden",
+                    "sie_plural": "haben bestanden",
+                    "Sie": "haben bestanden"
+                },
+                "Futur_I": {
+                    "ich": "werde bestehen",
+                    "du": "wirst bestehen",
+                    "er": "wird bestehen",
+                    "es": "wird bestehen",
+                    "sie_singular": "wird bestehen",
+                    "xier": "wird bestehen",
+                    "wir": "werden bestehen",
+                    "ihr": "werdet bestehen",
+                    "sie_plural": "werden bestehen",
+                    "Sie": "werden bestehen"
+                },
+                "imperative": {
+                    "du": "besteh",
+                    "ihr": "besteht",
+                    "Sie": "bestehen Sie"
+                }
+            },
+            "hinstellen": {
+                "present": {
+                    "ich": "stelle hin",
+                    "du": "stellst hin",
+                    "er": "stellt hin",
+                    "es": "stellt hin",
+                    "sie_singular": "stellt hin",
+                    "xier": "stellt hin",
+                    "wir": "stellen hin",
+                    "ihr": "stellt hin",
+                    "sie_plural": "stellen hin",
+                    "Sie": "stellen hin"
+                },
+                "Perfekt": {
+                    "ich": "habe hingestellt",
+                    "du": "hast hingestellt",
+                    "er": "hat hingestellt",
+                    "es": "hat hingestellt",
+                    "sie_singular": "hat hingestellt",
+                    "xier": "hat hingestellt",
+                    "wir": "haben hingestellt",
+                    "ihr": "habt hingestellt",
+                    "sie_plural": "haben hingestellt",
+                    "Sie": "haben hingestellt"
+                },
+                "Futur_I": {
+                    "ich": "werde hinstellen",
+                    "du": "wirst hinstellen",
+                    "er": "wird hinstellen",
+                    "es": "wird hinstellen",
+                    "sie_singular": "wird hinstellen",
+                    "xier": "wird hinstellen",
+                    "wir": "werden hinstellen",
+                    "ihr": "werdet hinstellen",
+                    "sie_plural": "werden hinstellen",
+                    "Sie": "werden hinstellen"
+                },
+                "imperative": {
+                    "du": "stell hin",
+                    "ihr": "stellt hin",
+                    "Sie": "stellen Sie hin"
+                }
+            },
+            "kennenlernen": {
+                "present": {
+                    "ich": "lerne kennen",
+                    "du": "lernst kennen",
+                    "er": "lernt kennen",
+                    "es": "lernt kennen",
+                    "sie_singular": "lernt kennen",
+                    "xier": "lernt kennen",
+                    "wir": "lernen kennen",
+                    "ihr": "lernt kennen",
+                    "sie_plural": "lernen kennen",
+                    "Sie": "lernen kennen"
+                },
+                "Perfekt": {
+                    "ich": "habe kennengelernt",
+                    "du": "hast kennengelernt",
+                    "er": "hat kennengelernt",
+                    "es": "hat kennengelernt",
+                    "sie_singular": "hat kennengelernt",
+                    "xier": "hat kennengelernt",
+                    "wir": "haben kennengelernt",
+                    "ihr": "habt kennengelernt",
+                    "sie_plural": "haben kennengelernt",
+                    "Sie": "haben kennengelernt"
+                },
+                "Futur_I": {
+                    "ich": "werde kennenlernen",
+                    "du": "wirst kennenlernen",
+                    "er": "wird kennenlernen",
+                    "es": "wird kennenlernen",
+                    "sie_singular": "wird kennenlernen",
+                    "xier": "wird kennenlernen",
+                    "wir": "werden kennenlernen",
+                    "ihr": "werdet kennenlernen",
+                    "sie_plural": "werden kennenlernen",
+                    "Sie": "werden kennenlernen"
+                },
+                "imperative": {
+                    "du": "lerne kennen",
+                    "ihr": "lernt kennen",
+                    "Sie": "lernen Sie kennen"
+                }
+            },
+            "kolonisieren": {
+                "present": {
+                    "ich": "kolonisiere",
+                    "du": "kolonisierst",
+                    "er": "kolonisiert",
+                    "es": "kolonisiert",
+                    "sie_singular": "kolonisiert",
+                    "xier": "kolonisiert",
+                    "wir": "kolonisieren",
+                    "ihr": "kolonisiert",
+                    "sie_plural": "kolonisieren",
+                    "Sie": "kolonisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kolonisiert",
+                    "du": "hast kolonisiert",
+                    "er": "hat kolonisiert",
+                    "es": "hat kolonisiert",
+                    "sie_singular": "hat kolonisiert",
+                    "xier": "hat kolonisiert",
+                    "wir": "haben kolonisiert",
+                    "ihr": "habt kolonisiert",
+                    "sie_plural": "haben kolonisiert",
+                    "Sie": "haben kolonisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde kolonisieren",
+                    "du": "wirst kolonisieren",
+                    "er": "wird kolonisieren",
+                    "es": "wird kolonisieren",
+                    "sie_singular": "wird kolonisieren",
+                    "xier": "wird kolonisieren",
+                    "wir": "werden kolonisieren",
+                    "ihr": "werdet kolonisieren",
+                    "sie_plural": "werden kolonisieren",
+                    "Sie": "werden kolonisieren"
+                },
+                "imperative": {
+                    "du": "kolonisiere",
+                    "ihr": "kolonisiert",
+                    "Sie": "kolonisieren Sie"
+                }
+            },
+            "hinzukommen": {
+                "Perfekt": {
+                    "ich": "bin hinzugekommen",
+                    "du": "bist hinzugekommen",
+                    "er": "ist hinzugekommen",
+                    "es": "ist hinzugekommen",
+                    "sie_singular": "ist hinzugekommen",
+                    "xier": "ist hinzugekommen",
+                    "wir": "sind hinzugekommen",
+                    "ihr": "seid hinzugekommen",
+                    "sie_plural": "sind hinzugekommen",
+                    "Sie": "sind hinzugekommen"
+                },
+                "Futur_I": {
+                    "ich": "werde hinzukommen",
+                    "du": "wirst hinzukommen",
+                    "er": "wird hinzukommen",
+                    "es": "wird hinzukommen",
+                    "sie_singular": "wird hinzukommen",
+                    "xier": "wird hinzukommen",
+                    "wir": "werden hinzukommen",
+                    "ihr": "werdet hinzukommen",
+                    "sie_plural": "werden hinzukommen",
+                    "Sie": "werden hinzukommen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie den Text.",
+            "Kreuzen Sie an, welche Wörter Sie hören.",
+            "Schreiben Sie auf, wenn Sie noch andere Wörter hören.",
+            "Menschen aus vielen Ländern haben ihre Lieblingswörter geteilt.",
+            "Es kamen 3500 E Mails an.",
+            "Die beliebtesten Wörter waren Fisimatenten, Tohuwabohu und Hängematte.",
+            "Aber es gibt auch andere Wörter, die aus anderen Sprachen kommen.",
+            "Woher sind Sie?",
+            "Hast du noch eine Paprika?",
+            "Ich möchte später Gulasch kochen.",
+            "Aus dem Englischen kommen viele moderne Wörter:",
+            "Nach dem Fitness-Training heute muss ich erstmal chillen.",
+            "Google doch mal, ob es hier eine nette Lounge gibt.",
+            "Aus dem Persischen bzw.",
+            "Farsi: Wollen wir eine Runde Schach spielen?",
+            "Ich habe schon ein paar Pistazien hingestellt.",
+            "Die schmecken paradiesisch.",
+            "Als die europäischen Länder Südamerika kolonisierten, brachten sie die Produkte und auch die Wörter mit.",
+            "Ich habe aus dem Supermarkt Tomaten, Schokolade und Chili mitgebracht.",
+            "Schon sehr lange gibt es französische Wörter im Deutschen:",
+            "Ich wollte heute noch mit meinem Cousin die Garage aufräumen.",
+            "Hören Sie noch einmal und ordnen Sie die Wörter den Sprachen zu.",
+            "F it ness-Trainer, chillen, Google, Lounge.",
+            "Wissen Sie, aus welchen Sprachen die anderen Wörter aus Teil 1 kommen?",
+            "Gibt es diese oder ähnliche Wörter auch im Englischen oder einer anderen Sprache, die Sie kennen?",
+            "Teilen Sie auch die Wörter, die Sie in LERNEN gesammelt haben.",
+            "Ordnen Sie erst die Jugendwörter des Jahres den Definitionen zu.",
+            "Dann formulieren Sie Erklärungen.",
+            "Sie können Sätze zu Personen (… ist eine Person.",
+            "Miderjärig, aber alt genug, um Tinder benutzen zu können",
+            "Sieht nichts, außer das Handy e) chillen, relaxen f",
+            "Jemand setzt Dinge sofort um g) verloren sein h",
+            "Aus dem Arabischen: Schnel!",
+            "Lass uns gehen!",
+            "Jemand verhält sich in einer Gruppe passiv k",
+            "Jemand ist cool l) fehlerhaft",
+            "Jugend Wörter sind kreative Spiegel unserer Zeit.",
+            "Woher könnten die Jugendwörter aus der Liste kommen?",
+            "Die deutsche Sprache verändert sich oft.",
+            "Sie haben in LERNEN gesehen, wie man wie mit Legos neue Wörter bauen kann.",
+            "In Aktivität 318 haben Sie mit -los aus Nomen Adjektive gemacht und Aktivität 323 haben Sie neue Wörter aus der Jugend kennengelernt.",
+            "Gehen Sie jetzt auf die Webseite und schauen Sie sich neue Wörter ( Neologismen ) der letzten Jahre an.",
+            "Scrollen Sie durch die Seiten und suchen Sie sich zwei Wörter aus, die S ie verstehen und gut/interessant/cool finden.",
+            "Culcha Candela ist eine deutsche Band, die einen Mix aus Reggae, Dancehall und Hip-Hop macht.",
+            "Sie kommt aus Berlin.",
+            "2002 haben die Sänger Johnny Strange, Mateo Jasik (Itchyban) und Lafrotino die Band gegründet.",
+            "Später sind andere Mitglieder dazu gekommen.",
+            "Heute besteht die Band aus DJ Chino con Estilo und den Sängern Johnny Strange, Itchyban und Don Cali.",
+            "Die unterschiedliche Herkunft der Mitglieder ist auch der Grund, dass die Band Lieder auf Deutsch, Englisch, Spanisch und Patois macht.",
+            "Manche Lieder sind politisch, andere Partyhits.",
+            "Hören Sie Culcha Candelas Lied \"Wayne\".",
+            "Wie ist Ihr erster Eindruck?",
+            "Das Lied bringt alle zum Tanzen.",
+            "Ich mag den Beat (nicht).",
+            "Ich bekomme Kopfschmerzen von dem Lied.",
+            "Das Lied ist (k)ein Ohrwurm.",
+            "Das Lied ist monoton.",
+            "Der Musikstil gefällt mir (nicht).",
+            "Das Lied macht gute/ schlechte Stimmung.",
+            "Hören Sie das Lied ein zweites Mal und schreiben Sie alle Anglizismen auf, die Sie hören.",
+            "Warum benutzt die Band vielleicht so viele englische Wörter?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

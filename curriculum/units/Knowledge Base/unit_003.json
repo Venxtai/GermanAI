@@ -1,0 +1,694 @@
+{
+  "unit": "3",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 3,
+    "prerequisite": "1-2"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Use all six personal pronouns as subjects: ich, du, er/es/sie/xier, wir, ihr, sie/Sie.",
+      "Conjugate regular verbs by removing the -en infinitive ending and adding: -e (ich), -st (du), -t (er/es/sie/xier), -en (wir), -t (ihr), -en (sie/Sie).",
+      "Ask and answer W-questions about a third person using Wie heißt / Woher kommt / Wo wohnt / Was studiert + er/sie/xier."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:yes_no_question",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "sich vorstellen",
+      "sagen, woher man kommt",
+      "sagen, wo man wohnt",
+      "sagen, was man studiert",
+      "Fragen zu Herkunft, Wohnort und Studium stellen und beantworten"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Herkunft, Wohnort und Studium"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "heißen",
+        "pos": "VERB",
+        "translation": "to be called, named"
+      },
+      {
+        "word": "ich",
+        "pos": "PRON",
+        "translation": "I",
+        "frequency": 10,
+        "cefr": "A1"
+      },
+      {
+        "word": "du",
+        "pos": "PRON",
+        "translation": "you (informal)",
+        "frequency": 54,
+        "cefr": "A1"
+      },
+      {
+        "word": "Sie",
+        "pos": "PRON",
+        "translation": "you (formal)",
+        "frequency": 7,
+        "cefr": "A1"
+      },
+      {
+        "word": "er",
+        "pos": "PRON",
+        "translation": "he",
+        "frequency": 15,
+        "cefr": "A1"
+      },
+      {
+        "word": "es",
+        "pos": "PRON",
+        "translation": "it",
+        "frequency": 12,
+        "cefr": "A1"
+      },
+      {
+        "word": "sie",
+        "pos": "PRON",
+        "translation": "she",
+        "frequency": 7,
+        "cefr": "A1"
+      },
+      {
+        "word": "xier",
+        "pos": "PRON",
+        "translation": "they (non-binary)"
+      },
+      {
+        "word": "wir",
+        "pos": "PRON",
+        "translation": "we",
+        "frequency": 26,
+        "cefr": "A1"
+      },
+      {
+        "word": "ihr",
+        "pos": "PRON",
+        "translation": "you all",
+        "frequency": 27,
+        "cefr": "A1"
+      },
+      {
+        "word": "sie",
+        "pos": "PRON",
+        "translation": "they",
+        "frequency": 7,
+        "cefr": "A1"
+      },
+      {
+        "word": "Was ist dein Pronomen?",
+        "pos": "PHRASE",
+        "translation": "What is your pronoun?"
+      },
+      {
+        "word": "Mein Pronomen ist X.",
+        "pos": "PHRASE",
+        "translation": "My pronoun is X."
+      },
+      {
+        "word": "wohnen",
+        "pos": "VERB",
+        "translation": "to live (in)",
+        "frequency": 560,
+        "cefr": "A1"
+      },
+      {
+        "word": "Wo wohnst du?",
+        "pos": "PHRASE",
+        "translation": "Where do you live?"
+      },
+      {
+        "word": "Ich wohne in Berlin.",
+        "pos": "PHRASE",
+        "translation": "I live in Berlin."
+      },
+      {
+        "word": "kommen",
+        "pos": "VERB",
+        "translation": "to come (from)",
+        "frequency": 62,
+        "cefr": "A1"
+      },
+      {
+        "word": "Woher kommst du?",
+        "pos": "PHRASE",
+        "translation": "Where do you come from?"
+      },
+      {
+        "word": "Ich komme aus Berlin.",
+        "pos": "PHRASE",
+        "translation": "I come from Berlin."
+      },
+      {
+        "word": "studieren",
+        "pos": "VERB",
+        "translation": "to major in",
+        "frequency": 600,
+        "cefr": "A1"
+      },
+      {
+        "word": "Was studierst du?",
+        "pos": "PHRASE",
+        "translation": "What are you majoring in?"
+      },
+      {
+        "word": "Ich studiere Germanistik.",
+        "pos": "PHRASE",
+        "translation": "I am majoring in German studies."
+      },
+      {
+        "word": "lernen",
+        "pos": "VERB",
+        "translation": "to learn; study",
+        "frequency": 288,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Geschichte",
+        "pos": "NOUN",
+        "translation": "history",
+        "frequency": 262,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Wirtschaft",
+        "pos": "NOUN",
+        "translation": "economy",
+        "frequency": 687,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Informatik",
+        "pos": "NOUN",
+        "translation": "computer science",
+        "frequency": 4132,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Germanistik",
+        "pos": "NOUN",
+        "translation": "German studies",
+        "frequency": 5786,
+        "cefr": "B2"
+      },
+      {
+        "word": "das Beispiel",
+        "pos": "NOUN",
+        "translation": "example",
+        "frequency": 94,
+        "cefr": "A1"
+      },
+      {
+        "word": "hören",
+        "pos": "VERB",
+        "translation": "to hear"
+      },
+      {
+        "word": "ergänzen",
+        "pos": "VERB",
+        "translation": "to add, complement, supplement; complete"
+      },
+      {
+        "word": "präsentieren",
+        "pos": "VERB",
+        "translation": "to present"
+      },
+      {
+        "word": "die Person",
+        "pos": "NOUN",
+        "translation": "person",
+        "frequency": 357,
+        "cefr": "A2"
+      },
+      {
+        "word": "das Gespräch",
+        "pos": "NOUN",
+        "translation": "conversation"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Grammatik",
+        "pos": "NOUN",
+        "frequency": 13162,
+        "cefr": "B2"
+      },
+      {
+        "word": "die Geburt",
+        "pos": "NOUN",
+        "frequency": 2096,
+        "cefr": "B1"
+      },
+      {
+        "word": "momentan",
+        "pos": "ADV",
+        "frequency": 2661
+      },
+      {
+        "word": "Grüß",
+        "pos": "NOUN",
+        "frequency": 4722,
+        "cefr": "A1"
+      },
+      {
+        "word": "grüßen",
+        "pos": "VERB",
+        "frequency": 3098,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Physik",
+        "pos": "NOUN",
+        "frequency": 1917,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Maschinenbau",
+        "pos": "NOUN",
+        "frequency": 11297
+      },
+      {
+        "word": "die Biologie",
+        "pos": "NOUN",
+        "frequency": 3617,
+        "cefr": "A2"
+      },
+      {
+        "word": "Business",
+        "pos": "NOUN",
+        "frequency": 4028
+      },
+      {
+        "word": "die Chemie",
+        "pos": "NOUN",
+        "frequency": 486,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Mathematik",
+        "pos": "NOUN",
+        "frequency": 1636,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Medizin",
+        "pos": "NOUN",
+        "frequency": 1960,
+        "cefr": "B1"
+      },
+      {
+        "word": "dir",
+        "pos": "PRON",
+        "frequency": 244,
+        "cefr": "A1"
+      },
+      {
+        "word": "mir",
+        "pos": "PRON",
+        "frequency": 63
+      },
+      {
+        "word": "aufschreiben",
+        "pos": "VERB",
+        "frequency": 3748,
+        "cefr": "B1"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "heißen": {
+        "present": {
+          "ich": "heiße",
+          "du": "heißt",
+          "er": "heißt",
+          "es": "heißt",
+          "sie_singular": "heißt",
+          "xier": "heißt",
+          "wir": "heißen",
+          "ihr": "heißt",
+          "sie_plural": "heißen",
+          "Sie": "heißen"
+        }
+      },
+      "wohnen": {
+        "present": {
+          "ich": "wohne",
+          "du": "wohnst",
+          "er": "wohnt",
+          "es": "wohnt",
+          "sie_singular": "wohnt",
+          "xier": "wohnt",
+          "wir": "wohnen",
+          "ihr": "wohnt",
+          "sie_plural": "wohnen",
+          "Sie": "wohnen"
+        }
+      },
+      "kommen": {
+        "present": {
+          "ich": "komme",
+          "du": "kommst",
+          "er": "kommt",
+          "es": "kommt",
+          "sie_singular": "kommt",
+          "xier": "kommt",
+          "wir": "kommen",
+          "ihr": "kommt",
+          "sie_plural": "kommen",
+          "Sie": "kommen"
+        }
+      },
+      "studieren": {
+        "present": {
+          "ich": "studiere",
+          "du": "studierst",
+          "er": "studiert",
+          "es": "studiert",
+          "sie_singular": "studiert",
+          "xier": "studiert",
+          "wir": "studieren",
+          "ihr": "studiert",
+          "sie_plural": "studieren",
+          "Sie": "studieren"
+        }
+      },
+      "lernen": {
+        "present": {
+          "ich": "lerne",
+          "du": "lernst",
+          "er": "lernt",
+          "es": "lernt",
+          "sie_singular": "lernt",
+          "xier": "lernt",
+          "wir": "lernen",
+          "ihr": "lernt",
+          "sie_plural": "lernen",
+          "Sie": "lernen"
+        }
+      },
+      "hören": {
+        "present": {
+          "ich": "höre",
+          "du": "hörst",
+          "er": "hört",
+          "es": "hört",
+          "sie_singular": "hört",
+          "xier": "hört",
+          "wir": "hören",
+          "ihr": "hört",
+          "sie_plural": "hören",
+          "Sie": "hören"
+        }
+      },
+      "ergänzen": {
+        "present": {
+          "ich": "ergänze",
+          "du": "ergänzt",
+          "er": "ergänzt",
+          "es": "ergänzt",
+          "sie_singular": "ergänzt",
+          "xier": "ergänzt",
+          "wir": "ergänzen",
+          "ihr": "ergänzt",
+          "sie_plural": "ergänzen",
+          "Sie": "ergänzen"
+        }
+      },
+      "präsentieren": {
+        "present": {
+          "ich": "präsentiere",
+          "du": "präsentierst",
+          "er": "präsentiert",
+          "es": "präsentiert",
+          "sie_singular": "präsentiert",
+          "xier": "präsentiert",
+          "wir": "präsentieren",
+          "ihr": "präsentiert",
+          "sie_plural": "präsentieren",
+          "Sie": "präsentieren"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Wie heißt die Person?",
+      "Wie heißt du?",
+      "Ich heiße Nina.",
+      "Was ist dein Pronomen?",
+      "Mein Pronomen ist sie.",
+      "Sie heißt Katharina.",
+      "Ich heiße X.",
+      "Woher kommst du?.",
+      "Wo wohnst du?",
+      "Ich heiße Alex!",
+      "Ich heiße Min Zhu.",
+      "Woher kommst du?",
+      "Ich komme aus Tucson in Arizona.",
+      "Und du?",
+      "Ich komme aus San Francisco in Kalifornien.",
+      "Ich wohne in Austin in Texas.",
+      "Ich wohne in Boston in Massachusetts.",
+      "Momentan Grüß Gott!",
+      "Ich heiße X!",
+      "Ich komme aus X in X.",
+      "Ich wohne in X in X.",
+      "Grüß Gott!",
+      "Wie heißen Sie?",
+      "Woher kommen Sie?",
+      "Und Sie?",
+      "Wo wohnen Sie?",
+      "Was studierst du?",
+      "Ich studiere Physik.",
+      "Ich studiere Maschinenbau.",
+      "Wie heißt Maschinenbau auf Englisch?",
+      "Und was studierst du?",
+      "Ich studiere Germanistik.",
+      "Ich studiere X.",
+      "Was heißt X auf Englisch?",
+      "Was hören Sie?",
+      "Guten Tag.",
+      "Ich heiße Klaus Pfeiffer.",
+      "Freut mich.",
+      "Ich heiße Monika Sabato.",
+      "Hi Christine, wie geht es dir?",
+      "Mir geht es super, Marco, und dir?",
+      "Mir geht es gut.",
+      "Hallo Anja.",
+      "Hallo, wie heißt du?",
+      "Hey, ich heiße Sascha.",
+      "Ich heiße Marie.",
+      "Ich studiere Geschichte.",
+      "Frau Sommer, wo wohnen Sie?",
+      "Ich wohne in Salzburg.",
+      "Ich wohne in Rosenheim.",
+      "Ich komme aber aus München.",
+      "Ich komme aus Wien.",
+      "Hören Sie und ergänzen Sie.",
+      "Ich heiße Julia.",
+      "Ich komme aus Würzburg.",
+      "Ich heiße Tom und komme aus Jena.",
+      "Guten Tag, Herr Wolf.",
+      "Guten Tag, Frau Ball.",
+      "Ich wohne in Kiel.",
+      "Hey Tina, wie geht es dir?",
+      "Was studiert Rene?",
+      "Rene studiert Mathematik.",
+      "Ich heiße Akari.",
+      "Mein Pronomen ist \"sie\".",
+      "Ich komme aus Japan.",
+      "Ich wohne in Düsseldorf.",
+      "Ich komme aus X.",
+      "Ich wohne in X.",
+      "Sie heißt Akari.",
+      "Sie kommt aus Tokio.",
+      "Sie wohnt in Düsseldorf.",
+      "Sie studiert Maschinenbau."
+    ],
+    "templated": [
+      {
+        "template": "Ich heiße [person_name].",
+        "source_literals": [
+          "Ich heiße Nina.",
+          "Ich heiße X.",
+          "Hey, ich heiße Sascha.",
+          "Ich heiße Marie.",
+          "Ich heiße Julia.",
+          "Ich heiße Akari."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present."
+      },
+      {
+        "template": "Sie heißt [person_name].",
+        "source_literals": [
+          "Sie heißt Katharina.",
+          "Sie heißt Akari."
+        ],
+        "grammar_note": "Verb heißen, 3rd person singular present."
+      },
+      {
+        "template": "Ich heiße [person_name]!",
+        "source_literals": [
+          "Ich heiße Alex!",
+          "Ich heiße X!"
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present. Exclamatory."
+      },
+      {
+        "template": "Ich heiße [person_name] [person_lastname].",
+        "source_literals": [
+          "Ich heiße Min Zhu.",
+          "Ich heiße Klaus Pfeiffer.",
+          "Ich heiße Monika Sabato."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present. Full name introduction."
+      },
+      {
+        "template": "Ich komme aus [place_city] in [place_state].",
+        "source_literals": [
+          "Ich komme aus Tucson in Arizona.",
+          "Ich komme aus San Francisco in Kalifornien.",
+          "Ich komme aus X in X."
+        ],
+        "grammar_note": "Verb kommen + aus + city + in + state/region."
+      },
+      {
+        "template": "Ich wohne in [place_city] in [place_state].",
+        "source_literals": [
+          "Ich wohne in Austin in Texas.",
+          "Ich wohne in Boston in Massachusetts.",
+          "Ich wohne in X in X."
+        ],
+        "grammar_note": "Verb wohnen + in + city + in + state."
+      },
+      {
+        "template": "Ich studiere {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Ich studiere Physik.",
+          "Ich studiere Maschinenbau.",
+          "Ich studiere Germanistik.",
+          "Ich studiere X.",
+          "Ich studiere Geschichte."
+        ],
+        "grammar_note": "Verb studieren + accusative NP, 1st person singular. No article for academic subjects."
+      },
+      {
+        "template": "Ich wohne in [place_city].",
+        "source_literals": [
+          "Ich wohne in Salzburg.",
+          "Ich wohne in Rosenheim.",
+          "Ich wohne in Kiel.",
+          "Ich wohne in Düsseldorf.",
+          "Ich wohne in X."
+        ],
+        "grammar_note": "Verb wohnen + in + dative, 1st person singular."
+      },
+      {
+        "template": "Ich komme aus [place_city].",
+        "source_literals": [
+          "Ich komme aus Wien.",
+          "Ich komme aus Würzburg.",
+          "Ich komme aus X."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 1st person singular."
+      },
+      {
+        "template": "Sie studiert {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Sie studiert Maschinenbau."
+        ],
+        "grammar_note": "Verb studieren + accusative NP, 3rd person singular."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "STUDYABLE_SUBJECT_NP_ACC": {
+      "type": "closed",
+      "description": "Academic subjects one can study",
+      "grammar": "accusative, no article",
+      "options": [
+        "Deutsch",
+        "Germanistik",
+        "Geschichte",
+        "Informatik",
+        "Wirtschaft"
+      ]
+    }
+  }
+}

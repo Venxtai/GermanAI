@@ -1,0 +1,439 @@
+{
+    "unit": "B46",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 46,
+        "prerequisite": "core 1-104, B1-B45"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [
+            "Use temporal adverbs to sequence events: zuerst (first), dann (then), danach (afterwards), anschließend (after that), schließlich (finally); they often take the first position."
+        ],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Ereignisse sortieren und zusammenfassen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "geschehen", "pos": "VERB", "translation": "to happen, occur (event)", "frequency": 623, "cefr": "B1" },
+            { "word": "mitteilen", "pos": "VERB", "translation": "to inform", "frequency": 875, "cefr": "B1" },
+            { "word": "besprechen", "pos": "VERB", "translation": "to discuss something; to review something", "frequency": 2205, "cefr": "B1" },
+            { "word": "abholen", "pos": "VERB", "translation": "to pick up", "frequency": 2377, "cefr": "A1" },
+            { "word": "der Aufbau", "pos": "NOUN", "translation": "composition", "frequency": 1091, "cefr": "A1" },
+            { "word": "die Lektüre", "pos": "NOUN", "translation": "reading", "frequency": 1, "cefr": "A1" },
+            { "word": "allgemein", "pos": "ADJ", "translation": "general (alternative to generell)", "frequency": 393, "cefr": "B1" },
+            { "word": "sowie", "pos": "CONJ", "translation": "plus", "frequency": 281 },
+            { "word": "zuerst", "pos": "ADV", "translation": "first", "frequency": 880, "cefr": "A2" },
+            { "word": "dann", "pos": "ADV", "translation": "then", "frequency": 41, "cefr": "A1" },
+            { "word": "danach", "pos": "ADV", "translation": "after that, afterwards", "frequency": 457, "cefr": "B1" },
+            { "word": "schließlich", "pos": "ADJ", "translation": "finally" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Update", "pos": "NOUN", "frequency": 19986 },
+            { "word": "die Beispielfrage", "pos": "NOUN" },
+            { "word": "der Hauptcharakter", "pos": "NOUN" },
+            { "word": "die Krimigeschicht", "pos": "NOUN" },
+            { "word": "die Timeline", "pos": "NOUN" },
+            { "word": "das Präsens", "pos": "NOUN", "frequency": 34155 },
+            { "word": "temporal", "pos": "ADJ" },
+            { "word": "das Konnektor", "pos": "NOUN" },
+            { "word": "die Spekulation", "pos": "NOUN", "frequency": 4765 },
+            { "word": "plausibel", "pos": "ADV", "frequency": 4871 },
+            { "word": "detailliert", "pos": "ADJ", "frequency": 3769 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "geschehen": {
+                "present": {
+                    "ich": "â€”",
+                    "du": "â€”",
+                    "er": "geschieht",
+                    "es": "geschieht",
+                    "sie_singular": "geschieht",
+                    "xier": "geschieht",
+                    "wir": "geschehen",
+                    "ihr": "gescheht",
+                    "sie_plural": "geschehen",
+                    "Sie": "geschehen"
+                },
+                "Präteritum": {
+                    "ich": "geschah",
+                    "du": "geschahst",
+                    "er": "geschah",
+                    "es": "geschah",
+                    "sie_singular": "geschah",
+                    "xier": "geschah",
+                    "wir": "geschahen",
+                    "ihr": "geschaht",
+                    "sie_plural": "geschahen",
+                    "Sie": "geschahen"
+                },
+                "Perfekt": {
+                    "ich": "bin geschehen",
+                    "du": "bist geschehen",
+                    "er": "ist geschehen",
+                    "es": "ist geschehen",
+                    "sie_singular": "ist geschehen",
+                    "xier": "ist geschehen",
+                    "wir": "sind geschehen",
+                    "ihr": "seid geschehen",
+                    "sie_plural": "sind geschehen",
+                    "Sie": "sind geschehen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war geschehen",
+                    "du": "warst geschehen",
+                    "er": "war geschehen",
+                    "es": "war geschehen",
+                    "sie_singular": "war geschehen",
+                    "xier": "war geschehen",
+                    "wir": "waren geschehen",
+                    "ihr": "wart geschehen",
+                    "sie_plural": "waren geschehen",
+                    "Sie": "waren geschehen"
+                },
+                "Futur_I": {
+                    "ich": "werde geschehen",
+                    "du": "wirst geschehen",
+                    "er": "wird geschehen",
+                    "es": "wird geschehen",
+                    "sie_singular": "wird geschehen",
+                    "xier": "wird geschehen",
+                    "wir": "werden geschehen",
+                    "ihr": "werdet geschehen",
+                    "sie_plural": "werden geschehen",
+                    "Sie": "werden geschehen"
+                },
+                "imperative": {
+                    "du": "â€”",
+                    "ihr": "â€”",
+                    "Sie": "geschehen Sie"
+                }
+            },
+            "mitteilen": {
+                "present": {
+                    "ich": "teile mit",
+                    "du": "teilst mit",
+                    "er": "teilt mit",
+                    "es": "teilt mit",
+                    "sie_singular": "teilt mit",
+                    "xier": "teilt mit",
+                    "wir": "teilen mit",
+                    "ihr": "teilt mit",
+                    "sie_plural": "teilen mit",
+                    "Sie": "teilen mit"
+                },
+                "Präteritum": {
+                    "ich": "teilte mit",
+                    "du": "teiltest mit",
+                    "er": "teilte mit",
+                    "es": "teilte mit",
+                    "sie_singular": "teilte mit",
+                    "xier": "teilte mit",
+                    "wir": "teilten mit",
+                    "ihr": "teiltet mit",
+                    "sie_plural": "teilten mit",
+                    "Sie": "teilten mit"
+                },
+                "Perfekt": {
+                    "ich": "habe mitgeteilt",
+                    "du": "hast mitgeteilt",
+                    "er": "hat mitgeteilt",
+                    "es": "hat mitgeteilt",
+                    "sie_singular": "hat mitgeteilt",
+                    "xier": "hat mitgeteilt",
+                    "wir": "haben mitgeteilt",
+                    "ihr": "habt mitgeteilt",
+                    "sie_plural": "haben mitgeteilt",
+                    "Sie": "haben mitgeteilt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte mitgeteilt",
+                    "du": "hattest mitgeteilt",
+                    "er": "hatte mitgeteilt",
+                    "es": "hatte mitgeteilt",
+                    "sie_singular": "hatte mitgeteilt",
+                    "xier": "hatte mitgeteilt",
+                    "wir": "hatten mitgeteilt",
+                    "ihr": "hattet mitgeteilt",
+                    "sie_plural": "hatten mitgeteilt",
+                    "Sie": "hatten mitgeteilt"
+                },
+                "Futur_I": {
+                    "ich": "werde mitteilen",
+                    "du": "wirst mitteilen",
+                    "er": "wird mitteilen",
+                    "es": "wird mitteilen",
+                    "sie_singular": "wird mitteilen",
+                    "xier": "wird mitteilen",
+                    "wir": "werden mitteilen",
+                    "ihr": "werdet mitteilen",
+                    "sie_plural": "werden mitteilen",
+                    "Sie": "werden mitteilen"
+                },
+                "imperative": {
+                    "du": "teil mit",
+                    "ihr": "teilt mit",
+                    "Sie": "teilen Sie mit"
+                }
+            },
+            "besprechen": {
+                "present": {
+                    "ich": "bespreche",
+                    "du": "besprichst",
+                    "er": "bespricht",
+                    "es": "bespricht",
+                    "sie_singular": "bespricht",
+                    "xier": "bespricht",
+                    "wir": "besprechen",
+                    "ihr": "besprecht",
+                    "sie_plural": "besprechen",
+                    "Sie": "besprechen"
+                },
+                "Präteritum": {
+                    "ich": "besprach",
+                    "du": "besprachst",
+                    "er": "besprach",
+                    "es": "besprach",
+                    "sie_singular": "besprach",
+                    "xier": "besprach",
+                    "wir": "besprachen",
+                    "ihr": "bespracht",
+                    "sie_plural": "besprachen",
+                    "Sie": "besprachen"
+                },
+                "Perfekt": {
+                    "ich": "habe besprochen",
+                    "du": "hast besprochen",
+                    "er": "hat besprochen",
+                    "es": "hat besprochen",
+                    "sie_singular": "hat besprochen",
+                    "xier": "hat besprochen",
+                    "wir": "haben besprochen",
+                    "ihr": "habt besprochen",
+                    "sie_plural": "haben besprochen",
+                    "Sie": "haben besprochen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte besprochen",
+                    "du": "hattest besprochen",
+                    "er": "hatte besprochen",
+                    "es": "hatte besprochen",
+                    "sie_singular": "hatte besprochen",
+                    "xier": "hatte besprochen",
+                    "wir": "hatten besprochen",
+                    "ihr": "hattet besprochen",
+                    "sie_plural": "hatten besprochen",
+                    "Sie": "hatten besprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde besprechen",
+                    "du": "wirst besprechen",
+                    "er": "wird besprechen",
+                    "es": "wird besprechen",
+                    "sie_singular": "wird besprechen",
+                    "xier": "wird besprechen",
+                    "wir": "werden besprechen",
+                    "ihr": "werdet besprechen",
+                    "sie_plural": "werden besprechen",
+                    "Sie": "werden besprechen"
+                },
+                "imperative": {
+                    "du": "besprich",
+                    "ihr": "besprecht",
+                    "Sie": "besprechen Sie"
+                }
+            },
+            "abholen": {
+                "present": {
+                    "ich": "hole ab",
+                    "du": "holst ab",
+                    "er": "holt ab",
+                    "es": "holt ab",
+                    "sie_singular": "holt ab",
+                    "xier": "holt ab",
+                    "wir": "holen ab",
+                    "ihr": "holt ab",
+                    "sie_plural": "holen ab",
+                    "Sie": "holen ab"
+                },
+                "Präteritum": {
+                    "ich": "holte ab",
+                    "du": "holtest ab",
+                    "er": "holte ab",
+                    "es": "holte ab",
+                    "sie_singular": "holte ab",
+                    "xier": "holte ab",
+                    "wir": "holten ab",
+                    "ihr": "holtet ab",
+                    "sie_plural": "holten ab",
+                    "Sie": "holten ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgeholt",
+                    "du": "hast abgeholt",
+                    "er": "hat abgeholt",
+                    "es": "hat abgeholt",
+                    "sie_singular": "hat abgeholt",
+                    "xier": "hat abgeholt",
+                    "wir": "haben abgeholt",
+                    "ihr": "habt abgeholt",
+                    "sie_plural": "haben abgeholt",
+                    "Sie": "haben abgeholt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte abgeholt",
+                    "du": "hattest abgeholt",
+                    "er": "hatte abgeholt",
+                    "es": "hatte abgeholt",
+                    "sie_singular": "hatte abgeholt",
+                    "xier": "hatte abgeholt",
+                    "wir": "hatten abgeholt",
+                    "ihr": "hattet abgeholt",
+                    "sie_plural": "hatten abgeholt",
+                    "Sie": "hatten abgeholt"
+                },
+                "Futur_I": {
+                    "ich": "werde abholen",
+                    "du": "wirst abholen",
+                    "er": "wird abholen",
+                    "es": "wird abholen",
+                    "sie_singular": "wird abholen",
+                    "xier": "wird abholen",
+                    "wir": "werden abholen",
+                    "ihr": "werdet abholen",
+                    "sie_plural": "werden abholen",
+                    "Sie": "werden abholen"
+                },
+                "imperative": {
+                    "du": "hole ab",
+                    "ihr": "holt ab",
+                    "Sie": "holen Sie ab"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie haben bisher viel über Ihr Buch gesprochen.",
+            "Aber was ist in den anderen Geschichten passiert?",
+            "Überlegen Sie gemeinsam Fragen, die Sie stellen können, um Informationen über die anderen Bücher zu bekommen.",
+            "Die Fragen sollten so allgemein sein, dass sie für alle sechs Lektüren funktionieren.",
+            "Sie wollen so viele Informationen wie möglich über Kapitel 1–6 (7) bekommen.",
+            "Schreiben Sie die Fragen zusammen auf (z.B.",
+            "Auf einem Whiteboard).",
+            "In welcher Stadt spielt die Geschichte?",
+            "Wer sind die Hauptcharaktere?",
+            "Was ist ganz am Anfang passiert?",
+            "Was waren die wichtigsten Ereignisse?",
+            "Interviewen Sie mit den Fragen eine Person, die ein anderes Buch liest.",
+            "Machen Sie sich Notizen zu den Antworten.",
+            "In Aktivität 135 haben Sie Informationen über eine der anderen fünf Krimigeschichten gesammelt.",
+            "Finden Sie eine Person, die auch zu dieser Geschichte Informationen gesammelt hat.",
+            "Tragen Sie die wichtigsten Momente und Ereignisse dieser Geschichte chronologisch in die Timeline unten ein.",
+            "Was passiert zuerst, dann, danach, zum Schluss?",
+            "Schreiben Sie auf der rechten Seite eine Zusammenfassung der Geschichte mit den Informationen aus Ihrer Timeline.",
+            "Schreiben Sie im Präsens.",
+            "Strukturieren Sie Ihre Zusammenfassung, indem Sie temporale Konnektoren benutzen.",
+            "Das Beispiel hilft Ihnen beim Aufbau Ihrer Zusammenfassung.",
+            "Diese Geschichte spielt am Bodensee und die Hauptpersonen sind Urs Hägi, Hanna Perner, Gerd Fischer sowie die Familien von Urs und Gerd.",
+            "Bevor Bevor die richtige Geschichte beginnt, ist Urs in den Schweizer Alpen.",
+            "Nach seiner Reise trifft er sich zuerst mit Gerd und sie besprechen etwas.",
+            "Dann Dann rufen die beiden Hanna an, um ihr ihren Plan mitzuteilen.",
+            "Danach fahren die Freund*innen gemeinsam zum Flughafen in Friedrichshafen.",
+            "Schließlich Schließlich holen sie die Uhren am Terminal im Flughafen ab.",
+            "Und wie wird es weitergehen?",
+            "Spekulieren Sie in Ihrer Gruppe, was als nächstes geschehen wird.",
+            "Jede Person formuliert einen spekulativen Satz im Futur.",
+            "Die anderen Personen müssen dann sagen, ob sie die Spekulation plausibel finden oder nicht und warum.",
+            "Urs wird seinen Freund*innen von seiner Entführung erzählen.",
+            "In Aktivität 136 haben Sie spekuliert, wie die Geschichte in einem anderen Buch weitergeht.",
+            "Aber was wird in Ihrem eigenen Buch als nächstes geschehen?",
+            "Sammeln Sie Ideen in der Tabelle für zwei mögliche Szenarien, wie die Geschichte weitergehen wird.",
+            "Arbeiten Sie jetzt mit einer anderen Person zusammen, die auch Ihr Buch liest.",
+            "Erzählen Sie der Person eine detaillierte Version Ihrer beiden Spekulationen im Futur.",
+            "Benutzen Sie die Konnektoren aus Aktivität 136.",
+            "Danach erzählt die andere Person Ihnen, was sie spekuliert hat.",
+            "Bevor sie den Flughafen verlassen, werden Urs, Hanna und Gerd zuerst die Uhren verstecken.",
+            "Dann werden Sie zum Sommerhaus fahren, um sich mit Berta zu treffen.",
+            "Danach werden … Zu zweit: Entscheiden Sie gemeinsam, welches Szenario am plausibelsten ist.",
+            "Schreiben Sie dieses Szenario in die Tabelle von Aktivität 138 in Einheit 47."
+        ],
+        "templated": []
+    }
+}

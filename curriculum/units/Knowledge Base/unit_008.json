@@ -1,0 +1,448 @@
+{
+  "unit": "8",
+  "is_optional": true,
+  "sequence_info": {
+    "track": "core",
+    "position": 8,
+    "prerequisite": "1-7"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": []
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": []
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "umrechnen",
+        "pos": "VERB",
+        "translation": "to convert",
+        "frequency": 4824
+      },
+      {
+        "word": "stehen",
+        "pos": "VERB",
+        "translation": "to stand for",
+        "frequency": 85,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Schritt",
+        "pos": "NOUN",
+        "translation": "step",
+        "frequency": 376,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Größe",
+        "pos": "NOUN",
+        "translation": "quantity; size"
+      },
+      {
+        "word": "die Einheit",
+        "pos": "NOUN",
+        "translation": "unit; unity",
+        "frequency": 755,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Formel",
+        "pos": "NOUN",
+        "translation": "formula",
+        "frequency": 1445,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Zeichen",
+        "pos": "NOUN",
+        "translation": "sign; symbol",
+        "frequency": 1155,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Geschwindigkeit",
+        "pos": "NOUN",
+        "translation": "speed",
+        "frequency": 1233,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Länge",
+        "pos": "NOUN",
+        "translation": "length"
+      },
+      {
+        "word": "der Quadratmeter",
+        "pos": "NOUN",
+        "translation": "square meter",
+        "frequency": 3117,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Kubikmeter",
+        "pos": "NOUN",
+        "translation": "cubic meter",
+        "frequency": 7624,
+        "cefr": "A1"
+      },
+      {
+        "word": "(geteilt) durch",
+        "pos": "PREP",
+        "translation": "divided by",
+        "frequency": 55,
+        "cefr": "A1"
+      },
+      {
+        "word": "(ist) gleich",
+        "pos": "PARTICLE",
+        "translation": "equals",
+        "frequency": 141,
+        "cefr": "A1"
+      },
+      {
+        "word": "jetzt",
+        "pos": "ADV",
+        "translation": "now",
+        "frequency": 72,
+        "cefr": "A1"
+      },
+      {
+        "word": "klein",
+        "pos": "ADJ",
+        "translation": "small; short",
+        "frequency": 110,
+        "cefr": "A1"
+      },
+      {
+        "word": "pro",
+        "pos": "PREP",
+        "translation": "per",
+        "frequency": 412,
+        "cefr": "A2"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Challenge",
+        "pos": "NOUN"
+      },
+      {
+        "word": "der Teiler",
+        "pos": "NOUN",
+        "frequency": 34457
+      },
+      {
+        "word": "die Computersprache",
+        "pos": "NOUN"
+      },
+      {
+        "word": "benutzen",
+        "pos": "VERB",
+        "frequency": 1119,
+        "cefr": "A1"
+      },
+      {
+        "word": "oft",
+        "pos": "ADV",
+        "frequency": 223,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Dezimalsystem",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Computerindustrie",
+        "pos": "NOUN"
+      },
+      {
+        "word": "das Binärsystem",
+        "pos": "NOUN"
+      },
+      {
+        "word": "der Rest",
+        "pos": "NOUN",
+        "frequency": 1071,
+        "cefr": "A2"
+      },
+      {
+        "word": "hier",
+        "pos": "ADV",
+        "frequency": 68,
+        "cefr": "A1"
+      },
+      {
+        "word": "teilen",
+        "pos": "VERB",
+        "frequency": 906,
+        "cefr": "A2"
+      },
+      {
+        "word": "um",
+        "pos": "ADP",
+        "frequency": 44,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Symbol",
+        "pos": "NOUN",
+        "frequency": 2570,
+        "cefr": "B1"
+      },
+      {
+        "word": "elektrisch",
+        "pos": "ADJ",
+        "frequency": 36115,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Stromstärke",
+        "pos": "NOUN"
+      },
+      {
+        "word": "international",
+        "pos": "ADJ",
+        "frequency": 426,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Einheitensystem",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Basisgröße",
+        "pos": "NOUN"
+      },
+      {
+        "word": "das Formelzeichen",
+        "pos": "NOUN"
+      },
+      {
+        "word": "das Einheitenzeichen",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Zeit",
+        "pos": "NOUN",
+        "frequency": 96,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Sekunde",
+        "pos": "NOUN",
+        "frequency": 837,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Masse",
+        "pos": "NOUN",
+        "frequency": 1062
+      },
+      {
+        "word": "das Kilogramm",
+        "pos": "NOUN",
+        "frequency": 1280,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Ampere",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Temperatur",
+        "pos": "NOUN",
+        "frequency": 873,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Lichtstärke",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Stoffmenge",
+        "pos": "NOUN"
+      },
+      {
+        "word": "das Mol",
+        "pos": "NOUN",
+        "frequency": 24722
+      },
+      {
+        "word": "abgeleitet",
+        "pos": "ADJ",
+        "frequency": 26359
+      },
+      {
+        "word": "der Volumeninhalt",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Oberfläche",
+        "pos": "NOUN",
+        "frequency": 2206
+      },
+      {
+        "word": "die Beschleunigung",
+        "pos": "NOUN",
+        "frequency": 3991
+      },
+      {
+        "word": "die Quadratsekunde",
+        "pos": "NOUN"
+      },
+      {
+        "word": "volumetrische",
+        "pos": "ADJ"
+      },
+      {
+        "word": "molar",
+        "pos": "ADJ"
+      },
+      {
+        "word": "die Konzentration",
+        "pos": "NOUN",
+        "frequency": 1319
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "umrechnen": {
+        "present": {
+          "ich": "rechne um",
+          "du": "rechnest um",
+          "er": "rechnet um",
+          "es": "rechnet um",
+          "sie_singular": "rechnet um",
+          "xier": "rechnet um",
+          "wir": "rechnen um",
+          "ihr": "rechnet um",
+          "sie_plural": "rechnen um",
+          "Sie": "rechnen um"
+        }
+      },
+      "stehen": {
+        "present": {
+          "ich": "stehe",
+          "du": "stehst",
+          "er": "steht",
+          "es": "steht",
+          "sie_singular": "steht",
+          "xier": "steht",
+          "wir": "stehen",
+          "ihr": "steht",
+          "sie_plural": "stehen",
+          "Sie": "stehen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Zählen Sie von 1 bis 100.",
+      "Zahlen mit Teiler 3 sind\" King \", Zahlen mit Teiler 4 sind\" Kong \", Zahlen mit Teiler 3 und 4 sind\" King Kong \".",
+      "Eins – zwei – King – Kong – fünf – King – sieben – Kong – King – zehn – elf – King Kong – dreizehn …",
+      "Die Mathematik benutzt oft das Dezimalsystem ( Zahlen 0-9 ).",
+      "Die Computerindustrie benutzt oft das Binärsystem ( Zahlen 0-1 ).",
+      "Lesen Sie und hören Sie.",
+      "Ich rechne die Zahl 36 um.",
+      "36 geteilt durch 2 ist gleich 18.",
+      "Der Rest ist 0. 18 durch 2 gleich 9.",
+      "Rest 1. 4 durch 2 gleich 2.",
+      "Rest 0 2 geteilt durch 2 ist gleich 1.",
+      "Die Zahl 36 im Dezimalsystem ist 1-0-0-1-0-0 im Binärsystem",
+      "Jetzt rechne ich die Zahl 45 um.",
+      "45 geteilt durch 2 ist gleich 22, Rest 1 22 durch 2 gleich 11",
+      "Rest 0. 11 durch 2 gleich 5, Rest 1. 5 durch 2 gleich 2.",
+      "Rest 1. 2 durch 2 gleich",
+      "Die Zahl 45 im Dezimalsystem ist 0-1-1-0-1 im Binärsystem",
+      "Rechnen Sie die Zahlen um.",
+      "Sagen Sie die Schritte laut.",
+      "Welche Zahl hören Sie?",
+      "Schreiben Sie die Buchstaben.",
+      "Wofür steht \"kleines m\"?",
+      "\"kleines m\" steht für \"Meter\".",
+      "Wofür steht \"großes I\"?",
+      "\"Großes I\" steht für \"Elektrische Stromstärke\".",
+      "Wofür steht \"kleines v\"?",
+      "Es steht für \"Geschwindigkeit\".",
+      "Und wie heißt die Einheit?",
+      "Sie heißt \"Meter pro Sekunde\".",
+      "Beschleunigung a Meter pro Quadratsekunde m"
+    ],
+    "templated": []
+  },
+  "placeholder_registry": {}
+}

@@ -1,0 +1,641 @@
+{
+    "unit": "73",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 73,
+        "prerequisite": "1-72"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Einträge fürs Poesiealbum schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Poesiealbum"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "nutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 429,
+                "cefr": "B1"
+            },
+            {
+                "word": "prüfen",
+                "pos": "VERB",
+                "translation": "to check, inspect"
+            },
+            {
+                "word": "tauschen",
+                "pos": "VERB",
+                "translation": "to switch, exchange",
+                "frequency": 3647,
+                "cefr": "A2"
+            },
+            {
+                "word": "hinzufügen",
+                "pos": "VERB",
+                "translation": "to add, append"
+            },
+            {
+                "word": "verwelken",
+                "pos": "VERB",
+                "translation": "to fade, shrivel, wither"
+            },
+            {
+                "word": "vergehen",
+                "pos": "VERB",
+                "translation": "to elapse, die away; pass by [time]",
+                "frequency": 310
+            },
+            {
+                "word": "bestehen",
+                "pos": "VERB",
+                "translation": "to exist, suvive, last; pass sth.",
+                "frequency": 246,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Autor*in",
+                "pos": "NOUN",
+                "translation": "author",
+                "frequency": 723,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Dichter*in",
+                "pos": "NOUN",
+                "translation": "poet",
+                "frequency": 1975
+            },
+            {
+                "word": "der*die Besitzer*in",
+                "pos": "NOUN",
+                "translation": "owner",
+                "frequency": 2839,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Wunsch",
+                "pos": "NOUN",
+                "translation": "wish",
+                "frequency": 1072,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Gedicht",
+                "pos": "NOUN",
+                "translation": "poem",
+                "frequency": 1897,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sammlung",
+                "pos": "NOUN",
+                "translation": "collection; compilation",
+                "frequency": 2884,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Poesiealbum, Poesiealben",
+                "pos": "NOUN",
+                "translation": "autograph book; poetry book"
+            },
+            {
+                "word": "der Eintrag",
+                "pos": "NOUN",
+                "translation": "entry",
+                "frequency": 6420,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Freundschaft",
+                "pos": "NOUN",
+                "translation": "friendship",
+                "frequency": 2981,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Blume",
+                "pos": "NOUN",
+                "translation": "flower",
+                "frequency": 2463,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Jahrhundert",
+                "pos": "NOUN",
+                "translation": "century",
+                "frequency": 492,
+                "cefr": "B1"
+            },
+            {
+                "word": "doch",
+                "pos": "ADJ",
+                "translation": "however; if only; yes (on the contrary)",
+                "frequency": 73,
+                "cefr": "A2"
+            },
+            {
+                "word": "damals",
+                "pos": "ADV",
+                "translation": "back then, in those days",
+                "frequency": 286,
+                "cefr": "A2"
+            },
+            {
+                "word": "früher",
+                "pos": "ADV",
+                "translation": "in the past; earlier"
+            },
+            {
+                "word": "ungefähr",
+                "pos": "PREP",
+                "translation": "about, approximately"
+            },
+            {
+                "word": "ewig",
+                "pos": "ADV",
+                "translation": "eternal, everlasting, forever",
+                "frequency": 1800,
+                "cefr": "B1"
+            },
+            {
+                "word": "jüdisch",
+                "pos": "ADJ",
+                "translation": "Jewish"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Freundschaftsbuch",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Doppelseite",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Kreative",
+                "pos": "NOUN",
+                "frequency": 23513
+            },
+            {
+                "word": "die Zeichnung",
+                "pos": "NOUN",
+                "frequency": 3419,
+                "cefr": "B1"
+            },
+            {
+                "word": "hinfügen",
+                "pos": "VERB",
+                "frequency": 12903
+            },
+            {
+                "word": "hineinschreiben",
+                "pos": "VERB",
+                "frequency": 47947
+            },
+            {
+                "word": "die Lieblingsfarbe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Lieblingstier",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Lieblingsbuch",
+                "pos": "NOUN",
+                "frequency": 41596
+            },
+            {
+                "word": "die Tradition",
+                "pos": "NOUN",
+                "frequency": 1650,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Poet",
+                "pos": "NOUN",
+                "frequency": 14958,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Illustration",
+                "pos": "NOUN",
+                "frequency": 9762
+            },
+            {
+                "word": "die Poesie",
+                "pos": "NOUN",
+                "frequency": 8945
+            },
+            {
+                "word": "historisch",
+                "pos": "ADJ",
+                "frequency": 901,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Hilfsverb",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Partizip",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Partizipie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Wortstellung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Hauptsatz",
+                "pos": "NOUN",
+                "frequency": 46443
+            },
+            {
+                "word": "der Holocaust",
+                "pos": "NOUN",
+                "frequency": 7959
+            },
+            {
+                "word": "die verwandte",
+                "pos": "NOUN",
+                "frequency": 6526,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Albe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "nachdenken",
+                "pos": "VERB",
+                "frequency": 1173,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Rose",
+                "pos": "NOUN",
+                "frequency": 3266,
+                "cefr": "A2"
+            },
+            {
+                "word": "unsre",
+                "pos": "ADJ",
+                "frequency": 8492
+            },
+            {
+                "word": "die Quelle",
+                "pos": "NOUN",
+                "frequency": 1108
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "nutzen": {
+                "present": {
+                    "ich": "nutze",
+                    "du": "nutzt",
+                    "er": "nutzt",
+                    "es": "nutzt",
+                    "sie_singular": "nutzt",
+                    "xier": "nutzt",
+                    "wir": "nutzen",
+                    "ihr": "nutzt",
+                    "sie_plural": "nutzen",
+                    "Sie": "nutzen"
+                },
+                "Perfekt": {
+                    "ich": "habe genutzt",
+                    "du": "hast genutzt",
+                    "er": "hat genutzt",
+                    "es": "hat genutzt",
+                    "sie_singular": "hat genutzt",
+                    "xier": "hat genutzt",
+                    "wir": "haben genutzt",
+                    "ihr": "habt genutzt",
+                    "sie_plural": "haben genutzt",
+                    "Sie": "haben genutzt"
+                }
+            },
+            "prüfen": {
+                "present": {
+                    "ich": "prüfe",
+                    "du": "prüfst",
+                    "er": "prüft",
+                    "es": "prüft",
+                    "sie_singular": "prüft",
+                    "xier": "prüft",
+                    "wir": "prüfen",
+                    "ihr": "prüft",
+                    "sie_plural": "prüfen",
+                    "Sie": "prüfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geprüft",
+                    "du": "hast geprüft",
+                    "er": "hat geprüft",
+                    "es": "hat geprüft",
+                    "sie_singular": "hat geprüft",
+                    "xier": "hat geprüft",
+                    "wir": "haben geprüft",
+                    "ihr": "habt geprüft",
+                    "sie_plural": "haben geprüft",
+                    "Sie": "haben geprüft"
+                }
+            },
+            "tauschen": {
+                "present": {
+                    "ich": "tausche",
+                    "du": "tauschst",
+                    "er": "tauscht",
+                    "es": "tauscht",
+                    "sie_singular": "tauscht",
+                    "xier": "tauscht",
+                    "wir": "tauschen",
+                    "ihr": "tauscht",
+                    "sie_plural": "tauschen",
+                    "Sie": "tauschen"
+                },
+                "Perfekt": {
+                    "ich": "habe getauscht",
+                    "du": "hast getauscht",
+                    "er": "hat getauscht",
+                    "es": "hat getauscht",
+                    "sie_singular": "hat getauscht",
+                    "xier": "hat getauscht",
+                    "wir": "haben getauscht",
+                    "ihr": "habt getauscht",
+                    "sie_plural": "haben getauscht",
+                    "Sie": "haben getauscht"
+                }
+            },
+            "hinzufügen": {
+                "present": {
+                    "ich": "füge hinzu",
+                    "du": "fügst hinzu",
+                    "er": "fügt hinzu",
+                    "es": "fügt hinzu",
+                    "sie_singular": "fügt hinzu",
+                    "xier": "fügt hinzu",
+                    "wir": "fügen hinzu",
+                    "ihr": "fügt hinzu",
+                    "sie_plural": "fügen hinzu",
+                    "Sie": "fügen hinzu"
+                },
+                "Perfekt": {
+                    "ich": "habe hinzugefügt",
+                    "du": "hast hinzugefügt",
+                    "er": "hat hinzugefügt",
+                    "es": "hat hinzugefügt",
+                    "sie_singular": "hat hinzugefügt",
+                    "xier": "hat hinzugefügt",
+                    "wir": "haben hinzugefügt",
+                    "ihr": "habt hinzugefügt",
+                    "sie_plural": "haben hinzugefügt",
+                    "Sie": "haben hinzugefügt"
+                }
+            },
+            "verwelken": {
+                "Perfekt": {
+                    "ich": "bin verwelkt",
+                    "du": "bist verwelkt",
+                    "er": "ist verwelkt",
+                    "es": "ist verwelkt",
+                    "sie_singular": "ist verwelkt",
+                    "xier": "ist verwelkt",
+                    "wir": "sind verwelkt",
+                    "ihr": "seid verwelkt",
+                    "sie_plural": "sind verwelkt",
+                    "Sie": "sind verwelkt"
+                }
+            },
+            "vergehen": {
+                "present": {
+                    "ich": "vergehe",
+                    "du": "vergehst",
+                    "er": "vergeht",
+                    "es": "vergeht",
+                    "sie_singular": "vergeht",
+                    "xier": "vergeht",
+                    "wir": "vergehen",
+                    "ihr": "vergeht",
+                    "sie_plural": "vergehen",
+                    "Sie": "vergehen"
+                },
+                "Perfekt": {
+                    "ich": "habe vergangen",
+                    "du": "hast vergangen",
+                    "er": "hat vergangen",
+                    "es": "hat vergangen",
+                    "sie_singular": "hat vergangen",
+                    "xier": "hat vergangen",
+                    "wir": "haben vergangen",
+                    "ihr": "habt vergangen",
+                    "sie_plural": "haben vergangen",
+                    "Sie": "haben vergangen"
+                }
+            },
+            "bestehen": {
+                "present": {
+                    "ich": "bestehe",
+                    "du": "bestehst",
+                    "er": "besteht",
+                    "es": "besteht",
+                    "sie_singular": "besteht",
+                    "xier": "besteht",
+                    "wir": "bestehen",
+                    "ihr": "besteht",
+                    "sie_plural": "bestehen",
+                    "Sie": "bestehen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestanden",
+                    "du": "hast bestanden",
+                    "er": "hat bestanden",
+                    "es": "hat bestanden",
+                    "sie_singular": "hat bestanden",
+                    "xier": "hat bestanden",
+                    "wir": "haben bestanden",
+                    "ihr": "habt bestanden",
+                    "sie_plural": "haben bestanden",
+                    "Sie": "haben bestanden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text über das Poesiealbum und beantworten Sie die Fragen.",
+            "Was ist ein anderer Name für das Poesiealbum?",
+            "Welche Informationen schreibt man ins Poesiealbum?",
+            "In welchem Alter nutzen Kinder Poesiealben?",
+            "Was findet man noch in Poesiealben?",
+            "Warum nutzen Kinder so ein Freundschaftsbuch?",
+            "Das Poesiealbum ist ein Freundschaftsbuch.",
+            "Kinder nutzen es vor allem in der ersten und zweiten Klasse in der Grundschule.",
+            "In diesem Alter lernen Kinder Lesen und Schreiben.",
+            "Im Poesiealbum sammeln Kinder interessante Informationen über Freund*innen und andere Schüler*innen.",
+            "Wie funktioniert ein Poesiealbum?",
+            "Ein Kind gibt sein Album einem anderen Kind.",
+            "Manchmal geben Kinder das Album auch an Lehrer*innen oder andere Erwachsene.",
+            "Kannst du bitte etwas in mein Album schreiben?",
+            "Für jeden Eintrag gibt es eine Doppelseite.",
+            "Auf der einen Seite schreibt man seine persönlichen Informationen (Name, Alter, Geburtstag, Lieblingsessen, etc.).",
+            "Auf der anderen Seite kann man entweder etwas Kreatives (eine Zeichnung, ein Gedicht, etc.) oder ein Foto hinzufügen.",
+            "Oft findet man auf der kreativen Seite auch eine persönliche Nachricht an die Besitzerin/den Besitzer des Buches.",
+            "Dann gibt man das Buch zurück und die nächste Person darf hineinschreiben.",
+            "Lassen Sie eine andere Person im Kurs in Ihr Poesiealbum zu schreiben.",
+            "Und Sie schreiben in das Album der Person.",
+            "Das mag ich nicht:",
+            "In 10 Jahren bin ich:",
+            "Poesiealben haben eine lange Tradition.",
+            "Es hat diese Alben schon im 19.",
+            "Jahrhundert gegeben.",
+            "Lesen Sie die Aussagen.",
+            "Dann hören Sie gut zu und entscheiden Sie, ob die Aussagen richtig oder falsch sind.",
+            "Korrigieren Sie die falschen Aussagen.",
+            "Jahrhundert haben Kinder Poesiealben in der Schule genutzt.",
+            "Wie heute hat man auf eine Seite persönliche Informationen geschrieben.",
+            "Man hat kleine Gedichte in das Album geschrieben.",
+            "Deshalb heißt es \"Poesiealbum\".",
+            "Das Poesiealbum hat eine lange Tradition.",
+            "Schon im 19.",
+            "Jahrhundert hat es diese Alben gegeben.",
+            "Damals haben aber nicht Schüler diese Poesiealben in der Schule benutzt, sondern Dichter und Poeten, also Menschen, die kreativ schreiben.",
+            "Diese Dichter und Poeten haben keine Informationen in die Poesiealben geschrieben wie heute.",
+            "Auf der einen Seite haben Sie etwas Kreatives, wie ein Gedicht, geschrieben oder einen guten Wunsch für die Person, der das Album gehört.",
+            "Auf der anderen Seite hat es normalerweise immer eine Illustration zu dem Gedicht oder ein anderes Bild gegeben.",
+            "Poesiealben waren früher also viel kreativer als heute.",
+            "Der Name Poesiealbum kommt auch aus dem 19.",
+            "Man hat fast immer ein Gedicht, also Poesie, in das Album geschrieben.",
+            "Deshalb heißt es noch heute Poesiealbum.",
+            "Schreiben Sie das historische Präsens in die Vergangenheit um.",
+            "Achten Sie auf die Position von Hilfsverb und Partizip!",
+            "Das Poesiealbum gibt es schon im 19.",
+            "Das Poesiealbum hat es schon im 19.",
+            "Damals nutzen Dichter *innen das Poesiealbum.",
+            "Damals haben Dichter das Poesiealbum genutzt.",
+            "Sie schreib en Gedichte ins Poesiealbum.",
+            "Sie haben Gedichte ins Poesiealbum geschrieben.",
+            "Man malt auch Bilder ins Poesiealbum.",
+            "Man hat auch Bilder ins Poesiealbum gemalt.",
+            "Tauschen Sie Ihre Sätze mit einer anderen Person.",
+            "Lesen Sie die Sätze.",
+            "Markieren Sie die Partizipien und prüfen Sie die Formen.",
+            "Prüfen Sie die Wortstellung von Hilfsverb und Partizip.",
+            "Das Partizip Perfekt steht immer am Ende eines Hauptsatzes ( independent clause ).",
+            "Das Poesiealbum im Kontext des Holocausts",
+            "Dann lesen Sie den Text und das Gedicht und beantworten Sie die Fragen.",
+            "Wie viele jüdische Kinder sind im Holocaust gestorben?",
+            "Ungefähr 1,5 Millionen jüdische Kinder sind im Holocaust gestorben.",
+            "Warum sind die Poesiealben von jüdischen Kindern in Yad Vashem so wichtig?",
+            "Wie lernen wir über das Leben der Kinder aus der Perspektive ihrer Freund*innen, Familien und Verwandten.",
+            "In dem Gedicht vergleicht der Autor Blumen mit Freundschaft.",
+            "Was ist gleich?",
+            "Was ist der Unterschied?",
+            "Blumen verwelken und gehen, Freundschaften bleiben ewig.",
+            "Die Nazis haben ungefähr 1,5 Millionen jüdische Kinder im Holocaust getötet.",
+            "Heute haben wir von diesen Kindern wenige Erinnerungsobjekte.",
+            "Aber Im Holocaust Museum in Yad Vashem gibt es eine Sammlung von Poesiealben.",
+            "Diese Alben haben jüdischen Kindern gehört.",
+            "In den Alben lesen wir Texte von Freund*innen, Familie und Verwandten und lernen so etwas über das Leben von den Kindern.",
+            "Die Alben sind Erinnerungsbücher.",
+            "Ein Ziel ist auch, dass Menschen über das Leben und das Sterben von den Kindern nachdenken.",
+            "Rosen verwelken, Blumen vergehen, doch unsre Freundschaft bleibt ewig bestehen.",
+            "Gehen Sie auf die Webseite von Yad Vashem.",
+            "Lesen Sie ein paar Gedichte in Poesiealben und wählen Sie eins aus.",
+            "Reagieren Sie.",
+            "Sie können z.B.",
+            "Etwas schreiben oder malen.",
+            "Ich habe das Poesiealbum von Erika Hoffmann gelesen.",
+            "Dort hat Jan van Beek ein Gedicht über Freundschaft geschrieben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

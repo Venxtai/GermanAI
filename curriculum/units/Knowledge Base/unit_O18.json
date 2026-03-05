@@ -1,0 +1,370 @@
+{
+    "unit": "O18",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 18,
+        "prerequisite": "core 1-104, O1-O17"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da"
+        ],
+        "new_rules_in_this_unit": [
+            "Combine verbs with the accusative prepositions für or gegen to express what one is for/against: demonstrieren für/gegen, sich interessieren für, sich entscheiden für/gegen, kämpfen für/gegen + accusative.",
+            "Use denn (coordinating conjunction, position zero, verb stays second) or da (subordinating conjunction, verb to end) as alternatives to weil for expressing reasons."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "kontroverse Meinungen formulieren und diskutieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Stimmen auf dem Campus"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "sich engagieren (für)", "pos": "VERB", "translation": "to commit oneself (to), become involved (in)", "frequency": 1831 },
+            { "word": "demonstrieren", "pos": "VERB", "translation": "to demonstrate, rally", "frequency": 3270 },
+            { "word": "protestieren", "pos": "VERB", "translation": "to protest", "frequency": 4097, "cefr": "B1" },
+            { "word": "das Medium, Medien", "pos": "NOUN", "translation": "medium", "frequency": 2764 },
+            { "word": "der Streik", "pos": "NOUN", "translation": "strike, walkout", "frequency": 6569, "cefr": "B1" },
+            { "word": "die Demonstration", "pos": "NOUN", "translation": "demonstration, rally", "frequency": 3235, "cefr": "A1" },
+            { "word": "der Protest", "pos": "NOUN", "translation": "protest", "frequency": 2639, "cefr": "B1" },
+            { "word": "der*die Demonstrant*in", "pos": "NOUN", "translation": "protester; demonstrator", "frequency": 4733 },
+            { "word": "der Daumen", "pos": "NOUN", "translation": "thumb", "frequency": 3965, "cefr": "A1" },
+            { "word": "anonym", "pos": "ADJ", "translation": "anonymous(ly)", "frequency": 6699 },
+            { "word": "weil, denn, da", "pos": "CONJ", "translation": "because (3 ways to say it)", "frequency": 88, "cefr": "A2" },
+            { "word": "für", "pos": "PREP", "translation": "for" },
+            { "word": "wofür", "pos": "ADV", "translation": "for what" },
+            { "word": "dafür", "pos": "ADV", "translation": "for it; in exchange" },
+            { "word": "gegen", "pos": "PREP", "translation": "against, toward", "frequency": 104, "cefr": "A1" },
+            { "word": "wogegen", "pos": "ADV", "translation": "against what", "frequency": 19952 },
+            { "word": "dagegen", "pos": "ADV", "translation": "against it, in contrast", "frequency": 467, "cefr": "A2" },
+            { "word": "runter", "pos": "ADV", "translation": "down", "frequency": 9442, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Planet", "pos": "NOUN", "frequency": 2744 },
+            { "word": "hrem", "pos": "ADJ" },
+            { "word": "kausal", "pos": "ADJ" },
+            { "word": "das Konnektor", "pos": "NOUN" },
+            { "word": "unfair", "pos": "ADV", "frequency": 12990 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "engagieren": {
+                "present": {
+                    "ich": "engagiere mich",
+                    "du": "engagierst dich",
+                    "er": "engagiert sich",
+                    "es": "engagiert sich",
+                    "sie_singular": "engagiert sich",
+                    "xier": "engagiert sich",
+                    "wir": "engagieren uns",
+                    "ihr": "engagiert euch",
+                    "sie_plural": "engagieren sich",
+                    "Sie": "engagieren sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich engagiert",
+                    "du": "hast dich engagiert",
+                    "er": "hat sich engagiert",
+                    "es": "hat sich engagiert",
+                    "sie_singular": "hat sich engagiert",
+                    "xier": "hat sich engagiert",
+                    "wir": "haben uns engagiert",
+                    "ihr": "habt euch engagiert",
+                    "sie_plural": "haben sich engagiert",
+                    "Sie": "haben sich engagiert"
+                },
+                "Futur_I": {
+                    "ich": "werde mich engagieren",
+                    "du": "wirst dich engagieren",
+                    "er": "wird sich engagieren",
+                    "es": "wird sich engagieren",
+                    "sie_singular": "wird sich engagieren",
+                    "xier": "wird sich engagieren",
+                    "wir": "werden uns engagieren",
+                    "ihr": "werdet euch engagieren",
+                    "sie_plural": "werden sich engagieren",
+                    "Sie": "werden sich engagieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde mich engagieren",
+                    "du": "würdest dich engagieren",
+                    "er": "würde sich engagieren",
+                    "es": "würde sich engagieren",
+                    "sie_singular": "würde sich engagieren",
+                    "xier": "würde sich engagieren",
+                    "wir": "würden uns engagieren",
+                    "ihr": "würdet euch engagieren",
+                    "sie_plural": "würden sich engagieren",
+                    "Sie": "würden sich engagieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte mich engagiert",
+                    "du": "hättest dich engagiert",
+                    "er": "hätte sich engagiert",
+                    "es": "hätte sich engagiert",
+                    "sie_singular": "hätte sich engagiert",
+                    "xier": "hätte sich engagiert",
+                    "wir": "hätten uns engagiert",
+                    "ihr": "hättet euch engagiert",
+                    "sie_plural": "hätten sich engagiert",
+                    "Sie": "hätten sich engagiert"
+                },
+                "imperative": {
+                    "du": "engagiere dich",
+                    "ihr": "engagiert euch",
+                    "Sie": "engagieren Sie sich"
+                }
+            },
+            "demonstrieren": {
+                "present": {
+                    "ich": "demonstriere",
+                    "du": "demonstrierst",
+                    "er": "demonstriert",
+                    "es": "demonstriert",
+                    "sie_singular": "demonstriert",
+                    "xier": "demonstriert",
+                    "wir": "demonstrieren",
+                    "ihr": "demonstriert",
+                    "sie_plural": "demonstrieren",
+                    "Sie": "demonstrieren"
+                },
+                "Perfekt": {
+                    "ich": "habe demonstriert",
+                    "du": "hast demonstriert",
+                    "er": "hat demonstriert",
+                    "es": "hat demonstriert",
+                    "sie_singular": "hat demonstriert",
+                    "xier": "hat demonstriert",
+                    "wir": "haben demonstriert",
+                    "ihr": "habt demonstriert",
+                    "sie_plural": "haben demonstriert",
+                    "Sie": "haben demonstriert"
+                },
+                "Futur_I": {
+                    "ich": "werde demonstrieren",
+                    "du": "wirst demonstrieren",
+                    "er": "wird demonstrieren",
+                    "es": "wird demonstrieren",
+                    "sie_singular": "wird demonstrieren",
+                    "xier": "wird demonstrieren",
+                    "wir": "werden demonstrieren",
+                    "ihr": "werdet demonstrieren",
+                    "sie_plural": "werden demonstrieren",
+                    "Sie": "werden demonstrieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde demonstrieren",
+                    "du": "würdest demonstrieren",
+                    "er": "würde demonstrieren",
+                    "es": "würde demonstrieren",
+                    "sie_singular": "würde demonstrieren",
+                    "xier": "würde demonstrieren",
+                    "wir": "würden demonstrieren",
+                    "ihr": "würdet demonstrieren",
+                    "sie_plural": "würden demonstrieren",
+                    "Sie": "würden demonstrieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte demonstriert",
+                    "du": "hättest demonstriert",
+                    "er": "hätte demonstriert",
+                    "es": "hätte demonstriert",
+                    "sie_singular": "hätte demonstriert",
+                    "xier": "hätte demonstriert",
+                    "wir": "hätten demonstriert",
+                    "ihr": "hättet demonstriert",
+                    "sie_plural": "hätten demonstriert",
+                    "Sie": "hätten demonstriert"
+                },
+                "imperative": {
+                    "du": "demonstrier",
+                    "ihr": "demonstriert",
+                    "Sie": "demonstrieren Sie"
+                }
+            },
+            "protestieren": {
+                "present": {
+                    "ich": "protestiere",
+                    "du": "protestierst",
+                    "er": "protestiert",
+                    "es": "protestiert",
+                    "sie_singular": "protestiert",
+                    "xier": "protestiert",
+                    "wir": "protestieren",
+                    "ihr": "protestiert",
+                    "sie_plural": "protestieren",
+                    "Sie": "protestieren"
+                },
+                "Perfekt": {
+                    "ich": "habe protestiert",
+                    "du": "hast protestiert",
+                    "er": "hat protestiert",
+                    "es": "hat protestiert",
+                    "sie_singular": "hat protestiert",
+                    "xier": "hat protestiert",
+                    "wir": "haben protestiert",
+                    "ihr": "habt protestiert",
+                    "sie_plural": "haben protestiert",
+                    "Sie": "haben protestiert"
+                },
+                "Futur_I": {
+                    "ich": "werde protestieren",
+                    "du": "wirst protestieren",
+                    "er": "wird protestieren",
+                    "es": "wird protestieren",
+                    "sie_singular": "wird protestieren",
+                    "xier": "wird protestieren",
+                    "wir": "werden protestieren",
+                    "ihr": "werdet protestieren",
+                    "sie_plural": "werden protestieren",
+                    "Sie": "werden protestieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde protestieren",
+                    "du": "würdest protestieren",
+                    "er": "würde protestieren",
+                    "es": "würde protestieren",
+                    "sie_singular": "würde protestieren",
+                    "xier": "würde protestieren",
+                    "wir": "würden protestieren",
+                    "ihr": "würdet protestieren",
+                    "sie_plural": "würden protestieren",
+                    "Sie": "würden protestieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte protestiert",
+                    "du": "hättest protestiert",
+                    "er": "hätte protestiert",
+                    "es": "hätte protestiert",
+                    "sie_singular": "hätte protestiert",
+                    "xier": "hätte protestiert",
+                    "wir": "hätten protestiert",
+                    "ihr": "hättet protestiert",
+                    "sie_plural": "hätten protestiert",
+                    "Sie": "hätten protestiert"
+                },
+                "imperative": {
+                    "du": "protestiere",
+                    "ihr": "protestiert",
+                    "Sie": "protestieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ich protestiere!",
+            "Wann und wo haben Sie protestiert/demonstriert?",
+            "Wofür oder wogegen waren Sie?",
+            "Wofür haben Sie sich engagiert?",
+            "Denken Sie an große Ereignisse (z.",
+            "Streiks, öffentliche Demonstrationen … ), aber auch an kleine Ereignisse (z.",
+            "Sie haben noch nie protestiert?",
+            "Sprechen Sie über die Proteste und Themen zuerst in kleinen Gruppen, dann im Kurs.",
+            "Formulieren Sie kontroverse Meinungen, von denen Sie denken, dass manche Menschen eine andere Meinung oder Perspektive dazu haben könnten.",
+            "Benutzen Sie „sollte(n).",
+            "Alkohol sollte man erst mit 30 kaufen dürfen.",
+            "Hausaufgaben sollten verboten werden.",
+            "Sportler*innen sollten weniger Geld verdienen.",
+            "Sollte Generative AI alle unsere Hausaufgaben schreiben?",
+            "Sollten wir auf anderen Planeten leben?",
+            "Sollten wir im Supermarkt Plastiktüten verbieten?",
+            "Sollten Kinder mehr Sprachen lernen?",
+            "Sollte das Essen von Tieren verboten sein?",
+            "Sollten Menschen in Restaurants mehr verdienen?",
+            "Sollten ein Studium nichts kosten?",
+            "Sind Sie dafür (Daumen hoch) oder dagegen (Daumen runter)?",
+            "Wählen Sie dann drei Sätze aus, die in Ihrer Gruppe besonders kontrovers sind, ohne über die Sätze zu sprechen.",
+            "Tragen Sie die Sätze rechts über die orangenen Felder ein.",
+            "Eine Person pro Gruppe legt das Buch vorne auf einen Tisch.",
+            "Alle Studierenden tragen dann (anonym) mit einem Kreuz in orangenen Feldern ein, wo sie auf der Skala von „dafür bis „dagegen sind.",
+            "Präsentieren Sie die Ergebnisse.",
+            "Warum sind manche Studierende für oder gegen diese Themen?",
+            "Benutzen Sie kausale Konnektoren.",
+            "Recherchieren Sie, wo Sie auf Ihrem Campus Ihre Meinungen sagen können.",
+            "Welche Gruppen, Medien, Vereine oder Initiativen gibt es?",
+            "Welche Themen diskutieren Studierende?",
+            "Schreiben Sie einen kurzen Text zu einem Thema aus Aktivität 60 2 für eine Gruppe oder ein Medium aus Aktivität",
+            "Warum sind Sie dafür oder dagegen?",
+            "Benutzen Sie die kausalen Konnektoren.",
+            "Ich bin neu hier an der Uni und möchte mein Auto auf dem Campus haben.",
+            "Ich darf es aber nicht.",
+            "Es ist unfair, weil ich so viel Geld an die Uni zahle wie ältere Studierende.",
+            "Ich brauche auch ein Auto, da ich arbeiten muss und nicht mit dem Bus zur Arbeit komme …"
+        ],
+        "templated": []
+    }
+}

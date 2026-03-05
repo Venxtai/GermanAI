@@ -1,0 +1,681 @@
+{
+    "unit": "B17",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 17,
+        "prerequisite": "core 1-104, B1-B16"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Ereignisse beschreiben und reflektieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "der 17. Juni 1953"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "berichten", "pos": "VERB", "translation": "to report (on), tell", "frequency": 591, "cefr": "A2" },
+            { "word": "hoffen", "pos": "VERB", "translation": "to hope", "frequency": 689, "cefr": "A2" },
+            { "word": "spazieren", "pos": "VERB", "translation": "to go for a walk", "frequency": 3312 },
+            { "word": "bewundern", "pos": "VERB", "translation": "to admire", "frequency": 4234 },
+            { "word": "schicken", "pos": "VERB", "translation": "to send", "frequency": 928, "cefr": "A1" },
+            { "word": "sich ärgern (über)", "pos": "VERB", "translation": "to be/get annoyed (at)" },
+            { "word": "provozieren", "pos": "VERB", "translation": "to provoke", "frequency": 8038 },
+            { "word": "inhaftieren", "pos": "VERB", "translation": "to arrest", "frequency": 12348 },
+            { "word": "stürmen", "pos": "VERB", "translation": "to storm; attack" },
+            { "word": "der*die Demonstrant*in", "pos": "NOUN", "translation": "demonstrator, protester", "frequency": 4733 },
+            { "word": "der*die Kämpfer*in", "pos": "NOUN", "translation": "fighter, warrior" },
+            { "word": "der*die Redakteur*in", "pos": "NOUN", "translation": "editor", "frequency": 4983 },
+            { "word": "die Bildunterschrift", "pos": "NOUN", "translation": "caption", "frequency": 23590, "cefr": "A1" },
+            { "word": "der Stein", "pos": "NOUN", "translation": "stone, brick", "frequency": 1181, "cefr": "B1" },
+            { "word": "der Mut", "pos": "NOUN", "translation": "courage", "frequency": 2180, "cefr": "B1" },
+            { "word": "die Note", "pos": "NOUN", "translation": "grade [school]; tone [music]", "frequency": 2952, "cefr": "A2" },
+            { "word": "friedlich", "pos": "ADJ", "translation": "peaceful", "frequency": 2373 },
+            { "word": "gewalttätig", "pos": "ADJ", "translation": "violent; rowdy" },
+            { "word": "erfolgreich", "pos": "ADJ", "translation": "successful", "frequency": 735, "cefr": "B1" },
+            { "word": "wahrscheinlich", "pos": "ADJ", "translation": "probably, likely", "frequency": 493, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die kriminelle", "pos": "NOUN", "frequency": 11607 },
+            { "word": "illegal", "pos": "ADV", "frequency": 2473, "cefr": "B1" },
+            { "word": "der Kommunismus", "pos": "NOUN", "frequency": 10505 },
+            { "word": "der Kapitalismus", "pos": "NOUN", "frequency": 8864, "cefr": "B2" },
+            { "word": "Verben", "pos": "NOUN" },
+            { "word": "der demonstrierender", "pos": "NOUN" },
+            { "word": "legitim", "pos": "ADV", "frequency": 8996 },
+            { "word": "die Unterschrift", "pos": "NOUN", "frequency": 3825, "cefr": "A1" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "berichten": {
+                "present": {
+                    "ich": "berichte",
+                    "du": "berichtest",
+                    "er": "berichtet",
+                    "es": "berichtet",
+                    "sie_singular": "berichtet",
+                    "xier": "berichtet",
+                    "wir": "berichten",
+                    "ihr": "berichtet",
+                    "sie_plural": "berichten",
+                    "Sie": "berichten"
+                },
+                "Präteritum": {
+                    "ich": "berichtete",
+                    "du": "berichtetest",
+                    "er": "berichtete",
+                    "es": "berichtete",
+                    "sie_singular": "berichtete",
+                    "xier": "berichtete",
+                    "wir": "berichteten",
+                    "ihr": "berichtetet",
+                    "sie_plural": "berichteten",
+                    "Sie": "berichteten"
+                },
+                "Perfekt": {
+                    "ich": "habe berichtet",
+                    "du": "hast berichtet",
+                    "er": "hat berichtet",
+                    "es": "hat berichtet",
+                    "sie_singular": "hat berichtet",
+                    "xier": "hat berichtet",
+                    "wir": "haben berichtet",
+                    "ihr": "habt berichtet",
+                    "sie_plural": "haben berichtet",
+                    "Sie": "haben berichtet"
+                },
+                "Futur_I": {
+                    "ich": "werde berichten",
+                    "du": "wirst berichten",
+                    "er": "wird berichten",
+                    "es": "wird berichten",
+                    "sie_singular": "wird berichten",
+                    "xier": "wird berichten",
+                    "wir": "werden berichten",
+                    "ihr": "werdet berichten",
+                    "sie_plural": "werden berichten",
+                    "Sie": "werden berichten"
+                },
+                "imperative": {
+                    "du": "berichte",
+                    "ihr": "berichtet",
+                    "Sie": "berichten Sie"
+                }
+            },
+            "hoffen": {
+                "present": {
+                    "ich": "hoffe",
+                    "du": "hoffst",
+                    "er": "hofft",
+                    "es": "hofft",
+                    "sie_singular": "hofft",
+                    "xier": "hofft",
+                    "wir": "hoffen",
+                    "ihr": "hofft",
+                    "sie_plural": "hoffen",
+                    "Sie": "hoffen"
+                },
+                "Präteritum": {
+                    "ich": "hoffte",
+                    "du": "hofftest",
+                    "er": "hoffte",
+                    "es": "hoffte",
+                    "sie_singular": "hoffte",
+                    "xier": "hoffte",
+                    "wir": "hofften",
+                    "ihr": "hofftet",
+                    "sie_plural": "hofften",
+                    "Sie": "hofften"
+                },
+                "Perfekt": {
+                    "ich": "habe gehofft",
+                    "du": "hast gehofft",
+                    "er": "hat gehofft",
+                    "es": "hat gehofft",
+                    "sie_singular": "hat gehofft",
+                    "xier": "hat gehofft",
+                    "wir": "haben gehofft",
+                    "ihr": "habt gehofft",
+                    "sie_plural": "haben gehofft",
+                    "Sie": "haben gehofft"
+                },
+                "Futur_I": {
+                    "ich": "werde hoffen",
+                    "du": "wirst hoffen",
+                    "er": "wird hoffen",
+                    "es": "wird hoffen",
+                    "sie_singular": "wird hoffen",
+                    "xier": "wird hoffen",
+                    "wir": "werden hoffen",
+                    "ihr": "werdet hoffen",
+                    "sie_plural": "werden hoffen",
+                    "Sie": "werden hoffen"
+                },
+                "imperative": {
+                    "du": "hoff",
+                    "ihr": "hofft",
+                    "Sie": "hoffen Sie"
+                }
+            },
+            "spazieren": {
+                "present": {
+                    "ich": "spaziere",
+                    "du": "spazierst",
+                    "er": "spaziert",
+                    "es": "spaziert",
+                    "sie_singular": "spaziert",
+                    "xier": "spaziert",
+                    "wir": "spazieren",
+                    "ihr": "spaziert",
+                    "sie_plural": "spazieren",
+                    "Sie": "spazieren"
+                },
+                "Präteritum": {
+                    "ich": "spazierte",
+                    "du": "spaziertest",
+                    "er": "spazierte",
+                    "es": "spazierte",
+                    "sie_singular": "spazierte",
+                    "xier": "spazierte",
+                    "wir": "spazierten",
+                    "ihr": "spaziertet",
+                    "sie_plural": "spazierten",
+                    "Sie": "spazierten"
+                },
+                "Perfekt": {
+                    "ich": "bin spaziert",
+                    "du": "bist spaziert",
+                    "er": "ist spaziert",
+                    "es": "ist spaziert",
+                    "sie_singular": "ist spaziert",
+                    "xier": "ist spaziert",
+                    "wir": "sind spaziert",
+                    "ihr": "seid spaziert",
+                    "sie_plural": "sind spaziert",
+                    "Sie": "sind spaziert"
+                },
+                "Futur_I": {
+                    "ich": "werde spazieren",
+                    "du": "wirst spazieren",
+                    "er": "wird spazieren",
+                    "es": "wird spazieren",
+                    "sie_singular": "wird spazieren",
+                    "xier": "wird spazieren",
+                    "wir": "werden spazieren",
+                    "ihr": "werdet spazieren",
+                    "sie_plural": "werden spazieren",
+                    "Sie": "werden spazieren"
+                },
+                "imperative": {
+                    "du": "spaziere",
+                    "ihr": "spaziert",
+                    "Sie": "spazieren Sie"
+                }
+            },
+            "bewundern": {
+                "present": {
+                    "ich": "bewundere",
+                    "du": "bewunderst",
+                    "er": "bewundert",
+                    "es": "bewundert",
+                    "sie_singular": "bewundert",
+                    "xier": "bewundert",
+                    "wir": "bewundern",
+                    "ihr": "bewundert",
+                    "sie_plural": "bewundern",
+                    "Sie": "bewundern"
+                },
+                "Präteritum": {
+                    "ich": "bewunderte",
+                    "du": "bewundertest",
+                    "er": "bewunderte",
+                    "es": "bewunderte",
+                    "sie_singular": "bewunderte",
+                    "xier": "bewunderte",
+                    "wir": "bewunderten",
+                    "ihr": "bewundertet",
+                    "sie_plural": "bewunderten",
+                    "Sie": "bewunderten"
+                },
+                "Perfekt": {
+                    "ich": "habe bewundert",
+                    "du": "hast bewundert",
+                    "er": "hat bewundert",
+                    "es": "hat bewundert",
+                    "sie_singular": "hat bewundert",
+                    "xier": "hat bewundert",
+                    "wir": "haben bewundert",
+                    "ihr": "habt bewundert",
+                    "sie_plural": "haben bewundert",
+                    "Sie": "haben bewundert"
+                },
+                "Futur_I": {
+                    "ich": "werde bewundern",
+                    "du": "wirst bewundern",
+                    "er": "wird bewundern",
+                    "es": "wird bewundern",
+                    "sie_singular": "wird bewundern",
+                    "xier": "wird bewundern",
+                    "wir": "werden bewundern",
+                    "ihr": "werdet bewundern",
+                    "sie_plural": "werden bewundern",
+                    "Sie": "werden bewundern"
+                },
+                "imperative": {
+                    "du": "bewundere",
+                    "ihr": "bewundert",
+                    "Sie": "bewundern Sie"
+                }
+            },
+            "schicken": {
+                "present": {
+                    "ich": "schicke",
+                    "du": "schickst",
+                    "er": "schickt",
+                    "es": "schickt",
+                    "sie_singular": "schickt",
+                    "xier": "schickt",
+                    "wir": "schicken",
+                    "ihr": "schickt",
+                    "sie_plural": "schicken",
+                    "Sie": "schicken"
+                },
+                "Präteritum": {
+                    "ich": "schickte",
+                    "du": "schicktest",
+                    "er": "schickte",
+                    "es": "schickte",
+                    "sie_singular": "schickte",
+                    "xier": "schickte",
+                    "wir": "schickten",
+                    "ihr": "schicktet",
+                    "sie_plural": "schickten",
+                    "Sie": "schickten"
+                },
+                "Perfekt": {
+                    "ich": "habe geschickt",
+                    "du": "hast geschickt",
+                    "er": "hat geschickt",
+                    "es": "hat geschickt",
+                    "sie_singular": "hat geschickt",
+                    "xier": "hat geschickt",
+                    "wir": "haben geschickt",
+                    "ihr": "habt geschickt",
+                    "sie_plural": "haben geschickt",
+                    "Sie": "haben geschickt"
+                },
+                "Futur_I": {
+                    "ich": "werde schicken",
+                    "du": "wirst schicken",
+                    "er": "wird schicken",
+                    "es": "wird schicken",
+                    "sie_singular": "wird schicken",
+                    "xier": "wird schicken",
+                    "wir": "werden schicken",
+                    "ihr": "werdet schicken",
+                    "sie_plural": "werden schicken",
+                    "Sie": "werden schicken"
+                },
+                "imperative": {
+                    "du": "schick",
+                    "ihr": "schickt",
+                    "Sie": "schicken Sie"
+                }
+            },
+            "ärgern": {
+                "present": {
+                    "ich": "ärgere mich",
+                    "du": "ärgerst dich",
+                    "er": "ärgert sich",
+                    "es": "ärgert sich",
+                    "sie_singular": "ärgert sich",
+                    "xier": "ärgert sich",
+                    "wir": "ärgern uns",
+                    "ihr": "ärgert euch",
+                    "sie_plural": "ärgern sich",
+                    "Sie": "ärgern sich"
+                },
+                "Präteritum": {
+                    "ich": "ärgerte mich",
+                    "du": "ärgertest dich",
+                    "er": "ärgerte sich",
+                    "es": "ärgerte sich",
+                    "sie_singular": "ärgerte sich",
+                    "xier": "ärgerte sich",
+                    "wir": "ärgerten uns",
+                    "ihr": "ärgertet euch",
+                    "sie_plural": "ärgerten sich",
+                    "Sie": "ärgerten sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich geärgert",
+                    "du": "hast dich geärgert",
+                    "er": "hat sich geärgert",
+                    "es": "hat sich geärgert",
+                    "sie_singular": "hat sich geärgert",
+                    "xier": "hat sich geärgert",
+                    "wir": "haben uns geärgert",
+                    "ihr": "habt euch geärgert",
+                    "sie_plural": "haben sich geärgert",
+                    "Sie": "haben sich geärgert"
+                },
+                "Futur_I": {
+                    "ich": "werde mich ärgern",
+                    "du": "wirst dich ärgern",
+                    "er": "wird sich ärgern",
+                    "es": "wird sich ärgern",
+                    "sie_singular": "wird sich ärgern",
+                    "xier": "wird sich ärgern",
+                    "wir": "werden uns ärgern",
+                    "ihr": "werdet euch ärgern",
+                    "sie_plural": "werden sich ärgern",
+                    "Sie": "werden sich ärgern"
+                },
+                "imperative": {
+                    "du": "ärgere dich",
+                    "ihr": "ärgert euch",
+                    "Sie": "ärgern Sie sich"
+                }
+            },
+            "provozieren": {
+                "present": {
+                    "ich": "provoziere",
+                    "du": "provozierst",
+                    "er": "provoziert",
+                    "es": "provoziert",
+                    "sie_singular": "provoziert",
+                    "xier": "provoziert",
+                    "wir": "provozieren",
+                    "ihr": "provoziert",
+                    "sie_plural": "provozieren",
+                    "Sie": "provozieren"
+                },
+                "Präteritum": {
+                    "ich": "provozierte",
+                    "du": "provoziertest",
+                    "er": "provozierte",
+                    "es": "provozierte",
+                    "sie_singular": "provozierte",
+                    "xier": "provozierte",
+                    "wir": "provozierten",
+                    "ihr": "provoziertet",
+                    "sie_plural": "provozierten",
+                    "Sie": "provozierten"
+                },
+                "Perfekt": {
+                    "ich": "habe provoziert",
+                    "du": "hast provoziert",
+                    "er": "hat provoziert",
+                    "es": "hat provoziert",
+                    "sie_singular": "hat provoziert",
+                    "xier": "hat provoziert",
+                    "wir": "haben provoziert",
+                    "ihr": "habt provoziert",
+                    "sie_plural": "haben provoziert",
+                    "Sie": "haben provoziert"
+                },
+                "Futur_I": {
+                    "ich": "werde provozieren",
+                    "du": "wirst provozieren",
+                    "er": "wird provozieren",
+                    "es": "wird provozieren",
+                    "sie_singular": "wird provozieren",
+                    "xier": "wird provozieren",
+                    "wir": "werden provozieren",
+                    "ihr": "werdet provozieren",
+                    "sie_plural": "werden provozieren",
+                    "Sie": "werden provozieren"
+                },
+                "imperative": {
+                    "du": "provoziere",
+                    "ihr": "provoziert",
+                    "Sie": "provozieren Sie"
+                }
+            },
+            "inhaftieren": {
+                "present": {
+                    "ich": "inhaftiere",
+                    "du": "inhaftierst",
+                    "er": "inhaftiert",
+                    "es": "inhaftiert",
+                    "sie_singular": "inhaftiert",
+                    "xier": "inhaftiert",
+                    "wir": "inhaftieren",
+                    "ihr": "inhaftiert",
+                    "sie_plural": "inhaftieren",
+                    "Sie": "inhaftieren"
+                },
+                "Präteritum": {
+                    "ich": "inhaftierte",
+                    "du": "inhaftiertest",
+                    "er": "inhaftierte",
+                    "es": "inhaftierte",
+                    "sie_singular": "inhaftierte",
+                    "xier": "inhaftierte",
+                    "wir": "inhaftierten",
+                    "ihr": "inhaftiertet",
+                    "sie_plural": "inhaftierten",
+                    "Sie": "inhaftierten"
+                },
+                "Perfekt": {
+                    "ich": "habe inhaftiert",
+                    "du": "hast inhaftiert",
+                    "er": "hat inhaftiert",
+                    "es": "hat inhaftiert",
+                    "sie_singular": "hat inhaftiert",
+                    "xier": "hat inhaftiert",
+                    "wir": "haben inhaftiert",
+                    "ihr": "habt inhaftiert",
+                    "sie_plural": "haben inhaftiert",
+                    "Sie": "haben inhaftiert"
+                },
+                "Futur_I": {
+                    "ich": "werde inhaftieren",
+                    "du": "wirst inhaftieren",
+                    "er": "wird inhaftieren",
+                    "es": "wird inhaftieren",
+                    "sie_singular": "wird inhaftieren",
+                    "xier": "wird inhaftieren",
+                    "wir": "werden inhaftieren",
+                    "ihr": "werdet inhaftieren",
+                    "sie_plural": "werden inhaftieren",
+                    "Sie": "werden inhaftieren"
+                },
+                "imperative": {
+                    "du": "inhaftiere",
+                    "ihr": "inhaftiert",
+                    "Sie": "inhaftieren Sie"
+                }
+            },
+            "stürmen": {
+                "present": {
+                    "ich": "stürme",
+                    "du": "stürmst",
+                    "er": "stürmt",
+                    "es": "stürmt",
+                    "sie_singular": "stürmt",
+                    "xier": "stürmt",
+                    "wir": "stürmen",
+                    "ihr": "stürmt",
+                    "sie_plural": "stürmen",
+                    "Sie": "stürmen"
+                },
+                "Präteritum": {
+                    "ich": "stürmte",
+                    "du": "stürmtest",
+                    "er": "stürmte",
+                    "es": "stürmte",
+                    "sie_singular": "stürmte",
+                    "xier": "stürmte",
+                    "wir": "stürmten",
+                    "ihr": "stürmtet",
+                    "sie_plural": "stürmten",
+                    "Sie": "stürmten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestürmt",
+                    "du": "hast gestürmt",
+                    "er": "hat gestürmt",
+                    "es": "hat gestürmt",
+                    "sie_singular": "hat gestürmt",
+                    "xier": "hat gestürmt",
+                    "wir": "haben gestürmt",
+                    "ihr": "habt gestürmt",
+                    "sie_plural": "haben gestürmt",
+                    "Sie": "haben gestürmt"
+                },
+                "Futur_I": {
+                    "ich": "werde stürmen",
+                    "du": "wirst stürmen",
+                    "er": "wird stürmen",
+                    "es": "wird stürmen",
+                    "sie_singular": "wird stürmen",
+                    "xier": "wird stürmen",
+                    "wir": "werden stürmen",
+                    "ihr": "werdet stürmen",
+                    "sie_plural": "werden stürmen",
+                    "Sie": "werden stürmen"
+                },
+                "imperative": {
+                    "du": "stürm",
+                    "ihr": "stürmt",
+                    "Sie": "stürmen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Mehr Hausaufgaben?",
+            "Ihre Lehrkraft ändert Ihre Hausaufgaben.",
+            "Sie müssen jetzt jeden Tag eine Aufgabe mehr machen.",
+            "Wie reagieren Sie?",
+            "Ich akzeptiere die neuen Hausaufgaben.",
+            "Meine Lehrkraft denkt, dass ich sie brauche und hat sicher Recht.",
+            "Ich ärgere mich, weil ich weniger Freizeit habe, aber ich mache die Hausaufgaben.",
+            "Ich mache die neuen Hausaufgaben, aber sehr schlecht.",
+            "Ich mache die neuen Hausaufgaben nicht und akzeptiere eine schlechtere Note.",
+            "Ich spreche mit den anderen Studierenden und protestierte gegen die neuen Hausaufgaben.",
+            "Was hat Ihre Lehrkraft vielleicht gedacht?",
+            "Welche Gründe sind gute Gründe?",
+            "Die Studierenden brauchen mehr Übung.",
+            "Ich möchte schneller und mehr Themen machen.",
+            "Sie bekommen eine Note von mir, also entscheide ich, was sie machen müssen.",
+            "Lesen Sie die folgenden Fakten über die Ereignisse vom 17.",
+            "Ab Mai 1953 mussten Arbeiter*innen in der DDR 10 % mehr arbeiten.",
+            "Die DDR zahlte das gleiche Geld wie vorher.",
+            "Juni protestierten Ostberliner Arbeiter*innen.",
+            "Juni demonstrierten Menschen in der ganzen DDR.",
+            "Die Sowjetunion schickte sowjetische Panzer auf die Straßen, um die Proteste zu beenden.",
+            "Die Polizei, Stasi und Sowjetarmee inhaftierten 15.000 Personen.",
+            "55 Menschen lebten am Ende des Tages nicht mehr.",
+            "Lesen Sie die folgenden Wörter, die die Demonstrant*innen und Proteste beschreiben.",
+            "Welche Wörter sind positiv (+), negativ (-) und neutral (0)?",
+            "Adjektive friedlich mutig gewalttätig illegal wütend",
+            "Kritisieren stürmen Ziele der Proteste für Freiheit für die deutsche Einheit gegen die Regierung gegen den Kommunismus für den Kapitalismus",
+            "Wählen Sie Wörter von Teil 2 aus und schreiben Sie einen Satz für einen Zeitungsartikel drei Mal: positiv, negativ und neutral.",
+            "Setzen Sie die Verben ins Präteritum.",
+            "Lesen Sie einen Satz.",
+            "Die anderen sagen, ob der Satz positiv, negativ oder neutral ist.",
+            "Sie arbeiten an einem Artikel über den 17.",
+            "Juni 1953 und Ihr*e Redakteur*in hat das folgende Bild für Ihren Artikel ausgewählt.",
+            "Was sehen Sie auf dem Foto?",
+            "Und wie ist das Foto?",
+            "Was sehen Sie?",
+            "Eine Straße | Häuser | Bäume | ein Park | viele Menschen | wenige Menschen | zwei Männer, die Steine werfen | zwei Frauen, die spazieren gehen | zwei Kinder, die spielen | Panzer | Autos |",
+            "Wie ist das Foto?",
+            "Dunkel | hell | bunt | grau | fröhlich | traurig | … Wählen Sie die beste Erklärung aus.",
+            "Welche Geschichte erzählt das Bild?",
+            "Das Bild zeigt Menschen, die etwas kaputt machen möchten.",
+            "Das Bild zeigt mutige, junge Leute, die sich nur mit Steinen gegen Panzer stellen.",
+            "Welche Zeitungen haben vielleicht positiv, negativ oder neutral über den 17.",
+            "Juni geschrieben?",
+            "Wählen Sie mögliche Gründe aus und schreiben Sie weil-Sätze im Präteritum.",
+            "| Sie berichten über die Fakten.",
+            "| Sie hoffen, dass sich etwas ändert.",
+            "| Sie zeigen, dass es Proteste gegen die DDR gibt.",
+            "| Sie sagen, dass die Proteste nicht legitim sind.",
+            "| Sie haben Angst, dass die Proteste erfolgreich sind.",
+            "| Sie freuen sich über die Proteste.",
+            "| Sie bewundern den Mut der Menschen.",
+            "Schreiben Sie eine mögliche Bildunterschrift im Präteritum."
+        ],
+        "templated": []
+    }
+}

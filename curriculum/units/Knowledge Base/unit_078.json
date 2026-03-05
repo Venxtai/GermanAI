@@ -1,0 +1,797 @@
+{
+    "unit": "78",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 78,
+        "prerequisite": "1-77"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Express similarities with genauso…wie, fast so…wie, ungefähr so…wie, and differences with im Vergleich zu, im Unterschied zu, im Gegensatz zu (all followed by dative)."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Märchen-Adaptionen und Filme vergleichen",
+            "Ähnlichkeiten und Unterschiede ausdrücken"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Filme und Hollywood"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "küssen",
+                "pos": "VERB",
+                "translation": "to kiss"
+            },
+            {
+                "word": "stolpern",
+                "pos": "VERB",
+                "translation": "to trip, stumble, flounder",
+                "frequency": 4676
+            },
+            {
+                "word": "fallen",
+                "pos": "VERB",
+                "translation": "to fall",
+                "frequency": 332,
+                "cefr": "A2"
+            },
+            {
+                "word": "legen",
+                "pos": "VERB",
+                "translation": "to place; put (horizontal)",
+                "frequency": 352,
+                "cefr": "A1"
+            },
+            {
+                "word": "fliegen",
+                "pos": "VERB",
+                "translation": "to fly",
+                "frequency": 824,
+                "cefr": "A1"
+            },
+            {
+                "word": "versuchen",
+                "pos": "VERB",
+                "translation": "to attempt, try",
+                "frequency": 247,
+                "cefr": "A2"
+            },
+            {
+                "word": "sich verkleiden (als)",
+                "pos": "VERB",
+                "translation": "to dress up (as)",
+                "frequency": 12075
+            },
+            {
+                "word": "benutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 1119,
+                "cefr": "A1"
+            },
+            {
+                "word": "erwachen",
+                "pos": "VERB",
+                "translation": "to awake, arise",
+                "frequency": 3532
+            },
+            {
+                "word": "aufwachen",
+                "pos": "VERB",
+                "translation": "to wake up",
+                "frequency": 2851,
+                "cefr": "B1"
+            },
+            {
+                "word": "konfrontieren",
+                "pos": "VERB",
+                "translation": "to confront so. with sth.",
+                "frequency": 3484
+            },
+            {
+                "word": "(um) Mitternacht",
+                "pos": "NOUN",
+                "translation": "(at) midnight",
+                "frequency": 3987,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Gemeinsamkeit, -en",
+                "pos": "ADJ",
+                "translation": "similarity, common ground"
+            },
+            {
+                "word": "die Ähnlichkeit",
+                "pos": "NOUN",
+                "translation": "similarity"
+            },
+            {
+                "word": "das Waisenkind, Waisenkinder",
+                "pos": "NOUN",
+                "translation": "orphan",
+                "frequency": 33119
+            },
+            {
+                "word": "der*die Zwerg*in",
+                "pos": "NOUN",
+                "translation": "dwarf",
+                "frequency": 4318
+            },
+            {
+                "word": "der*die Prostituierte",
+                "pos": "NOUN",
+                "translation": "prostitute",
+                "frequency": 10441
+            },
+            {
+                "word": "das Königreich",
+                "pos": "NOUN",
+                "translation": "kingdom"
+            },
+            {
+                "word": "der Sarg",
+                "pos": "NOUN",
+                "translation": "casket, coffin",
+                "frequency": 11734,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gift",
+                "pos": "NOUN",
+                "translation": "poison",
+                "frequency": 4356,
+                "cefr": "B1"
+            },
+            {
+                "word": "dunkel",
+                "pos": "ADJ",
+                "translation": "dark",
+                "frequency": 706,
+                "cefr": "A2"
+            },
+            {
+                "word": "bunt",
+                "pos": "ADJ",
+                "translation": "colorful",
+                "frequency": 1817,
+                "cefr": "A2"
+            },
+            {
+                "word": "romantisch",
+                "pos": "ADJ",
+                "translation": "romantic",
+                "frequency": 3894,
+                "cefr": "A2"
+            },
+            {
+                "word": "ohnmächtig",
+                "pos": "ADJ",
+                "translation": "unconscious"
+            },
+            {
+                "word": "im Vergleich zu …",
+                "pos": "PHRASE",
+                "translation": "compared to …"
+            },
+            {
+                "word": "im Gegensatz zu …",
+                "pos": "PHRASE",
+                "translation": "as opposed to …"
+            },
+            {
+                "word": "im Unterschied zu …",
+                "pos": "PHRASE",
+                "translation": "in contrast to …"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Filmversion",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Aschenputtel-Märchen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Analogie",
+                "pos": "NOUN",
+                "frequency": 18063,
+                "cefr": "B2"
+            },
+            {
+                "word": "verloren",
+                "pos": "ADJ",
+                "frequency": 6828
+            },
+            {
+                "word": "der Stiefbrüder",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Prinzessin",
+                "pos": "NOUN",
+                "frequency": 6626
+            },
+            {
+                "word": "männlich",
+                "pos": "ADJ",
+                "frequency": 2091,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gender-Swap",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Gabe",
+                "pos": "NOUN",
+                "frequency": 10069
+            },
+            {
+                "word": "die Elfe",
+                "pos": "NOUN",
+                "frequency": 29760
+            },
+            {
+                "word": "das Dienstmädchen",
+                "pos": "NOUN",
+                "frequency": 34201
+            },
+            {
+                "word": "Cinderella",
+                "pos": "NOUN",
+                "frequency": 39259
+            },
+            {
+                "word": "der Fokus",
+                "pos": "NOUN",
+                "frequency": 3561
+            },
+            {
+                "word": "comicartig",
+                "pos": "ADV"
+            },
+            {
+                "word": "elegant",
+                "pos": "ADV",
+                "frequency": 3722,
+                "cefr": "B1"
+            },
+            {
+                "word": "humorvoll",
+                "pos": "ADV",
+                "frequency": 11457
+            },
+            {
+                "word": "innovativ",
+                "pos": "ADV",
+                "frequency": 4450
+            },
+            {
+                "word": "kindlich",
+                "pos": "ADV",
+                "frequency": 12510
+            },
+            {
+                "word": "mysteriös",
+                "pos": "ADV",
+                "frequency": 12400
+            },
+            {
+                "word": "sexy",
+                "pos": "ADV",
+                "frequency": 13067,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Aschenputtel-Filmadaption",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Lieblingsfilmadaption",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Adaption",
+                "pos": "NOUN",
+                "frequency": 17987,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Märchenadaption",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Happy",
+                "pos": "NOUN"
+            },
+            {
+                "word": "End",
+                "pos": "NOUN",
+                "frequency": 26655
+            },
+            {
+                "word": "ie",
+                "pos": "DET",
+                "frequency": 23798
+            },
+            {
+                "word": "die Schneewittchen-Geschichte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Produktionsjahr",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Gebrüder",
+                "pos": "NOUN",
+                "frequency": 12259
+            },
+            {
+                "word": "der Zeichentrickfilm",
+                "pos": "NOUN",
+                "frequency": 28014
+            },
+            {
+                "word": "das Drehbuch",
+                "pos": "NOUN",
+                "frequency": 6969
+            },
+            {
+                "word": "Zusammen-",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die fassung",
+                "pos": "NOUN",
+                "frequency": 4998
+            },
+            {
+                "word": "der Charakter",
+                "pos": "NOUN",
+                "frequency": 2035,
+                "cefr": "B2"
+            },
+            {
+                "word": "giftig",
+                "pos": "ADJ",
+                "frequency": 4561,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Trick",
+                "pos": "NOUN",
+                "frequency": 4230
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "küssen": {
+                "present": {
+                    "ich": "küsse",
+                    "du": "küsst",
+                    "er": "küsst",
+                    "es": "küsst",
+                    "sie_singular": "küsst",
+                    "xier": "küsst",
+                    "wir": "küssen",
+                    "ihr": "küsst",
+                    "sie_plural": "küssen",
+                    "Sie": "küssen"
+                },
+                "Perfekt": {
+                    "ich": "habe geküsst",
+                    "du": "hast geküsst",
+                    "er": "hat geküsst",
+                    "es": "hat geküsst",
+                    "sie_singular": "hat geküsst",
+                    "xier": "hat geküsst",
+                    "wir": "haben geküsst",
+                    "ihr": "habt geküsst",
+                    "sie_plural": "haben geküsst",
+                    "Sie": "haben geküsst"
+                }
+            },
+            "stolpern": {
+                "present": {
+                    "ich": "stolpere",
+                    "du": "stolperst",
+                    "er": "stolpert",
+                    "es": "stolpert",
+                    "sie_singular": "stolpert",
+                    "xier": "stolpert",
+                    "wir": "stolpern",
+                    "ihr": "stolpert",
+                    "sie_plural": "stolpern",
+                    "Sie": "stolpern"
+                },
+                "Perfekt": {
+                    "ich": "bin gestolpert",
+                    "du": "bist gestolpert",
+                    "er": "ist gestolpert",
+                    "es": "ist gestolpert",
+                    "sie_singular": "ist gestolpert",
+                    "xier": "ist gestolpert",
+                    "wir": "sind gestolpert",
+                    "ihr": "seid gestolpert",
+                    "sie_plural": "sind gestolpert",
+                    "Sie": "sind gestolpert"
+                }
+            },
+            "fallen": {
+                "present": {
+                    "ich": "falle",
+                    "du": "fällst",
+                    "er": "fällt",
+                    "es": "fällt",
+                    "sie_singular": "fällt",
+                    "xier": "fällt",
+                    "wir": "fallen",
+                    "ihr": "fallt",
+                    "sie_plural": "fallen",
+                    "Sie": "fallen"
+                },
+                "Perfekt": {
+                    "ich": "bin gefallen",
+                    "du": "bist gefallen",
+                    "er": "ist gefallen",
+                    "es": "ist gefallen",
+                    "sie_singular": "ist gefallen",
+                    "xier": "ist gefallen",
+                    "wir": "sind gefallen",
+                    "ihr": "seid gefallen",
+                    "sie_plural": "sind gefallen",
+                    "Sie": "sind gefallen"
+                }
+            },
+            "legen": {
+                "present": {
+                    "ich": "lege",
+                    "du": "legst",
+                    "er": "legt",
+                    "es": "legt",
+                    "sie_singular": "legt",
+                    "xier": "legt",
+                    "wir": "legen",
+                    "ihr": "legt",
+                    "sie_plural": "legen",
+                    "Sie": "legen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelegt",
+                    "du": "hast gelegt",
+                    "er": "hat gelegt",
+                    "es": "hat gelegt",
+                    "sie_singular": "hat gelegt",
+                    "xier": "hat gelegt",
+                    "wir": "haben gelegt",
+                    "ihr": "habt gelegt",
+                    "sie_plural": "haben gelegt",
+                    "Sie": "haben gelegt"
+                }
+            },
+            "fliegen": {
+                "present": {
+                    "ich": "fliege",
+                    "du": "fliegst",
+                    "er": "fliegt",
+                    "es": "fliegt",
+                    "sie_singular": "fliegt",
+                    "xier": "fliegt",
+                    "wir": "fliegen",
+                    "ihr": "fliegt",
+                    "sie_plural": "fliegen",
+                    "Sie": "fliegen"
+                },
+                "Perfekt": {
+                    "ich": "bin geflogen",
+                    "du": "bist geflogen",
+                    "er": "ist geflogen",
+                    "es": "ist geflogen",
+                    "sie_singular": "ist geflogen",
+                    "xier": "ist geflogen",
+                    "wir": "sind geflogen",
+                    "ihr": "seid geflogen",
+                    "sie_plural": "sind geflogen",
+                    "Sie": "sind geflogen"
+                }
+            },
+            "versuchen": {
+                "present": {
+                    "ich": "versuche",
+                    "du": "versuchst",
+                    "er": "versucht",
+                    "es": "versucht",
+                    "sie_singular": "versucht",
+                    "xier": "versucht",
+                    "wir": "versuchen",
+                    "ihr": "versucht",
+                    "sie_plural": "versuchen",
+                    "Sie": "versuchen"
+                },
+                "Perfekt": {
+                    "ich": "habe versucht",
+                    "du": "hast versucht",
+                    "er": "hat versucht",
+                    "es": "hat versucht",
+                    "sie_singular": "hat versucht",
+                    "xier": "hat versucht",
+                    "wir": "haben versucht",
+                    "ihr": "habt versucht",
+                    "sie_plural": "haben versucht",
+                    "Sie": "haben versucht"
+                }
+            },
+            "verkleiden": {
+                "present": {
+                    "ich": "verkleide mich",
+                    "du": "verkleidest dich",
+                    "er": "verkleidet sich",
+                    "es": "verkleidet sich",
+                    "sie_singular": "verkleidet sich",
+                    "xier": "verkleidet sich",
+                    "wir": "verkleiden uns",
+                    "ihr": "verkleidet euch",
+                    "sie_plural": "verkleiden sich",
+                    "Sie": "verkleiden sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich verkleidet",
+                    "du": "hast dich verkleidet",
+                    "er": "hat sich verkleidet",
+                    "es": "hat sich verkleidet",
+                    "sie_singular": "hat sich verkleidet",
+                    "xier": "hat sich verkleidet",
+                    "wir": "haben uns verkleidet",
+                    "ihr": "habt euch verkleidet",
+                    "sie_plural": "haben sich verkleidet",
+                    "Sie": "haben sich verkleidet"
+                }
+            },
+            "benutzen": {
+                "present": {
+                    "ich": "benutze",
+                    "du": "benutzt",
+                    "er": "benutzt",
+                    "es": "benutzt",
+                    "sie_singular": "benutzt",
+                    "xier": "benutzt",
+                    "wir": "benutzen",
+                    "ihr": "benutzt",
+                    "sie_plural": "benutzen",
+                    "Sie": "benutzen"
+                },
+                "Perfekt": {
+                    "ich": "habe benutzt",
+                    "du": "hast benutzt",
+                    "er": "hat benutzt",
+                    "es": "hat benutzt",
+                    "sie_singular": "hat benutzt",
+                    "xier": "hat benutzt",
+                    "wir": "haben benutzt",
+                    "ihr": "habt benutzt",
+                    "sie_plural": "haben benutzt",
+                    "Sie": "haben benutzt"
+                }
+            },
+            "erwachen": {
+                "present": {
+                    "ich": "erwache",
+                    "du": "erwachst",
+                    "er": "erwacht",
+                    "es": "erwacht",
+                    "sie_singular": "erwacht",
+                    "xier": "erwacht",
+                    "wir": "erwachen",
+                    "ihr": "erwacht",
+                    "sie_plural": "erwachen",
+                    "Sie": "erwachen"
+                },
+                "Perfekt": {
+                    "ich": "bin erwacht",
+                    "du": "bist erwacht",
+                    "er": "ist erwacht",
+                    "es": "ist erwacht",
+                    "sie_singular": "ist erwacht",
+                    "xier": "ist erwacht",
+                    "wir": "sind erwacht",
+                    "ihr": "seid erwacht",
+                    "sie_plural": "sind erwacht",
+                    "Sie": "sind erwacht"
+                }
+            },
+            "aufwachen": {
+                "present": {
+                    "ich": "wache auf",
+                    "du": "wachst auf",
+                    "er": "wacht auf",
+                    "es": "wacht auf",
+                    "sie_singular": "wacht auf",
+                    "xier": "wacht auf",
+                    "wir": "wachen auf",
+                    "ihr": "wacht auf",
+                    "sie_plural": "wachen auf",
+                    "Sie": "wachen auf"
+                },
+                "Perfekt": {
+                    "ich": "bin aufgewacht",
+                    "du": "bist aufgewacht",
+                    "er": "ist aufgewacht",
+                    "es": "ist aufgewacht",
+                    "sie_singular": "ist aufgewacht",
+                    "xier": "ist aufgewacht",
+                    "wir": "sind aufgewacht",
+                    "ihr": "seid aufgewacht",
+                    "sie_plural": "sind aufgewacht",
+                    "Sie": "sind aufgewacht"
+                }
+            },
+            "konfrontieren": {
+                "present": {
+                    "ich": "konfrontiere",
+                    "du": "konfrontierst",
+                    "er": "konfrontiert",
+                    "es": "konfrontiert",
+                    "sie_singular": "konfrontiert",
+                    "xier": "konfrontiert",
+                    "wir": "konfrontieren",
+                    "ihr": "konfrontiert",
+                    "sie_plural": "konfrontieren",
+                    "Sie": "konfrontieren"
+                },
+                "Perfekt": {
+                    "ich": "habe konfrontiert",
+                    "du": "hast konfrontiert",
+                    "er": "hat konfrontiert",
+                    "es": "hat konfrontiert",
+                    "sie_singular": "hat konfrontiert",
+                    "xier": "hat konfrontiert",
+                    "wir": "haben konfrontiert",
+                    "ihr": "habt konfrontiert",
+                    "sie_plural": "haben konfrontiert",
+                    "Sie": "haben konfrontiert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Märchen bei Disney und in Hollywood",
+            "Hier ist eine Liste von Filmversionen des Aschenputtel-Märchens.",
+            "Welche von diesen Filmen kennen Sie?",
+            "Wer im Film ist Aschenputtel?",
+            "Wer ist der Prinz?",
+            "Wer spielt die Rolle der bösen Stiefmutter und/oder der bösen Stiefschwester?",
+            "Gibt es einen Ball, ein schönes Kleid oder einen verlorenen Schuh?",
+            "Beschreiben Sie die Bilder.",
+            "Wie sehen sie aus?",
+            "Was sehen Sie?",
+            "Wie ist die Atmosphäre?",
+            "Alt | bunt | comicartig | dunkel | elegant | erwachsen | humorvoll | innovativ | interessant | kindlich | langweilig mysteriös | negativ | neu | positiv | romantisch | sexy | spannend",
+            "Kennen Sie andere Aschenputtel-Filmadaptionen?",
+            "Was ist Ihre Lieblingsfilmadaption von Aschenputtel und warum?",
+            "Welche Adaptionen von anderen Märchen (nicht Aschenputtel) kennen Sie?",
+            "Interviewen Sie ein paar Personen.",
+            "Welche Märchenadaptionen kennst du?",
+            "Mit welchen Nomen / Adjektiven kannst du das Märchen beschreiben?",
+            "Haben diese Märchen ein Happy End?",
+            "Weißt du, wie d ie deutsche Version heißt?",
+            "Schneewittchen - Schneewittchen und die 7 Zwerge - Snow White and the Huntsman",
+            "In 3er-Gruppen: Jede Person bekommt die Informationen für eine Version von der Schneewittchen-Geschichte.",
+            "Fragen Sie die anderen Personen, um die fehlenden Informationen zu bekommen.",
+            "Wie heißt die Protagonistin?",
+            "Wer ist die böse Person?",
+            "Vor allem die Enden der drei Versionen sind unterschiedlich.",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie die Zusammen- fassungen vom Ende jeder Version und beantworten Sie die Fragen.",
+            "Welche Gemeinsamkeiten gibt es?",
+            "Wer rettet Schneewittchen am Ende der drei Versionen?",
+            "In welcher Version ist Schneewittchen ein starker Charakter?",
+            "Die böse Königin wollte Schneewittchen töten.",
+            "Sie hat Schneewittchen einen giftigen Apfel gegeben.",
+            "Schneewittchen hat den Apfel gegessen und ist gestorben.",
+            "Die sieben Zwerge konnten ihr nicht helfen.",
+            "Weil Schneewittchen so schön war, haben sie Schneewittchen in einen Sarg aus Glas gelegt.",
+            "Ein schöner Prinz hat Schneewittchen im Sarg gesehen.",
+            "Er hat sich verliebt und wollte, dass die Zwerge den Sarg zu ihm bringen.",
+            "Auf dem Weg zum Prinzen ist ein Zwerg gestolpert und der Sarg ist auf den Boden gefallen.",
+            "Da ist der giftige Apfel aus Schneewittchens Hals geflogen und sie hat wieder gelebt.",
+            "Der Prinz und Schneewittchen haben geheiratet.",
+            "Die böse Stiefmutter wollte Schneewittchen töten.",
+            "Schneewittchen hat den Apfel gegessen und die Zwerge haben Schneewittchen ohnmächtig gefunden.",
+            "Sie wollten die böse Stiefmutter finden und gegen sie kämpfen.",
+            "Schneewittchen ist gestorben.",
+            "Ein junger Prinz ist gekommen und hat Schneewittchen geküsst.",
+            "Der Kuss hat gemacht, dass sie aufgewacht ist.",
+            "Königin Ravenna hat sich als William verkleidet und Snow White einen giftigen Apfel gegeben.",
+            "William und der Huntsman haben Snow White gefunden und William hat sie geküsst.",
+            "Sie haben die ohnmächtige Snow White zu Hammonds Schloss gebracht.",
+            "Der Huntsman war traurig, dass er Snow White nicht retten konnte.",
+            "Auch er hat sie geküsst und Snow White ist aufgewacht.",
+            "Snow White hat Königin Ravenna konfrontiert, aber Ravenna war stärker wollte Snow White wieder töten.",
+            "Der Huntsman hat Snow White einen Trick gezeigt.",
+            "Sie hat den Trick genutzt und Königin Ravenna getötet.",
+            "Alle Menschen im Königreich hatten wieder ein gutes Leben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

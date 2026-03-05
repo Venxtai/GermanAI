@@ -1,0 +1,254 @@
+{
+    "unit": "B52",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 52,
+        "prerequisite": "core 1-104, B1-B51"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Medienbeitrag planen, erstellen und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "das Stück", "pos": "NOUN", "translation": "piece", "frequency": 1, "cefr": "A1" },
+            { "word": "abstimmen", "pos": "VERB", "translation": "to vote, take a vote on sth.", "frequency": 2802, "cefr": "B1" },
+            { "word": "aufgreifen", "pos": "VERB", "translation": "to pick up; take up", "frequency": 3935 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Choreografie", "pos": "NOUN", "frequency": 15375 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "abstimmen": {
+                "present": {
+                    "ich": "stimme ab",
+                    "du": "stimmst ab",
+                    "er": "stimmt ab",
+                    "es": "stimmt ab",
+                    "sie_singular": "stimmt ab",
+                    "xier": "stimmt ab",
+                    "wir": "stimmen ab",
+                    "ihr": "stimmt ab",
+                    "sie_plural": "stimmen ab",
+                    "Sie": "stimmen ab"
+                },
+                "Präteritum": {
+                    "ich": "stimmte ab",
+                    "du": "stimmtest ab",
+                    "er": "stimmte ab",
+                    "es": "stimmte ab",
+                    "sie_singular": "stimmte ab",
+                    "xier": "stimmte ab",
+                    "wir": "stimmten ab",
+                    "ihr": "stimmtet ab",
+                    "sie_plural": "stimmten ab",
+                    "Sie": "stimmten ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgestimmt",
+                    "du": "hast abgestimmt",
+                    "er": "hat abgestimmt",
+                    "es": "hat abgestimmt",
+                    "sie_singular": "hat abgestimmt",
+                    "xier": "hat abgestimmt",
+                    "wir": "haben abgestimmt",
+                    "ihr": "habt abgestimmt",
+                    "sie_plural": "haben abgestimmt",
+                    "Sie": "haben abgestimmt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte abgestimmt",
+                    "du": "hattest abgestimmt",
+                    "er": "hatte abgestimmt",
+                    "es": "hatte abgestimmt",
+                    "sie_singular": "hatte abgestimmt",
+                    "xier": "hatte abgestimmt",
+                    "wir": "hatten abgestimmt",
+                    "ihr": "hattet abgestimmt",
+                    "sie_plural": "hatten abgestimmt",
+                    "Sie": "hatten abgestimmt"
+                },
+                "Futur_I": {
+                    "ich": "werde abstimmen",
+                    "du": "wirst abstimmen",
+                    "er": "wird abstimmen",
+                    "es": "wird abstimmen",
+                    "sie_singular": "wird abstimmen",
+                    "xier": "wird abstimmen",
+                    "wir": "werden abstimmen",
+                    "ihr": "werdet abstimmen",
+                    "sie_plural": "werden abstimmen",
+                    "Sie": "werden abstimmen"
+                },
+                "imperative": {
+                    "du": "stimm ab",
+                    "ihr": "stimmt ab",
+                    "Sie": "stimmen Sie ab"
+                }
+            },
+            "aufgreifen": {
+                "present": {
+                    "ich": "greife auf",
+                    "du": "greifst auf",
+                    "er": "greift auf",
+                    "es": "greift auf",
+                    "sie_singular": "greift auf",
+                    "xier": "greift auf",
+                    "wir": "greifen auf",
+                    "ihr": "greift auf",
+                    "sie_plural": "greifen auf",
+                    "Sie": "greifen auf"
+                },
+                "Präteritum": {
+                    "ich": "griff auf",
+                    "du": "griffst auf",
+                    "er": "griff auf",
+                    "es": "griff auf",
+                    "sie_singular": "griff auf",
+                    "xier": "griff auf",
+                    "wir": "griffen auf",
+                    "ihr": "grifft auf",
+                    "sie_plural": "griffen auf",
+                    "Sie": "griffen auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgegriffen",
+                    "du": "hast aufgegriffen",
+                    "er": "hat aufgegriffen",
+                    "es": "hat aufgegriffen",
+                    "sie_singular": "hat aufgegriffen",
+                    "xier": "hat aufgegriffen",
+                    "wir": "haben aufgegriffen",
+                    "ihr": "habt aufgegriffen",
+                    "sie_plural": "haben aufgegriffen",
+                    "Sie": "haben aufgegriffen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte aufgegriffen",
+                    "du": "hattest aufgegriffen",
+                    "er": "hatte aufgegriffen",
+                    "es": "hatte aufgegriffen",
+                    "sie_singular": "hatte aufgegriffen",
+                    "xier": "hatte aufgegriffen",
+                    "wir": "hatten aufgegriffen",
+                    "ihr": "hattet aufgegriffen",
+                    "sie_plural": "hatten aufgegriffen",
+                    "Sie": "hatten aufgegriffen"
+                },
+                "Futur_I": {
+                    "ich": "werde aufgreifen",
+                    "du": "wirst aufgreifen",
+                    "er": "wird aufgreifen",
+                    "es": "wird aufgreifen",
+                    "sie_singular": "wird aufgreifen",
+                    "xier": "wird aufgreifen",
+                    "wir": "werden aufgreifen",
+                    "ihr": "werdet aufgreifen",
+                    "sie_plural": "werden aufgreifen",
+                    "Sie": "werden aufgreifen"
+                },
+                "imperative": {
+                    "du": "greife auf",
+                    "ihr": "greift auf",
+                    "Sie": "greifen Sie auf"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In diesem Kapitel haben Sie viele unterschiedliche Medientypen kennengelernt und auch schon begonnen, Ideen für eigene Beiträge zu sammeln.",
+            "In dem Projekt sollen Sie jetzt eine der vielen Ideen aufgreifen und einen Medientypen erstellen.",
+            "Erstellen Sie zuerst einen Plan.",
+            "Welchen Medientypen möchten Sie erstellen?",
+            "Idee für ein AR Spiel einen kreativen Beitrag in den sozialen Medien",
+            "Warum finden Sie das Thema besonders wichtig/relevant für Sie und die Menschen in Ihrer Region?",
+            "Welches Ziel verfolgen Sie mit Ihrem Medienbeitrag",
+            "Stellen Sie Ihre Idee im Kurs vor.",
+            "Alle stimmen ab, welche Idee sie am interessantesten finden.",
+            "Die Ideen, die die meisten Stimmen bekommen, werden dann in kleinen Gruppen umgesetzt.",
+            "Wenn Sie schon in Gruppen gearbeitet haben, gibt es diesen Schritt nicht.",
+            "Setzen Sie Ihre Idee um und erstellen Sie Ihren Beitrag.",
+            "Am Ende präsentieren alle Gruppen ihre Medienbeitrag."
+        ],
+        "templated": []
+    }
+}

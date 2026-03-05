@@ -1,0 +1,393 @@
+{
+    "unit": "B24",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 24,
+        "prerequisite": "core 1-104, B1-B23"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Geschichte und Kultur sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Regionalsprachen",
+            "Identität und Kultur"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "prägen", "pos": "VERB", "translation": "to shape, influence" },
+            { "word": "aufwachsen", "pos": "VERB", "translation": "to grow up", "frequency": 2355 },
+            { "word": "ignorieren", "pos": "VERB", "translation": "to ignore", "frequency": 3197 },
+            { "word": "die Allgemeinbildung", "pos": "ADJ", "translation": "general knowledge/education", "frequency": 29092, "cefr": "A1" },
+            { "word": "die Landkarte", "pos": "NOUN", "translation": "map", "frequency": 11968, "cefr": "A1" },
+            { "word": "die Privatheit", "pos": "NOUN", "translation": "privacy", "frequency": 47201, "cefr": "A1" },
+            { "word": "der Alltag", "pos": "NOUN", "translation": "everyday life", "frequency": 1709, "cefr": "B1" },
+            { "word": "die Befreiung", "pos": "NOUN", "translation": "liberation", "frequency": 4972, "cefr": "A1" },
+            { "word": "das Unrecht", "pos": "NOUN", "translation": "injustice", "frequency": 3921, "cefr": "A1" },
+            { "word": "das Opfer", "pos": "NOUN", "translation": "victim", "frequency": 1007, "cefr": "B1" },
+            { "word": "der*die Soziolog*in", "pos": "NOUN", "translation": "sociologist" },
+            { "word": "der*die Aktivist*in", "pos": "NOUN", "translation": "activist", "frequency": 8619 },
+            { "word": "einzeln", "pos": "ADJ", "translation": "single; individual, sole", "frequency": 308, "cefr": "A2" },
+            { "word": "breit", "pos": "ADJ", "translation": "broad; wide", "frequency": 847, "cefr": "A1" },
+            { "word": "unsichtbar", "pos": "ADJ", "translation": "invisible", "frequency": 3624 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Sozialisierung", "pos": "NOUN" },
+            { "word": "die Sportmannschaft", "pos": "NOUN" },
+            { "word": "der Gender", "pos": "NOUN" },
+            { "word": "diskriminieren", "pos": "VERB", "frequency": 18047 },
+            { "word": "diskriminiert", "pos": "ADJ" },
+            { "word": "das Frauenrecht", "pos": "NOUN", "frequency": 36538 },
+            { "word": "das geflüchtet", "pos": "NOUN", "frequency": 39622 },
+            { "word": "die Individualität", "pos": "NOUN", "frequency": 16646, "cefr": "B2" },
+            { "word": "der Atlas", "pos": "NOUN", "frequency": 11341, "cefr": "B2" },
+            { "word": "der Süd", "pos": "NOUN", "frequency": 1771 },
+            { "word": "die Diktatur", "pos": "NOUN", "frequency": 4705, "cefr": "B2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "prägen": {
+                "present": {
+                    "ich": "präge",
+                    "du": "prägst",
+                    "er": "prägt",
+                    "es": "prägt",
+                    "sie_singular": "prägt",
+                    "xier": "prägt",
+                    "wir": "prägen",
+                    "ihr": "prägt",
+                    "sie_plural": "prägen",
+                    "Sie": "prägen"
+                },
+                "Präteritum": {
+                    "ich": "prägte",
+                    "du": "prägtest",
+                    "er": "prägte",
+                    "es": "prägte",
+                    "sie_singular": "prägte",
+                    "xier": "prägte",
+                    "wir": "prägten",
+                    "ihr": "prägtet",
+                    "sie_plural": "prägten",
+                    "Sie": "prägten"
+                },
+                "Perfekt": {
+                    "ich": "habe geprägt",
+                    "du": "hast geprägt",
+                    "er": "hat geprägt",
+                    "es": "hat geprägt",
+                    "sie_singular": "hat geprägt",
+                    "xier": "hat geprägt",
+                    "wir": "haben geprägt",
+                    "ihr": "habt geprägt",
+                    "sie_plural": "haben geprägt",
+                    "Sie": "haben geprägt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte geprägt",
+                    "du": "hattest geprägt",
+                    "er": "hatte geprägt",
+                    "es": "hatte geprägt",
+                    "sie_singular": "hatte geprägt",
+                    "xier": "hatte geprägt",
+                    "wir": "hatten geprägt",
+                    "ihr": "hattet geprägt",
+                    "sie_plural": "hatten geprägt",
+                    "Sie": "hatten geprägt"
+                },
+                "Futur_I": {
+                    "ich": "werde prägen",
+                    "du": "wirst prägen",
+                    "er": "wird prägen",
+                    "es": "wird prägen",
+                    "sie_singular": "wird prägen",
+                    "xier": "wird prägen",
+                    "wir": "werden prägen",
+                    "ihr": "werdet prägen",
+                    "sie_plural": "werden prägen",
+                    "Sie": "werden prägen"
+                },
+                "imperative": {
+                    "du": "präge",
+                    "ihr": "prägt",
+                    "Sie": "prägen Sie"
+                }
+            },
+            "aufwachsen": {
+                "present": {
+                    "ich": "wachse auf",
+                    "du": "wächst auf",
+                    "er": "wächst auf",
+                    "es": "wächst auf",
+                    "sie_singular": "wächst auf",
+                    "xier": "wächst auf",
+                    "wir": "wachsen auf",
+                    "ihr": "wachst auf",
+                    "sie_plural": "wachsen auf",
+                    "Sie": "wachsen auf"
+                },
+                "Präteritum": {
+                    "ich": "wuchs auf",
+                    "du": "wuchsest auf",
+                    "er": "wuchs auf",
+                    "es": "wuchs auf",
+                    "sie_singular": "wuchs auf",
+                    "xier": "wuchs auf",
+                    "wir": "wuchsen auf",
+                    "ihr": "wuchst auf",
+                    "sie_plural": "wuchsen auf",
+                    "Sie": "wuchsen auf"
+                },
+                "Perfekt": {
+                    "ich": "bin aufgewachsen",
+                    "du": "bist aufgewachsen",
+                    "er": "ist aufgewachsen",
+                    "es": "ist aufgewachsen",
+                    "sie_singular": "ist aufgewachsen",
+                    "xier": "ist aufgewachsen",
+                    "wir": "sind aufgewachsen",
+                    "ihr": "seid aufgewachsen",
+                    "sie_plural": "sind aufgewachsen",
+                    "Sie": "sind aufgewachsen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war aufgewachsen",
+                    "du": "warst aufgewachsen",
+                    "er": "war aufgewachsen",
+                    "es": "war aufgewachsen",
+                    "sie_singular": "war aufgewachsen",
+                    "xier": "war aufgewachsen",
+                    "wir": "waren aufgewachsen",
+                    "ihr": "wart aufgewachsen",
+                    "sie_plural": "waren aufgewachsen",
+                    "Sie": "waren aufgewachsen"
+                },
+                "Futur_I": {
+                    "ich": "werde aufwachsen",
+                    "du": "wirst aufwachsen",
+                    "er": "wird aufwachsen",
+                    "es": "wird aufwachsen",
+                    "sie_singular": "wird aufwachsen",
+                    "xier": "wird aufwachsen",
+                    "wir": "werden aufwachsen",
+                    "ihr": "werdet aufwachsen",
+                    "sie_plural": "werden aufwachsen",
+                    "Sie": "werden aufwachsen"
+                },
+                "imperative": {
+                    "du": "wachse auf",
+                    "ihr": "wachst auf",
+                    "Sie": "wachsen Sie auf"
+                }
+            },
+            "ignorieren": {
+                "present": {
+                    "ich": "ignoriere",
+                    "du": "ignorierst",
+                    "er": "ignoriert",
+                    "es": "ignoriert",
+                    "sie_singular": "ignoriert",
+                    "xier": "ignoriert",
+                    "wir": "ignorieren",
+                    "ihr": "ignoriert",
+                    "sie_plural": "ignorieren",
+                    "Sie": "ignorieren"
+                },
+                "Präteritum": {
+                    "ich": "ignorierte",
+                    "du": "ignoriertest",
+                    "er": "ignorierte",
+                    "es": "ignorierte",
+                    "sie_singular": "ignorierte",
+                    "xier": "ignorierte",
+                    "wir": "ignorierten",
+                    "ihr": "ignoriertet",
+                    "sie_plural": "ignorierten",
+                    "Sie": "ignorierten"
+                },
+                "Perfekt": {
+                    "ich": "habe ignoriert",
+                    "du": "hast ignoriert",
+                    "er": "hat ignoriert",
+                    "es": "hat ignoriert",
+                    "sie_singular": "hat ignoriert",
+                    "xier": "hat ignoriert",
+                    "wir": "haben ignoriert",
+                    "ihr": "habt ignoriert",
+                    "sie_plural": "haben ignoriert",
+                    "Sie": "haben ignoriert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ignoriert",
+                    "du": "hattest ignoriert",
+                    "er": "hatte ignoriert",
+                    "es": "hatte ignoriert",
+                    "sie_singular": "hatte ignoriert",
+                    "xier": "hatte ignoriert",
+                    "wir": "hatten ignoriert",
+                    "ihr": "hattet ignoriert",
+                    "sie_plural": "hatten ignoriert",
+                    "Sie": "hatten ignoriert"
+                },
+                "Futur_I": {
+                    "ich": "werde ignorieren",
+                    "du": "wirst ignorieren",
+                    "er": "wird ignorieren",
+                    "es": "wird ignorieren",
+                    "sie_singular": "wird ignorieren",
+                    "xier": "wird ignorieren",
+                    "wir": "werden ignorieren",
+                    "ihr": "werdet ignorieren",
+                    "sie_plural": "werden ignorieren",
+                    "Sie": "werden ignorieren"
+                },
+                "imperative": {
+                    "du": "ignoriere",
+                    "ihr": "ignoriert",
+                    "Sie": "ignorieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wer seid ihr?",
+            "Haben Geschichte und Sozialisierung etwas mit Identität zu tun?",
+            "Sprechen Sie über die Fragen.",
+            "Wo sind Sie aufgewachsen?",
+            "Welche Traditionen gab es?",
+            "Gab es ein (historisches) Ereignis, das Ihre Kindheit und Jugend geprägt hat?",
+            "Sind diese Dinge heute auch noch wichtig für Sie?",
+            "Wenn ja, warum ist das so?",
+            "Wenn nein, was hat sich verändert?",
+            "Lesen Sie die Sätze.",
+            "Was ist positiv und negativ an Kategorien?",
+            "Ich kann mich gut in meiner Gruppe fühlen.",
+            "Menschen können andere Menschen und ihre Gruppen diskriminieren.",
+            "Es kann Stereotypen über Gruppen geben.",
+            "Diskriminierte Gruppen bekommen Hilfe von anderen Menschen in ihrer Gruppe.",
+            "Manche Gruppen haben Rechte (z.B.",
+            "Frauenrechte, Rechte für Geflüchtete) Gruppen sind zu einfach.",
+            "Ein Mensch ist mehr als Kategorien.",
+            "Individualität und Unterschiede sind unsichtbar in Gruppenidentitäten.",
+            "Auch Sprache hat mit Identität zu tun.",
+            "Welche Wörter benutzen Sie in Ihrer Region, die Menschen in anderen Regionen nicht benutzen?",
+            "Was sprechen Sie sie anders aus als andere Menschen in Ihrem Land?",
+            "Es gibt viele Dialekte in deutschsprachigen Ländern.",
+            "Forscher*innen haben Umfragen gemacht und Landkarten entwickelt.",
+            "Dieser Atlas zur deutschen Alltagssprache zeigt, wo die Deutschen, Österreicher*innen und Schweizer*innen wie sprechen.",
+            "Gehen Sie auf die Webseite und sehen Sie sich die Karten zu den Wörtern an.",
+            "Tragen Sie in die Tabelle ein, wo man was sagt.",
+            "Wo sind Dialektgrenzen in Deutschland (Nord Süd, Ost West)?",
+            "Bei welchen Wörtern gibt es viele regionale Varianten?",
+            "Haben Österreich und die Schweiz eigene Varianten oder sind sie wie im Süden von Deutschland?",
+            "Wer sind die Deutschen?",
+            "30 Jahre nach dem Mauerfall 2019 feierte Deutschland 30 Jahre Mauerfall.",
+            "Viele Politiker*innen und die Medien feiern den 9.",
+            "November als eine Befreiung der DDR Bürger*innen aus der Diktatur.",
+            "Das ist eine sehr westliche Perspektive.",
+            "Die Einheit war aber sehr komplex.",
+            "Lesen Sie nun einen Teil aus einem Interview mit dem Soziologen Steffen Mau und beantworten Sie die Fragen.",
+            "Was war denn das Normal in der DDR?",
+            "Wir waren“ gleich ”.",
+            "Wir haben gewohnt wie alle anderen auch.",
+            "Alle sind auf die gleichen Schulen gegangen und in die gleiche Kaufhalle [Supermarkt].",
+            "Wir haben in der Freizeit alle sehr ähnliche Dinge gemacht.",
+            "Auch sozial gab es wenige Unterschiede.",
+            "In der DDR hat man eine sehr gute, breite Allgemeinbildung bekommen, viele Arbeiter*innen lasen oder gingen ins Theater.",
+            "Herr Mau sagt, dass Menschen in der DDR gleich waren.",
+            "Welche Beispiele gibt er?",
+            "Bald feiern wir den 30.",
+            "Jahrestag des Mauerfalls.",
+            "Wird dann wieder die Befreiung der Ost Deutschen im Fokus stehen?",
+            "Im Fokus stehen Diktatur und der Unrechtsstaat DDR.",
+            "Das ist natürlich wichtig für die Opfer und Aktivist*innen, die gegen die Diktatur gekämpft haben",
+            "– es ist richtig, dass wir uns an die Opfer erinnern.",
+            "Aber viele andere Ost Deutsche identifizieren sich nicht mit dieser Erinnerung.",
+            "Die DDR war nicht nur eine Diktatur.",
+            "Diese Perspektive zeigt auch andere Dinge, die Teil der DDR waren: Privatheit, kleine Freiheiten, die Proteste gegen das System.",
+            "Als was erinnern wir die DDR meistens?",
+            "Warum oder für wen ist das wichtig?",
+            "Warum ist es ein Problem, wenn wir uns nur so an die DDR erinnern.",
+            "Kennen Sie Beispiele von Erinnerungskultur aus Ihrem Land, die die Erinnerung von einzelnen Personen ignoriert oder falsch präsentiert?",
+            "Sammeln Sie Beispiele."
+        ],
+        "templated": []
+    }
+}

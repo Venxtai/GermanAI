@@ -1,0 +1,436 @@
+{
+    "unit": "O29",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 29,
+        "prerequisite": "core 1-104, O1-O28"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Protestaktion organisieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "positionieren", "pos": "VERB", "translation": "to position", "frequency": 9987 },
+            { "word": "mobilisieren", "pos": "VERB", "translation": "to mobilize", "frequency": 9113 },
+            { "word": "ausdrücken", "pos": "VERB", "translation": "to express" },
+            { "word": "einsetzen", "pos": "VERB", "translation": "to apply, employ; insert", "frequency": 461, "cefr": "B1" },
+            { "word": "Emotionen", "pos": "VERB", "translation": "to create emotions" },
+            { "word": "die Aktion", "pos": "NOUN", "translation": "action; sale (promotion); campaign, initiative (project)", "frequency": 1838, "cefr": "B1" },
+            { "word": "die Petition", "pos": "NOUN", "translation": "petition", "frequency": 10237, "cefr": "A1" },
+            { "word": "das Anliegen", "pos": "NOUN", "translation": "concern; issue", "frequency": 2987, "cefr": "A1" },
+            { "word": "das Mittel", "pos": "NOUN", "translation": "means (pl.)", "frequency": 691, "cefr": "A2" },
+            { "word": "die Aufmerksamkeit", "pos": "NOUN", "translation": "attention", "frequency": 1753, "cefr": "A1" },
+            { "word": "relevant", "pos": "ADJ", "translation": "relevant", "frequency": 2031 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Dekolonialisierung", "pos": "NOUN" },
+            { "word": "die Performance", "pos": "NOUN", "frequency": 8053 },
+            { "word": "wecken", "pos": "VERB", "frequency": 2578, "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "positionieren": {
+                "present": {
+                    "ich": "positioniere",
+                    "du": "positionierst",
+                    "er": "positioniert",
+                    "es": "positioniert",
+                    "sie_singular": "positioniert",
+                    "xier": "positioniert",
+                    "wir": "positionieren",
+                    "ihr": "positioniert",
+                    "sie_plural": "positionieren",
+                    "Sie": "positionieren"
+                },
+                "Perfekt": {
+                    "ich": "habe positioniert",
+                    "du": "hast positioniert",
+                    "er": "hat positioniert",
+                    "es": "hat positioniert",
+                    "sie_singular": "hat positioniert",
+                    "xier": "hat positioniert",
+                    "wir": "haben positioniert",
+                    "ihr": "habt positioniert",
+                    "sie_plural": "haben positioniert",
+                    "Sie": "haben positioniert"
+                },
+                "Futur_I": {
+                    "ich": "werde positionieren",
+                    "du": "wirst positionieren",
+                    "er": "wird positionieren",
+                    "es": "wird positionieren",
+                    "sie_singular": "wird positionieren",
+                    "xier": "wird positionieren",
+                    "wir": "werden positionieren",
+                    "ihr": "werdet positionieren",
+                    "sie_plural": "werden positionieren",
+                    "Sie": "werden positionieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde positionieren",
+                    "du": "würdest positionieren",
+                    "er": "würde positionieren",
+                    "es": "würde positionieren",
+                    "sie_singular": "würde positionieren",
+                    "xier": "würde positionieren",
+                    "wir": "würden positionieren",
+                    "ihr": "würdet positionieren",
+                    "sie_plural": "würden positionieren",
+                    "Sie": "würden positionieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte positioniert",
+                    "du": "hättest positioniert",
+                    "er": "hätte positioniert",
+                    "es": "hätte positioniert",
+                    "sie_singular": "hätte positioniert",
+                    "xier": "hätte positioniert",
+                    "wir": "hätten positioniert",
+                    "ihr": "hättet positioniert",
+                    "sie_plural": "hätten positioniert",
+                    "Sie": "hätten positioniert"
+                },
+                "imperative": {
+                    "du": "positionier",
+                    "ihr": "positioniert",
+                    "Sie": "positionieren Sie"
+                }
+            },
+            "mobilisieren": {
+                "Perfekt": {
+                    "ich": "habe mobilisiert",
+                    "du": "hast mobilisiert",
+                    "er": "hat mobilisiert",
+                    "es": "hat mobilisiert",
+                    "sie_singular": "hat mobilisiert",
+                    "xier": "hat mobilisiert",
+                    "wir": "haben mobilisiert",
+                    "ihr": "habt mobilisiert",
+                    "sie_plural": "haben mobilisiert",
+                    "Sie": "haben mobilisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde mobilisieren",
+                    "du": "wirst mobilisieren",
+                    "er": "wird mobilisieren",
+                    "es": "wird mobilisieren",
+                    "sie_singular": "wird mobilisieren",
+                    "xier": "wird mobilisieren",
+                    "wir": "werden mobilisieren",
+                    "ihr": "werdet mobilisieren",
+                    "sie_plural": "werden mobilisieren",
+                    "Sie": "werden mobilisieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde mobilisieren",
+                    "du": "würdest mobilisieren",
+                    "er": "würde mobilisieren",
+                    "es": "würde mobilisieren",
+                    "sie_singular": "würde mobilisieren",
+                    "xier": "würde mobilisieren",
+                    "wir": "würden mobilisieren",
+                    "ihr": "würdet mobilisieren",
+                    "sie_plural": "würden mobilisieren",
+                    "Sie": "würden mobilisieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte mobilisiert",
+                    "du": "hättest mobilisiert",
+                    "er": "hätte mobilisiert",
+                    "es": "hätte mobilisiert",
+                    "sie_singular": "hätte mobilisiert",
+                    "xier": "hätte mobilisiert",
+                    "wir": "hätten mobilisiert",
+                    "ihr": "hättet mobilisiert",
+                    "sie_plural": "hätten mobilisiert",
+                    "Sie": "hätten mobilisiert"
+                }
+            },
+            "ausdrücken": {
+                "present": {
+                    "ich": "drücke aus",
+                    "du": "drückst aus",
+                    "er": "drückt aus",
+                    "es": "drückt aus",
+                    "sie_singular": "drückt aus",
+                    "xier": "drückt aus",
+                    "wir": "drücken aus",
+                    "ihr": "drückt aus",
+                    "sie_plural": "drücken aus",
+                    "Sie": "drücken aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgedrückt",
+                    "du": "hast ausgedrückt",
+                    "er": "hat ausgedrückt",
+                    "es": "hat ausgedrückt",
+                    "sie_singular": "hat ausgedrückt",
+                    "xier": "hat ausgedrückt",
+                    "wir": "haben ausgedrückt",
+                    "ihr": "habt ausgedrückt",
+                    "sie_plural": "haben ausgedrückt",
+                    "Sie": "haben ausgedrückt"
+                },
+                "Futur_I": {
+                    "ich": "werde ausdrücken",
+                    "du": "wirst ausdrücken",
+                    "er": "wird ausdrücken",
+                    "es": "wird ausdrücken",
+                    "sie_singular": "wird ausdrücken",
+                    "xier": "wird ausdrücken",
+                    "wir": "werden ausdrücken",
+                    "ihr": "werdet ausdrücken",
+                    "sie_plural": "werden ausdrücken",
+                    "Sie": "werden ausdrücken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ausdrücken",
+                    "du": "würdest ausdrücken",
+                    "er": "würde ausdrücken",
+                    "es": "würde ausdrücken",
+                    "sie_singular": "würde ausdrücken",
+                    "xier": "würde ausdrücken",
+                    "wir": "würden ausdrücken",
+                    "ihr": "würdet ausdrücken",
+                    "sie_plural": "würden ausdrücken",
+                    "Sie": "würden ausdrücken"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte ausgedrückt",
+                    "du": "hättest ausgedrückt",
+                    "er": "hätte ausgedrückt",
+                    "es": "hätte ausgedrückt",
+                    "sie_singular": "hätte ausgedrückt",
+                    "xier": "hätte ausgedrückt",
+                    "wir": "hätten ausgedrückt",
+                    "ihr": "hättet ausgedrückt",
+                    "sie_plural": "hätten ausgedrückt",
+                    "Sie": "hätten ausgedrückt"
+                },
+                "imperative": {
+                    "du": "drücke aus",
+                    "ihr": "drückt aus",
+                    "Sie": "drücken Sie aus"
+                }
+            },
+            "einsetzen": {
+                "present": {
+                    "ich": "setze ein",
+                    "du": "setzt ein",
+                    "er": "setzt ein",
+                    "es": "setzt ein",
+                    "sie_singular": "setzt ein",
+                    "xier": "setzt ein",
+                    "wir": "setzen ein",
+                    "ihr": "setzt ein",
+                    "sie_plural": "setzen ein",
+                    "Sie": "setzen ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingesetzt",
+                    "du": "hast eingesetzt",
+                    "er": "hat eingesetzt",
+                    "es": "hat eingesetzt",
+                    "sie_singular": "hat eingesetzt",
+                    "xier": "hat eingesetzt",
+                    "wir": "haben eingesetzt",
+                    "ihr": "habt eingesetzt",
+                    "sie_plural": "haben eingesetzt",
+                    "Sie": "haben eingesetzt"
+                },
+                "Futur_I": {
+                    "ich": "werde einsetzen",
+                    "du": "wirst einsetzen",
+                    "er": "wird einsetzen",
+                    "es": "wird einsetzen",
+                    "sie_singular": "wird einsetzen",
+                    "xier": "wird einsetzen",
+                    "wir": "werden einsetzen",
+                    "ihr": "werdet einsetzen",
+                    "sie_plural": "werden einsetzen",
+                    "Sie": "werden einsetzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde einsetzen",
+                    "du": "würdest einsetzen",
+                    "er": "würde einsetzen",
+                    "es": "würde einsetzen",
+                    "sie_singular": "würde einsetzen",
+                    "xier": "würde einsetzen",
+                    "wir": "würden einsetzen",
+                    "ihr": "würdet einsetzen",
+                    "sie_plural": "würden einsetzen",
+                    "Sie": "würden einsetzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte eingesetzt",
+                    "du": "hättest eingesetzt",
+                    "er": "hätte eingesetzt",
+                    "es": "hätte eingesetzt",
+                    "sie_singular": "hätte eingesetzt",
+                    "xier": "hätte eingesetzt",
+                    "wir": "hätten eingesetzt",
+                    "ihr": "hättet eingesetzt",
+                    "sie_plural": "hätten eingesetzt",
+                    "Sie": "hätten eingesetzt"
+                },
+                "imperative": {
+                    "du": "setze ein",
+                    "ihr": "setzt ein",
+                    "Sie": "setzen Sie ein"
+                }
+            },
+            "Emotionen": {
+                "Perfekt": {
+                    "ich": "habe geweckt",
+                    "du": "hast geweckt",
+                    "er": "hat geweckt",
+                    "es": "hat geweckt",
+                    "sie_singular": "hat geweckt",
+                    "xier": "hat geweckt",
+                    "wir": "haben geweckt",
+                    "ihr": "habt geweckt",
+                    "sie_plural": "haben geweckt",
+                    "Sie": "haben geweckt"
+                },
+                "Futur_I": {
+                    "ich": "werde Emotionen",
+                    "du": "wirst Emotionen",
+                    "er": "wird Emotionen",
+                    "es": "wird Emotionen",
+                    "sie_singular": "wird Emotionen",
+                    "xier": "wird Emotionen",
+                    "wir": "werden Emotionen",
+                    "ihr": "werdet Emotionen",
+                    "sie_plural": "werden Emotionen",
+                    "Sie": "werden Emotionen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde Emotionen",
+                    "du": "würdest Emotionen",
+                    "er": "würde Emotionen",
+                    "es": "würde Emotionen",
+                    "sie_singular": "würde Emotionen",
+                    "xier": "würde Emotionen",
+                    "wir": "würden Emotionen",
+                    "ihr": "würdet Emotionen",
+                    "sie_plural": "würden Emotionen",
+                    "Sie": "würden Emotionen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geweckt",
+                    "du": "hättest geweckt",
+                    "er": "hätte geweckt",
+                    "es": "hätte geweckt",
+                    "sie_singular": "hätte geweckt",
+                    "xier": "hätte geweckt",
+                    "wir": "hätten geweckt",
+                    "ihr": "hättet geweckt",
+                    "sie_plural": "hätten geweckt",
+                    "Sie": "hätten geweckt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Eine Protestaktion, bei der Sie sich für oder gegen ein gesellschaftlich relevantes Thema positionieren",
+            "Mit diesem Projekt üben Sie eine Meinung klar zu formulieren und kreative Mittel einzusetzen, um Aufmerksamkeit für gesellschaftliche Themen zu schaffen.",
+            ": Entscheiden Sie sich alleine, zu zweit oder in Gruppen, ob Sie für oder gegen etwas protestieren wollen.",
+            "Wählen Sie ein Thema aus und beantworten Sie die Fragen.",
+            "Warum ist dieses Thema wichtig?",
+            "Welche Auswirkungen hat es auf die Gesellschaft oder auf Ihr persönliches Leben?",
+            ": Wählen Sie eine kreative Form für Ihre Protestaktion",
+            "Protest Aktion] aus, die Ihre Botschaft stark macht.",
+            "Was ist Ihre Protestform?",
+            "Wie wecken Sie Emotionen?",
+            "Wie erreichen Sie andere Menschen?",
+            "Haben Sie ID2 BLAU schon gemacht?",
+            "Dann denken Sie an die Kommunikationsmittel aus Kapitel 1.",
+            "Entwickeln Sie jetzt klare Slogans, die Ihre Position ausdrücken.",
+            "Was wollen Sie erreichen?",
+            "Was fordern Sie?",
+            "Wie können Sie Menschen mobilisieren?",
+            "Schreiben Sie mindestens drei Sätze, wie Sie zum Beispiel auf Demonstrationsplakaten stehen können."
+        ],
+        "templated": []
+    }
+}

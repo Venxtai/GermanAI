@@ -1,8 +1,13 @@
 # Dependencies
 node_modules/
 
-# Environment variables
+# Environment variables — NEVER commit API keys
 .env
+**/.env
+
+# Uploaded audio files (temp storage for speech-to-text)
+uploads/
+**/uploads/
 
 # Logs
 *.log
@@ -21,3 +26,6 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Vite build output
+frontend/dist/

@@ -1,0 +1,713 @@
+{
+    "unit": "B8",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 8,
+        "prerequisite": "core 1-104, B1-B7"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Folgen des Klimawandels kennenlernen und diskutieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Klimawandel"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "sich wohlfühlen",
+                "pos": "VERB",
+                "translation": "to feel comfortable",
+                "frequency": 14,
+                "cefr": "A1"
+            },
+            {
+                "word": "wachsen",
+                "pos": "VERB",
+                "translation": "to grow, increase",
+                "frequency": 470,
+                "cefr": "B1"
+            },
+            {
+                "word": "aufgeben",
+                "pos": "VERB",
+                "translation": "to give up",
+                "frequency": 1371,
+                "cefr": "B1"
+            },
+            {
+                "word": "führen",
+                "pos": "VERB",
+                "translation": "to lead to sth."
+            },
+            {
+                "word": "zerstören",
+                "pos": "VERB",
+                "translation": "to destroy, demolish"
+            },
+            {
+                "word": "beschädigen",
+                "pos": "VERB",
+                "translation": "to damage"
+            },
+            {
+                "word": "schmelzen",
+                "pos": "VERB",
+                "translation": "to melt",
+                "frequency": 12244
+            },
+            {
+                "word": "die Art",
+                "pos": "NOUN",
+                "translation": "kind, type",
+                "frequency": 260,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Studie",
+                "pos": "NOUN",
+                "translation": "study (research)",
+                "frequency": 784,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Erderwärmung",
+                "pos": "NOUN",
+                "translation": "global warming"
+            },
+            {
+                "word": "der Sturm",
+                "pos": "NOUN",
+                "translation": "storm",
+                "frequency": 2913,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hitze",
+                "pos": "NOUN",
+                "translation": "heat",
+                "frequency": 3357,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Sauerstoff",
+                "pos": "NOUN",
+                "translation": "oxygen",
+                "frequency": 2432,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Insel",
+                "pos": "NOUN",
+                "translation": "island",
+                "frequency": 1029,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Fischer*in",
+                "pos": "NOUN",
+                "translation": "fisher",
+                "frequency": 2185
+            },
+            {
+                "word": "die Robbe",
+                "pos": "NOUN",
+                "translation": "seal (zool)]",
+                "frequency": 12804,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Pinguin",
+                "pos": "NOUN",
+                "translation": "penguin",
+                "frequency": 16728,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Insekt",
+                "pos": "NOUN",
+                "translation": "insect",
+                "frequency": 4736,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Ozean",
+                "pos": "NOUN",
+                "translation": "ocean",
+                "frequency": 4042,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Meer",
+                "pos": "NOUN",
+                "translation": "sea",
+                "frequency": 852,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Meeresspiegel",
+                "pos": "NOUN",
+                "translation": "sea level",
+                "frequency": 14064,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Methan",
+                "pos": "NOUN",
+                "frequency": 25291
+            },
+            {
+                "word": "das Lebenmittel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "öfter",
+                "pos": "ADV",
+                "frequency": 6614,
+                "cefr": "B1"
+            },
+            {
+                "word": "heutig",
+                "pos": "ADJ",
+                "frequency": 1076,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Stress",
+                "pos": "NOUN",
+                "frequency": 2745,
+                "cefr": "A2"
+            },
+            {
+                "word": "polar",
+                "pos": "ADV",
+                "frequency": 42073
+            },
+            {
+                "word": "tief",
+                "pos": "ADJ",
+                "frequency": 442,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Nest",
+                "pos": "NOUN",
+                "frequency": 9420
+            },
+            {
+                "word": "die Pole",
+                "pos": "NOUN",
+                "frequency": 4725
+            },
+            {
+                "word": "reproduzieren",
+                "pos": "VERB",
+                "frequency": 31237
+            },
+            {
+                "word": "jede",
+                "pos": "DET",
+                "frequency": 87,
+                "cefr": "A1"
+            },
+            {
+                "word": "ichen",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Nordpol",
+                "pos": "NOUN",
+                "frequency": 24764
+            },
+            {
+                "word": "das Südpol",
+                "pos": "NOUN",
+                "frequency": 28762
+            },
+            {
+                "word": "die Mücke",
+                "pos": "NOUN",
+                "frequency": 16253,
+                "cefr": "B1"
+            },
+            {
+                "word": "hiedene",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Malaria",
+                "pos": "NOUN",
+                "frequency": 18707,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wohlfühlen": {
+                "present": {
+                    "ich": "fühle mich wohl",
+                    "du": "fühlst dich wohl",
+                    "er": "fühlt sich wohl",
+                    "es": "fühlt sich wohl",
+                    "sie_singular": "fühlt sich wohl",
+                    "xier": "fühlt sich wohl",
+                    "wir": "fühlen uns wohl",
+                    "ihr": "fühlt euch wohl",
+                    "sie_plural": "fühlen sich wohl",
+                    "Sie": "fühlen sich wohl"
+                },
+                "Perfekt": {
+                    "ich": "habe mich wohlgefühlt",
+                    "du": "hast dich wohlgefühlt",
+                    "er": "hat sich wohlgefühlt",
+                    "es": "hat sich wohlgefühlt",
+                    "sie_singular": "hat sich wohlgefühlt",
+                    "xier": "hat sich wohlgefühlt",
+                    "wir": "haben uns wohlgefühlt",
+                    "ihr": "habt euch wohlgefühlt",
+                    "sie_plural": "haben sich wohlgefühlt",
+                    "Sie": "haben sich wohlgefühlt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich wohlfühlen",
+                    "du": "wirst dich wohlfühlen",
+                    "er": "wird sich wohlfühlen",
+                    "es": "wird sich wohlfühlen",
+                    "sie_singular": "wird sich wohlfühlen",
+                    "xier": "wird sich wohlfühlen",
+                    "wir": "werden uns wohlfühlen",
+                    "ihr": "werdet euch wohlfühlen",
+                    "sie_plural": "werden sich wohlfühlen",
+                    "Sie": "werden sich wohlfühlen"
+                },
+                "imperative": {
+                    "du": "fühl dich wohl",
+                    "ihr": "fühlt euch wohl",
+                    "Sie": "fühlen Sie sich wohl"
+                }
+            },
+            "wachsen": {
+                "present": {
+                    "ich": "wachse",
+                    "du": "wächst",
+                    "er": "wächst",
+                    "es": "wächst",
+                    "sie_singular": "wächst",
+                    "xier": "wächst",
+                    "wir": "wachsen",
+                    "ihr": "wachst",
+                    "sie_plural": "wachsen",
+                    "Sie": "wachsen"
+                },
+                "Perfekt": {
+                    "ich": "bin gewachsen",
+                    "du": "bist gewachsen",
+                    "er": "ist gewachsen",
+                    "es": "ist gewachsen",
+                    "sie_singular": "ist gewachsen",
+                    "xier": "ist gewachsen",
+                    "wir": "sind gewachsen",
+                    "ihr": "seid gewachsen",
+                    "sie_plural": "sind gewachsen",
+                    "Sie": "sind gewachsen"
+                },
+                "Futur_I": {
+                    "ich": "werde wachsen",
+                    "du": "wirst wachsen",
+                    "er": "wird wachsen",
+                    "es": "wird wachsen",
+                    "sie_singular": "wird wachsen",
+                    "xier": "wird wachsen",
+                    "wir": "werden wachsen",
+                    "ihr": "werdet wachsen",
+                    "sie_plural": "werden wachsen",
+                    "Sie": "werden wachsen"
+                },
+                "imperative": {
+                    "du": "wachse",
+                    "ihr": "wachst",
+                    "Sie": "wachsen Sie"
+                }
+            },
+            "aufgeben": {
+                "present": {
+                    "ich": "gebe auf",
+                    "du": "gibst auf",
+                    "er": "gibt auf",
+                    "es": "gibt auf",
+                    "sie_singular": "gibt auf",
+                    "xier": "gibt auf",
+                    "wir": "geben auf",
+                    "ihr": "gebt auf",
+                    "sie_plural": "geben auf",
+                    "Sie": "geben auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgegeben",
+                    "du": "hast aufgegeben",
+                    "er": "hat aufgegeben",
+                    "es": "hat aufgegeben",
+                    "sie_singular": "hat aufgegeben",
+                    "xier": "hat aufgegeben",
+                    "wir": "haben aufgegeben",
+                    "ihr": "habt aufgegeben",
+                    "sie_plural": "haben aufgegeben",
+                    "Sie": "haben aufgegeben"
+                },
+                "Futur_I": {
+                    "ich": "werde aufgeben",
+                    "du": "wirst aufgeben",
+                    "er": "wird aufgeben",
+                    "es": "wird aufgeben",
+                    "sie_singular": "wird aufgeben",
+                    "xier": "wird aufgeben",
+                    "wir": "werden aufgeben",
+                    "ihr": "werdet aufgeben",
+                    "sie_plural": "werden aufgeben",
+                    "Sie": "werden aufgeben"
+                },
+                "imperative": {
+                    "du": "gib auf",
+                    "ihr": "gebt auf",
+                    "Sie": "geben Sie auf"
+                }
+            },
+            "führen": {
+                "present": {
+                    "ich": "führe",
+                    "du": "führst",
+                    "er": "führt",
+                    "es": "führt",
+                    "sie_singular": "führt",
+                    "xier": "führt",
+                    "wir": "führen",
+                    "ihr": "führt",
+                    "sie_plural": "führen",
+                    "Sie": "führen"
+                },
+                "Perfekt": {
+                    "ich": "habe geführt",
+                    "du": "hast geführt",
+                    "er": "hat geführt",
+                    "es": "hat geführt",
+                    "sie_singular": "hat geführt",
+                    "xier": "hat geführt",
+                    "wir": "haben geführt",
+                    "ihr": "habt geführt",
+                    "sie_plural": "haben geführt",
+                    "Sie": "haben geführt"
+                },
+                "Futur_I": {
+                    "ich": "werde führen",
+                    "du": "wirst führen",
+                    "er": "wird führen",
+                    "es": "wird führen",
+                    "sie_singular": "wird führen",
+                    "xier": "wird führen",
+                    "wir": "werden führen",
+                    "ihr": "werdet führen",
+                    "sie_plural": "werden führen",
+                    "Sie": "werden führen"
+                },
+                "imperative": {
+                    "du": "führe",
+                    "ihr": "führt",
+                    "Sie": "führen Sie"
+                }
+            },
+            "zerstören": {
+                "present": {
+                    "ich": "zerstöre",
+                    "du": "zerstörst",
+                    "er": "zerstört",
+                    "es": "zerstört",
+                    "sie_singular": "zerstört",
+                    "xier": "zerstört",
+                    "wir": "zerstören",
+                    "ihr": "zerstört",
+                    "sie_plural": "zerstören",
+                    "Sie": "zerstören"
+                },
+                "Perfekt": {
+                    "ich": "habe zerstört",
+                    "du": "hast zerstört",
+                    "er": "hat zerstört",
+                    "es": "hat zerstört",
+                    "sie_singular": "hat zerstört",
+                    "xier": "hat zerstört",
+                    "wir": "haben zerstört",
+                    "ihr": "habt zerstört",
+                    "sie_plural": "haben zerstört",
+                    "Sie": "haben zerstört"
+                },
+                "Futur_I": {
+                    "ich": "werde zerstören",
+                    "du": "wirst zerstören",
+                    "er": "wird zerstören",
+                    "es": "wird zerstören",
+                    "sie_singular": "wird zerstören",
+                    "xier": "wird zerstören",
+                    "wir": "werden zerstören",
+                    "ihr": "werdet zerstören",
+                    "sie_plural": "werden zerstören",
+                    "Sie": "werden zerstören"
+                },
+                "imperative": {
+                    "du": "zerstöre",
+                    "ihr": "zerstört",
+                    "Sie": "zerstören Sie"
+                }
+            },
+            "beschädigen": {
+                "present": {
+                    "ich": "beschädige",
+                    "du": "beschädigst",
+                    "er": "beschädigt",
+                    "es": "beschädigt",
+                    "sie_singular": "beschädigt",
+                    "xier": "beschädigt",
+                    "wir": "beschädigen",
+                    "ihr": "beschädigt",
+                    "sie_plural": "beschädigen",
+                    "Sie": "beschädigen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschädigt",
+                    "du": "hast beschädigt",
+                    "er": "hat beschädigt",
+                    "es": "hat beschädigt",
+                    "sie_singular": "hat beschädigt",
+                    "xier": "hat beschädigt",
+                    "wir": "haben beschädigt",
+                    "ihr": "habt beschädigt",
+                    "sie_plural": "haben beschädigt",
+                    "Sie": "haben beschädigt"
+                },
+                "Futur_I": {
+                    "ich": "werde beschädigen",
+                    "du": "wirst beschädigen",
+                    "er": "wird beschädigen",
+                    "es": "wird beschädigen",
+                    "sie_singular": "wird beschädigen",
+                    "xier": "wird beschädigen",
+                    "wir": "werden beschädigen",
+                    "ihr": "werdet beschädigen",
+                    "sie_plural": "werden beschädigen",
+                    "Sie": "werden beschädigen"
+                },
+                "imperative": {
+                    "du": "beschädige",
+                    "ihr": "beschädigt",
+                    "Sie": "beschädigen Sie"
+                }
+            },
+            "schmelzen": {
+                "present": {
+                    "ich": "schmelze",
+                    "du": "schmilzt",
+                    "er": "schmilzt",
+                    "es": "schmilzt",
+                    "sie_singular": "schmilzt",
+                    "xier": "schmilzt",
+                    "wir": "schmelzen",
+                    "ihr": "schmelzt",
+                    "sie_plural": "schmelzen",
+                    "Sie": "schmelzen"
+                },
+                "Perfekt": {
+                    "ich": "bin geschmolzen",
+                    "du": "bist geschmolzen",
+                    "er": "ist geschmolzen",
+                    "es": "ist geschmolzen",
+                    "sie_singular": "ist geschmolzen",
+                    "xier": "ist geschmolzen",
+                    "wir": "sind geschmolzen",
+                    "ihr": "seid geschmolzen",
+                    "sie_plural": "sind geschmolzen",
+                    "Sie": "sind geschmolzen"
+                },
+                "Futur_I": {
+                    "ich": "werde schmelzen",
+                    "du": "wirst schmelzen",
+                    "er": "wird schmelzen",
+                    "es": "wird schmelzen",
+                    "sie_singular": "wird schmelzen",
+                    "xier": "wird schmelzen",
+                    "wir": "werden schmelzen",
+                    "ihr": "werdet schmelzen",
+                    "sie_plural": "werden schmelzen",
+                    "Sie": "werden schmelzen"
+                },
+                "imperative": {
+                    "du": "schmilz",
+                    "ihr": "schmelzt",
+                    "Sie": "schmelzen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie Ihren Textteil über den Klimawandel",
+            "Machen Sie sich zu der Frage, die Ihr Textteil beantwortet, ein paar Notizen.",
+            "Jede Person erzählt dann über Ihren Textteil und die anderen machen Notizen.",
+            "Was ist Klimawandel",
+            "Was sind die Folgen?",
+            "Was ist neu am Klimawandel",
+            "Klima Wandel, wenn die durchschnittliche Temperatur auf der Erde um nur wenige Grad ansteigt.",
+            "Durch Fabriken, Autos und Flugzeuge, die CO2 produzieren",
+            "Auch unsere Kleidung und unser Essen transportiert man;",
+            "Tiere benutzen viel Wasser und produzieren Methan;",
+            "Bäume sind wichtig, damit CO2 wieder zu Sauerstoff wird, aber Menschen brauchen Platz für das Anbauen von Lebenmitteln und deshalb gibt es immer weniger (Regen-)Wälder.",
+            "Schon jetzt können wir die Folgen des Klimawandel sehen.",
+            "Hochwasser, Stürme und Hitze.",
+            "In einigen Regionen in Afrika ist es schwierig Lebensmittel anzubauen, weil es so heiß ist und es wenig Trinkwasser gibt.",
+            "Der Lebensraum von Menschen und Tieren wird kleiner.",
+            "Wenn die Erde nur vier Grad wärmer wird, ist das eine Katastrophe.",
+            "Dann steigen die Meere um einen halben Meter, weil das Eis an den Polen schmilzt.",
+            "Tiere, wie der Eisbär, haben dann keinen Platz zum Leben mehr.",
+            "Wenn das Meer an steigt, hat das auch für den Menschen Folgen:",
+            "Städte a m Wasser wie Shanghai, Tokio oder Hamburg müssen dann in andere Regionen ziehen.",
+            "In wärmeren Regionen, wie z.B.",
+            "In großen Teilen Afrikas, können Menschen dann nicht mehr leben.",
+            "Einige Menschen denken, dass der heutige Klimawandel kein wirkliches Problem ist, weil sich das Klima der Erde immer ändert.",
+            "Das stimmt.",
+            "Aber in der Vergangenheit haben sich das Klima über Millionen von Jahren verändert.",
+            "Wandel, wie wir ihn heute sehen, hat sich in weniger als hundert Jahren gezeigt.",
+            "Fische, Vögel, Insekten, Polartiere – sie alle leiden unter den Folgen des Klimawandel",
+            "Welche Probleme haben diese vier Gruppen?",
+            "Ihre Lehrkraft gibt Ihnen Informationen zu zwei Gruppen.",
+            "Lesen Sie die Informationen und beschreiben Sie die Probleme mit Ihren eigenen Worten in der Tabelle.",
+            "Wenn das Wasser wärmer wird, gibt es weniger Sauerstoff im Wasser.",
+            "An sehr heißen Tagen bekommen Fische in Seen oder Flüssen nicht genug Sauerstoff und sterben.",
+            "Weitere Folgen sind, dass es weniger zu essen gibt (z.B.",
+            "Kleinere Fische).",
+            "Weil es weniger Sauerstoff gibt, werden einige Fische kleiner, d.h.",
+            "Sie hören früher auf zu wachsen.",
+            "Viele Fische wandern in kälteres Wasser oder schwimmen in tiefere Regionen.",
+            "All das hat Konsequenzen für andere Tierarten und die Fischer*innen.",
+            "Die immer höheren Temperaturen sind nicht gut für den Jahresrhythmus vieler Vögel.",
+            "Manche Vögel finden jetzt nicht mehr genug Insekten, wenn sie im Sommer nach Deutschland zurück kommen, weil die Insekten schon früher ihre H aupt saison [Haupt Saison] haben.",
+            "Deshalb sterben viele Vögel schon im Nest.",
+            "Viele Insekten wandern in Richtung der Pole oder in Regionen, die höher liegen.",
+            "Aber mit jedem Jahr werden die Regionen, in denen diese Insekten leben können, kleiner.",
+            "Und nicht alle Insektenarten können einfach in neue Regionen ziehen.",
+            "Weil es so heiß ist, können sich die Insekten nicht gut reproduzieren.",
+            "In Deutschland gibt es 75% weniger Insekten als vor 27 Jahren und der Klimawandel ist ein Grund dafür.",
+            "Bären, Robben und Pinguinen schmilzt unter ihren Füßen weg.",
+            "Und für sie gibt es keine kälteren Regionen, in die sie ziehen könnten.",
+            "Weil die Meere immer wärmer werden, gibt es weniger Fische.",
+            "Damit finden Pinguine weniger zu essen.",
+            "Bären essen am liebsten Robben.",
+            "Eine Person präsentiert und die andere Person ergänzt die Tabelle mit den Informationen.",
+            "Dann präsentiert die andere Person.",
+            "Was haben Sie schon gewusst?",
+            "Was nicht?",
+            "Fidschi im Südpazifik ist ein Beispiel für Klimawandel.",
+            "Hören Sie zu und ergänzen Sie die Sätze.",
+            "Der Meeresspiegel steigt jede s Jahr weiter an.",
+            "Deshalb sind Teile von vielen Dörfern oft voll mit Wasser.",
+            "2012 gibt es auf Fidschi erste Berichte von Friedhöfen unter Wasser.",
+            "Viele Dörfer sind heute komplett im Ozean.",
+            "Der hohe Meeresspiegel zerstört Leben und Kultur auf den Inseln langsam, aber man kann es nicht stoppen.",
+            "Menschen können Lebensmittel e in diesen Dörfern nicht mehr an bauen.",
+            "Auch wird das Meer wärmer.",
+            "Die Fischer*innen müssen weit ins Meer fahren, um etwas fangen zu können.",
+            "Aber selbst dann finden sie nicht immer genug Fische.",
+            "Es gibt Dörfer, die in höhere Regionen ziehen, aber n icht alle Menschen in den Dörfern wollen das.",
+            "Ihr Dorf zu verlassen, bedeutet für sie, ihre Heimat, ihre Geschichte und ihre Kultur aufzugeben.",
+            "Welche konkreten Folgen hat der Klimawandel für die Republik Fidschi?",
+            "Der Meeresspiegel steigt an und das Wasser beschädigt Häuser.",
+            "Menschen müssen in andere Regionen ziehen.",
+            "Lesen Sie über zwei weitere Folgen vom Klimawandel.",
+            "Ordnen Sie dann die Konsequenzen unten den beiden Folgen zu.",
+            "Fällt Ihnen noch etwas ein?",
+            "Weil Ozeane, Meere und Seen immer wärmer werden, wandern Fische in Richtung Nordpol oder Südpol oder schwimmen in tiefere Regionen, um dort kälteres Wasser zu finden.",
+            "Durch die Erderwärmung können die Fische nicht gut wachsen und sich reproduzieren.",
+            "Das bedeutet auch, dass Fischer*innen weniger Fische fangen.",
+            "Im Fachjournal Parasites and Vectors haben Autor*innen über eine Studie geschrieben:",
+            "Die Erderwärmung führt dazu, dass sich Mücken, die Menschen mit versc hiedene n Arten von Malaria infizieren können, in Südeuropa sehr wohl fühlen.",
+            "Auch deutsche Forscher*innen sind sich sicher, dass in den nächsten Jahren Malariamücken im Süden von Europa leben werden."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

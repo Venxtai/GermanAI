@@ -1,0 +1,457 @@
+{
+    "unit": "80",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 80,
+        "prerequisite": "1-79"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [
+            "Form relative clauses with a comma, a relative pronoun matching the noun's class and case, and the conjugated verb at the end: \"Wien ist eine Stadt, die in à–sterreich liegt.\"",
+            "Use nominative relative pronouns (der, das, die, die) when the relative pronoun is the subject of the relative clause.",
+            "Describe locations using cardinal directions with im + [Richtung] or [Richtung]lich von + dative: \"Wien liegt im Osten von à–sterreich.\""
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Informationen zu à–sterreich sammeln und beschreiben",
+            "Orte mit Himmelsrichtungen beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "à–sterreich"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "einfallen",
+                "pos": "VERB",
+                "translation": "to come into mind; collapse",
+                "frequency": 1095,
+                "cefr": "B1"
+            },
+            {
+                "word": "raten",
+                "pos": "VERB",
+                "translation": "to guess",
+                "frequency": 2409,
+                "cefr": "A2"
+            },
+            {
+                "word": "Wien",
+                "pos": "NOUN",
+                "translation": "Vienna",
+                "frequency": 5887
+            },
+            {
+                "word": "das Ergebnis",
+                "pos": "NOUN",
+                "translation": "outcome; result",
+                "frequency": 386,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Hauptstadt",
+                "pos": "NOUN",
+                "translation": "capital",
+                "frequency": 1694,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Landeshauptstadt",
+                "pos": "NOUN",
+                "translation": "state capital",
+                "frequency": 7565,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Staat",
+                "pos": "NOUN",
+                "translation": "state",
+                "frequency": 337,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bundesland",
+                "pos": "NOUN",
+                "translation": "federal state",
+                "frequency": 1993,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Flughafen",
+                "pos": "NOUN",
+                "translation": "airport",
+                "frequency": 1528,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Flug",
+                "pos": "NOUN",
+                "translation": "flight",
+                "frequency": 2220,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Hinflug",
+                "pos": "NOUN",
+                "translation": "outbound flight",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Rückflug",
+                "pos": "NOUN",
+                "translation": "return flight",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Monat",
+                "pos": "NOUN",
+                "translation": "month",
+                "frequency": 316,
+                "cefr": "A1"
+            },
+            {
+                "word": "westlich",
+                "pos": "ADJ",
+                "translation": "west (of)",
+                "frequency": 1876,
+                "cefr": "B1"
+            },
+            {
+                "word": "nördlich",
+                "pos": "ADJ",
+                "translation": "north (of)"
+            },
+            {
+                "word": "östlich",
+                "pos": "ADJ",
+                "translation": "east (of)"
+            },
+            {
+                "word": "südlich",
+                "pos": "ADJ",
+                "translation": "south (of)"
+            },
+            {
+                "word": "eigentlich",
+                "pos": "ADJ",
+                "translation": "actual; rather",
+                "frequency": 151,
+                "cefr": "A2"
+            },
+            {
+                "word": "günstig",
+                "pos": "ADJ",
+                "translation": "affordable, inexpensive"
+            },
+            {
+                "word": "dorthin",
+                "pos": "ADV",
+                "translation": "there, thither",
+                "frequency": 2599,
+                "cefr": "A1"
+            },
+            {
+                "word": "teuer",
+                "pos": "ADJ",
+                "translation": "expensive",
+                "frequency": 950,
+                "cefr": "A1"
+            },
+            {
+                "word": "basierend",
+                "pos": "ADJ",
+                "translation": "based",
+                "frequency": 10679
+            },
+            {
+                "word": "billig",
+                "pos": "ADJ",
+                "translation": "cheap",
+                "frequency": 1738,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Stunde",
+                "pos": "NOUN",
+                "translation": "hour",
+                "frequency": 276,
+                "cefr": "A1"
+            },
+            {
+                "word": "gewinnen",
+                "pos": "VERB",
+                "translation": "to win",
+                "frequency": 372,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Nachbarland",
+                "pos": "NOUN",
+                "frequency": 7649
+            },
+            {
+                "word": "geografisch",
+                "pos": "ADV",
+                "frequency": 11809
+            },
+            {
+                "word": "der Relativsatz",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Tschechien",
+                "pos": "PROPN",
+                "frequency": 6328
+            },
+            {
+                "word": "nordwestlich",
+                "pos": "ADV",
+                "frequency": 8635,
+                "cefr": "B2"
+            },
+            {
+                "word": "südwestlich",
+                "pos": "ADV",
+                "frequency": 8507,
+                "cefr": "B2"
+            },
+            {
+                "word": "südöstlich",
+                "pos": "ADV",
+                "frequency": 8474
+            },
+            {
+                "word": "tschechisch",
+                "pos": "ADJ",
+                "frequency": 6321
+            },
+            {
+                "word": "die Republik",
+                "pos": "NOUN",
+                "frequency": 2630,
+                "cefr": "B1"
+            },
+            {
+                "word": "Ungarn",
+                "pos": "PROPN",
+                "frequency": 2324
+            },
+            {
+                "word": "Salzburg",
+                "pos": "PROPN",
+                "frequency": 6004
+            },
+            {
+                "word": "der Vorarlberg",
+                "pos": "NOUN",
+                "frequency": 7408
+            },
+            {
+                "word": "ördlich",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Startflughafen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Endflughafen",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "einfallen": {
+                "present": {
+                    "ich": "falle ein",
+                    "du": "fällst ein",
+                    "er": "fällt ein",
+                    "es": "fällt ein",
+                    "sie_singular": "fällt ein",
+                    "xier": "fällt ein",
+                    "wir": "fallen ein",
+                    "ihr": "fallt ein",
+                    "sie_plural": "fallen ein",
+                    "Sie": "fallen ein"
+                },
+                "Perfekt": {
+                    "ich": "bin eingefallen",
+                    "du": "bist eingefallen",
+                    "er": "ist eingefallen",
+                    "es": "ist eingefallen",
+                    "sie_singular": "ist eingefallen",
+                    "xier": "ist eingefallen",
+                    "wir": "sind eingefallen",
+                    "ihr": "seid eingefallen",
+                    "sie_plural": "sind eingefallen",
+                    "Sie": "sind eingefallen"
+                }
+            },
+            "raten": {
+                "present": {
+                    "ich": "rate",
+                    "du": "rätst",
+                    "er": "rät",
+                    "es": "rät",
+                    "sie_singular": "rät",
+                    "xier": "rät",
+                    "wir": "raten",
+                    "ihr": "ratet",
+                    "sie_plural": "raten",
+                    "Sie": "raten"
+                },
+                "Perfekt": {
+                    "ich": "habe geraten",
+                    "du": "hast geraten",
+                    "er": "hat geraten",
+                    "es": "hat geraten",
+                    "sie_singular": "hat geraten",
+                    "xier": "hat geraten",
+                    "wir": "haben geraten",
+                    "ihr": "habt geraten",
+                    "sie_plural": "haben geraten",
+                    "Sie": "haben geraten"
+                }
+            },
+            "gewinnen": {
+                "present": {
+                    "ich": "gewinne",
+                    "du": "gewinnst",
+                    "er": "gewinnt",
+                    "es": "gewinnt",
+                    "sie_singular": "gewinnt",
+                    "xier": "gewinnt",
+                    "wir": "gewinnen",
+                    "ihr": "gewinnt",
+                    "sie_plural": "gewinnen",
+                    "Sie": "gewinnen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewonnen",
+                    "du": "hast gewonnen",
+                    "er": "hat gewonnen",
+                    "es": "hat gewonnen",
+                    "sie_singular": "hat gewonnen",
+                    "xier": "hat gewonnen",
+                    "wir": "haben gewonnen",
+                    "ihr": "habt gewonnen",
+                    "sie_plural": "haben gewonnen",
+                    "Sie": "haben gewonnen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was gibt es in dem Land?",
+            "Schreiben Sie in die Tabelle, was Ihnen zu Österreich einfällt.",
+            "Sie haben zwei Minuten.",
+            "Die Gruppe mit den meisten Assoziationen gewinnt.",
+            "Für welche Kategorie n haben Sie nicht viel gefunden?",
+            "Recherchieren Sie für die Kategorie n mit wenigen Ergebnissen mehr Informationen und tragen Sie sie in die Tabelle ein.",
+            "Wo liegt das eigentlich?!",
+            "Über welches Land spreche ich?",
+            "Wählen Sie ein Nachbarland von Österreich und beschreiben Sie, wo es geografisch liegt.",
+            "Benutzen Sie Relativsätze.",
+            "Die anderen Personen müssen raten, über welches Land Sie sprechen.",
+            "Ist dein Land, ein Land, das südlich von Tschechien liegt?",
+            "Nein, mein Land ist kein Land, das südlich von Tschechien liegt.",
+            "Ist es ein Land, das nördlich von der1 Schweiz liegt?",
+            "Ja genau, es ist ein Land, das nördlich von der Schweiz liegt.",
+            "Ist es ein Land, das nordwestlich von Österreich liegt?",
+            "Ja, es ist ein Land, das nordwestlich von Österreich liegt.",
+            "Ah, dein Land ist Deutschland.",
+            "Welche Bundesländer gibt es dort?",
+            "Hören Sie zu.",
+            "Wie heißt die Landeshauptstadt (LHS) des Bundeslandes?",
+            "Welche Nummer hat das es unten?",
+            "Hören Sie gut.",
+            "Welche Nummer hat das Bundesland unten?",
+            "Es ist ein Bundesland, das westlich von der Steiermark und nördlich/westlich von Tirol liegt.",
+            "Wie komme ich dorthin?",
+            "Sie möchten Österreich für 14 Tage besuchen.",
+            "Wann gibt es in den nächsten 6 Monaten einen günstigen, aber guten Flug?",
+            "Recherchieren Sie die Informationen und ergänzen Sie den Relativsatz."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

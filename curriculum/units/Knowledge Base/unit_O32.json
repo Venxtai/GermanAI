@@ -1,0 +1,474 @@
+{
+    "unit": "O32",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 32,
+        "prerequisite": "core 1-104, O1-O31"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Filme rezensieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Filmfestival in Locarno"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "betroffen", "pos": "VERB", "translation": "to be affected (by)", "frequency": 6181 },
+            { "word": "ansprechen", "pos": "VERB", "translation": "to address; approach", "frequency": 1214, "cefr": "B1" },
+            { "word": "verleihen", "pos": "VERB", "translation": "to award", "frequency": 2403 },
+            { "word": "aufhören", "pos": "VERB", "translation": "to stop" },
+            { "word": "der*die Schauspieler*in", "pos": "NOUN", "translation": "actor", "frequency": 1704, "cefr": "A2" },
+            { "word": "die Komödie", "pos": "NOUN", "translation": "comedy" },
+            { "word": "die Befreiung", "pos": "NOUN", "translation": "liberation", "frequency": 4972, "cefr": "A1" },
+            { "word": "Aufstand", "pos": "NOUN", "translation": "insurrection; revolt", "frequency": 7163 },
+            { "word": "die Aktion", "pos": "NOUN", "translation": "action; sale (promotion); campaign, initiative (project)", "frequency": 1838, "cefr": "B1" },
+            { "word": "die Zustimmung", "pos": "NOUN", "translation": "agreement [consent], approval; compliance", "frequency": 2737, "cefr": "B1" },
+            { "word": "zum Glück", "pos": "PHRASE", "translation": "luckily" },
+            { "word": "der Stopp", "pos": "NOUN", "translation": "stop", "frequency": 11224, "cefr": "A1" },
+            { "word": "das Schweizerdeutsch", "pos": "NOUN", "translation": "Swiss German", "frequency": 43377, "cefr": "A1" },
+            { "word": "das Hochdeutsch", "pos": "ADJ", "translation": "High German; standard German", "frequency": 18597, "cefr": "B2" },
+            { "word": "göttlich", "pos": "ADJ", "translation": "divine; godly" },
+            { "word": "sinnvoll", "pos": "ADJ", "translation": "useful, reasonable", "frequency": 1354, "cefr": "B1" },
+            { "word": "ungerecht", "pos": "ADJ", "translation": "unjust", "frequency": 9753 },
+            { "word": "tatsächlich", "pos": "ADJ", "translation": "actually, indeed" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Leopard", "pos": "NOUN", "frequency": 18512, "cefr": "B2" },
+            { "word": "die Fantasie", "pos": "NOUN", "frequency": 8500, "cefr": "B1" },
+            { "word": "ästhetisch", "pos": "ADV", "frequency": 3336 },
+            { "word": "der Spezialeffekt", "pos": "NOUN", "frequency": 36918 },
+            { "word": "der Soundtrack", "pos": "NOUN", "frequency": 11815 },
+            { "word": "der Thriller", "pos": "NOUN", "frequency": 10976 },
+            { "word": "das Frauenstimmrecht", "pos": "NOUN" },
+            { "word": "streiken", "pos": "VERB", "frequency": 12597, "cefr": "B1" },
+            { "word": "betreffen", "pos": "VERB", "frequency": 416 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "betroffen": {
+                "Futur_I": {
+                    "ich": "werde betroffen",
+                    "du": "wirst betroffen",
+                    "er": "wird betroffen",
+                    "es": "wird betroffen",
+                    "sie_singular": "wird betroffen",
+                    "xier": "wird betroffen",
+                    "wir": "werden betroffen",
+                    "ihr": "werdet betroffen",
+                    "sie_plural": "werden betroffen",
+                    "Sie": "werden betroffen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde betroffen",
+                    "du": "würdest betroffen",
+                    "er": "würde betroffen",
+                    "es": "würde betroffen",
+                    "sie_singular": "würde betroffen",
+                    "xier": "würde betroffen",
+                    "wir": "würden betroffen",
+                    "ihr": "würdet betroffen",
+                    "sie_plural": "würden betroffen",
+                    "Sie": "würden betroffen"
+                }
+            },
+            "ansprechen": {
+                "present": {
+                    "ich": "spreche an",
+                    "du": "sprichst an",
+                    "er": "spricht an",
+                    "es": "spricht an",
+                    "sie_singular": "spricht an",
+                    "xier": "spricht an",
+                    "wir": "sprechen an",
+                    "ihr": "sprecht an",
+                    "sie_plural": "sprechen an",
+                    "Sie": "sprechen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesprochen",
+                    "du": "hast angesprochen",
+                    "er": "hat angesprochen",
+                    "es": "hat angesprochen",
+                    "sie_singular": "hat angesprochen",
+                    "xier": "hat angesprochen",
+                    "wir": "haben angesprochen",
+                    "ihr": "habt angesprochen",
+                    "sie_plural": "haben angesprochen",
+                    "Sie": "haben angesprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansprechen",
+                    "du": "wirst ansprechen",
+                    "er": "wird ansprechen",
+                    "es": "wird ansprechen",
+                    "sie_singular": "wird ansprechen",
+                    "xier": "wird ansprechen",
+                    "wir": "werden ansprechen",
+                    "ihr": "werdet ansprechen",
+                    "sie_plural": "werden ansprechen",
+                    "Sie": "werden ansprechen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ansprechen",
+                    "du": "würdest ansprechen",
+                    "er": "würde ansprechen",
+                    "es": "würde ansprechen",
+                    "sie_singular": "würde ansprechen",
+                    "xier": "würde ansprechen",
+                    "wir": "würden ansprechen",
+                    "ihr": "würdet ansprechen",
+                    "sie_plural": "würden ansprechen",
+                    "Sie": "würden ansprechen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte angesprochen",
+                    "du": "hättest angesprochen",
+                    "er": "hätte angesprochen",
+                    "es": "hätte angesprochen",
+                    "sie_singular": "hätte angesprochen",
+                    "xier": "hätte angesprochen",
+                    "wir": "hätten angesprochen",
+                    "ihr": "hättet angesprochen",
+                    "sie_plural": "hätten angesprochen",
+                    "Sie": "hätten angesprochen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde angesprochen",
+                    "du": "wirst angesprochen",
+                    "er": "wird angesprochen",
+                    "es": "wird angesprochen",
+                    "sie_singular": "wird angesprochen",
+                    "xier": "wird angesprochen",
+                    "wir": "werden angesprochen",
+                    "ihr": "werdet angesprochen",
+                    "sie_plural": "werden angesprochen",
+                    "Sie": "werden angesprochen"
+                },
+                "imperative": {
+                    "du": "sprich an",
+                    "ihr": "sprecht an",
+                    "Sie": "sprechen Sie an"
+                }
+            },
+            "verleihen": {
+                "present": {
+                    "ich": "verleihe",
+                    "du": "verleihst",
+                    "er": "verleiht",
+                    "es": "verleiht",
+                    "sie_singular": "verleiht",
+                    "xier": "verleiht",
+                    "wir": "verleihen",
+                    "ihr": "verleiht",
+                    "sie_plural": "verleihen",
+                    "Sie": "verleihen"
+                },
+                "Perfekt": {
+                    "ich": "habe verliehen",
+                    "du": "hast verliehen",
+                    "er": "hat verliehen",
+                    "es": "hat verliehen",
+                    "sie_singular": "hat verliehen",
+                    "xier": "hat verliehen",
+                    "wir": "haben verliehen",
+                    "ihr": "habt verliehen",
+                    "sie_plural": "haben verliehen",
+                    "Sie": "haben verliehen"
+                },
+                "Futur_I": {
+                    "ich": "werde verleihen",
+                    "du": "wirst verleihen",
+                    "er": "wird verleihen",
+                    "es": "wird verleihen",
+                    "sie_singular": "wird verleihen",
+                    "xier": "wird verleihen",
+                    "wir": "werden verleihen",
+                    "ihr": "werdet verleihen",
+                    "sie_plural": "werden verleihen",
+                    "Sie": "werden verleihen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verleihen",
+                    "du": "würdest verleihen",
+                    "er": "würde verleihen",
+                    "es": "würde verleihen",
+                    "sie_singular": "würde verleihen",
+                    "xier": "würde verleihen",
+                    "wir": "würden verleihen",
+                    "ihr": "würdet verleihen",
+                    "sie_plural": "würden verleihen",
+                    "Sie": "würden verleihen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verliehen",
+                    "du": "hättest verliehen",
+                    "er": "hätte verliehen",
+                    "es": "hätte verliehen",
+                    "sie_singular": "hätte verliehen",
+                    "xier": "hätte verliehen",
+                    "wir": "hätten verliehen",
+                    "ihr": "hättet verliehen",
+                    "sie_plural": "hätten verliehen",
+                    "Sie": "hätten verliehen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verliehen",
+                    "du": "wirst verliehen",
+                    "er": "wird verliehen",
+                    "es": "wird verliehen",
+                    "sie_singular": "wird verliehen",
+                    "xier": "wird verliehen",
+                    "wir": "werden verliehen",
+                    "ihr": "werdet verliehen",
+                    "sie_plural": "werden verliehen",
+                    "Sie": "werden verliehen"
+                },
+                "imperative": {
+                    "du": "verleih",
+                    "ihr": "verleiht",
+                    "Sie": "verleihen Sie"
+                }
+            },
+            "aufhören": {
+                "present": {
+                    "ich": "höre auf",
+                    "du": "hörst auf",
+                    "er": "hört auf",
+                    "es": "hört auf",
+                    "sie_singular": "hört auf",
+                    "xier": "hört auf",
+                    "wir": "hören auf",
+                    "ihr": "hört auf",
+                    "sie_plural": "hören auf",
+                    "Sie": "hören auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgehört",
+                    "du": "hast aufgehört",
+                    "er": "hat aufgehört",
+                    "es": "hat aufgehört",
+                    "sie_singular": "hat aufgehört",
+                    "xier": "hat aufgehört",
+                    "wir": "haben aufgehört",
+                    "ihr": "habt aufgehört",
+                    "sie_plural": "haben aufgehört",
+                    "Sie": "haben aufgehört"
+                },
+                "Futur_I": {
+                    "ich": "werde aufhören",
+                    "du": "wirst aufhören",
+                    "er": "wird aufhören",
+                    "es": "wird aufhören",
+                    "sie_singular": "wird aufhören",
+                    "xier": "wird aufhören",
+                    "wir": "werden aufhören",
+                    "ihr": "werdet aufhören",
+                    "sie_plural": "werden aufhören",
+                    "Sie": "werden aufhören"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde aufhören",
+                    "du": "würdest aufhören",
+                    "er": "würde aufhören",
+                    "es": "würde aufhören",
+                    "sie_singular": "würde aufhören",
+                    "xier": "würde aufhören",
+                    "wir": "würden aufhören",
+                    "ihr": "würdet aufhören",
+                    "sie_plural": "würden aufhören",
+                    "Sie": "würden aufhören"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte aufgehört",
+                    "du": "hättest aufgehört",
+                    "er": "hätte aufgehört",
+                    "es": "hätte aufgehört",
+                    "sie_singular": "hätte aufgehört",
+                    "xier": "hätte aufgehört",
+                    "wir": "hätten aufgehört",
+                    "ihr": "hättet aufgehört",
+                    "sie_plural": "hätten aufgehört",
+                    "Sie": "hätten aufgehört"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde aufgehört",
+                    "du": "wirst aufgehört",
+                    "er": "wird aufgehört",
+                    "es": "wird aufgehört",
+                    "sie_singular": "wird aufgehört",
+                    "xier": "wird aufgehört",
+                    "wir": "werden aufgehört",
+                    "ihr": "werdet aufgehört",
+                    "sie_plural": "werden aufgehört",
+                    "Sie": "werden aufgehört"
+                },
+                "imperative": {
+                    "du": "hör auf",
+                    "ihr": "hört auf",
+                    "Sie": "hören Sie auf"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Es geht weiter von Genf nach Locarno in der italienischen Schweiz.",
+            "Es gibt viele Möglichkeiten, um von Genf nach Locarno zu kommen.",
+            "Finden Sie heraus, welche der Optionen unten tatsächlich möglich sind.",
+            "Mit dem Auto, mit dem Zug, mit dem Flugzeug, mit dem Fahrrad, zu Fuß Sie haben eine mögliche Option zugeteilt bekommen.",
+            "Recherchieren Sie die Route und beantworten Sie die Fragen.",
+            "Wie lange dauert die Reise ohne Pausen?",
+            "Was kostet sie?",
+            "Welche interessanten Städte/Kantone/Länder sind auf dem Weg?",
+            "Wo möchten Sie gerne einen Zwischenstopp",
+            "Zwischen Stopp machen?",
+            "Für wie lange?",
+            "Ein paar Teams präsentieren ihre Ergebnisse.",
+            "Wann ist welche Option am sinnvollsten?",
+            "Seit über 70 Jahren findet jedes Jahr das Locarno Film Festival statt.",
+            "Der größte Preis des Locarno Film Festivals ist der Goldene Leopard.",
+            "Wer hat wann gewonnen?",
+            "Bilden Sie Passivsätze zu den Informationen rechts wie im Beispiel.",
+            "Im Jahr 2024 wird der Goldene Leopard an Toxic verliehen.",
+            "Toxic kommt aus Litauen.",
+            "Im Jahr 2023 wird der Goldene Leopard an … Kennen Sie einen Film, der einen Goldenen Leoparden gewonnen hat?",
+            "Welche Länder haben viele Preise gewonnen?",
+            "Wie viele Filme sind Ko-Produktionen?",
+            "Sie bekommen einen Film zugeteilt.",
+            "Hat dieser Film noch andere Preise bekommen?",
+            "Es gibt viele Kriterien dafür, ob ein Film gut ist oder nicht.",
+            "Welche Kriterien sind besonders wichtig?",
+            "Werde ich emotional bewegt.",
+            "Werde ich unterhalten.",
+            "Werde ich informiert.",
+            "Werde ich zum Nachdenken gebracht.",
+            "Werden soziale oder politische Probleme angesprochen.",
+            "Sind für Jung und Alt gemacht.",
+            "Sind ästhetisch.",
+            "Sind spannend.",
+            "Haben gute Spezialeffekte.",
+            "Haben einen guten Soundtrack.",
+            "Welche Kriterien finden alle wichtig?",
+            "Bei welchen gibt es unterschiedliche Meinungen?",
+            "Erklären Sie, warum etwas für Sie wichtig oder unwichtig ist",
+            "Einigen Sie sich dann in der Gruppe auf fünf Kriterien.",
+            "Finden Sie in der Gruppe einen Film aus den letzten Jahren, der in allen fünf Punkten besonders gut war.",
+            "Warum dieser Film?",
+            "Sprechen Sie über den Film im Präsens (Aktiv oder Passiv).",
+            "Durch den Film „Get Out werde ich unterhalten.",
+            "Der Film ist spannend.",
+            "Alle Gruppen präsentieren ihren Film und die Kriterien im Kurs.",
+            "Einer der erfolgreichsten Schweizer Filme der letzten Jahre war „Die göttliche Ordnung.",
+            "Schauen Sie sich den Trailer auf Schweizerdeutsch an.",
+            "Ist der Film Ihrer Meinung nach ein Drama, eine Komödie oder ein Thriller?",
+            "Beschreiben Sie, was und wen Sie sehen.",
+            "Was machen die Personen?",
+            "Sehen Sie jetzt einen Trailer auf Hochdeutsch.",
+            "Was ist das Thema?",
+            "In welchem Jahr spielt der Film?",
+            "Welche Kriterien von Aktivität 106 werden hier gut umgesetzt?",
+            "1971 war die Welt in Bewegung aber hier bei uns war es so, als ob die Zeit stillstehen würde.",
+            "Wir kämpfen für die Befreiung der Frauen.",
+            "Ich fühle mich aber nicht unfrei [frei].",
+            "Den Frauen wie ihm geht es nicht vorwärts?",
+            "Was hältst du davon, wenn ich wieder arbeiten würde?",
+            "Ist die das wichtiger als unsere Familie?",
+            "Und ohne meine Zustimmung kannst du das auch gar nicht.",
+            "So ist das Gesetz.",
+            "Frauen in der Politik, meine Damen und Herren, das ist schlichtweg gegen die göttliche Ordnung.",
+            "Nein, ich bin nämlich fürs Frauenstimmrecht.",
+            "Zum Glück ist ihre Meinung nicht ausschlaggebend.",
+            "Ich bin.",
+            "Beim Kampf.",
+            "In Italien die Leute Streiken, wenn sie was wollen.",
+            "Wir müssen unsere Vaginas kennenlernen.",
+            "Das hat sie gesagt, nicht?",
+            "E s ist irgendwas Blasphemisches.",
+            "Ich finde auch vieles ungerecht und ich mache deswegen nicht so einen Aufstand.",
+            "Wenn das nicht aufhört, dann werden wir etwas unternehmen.",
+            "Los, nach Hause.",
+            "Männer machen die Gesetze, aber betroffen von diesen Gesetzen sind wir auch.",
+            "Weil es eigentlich glasklar ist, wie himmelschreiend ungerecht es ist.",
+            "Für wen ist die Reservierung?",
+            "Für das lokale A ktionskomitee [Aktion Komitee] für das Frauenstimmrecht."
+        ],
+        "templated": []
+    }
+}

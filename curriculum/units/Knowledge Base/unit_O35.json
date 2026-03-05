@@ -1,0 +1,528 @@
+{
+    "unit": "O35",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 35,
+        "prerequisite": "core 1-104, O1-O34"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Pünktlichkeit sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Pünktlichkeit und Schweizer Uhren"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "besorgen", "pos": "VERB", "translation": "to take care of; procure; provide", "frequency": 4170, "cefr": "B1" },
+            { "word": "verbringen", "pos": "VERB", "translation": "to spend (time)", "frequency": 1391, "cefr": "B1" },
+            { "word": "fangen", "pos": "VERB", "translation": "to catch", "frequency": 2043, "cefr": "B1" },
+            { "word": "verschieben", "pos": "VERB", "translation": "to delay", "frequency": 1991, "cefr": "A2" },
+            { "word": "der Ausdruck", "pos": "NOUN", "translation": "expression", "frequency": 970, "cefr": "B1" },
+            { "word": "der Rat", "pos": "NOUN", "translation": "advice; council", "frequency": 2251, "cefr": "B1" },
+            { "word": "der*die Schmied*in", "pos": "NOUN", "translation": "smith", "frequency": 13689 },
+            { "word": "der*die Uhrmacher*in", "pos": "NOUN", "translation": "clocksmith, watch maker", "frequency": 22624 },
+            { "word": "die Armbanduhr", "pos": "NOUN", "translation": "watch", "frequency": 24644, "cefr": "A1" },
+            { "word": "das Zahnrad", "pos": "NOUN", "translation": "gear wheel; cog wheel; pinion", "frequency": 1, "cefr": "A1" },
+            { "word": "das Zifferblatt", "pos": "NOUN", "translation": "clock face", "frequency": 48433, "cefr": "A1" },
+            { "word": "der Zeiger", "pos": "NOUN", "translation": "hand [clock, watch]", "frequency": 26104, "cefr": "A1" },
+            { "word": "die Feder", "pos": "NOUN", "translation": "spring; feather", "frequency": 3777, "cefr": "A1" },
+            { "word": "das Gehäuse", "pos": "NOUN", "translation": "case, housing, body" },
+            { "word": "das Werkzeug", "pos": "NOUN", "translation": "tool", "frequency": 3681, "cefr": "B1" },
+            { "word": "die Lupe", "pos": "NOUN", "translation": "magnifying glass", "frequency": 8145, "cefr": "A1" },
+            { "word": "der Schmuck", "pos": "NOUN", "translation": "jewelry", "frequency": 7103, "cefr": "B1" },
+            { "word": "die Legierung", "pos": "NOUN", "translation": "alloy", "frequency": 31342, "cefr": "A1" },
+            { "word": "tragbar", "pos": "ADJ", "translation": "portable; wearable; bearable", "frequency": 12548 },
+            { "word": "der Wurm", "pos": "NOUN", "translation": "worm", "frequency": 11318, "cefr": "A1" },
+            { "word": "die Wunde", "pos": "NOUN", "translation": "wound", "frequency": 3740, "cefr": "B1" },
+            { "word": "übrig", "pos": "ADJ", "translation": "remaining; left over; spare" },
+            { "word": "speziell", "pos": "ADJ", "translation": "specific; particular; extra", "frequency": 815, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "analog", "pos": "ADV", "frequency": 2232 },
+            { "word": "smart", "pos": "ADV", "frequency": 10266 },
+            { "word": "idiomatisch", "pos": "ADJ" },
+            { "word": "die Norm", "pos": "NOUN", "frequency": 2635 },
+            { "word": "unpünktlich", "pos": "ADV", "cefr": "B1" },
+            { "word": "der Unikurs", "pos": "NOUN" },
+            { "word": "die Date", "pos": "NOUN", "frequency": 23475 },
+            { "word": "das Abendessen", "pos": "NOUN", "frequency": 3907 },
+            { "word": "das Arbeitstreffen", "pos": "NOUN" },
+            { "word": "die Sprechstunde", "pos": "NOUN", "frequency": 7951, "cefr": "A2" },
+            { "word": "der Termin", "pos": "NOUN", "frequency": 2213, "cefr": "A1" },
+            { "word": "Zugahrt", "pos": "NOUN" },
+            { "word": "das Footballspiel", "pos": "NOUN" },
+            { "word": "der Filmabend", "pos": "NOUN", "frequency": 43763 },
+            { "word": "die Präzision", "pos": "NOUN", "frequency": 12024 },
+            { "word": "die usbildung", "pos": "NOUN" },
+            { "word": "die Hugenotte", "pos": "NOUN", "frequency": 32878 },
+            { "word": "das Ziffernblatt", "pos": "NOUN" },
+            { "word": "der Edelstahl", "pos": "NOUN", "frequency": 25429 },
+            { "word": "der Silber", "pos": "NOUN", "frequency": 4783, "cefr": "B2" },
+            { "word": "die Keramik", "pos": "NOUN", "frequency": 9701, "cefr": "B2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "besorgen": {
+                "present": {
+                    "ich": "besorge",
+                    "du": "besorgst",
+                    "er": "besorgt",
+                    "es": "besorgt",
+                    "sie_singular": "besorgt",
+                    "xier": "besorgt",
+                    "wir": "besorgen",
+                    "ihr": "besorgt",
+                    "sie_plural": "besorgen",
+                    "Sie": "besorgen"
+                },
+                "Perfekt": {
+                    "ich": "habe besorgt",
+                    "du": "hast besorgt",
+                    "er": "hat besorgt",
+                    "es": "hat besorgt",
+                    "sie_singular": "hat besorgt",
+                    "xier": "hat besorgt",
+                    "wir": "haben besorgt",
+                    "ihr": "habt besorgt",
+                    "sie_plural": "haben besorgt",
+                    "Sie": "haben besorgt"
+                },
+                "Futur_I": {
+                    "ich": "werde besorgen",
+                    "du": "wirst besorgen",
+                    "er": "wird besorgen",
+                    "es": "wird besorgen",
+                    "sie_singular": "wird besorgen",
+                    "xier": "wird besorgen",
+                    "wir": "werden besorgen",
+                    "ihr": "werdet besorgen",
+                    "sie_plural": "werden besorgen",
+                    "Sie": "werden besorgen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde besorgen",
+                    "du": "würdest besorgen",
+                    "er": "würde besorgen",
+                    "es": "würde besorgen",
+                    "sie_singular": "würde besorgen",
+                    "xier": "würde besorgen",
+                    "wir": "würden besorgen",
+                    "ihr": "würdet besorgen",
+                    "sie_plural": "würden besorgen",
+                    "Sie": "würden besorgen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte besorgt",
+                    "du": "hättest besorgt",
+                    "er": "hätte besorgt",
+                    "es": "hätte besorgt",
+                    "sie_singular": "hätte besorgt",
+                    "xier": "hätte besorgt",
+                    "wir": "hätten besorgt",
+                    "ihr": "hättet besorgt",
+                    "sie_plural": "hätten besorgt",
+                    "Sie": "hätten besorgt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde besorgt",
+                    "du": "wirst besorgt",
+                    "er": "wird besorgt",
+                    "es": "wird besorgt",
+                    "sie_singular": "wird besorgt",
+                    "xier": "wird besorgt",
+                    "wir": "werden besorgt",
+                    "ihr": "werdet besorgt",
+                    "sie_plural": "werden besorgt",
+                    "Sie": "werden besorgt"
+                },
+                "imperative": {
+                    "du": "besorge",
+                    "ihr": "besorgt",
+                    "Sie": "besorgen Sie"
+                }
+            },
+            "verbringen": {
+                "present": {
+                    "ich": "verbringe",
+                    "du": "verbringst",
+                    "er": "verbringt",
+                    "es": "verbringt",
+                    "sie_singular": "verbringt",
+                    "xier": "verbringt",
+                    "wir": "verbringen",
+                    "ihr": "verbringt",
+                    "sie_plural": "verbringen",
+                    "Sie": "verbringen"
+                },
+                "Perfekt": {
+                    "ich": "habe verbracht",
+                    "du": "hast verbracht",
+                    "er": "hat verbracht",
+                    "es": "hat verbracht",
+                    "sie_singular": "hat verbracht",
+                    "xier": "hat verbracht",
+                    "wir": "haben verbracht",
+                    "ihr": "habt verbracht",
+                    "sie_plural": "haben verbracht",
+                    "Sie": "haben verbracht"
+                },
+                "Futur_I": {
+                    "ich": "werde verbringen",
+                    "du": "wirst verbringen",
+                    "er": "wird verbringen",
+                    "es": "wird verbringen",
+                    "sie_singular": "wird verbringen",
+                    "xier": "wird verbringen",
+                    "wir": "werden verbringen",
+                    "ihr": "werdet verbringen",
+                    "sie_plural": "werden verbringen",
+                    "Sie": "werden verbringen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verbringen",
+                    "du": "würdest verbringen",
+                    "er": "würde verbringen",
+                    "es": "würde verbringen",
+                    "sie_singular": "würde verbringen",
+                    "xier": "würde verbringen",
+                    "wir": "würden verbringen",
+                    "ihr": "würdet verbringen",
+                    "sie_plural": "würden verbringen",
+                    "Sie": "würden verbringen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verbracht",
+                    "du": "hättest verbracht",
+                    "er": "hätte verbracht",
+                    "es": "hätte verbracht",
+                    "sie_singular": "hätte verbracht",
+                    "xier": "hätte verbracht",
+                    "wir": "hätten verbracht",
+                    "ihr": "hättet verbracht",
+                    "sie_plural": "hätten verbracht",
+                    "Sie": "hätten verbracht"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verbracht",
+                    "du": "wirst verbracht",
+                    "er": "wird verbracht",
+                    "es": "wird verbracht",
+                    "sie_singular": "wird verbracht",
+                    "xier": "wird verbracht",
+                    "wir": "werden verbracht",
+                    "ihr": "werdet verbracht",
+                    "sie_plural": "werden verbracht",
+                    "Sie": "werden verbracht"
+                },
+                "imperative": {
+                    "du": "verbringe",
+                    "ihr": "verbringt",
+                    "Sie": "verbringen Sie"
+                }
+            },
+            "fangen": {
+                "present": {
+                    "ich": "fange",
+                    "du": "fängst",
+                    "er": "fängt",
+                    "es": "fängt",
+                    "sie_singular": "fängt",
+                    "xier": "fängt",
+                    "wir": "fangen",
+                    "ihr": "fangt",
+                    "sie_plural": "fangen",
+                    "Sie": "fangen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefangen",
+                    "du": "hast gefangen",
+                    "er": "hat gefangen",
+                    "es": "hat gefangen",
+                    "sie_singular": "hat gefangen",
+                    "xier": "hat gefangen",
+                    "wir": "haben gefangen",
+                    "ihr": "habt gefangen",
+                    "sie_plural": "haben gefangen",
+                    "Sie": "haben gefangen"
+                },
+                "Futur_I": {
+                    "ich": "werde fangen",
+                    "du": "wirst fangen",
+                    "er": "wird fangen",
+                    "es": "wird fangen",
+                    "sie_singular": "wird fangen",
+                    "xier": "wird fangen",
+                    "wir": "werden fangen",
+                    "ihr": "werdet fangen",
+                    "sie_plural": "werden fangen",
+                    "Sie": "werden fangen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde fangen",
+                    "du": "würdest fangen",
+                    "er": "würde fangen",
+                    "es": "würde fangen",
+                    "sie_singular": "würde fangen",
+                    "xier": "würde fangen",
+                    "wir": "würden fangen",
+                    "ihr": "würdet fangen",
+                    "sie_plural": "würden fangen",
+                    "Sie": "würden fangen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gefangen",
+                    "du": "hättest gefangen",
+                    "er": "hätte gefangen",
+                    "es": "hätte gefangen",
+                    "sie_singular": "hätte gefangen",
+                    "xier": "hätte gefangen",
+                    "wir": "hätten gefangen",
+                    "ihr": "hättet gefangen",
+                    "sie_plural": "hätten gefangen",
+                    "Sie": "hätten gefangen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gefangen",
+                    "du": "wirst gefangen",
+                    "er": "wird gefangen",
+                    "es": "wird gefangen",
+                    "sie_singular": "wird gefangen",
+                    "xier": "wird gefangen",
+                    "wir": "werden gefangen",
+                    "ihr": "werdet gefangen",
+                    "sie_plural": "werden gefangen",
+                    "Sie": "werden gefangen"
+                },
+                "imperative": {
+                    "du": "fang",
+                    "ihr": "fangt",
+                    "Sie": "fangen Sie"
+                }
+            },
+            "verschieben": {
+                "present": {
+                    "ich": "verschiebe",
+                    "du": "verschiebst",
+                    "er": "verschiebt",
+                    "es": "verschiebt",
+                    "sie_singular": "verschiebt",
+                    "xier": "verschiebt",
+                    "wir": "verschieben",
+                    "ihr": "verschiebt",
+                    "sie_plural": "verschieben",
+                    "Sie": "verschieben"
+                },
+                "Perfekt": {
+                    "ich": "habe verschoben",
+                    "du": "hast verschoben",
+                    "er": "hat verschoben",
+                    "es": "hat verschoben",
+                    "sie_singular": "hat verschoben",
+                    "xier": "hat verschoben",
+                    "wir": "haben verschoben",
+                    "ihr": "habt verschoben",
+                    "sie_plural": "haben verschoben",
+                    "Sie": "haben verschoben"
+                },
+                "Futur_I": {
+                    "ich": "werde verschieben",
+                    "du": "wirst verschieben",
+                    "er": "wird verschieben",
+                    "es": "wird verschieben",
+                    "sie_singular": "wird verschieben",
+                    "xier": "wird verschieben",
+                    "wir": "werden verschieben",
+                    "ihr": "werdet verschieben",
+                    "sie_plural": "werden verschieben",
+                    "Sie": "werden verschieben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verschieben",
+                    "du": "würdest verschieben",
+                    "er": "würde verschieben",
+                    "es": "würde verschieben",
+                    "sie_singular": "würde verschieben",
+                    "xier": "würde verschieben",
+                    "wir": "würden verschieben",
+                    "ihr": "würdet verschieben",
+                    "sie_plural": "würden verschieben",
+                    "Sie": "würden verschieben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verschoben",
+                    "du": "hättest verschoben",
+                    "er": "hätte verschoben",
+                    "es": "hätte verschoben",
+                    "sie_singular": "hätte verschoben",
+                    "xier": "hätte verschoben",
+                    "wir": "hätten verschoben",
+                    "ihr": "hättet verschoben",
+                    "sie_plural": "hätten verschoben",
+                    "Sie": "hätten verschoben"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verschoben",
+                    "du": "wirst verschoben",
+                    "er": "wird verschoben",
+                    "es": "wird verschoben",
+                    "sie_singular": "wird verschoben",
+                    "xier": "wird verschoben",
+                    "wir": "werden verschoben",
+                    "ihr": "werdet verschoben",
+                    "sie_plural": "werden verschoben",
+                    "Sie": "werden verschoben"
+                },
+                "imperative": {
+                    "du": "verschiebe",
+                    "ihr": "verschiebt",
+                    "Sie": "verschieben Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Zeit, was ist das eigentlich?",
+            "Sprechen Sie über die Fragen und notieren Sie die Antworten.",
+            "Wechseln Sie dann die Gruppe und erzählen Sie von den Antworten.",
+            "Trägst du eine Armbanduhr?",
+            "Warum brauchst du keine, eine Armbanduhr?",
+            "Wenn du eine Armbanduhr hast, ist sie analog, digital oder smart?",
+            "Wenn du keine Armbanduhr hast, woher weißt du, wie spät es ist?",
+            "Wie viel Zeit brauchst du für typische tägliche Aktivitäten?",
+            "Womit verbringst du jeden Tag die meiste Zeit?",
+            "Benutzt du einen Kalender?",
+            "Wie organisierst du deine Zeit?",
+            "Lesen Sie die idiomatischen Ausdrücke zum Thema „Zeit und ordnen Sie sie den drei Kategorien zu.",
+            "Der frühe Vogel fängt den Wurm.",
+            "Kommt Zeit, kommt Rat.",
+            "Es ist fünf vor zwölf.",
+            "Die Zeit heilt alle Wunden.",
+            "Zeit ist Geld.",
+            "Was du heute kannst besorgen, das verschiebe nicht auf morgen.",
+            "Wenn nicht jetzt, wann dann.",
+            "Besser spät als nie.",
+            "Wer nicht kommt zur rechten Zeit, der muss sehen, was übrig bleibt.",
+            "Pünktlichkeit ist in vielen Kulturen eine Norm.",
+            "In welchen Situationen ist es in Ordnung unpünktlich zu sein?",
+            "Wie viele Minuten?",
+            "Gibt es Situationen, zu denen man nicht (zu) pünktlich sein sollte?",
+            "Ist das für Sie persönlich so oder für die meisten Menschen in Ihrer Kultur?",
+            "Man sollte pünktlich zu kommen.",
+            "Man kann bei unpünktlich sein.",
+            "Minuten sind ok.",
+            "Hier sehen Sie fünf Aussagen zur Geschichte der Schweizer Uhrenindustrie.",
+            "Ordnen Sie den Satzanfängen [Sätze Anfänge] die passenden Satzenden [Sätze Ende] aus de m grauen Kasten zu.",
+            "Die markierten Signalwörter helfen dabei.",
+            "Werden von Genf bis Basel zu Hause produziert, __",
+            "Deswegen beginnen die Goldschmied *innen, tragbare Uhren herzustellen.",
+            "Arbeiten die Uhrmacher*innen mit Lupen, Mikroskopen und speziellen Werkzeugen.",
+            "Aber heute kann eine Uhrmacher * innenausbildung",
+            "An sieben Orten in der Schweiz gemacht werden",
+            ") aber es werden auch große Uhren zum Beispiel für Kirchen gebaut.",
+            "E) die im 16.",
+            "Jahrhundert aus Frankreich fliehen.",
+            "Wird von den Hugenotten nach Genf gebracht, die im 16.",
+            "Es ist die Zeit der Calvinistischen Reformation und Menschen durften keinen Schmuck tragen, deswegen beginnen die Goldschmied *innen",
+            "Uhr werden von Genf bis Basel zu Hause produziert, aber es werden auch große Uhren zum Beispiel für Kirchen gebaut.",
+            "Die erste Schule für Uhrmacher*innen wird 1824 in Genf eröffnet, aber heute kann eine Uhrmacher * innenausbildung [Uhrmacher*innen Ausbildung ] an sieben Orten in der Schweiz gemacht werden.",
+            "Weil die Herstellung von Uhren höchste Präzision braucht, arbeiten die Uhrmacher*innen mit Lupen, Mikroskopen und speziellen Werkzeugen.",
+            "Beantworten Sie die Fragen zu den Aussagen mit einer anderen Person.",
+            "Formulieren Sie Ihre Sätze im Aktiv, wie im Beispiel.",
+            "Woher kommen die Hugenotten?",
+            "Die Hugenotten kommen aus Frankreich.",
+            "Was bringen die Hugenotten in die Schweiz?",
+            "Die Hugenotten bringen die Uhrmacher* innenkunst [Uhrmacher*innen Kunst ] in die Schweiz.",
+            "Warum beginnen Uhrmacher *innen, tragbare Uhren herzustellen?",
+            "S ie beginnen tragbare Uhren herzustellen, weil Menschen zur Zeit der Calvinistischen Reformation keinen Schmuck tragen dürfen.",
+            "Produzieren Uhrmacher *innen von Genf bis Basel nur Taschenuhren?",
+            "Nein, sie produzieren auch große Uhren.",
+            "Welche Werkzeuge benutzen Uhrmacher*innen für die Uhrenherstellung",
+            "Sie arbeiten mit Lupen, Mikroskopen und speziellen Werkzeugen, weil die Herstellung von Uhren höchste Präzision braucht.",
+            "Woraus werden Schweizer Uhren hergestellt?",
+            "Sie bekommen Informationen.",
+            "Stellen Sie der anderen Fragen zu den fehlenden Informationen in Ihrer Tabelle.",
+            "Formulieren Sie die Fragen im Passiv.",
+            "Aus welchem Material wird das Gehäuse hergestellt?",
+            "Das Gehäuse wird aus Plastik oder … hergestellt."
+        ],
+        "templated": []
+    }
+}

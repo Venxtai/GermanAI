@@ -1,0 +1,695 @@
+{
+    "unit": "B18",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 18,
+        "prerequisite": "core 1-104, B1-B17"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate strong verbs in Präteritum: change the stem vowel + endings --, -st, --, -en, -t, -en.",
+            "Conjugate mixed verbs in Präteritum: change the stem vowel + add -t marker + weak endings -e, -est, -e, -en, -et, -en."
+        ],
+        "forbidden": [
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Text lesen und interpretieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Zwischen uns die Mauer"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "wählen", "pos": "VERB", "translation": "to choose; pick; vote" },
+            { "word": "hoffen", "pos": "VERB", "translation": "to hope", "frequency": 689, "cefr": "A2" },
+            { "word": "aufhören", "pos": "VERB", "translation": "to stop" },
+            { "word": "ausreichen", "pos": "VERB", "translation": "to suffice; last", "frequency": 1116, "cefr": "B1" },
+            { "word": "überprüfen", "pos": "VERB", "translation": "to review; check; screen" },
+            { "word": "träumen", "pos": "VERB", "translation": "to dream" },
+            { "word": "sich ärgern (über)", "pos": "VERB", "translation": "to be/get annoyed (at)" },
+            { "word": "unterstreichen", "pos": "VERB", "translation": "to underline", "frequency": 4347, "cefr": "B1" },
+            { "word": "die Sache", "pos": "NOUN", "translation": "thing (alternative to Ding)", "frequency": 318, "cefr": "A2" },
+            { "word": "der Gedanke", "pos": "NOUN", "translation": "thought, notion, idea", "frequency": 585, "cefr": "B1" },
+            { "word": "die Phase", "pos": "NOUN", "translation": "phase", "frequency": 732, "cefr": "A1" },
+            { "word": "die Umgebung", "pos": "NOUN", "translation": "surroundings; environment", "frequency": 1466, "cefr": "B1" },
+            { "word": "die Seilbahn", "pos": "NOUN", "translation": "cable carn; zip line", "frequency": 14073, "cefr": "B2" },
+            { "word": "der Briefkasten", "pos": "NOUN", "translation": "mailbox", "frequency": 14932, "cefr": "B1" },
+            { "word": "der Stift", "pos": "NOUN", "translation": "pen; pencil", "frequency": 7234, "cefr": "A2" },
+            { "word": "die Scheiße", "pos": "NOUN", "translation": "crap; shit (coll./vulg.)", "frequency": 1, "cefr": "A1" },
+            { "word": "komisch", "pos": "ADJ", "translation": "strange, odd; funny", "frequency": 1875, "cefr": "A2" },
+            { "word": "schriftlich", "pos": "ADJ", "translation": "written", "frequency": 2309, "cefr": "A2" },
+            { "word": "mündlich", "pos": "ADJ", "translation": "verbal, oral" },
+            { "word": "damals", "pos": "ADV", "translation": "back then, in those days", "frequency": 286, "cefr": "A2" },
+            { "word": "ziemlich", "pos": "ADJ", "translation": "quite", "frequency": 605, "cefr": "B1" },
+            { "word": "telefonieren", "pos": "VERB", "translation": "to phone; call", "frequency": 3156, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "scheißen", "pos": "NOUN", "frequency": 31039 },
+            { "word": "der Versuch", "pos": "NOUN", "frequency": 791, "cefr": "B1" },
+            { "word": "die Telepathie", "pos": "NOUN" },
+            { "word": "die Distanz", "pos": "NOUN", "frequency": 2671, "cefr": "B1" },
+            { "word": "die Reisende", "pos": "NOUN", "frequency": 30466 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wählen": {
+                "present": {
+                    "ich": "wähle",
+                    "du": "wählst",
+                    "er": "wählt",
+                    "es": "wählt",
+                    "sie_singular": "wählt",
+                    "xier": "wählt",
+                    "wir": "wählen",
+                    "ihr": "wählt",
+                    "sie_plural": "wählen",
+                    "Sie": "wählen"
+                },
+                "Präteritum": {
+                    "ich": "wählte",
+                    "du": "wähltest",
+                    "er": "wählte",
+                    "es": "wählte",
+                    "sie_singular": "wählte",
+                    "xier": "wählte",
+                    "wir": "wählten",
+                    "ihr": "wähltet",
+                    "sie_plural": "wählten",
+                    "Sie": "wählten"
+                },
+                "Perfekt": {
+                    "ich": "habe gewählt",
+                    "du": "hast gewählt",
+                    "er": "hat gewählt",
+                    "es": "hat gewählt",
+                    "sie_singular": "hat gewählt",
+                    "xier": "hat gewählt",
+                    "wir": "haben gewählt",
+                    "ihr": "habt gewählt",
+                    "sie_plural": "haben gewählt",
+                    "Sie": "haben gewählt"
+                },
+                "Futur_I": {
+                    "ich": "werde wählen",
+                    "du": "wirst wählen",
+                    "er": "wird wählen",
+                    "es": "wird wählen",
+                    "sie_singular": "wird wählen",
+                    "xier": "wird wählen",
+                    "wir": "werden wählen",
+                    "ihr": "werdet wählen",
+                    "sie_plural": "werden wählen",
+                    "Sie": "werden wählen"
+                },
+                "imperative": {
+                    "du": "wähle",
+                    "ihr": "wählt",
+                    "Sie": "wählen Sie"
+                }
+            },
+            "hoffen": {
+                "present": {
+                    "ich": "hoffe",
+                    "du": "hoffst",
+                    "er": "hofft",
+                    "es": "hofft",
+                    "sie_singular": "hofft",
+                    "xier": "hofft",
+                    "wir": "hoffen",
+                    "ihr": "hofft",
+                    "sie_plural": "hoffen",
+                    "Sie": "hoffen"
+                },
+                "Präteritum": {
+                    "ich": "hoffte",
+                    "du": "hofftest",
+                    "er": "hoffte",
+                    "es": "hoffte",
+                    "sie_singular": "hoffte",
+                    "xier": "hoffte",
+                    "wir": "hofften",
+                    "ihr": "hofftet",
+                    "sie_plural": "hofften",
+                    "Sie": "hofften"
+                },
+                "Perfekt": {
+                    "ich": "habe gehofft",
+                    "du": "hast gehofft",
+                    "er": "hat gehofft",
+                    "es": "hat gehofft",
+                    "sie_singular": "hat gehofft",
+                    "xier": "hat gehofft",
+                    "wir": "haben gehofft",
+                    "ihr": "habt gehofft",
+                    "sie_plural": "haben gehofft",
+                    "Sie": "haben gehofft"
+                },
+                "Futur_I": {
+                    "ich": "werde hoffen",
+                    "du": "wirst hoffen",
+                    "er": "wird hoffen",
+                    "es": "wird hoffen",
+                    "sie_singular": "wird hoffen",
+                    "xier": "wird hoffen",
+                    "wir": "werden hoffen",
+                    "ihr": "werdet hoffen",
+                    "sie_plural": "werden hoffen",
+                    "Sie": "werden hoffen"
+                },
+                "imperative": {
+                    "du": "hoff",
+                    "ihr": "hofft",
+                    "Sie": "hoffen Sie"
+                }
+            },
+            "aufhören": {
+                "present": {
+                    "ich": "höre auf",
+                    "du": "hörst auf",
+                    "er": "hört auf",
+                    "es": "hört auf",
+                    "sie_singular": "hört auf",
+                    "xier": "hört auf",
+                    "wir": "hören auf",
+                    "ihr": "hört auf",
+                    "sie_plural": "hören auf",
+                    "Sie": "hören auf"
+                },
+                "Präteritum": {
+                    "ich": "hörte auf",
+                    "du": "hörtest auf",
+                    "er": "hörte auf",
+                    "es": "hörte auf",
+                    "sie_singular": "hörte auf",
+                    "xier": "hörte auf",
+                    "wir": "hörten auf",
+                    "ihr": "hörtet auf",
+                    "sie_plural": "hörten auf",
+                    "Sie": "hörten auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgehört",
+                    "du": "hast aufgehört",
+                    "er": "hat aufgehört",
+                    "es": "hat aufgehört",
+                    "sie_singular": "hat aufgehört",
+                    "xier": "hat aufgehört",
+                    "wir": "haben aufgehört",
+                    "ihr": "habt aufgehört",
+                    "sie_plural": "haben aufgehört",
+                    "Sie": "haben aufgehört"
+                },
+                "Futur_I": {
+                    "ich": "werde aufhören",
+                    "du": "wirst aufhören",
+                    "er": "wird aufhören",
+                    "es": "wird aufhören",
+                    "sie_singular": "wird aufhören",
+                    "xier": "wird aufhören",
+                    "wir": "werden aufhören",
+                    "ihr": "werdet aufhören",
+                    "sie_plural": "werden aufhören",
+                    "Sie": "werden aufhören"
+                },
+                "imperative": {
+                    "du": "hör auf",
+                    "ihr": "hört auf",
+                    "Sie": "hören Sie auf"
+                }
+            },
+            "ausreichen": {
+                "present": {
+                    "ich": "reiche aus",
+                    "du": "reichst aus",
+                    "er": "reicht aus",
+                    "es": "reicht aus",
+                    "sie_singular": "reicht aus",
+                    "xier": "reicht aus",
+                    "wir": "reichen aus",
+                    "ihr": "reicht aus",
+                    "sie_plural": "reichen aus",
+                    "Sie": "reichen aus"
+                },
+                "Präteritum": {
+                    "ich": "reichte aus",
+                    "du": "reichtest aus",
+                    "er": "reichte aus",
+                    "es": "reichte aus",
+                    "sie_singular": "reichte aus",
+                    "xier": "reichte aus",
+                    "wir": "reichten aus",
+                    "ihr": "reichtet aus",
+                    "sie_plural": "reichten aus",
+                    "Sie": "reichten aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgereicht",
+                    "du": "hast ausgereicht",
+                    "er": "hat ausgereicht",
+                    "es": "hat ausgereicht",
+                    "sie_singular": "hat ausgereicht",
+                    "xier": "hat ausgereicht",
+                    "wir": "haben ausgereicht",
+                    "ihr": "habt ausgereicht",
+                    "sie_plural": "haben ausgereicht",
+                    "Sie": "haben ausgereicht"
+                },
+                "Futur_I": {
+                    "ich": "werde ausreichen",
+                    "du": "wirst ausreichen",
+                    "er": "wird ausreichen",
+                    "es": "wird ausreichen",
+                    "sie_singular": "wird ausreichen",
+                    "xier": "wird ausreichen",
+                    "wir": "werden ausreichen",
+                    "ihr": "werdet ausreichen",
+                    "sie_plural": "werden ausreichen",
+                    "Sie": "werden ausreichen"
+                },
+                "imperative": {
+                    "du": "reich aus",
+                    "ihr": "reicht aus",
+                    "Sie": "reichen Sie aus"
+                }
+            },
+            "überprüfen": {
+                "present": {
+                    "ich": "überprüfe",
+                    "du": "überprüfst",
+                    "er": "überprüft",
+                    "es": "überprüft",
+                    "sie_singular": "überprüft",
+                    "xier": "überprüft",
+                    "wir": "überprüfen",
+                    "ihr": "überprüft",
+                    "sie_plural": "überprüfen",
+                    "Sie": "überprüfen"
+                },
+                "Präteritum": {
+                    "ich": "überprüfte",
+                    "du": "überprüftest",
+                    "er": "überprüfte",
+                    "es": "überprüfte",
+                    "sie_singular": "überprüfte",
+                    "xier": "überprüfte",
+                    "wir": "überprüften",
+                    "ihr": "überprüftet",
+                    "sie_plural": "überprüften",
+                    "Sie": "überprüften"
+                },
+                "Perfekt": {
+                    "ich": "habe überprüft",
+                    "du": "hast überprüft",
+                    "er": "hat überprüft",
+                    "es": "hat überprüft",
+                    "sie_singular": "hat überprüft",
+                    "xier": "hat überprüft",
+                    "wir": "haben überprüft",
+                    "ihr": "habt überprüft",
+                    "sie_plural": "haben überprüft",
+                    "Sie": "haben überprüft"
+                },
+                "Futur_I": {
+                    "ich": "werde überprüfen",
+                    "du": "wirst überprüfen",
+                    "er": "wird überprüfen",
+                    "es": "wird überprüfen",
+                    "sie_singular": "wird überprüfen",
+                    "xier": "wird überprüfen",
+                    "wir": "werden überprüfen",
+                    "ihr": "werdet überprüfen",
+                    "sie_plural": "werden überprüfen",
+                    "Sie": "werden überprüfen"
+                },
+                "imperative": {
+                    "du": "überprüfe",
+                    "ihr": "überprüft",
+                    "Sie": "überprüfen Sie"
+                }
+            },
+            "träumen": {
+                "present": {
+                    "ich": "träume",
+                    "du": "träumst",
+                    "er": "träumt",
+                    "es": "träumt",
+                    "sie_singular": "träumt",
+                    "xier": "träumt",
+                    "wir": "träumen",
+                    "ihr": "träumt",
+                    "sie_plural": "träumen",
+                    "Sie": "träumen"
+                },
+                "Präteritum": {
+                    "ich": "träumte",
+                    "du": "träumtest",
+                    "er": "träumte",
+                    "es": "träumte",
+                    "sie_singular": "träumte",
+                    "xier": "träumte",
+                    "wir": "träumten",
+                    "ihr": "träumtet",
+                    "sie_plural": "träumten",
+                    "Sie": "träumten"
+                },
+                "Perfekt": {
+                    "ich": "habe geträumt",
+                    "du": "hast geträumt",
+                    "er": "hat geträumt",
+                    "es": "hat geträumt",
+                    "sie_singular": "hat geträumt",
+                    "xier": "hat geträumt",
+                    "wir": "haben geträumt",
+                    "ihr": "habt geträumt",
+                    "sie_plural": "haben geträumt",
+                    "Sie": "haben geträumt"
+                },
+                "Futur_I": {
+                    "ich": "werde träumen",
+                    "du": "wirst träumen",
+                    "er": "wird träumen",
+                    "es": "wird träumen",
+                    "sie_singular": "wird träumen",
+                    "xier": "wird träumen",
+                    "wir": "werden träumen",
+                    "ihr": "werdet träumen",
+                    "sie_plural": "werden träumen",
+                    "Sie": "werden träumen"
+                },
+                "imperative": {
+                    "du": "träume",
+                    "ihr": "träumt",
+                    "Sie": "träumen Sie"
+                }
+            },
+            "ärgern": {
+                "present": {
+                    "ich": "ärgere mich",
+                    "du": "ärgerst dich",
+                    "er": "ärgert sich",
+                    "es": "ärgert sich",
+                    "sie_singular": "ärgert sich",
+                    "xier": "ärgert sich",
+                    "wir": "ärgern uns",
+                    "ihr": "ärgert euch",
+                    "sie_plural": "ärgern sich",
+                    "Sie": "ärgern sich"
+                },
+                "Präteritum": {
+                    "ich": "ärgerte mich",
+                    "du": "ärgertest dich",
+                    "er": "ärgerte sich",
+                    "es": "ärgerte sich",
+                    "sie_singular": "ärgerte sich",
+                    "xier": "ärgerte sich",
+                    "wir": "ärgerten uns",
+                    "ihr": "ärgertet euch",
+                    "sie_plural": "ärgerten sich",
+                    "Sie": "ärgerten sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich geärgert",
+                    "du": "hast dich geärgert",
+                    "er": "hat sich geärgert",
+                    "es": "hat sich geärgert",
+                    "sie_singular": "hat sich geärgert",
+                    "xier": "hat sich geärgert",
+                    "wir": "haben uns geärgert",
+                    "ihr": "habt euch geärgert",
+                    "sie_plural": "haben sich geärgert",
+                    "Sie": "haben sich geärgert"
+                },
+                "Futur_I": {
+                    "ich": "werde mich ärgern",
+                    "du": "wirst dich ärgern",
+                    "er": "wird sich ärgern",
+                    "es": "wird sich ärgern",
+                    "sie_singular": "wird sich ärgern",
+                    "xier": "wird sich ärgern",
+                    "wir": "werden uns ärgern",
+                    "ihr": "werdet euch ärgern",
+                    "sie_plural": "werden sich ärgern",
+                    "Sie": "werden sich ärgern"
+                },
+                "imperative": {
+                    "du": "ärgere dich",
+                    "ihr": "ärgert euch",
+                    "Sie": "ärgern Sie sich"
+                }
+            },
+            "unterstreichen": {
+                "present": {
+                    "ich": "unterstreiche",
+                    "du": "unterstreichst",
+                    "er": "unterstreicht",
+                    "es": "unterstreicht",
+                    "sie_singular": "unterstreicht",
+                    "xier": "unterstreicht",
+                    "wir": "unterstreichen",
+                    "ihr": "unterstreicht",
+                    "sie_plural": "unterstreichen",
+                    "Sie": "unterstreichen"
+                },
+                "Präteritum": {
+                    "ich": "unterstrich",
+                    "du": "unterstrichst",
+                    "er": "unterstrich",
+                    "es": "unterstrich",
+                    "sie_singular": "unterstrich",
+                    "xier": "unterstrich",
+                    "wir": "unterstrichen",
+                    "ihr": "unterstricht",
+                    "sie_plural": "unterstrichen",
+                    "Sie": "unterstrichen"
+                },
+                "Perfekt": {
+                    "ich": "habe unterstrichen",
+                    "du": "hast unterstrichen",
+                    "er": "hat unterstrichen",
+                    "es": "hat unterstrichen",
+                    "sie_singular": "hat unterstrichen",
+                    "xier": "hat unterstrichen",
+                    "wir": "haben unterstrichen",
+                    "ihr": "habt unterstrichen",
+                    "sie_plural": "haben unterstrichen",
+                    "Sie": "haben unterstrichen"
+                },
+                "Futur_I": {
+                    "ich": "werde unterstreichen",
+                    "du": "wirst unterstreichen",
+                    "er": "wird unterstreichen",
+                    "es": "wird unterstreichen",
+                    "sie_singular": "wird unterstreichen",
+                    "xier": "wird unterstreichen",
+                    "wir": "werden unterstreichen",
+                    "ihr": "werdet unterstreichen",
+                    "sie_plural": "werden unterstreichen",
+                    "Sie": "werden unterstreichen"
+                },
+                "imperative": {
+                    "du": "unterstreich",
+                    "ihr": "unterstreicht",
+                    "Sie": "unterstreichen Sie"
+                }
+            },
+            "telefonieren": {
+                "present": {
+                    "ich": "telefoniere",
+                    "du": "telefonierst",
+                    "er": "telefoniert",
+                    "es": "telefoniert",
+                    "sie_singular": "telefoniert",
+                    "xier": "telefoniert",
+                    "wir": "telefonieren",
+                    "ihr": "telefoniert",
+                    "sie_plural": "telefonieren",
+                    "Sie": "telefonieren"
+                },
+                "Präteritum": {
+                    "ich": "telefonierte",
+                    "du": "telefoniertest",
+                    "er": "telefonierte",
+                    "es": "telefonierte",
+                    "sie_singular": "telefonierte",
+                    "xier": "telefonierte",
+                    "wir": "telefonierten",
+                    "ihr": "telefoniertet",
+                    "sie_plural": "telefonierten",
+                    "Sie": "telefonierten"
+                },
+                "Perfekt": {
+                    "ich": "habe telefoniert",
+                    "du": "hast telefoniert",
+                    "er": "hat telefoniert",
+                    "es": "hat telefoniert",
+                    "sie_singular": "hat telefoniert",
+                    "xier": "hat telefoniert",
+                    "wir": "haben telefoniert",
+                    "ihr": "habt telefoniert",
+                    "sie_plural": "haben telefoniert",
+                    "Sie": "haben telefoniert"
+                },
+                "Futur_I": {
+                    "ich": "werde telefonieren",
+                    "du": "wirst telefonieren",
+                    "er": "wird telefonieren",
+                    "es": "wird telefonieren",
+                    "sie_singular": "wird telefonieren",
+                    "xier": "wird telefonieren",
+                    "wir": "werden telefonieren",
+                    "ihr": "werdet telefonieren",
+                    "sie_plural": "werden telefonieren",
+                    "Sie": "werden telefonieren"
+                },
+                "imperative": {
+                    "du": "telefoniere",
+                    "ihr": "telefoniert",
+                    "Sie": "telefonieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schriftliche vs.",
+            "Wie kommunizieren Sie mit Freund*innen und Familie?",
+            "Kreuzen Sie an und vergleichen Sie im Kurs.",
+            "Wir schreiben E-Mails wir schreiben Briefe",
+            "Wie haben Menschen früher kommuniziert und nicht kommuniziert?",
+            "Ordnen Sie den Optionen Vor teile und Nachteile zu.",
+            "Sie können auch eigene Ideen ergänzen.",
+            "Man alles überprüfen und planen kann.",
+            "Schreiben ist besser weil … es schneller ist.",
+            "Sprechen ist besser weil … man oft auf eine Antwort wartet.",
+            "Schreiben ist nicht so gut, weil ….",
+            "Emotionen eine große Rolle spielen.",
+            "Man schnell eine Antwort bekommt.",
+            "Man die andere Person und deren Körpersprache sehen kann.",
+            "In LERNEN haben Sie die Geschichte von Markus und Katja aus dem Buch Zwischen uns die Mauer von Katja Hildebrand kennengelernt.",
+            "Lesen Sie jetzt einen Brief von Katja an Markus und einen Brief von Markus an Katja.",
+            "Ihre Lehrkraft sagt Ihnen, aus welchem der beiden Briefe Sie 20 Verben in die Tabelle eintragen.",
+            "Ergänzen Sie dann die anderen Formen.",
+            "Markieren Sie die Form, die Sie im Text gefunden haben.",
+            "Lesen Sie den Brief von Markus noch einmal.",
+            "Wie geht es ihm?",
+            "Wie fühlt er sich?",
+            "Unterstreichen Sie die Wörter, die seine Gefühle beschreiben.",
+            "Erzählen Sie einer anderen Person, welche Wörter Sie unterstrichen haben und wie Markus sich fühlt.",
+            "Vielen Dank für deine beiden Briefe!",
+            "Samstag und Sonntag und gestern als sie angekommen sind, habe ich es vorher gefühlt.",
+            "Ich ging mit dem Gefühl nach Hause, dass Post von dir da ist - und wirklich.",
+            "Vielleicht findest du das komisch, aber ich finde es toll.",
+            "Hier ist es zur Zeit ganz lustig.",
+            "Nichts ist mehr normal.",
+            "Nach einer langen depressiven Phase ging es ab.",
+            "Jonas und ich haben uns getrennt.",
+            "Mensch, du, ich liebe dich.",
+            "Und ich möchte noch so viel mit dir machen.",
+            "Ich freue mich schon auf deinen nächsten Brief!",
+            "Liebe Katja, danke für deinen Brief.",
+            "Gut, dass du geschrieben hast.",
+            "Ich habe die ganze Zeit gewartet und war immer traurig, wenn ich den leeren Briefkasten sah.",
+            "Am Freitag habe ich dann aufgehört zu warten …",
+            "Gut, ich werde mal versuchen, nicht immer zu warten, aber man kann ja nicht wählen, wie sehr man jemanden lieb hat, oder?",
+            "Ja, ja.",
+            "Scheiß Mauer.",
+            "Weißt du, was mich sehr ärgert?",
+            "Wir können uns nicht richtig kennenlernen.",
+            "Ich weiß nicht, was ich machen soll.",
+            "Wir müssen nach unserer Rumänienreise entscheiden, was wir machen.",
+            "Die Sache mit der Seilbahn ist nicht schlecht, aber da sind viele Probleme.",
+            "Ich plane.",
+            "Ich träume von der Flucht.",
+            "Reicht mein Gefühl zu dir aus?",
+            "Du, komm so schnell wie möglich zu mir.",
+            "Ich habe Angst, dich zu verlieren.",
+            "Ich hoffe, du verstehst mich.",
+            "Du siehst, ein ziemliches Chaos in meinen Gedanken.",
+            "Sag mal, manchmal, hörst du mich da?",
+            "Da rede ich mit dir.",
+            "Versuch e es mit Telepathie.",
+            "Ist Liebe stärker als Distanz?",
+            "Ich frage mich: Reicht mein Gefühl zu dir aus?",
+            "Er fragt sich, ob seine Gefühle für Katja stark genug sind, um für sie zu flüchten und seine Umgebung hinter sich zu lassen.",
+            "Was können Menschen machen, damit eine Beziehung auf Distanz funktioniert?",
+            "Welche Optionen hatten Markus und Katja?",
+            "Welche Optionen gibt es heute?",
+            "Markus und Katja, damals täglich telefonieren Briefe an Reisende geben;",
+            "Freund*innen fragen Briefe zu tragen oder Telefongespräche zu machen;"
+        ],
+        "templated": []
+    }
+}

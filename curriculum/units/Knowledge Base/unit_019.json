@@ -1,0 +1,659 @@
+{
+    "unit": "19",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 19,
+        "prerequisite": "1-18"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "For stem-vowel changing verbs, change the stem vowel only in the du- and er/es/sie/xier-forms (a→ä, au→äu, e→i, e→ie); all other forms keep the original vowel.",
+            "Use the accusative case for direct objects: for r-words, der→den, ein→einen, kein→keinen, mein→meinen; s-words, e-words, and plurals stay the same.",
+            "Place predicate adjectives at the end of the sentence with no noun class endings."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Kleidung beschreiben",
+            "Farben und Muster benennen",
+            "sagen, was man trägt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kleidung"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "sprechen",
+                "pos": "VERB",
+                "translation": "to speak",
+                "frequency": 161,
+                "cefr": "A1"
+            },
+            {
+                "word": "mögen",
+                "pos": "VERB",
+                "translation": "to like"
+            },
+            {
+                "word": "tragen",
+                "pos": "VERB",
+                "translation": "to wear; carry",
+                "frequency": 271,
+                "cefr": "A2"
+            },
+            {
+                "word": "sehen",
+                "pos": "VERB",
+                "translation": "to see",
+                "frequency": 79,
+                "cefr": "A1"
+            },
+            {
+                "word": "fahren",
+                "pos": "VERB",
+                "translation": "to drive, ride",
+                "frequency": 215,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hemd",
+                "pos": "NOUN",
+                "translation": "shirt",
+                "frequency": 2657,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Kopftuch",
+                "pos": "NOUN",
+                "translation": "headscarf",
+                "frequency": 13187,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kleid",
+                "pos": "NOUN",
+                "translation": "dress",
+                "frequency": 1780,
+                "cefr": "A2"
+            },
+            {
+                "word": "das T-Shirt",
+                "pos": "NOUN",
+                "translation": "T-shirt",
+                "frequency": 3914,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Anzug",
+                "pos": "NOUN",
+                "translation": "suit",
+                "frequency": 3377,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Rock",
+                "pos": "NOUN",
+                "translation": "skirt",
+                "frequency": 3551,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Schuh",
+                "pos": "NOUN",
+                "translation": "shoe",
+                "frequency": 1678,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bluse",
+                "pos": "NOUN",
+                "translation": "blouse",
+                "frequency": 21510,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Hose",
+                "pos": "NOUN",
+                "translation": "pants",
+                "frequency": 2156,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kappe",
+                "pos": "NOUN",
+                "translation": "cap",
+                "frequency": 16957,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tasche",
+                "pos": "NOUN",
+                "translation": "purse; bag, pocket",
+                "frequency": 1804,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kette",
+                "pos": "NOUN",
+                "translation": "necklace; chain",
+                "frequency": 2346,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Brille",
+                "pos": "NOUN",
+                "translation": "glasses",
+                "frequency": 2883,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Farbe",
+                "pos": "NOUN",
+                "translation": "color",
+                "frequency": 1079,
+                "cefr": "A1"
+            },
+            {
+                "word": "weiß",
+                "pos": "ADJ",
+                "translation": "white"
+            },
+            {
+                "word": "schwarz",
+                "pos": "ADJ",
+                "translation": "black",
+                "frequency": 474,
+                "cefr": "A1"
+            },
+            {
+                "word": "rot",
+                "pos": "ADJ",
+                "translation": "red",
+                "frequency": 477,
+                "cefr": "A1"
+            },
+            {
+                "word": "grün",
+                "pos": "ADJ",
+                "translation": "green"
+            },
+            {
+                "word": "blau",
+                "pos": "ADJ",
+                "translation": "blue",
+                "frequency": 948,
+                "cefr": "A1"
+            },
+            {
+                "word": "gelb",
+                "pos": "ADJ",
+                "translation": "yellow",
+                "frequency": 1446,
+                "cefr": "A1"
+            },
+            {
+                "word": "grau",
+                "pos": "ADJ",
+                "translation": "gray",
+                "frequency": 1560,
+                "cefr": "A1"
+            },
+            {
+                "word": "braun",
+                "pos": "ADJ",
+                "translation": "brown",
+                "frequency": 2320,
+                "cefr": "A1"
+            },
+            {
+                "word": "kurz",
+                "pos": "ADJ",
+                "translation": "short",
+                "frequency": 176,
+                "cefr": "A1"
+            },
+            {
+                "word": "dies- (dieser",
+                "pos": "NOUN",
+                "translation": "this, that, these"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Outfit",
+                "pos": "NOUN",
+                "frequency": 12228
+            },
+            {
+                "word": "das Tanktop",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Pullover",
+                "pos": "NOUN",
+                "frequency": 17146,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Sweatshirt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Jeans",
+                "pos": "NOUN",
+                "frequency": 4942,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Legging",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Sneaker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Flip-Flop",
+                "pos": "NOUN"
+            },
+            {
+                "word": "orange",
+                "pos": "ADV",
+                "frequency": 8103,
+                "cefr": "A2"
+            },
+            {
+                "word": "wissen",
+                "pos": "ADV",
+                "frequency": 472,
+                "cefr": "A1"
+            },
+            {
+                "word": "lila",
+                "pos": "ADV",
+                "frequency": 16799,
+                "cefr": "A2"
+            },
+            {
+                "word": "pink",
+                "pos": "ADV",
+                "frequency": 11853,
+                "cefr": "B2"
+            },
+            {
+                "word": "rosa",
+                "pos": "ADV",
+                "frequency": 6887,
+                "cefr": "A2"
+            },
+            {
+                "word": "kariert",
+                "pos": "ADV"
+            },
+            {
+                "word": "streifen",
+                "pos": "VERB",
+                "frequency": 4135,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Schnürsenkel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "karieren",
+                "pos": "ADV"
+            },
+            {
+                "word": "Welches",
+                "pos": "DET",
+                "frequency": 122,
+                "cefr": "B1"
+            },
+            {
+                "word": "gestreift",
+                "pos": "VERB",
+                "frequency": 4135,
+                "cefr": "B2"
+            },
+            {
+                "word": "Mein*e",
+                "pos": "DET"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "sprechen": {
+                "present": {
+                    "ich": "spreche",
+                    "du": "sprichst",
+                    "er": "spricht",
+                    "es": "spricht",
+                    "sie_singular": "spricht",
+                    "xier": "spricht",
+                    "wir": "sprechen",
+                    "ihr": "sprecht",
+                    "sie_plural": "sprechen",
+                    "Sie": "sprechen"
+                }
+            },
+            "mögen": {
+                "present": {
+                    "ich": "mag",
+                    "du": "magst",
+                    "er": "mag",
+                    "es": "mag",
+                    "sie_singular": "mag",
+                    "xier": "mag",
+                    "wir": "mögen",
+                    "ihr": "mögt",
+                    "sie_plural": "mögen",
+                    "Sie": "mögen"
+                }
+            },
+            "tragen": {
+                "present": {
+                    "ich": "trage",
+                    "du": "trägst",
+                    "er": "trägt",
+                    "es": "trägt",
+                    "sie_singular": "trägt",
+                    "xier": "trägt",
+                    "wir": "tragen",
+                    "ihr": "tragt",
+                    "sie_plural": "tragen",
+                    "Sie": "tragen"
+                }
+            },
+            "sehen": {
+                "present": {
+                    "ich": "sehe",
+                    "du": "siehst",
+                    "er": "sieht",
+                    "es": "sieht",
+                    "sie_singular": "sieht",
+                    "xier": "sieht",
+                    "wir": "sehen",
+                    "ihr": "seht",
+                    "sie_plural": "sehen",
+                    "Sie": "sehen"
+                }
+            },
+            "fahren": {
+                "present": {
+                    "ich": "fahre",
+                    "du": "fährst",
+                    "er": "fährt",
+                    "es": "fährt",
+                    "sie_singular": "fährt",
+                    "xier": "fährt",
+                    "wir": "fahren",
+                    "ihr": "fahrt",
+                    "sie_plural": "fahren",
+                    "Sie": "fahren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie zu und sagen Sie die Vokabeln laut im Kurs.",
+            "Wer trägt ein T-Shirt?",
+            "Die Personen X tragen ein T-Shirt.",
+            "Wer trägt ein Tanktop?",
+            "Die Personen X tragen ein Tanktop.",
+            "Wer trägt eine Bluse?",
+            "Die Personen X tragen eine Bluse.",
+            "Wer trägt einen Pullover?",
+            "Die Personen X tragen einen Pullover.",
+            "Wer trägt ein Sweatshirt?",
+            "Die Personen X tragen ein Sweatshirt.",
+            "Wer trägt ein Hemd?",
+            "Die Personen X tragen ein Hemd.",
+            "Wer trägt einen Anzug?",
+            "Die Personen X tragen einen Anzug.",
+            "Wer trägt eine Uniform?",
+            "Die Personen X tragen eine Uniform.",
+            "Wer trägt ein Kleid?",
+            "Die Personen X tragen ein Kleid.",
+            "Wer trägt ein (kurze) Hose?",
+            "Die Personen X tragen ein (kurze) Hose.",
+            "Wer trägt ein Jeans?",
+            "Die Personen X tragen ein Jeans.",
+            "Wer trägt einen Rock?",
+            "Die Personen X tragen einen Rock.",
+            "Wer trägt eine Tasche?",
+            "Die Personen X tragen eine Tasche.",
+            "Wer trägt eine Kette?",
+            "Die Personen X tragen eine Kette.",
+            "Wer trägt eine Uhr?",
+            "Die Personen X tragen eine Uhr.",
+            "Wer trägt ein Leggings?",
+            "Die Personen X tragen ein Leggings.",
+            "Wer trägt Schuhe?",
+            "Die Personen X tragen Schuhe.",
+            "Wer trägt Sneakers?",
+            "Die Personen X tragen Sneakers.",
+            "Wer trägt eine Brille?",
+            "Die Personen X tragen eine Brille.",
+            "Wer trägt ein Kopftuch?",
+            "Die Personen X tragen ein Kopftuch.",
+            "Wer trägt eine Kappe?",
+            "Die Personen X tragen eine Kappe.",
+            "Sagen Sie, was die Personen tragen.",
+            "Person 1 trägt ein Hemd, eine Hose und Sneakers.",
+            "Person 2 trägt einen Anzug, Schuhe, eine Tasche und eine Brille.",
+            "Person 3 trägt ein T-Shirt, eine Jeans und Sneakers.",
+            "Person 4 trägt ein Hemd, eine Kette, eine Jeans und Sneakers.",
+            "Person 5 trägt eine Bluse, eine Jeans und Sneakers.",
+            "Person 6 trägt eine Bluse, eine Hose, eine Kette und Sneakers.",
+            "Person 7 trägt eine Bluse, eine Leggings, Schuhe und ein Kopftuch.",
+            "Person 8 trägt eine Kappe, ein Sweatshirt, eine kurze Hose, eine Uhr, eine Kappe und Flip-Flops.",
+            "Person 9 trägt eine Brille, ein Kleid, Leggings, Schuhe und eine Tasche.",
+            "Person 10 trägt eine Brille, eine Bluse, eine Jeans, eine Uhr und Schuhe.",
+            "Person 11 trägt ein T-Shirt, eine Uhr, eine kurze Hose und Sneakers.",
+            "Person 12 trägt einen Pullover, eine Jeans und Schuhe.",
+            "Person 13 trägt ein Hemd, eine Jeans und Sneakers.",
+            "Person 14 trägt ein Hemd, ein Sweatshirt, eine Jeans und Schuhe.",
+            "Person 15 trägt ein T-Shirt, eine kurze Hose und Schuhe.",
+            "Person 16 trägt eine Kette, ein T-Shirt, eine kurze Hose und Sneakers.",
+            "Person 17 trägt eine Brille, einen Pullover, Jeans und Schuhe.",
+            "Person 18 trägt ein Sweatshirt und eine Jeans.",
+            "Person 19 trägt eine Uniform und Schuhe.",
+            "Person 20 trägt einen Anzug und Schuhe.",
+            "Person 21 trägt ein T-Shirt, einen Rock und Flip-Flops.",
+            "Person 22 trägt ein Hemd, ein T-Shirt, eine Jeans und Sneakers.",
+            "Uwe und Renate sprechen über die Personen.",
+            "Hören Sie zu.",
+            "Welche Personen sind es?",
+            "Die Person trägt eine Kappe, ein Sweatshirt, eine kurze Hose, eine Uhr, eine Kappe und Flip-Flops.",
+            "Die Person mag blau.",
+            "Sind auch blau.",
+            "Die Flip-Flops sind weiß.",
+            "Welche Nummer hat die Person?",
+            "(8) Die nächste Person trägt eine Bluse, eine Hose, eine Kette und Sneakers.",
+            "Die Bluse ist pink und die Hose ist gelb.",
+            "Welche Nummer hat diese Person?",
+            "Die nächste Person trägt einen Anzug und Schuhe.",
+            "Die Person kombiniert den Anzug mit einem Pullover, genauer: mit einem Rollkragenpullover.",
+            "Der Anzug ist blau, der Pullover ist..",
+            "Die Schuhe sind weiß.",
+            "Welche Person ist das?",
+            "Und wir kommen zur nächsten Person.",
+            "Die Person trägt eine Kette, ein T-Shirt, eine kurze Hose und Sneakers… oder eine Sporthose und Sportschuhe.",
+            "Das T-Shirt ist blau und die Hose ist schwarz.",
+            "Die Schuhe sind weiß und haben schwarze Schnürsenkel.",
+            "Welche Person beschreibe ich?",
+            "Diese Person trägt eine Brille, ein Kleid, Leggings, Schuhe und eine Tasche.",
+            "Die Person trägt gern braun.",
+            "Die Leggings und auch das Kleid sind braun.",
+            "Die Schuhe sind schwarz und aus Leder.",
+            "Und wir kommen zur letzten Person.",
+            "Das T-Shirt ist weiß, und der Rock und die Flip-Flops sind schwarz.",
+            "Die Person trägt eine Bluse, eine Leggings, Schuhe und ein Kopftuch.",
+            "Die Bluse ist blau, die Leggings und Schuhe sind schwarz und das Kopftuch ist rot, gelb und schwarz.",
+            "Das ist Person 7!",
+            "Welche Person beschreibe ich.",
+            "Welche Kleidung magst du?",
+            "Welche Kleidung magst du nicht?",
+            "Welche Farbe hat die Kleidung?",
+            "Ich mag das Hemd von Outfit 13.",
+            "Er ist blau und grün kariert.",
+            "Welches Kleidung magst du nicht?",
+            "Ich mag das Hemd von Outfit 22 nicht.",
+            "Es ist weiß, orange und gelb.",
+            "Schreiben Sie, was sie und ihr*e Partner*in tragen.",
+            "Schreiben Sie auch, welche Farben die Kleidung hat.",
+            "Welche Kleidung haben die Personen in Ihrem Kurs?",
+            "Fragen Sie.",
+            "Hast du einen Anzug?",
+            "Ja, ich habe einen Anzug.",
+            "Er ist blau.",
+            "Hast du ein T-Shirt?",
+            "Ja, ich habe zehn T-Shirts.",
+            "Meine T-Shirts sind blau, grün und rot.",
+            "Hast du eine Kappe?",
+            "Nein, ich habe keine Kappe."
+        ],
+        "templated": [
+            {
+                "template": "Hast du {CLOTHING_NP_ACC}?",
+                "source_literals": [
+                    "Hast du eine Kappe?",
+                    "Hast du einen Anzug?"
+                ],
+                "description": "Ask if someone has a clothing item"
+            },
+            {
+                "template": "Ja, ich habe {CLOTHING_NP_ACC}.",
+                "source_literals": [
+                    "Ja, ich habe einen Anzug."
+                ],
+                "description": "Confirm having a clothing item"
+            },
+            {
+                "template": "Wer trägt {CLOTHING_NP_ACC}?",
+                "source_literals": [
+                    "Wer trägt Schuhe?",
+                    "Wer trägt Sneakers?",
+                    "Wer trägt ein (kurze) Hose?",
+                    "Wer trägt ein Hemd?",
+                    "Wer trägt ein Jeans?",
+                    "Wer trägt ein Kleid?",
+                    "Wer trägt ein Kopftuch?",
+                    "Wer trägt ein Leggings?",
+                    "Wer trägt ein Sweatshirt?",
+                    "Wer trägt ein Tanktop?",
+                    "Wer trägt eine Bluse?",
+                    "Wer trägt eine Brille?",
+                    "Wer trägt eine Kappe?",
+                    "Wer trägt eine Kette?",
+                    "Wer trägt eine Tasche?",
+                    "Wer trägt eine Uhr?",
+                    "Wer trägt eine Uniform?",
+                    "Wer trägt einen Anzug?",
+                    "Wer trägt einen Pullover?",
+                    "Wer trägt einen Rock?"
+                ],
+                "description": "Ask who wears a clothing item"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "CLOTHING_NP_ACC": {
+            "type": "closed",
+            "description": "Clothing items (accusative with indef. article)",
+            "usage_note": "accusative, with einen/eine/ein; plurals without article",
+            "options": [
+                "ein Hemd",
+                "ein Kleid",
+                "ein Kopftuch",
+                "ein T-Shirt",
+                "eine Bluse",
+                "eine Brille",
+                "eine Hose",
+                "eine Kappe",
+                "eine Kette",
+                "eine Tasche",
+                "eine Uhr",
+                "einen Anzug",
+                "einen Rock",
+                "einen Schuh"
+            ]
+        }
+    }
+}

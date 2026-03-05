@@ -1,0 +1,854 @@
+{
+    "unit": "35",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 35,
+        "prerequisite": "1-34"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kochshows"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "(durch +akk.) ersetzen",
+                "pos": "VERB",
+                "translation": "to replace, substitute (by)",
+                "frequency": 1380,
+                "cefr": "B1"
+            },
+            {
+                "word": "lassen",
+                "pos": "VERB",
+                "translation": "to let",
+                "frequency": 83,
+                "cefr": "A2"
+            },
+            {
+                "word": "legen",
+                "pos": "VERB",
+                "translation": "to place; put (horizontal)",
+                "frequency": 352,
+                "cefr": "A1"
+            },
+            {
+                "word": "probieren",
+                "pos": "VERB",
+                "translation": "to try ; taste",
+                "frequency": 2894,
+                "cefr": "A2"
+            },
+            {
+                "word": "schneiden",
+                "pos": "VERB",
+                "translation": "to cut",
+                "frequency": 2133,
+                "cefr": "A2"
+            },
+            {
+                "word": "rühren",
+                "pos": "VERB",
+                "translation": "to stir"
+            },
+            {
+                "word": "kneten",
+                "pos": "VERB",
+                "translation": "to knead"
+            },
+            {
+                "word": "gießen",
+                "pos": "VERB",
+                "translation": "to pour; water (plants)"
+            },
+            {
+                "word": "braten",
+                "pos": "VERB",
+                "translation": "to broil, roast, fry",
+                "frequency": 5809,
+                "cefr": "A2"
+            },
+            {
+                "word": "schälen",
+                "pos": "VERB",
+                "translation": "to peel, shell, pare"
+            },
+            {
+                "word": "würzen",
+                "pos": "VERB",
+                "translation": "to season; flavor, spice"
+            },
+            {
+                "word": "das Thema, Themen",
+                "pos": "NOUN",
+                "translation": "theme, topic",
+                "frequency": 298,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Teig",
+                "pos": "NOUN",
+                "translation": "dough",
+                "frequency": 16636,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Beilage",
+                "pos": "NOUN",
+                "translation": "side dish",
+                "frequency": 13323,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Dose",
+                "pos": "NOUN",
+                "translation": "can",
+                "frequency": 4826,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Idee",
+                "pos": "NOUN",
+                "translation": "idea",
+                "frequency": 451,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Kandidat*in",
+                "pos": "NOUN",
+                "translation": "candidate",
+                "frequency": 1854,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Köch*in",
+                "pos": "NOUN",
+                "translation": "cook"
+            },
+            {
+                "word": "der*die Moderator*in",
+                "pos": "NOUN",
+                "translation": "host, moderator, presenter",
+                "frequency": 4696,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Gewinner*in",
+                "pos": "NOUN",
+                "translation": "winner",
+                "frequency": 6322
+            },
+            {
+                "word": "jeder, jedes, jede",
+                "pos": "PRON",
+                "translation": "every",
+                "frequency": 87,
+                "cefr": "A1"
+            },
+            {
+                "word": "seit",
+                "pos": "PREP",
+                "translation": "since (time); for",
+                "frequency": 130,
+                "cefr": "A1"
+            },
+            {
+                "word": "dazu",
+                "pos": "VERB",
+                "translation": "to it (to add something)",
+                "frequency": 150
+            },
+            {
+                "word": "die Scheibe",
+                "pos": "NOUN",
+                "translation": "slice; window",
+                "frequency": 2789,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Punkt",
+                "pos": "NOUN",
+                "translation": "point",
+                "frequency": 248,
+                "cefr": "A2"
+            },
+            {
+                "word": "(etw.) Besonderes",
+                "pos": "NOUN",
+                "translation": "(sth.) special",
+                "frequency": 512
+            },
+            {
+                "word": "über",
+                "pos": "PREP",
+                "translation": "about, concerning; over"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Show",
+                "pos": "NOUN",
+                "frequency": 3367,
+                "cefr": "B1"
+            },
+            {
+                "word": "inspirierend",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Hunger",
+                "pos": "NOUN",
+                "frequency": 2097,
+                "cefr": "A1"
+            },
+            {
+                "word": "informativ",
+                "pos": "ADV",
+                "frequency": 9996
+            },
+            {
+                "word": "jeder",
+                "pos": "DET",
+                "frequency": 87,
+                "cefr": "A1"
+            },
+            {
+                "word": "moderieren",
+                "pos": "VERB",
+                "frequency": 8289
+            },
+            {
+                "word": "ein*e",
+                "pos": "DET"
+            },
+            {
+                "word": "ausscheiden",
+                "pos": "VERB",
+                "frequency": 3144
+            },
+            {
+                "word": "die Vorspeise",
+                "pos": "NOUN",
+                "frequency": 24831,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Finale",
+                "pos": "NOUN",
+                "frequency": 2770
+            },
+            {
+                "word": "des*der",
+                "pos": "DET"
+            },
+            {
+                "word": "der Bäcker",
+                "pos": "NOUN",
+                "frequency": 10084,
+                "cefr": "A2"
+            },
+            {
+                "word": "wenigster",
+                "pos": "DET"
+            },
+            {
+                "word": "die Ende",
+                "pos": "NOUN",
+                "frequency": 183,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Form",
+                "pos": "NOUN",
+                "frequency": 307,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Duell",
+                "pos": "NOUN",
+                "frequency": 4029
+            },
+            {
+                "word": "andere*n",
+                "pos": "ADJ"
+            },
+            {
+                "word": "lokal",
+                "pos": "ADJ",
+                "frequency": 1981,
+                "cefr": "B2"
+            },
+            {
+                "word": "dem*der",
+                "pos": "DET"
+            },
+            {
+                "word": "die Aufgabe",
+                "pos": "NOUN",
+                "frequency": 256,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Trophäe",
+                "pos": "NOUN",
+                "frequency": 11325
+            },
+            {
+                "word": "das Utensil",
+                "pos": "NOUN",
+                "frequency": 22648
+            },
+            {
+                "word": "arkieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "erhitzen",
+                "pos": "VERB",
+                "frequency": 3759
+            },
+            {
+                "word": "verrühren",
+                "pos": "VERB",
+                "frequency": 43576
+            },
+            {
+                "word": "dazugeben",
+                "pos": "VERB",
+                "frequency": 31346
+            },
+            {
+                "word": "ausrollen",
+                "pos": "VERB",
+                "frequency": 40828
+            },
+            {
+                "word": "dazugießen",
+                "pos": "VERB"
+            },
+            {
+                "word": "formen",
+                "pos": "VERB",
+                "frequency": 3107
+            },
+            {
+                "word": "die Pfanne",
+                "pos": "NOUN",
+                "frequency": 14363,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schneebesen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Schäler",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Schneidebrett",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Dosenöffner",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Sieb",
+                "pos": "NOUN",
+                "frequency": 32291
+            },
+            {
+                "word": "der Mixer",
+                "pos": "NOUN",
+                "frequency": 44190
+            },
+            {
+                "word": "der Pfannenwender",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kochlöffel",
+                "pos": "NOUN",
+                "frequency": 39499
+            },
+            {
+                "word": "der Pizzastein",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Küchenmesser",
+                "pos": "NOUN",
+                "frequency": 28579
+            },
+            {
+                "word": "der Pfeffer",
+                "pos": "NOUN",
+                "frequency": 9995,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Soße",
+                "pos": "NOUN",
+                "frequency": 26023,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Brühe",
+                "pos": "NOUN",
+                "frequency": 26000
+            },
+            {
+                "word": "der Senf",
+                "pos": "NOUN",
+                "frequency": 17706
+            },
+            {
+                "word": "der Esslöffel",
+                "pos": "NOUN",
+                "frequency": 37621
+            },
+            {
+                "word": "der Speck",
+                "pos": "NOUN",
+                "frequency": 14493
+            },
+            {
+                "word": "der Balsamico",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Hefe",
+                "pos": "NOUN",
+                "frequency": 28693
+            },
+            {
+                "word": "das Schüssel",
+                "pos": "NOUN",
+                "frequency": 7457,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Ofen",
+                "pos": "NOUN",
+                "frequency": 4981,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Mozzarella",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Rotwein",
+                "pos": "NOUN",
+                "frequency": 12636
+            },
+            {
+                "word": "die Margarine",
+                "pos": "NOUN",
+                "frequency": 37785,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Ball",
+                "pos": "NOUN",
+                "frequency": 1782,
+                "cefr": "A2"
+            },
+            {
+                "word": "keiner",
+                "pos": "PRON"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ersetzen": {
+                "present": {
+                    "ich": "ersetze",
+                    "du": "ersetzt",
+                    "er": "ersetzt",
+                    "es": "ersetzt",
+                    "sie_singular": "ersetzt",
+                    "xier": "ersetzt",
+                    "wir": "ersetzen",
+                    "ihr": "ersetzt",
+                    "sie_plural": "ersetzen",
+                    "Sie": "ersetzen"
+                }
+            },
+            "lassen": {
+                "present": {
+                    "ich": "lasse",
+                    "du": "lässt",
+                    "er": "lässt",
+                    "es": "lässt",
+                    "sie_singular": "lässt",
+                    "xier": "lässt",
+                    "wir": "lassen",
+                    "ihr": "lasst",
+                    "sie_plural": "lassen",
+                    "Sie": "lassen"
+                }
+            },
+            "legen": {
+                "present": {
+                    "ich": "lege",
+                    "du": "legst",
+                    "er": "legt",
+                    "es": "legt",
+                    "sie_singular": "legt",
+                    "xier": "legt",
+                    "wir": "legen",
+                    "ihr": "legt",
+                    "sie_plural": "legen",
+                    "Sie": "legen"
+                }
+            },
+            "probieren": {
+                "present": {
+                    "ich": "probiere",
+                    "du": "probierst",
+                    "er": "probiert",
+                    "es": "probiert",
+                    "sie_singular": "probiert",
+                    "xier": "probiert",
+                    "wir": "probieren",
+                    "ihr": "probiert",
+                    "sie_plural": "probieren",
+                    "Sie": "probieren"
+                }
+            },
+            "schneiden": {
+                "present": {
+                    "ich": "schneide",
+                    "du": "schneidest",
+                    "er": "schneidet",
+                    "es": "schneidet",
+                    "sie_singular": "schneidet",
+                    "xier": "schneidet",
+                    "wir": "schneiden",
+                    "ihr": "schneidet",
+                    "sie_plural": "schneiden",
+                    "Sie": "schneiden"
+                }
+            },
+            "rühren": {
+                "present": {
+                    "ich": "rühre",
+                    "du": "rührst",
+                    "er": "rührt",
+                    "es": "rührt",
+                    "sie_singular": "rührt",
+                    "xier": "rührt",
+                    "wir": "rühren",
+                    "ihr": "rührt",
+                    "sie_plural": "rühren",
+                    "Sie": "rühren"
+                }
+            },
+            "kneten": {
+                "present": {
+                    "ich": "knete",
+                    "du": "knetest",
+                    "er": "knetet",
+                    "es": "knetet",
+                    "sie_singular": "knetet",
+                    "xier": "knetet",
+                    "wir": "kneten",
+                    "ihr": "knetet",
+                    "sie_plural": "kneten",
+                    "Sie": "kneten"
+                }
+            },
+            "gießen": {
+                "present": {
+                    "ich": "gieße",
+                    "du": "gießt",
+                    "er": "gießt",
+                    "es": "gießt",
+                    "sie_singular": "gießt",
+                    "xier": "gießt",
+                    "wir": "gießen",
+                    "ihr": "gießt",
+                    "sie_plural": "gießen",
+                    "Sie": "gießen"
+                }
+            },
+            "braten": {
+                "present": {
+                    "ich": "brate",
+                    "du": "brätst",
+                    "er": "brät",
+                    "es": "brät",
+                    "sie_singular": "brät",
+                    "xier": "brät",
+                    "wir": "braten",
+                    "ihr": "bratet",
+                    "sie_plural": "braten",
+                    "Sie": "braten"
+                }
+            },
+            "schälen": {
+                "present": {
+                    "ich": "schäle",
+                    "du": "schälst",
+                    "er": "schält",
+                    "es": "schält",
+                    "sie_singular": "schält",
+                    "xier": "schält",
+                    "wir": "schälen",
+                    "ihr": "schält",
+                    "sie_plural": "schälen",
+                    "Sie": "schälen"
+                }
+            },
+            "würzen": {
+                "present": {
+                    "ich": "würze",
+                    "du": "würzt",
+                    "er": "würzt",
+                    "es": "würzt",
+                    "sie_singular": "würzt",
+                    "xier": "würzt",
+                    "wir": "würzen",
+                    "ihr": "würzt",
+                    "sie_plural": "würzen",
+                    "Sie": "würzen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Kennen Sie Köch*innen?",
+            "Oder Koch- und Backshows?",
+            "Ich kenne Chopped, The Great British Baking Show, Gordon Ramsay.",
+            "Koch- und Backshows sind international sehr beliebt.",
+            "Warum sind Koch- und Backshows so beliebt?",
+            "Ergänzen Sie die Sätze.",
+            "Menschen sehen gerne Koch- und Backshows, weil sie inspirierend sind, gern kochen, Hunger haben.",
+            "Es gibt so viele Koch- und Backshows, weil sie informativ sind.",
+            "Sie lesen in Gruppen den Text für Ihre Koch- oder Backshows.",
+            "Schreiben Sie Antworten zu den drei Fragen auf.",
+            "\" Die Küchenschlacht \" gibt es seit 2008 jede n Tag im ZDF.",
+            "Hobby Koch.",
+            "22 Köch*innen moderieren die Show oder sind die Juror*innen ( judges ).",
+            "Ein*e Köch*in kocht mit den Kandidat*innen für eine Woche.",
+            "Und ein*e Kandidat*in scheidet aus (is eliminated).",
+            "Am ersten Tag kochen alle Kandidat*innen ihr Lieblingsessen, am zweiten Tag eine Vorspeise, am dritten Tag eine vegetarische Speise und am vierten Tag zu einem Thema.",
+            "Die Speisen können die Kandidat*innen auswählen.",
+            "Am fünften Tag sind zwei Kandidat*innen im Finale und kochen zwei Rezepte des*der Moderator*in.",
+            "\" Das große Backen \" ist eine Backshows.",
+            "Es gibt sie seit 2013 auf SAT.1.",
+            "Enie van de Meiklokjes moderiert die Show und es gibt zwei Juror*innen ( judges ).",
+            "Zehn Hobby Bäcker*in nen [Hobby Bäcker] machen mit.",
+            "Sie backen jede Woche zu verschiedenen Themen.",
+            "Die Kandidat*innen backen drei Dinge in einer kurzen Zeit.",
+            "Die Juror*innen probieren und geben Punkte.",
+            "Die Person mit den meisten Punkten ist Bäcker*in der Woche.",
+            "Die Person mit den wenigsten Punkten scheidet aus der Show aus (is eliminated)..",
+            "Drei Kandidat*innen sind am Ende im Finale.",
+            "Der*die Gewinner*in schreibt ein Backbuch, bekommt 10.000 Euro und eine Trophäe in der Form eines Cupcakes.",
+            "Es gibt auch Spezialshows zu Weihnachten und Ostern.",
+            "Der Koch Tim Mälzer moderiert Kitchen Impossible.",
+            "Es gibt die Show seit 2014 auf VOX.",
+            "In dieser Kochshow gibt es jede Woche ein Duell.",
+            "Tim Mälzer kocht gegen eine*n andere*n Köch*in in verschiedenen Ländern.",
+            "Beide kochen eine Speise aus einem Land, aber sie kennen die Zutaten und das Rezept nicht.",
+            "Sie probieren die Speise in einem lokalen Restaurant und kochen es dann.",
+            "Gäst*innen, Freund*innen und Familie von dem*der lokalen Köch*in geben Punkte, wenn das Essen so schmeckt wie das Original.",
+            "Es gibt bei Kitchen Impossible eine Weihnachtsedition.",
+            "Die Kochshow bekommt 2017 und 2018 den Deutschen Fernsehpreis.",
+            "Welche Personen gibt es (z.B.",
+            "Moderator*in, Juror*in, Kandidat*in )?",
+            "Es gibt eine*n Moderator*in, sechs Kandidat*innen und jeden Tag eine*n Juror*in.",
+            "Es gibt eine Moderatorin, zwei Juror*innen und zehn Kandidat*innen.",
+            "Es gibt einen Moderator.",
+            "Er ist auch Kandidat und kocht gegen einen anderen Koch oder eine andere Köchin.",
+            "Die Juror*innen sind Familie und Freund*innen.",
+            "Was kochen oder backen die Kandidat*innen?",
+            "Am Montag kochen die Kandidat*innen ihr Lieblingsessen, am Dienstag eine Vorspeise, am Mittwoch eine vegetarische Speise, am Donnerstag zu einem Thema und am Freitag zwei Speisen.",
+            "Die Kandidat*innen backen drei Aufgaben.",
+            "Die Kandidat*innen kochen eine Speise aus einem anderen Land.",
+            "Was ist besonders an der Show?",
+            "Die Show kommt jede Woche.",
+            "Der*die Gewinner*in bekommt eine Trophäe, in der Form eines Cupcakes.",
+            "Die Kandidat*innen kennen das Rezept und die Zutaten nicht.",
+            "Sie können die Speise probieren und dann so wie das Original kochen.",
+            "Erzählen Sie den anderen über Ihre Show.",
+            "Schreiben Sie Notizen zu den beiden anderen Shows.",
+            "Nutzen Sie diese Strukturen.",
+            "Es gibt.",
+            "Das ist besonders.",
+            "Welche Show mögen Sie?",
+            "Warum mögen Sie sie?",
+            "Ich mag Kitchen Impossible, weil ich gerne international esse.",
+            "Ich mag das Große Backen, weil ich auch die Great British Baking Show mag, weil ich gerne Kuchen esse.",
+            "Ich mag die Küchenschlacht, weil es viele verschiedene Speisen gibt, weil es viele verschiedene Juror*innen gibt.",
+            "Ich mag Kitchen Impossible, weil ich andere Länder mag.",
+            "Sie bekommen ein Rezept und Utensilien.",
+            "Lesen Sie das Rezept und m arkieren Sie alle Koch- Verben.",
+            "Was machen Sie?",
+            "Wir rühren, braten und schneiden.",
+            "Unter dem Rezept haben Sie Utensilien.",
+            "Es gibt aber auch einen Tisch mit Spezialutensilien.",
+            "Sie können zwei Spezialutensilien auswählen.",
+            "Was brauchen Sie?",
+            "Können Sie die Spezialutensilien ersetzen (durch andere Spezialutensilien oder Utensilien unter Ihrem Rezept?",
+            "Was ist am wichtigsten?",
+            "Die Teams sagen jetzt, was sie gern hätten.",
+            "Jedes Team bekommt zwei Spezialutensilien.",
+            "Wir hätten gern.",
+            "Jetzt markieren Sie die Zutaten im Rezept.",
+            "Es gibt einen zweiten Tisch mit Zutaten.",
+            "Sie können fünf Zutaten auswählen.",
+            "Was können Sie ersetzen?",
+            "Machen Sie dann ein Zutaten Ranking für Ihr Rezept.",
+            "Wir brauchen X.",
+            "Aber y können wir vielleicht durch z ersetzen.",
+            "Andere Zutaten (können wir ersetzen).",
+            "Sie haben Öl, Butter, Weißwein, Salz und Pfeffer.",
+            "Sie brauchen 500g Schnitzel, 200ml Sahne, 250g Pilze, eine Zwiebel, eine Beilage (zum Beispiel Nudeln, Reis oder Kartoffeln).",
+            "Die Zwiebel und das Fleisch klein schneiden.",
+            "In einer Pfanne Öl erhitzen ( heat ), das Fleisch braten.",
+            "Das Fleisch aus der Pfanne nehmen.",
+            "Butter in die Pfanne geben und die Zwiebeln braten.",
+            "Den Wein über die Zwiebeln gießen und kochen.",
+            "Die Sahne in die Pfanne gießen und mit Salz und Pfeffer würzen.",
+            "Die Beilage kochen und das Fleisch in die Soße geben.",
+            "Sie brauchen 900g Kartoffeln, ½ Gurke, 2 Esslöffel Speck, 3 Zwiebeln, 4 Eier.",
+            "Kartoffeln kochen, dann schälen.",
+            "Gurke schälen und schneiden.",
+            "Eier kochen.",
+            "Zwiebel und Speck in Butter braten, Balsamico und Brühe dazugeben.",
+            "Mit Senf, Salz und Pfeffer würzen.",
+            "Zusammen mit Öl über die Kartoffel und Gurken gießen.",
+            "Die Eier schälen und in Viertel schneiden.",
+            "Eier auf den Kartoffelsalat legen.",
+            "Für den Teig ( dough ) die Hefe mit etwas Wasser verrühren.",
+            "Das Mehl in eine Schüssel geben, die Hefe und das Wasser, das Öl und etwas Salz dazugeben.",
+            "Den Teig kneten und 30 Minuten gehen lassen ( to let rise).",
+            "Den Speck schneiden.",
+            "Die Zwiebel schälen und schneiden.",
+            "Sahne mit Salz und Pfeffer verrühren.",
+            "Den Teig ausrollen ( to roll out ).",
+            "Erst die Sahnemischung [Sahne] und dann die Zwiebel und den Speck auf den Teig geben.",
+            "Sie haben Wasser, Olivenöl, Salz, Zucker.",
+            "Sie brauchen 40g Hefe, 925g Mehl, eine Dose Tomaten, 150g Pilze, 200g Mozzarella.",
+            "Wasser und Olivenöl in in eine Schüssel geben.",
+            "Die Hefe mit Salz und Zucker dazugeben.",
+            "Dann das Mehl dazugeben und zu einem Teig ( dough ) kneten.",
+            "Den Teig 30 Minuten gehen lassen ( to let rise ), dann kneten.",
+            "Die Tomaten auf den Teig geben.",
+            "Pilze schneiden und auf die Tomaten legen.",
+            "Dann die Mozzarella auf die Pizza legen.",
+            "Sie brauchen 2 Zwiebeln, 1 Knoblauchzehe [Knoblauch], 200g Hackfleisch, eine Dose Tomaten, 500g Spaghetti.",
+            "Zwiebeln und Knoblauch klein schneiden.",
+            "In einer Pfanne das Gemüse in Öl braten, salzen [Salz].",
+            "Das Hackfleisch dazugeben und braten.",
+            "Wein dazugießen, dann Tomaten aus der Dose und Brühe dazugeben.",
+            "Mit Salz und Pfeffer würzen.",
+            "Mindestens 30 Minuten kochen lassen.",
+            "Die Spaghetti in Salzwasser kochen.",
+            "Die Soße auf die Spaghetti geben.",
+            "Sie haben Salz, Pfeffer, Senf, Margarine.",
+            "Sie brauchen ein Brötchen, eine Zwiebel, ein Ei, 500g Hackfleisch, eine Beilage (zum Beispiel Salat, Kartoffeln oder Reis).",
+            "Das Brötchen in Wasser legen.",
+            "Die Zwiebel schälen und klein schneiden.",
+            "Das Ei, den Senf, und die Zwiebeln zum Hackfleisch geben und sehr gut kneten.",
+            "Das Brötchen zum Hackfleisch geben und kneten.",
+            "Kleine Bälle formen.",
+            "In einer Pfanne Margarine erhitzen ( to heat ) und die Frikadellen braten.",
+            "Die Beilage machen.",
+            "Die Teams wählen Zutaten aus.",
+            "Jedes Team bekommt fünf Zutaten.",
+            "Jetzt können Sie eine Zutat oder ein Utensil von einem anderen Team nehmen.",
+            "Können Sie Ihr Rezept jetzt kochen?",
+            "Wer ist erfolgreich (successful)?",
+            "Beschreiben Sie, was Sie machen.",
+            "Wir brauchen Zutaten.",
+            "Wir haben (keinen, kein, keine) X.",
+            "Wir nehmen y für z.",
+            "Wir ersetzen a durch b."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,631 @@
+{
+    "unit": "39",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 39,
+        "prerequisite": "1-38"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Burgen und Schlösser"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "werden",
+                "pos": "VERB",
+                "translation": "to become",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "leben",
+                "pos": "VERB",
+                "translation": "to live",
+                "frequency": 98,
+                "cefr": "A1"
+            },
+            {
+                "word": "sterben",
+                "pos": "VERB",
+                "translation": "to die",
+                "frequency": 475,
+                "cefr": "A2"
+            },
+            {
+                "word": "besuchen",
+                "pos": "VERB",
+                "translation": "to visit",
+                "frequency": 820,
+                "cefr": "A1"
+            },
+            {
+                "word": "schützen",
+                "pos": "VERB",
+                "translation": "to protect"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "helfen",
+                "pos": "VERB",
+                "translation": "to help",
+                "frequency": 338,
+                "cefr": "A1"
+            },
+            {
+                "word": "Bayern",
+                "pos": "NOUN",
+                "translation": "Bavaria",
+                "frequency": 624
+            },
+            {
+                "word": "das Geld",
+                "pos": "NOUN",
+                "translation": "money",
+                "frequency": 235,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Jahrhundert",
+                "pos": "NOUN",
+                "translation": "century",
+                "frequency": 492,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Museum, Museen",
+                "pos": "NOUN",
+                "translation": "museum",
+                "frequency": 1078,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Mittelalter",
+                "pos": "NOUN",
+                "translation": "Middle Ages; medieval times",
+                "frequency": 3171,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Teil",
+                "pos": "NOUN",
+                "translation": "part",
+                "frequency": 198,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vorteil",
+                "pos": "NOUN",
+                "translation": "advantage",
+                "frequency": 983,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Nachteil",
+                "pos": "NOUN",
+                "translation": "disadvantage",
+                "frequency": 2294,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Grund",
+                "pos": "NOUN",
+                "translation": "reason; ground",
+                "frequency": 249,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Märchen",
+                "pos": "NOUN",
+                "translation": "fairy tale"
+            },
+            {
+                "word": "der*die König*in",
+                "pos": "NOUN",
+                "translation": "monarch [e.g. king, queen, …]"
+            },
+            {
+                "word": "die Burg",
+                "pos": "NOUN",
+                "translation": "fortress, castle",
+                "frequency": 4235,
+                "cefr": "B1"
+            },
+            {
+                "word": "teuer",
+                "pos": "ADJ",
+                "translation": "expensive",
+                "frequency": 950,
+                "cefr": "A1"
+            },
+            {
+                "word": "berühmt",
+                "pos": "ADJ",
+                "translation": "famous"
+            },
+            {
+                "word": "fertig",
+                "pos": "ADJ",
+                "translation": "done; ready",
+                "frequency": 5585,
+                "cefr": "A1"
+            },
+            {
+                "word": "ein bisschen",
+                "pos": "PARTICLE",
+                "translation": "a little bit",
+                "frequency": 5516,
+                "cefr": "A2"
+            },
+            {
+                "word": "deshalb",
+                "pos": "ADV",
+                "translation": "therefore, hence",
+                "frequency": 229,
+                "cefr": "A2"
+            },
+            {
+                "word": "manch-",
+                "pos": "PRON",
+                "translation": "some"
+            },
+            {
+                "word": "die Arbeit",
+                "pos": "NOUN",
+                "translation": "work",
+                "frequency": 208,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Schloß",
+                "pos": "NOUN",
+                "frequency": 5942
+            },
+            {
+                "word": "besonder",
+                "pos": "ADJ",
+                "frequency": 512
+            },
+            {
+                "word": "die Festung",
+                "pos": "NOUN",
+                "frequency": 7296
+            },
+            {
+                "word": "der Ritter",
+                "pos": "NOUN",
+                "frequency": 6332
+            },
+            {
+                "word": "ab",
+                "pos": "ADP",
+                "frequency": 544,
+                "cefr": "A1"
+            },
+            {
+                "word": "mancher",
+                "pos": "DET",
+                "frequency": 433
+            },
+            {
+                "word": "umbauen",
+                "pos": "VERB",
+                "frequency": 6808
+            },
+            {
+                "word": "der Park",
+                "pos": "NOUN",
+                "frequency": 2141,
+                "cefr": "A2"
+            },
+            {
+                "word": "massiv",
+                "pos": "ADV",
+                "frequency": 1763
+            },
+            {
+                "word": "dekorieren",
+                "pos": "VERB",
+                "frequency": 16488,
+                "cefr": "B1"
+            },
+            {
+                "word": "repräsentativ",
+                "pos": "ADV",
+                "frequency": 7592
+            },
+            {
+                "word": "grenzen",
+                "pos": "VERB",
+                "frequency": 7568
+            },
+            {
+                "word": "die Mark",
+                "pos": "NOUN",
+                "frequency": 1539
+            },
+            {
+                "word": "der Schein",
+                "pos": "NOUN",
+                "frequency": 3383,
+                "cefr": "B1"
+            },
+            {
+                "word": "ihm",
+                "pos": "PRON",
+                "frequency": 91,
+                "cefr": "A1"
+            },
+            {
+                "word": "märchenhaft",
+                "pos": "ADJ",
+                "frequency": 17662,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Inspiration",
+                "pos": "NOUN",
+                "frequency": 12586,
+                "cefr": "B2"
+            },
+            {
+                "word": "bisschen",
+                "pos": "PRON",
+                "frequency": 301,
+                "cefr": "A1"
+            },
+            {
+                "word": "dort",
+                "pos": "ADV",
+                "frequency": 139,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Rekord",
+                "pos": "NOUN",
+                "frequency": 4701,
+                "cefr": "B1"
+            },
+            {
+                "word": "privat",
+                "pos": "ADV",
+                "frequency": 746,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Webseite",
+                "pos": "NOUN",
+                "frequency": 2837,
+                "cefr": "A2"
+            },
+            {
+                "word": "dies",
+                "pos": "PRON",
+                "frequency": 24,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "werden": {
+                "present": {
+                    "ich": "werde",
+                    "du": "wirst",
+                    "er": "wird",
+                    "es": "wird",
+                    "sie_singular": "wird",
+                    "xier": "wird",
+                    "wir": "werden",
+                    "ihr": "werdet",
+                    "sie_plural": "werden",
+                    "Sie": "werden"
+                }
+            },
+            "leben": {
+                "present": {
+                    "ich": "lebe",
+                    "du": "lebst",
+                    "er": "lebt",
+                    "es": "lebt",
+                    "sie_singular": "lebt",
+                    "xier": "lebt",
+                    "wir": "leben",
+                    "ihr": "lebt",
+                    "sie_plural": "leben",
+                    "Sie": "leben"
+                }
+            },
+            "sterben": {
+                "present": {
+                    "ich": "sterbe",
+                    "du": "stirbst",
+                    "er": "stirbt",
+                    "es": "stirbt",
+                    "sie_singular": "stirbt",
+                    "xier": "stirbt",
+                    "wir": "sterben",
+                    "ihr": "sterbt",
+                    "sie_plural": "sterben",
+                    "Sie": "sterben"
+                }
+            },
+            "besuchen": {
+                "present": {
+                    "ich": "besuche",
+                    "du": "besuchst",
+                    "er": "besucht",
+                    "es": "besucht",
+                    "sie_singular": "besucht",
+                    "xier": "besucht",
+                    "wir": "besuchen",
+                    "ihr": "besucht",
+                    "sie_plural": "besuchen",
+                    "Sie": "besuchen"
+                }
+            },
+            "schützen": {
+                "present": {
+                    "ich": "schütze",
+                    "du": "schützt",
+                    "er": "schützt",
+                    "es": "schützt",
+                    "sie_singular": "schützt",
+                    "xier": "schützt",
+                    "wir": "schützen",
+                    "ihr": "schützt",
+                    "sie_plural": "schützen",
+                    "Sie": "schützen"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                }
+            },
+            "helfen": {
+                "present": {
+                    "ich": "helfe",
+                    "du": "hilfst",
+                    "er": "hilft",
+                    "es": "hilft",
+                    "sie_singular": "hilft",
+                    "xier": "hilft",
+                    "wir": "helfen",
+                    "ihr": "helft",
+                    "sie_plural": "helfen",
+                    "Sie": "helfen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Welche Schlösser und Burgen kennen Sie?",
+            "Ich kenne das Schloss Versailles.",
+            "Es ist in Frankreich.",
+            "Ich kenne Buckingham Palace in England, Schloss Versailles in Frankreich, Neuschwanstein in Deutschland.",
+            "Lesen Sie den Text und beantworten Sie die Fragen.",
+            "Es gibt viele Burgen und Schlösser in Deutschland, Österreich und der Schweiz.",
+            "Auch im kleinen Liechtenstein gibt es mehrere Burgen.",
+            "In Deutschland sind es etwa 25.000 Schlösser und Burgen.",
+            "Der Rhein ist ein besonderer Ort.",
+            "Auf über 100 Kilometern gibt es 60 Burgen, Festungen und Schlösser.",
+            "Deshalb ist der Mittelrhein seit 2002 auch UNESCO Weltkulturerbe.",
+            "Auch in den Alpen gibt es viele Schlösser.",
+            "Burgen und Schlösser sind imposant und wir denken bei Burgen und Schlössern schnell an Märchen.",
+            "Was aber sind die Unterschiede?",
+            "Burgen sind älter.",
+            "Die meisten Burgen kommen aus dem Mittelalter.",
+            "Sie sind massiv gebaut, wenig dekoriert und haben eine Funktion: Burgen sollen schützen.",
+            "Hier wohnen im Mittelalter Ritter.",
+            "Ab dem 15.",
+            "Jahrhundert beginnt die Epoche der Schlösser.",
+            "Manche Könige lassen Burgen zu Schlössern umbauen und wohnen dann in den Schlössern.",
+            "Sie sind repräsentativ.",
+            "Deshalb sind sie schön dekoriert und haben große Parks und Gärten Richtig oder falsch.",
+            "Es gibt 28.000 Burgen in der Schweiz.",
+            "Das ist falsch.",
+            "Es gibt 25.000 Burgen in Deutschland.",
+            "Es gibt keine Burgen in Liechtenstein.",
+            "Es gibt mehrere Burgen in Liechtenstein.",
+            "Der Rhein ist UNESCO Weltkulturerbe.",
+            "Das ist richtig.",
+            "Burgen sind massiv gebaut und wenig dekoriert.",
+            "König*innen wohnen in Burgen.",
+            "Ritter wohnen in Burgen.",
+            "König*innen wohnen in Schlössern.",
+            "Schlösser sollen schützen.",
+            "Burgen sollen schützen.",
+            "Schlösser sind repräsentativ.",
+            "Hören Sie den Text zu Annette von Droste-Hülshoff und der Meersburg und beantworten Sie die Fragen.",
+            "Der Bodensee ist der größte See in Deutschland.",
+            "Er ist in Süddeutschland und grenzt an Österreich und die Schweiz.",
+            "Hier ist auch Meersburg, die älteste bewohnte Burg in Deutschland.",
+            "Wahrscheinlich gibt es die Meersburg seit dem 12.",
+            "Wann genau ist nicht klar.",
+            "Im Jahr 1838 kauft Joseph von Laßberg die Meersburg.",
+            "Annette von Droste Hülshoff.",
+            "Annette von Droste Hülshoff ist sehr bekannt.",
+            "S ie ist von 1992 bis 2002 auf dem deutschen Geld zu sehen, auf dem 20 Mark Schein.",
+            "Von 1841 bis 1848 lebt Annette auf der Burg und schreibt.",
+            "Annette hat eine Wohnung auf der Ihr Gedicht \"Das Alte Schloss\" ist über die Meersburg.",
+            "Sie stirbt 1848 auf der Burg.",
+            "Heute ist die Meersburg ein Museum.",
+            "Man kann 30 Zimmer sehen, auch die Zimmer von Annette von Droste Hülshoff.",
+            "Wohnen auch heute noch Menschen.",
+            "Die Meersburg ist die älteste bewohnte Burg in Deutschland.",
+            "Wo ist die Meersburg?",
+            "In Süddeutschland, am Bodensee.",
+            "Wie alt ist die Meersburg?",
+            "Sie ist über 1000 Jahre alt.",
+            "Wann lebt Annette von Droste-Hülshoff auf der Meersburg?",
+            "Sie lebt von 1841 bis 1848 auf der Meersburg.",
+            "Was macht sie auf der Meersburg?",
+            "Sie schreibt auf der Meersburg.",
+            "Was ist die Meersburg heute?",
+            "Heute ist die Meersburg ein Museum und es gibt auch eine Wohnung.",
+            "Hören Sie den ersten Teil vom Text zu König Ludwig II.",
+            "Von Bayern.",
+            "Kreuzen Sie an, was Sie hören.",
+            "König Ludwig II.",
+            "Von Bayern heißt auch der Märchenkönig, weil er märchenhafte Schlösser bauen lässt.",
+            "August 1845 wird Ludwig in Schloss Nymphenburg bei München geboren.",
+            "Sein Großvater ist Ludwig I.",
+            "Und sein Vater ist Kronprinz Maximilian.",
+            "Mit 18 Jahren wird er 1864 König von Bayern.",
+            "Ludwig II.",
+            "Mag Kultur, zum Beispiel den Komponisten Richard Wagner.",
+            "Ludwig hat psychische Probleme.",
+            "Die Ärzte der Zeit können ihm nicht helfen.",
+            "Im Jahr 1886 macht die bayerische Regierung Ludwig s Onkel Luitpold zum Prinzregent.",
+            "Wenig später stirbt Ludwig im Starnberger See.",
+            "Es ist nicht komplett klar, wie und es gibt viele Geschichten.",
+            "Hören Sie den zweiten Teil vom Text zu König Ludwig s Schlössern und ergänzen Sie die Zahlen.",
+            "Berühmt ist Ludwig II.",
+            "Von Bayern vor allem, weil er drei märchenhafte Schlösser bauen lässt.",
+            "Es sind Neuschwanstein, Schloss Linderhof und Herrenchiemsee.",
+            "Inspiration bekommt Ludwig in Frankreich.",
+            "Schloss Herrenchiemsee sieht ein bisschen aus wie Versailles.",
+            "Aber es ist nicht fertig.",
+            "Neuschwanstein lässt er zwischen 1869 und 1884 bauen.",
+            "Ist für 172 Tage auf Schloss Neuschwanstein.",
+            "Heute ist Neuschwanstein ein Tourismusmagnet.",
+            "Im Sommer besuchen mehr als 6000 Tourist*innen pro Tag das Schloss, im Jahr sind es 1,4 Millionen Personen.",
+            "Schloss Linderhof ist das kleinste Schloss von Ludwig II.",
+            "Es ist fertig und Ludwig wohnt dort auch eine längere Zeit.",
+            "Einen Rekord gibt es 1990, in diesem Jahr besuchen 982.649 Personen Schloss Linderhof.",
+            "Ludwig lässt Schlösser bauen.",
+            "Er ist 172 Tage auf Schloss Neuschwanstein.",
+            "Neuschwanstein besuchen im Sommer mehr als 6000 Personen pro Tag, 1,4 Millionen im Jahr.",
+            "Der Rekord für Schloss Linderhof im Jahr 1990 ist 982.649 Personen.",
+            "Viele Burgen und Schlösser sind heute Museen.",
+            "Sie können sie besuchen.",
+            "Andere Burgen und Schlösser sind Hotels oder sie sind privat.",
+            "Nicht nur König*innen wohnen in Schlössern, Menschen mit viel Geld können sie auch kaufen.",
+            "Möchten Sie in einem Schloss wohnen?",
+            "Was sind Vor- und Nachteile?",
+            "Ich kann wie ein*e König*in leben.",
+            "Das ist ein Vorteil.",
+            "Schlösser sind sehr teuer.",
+            "Das ist ein Nachteil.",
+            "Schlösser sind schön.",
+            "Ich kann viele Gäste haben.",
+            "Es gibt viel Platz.",
+            "Schlösser sind in den Bergen, nicht in der Stadt.",
+            "Das ist ein Nachteil (für die Arbeit) oder ein Vorteil (ich mag die Stadt nicht).",
+            "In Deutschland kann man auch Burgen oder Schlösser kaufen.",
+            "Welche Burg oder welches Schloss möchten Sie (nicht) kaufen?",
+            "Ich mag dieses Schloss, diese Burg.",
+            "Aber sie ist auch teuer.",
+            "Das stimmt.",
+            "Vielleicht diese Burg.",
+            "Sie ist nicht so teuer.",
+            "Aber sie ist nicht fertig.",
+            "Dieses Schloss ist schön, nicht so teuer und fertig.",
+            "Gut, nehmen wir dieses Schloss.",
+            "Präsentieren Sie Ihre Lieblingsburg oder Ihr Lieblingsschloss im Kurs.",
+            "Wir möchten dies Schloss kaufen.",
+            "Es ist sehr schön.",
+            "Es hat zehn Zimmer.",
+            "Es ist nicht so teuer, es kostet X.",
+            "Und es ist fertig.",
+            "Wir haben nicht so viel Arbeit."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

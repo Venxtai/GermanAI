@@ -1,0 +1,587 @@
+{
+    "unit": "36",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 36,
+        "prerequisite": "1-35"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Rezepte verstehen und schreiben",
+            "Risiken besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "abtropfen",
+                "pos": "VERB",
+                "translation": "to drain"
+            },
+            {
+                "word": "auflösen",
+                "pos": "VERB",
+                "translation": "to dissolve"
+            },
+            {
+                "word": "ablöschen",
+                "pos": "VERB",
+                "translation": "to deglaze; quench"
+            },
+            {
+                "word": "pürieren",
+                "pos": "VERB",
+                "translation": "to mash"
+            },
+            {
+                "word": "sinken",
+                "pos": "VERB",
+                "translation": "to sink; decrease",
+                "frequency": 902,
+                "cefr": "B1"
+            },
+            {
+                "word": "stehen",
+                "pos": "VERB",
+                "translation": "to stand; be standing (things that are located upright, e.g. on a foot)",
+                "frequency": 85,
+                "cefr": "A1"
+            },
+            {
+                "word": "tropfen",
+                "pos": "VERB",
+                "translation": "to seep; drip",
+                "frequency": 4231,
+                "cefr": "B1"
+            },
+            {
+                "word": "warnen",
+                "pos": "VERB",
+                "translation": "to warn (of)",
+                "frequency": 1337,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Topf",
+                "pos": "NOUN",
+                "translation": "pot, (sauce)pan",
+                "frequency": 4136,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Spritze",
+                "pos": "NOUN",
+                "translation": "syringe",
+                "frequency": 14236,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Sieb",
+                "pos": "NOUN",
+                "translation": "sieve; strainer; colander",
+                "frequency": 32291,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Röhrchen, -",
+                "pos": "ADJ",
+                "translation": "small tube"
+            },
+            {
+                "word": "der Stickstoff",
+                "pos": "NOUN",
+                "translation": "nitrogen",
+                "frequency": 4874,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Saft",
+                "pos": "NOUN",
+                "translation": "juice",
+                "frequency": 11404,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Mineralwasser",
+                "pos": "NOUN",
+                "translation": "sparkling water",
+                "frequency": 16283,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Haut",
+                "pos": "NOUN",
+                "translation": "skin",
+                "frequency": 1149,
+                "cefr": "B1"
+            },
+            {
+                "word": "gleich",
+                "pos": "ADJ",
+                "translation": "equal; soon",
+                "frequency": 141,
+                "cefr": "A1"
+            },
+            {
+                "word": "lang",
+                "pos": "ADJ",
+                "translation": "long",
+                "frequency": 97,
+                "cefr": "A1"
+            },
+            {
+                "word": "flüssig",
+                "pos": "ADJ",
+                "translation": "liquid"
+            },
+            {
+                "word": "gasförmig",
+                "pos": "ADJ",
+                "translation": "gaseous"
+            },
+            {
+                "word": "fest",
+                "pos": "ADJ",
+                "translation": "firm, solid",
+                "frequency": 567,
+                "cefr": "B1"
+            },
+            {
+                "word": "normalerweise",
+                "pos": "ADV",
+                "translation": "usually, typically",
+                "frequency": 2062,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "biochemisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Prozeß",
+                "pos": "NOUN",
+                "frequency": 5955
+            },
+            {
+                "word": "die Textur",
+                "pos": "NOUN",
+                "frequency": 46294
+            },
+            {
+                "word": "manipulieren",
+                "pos": "VERB",
+                "frequency": 11336
+            },
+            {
+                "word": "die Zentrifuge",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kaviar",
+                "pos": "NOUN",
+                "frequency": 29033
+            },
+            {
+                "word": "das Melonenkaviar",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Drittel",
+                "pos": "NOUN",
+                "frequency": 1797,
+                "cefr": "B1"
+            },
+            {
+                "word": "mixen",
+                "pos": "VERB",
+                "frequency": 40271
+            },
+            {
+                "word": "die Mixtur",
+                "pos": "NOUN",
+                "frequency": 26582
+            },
+            {
+                "word": "das Raum",
+                "pos": "NOUN",
+                "frequency": 403,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Melonensaft",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Lösung",
+                "pos": "NOUN",
+                "frequency": 317,
+                "cefr": "A1"
+            },
+            {
+                "word": "ml",
+                "pos": "NOUN",
+                "frequency": 18546
+            },
+            {
+                "word": "die Rezepte-Webseite",
+                "pos": "NOUN"
+            },
+            {
+                "word": "starterset",
+                "pos": "ADV"
+            },
+            {
+                "word": "das Sodbrennen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Geliermittel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Feuchthaltemittel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Sphärenbildung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Emulgator",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Pipette",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Silikon",
+                "pos": "NOUN",
+                "frequency": 43011
+            },
+            {
+                "word": "das Röhrchen",
+                "pos": "NOUN",
+                "frequency": 41342
+            },
+            {
+                "word": "das Risiko",
+                "pos": "NOUN",
+                "frequency": 977,
+                "cefr": "B1"
+            },
+            {
+                "word": "riskant",
+                "pos": "ADV",
+                "frequency": 10257,
+                "cefr": "B2"
+            },
+            {
+                "word": "riskieren",
+                "pos": "VERB",
+                "frequency": 4811
+            },
+            {
+                "word": "automatisch",
+                "pos": "ADV",
+                "frequency": 1916,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Sorbet",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Hobby-",
+                "pos": "NOUN",
+                "frequency": 36225
+            },
+            {
+                "word": "faszinierend",
+                "pos": "ADV",
+                "frequency": 8078
+            },
+            {
+                "word": "experimentieren",
+                "pos": "VERB",
+                "frequency": 11788
+            },
+            {
+                "word": "doch",
+                "pos": "CCONJ",
+                "frequency": 73,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Methode",
+                "pos": "NOUN",
+                "frequency": 796,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Chemiker*innen",
+                "pos": "NOUN",
+                "frequency": 3458
+            },
+            {
+                "word": "der Beginn",
+                "pos": "NOUN",
+                "frequency": 845,
+                "cefr": "B1"
+            },
+            {
+                "word": "C-kalter",
+                "pos": "ADJ"
+            },
+            {
+                "word": "C-heißes",
+                "pos": "ADJ"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "abtropfen": {
+                "present": {
+                    "ich": "tropfe ab",
+                    "du": "tropfst ab",
+                    "er": "tropft ab",
+                    "es": "tropft ab",
+                    "sie_singular": "tropft ab",
+                    "xier": "tropft ab",
+                    "wir": "tropfen ab",
+                    "ihr": "tropft ab",
+                    "sie_plural": "tropfen ab",
+                    "Sie": "tropfen ab"
+                }
+            },
+            "auflösen": {
+                "present": {
+                    "ich": "löse auf",
+                    "du": "löst auf",
+                    "er": "löst auf",
+                    "es": "löst auf",
+                    "sie_singular": "löst auf",
+                    "xier": "löst auf",
+                    "wir": "lösen auf",
+                    "ihr": "löst auf",
+                    "sie_plural": "lösen auf",
+                    "Sie": "lösen auf"
+                }
+            },
+            "ablöschen": {
+                "present": {
+                    "ich": "lösche ab",
+                    "du": "löschst ab",
+                    "er": "löscht ab",
+                    "es": "löscht ab",
+                    "sie_singular": "löscht ab",
+                    "xier": "löscht ab",
+                    "wir": "löschen ab",
+                    "ihr": "löscht ab",
+                    "sie_plural": "löschen ab",
+                    "Sie": "löschen ab"
+                }
+            },
+            "pürieren": {
+                "present": {
+                    "ich": "püriere",
+                    "du": "pürierst",
+                    "er": "püriert",
+                    "es": "püriert",
+                    "sie_singular": "püriert",
+                    "xier": "püriert",
+                    "wir": "pürieren",
+                    "ihr": "püriert",
+                    "sie_plural": "pürieren",
+                    "Sie": "pürieren"
+                }
+            },
+            "sinken": {
+                "present": {
+                    "ich": "sinke",
+                    "du": "sinkst",
+                    "er": "sinkt",
+                    "es": "sinkt",
+                    "sie_singular": "sinkt",
+                    "xier": "sinkt",
+                    "wir": "sinken",
+                    "ihr": "sinkt",
+                    "sie_plural": "sinken",
+                    "Sie": "sinken"
+                }
+            },
+            "stehen": {
+                "present": {
+                    "ich": "stehe",
+                    "du": "stehst",
+                    "er": "steht",
+                    "es": "steht",
+                    "sie_singular": "steht",
+                    "xier": "steht",
+                    "wir": "stehen",
+                    "ihr": "steht",
+                    "sie_plural": "stehen",
+                    "Sie": "stehen"
+                }
+            },
+            "tropfen": {
+                "present": {
+                    "ich": "tropfe",
+                    "du": "tropfst",
+                    "er": "tropft",
+                    "es": "tropft",
+                    "sie_singular": "tropft",
+                    "xier": "tropft",
+                    "wir": "tropfen",
+                    "ihr": "tropft",
+                    "sie_plural": "tropfen",
+                    "Sie": "tropfen"
+                }
+            },
+            "warnen": {
+                "present": {
+                    "ich": "warne",
+                    "du": "warnst",
+                    "er": "warnt",
+                    "es": "warnt",
+                    "sie_singular": "warnt",
+                    "xier": "warnt",
+                    "wir": "warnen",
+                    "ihr": "warnt",
+                    "sie_plural": "warnen",
+                    "Sie": "warnen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie haben für heute den Text \"Molekularküche \" gelesen.",
+            "Ordnen Sie zu.",
+            "Es schmeckt gut.",
+            "Vieles braucht Zeit.",
+            "Kochen ist traditionell, glaube ich.",
+            "Was denkst du?",
+            "Ja, das stimmt.",
+            "Lesen Sie das Rezept für Melonenkaviar.",
+            "Die Melone pürieren und den Saft abtropfen lassen.",
+            "Von dem Saft 250 g nehmen und ein Drittel mit Algin mixen.",
+            "Die Mixtur zu dem Rest geben und alles durch ein Sieb geben.",
+            "Dann alles für 30 Minuten bei Raumtemperatur stehen lassen.",
+            "Das Calcit im Wasser auflösen und den Melonensaft mit einer Spritze in die Lösung tropfen.",
+            "Es dann für 1 Minute kochen.",
+            "Jetzt mit Mineralwasser ablöschen.",
+            "Zutaten für 1 Portion: 500 g Melone",
+            "Erzählen Sie von dem Rezept.",
+            "Benutzen Sie \"man\".",
+            "Man püriert die Melone und lässt den Saft abtropfen.",
+            "Von dem Saft nimmt man 250 g und mixt ein Drittel mit Algin.",
+            "Die Mixtur gibt man zu dem Rest und gibt alles durch ein Sieb.",
+            "Dann lässt man alles für 30 Minuten bei Raumtemperatur stehen.",
+            "Das Calcit löst man im Wasser auf und den Melonensaft tropft man mit einer Spritze in das Wasser.",
+            "Man kocht es dann für 1 Minute.",
+            "Jetzt löscht man es mit Mineralwasser ab.",
+            "Finden Sie auf einer Rezepte-Webseite wie z.",
+            "Www.chefkoch.de andere Rezepte aus der Molekularküche.",
+            "Recherchieren Sie und ordnen Sie zu",
+            "Kennt man ein Wort, kennt man automatisch auch Wörter aus der Wortfamilie.",
+            "Lesen Sie den Text.",
+            "Sie kennen das Wort \"Risiko\".",
+            "Markieren Sie die Wörter aus der Wortfamilie.",
+            "Eis und Sorbets in wenigen Sekunden?",
+            "Diese Idee finden auch viele Hobby- Köch *innen faszinierend und experimentieren zu Hause mit flüssigem Stickstoff.",
+            "Doch wie riskant ist diese Methode?",
+            "Chemiker*innen warnen!",
+            "Viele Hobby- Köch *innen kennen die Risiken nicht.",
+            "Der Stickstoff ist zu Beginn flüssig und dann gasförmig.",
+            "Wollen Sie das riskieren?",
+            "Richtig oder falsch?",
+            "Das Risiko in der Molekularküche kommt von Fett.",
+            "Stickstoff macht in weniger als einer Sekunde Eis.",
+            "Chemiker riskieren ihre Haut.",
+            "Die Köche kennen das Risiko von Stickstoff.",
+            "Der Stickstoff ist erst gasförmig und dann flüssig.",
+            "Molekularköche nehmen Stickstoff für Sorbet s."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

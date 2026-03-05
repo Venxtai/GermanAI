@@ -1,0 +1,814 @@
+{
+    "unit": "92",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 92,
+        "prerequisite": "1-91"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Musikstadt Wien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "vergehen",
+                "pos": "VERB",
+                "translation": "to elapse, die away; pass by [time]",
+                "frequency": 310
+            },
+            {
+                "word": "auftreten",
+                "pos": "VERB",
+                "translation": "to perform",
+                "frequency": 654,
+                "cefr": "B1"
+            },
+            {
+                "word": "veröffentlichen",
+                "pos": "VERB",
+                "translation": "to publish"
+            },
+            {
+                "word": "einführen",
+                "pos": "VERB",
+                "translation": "to introduce, implement"
+            },
+            {
+                "word": "komponieren",
+                "pos": "VERB",
+                "translation": "to compose",
+                "frequency": 7669,
+                "cefr": "B2"
+            },
+            {
+                "word": "anfangen",
+                "pos": "VERB",
+                "translation": "to begin, start",
+                "frequency": 497,
+                "cefr": "A1"
+            },
+            {
+                "word": "auswandern",
+                "pos": "VERB",
+                "translation": "to emigrate",
+                "frequency": 16723,
+                "cefr": "B2"
+            },
+            {
+                "word": "einladen",
+                "pos": "VERB",
+                "translation": "to invite",
+                "frequency": 1279,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Persönlichkeit",
+                "pos": "NOUN",
+                "translation": "personality, character; figure"
+            },
+            {
+                "word": "das Geschlecht",
+                "pos": "NOUN",
+                "translation": "gender; sex",
+                "frequency": 2443,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Komponist*in",
+                "pos": "NOUN",
+                "translation": "composer",
+                "frequency": 4778,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Teilnahme",
+                "pos": "NOUN",
+                "translation": "participation",
+                "frequency": 3890,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Gewinn",
+                "pos": "NOUN",
+                "translation": "winnings; prize; yield; profit",
+                "frequency": 985,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Zeichen",
+                "pos": "NOUN",
+                "translation": "sign; symbol",
+                "frequency": 1155,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wirkung",
+                "pos": "NOUN",
+                "translation": "effect, impact, consequence",
+                "frequency": 849,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Tod",
+                "pos": "NOUN",
+                "translation": "death",
+                "frequency": 540,
+                "cefr": "B1"
+            },
+            {
+                "word": "gestern",
+                "pos": "ADV",
+                "translation": "yesterday",
+                "frequency": 821,
+                "cefr": "A1"
+            },
+            {
+                "word": "bald",
+                "pos": "ADV",
+                "translation": "soon",
+                "frequency": 503,
+                "cefr": "A1"
+            },
+            {
+                "word": "erfolgreich",
+                "pos": "ADJ",
+                "translation": "successful",
+                "frequency": 735,
+                "cefr": "B1"
+            },
+            {
+                "word": "gleichgeschlechtlich",
+                "pos": "ADJ",
+                "translation": "same-sex; same-gender",
+                "frequency": 17418,
+                "cefr": "B2"
+            },
+            {
+                "word": "fröhlich",
+                "pos": "ADJ",
+                "translation": "cheerful; happy"
+            },
+            {
+                "word": "harmonisch",
+                "pos": "ADJ",
+                "translation": "harmonious",
+                "frequency": 3318
+            },
+            {
+                "word": "während",
+                "pos": "CONJ",
+                "translation": "while, during"
+            },
+            {
+                "word": "der*die Gewinner*in",
+                "pos": "NOUN",
+                "translation": "winner",
+                "frequency": 6322
+            },
+            {
+                "word": "der Himmel",
+                "pos": "NOUN",
+                "translation": "heaven",
+                "frequency": 889,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Sonnenuntergang",
+                "pos": "NOUN",
+                "translation": "sunset, sundown",
+                "frequency": 15705,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Dirigent*in",
+                "pos": "NOUN",
+                "translation": "conductor",
+                "frequency": 5757
+            },
+            {
+                "word": "die Bühne",
+                "pos": "NOUN",
+                "translation": "stage",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "letzt-",
+                "pos": "PREFIX",
+                "translation": "last"
+            },
+            {
+                "word": "stattfinden",
+                "pos": "VERB",
+                "translation": "to take place, happen, occur",
+                "frequency": 652,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Musikstück",
+                "pos": "NOUN",
+                "frequency": 15704,
+                "cefr": "B2"
+            },
+            {
+                "word": "kategorisieren",
+                "pos": "VERB",
+                "frequency": 48265
+            },
+            {
+                "word": "die Skale",
+                "pos": "NOUN"
+            },
+            {
+                "word": "dissonant",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Klassik",
+                "pos": "NOUN",
+                "frequency": 8311,
+                "cefr": "B2"
+            },
+            {
+                "word": "bilingual",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Klavierlehrer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "musikalisch",
+                "pos": "ADJ",
+                "frequency": 3565,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Singschule",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Musikwissenschaftlerin",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Klavierlied",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Komposition",
+                "pos": "NOUN",
+                "frequency": 6696
+            },
+            {
+                "word": "zweiter",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Privatschülerin",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Musiklehrerin",
+                "pos": "NOUN",
+                "frequency": 42232
+            },
+            {
+                "word": "der*die Dragkünstler*in",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Contest",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Events",
+                "pos": "NOUN",
+                "frequency": 9884
+            },
+            {
+                "word": "konservativ",
+                "pos": "ADJ",
+                "frequency": 2605,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Dragkünstlerin",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Ikone",
+                "pos": "NOUN",
+                "frequency": 12505
+            },
+            {
+                "word": "das Top",
+                "pos": "NOUN",
+                "frequency": 5687
+            },
+            {
+                "word": "die LSBTIQ*-Community",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Ampelpaar",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Mix",
+                "pos": "NOUN",
+                "frequency": 9626
+            },
+            {
+                "word": "der Symphoniker",
+                "pos": "NOUN",
+                "frequency": 17453,
+                "cefr": "B2"
+            },
+            {
+                "word": "zusammenarbeiten",
+                "pos": "VERB",
+                "frequency": 2747
+            },
+            {
+                "word": "der Falco-Klassiker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "coveren",
+                "pos": "VERB"
+            },
+            {
+                "word": "feminin",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Diva",
+                "pos": "NOUN",
+                "frequency": 17914,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Elektropop-Künstler",
+                "pos": "NOUN"
+            },
+            {
+                "word": "elektronisch",
+                "pos": "ADJ",
+                "frequency": 1784,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Facette",
+                "pos": "NOUN",
+                "frequency": 10562
+            },
+            {
+                "word": "der Songtext",
+                "pos": "NOUN",
+                "frequency": 47095
+            },
+            {
+                "word": "das Hochdeutsch",
+                "pos": "NOUN",
+                "frequency": 18597,
+                "cefr": "B2"
+            },
+            {
+                "word": "die alte",
+                "pos": "NOUN",
+                "frequency": 2652
+            },
+            {
+                "word": "das Hochdeutschen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "jodeln",
+                "pos": "VERB"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vergehen": {
+                "present": {
+                    "ich": "vergehe",
+                    "du": "vergehst",
+                    "er": "vergeht",
+                    "es": "vergeht",
+                    "sie_singular": "vergeht",
+                    "xier": "vergeht",
+                    "wir": "vergehen",
+                    "ihr": "vergeht",
+                    "sie_plural": "vergehen",
+                    "Sie": "vergehen"
+                },
+                "Perfekt": {
+                    "ich": "habe vergangen",
+                    "du": "hast vergangen",
+                    "er": "hat vergangen",
+                    "es": "hat vergangen",
+                    "sie_singular": "hat vergangen",
+                    "xier": "hat vergangen",
+                    "wir": "haben vergangen",
+                    "ihr": "habt vergangen",
+                    "sie_plural": "haben vergangen",
+                    "Sie": "haben vergangen"
+                }
+            },
+            "auftreten": {
+                "present": {
+                    "ich": "trete auf",
+                    "du": "trittst auf",
+                    "er": "tritt auf",
+                    "es": "tritt auf",
+                    "sie_singular": "tritt auf",
+                    "xier": "tritt auf",
+                    "wir": "treten auf",
+                    "ihr": "tretet auf",
+                    "sie_plural": "treten auf",
+                    "Sie": "treten auf"
+                },
+                "Perfekt": {
+                    "ich": "bin aufgetreten",
+                    "du": "bist aufgetreten",
+                    "er": "ist aufgetreten",
+                    "es": "ist aufgetreten",
+                    "sie_singular": "ist aufgetreten",
+                    "xier": "ist aufgetreten",
+                    "wir": "sind aufgetreten",
+                    "ihr": "seid aufgetreten",
+                    "sie_plural": "sind aufgetreten",
+                    "Sie": "sind aufgetreten"
+                }
+            },
+            "veröffentlichen": {
+                "present": {
+                    "ich": "veröffentliche",
+                    "du": "veröffentlichst",
+                    "er": "veröffentlicht",
+                    "es": "veröffentlicht",
+                    "sie_singular": "veröffentlicht",
+                    "xier": "veröffentlicht",
+                    "wir": "veröffentlichen",
+                    "ihr": "veröffentlicht",
+                    "sie_plural": "veröffentlichen",
+                    "Sie": "veröffentlichen"
+                },
+                "Perfekt": {
+                    "ich": "habe veröffentlicht",
+                    "du": "hast veröffentlicht",
+                    "er": "hat veröffentlicht",
+                    "es": "hat veröffentlicht",
+                    "sie_singular": "hat veröffentlicht",
+                    "xier": "hat veröffentlicht",
+                    "wir": "haben veröffentlicht",
+                    "ihr": "habt veröffentlicht",
+                    "sie_plural": "haben veröffentlicht",
+                    "Sie": "haben veröffentlicht"
+                }
+            },
+            "einführen": {
+                "present": {
+                    "ich": "führe ein",
+                    "du": "führst ein",
+                    "er": "führt ein",
+                    "es": "führt ein",
+                    "sie_singular": "führt ein",
+                    "xier": "führt ein",
+                    "wir": "führen ein",
+                    "ihr": "führt ein",
+                    "sie_plural": "führen ein",
+                    "Sie": "führen ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingeführt",
+                    "du": "hast eingeführt",
+                    "er": "hat eingeführt",
+                    "es": "hat eingeführt",
+                    "sie_singular": "hat eingeführt",
+                    "xier": "hat eingeführt",
+                    "wir": "haben eingeführt",
+                    "ihr": "habt eingeführt",
+                    "sie_plural": "haben eingeführt",
+                    "Sie": "haben eingeführt"
+                }
+            },
+            "komponieren": {
+                "present": {
+                    "ich": "komponiere",
+                    "du": "komponierst",
+                    "er": "komponiert",
+                    "es": "komponiert",
+                    "sie_singular": "komponiert",
+                    "xier": "komponiert",
+                    "wir": "komponieren",
+                    "ihr": "komponiert",
+                    "sie_plural": "komponieren",
+                    "Sie": "komponieren"
+                },
+                "Perfekt": {
+                    "ich": "habe komponiert",
+                    "du": "hast komponiert",
+                    "er": "hat komponiert",
+                    "es": "hat komponiert",
+                    "sie_singular": "hat komponiert",
+                    "xier": "hat komponiert",
+                    "wir": "haben komponiert",
+                    "ihr": "habt komponiert",
+                    "sie_plural": "haben komponiert",
+                    "Sie": "haben komponiert"
+                }
+            },
+            "anfangen": {
+                "present": {
+                    "ich": "fange an",
+                    "du": "fängst an",
+                    "er": "fängt an",
+                    "es": "fängt an",
+                    "sie_singular": "fängt an",
+                    "xier": "fängt an",
+                    "wir": "fangen an",
+                    "ihr": "fangt an",
+                    "sie_plural": "fangen an",
+                    "Sie": "fangen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angefangen",
+                    "du": "hast angefangen",
+                    "er": "hat angefangen",
+                    "es": "hat angefangen",
+                    "sie_singular": "hat angefangen",
+                    "xier": "hat angefangen",
+                    "wir": "haben angefangen",
+                    "ihr": "habt angefangen",
+                    "sie_plural": "haben angefangen",
+                    "Sie": "haben angefangen"
+                }
+            },
+            "auswandern": {
+                "present": {
+                    "ich": "wandere aus",
+                    "du": "wanderst aus",
+                    "er": "wandert aus",
+                    "es": "wandert aus",
+                    "sie_singular": "wandert aus",
+                    "xier": "wandert aus",
+                    "wir": "wandern aus",
+                    "ihr": "wandert aus",
+                    "sie_plural": "wandern aus",
+                    "Sie": "wandern aus"
+                },
+                "Perfekt": {
+                    "ich": "bin ausgewandert",
+                    "du": "bist ausgewandert",
+                    "er": "ist ausgewandert",
+                    "es": "ist ausgewandert",
+                    "sie_singular": "ist ausgewandert",
+                    "xier": "ist ausgewandert",
+                    "wir": "sind ausgewandert",
+                    "ihr": "seid ausgewandert",
+                    "sie_plural": "sind ausgewandert",
+                    "Sie": "sind ausgewandert"
+                }
+            },
+            "einladen": {
+                "present": {
+                    "ich": "lade ein",
+                    "du": "lädst ein",
+                    "er": "lädt ein",
+                    "es": "lädt ein",
+                    "sie_singular": "lädt ein",
+                    "xier": "lädt ein",
+                    "wir": "laden ein",
+                    "ihr": "ladet ein",
+                    "sie_plural": "laden ein",
+                    "Sie": "laden ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingeladen",
+                    "du": "hast eingeladen",
+                    "er": "hat eingeladen",
+                    "es": "hat eingeladen",
+                    "sie_singular": "hat eingeladen",
+                    "xier": "hat eingeladen",
+                    "wir": "haben eingeladen",
+                    "ihr": "habt eingeladen",
+                    "sie_plural": "haben eingeladen",
+                    "Sie": "haben eingeladen"
+                }
+            },
+            "stattfinden": {
+                "present": {
+                    "ich": "finde statt",
+                    "du": "findest statt",
+                    "er": "findet statt",
+                    "es": "findet statt",
+                    "sie_singular": "findet statt",
+                    "xier": "findet statt",
+                    "wir": "finden statt",
+                    "ihr": "findet statt",
+                    "sie_plural": "finden statt",
+                    "Sie": "finden statt"
+                },
+                "Perfekt": {
+                    "ich": "habe stattgefunden",
+                    "du": "hast stattgefunden",
+                    "er": "hat stattgefunden",
+                    "es": "hat stattgefunden",
+                    "sie_singular": "hat stattgefunden",
+                    "xier": "hat stattgefunden",
+                    "wir": "haben stattgefunden",
+                    "ihr": "habt stattgefunden",
+                    "sie_plural": "haben stattgefunden",
+                    "Sie": "haben stattgefunden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie hören drei Musikstücke.",
+            "Wie komplex/einfach finden Sie es, wie neu/alt etc.",
+            "Nutzen Sie eine 1 für das erste Musikstück, eine 2 für das zweite und eine 3 für das dritte.",
+            "Komplex einfach klassisch modern harmonisch dissonant",
+            "Nicht schön traurig fröhlich ruhig aktiv",
+            "Wie haben Sie die Musikstücke kategorisiert?",
+            "Welches Musikstück finden Sie am schönsten und warum?",
+            "Das erste Stück ist ruhiger/trauriger/… als das zweite Stück.",
+            "Das dritte Stück ist am ruhigsten.",
+            "Sie haben Stücke von Mahler, Haydn und Schönberg gehört.",
+            "Sehen Sie sich die Informationen über die drei Komponisten an.",
+            "Wählen Sie drei Informationen und schreiben Sie Relativsätze.",
+            "Und Frauen?",
+            "Es gab viele Komponistinnen in Wien.",
+            "Sie sind nicht so bekannt wie die Männer der Wiener Klassik.",
+            "Jede Person bekommt einen Text und Fragen über eine Komponistin.",
+            "Lesen Sie Ihren Text und beantworten Sie die Fragen.",
+            "Dann präsentieren Sie Ihre Komponistin in der Gruppe.",
+            "Marianna von Martines war eine österreichische Komponistin und Sängerin.",
+            "Ihr Geburtstag war am 4.",
+            "Sie war bilingual und hat Deutsch und Italienisch gesprochen.",
+            "Später hat sie auch Englisch und Französisch gelernt.",
+            "Als sie zehn Jahre alt war, hat sie angefangen, Klavier zu spielen.",
+            "Ihr Klavierlehrer war Joseph Haydn.",
+            "Sie durfte für die Kaiserin Maria Theresia singen.",
+            "Als sie siebzehn Jahre alt war, komponierte sie ihr erstes Musikstück.",
+            "Ihr berühmtestes Werk heißt Isacco figura del redentore.",
+            "Sie hat es 1782 geschrieben.",
+            "Ihre Musikstücke konnte man in Wien sehen und sie waren zu der Zeit erfolgreich.",
+            "Einmal in der Woche hat Marianna von Martines Menschen zu einem musikalischen Abend nach Hause eingeladen.",
+            "Mozart war auch ein Gast.",
+            "Es ist nicht klar, ob Marianna von Martines mit Mozart zusammen gesungen oder gespielt hat.",
+            "Ab 1780 hatte Marianna von Martine eine Singschule in Wien.",
+            "Alma Mahler-Werfel war eine österreichische Komponistin.",
+            "Als Alma Margaretha Maria Schindler ist sie am 31.8.1879 in Wien geboren.",
+            "Als Kind hat Alma Mahler-Werfel Klavier spielen gelernt und auch schon komponiert.",
+            "Eine Musikwissenschaftlerin hat fast fünfzig Klavierlieder von Alma Mahler-Werfel identifiziert, die sie zwischen 1898 und 1902 komponiert hat, aber nur siebzehn Lieder sind heute bekannt.",
+            "Auch ihre anderen Kompositionen hat man nicht gefunden.",
+            "Der Komponist Gustav Mahler war ihr erster Mann, nach seinem Tod hat sie den Architekten Walter Gropius (Bauhaus) geheiratet und danach den Dichter Franz Werfel.",
+            "Sie hat auch andere berühmte Persönlichkeiten gekannt, wie den Maler Gustav Klimt.",
+            "Sie hat Menschen in künstlerische Salons in ihr Haus in Wien eingeladen.",
+            "Während dem Zweiten Weltkrieg ist sie in die USA ausgewandert.",
+            "Sie ist am 11.12.1964 in New York gestorben.",
+            "Vilma von Webenau, später nur Vilma Webenau, war eine österreichische Komponistin.",
+            "Sie ist am 15.2.1875 in Konstantinopel (heute Istanbul) geboren.",
+            "Als Kind wohnte Vilma von Webenau in Wien und hat dort bei Cäcilie (von) Frank Klavier spielen gelernt.",
+            "Sie hat Konzerte gespielt und die Zeitungen haben über sie geschrieben.",
+            "Später war Vilma von Webenau die erste Privatschülerin von Arnold Schönberg.",
+            "Sie hat von ihm Komponieren gelernt.",
+            "1899 hat sie ein Konzert in London gespielt, danach hat sie ein paar Jahre in Berlin gelebt.",
+            "Zurück in Wien hat sie als Musiklehrerin gearbeitet und komponiert.",
+            "Ihre Stücke konnte man in Konzerten hören.",
+            "Viele ihrer Kompositionen sind heute noch bekannt.",
+            "Sie ist am 9.10.1953 in Wien gestorben.",
+            "Von wann bis wann hat Vilma von Webenau gelebt?",
+            "Wo ist sie geboren?",
+            "Wo ist sie gestorben?",
+            "Bei wem hat sie Klavier spielen gelernt?",
+            "Welche berühmten Personen hat sie gekannt?",
+            "Was weiß man über ihre Kompositionen?",
+            "Lesen Sie den Text über Dragkünstler*in Conchita Wurst beim Eurovision Song Contest.",
+            "Kennen Sie Persönlichkeiten der LGBTQIA+-Community oder Events, die eine ähnliche Wirkung in Ihrem Land haben/hatten?",
+            "2014 hat Österreich das erste Mal seit 1966 den Eurovision Song Contest gewonnen, mit \"Rise like a Phoenix\" von Dragkünstler*in Conchita Wurst (Tom Neuwirth).",
+            "Die Teilnahme von Conchita war kontrovers.",
+            "Konservative Länder wollten nicht, dass sie singt.",
+            "Am Ende hat Conchita gewonnen, weil sie von den Menschen in vielen Ländern die meisten Punkte bekommen hat.",
+            "Das Lied war auch in den Top 10 in vielen Ländern in Europa und Nummer 1 in Österreich.",
+            "Viele haben das als ein positives Zeichen für die LGBTQIA+-Community gesehen.",
+            "Um den Gewinn zu feiern, hat die Stadt Wien im Jahr 2015 gleichgeschlechtliche Ampelfiguren eingeführt.",
+            "Lesen Sie den Text über Conchita Wurst.",
+            "Dann schauen Sie sich das Musikvideo von \"Heast as net\" an.",
+            "2014 hat Österreich das erste Mal seit 1966 den Eurovision Song Contest gewonnen, mit \"Rise like a Phoenix\" von Dragkünstlerin Conchita Wurst (Tom Neuwirth).",
+            "Mit ihrem Slogan We are unstoppable!",
+            "Ist Conchita Wurst eine Ikone der LSBTIQ*- Community.",
+            "Ihre Teilnahme am Eurovision Song Contest war kontrovers.",
+            "Am Ende hat Conchita Wurst gewonnen.",
+            "Viele haben das als ein positives Zeichen für die LSBTIQ*-Community gesehen.",
+            "Um den Gewinn zu feiern, hat die Stadt Wien im Jahr 2015 gleichgeschlechtliche Ampelpaare eingeführt.",
+            "Conchita Wurst ist bekannt für ihren Mix von unkonventionellen Ideen und (österreichischen) Traditionen.",
+            "Ab 2019 war die feminine Diva Conchita Wurst nur noch Conchita und Tom Neuwirth hat eine zweite, separate Persönlichkeit kreiert: den maskulinen Elektropop-Künstler WURST.",
+            "Als WURST hat er elektronischer Musik veröffentlicht.",
+            "Für ein paar Jahre ist er entweder als Conchita oder als WURST aufgetreten ist.",
+            "In den letzten Jahren hat er seine Figuren wieder verbunden.",
+            "Tom Neuwirth ist jetzt eine neue Conchita Wurst, die feminine und maskulinen Facetten hat.",
+            "Lesen Sie den Songtext zuerst auf Österreichisch und dann auf Hochdeutsch.",
+            "Hörst du es nicht?",
+            "Wie die Zeit vergeht Huidiei jodleiri Huidiridi",
+            "Gestern nur Haben die Leute ganz anders geredet.",
+            "Und gestern ist heute geworden",
+            "Und heute ist bald morgen.",
+            "Die Jungen sind alt geworden",
+            "Und die Alten sind gestorben.",
+            "Hörst du nicht, wie die Zeit vergeht?",
+            "Verstehen Sie die österreichische Version?",
+            "Welche Wörter sind wie im Hochdeutschen?",
+            "Welche Wörter sind anders?",
+            "Im Lied jodelt Conchita \"Huidiei jodleiri Huidiridi\".",
+            "Können Sie jodeln?",
+            "Versuchen Sie es."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,594 @@
+{
+    "unit": "33",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 33,
+        "prerequisite": "1-32"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate sollten (ich sollte, du solltest, er sollte, wir sollten, ihr solltet, sie sollten) with an infinitive at the end to express that someone should do something.",
+            "Use warum to ask why-questions and weil to answer them.",
+            "In a weil-clause, the conjugated verb moves to the end of the clause: \"…weil seine Schwester Geburtstag hat.\"",
+            "Place a weil-clause after the main clause with a comma, or before the main clause â€â€ in which case the main clause subject and verb invert: \"Weil ich einen Kuchen backe, gehe ich einkaufen.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Ratschläge geben",
+            "sagen, was man essen oder trinken sollte",
+            "Gründe nennen mit weil"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Lebensmittel und ihre Inhaltsstoffe"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "glauben",
+                "pos": "VERB",
+                "translation": "to believe",
+                "frequency": 156,
+                "cefr": "A1"
+            },
+            {
+                "word": "nehmen",
+                "pos": "VERB",
+                "translation": "to take",
+                "frequency": 142,
+                "cefr": "A1"
+            },
+            {
+                "word": "diskutieren",
+                "pos": "VERB",
+                "translation": "to discuss",
+                "frequency": 997,
+                "cefr": "A2"
+            },
+            {
+                "word": "konzentrieren",
+                "pos": "VERB",
+                "translation": "to concentrate",
+                "frequency": 1315,
+                "cefr": "B1"
+            },
+            {
+                "word": "sollen",
+                "pos": "VERB",
+                "translation": "should; ought to",
+                "frequency": 60,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Problem",
+                "pos": "NOUN",
+                "translation": "problem",
+                "frequency": 210,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Energie",
+                "pos": "NOUN",
+                "translation": "energy",
+                "frequency": 455,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Einheit",
+                "pos": "NOUN",
+                "translation": "unit; unity",
+                "frequency": 755,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kategorie",
+                "pos": "NOUN",
+                "translation": "category",
+                "frequency": 1564,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Salz",
+                "pos": "NOUN",
+                "translation": "salt",
+                "frequency": 2608,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Fett",
+                "pos": "NOUN",
+                "translation": "fat",
+                "frequency": 3047,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Eisen",
+                "pos": "NOUN",
+                "translation": "iron",
+                "frequency": 3044,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Auge",
+                "pos": "NOUN",
+                "translation": "eye",
+                "frequency": 222,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gehirn",
+                "pos": "NOUN",
+                "translation": "brain",
+                "frequency": 1385,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Muskel",
+                "pos": "NOUN",
+                "translation": "muscle",
+                "frequency": 1769,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Knochen",
+                "pos": "NOUN",
+                "translation": "bone",
+                "frequency": 1930,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Leber",
+                "pos": "NOUN",
+                "translation": "liver",
+                "frequency": 2120,
+                "cefr": "A1"
+            },
+            {
+                "word": "wenig",
+                "pos": "ADV",
+                "translation": "few, little (less)",
+                "frequency": 102,
+                "cefr": "A1"
+            },
+            {
+                "word": "warum",
+                "pos": "ADV",
+                "translation": "why",
+                "frequency": 192,
+                "cefr": "A1"
+            },
+            {
+                "word": "weil",
+                "pos": "PREP",
+                "translation": "because",
+                "frequency": 88,
+                "cefr": "A2"
+            },
+            {
+                "word": "(un) gesund",
+                "pos": "ADJ",
+                "translation": "(un)healthy",
+                "frequency": 1275,
+                "cefr": "A2"
+            },
+            {
+                "word": "krank",
+                "pos": "ADJ",
+                "translation": "sick",
+                "frequency": 1321,
+                "cefr": "A1"
+            },
+            {
+                "word": "müde",
+                "pos": "ADJ",
+                "translation": "tired"
+            },
+            {
+                "word": "also",
+                "pos": "CONJ",
+                "translation": "so, thus",
+                "frequency": 71,
+                "cefr": "A1"
+            },
+            {
+                "word": "freiwillig",
+                "pos": "ADJ",
+                "translation": "voluntary/voluntarily",
+                "frequency": 1652,
+                "cefr": "A2"
+            },
+            {
+                "word": "verarbeitet",
+                "pos": "ADJ",
+                "translation": "processed",
+                "frequency": 46709
+            },
+            {
+                "word": "ungesund",
+                "pos": "ADJ",
+                "translation": "unhealthy",
+                "frequency": 25132
+            },
+            {
+                "word": "die Bohne",
+                "pos": "NOUN",
+                "translation": "bean",
+                "frequency": 14944,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Ballaststoff",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Gewürz",
+                "pos": "NOUN",
+                "frequency": 14224,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kalorie",
+                "pos": "NOUN",
+                "frequency": 20860
+            },
+            {
+                "word": "die Protein",
+                "pos": "NOUN",
+                "frequency": 984
+            },
+            {
+                "word": "gesünd",
+                "pos": "ADV",
+                "frequency": 1275,
+                "cefr": "A2"
+            },
+            {
+                "word": "kontrovers",
+                "pos": "ADV",
+                "frequency": 9872
+            },
+            {
+                "word": "komplex",
+                "pos": "ADJ",
+                "frequency": 958
+            },
+            {
+                "word": "pur",
+                "pos": "ADJ",
+                "frequency": 6987
+            },
+            {
+                "word": "der Kohlenhydrat",
+                "pos": "NOUN",
+                "frequency": 35238
+            },
+            {
+                "word": "der Schokoriegel",
+                "pos": "NOUN",
+                "frequency": 42755
+            },
+            {
+                "word": "die Portion",
+                "pos": "NOUN",
+                "frequency": 9425,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Studierendenfutter",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Label",
+                "pos": "NOUN",
+                "frequency": 7389
+            },
+            {
+                "word": "hundert",
+                "pos": "NUM",
+                "frequency": 1107,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kilojoule",
+                "pos": "NOUN"
+            },
+            {
+                "word": "meist",
+                "pos": "PRON",
+                "frequency": 1749,
+                "cefr": "B1"
+            },
+            {
+                "word": "zweitausendzweiundneunzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "siebenundvierzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "eintausendneunhundertundzehn",
+                "pos": "NUM"
+            },
+            {
+                "word": "vierunddreißig",
+                "pos": "NUM"
+            },
+            {
+                "word": "zweitausendundachtzehn",
+                "pos": "NUM"
+            },
+            {
+                "word": "einundfünfzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "dreiundsechzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "vierhunderundzwei",
+                "pos": "NUM"
+            },
+            {
+                "word": "diese",
+                "pos": "PRON",
+                "frequency": 24,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Abwehrkraft",
+                "pos": "NOUN",
+                "frequency": 44372
+            },
+            {
+                "word": "das Kalzium",
+                "pos": "NOUN",
+                "frequency": 41029
+            },
+            {
+                "word": "die Blutbildung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "möchteen",
+                "pos": "VERB"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "glauben": {
+                "present": {
+                    "ich": "glaube",
+                    "du": "glaubst",
+                    "er": "glaubt",
+                    "es": "glaubt",
+                    "sie_singular": "glaubt",
+                    "xier": "glaubt",
+                    "wir": "glauben",
+                    "ihr": "glaubt",
+                    "sie_plural": "glauben",
+                    "Sie": "glauben"
+                }
+            },
+            "nehmen": {
+                "present": {
+                    "ich": "nehme",
+                    "du": "nimmst",
+                    "er": "nimmt",
+                    "es": "nimmt",
+                    "sie_singular": "nimmt",
+                    "xier": "nimmt",
+                    "wir": "nehmen",
+                    "ihr": "nehmt",
+                    "sie_plural": "nehmen",
+                    "Sie": "nehmen"
+                }
+            },
+            "diskutieren": {
+                "present": {
+                    "ich": "diskutiere",
+                    "du": "diskutierst",
+                    "er": "diskutiert",
+                    "es": "diskutiert",
+                    "sie_singular": "diskutiert",
+                    "xier": "diskutiert",
+                    "wir": "diskutieren",
+                    "ihr": "diskutiert",
+                    "sie_plural": "diskutieren",
+                    "Sie": "diskutieren"
+                }
+            },
+            "konzentrieren": {
+                "present": {
+                    "ich": "konzentriere",
+                    "du": "konzentrierst",
+                    "er": "konzentriert",
+                    "es": "konzentriert",
+                    "sie_singular": "konzentriert",
+                    "xier": "konzentriert",
+                    "wir": "konzentrieren",
+                    "ihr": "konzentriert",
+                    "sie_plural": "konzentrieren",
+                    "Sie": "konzentrieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was ist (nicht) gesund?",
+            "Viel Fett, Zucker und Salz ist nicht gesund.",
+            "Viele Vitamine und Ballaststoffe sind gesund.",
+            "Aber wir brauchen auch Fett und es gibt gute Fette.",
+            "Lesen Sie die drei Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Auf vielen Produkten in Deutschland, Österreich und der Schweiz (und in anderen Ländern wie Frankreich, Belgien, Luxemburg oder den Niederlanden ) gibt es den Nutri-Score.",
+            "Er ist auf verarbeiteten Lebensmitteln wie Pizza, Kekse, Käse und Joghurt, aber nicht auf Obst, Gemüse oder Gewürzen.",
+            "Äpfel (Obst), Kartoffeln (Gemüse) und Oregano ( Gewürz ) haben also keinen Nutri-Score.",
+            "Der Nutri-Score ist freiwillig.",
+            "Hersteller wie Danone oder Nestlé können den Nutri-Score für ihre Produkte nehmen.",
+            "Mit dem Nutri-Score kann man Produkte vergleichen.",
+            "Er hat fünf Buchstaben und die Farben grün (A), hellgrün (B), gelb (C), orange (D) und rot (E).",
+            "Produkte mit vielen Kalorien, viel Zucker, viel Salz und schlechtem Fett sind oft rot und haben ein E.",
+            "Sie sind ungesund.",
+            "Produkte mit guten Fetten/Ölen, viel Protein und Ballaststoffe n und Obst, Gemüse und Nüssen sind oft grün und haben ein A.",
+            "Produkte in einer Kategorie kann man vergleichen.",
+            "Wenn Müsliriegel 1 ein C hat und Müsliriegel 2 ein D, dann ist Müsliriegel 1 gesünder als Müsliriegel 2.",
+            "Der Nutri-Score ist kontrovers.",
+            "Für verarbeitete und komplexe Lebensmittel ist er gut, weil man schnell sieht welche Lebensmittel gesund und ungesund sind.",
+            "Aber gesunde Lebensmittel wie pures Olivenöl hat nur ein C.",
+            "Weil es ein Fett ist.",
+            "Fette haben die Buchstaben C-E.",
+            "Olivenöl ist hier mit C am besten, Butter bekommt ein E.",
+            "So kann man auch Fette vergleichen.",
+            "In welchen Ländern gibt es den Nutri-Score?",
+            "Es gibt den Nutri-Score Deutschland, Österreich, der Schweiz, F rankreich, Belgien, Luxemburg und den Niederlanden.",
+            "Käse und Kuchen haben einen Nutri-Score.",
+            "Der Nutri-Score ist für verarbeitete Lebensmittel.",
+            "Welche Farben und Buchstaben haben gesunde und ungesunde Lebensmittel?",
+            "Gesunde Lebensmittel sind grün und A.",
+            "Ungesunde Lebensmittel sind rot und E.",
+            "Was hat mehr Fett, Kohlenhydrate, Zucker, Eiweiß [ Protein ] und Salz?",
+            "Ein Schokoriegel, ein Müsliriegel, eine Portion Studierendenfutter, eine Banane.",
+            "Ich denke der Schokoriegel hat mehr Fett als ein Müsliriegel und eine Portion Studierendenfutter.",
+            "Der Müsliregel hat mehr Kohlenhydrate als eine Portion Studierendenfutter.",
+            "Die Banane hat mehr Zucker als der Müsliriegel und die Portion Studierendenfutter.",
+            "Eine Portion Studierendenfutter hat mehr Salz als die Banane und der Schokoriegel.",
+            "Was ist was?",
+            "Ordnen Sie die vier Snacks den vier Labels zu.",
+            "Fragen Sie andere Personen zu den Labels.",
+            "Wie viel Gramm Fett hat der Müsliriegel?",
+            "Der Müsliriegel hat Fett.",
+            "Das sind Gramm pro hundert Gramm.",
+            "Was hat am meisten Zucker, Salz, Fett?",
+            "Hat der Müsliriegel oder die Banane mehr Zucker, Salz, Fett?",
+            "Studierendenfutter hat die meisten Kilojoule.",
+            "Der Schokoriegel hat mehr Fett als der Müsliriegel und die Banane, aber das Studierendenfutter hat am meisten Fett.",
+            "Das Studierendenfutter hat aber gutes Fett und weniger gesättigte Fettsäuren als der Müsliriegel und der Schokoriegel.",
+            "Der Müsliriegel hat am meisten Kohlenhydrate aber der Schokoriegel hat am meisten Zucker.",
+            "Das Studierendenfutter hat am meisten Eiweiß [Protein].",
+            "Der Schokoriegel hat am meisten Salz.",
+            "Der Nutri-Score zeigt, welches Essen und welche Getränke gesund und ungesund sind.",
+            "Welche dieser Snacks sind grün, gelb oder rot und warum?",
+            "Welche anderen Snacks kennen Sie?",
+            "Sind diese grün, gelb oder rot?",
+            "Ich glaube ein Schokoriegel ist rot, weil er viel Zucker hat.",
+            "Beschreiben Sie die Grafik.",
+            "Paprika und Brokkoli haben viel Vitamin C.",
+            "Das ist gut für die Abwehrkräfte.",
+            "Leber und Bohnen haben Eisen.",
+            "Das ist gut für die Blutbildung.",
+            "Parmesan, Käse und Erdnussbutter haben Eiweiß [Protein].",
+            "Das ist gut für die Muskeln.",
+            "Parmesan, Käse und Nüsse haben Kalzium.",
+            "Das ist gut für die Knochen.",
+            "Leber und Möhren haben Vitamin A.",
+            "Das ist gut für die Knochen, das Gehirn und die Augen.",
+            "Leber und Fisch haben Vitamin B12.",
+            "Das ist gut für die Blutbildung und das Gehirn.",
+            "Paprikas und Brokkoli haben Vitamin C.",
+            "Diese Menschen haben ein Problem.",
+            "Was sollten sie essen?",
+            "Johanna ist müde (schlechte Blutbildung ).",
+            "Zara hat Probleme mit den Augen.",
+            "Ulla kann sich nicht gut konzentrieren.",
+            "Rudi möchte mehr Muskeln haben.",
+            "Ingo hat Osteoporose (schlechte Knochen).",
+            "Simon ist oft krank (schlechte Abwehrkräfte ).",
+            "Johanna sollte mehr Bohnen essen, weil sie Eisen braucht.",
+            "Rudi sollte Käse oder Erdnussbutter essen, weil er Eiweiß [Protein] braucht.",
+            "Ingo sollte Leber oder Möhren und Möhren essen, weil er Kalzium und Vitamin A braucht.",
+            "Ulla sollte Leber, Möhren oder Fisch essen, weil sie Vitamin A und B12 braucht.",
+            "Simon sollte Paprikas und Brokkoli essen, weil er Vitamin C braucht.",
+            "Und jetzt Sie.",
+            "Sprechen Sie mit einer anderen Person.",
+            "Was sollen Sie essen?",
+            "Was möchtest du?",
+            "Hast du ein Problem?",
+            "Ich bin oft krank.",
+            "Du sollte Paprikas oder Brokkoli essen, weil du Vitamin C brauchst.",
+            "Ich möchte besser denken.",
+            "Dann solltest du Möhren, Möhren oder Fisch essen, weil du Vitamin A und B12 brauchst.",
+            "Ich habe ein Problem mit den Augen.",
+            "Dann solltest du Leber und Möhren essen, weil du Vitamin A brauchst."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

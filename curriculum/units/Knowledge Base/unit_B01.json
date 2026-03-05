@@ -1,0 +1,1576 @@
+{
+    "unit": "B1",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 1,
+        "prerequisite": "core 1-104"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Geschichten aus der Kindheit erzählen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "sehen",
+                "pos": "VERB",
+                "translation": "to see",
+                "frequency": 79,
+                "cefr": "A1"
+            },
+            {
+                "word": "lesen",
+                "pos": "VERB",
+                "translation": "to read",
+                "frequency": 305,
+                "cefr": "A1"
+            },
+            {
+                "word": "sprechen",
+                "pos": "VERB",
+                "translation": "to speak",
+                "frequency": 161,
+                "cefr": "A1"
+            },
+            {
+                "word": "schreiben",
+                "pos": "VERB",
+                "translation": "to write",
+                "frequency": 184,
+                "cefr": "A1"
+            },
+            {
+                "word": "hören",
+                "pos": "VERB",
+                "translation": "to hear"
+            },
+            {
+                "word": "essen",
+                "pos": "VERB",
+                "translation": "to eat",
+                "frequency": 323,
+                "cefr": "A1"
+            },
+            {
+                "word": "spielen",
+                "pos": "VERB",
+                "translation": "to play",
+                "frequency": 205,
+                "cefr": "A1"
+            },
+            {
+                "word": "arbeiten",
+                "pos": "VERB",
+                "translation": "to work",
+                "frequency": 234,
+                "cefr": "A1"
+            },
+            {
+                "word": "erzählen",
+                "pos": "VERB",
+                "translation": "to tell; narrate; recount"
+            },
+            {
+                "word": "fahren",
+                "pos": "VERB",
+                "translation": "to drive; ride",
+                "frequency": 215,
+                "cefr": "A1"
+            },
+            {
+                "word": "helfen",
+                "pos": "VERB",
+                "translation": "to help",
+                "frequency": 338,
+                "cefr": "A1"
+            },
+            {
+                "word": "kaufen",
+                "pos": "VERB",
+                "translation": "to buy",
+                "frequency": 506,
+                "cefr": "A1"
+            },
+            {
+                "word": "passieren",
+                "pos": "VERB",
+                "translation": "to happen",
+                "frequency": 381,
+                "cefr": "A2"
+            },
+            {
+                "word": "tragen",
+                "pos": "VERB",
+                "translation": "to wear; carry",
+                "frequency": 271,
+                "cefr": "A2"
+            },
+            {
+                "word": "fühlen",
+                "pos": "VERB",
+                "translation": "to feel; sense"
+            },
+            {
+                "word": "tanzen",
+                "pos": "VERB",
+                "translation": "to dance",
+                "frequency": 1497,
+                "cefr": "A1"
+            },
+            {
+                "word": "reisen",
+                "pos": "VERB",
+                "translation": "to travel",
+                "frequency": 933,
+                "cefr": "A1"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "sammeln",
+                "pos": "VERB",
+                "translation": "to collect",
+                "frequency": 1219,
+                "cefr": "A2"
+            },
+            {
+                "word": "kochen",
+                "pos": "VERB",
+                "translation": "to cook",
+                "frequency": 1481,
+                "cefr": "A1"
+            },
+            {
+                "word": "studieren",
+                "pos": "VERB",
+                "translation": "to major in",
+                "frequency": 600,
+                "cefr": "A1"
+            },
+            {
+                "word": "gewinnen",
+                "pos": "VERB",
+                "translation": "to win",
+                "frequency": 372,
+                "cefr": "A1"
+            },
+            {
+                "word": "feiern",
+                "pos": "VERB",
+                "translation": "to celebrate",
+                "frequency": 869,
+                "cefr": "A1"
+            },
+            {
+                "word": "trinken",
+                "pos": "VERB",
+                "translation": "to drink",
+                "frequency": 634,
+                "cefr": "A1"
+            },
+            {
+                "word": "fliegen",
+                "pos": "VERB",
+                "translation": "to fly",
+                "frequency": 824,
+                "cefr": "A1"
+            },
+            {
+                "word": "groß",
+                "pos": "ADJ",
+                "translation": "big; tall"
+            },
+            {
+                "word": "alt",
+                "pos": "ADJ",
+                "translation": "old",
+                "frequency": 138,
+                "cefr": "A1"
+            },
+            {
+                "word": "klein",
+                "pos": "ADJ",
+                "translation": "small; short",
+                "frequency": 110,
+                "cefr": "A1"
+            },
+            {
+                "word": "schnell",
+                "pos": "ADJ",
+                "translation": "fast",
+                "frequency": 203,
+                "cefr": "A1"
+            },
+            {
+                "word": "jung",
+                "pos": "ADJ",
+                "translation": "young",
+                "frequency": 199,
+                "cefr": "A1"
+            },
+            {
+                "word": "stark",
+                "pos": "ADJ",
+                "translation": "strong",
+                "frequency": 178,
+                "cefr": "A2"
+            },
+            {
+                "word": "gern",
+                "pos": "ADV",
+                "translation": "gladly; like",
+                "frequency": 278,
+                "cefr": "A1"
+            },
+            {
+                "word": "interessant",
+                "pos": "ADJ",
+                "translation": "interesting",
+                "frequency": 16984,
+                "cefr": "A2"
+            },
+            {
+                "word": "toll",
+                "pos": "ADJ",
+                "translation": "awesome, great",
+                "frequency": 972,
+                "cefr": "A2"
+            },
+            {
+                "word": "erfolgreich",
+                "pos": "ADJ",
+                "translation": "successful",
+                "frequency": 735,
+                "cefr": "B1"
+            },
+            {
+                "word": "kreativ",
+                "pos": "ADJ",
+                "translation": "creative",
+                "frequency": 2664,
+                "cefr": "B1"
+            },
+            {
+                "word": "schön",
+                "pos": "ADJ",
+                "translation": "beautiful; nice"
+            },
+            {
+                "word": "lustig",
+                "pos": "ADJ",
+                "translation": "funny",
+                "frequency": 1973,
+                "cefr": "A1"
+            },
+            {
+                "word": "glücklich",
+                "pos": "ADJ",
+                "translation": "happy; lucky; fortunate"
+            },
+            {
+                "word": "traurig",
+                "pos": "ADJ",
+                "translation": "sad",
+                "frequency": 1752,
+                "cefr": "A2"
+            },
+            {
+                "word": "beliebt",
+                "pos": "ADJ",
+                "translation": "popular, liked",
+                "frequency": 1873,
+                "cefr": "A2"
+            },
+            {
+                "word": "gefährlich",
+                "pos": "ADJ",
+                "translation": "dangerous"
+            },
+            {
+                "word": "(un) gesund",
+                "pos": "ADJ",
+                "translation": "(un)healthy",
+                "frequency": 1275,
+                "cefr": "A2"
+            },
+            {
+                "word": "offen",
+                "pos": "ADJ",
+                "translation": "open; open-minded",
+                "frequency": 355,
+                "cefr": "A2"
+            },
+            {
+                "word": "freundlich",
+                "pos": "ADJ",
+                "translation": "friendly",
+                "frequency": 1566,
+                "cefr": "A2"
+            },
+            {
+                "word": "ruhig",
+                "pos": "ADJ",
+                "translation": "calm; quiet",
+                "frequency": 991,
+                "cefr": "A1"
+            },
+            {
+                "word": "langweilig",
+                "pos": "ADJ",
+                "translation": "boring",
+                "frequency": 3019,
+                "cefr": "A2"
+            },
+            {
+                "word": "romantisch",
+                "pos": "ADJ",
+                "translation": "romantic",
+                "frequency": 3894,
+                "cefr": "A2"
+            },
+            {
+                "word": "nachdenklich",
+                "pos": "ADJ",
+                "translation": "pensive; thoughtful; reflexive",
+                "frequency": 4635
+            },
+            {
+                "word": "verschieden",
+                "pos": "ADJ",
+                "translation": "different",
+                "frequency": 254,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Wahrheit",
+                "pos": "NOUN",
+                "frequency": 1156,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Lüge",
+                "pos": "NOUN",
+                "frequency": 3695,
+                "cefr": "A2"
+            },
+            {
+                "word": "wahr",
+                "pos": "ADV",
+                "frequency": 737,
+                "cefr": "A2"
+            },
+            {
+                "word": "dreimal",
+                "pos": "ADV",
+                "frequency": 2660,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Thema",
+                "pos": "NOUN",
+                "frequency": 298,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Frisbee",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "sehen": {
+                "present": {
+                    "ich": "sehe",
+                    "du": "siehst",
+                    "er": "sieht",
+                    "es": "sieht",
+                    "sie_singular": "sieht",
+                    "xier": "sieht",
+                    "wir": "sehen",
+                    "ihr": "seht",
+                    "sie_plural": "sehen",
+                    "Sie": "sehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesehen",
+                    "du": "hast gesehen",
+                    "er": "hat gesehen",
+                    "es": "hat gesehen",
+                    "sie_singular": "hat gesehen",
+                    "xier": "hat gesehen",
+                    "wir": "haben gesehen",
+                    "ihr": "habt gesehen",
+                    "sie_plural": "haben gesehen",
+                    "Sie": "haben gesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde sehen",
+                    "du": "wirst sehen",
+                    "er": "wird sehen",
+                    "es": "wird sehen",
+                    "sie_singular": "wird sehen",
+                    "xier": "wird sehen",
+                    "wir": "werden sehen",
+                    "ihr": "werdet sehen",
+                    "sie_plural": "werden sehen",
+                    "Sie": "werden sehen"
+                },
+                "imperative": {
+                    "du": "siehe",
+                    "ihr": "seht",
+                    "Sie": "sehen Sie"
+                }
+            },
+            "lesen": {
+                "present": {
+                    "ich": "lese",
+                    "du": "liest",
+                    "er": "liest",
+                    "es": "liest",
+                    "sie_singular": "liest",
+                    "xier": "liest",
+                    "wir": "lesen",
+                    "ihr": "lest",
+                    "sie_plural": "lesen",
+                    "Sie": "lesen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelesen",
+                    "du": "hast gelesen",
+                    "er": "hat gelesen",
+                    "es": "hat gelesen",
+                    "sie_singular": "hat gelesen",
+                    "xier": "hat gelesen",
+                    "wir": "haben gelesen",
+                    "ihr": "habt gelesen",
+                    "sie_plural": "haben gelesen",
+                    "Sie": "haben gelesen"
+                },
+                "Futur_I": {
+                    "ich": "werde lesen",
+                    "du": "wirst lesen",
+                    "er": "wird lesen",
+                    "es": "wird lesen",
+                    "sie_singular": "wird lesen",
+                    "xier": "wird lesen",
+                    "wir": "werden lesen",
+                    "ihr": "werdet lesen",
+                    "sie_plural": "werden lesen",
+                    "Sie": "werden lesen"
+                },
+                "imperative": {
+                    "du": "lies",
+                    "ihr": "lest",
+                    "Sie": "lesen Sie"
+                }
+            },
+            "sprechen": {
+                "present": {
+                    "ich": "spreche",
+                    "du": "sprichst",
+                    "er": "spricht",
+                    "es": "spricht",
+                    "sie_singular": "spricht",
+                    "xier": "spricht",
+                    "wir": "sprechen",
+                    "ihr": "sprecht",
+                    "sie_plural": "sprechen",
+                    "Sie": "sprechen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesprochen",
+                    "du": "hast gesprochen",
+                    "er": "hat gesprochen",
+                    "es": "hat gesprochen",
+                    "sie_singular": "hat gesprochen",
+                    "xier": "hat gesprochen",
+                    "wir": "haben gesprochen",
+                    "ihr": "habt gesprochen",
+                    "sie_plural": "haben gesprochen",
+                    "Sie": "haben gesprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde sprechen",
+                    "du": "wirst sprechen",
+                    "er": "wird sprechen",
+                    "es": "wird sprechen",
+                    "sie_singular": "wird sprechen",
+                    "xier": "wird sprechen",
+                    "wir": "werden sprechen",
+                    "ihr": "werdet sprechen",
+                    "sie_plural": "werden sprechen",
+                    "Sie": "werden sprechen"
+                },
+                "imperative": {
+                    "du": "sprich",
+                    "ihr": "sprecht",
+                    "Sie": "sprechen Sie"
+                }
+            },
+            "schreiben": {
+                "present": {
+                    "ich": "schreibe",
+                    "du": "schreibst",
+                    "er": "schreibt",
+                    "es": "schreibt",
+                    "sie_singular": "schreibt",
+                    "xier": "schreibt",
+                    "wir": "schreiben",
+                    "ihr": "schreibt",
+                    "sie_plural": "schreiben",
+                    "Sie": "schreiben"
+                },
+                "Perfekt": {
+                    "ich": "habe geschrieben",
+                    "du": "hast geschrieben",
+                    "er": "hat geschrieben",
+                    "es": "hat geschrieben",
+                    "sie_singular": "hat geschrieben",
+                    "xier": "hat geschrieben",
+                    "wir": "haben geschrieben",
+                    "ihr": "habt geschrieben",
+                    "sie_plural": "haben geschrieben",
+                    "Sie": "haben geschrieben"
+                },
+                "Futur_I": {
+                    "ich": "werde schreiben",
+                    "du": "wirst schreiben",
+                    "er": "wird schreiben",
+                    "es": "wird schreiben",
+                    "sie_singular": "wird schreiben",
+                    "xier": "wird schreiben",
+                    "wir": "werden schreiben",
+                    "ihr": "werdet schreiben",
+                    "sie_plural": "werden schreiben",
+                    "Sie": "werden schreiben"
+                },
+                "imperative": {
+                    "du": "schreibe",
+                    "ihr": "schreibt",
+                    "Sie": "schreiben Sie"
+                }
+            },
+            "hören": {
+                "present": {
+                    "ich": "höre",
+                    "du": "hörst",
+                    "er": "hört",
+                    "es": "hört",
+                    "sie_singular": "hört",
+                    "xier": "hört",
+                    "wir": "hören",
+                    "ihr": "hört",
+                    "sie_plural": "hören",
+                    "Sie": "hören"
+                },
+                "Perfekt": {
+                    "ich": "habe gehört",
+                    "du": "hast gehört",
+                    "er": "hat gehört",
+                    "es": "hat gehört",
+                    "sie_singular": "hat gehört",
+                    "xier": "hat gehört",
+                    "wir": "haben gehört",
+                    "ihr": "habt gehört",
+                    "sie_plural": "haben gehört",
+                    "Sie": "haben gehört"
+                },
+                "Futur_I": {
+                    "ich": "werde hören",
+                    "du": "wirst hören",
+                    "er": "wird hören",
+                    "es": "wird hören",
+                    "sie_singular": "wird hören",
+                    "xier": "wird hören",
+                    "wir": "werden hören",
+                    "ihr": "werdet hören",
+                    "sie_plural": "werden hören",
+                    "Sie": "werden hören"
+                },
+                "imperative": {
+                    "du": "hör",
+                    "ihr": "hört",
+                    "Sie": "hören Sie"
+                }
+            },
+            "essen": {
+                "present": {
+                    "ich": "esse",
+                    "du": "isst",
+                    "er": "isst",
+                    "es": "isst",
+                    "sie_singular": "isst",
+                    "xier": "isst",
+                    "wir": "essen",
+                    "ihr": "esst",
+                    "sie_plural": "essen",
+                    "Sie": "essen"
+                },
+                "Perfekt": {
+                    "ich": "habe gegessen",
+                    "du": "hast gegessen",
+                    "er": "hat gegessen",
+                    "es": "hat gegessen",
+                    "sie_singular": "hat gegessen",
+                    "xier": "hat gegessen",
+                    "wir": "haben gegessen",
+                    "ihr": "habt gegessen",
+                    "sie_plural": "haben gegessen",
+                    "Sie": "haben gegessen"
+                },
+                "Futur_I": {
+                    "ich": "werde essen",
+                    "du": "wirst essen",
+                    "er": "wird essen",
+                    "es": "wird essen",
+                    "sie_singular": "wird essen",
+                    "xier": "wird essen",
+                    "wir": "werden essen",
+                    "ihr": "werdet essen",
+                    "sie_plural": "werden essen",
+                    "Sie": "werden essen"
+                },
+                "imperative": {
+                    "du": "iss",
+                    "ihr": "esst",
+                    "Sie": "essen Sie"
+                }
+            },
+            "spielen": {
+                "present": {
+                    "ich": "spiele",
+                    "du": "spielst",
+                    "er": "spielt",
+                    "es": "spielt",
+                    "sie_singular": "spielt",
+                    "xier": "spielt",
+                    "wir": "spielen",
+                    "ihr": "spielt",
+                    "sie_plural": "spielen",
+                    "Sie": "spielen"
+                },
+                "Perfekt": {
+                    "ich": "habe gespielt",
+                    "du": "hast gespielt",
+                    "er": "hat gespielt",
+                    "es": "hat gespielt",
+                    "sie_singular": "hat gespielt",
+                    "xier": "hat gespielt",
+                    "wir": "haben gespielt",
+                    "ihr": "habt gespielt",
+                    "sie_plural": "haben gespielt",
+                    "Sie": "haben gespielt"
+                },
+                "Futur_I": {
+                    "ich": "werde spielen",
+                    "du": "wirst spielen",
+                    "er": "wird spielen",
+                    "es": "wird spielen",
+                    "sie_singular": "wird spielen",
+                    "xier": "wird spielen",
+                    "wir": "werden spielen",
+                    "ihr": "werdet spielen",
+                    "sie_plural": "werden spielen",
+                    "Sie": "werden spielen"
+                },
+                "imperative": {
+                    "du": "spiel",
+                    "ihr": "spielt",
+                    "Sie": "spielen Sie"
+                }
+            },
+            "arbeiten": {
+                "present": {
+                    "ich": "arbeite",
+                    "du": "arbeitest",
+                    "er": "arbeitet",
+                    "es": "arbeitet",
+                    "sie_singular": "arbeitet",
+                    "xier": "arbeitet",
+                    "wir": "arbeiten",
+                    "ihr": "arbeitet",
+                    "sie_plural": "arbeiten",
+                    "Sie": "arbeiten"
+                },
+                "Perfekt": {
+                    "ich": "habe gearbeitet",
+                    "du": "hast gearbeitet",
+                    "er": "hat gearbeitet",
+                    "es": "hat gearbeitet",
+                    "sie_singular": "hat gearbeitet",
+                    "xier": "hat gearbeitet",
+                    "wir": "haben gearbeitet",
+                    "ihr": "habt gearbeitet",
+                    "sie_plural": "haben gearbeitet",
+                    "Sie": "haben gearbeitet"
+                },
+                "Futur_I": {
+                    "ich": "werde arbeiten",
+                    "du": "wirst arbeiten",
+                    "er": "wird arbeiten",
+                    "es": "wird arbeiten",
+                    "sie_singular": "wird arbeiten",
+                    "xier": "wird arbeiten",
+                    "wir": "werden arbeiten",
+                    "ihr": "werdet arbeiten",
+                    "sie_plural": "werden arbeiten",
+                    "Sie": "werden arbeiten"
+                },
+                "imperative": {
+                    "du": "arbeite",
+                    "ihr": "arbeitet",
+                    "Sie": "arbeiten Sie"
+                }
+            },
+            "erzählen": {
+                "present": {
+                    "ich": "erzähle",
+                    "du": "erzählst",
+                    "er": "erzählt",
+                    "es": "erzählt",
+                    "sie_singular": "erzählt",
+                    "xier": "erzählt",
+                    "wir": "erzählen",
+                    "ihr": "erzählt",
+                    "sie_plural": "erzählen",
+                    "Sie": "erzählen"
+                },
+                "Perfekt": {
+                    "ich": "habe erzählt",
+                    "du": "hast erzählt",
+                    "er": "hat erzählt",
+                    "es": "hat erzählt",
+                    "sie_singular": "hat erzählt",
+                    "xier": "hat erzählt",
+                    "wir": "haben erzählt",
+                    "ihr": "habt erzählt",
+                    "sie_plural": "haben erzählt",
+                    "Sie": "haben erzählt"
+                },
+                "Futur_I": {
+                    "ich": "werde erzählen",
+                    "du": "wirst erzählen",
+                    "er": "wird erzählen",
+                    "es": "wird erzählen",
+                    "sie_singular": "wird erzählen",
+                    "xier": "wird erzählen",
+                    "wir": "werden erzählen",
+                    "ihr": "werdet erzählen",
+                    "sie_plural": "werden erzählen",
+                    "Sie": "werden erzählen"
+                },
+                "imperative": {
+                    "du": "erzähl",
+                    "ihr": "erzählt",
+                    "Sie": "erzählen Sie"
+                }
+            },
+            "fahren": {
+                "present": {
+                    "ich": "fahre",
+                    "du": "fährst",
+                    "er": "fährt",
+                    "es": "fährt",
+                    "sie_singular": "fährt",
+                    "xier": "fährt",
+                    "wir": "fahren",
+                    "ihr": "fahrt",
+                    "sie_plural": "fahren",
+                    "Sie": "fahren"
+                },
+                "Perfekt": {
+                    "ich": "bin gefahren",
+                    "du": "bist gefahren",
+                    "er": "ist gefahren",
+                    "es": "ist gefahren",
+                    "sie_singular": "ist gefahren",
+                    "xier": "ist gefahren",
+                    "wir": "sind gefahren",
+                    "ihr": "seid gefahren",
+                    "sie_plural": "sind gefahren",
+                    "Sie": "sind gefahren"
+                },
+                "Futur_I": {
+                    "ich": "werde fahren",
+                    "du": "wirst fahren",
+                    "er": "wird fahren",
+                    "es": "wird fahren",
+                    "sie_singular": "wird fahren",
+                    "xier": "wird fahren",
+                    "wir": "werden fahren",
+                    "ihr": "werdet fahren",
+                    "sie_plural": "werden fahren",
+                    "Sie": "werden fahren"
+                },
+                "imperative": {
+                    "du": "fahr",
+                    "ihr": "fahrt",
+                    "Sie": "fahren Sie"
+                }
+            },
+            "helfen": {
+                "present": {
+                    "ich": "helfe",
+                    "du": "hilfst",
+                    "er": "hilft",
+                    "es": "hilft",
+                    "sie_singular": "hilft",
+                    "xier": "hilft",
+                    "wir": "helfen",
+                    "ihr": "helft",
+                    "sie_plural": "helfen",
+                    "Sie": "helfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geholfen",
+                    "du": "hast geholfen",
+                    "er": "hat geholfen",
+                    "es": "hat geholfen",
+                    "sie_singular": "hat geholfen",
+                    "xier": "hat geholfen",
+                    "wir": "haben geholfen",
+                    "ihr": "habt geholfen",
+                    "sie_plural": "haben geholfen",
+                    "Sie": "haben geholfen"
+                },
+                "Futur_I": {
+                    "ich": "werde helfen",
+                    "du": "wirst helfen",
+                    "er": "wird helfen",
+                    "es": "wird helfen",
+                    "sie_singular": "wird helfen",
+                    "xier": "wird helfen",
+                    "wir": "werden helfen",
+                    "ihr": "werdet helfen",
+                    "sie_plural": "werden helfen",
+                    "Sie": "werden helfen"
+                },
+                "imperative": {
+                    "du": "hilf",
+                    "ihr": "helft",
+                    "Sie": "helfen Sie"
+                }
+            },
+            "kaufen": {
+                "present": {
+                    "ich": "kaufe",
+                    "du": "kaufst",
+                    "er": "kauft",
+                    "es": "kauft",
+                    "sie_singular": "kauft",
+                    "xier": "kauft",
+                    "wir": "kaufen",
+                    "ihr": "kauft",
+                    "sie_plural": "kaufen",
+                    "Sie": "kaufen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekauft",
+                    "du": "hast gekauft",
+                    "er": "hat gekauft",
+                    "es": "hat gekauft",
+                    "sie_singular": "hat gekauft",
+                    "xier": "hat gekauft",
+                    "wir": "haben gekauft",
+                    "ihr": "habt gekauft",
+                    "sie_plural": "haben gekauft",
+                    "Sie": "haben gekauft"
+                },
+                "Futur_I": {
+                    "ich": "werde kaufen",
+                    "du": "wirst kaufen",
+                    "er": "wird kaufen",
+                    "es": "wird kaufen",
+                    "sie_singular": "wird kaufen",
+                    "xier": "wird kaufen",
+                    "wir": "werden kaufen",
+                    "ihr": "werdet kaufen",
+                    "sie_plural": "werden kaufen",
+                    "Sie": "werden kaufen"
+                },
+                "imperative": {
+                    "du": "kauf",
+                    "ihr": "kauft",
+                    "Sie": "kaufen Sie"
+                }
+            },
+            "passieren": {
+                "present": {
+                    "ich": "passiere",
+                    "du": "passierst",
+                    "er": "passiert",
+                    "es": "passiert",
+                    "sie_singular": "passiert",
+                    "xier": "passiert",
+                    "wir": "passieren",
+                    "ihr": "passiert",
+                    "sie_plural": "passieren",
+                    "Sie": "passieren"
+                },
+                "Perfekt": {
+                    "ich": "habe passiert",
+                    "du": "hast passiert",
+                    "er": "hat passiert",
+                    "es": "hat passiert",
+                    "sie_singular": "hat passiert",
+                    "xier": "hat passiert",
+                    "wir": "haben passiert",
+                    "ihr": "habt passiert",
+                    "sie_plural": "haben passiert",
+                    "Sie": "haben passiert"
+                },
+                "Futur_I": {
+                    "ich": "werde passieren",
+                    "du": "wirst passieren",
+                    "er": "wird passieren",
+                    "es": "wird passieren",
+                    "sie_singular": "wird passieren",
+                    "xier": "wird passieren",
+                    "wir": "werden passieren",
+                    "ihr": "werdet passieren",
+                    "sie_plural": "werden passieren",
+                    "Sie": "werden passieren"
+                },
+                "imperative": {
+                    "du": "passiere",
+                    "ihr": "passiert",
+                    "Sie": "passieren Sie"
+                }
+            },
+            "tragen": {
+                "present": {
+                    "ich": "trage",
+                    "du": "trägst",
+                    "er": "trägt",
+                    "es": "trägt",
+                    "sie_singular": "trägt",
+                    "xier": "trägt",
+                    "wir": "tragen",
+                    "ihr": "tragt",
+                    "sie_plural": "tragen",
+                    "Sie": "tragen"
+                },
+                "Perfekt": {
+                    "ich": "habe getragen",
+                    "du": "hast getragen",
+                    "er": "hat getragen",
+                    "es": "hat getragen",
+                    "sie_singular": "hat getragen",
+                    "xier": "hat getragen",
+                    "wir": "haben getragen",
+                    "ihr": "habt getragen",
+                    "sie_plural": "haben getragen",
+                    "Sie": "haben getragen"
+                },
+                "Futur_I": {
+                    "ich": "werde tragen",
+                    "du": "wirst tragen",
+                    "er": "wird tragen",
+                    "es": "wird tragen",
+                    "sie_singular": "wird tragen",
+                    "xier": "wird tragen",
+                    "wir": "werden tragen",
+                    "ihr": "werdet tragen",
+                    "sie_plural": "werden tragen",
+                    "Sie": "werden tragen"
+                },
+                "imperative": {
+                    "du": "trag",
+                    "ihr": "tragt",
+                    "Sie": "tragen Sie"
+                }
+            },
+            "fühlen": {
+                "present": {
+                    "ich": "fühle",
+                    "du": "fühlst",
+                    "er": "fühlt",
+                    "es": "fühlt",
+                    "sie_singular": "fühlt",
+                    "xier": "fühlt",
+                    "wir": "fühlen",
+                    "ihr": "fühlt",
+                    "sie_plural": "fühlen",
+                    "Sie": "fühlen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefühlt",
+                    "du": "hast gefühlt",
+                    "er": "hat gefühlt",
+                    "es": "hat gefühlt",
+                    "sie_singular": "hat gefühlt",
+                    "xier": "hat gefühlt",
+                    "wir": "haben gefühlt",
+                    "ihr": "habt gefühlt",
+                    "sie_plural": "haben gefühlt",
+                    "Sie": "haben gefühlt"
+                },
+                "Futur_I": {
+                    "ich": "werde fühlen",
+                    "du": "wirst fühlen",
+                    "er": "wird fühlen",
+                    "es": "wird fühlen",
+                    "sie_singular": "wird fühlen",
+                    "xier": "wird fühlen",
+                    "wir": "werden fühlen",
+                    "ihr": "werdet fühlen",
+                    "sie_plural": "werden fühlen",
+                    "Sie": "werden fühlen"
+                },
+                "imperative": {
+                    "du": "fühl",
+                    "ihr": "fühlt",
+                    "Sie": "fühlen Sie"
+                }
+            },
+            "tanzen": {
+                "present": {
+                    "ich": "tanze",
+                    "du": "tanzt",
+                    "er": "tanzt",
+                    "es": "tanzt",
+                    "sie_singular": "tanzt",
+                    "xier": "tanzt",
+                    "wir": "tanzen",
+                    "ihr": "tanzt",
+                    "sie_plural": "tanzen",
+                    "Sie": "tanzen"
+                },
+                "Perfekt": {
+                    "ich": "habe getanzt",
+                    "du": "hast getanzt",
+                    "er": "hat getanzt",
+                    "es": "hat getanzt",
+                    "sie_singular": "hat getanzt",
+                    "xier": "hat getanzt",
+                    "wir": "haben getanzt",
+                    "ihr": "habt getanzt",
+                    "sie_plural": "haben getanzt",
+                    "Sie": "haben getanzt"
+                },
+                "Futur_I": {
+                    "ich": "werde tanzen",
+                    "du": "wirst tanzen",
+                    "er": "wird tanzen",
+                    "es": "wird tanzen",
+                    "sie_singular": "wird tanzen",
+                    "xier": "wird tanzen",
+                    "wir": "werden tanzen",
+                    "ihr": "werdet tanzen",
+                    "sie_plural": "werden tanzen",
+                    "Sie": "werden tanzen"
+                },
+                "imperative": {
+                    "du": "tanze",
+                    "ihr": "tanzt",
+                    "Sie": "tanzen Sie"
+                }
+            },
+            "reisen": {
+                "present": {
+                    "ich": "reise",
+                    "du": "reist",
+                    "er": "reist",
+                    "es": "reist",
+                    "sie_singular": "reist",
+                    "xier": "reist",
+                    "wir": "reisen",
+                    "ihr": "reist",
+                    "sie_plural": "reisen",
+                    "Sie": "reisen"
+                },
+                "Perfekt": {
+                    "ich": "bin gereist",
+                    "du": "bist gereist",
+                    "er": "ist gereist",
+                    "es": "ist gereist",
+                    "sie_singular": "ist gereist",
+                    "xier": "ist gereist",
+                    "wir": "sind gereist",
+                    "ihr": "seid gereist",
+                    "sie_plural": "sind gereist",
+                    "Sie": "sind gereist"
+                },
+                "Futur_I": {
+                    "ich": "werde reisen",
+                    "du": "wirst reisen",
+                    "er": "wird reisen",
+                    "es": "wird reisen",
+                    "sie_singular": "wird reisen",
+                    "xier": "wird reisen",
+                    "wir": "werden reisen",
+                    "ihr": "werdet reisen",
+                    "sie_plural": "werden reisen",
+                    "Sie": "werden reisen"
+                },
+                "imperative": {
+                    "du": "reise",
+                    "ihr": "reist",
+                    "Sie": "reisen Sie"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebaut",
+                    "du": "hast gebaut",
+                    "er": "hat gebaut",
+                    "es": "hat gebaut",
+                    "sie_singular": "hat gebaut",
+                    "xier": "hat gebaut",
+                    "wir": "haben gebaut",
+                    "ihr": "habt gebaut",
+                    "sie_plural": "haben gebaut",
+                    "Sie": "haben gebaut"
+                },
+                "Futur_I": {
+                    "ich": "werde bauen",
+                    "du": "wirst bauen",
+                    "er": "wird bauen",
+                    "es": "wird bauen",
+                    "sie_singular": "wird bauen",
+                    "xier": "wird bauen",
+                    "wir": "werden bauen",
+                    "ihr": "werdet bauen",
+                    "sie_plural": "werden bauen",
+                    "Sie": "werden bauen"
+                },
+                "imperative": {
+                    "du": "baue",
+                    "ihr": "baut",
+                    "Sie": "bauen Sie"
+                }
+            },
+            "sammeln": {
+                "present": {
+                    "ich": "sammle",
+                    "du": "sammelst",
+                    "er": "sammelt",
+                    "es": "sammelt",
+                    "sie_singular": "sammelt",
+                    "xier": "sammelt",
+                    "wir": "sammeln",
+                    "ihr": "sammelt",
+                    "sie_plural": "sammeln",
+                    "Sie": "sammeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gesammelt",
+                    "du": "hast gesammelt",
+                    "er": "hat gesammelt",
+                    "es": "hat gesammelt",
+                    "sie_singular": "hat gesammelt",
+                    "xier": "hat gesammelt",
+                    "wir": "haben gesammelt",
+                    "ihr": "habt gesammelt",
+                    "sie_plural": "haben gesammelt",
+                    "Sie": "haben gesammelt"
+                },
+                "Futur_I": {
+                    "ich": "werde sammeln",
+                    "du": "wirst sammeln",
+                    "er": "wird sammeln",
+                    "es": "wird sammeln",
+                    "sie_singular": "wird sammeln",
+                    "xier": "wird sammeln",
+                    "wir": "werden sammeln",
+                    "ihr": "werdet sammeln",
+                    "sie_plural": "werden sammeln",
+                    "Sie": "werden sammeln"
+                },
+                "imperative": {
+                    "du": "sammle",
+                    "ihr": "sammelt",
+                    "Sie": "sammeln Sie"
+                }
+            },
+            "kochen": {
+                "present": {
+                    "ich": "koche",
+                    "du": "kochst",
+                    "er": "kocht",
+                    "es": "kocht",
+                    "sie_singular": "kocht",
+                    "xier": "kocht",
+                    "wir": "kochen",
+                    "ihr": "kocht",
+                    "sie_plural": "kochen",
+                    "Sie": "kochen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekocht",
+                    "du": "hast gekocht",
+                    "er": "hat gekocht",
+                    "es": "hat gekocht",
+                    "sie_singular": "hat gekocht",
+                    "xier": "hat gekocht",
+                    "wir": "haben gekocht",
+                    "ihr": "habt gekocht",
+                    "sie_plural": "haben gekocht",
+                    "Sie": "haben gekocht"
+                },
+                "Futur_I": {
+                    "ich": "werde kochen",
+                    "du": "wirst kochen",
+                    "er": "wird kochen",
+                    "es": "wird kochen",
+                    "sie_singular": "wird kochen",
+                    "xier": "wird kochen",
+                    "wir": "werden kochen",
+                    "ihr": "werdet kochen",
+                    "sie_plural": "werden kochen",
+                    "Sie": "werden kochen"
+                },
+                "imperative": {
+                    "du": "koch",
+                    "ihr": "kocht",
+                    "Sie": "kochen Sie"
+                }
+            },
+            "studieren": {
+                "present": {
+                    "ich": "studiere",
+                    "du": "studierst",
+                    "er": "studiert",
+                    "es": "studiert",
+                    "sie_singular": "studiert",
+                    "xier": "studiert",
+                    "wir": "studieren",
+                    "ihr": "studiert",
+                    "sie_plural": "studieren",
+                    "Sie": "studieren"
+                },
+                "Perfekt": {
+                    "ich": "habe studiert",
+                    "du": "hast studiert",
+                    "er": "hat studiert",
+                    "es": "hat studiert",
+                    "sie_singular": "hat studiert",
+                    "xier": "hat studiert",
+                    "wir": "haben studiert",
+                    "ihr": "habt studiert",
+                    "sie_plural": "haben studiert",
+                    "Sie": "haben studiert"
+                },
+                "Futur_I": {
+                    "ich": "werde studieren",
+                    "du": "wirst studieren",
+                    "er": "wird studieren",
+                    "es": "wird studieren",
+                    "sie_singular": "wird studieren",
+                    "xier": "wird studieren",
+                    "wir": "werden studieren",
+                    "ihr": "werdet studieren",
+                    "sie_plural": "werden studieren",
+                    "Sie": "werden studieren"
+                },
+                "imperative": {
+                    "du": "studier",
+                    "ihr": "studiert",
+                    "Sie": "studieren Sie"
+                }
+            },
+            "gewinnen": {
+                "present": {
+                    "ich": "gewinne",
+                    "du": "gewinnst",
+                    "er": "gewinnt",
+                    "es": "gewinnt",
+                    "sie_singular": "gewinnt",
+                    "xier": "gewinnt",
+                    "wir": "gewinnen",
+                    "ihr": "gewinnt",
+                    "sie_plural": "gewinnen",
+                    "Sie": "gewinnen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewonnen",
+                    "du": "hast gewonnen",
+                    "er": "hat gewonnen",
+                    "es": "hat gewonnen",
+                    "sie_singular": "hat gewonnen",
+                    "xier": "hat gewonnen",
+                    "wir": "haben gewonnen",
+                    "ihr": "habt gewonnen",
+                    "sie_plural": "haben gewonnen",
+                    "Sie": "haben gewonnen"
+                },
+                "Futur_I": {
+                    "ich": "werde gewinnen",
+                    "du": "wirst gewinnen",
+                    "er": "wird gewinnen",
+                    "es": "wird gewinnen",
+                    "sie_singular": "wird gewinnen",
+                    "xier": "wird gewinnen",
+                    "wir": "werden gewinnen",
+                    "ihr": "werdet gewinnen",
+                    "sie_plural": "werden gewinnen",
+                    "Sie": "werden gewinnen"
+                },
+                "imperative": {
+                    "du": "gewinn",
+                    "ihr": "gewinnt",
+                    "Sie": "gewinnen Sie"
+                }
+            },
+            "feiern": {
+                "present": {
+                    "ich": "feiere",
+                    "du": "feierst",
+                    "er": "feiert",
+                    "es": "feiert",
+                    "sie_singular": "feiert",
+                    "xier": "feiert",
+                    "wir": "feiern",
+                    "ihr": "feiert",
+                    "sie_plural": "feiern",
+                    "Sie": "feiern"
+                },
+                "Perfekt": {
+                    "ich": "habe gefeiert",
+                    "du": "hast gefeiert",
+                    "er": "hat gefeiert",
+                    "es": "hat gefeiert",
+                    "sie_singular": "hat gefeiert",
+                    "xier": "hat gefeiert",
+                    "wir": "haben gefeiert",
+                    "ihr": "habt gefeiert",
+                    "sie_plural": "haben gefeiert",
+                    "Sie": "haben gefeiert"
+                },
+                "Futur_I": {
+                    "ich": "werde feiern",
+                    "du": "wirst feiern",
+                    "er": "wird feiern",
+                    "es": "wird feiern",
+                    "sie_singular": "wird feiern",
+                    "xier": "wird feiern",
+                    "wir": "werden feiern",
+                    "ihr": "werdet feiern",
+                    "sie_plural": "werden feiern",
+                    "Sie": "werden feiern"
+                },
+                "imperative": {
+                    "du": "feier",
+                    "ihr": "feiert",
+                    "Sie": "feiern Sie"
+                }
+            },
+            "trinken": {
+                "present": {
+                    "ich": "trinke",
+                    "du": "trinkst",
+                    "er": "trinkt",
+                    "es": "trinkt",
+                    "sie_singular": "trinkt",
+                    "xier": "trinkt",
+                    "wir": "trinken",
+                    "ihr": "trinkt",
+                    "sie_plural": "trinken",
+                    "Sie": "trinken"
+                },
+                "Perfekt": {
+                    "ich": "habe getrunken",
+                    "du": "hast getrunken",
+                    "er": "hat getrunken",
+                    "es": "hat getrunken",
+                    "sie_singular": "hat getrunken",
+                    "xier": "hat getrunken",
+                    "wir": "haben getrunken",
+                    "ihr": "habt getrunken",
+                    "sie_plural": "haben getrunken",
+                    "Sie": "haben getrunken"
+                },
+                "Futur_I": {
+                    "ich": "werde trinken",
+                    "du": "wirst trinken",
+                    "er": "wird trinken",
+                    "es": "wird trinken",
+                    "sie_singular": "wird trinken",
+                    "xier": "wird trinken",
+                    "wir": "werden trinken",
+                    "ihr": "werdet trinken",
+                    "sie_plural": "werden trinken",
+                    "Sie": "werden trinken"
+                },
+                "imperative": {
+                    "du": "trink",
+                    "ihr": "trinkt",
+                    "Sie": "trinken Sie"
+                }
+            },
+            "fliegen": {
+                "present": {
+                    "ich": "fliege",
+                    "du": "fliegst",
+                    "er": "fliegt",
+                    "es": "fliegt",
+                    "sie_singular": "fliegt",
+                    "xier": "fliegt",
+                    "wir": "fliegen",
+                    "ihr": "fliegt",
+                    "sie_plural": "fliegen",
+                    "Sie": "fliegen"
+                },
+                "Perfekt": {
+                    "ich": "bin geflogen",
+                    "du": "bist geflogen",
+                    "er": "ist geflogen",
+                    "es": "ist geflogen",
+                    "sie_singular": "ist geflogen",
+                    "xier": "ist geflogen",
+                    "wir": "sind geflogen",
+                    "ihr": "seid geflogen",
+                    "sie_plural": "sind geflogen",
+                    "Sie": "sind geflogen"
+                },
+                "Futur_I": {
+                    "ich": "werde fliegen",
+                    "du": "wirst fliegen",
+                    "er": "wird fliegen",
+                    "es": "wird fliegen",
+                    "sie_singular": "wird fliegen",
+                    "xier": "wird fliegen",
+                    "wir": "werden fliegen",
+                    "ihr": "werdet fliegen",
+                    "sie_plural": "werden fliegen",
+                    "Sie": "werden fliegen"
+                },
+                "imperative": {
+                    "du": "flieg",
+                    "ihr": "fliegt",
+                    "Sie": "fliegen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schreiben Sie drei Informationen über sich selbst.",
+            "Zwei Informationen sind wahr, eine Information ist eine Lüge.",
+            "Sprechen Sie mit anderen Personen im Kurs.",
+            "Sagen Sie der anderen Person Ihre drei Informationen.",
+            "Die andere Person soll raten, was eine Lüge ist.",
+            "Sprechen Sie mit mindestens vier Personen.",
+            "Welche Informationen finden Sie am interessantesten?",
+            "Mehmet fährt in seiner Freizeit gern Fahrrad.",
+            "Dreimal pro Woche geht er auch mit seinem Mann ins Fitnessstudio.",
+            "Ein weiteres Hobby von Mehmet ist tanzen.",
+            "Jasna mag Tier e.",
+            "Sie hat 2 Katzen und einen Hund.",
+            "In ihrer Freizeit kocht Jasna oft.",
+            "Sie liest und schreibt auch gerne.",
+            "Sie möchte mal ein Buch schreiben.",
+            "Sabine reist sehr gerne.",
+            "Sie war schon in über 25 Ländern.",
+            "Sie macht auch gerne Musik.",
+            "Sie hat Medizin studiert und arbeitet jetzt als Ärztin.",
+            "Wie sind Sie?",
+            "Welche Adjektive passen zu Ihnen?",
+            "Vergleichen Sie sich mit Mehmet, Jasna und Sabine.",
+            "Sie können auch weitere Adjektive benutzen.",
+            "Ich bin stark wie Mehmet, aber nicht kreativ wie Sabine.",
+            "Wählen Sie ein Thema aus.",
+            "Schreiben Sie mit den Wörtern eine kurze Geschichte über Ihre Kindheit in Perfekt.",
+            "Bauen, heiße Schokolade trinken, Handschuhe tragen",
+            "Die andere Person hört gut zu und stellt Fragen zu Ihrer Geschichte."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

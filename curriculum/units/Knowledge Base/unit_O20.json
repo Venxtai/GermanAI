@@ -1,0 +1,1201 @@
+{
+    "unit": "O20",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 20,
+        "prerequisite": "core 1-104, O1-O19"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da"
+        ],
+        "new_rules_in_this_unit": [
+            "Use aber (but, general contrast) and sondern (but rather, after negation to correct) as coordinating conjunctions at position zero.",
+            "Combine verbs with dative prepositions: anfangen/beginnen/aufhören mit + dative, sich beschweren bei + dative, helfen bei + dative, verlangen von + dative, überreden zu + dative."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Gründe für und gegen Widerstand sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Widerstand im Dritten Reich und die Weiße Rose"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "ändern", "pos": "VERB", "translation": "to change, alter" },
+            { "word": "ansehen", "pos": "VERB", "translation": "to look at", "frequency": 507, "cefr": "A2" },
+            { "word": "benennen", "pos": "VERB", "translation": "to name, designate, label", "frequency": 2071 },
+            { "word": "besiegen", "pos": "VERB", "translation": "to defeat", "frequency": 4540 },
+            { "word": "erwischen", "pos": "VERB", "translation": "to catch, arrest", "frequency": 2755 },
+            { "word": "Widerstand leisten", "pos": "VERB", "translation": "to resist", "frequency": 1435 },
+            { "word": "schockieren", "pos": "VERB", "translation": "to shock", "frequency": 20598 },
+            { "word": "streiten", "pos": "VERB", "translation": "to argue (with)", "frequency": 2288, "cefr": "A2" },
+            { "word": "überzeugen", "pos": "VERB", "translation": "to convince (of)" },
+            { "word": "verhaften", "pos": "VERB", "translation": "to arrest", "frequency": 3354, "cefr": "B1" },
+            { "word": "verlangen", "pos": "VERB", "translation": "to demand (from)", "frequency": 879, "cefr": "B1" },
+            { "word": "verteilen", "pos": "VERB", "translation": "to distribute; spread", "frequency": 1162, "cefr": "B1" },
+            { "word": "warnen", "pos": "VERB", "translation": "to warn (of)", "frequency": 1337, "cefr": "B1" },
+            { "word": "ein Verbrechen begehen", "pos": "VERB", "translation": "to commit a crime" },
+            { "word": "der*die Alliierte", "pos": "NOUN", "translation": "ally", "frequency": 10835 },
+            { "word": "der*die Kämpfer*in", "pos": "NOUN", "translation": "fighter, warrior" },
+            { "word": "der*die Widerständler*in", "pos": "NOUN", "translation": "insurgent, resister" },
+            { "word": "der Widerstand", "pos": "NOUN", "translation": "resistance; opposition", "frequency": 1435, "cefr": "A1" },
+            { "word": "das Flugblatt", "pos": "NOUN", "translation": "flyer", "frequency": 11308, "cefr": "A1" },
+            { "word": "das Gefängnis", "pos": "NOUN", "translation": "prison" },
+            { "word": "das Gymnasium, Gymnasien", "pos": "ADJ", "translation": "high school (preparing for university)" },
+            { "word": "Haupt-", "pos": "ADJ", "translation": "main", "frequency": 9201, "cefr": "B1" },
+            { "word": "deswegen", "pos": "ADV", "translation": "therefore, for that reason", "frequency": 749, "cefr": "B1" },
+            { "word": "nächster", "pos": "ADJ", "translation": "next" },
+            { "word": "aber", "pos": "CONJ", "translation": "but", "frequency": 31, "cefr": "A1" },
+            { "word": "sondern", "pos": "CONJ", "translation": "but rather", "frequency": 115, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "leisten", "pos": "VERB", "frequency": 693, "cefr": "B1" },
+            { "word": "autoritär", "pos": "ADJ", "frequency": 11115, "cefr": "B2" },
+            { "word": "die Regime", "pos": "NOUN", "frequency": 4156 },
+            { "word": "finanziell", "pos": "ADV", "frequency": 1323, "cefr": "B1" },
+            { "word": "die Ideologie", "pos": "NOUN", "frequency": 7967 },
+            { "word": "der Osten", "pos": "NOUN", "frequency": 1208, "cefr": "A1" },
+            { "word": "brutal", "pos": "ADJ", "frequency": 4069 },
+            { "word": "sechst", "pos": "ADJ", "frequency": 6265 },
+            { "word": "die Nazi-Sympathisantin", "pos": "NOUN" },
+            { "word": "die Philosophie", "pos": "NOUN", "frequency": 2922, "cefr": "B1" },
+            { "word": "exekutieren", "pos": "VERB", "frequency": 36734 },
+            { "word": "desillusionieren", "pos": "VERB" },
+            { "word": "der Mediziner", "pos": "NOUN", "frequency": 4055 },
+            { "word": "das Gymnasium", "pos": "NOUN", "frequency": 3081, "cefr": "B1" },
+            { "word": "kontra", "pos": "ADP", "frequency": 18072, "cefr": "B2" },
+            { "word": "die Reputation", "pos": "NOUN", "frequency": 16937, "cefr": "B2" },
+            { "word": "der Pass", "pos": "NOUN", "frequency": 2549, "cefr": "A1" },
+            { "word": "weiße", "pos": "ADJ", "frequency": 19083 },
+            { "word": "Welchen", "pos": "DET" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ändern": {
+                "present": {
+                    "ich": "ändere",
+                    "du": "änderst",
+                    "er": "ändert",
+                    "es": "ändert",
+                    "sie_singular": "ändert",
+                    "xier": "ändert",
+                    "wir": "ändern",
+                    "ihr": "ändert",
+                    "sie_plural": "ändern",
+                    "Sie": "ändern"
+                },
+                "Perfekt": {
+                    "ich": "habe geändert",
+                    "du": "hast geändert",
+                    "er": "hat geändert",
+                    "es": "hat geändert",
+                    "sie_singular": "hat geändert",
+                    "xier": "hat geändert",
+                    "wir": "haben geändert",
+                    "ihr": "habt geändert",
+                    "sie_plural": "haben geändert",
+                    "Sie": "haben geändert"
+                },
+                "Futur_I": {
+                    "ich": "werde ändern",
+                    "du": "wirst ändern",
+                    "er": "wird ändern",
+                    "es": "wird ändern",
+                    "sie_singular": "wird ändern",
+                    "xier": "wird ändern",
+                    "wir": "werden ändern",
+                    "ihr": "werdet ändern",
+                    "sie_plural": "werden ändern",
+                    "Sie": "werden ändern"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ändern",
+                    "du": "würdest ändern",
+                    "er": "würde ändern",
+                    "es": "würde ändern",
+                    "sie_singular": "würde ändern",
+                    "xier": "würde ändern",
+                    "wir": "würden ändern",
+                    "ihr": "würdet ändern",
+                    "sie_plural": "würden ändern",
+                    "Sie": "würden ändern"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geändert",
+                    "du": "hättest geändert",
+                    "er": "hätte geändert",
+                    "es": "hätte geändert",
+                    "sie_singular": "hätte geändert",
+                    "xier": "hätte geändert",
+                    "wir": "hätten geändert",
+                    "ihr": "hättet geändert",
+                    "sie_plural": "hätten geändert",
+                    "Sie": "hätten geändert"
+                },
+                "imperative": {
+                    "du": "ändere",
+                    "ihr": "ändert",
+                    "Sie": "ändern Sie"
+                }
+            },
+            "ansehen": {
+                "present": {
+                    "ich": "sehe an",
+                    "du": "siehst an",
+                    "er": "sieht an",
+                    "es": "sieht an",
+                    "sie_singular": "sieht an",
+                    "xier": "sieht an",
+                    "wir": "sehen an",
+                    "ihr": "seht an",
+                    "sie_plural": "sehen an",
+                    "Sie": "sehen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesehen",
+                    "du": "hast angesehen",
+                    "er": "hat angesehen",
+                    "es": "hat angesehen",
+                    "sie_singular": "hat angesehen",
+                    "xier": "hat angesehen",
+                    "wir": "haben angesehen",
+                    "ihr": "habt angesehen",
+                    "sie_plural": "haben angesehen",
+                    "Sie": "haben angesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansehen",
+                    "du": "wirst ansehen",
+                    "er": "wird ansehen",
+                    "es": "wird ansehen",
+                    "sie_singular": "wird ansehen",
+                    "xier": "wird ansehen",
+                    "wir": "werden ansehen",
+                    "ihr": "werdet ansehen",
+                    "sie_plural": "werden ansehen",
+                    "Sie": "werden ansehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ansehen",
+                    "du": "würdest ansehen",
+                    "er": "würde ansehen",
+                    "es": "würde ansehen",
+                    "sie_singular": "würde ansehen",
+                    "xier": "würde ansehen",
+                    "wir": "würden ansehen",
+                    "ihr": "würdet ansehen",
+                    "sie_plural": "würden ansehen",
+                    "Sie": "würden ansehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte angesehen",
+                    "du": "hättest angesehen",
+                    "er": "hätte angesehen",
+                    "es": "hätte angesehen",
+                    "sie_singular": "hätte angesehen",
+                    "xier": "hätte angesehen",
+                    "wir": "hätten angesehen",
+                    "ihr": "hättet angesehen",
+                    "sie_plural": "hätten angesehen",
+                    "Sie": "hätten angesehen"
+                },
+                "imperative": {
+                    "du": "sieh an",
+                    "ihr": "seht an",
+                    "Sie": "sehen Sie an"
+                }
+            },
+            "benennen": {
+                "present": {
+                    "ich": "benenne",
+                    "du": "benennst",
+                    "er": "benennt",
+                    "es": "benennt",
+                    "sie_singular": "benennt",
+                    "xier": "benennt",
+                    "wir": "benennen",
+                    "ihr": "benennt",
+                    "sie_plural": "benennen",
+                    "Sie": "benennen"
+                },
+                "Perfekt": {
+                    "ich": "habe benannt",
+                    "du": "hast benannt",
+                    "er": "hat benannt",
+                    "es": "hat benannt",
+                    "sie_singular": "hat benannt",
+                    "xier": "hat benannt",
+                    "wir": "haben benannt",
+                    "ihr": "habt benannt",
+                    "sie_plural": "haben benannt",
+                    "Sie": "haben benannt"
+                },
+                "Futur_I": {
+                    "ich": "werde benennen",
+                    "du": "wirst benennen",
+                    "er": "wird benennen",
+                    "es": "wird benennen",
+                    "sie_singular": "wird benennen",
+                    "xier": "wird benennen",
+                    "wir": "werden benennen",
+                    "ihr": "werdet benennen",
+                    "sie_plural": "werden benennen",
+                    "Sie": "werden benennen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde benennen",
+                    "du": "würdest benennen",
+                    "er": "würde benennen",
+                    "es": "würde benennen",
+                    "sie_singular": "würde benennen",
+                    "xier": "würde benennen",
+                    "wir": "würden benennen",
+                    "ihr": "würdet benennen",
+                    "sie_plural": "würden benennen",
+                    "Sie": "würden benennen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte benannt",
+                    "du": "hättest benannt",
+                    "er": "hätte benannt",
+                    "es": "hätte benannt",
+                    "sie_singular": "hätte benannt",
+                    "xier": "hätte benannt",
+                    "wir": "hätten benannt",
+                    "ihr": "hättet benannt",
+                    "sie_plural": "hätten benannt",
+                    "Sie": "hätten benannt"
+                },
+                "imperative": {
+                    "du": "benenne",
+                    "ihr": "benennt",
+                    "Sie": "benennen Sie"
+                }
+            },
+            "besiegen": {
+                "present": {
+                    "ich": "besiege",
+                    "du": "besiegst",
+                    "er": "besiegt",
+                    "es": "besiegt",
+                    "sie_singular": "besiegt",
+                    "xier": "besiegt",
+                    "wir": "besiegen",
+                    "ihr": "besiegt",
+                    "sie_plural": "besiegen",
+                    "Sie": "besiegen"
+                },
+                "Perfekt": {
+                    "ich": "habe besiegt",
+                    "du": "hast besiegt",
+                    "er": "hat besiegt",
+                    "es": "hat besiegt",
+                    "sie_singular": "hat besiegt",
+                    "xier": "hat besiegt",
+                    "wir": "haben besiegt",
+                    "ihr": "habt besiegt",
+                    "sie_plural": "haben besiegt",
+                    "Sie": "haben besiegt"
+                },
+                "Futur_I": {
+                    "ich": "werde besiegen",
+                    "du": "wirst besiegen",
+                    "er": "wird besiegen",
+                    "es": "wird besiegen",
+                    "sie_singular": "wird besiegen",
+                    "xier": "wird besiegen",
+                    "wir": "werden besiegen",
+                    "ihr": "werdet besiegen",
+                    "sie_plural": "werden besiegen",
+                    "Sie": "werden besiegen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde besiegen",
+                    "du": "würdest besiegen",
+                    "er": "würde besiegen",
+                    "es": "würde besiegen",
+                    "sie_singular": "würde besiegen",
+                    "xier": "würde besiegen",
+                    "wir": "würden besiegen",
+                    "ihr": "würdet besiegen",
+                    "sie_plural": "würden besiegen",
+                    "Sie": "würden besiegen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte besiegt",
+                    "du": "hättest besiegt",
+                    "er": "hätte besiegt",
+                    "es": "hätte besiegt",
+                    "sie_singular": "hätte besiegt",
+                    "xier": "hätte besiegt",
+                    "wir": "hätten besiegt",
+                    "ihr": "hättet besiegt",
+                    "sie_plural": "hätten besiegt",
+                    "Sie": "hätten besiegt"
+                },
+                "imperative": {
+                    "du": "besieg",
+                    "ihr": "besiegt",
+                    "Sie": "besiegen Sie"
+                }
+            },
+            "erwischen": {
+                "present": {
+                    "ich": "erwische",
+                    "du": "erwischst",
+                    "er": "erwischt",
+                    "es": "erwischt",
+                    "sie_singular": "erwischt",
+                    "xier": "erwischt",
+                    "wir": "erwischen",
+                    "ihr": "erwischt",
+                    "sie_plural": "erwischen",
+                    "Sie": "erwischen"
+                },
+                "Perfekt": {
+                    "ich": "habe erwischt",
+                    "du": "hast erwischt",
+                    "er": "hat erwischt",
+                    "es": "hat erwischt",
+                    "sie_singular": "hat erwischt",
+                    "xier": "hat erwischt",
+                    "wir": "haben erwischt",
+                    "ihr": "habt erwischt",
+                    "sie_plural": "haben erwischt",
+                    "Sie": "haben erwischt"
+                },
+                "Futur_I": {
+                    "ich": "werde erwischen",
+                    "du": "wirst erwischen",
+                    "er": "wird erwischen",
+                    "es": "wird erwischen",
+                    "sie_singular": "wird erwischen",
+                    "xier": "wird erwischen",
+                    "wir": "werden erwischen",
+                    "ihr": "werdet erwischen",
+                    "sie_plural": "werden erwischen",
+                    "Sie": "werden erwischen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erwischen",
+                    "du": "würdest erwischen",
+                    "er": "würde erwischen",
+                    "es": "würde erwischen",
+                    "sie_singular": "würde erwischen",
+                    "xier": "würde erwischen",
+                    "wir": "würden erwischen",
+                    "ihr": "würdet erwischen",
+                    "sie_plural": "würden erwischen",
+                    "Sie": "würden erwischen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erwischt",
+                    "du": "hättest erwischt",
+                    "er": "hätte erwischt",
+                    "es": "hätte erwischt",
+                    "sie_singular": "hätte erwischt",
+                    "xier": "hätte erwischt",
+                    "wir": "hätten erwischt",
+                    "ihr": "hättet erwischt",
+                    "sie_plural": "hätten erwischt",
+                    "Sie": "hätten erwischt"
+                },
+                "imperative": {
+                    "du": "erwische",
+                    "ihr": "erwischt",
+                    "Sie": "erwischen Sie"
+                }
+            },
+            "leisten": {
+                "present": {
+                    "ich": "leiste",
+                    "du": "leistest",
+                    "er": "leistet",
+                    "es": "leistet",
+                    "sie_singular": "leistet",
+                    "xier": "leistet",
+                    "wir": "leisten",
+                    "ihr": "leistet",
+                    "sie_plural": "leisten",
+                    "Sie": "leisten"
+                },
+                "Perfekt": {
+                    "ich": "habe geleistet",
+                    "du": "hast geleistet",
+                    "er": "hat geleistet",
+                    "es": "hat geleistet",
+                    "sie_singular": "hat geleistet",
+                    "xier": "hat geleistet",
+                    "wir": "haben geleistet",
+                    "ihr": "habt geleistet",
+                    "sie_plural": "haben geleistet",
+                    "Sie": "haben geleistet"
+                },
+                "Futur_I": {
+                    "ich": "werde leisten",
+                    "du": "wirst leisten",
+                    "er": "wird leisten",
+                    "es": "wird leisten",
+                    "sie_singular": "wird leisten",
+                    "xier": "wird leisten",
+                    "wir": "werden leisten",
+                    "ihr": "werdet leisten",
+                    "sie_plural": "werden leisten",
+                    "Sie": "werden leisten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde leisten",
+                    "du": "würdest leisten",
+                    "er": "würde leisten",
+                    "es": "würde leisten",
+                    "sie_singular": "würde leisten",
+                    "xier": "würde leisten",
+                    "wir": "würden leisten",
+                    "ihr": "würdet leisten",
+                    "sie_plural": "würden leisten",
+                    "Sie": "würden leisten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geleistet",
+                    "du": "hättest geleistet",
+                    "er": "hätte geleistet",
+                    "es": "hätte geleistet",
+                    "sie_singular": "hätte geleistet",
+                    "xier": "hätte geleistet",
+                    "wir": "hätten geleistet",
+                    "ihr": "hättet geleistet",
+                    "sie_plural": "hätten geleistet",
+                    "Sie": "hätten geleistet"
+                },
+                "imperative": {
+                    "du": "leiste",
+                    "ihr": "leistet",
+                    "Sie": "leisten Sie"
+                }
+            },
+            "schockieren": {
+                "present": {
+                    "ich": "schockiere",
+                    "du": "schockierst",
+                    "er": "schockiert",
+                    "es": "schockiert",
+                    "sie_singular": "schockiert",
+                    "xier": "schockiert",
+                    "wir": "schockieren",
+                    "ihr": "schockiert",
+                    "sie_plural": "schockieren",
+                    "Sie": "schockieren"
+                },
+                "Perfekt": {
+                    "ich": "habe schockiert",
+                    "du": "hast schockiert",
+                    "er": "hat schockiert",
+                    "es": "hat schockiert",
+                    "sie_singular": "hat schockiert",
+                    "xier": "hat schockiert",
+                    "wir": "haben schockiert",
+                    "ihr": "habt schockiert",
+                    "sie_plural": "haben schockiert",
+                    "Sie": "haben schockiert"
+                },
+                "Futur_I": {
+                    "ich": "werde schockieren",
+                    "du": "wirst schockieren",
+                    "er": "wird schockieren",
+                    "es": "wird schockieren",
+                    "sie_singular": "wird schockieren",
+                    "xier": "wird schockieren",
+                    "wir": "werden schockieren",
+                    "ihr": "werdet schockieren",
+                    "sie_plural": "werden schockieren",
+                    "Sie": "werden schockieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schockieren",
+                    "du": "würdest schockieren",
+                    "er": "würde schockieren",
+                    "es": "würde schockieren",
+                    "sie_singular": "würde schockieren",
+                    "xier": "würde schockieren",
+                    "wir": "würden schockieren",
+                    "ihr": "würdet schockieren",
+                    "sie_plural": "würden schockieren",
+                    "Sie": "würden schockieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte schockiert",
+                    "du": "hättest schockiert",
+                    "er": "hätte schockiert",
+                    "es": "hätte schockiert",
+                    "sie_singular": "hätte schockiert",
+                    "xier": "hätte schockiert",
+                    "wir": "hätten schockiert",
+                    "ihr": "hättet schockiert",
+                    "sie_plural": "hätten schockiert",
+                    "Sie": "hätten schockiert"
+                },
+                "imperative": {
+                    "du": "schockier",
+                    "ihr": "schockiert",
+                    "Sie": "schockieren Sie"
+                }
+            },
+            "streiten": {
+                "present": {
+                    "ich": "streite",
+                    "du": "streitest",
+                    "er": "streitet",
+                    "es": "streitet",
+                    "sie_singular": "streitet",
+                    "xier": "streitet",
+                    "wir": "streiten",
+                    "ihr": "streitet",
+                    "sie_plural": "streiten",
+                    "Sie": "streiten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestritten",
+                    "du": "hast gestritten",
+                    "er": "hat gestritten",
+                    "es": "hat gestritten",
+                    "sie_singular": "hat gestritten",
+                    "xier": "hat gestritten",
+                    "wir": "haben gestritten",
+                    "ihr": "habt gestritten",
+                    "sie_plural": "haben gestritten",
+                    "Sie": "haben gestritten"
+                },
+                "Futur_I": {
+                    "ich": "werde streiten",
+                    "du": "wirst streiten",
+                    "er": "wird streiten",
+                    "es": "wird streiten",
+                    "sie_singular": "wird streiten",
+                    "xier": "wird streiten",
+                    "wir": "werden streiten",
+                    "ihr": "werdet streiten",
+                    "sie_plural": "werden streiten",
+                    "Sie": "werden streiten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde streiten",
+                    "du": "würdest streiten",
+                    "er": "würde streiten",
+                    "es": "würde streiten",
+                    "sie_singular": "würde streiten",
+                    "xier": "würde streiten",
+                    "wir": "würden streiten",
+                    "ihr": "würdet streiten",
+                    "sie_plural": "würden streiten",
+                    "Sie": "würden streiten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gestritten",
+                    "du": "hättest gestritten",
+                    "er": "hätte gestritten",
+                    "es": "hätte gestritten",
+                    "sie_singular": "hätte gestritten",
+                    "xier": "hätte gestritten",
+                    "wir": "hätten gestritten",
+                    "ihr": "hättet gestritten",
+                    "sie_plural": "hätten gestritten",
+                    "Sie": "hätten gestritten"
+                },
+                "imperative": {
+                    "du": "streite",
+                    "ihr": "streitet",
+                    "Sie": "streiten Sie"
+                }
+            },
+            "überzeugen": {
+                "present": {
+                    "ich": "überzeuge",
+                    "du": "überzeugst",
+                    "er": "überzeugt",
+                    "es": "überzeugt",
+                    "sie_singular": "überzeugt",
+                    "xier": "überzeugt",
+                    "wir": "überzeugen",
+                    "ihr": "überzeugt",
+                    "sie_plural": "überzeugen",
+                    "Sie": "überzeugen"
+                },
+                "Perfekt": {
+                    "ich": "habe überzeugt",
+                    "du": "hast überzeugt",
+                    "er": "hat überzeugt",
+                    "es": "hat überzeugt",
+                    "sie_singular": "hat überzeugt",
+                    "xier": "hat überzeugt",
+                    "wir": "haben überzeugt",
+                    "ihr": "habt überzeugt",
+                    "sie_plural": "haben überzeugt",
+                    "Sie": "haben überzeugt"
+                },
+                "Futur_I": {
+                    "ich": "werde überzeugen",
+                    "du": "wirst überzeugen",
+                    "er": "wird überzeugen",
+                    "es": "wird überzeugen",
+                    "sie_singular": "wird überzeugen",
+                    "xier": "wird überzeugen",
+                    "wir": "werden überzeugen",
+                    "ihr": "werdet überzeugen",
+                    "sie_plural": "werden überzeugen",
+                    "Sie": "werden überzeugen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde überzeugen",
+                    "du": "würdest überzeugen",
+                    "er": "würde überzeugen",
+                    "es": "würde überzeugen",
+                    "sie_singular": "würde überzeugen",
+                    "xier": "würde überzeugen",
+                    "wir": "würden überzeugen",
+                    "ihr": "würdet überzeugen",
+                    "sie_plural": "würden überzeugen",
+                    "Sie": "würden überzeugen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte überzeugt",
+                    "du": "hättest überzeugt",
+                    "er": "hätte überzeugt",
+                    "es": "hätte überzeugt",
+                    "sie_singular": "hätte überzeugt",
+                    "xier": "hätte überzeugt",
+                    "wir": "hätten überzeugt",
+                    "ihr": "hättet überzeugt",
+                    "sie_plural": "hätten überzeugt",
+                    "Sie": "hätten überzeugt"
+                },
+                "imperative": {
+                    "du": "überzeuge",
+                    "ihr": "überzeugt",
+                    "Sie": "überzeugen Sie"
+                }
+            },
+            "verhaften": {
+                "present": {
+                    "ich": "verhafte",
+                    "du": "verhaftest",
+                    "er": "verhaftet",
+                    "es": "verhaftet",
+                    "sie_singular": "verhaftet",
+                    "xier": "verhaftet",
+                    "wir": "verhaften",
+                    "ihr": "verhaftet",
+                    "sie_plural": "verhaften",
+                    "Sie": "verhaften"
+                },
+                "Perfekt": {
+                    "ich": "habe verhaftet",
+                    "du": "hast verhaftet",
+                    "er": "hat verhaftet",
+                    "es": "hat verhaftet",
+                    "sie_singular": "hat verhaftet",
+                    "xier": "hat verhaftet",
+                    "wir": "haben verhaftet",
+                    "ihr": "habt verhaftet",
+                    "sie_plural": "haben verhaftet",
+                    "Sie": "haben verhaftet"
+                },
+                "Futur_I": {
+                    "ich": "werde verhaften",
+                    "du": "wirst verhaften",
+                    "er": "wird verhaften",
+                    "es": "wird verhaften",
+                    "sie_singular": "wird verhaften",
+                    "xier": "wird verhaften",
+                    "wir": "werden verhaften",
+                    "ihr": "werdet verhaften",
+                    "sie_plural": "werden verhaften",
+                    "Sie": "werden verhaften"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verhaften",
+                    "du": "würdest verhaften",
+                    "er": "würde verhaften",
+                    "es": "würde verhaften",
+                    "sie_singular": "würde verhaften",
+                    "xier": "würde verhaften",
+                    "wir": "würden verhaften",
+                    "ihr": "würdet verhaften",
+                    "sie_plural": "würden verhaften",
+                    "Sie": "würden verhaften"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verhaftet",
+                    "du": "hättest verhaftet",
+                    "er": "hätte verhaftet",
+                    "es": "hätte verhaftet",
+                    "sie_singular": "hätte verhaftet",
+                    "xier": "hätte verhaftet",
+                    "wir": "hätten verhaftet",
+                    "ihr": "hättet verhaftet",
+                    "sie_plural": "hätten verhaftet",
+                    "Sie": "hätten verhaftet"
+                },
+                "imperative": {
+                    "du": "verhafte",
+                    "ihr": "verhaftet",
+                    "Sie": "verhaften Sie"
+                }
+            },
+            "verlangen": {
+                "present": {
+                    "ich": "verlange",
+                    "du": "verlangst",
+                    "er": "verlangt",
+                    "es": "verlangt",
+                    "sie_singular": "verlangt",
+                    "xier": "verlangt",
+                    "wir": "verlangen",
+                    "ihr": "verlangt",
+                    "sie_plural": "verlangen",
+                    "Sie": "verlangen"
+                },
+                "Perfekt": {
+                    "ich": "habe verlangt",
+                    "du": "hast verlangt",
+                    "er": "hat verlangt",
+                    "es": "hat verlangt",
+                    "sie_singular": "hat verlangt",
+                    "xier": "hat verlangt",
+                    "wir": "haben verlangt",
+                    "ihr": "habt verlangt",
+                    "sie_plural": "haben verlangt",
+                    "Sie": "haben verlangt"
+                },
+                "Futur_I": {
+                    "ich": "werde verlangen",
+                    "du": "wirst verlangen",
+                    "er": "wird verlangen",
+                    "es": "wird verlangen",
+                    "sie_singular": "wird verlangen",
+                    "xier": "wird verlangen",
+                    "wir": "werden verlangen",
+                    "ihr": "werdet verlangen",
+                    "sie_plural": "werden verlangen",
+                    "Sie": "werden verlangen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verlangen",
+                    "du": "würdest verlangen",
+                    "er": "würde verlangen",
+                    "es": "würde verlangen",
+                    "sie_singular": "würde verlangen",
+                    "xier": "würde verlangen",
+                    "wir": "würden verlangen",
+                    "ihr": "würdet verlangen",
+                    "sie_plural": "würden verlangen",
+                    "Sie": "würden verlangen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verlangt",
+                    "du": "hättest verlangt",
+                    "er": "hätte verlangt",
+                    "es": "hätte verlangt",
+                    "sie_singular": "hätte verlangt",
+                    "xier": "hätte verlangt",
+                    "wir": "hätten verlangt",
+                    "ihr": "hättet verlangt",
+                    "sie_plural": "hätten verlangt",
+                    "Sie": "hätten verlangt"
+                },
+                "imperative": {
+                    "du": "verlange",
+                    "ihr": "verlangt",
+                    "Sie": "verlangen Sie"
+                }
+            },
+            "verteilen": {
+                "present": {
+                    "ich": "verteile",
+                    "du": "verteilst",
+                    "er": "verteilt",
+                    "es": "verteilt",
+                    "sie_singular": "verteilt",
+                    "xier": "verteilt",
+                    "wir": "verteilen",
+                    "ihr": "verteilt",
+                    "sie_plural": "verteilen",
+                    "Sie": "verteilen"
+                },
+                "Perfekt": {
+                    "ich": "habe verteilt",
+                    "du": "hast verteilt",
+                    "er": "hat verteilt",
+                    "es": "hat verteilt",
+                    "sie_singular": "hat verteilt",
+                    "xier": "hat verteilt",
+                    "wir": "haben verteilt",
+                    "ihr": "habt verteilt",
+                    "sie_plural": "haben verteilt",
+                    "Sie": "haben verteilt"
+                },
+                "Futur_I": {
+                    "ich": "werde verteilen",
+                    "du": "wirst verteilen",
+                    "er": "wird verteilen",
+                    "es": "wird verteilen",
+                    "sie_singular": "wird verteilen",
+                    "xier": "wird verteilen",
+                    "wir": "werden verteilen",
+                    "ihr": "werdet verteilen",
+                    "sie_plural": "werden verteilen",
+                    "Sie": "werden verteilen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verteilen",
+                    "du": "würdest verteilen",
+                    "er": "würde verteilen",
+                    "es": "würde verteilen",
+                    "sie_singular": "würde verteilen",
+                    "xier": "würde verteilen",
+                    "wir": "würden verteilen",
+                    "ihr": "würdet verteilen",
+                    "sie_plural": "würden verteilen",
+                    "Sie": "würden verteilen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verteilt",
+                    "du": "hättest verteilt",
+                    "er": "hätte verteilt",
+                    "es": "hätte verteilt",
+                    "sie_singular": "hätte verteilt",
+                    "xier": "hätte verteilt",
+                    "wir": "hätten verteilt",
+                    "ihr": "hättet verteilt",
+                    "sie_plural": "hätten verteilt",
+                    "Sie": "hätten verteilt"
+                },
+                "imperative": {
+                    "du": "verteile",
+                    "ihr": "verteilt",
+                    "Sie": "verteilen Sie"
+                }
+            },
+            "warnen": {
+                "present": {
+                    "ich": "warne",
+                    "du": "warnst",
+                    "er": "warnt",
+                    "es": "warnt",
+                    "sie_singular": "warnt",
+                    "xier": "warnt",
+                    "wir": "warnen",
+                    "ihr": "warnt",
+                    "sie_plural": "warnen",
+                    "Sie": "warnen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewarnt",
+                    "du": "hast gewarnt",
+                    "er": "hat gewarnt",
+                    "es": "hat gewarnt",
+                    "sie_singular": "hat gewarnt",
+                    "xier": "hat gewarnt",
+                    "wir": "haben gewarnt",
+                    "ihr": "habt gewarnt",
+                    "sie_plural": "haben gewarnt",
+                    "Sie": "haben gewarnt"
+                },
+                "Futur_I": {
+                    "ich": "werde warnen",
+                    "du": "wirst warnen",
+                    "er": "wird warnen",
+                    "es": "wird warnen",
+                    "sie_singular": "wird warnen",
+                    "xier": "wird warnen",
+                    "wir": "werden warnen",
+                    "ihr": "werdet warnen",
+                    "sie_plural": "werden warnen",
+                    "Sie": "werden warnen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde warnen",
+                    "du": "würdest warnen",
+                    "er": "würde warnen",
+                    "es": "würde warnen",
+                    "sie_singular": "würde warnen",
+                    "xier": "würde warnen",
+                    "wir": "würden warnen",
+                    "ihr": "würdet warnen",
+                    "sie_plural": "würden warnen",
+                    "Sie": "würden warnen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gewarnt",
+                    "du": "hättest gewarnt",
+                    "er": "hätte gewarnt",
+                    "es": "hätte gewarnt",
+                    "sie_singular": "hätte gewarnt",
+                    "xier": "hätte gewarnt",
+                    "wir": "hätten gewarnt",
+                    "ihr": "hättet gewarnt",
+                    "sie_plural": "hätten gewarnt",
+                    "Sie": "hätten gewarnt"
+                },
+                "imperative": {
+                    "du": "warne",
+                    "ihr": "warnt",
+                    "Sie": "warnen Sie"
+                }
+            },
+            "begehen": {
+                "present": {
+                    "ich": "begehe",
+                    "du": "begehst",
+                    "er": "begeht",
+                    "es": "begeht",
+                    "sie_singular": "begeht",
+                    "xier": "begeht",
+                    "wir": "begehen",
+                    "ihr": "begeht",
+                    "sie_plural": "begehen",
+                    "Sie": "begehen"
+                },
+                "Perfekt": {
+                    "ich": "habe begangen",
+                    "du": "hast begangen",
+                    "er": "hat begangen",
+                    "es": "hat begangen",
+                    "sie_singular": "hat begangen",
+                    "xier": "hat begangen",
+                    "wir": "haben begangen",
+                    "ihr": "habt begangen",
+                    "sie_plural": "haben begangen",
+                    "Sie": "haben begangen"
+                },
+                "Futur_I": {
+                    "ich": "werde begehen",
+                    "du": "wirst begehen",
+                    "er": "wird begehen",
+                    "es": "wird begehen",
+                    "sie_singular": "wird begehen",
+                    "xier": "wird begehen",
+                    "wir": "werden begehen",
+                    "ihr": "werdet begehen",
+                    "sie_plural": "werden begehen",
+                    "Sie": "werden begehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde begehen",
+                    "du": "würdest begehen",
+                    "er": "würde begehen",
+                    "es": "würde begehen",
+                    "sie_singular": "würde begehen",
+                    "xier": "würde begehen",
+                    "wir": "würden begehen",
+                    "ihr": "würdet begehen",
+                    "sie_plural": "würden begehen",
+                    "Sie": "würden begehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte begangen",
+                    "du": "hättest begangen",
+                    "er": "hätte begangen",
+                    "es": "hätte begangen",
+                    "sie_singular": "hätte begangen",
+                    "xier": "hätte begangen",
+                    "wir": "hätten begangen",
+                    "ihr": "hättet begangen",
+                    "sie_plural": "hätten begangen",
+                    "Sie": "hätten begangen"
+                },
+                "imperative": {
+                    "du": "begeh",
+                    "ihr": "begeht",
+                    "Sie": "begehen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Widerstand – Für und gegen Zu zweit: Widerstand im Dritten Reich zu leisten, war natürlich sehr gefährlich.",
+            "Warum haben die Widerständler *innen Widerstand geleistet?",
+            "Hier sehen Sie ein paar mögliche Argumente für und gegen Widerstand.",
+            "Entscheiden Sie zuerst für jedes Argument, ob es ein Argument für (+) oder gegen (-) Widerstand ist.",
+            "Durch Widerstand bringe ich mich selbst in Gefahr.",
+            "Ich will das autoritäre Regime stoppen.",
+            "Ich kann nicht akzeptieren, dass die Nazis die Menschenrecht e verletzen.",
+            "Das Naziregime ist positiv für mich ( z.B.",
+            "Ich weiß nichts von den Verbrechen der Nazis.",
+            "Ich will jüdische Freund*innen retten.",
+            "Ich denke Nazis sind schlecht für Deutschland.",
+            "Was, glauben Sie, waren die zwei häufigsten Gründe für Widerstand?",
+            "Was, denken Sie, waren die zwei wichtigsten Gründe gegen Widerstand?",
+            "Hören Sie den Dialog zwischen einer Frau und einem Mann.",
+            "Welche Person (die Frau oder der Mann) streitet, verlangt, überzeugt?",
+            "Beantworten Sie die Fragen und bilden Sie Sätze mit den Dativpräpositionen.",
+            "Wer streitet mit wem?",
+            "Ein e Frau streitet mit einem Mann.",
+            "Wer verlangt von wem, dass er/sie beim Protest mitmacht?",
+            "Die Frau verlangt vo n dem Mann, dass er beim Protest mitmacht.",
+            "Wer überzeugt wen vom Widerstand?",
+            "Die Frau überzeugt den Mann vom Widerstand.",
+            "Wer beginnt nach dem Dialog mit dem Protest?",
+            "Der Mann beginnt nach dem Dialog mit dem Protest.",
+            "Wer hilft nach dem Dialog beim Schreiben von Plakaten?",
+            "Der Mann hilft beim Schreiben von Plakaten, Frau: Warum hilfst du uns nicht beim Protest?",
+            "Ich will nicht protestieren.",
+            "Aber warum nicht?",
+            "Widerstand ist wichtig.",
+            "Ich mag die Politik auch nicht, aber ich habe Angst.",
+            "Du hast Angst?",
+            "Es gibt viele viele Opfer, die haben Angst.",
+            "Du musst mitmachen!",
+            "Ich weiß nicht.",
+            "Stell dir mal vor, du machst nicht mit und deinen Freund*innen passiert etwas?",
+            "Ok, ich mache beim nächsten Protest mit.",
+            "Ich helfe euch beim Schreiben von Plakaten.",
+            "Sie haben in LERNEN eine Text über die Weiße Rose gehört.",
+            "Welcher Satz passt zu welchem Flugblatt (1-5)?",
+            "Vergleichen Sie Ihre Antworten mit einer anderen Person",
+            "Die Gruppe von Widerstandskämpfer*innen {Widerstand Kämpfer*innen) mit dem Namen Weiße Rose hat 1942 mit ihren Aktivitäten begonnen.",
+            "Die Weiße Rose waren Hans und Sophie Scholl und andere Medizinstudierende an der Ludwig-Maximilians-Universität in München.",
+            "Sie haben viele Dinge über den Krieg im Osten und die brutalen Aktionen der Nazis gegen Widerstandskämpfer*innen {Widerstand Kämpfer*innen) gehört.",
+            "Im ersten Flugblatt haben sie die Deutschen gewarnt.",
+            "Im zweiten Flugblatt haben sie über den Holocaust beginn [Holocaust Beginn] informiert.",
+            "Im dritten Flugblatt hofften sie, dass man das Regime durch passiven Widerstand besiegen kann.",
+            "Im vierten Flugblatt haben sie über die große Zahl von Me n schen geschrieben, die im Krieg im Osten gestorben sind, im fünften wollte die Weiße Rose Menschen vom aktiven Widerstand überzeugen.",
+            "Das sechste war „Das Manifest der Münchner Studenten.",
+            "Es kam in die Hände der Alliierten, die es in Millionen Kopien aus Flugzeugen geworfen und so in Deutschland verteilt haben.",
+            "Die Gestapo hat Sophie und Hans Scholl verhaftet.",
+            "Dieses Flugblatt informiert über den Holocaust.",
+            "Dieses Flugblatt verlangt aktiven Widerstand.",
+            "Dieses Flugblatt will passiven Widerstand.",
+            "Dieses Flugblatt warnt.",
+            "Dieses Flugblatt informiert über den Krieg im Osten.",
+            "Lesen Sie die Informationen über das 6.",
+            "Flugblatt und Wählen Sie alle korrekten aus.",
+            "Das Flugblatt heißt Das Manifest der Münchner Studenten.",
+            "Die Weiße Rose schreibt das Flugblatt im Gefängnis.",
+            "Ergänzen Sie die Konnektoren.",
+            "Sophie Scholl war beim Bund Deutscher Mädel, aber sie war keine Nazi-Sympathisantin.",
+            "Nach der Schule hat sie mit Kindern und auch beim Reichsarbeitsdienst gearbeitet, bevor sie studierenden durfte.",
+            "Sie hat in München Philosophie und Biologie studiert und dort auch die anderen Mitglieder der Weißen Rose kennengelernt.",
+            "Weil die Weiße Rose von dem Krieg und den Kriegsverbrechen schockiert war, hat die Gruppe Flugblätter gegen den Krieg geschrieben.",
+            "Aber beim Verteilen vom sechsten Flugblatt hat die Gestapo Sophie verhaftet und sie wurde am 22.",
+            "Februar 1943 exekutiert.",
+            "Hans Scholl wurde am 22.",
+            "September 1918 geboren.",
+            "Hans ' Vater war gegen die Nazis, aber Hans war trotzdem Mitglied in der Hitlerjugend.",
+            "Aber nach dem Reichsparteitag 1936 war Hans von der HJ desillusioniert.",
+            "Nach der Schule musste Hans zum Reichsarbeitsdienst und zum Militär.",
+            "Weil er in München Medizin studiert hat, war er im Militär bei den Mediziner *innen.",
+            "Hans war gegen den Krieg und die Kriegsverbrechen und hat mit Freund*innen die Weiße Rose gegründet.",
+            "Die Gestapo hat ihn und Sophie beim Verteilen von Flugblättern verhaftet und er wurde am 22.",
+            "Lesen Sie Ihre Sätze der anderen Person vor.",
+            "Lesen Sie zuerst die Fragen durch.",
+            "Dann schauen Sie sich das Video an.",
+            "Welche Orte mit dem Namen „Geschwister Scholl nennen die Personen im Video?",
+            "Warum wurden diese Orte nach Sophie und Hans Scholl benannt?",
+            "Welche Argumente hören Sie?",
+            "Die Geschwister Scholl waren ein Symbol des Widerstands im Dritten Reich.",
+            "Die Geschwister Scholl kommen aus Stuttgart.",
+            "Die Orte erinnern an die Geschwister Scholl.",
+            "Zwei Personen im Video diskutieren, ob das Benennen von öffentlichen Orten nach wichtigen Personen eine gute Art der Erinnerung ist.",
+            "Schreiben Sie pro und kontra hinter die Argumente.",
+            "Menschen können die Personen so nicht vergessen.",
+            "Die Reputation der Person kann sich ändern, dann muss man die Namen ändern.",
+            "Menschen wissen so mehr über die Geschichte.",
+            "Durch die Orte kann man sich an die Personen erinnern.",
+            "Kennen Sie Orte, die nach den Geschwistern Scholl benannt sind?",
+            "Fällt mir jetzt nichts dazu ein.",
+            "Ich glaube, es gibt vielleicht ‘n Institut, aber ich wüsste nicht was die da machen.",
+            "Es gibt Geschwister- Scholl - Gymnasium hier in Stuttgart.",
+            "Wir haben dort Pass.",
+            "Worte gespielt und, ja, deswegen kann ich",
+            "Kann ich mich noch erinnern.",
+            "Also ich kenne leider nur die Geschwister- Scholl - Straße hier in Stuttgart, die nach den Geschwistern benannt wurde.",
+            "Nee, fällt mir grad nichts ein.",
+            "Ich glaub, ich kenn da nichts.",
+            "Ja, also das Erste, das mir einfällt, wäre der Geschwister- Scholl - Platz vor dem Hauptgebäude der LMU - Ludwig Maximilians Universität München.",
+            "Genau, und in diesem Hauptgebäude gibt‘s auch einen Lichthof.",
+            "Warum sind diese Orte nach Sophie und Hans Scholl benannt?",
+            "Soweit ich weiß, haben sie dort studiert.",
+            "Ich finde es wichtig und gut, Orte und Straßen nach Personen zu benennen - deswegen, weil man sich dann an diese Personen auch erinnern kann.",
+            "Der Nachteil davon könnte sein, dass diese Personen in ein paar Jahren eine andere Reputation haben können.",
+            "Ein Beispiel davon könnte sein, Tschechien mit Orten, die nach kommunistischen Personen benannt wurden.",
+            "Und nach der Wende mussten dann alle Plätze wieder neu benannt werden.",
+            "Das könnte einer von den Nachteilen sein, dass man die Person in ein paar Jahren vielleicht auch anders ansieht.",
+            "Sprechen Sie jetzt in Ihrer Gruppe:",
+            "Welchen Argumenten stimmen Sie zu welchen nicht?"
+        ],
+        "templated": []
+    }
+}

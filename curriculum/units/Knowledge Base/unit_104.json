@@ -1,0 +1,549 @@
+{
+    "unit": "104",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 104,
+        "prerequisite": "1-103"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Erfindung präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "vergeben",
+                "pos": "VERB",
+                "translation": "to allocate (to)",
+                "frequency": 2501
+            },
+            {
+                "word": "tauschen",
+                "pos": "VERB",
+                "translation": "to switch, exchange",
+                "frequency": 3647,
+                "cefr": "A2"
+            },
+            {
+                "word": "nachdenken",
+                "pos": "VERB",
+                "translation": "to think (about), reflect (on)",
+                "frequency": 1173,
+                "cefr": "B1"
+            },
+            {
+                "word": "tanken",
+                "pos": "VERB",
+                "translation": "to refuel",
+                "frequency": 10385,
+                "cefr": "B1"
+            },
+            {
+                "word": "basteln",
+                "pos": "VERB",
+                "translation": "to do handicrafts",
+                "frequency": 6849,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Höhle",
+                "pos": "NOUN",
+                "translation": "cave; cavern"
+            },
+            {
+                "word": "der Löwe",
+                "pos": "NOUN",
+                "translation": "lion"
+            },
+            {
+                "word": "der Innenraum",
+                "pos": "NOUN",
+                "translation": "interior; indoor; inside space",
+                "frequency": 9775,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Rolle",
+                "pos": "NOUN",
+                "translation": "role",
+                "frequency": 385,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hälfte",
+                "pos": "NOUN",
+                "translation": "half"
+            },
+            {
+                "word": "gesamt",
+                "pos": "ADJ",
+                "translation": "alltogether",
+                "frequency": 557,
+                "cefr": "B1"
+            },
+            {
+                "word": "verteilen",
+                "pos": "VERB",
+                "translation": "to distribute sth.; spread sth.",
+                "frequency": 1162,
+                "cefr": "B1"
+            },
+            {
+                "word": "besprechen",
+                "pos": "VERB",
+                "translation": "to discuss something; to review something",
+                "frequency": 2205,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Jury",
+                "pos": "NOUN",
+                "frequency": 4920
+            },
+            {
+                "word": "der Flatscreen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Popcornmaschine",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Grünfläche",
+                "pos": "NOUN",
+                "frequency": 11987,
+                "cefr": "B2"
+            },
+            {
+                "word": "digital",
+                "pos": "ADJ",
+                "frequency": 1291,
+                "cefr": "B1"
+            },
+            {
+                "word": "insgesamt",
+                "pos": "ADV",
+                "frequency": 496,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vergeben": {
+                "present": {
+                    "ich": "vergebe",
+                    "du": "vergibst",
+                    "er": "vergibt",
+                    "es": "vergibt",
+                    "sie_singular": "vergibt",
+                    "xier": "vergibt",
+                    "wir": "vergeben",
+                    "ihr": "vergebt",
+                    "sie_plural": "vergeben",
+                    "Sie": "vergeben"
+                },
+                "Perfekt": {
+                    "ich": "habe vergeben",
+                    "du": "hast vergeben",
+                    "er": "hat vergeben",
+                    "es": "hat vergeben",
+                    "sie_singular": "hat vergeben",
+                    "xier": "hat vergeben",
+                    "wir": "haben vergeben",
+                    "ihr": "habt vergeben",
+                    "sie_plural": "haben vergeben",
+                    "Sie": "haben vergeben"
+                },
+                "Futur_I": {
+                    "ich": "werde vergeben",
+                    "du": "wirst vergeben",
+                    "er": "wird vergeben",
+                    "es": "wird vergeben",
+                    "sie_singular": "wird vergeben",
+                    "xier": "wird vergeben",
+                    "wir": "werden vergeben",
+                    "ihr": "werdet vergeben",
+                    "sie_plural": "werden vergeben",
+                    "Sie": "werden vergeben"
+                },
+                "imperative": {
+                    "du": "vergib",
+                    "ihr": "vergebt",
+                    "Sie": "vergeben Sie"
+                }
+            },
+            "tauschen": {
+                "present": {
+                    "ich": "tausche",
+                    "du": "tauschst",
+                    "er": "tauscht",
+                    "es": "tauscht",
+                    "sie_singular": "tauscht",
+                    "xier": "tauscht",
+                    "wir": "tauschen",
+                    "ihr": "tauscht",
+                    "sie_plural": "tauschen",
+                    "Sie": "tauschen"
+                },
+                "Perfekt": {
+                    "ich": "habe getauscht",
+                    "du": "hast getauscht",
+                    "er": "hat getauscht",
+                    "es": "hat getauscht",
+                    "sie_singular": "hat getauscht",
+                    "xier": "hat getauscht",
+                    "wir": "haben getauscht",
+                    "ihr": "habt getauscht",
+                    "sie_plural": "haben getauscht",
+                    "Sie": "haben getauscht"
+                },
+                "Futur_I": {
+                    "ich": "werde tauschen",
+                    "du": "wirst tauschen",
+                    "er": "wird tauschen",
+                    "es": "wird tauschen",
+                    "sie_singular": "wird tauschen",
+                    "xier": "wird tauschen",
+                    "wir": "werden tauschen",
+                    "ihr": "werdet tauschen",
+                    "sie_plural": "werden tauschen",
+                    "Sie": "werden tauschen"
+                },
+                "imperative": {
+                    "du": "tausche",
+                    "ihr": "tauscht",
+                    "Sie": "tauschen Sie"
+                }
+            },
+            "nachdenken": {
+                "present": {
+                    "ich": "denke nach",
+                    "du": "denkst nach",
+                    "er": "denkt nach",
+                    "es": "denkt nach",
+                    "sie_singular": "denkt nach",
+                    "xier": "denkt nach",
+                    "wir": "denken nach",
+                    "ihr": "denkt nach",
+                    "sie_plural": "denken nach",
+                    "Sie": "denken nach"
+                },
+                "Perfekt": {
+                    "ich": "habe nachgedacht",
+                    "du": "hast nachgedacht",
+                    "er": "hat nachgedacht",
+                    "es": "hat nachgedacht",
+                    "sie_singular": "hat nachgedacht",
+                    "xier": "hat nachgedacht",
+                    "wir": "haben nachgedacht",
+                    "ihr": "habt nachgedacht",
+                    "sie_plural": "haben nachgedacht",
+                    "Sie": "haben nachgedacht"
+                },
+                "Futur_I": {
+                    "ich": "werde nachdenken",
+                    "du": "wirst nachdenken",
+                    "er": "wird nachdenken",
+                    "es": "wird nachdenken",
+                    "sie_singular": "wird nachdenken",
+                    "xier": "wird nachdenken",
+                    "wir": "werden nachdenken",
+                    "ihr": "werdet nachdenken",
+                    "sie_plural": "werden nachdenken",
+                    "Sie": "werden nachdenken"
+                },
+                "imperative": {
+                    "du": "denke nach",
+                    "ihr": "denkt nach",
+                    "Sie": "denken Sie nach"
+                }
+            },
+            "tanken": {
+                "present": {
+                    "ich": "tanke",
+                    "du": "tankst",
+                    "er": "tankt",
+                    "es": "tankt",
+                    "sie_singular": "tankt",
+                    "xier": "tankt",
+                    "wir": "tanken",
+                    "ihr": "tankt",
+                    "sie_plural": "tanken",
+                    "Sie": "tanken"
+                },
+                "Perfekt": {
+                    "ich": "habe getankt",
+                    "du": "hast getankt",
+                    "er": "hat getankt",
+                    "es": "hat getankt",
+                    "sie_singular": "hat getankt",
+                    "xier": "hat getankt",
+                    "wir": "haben getankt",
+                    "ihr": "habt getankt",
+                    "sie_plural": "haben getankt",
+                    "Sie": "haben getankt"
+                },
+                "Futur_I": {
+                    "ich": "werde tanken",
+                    "du": "wirst tanken",
+                    "er": "wird tanken",
+                    "es": "wird tanken",
+                    "sie_singular": "wird tanken",
+                    "xier": "wird tanken",
+                    "wir": "werden tanken",
+                    "ihr": "werdet tanken",
+                    "sie_plural": "werden tanken",
+                    "Sie": "werden tanken"
+                },
+                "imperative": {
+                    "du": "tank",
+                    "ihr": "tankt",
+                    "Sie": "tanken Sie"
+                }
+            },
+            "basteln": {
+                "present": {
+                    "ich": "bastle",
+                    "du": "bastelst",
+                    "er": "bastelt",
+                    "es": "bastelt",
+                    "sie_singular": "bastelt",
+                    "xier": "bastelt",
+                    "wir": "basteln",
+                    "ihr": "bastelt",
+                    "sie_plural": "basteln",
+                    "Sie": "basteln"
+                },
+                "Perfekt": {
+                    "ich": "habe gebastelt",
+                    "du": "hast gebastelt",
+                    "er": "hat gebastelt",
+                    "es": "hat gebastelt",
+                    "sie_singular": "hat gebastelt",
+                    "xier": "hat gebastelt",
+                    "wir": "haben gebastelt",
+                    "ihr": "habt gebastelt",
+                    "sie_plural": "haben gebastelt",
+                    "Sie": "haben gebastelt"
+                },
+                "Futur_I": {
+                    "ich": "werde basteln",
+                    "du": "wirst basteln",
+                    "er": "wird basteln",
+                    "es": "wird basteln",
+                    "sie_singular": "wird basteln",
+                    "xier": "wird basteln",
+                    "wir": "werden basteln",
+                    "ihr": "werdet basteln",
+                    "sie_plural": "werden basteln",
+                    "Sie": "werden basteln"
+                },
+                "imperative": {
+                    "du": "bastel",
+                    "ihr": "bastelt",
+                    "Sie": "basteln Sie"
+                }
+            },
+            "verteilen": {
+                "present": {
+                    "ich": "verteile",
+                    "du": "verteilst",
+                    "er": "verteilt",
+                    "es": "verteilt",
+                    "sie_singular": "verteilt",
+                    "xier": "verteilt",
+                    "wir": "verteilen",
+                    "ihr": "verteilt",
+                    "sie_plural": "verteilen",
+                    "Sie": "verteilen"
+                },
+                "Perfekt": {
+                    "ich": "habe verteilt",
+                    "du": "hast verteilt",
+                    "er": "hat verteilt",
+                    "es": "hat verteilt",
+                    "sie_singular": "hat verteilt",
+                    "xier": "hat verteilt",
+                    "wir": "haben verteilt",
+                    "ihr": "habt verteilt",
+                    "sie_plural": "haben verteilt",
+                    "Sie": "haben verteilt"
+                },
+                "Futur_I": {
+                    "ich": "werde verteilen",
+                    "du": "wirst verteilen",
+                    "er": "wird verteilen",
+                    "es": "wird verteilen",
+                    "sie_singular": "wird verteilen",
+                    "xier": "wird verteilen",
+                    "wir": "werden verteilen",
+                    "ihr": "werdet verteilen",
+                    "sie_plural": "werden verteilen",
+                    "Sie": "werden verteilen"
+                },
+                "imperative": {
+                    "du": "verteile",
+                    "ihr": "verteilt",
+                    "Sie": "verteilen Sie"
+                }
+            },
+            "besprechen": {
+                "present": {
+                    "ich": "bespreche",
+                    "du": "besprichst",
+                    "er": "bespricht",
+                    "es": "bespricht",
+                    "sie_singular": "bespricht",
+                    "xier": "bespricht",
+                    "wir": "besprechen",
+                    "ihr": "besprecht",
+                    "sie_plural": "besprechen",
+                    "Sie": "besprechen"
+                },
+                "Perfekt": {
+                    "ich": "habe besprochen",
+                    "du": "hast besprochen",
+                    "er": "hat besprochen",
+                    "es": "hat besprochen",
+                    "sie_singular": "hat besprochen",
+                    "xier": "hat besprochen",
+                    "wir": "haben besprochen",
+                    "ihr": "habt besprochen",
+                    "sie_plural": "haben besprochen",
+                    "Sie": "haben besprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde besprechen",
+                    "du": "wirst besprechen",
+                    "er": "wird besprechen",
+                    "es": "wird besprechen",
+                    "sie_singular": "wird besprechen",
+                    "xier": "wird besprechen",
+                    "wir": "werden besprechen",
+                    "ihr": "werdet besprechen",
+                    "sie_plural": "werden besprechen",
+                    "Sie": "werden besprechen"
+                },
+                "imperative": {
+                    "du": "besprich",
+                    "ihr": "besprecht",
+                    "Sie": "besprechen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie können alleine oder mit einer anderen Person arbeiten.",
+            "Sie haben in diesem Kapitel zum Beispiel über das Auto der Zukunft gesprochen, aber auch über andere Erfindungen nachgedacht.",
+            "Was wird man in der Zukunft brauchen?",
+            "Hier sind einige Schritte auf dem Weg zum \"Höhle des Löwen\"-Szenario – so heißt Shark Tank im deutschen Fernsehen.",
+            "Entscheiden Sie, was für ein Objekt Sie verbessern/verändern oder ganz neu erfinden möchten.",
+            "Schreiben Sie fünf Sätze, was Ihr Objekt machen wird.",
+            "Mein Auto wird fliegen.",
+            "Es wird einen Flatscreen und eine Popcornmaschine im Innenraum haben.",
+            "Ich werde es nicht tanken müssen.",
+            "Schreiben Sie drei Gründe, warum Ihr Objekt gut für die Zukunft sein wird.",
+            "Mein Auto wird ohne Treibstoff fahren, damit ich etwas für die Umwelt tun kann.",
+            "Es wird fliegen, weil es weniger Straßen geben sollte und wir mehr Grünflächen brauchen werden.",
+            "ÉEs wird einen Flatscreen haben, damit mir nicht langweilig wird.",
+            "Es wird fliegen, damit wir weniger Straßen brauchen werden und es mehr Grünflächen geben wird.",
+            "Machen Sie eine Präsentation.",
+            "Sie können einen Prototyp basteln oder ein Poster oder eine digitale Präsentation machen.",
+            "Es darf nicht zu viel Text auf Ihrem Poster oder Ihrer digitalen Präsentation stehen, damit Sie so frei wie möglich sprechen.",
+            "Ihre Präsentation wird nur 2 Minuten lang sein.",
+            "Sie können hier Notizen für Ihre Präsentation schreiben.",
+            "Spielen Sie die \"Höhle des Löwen\" (mit Impuls Deutsch Regeln).",
+            "Im Kurs bilden Sie Gruppen mit 6-8 Studierenden.",
+            "Erst ist die eine Hälfte die Jury, dann die andere.",
+            "Präsentieren Sie die Erfindungen (maximal 2 Minuten pro Erfindung).",
+            "Die Jury stellt Fragen (jedes Mitglied eine Frage), die Erfinder*innen antworten.",
+            "Tauschen Sie die Rollen (die Erfinder*innen werden Jury und die Jury die Erfinder*innen).",
+            "Diskussion der Jury: Entscheiden Sie, welche Erfindung wie viel Geld bekommt.",
+            "Die Jury kann insgesamt 1.000.000 Euro vergeben.",
+            "Aus jeder Gruppe präsentieren die Erfinder*innen, die das meiste \"Geld\" bekommen haben, ihre Erfindung dem ganzen Kurs.",
+            "Der ganze Kurs entscheidet, welche Erfindung die \"Höhle des Löwen\" gewinnt."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,625 @@
+{
+    "unit": "64",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 64,
+        "prerequisite": "1-63"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "When a reflexive verb specifies a body part, use dative reflexive pronouns (mir, dir, sich, uns, euch, sich) and place the body part as the accusative object: \"Ich wasche mir die Hände.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Alternativen zu Plastik diskutieren",
+            "Körperpflege beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Plastik vermeiden"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "abtrocknen",
+                "pos": "VERB",
+                "translation": "to dry off"
+            },
+            {
+                "word": "ausziehen",
+                "pos": "VERB",
+                "translation": "to take off (clothes); undress",
+                "frequency": 2434,
+                "cefr": "A1"
+            },
+            {
+                "word": "bürsten",
+                "pos": "VERB",
+                "translation": "to brush"
+            },
+            {
+                "word": "eincremen",
+                "pos": "VERB",
+                "translation": "to moisturize; put lotion on"
+            },
+            {
+                "word": "pflegen",
+                "pos": "VERB",
+                "translation": "to take care of",
+                "frequency": 1842,
+                "cefr": "B1"
+            },
+            {
+                "word": "überlegen",
+                "pos": "VERB",
+                "translation": "to consider, reflect , think"
+            },
+            {
+                "word": "empfehlen",
+                "pos": "VERB",
+                "translation": "to recommend",
+                "frequency": 1418,
+                "cefr": "A1"
+            },
+            {
+                "word": "bilden",
+                "pos": "VERB",
+                "translation": "to build; form",
+                "frequency": 315,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Verhalten",
+                "pos": "NOUN",
+                "translation": "behavior",
+                "frequency": 5573,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Wunder",
+                "pos": "NOUN",
+                "translation": "miracle; wonder",
+                "frequency": 1909,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Qualität",
+                "pos": "NOUN",
+                "translation": "quality"
+            },
+            {
+                "word": "das Holz",
+                "pos": "NOUN",
+                "translation": "wood",
+                "frequency": 2221,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kamm",
+                "pos": "NOUN",
+                "translation": "comb (hair)",
+                "frequency": 15037,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bürste",
+                "pos": "NOUN",
+                "translation": "brush",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Seife",
+                "pos": "NOUN",
+                "translation": "soap",
+                "frequency": 17814,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Haar, e",
+                "pos": "NOUN",
+                "translation": "hair",
+                "frequency": 748,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Brust",
+                "pos": "NOUN",
+                "translation": "chest; breast",
+                "frequency": 1783,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bart",
+                "pos": "NOUN",
+                "translation": "beard",
+                "frequency": 10280,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Keller",
+                "pos": "NOUN",
+                "translation": "cellar; basement",
+                "frequency": 1599,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Schluss",
+                "pos": "NOUN",
+                "translation": "ending",
+                "frequency": 1030,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Ersatz (für etw.)",
+                "pos": "NOUN",
+                "translation": "replacement (for sth.)"
+            },
+            {
+                "word": "flüssig",
+                "pos": "ADJ",
+                "translation": "liquid"
+            },
+            {
+                "word": "fest",
+                "pos": "ADJ",
+                "translation": "firm, solid, fixed",
+                "frequency": 567,
+                "cefr": "B1"
+            },
+            {
+                "word": "einfach",
+                "pos": "ADJ",
+                "translation": "easy [opposite of difficult]; simple; plain; ordinary",
+                "frequency": 131,
+                "cefr": "A1"
+            },
+            {
+                "word": "wirklich",
+                "pos": "ADJ",
+                "translation": "real(ly), actuall(y)",
+                "frequency": 189,
+                "cefr": "A2"
+            },
+            {
+                "word": "täglich",
+                "pos": "ADJ",
+                "translation": "daily"
+            },
+            {
+                "word": "wieder",
+                "pos": "ADV",
+                "translation": "again",
+                "frequency": 74,
+                "cefr": "A2"
+            },
+            {
+                "word": "Du bist dran!",
+                "pos": "PHRASE",
+                "translation": "It's your turn!"
+            },
+            {
+                "word": "verbessern",
+                "pos": "VERB",
+                "translation": "to improve, enhance",
+                "frequency": 1194,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Rasierer",
+                "pos": "NOUN",
+                "translation": "razor; shaver",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Mülleimer",
+                "pos": "NOUN",
+                "translation": "trash can, garbage can",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Plastik",
+                "pos": "NOUN",
+                "translation": "plastic",
+                "frequency": 8781,
+                "cefr": "B1"
+            },
+            {
+                "word": "leicht",
+                "pos": "ADJ",
+                "translation": "easy [opposite of heavy]; light; simple",
+                "frequency": 311,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "recyclen",
+                "pos": "VERB"
+            },
+            {
+                "word": "recyceln",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Personalpronoma",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Intro",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Podcast",
+                "pos": "NOUN"
+            },
+            {
+                "word": "definitiv",
+                "pos": "ADV",
+                "frequency": 3431
+            },
+            {
+                "word": "der Potential",
+                "pos": "NOUN",
+                "frequency": 9710
+            },
+            {
+                "word": "das Gel",
+                "pos": "NOUN",
+                "frequency": 37999
+            },
+            {
+                "word": "das Shampoo",
+                "pos": "NOUN",
+                "frequency": 45940
+            },
+            {
+                "word": "das Deo",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Ersatz",
+                "pos": "NOUN",
+                "frequency": 3760,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Recycling",
+                "pos": "NOUN",
+                "frequency": 18370,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Tampon",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "abtrocknen": {
+                "present": {
+                    "ich": "trockne ab",
+                    "du": "trocknest ab",
+                    "er": "trocknet ab",
+                    "es": "trocknet ab",
+                    "sie_singular": "trocknet ab",
+                    "xier": "trocknet ab",
+                    "wir": "trocknen ab",
+                    "ihr": "trocknet ab",
+                    "sie_plural": "trocknen ab",
+                    "Sie": "trocknen ab"
+                }
+            },
+            "ausziehen": {
+                "present": {
+                    "ich": "ziehe aus",
+                    "du": "ziehst aus",
+                    "er": "zieht aus",
+                    "es": "zieht aus",
+                    "sie_singular": "zieht aus",
+                    "xier": "zieht aus",
+                    "wir": "ziehen aus",
+                    "ihr": "zieht aus",
+                    "sie_plural": "ziehen aus",
+                    "Sie": "ziehen aus"
+                }
+            },
+            "bürsten": {
+                "present": {
+                    "ich": "bürste",
+                    "du": "bürstest",
+                    "er": "bürstet",
+                    "es": "bürstet",
+                    "sie_singular": "bürstet",
+                    "xier": "bürstet",
+                    "wir": "bürsten",
+                    "ihr": "bürstet",
+                    "sie_plural": "bürsten",
+                    "Sie": "bürsten"
+                }
+            },
+            "eincremen": {
+                "present": {
+                    "ich": "creme ein",
+                    "du": "cremst ein",
+                    "er": "cremt ein",
+                    "es": "cremt ein",
+                    "sie_singular": "cremt ein",
+                    "xier": "cremt ein",
+                    "wir": "cremen ein",
+                    "ihr": "cremt ein",
+                    "sie_plural": "cremen ein",
+                    "Sie": "cremen ein"
+                }
+            },
+            "pflegen": {
+                "present": {
+                    "ich": "pflege",
+                    "du": "pflegst",
+                    "er": "pflegt",
+                    "es": "pflegt",
+                    "sie_singular": "pflegt",
+                    "xier": "pflegt",
+                    "wir": "pflegen",
+                    "ihr": "pflegt",
+                    "sie_plural": "pflegen",
+                    "Sie": "pflegen"
+                }
+            },
+            "überlegen": {
+                "present": {
+                    "ich": "überlege",
+                    "du": "überlegst",
+                    "er": "überlegt",
+                    "es": "überlegt",
+                    "sie_singular": "überlegt",
+                    "xier": "überlegt",
+                    "wir": "überlegen",
+                    "ihr": "überlegt",
+                    "sie_plural": "überlegen",
+                    "Sie": "überlegen"
+                }
+            },
+            "empfehlen": {
+                "present": {
+                    "ich": "empfehle",
+                    "du": "empfiehlst",
+                    "er": "empfiehlt",
+                    "es": "empfiehlt",
+                    "sie_singular": "empfiehlt",
+                    "xier": "empfiehlt",
+                    "wir": "empfehlen",
+                    "ihr": "empfehlt",
+                    "sie_plural": "empfehlen",
+                    "Sie": "empfehlen"
+                }
+            },
+            "bilden": {
+                "present": {
+                    "ich": "bilde",
+                    "du": "bildest",
+                    "er": "bildet",
+                    "es": "bildet",
+                    "sie_singular": "bildet",
+                    "xier": "bildet",
+                    "wir": "bilden",
+                    "ihr": "bildet",
+                    "sie_plural": "bilden",
+                    "Sie": "bilden"
+                }
+            },
+            "verbessern": {
+                "present": {
+                    "ich": "verbessere",
+                    "du": "verbesserst",
+                    "er": "verbessert",
+                    "es": "verbessert",
+                    "sie_singular": "verbessert",
+                    "xier": "verbessert",
+                    "wir": "verbessern",
+                    "ihr": "verbessert",
+                    "sie_plural": "verbessern",
+                    "Sie": "verbessern"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was ist alles aus Plastik?",
+            "Sammeln Sie (in den grünen Boxen) elf weitere Dinge aus Plastik.",
+            "Brauchen Sie die Dinge (b?)?",
+            "Kann man die Dinge recyclen (r?)?",
+            "Schreiben Sie Alternativen auf, wenn man sie ersetzen kann.",
+            "Sprechen Sie über die Dinge aus Plastik.",
+            "Braucht man sie?",
+            "Kann man sie recyclen?",
+            "Kann man sie ersetzen?",
+            "Im Kursraum gibt es eine Wasserflasche, eine Uhr Nele: Was brauchst du?",
+            "Ich brauche die Uhr nicht.",
+            "Was kannst du recyceln?",
+            "Ich kann die Wasserflasche recyclen.",
+            "Was kannst du ersetzen?",
+            "Ich kann die Wasserflasche ersetzen.",
+            "Welche Alternative gibt es?",
+            "Ich kann sie mit einer Flasche aus Metall ersetzen.",
+            "Fragen Sie drei Personen.",
+            "Achten Sie auf die Personalpronomen im Dativ!",
+            "Wie wichtig sind dir Alternativen?",
+            "Lesen Sie das Intro von einem Podcast über ein Zero - Waste Bad.",
+            "Welche Ideen hat Marek?",
+            "Du suchst die besten Tipps für ein plastikfreies Badezimmer [Bad]?",
+            "Dann bist du hier genau richtig!",
+            "Täglich produzieren wir Menschen jede Menge Müll – kein Wunder, dass der Plastikmüll [ Plastikmüll ] in der Umwelt definitiv zu den größten Umweltproblemen unserer Zeit zählt.",
+            "Besonders bei der Körperpflege im Bad fällt jede Menge Müll an.",
+            "Das Potential für den Umweltschutz {Umwelt schützen ist groß.",
+            "Los geht's!",
+            "Im Podcast spricht Merek mit drei Personen - Robin ( xier ), Kevin (er) und Natasha (sie) - Lesen Sie die Aussagen von den drei Personen und ergänzen Sie die Reflexivpronomen.",
+            "Hören Sie jetzt den ersten Teil von dem Podcast.",
+            "Sind die Pronomen von Teil 2 richtig?",
+            "Heute besuche ich Robin, Kevin und Natasha in Düsseldorf.",
+            "Ich gebe den Dreien Tipps, um mit einfachen Mitteln ein Zero Waste Badezimmer [Bad] zu schaffen.",
+            "Robin, Kevin und Natasha, wie sieht euer Morgen im Badezimmer [Bad] aus?",
+            "Was macht ihr und welche Produkte benutzt ihr?",
+            "Beginnen wir mit Robin.",
+            "Hallo Marek.",
+            "Zuerst dusche ich mich.",
+            "Ich wasche mir den Körper mit einem Duschgel und die Haare mit einem Shampoo.",
+            "Dann trockne ich mich ab.",
+            "Ich trockne mir zuerst den Oberkörper ab und dann die Beine.",
+            "Als letztes bürste ich mich.",
+            "Ich bürste mir die Haare normalerweise mit einer Plastikbürste.",
+            "Danke Robin.",
+            "Kevin, wie sieht dein typischer Morgen aus?",
+            "Hi Marek.",
+            "Danke, dass ich bei deinem Podcast mitmachen kann.",
+            "Hier ist mein typischer Morgen:",
+            "Ich rasiere mich zuerst.",
+            "Ich rasiere mir den Bart und die Brust mit einem Einwegrasierer.",
+            "Dann überlege ich mir was ich anziehe und kämme mich.",
+            "Ich kämme mir die Haare mit einem Kamm.",
+            "Zum Schluss ziehe ich mich an.",
+            "Danke Kevin.",
+            "Natasha, du bist dran.",
+            "Als erstes putze ich mir die Zähne und dann creme ich mich ein.",
+            "Zuerst creme ich mir mein Gesicht ein.",
+            "Dann ziehe ich mich aus.",
+            "Ich ziehe mir zuerst das T-Shirt aus und creme mir die Arme ein.",
+            "Dann benutze ich mein Deo und ziehe mich wieder an.",
+            "Vielen Dank Robin, Kevin und Natasha.",
+            "Nach einer kurzen Werbeunterbrechung sind wir wieder zurück mit meinen Tipps für ein Zero Waste Badezimmer [Bad].",
+            "Person 1 ist Robin und Person 2 ist Kevin.",
+            "Robin erzählt Kevin, was er macht.",
+            "Kevin erzählt Robin, was Natasha macht.",
+            "Du rasierst dich zuerst.",
+            "Du rasiere dir den Bart und die Brust mit einem Einwegrasierer.",
+            "Dann überlegst du mir was du anziehst und kämmst dich.",
+            "Du kämmst dir die Haare mit einem Kamm.",
+            "Zum Schluss ziehst du dich an.",
+            "Als erstes putzt sie sich die Zähne und dann cremt sie sich ein.",
+            "Zuerst creme sie ihr Gesicht ein.",
+            "Dann zieht sie sich aus.",
+            "Sie zieht sich zuerst das T-Shirt aus und creme sich die Arme ein.",
+            "Dann benutzt sie ihr Deo und zieh t sich wieder an.",
+            "Welche Produkte hat Marek für die drei Personen?",
+            "Willkommen zurück.",
+            "Hier sind meine Tipps für ein Zero Waste Badezimmer [Bad].",
+            "Robin, die empfehle ich feste Produkte.",
+            "Du wäschst deinen Körper mit einem flüssigen Duschgel, die Haare mit einem flüssigen Shampoo und hast ein flüssiges [Flüssigkeit] Deo in einer Metalldose.",
+            "Für dein Badezimmer [Bad] habe ich ein festes Duschgel, ein festes Shampoo und eine feste Spülung und ein festes Deo.",
+            "Und als Ersatz für deine Plastikbürste habe ich noch eine Bürste aus Holz für dich.",
+            "Danke Melek.",
+            "Das feste Duschgel ist mega!",
+            "Flüssiges Shampoo?",
+            "Ich wusste nicht, dass es das gibt.",
+            "Ich probier's mal aus!",
+            "Kevin, du rasierst dir täglich das Gesicht und die Brust mit einem Rasiergel und einem Einwegrasierer aus Plastik.",
+            "Ja, ich rasiere mich jeden Tag.",
+            "Für dich habe ich eine Aloe Vera",
+            "Und einen Rasierer aus Holz.",
+            "Zum Kämmen habe ich einen Kamm aus Holz für dich.",
+            "Außerdem habe ich noch ein Recycling-Toilettenpapier für dich.",
+            "Mag ich nicht.",
+            "Das ist immer so hart.",
+            "Nein, dieses Toilettenpapier ist ganz weich.",
+            "Probier es mal aus.",
+            "Natasha,du kannst vor allem deine Zahnputz-Routine verbessern [besser].",
+            "Meine Zahnputz-Routine?",
+            "Ja, ich habe für dich eine Zahnbürste",
+            "Zähne putzen n..",
+            "Und du wirst diese Körperbutter lieben.",
+            "Ich sehe auch eine Packung Tampons in deinem Badezimmer [Bad].",
+            "Ich empfehle dir diese Menstruationstasse aus Silikon.",
+            "Und das war's auch schon.",
+            "In der nächsten Folge meines Podcasts treffe ich wieder drei Personen.",
+            "Bis bald!",
+            "Eine Zahnbürste aus Bambus, eine Menstruationstasse aus Silikon, eine Aloe Vera Rasierseife, Recycling-Toilettenpapier",
+            "Ein festes Shampoo ein festes Duschgel, ein Kamm aus Holz, eine Körperbutter, ein festes Deo",
+            "Was gibt Marek Robin, Kevin und Natasha in Teil?",
+            "Bilden Sie Sätze mit Personalpronomen.",
+            "Er ( Marek ) gibt ihm ( Kevin ) ein festes Shampoo.",
+            "Er gibt ihm eine Aloe Vera",
+            "Er gibt xiem ein festes Shampoo",
+            "Er gibt xiem ein festes Duschgel",
+            "Er gibt ihm ein Kamm aus Holz",
+            "Er gibt xiem ein festes Deo"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,732 @@
+{
+  "unit": "12",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 12,
+    "prerequisite": "1-11"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative",
+      "accusative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Use kein to negate nouns that have indefinite articles or no article: keinen for accusative r-words, kein for s-words, keine for e-words, and keine for plurals."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "sagen, was man nicht hat",
+      "sagen, was etwas nicht ist",
+      "Objekte im Kursraum benennen und erfragen"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Gegenstände im Kursraum"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "finden",
+        "pos": "VERB",
+        "translation": "to find",
+        "frequency": 103,
+        "cefr": "A1"
+      },
+      {
+        "word": "zeigen",
+        "pos": "VERB",
+        "translation": "to show, demonstrate",
+        "frequency": 136,
+        "cefr": "A2"
+      },
+      {
+        "word": "bekommen",
+        "pos": "VERB",
+        "translation": "to get",
+        "frequency": 212,
+        "cefr": "A1"
+      },
+      {
+        "word": "suchen",
+        "pos": "VERB",
+        "translation": "to look for, search",
+        "frequency": 293,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Tür",
+        "pos": "NOUN",
+        "translation": "door",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Fenster",
+        "pos": "NOUN",
+        "translation": "window",
+        "frequency": 674,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Wand",
+        "pos": "NOUN",
+        "translation": "wall (of a house or room)",
+        "frequency": 828,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Ding",
+        "pos": "NOUN",
+        "translation": "thing",
+        "frequency": 370,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Karte",
+        "pos": "NOUN",
+        "translation": "card; map",
+        "frequency": 1474,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Kurs",
+        "pos": "NOUN",
+        "translation": "course",
+        "frequency": 1549,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Kursraum",
+        "pos": "NOUN",
+        "translation": "course room, classroom",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Leinwand",
+        "pos": "NOUN",
+        "translation": "screen; canvas",
+        "frequency": 7134,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Beamer",
+        "pos": "NOUN",
+        "translation": "projector",
+        "frequency": 33789,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Buch",
+        "pos": "NOUN",
+        "translation": "book",
+        "frequency": 300,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Flasche",
+        "pos": "NOUN",
+        "translation": "bottle",
+        "frequency": 1602,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Tafel",
+        "pos": "NOUN",
+        "translation": "blackboard",
+        "frequency": 3855,
+        "cefr": "A2"
+      },
+      {
+        "word": "kein",
+        "pos": "PARTICLE",
+        "translation": "no; none",
+        "frequency": 46,
+        "cefr": "A1"
+      },
+      {
+        "word": "da",
+        "pos": "PARTICLE",
+        "translation": "there; since [because]",
+        "frequency": 48,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "das Whiteboard",
+        "pos": "NOUN"
+      },
+      {
+        "word": "eine*n",
+        "pos": "DET"
+      },
+      {
+        "word": "die Stiefmutter",
+        "pos": "NOUN",
+        "frequency": 29357
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "finden": {
+        "present": {
+          "ich": "finde",
+          "du": "findest",
+          "er": "findet",
+          "es": "findet",
+          "sie_singular": "findet",
+          "xier": "findet",
+          "wir": "finden",
+          "ihr": "findet",
+          "sie_plural": "finden",
+          "Sie": "finden"
+        }
+      },
+      "zeigen": {
+        "present": {
+          "ich": "zeige",
+          "du": "zeigst",
+          "er": "zeigt",
+          "es": "zeigt",
+          "sie_singular": "zeigt",
+          "xier": "zeigt",
+          "wir": "zeigen",
+          "ihr": "zeigt",
+          "sie_plural": "zeigen",
+          "Sie": "zeigen"
+        }
+      },
+      "bekommen": {
+        "present": {
+          "ich": "bekomme",
+          "du": "bekommst",
+          "er": "bekommt",
+          "es": "bekommt",
+          "sie_singular": "bekommt",
+          "xier": "bekommt",
+          "wir": "bekommen",
+          "ihr": "bekommt",
+          "sie_plural": "bekommen",
+          "Sie": "bekommen"
+        }
+      },
+      "suchen": {
+        "present": {
+          "ich": "suche",
+          "du": "suchst",
+          "er": "sucht",
+          "es": "sucht",
+          "sie_singular": "sucht",
+          "xier": "sucht",
+          "wir": "suchen",
+          "ihr": "sucht",
+          "sie_plural": "suchen",
+          "Sie": "suchen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Lesen Sie die Vokabeln laut.",
+      "Die Pflanze der Stuhl der Tisch",
+      "Da ist es!",
+      "Wo ist die Wand?",
+      "Da ist sie!",
+      "Wo ist der Beamer?",
+      "Da ist er.",
+      "Wo ist das Fenster?",
+      "Da ist es.",
+      "Wo ist die Lampe?",
+      "Da ist sie.",
+      "Wo ist die Leinwand?",
+      "Wo ist die Pflanze?",
+      "Wo ist der Stuhl?",
+      "Wo ist der Tisch?",
+      "Wo ist die Tür?",
+      "Wo ist das Whiteboard?",
+      "Ist das ein Beamer?",
+      "Nein, das ist kein Beamer.",
+      "Das ist ein Fenster.",
+      "Ist das ein Fenster?",
+      "Nein, das ist kein Fenster.",
+      "Das ist eine Lampe.",
+      "Ist das ein Lampe?",
+      "Nein, das ist keine Lampe.",
+      "Das ist eine Leinwand.",
+      "Ist das eine Leinwand?",
+      "Nein, das ist keine Leinwand.",
+      "Das ist eine Pflanze.",
+      "Ist das ein Pflanze?",
+      "Nein, das ist keine Pflanze.",
+      "Das ist ein Stuhl.",
+      "Ist das ein Stuhl?",
+      "Nein, das ist kein Stuhl.",
+      "Das ist ein Tisch.",
+      "Ist das ein Tisch?",
+      "Nein, das ist kein Tisch.",
+      "Das ist eine Tür.",
+      "Ist das ein Tür?",
+      "Nein, das ist keine Tür.",
+      "Das ist eine Wand.",
+      "Ist das eine Wand?",
+      "Nein, das ist keine Wand.",
+      "Das ist ein Whiteboard.",
+      "Ist das ein Whiteboard?",
+      "Nein, das ist kein Whiteboard.",
+      "Das ist ein Beamer.",
+      "Haben Sie die Dinge im Kursraum?",
+      "Das Fenster das Foto der Fußball",
+      "Die Tafel der Tisch die Tür",
+      "Welche vier Dinge haben Sie im Kursraum?",
+      "Wie haben einen Beamer, ein Deutschbuch, ein Fenster und ein Handy im Kursraum.",
+      "Welche vier Dinge haben Sie nicht im Kursraum?",
+      "Wir haben keinen Und, keine Pflanze, kein Videospiel und kein Videospiel im Kursraum.",
+      "Zeigen Sie auf Dinge und fragen Sie: Ist das ein(e)…?",
+      "Das ist ein Deutschbuch.",
+      "Ist das eine Tür?",
+      "Das ist eine Deutschbuch.",
+      "Ist das ein Deutschbuch?",
+      "Nein, das ist keine Deutschbuch",
+      "Ist das eine Fenster?",
+      "Nein, das ist keine Fenster.",
+      "Das ist ein Foto.",
+      "Ist das eine Foto?",
+      "Nein, das ist kein Foto.",
+      "Das ist ein Fußball.",
+      "Ist das ein Fußball?",
+      "Nein, das ist kein Fußball.",
+      "Das ist eine Wasserflasche.",
+      "Ist das ein Handy?",
+      "Nein, das ist kein Handy.",
+      "Das ist ein Hund.",
+      "Ist das ein Hund?",
+      "Nein, das ist kein Hund.",
+      "Das ist eine Katze.",
+      "Ist das ein Katze?",
+      "Nein, das ist keine Katze.",
+      "Ist das eine Lampe?",
+      "Ist das ein Leinwand?",
+      "Ist das ein Mathebuch?",
+      "Nein, das ist kein Mathebuch.",
+      "Das ist eine Tafel.",
+      "Ist das ein Tafel?",
+      "Nein, das ist keine Tafel.",
+      "Das ist ein Videospiel.",
+      "Ist das eine Videospiel?",
+      "Nein, das ist kein Videospiel.",
+      "Nein, ich bin kein Ingenieur.",
+      "Sie bekommen eine Karte mit Ihrem Beruf und drei Personen.",
+      "Finden Sie die drei Personen.",
+      "Fragen Sie.",
+      "Patrick ist Professor.",
+      "Er sucht eine*n Ingenieur*in, eine*n Polizist*in und eine*n Forscher*in.",
+      "Ava, bist du Ingenieurin?",
+      "Nein, ich bin keine Ingenieurin.",
+      "Ich bin Politikerin.",
+      "Farouk, bist du Ingenieur?",
+      "Ich bin Anwalt.",
+      "Jan, bist du Ingenieur?",
+      "Ja, ich bin Ingenieur!",
+      "Bist du Professorin?",
+      "Nein, ich bin keine Professorin.",
+      "Ich bin Forscherin.",
+      "Bist du Verkäufer?",
+      "Nein, ich bin kein Verkäufer.",
+      "Ich bin Künstler.",
+      "Bist du Künstlerin?",
+      "Nein, ich bin keine Künstlerin.",
+      "Ich bin Polizistin.",
+      "Bist du Polizist?",
+      "Nein, ich bin kein Polizist.",
+      "Bist du Anwalt?",
+      "Nein, ich bin kein Anwalt.",
+      "Ich bin Politiker.",
+      "Bist du Politiker?",
+      "Nein, ich bin kein Politiker.",
+      "Ich bin Ingenieur.",
+      "Bist du Ingenieurin?",
+      "Ich bin Professor.",
+      "Hat er einen Onkel?",
+      "Stellen Sie Fragen mit haben über Lauras und Patrick s Familie (S. 18 und S. 20).",
+      "Hat Laura eine Stiefmutter?",
+      "Hat Patrick einen Bruder?",
+      "Nein, sie hat keine Stiefmutter.",
+      "Nein, er hat keinen Bruder.",
+      "Hat Laura einen Freund?",
+      "Ja, sie hat einen Freund.",
+      "Hat Laura einen Mann?",
+      "Nein, sie hat keinen Mann.",
+      "Hat Laura einen Bruder?",
+      "Ja, sie hat einen Bruder.",
+      "Hat Laura einen Vater?",
+      "Ja, sie hat einen Vater.",
+      "Hat Laura einen Schwiegervater?",
+      "Nein, sie hat keinen Schwiegervater.",
+      "Hat Laura einen Opa?",
+      "Ja, sie hat einen Opa.",
+      "Hat Laura einen Sohn?",
+      "Nein, sie hat keinen Sohn.",
+      "Hat Laura ein Enkelkind?",
+      "Nein, sie hat kein Enkelkind.",
+      "Hat Laura einen Onkel?",
+      "Ja, sie hat einen Onkel.",
+      "Hat Laura einen Neffen?",
+      "Ja, sie hat einen Neffen.",
+      "Hat Laura eine Frau?",
+      "Nein, sie hat eine Frau.",
+      "Hat Laura eine Freundin?",
+      "Ja, sie hat eine Freundin.",
+      "Nein, sie hat keine Frau.",
+      "Hat Laura eine Schwester?",
+      "Nein, sie hat keine Schwester.",
+      "Hat Laura eine Halbschwester?",
+      "Ja, sie hat eine Halbschwester.",
+      "Hat Laura eine Mutter?",
+      "Ja, sie hat eine Mutter.",
+      "Hat Laura eine Schwiegermutter?",
+      "Nein, sie hat keine Schwiegermutter.",
+      "Hat Laura eine Oma?",
+      "Ja, sie hat eine Oma.",
+      "Hat Laura eine Tochter?",
+      "Nein, sie hat keine Tochter.",
+      "Hat Laura eine Tante?",
+      "Ja, sie hat eine Tante.",
+      "Hat Laura die Nichte?",
+      "Ja, sie hat die Nichte.",
+      "Stellen Sie Fragen mit haben über ihre Familie und Freund*innen.",
+      "Hast du eine Tante?",
+      "Nein, ich habe keine Tante.",
+      "Hast du einen Onkel?",
+      "Ja, ich habe einen Onkel.",
+      "Er heißt Georg."
+    ],
+    "templated": [
+      {
+        "template": "Wo ist {LOCATABLE_OBJECT_NOM_DEF}?",
+        "source_literals": [
+          "Wo ist die Wand?",
+          "Wo ist der Beamer?",
+          "Wo ist das Fenster?",
+          "Wo ist die Lampe?",
+          "Wo ist die Leinwand?",
+          "Wo ist die Pflanze?",
+          "Wo ist der Stuhl?",
+          "Wo ist der Tisch?",
+          "Wo ist die Tür?",
+          "Wo ist das Whiteboard?"
+        ],
+        "grammar_note": "Location question with definite article, nominative."
+      },
+      {
+        "template": "Das ist {IDENTIFIABLE_OBJECT_NOM_INDEF}.",
+        "source_literals": [
+          "Das ist ein Fenster.",
+          "Das ist eine Lampe.",
+          "Das ist eine Leinwand.",
+          "Das ist eine Pflanze.",
+          "Das ist ein Stuhl.",
+          "Das ist ein Tisch.",
+          "Das ist eine Tür.",
+          "Das ist eine Wand.",
+          "Das ist ein Whiteboard.",
+          "Das ist ein Beamer.",
+          "Das ist ein Deutschbuch.",
+          "Das ist ein Foto.",
+          "Das ist ein Fußball.",
+          "Das ist eine Wasserflasche.",
+          "Das ist ein Hund.",
+          "Das ist eine Katze.",
+          "Das ist eine Tafel.",
+          "Das ist ein Videospiel."
+        ],
+        "grammar_note": "Identification with indefinite article, nominative."
+      },
+      {
+        "template": "[person_name] ist {PROFESSION_NOM}.",
+        "source_literals": [
+          "Patrick ist Professor."
+        ],
+        "grammar_note": "Verb sein + profession, 3rd person singular nominative."
+      },
+      {
+        "template": "Ich bin {PROFESSION_NOM}.",
+        "source_literals": [
+          "Ich bin Politikerin.",
+          "Ich bin Anwalt.",
+          "Ich bin Forscherin.",
+          "Ich bin Künstler.",
+          "Ich bin Polizistin.",
+          "Ich bin Politiker.",
+          "Ich bin Ingenieur.",
+          "Ich bin Professor."
+        ],
+        "grammar_note": "Verb sein + profession, 1st person singular nominative. No article."
+      },
+      {
+        "template": "Nein, er hat keinen {FAMILY_MEMBER_ACC_MASC}.",
+        "source_literals": [
+          "Nein, er hat keinen Bruder."
+        ],
+        "grammar_note": "Negation with kein: haben + keinen (accusative masculine) + family member."
+      },
+      {
+        "template": "Ja, sie hat einen {FAMILY_MEMBER_ACC_MASC}.",
+        "source_literals": [
+          "Ja, sie hat einen Freund.",
+          "Ja, sie hat einen Bruder.",
+          "Ja, sie hat einen Vater.",
+          "Ja, sie hat einen Opa.",
+          "Ja, sie hat einen Onkel."
+        ],
+        "grammar_note": "Haben + einen (accusative masculine) + family member."
+      },
+      {
+        "template": "Nein, sie hat keinen {FAMILY_MEMBER_ACC_MASC}.",
+        "source_literals": [
+          "Nein, sie hat keinen Mann.",
+          "Nein, sie hat keinen Schwiegervater.",
+          "Nein, sie hat keinen Sohn."
+        ],
+        "grammar_note": "Negation with kein: haben + keinen (accusative masculine) + family member."
+      },
+      {
+        "template": "Ja, sie hat eine {FAMILY_MEMBER_ACC_FEM}.",
+        "source_literals": [
+          "Ja, sie hat eine Freundin.",
+          "Ja, sie hat eine Halbschwester.",
+          "Ja, sie hat eine Mutter.",
+          "Ja, sie hat eine Oma.",
+          "Ja, sie hat eine Tante."
+        ],
+        "grammar_note": "Haben + eine (accusative feminine) + family member."
+      },
+      {
+        "template": "Nein, sie hat keine {FAMILY_MEMBER_ACC_FEM}.",
+        "source_literals": [
+          "Nein, sie hat keine Frau.",
+          "Nein, sie hat keine Schwester.",
+          "Nein, sie hat keine Schwiegermutter.",
+          "Nein, sie hat keine Tochter."
+        ],
+        "grammar_note": "Negation with kein: haben + keine (accusative feminine) + family member."
+      },
+      {
+        "template": "Nein, ich habe keine {FAMILY_MEMBER_ACC_FEM}.",
+        "source_literals": [
+          "Nein, ich habe keine Tante."
+        ],
+        "grammar_note": "Negation with kein: haben + keine (accusative feminine) + family member."
+      },
+      {
+        "template": "Ja, ich habe einen {FAMILY_MEMBER_ACC_MASC}.",
+        "source_literals": [
+          "Ja, ich habe einen Onkel."
+        ],
+        "grammar_note": "Haben + einen (accusative masculine) + family member."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "FAMILY_MEMBER_ACC_FEM": {
+      "type": "closed",
+      "description": "Feminine family members/relations (accusative)",
+      "grammar": "accusative, with eine/keine",
+      "options": [
+        "Frau",
+        "Freundin",
+        "Mitbewohnerin",
+        "Mutter",
+        "Nichte",
+        "Oma",
+        "Schwester",
+        "Schwiegermutter",
+        "Schwägerin",
+        "Tante",
+        "Tochter"
+      ]
+    },
+    "FAMILY_MEMBER_ACC_MASC": {
+      "type": "closed",
+      "description": "Masculine family members/relations (accusative)",
+      "grammar": "accusative, with einen/keinen",
+      "options": [
+        "Bruder",
+        "Enkelkind",
+        "Freund",
+        "Mann",
+        "Mitbewohner",
+        "Neffe",
+        "Onkel",
+        "Opa",
+        "Schwager",
+        "Schwiegervater",
+        "Sohn",
+        "Vater"
+      ]
+    },
+    "IDENTIFIABLE_OBJECT_NOM_INDEF": {
+      "type": "closed",
+      "description": "Everyday/classroom objects for identification",
+      "grammar": "nominative, indefinite article included",
+      "options": [
+        "ein Auto",
+        "ein Beamer",
+        "ein Buch",
+        "ein Fenster",
+        "ein Foto",
+        "ein Fußball",
+        "ein Handy",
+        "ein Hund",
+        "ein Stuhl",
+        "ein Tisch",
+        "ein Videospiel",
+        "ein Wasser",
+        "eine Katze",
+        "eine Lampe",
+        "eine Leinwand",
+        "eine Pflanze",
+        "eine Tafel",
+        "eine Tastatur",
+        "eine Tür",
+        "eine Uhr",
+        "eine Wand"
+      ]
+    },
+    "LOCATABLE_OBJECT_NOM_DEF": {
+      "type": "closed",
+      "description": "Everyday/classroom objects for location questions",
+      "grammar": "nominative, definite article included",
+      "options": [
+        "das Auto",
+        "das Buch",
+        "das Fenster",
+        "das Foto",
+        "das Handy",
+        "das Videospiel",
+        "das Wasser",
+        "der Beamer",
+        "der Fußball",
+        "der Hund",
+        "der Stuhl",
+        "der Tisch",
+        "die Katze",
+        "die Lampe",
+        "die Leinwand",
+        "die Pflanze",
+        "die Tafel",
+        "die Tastatur",
+        "die Tür",
+        "die Uhr",
+        "die Wand"
+      ]
+    },
+    "PROFESSION_NOM": {
+      "type": "closed",
+      "description": "Professions (masculine, feminine, and gender-inclusive *in forms)",
+      "grammar": "nominative, no article",
+      "options": [
+        "Anwalt",
+        "Anwalt*Anwältin",
+        "Anwältin",
+        "Arzt",
+        "Arzt*Ärztin",
+        "Autor",
+        "Autor*in",
+        "Autorin",
+        "Forscher",
+        "Forscher*in",
+        "Forscherin",
+        "Ingenieur",
+        "Ingenieur*in",
+        "Ingenieurin",
+        "Künstler",
+        "Künstler*in",
+        "Künstlerin",
+        "Politiker",
+        "Politiker*in",
+        "Politikerin",
+        "Polizist",
+        "Polizist*in",
+        "Polizistin",
+        "Professor",
+        "Professor*in",
+        "Professorin",
+        "Verkäufer",
+        "Verkäufer*in",
+        "Verkäuferin",
+        "Ärztin"
+      ]
+    }
+  }
+}

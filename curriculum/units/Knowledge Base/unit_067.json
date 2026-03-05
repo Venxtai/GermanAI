@@ -1,0 +1,345 @@
+{
+    "unit": "67",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 67,
+        "prerequisite": "1-66"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Marketing-Konzept oder eine Werbekampagne gestalten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "versprechen",
+                "pos": "VERB",
+                "translation": "to promise",
+                "frequency": 1056,
+                "cefr": "B1"
+            },
+            {
+                "word": "auspacken",
+                "pos": "VERB",
+                "translation": "to unpack, unwrap, unbox",
+                "frequency": 23304,
+                "cefr": "A2"
+            },
+            {
+                "word": "anpacken",
+                "pos": "VERB",
+                "translation": "to tackle, seize; go about",
+                "frequency": 10529
+            },
+            {
+                "word": "ausarbeiten",
+                "pos": "VERB",
+                "translation": "to flesh out; elaborate",
+                "frequency": 8335
+            },
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design, create",
+                "frequency": 1613
+            },
+            {
+                "word": "überzeugen",
+                "pos": "VERB",
+                "translation": "to convince (of)"
+            },
+            {
+                "word": "das Medium, Medien",
+                "pos": "NOUN",
+                "translation": "medium",
+                "frequency": 2764
+            },
+            {
+                "word": "die Werbung",
+                "pos": "NOUN",
+                "translation": "advertisement",
+                "frequency": 2462,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Werbekampagne",
+                "pos": "NOUN",
+                "translation": "advertising campaign",
+                "frequency": 17404,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Zielgruppe",
+                "pos": "NOUN",
+                "translation": "target audience, target group",
+                "frequency": 3376,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Konzept",
+                "pos": "NOUN",
+                "translation": "concept",
+                "frequency": 1186,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Brainstorming",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Aspekt",
+                "pos": "NOUN",
+                "frequency": 1296
+            },
+            {
+                "word": "die Vision",
+                "pos": "NOUN",
+                "frequency": 3182
+            },
+            {
+                "word": "die Tagline",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Kampagne",
+                "pos": "NOUN",
+                "frequency": 3958
+            },
+            {
+                "word": "das Branding",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der*die Kunde*in",
+                "pos": "NOUN",
+                "frequency": 519,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Cashback",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Bonussystem",
+                "pos": "NOUN"
+            },
+            {
+                "word": "verpacken",
+                "pos": "VERB",
+                "frequency": 11739,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Infografik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Überschrift",
+                "pos": "NOUN",
+                "frequency": 6937,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Skizze",
+                "pos": "NOUN",
+                "frequency": 10911,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "versprechen": {
+                "present": {
+                    "ich": "verspreche",
+                    "du": "versprichst",
+                    "er": "verspricht",
+                    "es": "verspricht",
+                    "sie_singular": "verspricht",
+                    "xier": "verspricht",
+                    "wir": "versprechen",
+                    "ihr": "versprecht",
+                    "sie_plural": "versprechen",
+                    "Sie": "versprechen"
+                }
+            },
+            "auspacken": {
+                "present": {
+                    "ich": "packe aus",
+                    "du": "packst aus",
+                    "er": "packt aus",
+                    "es": "packt aus",
+                    "sie_singular": "packt aus",
+                    "xier": "packt aus",
+                    "wir": "packen aus",
+                    "ihr": "packt aus",
+                    "sie_plural": "packen aus",
+                    "Sie": "packen aus"
+                }
+            },
+            "anpacken": {
+                "present": {
+                    "ich": "packe an",
+                    "du": "packst an",
+                    "er": "packt an",
+                    "es": "packt an",
+                    "sie_singular": "packt an",
+                    "xier": "packt an",
+                    "wir": "packen an",
+                    "ihr": "packt an",
+                    "sie_plural": "packen an",
+                    "Sie": "packen an"
+                }
+            },
+            "ausarbeiten": {
+                "present": {
+                    "ich": "arbeite aus",
+                    "du": "arbeitest aus",
+                    "er": "arbeitet aus",
+                    "es": "arbeitet aus",
+                    "sie_singular": "arbeitet aus",
+                    "xier": "arbeitet aus",
+                    "wir": "arbeiten aus",
+                    "ihr": "arbeitet aus",
+                    "sie_plural": "arbeiten aus",
+                    "Sie": "arbeiten aus"
+                }
+            },
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                }
+            },
+            "überzeugen": {
+                "present": {
+                    "ich": "überzeuge",
+                    "du": "überzeugst",
+                    "er": "überzeugt",
+                    "es": "überzeugt",
+                    "sie_singular": "überzeugt",
+                    "xier": "überzeugt",
+                    "wir": "überzeugen",
+                    "ihr": "überzeugt",
+                    "sie_plural": "überzeugen",
+                    "Sie": "überzeugen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie macht man Werbung",
+            "Ein Produkt ohne Verpackung?",
+            "Das ist Ihr Projekt.",
+            "Machen Sie ein Marketingkonzept oder eine Werbekampagne f",
+            "Ein Produkt von den Unverpacktläden.",
+            "Schauen Sie sich noch einmal die Einheiten 62 und 63 an und planen Sie die Werbekampagne.",
+            "Was versprechen Sie den Kundinnen und Kunden?",
+            "Was ist Ihr Slogan oder Ihre Tagline?",
+            "Wer ist Ihre Zielgruppe?",
+            "Wie machen Sie \"Branding,\" wie wissen der*die Kunde*in in allen Teilen der Kampagne immer sofort, dass es Ihr Produkt ist?",
+            "Welche Motivation haben die Kund*innen (z.B.",
+            "Ein Cashback Bonussystem wie beim Fliegen )?",
+            "Arbeiten Sie Ihre Ideen jetzt aus.",
+            "Welche Idee gefällt Ihnen?",
+            "R die Umwelt, aber es macht keine Arbeit",
+            "Schon das Wort \"packen\" hat eine große Wortfamilie: anpacken, auspacken, Zweier-/Dreier-/…- pack",
+            "Das Wort \"packen\" muss im Konzept sicher eine Rolle spielen.",
+            "Alle machen sicher nicht mit, aber wen wollen Sie ü berzeug en?",
+            "Am besten ist immer eine Kombination von einem Bild oder Symbol mit Werbeslogan.",
+            "Meine Idee (Produkt und Verpackung): Lassen Sie sich von den Bildern inspirieren.",
+            "Hier hat die Natur schon ihre \"Produkte\" gut verpackt oder ausgepackt.",
+            "Arbeiten Sie jetzt an Ihrer Präsentation.",
+            "Planen Sie hier vor."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

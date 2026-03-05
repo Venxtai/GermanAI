@@ -1,0 +1,348 @@
+{
+    "unit": "B15",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 15,
+        "prerequisite": "core 1-104, B1-B14"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [
+            "Read German dates in day.month.year format with am + ordinal number: 'am einundzwanzigsten Fünften' (am 21.05.); years 1100–1999 use hundert (neunzehnhundertneunundachtzig), years 2000+ read as normal numbers."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Fragen zur deutschen Geschichte stellen und beantworten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "deutsche Geschichte"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "demonstrieren", "pos": "VERB", "translation": "to demonstrate, rally", "frequency": 3270 },
+            { "word": "protestieren", "pos": "VERB", "translation": "to protest", "frequency": 4097, "cefr": "B1" },
+            { "word": "einen Vertrag", "pos": "VERB", "translation": "to enter/conclude a contract", "frequency": 5 },
+            { "word": "Was ist los?", "pos": "PHRASE", "translation": "What's going on?" },
+            { "word": "die Grenze", "pos": "NOUN", "translation": "border; boundary; limit", "frequency": 447, "cefr": "B1" },
+            { "word": "die Einheit", "pos": "NOUN", "translation": "unit; unity", "frequency": 755, "cefr": "A1" },
+            { "word": "die Berliner Mauer", "pos": "NOUN", "translation": "Berlin Wall", "frequency": 1190 },
+            { "word": "der Bau", "pos": "NOUN", "translation": "construction, building", "frequency": 1598, "cefr": "B1" },
+            { "word": "die Mauer", "pos": "NOUN", "translation": "wall (structure made of bricks)", "frequency": 1659, "cefr": "B1" },
+            { "word": "der Strand", "pos": "NOUN", "translation": "beach", "frequency": 1966, "cefr": "A2" },
+            { "word": "die Autobahn", "pos": "NOUN", "translation": "interstate highway", "frequency": 2966, "cefr": "A1" },
+            { "word": "die Gründung", "pos": "NOUN", "translation": "foundation, establishment", "frequency": 1, "cefr": "A1" },
+            { "word": "der Eiserne Vorhang", "pos": "NOUN", "translation": "Iron Curtain", "frequency": 39907 },
+            { "word": "das Gebirge", "pos": "NOUN", "translation": "mountains (pl.)", "frequency": 5717, "cefr": "B1" },
+            { "word": "die DDR (Deutsche Demokratische Republik)", "pos": "NOUN", "translation": "GDR (German Democratic Republic)", "frequency": 1348 },
+            { "word": "die SED (Sozialistische Einheitspartei)", "pos": "NOUN", "translation": "SED (Socialist Unity Party)" },
+            { "word": "die BRD (Bundesrepublik Deutschland)", "pos": "NOUN", "translation": "FRG (Federal Republic of Germany)" },
+            { "word": "die Botschaft", "pos": "NOUN", "translation": "embassy; message", "frequency": 1708, "cefr": "B1" },
+            { "word": "direkt", "pos": "ADJ", "translation": "direct(ly)", "frequency": 353, "cefr": "A2" },
+            { "word": "mitten durch", "pos": "ADJ", "translation": "(right) through the middle", "frequency": 1412, "cefr": "B1" },
+            { "word": "nochmal", "pos": "ADV", "translation": "again", "frequency": 1984 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Puzzle", "pos": "NOUN", "frequency": 20311, "cefr": "B1" },
+            { "word": "das Datum", "pos": "NOUN", "frequency": 3203, "cefr": "A1" },
+            { "word": "die Einheitspartei", "pos": "NOUN", "frequency": 35150 },
+            { "word": "der Osten", "pos": "NOUN", "frequency": 1208, "cefr": "A1" },
+            { "word": "die Bundesrepublik", "pos": "NOUN", "frequency": 2034, "cefr": "B1" },
+            { "word": "der Westen", "pos": "NOUN", "frequency": 1010, "cefr": "A1" },
+            { "word": "osteuropäisch", "pos": "ADJ", "frequency": 9944 },
+            { "word": "Leipzig", "pos": "PROPN", "frequency": 6017 },
+            { "word": "eisern", "pos": "ADJ", "frequency": 7654 },
+            { "word": "die BRD-Botschaft", "pos": "NOUN" },
+            { "word": "kaum", "pos": "ADV", "frequency": 272, "cefr": "B1" },
+            { "word": "daran", "pos": "ADV", "frequency": 292 },
+            { "word": "moin", "pos": "ADV" },
+            { "word": "der Harz", "pos": "NOUN", "frequency": 10356 },
+            { "word": "der Transit", "pos": "NOUN", "frequency": 20058, "cefr": "B2" },
+            { "word": "innerdeutsch", "pos": "ADJ", "frequency": 19683, "cefr": "B2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "demonstrieren": {
+                "present": {
+                    "ich": "demonstriere",
+                    "du": "demonstrierst",
+                    "er": "demonstriert",
+                    "es": "demonstriert",
+                    "sie_singular": "demonstriert",
+                    "xier": "demonstriert",
+                    "wir": "demonstrieren",
+                    "ihr": "demonstriert",
+                    "sie_plural": "demonstrieren",
+                    "Sie": "demonstrieren"
+                },
+                "Perfekt": {
+                    "ich": "habe demonstriert",
+                    "du": "hast demonstriert",
+                    "er": "hat demonstriert",
+                    "es": "hat demonstriert",
+                    "sie_singular": "hat demonstriert",
+                    "xier": "hat demonstriert",
+                    "wir": "haben demonstriert",
+                    "ihr": "habt demonstriert",
+                    "sie_plural": "haben demonstriert",
+                    "Sie": "haben demonstriert"
+                },
+                "Futur_I": {
+                    "ich": "werde demonstrieren",
+                    "du": "wirst demonstrieren",
+                    "er": "wird demonstrieren",
+                    "es": "wird demonstrieren",
+                    "sie_singular": "wird demonstrieren",
+                    "xier": "wird demonstrieren",
+                    "wir": "werden demonstrieren",
+                    "ihr": "werdet demonstrieren",
+                    "sie_plural": "werden demonstrieren",
+                    "Sie": "werden demonstrieren"
+                },
+                "imperative": {
+                    "du": "demonstrier",
+                    "ihr": "demonstriert",
+                    "Sie": "demonstrieren Sie"
+                }
+            },
+            "protestieren": {
+                "present": {
+                    "ich": "protestiere",
+                    "du": "protestierst",
+                    "er": "protestiert",
+                    "es": "protestiert",
+                    "sie_singular": "protestiert",
+                    "xier": "protestiert",
+                    "wir": "protestieren",
+                    "ihr": "protestiert",
+                    "sie_plural": "protestieren",
+                    "Sie": "protestieren"
+                },
+                "Perfekt": {
+                    "ich": "habe protestiert",
+                    "du": "hast protestiert",
+                    "er": "hat protestiert",
+                    "es": "hat protestiert",
+                    "sie_singular": "hat protestiert",
+                    "xier": "hat protestiert",
+                    "wir": "haben protestiert",
+                    "ihr": "habt protestiert",
+                    "sie_plural": "haben protestiert",
+                    "Sie": "haben protestiert"
+                },
+                "Futur_I": {
+                    "ich": "werde protestieren",
+                    "du": "wirst protestieren",
+                    "er": "wird protestieren",
+                    "es": "wird protestieren",
+                    "sie_singular": "wird protestieren",
+                    "xier": "wird protestieren",
+                    "wir": "werden protestieren",
+                    "ihr": "werdet protestieren",
+                    "sie_plural": "werden protestieren",
+                    "Sie": "werden protestieren"
+                },
+                "imperative": {
+                    "du": "protestiere",
+                    "ihr": "protestiert",
+                    "Sie": "protestieren Sie"
+                }
+            },
+            "Vertrag": {
+                "Perfekt": {
+                    "ich": "habe geschlossen",
+                    "du": "hast geschlossen",
+                    "er": "hat geschlossen",
+                    "es": "hat geschlossen",
+                    "sie_singular": "hat geschlossen",
+                    "xier": "hat geschlossen",
+                    "wir": "haben geschlossen",
+                    "ihr": "habt geschlossen",
+                    "sie_plural": "haben geschlossen",
+                    "Sie": "haben geschlossen"
+                },
+                "Futur_I": {
+                    "ich": "werde Vertrag",
+                    "du": "wirst Vertrag",
+                    "er": "wird Vertrag",
+                    "es": "wird Vertrag",
+                    "sie_singular": "wird Vertrag",
+                    "xier": "wird Vertrag",
+                    "wir": "werden Vertrag",
+                    "ihr": "werdet Vertrag",
+                    "sie_plural": "werden Vertrag",
+                    "Sie": "werden Vertrag"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            ": Was ist wann passiert?",
+            "Sie bekommen die Ereignisse für sechs Daten der deutschen Geschichte.",
+            "Fragen Sie nach den Ereignissen für die anderen sechs Daten.",
+            "Nutzen Sie Perfekt (und das Präteritum für sein und haben).",
+            "Was ist am achten Mai neunzehnhundertfünfundvierzig passiert?",
+            "Der Zweite Weltkrieg hat geendet.",
+            "Was ist im April neunzehnhundertsechsundvierzig passiert?",
+            "Es war die Gründung der Sozialistischen Einheitspartei (SED) im Osten.",
+            "Der Bau der Berlin er Mauer beginnt.",
+            "Es ist die Gründung der Bundesrepublik Deutschland ( BRD ) 3: Arbeiter*innen protestieren in der DDR.",
+            "Es ist der Tag der Deutschen Einheit.",
+            "Studierende demonstrieren im Westen.",
+            "Die DDR öffnet die Berlin er Mauer.",
+            "Präsident Reagan sagt: Mr.",
+            "Gorbachev, tear down this wall!",
+            "Gorbatschow wird Generalsekretär in der Sowjetunion.",
+            "Die BRD schließt Verträge mit osteuropäischen Staaten.",
+            "Es ist die Gründung der Deutschen Demokratischen Republik (DDR).",
+            "120.000 Menschen demonstrieren in Leipzig in der DDR.",
+            "Es ist die Gründung der Sozialistischen Einheitspartei (SED) im Osten.",
+            "Ungarn beginnt den Eisernen Vorhang zu Österreich zu öffnen.",
+            "JFK spricht in Berlin.",
+            "4.000 Geflüchtete aus der DDR dürfen aus der BRD-Botschaft in Prag in den Westen reisen.",
+            "Es war am dreizehnten Mai ( 1961 ).",
+            "Es war am dreiundzwanzigsten Mai ( 1961 ).",
+            "Es war im Mai ( 1961 ).",
+            "Es war 1961.",
+            "Die beiden deutschen Staaten und ihre Grenze",
+            "Hören Sie zu und markieren Sie alle Städte und Regionen, die Sie hören.",
+            "Wir haben mit Menschen an der deutschen Grenze gesprochen und gefragt, wo sie wohnen und wo die Grenze war.",
+            "Sie hören jetzt die Antworten.",
+            "Hallo, ich bin der Heinz.",
+            "Ich wohne in Hof.",
+            "Die Stadt liegt im Nordosten von Bayern, fast an der tschechischen Grenze.",
+            "Hier war früher auch die deutsch - deutsche Grenze zwischen Bayern und Sachsen.",
+            "In Hof sind Züge mit Waren aus der DDR angekommen.",
+            "Man kann heute mit dem Fahrrad an der alten Grenze fahren.",
+            "Da gibt es viel Natur, aber auch noch alte Grenztürme",
+            "Grenzen Türme.",
+            "Guten Tag, ich bin die Inge.",
+            "Ich habe im Bezirk Erfurt gewohnt.",
+            "In der DDR hat es keine Bundesländer gegeben, sondern Bezirke.",
+            "Jetzt wohne ich im Bundesland Thüringen, wie man heute sagt.",
+            "Ich hatte auch Familie an der Grenze zwischen Thüringen und Hessen.",
+            "Hi, ich heiße Mario und ich wohne in Lübeck.",
+            "Lübeck liegt an der Ostsee, in Schleswig - Holstein.",
+            "Hier war die deutsch-deutsche Grenze zwischen Schleswig - Holstein und Meck - Pom.",
+            "So nennen wir Mecklenburg - Vorpommern.",
+            "Weil Menschen über das Meer, also über die Ostsee, fliehen konnten, waren am Strand Grenzsoldat*innen",
+            "Ich sollte das aus meiner Kindheit kennen, kann mich aber kaum noch daran erinnern.",
+            "Moin, ich bin die Maja.",
+            "Ich komme aus Helmstedt, das ist eine Stadt in Niedersachsen, direkt an der alten deutsch - deutschen Grenze.",
+            "Wir waren im Westen und Sachsen - Anhalt war im Osten.",
+            "Die Grenzstadt auf der anderen Seite war Marienborn.",
+            "Hier konnte man mit dem Auto über die Transitstraße von Hannover nach Westberlin fahren.",
+            "Meine Familie hat das auch gemacht, da war ich aber noch ganz klein.",
+            "Hallo, ich heiße Linus.",
+            "Ich wohne im Harz.",
+            "Das ist ein Gebirge mitten in Deutschland.",
+            "Ein Teil vom Harz war im Osten und ein Teil im Westen.",
+            "Heute ist der Harz in Niedersachsen im Westen und in Sachsen - Anhalt und Thüringen im Osten.",
+            "Die Grenze kenne ich aus dem Grenzmuseum in Bad Sachsa.",
+            "Hi, ich bin Emma.",
+            "Ich komme aus Hamburg.",
+            "Hamburg war nicht an der Grenze, aber von Hamburg nach Berlin hat es eine Autobahn gegeben.",
+            "Meine Großeltern haben in Westberlin gewohnt und meine Eltern konnten sie so besuchen fahren.",
+            "Hey, ich heiße Thien.",
+            "Ich bin in Vietnam geboren, habe aber in der DDR gearbeitet, in Jena – das liegt in Thüringen.",
+            "Ganz in der Nähe war die Transitautobahn von München nach Berlin, aber wir aus der DDR konnten auf der Straße natürlich nicht fahren.",
+            "Hören Sie nochmal.",
+            "Tragen Sie auf der Karte die innerdeutsche Grenze ein.",
+            "Lesen Sie die Fragen.",
+            "Dann hören Sie den Text noch einmal und beantworten Sie die Fragen.",
+            "Was kann man heute in Hof machen und/oder sehen?",
+            "In welchem Bezirk hat Inge früher gewohnt und in welchem Bundesland wohnt sie heute?",
+            "Wer war am Strand bei Lübeck?",
+            "In welchem Land war Helmstedt?",
+            "In welchem Land war Marienborn?",
+            "Was besucht Linus in Bad Sachsa?",
+            "Wen haben Emmas Eltern in Westberlin besucht?",
+            "Was hat Thien in Jena gemacht?",
+            "Was ist (offizielle) Geschichte und was sind (persönliche) Geschichten?",
+            "August 1961 begann die DDR mit dem Bau der Berlin er Mauer.",
+            "August 1961 habe ich vom Fenster aus gesehen, wie Soldat*innen unsere Straße blockiert haben.",
+            "Ich habe im Westen gewohnt und habe nur im Fernsehen gesehen, wie die DDR die Mauer gebaut hat.",
+            "Ich habe nicht in Berlin gewohnt, aber mein Cousin aus Berlin hat mich angerufen und erzählt, was los ist.",
+            "In den folgenden Tagen und Monaten bauten die Soldat*innen eine Grenze mitten durch die Stadt Berlin.",
+            "Markieren Sie die Verben in den Sätzen von Teil 1.",
+            "Welche Zeitformen kennen Sie schon?",
+            "Welche kennen Sie nicht?",
+            "Ergänzen Sie die Regel.",
+            "Im Deutschen gibt es 0ein | zwei0 Vergangenheitsformen."
+        ],
+        "templated": []
+    }
+}

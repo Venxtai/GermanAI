@@ -1,0 +1,582 @@
+{
+    "unit": "48",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 48,
+        "prerequisite": "1-47"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate müssen (ich muss, du musst, er muss, wir müssen, ihr müsst, sie müssen) to express obligation; nicht müssen means \"don't have to,\" not \"must not.\"",
+            "Conjugate dürfen (ich darf, du darfst, er darf, wir dürfen, ihr dürft, sie dürfen) to express permission; nicht dürfen means \"not allowed to / must not.\"",
+            "Use \"Darf ich…?\" to make polite requests."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "sagen, was man muss oder nicht muss",
+            "sagen, was man darf oder nicht darf",
+            "die Tagesroutine optimieren und besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "ein Tag im Leben"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "müssen",
+                "pos": "VERB",
+                "translation": "to have to; must"
+            },
+            {
+                "word": "dürfen",
+                "pos": "VERB",
+                "translation": "to be allowed to"
+            },
+            {
+                "word": "warten",
+                "pos": "VERB",
+                "translation": "to wait (for)",
+                "frequency": 364,
+                "cefr": "A1"
+            },
+            {
+                "word": "erhitzen",
+                "pos": "VERB",
+                "translation": "to heat up",
+                "frequency": 3759
+            },
+            {
+                "word": "rasieren",
+                "pos": "VERB",
+                "translation": "to shave",
+                "frequency": 30904,
+                "cefr": "B1"
+            },
+            {
+                "word": "kämmen",
+                "pos": "VERB",
+                "translation": "to comb"
+            },
+            {
+                "word": "schminken",
+                "pos": "VERB",
+                "translation": "to put on makeup",
+                "frequency": 21908,
+                "cefr": "B1"
+            },
+            {
+                "word": "duschen",
+                "pos": "VERB",
+                "translation": "to take a shower",
+                "frequency": 36067,
+                "cefr": "A1"
+            },
+            {
+                "word": "kümmern (um)",
+                "pos": "VERB",
+                "translation": "to take care (of)"
+            },
+            {
+                "word": "aufwachen",
+                "pos": "VERB",
+                "translation": "to wake up",
+                "frequency": 2851,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Reihenfolge",
+                "pos": "NOUN",
+                "translation": "order, sequence",
+                "frequency": 3311,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Frühstück",
+                "pos": "NOUN",
+                "translation": "breakfast",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bargeld",
+                "pos": "NOUN",
+                "translation": "cash",
+                "frequency": 4272,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Zahn",
+                "pos": "NOUN",
+                "translation": "tooth",
+                "frequency": 1871,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Zeitung",
+                "pos": "NOUN",
+                "translation": "newspaper",
+                "frequency": 670,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Morgen",
+                "pos": "NOUN",
+                "translation": "morning",
+                "frequency": 621,
+                "cefr": "A1"
+            },
+            {
+                "word": "morgens",
+                "pos": "ADV",
+                "translation": "in the morning",
+                "frequency": 621,
+                "cefr": "A2"
+            },
+            {
+                "word": "morgen",
+                "pos": "ADV",
+                "translation": "tomorrow",
+                "frequency": 621,
+                "cefr": "A1"
+            },
+            {
+                "word": "gleich",
+                "pos": "ADJ",
+                "translation": "equal; soon",
+                "frequency": 141,
+                "cefr": "A1"
+            },
+            {
+                "word": "trotzdem",
+                "pos": "CONJ",
+                "translation": "despite that, still, nevertheless",
+                "frequency": 463,
+                "cefr": "B1"
+            },
+            {
+                "word": "effizient",
+                "pos": "ADJ",
+                "translation": "efficient",
+                "frequency": 3072
+            },
+            {
+                "word": "sofort",
+                "pos": "ADV",
+                "translation": "immediately",
+                "frequency": 446,
+                "cefr": "A1"
+            },
+            {
+                "word": "beginnen",
+                "pos": "VERB",
+                "translation": "to begin, start",
+                "frequency": 251,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Internet",
+                "pos": "NOUN",
+                "frequency": 805,
+                "cefr": "A1"
+            },
+            {
+                "word": "texten",
+                "pos": "VERB"
+            },
+            {
+                "word": "checken",
+                "pos": "VERB",
+                "frequency": 44326,
+                "cefr": "B1"
+            },
+            {
+                "word": "das E-Mail",
+                "pos": "NOUN",
+                "frequency": 5675,
+                "cefr": "A1"
+            },
+            {
+                "word": "wäschen",
+                "pos": "VERB",
+                "frequency": 2315,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Routine",
+                "pos": "NOUN",
+                "frequency": 10484
+            },
+            {
+                "word": "tracken",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Smartwatch",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Toast",
+                "pos": "NOUN",
+                "frequency": 38612
+            },
+            {
+                "word": "optimieren",
+                "pos": "VERB",
+                "frequency": 11638
+            },
+            {
+                "word": "optimiert",
+                "pos": "ADJ",
+                "frequency": 43241
+            },
+            {
+                "word": "das Email",
+                "pos": "NOUN",
+                "frequency": 25419
+            },
+            {
+                "word": "stattdessen",
+                "pos": "ADV",
+                "frequency": 1660
+            },
+            {
+                "word": "der Bus",
+                "pos": "NOUN",
+                "frequency": 1562,
+                "cefr": "A1"
+            },
+            {
+                "word": "parken",
+                "pos": "VERB",
+                "frequency": 7891,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kreditkarte",
+                "pos": "NOUN",
+                "frequency": 13131,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Cafe",
+                "pos": "NOUN",
+                "frequency": 11217
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "müssen": {
+                "present": {
+                    "ich": "muss",
+                    "du": "musst",
+                    "er": "muss",
+                    "es": "muss",
+                    "sie_singular": "muss",
+                    "xier": "muss",
+                    "wir": "müssen",
+                    "ihr": "müsst",
+                    "sie_plural": "müssen",
+                    "Sie": "müssen"
+                }
+            },
+            "dürfen": {
+                "present": {
+                    "ich": "darf",
+                    "du": "darfst",
+                    "er": "darf",
+                    "es": "darf",
+                    "sie_singular": "darf",
+                    "xier": "darf",
+                    "wir": "dürfen",
+                    "ihr": "dürft",
+                    "sie_plural": "dürfen",
+                    "Sie": "dürfen"
+                }
+            },
+            "warten": {
+                "present": {
+                    "ich": "warte",
+                    "du": "wartest",
+                    "er": "wartet",
+                    "es": "wartet",
+                    "sie_singular": "wartet",
+                    "xier": "wartet",
+                    "wir": "warten",
+                    "ihr": "wartet",
+                    "sie_plural": "warten",
+                    "Sie": "warten"
+                }
+            },
+            "erhitzen": {
+                "present": {
+                    "ich": "erhitze",
+                    "du": "erhitzt",
+                    "er": "erhitzt",
+                    "es": "erhitzt",
+                    "sie_singular": "erhitzt",
+                    "xier": "erhitzt",
+                    "wir": "erhitzen",
+                    "ihr": "erhitzt",
+                    "sie_plural": "erhitzen",
+                    "Sie": "erhitzen"
+                }
+            },
+            "rasieren": {
+                "present": {
+                    "ich": "rasiere",
+                    "du": "rasierst",
+                    "er": "rasiert",
+                    "es": "rasiert",
+                    "sie_singular": "rasiert",
+                    "xier": "rasiert",
+                    "wir": "rasieren",
+                    "ihr": "rasiert",
+                    "sie_plural": "rasieren",
+                    "Sie": "rasieren"
+                }
+            },
+            "kämmen": {
+                "present": {
+                    "ich": "kämme",
+                    "du": "kämmst",
+                    "er": "kämmt",
+                    "es": "kämmt",
+                    "sie_singular": "kämmt",
+                    "xier": "kämmt",
+                    "wir": "kämmen",
+                    "ihr": "kämmt",
+                    "sie_plural": "kämmen",
+                    "Sie": "kämmen"
+                }
+            },
+            "schminken": {
+                "present": {
+                    "ich": "schminke",
+                    "du": "schminkst",
+                    "er": "schminkt",
+                    "es": "schminkt",
+                    "sie_singular": "schminkt",
+                    "xier": "schminkt",
+                    "wir": "schminken",
+                    "ihr": "schminkt",
+                    "sie_plural": "schminken",
+                    "Sie": "schminken"
+                }
+            },
+            "duschen": {
+                "present": {
+                    "ich": "dusche",
+                    "du": "duschst",
+                    "er": "duscht",
+                    "es": "duscht",
+                    "sie_singular": "duscht",
+                    "xier": "duscht",
+                    "wir": "duschen",
+                    "ihr": "duscht",
+                    "sie_plural": "duschen",
+                    "Sie": "duschen"
+                }
+            },
+            "kümmern": {
+                "present": {
+                    "ich": "kümmere",
+                    "du": "kümmerst",
+                    "er": "kümmert",
+                    "es": "kümmert",
+                    "sie_singular": "kümmert",
+                    "xier": "kümmert",
+                    "wir": "kümmern",
+                    "ihr": "kümmert",
+                    "sie_plural": "kümmern",
+                    "Sie": "kümmern"
+                }
+            },
+            "aufwachen": {
+                "present": {
+                    "ich": "wache auf",
+                    "du": "wachst auf",
+                    "er": "wacht auf",
+                    "es": "wacht auf",
+                    "sie_singular": "wacht auf",
+                    "xier": "wacht auf",
+                    "wir": "wachen auf",
+                    "ihr": "wacht auf",
+                    "sie_plural": "wachen auf",
+                    "Sie": "wachen auf"
+                }
+            },
+            "beginnen": {
+                "present": {
+                    "ich": "beginne",
+                    "du": "beginnst",
+                    "er": "beginnt",
+                    "es": "beginnt",
+                    "sie_singular": "beginnt",
+                    "xier": "beginnt",
+                    "wir": "beginnen",
+                    "ihr": "beginnt",
+                    "sie_plural": "beginnen",
+                    "Sie": "beginnen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was machen Sie jeden Morgen?",
+            "Schreiben Sie acht Aktivitäten.",
+            "Schreiben Sie die Aktivitäten nicht in der korrekten Reihenfolge.",
+            "Ich stehe auf.",
+            "Fragen Sie die andere Person nach der richtigen Reihenfolge.",
+            "Stehst du zuerst auf oder checkst du erst deine E-Mails?",
+            "Ich stehe zuerst auf.",
+            "Kämmst du dich zuerst oder rasierst du dich zuerst.",
+            "Ich rasiere mich zuerst.",
+            "Siehst du zuerst fern/textest du zuerst?",
+            "Ordnen Sie die Aktivitäten den drei Kategorien zu.",
+            "Das muss ich nicht machen, aber ich mache es trotzdem: die Zeitung lesen, im Internet surfen, texten, mich schminken",
+            "Was ist gleich?",
+            "Was ist anders?",
+            "Wir müssen beide morgens aufstehen.",
+            "Sie duscht zuerst, ich mache zuerst Frühstück.",
+            "Wir müssen beide nicht fernsehen, machen es aber trotzdem.",
+            "Wir machen beide Frühstück, aber ich koche auch Kaffee.",
+            "Wir duschen uns und ziehen uns an.",
+            "Wir putzen die Zähne.",
+            "Ich surfe im Internet und sie liest die Zeitung.",
+            "Wir texten beide.",
+            "Jacqueline erzählt über ihren Morgen.",
+            "Wann macht sie was?",
+            "Heute tracke ich meinen Morgen mit meiner Smartwatch.",
+            "Ich tracke jede Aktivität ganz genau auf die Minute.",
+            "Der Tag beginnt.",
+            "30 Uhr und ich wache auf.",
+            "50 Uhr stehe ich auf.",
+            "Zwei Minuten später, um 6:52 Uhr, dusche ich.",
+            "02 Uhr ziehe ich mich an.",
+            "07 Uhr und ich erhitze Wasser in einem Topf.",
+            "12 Uhr ein Ei.",
+            "17 Uhr zwei Scheiben Toast und mache um 7:21 Uhr die Kaffeemaschine an und warte auf den Kaffee.",
+            "Ist Jacquelines Morgen effizient?",
+            "Können Sie ihn optimieren?",
+            "Schreiben Sie eine neue Version.",
+            "Jacqueline will um 8 Uhr zur Arbeit gehen.",
+            "Wann muss sie mit Ihrem optimierten aufstehen?",
+            "Der Morgen ist nicht effizient.",
+            "Jacqueline kann zwanzig Minuten später aufwachen und sofort aufstehen.",
+            "Sie kann die Kaffeemaschine zuerst anmachen.",
+            "Wenn sie auf den Kaffee wartet, kann sie das Wasser erhitzen.",
+            "Sie kann das Toast toasten, wenn das Ei im Wasser kocht.",
+            "Sie kann essen und Kaffee trinken.",
+            "Sie muss ihre Emails nicht checken.",
+            "Sie wacht auf und steht auf.",
+            "Sie zieht sich an.",
+            "Sie macht die Kaffeemaschine an und erhitzt Wasser im Topf.",
+            "Sie toastet Toast und kocht Ei im Wasser.",
+            "Trinkt Kaffee und isst Ei mit Toast.",
+            "Putzt ihre Zähne.",
+            "Geht zur Arbeit.",
+            "Wann beginnt Ihr Tag?",
+            "Nehmen Sie sich morgens gerne Zeit oder sind Sie in Ihrer Morgenroutine",
+            "Morgen Routine sehr effizient.",
+            "Mein Tag beginnt um X Uhr.",
+            "Ich nehme mir gerne Zeit.",
+            "Ich bin sehr effizient.",
+            "Manchmal will man das Leben optimieren, aber man darf nicht immer alles machen.",
+            "Was darf man nicht machen?",
+            "Was muss man stattdessen machen?",
+            "Man darf im Kursraum keinen Laptop benutzen.",
+            "Man muss Notizen mit der Hand schreiben.",
+            "Bus fahren, parken.",
+            "Man darf in der Stadt nicht parken.",
+            "Man muss mit dem Bus fahren.",
+            "Mit Kreditkarte bezahlen, mit Bargeld bezahlen.",
+            "Man darf im Cafe nicht mit der Kreditkarte zahlen.",
+            "Man muss mit Bargeld zahlen.",
+            "Zu Hause, auf der Arbeit.",
+            "Man darf auf der Arbeit nicht schlafen.",
+            "Man muss zu Hause schlafen.",
+            "Langsamer als 50 km /h, schneller als 50 km /h.",
+            "Man darf nicht schneller als 50 km /h fahren.",
+            "Man muss 50 km /h oder langsamer fahren."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,1243 @@
+{
+    "unit": "53",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 53,
+        "prerequisite": "1-52"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "kaufen",
+                "pos": "VERB",
+                "translation": "to buy",
+                "frequency": 506,
+                "cefr": "A1"
+            },
+            {
+                "word": "einkaufen",
+                "pos": "VERB",
+                "translation": "to shop",
+                "frequency": 2877,
+                "cefr": "A1"
+            },
+            {
+                "word": "anziehen",
+                "pos": "VERB",
+                "translation": "to put on (clothes)",
+                "frequency": 1436,
+                "cefr": "A1"
+            },
+            {
+                "word": "zuordnen",
+                "pos": "VERB",
+                "translation": "to match",
+                "frequency": 2241,
+                "cefr": "B1"
+            },
+            {
+                "word": "anschauen",
+                "pos": "VERB",
+                "translation": "to look at; watch",
+                "frequency": 949
+            },
+            {
+                "word": "nehmen",
+                "pos": "VERB",
+                "translation": "to take",
+                "frequency": 142,
+                "cefr": "A1"
+            },
+            {
+                "word": "mitnehmen",
+                "pos": "VERB",
+                "translation": "to take take with one; take along; give sb. a ride",
+                "frequency": 1459,
+                "cefr": "A1"
+            },
+            {
+                "word": "schreiben",
+                "pos": "VERB",
+                "translation": "to write",
+                "frequency": 184,
+                "cefr": "A1"
+            },
+            {
+                "word": "aufschreiben",
+                "pos": "VERB",
+                "translation": "to make a note, write down",
+                "frequency": 3748,
+                "cefr": "B1"
+            },
+            {
+                "word": "ankreuzen",
+                "pos": "VERB",
+                "translation": "to check, mark sth. with a cross",
+                "cefr": "A1"
+            },
+            {
+                "word": "darstellen",
+                "pos": "VERB",
+                "translation": "to depict, represent",
+                "frequency": 402,
+                "cefr": "B1"
+            },
+            {
+                "word": "auswählen",
+                "pos": "VERB",
+                "translation": "to choose"
+            },
+            {
+                "word": "wissen",
+                "pos": "VERB",
+                "translation": "to know (as a fact)",
+                "frequency": 78,
+                "cefr": "A1"
+            },
+            {
+                "word": "kennen",
+                "pos": "VERB",
+                "translation": "to be familiar with; know",
+                "frequency": 216,
+                "cefr": "A1"
+            },
+            {
+                "word": "können",
+                "pos": "VERB",
+                "translation": "to be able to; can; may"
+            },
+            {
+                "word": "müssen",
+                "pos": "VERB",
+                "translation": "to have to; must"
+            },
+            {
+                "word": "wollen",
+                "pos": "VERB",
+                "translation": "to want to",
+                "frequency": 57,
+                "cefr": "A1"
+            },
+            {
+                "word": "dürfen",
+                "pos": "VERB",
+                "translation": "to be allowed to"
+            },
+            {
+                "word": "mögen",
+                "pos": "VERB",
+                "translation": "to like"
+            },
+            {
+                "word": "geben",
+                "pos": "VERB",
+                "translation": "to give; exist, occur",
+                "frequency": 49,
+                "cefr": "A1"
+            },
+            {
+                "word": "brauchen",
+                "pos": "VERB",
+                "translation": "to need",
+                "frequency": 179,
+                "cefr": "A1"
+            },
+            {
+                "word": "(be)nutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 429,
+                "cefr": "B1"
+            },
+            {
+                "word": "suchen",
+                "pos": "VERB",
+                "translation": "to look for, search",
+                "frequency": 293,
+                "cefr": "A1"
+            },
+            {
+                "word": "finden",
+                "pos": "VERB",
+                "translation": "to find",
+                "frequency": 103,
+                "cefr": "A1"
+            },
+            {
+                "word": "glauben",
+                "pos": "VERB",
+                "translation": "to believe",
+                "frequency": 156,
+                "cefr": "A1"
+            },
+            {
+                "word": "denken",
+                "pos": "VERB",
+                "translation": "to think (about/of)",
+                "frequency": 128,
+                "cefr": "A2"
+            },
+            {
+                "word": "arbeiten",
+                "pos": "VERB",
+                "translation": "to work",
+                "frequency": 234,
+                "cefr": "A1"
+            },
+            {
+                "word": "machen",
+                "pos": "VERB",
+                "translation": "to do; make",
+                "frequency": 58,
+                "cefr": "A1"
+            },
+            {
+                "word": "tragen",
+                "pos": "VERB",
+                "translation": "to wear; carry",
+                "frequency": 271,
+                "cefr": "A2"
+            },
+            {
+                "word": "sammeln",
+                "pos": "VERB",
+                "translation": "to collect",
+                "frequency": 1219,
+                "cefr": "A2"
+            },
+            {
+                "word": "sehen",
+                "pos": "VERB",
+                "translation": "to see; watch",
+                "frequency": 79,
+                "cefr": "A1"
+            },
+            {
+                "word": "leben",
+                "pos": "VERB",
+                "translation": "to live",
+                "frequency": 98,
+                "cefr": "A1"
+            },
+            {
+                "word": "bekommen",
+                "pos": "VERB",
+                "translation": "to get",
+                "frequency": 212,
+                "cefr": "A1"
+            },
+            {
+                "word": "ersetzen",
+                "pos": "VERB",
+                "translation": "to replace, substitute",
+                "frequency": 1380,
+                "cefr": "B1"
+            },
+            {
+                "word": "erzählen",
+                "pos": "VERB",
+                "translation": "to tell; narrate; recount"
+            },
+            {
+                "word": "gehen",
+                "pos": "VERB",
+                "translation": "to go, walk",
+                "frequency": 66,
+                "cefr": "A1"
+            },
+            {
+                "word": "spielen",
+                "pos": "VERB",
+                "translation": "to play",
+                "frequency": 205,
+                "cefr": "A1"
+            },
+            {
+                "word": "gewinnen",
+                "pos": "VERB",
+                "translation": "to win",
+                "frequency": 372,
+                "cefr": "A1"
+            },
+            {
+                "word": "zeigen",
+                "pos": "VERB",
+                "translation": "to show, demonstrate",
+                "frequency": 136,
+                "cefr": "A2"
+            },
+            {
+                "word": "lassen",
+                "pos": "VERB",
+                "translation": "to let",
+                "frequency": 83,
+                "cefr": "A2"
+            },
+            {
+                "word": "bleiben",
+                "pos": "VERB",
+                "translation": "to stay, remain",
+                "frequency": 113,
+                "cefr": "A1"
+            },
+            {
+                "word": "folgen",
+                "pos": "VERB",
+                "translation": "to follow",
+                "frequency": 160,
+                "cefr": "B1"
+            },
+            {
+                "word": "lieben",
+                "pos": "VERB",
+                "translation": "to love",
+                "frequency": 701,
+                "cefr": "A1"
+            },
+            {
+                "word": "versuchen",
+                "pos": "VERB",
+                "translation": "to attempt. try",
+                "frequency": 247,
+                "cefr": "A2"
+            },
+            {
+                "word": "treffen",
+                "pos": "VERB",
+                "translation": "to meet; hit",
+                "frequency": 259,
+                "cefr": "A1"
+            },
+            {
+                "word": "passieren",
+                "pos": "VERB",
+                "translation": "to happen",
+                "frequency": 381,
+                "cefr": "A2"
+            },
+            {
+                "word": "ergänzen",
+                "pos": "VERB",
+                "translation": "to add, complement, supplement; complete"
+            },
+            {
+                "word": "raten",
+                "pos": "VERB",
+                "translation": "to guess",
+                "frequency": 2409,
+                "cefr": "A2"
+            },
+            {
+                "word": "öffnen",
+                "pos": "VERB",
+                "translation": "to open"
+            },
+            {
+                "word": "sollen",
+                "pos": "VERB",
+                "translation": "should; ought to",
+                "frequency": 60,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "Auffallen",
+                "pos": "NOUN",
+                "frequency": 1160,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bügel",
+                "pos": "NOUN",
+                "frequency": 28017
+            },
+            {
+                "word": "die Schneie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "oben",
+                "pos": "ADV",
+                "frequency": 417,
+                "cefr": "A1"
+            },
+            {
+                "word": "variieren",
+                "pos": "VERB",
+                "frequency": 4159
+            },
+            {
+                "word": "der Plural",
+                "pos": "NOUN",
+                "frequency": 16449,
+                "cefr": "B2"
+            },
+            {
+                "word": "fügen",
+                "pos": "VERB",
+                "frequency": 5629
+            },
+            {
+                "word": "hinzu",
+                "pos": "ADV",
+                "frequency": 3495
+            },
+            {
+                "word": "die Konjugationsschnecke",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Konjugationsschnecken-Spiel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "würfeln",
+                "pos": "VERB",
+                "cefr": "B2"
+            },
+            {
+                "word": "gewürfelt",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Augenzahl",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Schnecke",
+                "pos": "NOUN",
+                "frequency": 14916,
+                "cefr": "B2"
+            },
+            {
+                "word": "vorwärts",
+                "pos": "ADV",
+                "frequency": 8191,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Verbkarte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "konjugieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "prüfen",
+                "pos": "VERB",
+                "frequency": 1408,
+                "cefr": "A2"
+            },
+            {
+                "word": "ziehen",
+                "pos": "VERB",
+                "frequency": 193,
+                "cefr": "A2"
+            },
+            {
+                "word": "bilden",
+                "pos": "VERB",
+                "frequency": 315,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Modalverb",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Verbform",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "kaufen": {
+                "present": {
+                    "ich": "kaufe",
+                    "du": "kaufst",
+                    "er": "kauft",
+                    "es": "kauft",
+                    "sie_singular": "kauft",
+                    "xier": "kauft",
+                    "wir": "kaufen",
+                    "ihr": "kauft",
+                    "sie_plural": "kaufen",
+                    "Sie": "kaufen"
+                }
+            },
+            "einkaufen": {
+                "present": {
+                    "ich": "kaufe ein",
+                    "du": "kaufst ein",
+                    "er": "kauft ein",
+                    "es": "kauft ein",
+                    "sie_singular": "kauft ein",
+                    "xier": "kauft ein",
+                    "wir": "kaufen ein",
+                    "ihr": "kauft ein",
+                    "sie_plural": "kaufen ein",
+                    "Sie": "kaufen ein"
+                }
+            },
+            "anziehen": {
+                "present": {
+                    "ich": "ziehe an",
+                    "du": "ziehst an",
+                    "er": "zieht an",
+                    "es": "zieht an",
+                    "sie_singular": "zieht an",
+                    "xier": "zieht an",
+                    "wir": "ziehen an",
+                    "ihr": "zieht an",
+                    "sie_plural": "ziehen an",
+                    "Sie": "ziehen an"
+                }
+            },
+            "zuordnen": {
+                "present": {
+                    "ich": "ordne zu",
+                    "du": "ordnest zu",
+                    "er": "ordnet zu",
+                    "es": "ordnet zu",
+                    "sie_singular": "ordnet zu",
+                    "xier": "ordnet zu",
+                    "wir": "ordnen zu",
+                    "ihr": "ordnet zu",
+                    "sie_plural": "ordnen zu",
+                    "Sie": "ordnen zu"
+                }
+            },
+            "anschauen": {
+                "present": {
+                    "ich": "schaue an",
+                    "du": "schaust an",
+                    "er": "schaut an",
+                    "es": "schaut an",
+                    "sie_singular": "schaut an",
+                    "xier": "schaut an",
+                    "wir": "schauen an",
+                    "ihr": "schaut an",
+                    "sie_plural": "schauen an",
+                    "Sie": "schauen an"
+                }
+            },
+            "nehmen": {
+                "present": {
+                    "ich": "nehme",
+                    "du": "nimmst",
+                    "er": "nimmt",
+                    "es": "nimmt",
+                    "sie_singular": "nimmt",
+                    "xier": "nimmt",
+                    "wir": "nehmen",
+                    "ihr": "nehmt",
+                    "sie_plural": "nehmen",
+                    "Sie": "nehmen"
+                }
+            },
+            "mitnehmen": {
+                "present": {
+                    "ich": "nehme mit",
+                    "du": "nimmst mit",
+                    "er": "nimmt mit",
+                    "es": "nimmt mit",
+                    "sie_singular": "nimmt mit",
+                    "xier": "nimmt mit",
+                    "wir": "nehmen mit",
+                    "ihr": "nehmt mit",
+                    "sie_plural": "nehmen mit",
+                    "Sie": "nehmen mit"
+                }
+            },
+            "schreiben": {
+                "present": {
+                    "ich": "schreibe",
+                    "du": "schreibst",
+                    "er": "schreibt",
+                    "es": "schreibt",
+                    "sie_singular": "schreibt",
+                    "xier": "schreibt",
+                    "wir": "schreiben",
+                    "ihr": "schreibt",
+                    "sie_plural": "schreiben",
+                    "Sie": "schreiben"
+                }
+            },
+            "aufschreiben": {
+                "present": {
+                    "ich": "schreibe auf",
+                    "du": "schreibst auf",
+                    "er": "schreibt auf",
+                    "es": "schreibt auf",
+                    "sie_singular": "schreibt auf",
+                    "xier": "schreibt auf",
+                    "wir": "schreiben auf",
+                    "ihr": "schreibt auf",
+                    "sie_plural": "schreiben auf",
+                    "Sie": "schreiben auf"
+                }
+            },
+            "ankreuzen": {
+                "present": {
+                    "ich": "kreuze an",
+                    "du": "kreuzt an",
+                    "er": "kreuzt an",
+                    "es": "kreuzt an",
+                    "sie_singular": "kreuzt an",
+                    "xier": "kreuzt an",
+                    "wir": "kreuzen an",
+                    "ihr": "kreuzt an",
+                    "sie_plural": "kreuzen an",
+                    "Sie": "kreuzen an"
+                }
+            },
+            "darstellen": {
+                "present": {
+                    "ich": "stelle dar",
+                    "du": "stellst dar",
+                    "er": "stellt dar",
+                    "es": "stellt dar",
+                    "sie_singular": "stellt dar",
+                    "xier": "stellt dar",
+                    "wir": "stellen dar",
+                    "ihr": "stellt dar",
+                    "sie_plural": "stellen dar",
+                    "Sie": "stellen dar"
+                }
+            },
+            "auswählen": {
+                "present": {
+                    "ich": "wähle aus",
+                    "du": "wählst aus",
+                    "er": "wählt aus",
+                    "es": "wählt aus",
+                    "sie_singular": "wählt aus",
+                    "xier": "wählt aus",
+                    "wir": "wählen aus",
+                    "ihr": "wählt aus",
+                    "sie_plural": "wählen aus",
+                    "Sie": "wählen aus"
+                }
+            },
+            "wissen": {
+                "present": {
+                    "ich": "weiß",
+                    "du": "weißt",
+                    "er": "weiß",
+                    "es": "weiß",
+                    "sie_singular": "weiß",
+                    "xier": "weiß",
+                    "wir": "wissen",
+                    "ihr": "wisst",
+                    "sie_plural": "wissen",
+                    "Sie": "wissen"
+                }
+            },
+            "kennen": {
+                "present": {
+                    "ich": "kenne",
+                    "du": "kennst",
+                    "er": "kennt",
+                    "es": "kennt",
+                    "sie_singular": "kennt",
+                    "xier": "kennt",
+                    "wir": "kennen",
+                    "ihr": "kennt",
+                    "sie_plural": "kennen",
+                    "Sie": "kennen"
+                }
+            },
+            "können": {
+                "present": {
+                    "ich": "kann",
+                    "du": "kannst",
+                    "er": "kann",
+                    "es": "kann",
+                    "sie_singular": "kann",
+                    "xier": "kann",
+                    "wir": "können",
+                    "ihr": "könnt",
+                    "sie_plural": "können",
+                    "Sie": "können"
+                }
+            },
+            "müssen": {
+                "present": {
+                    "ich": "muss",
+                    "du": "musst",
+                    "er": "muss",
+                    "es": "muss",
+                    "sie_singular": "muss",
+                    "xier": "muss",
+                    "wir": "müssen",
+                    "ihr": "müsst",
+                    "sie_plural": "müssen",
+                    "Sie": "müssen"
+                }
+            },
+            "wollen": {
+                "present": {
+                    "ich": "will",
+                    "du": "willst",
+                    "er": "will",
+                    "es": "will",
+                    "sie_singular": "will",
+                    "xier": "will",
+                    "wir": "wollen",
+                    "ihr": "wollt",
+                    "sie_plural": "wollen",
+                    "Sie": "wollen"
+                }
+            },
+            "dürfen": {
+                "present": {
+                    "ich": "darf",
+                    "du": "darfst",
+                    "er": "darf",
+                    "es": "darf",
+                    "sie_singular": "darf",
+                    "xier": "darf",
+                    "wir": "dürfen",
+                    "ihr": "dürft",
+                    "sie_plural": "dürfen",
+                    "Sie": "dürfen"
+                }
+            },
+            "mögen": {
+                "present": {
+                    "ich": "mag",
+                    "du": "magst",
+                    "er": "mag",
+                    "es": "mag",
+                    "sie_singular": "mag",
+                    "xier": "mag",
+                    "wir": "mögen",
+                    "ihr": "mögt",
+                    "sie_plural": "mögen",
+                    "Sie": "mögen"
+                }
+            },
+            "geben": {
+                "present": {
+                    "ich": "gebe",
+                    "du": "gibst",
+                    "er": "gibt",
+                    "es": "gibt",
+                    "sie_singular": "gibt",
+                    "xier": "gibt",
+                    "wir": "geben",
+                    "ihr": "gebt",
+                    "sie_plural": "geben",
+                    "Sie": "geben"
+                }
+            },
+            "brauchen": {
+                "present": {
+                    "ich": "brauche",
+                    "du": "brauchst",
+                    "er": "braucht",
+                    "es": "braucht",
+                    "sie_singular": "braucht",
+                    "xier": "braucht",
+                    "wir": "brauchen",
+                    "ihr": "braucht",
+                    "sie_plural": "brauchen",
+                    "Sie": "brauchen"
+                }
+            },
+            "suchen": {
+                "present": {
+                    "ich": "suche",
+                    "du": "suchst",
+                    "er": "sucht",
+                    "es": "sucht",
+                    "sie_singular": "sucht",
+                    "xier": "sucht",
+                    "wir": "suchen",
+                    "ihr": "sucht",
+                    "sie_plural": "suchen",
+                    "Sie": "suchen"
+                }
+            },
+            "finden": {
+                "present": {
+                    "ich": "finde",
+                    "du": "findest",
+                    "er": "findet",
+                    "es": "findet",
+                    "sie_singular": "findet",
+                    "xier": "findet",
+                    "wir": "finden",
+                    "ihr": "findet",
+                    "sie_plural": "finden",
+                    "Sie": "finden"
+                }
+            },
+            "glauben": {
+                "present": {
+                    "ich": "glaube",
+                    "du": "glaubst",
+                    "er": "glaubt",
+                    "es": "glaubt",
+                    "sie_singular": "glaubt",
+                    "xier": "glaubt",
+                    "wir": "glauben",
+                    "ihr": "glaubt",
+                    "sie_plural": "glauben",
+                    "Sie": "glauben"
+                }
+            },
+            "denken": {
+                "present": {
+                    "ich": "denke",
+                    "du": "denkst",
+                    "er": "denkt",
+                    "es": "denkt",
+                    "sie_singular": "denkt",
+                    "xier": "denkt",
+                    "wir": "denken",
+                    "ihr": "denkt",
+                    "sie_plural": "denken",
+                    "Sie": "denken"
+                }
+            },
+            "arbeiten": {
+                "present": {
+                    "ich": "arbeite",
+                    "du": "arbeitest",
+                    "er": "arbeitet",
+                    "es": "arbeitet",
+                    "sie_singular": "arbeitet",
+                    "xier": "arbeitet",
+                    "wir": "arbeiten",
+                    "ihr": "arbeitet",
+                    "sie_plural": "arbeiten",
+                    "Sie": "arbeiten"
+                }
+            },
+            "machen": {
+                "present": {
+                    "ich": "mache",
+                    "du": "machst",
+                    "er": "macht",
+                    "es": "macht",
+                    "sie_singular": "macht",
+                    "xier": "macht",
+                    "wir": "machen",
+                    "ihr": "macht",
+                    "sie_plural": "machen",
+                    "Sie": "machen"
+                }
+            },
+            "tragen": {
+                "present": {
+                    "ich": "trage",
+                    "du": "trägst",
+                    "er": "trägt",
+                    "es": "trägt",
+                    "sie_singular": "trägt",
+                    "xier": "trägt",
+                    "wir": "tragen",
+                    "ihr": "tragt",
+                    "sie_plural": "tragen",
+                    "Sie": "tragen"
+                }
+            },
+            "sammeln": {
+                "present": {
+                    "ich": "sammle",
+                    "du": "sammelst",
+                    "er": "sammelt",
+                    "es": "sammelt",
+                    "sie_singular": "sammelt",
+                    "xier": "sammelt",
+                    "wir": "sammeln",
+                    "ihr": "sammelt",
+                    "sie_plural": "sammeln",
+                    "Sie": "sammeln"
+                }
+            },
+            "sehen": {
+                "present": {
+                    "ich": "sehe",
+                    "du": "siehst",
+                    "er": "sieht",
+                    "es": "sieht",
+                    "sie_singular": "sieht",
+                    "xier": "sieht",
+                    "wir": "sehen",
+                    "ihr": "seht",
+                    "sie_plural": "sehen",
+                    "Sie": "sehen"
+                }
+            },
+            "leben": {
+                "present": {
+                    "ich": "lebe",
+                    "du": "lebst",
+                    "er": "lebt",
+                    "es": "lebt",
+                    "sie_singular": "lebt",
+                    "xier": "lebt",
+                    "wir": "leben",
+                    "ihr": "lebt",
+                    "sie_plural": "leben",
+                    "Sie": "leben"
+                }
+            },
+            "bekommen": {
+                "present": {
+                    "ich": "bekomme",
+                    "du": "bekommst",
+                    "er": "bekommt",
+                    "es": "bekommt",
+                    "sie_singular": "bekommt",
+                    "xier": "bekommt",
+                    "wir": "bekommen",
+                    "ihr": "bekommt",
+                    "sie_plural": "bekommen",
+                    "Sie": "bekommen"
+                }
+            },
+            "ersetzen": {
+                "present": {
+                    "ich": "ersetze",
+                    "du": "ersetzt",
+                    "er": "ersetzt",
+                    "es": "ersetzt",
+                    "sie_singular": "ersetzt",
+                    "xier": "ersetzt",
+                    "wir": "ersetzen",
+                    "ihr": "ersetzt",
+                    "sie_plural": "ersetzen",
+                    "Sie": "ersetzen"
+                }
+            },
+            "erzählen": {
+                "present": {
+                    "ich": "erzähle",
+                    "du": "erzählst",
+                    "er": "erzählt",
+                    "es": "erzählt",
+                    "sie_singular": "erzählt",
+                    "xier": "erzählt",
+                    "wir": "erzählen",
+                    "ihr": "erzählt",
+                    "sie_plural": "erzählen",
+                    "Sie": "erzählen"
+                }
+            },
+            "gehen": {
+                "present": {
+                    "ich": "gehe",
+                    "du": "gehst",
+                    "er": "geht",
+                    "es": "geht",
+                    "sie_singular": "geht",
+                    "xier": "geht",
+                    "wir": "gehen",
+                    "ihr": "geht",
+                    "sie_plural": "gehen",
+                    "Sie": "gehen"
+                }
+            },
+            "spielen": {
+                "present": {
+                    "ich": "spiele",
+                    "du": "spielst",
+                    "er": "spielt",
+                    "es": "spielt",
+                    "sie_singular": "spielt",
+                    "xier": "spielt",
+                    "wir": "spielen",
+                    "ihr": "spielt",
+                    "sie_plural": "spielen",
+                    "Sie": "spielen"
+                }
+            },
+            "gewinnen": {
+                "present": {
+                    "ich": "gewinne",
+                    "du": "gewinnst",
+                    "er": "gewinnt",
+                    "es": "gewinnt",
+                    "sie_singular": "gewinnt",
+                    "xier": "gewinnt",
+                    "wir": "gewinnen",
+                    "ihr": "gewinnt",
+                    "sie_plural": "gewinnen",
+                    "Sie": "gewinnen"
+                }
+            },
+            "zeigen": {
+                "present": {
+                    "ich": "zeige",
+                    "du": "zeigst",
+                    "er": "zeigt",
+                    "es": "zeigt",
+                    "sie_singular": "zeigt",
+                    "xier": "zeigt",
+                    "wir": "zeigen",
+                    "ihr": "zeigt",
+                    "sie_plural": "zeigen",
+                    "Sie": "zeigen"
+                }
+            },
+            "lassen": {
+                "present": {
+                    "ich": "lasse",
+                    "du": "lässt",
+                    "er": "lässt",
+                    "es": "lässt",
+                    "sie_singular": "lässt",
+                    "xier": "lässt",
+                    "wir": "lassen",
+                    "ihr": "lasst",
+                    "sie_plural": "lassen",
+                    "Sie": "lassen"
+                }
+            },
+            "bleiben": {
+                "present": {
+                    "ich": "bleibe",
+                    "du": "bleibst",
+                    "er": "bleibt",
+                    "es": "bleibt",
+                    "sie_singular": "bleibt",
+                    "xier": "bleibt",
+                    "wir": "bleiben",
+                    "ihr": "bleibt",
+                    "sie_plural": "bleiben",
+                    "Sie": "bleiben"
+                }
+            },
+            "folgen": {
+                "present": {
+                    "ich": "folge",
+                    "du": "folgst",
+                    "er": "folgt",
+                    "es": "folgt",
+                    "sie_singular": "folgt",
+                    "xier": "folgt",
+                    "wir": "folgen",
+                    "ihr": "folgt",
+                    "sie_plural": "folgen",
+                    "Sie": "folgen"
+                }
+            },
+            "lieben": {
+                "present": {
+                    "ich": "liebe",
+                    "du": "liebst",
+                    "er": "liebt",
+                    "es": "liebt",
+                    "sie_singular": "liebt",
+                    "xier": "liebt",
+                    "wir": "lieben",
+                    "ihr": "liebt",
+                    "sie_plural": "lieben",
+                    "Sie": "lieben"
+                }
+            },
+            "versuchen": {
+                "present": {
+                    "ich": "versuche",
+                    "du": "versuchst",
+                    "er": "versucht",
+                    "es": "versucht",
+                    "sie_singular": "versucht",
+                    "xier": "versucht",
+                    "wir": "versuchen",
+                    "ihr": "versucht",
+                    "sie_plural": "versuchen",
+                    "Sie": "versuchen"
+                }
+            },
+            "treffen": {
+                "present": {
+                    "ich": "treffe",
+                    "du": "triffst",
+                    "er": "trifft",
+                    "es": "trifft",
+                    "sie_singular": "trifft",
+                    "xier": "trifft",
+                    "wir": "treffen",
+                    "ihr": "trefft",
+                    "sie_plural": "treffen",
+                    "Sie": "treffen"
+                }
+            },
+            "passieren": {
+                "present": {
+                    "ich": "passiere",
+                    "du": "passierst",
+                    "er": "passiert",
+                    "es": "passiert",
+                    "sie_singular": "passiert",
+                    "xier": "passiert",
+                    "wir": "passieren",
+                    "ihr": "passiert",
+                    "sie_plural": "passieren",
+                    "Sie": "passieren"
+                }
+            },
+            "ergänzen": {
+                "present": {
+                    "ich": "ergänze",
+                    "du": "ergänzt",
+                    "er": "ergänzt",
+                    "es": "ergänzt",
+                    "sie_singular": "ergänzt",
+                    "xier": "ergänzt",
+                    "wir": "ergänzen",
+                    "ihr": "ergänzt",
+                    "sie_plural": "ergänzen",
+                    "Sie": "ergänzen"
+                }
+            },
+            "raten": {
+                "present": {
+                    "ich": "rate",
+                    "du": "rätst",
+                    "er": "rät",
+                    "es": "rät",
+                    "sie_singular": "rät",
+                    "xier": "rät",
+                    "wir": "raten",
+                    "ihr": "ratet",
+                    "sie_plural": "raten",
+                    "Sie": "raten"
+                }
+            },
+            "öffnen": {
+                "present": {
+                    "ich": "öffne",
+                    "du": "öffnest",
+                    "er": "öffnet",
+                    "es": "öffnet",
+                    "sie_singular": "öffnet",
+                    "xier": "öffnet",
+                    "wir": "öffnen",
+                    "ihr": "öffnet",
+                    "sie_plural": "öffnen",
+                    "Sie": "öffnen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was machen die Menschen auf den Bildern (vielleicht)?",
+            "Die Menschen essen.",
+            "Sie lachen.",
+            "Sie treffen Freunde.",
+            "Sie lernen.",
+            "Sie studieren, sie lesen.",
+            "Schreiben Sie in drei Minuten ganz viele Verben.",
+            "Zahlen zählen zeichnen zeigen zuhören zuordnen",
+            "Schauen Sie sich die Verben oben an:",
+            "Ich X gern, weil ich … Wählen Sie fünf Verben und schreiben Sie jeweils einen kompletten Satz.",
+            "Eine Person X.",
+            "Die Leute X.",
+            "Benutzen Sie eine \"dass\"-Konstruktion für einen Satz (ich denke/glaube/finde …) und fügen Sie einem anderen Satz einen \"weil\"-Nebensatz hinzu.",
+            "Ich glaube, denke, finde, dass Grammatik Achten Sie auf die Position der Verben!",
+            "Würfeln Sie und gehen Sie die gewürfelte Augenzahl in der Schnecke vorwärts.",
+            "Nehmen Sie eine Verbkarte und konjugieren Sie das Verb für das Feld, auf dem Sie stehen.",
+            "Ist es korrekt?",
+            "Gehen Sie einen Schritt vorwärts.",
+            "Ist es falsch?",
+            "Gehen Sie einen Schritt rückwärts.",
+            "Dann ist die nächste Person an der Reihe.",
+            "Wer zuerst im Ziel ist, gewinnt.",
+            "Haben sagen geben machen",
+            "Suchen Sie sich eine Verbform aus.",
+            "Spielen Sie wieder in der Schnecke und bilden Sie einen Satz mit der korrekten Person (ich, du, …).",
+            "Wenn der Satz korrekt ist, bekommt die Person die Karte.",
+            "Die Person mit den meisten Karten gewinnt.",
+            "Ich muss im Kurs Deutsch sprechen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

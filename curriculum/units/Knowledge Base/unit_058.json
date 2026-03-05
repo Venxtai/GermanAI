@@ -1,0 +1,301 @@
+{
+    "unit": "58",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 58,
+        "prerequisite": "1-57"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use the dative case for indirect objects (the recipient of an action, answering wem?): dem for r-words, dem for s-words, der for e-words, den + -n on the noun for plural.",
+            "Use dative indefinite articles for indirect objects: einem for r-words, einem for s-words, einer for e-words."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "sagen, für wen oder wem man etwas kauft oder gibt",
+            "im Einkaufszentrum einkaufen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "im Einkaufszentrum einkaufen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "besuchen",
+                "pos": "VERB",
+                "translation": "to visit",
+                "frequency": 820,
+                "cefr": "A1"
+            },
+            {
+                "word": "helfen",
+                "pos": "VERB",
+                "translation": "to help",
+                "frequency": 338,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Einkaufszentrum",
+                "pos": "NOUN",
+                "translation": "shopping mall",
+                "frequency": 7847,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Laden",
+                "pos": "NOUN",
+                "translation": "store",
+                "frequency": 1675,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Mädchen",
+                "pos": "NOUN",
+                "translation": "girl"
+            },
+            {
+                "word": "der Junge",
+                "pos": "NOUN",
+                "translation": "boy",
+                "frequency": 548,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Lehrer*in",
+                "pos": "NOUN",
+                "translation": "teacher",
+                "frequency": 695,
+                "cefr": "A1"
+            },
+            {
+                "word": "Wem?",
+                "pos": "PHRASE",
+                "translation": "(To) Whom?"
+            },
+            {
+                "word": "deutschsprachig",
+                "pos": "ADJ",
+                "translation": "German-speaking",
+                "frequency": 3536
+            },
+            {
+                "word": "kaputt",
+                "pos": "ADJ",
+                "translation": "broken",
+                "frequency": 2950,
+                "cefr": "A1"
+            },
+            {
+                "word": "sportlich",
+                "pos": "ADJ",
+                "translation": "sporty",
+                "frequency": 2299,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Ware",
+                "pos": "NOUN",
+                "translation": "goods, merchandise",
+                "frequency": 1979,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Geschenk",
+                "pos": "NOUN",
+                "translation": "present",
+                "frequency": 2595,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Flip-Phone",
+                "pos": "NOUN"
+            },
+            {
+                "word": "de",
+                "pos": "DET",
+                "frequency": 5866
+            },
+            {
+                "word": "em",
+                "pos": "ADP",
+                "frequency": 6486
+            },
+            {
+                "word": "die Internetseite",
+                "pos": "NOUN",
+                "frequency": 7116
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "besuchen": {
+                "present": {
+                    "ich": "besuche",
+                    "du": "besuchst",
+                    "er": "besucht",
+                    "es": "besucht",
+                    "sie_singular": "besucht",
+                    "xier": "besucht",
+                    "wir": "besuchen",
+                    "ihr": "besucht",
+                    "sie_plural": "besuchen",
+                    "Sie": "besuchen"
+                }
+            },
+            "helfen": {
+                "present": {
+                    "ich": "helfe",
+                    "du": "hilfst",
+                    "er": "hilft",
+                    "es": "hilft",
+                    "sie_singular": "hilft",
+                    "xier": "hilft",
+                    "wir": "helfen",
+                    "ihr": "helft",
+                    "sie_plural": "helfen",
+                    "Sie": "helfen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Helfen Sie!",
+            "Zeigen Sie auf ein Ding und geben\"Sie es einer Person.",
+            "Sagen Sie warum (\"Gründe\").",
+            "Denken Sie an die korrekten Artikel im Nominativ, Akkusativ und Dativ.",
+            "Hier ist der Fußball.",
+            "Ich gebe der Ärztin den Fußball.",
+            "Warum gibst du der Ärztin den Fußball?",
+            "Ich gebe der Ärztin den Fußball, weil die Ärztin sportlich ist.",
+            "Der Vater der Junge der Lehrer die Schwester die Ärztin die Professorin das Kind",
+            "Das Buch der Fußball die Schuhe",
+            "Das Handy der Fernseher die Uhr",
+            "Das Videospiel der Koffer die Pizza",
+            "Das Fahrrad der Stuhl die Schokolade",
+            "Eine Person (Nominativ) nimmt ein Ding (Akkusativ).",
+            "Eine Person (Nominativ) gibt einer Person (Dativ) ein Ding (Akkusativ).",
+            "Ich nehme de n Kaffee.",
+            "Ich nehme die Tasche.",
+            "Ich nehme das Buch.",
+            "Ich nehme de n Fußball.",
+            "Ich nehme die Schuhe.",
+            "Ich nehme das Handy.",
+            "Ich nehme de n Fernseher.",
+            "Ich nehme die Uhr.",
+            "Ich gebe de m Mensch en das Auto.",
+            "Ich gebe de m Mann de n Kaffee.",
+            "Ich gebe de m Vater die Tasche.",
+            "Ich gebe de m Jungen das Buch.",
+            "Ich gebe de m Lehrer de n Fußball.",
+            "Ich gebe d er Person die Schuhe.",
+            "Ich gebe d er Frau das Handy.",
+            "Ich gebe d er Schwester de n Fernseher.",
+            "Ich gebe d er Ärztin die Uhr das Videospiel.",
+            "Ich gebe d er Professorin de n Koffer.",
+            "Ich gebe d em Kind die Pizza.",
+            "Ich gebe d em Mädchen das Fahrrad.",
+            "Ich gebe den Leute n die Schokolade.",
+            "Ich gebe den Eltern das Auto.",
+            "Ich gebe den Freund*innen de n Kaffee.",
+            "Woher kommen diese Marken?",
+            "Was denken Sie: Woher kommen diese Marken?",
+            "Welche kommen aus den USA?",
+            "Welche kommen aus Deutschland, Österreich oder der Schweiz?",
+            "Ich denke, dass Create & Barrel aus Deutschland, Österreich, der Schweiz, den USA kommt.",
+            "Ich denke, dass Red Bull aus Deutschland, Österreich, der Schweiz, den USA kommt.",
+            "Ich denke, dass Trader Joe's aus Deutschland, Österreich, der Schweiz, den USA kommt.",
+            "Welche anderen Marken und Produkte aus Deutschland, Österreich oder der Schweiz kennen Sie?",
+            "Ich kenne X.",
+            "Welche amerikanischen Marken und Produkte sind beliebt in deutschsprachigen Ländern?",
+            "Besuchen Sie die Webseite von einem Einkaufszentrum.",
+            "Aus welchen Ländern kommen sie?",
+            "Ergänzen Sie die Tabelle.",
+            "Die Läden kommen aus den USA, aus deutschsprachigen Ländern und aus anderen Ländern.",
+            "Nehmen Sie fünf Dinge aus Aktivität",
+            "In welchen Läden oder von welchen Internetseiten kaufen Sie jedes Ding in Ihrem Land?",
+            "Ding das Auto der Kaffee die Tasche",
+            "Fragen Sie \"Was kaufst du?\" und \"In welchem Laden oder von welcher Internetseite kaufst du es?\"",
+            "Ich kaufe das Auto der Kaffee die Tasche",
+            "Ich kaufe es bei X."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

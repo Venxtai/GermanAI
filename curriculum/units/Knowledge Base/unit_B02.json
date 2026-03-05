@@ -1,0 +1,948 @@
+{
+    "unit": "B2",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 2,
+        "prerequisite": "core 1-104, B1-B1"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen perfekten Morgen beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "Es gibt …, es gab …, es hat … gegeben",
+                "pos": "PHRASE",
+                "translation": "There is/are …"
+            },
+            {
+                "word": "machen",
+                "pos": "VERB",
+                "translation": "to do; make",
+                "frequency": 58,
+                "cefr": "A1"
+            },
+            {
+                "word": "leben",
+                "pos": "VERB",
+                "translation": "to live",
+                "frequency": 98,
+                "cefr": "A1"
+            },
+            {
+                "word": "gehen",
+                "pos": "VERB",
+                "translation": "to go, walk",
+                "frequency": 66,
+                "cefr": "A1"
+            },
+            {
+                "word": "liegen",
+                "pos": "VERB",
+                "translation": "to lie; be lying [things that are located flat]",
+                "frequency": 107,
+                "cefr": "A1"
+            },
+            {
+                "word": "nehmen",
+                "pos": "VERB",
+                "translation": "to take",
+                "frequency": 142,
+                "cefr": "A1"
+            },
+            {
+                "word": "einkaufen",
+                "pos": "VERB",
+                "translation": "to shop",
+                "frequency": 2877,
+                "cefr": "A1"
+            },
+            {
+                "word": "waschen",
+                "pos": "VERB",
+                "translation": "to wash",
+                "frequency": 2315,
+                "cefr": "A1"
+            },
+            {
+                "word": "bleiben",
+                "pos": "VERB",
+                "translation": "to stay, remain",
+                "frequency": 113,
+                "cefr": "A1"
+            },
+            {
+                "word": "schlafen",
+                "pos": "VERB",
+                "translation": "to sleep",
+                "frequency": 679,
+                "cefr": "A1"
+            },
+            {
+                "word": "wohnen",
+                "pos": "VERB",
+                "translation": "to live (in)",
+                "frequency": 560,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Mensch",
+                "pos": "NOUN",
+                "translation": "human (being), person",
+                "frequency": 90,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Person",
+                "pos": "NOUN",
+                "translation": "person",
+                "frequency": 357,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Familie",
+                "pos": "NOUN",
+                "translation": "family",
+                "frequency": 329,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Eltern",
+                "pos": "NOUN",
+                "translation": "parents",
+                "frequency": 404,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mutter",
+                "pos": "NOUN",
+                "translation": "mother",
+                "frequency": 218,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vater",
+                "pos": "NOUN",
+                "translation": "father",
+                "frequency": 232,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kind",
+                "pos": "NOUN",
+                "translation": "child",
+                "frequency": 133,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Freund*in",
+                "pos": "NOUN",
+                "translation": "friend",
+                "frequency": 273,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zeit",
+                "pos": "NOUN",
+                "translation": "time",
+                "frequency": 96,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Jahr",
+                "pos": "NOUN",
+                "translation": "year",
+                "frequency": 53,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Welt",
+                "pos": "NOUN",
+                "translation": "world",
+                "frequency": 164,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Ort",
+                "pos": "NOUN",
+                "translation": "location; site; place",
+                "frequency": 341,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Land",
+                "pos": "NOUN",
+                "translation": "country",
+                "frequency": 134,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Stadt",
+                "pos": "NOUN",
+                "translation": "city",
+                "frequency": 204,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Straße",
+                "pos": "NOUN",
+                "translation": "street",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Geschichte",
+                "pos": "NOUN",
+                "translation": "history",
+                "frequency": 262,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kultur",
+                "pos": "NOUN",
+                "translation": "culture",
+                "frequency": 594,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Thema, Themen",
+                "pos": "NOUN",
+                "translation": "theme, topic",
+                "frequency": 298,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Grund",
+                "pos": "NOUN",
+                "translation": "reason; ground",
+                "frequency": 249,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sprache",
+                "pos": "NOUN",
+                "translation": "language",
+                "frequency": 421,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kleidung",
+                "pos": "NOUN",
+                "translation": "clothing",
+                "frequency": 2820,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Uhr",
+                "pos": "NOUN",
+                "translation": "clock; watch",
+                "frequency": 348,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Buch",
+                "pos": "NOUN",
+                "translation": "book",
+                "frequency": 300,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Musik",
+                "pos": "NOUN",
+                "translation": "music",
+                "frequency": 509,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Geld",
+                "pos": "NOUN",
+                "translation": "money",
+                "frequency": 235,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Lied",
+                "pos": "NOUN",
+                "translation": "song",
+                "frequency": 1733,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Auto",
+                "pos": "NOUN",
+                "translation": "car",
+                "frequency": 361,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kino",
+                "pos": "NOUN",
+                "translation": "cinema, the movies",
+                "frequency": 2020,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Brief",
+                "pos": "NOUN",
+                "translation": "letter",
+                "frequency": 838,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Foto",
+                "pos": "NOUN",
+                "translation": "picture",
+                "frequency": 633,
+                "cefr": "A1"
+            },
+            {
+                "word": "gut",
+                "pos": "ADJ",
+                "translation": "good",
+                "frequency": 76,
+                "cefr": "A1"
+            },
+            {
+                "word": "wichtig",
+                "pos": "ADJ",
+                "translation": "important",
+                "frequency": 144,
+                "cefr": "A1"
+            },
+            {
+                "word": "wahrscheinlich",
+                "pos": "ADJ",
+                "translation": "probably, likely",
+                "frequency": 493,
+                "cefr": "A2"
+            },
+            {
+                "word": "eigentlich",
+                "pos": "ADJ",
+                "translation": "actual; rather",
+                "frequency": 151,
+                "cefr": "A2"
+            },
+            {
+                "word": "ähnlich",
+                "pos": "ADJ",
+                "translation": "similar"
+            },
+            {
+                "word": "wirklich",
+                "pos": "ADJ",
+                "translation": "real(ly), actual(ly)",
+                "frequency": 189,
+                "cefr": "A2"
+            },
+            {
+                "word": "fremd",
+                "pos": "ADJ",
+                "translation": "foreign",
+                "frequency": 859,
+                "cefr": "A1"
+            },
+            {
+                "word": "spannend",
+                "pos": "ADJ",
+                "translation": "suspenseful, thrilling, gripping",
+                "frequency": 1810,
+                "cefr": "A2"
+            },
+            {
+                "word": "faul",
+                "pos": "ADJ",
+                "translation": "lazy",
+                "frequency": 4856,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "meditieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Spaziergang",
+                "pos": "NOUN",
+                "frequency": 4675,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Meditation",
+                "pos": "NOUN",
+                "frequency": 12691
+            },
+            {
+                "word": "der Lieblingsort",
+                "pos": "NOUN"
+            },
+            {
+                "word": "einkreisen",
+                "pos": "VERB"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "machen": {
+                "present": {
+                    "ich": "mache",
+                    "du": "machst",
+                    "er": "macht",
+                    "es": "macht",
+                    "sie_singular": "macht",
+                    "xier": "macht",
+                    "wir": "machen",
+                    "ihr": "macht",
+                    "sie_plural": "machen",
+                    "Sie": "machen"
+                },
+                "Perfekt": {
+                    "ich": "habe gemacht",
+                    "du": "hast gemacht",
+                    "er": "hat gemacht",
+                    "es": "hat gemacht",
+                    "sie_singular": "hat gemacht",
+                    "xier": "hat gemacht",
+                    "wir": "haben gemacht",
+                    "ihr": "habt gemacht",
+                    "sie_plural": "haben gemacht",
+                    "Sie": "haben gemacht"
+                },
+                "Futur_I": {
+                    "ich": "werde machen",
+                    "du": "wirst machen",
+                    "er": "wird machen",
+                    "es": "wird machen",
+                    "sie_singular": "wird machen",
+                    "xier": "wird machen",
+                    "wir": "werden machen",
+                    "ihr": "werdet machen",
+                    "sie_plural": "werden machen",
+                    "Sie": "werden machen"
+                },
+                "imperative": {
+                    "du": "mache",
+                    "ihr": "macht",
+                    "Sie": "machen Sie"
+                }
+            },
+            "leben": {
+                "present": {
+                    "ich": "lebe",
+                    "du": "lebst",
+                    "er": "lebt",
+                    "es": "lebt",
+                    "sie_singular": "lebt",
+                    "xier": "lebt",
+                    "wir": "leben",
+                    "ihr": "lebt",
+                    "sie_plural": "leben",
+                    "Sie": "leben"
+                },
+                "Perfekt": {
+                    "ich": "habe gelebt",
+                    "du": "hast gelebt",
+                    "er": "hat gelebt",
+                    "es": "hat gelebt",
+                    "sie_singular": "hat gelebt",
+                    "xier": "hat gelebt",
+                    "wir": "haben gelebt",
+                    "ihr": "habt gelebt",
+                    "sie_plural": "haben gelebt",
+                    "Sie": "haben gelebt"
+                },
+                "Futur_I": {
+                    "ich": "werde leben",
+                    "du": "wirst leben",
+                    "er": "wird leben",
+                    "es": "wird leben",
+                    "sie_singular": "wird leben",
+                    "xier": "wird leben",
+                    "wir": "werden leben",
+                    "ihr": "werdet leben",
+                    "sie_plural": "werden leben",
+                    "Sie": "werden leben"
+                },
+                "imperative": {
+                    "du": "lebe",
+                    "ihr": "lebt",
+                    "Sie": "leben Sie"
+                }
+            },
+            "gehen": {
+                "present": {
+                    "ich": "gehe",
+                    "du": "gehst",
+                    "er": "geht",
+                    "es": "geht",
+                    "sie_singular": "geht",
+                    "xier": "geht",
+                    "wir": "gehen",
+                    "ihr": "geht",
+                    "sie_plural": "gehen",
+                    "Sie": "gehen"
+                },
+                "Perfekt": {
+                    "ich": "bin gegangen",
+                    "du": "bist gegangen",
+                    "er": "ist gegangen",
+                    "es": "ist gegangen",
+                    "sie_singular": "ist gegangen",
+                    "xier": "ist gegangen",
+                    "wir": "sind gegangen",
+                    "ihr": "seid gegangen",
+                    "sie_plural": "sind gegangen",
+                    "Sie": "sind gegangen"
+                },
+                "Futur_I": {
+                    "ich": "werde gehen",
+                    "du": "wirst gehen",
+                    "er": "wird gehen",
+                    "es": "wird gehen",
+                    "sie_singular": "wird gehen",
+                    "xier": "wird gehen",
+                    "wir": "werden gehen",
+                    "ihr": "werdet gehen",
+                    "sie_plural": "werden gehen",
+                    "Sie": "werden gehen"
+                },
+                "imperative": {
+                    "du": "geh",
+                    "ihr": "geht",
+                    "Sie": "gehen Sie"
+                }
+            },
+            "liegen": {
+                "present": {
+                    "ich": "liege",
+                    "du": "liegst",
+                    "er": "liegt",
+                    "es": "liegt",
+                    "sie_singular": "liegt",
+                    "xier": "liegt",
+                    "wir": "liegen",
+                    "ihr": "liegt",
+                    "sie_plural": "liegen",
+                    "Sie": "liegen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelegen",
+                    "du": "hast gelegen",
+                    "er": "hat gelegen",
+                    "es": "hat gelegen",
+                    "sie_singular": "hat gelegen",
+                    "xier": "hat gelegen",
+                    "wir": "haben gelegen",
+                    "ihr": "habt gelegen",
+                    "sie_plural": "haben gelegen",
+                    "Sie": "haben gelegen"
+                },
+                "Futur_I": {
+                    "ich": "werde liegen",
+                    "du": "wirst liegen",
+                    "er": "wird liegen",
+                    "es": "wird liegen",
+                    "sie_singular": "wird liegen",
+                    "xier": "wird liegen",
+                    "wir": "werden liegen",
+                    "ihr": "werdet liegen",
+                    "sie_plural": "werden liegen",
+                    "Sie": "werden liegen"
+                },
+                "imperative": {
+                    "du": "lieg",
+                    "ihr": "liegt",
+                    "Sie": "liegen Sie"
+                }
+            },
+            "nehmen": {
+                "present": {
+                    "ich": "nehme",
+                    "du": "nimmst",
+                    "er": "nimmt",
+                    "es": "nimmt",
+                    "sie_singular": "nimmt",
+                    "xier": "nimmt",
+                    "wir": "nehmen",
+                    "ihr": "nehmt",
+                    "sie_plural": "nehmen",
+                    "Sie": "nehmen"
+                },
+                "Perfekt": {
+                    "ich": "habe genommen",
+                    "du": "hast genommen",
+                    "er": "hat genommen",
+                    "es": "hat genommen",
+                    "sie_singular": "hat genommen",
+                    "xier": "hat genommen",
+                    "wir": "haben genommen",
+                    "ihr": "habt genommen",
+                    "sie_plural": "haben genommen",
+                    "Sie": "haben genommen"
+                },
+                "Futur_I": {
+                    "ich": "werde nehmen",
+                    "du": "wirst nehmen",
+                    "er": "wird nehmen",
+                    "es": "wird nehmen",
+                    "sie_singular": "wird nehmen",
+                    "xier": "wird nehmen",
+                    "wir": "werden nehmen",
+                    "ihr": "werdet nehmen",
+                    "sie_plural": "werden nehmen",
+                    "Sie": "werden nehmen"
+                },
+                "imperative": {
+                    "du": "nimm",
+                    "ihr": "nehmt",
+                    "Sie": "nehmen Sie"
+                }
+            },
+            "einkaufen": {
+                "present": {
+                    "ich": "kaufe ein",
+                    "du": "kaufst ein",
+                    "er": "kauft ein",
+                    "es": "kauft ein",
+                    "sie_singular": "kauft ein",
+                    "xier": "kauft ein",
+                    "wir": "kaufen ein",
+                    "ihr": "kauft ein",
+                    "sie_plural": "kaufen ein",
+                    "Sie": "kaufen ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingekauft",
+                    "du": "hast eingekauft",
+                    "er": "hat eingekauft",
+                    "es": "hat eingekauft",
+                    "sie_singular": "hat eingekauft",
+                    "xier": "hat eingekauft",
+                    "wir": "haben eingekauft",
+                    "ihr": "habt eingekauft",
+                    "sie_plural": "haben eingekauft",
+                    "Sie": "haben eingekauft"
+                },
+                "Futur_I": {
+                    "ich": "werde einkaufen",
+                    "du": "wirst einkaufen",
+                    "er": "wird einkaufen",
+                    "es": "wird einkaufen",
+                    "sie_singular": "wird einkaufen",
+                    "xier": "wird einkaufen",
+                    "wir": "werden einkaufen",
+                    "ihr": "werdet einkaufen",
+                    "sie_plural": "werden einkaufen",
+                    "Sie": "werden einkaufen"
+                },
+                "imperative": {
+                    "du": "kauf ein",
+                    "ihr": "kauft ein",
+                    "Sie": "kaufen Sie ein"
+                }
+            },
+            "waschen": {
+                "present": {
+                    "ich": "wasche",
+                    "du": "wäschst",
+                    "er": "wäscht",
+                    "es": "wäscht",
+                    "sie_singular": "wäscht",
+                    "xier": "wäscht",
+                    "wir": "waschen",
+                    "ihr": "wascht",
+                    "sie_plural": "waschen",
+                    "Sie": "waschen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewaschen",
+                    "du": "hast gewaschen",
+                    "er": "hat gewaschen",
+                    "es": "hat gewaschen",
+                    "sie_singular": "hat gewaschen",
+                    "xier": "hat gewaschen",
+                    "wir": "haben gewaschen",
+                    "ihr": "habt gewaschen",
+                    "sie_plural": "haben gewaschen",
+                    "Sie": "haben gewaschen"
+                },
+                "Futur_I": {
+                    "ich": "werde waschen",
+                    "du": "wirst waschen",
+                    "er": "wird waschen",
+                    "es": "wird waschen",
+                    "sie_singular": "wird waschen",
+                    "xier": "wird waschen",
+                    "wir": "werden waschen",
+                    "ihr": "werdet waschen",
+                    "sie_plural": "werden waschen",
+                    "Sie": "werden waschen"
+                },
+                "imperative": {
+                    "du": "wasche",
+                    "ihr": "wascht",
+                    "Sie": "waschen Sie"
+                }
+            },
+            "bleiben": {
+                "present": {
+                    "ich": "bleibe",
+                    "du": "bleibst",
+                    "er": "bleibt",
+                    "es": "bleibt",
+                    "sie_singular": "bleibt",
+                    "xier": "bleibt",
+                    "wir": "bleiben",
+                    "ihr": "bleibt",
+                    "sie_plural": "bleiben",
+                    "Sie": "bleiben"
+                },
+                "Perfekt": {
+                    "ich": "bin geblieben",
+                    "du": "bist geblieben",
+                    "er": "ist geblieben",
+                    "es": "ist geblieben",
+                    "sie_singular": "ist geblieben",
+                    "xier": "ist geblieben",
+                    "wir": "sind geblieben",
+                    "ihr": "seid geblieben",
+                    "sie_plural": "sind geblieben",
+                    "Sie": "sind geblieben"
+                },
+                "Futur_I": {
+                    "ich": "werde bleiben",
+                    "du": "wirst bleiben",
+                    "er": "wird bleiben",
+                    "es": "wird bleiben",
+                    "sie_singular": "wird bleiben",
+                    "xier": "wird bleiben",
+                    "wir": "werden bleiben",
+                    "ihr": "werdet bleiben",
+                    "sie_plural": "werden bleiben",
+                    "Sie": "werden bleiben"
+                },
+                "imperative": {
+                    "du": "bleibe",
+                    "ihr": "bleibt",
+                    "Sie": "bleiben Sie"
+                }
+            },
+            "schlafen": {
+                "present": {
+                    "ich": "schlafe",
+                    "du": "schläfst",
+                    "er": "schläft",
+                    "es": "schläft",
+                    "sie_singular": "schläft",
+                    "xier": "schläft",
+                    "wir": "schlafen",
+                    "ihr": "schlaft",
+                    "sie_plural": "schlafen",
+                    "Sie": "schlafen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschlafen",
+                    "du": "hast geschlafen",
+                    "er": "hat geschlafen",
+                    "es": "hat geschlafen",
+                    "sie_singular": "hat geschlafen",
+                    "xier": "hat geschlafen",
+                    "wir": "haben geschlafen",
+                    "ihr": "habt geschlafen",
+                    "sie_plural": "haben geschlafen",
+                    "Sie": "haben geschlafen"
+                },
+                "Futur_I": {
+                    "ich": "werde schlafen",
+                    "du": "wirst schlafen",
+                    "er": "wird schlafen",
+                    "es": "wird schlafen",
+                    "sie_singular": "wird schlafen",
+                    "xier": "wird schlafen",
+                    "wir": "werden schlafen",
+                    "ihr": "werdet schlafen",
+                    "sie_plural": "werden schlafen",
+                    "Sie": "werden schlafen"
+                },
+                "imperative": {
+                    "du": "schlaf",
+                    "ihr": "schlaft",
+                    "Sie": "schlafen Sie"
+                }
+            },
+            "wohnen": {
+                "present": {
+                    "ich": "wohne",
+                    "du": "wohnst",
+                    "er": "wohnt",
+                    "es": "wohnt",
+                    "sie_singular": "wohnt",
+                    "xier": "wohnt",
+                    "wir": "wohnen",
+                    "ihr": "wohnt",
+                    "sie_plural": "wohnen",
+                    "Sie": "wohnen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewohnt",
+                    "du": "hast gewohnt",
+                    "er": "hat gewohnt",
+                    "es": "hat gewohnt",
+                    "sie_singular": "hat gewohnt",
+                    "xier": "hat gewohnt",
+                    "wir": "haben gewohnt",
+                    "ihr": "habt gewohnt",
+                    "sie_plural": "haben gewohnt",
+                    "Sie": "haben gewohnt"
+                },
+                "Futur_I": {
+                    "ich": "werde wohnen",
+                    "du": "wirst wohnen",
+                    "er": "wird wohnen",
+                    "es": "wird wohnen",
+                    "sie_singular": "wird wohnen",
+                    "xier": "wird wohnen",
+                    "wir": "werden wohnen",
+                    "ihr": "werdet wohnen",
+                    "sie_plural": "werden wohnen",
+                    "Sie": "werden wohnen"
+                },
+                "imperative": {
+                    "du": "wohne",
+                    "ihr": "wohnt",
+                    "Sie": "wohnen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Mara, Maja und Ben erzählen von ihrem perfekten Samstagmorgen.",
+            "Hören Sie zu und ordnen Sie die Wörter unten der richtigen Person zu.",
+            "Nicht alle Wörter gehören zu einer der drei Personen.",
+            "An einem perfekten Samstagmorgen schlafe ich lange.",
+            "Wenn ich aufwache, bleibe ich im Bett liegen und schaue mir Videos auf TikTok an.",
+            "Danach mache ich mir einen Kaffee und setze mich mit einem guten Buch auf's Sofa.",
+            "Ein perfekter Samstagmorgen bedeutet für mich, dass ich faul sein kann.",
+            "Am Samstag mache ich meistens Sport.",
+            "Ich gehe sehr gerne gleich nach dem Aufstehen joggen.",
+            "Danach mache ich mir dann ein großes Frühstück mit Eiern, Müsli und Orangens aft.",
+            "Mache ich nach dem Frühstück dann noch ein bisschen Meditation.",
+            "Unter der Woche habe ich nicht so viel Zeit für meine Familie, weil ich viel arbeiten muss.",
+            "Am Samstagmorgen mache ich deshalb immer etwas mit meinen Eltern und meinen Geschwistern.",
+            "Wir gehen oft in ein Café zum Frühstücken.",
+            "Oder wir machen einen langen Spaziergang im Stadtpark.",
+            "Im Sommer gehen wir auch manchmal zusammen schwimmen.",
+            "Sieht Ihr perfekter Samstagmorgen ähnlich oder anders aus?",
+            "Was machen Sie an einem perfekten Samstagmorgen?",
+            "Notieren Sie Ihre Lieblings orte [Lieblings Orte ].",
+            "Wo bin, wohne, studiere, schlafe ich gerne?",
+            "Wohin möchte ich gerne reisen?",
+            "Lieblings Orte an der Tafel.",
+            "Gibt es Orte, die mehrere Personen mögen?",
+            "Sprechen Sie über die Statistik an der Tafel wie im Beispiel.",
+            "Wie viele Personen wohnen gern in der Stadt, auf dem Land?",
+            "Drei Personen wohnen gern in einem Haus in der Stadt.",
+            "Vier Personen wohnen gern in einer Wohnung in der Stadt.",
+            "Musik, die ich gern habe",
+            "Denken Sie an Ihre Lieblingsmusik.",
+            "Welche Adjektive passen zu Ihrer Lieblingsmusik?",
+            "K reisen Sie die passenden Adjektive ein.",
+            "Sprechen Sie über Ihre Lieblingsmusik.",
+            "Stellen Sie sich Fragen wie im Beispiel.",
+            "Magst du gern langsame Musik?",
+            "Ja, ich mag langsame Musik, aber nur manchmal.",
+            "Ich finde fröhliche Musik besser.",
+            "Und du?",
+            "Geschenke für Menschen, die ich gern habe",
+            "In vielen Kulturen macht man sich Geschenke an wichtigen Tagen (Geburtstag, Hochzeit, Abschluss der Uni, etc.).",
+            "Was schenken Sie wichtigen Menschen gern?",
+            "Machen Sie sich Notizen, welcher Person Sie was an welchem Tag schenken.",
+            "Sprechen Sie mit mindestens drei Personen im Kurs.",
+            "Fragen Sie die anderen Personen, was sie gerne anderen Menschen schenken.",
+            "Schenken ist ein Dativverb.",
+            "Ich schenke meiner Mutter einen warmen Schal zu Weihnachten."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

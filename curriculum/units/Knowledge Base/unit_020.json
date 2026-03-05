@@ -1,0 +1,545 @@
+{
+    "unit": "20",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 20,
+        "prerequisite": "1-19"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Use accusative personal pronouns for direct objects: mich, dich, ihn, es, sie, xien, uns, euch, sie/Sie.",
+            "Replace accusative nouns with pronouns matching their noun class: r-words use ihn, s-words use es, e-words use sie."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die passende Kleidung für das Wetter besprechen",
+            "Gegenstände und Personen mit Pronomen im Akkusativ ersetzen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "passende Kleidung für das Wetter"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "gehen",
+                "pos": "VERB",
+                "translation": "to go, walk",
+                "frequency": 66,
+                "cefr": "A1"
+            },
+            {
+                "word": "packen",
+                "pos": "VERB",
+                "translation": "to pack",
+                "frequency": 1639,
+                "cefr": "A2"
+            },
+            {
+                "word": "mitnehmen",
+                "pos": "VERB",
+                "translation": "to take take with one; take along; give sb. a ride",
+                "frequency": 1459,
+                "cefr": "A1"
+            },
+            {
+                "word": "Angst",
+                "pos": "VERB",
+                "translation": "to be afraid",
+                "frequency": 392,
+                "cefr": "A2"
+            },
+            {
+                "word": "melden",
+                "pos": "VERB",
+                "translation": "to raise one's hand [in class]; to get in touch",
+                "frequency": 1005,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Wort",
+                "pos": "NOUN",
+                "translation": "word",
+                "frequency": 194,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Moment",
+                "pos": "NOUN",
+                "translation": "moment",
+                "frequency": 358,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Luft",
+                "pos": "NOUN",
+                "translation": "air",
+                "frequency": 487,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sonne",
+                "pos": "NOUN",
+                "translation": "sun",
+                "frequency": 864,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wind",
+                "pos": "NOUN",
+                "translation": "wind",
+                "frequency": 1124,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schnee",
+                "pos": "NOUN",
+                "translation": "snow",
+                "frequency": 1760,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Regen",
+                "pos": "NOUN",
+                "translation": "rain",
+                "frequency": 1957,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Wolke",
+                "pos": "NOUN",
+                "translation": "cloud",
+                "frequency": 2114,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Gewitter",
+                "pos": "NOUN",
+                "translation": "thunderstorm",
+                "frequency": 9123,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Sturm",
+                "pos": "NOUN",
+                "translation": "storm",
+                "frequency": 2913,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Licht, -er",
+                "pos": "ADJ",
+                "translation": "light"
+            },
+            {
+                "word": "die Jacke",
+                "pos": "NOUN",
+                "translation": "jacket",
+                "frequency": 3287,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Gummistiefel",
+                "pos": "NOUN",
+                "translation": "rain boots, rubber boots",
+                "frequency": 25305,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mütze",
+                "pos": "NOUN",
+                "translation": "hat; beanie",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schal",
+                "pos": "NOUN",
+                "translation": "scarf",
+                "frequency": 14879,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Mantel",
+                "pos": "NOUN",
+                "translation": "coat",
+                "frequency": 2983,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Koffer",
+                "pos": "NOUN",
+                "translation": "suitcase",
+                "frequency": 2387,
+                "cefr": "A1"
+            },
+            {
+                "word": "kalt",
+                "pos": "ADJ",
+                "translation": "cold",
+                "frequency": 887,
+                "cefr": "A2"
+            },
+            {
+                "word": "warm",
+                "pos": "ADJ",
+                "translation": "warm",
+                "frequency": 1281,
+                "cefr": "A2"
+            },
+            {
+                "word": "heiß",
+                "pos": "ADJ",
+                "translation": "hot"
+            },
+            {
+                "word": "schön",
+                "pos": "ADJ",
+                "translation": "beautiful; nice"
+            },
+            {
+                "word": "hässlich",
+                "pos": "ADJ",
+                "translation": "ugly"
+            },
+            {
+                "word": "zu warm/kalt",
+                "pos": "ADJ",
+                "translation": "too cold/warm"
+            },
+            {
+                "word": "wenn",
+                "pos": "CONJ",
+                "translation": "when; if",
+                "frequency": 42,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Musik-Ecke",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Song",
+                "pos": "NOUN",
+                "frequency": 3373,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Original",
+                "pos": "NOUN",
+                "frequency": 4279,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Chance",
+                "pos": "NOUN",
+                "frequency": 551,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Licht",
+                "pos": "NOUN",
+                "frequency": 436,
+                "cefr": "A1"
+            },
+            {
+                "word": "eiskalt",
+                "pos": "ADV",
+                "frequency": 11338
+            },
+            {
+                "word": "mild",
+                "pos": "ADV",
+                "frequency": 4255,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Celsius",
+                "pos": "NOUN",
+                "frequency": 5701,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Fahrenheit",
+                "pos": "NOUN",
+                "frequency": 42513
+            },
+            {
+                "word": "zweiunddreißig",
+                "pos": "NUM"
+            },
+            {
+                "word": "neunundfünfzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "siebenundsiebzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "die Situation",
+                "pos": "NOUN",
+                "frequency": 423,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gehen": {
+                "present": {
+                    "ich": "gehe",
+                    "du": "gehst",
+                    "er": "geht",
+                    "es": "geht",
+                    "sie_singular": "geht",
+                    "xier": "geht",
+                    "wir": "gehen",
+                    "ihr": "geht",
+                    "sie_plural": "gehen",
+                    "Sie": "gehen"
+                }
+            },
+            "packen": {
+                "present": {
+                    "ich": "packe",
+                    "du": "packst",
+                    "er": "packt",
+                    "es": "packt",
+                    "sie_singular": "packt",
+                    "xier": "packt",
+                    "wir": "packen",
+                    "ihr": "packt",
+                    "sie_plural": "packen",
+                    "Sie": "packen"
+                }
+            },
+            "mitnehmen": {
+                "present": {
+                    "ich": "nehme mit",
+                    "du": "nimmst mit",
+                    "er": "nimmt mit",
+                    "es": "nimmt mit",
+                    "sie_singular": "nimmt mit",
+                    "xier": "nimmt mit",
+                    "wir": "nehmen mit",
+                    "ihr": "nehmt mit",
+                    "sie_plural": "nehmen mit",
+                    "Sie": "nehmen mit"
+                }
+            },
+            "melden": {
+                "present": {
+                    "ich": "melde",
+                    "du": "meldest",
+                    "er": "meldet",
+                    "es": "meldet",
+                    "sie_singular": "meldet",
+                    "xier": "meldet",
+                    "wir": "melden",
+                    "ihr": "meldet",
+                    "sie_plural": "melden",
+                    "Sie": "melden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Er kommt aus Waldshut-Tiengen in Deutschland und singt, schreibt und macht Musik.",
+            "Er singt Deutsch und Englisch.",
+            "Im Jahr 2004 singt er für Deutschland den Song \"Can't wait until tonight\" beim Eurovision Song Contest.",
+            "Der Song \"Sommerregen\" ist ein Jazz-Cover.",
+            "Das Original ist von den Fantastischen Vier, einer deutschen Hip-Hop Gruppe.",
+            "Lesen Sie die Wörter.",
+            "Dann hören Sie die Musik und markieren Sie, welche Wörter im Song sind.",
+            "Die Sonne scheint, der Tag ist wie neu.",
+            "Das Gewitter ist weg und es war wichtig für jeden.",
+            "Die Luft ist noch feucht und es riecht noch nach Regen.",
+            "Es ist klar - Der Regen wäscht auf jeden Fall.",
+            "Schenkt er auch neues Leben, eine neue Chance für jeden.",
+            "Wenn Sonnenlicht durch Wolken bricht, wie nach einem Sommerregen.",
+            "Doch wir mieden Sturm und blieben daheim.",
+            "Den Regen verflucht und doch nie überwunden.",
+            "Statt durch Nebel zu gehen, auf das, was auf uns zukommt, haben viele nur einfach Angst vor der Zukunft.",
+            "In Räumen, an Wänden, hier geht es nicht weiter, Denn wie alles da draußen erblüht unser Leben auch nur durch den Wechsel von Sonne und Regen.",
+            "Wie oft sagt Max Mutzke das Wort \"Regen\"?",
+            "Melden Sie sich, wenn Sie das Wort hören.",
+            "Rechnen Sie die Temperaturen um.",
+            "Ist es eiskalt, kalt, mild, warm oder heiß?",
+            "Minus fünfzehn Grad Celsius ist fünf Grad Fahrenheit.",
+            "Es ist eiskalt.",
+            "Minus fünf Grad Celsius ist dreiundzwanzig Grad Fahrenheit.",
+            "Es ist kalt.",
+            "Null Grad Celsius ist zweiunddreißig Grad Fahrenheit.",
+            "Fünfzehn Grad Celsius ist neunundfünfzig Grad Fahrenheit.",
+            "Es ist mild.",
+            "Fünfundzwanzig Grad Celsius ist siebenundsiebzig Grad Fahrenheit.",
+            "Es ist warm.",
+            "Fünfunddreißig Grad Celsius ist 95 Grad Fahrenheit.",
+            "Es ist heiß.",
+            "Jacke oder Flip-Flops?",
+            "Ordnen Sie die Kleidung zu.",
+            "Die Sneakers 8 die Flip-Flops 9 die Mütze 10 die Kappe 11 der Schal 12 die Sonnenbrille",
+            "Das T-Shirt 16 das Tanktop 17 die Hose 18 die kurze Hose 19 die Jeans 20 der Rock",
+            "Es sind -17 C und Sie machen eine City-Tour in Wien.",
+            "Ist der Rock zu warm oder zu kalt?",
+            "Ziehen Sie den Rock in der Situation an?",
+            "Was ziehen Sie an?",
+            "Nein, ich ziehe den Rock nicht an.",
+            "Er ist zu kalt.",
+            "Ich ziehe eine Jeans, einen Pullover, eine Jacke und Schuhe an.",
+            "Es sind 27 C und Sie sind an der Nordsee.",
+            "Tragen Sie die Jacke in der Situation?",
+            "Ist sie zu warm oder zu kalt?",
+            "Was tragen Sie?",
+            "Nein, ich trage die Jacke nicht.",
+            "Sie ist zu warm.",
+            "Ich trage ein T-Shirt / ein Tanktop, eine kurze Hose und Flip-Flops.",
+            "Es schneit und Sie kaufen Kleidung ein.",
+            "Ziehen Sie das Tanktop in der Situation an?",
+            "Ist das es zu warm oder zu kalt?",
+            "Nein, ich ziehe das Tanktop nicht an.",
+            "Es ist zu kalt.",
+            "Ich ziehe einen Mantel, Schuhe, einen Schal und eine Mütze an.",
+            "Es sind 15 C und Sie spielen Fußball.",
+            "Tragen Sie die Mütze und den Schal in der Situation?",
+            "Sind sie zu warm oder zu kalt?",
+            "Nein, ich trage die Mütze nicht.",
+            "Ich trage eine Kappe, eine kurze Hose, ein T-Shirt und Sneakers.",
+            "Es sind 21 C, es regnet und Sie gehen zur Uni.",
+            "Ziehen Sie die Flip-Flops in der Situation an?",
+            "Die Flip-Flops sind nicht zu warm und nicht zu kalt.",
+            "Es regnet.",
+            "Ich ziehe die Flip-Flops nicht an.",
+            "Ich ziehe Gummistiefel an.",
+            "Ich packe meinen Koffer und nehme eine Hose mit.",
+            "Ich packe meinen Koffer und nehme eine Hose und einen Mantel mit.",
+            "Ich packe meinen Koffer und nehme eine Hose, einen Mantel und einen Laptop mit.",
+            "Ich packe meinen Koffer und nehme eine Hose, einen Mantel, einen Laptop und eine Uhr mit.",
+            "Ich packe meinen Koffer und nehme X mit.",
+            "Was ist im Koffer?",
+            "Ich packe meinen Koffer und nehme eine Hose, einen Pullover und ein Kleid mit.",
+            "Im Koffer sind eine Hose, ein Pullover und ein Kleid.",
+            "Ich packe meinen Koffer und nehme … Ich packe meinen Koffer und nehme X mit.",
+            "Im Koffer sind X."
+        ],
+        "templated": [
+            {
+                "template": "Es ist {TEMP_FEELING}.",
+                "source_literals": [
+                    "Es ist eiskalt.",
+                    "Es ist heiß.",
+                    "Es ist kalt.",
+                    "Es ist mild.",
+                    "Es ist warm."
+                ],
+                "description": "Temperature feeling description"
+            },
+            {
+                "template": "Es {WEATHER_VERB_3SG}.",
+                "source_literals": [
+                    "Es regnet."
+                ],
+                "description": "Weather verb statement"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "TEMP_FEELING": {
+            "type": "closed",
+            "description": "Temperature feeling adjectives",
+            "usage_note": "predicate after \"Es ist\"",
+            "options": [
+                "heiß",
+                "kalt",
+                "warm"
+            ]
+        },
+        "WEATHER_VERB_3SG": {
+            "type": "closed",
+            "description": "Weather verbs (3sg present)",
+            "usage_note": "3rd person singular present",
+            "options": [
+                "blitzt",
+                "donnert",
+                "regnet",
+                "schneit"
+            ]
+        }
+    }
+}

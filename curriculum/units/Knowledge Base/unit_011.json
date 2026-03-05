@@ -1,0 +1,491 @@
+{
+  "unit": "11",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 11,
+    "prerequisite": "1-10"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative",
+      "accusative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Conjugate haben: ich habe, du hast, er/es/sie/xier hat, wir haben, ihr habt, sie/Sie haben.",
+      "Use the accusative case after haben: for r-words, der changes to den and ein changes to einen; s-words and e-words stay the same."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "sagen, was man hat",
+      "über die eigene Familie sprechen"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Familie"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "haben",
+        "pos": "VERB",
+        "translation": "to have",
+        "frequency": 6,
+        "cefr": "A1"
+      },
+      {
+        "word": "beschreiben",
+        "pos": "VERB",
+        "translation": "to describe",
+        "frequency": 435,
+        "cefr": "A2"
+      },
+      {
+        "word": "reden",
+        "pos": "VERB",
+        "translation": "to talk; discourse; orate",
+        "frequency": 368,
+        "cefr": "A2"
+      },
+      {
+        "word": "Fragen stellen",
+        "pos": "VERB",
+        "translation": "to ask questions",
+        "frequency": 153,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Perspektive",
+        "pos": "NOUN",
+        "translation": "perspective",
+        "frequency": 1801,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Alternative",
+        "pos": "NOUN",
+        "translation": "alternative (noun)",
+        "frequency": 1688,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Collage",
+        "pos": "NOUN",
+        "translation": "collage",
+        "frequency": 12811,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Familie",
+        "pos": "NOUN",
+        "translation": "family",
+        "frequency": 329,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Stammbaum",
+        "pos": "NOUN",
+        "translation": "family tree",
+        "frequency": 21805,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Oma",
+        "pos": "NOUN",
+        "translation": "grandma",
+        "frequency": 2175,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Opa",
+        "pos": "NOUN",
+        "translation": "grandpa",
+        "frequency": 2776,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Tante",
+        "pos": "NOUN",
+        "translation": "aunt",
+        "frequency": 1826,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Onkel",
+        "pos": "NOUN",
+        "translation": "uncle",
+        "frequency": 1832,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Sohn",
+        "pos": "NOUN",
+        "translation": "son",
+        "frequency": 596,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Schwiegermutter",
+        "pos": "NOUN",
+        "translation": "mother-in-law",
+        "frequency": 18474,
+        "cefr": "B1"
+      },
+      {
+        "word": "der Schwiegervater",
+        "pos": "NOUN",
+        "translation": "father-in-law",
+        "frequency": 17416,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Enkelkind",
+        "pos": "NOUN",
+        "translation": "grandchild",
+        "frequency": 13808,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Schwägerin, nen",
+        "pos": "NOUN",
+        "translation": "sister-in-law"
+      },
+      {
+        "word": "die USA (aus den USA)",
+        "pos": "NOUN",
+        "translation": "USA (from the USA)"
+      },
+      {
+        "word": "England (aus England)",
+        "pos": "NOUN",
+        "translation": "England (from England)"
+      },
+      {
+        "word": "oder",
+        "pos": "CONJ",
+        "translation": "or",
+        "frequency": 35,
+        "cefr": "A1"
+      },
+      {
+        "word": "neu",
+        "pos": "ADJ",
+        "translation": "new",
+        "frequency": 84,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Ehe",
+        "pos": "NOUN",
+        "frequency": 2321,
+        "cefr": "B1"
+      },
+      {
+        "word": "verwitwet",
+        "pos": "ADV",
+        "frequency": 28242
+      },
+      {
+        "word": "versterben",
+        "pos": "VERB",
+        "frequency": 3015
+      },
+      {
+        "word": "stellen",
+        "pos": "VERB",
+        "frequency": 135,
+        "cefr": "A1"
+      },
+      {
+        "word": "maskulin",
+        "pos": "ADJ"
+      },
+      {
+        "word": "der Nome",
+        "pos": "NOUN"
+      },
+      {
+        "word": "der Akkusativ",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Version",
+        "pos": "NOUN",
+        "frequency": 2860
+      },
+      {
+        "word": "anderer",
+        "pos": "ADJ",
+        "frequency": 59,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "haben": {
+        "present": {
+          "ich": "habe",
+          "du": "hast",
+          "er": "hat",
+          "es": "hat",
+          "sie_singular": "hat",
+          "xier": "hat",
+          "wir": "haben",
+          "ihr": "habt",
+          "sie_plural": "haben",
+          "Sie": "haben"
+        }
+      },
+      "beschreiben": {
+        "present": {
+          "ich": "beschreibe",
+          "du": "beschreibst",
+          "er": "beschreibt",
+          "es": "beschreibt",
+          "sie_singular": "beschreibt",
+          "xier": "beschreibt",
+          "wir": "beschreiben",
+          "ihr": "beschreibt",
+          "sie_plural": "beschreiben",
+          "Sie": "beschreiben"
+        }
+      },
+      "reden": {
+        "present": {
+          "ich": "rede",
+          "du": "redest",
+          "er": "redet",
+          "es": "redet",
+          "sie_singular": "redet",
+          "xier": "redet",
+          "wir": "reden",
+          "ihr": "redet",
+          "sie_plural": "reden",
+          "Sie": "reden"
+        }
+      },
+      "stellen": {
+        "present": {
+          "ich": "stelle",
+          "du": "stellst",
+          "er": "stellt",
+          "es": "stellt",
+          "sie_singular": "stellt",
+          "xier": "stellt",
+          "wir": "stellen",
+          "ihr": "stellt",
+          "sie_plural": "stellen",
+          "Sie": "stellen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Lesen Sie die Vokabeln auf der rechten Seite laut.",
+      "Die Elterngeschwisterkind das Kind der Geschwister das Geschwisterkind 2.",
+      "Stellen Sie Fragen über Patrick s Familie.",
+      "Wie heißt sein Vater?",
+      "Sein Vater heißt Richard … Wie alt ist seine Tochter?",
+      "Seine Tochter ist 2 Jahre alt.",
+      "Woher kommt sein Opa?",
+      "Sein Opa kommt aus Deutschland.",
+      "Woher kommt seine Oma?",
+      "Seine Oma Hildegard kommt aus Deutschland.",
+      "Seine Oma Barbara kommt aus den USA.",
+      "Sein Vater heißt Richard.",
+      "Wie alt ist seine Schwester?",
+      "Seine Schwester ist 19 Jahre alt",
+      "Wie heißt seine Halbschwester?",
+      "Seine Halbschwester heißt Anna.",
+      "Wie heißt sein Schwiegervater?",
+      "Sein Schwiegervater David.",
+      "Wie alt ist seine Schwiegermutter?",
+      "Seine Schwiegermutter ist 53 Jahre alt.",
+      "Wie heißt sein Neffe?",
+      "Sein Neffe heißt Liam.",
+      "Woher kommt sein Schwager?",
+      "Sein Schwager kommt aus England.",
+      "Eine neue Perspektive.",
+      "Stellen Sie Fragen.",
+      "Beates Perspektive: Wie heißt ihre Mutter?",
+      "Ihre Mutter heißt Hildegard.",
+      "Wie alt ist sein Sohn?",
+      "Woher kommt ihre Mutter?",
+      "Wie alt ist ihr Enkelkind?",
+      "Reden Sie über Patrick s Familie.",
+      "Er hat eine Mutter.",
+      "Sie heißt Beate.",
+      "Er hat einen Vater.",
+      "Machen Sie Ihre Collage ( Lauras Version) oder Ihren Stammbaum ( Patrick s Version).",
+      "Schreiben Sie über die Personen in Ihrem Leben.",
+      "Wie heißen die Personen?",
+      "Wie alt sind sie?",
+      "Was machen sie gern?",
+      "Woher kommen sie?",
+      "Wo wohnen sie?",
+      "Was sind sie von Beruf?",
+      "Ich habe eine Mutter und einen Stiefvater.",
+      "Sie wohnen in Wien.",
+      "Meine Mutter Uschi ist 57 Jahre alt und mein Stiefvater Thomas ist 59 Jahre alt.",
+      "Präsentieren Sie Ihren Stammbaum oder Ihre Collage.",
+      "Die andere Person stellt Fragen."
+    ],
+    "templated": [
+      {
+        "template": "Seine {FAMILY_MEMBER_NOM_FEM} ist [number] Jahre alt.",
+        "source_literals": [
+          "Seine Tochter ist 2 Jahre alt.",
+          "Seine Schwiegermutter ist 53 Jahre alt."
+        ],
+        "grammar_note": "Possessive + feminine family member + age."
+      },
+      {
+        "template": "Sein {FAMILY_MEMBER_NOM_MASC} kommt aus [place_origin].",
+        "source_literals": [
+          "Sein Opa kommt aus Deutschland.",
+          "Sein Schwager kommt aus England."
+        ],
+        "grammar_note": "Possessive + masculine family member + origin."
+      },
+      {
+        "template": "Sein {FAMILY_MEMBER_NOM_MASC} heißt [person_name].",
+        "source_literals": [
+          "Sein Vater heißt Richard.",
+          "Sein Neffe heißt Liam."
+        ],
+        "grammar_note": "Possessive + masculine family member + heißen."
+      },
+      {
+        "template": "Seine {FAMILY_MEMBER_NOM_FEM} ist [number] Jahre alt",
+        "source_literals": [
+          "Seine Schwester ist 19 Jahre alt"
+        ],
+        "grammar_note": "Possessive + feminine family member + age."
+      },
+      {
+        "template": "Seine {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Seine Halbschwester heißt Anna."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      },
+      {
+        "template": "Ihre {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Ihre Mutter heißt Hildegard."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "FAMILY_MEMBER_NOM_FEM": {
+      "type": "closed",
+      "description": "Feminine family members/relations",
+      "grammar": "nominative, no article, used with meine/seine/ihre",
+      "options": [
+        "Frau",
+        "Freundin",
+        "Mitbewohnerin",
+        "Mutter",
+        "Nichte",
+        "Oma",
+        "Schwester",
+        "Schwiegermutter",
+        "Schwägerin",
+        "Tante",
+        "Tochter"
+      ]
+    },
+    "FAMILY_MEMBER_NOM_MASC": {
+      "type": "closed",
+      "description": "Masculine family members/relations",
+      "grammar": "nominative, no article, used with mein/sein/ihr",
+      "options": [
+        "Bruder",
+        "Enkelkind",
+        "Freund",
+        "Mann",
+        "Mitbewohner",
+        "Neffe",
+        "Onkel",
+        "Opa",
+        "Schwager",
+        "Schwiegervater",
+        "Sohn",
+        "Vater"
+      ]
+    }
+  }
+}

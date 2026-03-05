@@ -1,0 +1,709 @@
+{
+    "unit": "89",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 89,
+        "prerequisite": "1-88"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Theater"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "beschimpfen",
+                "pos": "VERB",
+                "translation": "to berate, swear at so., call so. names",
+                "frequency": 9702
+            },
+            {
+                "word": "das Stück",
+                "pos": "NOUN",
+                "translation": "piece",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Aktion",
+                "pos": "NOUN",
+                "translation": "action; initiative (project); sale (promotion)",
+                "frequency": 1838,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Aufmerksamkeit",
+                "pos": "NOUN",
+                "translation": "attention, concentration; thoughtfulness",
+                "frequency": 1753,
+                "cefr": "A1"
+            },
+            {
+                "word": "Achtung!",
+                "pos": "PHRASE",
+                "translation": "Attention!"
+            },
+            {
+                "word": "die Gesellschaft",
+                "pos": "NOUN",
+                "translation": "society; community",
+                "frequency": 363,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gerechtigkeit",
+                "pos": "NOUN",
+                "translation": "justice, fairness",
+                "frequency": 3303,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Wut",
+                "pos": "NOUN",
+                "translation": "rage; anger",
+                "frequency": 2706,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Befürworter*in",
+                "pos": "NOUN",
+                "translation": "proponent, advocat"
+            },
+            {
+                "word": "der*die Ausländer*in",
+                "pos": "NOUN",
+                "translation": "foreigner"
+            },
+            {
+                "word": "der*die Asylbewerber*in",
+                "pos": "NOUN",
+                "translation": "person applying for asylum",
+                "frequency": 3849
+            },
+            {
+                "word": "die Regierung",
+                "pos": "NOUN",
+                "translation": "government",
+                "frequency": 521,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Partei, -en",
+                "pos": "ADJ",
+                "translation": "party (political)"
+            },
+            {
+                "word": "die Botschaft",
+                "pos": "NOUN",
+                "translation": "message; embassy",
+                "frequency": 1708,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Blindheit",
+                "pos": "NOUN",
+                "translation": "blindness",
+                "frequency": 28233,
+                "cefr": "A1"
+            },
+            {
+                "word": "bedeutend",
+                "pos": "ADJ",
+                "translation": "meaningful; major; grand",
+                "frequency": 2203
+            },
+            {
+                "word": "mutig",
+                "pos": "ADJ",
+                "translation": "brave, courageous",
+                "frequency": 3852,
+                "cefr": "B1"
+            },
+            {
+                "word": "echt",
+                "pos": "ADV",
+                "translation": "real, really",
+                "frequency": 685,
+                "cefr": "A2"
+            },
+            {
+                "word": "ernst",
+                "pos": "ADJ",
+                "translation": "serious",
+                "frequency": 1050,
+                "cefr": "B1"
+            },
+            {
+                "word": "geschmacklos",
+                "pos": "ADJ",
+                "translation": "in bad taste; tasteless",
+                "frequency": 32152
+            },
+            {
+                "word": "während",
+                "pos": "CONJ",
+                "translation": "while, during"
+            },
+            {
+                "word": "danach",
+                "pos": "ADV",
+                "translation": "after that , afterwards",
+                "frequency": 457,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wunde",
+                "pos": "NOUN",
+                "translation": "wound",
+                "frequency": 3740,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Improvisationstheater",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Schimpfkanonade",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Improvisationsspiel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "neutral",
+                "pos": "ADJ",
+                "frequency": 3163
+            },
+            {
+                "word": "die Körpersprache",
+                "pos": "NOUN",
+                "frequency": 21517
+            },
+            {
+                "word": "die Intonation",
+                "pos": "NOUN",
+                "frequency": 30716
+            },
+            {
+                "word": "das Statement",
+                "pos": "NOUN",
+                "frequency": 10403
+            },
+            {
+                "word": "die Theateraktion",
+                "pos": "NOUN"
+            },
+            {
+                "word": "rechtspopulistisch",
+                "pos": "ADJ",
+                "frequency": 26951
+            },
+            {
+                "word": "raus",
+                "pos": "ADV",
+                "frequency": 6219,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Partei",
+                "pos": "NOUN",
+                "frequency": 588,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Theaterregisseur",
+                "pos": "NOUN",
+                "frequency": 27536
+            },
+            {
+                "word": "das Aktionstheater",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Festwoche",
+                "pos": "NOUN",
+                "frequency": 14724,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Zuschauer*innen",
+                "pos": "NOUN",
+                "frequency": 1410,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kronenzeitung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "emotional",
+                "pos": "ADJ",
+                "frequency": 2388
+            },
+            {
+                "word": "thematisieren",
+                "pos": "VERB",
+                "frequency": 4784
+            },
+            {
+                "word": "respektlos",
+                "pos": "ADV",
+                "frequency": 31468
+            },
+            {
+                "word": "provozieren",
+                "pos": "VERB",
+                "frequency": 8038
+            },
+            {
+                "word": "die Sorge",
+                "pos": "NOUN",
+                "frequency": 888,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Hass",
+                "pos": "NOUN",
+                "frequency": 3154
+            },
+            {
+                "word": "das Asyl",
+                "pos": "NOUN",
+                "frequency": 4853,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Diskussion",
+                "pos": "NOUN",
+                "frequency": 1015,
+                "cefr": "B1"
+            },
+            {
+                "word": "polarisieren",
+                "pos": "VERB",
+                "frequency": 34725
+            },
+            {
+                "word": "das Theaterstück",
+                "pos": "NOUN",
+                "frequency": 7665
+            },
+            {
+                "word": "provokativ",
+                "pos": "ADJ",
+                "frequency": 37101
+            },
+            {
+                "word": "unpatriotisch",
+                "pos": "ADV"
+            },
+            {
+                "word": "das Engagement",
+                "pos": "NOUN",
+                "frequency": 1901
+            },
+            {
+                "word": "kritisch",
+                "pos": "ADJ",
+                "frequency": 1241,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sicht",
+                "pos": "NOUN",
+                "frequency": 940
+            },
+            {
+                "word": "die Stimme",
+                "pos": "NOUN",
+                "frequency": 399,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Uraufführung",
+                "pos": "NOUN",
+                "frequency": 7412,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Regie",
+                "pos": "NOUN",
+                "frequency": 6037
+            },
+            {
+                "word": "die Veröffentlichung",
+                "pos": "NOUN",
+                "frequency": 3254
+            },
+            {
+                "word": "die Bühne",
+                "pos": "NOUN",
+                "frequency": 1449,
+                "cefr": "B1"
+            },
+            {
+                "word": "Bonn",
+                "pos": "PROPN",
+                "frequency": 5965
+            },
+            {
+                "word": "der Inhalt",
+                "pos": "NOUN",
+                "frequency": 1065,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Satire",
+                "pos": "NOUN",
+                "frequency": 11271
+            },
+            {
+                "word": "die Kontinuität",
+                "pos": "NOUN",
+                "frequency": 9652
+            },
+            {
+                "word": "der Nationalsozialismus",
+                "pos": "NOUN",
+                "frequency": 6784,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Nachkriegszeit",
+                "pos": "NOUN",
+                "frequency": 9527
+            },
+            {
+                "word": "der Stab",
+                "pos": "NOUN",
+                "frequency": 4481
+            },
+            {
+                "word": "das Schauspielhaus",
+                "pos": "NOUN",
+                "frequency": 8651,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Ermordung",
+                "pos": "NOUN",
+                "frequency": 8295
+            },
+            {
+                "word": "das Rom",
+                "pos": "NOUN",
+                "frequency": 6033
+            },
+            {
+                "word": "die Medienkritik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Alltagsrassismus",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Sportstück",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Metapher",
+                "pos": "NOUN",
+                "frequency": 12677
+            },
+            {
+                "word": "die Gewalt",
+                "pos": "NOUN",
+                "frequency": 1361,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Massenhysterie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Körperkult",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Idolisierung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Sportler",
+                "pos": "NOUN",
+                "frequency": 2565,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Irakkrieg",
+                "pos": "NOUN",
+                "frequency": 23584
+            },
+            {
+                "word": "medial",
+                "pos": "ADJ",
+                "frequency": 2059
+            },
+            {
+                "word": "die Darstellung",
+                "pos": "NOUN",
+                "frequency": 990,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Reflexion",
+                "pos": "NOUN",
+                "frequency": 4315
+            },
+            {
+                "word": "die Grundlage",
+                "pos": "NOUN",
+                "frequency": 644
+            },
+            {
+                "word": "der Würgeengel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "münchner",
+                "pos": "ADJ",
+                "frequency": 2576
+            },
+            {
+                "word": "das Kammerspiel",
+                "pos": "NOUN",
+                "frequency": 11222
+            },
+            {
+                "word": "der Massaker",
+                "pos": "NOUN",
+                "frequency": 7939
+            },
+            {
+                "word": "der Zwangsarbeiter",
+                "pos": "NOUN",
+                "frequency": 12540
+            },
+            {
+                "word": "die Verdrängung",
+                "pos": "NOUN",
+                "frequency": 17726,
+                "cefr": "B2"
+            },
+            {
+                "word": "das verschweigen",
+                "pos": "NOUN",
+                "frequency": 8588
+            },
+            {
+                "word": "das NS-Verbrechen",
+                "pos": "NOUN",
+                "frequency": 40024
+            },
+            {
+                "word": "gesellschaftlich",
+                "pos": "ADJ",
+                "frequency": 1151
+            },
+            {
+                "word": "das Burgtheater",
+                "pos": "NOUN",
+                "frequency": 13590,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "beschimpfen": {
+                "present": {
+                    "ich": "beschimpfe",
+                    "du": "beschimpfst",
+                    "er": "beschimpft",
+                    "es": "beschimpft",
+                    "sie_singular": "beschimpft",
+                    "xier": "beschimpft",
+                    "wir": "beschimpfen",
+                    "ihr": "beschimpft",
+                    "sie_plural": "beschimpfen",
+                    "Sie": "beschimpfen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschimpft",
+                    "du": "hast beschimpft",
+                    "er": "hat beschimpft",
+                    "es": "hat beschimpft",
+                    "sie_singular": "hat beschimpft",
+                    "xier": "hat beschimpft",
+                    "wir": "haben beschimpft",
+                    "ihr": "habt beschimpft",
+                    "sie_plural": "haben beschimpft",
+                    "Sie": "haben beschimpft"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In diesem Improvisationsspiel dürfen Sie sich beschimpfen, aber nur mit \"neutralen\" Wörtern.",
+            "Zeigen Sie Ihre Wut mit Ihrer Körpersprache und Intonation, aber nicht mit den Wörtern.",
+            "Du Tasche!!!",
+            "Ich Tasche?",
+            "Du Flugzeug!!!",
+            "Ich Flugzeug?",
+            "Lesen Sie zuerst die drei Statements.",
+            "Danach lesen Sie den Text zu Christoph Schlingensiefs Wiener Theateraktion \"Bitte liebt Österreich\".",
+            "Diskutieren Sie, ob die Statements richtig oder falsch sind.",
+            "Die Theateraktion war eine Reaktion auf die rechtspopulistische FPÖ in der neuen Regierung.",
+            "Die Personen in den Containern waren echte Asylbewerber*innen.",
+            "Der Satz\"Ausländer raus\" auf dem Poster bedeutet, dass Ausländer Österreich verlassen sollen.",
+            "Politisches Theater hat in Österreich eine lange Tradition.",
+            "Im Jahr 2000 hat es zum ersten Mal seit 1945 eine rechtspopulistische Partei in der österreichischen Regierung gegeben: die Freiheitliche Partei Österreichs (FPÖ ).",
+            "Während der Wiener Festwochen haben zwölf Schauspieler*innen als \"Asylbewerber*innen\" in Containern neben der Staatsoper gewohnt.",
+            "Jede Woche sollten die Zuschauer*innen eine Person aus den Containern — also aus dem Land — wählen.",
+            "Auf einem Poster über den Containern hat \"Ausländer raus\" gestanden, ein Satz aus der österreichischen Kronenzeitung.",
+            "Schlingensiefs Aktion hat viel Aufmerksamkeit bekommen und es hat bei manchen Menschen emotionale Reaktionen gegeben.",
+            "Es gab viele Reaktionen auf Schlingensiefs Aktion.",
+            "Lesen Sie die fünf Meinungen.",
+            "Unterstreichen Sie zuerst alle Adjektive.",
+            "Dann entscheiden Sie, ob die Meinungen positiv, neutral, oder negativ sind.",
+            "Schlingensief macht kreativen Aktivismus für die Rechte von Asylbewerber*innen.",
+            "Schlingensief macht aus ernsten, politischen Themen ein Spiel.",
+            "Es ist mutig, wie Schlingensief soziale Probleme durch Kunst und Theater thematisiert.",
+            "Die Aktion ist geschmacklos und respektlos gegenüber echten Asylbewerber* innen..",
+            "Schlingensief provoziert mit dieser Aktion, aber ich bin nicht sicher, ob sie okay ist.",
+            "Die Aktion ist nur Show.",
+            "Für echte Probleme und Sorgen von Menschen bringt sie keine Lösung",
+            "Er zeigt mit der Aktion, wie schlimm der Hass in Österreich ist.",
+            "Das ist wichtig.",
+            "Und wie finden Sie Schlingensiefs Aktion?",
+            "Benutzen Sie Adjektive aus Teil und beschreiben Sie Ihre Meinung.",
+            "Sie müssen Ihre eigene Meinung zum Thema Asyl nicht sagen.",
+            "Bringt sie die Diskussion weiter?",
+            "Bringt sie eine neue Perspektive?",
+            "Polarisiert sie noch mehr?",
+            "Elfriede Jelinek ist eine österreichische Schriftstellerin.",
+            "Sie schreibt Theaterstücke, die oft politisch sind.",
+            "Ihre Werke kritisieren die Gesellschaft und sind über Themen wie Krieg und Ungerechtigkeit.",
+            "Jelinek setzt sich stark für soziale Gerechtigkeit ein und nutzt ihr Theater für wichtige politische Botschaften.",
+            "Viele Menschen mögen ihre mutigen und provokativen Stücke, aber einige finden sie auch kontrovers und unpatriotisch.",
+            "Jelineks Engagement und ihre kritische Sicht auf die Welt machen sie zu einer bedeutenden Stimme in der Literatur.",
+            "Stellen Sie Ihre Fragen einer anderen Person im Kurs.",
+            "Die Person antwortet, dann beantworten Sie die Fragen der Person.",
+            "Sprechen Sie mit 3 Personen.",
+            "Sie bekommen Informationen über ein Stück von Jelinek.",
+            "Lesen Sie die Informationen.",
+            "Danach interviewen Sie die anderen Personen:",
+            "Stellen Sie die Fragen unten.",
+            "Sie können auch noch andere Fragen stellen.",
+            "Wie heißt dein Stück?",
+            "Aus welchem Jahr ist es?",
+            "An welchem Theater war die Uraufführung?",
+            "Wer hat Regie geführt?",
+            "Um was geht es in dem Stück?",
+            "Möchtest du das Stück sehen oder lesen?",
+            "Bühnen der Stadt Bonn, 10.",
+            "Inhalt/Thema: Satire über die österreichische Gesellschaft und das Burgtheater, kritisiert die Kontinuitäten von Nationalsozialismus und Nachkriegszeit.",
+            "Deutsches Schauspielhaus Hamburg, 12.",
+            "Inhalt/Thema: Ermordung von vier Roma in Österreich, Medienkritik, Alltagsrassismus.",
+            "Burgtheater Wien, 23.",
+            "Inhalt/Thema: Sport als Metapher für Gewalt und Massenhysterie, Kritik an Körperkult und Idolisierung von Sportlern.",
+            "2003 Ort und Datum der Uraufführung: Burgtheater Wien, 12.",
+            "Inhalt/Thema: Kritik am Irakkrieg und dessen mediale Darstellung, Reflexion über die Grundlagen des westlichen Bewusstseins.",
+            "Münchner Kammerspiele, 28.",
+            "Inhalt/Thema: Massaker an jüdischen Zwangsarbeitern, Verdrängung und Verschweigen der NS-Verbrechen.",
+            "Deutsches Schauspielhaus Hamburg, 28.",
+            "Inhalt/Thema: Kritik an Donald Trump, politische und gesellschaftliche Blindheit.",
+            "Das Burgtheater Wien ist eines der wichtigsten Theater im deutschsprachigen Raum.",
+            "Gehen Sie auf die Internetseite vom Burgtheater Wien und recherchieren Sie.",
+            "Welche Stücke zeigt das Burgtheater?",
+            "Machen Sie eine Liste.",
+            "Welches Stück möchten Sie gerne sehen?",
+            "Erzählen Sie anderen Personen im Kurs, welches Stück Sie sehen wollen und warum.",
+            "Und das finde ich interessant.",
+            "Es ist ein lustiges Stück und ich will lachen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

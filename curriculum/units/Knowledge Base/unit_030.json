@@ -1,0 +1,580 @@
+{
+    "unit": "30",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 30,
+        "prerequisite": "1-29"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Essen und Speisekarten vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Essen in verschiedenen Ländern"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "Ich möchte gern ...",
+                "pos": "PHRASE",
+                "translation": "I would like ..."
+            },
+            {
+                "word": "Es schmeckt gut.",
+                "pos": "PHRASE",
+                "translation": "It's tasty."
+            },
+            {
+                "word": "Es ist schade.",
+                "pos": "PHRASE",
+                "translation": "It's a pity/bummer."
+            },
+            {
+                "word": "ankreuzen",
+                "pos": "VERB",
+                "translation": "to check, mark with a cross",
+                "cefr": "A1"
+            },
+            {
+                "word": "ernähren",
+                "pos": "VERB",
+                "translation": "to feed on sth., nourish on sth."
+            },
+            {
+                "word": "lieben",
+                "pos": "VERB",
+                "translation": "to love",
+                "frequency": 701,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Einkauf",
+                "pos": "NOUN",
+                "translation": "purchase",
+                "frequency": 4863,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Kund*in",
+                "pos": "NOUN",
+                "translation": "customer",
+                "frequency": 25911
+            },
+            {
+                "word": "das Frühstück",
+                "pos": "NOUN",
+                "translation": "breakfast",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Speisekarte",
+                "pos": "NOUN",
+                "translation": "menu",
+                "frequency": 15081,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hähnchen",
+                "pos": "NOUN",
+                "translation": "chicken meat"
+            },
+            {
+                "word": "das Öl",
+                "pos": "NOUN",
+                "translation": "oil",
+                "frequency": 6388,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Paket",
+                "pos": "NOUN",
+                "translation": "package",
+                "frequency": 3585,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Gemeinsamkeit, -en",
+                "pos": "ADJ",
+                "translation": "similarity, common ground"
+            },
+            {
+                "word": "der Unterschied",
+                "pos": "NOUN",
+                "translation": "difference, distinction",
+                "frequency": 632,
+                "cefr": "A2"
+            },
+            {
+                "word": "bei",
+                "pos": "PREP",
+                "translation": "at",
+                "frequency": 29,
+                "cefr": "A1"
+            },
+            {
+                "word": "nur",
+                "pos": "ADJ",
+                "translation": "only",
+                "frequency": 39,
+                "cefr": "A1"
+            },
+            {
+                "word": "sondern",
+                "pos": "CONJ",
+                "translation": "but rather",
+                "frequency": 115,
+                "cefr": "B1"
+            },
+            {
+                "word": "da",
+                "pos": "ADV",
+                "translation": "there; since (because)",
+                "frequency": 48,
+                "cefr": "A1"
+            },
+            {
+                "word": "hier",
+                "pos": "ADV",
+                "translation": "here",
+                "frequency": 68,
+                "cefr": "A1"
+            },
+            {
+                "word": "also",
+                "pos": "CONJ",
+                "translation": "so, thus",
+                "frequency": 71,
+                "cefr": "A1"
+            },
+            {
+                "word": "eindeutig",
+                "pos": "ADJ",
+                "translation": "definite(ly)",
+                "frequency": 1168,
+                "cefr": "B1"
+            },
+            {
+                "word": "hauptsächlich",
+                "pos": "ADV",
+                "translation": "mainly"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Bratwurst",
+                "pos": "NOUN",
+                "frequency": 13250
+            },
+            {
+                "word": "das Müsli",
+                "pos": "NOUN",
+                "frequency": 36585,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die US-Amerikaner*innen",
+                "pos": "NOUN",
+                "frequency": 7969
+            },
+            {
+                "word": "Tausend",
+                "pos": "NOUN",
+                "frequency": 1177,
+                "cefr": "A1"
+            },
+            {
+                "word": "extra",
+                "pos": "ADV",
+                "frequency": 2925,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Wunder",
+                "pos": "NOUN",
+                "frequency": 1909,
+                "cefr": "B1"
+            },
+            {
+                "word": "dass",
+                "pos": "SCONJ",
+                "frequency": 20,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Müsliriegel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "verkaufen",
+                "pos": "VERB",
+                "frequency": 721,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Reaktion",
+                "pos": "NOUN",
+                "frequency": 400,
+                "cefr": "B1"
+            },
+            {
+                "word": "möchten",
+                "pos": "AUX",
+                "cefr": "A1"
+            },
+            {
+                "word": "die Leberwurst",
+                "pos": "NOUN",
+                "frequency": 38440
+            },
+            {
+                "word": "gerade",
+                "pos": "ADV",
+                "frequency": 159,
+                "cefr": "A1"
+            },
+            {
+                "word": "weg",
+                "pos": "ADV",
+                "frequency": 220,
+                "cefr": "A2"
+            },
+            {
+                "word": "schmecken",
+                "pos": "VERB",
+                "frequency": 2143,
+                "cefr": "A1"
+            },
+            {
+                "word": "online",
+                "pos": "ADV",
+                "frequency": 1844,
+                "cefr": "A2"
+            },
+            {
+                "word": "warum",
+                "pos": "ADV",
+                "frequency": 192,
+                "cefr": "A1"
+            },
+            {
+                "word": "schweizer",
+                "pos": "ADJ",
+                "frequency": 1274,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Nationalburger",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Welt",
+                "pos": "NOUN",
+                "frequency": 164,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fotograf",
+                "pos": "NOUN",
+                "frequency": 4573,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Magazin",
+                "pos": "NOUN",
+                "frequency": 4247,
+                "cefr": "B1"
+            },
+            {
+                "word": "aller",
+                "pos": "DET",
+                "frequency": 20349
+            },
+            {
+                "word": "die Bohne",
+                "pos": "NOUN",
+                "frequency": 14944,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Chilis",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Chip",
+                "pos": "NOUN",
+                "frequency": 5782,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Saft",
+                "pos": "NOUN",
+                "frequency": 11404,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Cracker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Sirup",
+                "pos": "NOUN",
+                "frequency": 40761
+            },
+            {
+                "word": "der Eistee",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Ketchup",
+                "pos": "NOUN",
+                "frequency": 32967,
+                "cefr": "B1"
+            },
+            {
+                "word": "öffnen",
+                "pos": "VERB",
+                "frequency": 508,
+                "cefr": "A1"
+            },
+            {
+                "word": "nun",
+                "pos": "ADV",
+                "frequency": 114,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gemeinsamkeit",
+                "pos": "NOUN",
+                "frequency": 4306
+            },
+            {
+                "word": "industriell",
+                "pos": "ADV",
+                "frequency": 3483
+            },
+            {
+                "word": "verarbeitet",
+                "pos": "ADJ",
+                "frequency": 46709
+            },
+            {
+                "word": "repräsentieren",
+                "pos": "VERB",
+                "frequency": 4189
+            },
+            {
+                "word": "der Campus",
+                "pos": "NOUN",
+                "frequency": 9274
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ankreuzen": {
+                "present": {
+                    "ich": "kreuze an",
+                    "du": "kreuzt an",
+                    "er": "kreuzt an",
+                    "es": "kreuzt an",
+                    "sie_singular": "kreuzt an",
+                    "xier": "kreuzt an",
+                    "wir": "kreuzen an",
+                    "ihr": "kreuzt an",
+                    "sie_plural": "kreuzen an",
+                    "Sie": "kreuzen an"
+                }
+            },
+            "ernähren": {
+                "present": {
+                    "ich": "ernähre",
+                    "du": "ernährst",
+                    "er": "ernährt",
+                    "es": "ernährt",
+                    "sie_singular": "ernährt",
+                    "xier": "ernährt",
+                    "wir": "ernähren",
+                    "ihr": "ernährt",
+                    "sie_plural": "ernähren",
+                    "Sie": "ernähren"
+                }
+            },
+            "lieben": {
+                "present": {
+                    "ich": "liebe",
+                    "du": "liebst",
+                    "er": "liebt",
+                    "es": "liebt",
+                    "sie_singular": "liebt",
+                    "xier": "liebt",
+                    "wir": "lieben",
+                    "ihr": "liebt",
+                    "sie_plural": "lieben",
+                    "Sie": "lieben"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Kaufen Sie deutsche Lebensmittel in den USA?",
+            "Wo kaufen Sie die Lebensmittel?",
+            "Was kaufen Sie?",
+            "Ich kaufe (keine) deutschen Lebensmittel in den USA.",
+            "Ich kaufe Lebensmittel bei X.",
+            "Seit 2018 hat ALDI USA eine \"deutsche Woche\".",
+            "Lesen Sie den Text und beantworten Sie die Fragen.",
+            "Spätzle, Brezeln oder Schwarzwälder Schinken mögen nicht nur Deutsche, sondern auch US-Amerikaner*innen.",
+            "Tausende von US-Amerikaner*innen reisen extra fürs Oktoberfest nach Deutschland.",
+            "Kein Wunder also, dass US-Amerikaner*innen deutsche Produkte wollen.",
+            "Jetzt können sie die Produkte in den USA bei ALDI kaufen.",
+            "Der deutsche Discounter macht jetzt eine German Week.",
+            "Da gibt es dann Produkte wie deutsches Brot, Bratwürste, Müsliriegel oder auch Doppelkekse [Kekse].",
+            "Welche Produkte kann man in der deutschen Woche bei ALDI kaufen?",
+            "Mögen US-Amerikaner*innen deutsche Produkte?",
+            "Kund*innen sprechen über ihren Einkauf bei ALDI.",
+            "Welche Sätze hören Sie?",
+            "Ich kaufe gerne bei ALDI ein.",
+            "Ich möchte die deutschen Produkte immer kaufen, nicht nur in der deutschen Woche.",
+            "Die Wurst ist super.",
+            "Ich mag die Leberwurst und die Bratwurst.",
+            "Spätzle sind meine Lieblingsspeise.",
+            "Ich kaufe immer zwanzig Pakete.",
+            "Ich bin gerade bei ALDI, aber es ist alles schon weg.",
+            "Ich kann kein Brot kaufen.",
+            "Das ist schade.",
+            "Ich liebe das Müsli.",
+            "Es hat keinen Zucker und schmeckt gut.",
+            "Ich möchte die deutschen Produkte immer kaufen.",
+            "Der Käse ist lecker.",
+            "Ich mag keine Spätzle.",
+            "Ich kaufe immer 20 Pakete.",
+            "Ich esse gerne Brot.",
+            "Welche Fast-Food-Kette n kennen Sie in den USA?",
+            "Machen Sie eine Liste.",
+            "Welche Fast-Food-Kette n mögen Sie?",
+            "Welche mögen Sie nicht?",
+            "Ich kenne in den USA die Fast-Food-Kette n X.",
+            "Ich mag die Fast-Food-Kette n X (nicht).",
+            "Gibt es die Fast-Food-Kette n auch in Deutschland, Österreich und der Schweiz?",
+            "Suchen Sie online.",
+            "Sie bekommen drei verschiedene McDonald's Speisekarte.",
+            "Aus welchen Ländern kommen die Speisekarte?",
+            "Was sind die Unterschiede?",
+            "Die Speisekarte kommt aus Österreich.",
+            "Es gibt Wiener Frühstück.",
+            "Die Speisekarte kommt aus der Schweiz.",
+            "Es gibt Raclette.",
+            "Er heißt Schweizer Nationalburger.",
+            "Es gibt auch Produkte mit französischen Namen.",
+            "In der Schweiz spricht man auch Französisch.",
+            "Die Speisekarte kommt aus Deutschland.",
+            "Peter Menzel ist ein amerikanischer Fotograf aus Connecticut in den USA.",
+            "Er hat für National Geographic, Forbes, Wired, Geo, Stern und andere internationale Magazine fotografiert.",
+            "Er ist bekannt für sein Projekt \"So isst der Mensch.",
+            "Familien in aller Welt zeigen, was sie ernährt.\"",
+            "In dem Buch aus dem Jahr 2007 gibt es Interviews mit Familien in 24 Ländern.",
+            "Es gibt auch Fotos von ihrem typischen Wocheneinkauf.",
+            "Hier ist das Foto von Familie Fernandez aus Texas.",
+            "Was sehen Sie?",
+            "Was kauft die Familie für eine Woche ein?",
+            "Öffnen Sie den Link zu dieser Aktivität.",
+            "Sehen Sie sich nun die anderen Bilder an.",
+            "Vergleichen Sie und finden Sie Gemeinsamkeiten und Unterschiede.",
+            "Was essen und trinken Menschen in vielen Ländern?",
+            "Die Menschen essen und trinken in vielen Ländern",
+            "Welche Familien aus welchen Ländern essen mehr Brot, Reis oder Nudeln?",
+            "Gemüse und Obst?",
+            "Die Familien aus X essen mehr Brot, Reis oder Nudeln.",
+            "Die Familien aus X essen mehr Gemüse und Obst.",
+            "Die Familien aus X essen mehr Fleisch.",
+            "Welche Familien aus welchem Land essen mehr \"industriell verarbeitete Lebensmittel\" ( processed food )?",
+            "Die Familien aus X essen mehr industriell verarbeitete Lebensmittel.",
+            "Suchen Sie ein Foto aus Ihrem Land.",
+            "Repräsentiert das Foto Sie?",
+            "Was isst Ihre Familie in einer Woche?",
+            "Wie sieht Ihr Foto aus?",
+            "Was essen Sie (auf dem Campus oder mit der Familie) in einer typischen Woche?",
+            "Fragen Sie andere Personen im Kurs und vergleichen Sie.",
+            "Benutzen Sie die Informationen aus Teil und Teil."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

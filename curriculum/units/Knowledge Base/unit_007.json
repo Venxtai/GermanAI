@@ -1,0 +1,673 @@
+{
+  "unit": "7",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 7,
+    "prerequisite": "1-6"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [
+      "In declarative sentences, place the conjugated verb in second position with the subject in position 1 or 3.",
+      "In W-questions, place the question word in position 1, the conjugated verb in position 2, and the subject in position 3.",
+      "In yes/no questions, place the conjugated verb in position 1 and the subject in position 2.",
+      "Use nicht to negate a sentence: place nicht after the verb in short sentences, and before predicative nouns, adverbs, and places.",
+      "Place gern/gerne directly after the conjugated verb, or between the verb and its complement if the verb has one."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "Lügen berichtigen",
+      "über Präferenzen sprechen",
+      "sagen, was man gern oder nicht gern macht"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Vorlieben und Abneigungen"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "sagen",
+        "pos": "VERB",
+        "translation": "to say",
+        "frequency": 40,
+        "cefr": "A1"
+      },
+      {
+        "word": "machen",
+        "pos": "VERB",
+        "translation": "to do; make",
+        "frequency": 58,
+        "cefr": "A1"
+      },
+      {
+        "word": "spielen",
+        "pos": "VERB",
+        "translation": "to play",
+        "frequency": 205,
+        "cefr": "A1"
+      },
+      {
+        "word": "reisen",
+        "pos": "VERB",
+        "translation": "to travel",
+        "frequency": 933,
+        "cefr": "A1"
+      },
+      {
+        "word": "singen",
+        "pos": "VERB",
+        "translation": "to sing",
+        "frequency": 1063,
+        "cefr": "A2"
+      },
+      {
+        "word": "kochen",
+        "pos": "VERB",
+        "translation": "to cook",
+        "frequency": 1481,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Aktivität",
+        "pos": "NOUN",
+        "translation": "activity"
+      },
+      {
+        "word": "die Musik",
+        "pos": "NOUN",
+        "translation": "music",
+        "frequency": 509,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Fußball",
+        "pos": "NOUN",
+        "translation": "soccer",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Spiel",
+        "pos": "NOUN",
+        "translation": "game",
+        "frequency": 328,
+        "cefr": "A2"
+      },
+      {
+        "word": "das Videospiel",
+        "pos": "NOUN",
+        "translation": "video game",
+        "frequency": 19028,
+        "cefr": "B2"
+      },
+      {
+        "word": "das Foto",
+        "pos": "NOUN",
+        "translation": "picture",
+        "frequency": 633,
+        "cefr": "A1"
+      },
+      {
+        "word": "der*die Partner*in",
+        "pos": "NOUN",
+        "translation": "partner",
+        "frequency": 1172,
+        "cefr": "A1"
+      },
+      {
+        "word": "schnell",
+        "pos": "ADJ",
+        "translation": "fast",
+        "frequency": 203,
+        "cefr": "A1"
+      },
+      {
+        "word": "langsam",
+        "pos": "ADJ",
+        "translation": "slow(ly)",
+        "frequency": 526,
+        "cefr": "A1"
+      },
+      {
+        "word": "leise",
+        "pos": "ADJ",
+        "translation": "quiet(ly)",
+        "frequency": 1166,
+        "cefr": "A1"
+      },
+      {
+        "word": "nicht",
+        "pos": "PARTICLE",
+        "translation": "not",
+        "frequency": 11,
+        "cefr": "A1"
+      },
+      {
+        "word": "aber",
+        "pos": "CONJ",
+        "translation": "but",
+        "frequency": 31,
+        "cefr": "A1"
+      },
+      {
+        "word": "gern",
+        "pos": "ADV",
+        "translation": "gladly, with pleasure",
+        "frequency": 278,
+        "cefr": "A1"
+      },
+      {
+        "word": "wer",
+        "pos": "PRON",
+        "translation": "who",
+        "frequency": 149,
+        "cefr": "A1"
+      },
+      {
+        "word": "richtig",
+        "pos": "ADJ",
+        "translation": "correct, right",
+        "frequency": 177,
+        "cefr": "A1"
+      },
+      {
+        "word": "falsch",
+        "pos": "ADJ",
+        "translation": "incorrect, wrong",
+        "frequency": 524,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "der Fakt",
+        "pos": "NOUN",
+        "frequency": 2567
+      },
+      {
+        "word": "die Kostümparty",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Party",
+        "pos": "NOUN",
+        "frequency": 2809,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Kostüm",
+        "pos": "NOUN",
+        "frequency": 7016,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Info",
+        "pos": "NOUN",
+        "frequency": 5959
+      },
+      {
+        "word": "streamen",
+        "pos": "VERB"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "sagen": {
+        "present": {
+          "ich": "sage",
+          "du": "sagst",
+          "er": "sagt",
+          "es": "sagt",
+          "sie_singular": "sagt",
+          "xier": "sagt",
+          "wir": "sagen",
+          "ihr": "sagt",
+          "sie_plural": "sagen",
+          "Sie": "sagen"
+        }
+      },
+      "machen": {
+        "present": {
+          "ich": "mache",
+          "du": "machst",
+          "er": "macht",
+          "es": "macht",
+          "sie_singular": "macht",
+          "xier": "macht",
+          "wir": "machen",
+          "ihr": "macht",
+          "sie_plural": "machen",
+          "Sie": "machen"
+        }
+      },
+      "spielen": {
+        "present": {
+          "ich": "spiele",
+          "du": "spielst",
+          "er": "spielt",
+          "es": "spielt",
+          "sie_singular": "spielt",
+          "xier": "spielt",
+          "wir": "spielen",
+          "ihr": "spielt",
+          "sie_plural": "spielen",
+          "Sie": "spielen"
+        }
+      },
+      "reisen": {
+        "present": {
+          "ich": "reise",
+          "du": "reist",
+          "er": "reist",
+          "es": "reist",
+          "sie_singular": "reist",
+          "xier": "reist",
+          "wir": "reisen",
+          "ihr": "reist",
+          "sie_plural": "reisen",
+          "Sie": "reisen"
+        }
+      },
+      "singen": {
+        "present": {
+          "ich": "singe",
+          "du": "singst",
+          "er": "singt",
+          "es": "singt",
+          "sie_singular": "singt",
+          "xier": "singt",
+          "wir": "singen",
+          "ihr": "singt",
+          "sie_plural": "singen",
+          "Sie": "singen"
+        }
+      },
+      "kochen": {
+        "present": {
+          "ich": "koche",
+          "du": "kochst",
+          "er": "kocht",
+          "es": "kocht",
+          "sie_singular": "kocht",
+          "xier": "kocht",
+          "wir": "kochen",
+          "ihr": "kocht",
+          "sie_plural": "kochen",
+          "Sie": "kochen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Eine Person sagt vier Fakten.",
+      "Drei Fakten sind richtig, ein Fakt ist falsch.",
+      "Ich heiße Diego.",
+      "Ich komme aus Atlanta.",
+      "Ich studiere Physik.",
+      "Ich bin 17 Jahre alt.",
+      "Kommst du aus Atlanta?",
+      "Ja, ich komme aus Atlanta.",
+      "Studierst du Musik?",
+      "Ja, ich studiere Musik.",
+      "Bist du 17 Jahre alt?",
+      "Nein, ich bin nicht 17 Jahre alt.",
+      "Ich bin 18 Jahre alt.",
+      "Ich heiße X.",
+      "Ich komme aus X.",
+      "Ich studiere X.",
+      "Ich bin X Jahre alt.",
+      "Kommst du aus X.",
+      "Ja, ich komme aus X.",
+      "Studierst du X.",
+      "Ja, ich studiere X.",
+      "Bist du X Jahre alt.",
+      "Nein, Ich bin nicht X Jahre alt.",
+      "Lesen Sie die Informationen von Heiko.",
+      "Beantworten Sie die Fragen.",
+      "Wie heißt er?",
+      "Wie alt ist er?",
+      "Wie groß ist er?",
+      "Woher kommt er?",
+      "Was studiert er?",
+      "Was macht er gern?",
+      "Hallo, ich heiße Heiko.",
+      "Mein Pronomen ist \"er\".",
+      "Ich bin 19 Jahre alt, 1,82 m groß und komme aus Wolfsburg.",
+      "Ich studiere Deutsch.",
+      "Ich koche gern, ich reise gern, ich höre gern Musik und ich spiele gern Videospiele.",
+      "Er heißt Heiko.",
+      "Er ist 19 Jahre alt.",
+      "Er ist 1,82 m groß.",
+      "Er kommt aus Wolfsburg.",
+      "Er studiert Germanistik, Was macht er gern?",
+      "Er kocht gern.",
+      "Er reist gern.",
+      "Er hört gern Musik.",
+      "Er spielt gern Videospiele.",
+      "Julia ist auf einer Kostümparty.",
+      "Heiko ist auch auf der Party, aber Heiko ist nicht Heiko.",
+      "Er hat ein Kostüm.",
+      "Heißt er Heiko?",
+      "Nein, er heißt nicht Heiko.",
+      "Ist er 19 Jahre alt?",
+      "Nein, er ist nicht 19 Jahre alt.",
+      "1,82 m groß 1,90 m groß kocht gern singt gern aus Wolfsburg",
+      "Aus Detroit studiert Germanistik studiert Mathematik laut leise langsam schnell",
+      "Er heißt Markus.",
+      "Er ist 17 Jahre alt.",
+      "Ist er 1,82 m groß?",
+      "Nein, er ist nicht 1,82 m groß.",
+      "Er ist 1,90 m groß.",
+      "Kocht er gern?",
+      "Nein, er kocht nicht gern.",
+      "Er sing gern.",
+      "Kommt er aus Wolfsburg?",
+      "Nein, er kommt nicht aus Wolfsburg.",
+      "Er kommt aus Detroit.",
+      "Studiert er Germanistik?",
+      "Nein, er studiert nicht Germanistik.",
+      "Er studiert Mathematik.",
+      "Ist er laut?",
+      "Nein, er ist nicht laut.",
+      "Er ist leise.",
+      "Ist er langsam?",
+      "Nein, er ist nicht langsam, er ist schnell.",
+      "Lesen Sie die Aktivitäten und schreiben Sie die Fotonummer.",
+      "Was machst du gern?",
+      "Was machst du nicht gern?",
+      "Fragen Sie.",
+      "Spielst du gern Fußball?",
+      "Ja, ich spiele gern Fußball.",
+      "Und du?",
+      "Nein, ich spiele nicht gern Fußball.",
+      "Ich koche gern.",
+      "Kochst du gern?",
+      "Nein, ich koche nicht gern.",
+      "Singst du gern?",
+      "Ja, ich singe gern.",
+      "Nein, ich spiele nicht gern Fußball",
+      "Ja, ich koche gern.",
+      "Rechnest du gern?",
+      "Ja, ich rechne gern.",
+      "Nein, ich rechne nicht gern.",
+      "Spielst du gern Videospiele?",
+      "Ja, ich spiele gern Videospiele.",
+      "Nein, ich spiele nicht gern Videospiele.",
+      "Hörst du gern Musik?",
+      "Ja, ich höre gern Musik.",
+      "Nein, ich höre nicht gern Musik.",
+      "Präsentierst du gern?",
+      "Ja, ich präsentiere gern.",
+      "Nein, ich präsentiere nicht gern.",
+      "Liest du gern?",
+      "Ja, ich lese gern.",
+      "Nein, ich lese nicht gern.",
+      "Reist du gern?",
+      "Ja, ich reise gern.",
+      "Nein, ich reise nicht gern.",
+      "Nein, ich singe nicht gern.",
+      "Was machen Sie gern?",
+      "Ich spiele gern Fußball.",
+      "Ich rechne gern..",
+      "Was machen Sie nicht gern?",
+      "Ich spiele nicht gern Videospiele.",
+      "Ich höre nicht gern Musik.",
+      "Ich präsentiere nicht gern..",
+      "Was macht die andere Person gern?",
+      "Was macht die andere PErson nicht gern?"
+    ],
+    "templated": [
+      {
+        "template": "Ich heiße [person_name].",
+        "source_literals": [
+          "Ich heiße Diego.",
+          "Ich heiße X."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present."
+      },
+      {
+        "template": "Ich komme aus [place_city].",
+        "source_literals": [
+          "Ich komme aus Atlanta.",
+          "Ich komme aus X."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 1st person singular."
+      },
+      {
+        "template": "Ich studiere {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Ich studiere Physik.",
+          "Ich studiere X.",
+          "Ich studiere Deutsch."
+        ],
+        "grammar_note": "Verb studieren + accusative NP, 1st person singular. No article for academic subjects."
+      },
+      {
+        "template": "Ich bin [number] Jahre alt.",
+        "source_literals": [
+          "Ich bin 17 Jahre alt.",
+          "Ich bin 18 Jahre alt.",
+          "Ich bin X Jahre alt."
+        ],
+        "grammar_note": "Verb sein + age expression, 1st person singular."
+      },
+      {
+        "template": "Bist du [number] Jahre alt?",
+        "source_literals": [
+          "Bist du 17 Jahre alt?",
+          "Bist du X Jahre alt."
+        ],
+        "grammar_note": "Yes/no question, verb sein + age, 2nd person singular informal."
+      },
+      {
+        "template": "Nein, ich bin nicht [number] Jahre alt.",
+        "source_literals": [
+          "Nein, ich bin nicht 17 Jahre alt.",
+          "Nein, Ich bin nicht X Jahre alt."
+        ],
+        "grammar_note": "Negation with nicht, verb sein + age, 1st person singular."
+      },
+      {
+        "template": "Er heißt [person_name].",
+        "source_literals": [
+          "Er heißt Heiko.",
+          "Er heißt Markus."
+        ],
+        "grammar_note": "Verb heißen, 3rd person singular present."
+      },
+      {
+        "template": "Er ist [number] Jahre alt.",
+        "source_literals": [
+          "Er ist 19 Jahre alt.",
+          "Er ist 17 Jahre alt."
+        ],
+        "grammar_note": "Verb sein + age expression, 3rd person singular."
+      },
+      {
+        "template": "Er kommt aus [place_city].",
+        "source_literals": [
+          "Er kommt aus Wolfsburg.",
+          "Er kommt aus Detroit."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 3rd person singular."
+      },
+      {
+        "template": "Er [verb_3sg] gern.",
+        "source_literals": [
+          "Er kocht gern.",
+          "Er reist gern."
+        ],
+        "grammar_note": "Verb + gern, 3rd person singular. Open — any activity verb in 3sg conjugated form."
+      },
+      {
+        "template": "Nein, er studiert nicht {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Nein, er studiert nicht Germanistik."
+        ],
+        "grammar_note": "Negation with nicht, verb studieren, 3rd person singular."
+      },
+      {
+        "template": "Er studiert {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Er studiert Mathematik."
+        ],
+        "grammar_note": "Verb studieren + accusative NP, 3rd person singular."
+      },
+      {
+        "template": "Spielst du gern {PLAYABLE_NP_ACC}?",
+        "source_literals": [
+          "Spielst du gern Fußball?",
+          "Spielst du gern Videospiele?"
+        ],
+        "grammar_note": "Yes/no question: spielen + gern + accusative NP, 2nd person singular."
+      },
+      {
+        "template": "Ja, ich spiele gern {PLAYABLE_NP_ACC}.",
+        "source_literals": [
+          "Ja, ich spiele gern Fußball.",
+          "Ja, ich spiele gern Videospiele."
+        ],
+        "grammar_note": "Positive answer: spielen + gern + accusative NP."
+      },
+      {
+        "template": "Nein, ich spiele nicht gern {PLAYABLE_NP_ACC}.",
+        "source_literals": [
+          "Nein, ich spiele nicht gern Fußball.",
+          "Nein, ich spiele nicht gern Videospiele."
+        ],
+        "grammar_note": "Negation answer: spielen + nicht gern + accusative NP."
+      },
+      {
+        "template": "[verb_2sg_cap] du gern?",
+        "source_literals": [
+          "Kochst du gern?",
+          "Singst du gern?",
+          "Präsentierst du gern?",
+          "Liest du gern?",
+          "Reist du gern?"
+        ],
+        "grammar_note": "Yes/no question: verb + gern, 2nd person singular informal. Open verb."
+      },
+      {
+        "template": "Nein, ich [verb_1sg] nicht gern.",
+        "source_literals": [
+          "Nein, ich koche nicht gern.",
+          "Nein, ich präsentiere nicht gern.",
+          "Nein, ich lese nicht gern.",
+          "Nein, ich reise nicht gern.",
+          "Nein, ich singe nicht gern."
+        ],
+        "grammar_note": "Negative answer to gern question, 1st person singular. Open verb."
+      },
+      {
+        "template": "Ja, ich [verb_1sg] gern.",
+        "source_literals": [
+          "Ja, ich singe gern.",
+          "Ja, ich koche gern.",
+          "Ja, ich präsentiere gern.",
+          "Ja, ich lese gern.",
+          "Ja, ich reise gern."
+        ],
+        "grammar_note": "Positive answer to gern question, 1st person singular. Open verb."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "PLAYABLE_NP_ACC": {
+      "type": "closed",
+      "description": "Things one can play",
+      "grammar": "accusative, no article",
+      "options": [
+        "Fußball",
+        "Videospiel"
+      ]
+    },
+    "STUDYABLE_SUBJECT_NP_ACC": {
+      "type": "closed",
+      "description": "Academic subjects one can study",
+      "grammar": "accusative, no article",
+      "options": [
+        "Deutsch",
+        "Germanistik",
+        "Geschichte",
+        "Informatik",
+        "Musik",
+        "Wirtschaft"
+      ]
+    }
+  }
+}

@@ -1,0 +1,605 @@
+{
+    "unit": "B48",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 48,
+        "prerequisite": "core 1-104, B1-B47"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [
+            "Use lassen + infinitive to express 'to let/allow/have someone do something': conjugated lassen in position 2, infinitive at end."
+        ],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Kinobesuch planen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "im Kino",
+            "ostdeutsche Filmproduktion"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "entstehen", "pos": "VERB", "translation": "to emerge, develop", "frequency": 264, "cefr": "B1" },
+            { "word": "stattfinden", "pos": "VERB", "translation": "to take place, happen, occur", "frequency": 652, "cefr": "A2" },
+            { "word": "kontrollieren", "pos": "VERB", "translation": "to check, monitor, control", "frequency": 1546, "cefr": "A2" },
+            { "word": "entlassen", "pos": "VERB", "translation": "to dismiss, fire", "frequency": 2799, "cefr": "B1" },
+            { "word": "spezialisieren", "pos": "VERB", "translation": "to specialize; concentrate on a subject", "frequency": 4158 },
+            { "word": "schulden", "pos": "VERB", "translation": "to be in dept; owe", "frequency": 2853, "cefr": "B1" },
+            { "word": "zur Verfügung", "pos": "VERB", "translation": "to have at one's disposal", "frequency": 5855 },
+            { "word": "das Kriterium, die Kriterien", "pos": "NOUN", "translation": "criterion", "frequency": 1626 },
+            { "word": "der*die Mitarbeiter*in", "pos": "NOUN", "translation": "staff, employee", "frequency": 639, "cefr": "A2" },
+            { "word": "der Konzern", "pos": "NOUN", "translation": "enterprise; cooperation", "frequency": 1496, "cefr": "B2" },
+            { "word": "die Macht", "pos": "NOUN", "translation": "power; authority", "frequency": 1098, "cefr": "A1" },
+            { "word": "der*die Kaiser*in", "pos": "NOUN", "translation": "imperial majesty", "frequency": 2563 },
+            { "word": "der*die Held*in", "pos": "NOUN", "translation": "hero", "frequency": 2447, "cefr": "B1" },
+            { "word": "das Brautpaar", "pos": "NOUN", "translation": "bridal couple (bride, groom)", "frequency": 28918, "cefr": "A1" },
+            { "word": "der*die Synchronsprecher*in", "pos": "NOUN", "translation": "dubbing actor", "frequency": 20643 },
+            { "word": "der Stummfilm", "pos": "NOUN", "translation": "silent film", "frequency": 26634, "cefr": "A1" },
+            { "word": "ausgezeichnet", "pos": "ADJ", "translation": "excellent", "frequency": 4891, "cefr": "B1" },
+            { "word": "bestehend", "pos": "ADJ", "translation": "existing", "frequency": 6006 },
+            { "word": "übrig", "pos": "ADJ", "translation": "remaining; left over; spare" },
+            { "word": "heraus", "pos": "ADV", "translation": "out; forth; out here", "frequency": 1169, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "hundertster", "pos": "ADJ" },
+            { "word": "das Jubiläum", "pos": "NOUN", "frequency": 6221, "cefr": "B2" },
+            { "word": "bekennen", "pos": "ADV", "frequency": 319, "cefr": "A1" },
+            { "word": "die Premiere", "pos": "NOUN", "frequency": 4492, "cefr": "B2" },
+            { "word": "privatisieren", "pos": "VERB", "frequency": 14270 },
+            { "word": "die Adresse", "pos": "NOUN", "frequency": 2739, "cefr": "A1" },
+            { "word": "das Braut", "pos": "NOUN", "frequency": 9468 },
+            { "word": "die Verfügung", "pos": "NOUN", "frequency": 868 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "entstehen": {
+                "present": {
+                    "ich": "entstehe",
+                    "du": "entstehst",
+                    "er": "entsteht",
+                    "es": "entsteht",
+                    "sie_singular": "entsteht",
+                    "xier": "entsteht",
+                    "wir": "entstehen",
+                    "ihr": "entsteht",
+                    "sie_plural": "entstehen",
+                    "Sie": "entstehen"
+                },
+                "Präteritum": {
+                    "ich": "entstand",
+                    "du": "entstandest",
+                    "er": "entstand",
+                    "es": "entstand",
+                    "sie_singular": "entstand",
+                    "xier": "entstand",
+                    "wir": "entstanden",
+                    "ihr": "entstandet",
+                    "sie_plural": "entstanden",
+                    "Sie": "entstanden"
+                },
+                "Perfekt": {
+                    "ich": "bin entstanden",
+                    "du": "bist entstanden",
+                    "er": "ist entstanden",
+                    "es": "ist entstanden",
+                    "sie_singular": "ist entstanden",
+                    "xier": "ist entstanden",
+                    "wir": "sind entstanden",
+                    "ihr": "seid entstanden",
+                    "sie_plural": "sind entstanden",
+                    "Sie": "sind entstanden"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war entstanden",
+                    "du": "warst entstanden",
+                    "er": "war entstanden",
+                    "es": "war entstanden",
+                    "sie_singular": "war entstanden",
+                    "xier": "war entstanden",
+                    "wir": "waren entstanden",
+                    "ihr": "wart entstanden",
+                    "sie_plural": "waren entstanden",
+                    "Sie": "waren entstanden"
+                },
+                "Futur_I": {
+                    "ich": "werde entstehen",
+                    "du": "wirst entstehen",
+                    "er": "wird entstehen",
+                    "es": "wird entstehen",
+                    "sie_singular": "wird entstehen",
+                    "xier": "wird entstehen",
+                    "wir": "werden entstehen",
+                    "ihr": "werdet entstehen",
+                    "sie_plural": "werden entstehen",
+                    "Sie": "werden entstehen"
+                },
+                "imperative": {
+                    "du": "entstehe",
+                    "ihr": "entsteht",
+                    "Sie": "entstehen Sie"
+                }
+            },
+            "stattfinden": {
+                "present": {
+                    "ich": "finde statt",
+                    "du": "findest statt",
+                    "er": "findet statt",
+                    "es": "findet statt",
+                    "sie_singular": "findet statt",
+                    "xier": "findet statt",
+                    "wir": "finden statt",
+                    "ihr": "findet statt",
+                    "sie_plural": "finden statt",
+                    "Sie": "finden statt"
+                },
+                "Präteritum": {
+                    "ich": "fand statt",
+                    "du": "fandest statt",
+                    "er": "fand statt",
+                    "es": "fand statt",
+                    "sie_singular": "fand statt",
+                    "xier": "fand statt",
+                    "wir": "fanden statt",
+                    "ihr": "fandet statt",
+                    "sie_plural": "fanden statt",
+                    "Sie": "fanden statt"
+                },
+                "Perfekt": {
+                    "ich": "habe stattgefunden",
+                    "du": "hast stattgefunden",
+                    "er": "hat stattgefunden",
+                    "es": "hat stattgefunden",
+                    "sie_singular": "hat stattgefunden",
+                    "xier": "hat stattgefunden",
+                    "wir": "haben stattgefunden",
+                    "ihr": "habt stattgefunden",
+                    "sie_plural": "haben stattgefunden",
+                    "Sie": "haben stattgefunden"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte stattgefunden",
+                    "du": "hattest stattgefunden",
+                    "er": "hatte stattgefunden",
+                    "es": "hatte stattgefunden",
+                    "sie_singular": "hatte stattgefunden",
+                    "xier": "hatte stattgefunden",
+                    "wir": "hatten stattgefunden",
+                    "ihr": "hattet stattgefunden",
+                    "sie_plural": "hatten stattgefunden",
+                    "Sie": "hatten stattgefunden"
+                },
+                "Futur_I": {
+                    "ich": "werde stattfinden",
+                    "du": "wirst stattfinden",
+                    "er": "wird stattfinden",
+                    "es": "wird stattfinden",
+                    "sie_singular": "wird stattfinden",
+                    "xier": "wird stattfinden",
+                    "wir": "werden stattfinden",
+                    "ihr": "werdet stattfinden",
+                    "sie_plural": "werden stattfinden",
+                    "Sie": "werden stattfinden"
+                },
+                "imperative": {
+                    "du": "finde statt",
+                    "ihr": "findet statt",
+                    "Sie": "finden Sie statt"
+                }
+            },
+            "kontrollieren": {
+                "present": {
+                    "ich": "kontrolliere",
+                    "du": "kontrollierst",
+                    "er": "kontrolliert",
+                    "es": "kontrolliert",
+                    "sie_singular": "kontrolliert",
+                    "xier": "kontrolliert",
+                    "wir": "kontrollieren",
+                    "ihr": "kontrolliert",
+                    "sie_plural": "kontrollieren",
+                    "Sie": "kontrollieren"
+                },
+                "Präteritum": {
+                    "ich": "kontrollierte",
+                    "du": "kontrolliertest",
+                    "er": "kontrollierte",
+                    "es": "kontrollierte",
+                    "sie_singular": "kontrollierte",
+                    "xier": "kontrollierte",
+                    "wir": "kontrollierten",
+                    "ihr": "kontrolliertet",
+                    "sie_plural": "kontrollierten",
+                    "Sie": "kontrollierten"
+                },
+                "Perfekt": {
+                    "ich": "habe kontrolliert",
+                    "du": "hast kontrolliert",
+                    "er": "hat kontrolliert",
+                    "es": "hat kontrolliert",
+                    "sie_singular": "hat kontrolliert",
+                    "xier": "hat kontrolliert",
+                    "wir": "haben kontrolliert",
+                    "ihr": "habt kontrolliert",
+                    "sie_plural": "haben kontrolliert",
+                    "Sie": "haben kontrolliert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte kontrolliert",
+                    "du": "hattest kontrolliert",
+                    "er": "hatte kontrolliert",
+                    "es": "hatte kontrolliert",
+                    "sie_singular": "hatte kontrolliert",
+                    "xier": "hatte kontrolliert",
+                    "wir": "hatten kontrolliert",
+                    "ihr": "hattet kontrolliert",
+                    "sie_plural": "hatten kontrolliert",
+                    "Sie": "hatten kontrolliert"
+                },
+                "Futur_I": {
+                    "ich": "werde kontrollieren",
+                    "du": "wirst kontrollieren",
+                    "er": "wird kontrollieren",
+                    "es": "wird kontrollieren",
+                    "sie_singular": "wird kontrollieren",
+                    "xier": "wird kontrollieren",
+                    "wir": "werden kontrollieren",
+                    "ihr": "werdet kontrollieren",
+                    "sie_plural": "werden kontrollieren",
+                    "Sie": "werden kontrollieren"
+                },
+                "imperative": {
+                    "du": "kontrolliere",
+                    "ihr": "kontrolliert",
+                    "Sie": "kontrollieren Sie"
+                }
+            },
+            "entlassen": {
+                "present": {
+                    "ich": "entlasse",
+                    "du": "entlässt",
+                    "er": "entlässt",
+                    "es": "entlässt",
+                    "sie_singular": "entlässt",
+                    "xier": "entlässt",
+                    "wir": "entlassen",
+                    "ihr": "entlasst",
+                    "sie_plural": "entlassen",
+                    "Sie": "entlassen"
+                },
+                "Präteritum": {
+                    "ich": "entließ",
+                    "du": "entließest",
+                    "er": "entließ",
+                    "es": "entließ",
+                    "sie_singular": "entließ",
+                    "xier": "entließ",
+                    "wir": "entließen",
+                    "ihr": "entließt",
+                    "sie_plural": "entließen",
+                    "Sie": "entließen"
+                },
+                "Perfekt": {
+                    "ich": "habe entlassen",
+                    "du": "hast entlassen",
+                    "er": "hat entlassen",
+                    "es": "hat entlassen",
+                    "sie_singular": "hat entlassen",
+                    "xier": "hat entlassen",
+                    "wir": "haben entlassen",
+                    "ihr": "habt entlassen",
+                    "sie_plural": "haben entlassen",
+                    "Sie": "haben entlassen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte entlassen",
+                    "du": "hattest entlassen",
+                    "er": "hatte entlassen",
+                    "es": "hatte entlassen",
+                    "sie_singular": "hatte entlassen",
+                    "xier": "hatte entlassen",
+                    "wir": "hatten entlassen",
+                    "ihr": "hattet entlassen",
+                    "sie_plural": "hatten entlassen",
+                    "Sie": "hatten entlassen"
+                },
+                "Futur_I": {
+                    "ich": "werde entlassen",
+                    "du": "wirst entlassen",
+                    "er": "wird entlassen",
+                    "es": "wird entlassen",
+                    "sie_singular": "wird entlassen",
+                    "xier": "wird entlassen",
+                    "wir": "werden entlassen",
+                    "ihr": "werdet entlassen",
+                    "sie_plural": "werden entlassen",
+                    "Sie": "werden entlassen"
+                },
+                "imperative": {
+                    "du": "entlasse",
+                    "ihr": "entlasst",
+                    "Sie": "entlassen Sie"
+                }
+            },
+            "spezialisieren": {
+                "Perfekt": {
+                    "ich": "habe spezialisiert",
+                    "du": "hast spezialisiert",
+                    "er": "hat spezialisiert",
+                    "es": "hat spezialisiert",
+                    "sie_singular": "hat spezialisiert",
+                    "xier": "hat spezialisiert",
+                    "wir": "haben spezialisiert",
+                    "ihr": "habt spezialisiert",
+                    "sie_plural": "haben spezialisiert",
+                    "Sie": "haben spezialisiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte spezialisiert",
+                    "du": "hattest spezialisiert",
+                    "er": "hatte spezialisiert",
+                    "es": "hatte spezialisiert",
+                    "sie_singular": "hatte spezialisiert",
+                    "xier": "hatte spezialisiert",
+                    "wir": "hatten spezialisiert",
+                    "ihr": "hattet spezialisiert",
+                    "sie_plural": "hatten spezialisiert",
+                    "Sie": "hatten spezialisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde spezialisieren",
+                    "du": "wirst spezialisieren",
+                    "er": "wird spezialisieren",
+                    "es": "wird spezialisieren",
+                    "sie_singular": "wird spezialisieren",
+                    "xier": "wird spezialisieren",
+                    "wir": "werden spezialisieren",
+                    "ihr": "werdet spezialisieren",
+                    "sie_plural": "werden spezialisieren",
+                    "Sie": "werden spezialisieren"
+                }
+            },
+            "schulden": {
+                "present": {
+                    "ich": "schulde",
+                    "du": "schuldest",
+                    "er": "schuldet",
+                    "es": "schuldet",
+                    "sie_singular": "schuldet",
+                    "xier": "schuldet",
+                    "wir": "schulden",
+                    "ihr": "schuldet",
+                    "sie_plural": "schulden",
+                    "Sie": "schulden"
+                },
+                "Präteritum": {
+                    "ich": "schuldete",
+                    "du": "schuldetest",
+                    "er": "schuldete",
+                    "es": "schuldete",
+                    "sie_singular": "schuldete",
+                    "xier": "schuldete",
+                    "wir": "schuldeten",
+                    "ihr": "schuldetet",
+                    "sie_plural": "schuldeten",
+                    "Sie": "schuldeten"
+                },
+                "Perfekt": {
+                    "ich": "habe geschuldet",
+                    "du": "hast geschuldet",
+                    "er": "hat geschuldet",
+                    "es": "hat geschuldet",
+                    "sie_singular": "hat geschuldet",
+                    "xier": "hat geschuldet",
+                    "wir": "haben geschuldet",
+                    "ihr": "habt geschuldet",
+                    "sie_plural": "haben geschuldet",
+                    "Sie": "haben geschuldet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte geschuldet",
+                    "du": "hattest geschuldet",
+                    "er": "hatte geschuldet",
+                    "es": "hatte geschuldet",
+                    "sie_singular": "hatte geschuldet",
+                    "xier": "hatte geschuldet",
+                    "wir": "hatten geschuldet",
+                    "ihr": "hattet geschuldet",
+                    "sie_plural": "hatten geschuldet",
+                    "Sie": "hatten geschuldet"
+                },
+                "Futur_I": {
+                    "ich": "werde schulden",
+                    "du": "wirst schulden",
+                    "er": "wird schulden",
+                    "es": "wird schulden",
+                    "sie_singular": "wird schulden",
+                    "xier": "wird schulden",
+                    "wir": "werden schulden",
+                    "ihr": "werdet schulden",
+                    "sie_plural": "werden schulden",
+                    "Sie": "werden schulden"
+                },
+                "imperative": {
+                    "du": "schuld",
+                    "ihr": "schuldet",
+                    "Sie": "schulden Sie"
+                }
+            },
+            "Verfügung": {
+                "Perfekt": {
+                    "ich": "habe gehabt",
+                    "du": "hast gehabt",
+                    "er": "hat gehabt",
+                    "es": "hat gehabt",
+                    "sie_singular": "hat gehabt",
+                    "xier": "hat gehabt",
+                    "wir": "haben gehabt",
+                    "ihr": "habt gehabt",
+                    "sie_plural": "haben gehabt",
+                    "Sie": "haben gehabt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gehabt",
+                    "du": "hattest gehabt",
+                    "er": "hatte gehabt",
+                    "es": "hatte gehabt",
+                    "sie_singular": "hatte gehabt",
+                    "xier": "hatte gehabt",
+                    "wir": "hatten gehabt",
+                    "ihr": "hattet gehabt",
+                    "sie_plural": "hatten gehabt",
+                    "Sie": "hatten gehabt"
+                },
+                "Futur_I": {
+                    "ich": "werde Verfügung",
+                    "du": "wirst Verfügung",
+                    "er": "wird Verfügung",
+                    "es": "wird Verfügung",
+                    "sie_singular": "wird Verfügung",
+                    "xier": "wird Verfügung",
+                    "wir": "werden Verfügung",
+                    "ihr": "werdet Verfügung",
+                    "sie_plural": "werden Verfügung",
+                    "Sie": "werden Verfügung"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Im Jahr 2017 feierte die Universum Film AG ( UFA ), die älteste noch bestehende Filmproduktionsgesellschaft in Deutschland, ihr hundertstes Jubiläum.",
+            "Lesen Sie unten die fünf Fragen durch und hören Sie dann den Bericht über 100 Jahre UFA.",
+            "Machen Sie sich beim Hören Notizen zu den Fragen.",
+            "Dezember 1917 fand in Berlin die Gründung der Universum-Film AG, kurz UFA, statt, um den Kaiser im Ersten Weltkrieg mit Propaganda zu unterstützen.",
+            "Doch direkt nach dem Krieg entstand ein moderner und international ausgezeichneter Medienkonzern.",
+            "In den 1920er Jahren entstanden viele Stummfilme, wie „Dr.",
+            "Mabuse, der Spieler“, „Die Nibelungen“ und „Metropolis“, von Star Regisseuren wie Ernst Lubitsch, Friedrich Wilhelm Murnau und Fritz Lang.",
+            "Im Jahr 1930 brachte die UFA den Film „Der blaue Engel ” heraus, mit der Berliner Schauspielerin Marlene Dietrich, die durch den Film bekannt wurde.",
+            "Sie wanderte noch am Abend der Premiere nach Hollywood aus und machte dort Karriere.",
+            "Das American Film Institute wählte sie unter die 25 größten weiblichen Leinwandlegenden aller Zeiten.",
+            "1933 kamen Hitler und die Nationalsozialisten an die Macht und die UFA musste 2.000 jüdische Mitarbeiter*innen entlassen.",
+            "Andere emigrierten, unter anderem in die USA.",
+            "Andere töteten die Nazis später.",
+            "Ab 1941 kontrollierte der Staat die UFA und schloss sie mit anderen Produktionsfirmen zur UFI zusammen.",
+            "In der Zeit machte die UFI Propagandafilme, aber es gab auch weiterhin Dramen und Revuefilme.",
+            "Was nach dem Krieg von der UFI übrig war, besetzten die Alliierten.",
+            "Aus einem Teil gründete die Sowjetunion das Filmstudio DEFA, welches später das Filmstudio Ostdeutschlands war.",
+            "Die anderen Teile privatisierten die Alliierten 1956 als Bavaria und UFA.",
+            "Nach vielen ruhigen Jahren entwickelte sich die UFA zum größten deutschen Produktionsunternehmen.",
+            "Während sie weiterhin Filme produziert, spezialisiert sie sich heute auf TV-Movies, Daily Soaps, Sitcoms und Serien.",
+            "Wann und warum war die Gründung der UFA?",
+            "Welche berühmten Stummfilme produzierte die UFA in den 1920ern?",
+            "Durch welchen Film wurde Marlene Dietrich bekannt?",
+            "Wohin ist sie ausgewandert?",
+            "Wen musste die UFA zu Beginn der Nazi zeit [Nazi Zeit] entlassen?",
+            "Worauf spezialisiert sich die UFA heute?",
+            "Welche UFA Sendung aus den letzten Jahren ist international erfolgreich?",
+            "Besuch in einer deutschen Stadt.",
+            "Gehen Sie auf die Webseite und beantworten Sie die Fragen.",
+            "Welches Kino werden Sie besuchen?",
+            "Welchen Film werden Sie wann sehen?",
+            "Wie viel wird die Kinokarte kosten?",
+            "Was werden Sie im Kino essen und trinken?",
+            "Was werden Sie nach dem Film machen?",
+            "Die andere Person hat auch einen Besuch im Kino geplant.",
+            "Sie wollen zusammen gehen.",
+            "Das Kino auswählen | den Film aussuchen | die Kinokarte",
+            "Kaufen | Essen kaufen | den Bus aussuchen |",
+            "Entscheiden, was man nach dem Film in der Stadt macht |",
+            "Einen besseren Geschmack haben | der anderen Person Geld schulden | die Kinos besser kennen | die Stadt besser kennen | Hunger haben | öfter mit dem Bus fahren | nicht alle Filme mögen |",
+            "Ich lasse dich das Kino auswählen, weil du die Kinos besser kennst.",
+            "Danke, dass du mich das Kino auswählen lässt.",
+            "Und ich lasse dich den Film aussuchen, weil …",
+            "Deutsche oder englische Filmtitel?",
+            "Englische Filme bekommen in Deutschland oft einen neuen Titel.",
+            "Manchmal ist der neue Titel auch wieder auf Englisch, aber anders.",
+            "„Meine Braut, ihr Vater und ich“ „Miss Undercover“ „The Return of the First Avenger“ „Wenn Träume fliegen lernen",
+            "„Wir waren Helden“ „Die unglaubliche Reise in einem verrückten Flugzeug“",
+            "Was sind Ihre Lieblingsfilme aus den letzten Jahren?",
+            "Überlegen Sie sich deutsche Titel für diese Filme.",
+            "Seien Sie kreativ.",
+            "Deutsche oder englische Stimmen?",
+            "Im Kino spielen die meisten Filme auf Deutsch.",
+            "Es gibt also deutsche Synchronsprecher*innen.",
+            "Für welche amerikanischen Schauspieler*innen oder Figuren sind sie die deutsche Stimme?",
+            "Sie haben insgesamt zwei Synchronsprecherinnen (Nummer 1 und 2) und zwei Synchronsprecher (Nummer 3 und 4) zur Verfügung.",
+            "Welchen Personen geben Sie die gleiche Stimme?",
+            "Welche Kriterien benutzen Sie?"
+        ],
+        "templated": []
+    }
+}

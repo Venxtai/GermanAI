@@ -1,0 +1,589 @@
+{
+    "unit": "29",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 29,
+        "prerequisite": "1-28"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate können (ich kann, du kannst, er kann, wir können, ihr könnt, sie können) and place it in position 2 with the infinitive at the end of the clause.",
+            "Conjugate wollen (ich will, du willst, er will, wir wollen, ihr wollt, sie wollen) and place it in position 2 with the infinitive at the end of the clause.",
+            "Use mögen (ich mag, du magst, er mag, wir mögen, ihr mögt, sie mögen) with nouns to express fondness, and use gern with verbs to express enjoyment of an activity."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Allergien und Ernährungsweisen sprechen",
+            "sagen, was man kann, will oder mag",
+            "ausdrücken, was man essen kann oder nicht essen kann"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Ernährungsweisen und Allergien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "brauchen",
+                "pos": "VERB",
+                "translation": "to need",
+                "frequency": 179,
+                "cefr": "A1"
+            },
+            {
+                "word": "wollen",
+                "pos": "VERB",
+                "translation": "to want",
+                "frequency": 57,
+                "cefr": "A1"
+            },
+            {
+                "word": "können",
+                "pos": "VERB",
+                "translation": "to be able to; can; may"
+            },
+            {
+                "word": "trinken",
+                "pos": "VERB",
+                "translation": "to drink",
+                "frequency": 634,
+                "cefr": "A1"
+            },
+            {
+                "word": "mitkommen",
+                "pos": "VERB",
+                "translation": "to tag along, accompany",
+                "frequency": 2629,
+                "cefr": "A1"
+            },
+            {
+                "word": "kaufen",
+                "pos": "VERB",
+                "translation": "to buy",
+                "frequency": 506,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Brot, -e (Vollkornbrot)",
+                "pos": "ADJ",
+                "translation": "bread (whole grain bread)"
+            },
+            {
+                "word": "das Brötchen",
+                "pos": "NOUN",
+                "translation": "bread roll (sesame roll, multigrain roll)"
+            },
+            {
+                "word": "das Produkt",
+                "pos": "NOUN",
+                "translation": "product (animal product, dairy product, grain product)",
+                "frequency": 422,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Fleisch",
+                "pos": "NOUN",
+                "translation": "meat",
+                "frequency": 1790,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Ei",
+                "pos": "NOUN",
+                "translation": "egg",
+                "frequency": 1999,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Eis",
+                "pos": "NOUN",
+                "translation": "ice (cream)",
+                "frequency": 1874,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Fisch",
+                "pos": "NOUN",
+                "translation": "fish",
+                "frequency": 1959,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Milch",
+                "pos": "NOUN",
+                "translation": "milk",
+                "frequency": 2276,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Kuchen",
+                "pos": "NOUN",
+                "translation": "cake",
+                "frequency": 4381,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Keks",
+                "pos": "NOUN",
+                "translation": "cookie",
+                "frequency": 4083,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Zucker",
+                "pos": "NOUN",
+                "translation": "sugar",
+                "frequency": 2559,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nuss",
+                "pos": "NOUN",
+                "translation": "nut",
+                "frequency": 19040,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Erdnuss",
+                "pos": "NOUN",
+                "translation": "peanut",
+                "frequency": 47899,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Reis",
+                "pos": "NOUN",
+                "translation": "rice",
+                "frequency": 6022,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bild",
+                "pos": "NOUN",
+                "translation": "image, picture",
+                "frequency": 253,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ernährungsweise",
+                "pos": "NOUN",
+                "translation": "dietary habit"
+            },
+            {
+                "word": "die Allergie",
+                "pos": "NOUN",
+                "translation": "allergy",
+                "frequency": 15321,
+                "cefr": "B2"
+            },
+            {
+                "word": "etwas",
+                "pos": "PRON",
+                "translation": "something",
+                "frequency": 100,
+                "cefr": "A2"
+            },
+            {
+                "word": "wahrscheinlich",
+                "pos": "ADJ",
+                "translation": "probably, likely",
+                "frequency": 493,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nudel",
+                "pos": "NOUN",
+                "translation": "pasta, noodle(s)",
+                "frequency": 17542,
+                "cefr": "A2"
+            },
+            {
+                "word": "dies-",
+                "pos": "PRON",
+                "translation": "this, that, these"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Brot",
+                "pos": "NOUN",
+                "frequency": 2095,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Variante",
+                "pos": "NOUN",
+                "frequency": 2256
+            },
+            {
+                "word": "die Baguette",
+                "pos": "NOUN",
+                "frequency": 46801
+            },
+            {
+                "word": "der Dialog",
+                "pos": "NOUN",
+                "frequency": 2459,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Glut",
+                "pos": "NOUN",
+                "frequency": 23074
+            },
+            {
+                "word": "individuell",
+                "pos": "ADV",
+                "frequency": 1343,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Lasagne",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Basmatireis",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Erdbeer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Cheeseburger",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Hindu",
+                "pos": "NOUN",
+                "frequency": 21095
+            },
+            {
+                "word": "der*die Pescetarier*in",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Paläo-Diät",
+                "pos": "NOUN"
+            },
+            {
+                "word": "fettreduziert",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Artischocke",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Brokkoli",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Butter",
+                "pos": "NOUN",
+                "frequency": 4960,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Hamburger",
+                "pos": "NOUN",
+                "frequency": 2588,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Joghurt",
+                "pos": "NOUN",
+                "frequency": 22277
+            },
+            {
+                "word": "die Mango",
+                "pos": "NOUN",
+                "frequency": 40316
+            },
+            {
+                "word": "die Marmelade",
+                "pos": "NOUN",
+                "frequency": 19266,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Melone",
+                "pos": "NOUN",
+                "frequency": 38312
+            },
+            {
+                "word": "die Olive",
+                "pos": "NOUN",
+                "frequency": 24839
+            },
+            {
+                "word": "das Steak",
+                "pos": "NOUN",
+                "frequency": 18180,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Schwein",
+                "pos": "NOUN",
+                "frequency": 2975,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Rind",
+                "pos": "NOUN",
+                "frequency": 8717,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Lamm",
+                "pos": "NOUN",
+                "frequency": 14511
+            },
+            {
+                "word": "das Hähnchen",
+                "pos": "NOUN",
+                "frequency": 32890,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "brauchen": {
+                "present": {
+                    "ich": "brauche",
+                    "du": "brauchst",
+                    "er": "braucht",
+                    "es": "braucht",
+                    "sie_singular": "braucht",
+                    "xier": "braucht",
+                    "wir": "brauchen",
+                    "ihr": "braucht",
+                    "sie_plural": "brauchen",
+                    "Sie": "brauchen"
+                }
+            },
+            "wollen": {
+                "present": {
+                    "ich": "will",
+                    "du": "willst",
+                    "er": "will",
+                    "es": "will",
+                    "sie_singular": "will",
+                    "xier": "will",
+                    "wir": "wollen",
+                    "ihr": "wollt",
+                    "sie_plural": "wollen",
+                    "Sie": "wollen"
+                }
+            },
+            "können": {
+                "present": {
+                    "ich": "kann",
+                    "du": "kannst",
+                    "er": "kann",
+                    "es": "kann",
+                    "sie_singular": "kann",
+                    "xier": "kann",
+                    "wir": "können",
+                    "ihr": "könnt",
+                    "sie_plural": "können",
+                    "Sie": "können"
+                }
+            },
+            "trinken": {
+                "present": {
+                    "ich": "trinke",
+                    "du": "trinkst",
+                    "er": "trinkt",
+                    "es": "trinkt",
+                    "sie_singular": "trinkt",
+                    "xier": "trinkt",
+                    "wir": "trinken",
+                    "ihr": "trinkt",
+                    "sie_plural": "trinken",
+                    "Sie": "trinken"
+                }
+            },
+            "mitkommen": {
+                "present": {
+                    "ich": "komme mit",
+                    "du": "kommst mit",
+                    "er": "kommt mit",
+                    "es": "kommt mit",
+                    "sie_singular": "kommt mit",
+                    "xier": "kommt mit",
+                    "wir": "kommen mit",
+                    "ihr": "kommt mit",
+                    "sie_plural": "kommen mit",
+                    "Sie": "kommen mit"
+                }
+            },
+            "kaufen": {
+                "present": {
+                    "ich": "kaufe",
+                    "du": "kaufst",
+                    "er": "kauft",
+                    "es": "kauft",
+                    "sie_singular": "kauft",
+                    "xier": "kauft",
+                    "wir": "kaufen",
+                    "ihr": "kauft",
+                    "sie_plural": "kaufen",
+                    "Sie": "kaufen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie kennen die Wörter \"Brot\" und \"Brötchen\".",
+            "Die Deutschen essen viele Varianten von Brot und Brötchen.",
+            "Ordnen Sie zu.",
+            "Die Brezel ist Nummer sieben.",
+            "Das Baguette ist Nummer fünf.",
+            "Das Brötchen ist Nummer eins.",
+            "Das Mehrkornbrötchen ist Nummer vier.",
+            "Das Sesambrötchen ist Nummer acht.",
+            "Das Graubrot ist Nummer zwei.",
+            "Das Schwarzbrot ist Nummer sechs.",
+            "Das Toastbrot ist Nummer drei.",
+            "Welches Brot mögen Sie?",
+            "Ja, ich kann Brot essen.",
+            "Nein, ich kann kein Brot essen.",
+            "Die Freunde Amelie, Nina und Tim gehen auf den Wochenmarkt.",
+            "Lesen Sie den Dialog.",
+            "Wir brauchen Brot, am besten Baguette, Bratwürste und Gemüse.",
+            "Ich bin Vegetarierin.",
+            "Können wir auch Käse kaufen?",
+            "Ja, es kommen viele Vegetarier und Laurenz ist Veganer.",
+            "Es gibt Salat.",
+            "Nudelsalat ist super.",
+            "Anne kann keinen Nudelsalat essen, sie hat Zöliakie.",
+            "Was ist das?",
+            "Sie kann kein Gluten essen.",
+            "Dann Kartoffelsalat?",
+            "Aber keine Mayo für Laurenz.",
+            "Dann gibt es für alle etwas.",
+            "Beantworten Sie die Fragen zum Text:",
+            "Wer im Dialog ist Vegetarierin?",
+            "Wer will wahrscheinlich keinen Käse essen?",
+            "Wer kann keinen Nudelsalat essen?",
+            "Nina ist Vegetarierin.",
+            "Nein, Amelie will keinen Käse kaufen.",
+            "Nina will Käse kaufen.",
+            "Laurenz will wahrscheinlich keinen Käse essen.",
+            "Er ist Veganer.",
+            "Anne kann keinen Nudelsalat essen.",
+            "Sie hat Zöliakie.",
+            "Anne kann kein Gluten essen.",
+            "Was können die Personen (nicht) essen?",
+            "Was wollen sie (nicht) essen?",
+            "Personen 1 und 2 haben Allergien und können Dinge nicht essen.",
+            "Person 3 ist Muslimin und isst manche Speisen nicht.",
+            "Personen 4-7 wollen manche Lebensmittel nicht essen.",
+            "Ergänzen Sie in der Tabelle rechts J oder N.",
+            "Vergleichen Sie Ihre Antworten zu Personen 1-3.",
+            "Dann fragen Sie, was die andere Person (nicht) essen kann.",
+            "Person 1 kann das Spaghettieis [Eis], … nicht essen.",
+            "Was kannst du (nicht) essen?",
+            "Sie kann das Vollkornbrot, den Basmatireis [Reis], den Apfelkuchen und das Schweineschnitzel essen.",
+            "Vergleichen Sie Ihre Antworten zu Personen 4-7.",
+            "Dann fragen Sie, was die andere Person (nicht) essen will.",
+            "Person 4 will das Vollkornbrot, den Basmatireis, die Gemüselasagne und den Apfelkuchen essen.",
+            "Sie will nicht das Spaghettieis, den Cheeseburger, den Schokoladenkeks und das Schweineschnitzel essen.",
+            "Sie will nicht die Erdbeermilch trinken.",
+            "Person 5 will das Spaghettieis, das Vollkornbrot, den Basmatireis, den den Schokoladenkeks, den Apfelkuchen und die Gemüselasagne essen und die Erdbeermilch trinken.",
+            "Sie will nicht den Cheeseburger und das Schweineschnitzel essen.",
+            "Person 6 will keine Speise essen.",
+            "Welche anderen Ernährungsweisen kennen Sie?",
+            "Ergänzen Sie für Person 8.",
+            "Die Person isst kein Schweinefleisch.",
+            "Hindus essen kein Rindfleisch.",
+            "Es gibt Nussallergien.",
+            "Die Personen können keine Nüsse essen.",
+            "Was mögen Sie (nicht)?",
+            "Was essen Sie (gern)?",
+            "Was können Sie (nicht) essen?",
+            "Was wollen Sie (nicht) essen?",
+            "Schreiben Sie einen Text.",
+            "Ich mag (nicht), ich esse (nicht) gern, ich esse (nicht) oft, ich kann (nicht) essen, ich will (nicht) essen.",
+            "Ich bin Vegetarier*in, Veganer*in, Pescetarier*in, Ich mache eine Paläo-Diät.",
+            "Ich esse fettreduziert, zuckerreduziert [Zucker], alles."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

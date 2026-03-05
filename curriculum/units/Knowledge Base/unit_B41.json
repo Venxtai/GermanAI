@@ -1,0 +1,507 @@
+{
+    "unit": "B41",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 41,
+        "prerequisite": "core 1-104, B1-B40"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "deutsche Nachrichtenmedien vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Nachrichtenmedien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "berichten", "pos": "VERB", "translation": "to report, tell", "frequency": 591, "cefr": "A2" },
+            { "word": "klingen", "pos": "VERB", "translation": "to sound", "frequency": 700, "cefr": "B1" },
+            { "word": "ansprechen", "pos": "VERB", "translation": "to address; approach", "frequency": 1214, "cefr": "B1" },
+            { "word": "ausbrechen", "pos": "VERB", "translation": "to break out", "frequency": 3407 },
+            { "word": "sich herausstellen", "pos": "VERB", "translation": "to turn out; transpire; highlight", "frequency": 5645, "cefr": "A1" },
+            { "word": "der Mangel", "pos": "NOUN", "translation": "lack, shortage", "frequency": 2230, "cefr": "B1" },
+            { "word": "das/der Virus, Viren", "pos": "NOUN", "translation": "virus" },
+            { "word": "die Verbreitung", "pos": "NOUN", "translation": "spread; dispersion", "frequency": 4607, "cefr": "A1" },
+            { "word": "die Maßnahme", "pos": "NOUN", "translation": "(course of) action; sanction", "frequency": 1, "cefr": "A1" },
+            { "word": "das Hilfsmittel", "pos": "NOUN", "translation": "means for support", "frequency": 4840, "cefr": "B1" },
+            { "word": "die Quelle", "pos": "NOUN", "translation": "source; spring", "frequency": 1108, "cefr": "A1" },
+            { "word": "die Basis, Basen", "pos": "NOUN", "translation": "basis; foundation", "frequency": 1333 },
+            { "word": "die Bundesregierung", "pos": "NOUN", "translation": "Federal Government", "frequency": 1345, "cefr": "A1" },
+            { "word": "das Tagebuch", "pos": "NOUN", "translation": "journal; diary", "frequency": 3675, "cefr": "A1" },
+            { "word": "anscheinend", "pos": "ADJ", "translation": "apparently, seemingly", "frequency": 3234 },
+            { "word": "analytisch", "pos": "ADJ", "translation": "analytical", "frequency": 2986, "cefr": "B2" },
+            { "word": "faktisch", "pos": "ADJ", "translation": "factually", "frequency": 8176 },
+            { "word": "unzufrieden", "pos": "ADJ", "translation": "dissatisfied; discontent", "frequency": 8384 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Skala", "pos": "NOUN", "frequency": 4394, "cefr": "B2" },
+            { "word": "authentisch", "pos": "ADJ", "frequency": 8849 },
+            { "word": "komplizieren", "pos": "ADV", "frequency": 1868, "cefr": "B1" },
+            { "word": "die Pandemie", "pos": "NOUN", "frequency": 35311 },
+            { "word": "das Virus", "pos": "NOUN", "frequency": 2720, "cefr": "B1" },
+            { "word": "das Coronavirus", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "berichten": {
+                "present": {
+                    "ich": "berichte",
+                    "du": "berichtest",
+                    "er": "berichtet",
+                    "es": "berichtet",
+                    "sie_singular": "berichtet",
+                    "xier": "berichtet",
+                    "wir": "berichten",
+                    "ihr": "berichtet",
+                    "sie_plural": "berichten",
+                    "Sie": "berichten"
+                },
+                "Präteritum": {
+                    "ich": "berichtete",
+                    "du": "berichtetest",
+                    "er": "berichtete",
+                    "es": "berichtete",
+                    "sie_singular": "berichtete",
+                    "xier": "berichtete",
+                    "wir": "berichteten",
+                    "ihr": "berichtetet",
+                    "sie_plural": "berichteten",
+                    "Sie": "berichteten"
+                },
+                "Perfekt": {
+                    "ich": "habe berichtet",
+                    "du": "hast berichtet",
+                    "er": "hat berichtet",
+                    "es": "hat berichtet",
+                    "sie_singular": "hat berichtet",
+                    "xier": "hat berichtet",
+                    "wir": "haben berichtet",
+                    "ihr": "habt berichtet",
+                    "sie_plural": "haben berichtet",
+                    "Sie": "haben berichtet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte berichtet",
+                    "du": "hattest berichtet",
+                    "er": "hatte berichtet",
+                    "es": "hatte berichtet",
+                    "sie_singular": "hatte berichtet",
+                    "xier": "hatte berichtet",
+                    "wir": "hatten berichtet",
+                    "ihr": "hattet berichtet",
+                    "sie_plural": "hatten berichtet",
+                    "Sie": "hatten berichtet"
+                },
+                "Futur_I": {
+                    "ich": "werde berichten",
+                    "du": "wirst berichten",
+                    "er": "wird berichten",
+                    "es": "wird berichten",
+                    "sie_singular": "wird berichten",
+                    "xier": "wird berichten",
+                    "wir": "werden berichten",
+                    "ihr": "werdet berichten",
+                    "sie_plural": "werden berichten",
+                    "Sie": "werden berichten"
+                },
+                "imperative": {
+                    "du": "berichte",
+                    "ihr": "berichtet",
+                    "Sie": "berichten Sie"
+                }
+            },
+            "klingen": {
+                "present": {
+                    "ich": "klinge",
+                    "du": "klingst",
+                    "er": "klingt",
+                    "es": "klingt",
+                    "sie_singular": "klingt",
+                    "xier": "klingt",
+                    "wir": "klingen",
+                    "ihr": "klingt",
+                    "sie_plural": "klingen",
+                    "Sie": "klingen"
+                },
+                "Präteritum": {
+                    "ich": "klang",
+                    "du": "klangst",
+                    "er": "klang",
+                    "es": "klang",
+                    "sie_singular": "klang",
+                    "xier": "klang",
+                    "wir": "klangen",
+                    "ihr": "klangt",
+                    "sie_plural": "klangen",
+                    "Sie": "klangen"
+                },
+                "Perfekt": {
+                    "ich": "habe geklungen",
+                    "du": "hast geklungen",
+                    "er": "hat geklungen",
+                    "es": "hat geklungen",
+                    "sie_singular": "hat geklungen",
+                    "xier": "hat geklungen",
+                    "wir": "haben geklungen",
+                    "ihr": "habt geklungen",
+                    "sie_plural": "haben geklungen",
+                    "Sie": "haben geklungen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte geklungen",
+                    "du": "hattest geklungen",
+                    "er": "hatte geklungen",
+                    "es": "hatte geklungen",
+                    "sie_singular": "hatte geklungen",
+                    "xier": "hatte geklungen",
+                    "wir": "hatten geklungen",
+                    "ihr": "hattet geklungen",
+                    "sie_plural": "hatten geklungen",
+                    "Sie": "hatten geklungen"
+                },
+                "Futur_I": {
+                    "ich": "werde klingen",
+                    "du": "wirst klingen",
+                    "er": "wird klingen",
+                    "es": "wird klingen",
+                    "sie_singular": "wird klingen",
+                    "xier": "wird klingen",
+                    "wir": "werden klingen",
+                    "ihr": "werdet klingen",
+                    "sie_plural": "werden klingen",
+                    "Sie": "werden klingen"
+                },
+                "imperative": {
+                    "du": "klinge",
+                    "ihr": "klingt",
+                    "Sie": "klingen Sie"
+                }
+            },
+            "ansprechen": {
+                "present": {
+                    "ich": "spreche an",
+                    "du": "sprichst an",
+                    "er": "spricht an",
+                    "es": "spricht an",
+                    "sie_singular": "spricht an",
+                    "xier": "spricht an",
+                    "wir": "sprechen an",
+                    "ihr": "sprecht an",
+                    "sie_plural": "sprechen an",
+                    "Sie": "sprechen an"
+                },
+                "Präteritum": {
+                    "ich": "sprach an",
+                    "du": "sprachst an",
+                    "er": "sprach an",
+                    "es": "sprach an",
+                    "sie_singular": "sprach an",
+                    "xier": "sprach an",
+                    "wir": "sprachen an",
+                    "ihr": "spracht an",
+                    "sie_plural": "sprachen an",
+                    "Sie": "sprachen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesprochen",
+                    "du": "hast angesprochen",
+                    "er": "hat angesprochen",
+                    "es": "hat angesprochen",
+                    "sie_singular": "hat angesprochen",
+                    "xier": "hat angesprochen",
+                    "wir": "haben angesprochen",
+                    "ihr": "habt angesprochen",
+                    "sie_plural": "haben angesprochen",
+                    "Sie": "haben angesprochen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte angesprochen",
+                    "du": "hattest angesprochen",
+                    "er": "hatte angesprochen",
+                    "es": "hatte angesprochen",
+                    "sie_singular": "hatte angesprochen",
+                    "xier": "hatte angesprochen",
+                    "wir": "hatten angesprochen",
+                    "ihr": "hattet angesprochen",
+                    "sie_plural": "hatten angesprochen",
+                    "Sie": "hatten angesprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansprechen",
+                    "du": "wirst ansprechen",
+                    "er": "wird ansprechen",
+                    "es": "wird ansprechen",
+                    "sie_singular": "wird ansprechen",
+                    "xier": "wird ansprechen",
+                    "wir": "werden ansprechen",
+                    "ihr": "werdet ansprechen",
+                    "sie_plural": "werden ansprechen",
+                    "Sie": "werden ansprechen"
+                },
+                "imperative": {
+                    "du": "sprich an",
+                    "ihr": "sprecht an",
+                    "Sie": "sprechen Sie an"
+                }
+            },
+            "ausbrechen": {
+                "present": {
+                    "ich": "breche aus",
+                    "du": "brichst aus",
+                    "er": "bricht aus",
+                    "es": "bricht aus",
+                    "sie_singular": "bricht aus",
+                    "xier": "bricht aus",
+                    "wir": "brechen aus",
+                    "ihr": "brecht aus",
+                    "sie_plural": "brechen aus",
+                    "Sie": "brechen aus"
+                },
+                "Präteritum": {
+                    "ich": "brach aus",
+                    "du": "brachst aus",
+                    "er": "brach aus",
+                    "es": "brach aus",
+                    "sie_singular": "brach aus",
+                    "xier": "brach aus",
+                    "wir": "brachen aus",
+                    "ihr": "bracht aus",
+                    "sie_plural": "brachen aus",
+                    "Sie": "brachen aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgebrochen",
+                    "du": "hast ausgebrochen",
+                    "er": "hat ausgebrochen",
+                    "es": "hat ausgebrochen",
+                    "sie_singular": "hat ausgebrochen",
+                    "xier": "hat ausgebrochen",
+                    "wir": "haben ausgebrochen",
+                    "ihr": "habt ausgebrochen",
+                    "sie_plural": "haben ausgebrochen",
+                    "Sie": "haben ausgebrochen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausgebrochen",
+                    "du": "hattest ausgebrochen",
+                    "er": "hatte ausgebrochen",
+                    "es": "hatte ausgebrochen",
+                    "sie_singular": "hatte ausgebrochen",
+                    "xier": "hatte ausgebrochen",
+                    "wir": "hatten ausgebrochen",
+                    "ihr": "hattet ausgebrochen",
+                    "sie_plural": "hatten ausgebrochen",
+                    "Sie": "hatten ausgebrochen"
+                },
+                "Futur_I": {
+                    "ich": "werde ausbrechen",
+                    "du": "wirst ausbrechen",
+                    "er": "wird ausbrechen",
+                    "es": "wird ausbrechen",
+                    "sie_singular": "wird ausbrechen",
+                    "xier": "wird ausbrechen",
+                    "wir": "werden ausbrechen",
+                    "ihr": "werdet ausbrechen",
+                    "sie_plural": "werden ausbrechen",
+                    "Sie": "werden ausbrechen"
+                },
+                "imperative": {
+                    "du": "brich aus",
+                    "ihr": "brecht aus",
+                    "Sie": "brechen Sie aus"
+                }
+            },
+            "herausstellen": {
+                "present": {
+                    "ich": "stelle mich heraus",
+                    "du": "stellst dich heraus",
+                    "er": "stellt sich heraus",
+                    "es": "stellt sich heraus",
+                    "sie_singular": "stellt sich heraus",
+                    "xier": "stellt sich heraus",
+                    "wir": "stellen uns heraus",
+                    "ihr": "stellt euch heraus",
+                    "sie_plural": "stellen sich heraus",
+                    "Sie": "stellen sich heraus"
+                },
+                "Präteritum": {
+                    "ich": "stellte mich heraus",
+                    "du": "stelltest dich heraus",
+                    "er": "stellte sich heraus",
+                    "es": "stellte sich heraus",
+                    "sie_singular": "stellte sich heraus",
+                    "xier": "stellte sich heraus",
+                    "wir": "stellten uns heraus",
+                    "ihr": "stelltet euch heraus",
+                    "sie_plural": "stellten sich heraus",
+                    "Sie": "stellten sich heraus"
+                },
+                "Perfekt": {
+                    "ich": "habe mich herausgestellt",
+                    "du": "hast dich herausgestellt",
+                    "er": "hat sich herausgestellt",
+                    "es": "hat sich herausgestellt",
+                    "sie_singular": "hat sich herausgestellt",
+                    "xier": "hat sich herausgestellt",
+                    "wir": "haben uns herausgestellt",
+                    "ihr": "habt euch herausgestellt",
+                    "sie_plural": "haben sich herausgestellt",
+                    "Sie": "haben sich herausgestellt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte mich herausgestellt",
+                    "du": "hattest dich herausgestellt",
+                    "er": "hatte sich herausgestellt",
+                    "es": "hatte sich herausgestellt",
+                    "sie_singular": "hatte sich herausgestellt",
+                    "xier": "hatte sich herausgestellt",
+                    "wir": "hatten uns herausgestellt",
+                    "ihr": "hattet euch herausgestellt",
+                    "sie_plural": "hatten sich herausgestellt",
+                    "Sie": "hatten sich herausgestellt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich herausstellen",
+                    "du": "wirst dich herausstellen",
+                    "er": "wird sich herausstellen",
+                    "es": "wird sich herausstellen",
+                    "sie_singular": "wird sich herausstellen",
+                    "xier": "wird sich herausstellen",
+                    "wir": "werden uns herausstellen",
+                    "ihr": "werdet euch herausstellen",
+                    "sie_plural": "werden sich herausstellen",
+                    "Sie": "werden sich herausstellen"
+                },
+                "imperative": {
+                    "du": "stell dich heraus",
+                    "ihr": "stellt euch heraus",
+                    "Sie": "stellen Sie sich heraus"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Beschreiben Sie, welche Medien die Deutschen für Nachrichten nutzen.",
+            "Erzählen Sie auch, welche Medien Sie persönlich für Nachrichten nutzen.",
+            "Quelle liegen auf einer Skala von links neutral rechts und komplex analytisch hoher Standard",
+            "Basis Informationen Clickbait.",
+            "Kennen Sie Medien, die links, neutral oder rechts sind?",
+            "Kennen Sie Medien, die komplex sind oder einen hohen Standard haben?",
+            "Kennen Sie Medien, die Basisinformationen geben oder Clickbait sind?",
+            "Sehen Sie sich die Webseite einer Nachrichtenquellen, die es im Print und Online gibt, an und sortieren Sie: Welche Beschreibung passt zu Ihrer Nachrichtenquellen",
+            "Warum denken Sie das?",
+            "Weil die Überschriften nach Clickbait klingen.",
+            "Weil ich Informationen zu wichtigen politischen Themen finde.",
+            "Fakt oder Fake?",
+            "Im Internet gibt es viele Nachrichten.",
+            "Und immer mehr Menschen nutzen das Internet, um sich zu informieren.",
+            "Wie aber erkennt man, was Fakt und was Fake ist.",
+            "Die Bundesregierung hat eine Grafik erstellt.",
+            "Sehen Sie sich die Grafik an und lesen Sie die Beschreibung.",
+            "Werden Sie zu Faktenfinder*innen.",
+            "Gehen Sie auf die Webseite und sehen Sie sich die authentischen Quellen an.",
+            "Sie werden also nicht alle Wörter verstehen.",
+            "Besonders, wenn wir nicht alles verstehen, kann es schwierig sein, Fake s zu entdecken.",
+            "Benutzen Sie die Schritte der Grafik aus Teil 1 und Online Hilfsmittel, um herauszufinden, was Fake, Fakt und Satire ist.",
+            "Vergleichen Sie im Kurs.",
+            "Erzählen Sie, welche Schritte der Grafik haben Ihnen besonders geholfen?",
+            "Was war leicht?",
+            "Was war schwierig?",
+            "Haben Sie Satire erkannt?",
+            "Warum ist es vielleicht kompliziert, Satire in einer Sprache und Kultur, die man nicht gut kennt, zu erkennen?",
+            "Lesen Sie den Kommentar, der über die Anfänge der Informationsverbreitung der COVID-19 Pandemie reflektiert.",
+            "Unterstreichen Sie alle Verben im Präteritum und erstellen Sie eine Liste der Verben mit ihrem Infinitiv.",
+            "Wie Medien berichteten, kamen schon Anfang Januar Politiker*innen aus Peking und schlossen den Markt, auf dem anscheinend das Virus ausbrach.",
+            "Doch viele Menschen in China erfuhren erst aus sozialen Medien von dem Virus oder als Freund*innen und Bekannte sie ansprachen.",
+            "Die Menschen vor Ort waren mit der Informationspolitik der Regierung unzufrieden und erklärten später, dass sie sich nicht gut informiert fühlten.",
+            "Dieser Mangel an Informationen führte auch dazu, dass am Anfang das Leben ganz normal weiterging und es wenig Sicherheitsmaßnahmen gab.",
+            "Wie sich später herausstellte, war das ein großer Fehler.",
+            "Lesen Sie den Text noch einmal.",
+            "Schreiben Sie eine Frage zum Text, wie im Beispiel, und stellen Sie die Frage mindestens drei anderen Personen.",
+            "Beantworten Sie dann die Fragen der anderen.",
+            "Wie erfuhren viele Menschen in China zuerst vom Coronavirus?",
+            "Viele Menschen in China erfuhren vom Coronavirus erst aus den sozialen Medien.",
+            "Schreiben Sie einen faktischen Bericht im Präteritum zu Ihren eigenen Erinnerungen an die Anfänge der Pandemie.",
+            "Sie können im Stil eines Tagebuchs oder von Nachrichten schreiben.",
+            "Ist es persönlich (Tagebuch) oder faktisch (Nachrichten)?"
+        ],
+        "templated": []
+    }
+}

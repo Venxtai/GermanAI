@@ -1,0 +1,791 @@
+{
+    "unit": "99",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 99,
+        "prerequisite": "1-98"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Traumauto beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Traumauto"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "sich bücken",
+                "pos": "VERB",
+                "translation": "to stoop; bend down",
+                "frequency": 14,
+                "cefr": "A1"
+            },
+            {
+                "word": "bewegen",
+                "pos": "VERB",
+                "translation": "to move",
+                "frequency": 561,
+                "cefr": "B1"
+            },
+            {
+                "word": "wachsen",
+                "pos": "VERB",
+                "translation": "to grow, increase",
+                "frequency": 470,
+                "cefr": "B1"
+            },
+            {
+                "word": "drehen",
+                "pos": "VERB",
+                "translation": "to turn, spin",
+                "frequency": 788,
+                "cefr": "B1"
+            },
+            {
+                "word": "unterstützen",
+                "pos": "VERB",
+                "translation": "to support"
+            },
+            {
+                "word": "die Aktiengesellschaft",
+                "pos": "NOUN",
+                "translation": "stock corporation",
+                "frequency": 1892,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Arbeiter*in",
+                "pos": "NOUN",
+                "translation": "worker",
+                "frequency": 2404,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Herstellung",
+                "pos": "NOUN",
+                "translation": "manufacturing; production",
+                "frequency": 2568,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ausstattung",
+                "pos": "NOUN",
+                "translation": "equipment",
+                "frequency": 4590,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Schiene",
+                "pos": "NOUN",
+                "translation": "rail; track",
+                "frequency": 7352,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Regierung",
+                "pos": "NOUN",
+                "translation": "government",
+                "frequency": 521,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Steuer",
+                "pos": "NOUN",
+                "translation": "tax",
+                "frequency": 1524,
+                "cefr": "B1"
+            },
+            {
+                "word": "erfolgreich",
+                "pos": "ADJ",
+                "translation": "successful",
+                "frequency": 735,
+                "cefr": "B1"
+            },
+            {
+                "word": "niedrig",
+                "pos": "ADJ",
+                "translation": "low; low to the ground",
+                "frequency": 778,
+                "cefr": "B1"
+            },
+            {
+                "word": "weltweit",
+                "pos": "ADJ",
+                "translation": "worldwide",
+                "frequency": 843,
+                "cefr": "B1"
+            },
+            {
+                "word": "automatisch",
+                "pos": "ADJ",
+                "translation": "automatic(ly)",
+                "frequency": 1916,
+                "cefr": "A1"
+            },
+            {
+                "word": "zuverlässig",
+                "pos": "ADJ",
+                "translation": "reliable; dependable"
+            },
+            {
+                "word": "sparsam",
+                "pos": "ADJ",
+                "translation": "economical(ly); frugal, thrifty",
+                "frequency": 8992,
+                "cefr": "B1"
+            },
+            {
+                "word": "deutlich",
+                "pos": "ADJ",
+                "translation": "significantly, clearly",
+                "frequency": 302,
+                "cefr": "A2"
+            },
+            {
+                "word": "gläsern",
+                "pos": "ADJ",
+                "translation": "vitreous"
+            },
+            {
+                "word": "ungefähr",
+                "pos": "PREP",
+                "translation": "about, approximately"
+            },
+            {
+                "word": "manch-",
+                "pos": "PRON",
+                "translation": "some"
+            },
+            {
+                "word": "die Art und Weise",
+                "pos": "PHRASE",
+                "translation": "way; method; kind, manner"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "AG",
+                "pos": "NOUN",
+                "frequency": 1892
+            },
+            {
+                "word": "der Autohersteller",
+                "pos": "NOUN",
+                "frequency": 11515
+            },
+            {
+                "word": "das Portfolio",
+                "pos": "NOUN",
+                "frequency": 16280,
+                "cefr": "B2"
+            },
+            {
+                "word": "vereinigt",
+                "pos": "ADJ",
+                "frequency": 6112
+            },
+            {
+                "word": "die Automatik",
+                "pos": "NOUN",
+                "frequency": 27979
+            },
+            {
+                "word": "manuell",
+                "pos": "ADJ",
+                "frequency": 13645,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Automatikgetriebe",
+                "pos": "NOUN",
+                "frequency": 37986
+            },
+            {
+                "word": "die Fahrkultur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "einiger",
+                "pos": "DET"
+            },
+            {
+                "word": "die Luxusmarke",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Neuwagen",
+                "pos": "NOUN",
+                "frequency": 18363,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Präferenz",
+                "pos": "NOUN",
+                "frequency": 3288
+            },
+            {
+                "word": "das VW-Modell",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Modell-Name",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Tempomat",
+                "pos": "NOUN"
+            },
+            {
+                "word": "klimatisiert",
+                "pos": "ADJ",
+                "frequency": 42295
+            },
+            {
+                "word": "das Handschuhfach",
+                "pos": "NOUN",
+                "frequency": 47953
+            },
+            {
+                "word": "die Ruckfahrkamera",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kaufaspekt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "sudafrikanisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das Preis-Leitungs-Verhältnis",
+                "pos": "NOUN"
+            },
+            {
+                "word": "sudafrikaner",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die High-End-Limousine",
+                "pos": "NOUN"
+            },
+            {
+                "word": "dynamisch",
+                "pos": "ADJ",
+                "frequency": 3302
+            },
+            {
+                "word": "das Karosseriedesign",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Interieur",
+                "pos": "NOUN",
+                "frequency": 19139,
+                "cefr": "B2"
+            },
+            {
+                "word": "zukunftsorientiert",
+                "pos": "ADJ",
+                "frequency": 21485
+            },
+            {
+                "word": "die Oberklasse",
+                "pos": "NOUN",
+                "frequency": 33042
+            },
+            {
+                "word": "Brasilien",
+                "pos": "PROPN",
+                "frequency": 2694
+            },
+            {
+                "word": "kompakt",
+                "pos": "ADV",
+                "frequency": 6476
+            },
+            {
+                "word": "meistverkauft",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das Ethanol",
+                "pos": "NOUN"
+            },
+            {
+                "word": "kompatibl",
+                "pos": "ADJ"
+            },
+            {
+                "word": "ünstig",
+                "pos": "ADV"
+            },
+            {
+                "word": "unterstutzen",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Zuckerrohr",
+                "pos": "NOUN",
+                "frequency": 38232
+            },
+            {
+                "word": "das Traumauto",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Ausstattungselement",
+                "pos": "NOUN"
+            },
+            {
+                "word": "umweltfreudlich",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Autofabrik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Luxusauto",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Transportsystem",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Magnet",
+                "pos": "NOUN",
+                "frequency": 17174,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Fahrer*innen",
+                "pos": "NOUN",
+                "frequency": 1554,
+                "cefr": "A1"
+            },
+            {
+                "word": "Kanada",
+                "pos": "PROPN",
+                "frequency": 3324
+            },
+            {
+                "word": "die Manufaktur",
+                "pos": "NOUN",
+                "frequency": 20679
+            },
+            {
+                "word": "die Strategie",
+                "pos": "NOUN",
+                "frequency": 1477
+            },
+            {
+                "word": "die Solaranlage",
+                "pos": "NOUN",
+                "frequency": 13707,
+                "cefr": "B2"
+            },
+            {
+                "word": "das E-Auto",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Ausstellungsort",
+                "pos": "NOUN",
+                "frequency": 40555
+            },
+            {
+                "word": "die Elektromobilität",
+                "pos": "NOUN",
+                "frequency": 26971
+            },
+            {
+                "word": "die Digitalisierung",
+                "pos": "NOUN",
+                "frequency": 3263
+            },
+            {
+                "word": "das ransportsystem",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Stromkabel",
+                "pos": "NOUN",
+                "frequency": 40702
+            },
+            {
+                "word": "der Fabrikboden",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Phaeton-",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bücken": {
+                "present": {
+                    "ich": "bücke mich",
+                    "du": "bückst dich",
+                    "er": "bückt sich",
+                    "es": "bückt sich",
+                    "sie_singular": "bückt sich",
+                    "xier": "bückt sich",
+                    "wir": "bücken uns",
+                    "ihr": "bückt euch",
+                    "sie_plural": "bücken sich",
+                    "Sie": "bücken sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich gebückt",
+                    "du": "hast dich gebückt",
+                    "er": "hat sich gebückt",
+                    "es": "hat sich gebückt",
+                    "sie_singular": "hat sich gebückt",
+                    "xier": "hat sich gebückt",
+                    "wir": "haben uns gebückt",
+                    "ihr": "habt euch gebückt",
+                    "sie_plural": "haben sich gebückt",
+                    "Sie": "haben sich gebückt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich bücken",
+                    "du": "wirst dich bücken",
+                    "er": "wird sich bücken",
+                    "es": "wird sich bücken",
+                    "sie_singular": "wird sich bücken",
+                    "xier": "wird sich bücken",
+                    "wir": "werden uns bücken",
+                    "ihr": "werdet euch bücken",
+                    "sie_plural": "werden sich bücken",
+                    "Sie": "werden sich bücken"
+                }
+            },
+            "bewegen": {
+                "present": {
+                    "ich": "bewege",
+                    "du": "bewegst",
+                    "er": "bewegt",
+                    "es": "bewegt",
+                    "sie_singular": "bewegt",
+                    "xier": "bewegt",
+                    "wir": "bewegen",
+                    "ihr": "bewegt",
+                    "sie_plural": "bewegen",
+                    "Sie": "bewegen"
+                },
+                "Perfekt": {
+                    "ich": "habe bewegt",
+                    "du": "hast bewegt",
+                    "er": "hat bewegt",
+                    "es": "hat bewegt",
+                    "sie_singular": "hat bewegt",
+                    "xier": "hat bewegt",
+                    "wir": "haben bewegt",
+                    "ihr": "habt bewegt",
+                    "sie_plural": "haben bewegt",
+                    "Sie": "haben bewegt"
+                },
+                "Futur_I": {
+                    "ich": "werde bewegen",
+                    "du": "wirst bewegen",
+                    "er": "wird bewegen",
+                    "es": "wird bewegen",
+                    "sie_singular": "wird bewegen",
+                    "xier": "wird bewegen",
+                    "wir": "werden bewegen",
+                    "ihr": "werdet bewegen",
+                    "sie_plural": "werden bewegen",
+                    "Sie": "werden bewegen"
+                }
+            },
+            "wachsen": {
+                "present": {
+                    "ich": "wachse",
+                    "du": "wächst",
+                    "er": "wächst",
+                    "es": "wächst",
+                    "sie_singular": "wächst",
+                    "xier": "wächst",
+                    "wir": "wachsen",
+                    "ihr": "wachst",
+                    "sie_plural": "wachsen",
+                    "Sie": "wachsen"
+                },
+                "Perfekt": {
+                    "ich": "bin gewachsen",
+                    "du": "bist gewachsen",
+                    "er": "ist gewachsen",
+                    "es": "ist gewachsen",
+                    "sie_singular": "ist gewachsen",
+                    "xier": "ist gewachsen",
+                    "wir": "sind gewachsen",
+                    "ihr": "seid gewachsen",
+                    "sie_plural": "sind gewachsen",
+                    "Sie": "sind gewachsen"
+                },
+                "Futur_I": {
+                    "ich": "werde wachsen",
+                    "du": "wirst wachsen",
+                    "er": "wird wachsen",
+                    "es": "wird wachsen",
+                    "sie_singular": "wird wachsen",
+                    "xier": "wird wachsen",
+                    "wir": "werden wachsen",
+                    "ihr": "werdet wachsen",
+                    "sie_plural": "werden wachsen",
+                    "Sie": "werden wachsen"
+                }
+            },
+            "drehen": {
+                "present": {
+                    "ich": "drehe",
+                    "du": "drehst",
+                    "er": "dreht",
+                    "es": "dreht",
+                    "sie_singular": "dreht",
+                    "xier": "dreht",
+                    "wir": "drehen",
+                    "ihr": "dreht",
+                    "sie_plural": "drehen",
+                    "Sie": "drehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gedreht",
+                    "du": "hast gedreht",
+                    "er": "hat gedreht",
+                    "es": "hat gedreht",
+                    "sie_singular": "hat gedreht",
+                    "xier": "hat gedreht",
+                    "wir": "haben gedreht",
+                    "ihr": "habt gedreht",
+                    "sie_plural": "haben gedreht",
+                    "Sie": "haben gedreht"
+                },
+                "Futur_I": {
+                    "ich": "werde drehen",
+                    "du": "wirst drehen",
+                    "er": "wird drehen",
+                    "es": "wird drehen",
+                    "sie_singular": "wird drehen",
+                    "xier": "wird drehen",
+                    "wir": "werden drehen",
+                    "ihr": "werdet drehen",
+                    "sie_plural": "werden drehen",
+                    "Sie": "werden drehen"
+                }
+            },
+            "unterstützen": {
+                "present": {
+                    "ich": "unterstütze",
+                    "du": "unterstützt",
+                    "er": "unterstützt",
+                    "es": "unterstützt",
+                    "sie_singular": "unterstützt",
+                    "xier": "unterstützt",
+                    "wir": "unterstützen",
+                    "ihr": "unterstützt",
+                    "sie_plural": "unterstützen",
+                    "Sie": "unterstützen"
+                },
+                "Perfekt": {
+                    "ich": "habe unterstützt",
+                    "du": "hast unterstützt",
+                    "er": "hat unterstützt",
+                    "es": "hat unterstützt",
+                    "sie_singular": "hat unterstützt",
+                    "xier": "hat unterstützt",
+                    "wir": "haben unterstützt",
+                    "ihr": "habt unterstützt",
+                    "sie_plural": "haben unterstützt",
+                    "Sie": "haben unterstützt"
+                },
+                "Futur_I": {
+                    "ich": "werde unterstützen",
+                    "du": "wirst unterstützen",
+                    "er": "wird unterstützen",
+                    "es": "wird unterstützen",
+                    "sie_singular": "wird unterstützen",
+                    "xier": "wird unterstützen",
+                    "wir": "werden unterstützen",
+                    "ihr": "werdet unterstützen",
+                    "sie_plural": "werden unterstützen",
+                    "Sie": "werden unterstützen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Volkswagen AG: Ein Auto für alle",
+            "Die Volkswagen AG gehört zu den weltweit größten Autoherstellern.",
+            "Sie hat ein sehr großes Portfolio an Automarken aus verschiedenen Ländern.",
+            "Raten Sie, woher diese Automarken kommen.",
+            "Welche Marken kennen Sie (nicht)?",
+            "Was assoziieren Sie mit den Automarken?",
+            "Welche möchten Sie (nicht) gern fahren?",
+            "Automatik oder manuelles Getriebe?",
+            "Lesen Sie zuerst die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Gibt es mehr Automatikgetriebe in Deutschland oder in den USA?",
+            "Es gibt mehr Automatikgetriebe in den USA.",
+            "Warum kaufen Deutsche lieber Autos mit Manuell Getriebe?",
+            "Sie kosten nicht so viel und Deutschland hat eine andere Fahrkultur.",
+            "Welche Autos gibt es oft nicht mit Manuell Getriebe?",
+            "Bei einigen Luxusmarken gibt es heute keine manuellen Schaltgetriebe mehr zu kaufen.",
+            "90 Prozent aller Neuwagen in den USA haben ein Automatikgetriebe.",
+            "In Deutschland sind es um die 20 Prozent.",
+            "Das hat mehrere Gründe:",
+            "Autos mit Automatikgetriebe kosten mehr und Deutschland hat eine andere Fahrkultur.",
+            "Interessant ist, dass es deutlich unterschiedliche Präferenzen zwischen Männern und Frauen gibt:",
+            "Deutlich mehr Männer (24,3 Prozent) kaufen Autos mit Automatikgetriebe als Frauen (6,4 Prozent).",
+            "Bei einigen Luxusmarken gibt es heute keine Schaltgetriebe mehr zu kaufen.",
+            "Machen Sie eine Umfrage im Kurs:",
+            "Wie viele Personen im Kurs können Autos mit Manuell Getriebe fahren?",
+            "Wie viele haben ein manuelles Auto oder möchten eins kaufen?",
+            "In 4er-Gruppen: Manche VW-Modelle kennt man auf der ganzen Welt.",
+            "Es gibt aber auch Autos, die VW nur für bestimmte Märkte produziert.",
+            "Jede Person bekommt eine Karte mit Infos zu einem VW-Modell und präsentiert die Informationen.",
+            "Die anderen tragen sie in die Tabelle ein.",
+            "Für den indischen Markt entwickelt und dort produziert.",
+            "Tempomat, klimatisiertes Handschuhfach und Ruckfahrkamera.",
+            "Warum erfolgreich in diesem Land?",
+            "Ein wichtiger Kaufaspekt auf dem indischen Markt",
+            "Ungefähr 70 Prozent der Teile des Polo Vivo werden in Sudafrika von sudafrikanischen Firmen produziert.",
+            "Wichtig für Sudafrikaner Person 3: VW Phideon",
+            "High-End Interieur mit vielen zukunftsorientierten Design",
+            "Der Marke für Oberklassen (also High-End-)Autos in China wachst stark.",
+            "Bis 2013 meistverkaufte Auto in Brasilien",
+            "Die Regierung unterstutzt Ethanol, weil man sie aus Zuckerrohr produzieren kann.",
+            "Gibt es ähnliche Gründe, warum diese Modelle sich in den spezifischen Ländern gut verkaufen?",
+            "Welche Ausstattungselemente hat Ihr Traumauto?",
+            "Schreiben Sie Nomen und Adjektive auf, um ihr Traumauto zu beschreiben.",
+            "Sprechen Sie über Ihr Traumauto mit anderen Studierenden.",
+            "Sprechen Sie über Ihr eigenes Auto und fragen Sie die anderen Personen, wie ihre Traumautos aussehen.",
+            "Ich möchte ein großes Auto mit einem sparsamen Motor und zu einem guten Preis …",
+            "Sie haben in LERNEN Fragen zum Text \"Autofabrik der Zukunft\" sortiert.",
+            "Person 1 bekommt die Fragen zum linken Teil, Person 2 die Fragen zum rechten Teil.",
+            "Stellen Sie der anderen Person Ihre Fragen.",
+            "Die Person antwortet und zeigt, wo sie im Text die Information gefunden hat.",
+            "Im Jahre 2002 hat Volkswagen eine neue Autofabrik in der Mitte von Dresden eröffnet.",
+            "In der Fabrik hat VW von 2002 bis 2016 das Luxusauto \"Phaeton\" gebaut.",
+            "Dann den e-Golf und den ID.3.",
+            "Das Gebäude ist besonders:",
+            "Es sieht mehr wie ein Museum als wie eine Fabrik aus.",
+            "Für die Herstellung bewegt ein Transportsystem die Autoteile mit Hilfe von 60.000 Magneten automatisch, ohne Fahrer*innen.",
+            "Die Arbeiter*innen bewegen sich mit den Autos – das ist neu.",
+            "Die Autos hängen an Schienen und die Arbeiter*innen können das ganze Auto mit einer Hand drehen.",
+            "Nicht nur die Autos sind Luxus, auch die Fabrik selbst:",
+            "Der Boden der Fabrik besteht aus 24.000 m2 Holz aus Kanada.",
+            "Weil die Fabrik fast 28.000 m2 Fenster und Wände aus Glas hat, heißt sie auch \"Gläserne Manufaktur\".",
+            "VW hat auch eine Strategie, um umweltfreundlich zu arbeiten.",
+            "Alle Fabriken im Bundesland Sachsen sollen \"grüne Fabriken\" sein.",
+            "VW will CO2-neutral bauen.",
+            "Es gibt eine Solaranlage in der Nähe von Zwickau.",
+            "In Dresden und Zwickau baut VW nur E-Autos.",
+            "Aber die E-Autos von VW sind teuer.",
+            "Es ist kein Auto für alle (mehr).",
+            "Deshalb baut VW ab 2027 den ID.1, der nur 20.000 Euro kosten soll.",
+            "So will VW auch in der Zukunft Autos für alle bauen.",
+            "Das geht aber nicht in Deutschland, weil die Produktion in Deutschland teuer ist.",
+            "In der Gläsernen Manufaktur baut VW ab 2025 keine Autos mehr.",
+            "Dann ist die Fabrik nur noch ein Ausstellungsort für Elektromobilität und Digitalisierung.",
+            "Wo ist die Fabrik?",
+            "Welches Auto hat Volkswagen zuerst in der Fabrik gebaut?",
+            "Wie sieht die Fabrik aus?",
+            "Wie viele Magneten hat das T ransportsystem?",
+            "Was machen die die Arbeiter*innen?",
+            "Warum gibt es keine Stromkabel?",
+            "Warum müssen sich die Arbeiter*innen nicht bücken?",
+            "Wie sieht der Fabrikboden aus?",
+            "Was ist das Material?",
+            "Aus welchem Land kommt das Holz?",
+            "Wie viel Glas hat die Fabrik?",
+            "Wie lange hat Volkswagen die Phaeton- Autos in der Fabrik hergestellt?",
+            "Welches Auto baut Volkswagen heute in der Fabri k?",
+            "Was können die Kund *innen heute in der Fabrik machen?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,437 @@
+{
+    "unit": "B37",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 37,
+        "prerequisite": "core 1-104, B1-B36"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die Biografie einer berühmten Person verfassen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erstellen", "pos": "VERB", "translation": "to create", "frequency": 2389, "cefr": "B1" },
+            { "word": "verwirklichen", "pos": "VERB", "translation": "to implement, make happen", "frequency": 4522 },
+            { "word": "aussuchen", "pos": "VERB", "translation": "to pick; choose", "frequency": 3137, "cefr": "B1" },
+            { "word": "programmieren", "pos": "VERB", "translation": "to program", "frequency": 12172 },
+            { "word": "einstudieren", "pos": "VERB", "translation": "to rehearse", "frequency": 14804 },
+            { "word": "die Gliederung", "pos": "NOUN", "translation": "outline, structure", "frequency": 3836, "cefr": "A1" },
+            { "word": "grafisch", "pos": "ADJ", "translation": "graphic(ally)", "frequency": 13575 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "vorkommen", "pos": "VERB", "frequency": 628, "cefr": "B1" },
+            { "word": "professionell", "pos": "ADJ", "frequency": 3006 },
+            { "word": "die Narration", "pos": "NOUN" },
+            { "word": "die Comicfigur", "pos": "NOUN" },
+            { "word": "ine", "pos": "ADJ", "frequency": 27209 },
+            { "word": "das Storyboard", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erstellen": {
+                "present": {
+                    "ich": "erstelle",
+                    "du": "erstellst",
+                    "er": "erstellt",
+                    "es": "erstellt",
+                    "sie_singular": "erstellt",
+                    "xier": "erstellt",
+                    "wir": "erstellen",
+                    "ihr": "erstellt",
+                    "sie_plural": "erstellen",
+                    "Sie": "erstellen"
+                },
+                "Präteritum": {
+                    "ich": "erstellte",
+                    "du": "erstelltest",
+                    "er": "erstellte",
+                    "es": "erstellte",
+                    "sie_singular": "erstellte",
+                    "xier": "erstellte",
+                    "wir": "erstellten",
+                    "ihr": "erstelltet",
+                    "sie_plural": "erstellten",
+                    "Sie": "erstellten"
+                },
+                "Perfekt": {
+                    "ich": "habe erstellt",
+                    "du": "hast erstellt",
+                    "er": "hat erstellt",
+                    "es": "hat erstellt",
+                    "sie_singular": "hat erstellt",
+                    "xier": "hat erstellt",
+                    "wir": "haben erstellt",
+                    "ihr": "habt erstellt",
+                    "sie_plural": "haben erstellt",
+                    "Sie": "haben erstellt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erstellt",
+                    "du": "hattest erstellt",
+                    "er": "hatte erstellt",
+                    "es": "hatte erstellt",
+                    "sie_singular": "hatte erstellt",
+                    "xier": "hatte erstellt",
+                    "wir": "hatten erstellt",
+                    "ihr": "hattet erstellt",
+                    "sie_plural": "hatten erstellt",
+                    "Sie": "hatten erstellt"
+                },
+                "Futur_I": {
+                    "ich": "werde erstellen",
+                    "du": "wirst erstellen",
+                    "er": "wird erstellen",
+                    "es": "wird erstellen",
+                    "sie_singular": "wird erstellen",
+                    "xier": "wird erstellen",
+                    "wir": "werden erstellen",
+                    "ihr": "werdet erstellen",
+                    "sie_plural": "werden erstellen",
+                    "Sie": "werden erstellen"
+                },
+                "imperative": {
+                    "du": "erstelle",
+                    "ihr": "erstellt",
+                    "Sie": "erstellen Sie"
+                }
+            },
+            "verwirklichen": {
+                "present": {
+                    "ich": "verwirkliche",
+                    "du": "verwirklichst",
+                    "er": "verwirklicht",
+                    "es": "verwirklicht",
+                    "sie_singular": "verwirklicht",
+                    "xier": "verwirklicht",
+                    "wir": "verwirklichen",
+                    "ihr": "verwirklicht",
+                    "sie_plural": "verwirklichen",
+                    "Sie": "verwirklichen"
+                },
+                "Präteritum": {
+                    "ich": "verwirklichte",
+                    "du": "verwirklichtest",
+                    "er": "verwirklichte",
+                    "es": "verwirklichte",
+                    "sie_singular": "verwirklichte",
+                    "xier": "verwirklichte",
+                    "wir": "verwirklichten",
+                    "ihr": "verwirklichtet",
+                    "sie_plural": "verwirklichten",
+                    "Sie": "verwirklichten"
+                },
+                "Perfekt": {
+                    "ich": "habe verwirklicht",
+                    "du": "hast verwirklicht",
+                    "er": "hat verwirklicht",
+                    "es": "hat verwirklicht",
+                    "sie_singular": "hat verwirklicht",
+                    "xier": "hat verwirklicht",
+                    "wir": "haben verwirklicht",
+                    "ihr": "habt verwirklicht",
+                    "sie_plural": "haben verwirklicht",
+                    "Sie": "haben verwirklicht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte verwirklicht",
+                    "du": "hattest verwirklicht",
+                    "er": "hatte verwirklicht",
+                    "es": "hatte verwirklicht",
+                    "sie_singular": "hatte verwirklicht",
+                    "xier": "hatte verwirklicht",
+                    "wir": "hatten verwirklicht",
+                    "ihr": "hattet verwirklicht",
+                    "sie_plural": "hatten verwirklicht",
+                    "Sie": "hatten verwirklicht"
+                },
+                "Futur_I": {
+                    "ich": "werde verwirklichen",
+                    "du": "wirst verwirklichen",
+                    "er": "wird verwirklichen",
+                    "es": "wird verwirklichen",
+                    "sie_singular": "wird verwirklichen",
+                    "xier": "wird verwirklichen",
+                    "wir": "werden verwirklichen",
+                    "ihr": "werdet verwirklichen",
+                    "sie_plural": "werden verwirklichen",
+                    "Sie": "werden verwirklichen"
+                },
+                "imperative": {
+                    "du": "verwirklich",
+                    "ihr": "verwirklicht",
+                    "Sie": "verwirklichen Sie"
+                }
+            },
+            "aussuchen": {
+                "present": {
+                    "ich": "suche aus",
+                    "du": "suchst aus",
+                    "er": "sucht aus",
+                    "es": "sucht aus",
+                    "sie_singular": "sucht aus",
+                    "xier": "sucht aus",
+                    "wir": "suchen aus",
+                    "ihr": "sucht aus",
+                    "sie_plural": "suchen aus",
+                    "Sie": "suchen aus"
+                },
+                "Präteritum": {
+                    "ich": "suchte aus",
+                    "du": "suchtest aus",
+                    "er": "suchte aus",
+                    "es": "suchte aus",
+                    "sie_singular": "suchte aus",
+                    "xier": "suchte aus",
+                    "wir": "suchten aus",
+                    "ihr": "suchtet aus",
+                    "sie_plural": "suchten aus",
+                    "Sie": "suchten aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgesucht",
+                    "du": "hast ausgesucht",
+                    "er": "hat ausgesucht",
+                    "es": "hat ausgesucht",
+                    "sie_singular": "hat ausgesucht",
+                    "xier": "hat ausgesucht",
+                    "wir": "haben ausgesucht",
+                    "ihr": "habt ausgesucht",
+                    "sie_plural": "haben ausgesucht",
+                    "Sie": "haben ausgesucht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausgesucht",
+                    "du": "hattest ausgesucht",
+                    "er": "hatte ausgesucht",
+                    "es": "hatte ausgesucht",
+                    "sie_singular": "hatte ausgesucht",
+                    "xier": "hatte ausgesucht",
+                    "wir": "hatten ausgesucht",
+                    "ihr": "hattet ausgesucht",
+                    "sie_plural": "hatten ausgesucht",
+                    "Sie": "hatten ausgesucht"
+                },
+                "Futur_I": {
+                    "ich": "werde aussuchen",
+                    "du": "wirst aussuchen",
+                    "er": "wird aussuchen",
+                    "es": "wird aussuchen",
+                    "sie_singular": "wird aussuchen",
+                    "xier": "wird aussuchen",
+                    "wir": "werden aussuchen",
+                    "ihr": "werdet aussuchen",
+                    "sie_plural": "werden aussuchen",
+                    "Sie": "werden aussuchen"
+                },
+                "imperative": {
+                    "du": "suche aus",
+                    "ihr": "sucht aus",
+                    "Sie": "suchen Sie aus"
+                }
+            },
+            "programmieren": {
+                "present": {
+                    "ich": "programmiere",
+                    "du": "programmierst",
+                    "er": "programmiert",
+                    "es": "programmiert",
+                    "sie_singular": "programmiert",
+                    "xier": "programmiert",
+                    "wir": "programmieren",
+                    "ihr": "programmiert",
+                    "sie_plural": "programmieren",
+                    "Sie": "programmieren"
+                },
+                "Präteritum": {
+                    "ich": "programmierte",
+                    "du": "programmiertest",
+                    "er": "programmierte",
+                    "es": "programmierte",
+                    "sie_singular": "programmierte",
+                    "xier": "programmierte",
+                    "wir": "programmierten",
+                    "ihr": "programmiertet",
+                    "sie_plural": "programmierten",
+                    "Sie": "programmierten"
+                },
+                "Perfekt": {
+                    "ich": "habe programmiert",
+                    "du": "hast programmiert",
+                    "er": "hat programmiert",
+                    "es": "hat programmiert",
+                    "sie_singular": "hat programmiert",
+                    "xier": "hat programmiert",
+                    "wir": "haben programmiert",
+                    "ihr": "habt programmiert",
+                    "sie_plural": "haben programmiert",
+                    "Sie": "haben programmiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte programmiert",
+                    "du": "hattest programmiert",
+                    "er": "hatte programmiert",
+                    "es": "hatte programmiert",
+                    "sie_singular": "hatte programmiert",
+                    "xier": "hatte programmiert",
+                    "wir": "hatten programmiert",
+                    "ihr": "hattet programmiert",
+                    "sie_plural": "hatten programmiert",
+                    "Sie": "hatten programmiert"
+                },
+                "Futur_I": {
+                    "ich": "werde programmieren",
+                    "du": "wirst programmieren",
+                    "er": "wird programmieren",
+                    "es": "wird programmieren",
+                    "sie_singular": "wird programmieren",
+                    "xier": "wird programmieren",
+                    "wir": "werden programmieren",
+                    "ihr": "werdet programmieren",
+                    "sie_plural": "werden programmieren",
+                    "Sie": "werden programmieren"
+                },
+                "imperative": {
+                    "du": "programmiere",
+                    "ihr": "programmiert",
+                    "Sie": "programmieren Sie"
+                }
+            },
+            "einstudieren": {
+                "Perfekt": {
+                    "ich": "habe einstudiert",
+                    "du": "hast einstudiert",
+                    "er": "hat einstudiert",
+                    "es": "hat einstudiert",
+                    "sie_singular": "hat einstudiert",
+                    "xier": "hat einstudiert",
+                    "wir": "haben einstudiert",
+                    "ihr": "habt einstudiert",
+                    "sie_plural": "haben einstudiert",
+                    "Sie": "haben einstudiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte einstudiert",
+                    "du": "hattest einstudiert",
+                    "er": "hatte einstudiert",
+                    "es": "hatte einstudiert",
+                    "sie_singular": "hatte einstudiert",
+                    "xier": "hatte einstudiert",
+                    "wir": "hatten einstudiert",
+                    "ihr": "hattet einstudiert",
+                    "sie_plural": "hatten einstudiert",
+                    "Sie": "hatten einstudiert"
+                },
+                "Futur_I": {
+                    "ich": "werde einstudieren",
+                    "du": "wirst einstudieren",
+                    "er": "wird einstudieren",
+                    "es": "wird einstudieren",
+                    "sie_singular": "wird einstudieren",
+                    "xier": "wird einstudieren",
+                    "wir": "werden einstudieren",
+                    "ihr": "werdet einstudieren",
+                    "sie_plural": "werden einstudieren",
+                    "Sie": "werden einstudieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Suchen Sie sich eine berühmte Person aus Einheit 27 aus.",
+            "Sie können auch mit Ihrer Lehrkraft sprechen, wenn Sie zu einer anderen berühmten Person arbeiten möchten.",
+            "Recherchieren Sie so viele Informationen wie möglich über die Person und ihr Leben.",
+            "Welche Themen werden in der Biografie vorkommen?",
+            "Geht es um die persönliche, professionelle oder soziale Identität der Person?",
+            "Wie viele Abschnitte wird Ihre Biografie haben?",
+            "Entscheiden Sie sich für ein Medium:",
+            "Wollen Sie eine grafische Biografie gestalten?",
+            "Wollen Sie nur Text schreiben?",
+            "Wollen Sie ein Video mit Narration machen, vielleicht mit Comicfiguren?",
+            "Oder wollen Sie ein e ine Person Theaterstück schreiben und einstudieren?",
+            "Sie können auch eine choose your own adventure Geschichte aus der Biografie machen, dafür gibt es einfache Programme online.",
+            "Fragen Sie Ihre Lehrkraft nach Programmen, die Ihnen helfen können, Ihre Idee zu verwirklichen.",
+            "Erstellen Sie jetzt ein Storyboard, falls Sie einen Comic schreiben oder ein Video machen möchten.",
+            "Teilen Sie Ihre Biografie mit Ihrer Lehrkraft und/oder präsentieren Sie sie im Kurs."
+        ],
+        "templated": []
+    }
+}

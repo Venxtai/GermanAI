@@ -1,0 +1,858 @@
+{
+    "unit": "B16",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 16,
+        "prerequisite": "core 1-104, B1-B15"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate weak verbs in Präteritum: add -t to the stem + endings -e, -est, -e, -en, -et, -en; for stems ending in -d or -t, add -et."
+        ],
+        "forbidden": [
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Reisefreiheit und Flucht sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "geteiltes Berlin"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "schaffen", "pos": "VERB", "translation": "to accomplish; manage", "frequency": 285, "cefr": "A2" },
+            { "word": "schaffen", "pos": "VERB", "translation": "to create", "frequency": 285, "cefr": "A2" },
+            { "word": "beobachten", "pos": "VERB", "translation": "to observe; monitor", "frequency": 697, "cefr": "B1" },
+            { "word": "warnen", "pos": "VERB", "translation": "to warn (of)", "frequency": 1337, "cefr": "B1" },
+            { "word": "verhindern", "pos": "VERB", "translation": "to prevent", "frequency": 939, "cefr": "B1" },
+            { "word": "flüchten", "pos": "VERB", "translation": "to escape; flee" },
+            { "word": "scheitern", "pos": "VERB", "translation": "to fail", "frequency": 1066 },
+            { "word": "zerstören", "pos": "VERB", "translation": "to destroy, demolish" },
+            { "word": "landen", "pos": "VERB", "translation": "to land", "frequency": 1316, "cefr": "B1" },
+            { "word": "sich umdrehen", "pos": "VERB", "translation": "to turn, turn around", "frequency": 1750, "cefr": "B1" },
+            { "word": "trainieren", "pos": "VERB", "translation": "to train; practice; exercise; work out", "frequency": 2255, "cefr": "A2" },
+            { "word": "klettern", "pos": "VERB", "translation": "to climb", "frequency": 2601, "cefr": "B1" },
+            { "word": "der Pass", "pos": "NOUN", "translation": "passport", "frequency": 6455, "cefr": "A1" },
+            { "word": "das Volk", "pos": "NOUN", "translation": "people; nation; tribe", "frequency": 1032, "cefr": "A1" },
+            { "word": "der*die Bürger*in", "pos": "NOUN", "translation": "citizen" },
+            { "word": "der*die Flüchtende", "pos": "NOUN", "translation": "fugitive, fleeing person" },
+            { "word": "der*die Helfer*in", "pos": "NOUN", "translation": "helper", "frequency": 3426 },
+            { "word": "der*die Lokführer*in", "pos": "NOUN", "translation": "train driver" },
+            { "word": "die Stasi (Staatssicherheitsdienst)", "pos": "NOUN", "translation": "Stasi (State Security of the GDR)", "frequency": 4375 },
+            { "word": "der Grenzübergang", "pos": "NOUN", "translation": "border checkpoint", "frequency": 1, "cefr": "A1" },
+            { "word": "der Todesstreifen", "pos": "NOUN", "translation": "death strip", "frequency": 1, "cefr": "A1" },
+            { "word": "der Zaun", "pos": "NOUN", "translation": "fence", "frequency": 3279, "cefr": "A1" },
+            { "word": "die Sperre", "pos": "NOUN", "translation": "barrier; blockage", "frequency": 7132, "cefr": "A1" },
+            { "word": "der Panzer", "pos": "NOUN", "translation": "tank", "frequency": 7927, "cefr": "A1" },
+            { "word": "das Gefängnis", "pos": "NOUN", "translation": "prison" },
+            { "word": "der Pfeil", "pos": "NOUN", "translation": "arrow; dart", "frequency": 4266, "cefr": "B2" },
+            { "word": "das Seil", "pos": "NOUN", "translation": "rope; cord", "frequency": 4925, "cefr": "A1" },
+            { "word": "der Bericht", "pos": "NOUN", "translation": "report", "frequency": 1201, "cefr": "B1" },
+            { "word": "die Strecke", "pos": "NOUN", "translation": "route, distance; track [as in: race track]", "frequency": 1456, "cefr": "B1" },
+            { "word": "die Kuh", "pos": "NOUN", "translation": "cow", "frequency": 2935, "cefr": "B1" },
+            { "word": "die Rolle", "pos": "NOUN", "translation": "role", "frequency": 385, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der August", "pos": "NOUN", "frequency": 1929, "cefr": "A1" },
+            { "word": "signalisieren", "pos": "VERB", "frequency": 4534 },
+            { "word": "das Rohr", "pos": "NOUN", "frequency": 8328, "cefr": "B1" },
+            { "word": "positionieren", "pos": "VERB", "frequency": 9987 },
+            { "word": "visualisieren", "pos": "VERB" },
+            { "word": "der*die Journalist*in", "pos": "NOUN", "frequency": 1480, "cefr": "A2" },
+            { "word": "trojanisch", "pos": "ADJ" },
+            { "word": "zwölfter", "pos": "ADJ" },
+            { "word": "der Reichstag", "pos": "NOUN", "frequency": 8477 },
+            { "word": "der Lagerarbeiter", "pos": "NOUN" },
+            { "word": "einsetzen", "pos": "VERB", "frequency": 461, "cefr": "B1" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schaffen": {
+                "present": {
+                    "ich": "schaffe",
+                    "du": "schaffst",
+                    "er": "schafft",
+                    "es": "schafft",
+                    "sie_singular": "schafft",
+                    "xier": "schafft",
+                    "wir": "schaffen",
+                    "ihr": "schafft",
+                    "sie_plural": "schaffen",
+                    "Sie": "schaffen"
+                },
+                "Präteritum": {
+                    "ich": "schuf",
+                    "du": "schufst",
+                    "er": "schuf",
+                    "es": "schuf",
+                    "sie_singular": "schuf",
+                    "xier": "schuf",
+                    "wir": "schufen",
+                    "ihr": "schuft",
+                    "sie_plural": "schufen",
+                    "Sie": "schufen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschaffen",
+                    "du": "hast geschaffen",
+                    "er": "hat geschaffen",
+                    "es": "hat geschaffen",
+                    "sie_singular": "hat geschaffen",
+                    "xier": "hat geschaffen",
+                    "wir": "haben geschaffen",
+                    "ihr": "habt geschaffen",
+                    "sie_plural": "haben geschaffen",
+                    "Sie": "haben geschaffen"
+                },
+                "Futur_I": {
+                    "ich": "werde schaffen",
+                    "du": "wirst schaffen",
+                    "er": "wird schaffen",
+                    "es": "wird schaffen",
+                    "sie_singular": "wird schaffen",
+                    "xier": "wird schaffen",
+                    "wir": "werden schaffen",
+                    "ihr": "werdet schaffen",
+                    "sie_plural": "werden schaffen",
+                    "Sie": "werden schaffen"
+                },
+                "imperative": {
+                    "du": "schaffe",
+                    "ihr": "schafft",
+                    "Sie": "schaffen Sie"
+                }
+            },
+            "beobachten": {
+                "present": {
+                    "ich": "beobachte",
+                    "du": "beobachtest",
+                    "er": "beobachtet",
+                    "es": "beobachtet",
+                    "sie_singular": "beobachtet",
+                    "xier": "beobachtet",
+                    "wir": "beobachten",
+                    "ihr": "beobachtet",
+                    "sie_plural": "beobachten",
+                    "Sie": "beobachten"
+                },
+                "Präteritum": {
+                    "ich": "beobachtete",
+                    "du": "beobachtetest",
+                    "er": "beobachtete",
+                    "es": "beobachtete",
+                    "sie_singular": "beobachtete",
+                    "xier": "beobachtete",
+                    "wir": "beobachteten",
+                    "ihr": "beobachtetet",
+                    "sie_plural": "beobachteten",
+                    "Sie": "beobachteten"
+                },
+                "Perfekt": {
+                    "ich": "habe beobachtet",
+                    "du": "hast beobachtet",
+                    "er": "hat beobachtet",
+                    "es": "hat beobachtet",
+                    "sie_singular": "hat beobachtet",
+                    "xier": "hat beobachtet",
+                    "wir": "haben beobachtet",
+                    "ihr": "habt beobachtet",
+                    "sie_plural": "haben beobachtet",
+                    "Sie": "haben beobachtet"
+                },
+                "Futur_I": {
+                    "ich": "werde beobachten",
+                    "du": "wirst beobachten",
+                    "er": "wird beobachten",
+                    "es": "wird beobachten",
+                    "sie_singular": "wird beobachten",
+                    "xier": "wird beobachten",
+                    "wir": "werden beobachten",
+                    "ihr": "werdet beobachten",
+                    "sie_plural": "werden beobachten",
+                    "Sie": "werden beobachten"
+                },
+                "imperative": {
+                    "du": "beobachte",
+                    "ihr": "beobachtet",
+                    "Sie": "beobachten Sie"
+                }
+            },
+            "warnen": {
+                "present": {
+                    "ich": "warne",
+                    "du": "warnst",
+                    "er": "warnt",
+                    "es": "warnt",
+                    "sie_singular": "warnt",
+                    "xier": "warnt",
+                    "wir": "warnen",
+                    "ihr": "warnt",
+                    "sie_plural": "warnen",
+                    "Sie": "warnen"
+                },
+                "Präteritum": {
+                    "ich": "warnte",
+                    "du": "warntest",
+                    "er": "warnte",
+                    "es": "warnte",
+                    "sie_singular": "warnte",
+                    "xier": "warnte",
+                    "wir": "warnten",
+                    "ihr": "warntet",
+                    "sie_plural": "warnten",
+                    "Sie": "warnten"
+                },
+                "Perfekt": {
+                    "ich": "habe gewarnt",
+                    "du": "hast gewarnt",
+                    "er": "hat gewarnt",
+                    "es": "hat gewarnt",
+                    "sie_singular": "hat gewarnt",
+                    "xier": "hat gewarnt",
+                    "wir": "haben gewarnt",
+                    "ihr": "habt gewarnt",
+                    "sie_plural": "haben gewarnt",
+                    "Sie": "haben gewarnt"
+                },
+                "Futur_I": {
+                    "ich": "werde warnen",
+                    "du": "wirst warnen",
+                    "er": "wird warnen",
+                    "es": "wird warnen",
+                    "sie_singular": "wird warnen",
+                    "xier": "wird warnen",
+                    "wir": "werden warnen",
+                    "ihr": "werdet warnen",
+                    "sie_plural": "werden warnen",
+                    "Sie": "werden warnen"
+                },
+                "imperative": {
+                    "du": "warne",
+                    "ihr": "warnt",
+                    "Sie": "warnen Sie"
+                }
+            },
+            "verhindern": {
+                "present": {
+                    "ich": "verhindere",
+                    "du": "verhinderst",
+                    "er": "verhindert",
+                    "es": "verhindert",
+                    "sie_singular": "verhindert",
+                    "xier": "verhindert",
+                    "wir": "verhindern",
+                    "ihr": "verhindert",
+                    "sie_plural": "verhindern",
+                    "Sie": "verhindern"
+                },
+                "Präteritum": {
+                    "ich": "verhinderte",
+                    "du": "verhindertest",
+                    "er": "verhinderte",
+                    "es": "verhinderte",
+                    "sie_singular": "verhinderte",
+                    "xier": "verhinderte",
+                    "wir": "verhinderten",
+                    "ihr": "verhindertet",
+                    "sie_plural": "verhinderten",
+                    "Sie": "verhinderten"
+                },
+                "Perfekt": {
+                    "ich": "habe verhindert",
+                    "du": "hast verhindert",
+                    "er": "hat verhindert",
+                    "es": "hat verhindert",
+                    "sie_singular": "hat verhindert",
+                    "xier": "hat verhindert",
+                    "wir": "haben verhindert",
+                    "ihr": "habt verhindert",
+                    "sie_plural": "haben verhindert",
+                    "Sie": "haben verhindert"
+                },
+                "Futur_I": {
+                    "ich": "werde verhindern",
+                    "du": "wirst verhindern",
+                    "er": "wird verhindern",
+                    "es": "wird verhindern",
+                    "sie_singular": "wird verhindern",
+                    "xier": "wird verhindern",
+                    "wir": "werden verhindern",
+                    "ihr": "werdet verhindern",
+                    "sie_plural": "werden verhindern",
+                    "Sie": "werden verhindern"
+                },
+                "imperative": {
+                    "du": "verhindere",
+                    "ihr": "verhindert",
+                    "Sie": "verhindern Sie"
+                }
+            },
+            "flüchten": {
+                "present": {
+                    "ich": "flüchte",
+                    "du": "flüchtest",
+                    "er": "flüchtet",
+                    "es": "flüchtet",
+                    "sie_singular": "flüchtet",
+                    "xier": "flüchtet",
+                    "wir": "flüchten",
+                    "ihr": "flüchtet",
+                    "sie_plural": "flüchten",
+                    "Sie": "flüchten"
+                },
+                "Präteritum": {
+                    "ich": "flüchtete",
+                    "du": "flüchtetest",
+                    "er": "flüchtete",
+                    "es": "flüchtete",
+                    "sie_singular": "flüchtete",
+                    "xier": "flüchtete",
+                    "wir": "flüchteten",
+                    "ihr": "flüchtetet",
+                    "sie_plural": "flüchteten",
+                    "Sie": "flüchteten"
+                },
+                "Perfekt": {
+                    "ich": "bin geflüchtet",
+                    "du": "bist geflüchtet",
+                    "er": "ist geflüchtet",
+                    "es": "ist geflüchtet",
+                    "sie_singular": "ist geflüchtet",
+                    "xier": "ist geflüchtet",
+                    "wir": "sind geflüchtet",
+                    "ihr": "seid geflüchtet",
+                    "sie_plural": "sind geflüchtet",
+                    "Sie": "sind geflüchtet"
+                },
+                "Futur_I": {
+                    "ich": "werde flüchten",
+                    "du": "wirst flüchten",
+                    "er": "wird flüchten",
+                    "es": "wird flüchten",
+                    "sie_singular": "wird flüchten",
+                    "xier": "wird flüchten",
+                    "wir": "werden flüchten",
+                    "ihr": "werdet flüchten",
+                    "sie_plural": "werden flüchten",
+                    "Sie": "werden flüchten"
+                },
+                "imperative": {
+                    "du": "flüchte",
+                    "ihr": "flüchtet",
+                    "Sie": "flüchten Sie"
+                }
+            },
+            "scheitern": {
+                "present": {
+                    "ich": "scheitere",
+                    "du": "scheiterst",
+                    "er": "scheitert",
+                    "es": "scheitert",
+                    "sie_singular": "scheitert",
+                    "xier": "scheitert",
+                    "wir": "scheitern",
+                    "ihr": "scheitert",
+                    "sie_plural": "scheitern",
+                    "Sie": "scheitern"
+                },
+                "Präteritum": {
+                    "ich": "scheiterte",
+                    "du": "scheitertest",
+                    "er": "scheiterte",
+                    "es": "scheiterte",
+                    "sie_singular": "scheiterte",
+                    "xier": "scheiterte",
+                    "wir": "scheiterten",
+                    "ihr": "scheitertet",
+                    "sie_plural": "scheiterten",
+                    "Sie": "scheiterten"
+                },
+                "Perfekt": {
+                    "ich": "bin gescheitert",
+                    "du": "bist gescheitert",
+                    "er": "ist gescheitert",
+                    "es": "ist gescheitert",
+                    "sie_singular": "ist gescheitert",
+                    "xier": "ist gescheitert",
+                    "wir": "sind gescheitert",
+                    "ihr": "seid gescheitert",
+                    "sie_plural": "sind gescheitert",
+                    "Sie": "sind gescheitert"
+                },
+                "Futur_I": {
+                    "ich": "werde scheitern",
+                    "du": "wirst scheitern",
+                    "er": "wird scheitern",
+                    "es": "wird scheitern",
+                    "sie_singular": "wird scheitern",
+                    "xier": "wird scheitern",
+                    "wir": "werden scheitern",
+                    "ihr": "werdet scheitern",
+                    "sie_plural": "werden scheitern",
+                    "Sie": "werden scheitern"
+                },
+                "imperative": {
+                    "du": "scheitere",
+                    "ihr": "scheitert",
+                    "Sie": "scheitern Sie"
+                }
+            },
+            "zerstören": {
+                "present": {
+                    "ich": "zerstöre",
+                    "du": "zerstörst",
+                    "er": "zerstört",
+                    "es": "zerstört",
+                    "sie_singular": "zerstört",
+                    "xier": "zerstört",
+                    "wir": "zerstören",
+                    "ihr": "zerstört",
+                    "sie_plural": "zerstören",
+                    "Sie": "zerstören"
+                },
+                "Präteritum": {
+                    "ich": "zerstörte",
+                    "du": "zerstörtest",
+                    "er": "zerstörte",
+                    "es": "zerstörte",
+                    "sie_singular": "zerstörte",
+                    "xier": "zerstörte",
+                    "wir": "zerstörten",
+                    "ihr": "zerstörtet",
+                    "sie_plural": "zerstörten",
+                    "Sie": "zerstörten"
+                },
+                "Perfekt": {
+                    "ich": "habe zerstört",
+                    "du": "hast zerstört",
+                    "er": "hat zerstört",
+                    "es": "hat zerstört",
+                    "sie_singular": "hat zerstört",
+                    "xier": "hat zerstört",
+                    "wir": "haben zerstört",
+                    "ihr": "habt zerstört",
+                    "sie_plural": "haben zerstört",
+                    "Sie": "haben zerstört"
+                },
+                "Futur_I": {
+                    "ich": "werde zerstören",
+                    "du": "wirst zerstören",
+                    "er": "wird zerstören",
+                    "es": "wird zerstören",
+                    "sie_singular": "wird zerstören",
+                    "xier": "wird zerstören",
+                    "wir": "werden zerstören",
+                    "ihr": "werdet zerstören",
+                    "sie_plural": "werden zerstören",
+                    "Sie": "werden zerstören"
+                },
+                "imperative": {
+                    "du": "zerstöre",
+                    "ihr": "zerstört",
+                    "Sie": "zerstören Sie"
+                }
+            },
+            "landen": {
+                "present": {
+                    "ich": "lande",
+                    "du": "landest",
+                    "er": "landet",
+                    "es": "landet",
+                    "sie_singular": "landet",
+                    "xier": "landet",
+                    "wir": "landen",
+                    "ihr": "landet",
+                    "sie_plural": "landen",
+                    "Sie": "landen"
+                },
+                "Präteritum": {
+                    "ich": "landete",
+                    "du": "landetest",
+                    "er": "landete",
+                    "es": "landete",
+                    "sie_singular": "landete",
+                    "xier": "landete",
+                    "wir": "landeten",
+                    "ihr": "landetet",
+                    "sie_plural": "landeten",
+                    "Sie": "landeten"
+                },
+                "Perfekt": {
+                    "ich": "bin gelandet",
+                    "du": "bist gelandet",
+                    "er": "ist gelandet",
+                    "es": "ist gelandet",
+                    "sie_singular": "ist gelandet",
+                    "xier": "ist gelandet",
+                    "wir": "sind gelandet",
+                    "ihr": "seid gelandet",
+                    "sie_plural": "sind gelandet",
+                    "Sie": "sind gelandet"
+                },
+                "Futur_I": {
+                    "ich": "werde landen",
+                    "du": "wirst landen",
+                    "er": "wird landen",
+                    "es": "wird landen",
+                    "sie_singular": "wird landen",
+                    "xier": "wird landen",
+                    "wir": "werden landen",
+                    "ihr": "werdet landen",
+                    "sie_plural": "werden landen",
+                    "Sie": "werden landen"
+                },
+                "imperative": {
+                    "du": "lande",
+                    "ihr": "landet",
+                    "Sie": "landen Sie"
+                }
+            },
+            "umdrehen": {
+                "present": {
+                    "ich": "drehe mich um",
+                    "du": "drehst dich um",
+                    "er": "dreht sich um",
+                    "es": "dreht sich um",
+                    "sie_singular": "dreht sich um",
+                    "xier": "dreht sich um",
+                    "wir": "drehen uns um",
+                    "ihr": "dreht euch um",
+                    "sie_plural": "drehen sich um",
+                    "Sie": "drehen sich um"
+                },
+                "Präteritum": {
+                    "ich": "drehte mich um",
+                    "du": "drehtest dich um",
+                    "er": "drehte sich um",
+                    "es": "drehte sich um",
+                    "sie_singular": "drehte sich um",
+                    "xier": "drehte sich um",
+                    "wir": "drehten uns um",
+                    "ihr": "drehtet euch um",
+                    "sie_plural": "drehten sich um",
+                    "Sie": "drehten sich um"
+                },
+                "Perfekt": {
+                    "ich": "habe mich umgedreht",
+                    "du": "hast dich umgedreht",
+                    "er": "hat sich umgedreht",
+                    "es": "hat sich umgedreht",
+                    "sie_singular": "hat sich umgedreht",
+                    "xier": "hat sich umgedreht",
+                    "wir": "haben uns umgedreht",
+                    "ihr": "habt euch umgedreht",
+                    "sie_plural": "haben sich umgedreht",
+                    "Sie": "haben sich umgedreht"
+                },
+                "Futur_I": {
+                    "ich": "werde mich umdrehen",
+                    "du": "wirst dich umdrehen",
+                    "er": "wird sich umdrehen",
+                    "es": "wird sich umdrehen",
+                    "sie_singular": "wird sich umdrehen",
+                    "xier": "wird sich umdrehen",
+                    "wir": "werden uns umdrehen",
+                    "ihr": "werdet euch umdrehen",
+                    "sie_plural": "werden sich umdrehen",
+                    "Sie": "werden sich umdrehen"
+                },
+                "imperative": {
+                    "du": "dreh dich um",
+                    "ihr": "dreht euch um",
+                    "Sie": "drehen Sie sich um"
+                }
+            },
+            "trainieren": {
+                "present": {
+                    "ich": "trainiere",
+                    "du": "trainierst",
+                    "er": "trainiert",
+                    "es": "trainiert",
+                    "sie_singular": "trainiert",
+                    "xier": "trainiert",
+                    "wir": "trainieren",
+                    "ihr": "trainiert",
+                    "sie_plural": "trainieren",
+                    "Sie": "trainieren"
+                },
+                "Präteritum": {
+                    "ich": "trainierte",
+                    "du": "trainiertest",
+                    "er": "trainierte",
+                    "es": "trainierte",
+                    "sie_singular": "trainierte",
+                    "xier": "trainierte",
+                    "wir": "trainierten",
+                    "ihr": "trainiertet",
+                    "sie_plural": "trainierten",
+                    "Sie": "trainierten"
+                },
+                "Perfekt": {
+                    "ich": "habe trainiert",
+                    "du": "hast trainiert",
+                    "er": "hat trainiert",
+                    "es": "hat trainiert",
+                    "sie_singular": "hat trainiert",
+                    "xier": "hat trainiert",
+                    "wir": "haben trainiert",
+                    "ihr": "habt trainiert",
+                    "sie_plural": "haben trainiert",
+                    "Sie": "haben trainiert"
+                },
+                "Futur_I": {
+                    "ich": "werde trainieren",
+                    "du": "wirst trainieren",
+                    "er": "wird trainieren",
+                    "es": "wird trainieren",
+                    "sie_singular": "wird trainieren",
+                    "xier": "wird trainieren",
+                    "wir": "werden trainieren",
+                    "ihr": "werdet trainieren",
+                    "sie_plural": "werden trainieren",
+                    "Sie": "werden trainieren"
+                },
+                "imperative": {
+                    "du": "trainier",
+                    "ihr": "trainiert",
+                    "Sie": "trainieren Sie"
+                }
+            },
+            "klettern": {
+                "present": {
+                    "ich": "klettere",
+                    "du": "kletterst",
+                    "er": "klettert",
+                    "es": "klettert",
+                    "sie_singular": "klettert",
+                    "xier": "klettert",
+                    "wir": "klettern",
+                    "ihr": "klettert",
+                    "sie_plural": "klettern",
+                    "Sie": "klettern"
+                },
+                "Präteritum": {
+                    "ich": "kletterte",
+                    "du": "klettertest",
+                    "er": "kletterte",
+                    "es": "kletterte",
+                    "sie_singular": "kletterte",
+                    "xier": "kletterte",
+                    "wir": "kletterten",
+                    "ihr": "klettertet",
+                    "sie_plural": "kletterten",
+                    "Sie": "kletterten"
+                },
+                "Perfekt": {
+                    "ich": "bin geklettert",
+                    "du": "bist geklettert",
+                    "er": "ist geklettert",
+                    "es": "ist geklettert",
+                    "sie_singular": "ist geklettert",
+                    "xier": "ist geklettert",
+                    "wir": "sind geklettert",
+                    "ihr": "seid geklettert",
+                    "sie_plural": "sind geklettert",
+                    "Sie": "sind geklettert"
+                },
+                "Futur_I": {
+                    "ich": "werde klettern",
+                    "du": "wirst klettern",
+                    "er": "wird klettern",
+                    "es": "wird klettern",
+                    "sie_singular": "wird klettern",
+                    "xier": "wird klettern",
+                    "wir": "werden klettern",
+                    "ihr": "werdet klettern",
+                    "sie_plural": "werden klettern",
+                    "Sie": "werden klettern"
+                },
+                "imperative": {
+                    "du": "kletter",
+                    "ihr": "klettert",
+                    "Sie": "klettern Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie sehen hier ein Ranking von Pässen aus dem Jahr 2025.",
+            "Links sehen Sie einige Länder aus den Top Ten.",
+            "Rechts sehen Sie einige Länder der letzten zehn Plätze im Ranking.",
+            "Was sagt die Zahl rechts?",
+            "Die Zahl sagt, in wie viele Länder man mit dem Pass reisen kann.",
+            "Ab dem 13.",
+            "August 1961 baute die DDR Regierung eine Mauer um Westberlin.",
+            "Hören Sie den Text und ergänzen Sie die Verben im Präteritum.",
+            "Im Jahre 1960 flüchteten mehr als 200.000 Menschen aus der DDR in den Westen.",
+            "Die DDR Regierung wollte das Auswandern stoppen.",
+            "Deshalb baute sie die Mauer.",
+            "August zerstörten die Polizei und ihre Helfer*innen 73 von 85 Grenzübergängen.",
+            "Sie trennten Straßen und Bahnlinien und bauten alle Fenster von Häusern an der Grenze zu.",
+            "Das war der Beginn der 156,4 Kilometer langen Berlin er Mauer.",
+            "Die Berlin er Mauer und de r",
+            "Todesstreifen war en komplex.",
+            "Zäune, Lichter, Türme, Sperren und die Mauer selbst verhinderten die Flucht von DDR Bürger*innen bis 1989.",
+            "Schauen Sie sich rechts die Elemente der Berlin er Mauer an.",
+            "Tragen Sie die Nummern der Elemente ein, die zu den Sätzen passen.",
+            "Dieser Zaun signalisiert den Soldat*innen, dass eine Person dort ist.",
+            "Durch diese Tür können DDR Soldat*innen hinter die Mauer gehen.",
+            "Von diesem Turm beobachten die Soldat*innen alles.",
+            "An diesem Rasen verletzen sich die Flüchtenden an den Füßen.",
+            "Die Flüchtenden klettern über diese Mauer.",
+            "Lesen Sie die Sätze von Teil 2, aber im Präteritum.",
+            "Die andere Person sagt, welche Nummer es ist und wie das Element heißt.",
+            "Dieser Zaun signalisierte den Soldat*innen, dass eine Person dort ist.",
+            "Durch diese Tür konnten DDR Soldat*innen hinter die Mauer gehen.",
+            "Von diesem Turm beobachteten die Soldat*innen alles.",
+            "An diesem Rasen verletzten sich die Flüchtenden an den Füßen.",
+            "Die Flüchtenden kletterten über diese Mauer.",
+            "Ihr Kursraum wird zu Ihrer Stadt.",
+            "Ihre Lehrkraft sagt Ihnen, wo Osten, Westen, Süden und Norden sind oder wo zum Beispiel der Campus liegt.",
+            "Sie positionieren sich so, wie Sie wohnen.",
+            "Ihre Lehrkraft sagt dann, wo eine Grenze ist.",
+            "Wen können Sie jetzt nicht mehr besuchen?",
+            "Können Sie noch dort arbeiten, wo Sie jetzt arbeiten?",
+            "Wo ist Ihre Familie?",
+            "Wo sind Ihre Freund*innen, die nicht im Kurs sind?",
+            "Sie können sie z.",
+            "Zeichnen, aber auch über ihre Gefühle und Emotionen schreiben.",
+            "Im Kalten Krieg konnten Menschen aus dem Osten nicht einfach in den Westen reisen.",
+            "Lesen Sie eine Geschichte eines Menschen, der geflüchtet ist.",
+            "Die Menschen erzählen im Perfekt.",
+            "Sie sind Journalist*in.",
+            "Schreiben Sie als erstes die Geschichte im Präteritum auf die Activity Card.",
+            "Identifizieren Sie die Elemente Ihrer Geschichte und tragen Sie die Nummer Ihrer Geschichte für alle Fragen ein.",
+            "Keine Info ♀ Wann?",
+            "In einer trojanischen Kuh mit einer Kamera mit Pfeil und Seil mit einem Flugzeug mit einem Zug Lesen Sie die Berichte (die Activity Cards ) der anderen Gruppen und ergänzen Sie die Informationen.",
+            "Lesen Sie den Bericht und markieren Sie die Verben im Perfekt.",
+            "Ich habe in den 1960er Jahren als Fotograf bei der Berlin er Zeitung gearbeitet.",
+            "Meine Flucht habe ich für den 9.",
+            "Oktober 1961 geplant.",
+            "Das war der zwölfte Geburtstag der DDR.",
+            "Ich habe Sportler*innen an der Grenze an der Friedrichstraße fotografiert.",
+            "Ich habe zu ihnen gesagt, dass sie sich an die Mauer stellen sollen.",
+            "Beim Fotografieren habe ich mich zur Grenze bewegt.",
+            "Hat mich gewarnt, dass ich nicht über die Grenze gehen soll.",
+            "Die Grenze war also ganz nah!",
+            "Da habe ich mich umgedreht und habe ganz schnell ein paar Schritte gemacht.",
+            "So habe ich den Checkpoint Charlie im Westen erreicht!",
+            "Ich war 18 Jahre alt und wollte zu meinem Partner nach West- Berlin.",
+            "Mein Partner hat zwei Helfern 5. 000 D-Mark gezahlt.",
+            "Die Helfer sollten später in West- Berlin nochmal 5. 000 D-Mark bekommen.",
+            "Juli 1969 habe ich mich in einer trojanischen Kuh versteckt.",
+            "Die Kuh war aus dem Museum und ich bin in den Bauch geklettert.",
+            "Die Helfer haben die Kuh (und mich) nach Potsdam transportiert.",
+            "Aber am DDR Grenzübergang Drewitz haben mich Grenzsoldat*innen entdeckt.",
+            "Die Flucht in der Kuh ist gescheitert und ich habe es nicht nach Berlin - Wannsee im Westen geschafft.",
+            "Ich musste für zwei Jahre und zehn Monate ins Gefängnis.",
+            "Nach vier Monaten hat die Bundesrepublik mich frei gekauft und ich war im Westen.",
+            "Ich bin der jüngste von drei Brüder.",
+            "Wir sind alle aus der DDR geflüchtet.",
+            "Unsere kommunistischen Eltern haben für die DDR gearbeitet, bis mein ältester Bruder Ingo über den Fluss Elbe in den Westen geflüchtet ist.",
+            "Mit meinem Freund Michael Becker habe ich an einem tollen Plan gearbeitet, um in den Westen zu kommen.",
+            "Wir haben geplant, mit einem Seil über den Todesstreifen zu kommen.",
+            "Wir haben viel trainiert.",
+            "Mai 1983 war es so weit.",
+            "Wir haben einen Pfeil mit einem Seil benutzt.",
+            "Auf der anderen Seite war Ingo und wir haben mit Walkie Talkies kommuniziert.",
+            "Wir haben Rollen an das Seil gehängt und sind 20 Meter über dem Todesstreifen von Berlin - Treptow nach Berlin - Neukölln gerollt.",
+            "Der Grenzsoldat { Grenze Soldat hat nicht aufgepasst und deshalb haben wir es in den Westen geschafft.",
+            "Ich hatte zwei Brüder, die aus dem Osten in den Westen geflüchtet sind.",
+            "Die Stasi hat mich und meine Eltern deshalb beobachtet.",
+            "E s war sehr gefährlich, aber ich habe meine Flucht geplant.",
+            "Ich habe mit meinen Brüdern Ingo und Holger kommuniziert und sie konnten mir helfen.",
+            "Sie haben sich zwei kleine Flugzeuge gekauft und haben gelernt, wie man damit fliegt.",
+            "Mai 1989 war es so weit.",
+            "Sie sind im Volkspark Treptow gelandet und ich bin schnell in das Flugzeug geklettert.",
+            "Minuten später sind wir sicher vor dem Reichstag gelandet.",
+            "Wir haben unsere Flucht gefilmt und das Video an ein Magazin verkauft.",
+            "Ich hatte deshalb Geld für den Start im Westen.",
+            "Im Westen habe ich dann als Lagerarbeiter gearbeitet.",
+            "Ich habe als Lokführer gearbeitet.",
+            "Ich habe mit einem Kollegen meine Flucht geplant.",
+            "Auf der Strecke bei Albrechtshof war die Grenze nur einen Kilometer hinter dem letzten Bahnhof.",
+            "Wir haben gefragt, ob wir auf dieser Strecke eine Fahrt machen können.",
+            "Dezember 1961 sind meine Familie und Freund*innen in den Zug geklettert.",
+            "An der letzten Station Albrechtshof habe ich nicht gestoppt.",
+            "Die Menschen im Zug haben sich auf den Boden gelegt, bis der Zug im Westen auf der Strecke nach Spandau war.",
+            "25 Leute haben ab dann im Westen gewohnt.",
+            "7 Menschen, die im Zug waren, wollten wieder zurück in die DDR.",
+            "Das haben sie zu Fuß geschafft.",
+            "Setzen Sie jetzt die Verben im Präteritum in Ihren Bericht ein."
+        ],
+        "templated": []
+    }
+}

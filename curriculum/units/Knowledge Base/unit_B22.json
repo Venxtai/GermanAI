@@ -1,0 +1,536 @@
+{
+    "unit": "B22",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 22,
+        "prerequisite": "core 1-104, B1-B21"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the Plusquamperfekt with hatte/war (Präteritum of haben/sein) + past participle to express events that happened before the main narrative.",
+            "Use nachdem as a subordinating conjunction (verb to end); the nachdem-clause uses a tense one step earlier than the main clause."
+        ],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Emotionen beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die Wende"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erfolgen", "pos": "VERB", "translation": "to occur; take place; happen", "frequency": 648 },
+            { "word": "erlauben", "pos": "VERB", "translation": "to allow", "frequency": 963, "cefr": "A1" },
+            { "word": "vereinigen", "pos": "VERB", "translation": "to unite; rejoin", "frequency": 1989 },
+            { "word": "verbinden", "pos": "VERB", "translation": "to connect; link", "frequency": 452, "cefr": "B1" },
+            { "word": "erwähnen", "pos": "VERB", "translation": "to mention" },
+            { "word": "die Freude", "pos": "NOUN", "translation": "joy, delight", "frequency": 1286, "cefr": "B1" },
+            { "word": "das Leid", "pos": "NOUN", "translation": "harm; suffering; sorrow", "frequency": 1300, "cefr": "A1" },
+            { "word": "die Trennung", "pos": "NOUN", "translation": "separation; division", "frequency": 2171, "cefr": "B1" },
+            { "word": "die Ausreise", "pos": "NOUN", "translation": "departure", "frequency": 16757, "cefr": "B2" },
+            { "word": "die Vielfalt", "pos": "NOUN", "translation": "diversity; variety", "frequency": 2326, "cefr": "A1" },
+            { "word": "der Mauerfall", "pos": "NOUN", "translation": "fall of the Berlin Wall", "frequency": 15911, "cefr": "B2" },
+            { "word": "die Wiedervereinigung", "pos": "NOUN", "translation": "reunification", "frequency": 4416, "cefr": "A1" },
+            { "word": "die Wende [hist.: Wiedervereinigung Deutschlands]", "pos": "NOUN", "translation": "turning point [hist.: German reunification]" },
+            { "word": "das Tor", "pos": "NOUN", "translation": "gate; goal (sport)", "frequency": 956, "cefr": "B1" },
+            { "word": "zufrieden", "pos": "ADJ", "translation": "content, happy (with)", "frequency": 1518, "cefr": "A1" },
+            { "word": "gespannt", "pos": "ADJ", "translation": "curious; excited", "frequency": 3395, "cefr": "B1" },
+            { "word": "höflich", "pos": "ADJ", "translation": "polite" },
+            { "word": "aufgeregt", "pos": "ADJ", "translation": "excited; nervous; agitated", "frequency": 15378 },
+            { "word": "eher", "pos": "ADV", "translation": "rather; earlier", "frequency": 322, "cefr": "B1" },
+            { "word": "nachdem", "pos": "PREP", "translation": "after", "frequency": 528, "cefr": "B1" },
+            { "word": "danach", "pos": "ADV", "translation": "after that, afterwards", "frequency": 457, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Protokoll", "pos": "NOUN", "frequency": 3623 },
+            { "word": "die Presse", "pos": "NOUN", "frequency": 2800, "cefr": "B1" },
+            { "word": "die Konferenz", "pos": "NOUN", "frequency": 3918, "cefr": "B1" },
+            { "word": "permanent", "pos": "ADJ", "frequency": 2992 },
+            { "word": "gelassen", "pos": "VERB", "frequency": 83, "cefr": "A2" },
+            { "word": "der Plusquamperfekt", "pos": "NOUN" },
+            { "word": "die Videosequenz", "pos": "NOUN" },
+            { "word": "darauf", "pos": "ADV", "frequency": 195, "cefr": "A2" },
+            { "word": "ängstlich", "pos": "ADV", "frequency": 13954, "cefr": "B1" },
+            { "word": "ärgerlich", "pos": "ADV", "frequency": 10088, "cefr": "B1" },
+            { "word": "aufregen", "pos": "ADV", "frequency": 15378, "cefr": "B1" },
+            { "word": "die Video-Ecke", "pos": "NOUN" },
+            { "word": "der Zusammenhalt", "pos": "NOUN", "frequency": 10700 },
+            { "word": "das Zuhause", "pos": "NOUN", "frequency": 2856, "cefr": "B1" },
+            { "word": "die Aufregung", "pos": "NOUN", "frequency": 3529 },
+            { "word": "die Nervosität", "pos": "NOUN", "frequency": 11513 },
+            { "word": "die positive", "pos": "NOUN", "frequency": 10301 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erfolgen": {
+                "present": {
+                    "ich": "â€”",
+                    "du": "â€”",
+                    "er": "erfolgt",
+                    "es": "erfolgt",
+                    "sie_singular": "erfolgt",
+                    "xier": "erfolgt",
+                    "wir": "erfolgen",
+                    "ihr": "erfolgt",
+                    "sie_plural": "erfolgen",
+                    "Sie": "erfolgen"
+                },
+                "Präteritum": {
+                    "ich": "erfolgte",
+                    "du": "erfolgtest",
+                    "er": "erfolgte",
+                    "es": "erfolgte",
+                    "sie_singular": "erfolgte",
+                    "xier": "erfolgte",
+                    "wir": "erfolgten",
+                    "ihr": "erfolgtet",
+                    "sie_plural": "erfolgten",
+                    "Sie": "erfolgten"
+                },
+                "Perfekt": {
+                    "ich": "bin erfolgt",
+                    "du": "bist erfolgt",
+                    "er": "ist erfolgt",
+                    "es": "ist erfolgt",
+                    "sie_singular": "ist erfolgt",
+                    "xier": "ist erfolgt",
+                    "wir": "sind erfolgt",
+                    "ihr": "seid erfolgt",
+                    "sie_plural": "sind erfolgt",
+                    "Sie": "sind erfolgt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war erfolgt",
+                    "du": "warst erfolgt",
+                    "er": "war erfolgt",
+                    "es": "war erfolgt",
+                    "sie_singular": "war erfolgt",
+                    "xier": "war erfolgt",
+                    "wir": "waren erfolgt",
+                    "ihr": "wart erfolgt",
+                    "sie_plural": "waren erfolgt",
+                    "Sie": "waren erfolgt"
+                },
+                "Futur_I": {
+                    "ich": "werde erfolgen",
+                    "du": "wirst erfolgen",
+                    "er": "wird erfolgen",
+                    "es": "wird erfolgen",
+                    "sie_singular": "wird erfolgen",
+                    "xier": "wird erfolgen",
+                    "wir": "werden erfolgen",
+                    "ihr": "werdet erfolgen",
+                    "sie_plural": "werden erfolgen",
+                    "Sie": "werden erfolgen"
+                },
+                "imperative": {
+                    "du": "â€”",
+                    "ihr": "â€”",
+                    "Sie": "erfolgen Sie"
+                }
+            },
+            "erlauben": {
+                "present": {
+                    "ich": "erlaube",
+                    "du": "erlaubst",
+                    "er": "erlaubt",
+                    "es": "erlaubt",
+                    "sie_singular": "erlaubt",
+                    "xier": "erlaubt",
+                    "wir": "erlauben",
+                    "ihr": "erlaubt",
+                    "sie_plural": "erlauben",
+                    "Sie": "erlauben"
+                },
+                "Präteritum": {
+                    "ich": "erlaubte",
+                    "du": "erlaubtest",
+                    "er": "erlaubte",
+                    "es": "erlaubte",
+                    "sie_singular": "erlaubte",
+                    "xier": "erlaubte",
+                    "wir": "erlaubten",
+                    "ihr": "erlaubtet",
+                    "sie_plural": "erlaubten",
+                    "Sie": "erlaubten"
+                },
+                "Perfekt": {
+                    "ich": "habe erlaubt",
+                    "du": "hast erlaubt",
+                    "er": "hat erlaubt",
+                    "es": "hat erlaubt",
+                    "sie_singular": "hat erlaubt",
+                    "xier": "hat erlaubt",
+                    "wir": "haben erlaubt",
+                    "ihr": "habt erlaubt",
+                    "sie_plural": "haben erlaubt",
+                    "Sie": "haben erlaubt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erlaubt",
+                    "du": "hattest erlaubt",
+                    "er": "hatte erlaubt",
+                    "es": "hatte erlaubt",
+                    "sie_singular": "hatte erlaubt",
+                    "xier": "hatte erlaubt",
+                    "wir": "hatten erlaubt",
+                    "ihr": "hattet erlaubt",
+                    "sie_plural": "hatten erlaubt",
+                    "Sie": "hatten erlaubt"
+                },
+                "Futur_I": {
+                    "ich": "werde erlauben",
+                    "du": "wirst erlauben",
+                    "er": "wird erlauben",
+                    "es": "wird erlauben",
+                    "sie_singular": "wird erlauben",
+                    "xier": "wird erlauben",
+                    "wir": "werden erlauben",
+                    "ihr": "werdet erlauben",
+                    "sie_plural": "werden erlauben",
+                    "Sie": "werden erlauben"
+                },
+                "imperative": {
+                    "du": "erlaube",
+                    "ihr": "erlaubt",
+                    "Sie": "erlauben Sie"
+                }
+            },
+            "vereinigen": {
+                "present": {
+                    "ich": "vereinige",
+                    "du": "vereinigst",
+                    "er": "vereinigt",
+                    "es": "vereinigt",
+                    "sie_singular": "vereinigt",
+                    "xier": "vereinigt",
+                    "wir": "vereinigen",
+                    "ihr": "vereinigt",
+                    "sie_plural": "vereinigen",
+                    "Sie": "vereinigen"
+                },
+                "Präteritum": {
+                    "ich": "vereinigte",
+                    "du": "vereinigtest",
+                    "er": "vereinigte",
+                    "es": "vereinigte",
+                    "sie_singular": "vereinigte",
+                    "xier": "vereinigte",
+                    "wir": "vereinigten",
+                    "ihr": "vereinigtet",
+                    "sie_plural": "vereinigten",
+                    "Sie": "vereinigten"
+                },
+                "Perfekt": {
+                    "ich": "habe vereinigt",
+                    "du": "hast vereinigt",
+                    "er": "hat vereinigt",
+                    "es": "hat vereinigt",
+                    "sie_singular": "hat vereinigt",
+                    "xier": "hat vereinigt",
+                    "wir": "haben vereinigt",
+                    "ihr": "habt vereinigt",
+                    "sie_plural": "haben vereinigt",
+                    "Sie": "haben vereinigt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vereinigt",
+                    "du": "hattest vereinigt",
+                    "er": "hatte vereinigt",
+                    "es": "hatte vereinigt",
+                    "sie_singular": "hatte vereinigt",
+                    "xier": "hatte vereinigt",
+                    "wir": "hatten vereinigt",
+                    "ihr": "hattet vereinigt",
+                    "sie_plural": "hatten vereinigt",
+                    "Sie": "hatten vereinigt"
+                },
+                "Futur_I": {
+                    "ich": "werde vereinigen",
+                    "du": "wirst vereinigen",
+                    "er": "wird vereinigen",
+                    "es": "wird vereinigen",
+                    "sie_singular": "wird vereinigen",
+                    "xier": "wird vereinigen",
+                    "wir": "werden vereinigen",
+                    "ihr": "werdet vereinigen",
+                    "sie_plural": "werden vereinigen",
+                    "Sie": "werden vereinigen"
+                },
+                "imperative": {
+                    "du": "vereinige",
+                    "ihr": "vereinigt",
+                    "Sie": "vereinigen Sie"
+                }
+            },
+            "verbinden": {
+                "present": {
+                    "ich": "verbinde",
+                    "du": "verbindest",
+                    "er": "verbindet",
+                    "es": "verbindet",
+                    "sie_singular": "verbindet",
+                    "xier": "verbindet",
+                    "wir": "verbinden",
+                    "ihr": "verbindet",
+                    "sie_plural": "verbinden",
+                    "Sie": "verbinden"
+                },
+                "Präteritum": {
+                    "ich": "verband",
+                    "du": "verbandest",
+                    "er": "verband",
+                    "es": "verband",
+                    "sie_singular": "verband",
+                    "xier": "verband",
+                    "wir": "verbanden",
+                    "ihr": "verbandet",
+                    "sie_plural": "verbanden",
+                    "Sie": "verbanden"
+                },
+                "Perfekt": {
+                    "ich": "habe verbunden",
+                    "du": "hast verbunden",
+                    "er": "hat verbunden",
+                    "es": "hat verbunden",
+                    "sie_singular": "hat verbunden",
+                    "xier": "hat verbunden",
+                    "wir": "haben verbunden",
+                    "ihr": "habt verbunden",
+                    "sie_plural": "haben verbunden",
+                    "Sie": "haben verbunden"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte verbunden",
+                    "du": "hattest verbunden",
+                    "er": "hatte verbunden",
+                    "es": "hatte verbunden",
+                    "sie_singular": "hatte verbunden",
+                    "xier": "hatte verbunden",
+                    "wir": "hatten verbunden",
+                    "ihr": "hattet verbunden",
+                    "sie_plural": "hatten verbunden",
+                    "Sie": "hatten verbunden"
+                },
+                "Futur_I": {
+                    "ich": "werde verbinden",
+                    "du": "wirst verbinden",
+                    "er": "wird verbinden",
+                    "es": "wird verbinden",
+                    "sie_singular": "wird verbinden",
+                    "xier": "wird verbinden",
+                    "wir": "werden verbinden",
+                    "ihr": "werdet verbinden",
+                    "sie_plural": "werden verbinden",
+                    "Sie": "werden verbinden"
+                },
+                "imperative": {
+                    "du": "verbinde",
+                    "ihr": "verbindet",
+                    "Sie": "verbinden Sie"
+                }
+            },
+            "erwähnen": {
+                "present": {
+                    "ich": "erwähne",
+                    "du": "erwähnst",
+                    "er": "erwähnt",
+                    "es": "erwähnt",
+                    "sie_singular": "erwähnt",
+                    "xier": "erwähnt",
+                    "wir": "erwähnen",
+                    "ihr": "erwähnt",
+                    "sie_plural": "erwähnen",
+                    "Sie": "erwähnen"
+                },
+                "Präteritum": {
+                    "ich": "erwähnte",
+                    "du": "erwähntest",
+                    "er": "erwähnte",
+                    "es": "erwähnte",
+                    "sie_singular": "erwähnte",
+                    "xier": "erwähnte",
+                    "wir": "erwähnten",
+                    "ihr": "erwähntet",
+                    "sie_plural": "erwähnten",
+                    "Sie": "erwähnten"
+                },
+                "Perfekt": {
+                    "ich": "habe erwähnt",
+                    "du": "hast erwähnt",
+                    "er": "hat erwähnt",
+                    "es": "hat erwähnt",
+                    "sie_singular": "hat erwähnt",
+                    "xier": "hat erwähnt",
+                    "wir": "haben erwähnt",
+                    "ihr": "habt erwähnt",
+                    "sie_plural": "haben erwähnt",
+                    "Sie": "haben erwähnt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erwähnt",
+                    "du": "hattest erwähnt",
+                    "er": "hatte erwähnt",
+                    "es": "hatte erwähnt",
+                    "sie_singular": "hatte erwähnt",
+                    "xier": "hatte erwähnt",
+                    "wir": "hatten erwähnt",
+                    "ihr": "hattet erwähnt",
+                    "sie_plural": "hatten erwähnt",
+                    "Sie": "hatten erwähnt"
+                },
+                "Futur_I": {
+                    "ich": "werde erwähnen",
+                    "du": "wirst erwähnen",
+                    "er": "wird erwähnen",
+                    "es": "wird erwähnen",
+                    "sie_singular": "wird erwähnen",
+                    "xier": "wird erwähnen",
+                    "wir": "werden erwähnen",
+                    "ihr": "werdet erwähnen",
+                    "sie_plural": "werden erwähnen",
+                    "Sie": "werden erwähnen"
+                },
+                "imperative": {
+                    "du": "erwähne",
+                    "ihr": "erwähnt",
+                    "Sie": "erwähnen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie das Protokoll vom 9.",
+            "Am Tag: Die SED entschied, das Reisen in die BRD zu erlauben.",
+            "18 Uhr: Günter Schabowski begann die Pressekonferenz.",
+            "Permanente Ausreisen können über alle Grenzpunkte der DDR zur BRD und zu Berlin [West] erfolgen.",
+            "Direkt danach: Reporter Peter Brinkmann fragte, wann es beginnt.",
+            "Die Nachrichtenagentur AP meldete: Die DDR Grenzen sind offen.",
+            "80 Ost Berliner*innen kamen zu mehreren Grenzübergängen in Berlin.",
+            "Soldaten wussten nicht, was sie tun sollten.",
+            "Danach: Die Stasi erklärte den Grenzsoldat*innen",
+            "Dass die Leute nach Hause gehen sollten",
+            "Wir können Ihnen heute die Ausreise nicht erlauben.",
+            "30 Uhr: 1.000 Menschen waren am Grenzübergang Bornholmer Straße.",
+            "Soldaten ließen einige laute Menschen über die Grenze.",
+            "Die Stasi erlaubte auch die Öffnung [geöffnet] der anderen 6 Grenzübergänge in Berlin.",
+            "00 Uhr: Tausende West und Ost Berliner *innen kletterten über die Mauer am Brandenburger Tor.",
+            "( geklettert ) in der Nacht: West und Ost Berliner *innen feierten.",
+            "Sie tanzten auf der Mauer am Brandenburger Tor.",
+            "Die erste Person verbindet Satz 1 und 2 mit nachdem, die zweite Person Satz 2 und 3 mit nachdem usw.",
+            "Denken Sie an: nachdem + Plusquamperfekt, sonst Präteritum.",
+            "Nachdem die SED entschieden hatte, das Reisen in die BRD zu erlauben, begann Günter Schabowski die Pressekonferenz.",
+            "Nachdem Günter Schabowski die Pressekonferenz begonnen hatte, sagte Schabowski: Permanente Ausreisen können über alle Grenzpunkte der DDR zur BRD und zu Berlin [West] erfolgen.",
+            "Schauen Sie sich die Videosequenzen vom 9.",
+            "November an der Bornholmer Straße an.",
+            "Sie brauchen nicht darauf zu achten, was die Menschen sagen, beobachten Sie die Emotionen.",
+            "Kreuzen Sie alles an, was passt.",
+            "Die Menschen sind … aufgeregt glücklich ängstlich gespannt ärgerlich",
+            "Die Menschen reden … laut leise höflich schnell aufgeregt",
+            "Die Atmosphäre ist … romantisch gemütlich wütend fröhlich traurig",
+            "Wann sehen Sie diese Emotionen und die Atmosphäre?",
+            "Bilden Sie Sätze mit wenn, als und/oder nachdem.",
+            "Nachdem die Soldaten die Grenze öffneten, sind die Menschen …",
+            "Die Menschen reden aufgeregt und sind ärgerlich, als die Soldaten die Grenze nicht öffnen.",
+            "Während die Menschen warten, reden sie laut.",
+            "Wir kommen wieder.",
+            "Wenn Menschen über die Grenze gehen, ist die Atmosphäre fröhlich.",
+            "Die Menschen lachen.",
+            "Nachdem die Soldaten die Mauer geöffnet haben, sind die Menschen glücklich.",
+            "Als die Grenze offen ist, sind die Menschen glücklich.",
+            "Sie rennen über die Grenze.",
+            "Schauen Sie sich das erste Video an.",
+            "Die Personen assoziieren Wörter zur Deutschen Einheit.",
+            "Notieren Sie sich so viele Wörter wie möglich.",
+            "Was assoziieren Sie mit der deutschen Einheit?",
+            "Die Mauer und der Mauerfall, Nardos: Ich würde sagen Mauerfall, Wiedervereinigung, Ost und West, Berlin",
+            "Markieren Sie in Teil 1, welche Assoziationen eher positiv (+), eher negativ (-) oder beides (+/-) sind.",
+            "Wer denkt vielleicht eher positiv oder eher negativ über die Deutsche Einheit?",
+            "Notieren Sie + oder - Menschen, denen es in der DDR gut ging.",
+            "Menschen, die im vereinten Deutschland ihren Job verloren.",
+            "Menschen, die Familie in dem anderen Teil Deutschlands hatten.",
+            "Menschen, die im Osten lebten und in den Westen reisen wollten.",
+            "Menschen, die einen Job in der DDR hatten.",
+            "Menschen, die im Westen lebten und im Osten arbeiten wollten.",
+            "Sehen Sie nun das zweite Video, in dem Nardos mehr zu positiven und negativen Assoziationen sagt.",
+            "Markieren Sie in Teil 3, welche Menschen Nardos erwähnt.",
+            "Negativ ist, vielleicht eher, ja wenn man vielleicht sein“ gutes ” Leben in der DDR hatte:"
+        ],
+        "templated": []
+    }
+}

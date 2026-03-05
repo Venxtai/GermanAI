@@ -1,0 +1,729 @@
+{
+    "unit": "47",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 47,
+        "prerequisite": "1-46"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Prozesse optimieren und beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "holen",
+                "pos": "VERB",
+                "translation": "to get, fetch",
+                "frequency": 547,
+                "cefr": "A1"
+            },
+            {
+                "word": "stecken",
+                "pos": "VERB",
+                "translation": "to plug, insert",
+                "frequency": 688,
+                "cefr": "B1"
+            },
+            {
+                "word": "versuchen",
+                "pos": "VERB",
+                "translation": "to attempt. try",
+                "frequency": 247,
+                "cefr": "A2"
+            },
+            {
+                "word": "schlagen",
+                "pos": "VERB",
+                "translation": "to beat, hit",
+                "frequency": 613,
+                "cefr": "B1"
+            },
+            {
+                "word": "schießen",
+                "pos": "VERB",
+                "translation": "to kick (a ball); shoot"
+            },
+            {
+                "word": "füllen",
+                "pos": "VERB",
+                "translation": "to fill"
+            },
+            {
+                "word": "verbinden",
+                "pos": "VERB",
+                "translation": "to connect",
+                "frequency": 452,
+                "cefr": "B1"
+            },
+            {
+                "word": "sich mit Freunden treffen",
+                "pos": "VERB",
+                "translation": "to meet with friends"
+            },
+            {
+                "word": "das Ziel treffen",
+                "pos": "VERB",
+                "translation": "to hit the mark"
+            },
+            {
+                "word": "das Ziel",
+                "pos": "NOUN",
+                "translation": "goal; destination",
+                "frequency": 320,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Reihenfolge",
+                "pos": "NOUN",
+                "translation": "order, sequence",
+                "frequency": 3311,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kühlschrank",
+                "pos": "NOUN",
+                "translation": "refrigerator",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mikrowelle",
+                "pos": "NOUN",
+                "translation": "microwave",
+                "frequency": 37331,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wasserhahn",
+                "pos": "NOUN",
+                "translation": "faucet, water tap",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bohne",
+                "pos": "NOUN",
+                "translation": "bean",
+                "frequency": 14944,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Mühle",
+                "pos": "NOUN",
+                "translation": "grinder, mill",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kanne",
+                "pos": "NOUN",
+                "translation": "pot, pitcher",
+                "frequency": 26029,
+                "cefr": "B1"
+            },
+            {
+                "word": "(das) Schach",
+                "pos": "NOUN",
+                "translation": "chess",
+                "frequency": 9521
+            },
+            {
+                "word": "der*die Spieler*in",
+                "pos": "NOUN",
+                "translation": "player",
+                "frequency": 822,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Regel",
+                "pos": "NOUN",
+                "translation": "rule, norm, regulation",
+                "frequency": 438,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Runde, -n",
+                "pos": "ADJ",
+                "translation": "round; lap"
+            },
+            {
+                "word": "das Netz",
+                "pos": "NOUN",
+                "translation": "net",
+                "frequency": 1325,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Feld",
+                "pos": "NOUN",
+                "translation": "field; space",
+                "frequency": 834,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Tor",
+                "pos": "NOUN",
+                "translation": "goal [sport]; gate",
+                "frequency": 956,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Loch",
+                "pos": "NOUN",
+                "translation": "hole",
+                "frequency": 1861,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fuß",
+                "pos": "NOUN",
+                "translation": "foot",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kissen",
+                "pos": "NOUN",
+                "translation": "pillow",
+                "frequency": 4898,
+                "cefr": "B1"
+            },
+            {
+                "word": "lustig",
+                "pos": "ADJ",
+                "translation": "funny",
+                "frequency": 1973,
+                "cefr": "A1"
+            },
+            {
+                "word": "nächst-",
+                "pos": "ADJ",
+                "translation": "next"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Filter",
+                "pos": "NOUN",
+                "frequency": 13524
+            },
+            {
+                "word": "der Tee",
+                "pos": "NOUN",
+                "frequency": 2617,
+                "cefr": "A1"
+            },
+            {
+                "word": "nächster",
+                "pos": "ADJ",
+                "frequency": 237
+            },
+            {
+                "word": "die Wenn-Karte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "treffen",
+                "pos": "VERB",
+                "frequency": 259,
+                "cefr": "A1"
+            },
+            {
+                "word": "Italien",
+                "pos": "PROPN",
+                "frequency": 1204
+            },
+            {
+                "word": "transparent",
+                "pos": "ADJ",
+                "frequency": 6978
+            },
+            {
+                "word": "aufblasbar",
+                "pos": "ADJ"
+            },
+            {
+                "word": "normal",
+                "pos": "ADJ",
+                "frequency": 642,
+                "cefr": "A1"
+            },
+            {
+                "word": "klassisch",
+                "pos": "ADJ",
+                "frequency": 882
+            },
+            {
+                "word": "der Volleyball",
+                "pos": "NOUN",
+                "frequency": 8382,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Akrobatik",
+                "pos": "NOUN",
+                "frequency": 20278,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Trampoline",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Trampolin",
+                "pos": "NOUN",
+                "frequency": 31142
+            },
+            {
+                "word": "die Zone",
+                "pos": "NOUN",
+                "frequency": 3614,
+                "cefr": "B1"
+            },
+            {
+                "word": "kicken",
+                "pos": "VERB",
+                "frequency": 11063,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Kombination",
+                "pos": "NOUN",
+                "frequency": 1895
+            },
+            {
+                "word": "das Billard",
+                "pos": "NOUN",
+                "frequency": 25792
+            },
+            {
+                "word": "Boxen",
+                "pos": "NOUN",
+                "frequency": 21358,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Box",
+                "pos": "NOUN",
+                "frequency": 4400
+            },
+            {
+                "word": "die Runde",
+                "pos": "NOUN",
+                "frequency": 1488,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pause",
+                "pos": "NOUN",
+                "frequency": 1441,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Knockout",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Schachmatt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "gewinnen",
+                "pos": "VERB",
+                "frequency": 372,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Boxring",
+                "pos": "NOUN",
+                "frequency": 41070
+            },
+            {
+                "word": "das Review",
+                "pos": "NOUN",
+                "frequency": 7472
+            },
+            {
+                "word": "die Konstruktion",
+                "pos": "NOUN",
+                "frequency": 3712
+            },
+            {
+                "word": "die Fitness",
+                "pos": "NOUN",
+                "cefr": "B1"
+            },
+            {
+                "word": "das Pool",
+                "pos": "NOUN",
+                "frequency": 11374
+            },
+            {
+                "word": "suboptimal",
+                "pos": "ADJ",
+                "frequency": 44200
+            },
+            {
+                "word": "chaotisch",
+                "pos": "ADV",
+                "frequency": 11471
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "holen": {
+                "present": {
+                    "ich": "hole",
+                    "du": "holst",
+                    "er": "holt",
+                    "es": "holt",
+                    "sie_singular": "holt",
+                    "xier": "holt",
+                    "wir": "holen",
+                    "ihr": "holt",
+                    "sie_plural": "holen",
+                    "Sie": "holen"
+                }
+            },
+            "stecken": {
+                "present": {
+                    "ich": "stecke",
+                    "du": "steckst",
+                    "er": "steckt",
+                    "es": "steckt",
+                    "sie_singular": "steckt",
+                    "xier": "steckt",
+                    "wir": "stecken",
+                    "ihr": "steckt",
+                    "sie_plural": "stecken",
+                    "Sie": "stecken"
+                }
+            },
+            "versuchen": {
+                "present": {
+                    "ich": "versuche",
+                    "du": "versuchst",
+                    "er": "versucht",
+                    "es": "versucht",
+                    "sie_singular": "versucht",
+                    "xier": "versucht",
+                    "wir": "versuchen",
+                    "ihr": "versucht",
+                    "sie_plural": "versuchen",
+                    "Sie": "versuchen"
+                }
+            },
+            "schlagen": {
+                "present": {
+                    "ich": "schlage",
+                    "du": "schlägst",
+                    "er": "schlägt",
+                    "es": "schlägt",
+                    "sie_singular": "schlägt",
+                    "xier": "schlägt",
+                    "wir": "schlagen",
+                    "ihr": "schlagt",
+                    "sie_plural": "schlagen",
+                    "Sie": "schlagen"
+                }
+            },
+            "schießen": {
+                "present": {
+                    "ich": "schieße",
+                    "du": "schießt",
+                    "er": "schießt",
+                    "es": "schießt",
+                    "sie_singular": "schießt",
+                    "xier": "schießt",
+                    "wir": "schießen",
+                    "ihr": "schießt",
+                    "sie_plural": "schießen",
+                    "Sie": "schießen"
+                }
+            },
+            "füllen": {
+                "present": {
+                    "ich": "fülle",
+                    "du": "füllst",
+                    "er": "füllt",
+                    "es": "füllt",
+                    "sie_singular": "füllt",
+                    "xier": "füllt",
+                    "wir": "füllen",
+                    "ihr": "füllt",
+                    "sie_plural": "füllen",
+                    "Sie": "füllen"
+                }
+            },
+            "verbinden": {
+                "present": {
+                    "ich": "verbinde",
+                    "du": "verbindest",
+                    "er": "verbindet",
+                    "es": "verbindet",
+                    "sie_singular": "verbindet",
+                    "xier": "verbindet",
+                    "wir": "verbinden",
+                    "ihr": "verbindet",
+                    "sie_plural": "verbinden",
+                    "Sie": "verbinden"
+                }
+            },
+            "treffen": {
+                "present": {
+                    "ich": "treffe",
+                    "du": "triffst",
+                    "er": "trifft",
+                    "es": "trifft",
+                    "sie_singular": "trifft",
+                    "xier": "trifft",
+                    "wir": "treffen",
+                    "ihr": "trefft",
+                    "sie_plural": "treffen",
+                    "Sie": "treffen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Robin trinkt gern Kaffee und möchte Kaffee kochen.",
+            "Xier sucht die Zutaten und Dinge.",
+            "Sie bekommen Informationen über die Positionen.",
+            "Wenn Sie die Information über die Position haben, schreiben Sie den Buchstaben in den richtigen Kreis auf dem Bild.",
+            "Wo sind die Kaffeelöffel",
+            "Die Kaffeelöffel sind in der Schublade unter dem Toaster.",
+            "Der Wasserhahn ist in der Spüle.",
+            "Der Wasserkocher ist vor dem Fenster links.",
+            "Die Steckdose ist neben dem Fenster rechts.",
+            "Der Kaffeefilter ist in der Schublade unter der Mikrowelle.",
+            "Die Kaffeebohnen sind im Schrank.",
+            "Die Kaffeetassen sind im Schrank über dem Herd.",
+            "Die Kaffeekanne ist im Schrank über der Mikrowelle.",
+            "Die Kaffeemühle sind im Schrank über dem Kühlschrank.",
+            "Robin erzählt, wie man guten Kaffee kocht.",
+            "Hören Sie zu und bringen Sie die Dinge in die richtige Reihenfolge.",
+            "Hey Robin.",
+            "Meine Mutter kommt am Wochenende zu Besuch.",
+            "Sie trinkt gern Kaffee, aber ich weiß nicht, wie man Kaffee kocht.",
+            "Du bist ja bekannt für deinen tollen Kaffee.",
+            "Hast du ein paar Tipps?",
+            "Als erstes füllst du den Wasserkocher mit Wasser aus dem Wasserhahn.",
+            "Dann steckst du den Wasserkocher in die Steckdose und kochst das Wasser.",
+            "In der Zwischenzeit holst du die Kaffeemühle und die Kaffeebohnen.",
+            "Du nimmst etwas 4 Teelöffel Kaffeebohnen.",
+            "Dann mahlst du die Bohnen in der Mühle zu Kaffeepulver",
+            "Du füllst mit einem Kaffeelöffel das Kaffeepulver",
+            "Kaffee Filter] und stellst den Filter mit dem Pulver direkt auf die Kaffeekanne.",
+            "Wenn das Wasser heiß ist, gießt du das Wasser in den Filter direkt auf das Kaffeepulver.",
+            "Wenn der Kaffee fertig ist, füllst du ihn in Kaffeetassen und fertig – du kannst den Kaffee trinken.",
+            "Super, vielen Dank.",
+            "So mache ich das.",
+            "Wie läuft Robin?",
+            "Verbinden Sie jetzt die Dinge ( im Bild) in der Reihenfolge.",
+            "Ist das optimal?",
+            "Ich denke, dass es nicht optimal ist.",
+            "Wenn der Wasserkocher links steht und die Steckdose rechts ist, läuft man viel.",
+            "Auch für die Kaffeetassen und Kaffeelöffel und der Kaffeefilter läuft man viel.",
+            "Robin spielt gern Spiele.",
+            "Ist das Wenn",
+            "Spielen Sie es Zu zweit oder fünft.",
+            "Geben Sie allen Personen Reaktion Karten.",
+            "Die wenn Karten liegen in der Mitte.",
+            "Die erste Person nimmt die erste wenn Karte und liest sie vor.",
+            "Die anderen Personen wählen eine Reaktion Karte aus und legen sie vor sich auf den Tisch.",
+            "Die erste Person sucht die optimale Karte aus und sagt einen wenn Satz.",
+            "Der Satz kann logisch oder lustig sein.",
+            "Die Person mit der optimalen Karte bekommt einen Punkt.",
+            "Dann nimmt die nächste Person einen Wenn-Karte.",
+            "Viel Spaß!",
+            "Es ist heiß draußen.",
+            "Wenn es draußen heiß ist, trinke ich Kaffee.",
+            "Ich bin müde.",
+            "Ich habe Hunger.",
+            "Es ist kalt.",
+            "Ich habe viel Zeit.",
+            "Ich mache nicht gern Hausaufgaben.",
+            "Ich bin in der Uni.",
+            "Ich treffe mich mit Freund* innen..",
+            "Ich habe viel Arbeit.",
+            "Ich singe.",
+            "Ich höre Musik.",
+            "Ich ziehe mich an.",
+            "Ich lese.",
+            "Ich mache Hausaufgaben.",
+            "Ich habe Spaß.",
+            "Ich tanze.",
+            "Ich fahre nach Italien.",
+            "Ich lerne.",
+            "Ich esse einen Apfel.",
+            "Ich trinke einen Kaffee.",
+            "Ich ziehe einen Schal an.",
+            "Ich gehe einkaufen.",
+            "Ich kaufe eine Banane.",
+            "Ich schreibe einen Text.",
+            "Ich gehe ins Kino.",
+            "Ich spiele mit meiner Katze.",
+            "Ich präsentiere.",
+            "Ich sehe fern.",
+            "Ich esse viele Bohnen.",
+            "Ich verletze mich.",
+            "Der Schrank ist schmutzig.",
+            "Lese ich / mache ich Hausaufgaben / habe ich Spaß.",
+            "Tanze ich.",
+            "Fahre ich nach Italien.",
+            "Lerne ich / esse ich einen Apfel.",
+            "Trinke ich einen Kaffee.",
+            "Ziehe ich einen Schal an / gehe ich einkaufen.",
+            "Kaufe ich eine Banane / schreibe ich einen Text / gehe ich ins Kino.",
+            "Spiele ich mit meiner Katze.",
+            "Entspanne ich meine Schultern.",
+            "Schlafe ich.",
+            "Gieße ich meinen Hund / sammele ich Tiere / streiche ich die Möbel.",
+            "Lösche ich ein Feuer.",
+            "Fliege ich ein Flugzeug / mache ich Kaffee / springe ich.",
+            "Koche ich ein Sofa / wasche ich die Wäsche.",
+            "Bügele ich den Rasen.",
+            "Putze ich die Orange.",
+            "Kaufe ich Hackfleisch.",
+            "Esse ich vegetarisch / spreche ich Deutsch.",
+            "Robin mag Sport und ist in einem Bubble Fußball Team.",
+            "Lesen Sie in Gruppen den Text zu einer seltenen Sportart [Sport] und beantworten Sie die Fragen.",
+            "Was braucht man für die Sportart [Sport]?",
+            "Woher kommt die Sportart [Sport]?",
+            "Welche Regeln gibt es?",
+            "Fußball kommt aus Deutschland.",
+            "Die Spieler*innen sind in transparenten, aufblasbaren ( blow up ) Bällen.",
+            "Es spielen fünf gegen fünf auf einem Feld, das halb so groß wie ein normales Fußballfeld ist.",
+            "Die Spielzeit ist 5-7 Minuten.",
+            "Die Regeln sind wie beim klassischen Fußball, die Spieler*innen wollen den Ball ins Tor schießen, aber sie können andere Spieler* innen bumpen.",
+            "Man braucht große transparent Bälle, Spieler*innen und ein Spielfeld.",
+            "Die Sportart [Sport] kommt aus Deutschland.",
+            "Das Spiel ist 5 -7 Minuten.",
+            "Man spielt wie Fußball aber mit Bällen um die Spieler, sie können bumpen.",
+            "Bossaball kommt aus Spanien und kombiniert Volleyball, Fußball und Akrobatik.",
+            "Das Spielfeld ist ein Luftkissen",
+            "Mit einem Netz und zwei Trampolinen",
+            "Ein Team spielt gegen ein anderes Team.",
+            "Ein*e Spieler*in von jedem Team ist auf dem Trampolin, die anderen drei im Feld.",
+            "Man kann den Ball mit dem Fuß oder der Hand über das Netz bringen.",
+            "Man bekommt Punkte, wenn das andere Team den Ball nicht bekommt oder man die Scoring Zone trifft.",
+            "Das Spiel kommt aus Spanien.",
+            "Man braucht ein Luftkissen, Netz, Trampoline und einen Ball.",
+            "Man springt auf dem Trampolin und versucht den Ball ins andere Feld zu kicken oder zu schlagen.",
+            "Footy Pool kommt aus England und ist eine Kombination aus Fußball und Billard.",
+            "Das Spielfeld sieht wie ein großer Billard Tisch aus, ist aber auf dem Boden.",
+            "Man benutzt Fußbälle.",
+            "Es gibt keine Queues, man schießt die Bälle.",
+            "Die Spieler*innen schießen den weißen Ball gegen die anderen Bälle.",
+            "Die Bälle sollen in die Löcher wie beim normalen Billard.",
+            "Man braucht ein Spielfeld und Bälle.",
+            "Das Spiel kommt aus England.",
+            "Man spielt Billard, aber mit Fußbällen.",
+            "Man kickt den weißen Ball auf die anderen Bälle und die Bälle in die Löcher.",
+            "Boxen kommt aus den Niederlanden und ist eine Kombination aus Schach und Boxen.",
+            "Das Spiel hat 11 Runden, 6 Runden im Schach und 5 im Boxen.",
+            "Jede Runde ist 3 Minuten (im Schach und im Boxen), zwischen den Runden gibt es eine Minute Pause.",
+            "Das Spiel endet mit Knockout oder Schachmatt.",
+            "Wenn keine Person im Schach gewinnt, werden die Punkte im Boxen gezählt.",
+            "Das Spiel kommt aus den Niederlanden.",
+            "Man braucht ein Schach und einen Boxring.",
+            "Man spielt drei Minuten Schach, dann drei Minuten Boxen und das elf Runden.",
+            "Präsentieren Sie die Sportarten [Sport] im Kurs.",
+            "Präsentieren Sie Ihre seltene Sportart [Sport] als optimalen Sport.",
+            "Und warum?",
+            "Sprechen Sie mit der anderen Person über die vier Sportarten [Sport].",
+            "Ich finde Bubble Fußball lustig, weil man bumpen kann.",
+            "Ich finde Footy Pool interessant, weil ich gerne Billard spiele, aber man kann es draußen spielen.",
+            "Boxen lustig, weil Schach anders als Boxen ist.",
+            "Ich finde Bossaball cool, weil man Trampolin springt und Fußball und Volleyball alles zusammen spielt.",
+            "Schreiben Sie eine kurze (vielleicht auch lustige) Review über die über Ihre Lieblingssportart aus Teil 3.",
+            "In der Review sagen Sie Ihre Meinung.",
+            "Benutzen Sie verschiedene Konstruktionen.",
+            "Es ist der optimale Sport.",
+            "Man kann Fitness machen, draußen trainieren und es macht Spaß.",
+            "Es ist ein suboptimaler Sport.",
+            "Es ist chaotisch und vielleicht verletzt man sich."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

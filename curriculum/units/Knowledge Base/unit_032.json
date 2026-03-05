@@ -1,0 +1,557 @@
+{
+    "unit": "32",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 32,
+        "prerequisite": "1-31"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Use the accusative case after the prepositions bis, durch, für, ohne, gegen, and um."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einkaufen und sagen, was man kaufen möchte",
+            "nach Preisen fragen und Preise nennen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Einkaufen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "backen",
+                "pos": "VERB",
+                "translation": "to bake",
+                "frequency": 4640,
+                "cefr": "A2"
+            },
+            {
+                "word": "benutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 1119,
+                "cefr": "A1"
+            },
+            {
+                "word": "nutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 429,
+                "cefr": "B1"
+            },
+            {
+                "word": "auswählen",
+                "pos": "VERB",
+                "translation": "to choose"
+            },
+            {
+                "word": "bis",
+                "pos": "PREP",
+                "translation": "until, as far as, by",
+                "frequency": 77,
+                "cefr": "A1"
+            },
+            {
+                "word": "durch",
+                "pos": "PREP",
+                "translation": "through",
+                "frequency": 55,
+                "cefr": "A1"
+            },
+            {
+                "word": "für",
+                "pos": "PREP",
+                "translation": "for"
+            },
+            {
+                "word": "ohne",
+                "pos": "PREP",
+                "translation": "without",
+                "frequency": 120,
+                "cefr": "A1"
+            },
+            {
+                "word": "gegen",
+                "pos": "PREP",
+                "translation": "against; toward",
+                "frequency": 104,
+                "cefr": "A1"
+            },
+            {
+                "word": "um",
+                "pos": "PREP",
+                "translation": "around",
+                "frequency": 44,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Angebot",
+                "pos": "NOUN",
+                "translation": "offer; quote; proposal",
+                "frequency": 719,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Metzgerei",
+                "pos": "NOUN",
+                "translation": "butchery",
+                "frequency": 16785,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Bäckerei",
+                "pos": "NOUN",
+                "translation": "bakery"
+            },
+            {
+                "word": "der Supermarkt",
+                "pos": "NOUN",
+                "translation": "supermarket",
+                "frequency": 3218,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Kund*in",
+                "pos": "NOUN",
+                "translation": "customer",
+                "frequency": 25911
+            },
+            {
+                "word": "das Pfund",
+                "pos": "NOUN",
+                "translation": "pound",
+                "frequency": 4163,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Mais",
+                "pos": "NOUN",
+                "translation": "corn",
+                "frequency": 11237,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hähnchen",
+                "pos": "NOUN",
+                "translation": "chicken meat"
+            },
+            {
+                "word": "das Rindfleisch",
+                "pos": "NOUN",
+                "translation": "beef",
+                "frequency": 14207,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hackfleisch",
+                "pos": "NOUN",
+                "translation": "ground meat",
+                "frequency": 42156,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Öl",
+                "pos": "NOUN",
+                "translation": "oil (olive oil)",
+                "frequency": 6388,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Mehl",
+                "pos": "NOUN",
+                "translation": "flour",
+                "frequency": 11621,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sahne",
+                "pos": "NOUN",
+                "translation": "cream",
+                "frequency": 18323,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Kraut",
+                "pos": "NOUN",
+                "translation": "herb",
+                "frequency": 8503,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Knoblauch",
+                "pos": "NOUN",
+                "translation": "garlic",
+                "frequency": 16482,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Rezept",
+                "pos": "NOUN",
+                "translation": "recipe",
+                "frequency": 4190,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Suppe",
+                "pos": "NOUN",
+                "translation": "soup",
+                "frequency": 9624,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Geschäft",
+                "pos": "NOUN",
+                "translation": "shop; business"
+            },
+            {
+                "word": "die Zutat",
+                "pos": "NOUN",
+                "translation": "ingredient",
+                "frequency": 38430,
+                "cefr": "B1"
+            },
+            {
+                "word": "verbinden",
+                "pos": "VERB",
+                "translation": "to connect; link",
+                "frequency": 452,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Basilikum",
+                "pos": "NOUN",
+                "frequency": 36943
+            },
+            {
+                "word": "das Olivenöl",
+                "pos": "NOUN",
+                "frequency": 18054,
+                "cefr": "B2"
+            },
+            {
+                "word": "fünfhundert",
+                "pos": "NUM",
+                "frequency": 33290
+            },
+            {
+                "word": "das Gramm",
+                "pos": "NOUN",
+                "frequency": 4104,
+                "cefr": "A1"
+            },
+            {
+                "word": "'s",
+                "pos": "PRON"
+            },
+            {
+                "word": "neunundneunzig",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Sellerie",
+                "pos": "NOUN",
+                "frequency": 39018
+            },
+            {
+                "word": "uns",
+                "pos": "PRON",
+                "frequency": 75
+            },
+            {
+                "word": "wen",
+                "pos": "PRON",
+                "frequency": 19255,
+                "cefr": "C1/C2"
+            },
+            {
+                "word": "Oh",
+                "pos": "INTJ",
+                "frequency": 397
+            },
+            {
+                "word": "ok",
+                "pos": "ADV",
+                "frequency": 7361
+            },
+            {
+                "word": "siebenundachtzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "eine",
+                "pos": "DET",
+                "frequency": 5,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Tomatenmark",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Parmesan",
+                "pos": "NOUN",
+                "frequency": 41036
+            },
+            {
+                "word": "die Avocado",
+                "pos": "NOUN"
+            },
+            {
+                "word": "dreihundert",
+                "pos": "NUM",
+                "frequency": 26287
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "backen": {
+                "present": {
+                    "ich": "backe",
+                    "du": "bäckst",
+                    "er": "bäckt",
+                    "es": "bäckt",
+                    "sie_singular": "bäckt",
+                    "xier": "bäckt",
+                    "wir": "backen",
+                    "ihr": "backt",
+                    "sie_plural": "backen",
+                    "Sie": "backen"
+                }
+            },
+            "benutzen": {
+                "present": {
+                    "ich": "benutze",
+                    "du": "benutzt",
+                    "er": "benutzt",
+                    "es": "benutzt",
+                    "sie_singular": "benutzt",
+                    "xier": "benutzt",
+                    "wir": "benutzen",
+                    "ihr": "benutzt",
+                    "sie_plural": "benutzen",
+                    "Sie": "benutzen"
+                }
+            },
+            "nutzen": {
+                "present": {
+                    "ich": "nutze",
+                    "du": "nutzt",
+                    "er": "nutzt",
+                    "es": "nutzt",
+                    "sie_singular": "nutzt",
+                    "xier": "nutzt",
+                    "wir": "nutzen",
+                    "ihr": "nutzt",
+                    "sie_plural": "nutzen",
+                    "Sie": "nutzen"
+                }
+            },
+            "auswählen": {
+                "present": {
+                    "ich": "wähle aus",
+                    "du": "wählst aus",
+                    "er": "wählt aus",
+                    "es": "wählt aus",
+                    "sie_singular": "wählt aus",
+                    "xier": "wählt aus",
+                    "wir": "wählen aus",
+                    "ihr": "wählt aus",
+                    "sie_plural": "wählen aus",
+                    "Sie": "wählen aus"
+                }
+            },
+            "verbinden": {
+                "present": {
+                    "ich": "verbinde",
+                    "du": "verbindest",
+                    "er": "verbindet",
+                    "es": "verbindet",
+                    "sie_singular": "verbindet",
+                    "xier": "verbindet",
+                    "wir": "verbinden",
+                    "ihr": "verbindet",
+                    "sie_plural": "verbinden",
+                    "Sie": "verbinden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Welche Zutaten für welche Rezepte?",
+            "Ordnen Sie die sechs Einkaufslisten den Speisen zu.",
+            "Für die Kartoffelsuppe brauche ich Kartoffeln, Möhren, Wurst, Knoblauch und Kräuter.",
+            "Ich brauche Spaghetti, Tomaten, Tomatenmark, Basilikum, Parmesan und Olivenöl für die Spaghetti Napoli.",
+            "Für das Schokoladenmousse brauche ich Schokolade, Eier, Butter, Zucker und Sahne.",
+            "Für das Fisch Brötchen brauche ich Fisch, Brötchen, Tomate, Gurke, Salat und Zwiebeln.",
+            "Für den Kuchen brauche ich Mehl, Zucker, Äpfel, Eier und Öl.",
+            "Für den Salat brauche ich Hähnchen, Paprika, Avocado, Kräuter und Couscous.",
+            "Wählen Sie eine Einkaufsliste aus.",
+            "Wo kaufen Sie was?",
+            "Die Metzgerei, die Bäckerei, der Wochenmarkt, der Supermarkt.",
+            "Das ist die Metzgerei.",
+            "Ich bin hier für das Hähnchen.",
+            "Das ist die Bäckerei.",
+            "Ich bin hier für das Brötchen.",
+            "Das ist der Wochenmarkt.",
+            "Das ist der Supermarkt.",
+            "Ahmed möchte Spaghetti Bolognese für seine Freundin kochen und einen Kuchen backen.",
+            "Rst kauft er ein.",
+            "Hören Sie zu und beantworten Sie die Fragen.",
+            "Willkommen in der Metzgerei Schmitz.",
+            "Guten Tag.",
+            "Ich möchte Spaghetti Bolognese kochen und brauche Hackfleisch.",
+            "Wie viel Hackfleisch hätten Sie denn gern?",
+            "Ein Pfund Hackfleisch vom Rind bitte.",
+            "Wunderbar, also fünfhundert Gramm Rinderhack.",
+            "Und sonst?",
+            "Das war's, danke.",
+            "Wie viel macht das?",
+            "Vier Euro achtzig, bitte.",
+            "Auf Wiedersehen.",
+            "Frische Möhren, frische Möhren.",
+            "Im Angebot, heute das Pfund drei Euro neunundneunzig.",
+            "Salat aus der Region.",
+            "Tomaten, frische Tomaten.",
+            "Ich hätte gern ein Pfund Möhren, ein halbes Pfund Staudensellerie [Sellerie], eine Knoblauchknolle, ein Kilo Tomaten und ein Bund Kräuter.",
+            "Alles klar, bitte schön.",
+            "Die Möhren kosten heute nur drei Euro neunundneunzig.",
+            "Die sind im Angebot.",
+            "Zusammen macht das dann alles neunzehn Euro fünfzig.",
+            "Hier sind zwanzig Euro.",
+            "Und fünfzig cent für Sie.",
+            "Bitte schön.",
+            "Hi Ahmed, da bist du ja wieder.",
+            "Hallo Annika.",
+            "Hier sind die Einkäufe.",
+            "Wow, das ist aber viel.",
+            "Ist das alles für uns?",
+            "Nein, nein.",
+            "Für uns sind das Hackfleisch, das Gemüse und die Nudeln.",
+            "Ich war noch im Supermarkt.",
+            "Und für wen ist der Rest?",
+            "Also das Obst ist für die Silke.",
+            "Die Chips sind für meinen Freund Olaf.",
+            "Die Kartoffeln sind für meine Eltern.",
+            "Und die Schokolade ist für meinen Onkel.",
+            "Er mag Schokolade.",
+            "Ich auch!",
+            "Für dich habe ich Eis zur Nachspeise.",
+            "Oh, danke!",
+            "Schokolade ist super, aber Eis ist besser!",
+            "Ein Pfund, ein Kilo, ein Pfund, ein halbes Pfund, ein Bund, fünfhundert Gramm.",
+            "Wie viel kosten die Möhren?",
+            "3 Euro neunundneunzig.",
+            "Für wen kauft Ahmed was?",
+            "Er kauft Obst für Silke.",
+            "Er kauft Chips für seinen Freund.",
+            "Er kauft Hackfleisch für Ahmed und Annika.",
+            "Er kauft Kartoffeln für seine Eltern.",
+            "Was hat Ahmed für Annika?",
+            "Er hat Eis für Annika.",
+            "Lesen Sie die Redemittel laut.",
+            "Redemittel Kund*in: Ich möchte eine Suppe machen.",
+            "Haben Sie Tomaten?",
+            "Ich brauche 300 Gramm Tomaten.",
+            "Ich hätte gern 300 Gramm Tomaten.",
+            "Wie viel kosten die Tomaten.",
+            "Das ist alles, danke.",
+            "Was macht das?",
+            "Redemittel Verkäufer*in: Ja, wir haben Tomaten.",
+            "Tomaten haben wir nicht mehr.",
+            "Wie viel Tomaten hätten Sie gern?",
+            "Sind 300 Gramm Tomaten ok?",
+            "300 Gramm Tomaten, bitte schön.",
+            "Drei Euro neunundneunzig pro Kilo.",
+            "Sonst n och etwas?",
+            "Das macht zwei Euro siebenundachtzig.",
+            "Kaufen Sie ein.",
+            "Benutzen Sie die Einkaufslisten von X.",
+            "Eine oder zwei Personen sind Verkäufer*innen in der Metzgerei, der Bäckerei, dem Wochenmarkt oder dem Supermarkt, die anderen sind Kund*innen.",
+            "Ich möchte eine Kartoffelsuppe, Spaghetti, einen Couscous Salat [ Couscous Salat], Mousse au Chocolat, einen Apfelkuchen, ein Fischbrötchen",
+            "Ich hätte gern dreihundert Gramm, ein Pfund, ein Kilo, ein Bund.",
+            "Noch etwas?",
+            "Das ist alles.",
+            "Das macht Euro."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

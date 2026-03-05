@@ -1,0 +1,721 @@
+{
+    "unit": "96",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 96,
+        "prerequisite": "1-95"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu"
+        ],
+        "new_rules_in_this_unit": [
+            "Use damit + subordinate clause (verb at end) to express purpose, especially when the subjects differ: \"…damit seine Kinder nicht rutschen.\"",
+            "Use um…zu + infinitive to express purpose when the subject is the same in both clauses; no subject appears in the um…zu clause: \"…um nicht zu rutschen.\""
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Auto"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "empfangen",
+                "pos": "VERB",
+                "translation": "to receive",
+                "frequency": 2626,
+                "cefr": "B1"
+            },
+            {
+                "word": "lenken",
+                "pos": "VERB",
+                "translation": "to steer; drive; control",
+                "frequency": 3048
+            },
+            {
+                "word": "beschleunigen",
+                "pos": "VERB",
+                "translation": "to accelerate",
+                "frequency": 2634
+            },
+            {
+                "word": "verbrauchen",
+                "pos": "VERB",
+                "translation": "to use up; expend; consume",
+                "frequency": 3307,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausstoßen",
+                "pos": "VERB",
+                "translation": "to emit; exhale; eject; discharge"
+            },
+            {
+                "word": "der Hauptsitz",
+                "pos": "NOUN",
+                "translation": "headquarters",
+                "frequency": 11293,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wagen",
+                "pos": "NOUN",
+                "translation": "wagon; car; automobile",
+                "frequency": 1175,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Führerschein",
+                "pos": "NOUN",
+                "translation": "driver's licence",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Lenkrad",
+                "pos": "NOUN",
+                "translation": "steering wheel",
+                "frequency": 16209,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Bremse",
+                "pos": "NOUN",
+                "translation": "break [technology, e.g of a vehicle]",
+                "frequency": 9394,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kupplung",
+                "pos": "NOUN",
+                "translation": "clutch [automobile], coupling [technology]; hitch",
+                "frequency": 29622,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Gang",
+                "pos": "NOUN",
+                "translation": "gear [technology], aisle [architecture]; course (or a meal) [cooking]; walk",
+                "frequency": 1139,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Dach",
+                "pos": "NOUN",
+                "translation": "roof",
+                "frequency": 1812,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Scheibe",
+                "pos": "NOUN",
+                "translation": "slice; window",
+                "frequency": 2789,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Sitz",
+                "pos": "NOUN",
+                "translation": "seat",
+                "frequency": 2337,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Getriebe",
+                "pos": "NOUN",
+                "translation": "gearbox; (gear) transmission",
+                "frequency": 13342,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Schaltgetriebe",
+                "pos": "NOUN",
+                "translation": "manual transmission",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Hubraum",
+                "pos": "NOUN",
+                "translation": "(engine) displacement; cubic capacity [automobile]",
+                "frequency": 11856,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gewicht",
+                "pos": "NOUN",
+                "translation": "weight; heft",
+                "frequency": 1940,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Leistung",
+                "pos": "NOUN",
+                "translation": "accomplishment; performance; (engine) power",
+                "frequency": 646,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Geschwindigkeit",
+                "pos": "NOUN",
+                "translation": "speed",
+                "frequency": 1233,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Länge",
+                "pos": "NOUN",
+                "translation": "length"
+            },
+            {
+                "word": "die Beschleunigung",
+                "pos": "NOUN",
+                "translation": "acceleration",
+                "frequency": 3991,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Verbrauch",
+                "pos": "NOUN",
+                "translation": "use, expenditure; consumption; waste",
+                "frequency": 8744,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Benzin",
+                "pos": "NOUN",
+                "translation": "gasoline",
+                "frequency": 8212,
+                "cefr": "B1"
+            },
+            {
+                "word": "einander",
+                "pos": "ADJ",
+                "translation": "each other; one another",
+                "frequency": 1821
+            },
+            {
+                "word": "damit",
+                "pos": "CONJ",
+                "translation": "so that [expressing purpose], with it [adverb]",
+                "frequency": 119,
+                "cefr": "B1"
+            },
+            {
+                "word": "wozu",
+                "pos": "ADV",
+                "translation": "what for",
+                "frequency": 2545
+            },
+            {
+                "word": "um … zu",
+                "pos": "CONJ",
+                "translation": "in order to; to; so as to"
+            },
+            {
+                "word": "leer",
+                "pos": "ADJ",
+                "translation": "empty",
+                "frequency": 874,
+                "cefr": "A2"
+            },
+            {
+                "word": "bremsen",
+                "pos": "VERB",
+                "translation": "to brake; decelerate; apply the brakes",
+                "frequency": 3683,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der*die Fahrschullehrer*in",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Manuellgetriebe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "überraschen",
+                "pos": "VERB",
+                "frequency": 914,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Antenne",
+                "pos": "NOUN",
+                "frequency": 11124
+            },
+            {
+                "word": "der Blinker",
+                "pos": "NOUN",
+                "frequency": 37304
+            },
+            {
+                "word": "der Gaspedal",
+                "pos": "NOUN",
+                "frequency": 26284
+            },
+            {
+                "word": "der Rückspiegel",
+                "pos": "NOUN",
+                "frequency": 27723
+            },
+            {
+                "word": "der Scheibenwischer",
+                "pos": "NOUN",
+                "frequency": 32163
+            },
+            {
+                "word": "der Griff",
+                "pos": "NOUN",
+                "frequency": 2643
+            },
+            {
+                "word": "die Windschutzscheibe",
+                "pos": "NOUN",
+                "frequency": 21317
+            },
+            {
+                "word": "der Insekt",
+                "pos": "NOUN",
+                "frequency": 4736,
+                "cefr": "B1"
+            },
+            {
+                "word": "abbiegen",
+                "pos": "VERB",
+                "frequency": 13910,
+                "cefr": "B1"
+            },
+            {
+                "word": "die eizung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die teuerung",
+                "pos": "NOUN",
+                "frequency": 17057,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Einpark",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Assistent",
+                "pos": "NOUN",
+                "frequency": 4057
+            },
+            {
+                "word": "das Kompliment",
+                "pos": "NOUN",
+                "frequency": 10981
+            },
+            {
+                "word": "die Massage",
+                "pos": "NOUN",
+                "frequency": 18186,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Autoteil",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Auto-Recherche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Autoquartett-Schreidiktat",
+                "pos": "NOUN"
+            },
+            {
+                "word": "PS",
+                "pos": "NOUN",
+                "frequency": 6239
+            },
+            {
+                "word": "der Zylinder",
+                "pos": "NOUN",
+                "frequency": 13255
+            },
+            {
+                "word": "das Leergewicht",
+                "pos": "NOUN",
+                "frequency": 35184
+            },
+            {
+                "word": "kg",
+                "pos": "NOUN",
+                "frequency": 1280
+            },
+            {
+                "word": "der Kilometer",
+                "pos": "NOUN",
+                "frequency": 582,
+                "cefr": "A1"
+            },
+            {
+                "word": "stoßen",
+                "pos": "VERB",
+                "frequency": 1221,
+                "cefr": "B1"
+            },
+            {
+                "word": "TDI",
+                "pos": "NOUN",
+                "frequency": 43495
+            },
+            {
+                "word": "das Cabrio",
+                "pos": "NOUN",
+                "frequency": 15070,
+                "cefr": "B2"
+            },
+            {
+                "word": "ihrs",
+                "pos": "PRON"
+            },
+            {
+                "word": "XXX",
+                "pos": "NUM"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "empfangen": {
+                "present": {
+                    "ich": "empfange",
+                    "du": "empfängst",
+                    "er": "empfängt",
+                    "es": "empfängt",
+                    "sie_singular": "empfängt",
+                    "xier": "empfängt",
+                    "wir": "empfangen",
+                    "ihr": "empfangt",
+                    "sie_plural": "empfangen",
+                    "Sie": "empfangen"
+                },
+                "Perfekt": {
+                    "ich": "habe empfangen",
+                    "du": "hast empfangen",
+                    "er": "hat empfangen",
+                    "es": "hat empfangen",
+                    "sie_singular": "hat empfangen",
+                    "xier": "hat empfangen",
+                    "wir": "haben empfangen",
+                    "ihr": "habt empfangen",
+                    "sie_plural": "haben empfangen",
+                    "Sie": "haben empfangen"
+                }
+            },
+            "lenken": {
+                "present": {
+                    "ich": "lenke",
+                    "du": "lenkst",
+                    "er": "lenkt",
+                    "es": "lenkt",
+                    "sie_singular": "lenkt",
+                    "xier": "lenkt",
+                    "wir": "lenken",
+                    "ihr": "lenkt",
+                    "sie_plural": "lenken",
+                    "Sie": "lenken"
+                },
+                "Perfekt": {
+                    "ich": "habe gelenkt",
+                    "du": "hast gelenkt",
+                    "er": "hat gelenkt",
+                    "es": "hat gelenkt",
+                    "sie_singular": "hat gelenkt",
+                    "xier": "hat gelenkt",
+                    "wir": "haben gelenkt",
+                    "ihr": "habt gelenkt",
+                    "sie_plural": "haben gelenkt",
+                    "Sie": "haben gelenkt"
+                }
+            },
+            "beschleunigen": {
+                "present": {
+                    "ich": "beschleunige",
+                    "du": "beschleunigst",
+                    "er": "beschleunigt",
+                    "es": "beschleunigt",
+                    "sie_singular": "beschleunigt",
+                    "xier": "beschleunigt",
+                    "wir": "beschleunigen",
+                    "ihr": "beschleunigt",
+                    "sie_plural": "beschleunigen",
+                    "Sie": "beschleunigen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschleunigt",
+                    "du": "hast beschleunigt",
+                    "er": "hat beschleunigt",
+                    "es": "hat beschleunigt",
+                    "sie_singular": "hat beschleunigt",
+                    "xier": "hat beschleunigt",
+                    "wir": "haben beschleunigt",
+                    "ihr": "habt beschleunigt",
+                    "sie_plural": "haben beschleunigt",
+                    "Sie": "haben beschleunigt"
+                }
+            },
+            "verbrauchen": {
+                "present": {
+                    "ich": "verbrauche",
+                    "du": "verbrauchst",
+                    "er": "verbraucht",
+                    "es": "verbraucht",
+                    "sie_singular": "verbraucht",
+                    "xier": "verbraucht",
+                    "wir": "verbrauchen",
+                    "ihr": "verbraucht",
+                    "sie_plural": "verbrauchen",
+                    "Sie": "verbrauchen"
+                },
+                "Perfekt": {
+                    "ich": "habe verbraucht",
+                    "du": "hast verbraucht",
+                    "er": "hat verbraucht",
+                    "es": "hat verbraucht",
+                    "sie_singular": "hat verbraucht",
+                    "xier": "hat verbraucht",
+                    "wir": "haben verbraucht",
+                    "ihr": "habt verbraucht",
+                    "sie_plural": "haben verbraucht",
+                    "Sie": "haben verbraucht"
+                }
+            },
+            "ausstoßen": {
+                "Perfekt": {
+                    "ich": "habe ausgestoßen",
+                    "du": "hast ausgestoßen",
+                    "er": "hat ausgestoßen",
+                    "es": "hat ausgestoßen",
+                    "sie_singular": "hat ausgestoßen",
+                    "xier": "hat ausgestoßen",
+                    "wir": "haben ausgestoßen",
+                    "ihr": "habt ausgestoßen",
+                    "sie_plural": "haben ausgestoßen",
+                    "Sie": "haben ausgestoßen"
+                }
+            },
+            "bremsen": {
+                "present": {
+                    "ich": "bremse",
+                    "du": "bremst",
+                    "er": "bremst",
+                    "es": "bremst",
+                    "sie_singular": "bremst",
+                    "xier": "bremst",
+                    "wir": "bremsen",
+                    "ihr": "bremst",
+                    "sie_plural": "bremsen",
+                    "Sie": "bremsen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebremst",
+                    "du": "hast gebremst",
+                    "er": "hat gebremst",
+                    "es": "hat gebremst",
+                    "sie_singular": "hat gebremst",
+                    "xier": "hat gebremst",
+                    "wir": "haben gebremst",
+                    "ihr": "habt gebremst",
+                    "sie_plural": "haben gebremst",
+                    "Sie": "haben gebremst"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sprechen Sie mit mindestens drei Personen, die einen Führerschein haben und fragen Sie die Fragen.",
+            "Wie alt warst du, als du Ihren Führerschein gemacht haben?",
+            "Mit wem hast du das Fahren gelernt?",
+            "Wo hast du deinen Führerschein gemacht?",
+            "Wie viel hat Ihr Führerschein gekostet?",
+            "Hast du ein Auto?",
+            "Wenn ja, was für ein Auto fährst du?",
+            "Fährst du lieber ein Auto mit Automatik- oder Manuellgetriebe?",
+            "Was haben Sie über die anderen Studierenden gelernt?",
+            "Hat Sie eine Antwort überrascht?",
+            "Was wissen Sie über Autos?",
+            "Sie wollen ein modernes und sicheres Auto haben.",
+            "Es soll alles haben.",
+            "Warum wollen Sie diese Dinge für Ihr Auto haben?",
+            "Ordnen Sie zu.",
+            "Die Antenne der Blinker die Bremse das Dach",
+            "Die Kupplung die Lautsprecher das Lenkrad der Rückspiegel der Scheibenwischer",
+            "Damit ich Regen (und Insekten) von der Scheibe wischen kann.",
+            "Damit ich keine Insekten ins Gesicht bekomme.",
+            "Damit ich das Auto lenken kann.",
+            "Damit ich Radio empfangen kann.",
+            "Damit ich schneller oder langsamer fahren kann.",
+            "Damit ich Musik hören kann.",
+            "Damit ich in das Auto komme.",
+            "Damit ich die Autotür.",
+            "Öffnen kann.",
+            "Damit ich das Auto lüften kann.",
+            "Damit ich sehe, was hinter dem Auto passiert.",
+            "Damit ich das Auto stoppen kann.",
+            "Damit ich den Gang wechseln kann.",
+            "Damit ich im Auto sitzen kann.",
+            "Damit ich zeigen kann, dass ich abbiegen will.",
+            "Welche zwei Extras hat Ihr Auto?",
+            "Die Sitz H eizung | die Sprach e S teuerung | der Einpark en Assistent | der Spiegel, der Komplimente gibt | die Kaffee Maschine | der Massage S itz |",
+            "Sie bauen ein Auto.",
+            "Fragen Sie die andere Person, wozu sie die Autoteile in Teil 1 und die Extras aus Teil 2 für das Auto braucht.",
+            "Wozu braucht man die Antenne?",
+            "Man braucht die Antenne, um Radio zu empfangen.",
+            "Wozu brauchst du die Antenne?",
+            "Ich brauche die Antenne, um Radio zu empfangen.",
+            "Wozu brauchst du den Blinker?",
+            "Wozu brauchst du die Bremse?",
+            "Wozu brauchst du das Dach?",
+            "Ich brauche das Dach, um keinen Sonnenbrand zu bekommen.",
+            "Wozu brauchst du das Fenster?",
+            "Ich brauche das Fenster, um Luft in das Auto zu lassen.",
+            "Wozu brauchst du das Gaspedal?",
+            "Ich brauche das Gaspedal, um schneller oder langsamer zu fahren.",
+            "Wozu brauchst du die Kupplung?",
+            "Ich brauche die Kupplung, um den Ganz zu wechseln.",
+            "Wozu brauchst du die Lautsprecher?",
+            "Ich brauche die Lautsprecher, um Musik zu hören.",
+            "Wozu brauchst du das Lenkrad?",
+            "Ich brauche das Lenkrad, um das Auto zu lenken.",
+            "Wozu brauchst du den Rückspiegel?",
+            "Wozu brauchst du den Scheibenwischer?",
+            "Ich brauche den Scheibenwischer, um Regen (und Insekten) von der Scheibe zu wischen.",
+            "Wozu brauchst du die Tür?",
+            "Ich brauche die Tür, um in das Auto zu kommen.",
+            "Wozu brauchst du der Türgriff?",
+            "Ich brauche der Türgriff, um die Autotür.",
+            "Zu öffnen.",
+            "Wozu brauchst du das Radio?",
+            "Ich brauche das Radio, um Musik zu hören.",
+            "Wozu brauchst du die Windschutzscheibe?",
+            "Ich brauche die Windschutzscheibe, um keine Insekten ins Gesicht zu bekommen.",
+            "Wozu brauchst du den Autositz?",
+            "Ich brauche den Autositz, um im Auto zu sitzen.",
+            "Sie haben in LERNEN ein Auto recherchiert.",
+            "Zeigen Sie einer anderen Person Bilder von dem Auto und erzählen Sie etwas über das Auto und über die Automarken.",
+            "Danach spricht die andere Person über ihr Auto.",
+            "Wie heißen die Marke und das Modell?",
+            "Wie viel kostet das Auto?",
+            "Wie schnell fährt es und wie groß ist es?",
+            "Wo ist der Hauptsitz der Autofirma und wo produziert sie Autos?",
+            "Sie bekommen die Informationen zu einem Auto.",
+            "Tragen Sie Daten in die Tabelle (grün) ein.",
+            "Wann wurde dein Auto gebaut?",
+            "Mein Auto wurde im Jahr … gebaut.",
+            "Wie viel kostet dein Auto?",
+            "Hubraum (cm3) Wie viel Hubraum hat dein Auto?",
+            "Mein Wagen hat einen … Liter Hubraum.",
+            "Wie viel PS hat dein Auto?",
+            "Wie viele Zylinder hat dein Wagen?",
+            "Wie schwer ist dein Wagen?",
+            "Wie schnell fährt dein Auto?",
+            "Mein Auto fährt … Kilometer pro Stunde.",
+            "Wie schnell beschleunigt dein Wagen?",
+            "Mein Wagen beschleunigt von null auf hundert in … Sekunden.",
+            "Wie viel Benzin verbraucht dein Wagen?",
+            "Wie lang ist dein Auto?",
+            "Wie viel C02 stößt dein Wagen aus?",
+            "Mein Wagen stößt … Gramm C02 pro Kilometer aus.",
+            "Personen mit den Autos eins bis vier sind auf der linken Seite des Kursraums, Personen mit den Autos fünf bis acht auf der rechten.",
+            "Identifizieren Sie eine Person auf der anderen Seite.",
+            "Sie soll weit weg sein.",
+            "Vielleicht spielt Ihr*e Professor*in Musik.",
+            "Fragen Sie einander nach den Daten und tragen Sie diese in die Tabelle von Teil 1 ein (grau).",
+            "Basierend auf den Daten, wie heißt das Auto der anderen Person?",
+            "Jede Person muss ein anderes Auto (grün) haben.",
+            "Dann bekommen Sie einen Punkt.",
+            "Welches Auto ist am ältesten?",
+            "Man hat mein Auto im Jahr XXX gebaut.",
+            "Mein Auto ist älter.",
+            "Man hat es im Jahr XXX gebaut.",
+            "Mein Auto ist älter als Bens und neuer als Vivians.",
+            "Man hat es im Jahr XXX gebaut..",
+            "Vivians Auto ist am ältesten.",
+            "Jenny bekommt einen Punkt."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

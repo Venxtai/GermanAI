@@ -1,0 +1,660 @@
+{
+    "unit": "O49",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 49,
+        "prerequisite": "core 1-104, O1-O48"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [
+            "Use appositions as right-side attributes after a noun, separated by commas: 'Frau Müller, unsere Trainerin, begleitet uns'; with als (no comma): 'Frau Müller als ihre Trainerin war zufrieden.'"
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "beliebte Sportarten vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Sport und Olympia"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "trainieren", "pos": "VERB", "translation": "to train; practice; exercise; work out", "frequency": 2255, "cefr": "A2" },
+            { "word": "finanzieren", "pos": "VERB", "translation": "to finance", "frequency": 2194, "cefr": "B1" },
+            { "word": "verfolgen", "pos": "VERB", "translation": "to follow, chase; persecute", "frequency": 1150 },
+            { "word": "dienen", "pos": "VERB", "translation": "to serve", "frequency": 684, "cefr": "B1" },
+            { "word": "schlagen", "pos": "VERB", "translation": "to beat, defeat; hit", "frequency": 613, "cefr": "B1" },
+            { "word": "der*die Gründer*in", "pos": "NOUN", "translation": "founder" },
+            { "word": "der*die Teilnehmer*in", "pos": "NOUN", "translation": "participant", "frequency": 1920, "cefr": "B1" },
+            { "word": "der*die Olympionik*in", "pos": "NOUN", "translation": "Olympian (competitor) (sport)" },
+            { "word": "der*die Sieger*in", "pos": "NOUN", "translation": "winner (of a competition, fight or war)", "frequency": 3503, "cefr": "B1" },
+            { "word": "der Rang", "pos": "NOUN", "translation": "rank", "frequency": 2067, "cefr": "A1" },
+            { "word": "die Bundesregierung", "pos": "NOUN", "translation": "Federal Government", "frequency": 1345, "cefr": "A1" },
+            { "word": "der Frieden", "pos": "NOUN", "translation": "peace", "frequency": 1696, "cefr": "B1" },
+            { "word": "die Völkerverständigung", "pos": "ADJ", "translation": "international understanding" },
+            { "word": "der Bericht", "pos": "NOUN", "translation": "report", "frequency": 1201, "cefr": "B1" },
+            { "word": "der Langlauf", "pos": "NOUN", "translation": "cross-country (skiing) [sport]", "frequency": 20918, "cefr": "A1" },
+            { "word": "die Leichtathletik", "pos": "NOUN", "translation": "track and field [sport]; athletic sports", "frequency": 7291, "cefr": "B2" },
+            { "word": "olympisch", "pos": "ADJ", "translation": "Olympic; Olympian [adj.]", "frequency": 2469 },
+            { "word": "finanziell", "pos": "ADJ", "translation": "financial(ly)", "frequency": 1323, "cefr": "B1" },
+            { "word": "sowohl ... als auch", "pos": "CONJ", "translation": "both ... and â€¦; â€¦ as well as â€¦" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "live", "pos": "ADV", "frequency": 4088, "cefr": "B1" },
+            { "word": "das Einzel", "pos": "NOUN", "frequency": 6809 },
+            { "word": "treiben", "pos": "VERB", "frequency": 964, "cefr": "B1" },
+            { "word": "die Medaille", "pos": "NOUN", "frequency": 6299 },
+            { "word": "die Schwimmerin", "pos": "NOUN", "frequency": 19479, "cefr": "B2" },
+            { "word": "die Alpin", "pos": "NOUN", "frequency": 8653 },
+            { "word": "profitabel", "pos": "ADV", "frequency": 15854, "cefr": "B2" },
+            { "word": "der Dollar", "pos": "NOUN", "frequency": 941 },
+            { "word": "das TV", "pos": "NOUN", "frequency": 4568, "cefr": "B1" },
+            { "word": "die Bundesliga", "pos": "NOUN", "frequency": 2713 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "trainieren": {
+                "present": {
+                    "ich": "trainiere",
+                    "du": "trainierst",
+                    "er": "trainiert",
+                    "es": "trainiert",
+                    "sie_singular": "trainiert",
+                    "xier": "trainiert",
+                    "wir": "trainieren",
+                    "ihr": "trainiert",
+                    "sie_plural": "trainieren",
+                    "Sie": "trainieren"
+                },
+                "Perfekt": {
+                    "ich": "habe trainiert",
+                    "du": "hast trainiert",
+                    "er": "hat trainiert",
+                    "es": "hat trainiert",
+                    "sie_singular": "hat trainiert",
+                    "xier": "hat trainiert",
+                    "wir": "haben trainiert",
+                    "ihr": "habt trainiert",
+                    "sie_plural": "haben trainiert",
+                    "Sie": "haben trainiert"
+                },
+                "Futur_I": {
+                    "ich": "werde trainieren",
+                    "du": "wirst trainieren",
+                    "er": "wird trainieren",
+                    "es": "wird trainieren",
+                    "sie_singular": "wird trainieren",
+                    "xier": "wird trainieren",
+                    "wir": "werden trainieren",
+                    "ihr": "werdet trainieren",
+                    "sie_plural": "werden trainieren",
+                    "Sie": "werden trainieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde trainieren",
+                    "du": "würdest trainieren",
+                    "er": "würde trainieren",
+                    "es": "würde trainieren",
+                    "sie_singular": "würde trainieren",
+                    "xier": "würde trainieren",
+                    "wir": "würden trainieren",
+                    "ihr": "würdet trainieren",
+                    "sie_plural": "würden trainieren",
+                    "Sie": "würden trainieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte trainiert",
+                    "du": "hättest trainiert",
+                    "er": "hätte trainiert",
+                    "es": "hätte trainiert",
+                    "sie_singular": "hätte trainiert",
+                    "xier": "hätte trainiert",
+                    "wir": "hätten trainiert",
+                    "ihr": "hättet trainiert",
+                    "sie_plural": "hätten trainiert",
+                    "Sie": "hätten trainiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde trainiert",
+                    "du": "wirst trainiert",
+                    "er": "wird trainiert",
+                    "es": "wird trainiert",
+                    "sie_singular": "wird trainiert",
+                    "xier": "wird trainiert",
+                    "wir": "werden trainiert",
+                    "ihr": "werdet trainiert",
+                    "sie_plural": "werden trainiert",
+                    "Sie": "werden trainiert"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde trainiert",
+                    "du": "wurdest trainiert",
+                    "er": "wurde trainiert",
+                    "es": "wurde trainiert",
+                    "sie_singular": "wurde trainiert",
+                    "xier": "wurde trainiert",
+                    "wir": "wurden trainiert",
+                    "ihr": "wurdet trainiert",
+                    "sie_plural": "wurden trainiert",
+                    "Sie": "wurden trainiert"
+                },
+                "imperative": {
+                    "du": "trainier",
+                    "ihr": "trainiert",
+                    "Sie": "trainieren Sie"
+                }
+            },
+            "finanzieren": {
+                "present": {
+                    "ich": "finanziere",
+                    "du": "finanzierst",
+                    "er": "finanziert",
+                    "es": "finanziert",
+                    "sie_singular": "finanziert",
+                    "xier": "finanziert",
+                    "wir": "finanzieren",
+                    "ihr": "finanziert",
+                    "sie_plural": "finanzieren",
+                    "Sie": "finanzieren"
+                },
+                "Perfekt": {
+                    "ich": "habe finanziert",
+                    "du": "hast finanziert",
+                    "er": "hat finanziert",
+                    "es": "hat finanziert",
+                    "sie_singular": "hat finanziert",
+                    "xier": "hat finanziert",
+                    "wir": "haben finanziert",
+                    "ihr": "habt finanziert",
+                    "sie_plural": "haben finanziert",
+                    "Sie": "haben finanziert"
+                },
+                "Futur_I": {
+                    "ich": "werde finanzieren",
+                    "du": "wirst finanzieren",
+                    "er": "wird finanzieren",
+                    "es": "wird finanzieren",
+                    "sie_singular": "wird finanzieren",
+                    "xier": "wird finanzieren",
+                    "wir": "werden finanzieren",
+                    "ihr": "werdet finanzieren",
+                    "sie_plural": "werden finanzieren",
+                    "Sie": "werden finanzieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde finanzieren",
+                    "du": "würdest finanzieren",
+                    "er": "würde finanzieren",
+                    "es": "würde finanzieren",
+                    "sie_singular": "würde finanzieren",
+                    "xier": "würde finanzieren",
+                    "wir": "würden finanzieren",
+                    "ihr": "würdet finanzieren",
+                    "sie_plural": "würden finanzieren",
+                    "Sie": "würden finanzieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte finanziert",
+                    "du": "hättest finanziert",
+                    "er": "hätte finanziert",
+                    "es": "hätte finanziert",
+                    "sie_singular": "hätte finanziert",
+                    "xier": "hätte finanziert",
+                    "wir": "hätten finanziert",
+                    "ihr": "hättet finanziert",
+                    "sie_plural": "hätten finanziert",
+                    "Sie": "hätten finanziert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde finanziert",
+                    "du": "wirst finanziert",
+                    "er": "wird finanziert",
+                    "es": "wird finanziert",
+                    "sie_singular": "wird finanziert",
+                    "xier": "wird finanziert",
+                    "wir": "werden finanziert",
+                    "ihr": "werdet finanziert",
+                    "sie_plural": "werden finanziert",
+                    "Sie": "werden finanziert"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde finanziert",
+                    "du": "wurdest finanziert",
+                    "er": "wurde finanziert",
+                    "es": "wurde finanziert",
+                    "sie_singular": "wurde finanziert",
+                    "xier": "wurde finanziert",
+                    "wir": "wurden finanziert",
+                    "ihr": "wurdet finanziert",
+                    "sie_plural": "wurden finanziert",
+                    "Sie": "wurden finanziert"
+                },
+                "imperative": {
+                    "du": "finanziere",
+                    "ihr": "finanziert",
+                    "Sie": "finanzieren Sie"
+                }
+            },
+            "verfolgen": {
+                "present": {
+                    "ich": "verfolge",
+                    "du": "verfolgst",
+                    "er": "verfolgt",
+                    "es": "verfolgt",
+                    "sie_singular": "verfolgt",
+                    "xier": "verfolgt",
+                    "wir": "verfolgen",
+                    "ihr": "verfolgt",
+                    "sie_plural": "verfolgen",
+                    "Sie": "verfolgen"
+                },
+                "Perfekt": {
+                    "ich": "habe verfolgt",
+                    "du": "hast verfolgt",
+                    "er": "hat verfolgt",
+                    "es": "hat verfolgt",
+                    "sie_singular": "hat verfolgt",
+                    "xier": "hat verfolgt",
+                    "wir": "haben verfolgt",
+                    "ihr": "habt verfolgt",
+                    "sie_plural": "haben verfolgt",
+                    "Sie": "haben verfolgt"
+                },
+                "Futur_I": {
+                    "ich": "werde verfolgen",
+                    "du": "wirst verfolgen",
+                    "er": "wird verfolgen",
+                    "es": "wird verfolgen",
+                    "sie_singular": "wird verfolgen",
+                    "xier": "wird verfolgen",
+                    "wir": "werden verfolgen",
+                    "ihr": "werdet verfolgen",
+                    "sie_plural": "werden verfolgen",
+                    "Sie": "werden verfolgen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verfolgen",
+                    "du": "würdest verfolgen",
+                    "er": "würde verfolgen",
+                    "es": "würde verfolgen",
+                    "sie_singular": "würde verfolgen",
+                    "xier": "würde verfolgen",
+                    "wir": "würden verfolgen",
+                    "ihr": "würdet verfolgen",
+                    "sie_plural": "würden verfolgen",
+                    "Sie": "würden verfolgen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verfolgt",
+                    "du": "hättest verfolgt",
+                    "er": "hätte verfolgt",
+                    "es": "hätte verfolgt",
+                    "sie_singular": "hätte verfolgt",
+                    "xier": "hätte verfolgt",
+                    "wir": "hätten verfolgt",
+                    "ihr": "hättet verfolgt",
+                    "sie_plural": "hätten verfolgt",
+                    "Sie": "hätten verfolgt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verfolgt",
+                    "du": "wirst verfolgt",
+                    "er": "wird verfolgt",
+                    "es": "wird verfolgt",
+                    "sie_singular": "wird verfolgt",
+                    "xier": "wird verfolgt",
+                    "wir": "werden verfolgt",
+                    "ihr": "werdet verfolgt",
+                    "sie_plural": "werden verfolgt",
+                    "Sie": "werden verfolgt"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde verfolgt",
+                    "du": "wurdest verfolgt",
+                    "er": "wurde verfolgt",
+                    "es": "wurde verfolgt",
+                    "sie_singular": "wurde verfolgt",
+                    "xier": "wurde verfolgt",
+                    "wir": "wurden verfolgt",
+                    "ihr": "wurdet verfolgt",
+                    "sie_plural": "wurden verfolgt",
+                    "Sie": "wurden verfolgt"
+                },
+                "imperative": {
+                    "du": "verfolge",
+                    "ihr": "verfolgt",
+                    "Sie": "verfolgen Sie"
+                }
+            },
+            "dienen": {
+                "present": {
+                    "ich": "diene",
+                    "du": "dienst",
+                    "er": "dient",
+                    "es": "dient",
+                    "sie_singular": "dient",
+                    "xier": "dient",
+                    "wir": "dienen",
+                    "ihr": "dient",
+                    "sie_plural": "dienen",
+                    "Sie": "dienen"
+                },
+                "Perfekt": {
+                    "ich": "habe gedient",
+                    "du": "hast gedient",
+                    "er": "hat gedient",
+                    "es": "hat gedient",
+                    "sie_singular": "hat gedient",
+                    "xier": "hat gedient",
+                    "wir": "haben gedient",
+                    "ihr": "habt gedient",
+                    "sie_plural": "haben gedient",
+                    "Sie": "haben gedient"
+                },
+                "Futur_I": {
+                    "ich": "werde dienen",
+                    "du": "wirst dienen",
+                    "er": "wird dienen",
+                    "es": "wird dienen",
+                    "sie_singular": "wird dienen",
+                    "xier": "wird dienen",
+                    "wir": "werden dienen",
+                    "ihr": "werdet dienen",
+                    "sie_plural": "werden dienen",
+                    "Sie": "werden dienen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde dienen",
+                    "du": "würdest dienen",
+                    "er": "würde dienen",
+                    "es": "würde dienen",
+                    "sie_singular": "würde dienen",
+                    "xier": "würde dienen",
+                    "wir": "würden dienen",
+                    "ihr": "würdet dienen",
+                    "sie_plural": "würden dienen",
+                    "Sie": "würden dienen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gedient",
+                    "du": "hättest gedient",
+                    "er": "hätte gedient",
+                    "es": "hätte gedient",
+                    "sie_singular": "hätte gedient",
+                    "xier": "hätte gedient",
+                    "wir": "hätten gedient",
+                    "ihr": "hättet gedient",
+                    "sie_plural": "hätten gedient",
+                    "Sie": "hätten gedient"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gedient",
+                    "du": "wirst gedient",
+                    "er": "wird gedient",
+                    "es": "wird gedient",
+                    "sie_singular": "wird gedient",
+                    "xier": "wird gedient",
+                    "wir": "werden gedient",
+                    "ihr": "werdet gedient",
+                    "sie_plural": "werden gedient",
+                    "Sie": "werden gedient"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde gedient",
+                    "du": "wurdest gedient",
+                    "er": "wurde gedient",
+                    "es": "wurde gedient",
+                    "sie_singular": "wurde gedient",
+                    "xier": "wurde gedient",
+                    "wir": "wurden gedient",
+                    "ihr": "wurdet gedient",
+                    "sie_plural": "wurden gedient",
+                    "Sie": "wurden gedient"
+                },
+                "imperative": {
+                    "du": "diene",
+                    "ihr": "dient",
+                    "Sie": "dienen Sie"
+                }
+            },
+            "schlagen": {
+                "present": {
+                    "ich": "schlage",
+                    "du": "schlägst",
+                    "er": "schlägt",
+                    "es": "schlägt",
+                    "sie_singular": "schlägt",
+                    "xier": "schlägt",
+                    "wir": "schlagen",
+                    "ihr": "schlagt",
+                    "sie_plural": "schlagen",
+                    "Sie": "schlagen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschlagen",
+                    "du": "hast geschlagen",
+                    "er": "hat geschlagen",
+                    "es": "hat geschlagen",
+                    "sie_singular": "hat geschlagen",
+                    "xier": "hat geschlagen",
+                    "wir": "haben geschlagen",
+                    "ihr": "habt geschlagen",
+                    "sie_plural": "haben geschlagen",
+                    "Sie": "haben geschlagen"
+                },
+                "Futur_I": {
+                    "ich": "werde schlagen",
+                    "du": "wirst schlagen",
+                    "er": "wird schlagen",
+                    "es": "wird schlagen",
+                    "sie_singular": "wird schlagen",
+                    "xier": "wird schlagen",
+                    "wir": "werden schlagen",
+                    "ihr": "werdet schlagen",
+                    "sie_plural": "werden schlagen",
+                    "Sie": "werden schlagen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schlagen",
+                    "du": "würdest schlagen",
+                    "er": "würde schlagen",
+                    "es": "würde schlagen",
+                    "sie_singular": "würde schlagen",
+                    "xier": "würde schlagen",
+                    "wir": "würden schlagen",
+                    "ihr": "würdet schlagen",
+                    "sie_plural": "würden schlagen",
+                    "Sie": "würden schlagen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geschlagen",
+                    "du": "hättest geschlagen",
+                    "er": "hätte geschlagen",
+                    "es": "hätte geschlagen",
+                    "sie_singular": "hätte geschlagen",
+                    "xier": "hätte geschlagen",
+                    "wir": "hätten geschlagen",
+                    "ihr": "hättet geschlagen",
+                    "sie_plural": "hätten geschlagen",
+                    "Sie": "hätten geschlagen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geschlagen",
+                    "du": "wirst geschlagen",
+                    "er": "wird geschlagen",
+                    "es": "wird geschlagen",
+                    "sie_singular": "wird geschlagen",
+                    "xier": "wird geschlagen",
+                    "wir": "werden geschlagen",
+                    "ihr": "werdet geschlagen",
+                    "sie_plural": "werden geschlagen",
+                    "Sie": "werden geschlagen"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde geschlagen",
+                    "du": "wurdest geschlagen",
+                    "er": "wurde geschlagen",
+                    "es": "wurde geschlagen",
+                    "sie_singular": "wurde geschlagen",
+                    "xier": "wurde geschlagen",
+                    "wir": "wurden geschlagen",
+                    "ihr": "wurdet geschlagen",
+                    "sie_plural": "wurden geschlagen",
+                    "Sie": "wurden geschlagen"
+                },
+                "imperative": {
+                    "du": "schlag",
+                    "ihr": "schlagt",
+                    "Sie": "schlagen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Tauschen Sie sich aus.",
+            "Welche Sportarten sehen Sie gern?",
+            "Live oder im Fernsehen?",
+            "Welche Sportarten haben Sie als Kind aktiv ausgeführt?",
+            "Wo haben Sie als Kind Sport gemacht (Verein, Schule, Freizeit)?",
+            "Machen Sie heute Sport?",
+            "Welchen, wie und wo?",
+            "Welche Sportart möchten Sie probieren?",
+            "Was sind beliebte Sportarten (sehen und machen)?",
+            "Ist das repräsentativ für Ihr Land?",
+            "Sie bekommen Informationen zu den beliebtesten Sportarten in zwei Ländern.",
+            "Fragen Sie welchen Rang die Sportarten haben und füllen Sie die Tabelle auf dem Arbeitsblatt aus.",
+            "Welchen Rang hat Golf in Land 1?",
+            "Golf hat den achten Rang in Land 1.",
+            "Welchen Rang hat Schwimmen in Land 2?",
+            "Schwimmen ist Land 2 nicht in den Top 10.",
+            "Auf dem Arbeitsblatt mit Ihren Informationen hat Ihr 2er-Team ein“A” oder ein“B”.",
+            "Finden Sie ein 2er-Team mit dem anderen Buchstaben.",
+            "Dann schauen Sie sich Statistiken zu viert an und ordnen Sie die Länder und Fragen zu.",
+            "Arten verfolgen sehen Sie regelmäßig?",
+            "Arten treiben machen Sie regelmäßig?",
+            "Vergleichen Sie die Daten.",
+            "Welche Sportarten sind in den USA und in Deutschland in den Top Ten?",
+            "Sind nur bei einem der beiden Länder in den Top Ten?",
+            "Gibt es Sportarten, die viele Menschen in beiden Ländern oder in einem Land verfolgen und treiben?",
+            "Die viele Menschen in einem Land treiben aber in dem anderen Land nur verfolgen?",
+            "Finden Sie etwas überraschend?",
+            "Lesen Sie den folgenden Text zu berühmten oder interessanten Olympionik *innen.",
+            "Die Olympischen Spiele, die größte Sportveranstaltung der Welt, finden in der Regel alle vier Jahre statt.",
+            "Pierre de Coubertin, der Gründer der Olympischen Spiele der Neuzeit, wollte, dass seine neuen Spiele der Völkerverständigung und dem Frieden dienen.",
+            "Alex Diggelmann, ein schweizer Künstler, hat drei Medaillen für seine Sportplakate gewonnen.",
+            ".Seit 1960 finden die Paralympics, das heute drittgrößte [drei groß] Sportereignis der Welt, im gleichen Jahr wie die Olympischen Spiele statt",
+            "Sie hören jetzt den Bericht.",
+            "Schreiben Sie die Appositionen auf, die im Bericht vorkommen, aber im Text oben fehlen.",
+            "Leistungs sport in den USA und Deutschland",
+            "Lesen Sie Fragen.",
+            "Lesen Sie dann den Text und beantworten Sie die Fragen.",
+            "Sport Budget in Deutschland und den USA:",
+            "Wie hoch sind die Budgets?",
+            "Woher kommt das Geld?",
+            "Welche Ligen sind am profitabelsten in Deutschland und den USA?",
+            "Wie viel Geld nehmen sie ein?",
+            "Wie trainieren Sportler*innen in Deutschland und den USA?",
+            "Sportler*innen aus den USA sind sehr erfolgreich, bei den Olympischen Spielen gewinnen US Sportler *innen in vielen Sportarten Medaillen.",
+            "Deutsche Sportler *innen gewinnen immer weniger Medaillen.",
+            "Warum ist das so?",
+            "2023 war das Sportbudget in den USA 13 Milliarden Dollar, in Deutschland waren für 2024 276 Millionen Euro geplant.",
+            "Der größte Unterschied hier ist, woher das Geld kommt und wohin es geht.",
+            "In Deutschland finanziert die Bundesregierung Sportler*innen, die in Vereinen trainieren.",
+            "In den USA spielen Colleges und Universitäten die größte Rolle.",
+            "Die Unis haben riesige Sportbudgets.",
+            "Texas Athletics von der Universität in Austin zum Beispiel hatte 2019/2020 ein Sportbudget von 187 Millionen Dollar.",
+            "Das Geld kommt von Studiengebühren und auch von TV Rechten.",
+            "Viele Sportveranstaltungen im College kann man im Fernsehen sehen.",
+            "Vor allem College-Football, aber auch Basketball hat viele Fans.",
+            "In Deutschland spielt Sport in Schulen und Universitäten keine Rolle.",
+            "Hier sind Profi Ligen wichtiger.",
+            "Aber auch hier gibt es große Unterschiede:",
+            "Die erfolgreichste und finanziell stärkste Liga in Deutschland, die Bundesliga, konnte für das Jahr 2024 5 Milliarden Euro Gewinn erreichen.",
+            "Im Vergleich dazu kommt die NFL in den USA auf über 13 Milliarden Dollar ( 2023 ).",
+            "Sport ist finanziell also in den USA ein viel größeres Geschäft als in Deutschland.",
+            "Die Unterstützung sieht auch anders aus:",
+            "In den USA haben Sportler*innen sehr gute Trainingsmöglichkeiten, sie haben sehr gute Trainer*innen und trainieren oft in Gruppen.",
+            "Außerdem gibt es Stipendien an den Universitäten für Sportler*innen aus dem Ausland.",
+            "In Deutschland trainieren die Sportler *innen oft alleine und es gibt keine zentralen Trainingsorte für Sportler*innen.",
+            "Manchmal helfen die finanziellen Möglichkeiten aber nichts:",
+            "Die NBA ist die bekannteste und reichste Profi Basketball Liga der Welt.",
+            "Dagegen wird die deutsche Basketballliga von nicht besonders vielen Menschen gekannt oder gesehen.",
+            "Und trotzdem konnten die deutschen Männer 2023 die Basketballweltmeisterschaft und im Halbfinale gegen die USA gewinnen."
+        ],
+        "templated": []
+    }
+}

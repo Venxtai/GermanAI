@@ -1,0 +1,265 @@
+{
+    "unit": "B26",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 26,
+        "prerequisite": "core 1-104, B1-B25"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Geschichte zur Geschichte schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "Sie sind dran.", "pos": "PHRASE", "translation": "It's your turn. [formal]" },
+            { "word": "Du bist dran.", "pos": "PHRASE", "translation": "It's your turn. [informal]" },
+            { "word": "aufschreiben", "pos": "VERB", "translation": "to make a note; write down", "frequency": 3748, "cefr": "B1" },
+            { "word": "nachschlagen", "pos": "VERB", "translation": "to to look up", "frequency": 33330, "cefr": "B1" },
+            { "word": "theoretisch", "pos": "ADJ", "translation": "theoretical", "frequency": 1129, "cefr": "B1" },
+            { "word": "denkbar", "pos": "ADJ", "translation": "conceivable, thinkable; possible", "frequency": 2826 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Sozialismus", "pos": "NOUN", "frequency": 8447 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "aufschreiben": {
+                "present": {
+                    "ich": "schreibe auf",
+                    "du": "schreibst auf",
+                    "er": "schreibt auf",
+                    "es": "schreibt auf",
+                    "sie_singular": "schreibt auf",
+                    "xier": "schreibt auf",
+                    "wir": "schreiben auf",
+                    "ihr": "schreibt auf",
+                    "sie_plural": "schreiben auf",
+                    "Sie": "schreiben auf"
+                },
+                "Präteritum": {
+                    "ich": "schrieb auf",
+                    "du": "schriebst auf",
+                    "er": "schrieb auf",
+                    "es": "schrieb auf",
+                    "sie_singular": "schrieb auf",
+                    "xier": "schrieb auf",
+                    "wir": "schrieben auf",
+                    "ihr": "schriebt auf",
+                    "sie_plural": "schrieben auf",
+                    "Sie": "schrieben auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgeschrieben",
+                    "du": "hast aufgeschrieben",
+                    "er": "hat aufgeschrieben",
+                    "es": "hat aufgeschrieben",
+                    "sie_singular": "hat aufgeschrieben",
+                    "xier": "hat aufgeschrieben",
+                    "wir": "haben aufgeschrieben",
+                    "ihr": "habt aufgeschrieben",
+                    "sie_plural": "haben aufgeschrieben",
+                    "Sie": "haben aufgeschrieben"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte aufgeschrieben",
+                    "du": "hattest aufgeschrieben",
+                    "er": "hatte aufgeschrieben",
+                    "es": "hatte aufgeschrieben",
+                    "sie_singular": "hatte aufgeschrieben",
+                    "xier": "hatte aufgeschrieben",
+                    "wir": "hatten aufgeschrieben",
+                    "ihr": "hattet aufgeschrieben",
+                    "sie_plural": "hatten aufgeschrieben",
+                    "Sie": "hatten aufgeschrieben"
+                },
+                "Futur_I": {
+                    "ich": "werde aufschreiben",
+                    "du": "wirst aufschreiben",
+                    "er": "wird aufschreiben",
+                    "es": "wird aufschreiben",
+                    "sie_singular": "wird aufschreiben",
+                    "xier": "wird aufschreiben",
+                    "wir": "werden aufschreiben",
+                    "ihr": "werdet aufschreiben",
+                    "sie_plural": "werden aufschreiben",
+                    "Sie": "werden aufschreiben"
+                },
+                "imperative": {
+                    "du": "schreib auf",
+                    "ihr": "schreibt auf",
+                    "Sie": "schreiben Sie auf"
+                }
+            },
+            "nachschlagen": {
+                "present": {
+                    "ich": "schlage nach",
+                    "du": "schlägst nach",
+                    "er": "schlägt nach",
+                    "es": "schlägt nach",
+                    "sie_singular": "schlägt nach",
+                    "xier": "schlägt nach",
+                    "wir": "schlagen nach",
+                    "ihr": "schlagt nach",
+                    "sie_plural": "schlagen nach",
+                    "Sie": "schlagen nach"
+                },
+                "Präteritum": {
+                    "ich": "schlug nach",
+                    "du": "schlugst nach",
+                    "er": "schlug nach",
+                    "es": "schlug nach",
+                    "sie_singular": "schlug nach",
+                    "xier": "schlug nach",
+                    "wir": "schlugen nach",
+                    "ihr": "schlugt nach",
+                    "sie_plural": "schlugen nach",
+                    "Sie": "schlugen nach"
+                },
+                "Perfekt": {
+                    "ich": "habe nachgeschlagen",
+                    "du": "hast nachgeschlagen",
+                    "er": "hat nachgeschlagen",
+                    "es": "hat nachgeschlagen",
+                    "sie_singular": "hat nachgeschlagen",
+                    "xier": "hat nachgeschlagen",
+                    "wir": "haben nachgeschlagen",
+                    "ihr": "habt nachgeschlagen",
+                    "sie_plural": "haben nachgeschlagen",
+                    "Sie": "haben nachgeschlagen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte nachgeschlagen",
+                    "du": "hattest nachgeschlagen",
+                    "er": "hatte nachgeschlagen",
+                    "es": "hatte nachgeschlagen",
+                    "sie_singular": "hatte nachgeschlagen",
+                    "xier": "hatte nachgeschlagen",
+                    "wir": "hatten nachgeschlagen",
+                    "ihr": "hattet nachgeschlagen",
+                    "sie_plural": "hatten nachgeschlagen",
+                    "Sie": "hatten nachgeschlagen"
+                },
+                "Futur_I": {
+                    "ich": "werde nachschlagen",
+                    "du": "wirst nachschlagen",
+                    "er": "wird nachschlagen",
+                    "es": "wird nachschlagen",
+                    "sie_singular": "wird nachschlagen",
+                    "xier": "wird nachschlagen",
+                    "wir": "werden nachschlagen",
+                    "ihr": "werdet nachschlagen",
+                    "sie_plural": "werden nachschlagen",
+                    "Sie": "werden nachschlagen"
+                },
+                "imperative": {
+                    "du": "schlag nach",
+                    "ihr": "schlagt nach",
+                    "Sie": "schlagen Sie nach"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In“ Good Bye, Lenin ” erfindet Alex ein neues, utopisches Ende der DDR.",
+            "Jetzt sind Sie dran.",
+            "Welches Ereignis der Weltgeschichte erzählen Sie anders?",
+            "In Good Bye, Lenin!",
+            "Sind die neuen Geschichten positiv.",
+            "Sie sind utopisch, aber theoretisch denkbar.",
+            "Seien Sie kreativ und schreiben Sie eine Geschichte positiv neu!",
+            "Machen Sie sich Notizen zu folgenden Punkten:",
+            "Über welches historische Ereignis wollen Sie schreiben?",
+            "Was soll anders sein als die Realität?",
+            "Welche Wörter kennen Sie schon, die Sie für Ihre Geschichte brauchen?",
+            "Welche Wörter brauchen Sie noch, aber kennen Sie noch nicht?",
+            "Sie können fünf Wörter, die wichtig sind, im Wörterbuch oder online nachschlagen (keine ganzen Sätze).",
+            "Schreiben Sie sie auf.",
+            "Planen Sie jetzt Ihre Geschichte.",
+            "Schreiben Sie die wichtigsten Punkte auf.",
+            "Sie können auch schon kurze Sätze schreiben.",
+            "Achten Sie auf das Präteritum für die schriftliche Vergangenheit (und das Plusquamperfekt für Sätze, die vorher passiert sind).",
+            "Schreiben Sie Ihre utopische Geschichte.",
+            "Sie können die Geschichte auch als Bild darstellen oder eine Graphic Story schreiben.",
+            "Online gibt es verschiedene Tools, mit denen Sie Wort und Bild kombinieren können."
+        ],
+        "templated": []
+    }
+}

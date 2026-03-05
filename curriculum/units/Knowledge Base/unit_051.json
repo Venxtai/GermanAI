@@ -1,0 +1,664 @@
+{
+    "unit": "51",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 51,
+        "prerequisite": "1-50"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Videointerviews verstehen und darüber sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "wissen",
+                "pos": "VERB",
+                "translation": "to know",
+                "frequency": 78,
+                "cefr": "A1"
+            },
+            {
+                "word": "lieben",
+                "pos": "VERB",
+                "translation": "to love",
+                "frequency": 701,
+                "cefr": "A1"
+            },
+            {
+                "word": "dauern",
+                "pos": "VERB",
+                "translation": "to last; take",
+                "frequency": 744,
+                "cefr": "A1"
+            },
+            {
+                "word": "füllen",
+                "pos": "VERB",
+                "translation": "to fill in"
+            },
+            {
+                "word": "das Mal, -e",
+                "pos": "ADJ",
+                "translation": "time [e.g. next time]"
+            },
+            {
+                "word": "der Schritt",
+                "pos": "NOUN",
+                "translation": "step",
+                "frequency": 376,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ordnung",
+                "pos": "NOUN",
+                "translation": "order",
+                "frequency": 797,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Pünktlichkeit",
+                "pos": "NOUN",
+                "translation": "punctuality, timeliness",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Büro",
+                "pos": "NOUN",
+                "translation": "office",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Papier",
+                "pos": "NOUN",
+                "translation": "paper",
+                "frequency": 1163,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Anfang",
+                "pos": "NOUN",
+                "translation": "start, beginning",
+                "frequency": 427,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Aussage",
+                "pos": "NOUN",
+                "translation": "statement",
+                "frequency": 577,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Brief",
+                "pos": "NOUN",
+                "translation": "letter",
+                "frequency": 838,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Geflüchtete",
+                "pos": "NOUN",
+                "translation": "person who fled"
+            },
+            {
+                "word": "der*die Nachbar*in",
+                "pos": "NOUN",
+                "translation": "neighbor",
+                "frequency": 1283,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Schule",
+                "pos": "NOUN",
+                "translation": "school",
+                "frequency": 359,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Stunde",
+                "pos": "NOUN",
+                "translation": "hour [time], lesson [education]",
+                "frequency": 276,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Unterricht",
+                "pos": "NOUN",
+                "translation": "lesson, class",
+                "frequency": 1823,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ausbildung",
+                "pos": "NOUN",
+                "translation": "education; apprenticeship",
+                "frequency": 1174,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Umwelt",
+                "pos": "NOUN",
+                "translation": "environment",
+                "frequency": 1664,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Blut",
+                "pos": "NOUN",
+                "translation": "blood",
+                "frequency": 851,
+                "cefr": "B1"
+            },
+            {
+                "word": "lang",
+                "pos": "ADJ",
+                "translation": "long",
+                "frequency": 97,
+                "cefr": "A1"
+            },
+            {
+                "word": "natürlich",
+                "pos": "ADJ",
+                "translation": "natural(ly)"
+            },
+            {
+                "word": "weit weg",
+                "pos": "ADV",
+                "translation": "far away",
+                "frequency": 230,
+                "cefr": "A1"
+            },
+            {
+                "word": "schwer",
+                "pos": "ADJ",
+                "translation": "heavy; difficult, challenging",
+                "frequency": 257,
+                "cefr": "A1"
+            },
+            {
+                "word": "pünktlich",
+                "pos": "ADJ",
+                "translation": "punctual, on time"
+            },
+            {
+                "word": "fertig",
+                "pos": "ADJ",
+                "translation": "done; ready",
+                "frequency": 5585,
+                "cefr": "A1"
+            },
+            {
+                "word": "nennen",
+                "pos": "VERB",
+                "translation": "to name",
+                "frequency": 191,
+                "cefr": "A2"
+            },
+            {
+                "word": "abends",
+                "pos": "ADV",
+                "translation": "in the evening",
+                "frequency": 5532,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Arbeit",
+                "pos": "NOUN",
+                "translation": "work",
+                "frequency": 208,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Heimat",
+                "pos": "NOUN",
+                "translation": "home [country/region]",
+                "frequency": 1305,
+                "cefr": "A1"
+            },
+            {
+                "word": "gehören",
+                "pos": "VERB",
+                "translation": "to belong (to)"
+            },
+            {
+                "word": "flüchten",
+                "pos": "VERB",
+                "translation": "to escape; flee"
+            },
+            {
+                "word": "ähnlich",
+                "pos": "ADJ",
+                "translation": "similar"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "Stuttgart",
+                "pos": "PROPN",
+                "frequency": 5945
+            },
+            {
+                "word": "Asien",
+                "pos": "PROPN",
+                "frequency": 3330
+            },
+            {
+                "word": "älteste",
+                "pos": "ADJ",
+                "frequency": 19015
+            },
+            {
+                "word": "das Management",
+                "pos": "NOUN",
+                "frequency": 1862
+            },
+            {
+                "word": "dual",
+                "pos": "ADJ",
+                "frequency": 10727,
+                "cefr": "B2"
+            },
+            {
+                "word": "zweimal",
+                "pos": "ADV",
+                "frequency": 1836,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Freizeit",
+                "pos": "NOUN",
+                "frequency": 2594,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ähnliche",
+                "pos": "NOUN",
+                "frequency": 8567
+            },
+            {
+                "word": "der Lauch",
+                "pos": "NOUN",
+                "frequency": 37497
+            },
+            {
+                "word": "der Stereotyp",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Bürokratie",
+                "pos": "NOUN",
+                "frequency": 8983
+            },
+            {
+                "word": "die Post",
+                "pos": "NOUN",
+                "frequency": 1926,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wissen": {
+                "present": {
+                    "ich": "weiß",
+                    "du": "weißt",
+                    "er": "weiß",
+                    "es": "weiß",
+                    "sie_singular": "weiß",
+                    "xier": "weiß",
+                    "wir": "wissen",
+                    "ihr": "wisst",
+                    "sie_plural": "wissen",
+                    "Sie": "wissen"
+                }
+            },
+            "lieben": {
+                "present": {
+                    "ich": "liebe",
+                    "du": "liebst",
+                    "er": "liebt",
+                    "es": "liebt",
+                    "sie_singular": "liebt",
+                    "xier": "liebt",
+                    "wir": "lieben",
+                    "ihr": "liebt",
+                    "sie_plural": "lieben",
+                    "Sie": "lieben"
+                }
+            },
+            "dauern": {
+                "present": {
+                    "ich": "dauere",
+                    "du": "dauerst",
+                    "er": "dauert",
+                    "es": "dauert",
+                    "sie_singular": "dauert",
+                    "xier": "dauert",
+                    "wir": "dauern",
+                    "ihr": "dauert",
+                    "sie_plural": "dauern",
+                    "Sie": "dauern"
+                }
+            },
+            "füllen": {
+                "present": {
+                    "ich": "fülle",
+                    "du": "füllst",
+                    "er": "füllt",
+                    "es": "füllt",
+                    "sie_singular": "füllt",
+                    "xier": "füllt",
+                    "wir": "füllen",
+                    "ihr": "füllt",
+                    "sie_plural": "füllen",
+                    "Sie": "füllen"
+                }
+            },
+            "nennen": {
+                "present": {
+                    "ich": "nenne",
+                    "du": "nennst",
+                    "er": "nennt",
+                    "es": "nennt",
+                    "sie_singular": "nennt",
+                    "xier": "nennt",
+                    "wir": "nennen",
+                    "ihr": "nennt",
+                    "sie_plural": "nennen",
+                    "Sie": "nennen"
+                }
+            },
+            "gehören": {
+                "present": {
+                    "ich": "gehöre",
+                    "du": "gehörst",
+                    "er": "gehört",
+                    "es": "gehört",
+                    "sie_singular": "gehört",
+                    "xier": "gehört",
+                    "wir": "gehören",
+                    "ihr": "gehört",
+                    "sie_plural": "gehören",
+                    "Sie": "gehören"
+                }
+            },
+            "flüchten": {
+                "present": {
+                    "ich": "flüchte",
+                    "du": "flüchtest",
+                    "er": "flüchtet",
+                    "es": "flüchtet",
+                    "sie_singular": "flüchtet",
+                    "xier": "flüchtet",
+                    "wir": "flüchten",
+                    "ihr": "flüchtet",
+                    "sie_plural": "flüchten",
+                    "Sie": "flüchten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Heute lernen Sie drei Geflüchtete kennen.",
+            "Sie sind aus Afghanistan und wohnen jetzt in Stuttgart in Deutschland.",
+            "Was wissen Sie schon über Afghanistan oder Stuttgart?",
+            "In diesem Video erzählen die drei Freunde über ihr Leben in Stuttgart.",
+            "Hören Sie gut zu und machen Sie Notizen.",
+            "Ich heiße Mahdi.",
+            "Das buchstabiert man M A H D I.",
+            "Ich bin 19 Jahre alt und komme aus Afghanistan.",
+            "Ich weiß nicht genau, wie weit weg Afghanistan von hier ist aber auf jeden Fall ist es sehr weit weg.",
+            "Afghanistan ist in Asien.",
+            "Wer bist du?",
+            "Mein Name ist Ehsan.",
+            "Das schreibt man E H S A",
+            "Ich komme auch aus Afghanistan und bin 20 Jahre alt.",
+            "Ich bin seit vier Jahren in Deutschland.",
+            "Und wie heißt du?",
+            "(zu Hassan ) Hassan: Hallo.",
+            "Ich bin Hassan.",
+            "Das schreibt man H",
+            "Ich bin 20 Jahre alt und komme aus Afghanistan.",
+            "Afghanistan ist sehr weit weg von Deutschland.",
+            "Ich bin auch seit vier Jahren in Deutschland, in Stuttgart.",
+            "Seit Ende 2014.",
+            "Wie heißen sie?",
+            "Wie alt sind sie?",
+            "Woher kommen sie?",
+            "Wie lange leben sie in Deutschland?",
+            "4 Jahre Schauen Sie das zweite Video an.",
+            "Sind die Aussagen richtig oder falsch?",
+            "Korrigieren Sie die falschen Aussagen.",
+            "Ich habe drei Geschwister, zwei Schwestern und einen Bruder.",
+            "Meine Mutter ist die wichtigste Person in meinem Leben.",
+            "Ich habe zwei Brüder, einen kleinen und einen großen.",
+            "Und ich habe noch zwei Schwestern.",
+            "Meine Familie ist mir sehr wichtig.",
+            "Ich habe vier Geschwister, zwei Brüder und zwei Schwestern.",
+            "Meine Geschwister sind auch aus Afghanistan geflüchtet [Geflüchtete].",
+            "Sie wohnen jetzt im Iran.",
+            "Ich bin der Älteste.",
+            "Meine Geschwister sind alle jünger.",
+            "Meine Eltern und meine Geschwister sind alle wichtig für mich.",
+            "Mahdi hat drei Schwestern.",
+            "Mahdi hat zwei Schwestern und einen Bruder.",
+            "Mahdis Mutter ist die wichtigste Person in seinem Leben.",
+            "Ehsan hat zwei Brüder und zwei Schwestern.",
+            "Hassan hat drei Schwestern und einen Bruder.",
+            "Hassan hat zwei Brüder und zwei Schwestern.",
+            "Hassans Familie wohnt jetzt in Afghanistan.",
+            "Hassans Familie wohnt jetzt im Iran.",
+            "Was macht Mahdi an einem normalen Tag?",
+            "Machen Sie Notizen.",
+            "Mahdi, wie sieht ein normaler Wochentag für dich aus?",
+            "Also, ich stehe jeden Tag um 6.30 Uhr auf, dann gehe ich um 7.05 Uhr los zu Hause.",
+            "Ich bin so gegen 7.35 Uhr in der Schule und unser Unterricht beginnt um 7.50 Uhr.",
+            "Wir haben bis 13 Uhr Schule und manchmal haben wir auch Mittagsschule [Schule] bis 15 Uhr.",
+            "Dann treffe ich mich auch mit Freunden zum Fußball spielen und abends [Abend] spiele ich auch Theater.",
+            "30 Uhr auf, Er geht um 7:05 Uhr",
+            "35 Uhr in der Schule.",
+            "Er hat bis 13 Uhr Schule.",
+            "Manchmal hat er Mittagsschule [Schule] bis 15 Uhr.",
+            "Er trifft sich mit Freunden.",
+            "Sie spielen Fußball, Er spielt Theater.",
+            "Mahdi spricht über das Wetter in Afghanistan und Stuttgart.",
+            "Mahdi, wie findest du das Wetter hier in Stuttgart?",
+            "Ist es wie in Afghanistan?",
+            "In Afghanistan gibt es Frühling, Sommer, Herbst und Winter.",
+            "In Deutschland glaube ich gibt es, glaube ich, nur ein bisschen Frühling und der Rest ist Winter.",
+            "Es regnet viel hier in Stuttgart.",
+            "Im Winter schneit es auch oft.",
+            "Man weiß nie, wie das Wetter ist.",
+            "Im Sommer ist es in Afghanistan viel wärmer.",
+            "Manchmal bis 40 Grad.",
+            "In Afghanistan gibt es nur Sommer.",
+            "Es gibt Frühling, Sommer, Herbst und Winter.",
+            "In Stuttgart regnet es viel und es schneit im Winter.",
+            "In Stuttgart weiß man immer, wie das Wetter ist.",
+            "Was macht Ehsan an einem normalen Tag?",
+            "Ehsan, was machst du einem typischen Tag?",
+            "Ich stehe immer um 6 Uhr morgens auf.",
+            "Dann frühstücke ich ein bisschen.",
+            "Ich mache eine Ausbildung zum Kaufmann für Büromanagement in einem Büro.",
+            "Zwei Tage pro Woche muss ich zur Schule.",
+            "45 Uhr bis 13:30 Uhr.",
+            "Danach [dann] muss ich noch zur Arbeit.",
+            "45 Uhr bis 15:30 Uhr habe ich Schule.",
+            "Und an drei Tagen pro Wochen muss ich von 8 Uhr bis 17 Uhr arbeiten.",
+            "Um wie viel Uhr steht Ehsan auf?",
+            "Wie viele Tage pro Woche muss Ehsan zur Schule?",
+            "Wie lange muss Ehsan an drei Tagen arbeiten?",
+            "Von 8 Uhr bis 17 Uhr",
+            "Hassan spricht über seinen Tag.",
+            "Hassan, du machst ja auch eine Ausbildung.",
+            "Wann gehst du zur Arbeit, wann kommst du nach Hause und was machst du dann nach der Arbeit?",
+            "Ich mache eine duale Ausbildung.",
+            "Ich muss immer zwei Wochen zur Arbeit und eine Woche zur Schule.",
+            "Ich stehe immer um 6 Uhr auf, wenn ich zur Arbeit muss.",
+            "Es dauert eine Stunde zur Arbeit.",
+            "Ich fahre mit dem Bus und mit der S-Bahn.",
+            "8 Stunden pro Tag muss ich arbeiten und ich bin mit der Arbeit so um 17 Uhr fertig.",
+            "Zweimal pro Woche trainiere ich auch.",
+            "Ich bin in einem Ring-Verein.",
+            "Du hast gesagt, Hassan, dass du zweimal pro Woche trainierst.",
+            "Ist Kunst auch wichtig für dich in deiner Freizeit?",
+            "Ja, Kunst ist auch wichtig für mich.",
+            "Ich war zwei oder drei Mal in dem Theaterpalast.",
+            "Ich habe dort Opernmusik gehört.",
+            "Das war interessant.",
+            "Hassan steht um 7 Uhr auf.",
+            "Hassan steht um 6 Uhr auf, wenn er zur Arbeit muss.",
+            "Er fährt mit dem Bus und der S-Bahn zur Arbeit.",
+            "Hassan arbeitet jeden Tag bis 16 Uhr.",
+            "Er arbeitet bis 17 Uhr.",
+            "Hassan findet Opernmusik interessant.",
+            "Essen in Deutschland und in Afghanistan",
+            "Welche Speisen sind typisch für Deutschland und die Region Stuttgart?",
+            "Typisch deutsches Essen… Kartoffeln sind sehr deutsch.",
+            "Sie machen viele Dinge aus Kartoffeln, zum Beispiel Kartoffelsalat.",
+            "Hier in Stuttgart gibt es auch Spätzle.",
+            "Das ist typisch für diese Region.",
+            "Das ist für mich sehr neu, weil es in Afghanistan keine Spätzle gibt.",
+            ", Spätzle Ehsan spricht auch über afghanisches Essen.",
+            "Was isst er in Afghanistan?",
+            "Schreiben Sie zwei Dinge.",
+            "Ja, Spätzle gibt es hier sehr viel.",
+            "Und Maultaschen sind sehr gut und lecker.",
+            "Und natürlich auch Kartoffelsalat.",
+            "Eine Sache, die mir nicht schmeckt, ist Blutwurst.",
+            "Die finde ich gar nicht gut.",
+            "In Afghanistan essen wir sehr viel Reis.",
+            "Ein typisches Gericht ist Kabouli.",
+            "Wir essen auch sehr viel Fleisch in Afghanistan.",
+            "Das gehört zum afghanischen Essen.",
+            "Reis und Fleisch Hassan erklärt, wie man Ashak kocht und auch wie man Maultaschen macht.",
+            "Bringen Sie die Sätze in die richtige Reihenfolge (1, 2, 3).",
+            "Die Menschen hier in Stuttgart lieben Maultaschen.",
+            "Das ist ein typisch schwäbisch es Essen.",
+            "Maultaschen sind ein kleines Stück Teig.",
+            "Dann füllt man Gemüse oder Fleisch in den Teig.",
+            "Und danach [dann] muss man die Teigtasche.",
+            "Bei uns in Afghanistan gibt es so etwas Ähnliches wie Maultaschen.",
+            "Es heißt Ashak.",
+            "Man macht zuerst einen Teig.",
+            "Diesen Teig füllt man mit Hackfleisch, Lauch und Zwiebeln.",
+            "Dazu gibt es auch eine Tomatensoße.",
+            "Ashak schmeckt sehr gut.",
+            "Man kocht die Teigtasche.",
+            "Man nimmt eine Teigtasche.",
+            "Man füllt die Teigtasche mit Gemüse oder Fleisch.",
+            "2 Man füllt den Teig mit Hackfleisch, Lauch und Zwiebeln.",
+            "Man isst Ashak mit einer Tomatensoße.",
+            "Man macht einen Teig.",
+            "Ehsan und Mahdi sprechen heute das Stereotyp, dass Deutsche sehr pünktlich und ordentlich sind.",
+            "Was sagt Ehsan über Pünktlichkeit und Ordnung in Deutschland?",
+            "Pünktlichkeit ist in Deutschland sehr wichtig.",
+            "Viel wichtiger als in Afghanistan.",
+            "Am Anfang war es sehr schwer für mich, pünktlich zu sein.",
+            "Ich war oft unpünktlich [Pünktlichkeit].",
+            "Ordnung ist auch sehr wichtig.",
+            "Das Haus muss sauber und ordentlich sein.",
+            "Pünktlichkeit ist in Deutschland wichtiger als in Afghanistan.",
+            "Am Anfang war es schwer für ihn, pünktlich zu sein.",
+            "Ordnung ist auch wichtig.",
+            "Denkt Mahdi, dass Pünktlichkeit wichtig ist?",
+            "Pünktlichkeit ist gut und wichtig.",
+            "Aber es soll nicht zu extrem sein.",
+            "5 Minuten zu spät sind okay.",
+            "Die meisten Deutschen sind auch pünktlich, aber nicht alle.",
+            "Es gibt auch viel Bürokratie.",
+            "Man bekommt viele Briefe mit der Post.",
+            "Das braucht auch viel Papier.",
+            "Das ist schlecht für die Umwelt.",
+            "Pünktlichkeit ist wichtig, aber es sollte nicht so extrem sein.",
+            "5 Minuten zu spät sein ist ok.",
+            "Was sagt Mahdi über Bürokratie in Deutschland?",
+            "Welches Beispiel gibt er und was denkt er über diese Bürokratie?",
+            "Es gibt viel Bürokratie.",
+            "Das braucht viel Papier und ist schlecht für die Umwelt."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

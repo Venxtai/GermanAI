@@ -1,0 +1,573 @@
+{
+  "unit": "2",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 2,
+    "prerequisite": "1-1"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Conjugate heißen with three forms: ich heiße, du heißt, Sie heißen.",
+      "Use du for informal address with friends, family, children, and fellow students, and Sie for formal address with adults in professional or transactional settings."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "person:er/es/sie/xier",
+      "person:wir",
+      "person:ihr",
+      "person:sie/Sie",
+      "sentence_type:yes_no_question",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "sich vorstellen",
+      "jemanden formell oder informell ansprechen",
+      "fragen, wie es jemandem geht"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "der eigene Name"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "Hallo!",
+        "pos": "PHRASE",
+        "translation": "Hello!"
+      },
+      {
+        "word": "Tschüss!",
+        "pos": "PHRASE",
+        "translation": "Bye! [informal]"
+      },
+      {
+        "word": "Auf Wiedersehen!",
+        "pos": "ADJ",
+        "translation": "Goodbye"
+      },
+      {
+        "word": "die Seite",
+        "pos": "NOUN",
+        "translation": "page; side",
+        "frequency": 197,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Hausaufgabe",
+        "pos": "NOUN",
+        "translation": "homework",
+        "frequency": 10452,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Name",
+        "pos": "NOUN",
+        "translation": "name",
+        "frequency": 255,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Lehrkraft",
+        "pos": "NOUN",
+        "translation": "teacher",
+        "frequency": 8720,
+        "cefr": "A1"
+      },
+      {
+        "word": "deutsch",
+        "pos": "ADJ",
+        "translation": "German",
+        "frequency": 112,
+        "cefr": "B1"
+      },
+      {
+        "word": "wie",
+        "pos": "ADV",
+        "translation": "how",
+        "frequency": 25,
+        "cefr": "A1"
+      },
+      {
+        "word": "Wie heißt du?",
+        "pos": "PHRASE",
+        "translation": "How are you called? [informal]"
+      },
+      {
+        "word": "Wie heißen Sie?",
+        "pos": "PHRASE",
+        "translation": "How are you called? [formal]"
+      },
+      {
+        "word": "Ich heiße Sophie.",
+        "pos": "PHRASE",
+        "translation": "I am called Sophie."
+      },
+      {
+        "word": "Wie heißt X auf Englisch?",
+        "pos": "PHRASE",
+        "translation": "How is X called in English?"
+      },
+      {
+        "word": "Wie heißt X auf Deutsch?",
+        "pos": "PHRASE",
+        "translation": "How is X called in German?"
+      },
+      {
+        "word": "Wie geht's?",
+        "pos": "PHRASE",
+        "translation": "How are you? [informal]"
+      },
+      {
+        "word": "gut",
+        "pos": "ADJ",
+        "translation": "good",
+        "frequency": 76,
+        "cefr": "A1"
+      },
+      {
+        "word": "schlecht",
+        "pos": "ADJ",
+        "translation": "bad",
+        "frequency": 327,
+        "cefr": "A1"
+      },
+      {
+        "word": "Freut mich, Sie kennenzulernen.",
+        "pos": "PHRASE",
+        "translation": "Nice to meet you. [formal]"
+      },
+      {
+        "word": "danke",
+        "pos": "PARTICLE",
+        "translation": "thanks",
+        "frequency": 877,
+        "cefr": "A1"
+      },
+      {
+        "word": "auch",
+        "pos": "ADV",
+        "translation": "too",
+        "frequency": 18,
+        "cefr": "A1"
+      },
+      {
+        "word": "und",
+        "pos": "CONJ",
+        "translation": "and",
+        "frequency": 2,
+        "cefr": "A1"
+      },
+      {
+        "word": "fragen",
+        "pos": "VERB",
+        "translation": "to ask",
+        "frequency": 153,
+        "cefr": "A1"
+      },
+      {
+        "word": "lesen",
+        "pos": "VERB",
+        "translation": "to read",
+        "frequency": 305,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "Hi",
+        "pos": "NOUN",
+        "frequency": 3423
+      },
+      {
+        "word": "die Option",
+        "pos": "NOUN",
+        "frequency": 3364
+      },
+      {
+        "word": "bis",
+        "pos": "ADP",
+        "frequency": 77,
+        "cefr": "A1"
+      },
+      {
+        "word": "bald",
+        "pos": "ADV",
+        "frequency": 503,
+        "cefr": "A1"
+      },
+      {
+        "word": "regional",
+        "pos": "ADV",
+        "frequency": 2011,
+        "cefr": "B1"
+      },
+      {
+        "word": "spät",
+        "pos": "ADV",
+        "frequency": 169,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Gott",
+        "pos": "NOUN",
+        "frequency": 514,
+        "cefr": "B1"
+      },
+      {
+        "word": "Servus",
+        "pos": "NOUN"
+      },
+      {
+        "word": "der Tag",
+        "pos": "NOUN",
+        "frequency": 111,
+        "cefr": "A1"
+      },
+      {
+        "word": "freuen",
+        "pos": "VERB",
+        "frequency": 589,
+        "cefr": "A2"
+      },
+      {
+        "word": "kennenlernen",
+        "pos": "VERB",
+        "frequency": 2303,
+        "cefr": "A1"
+      },
+      {
+        "word": "das wiedersehen",
+        "pos": "NOUN",
+        "frequency": 3202,
+        "cefr": "B2"
+      },
+      {
+        "word": "der Morgen",
+        "pos": "NOUN",
+        "frequency": 621,
+        "cefr": "A1"
+      },
+      {
+        "word": "guten",
+        "pos": "ADJ"
+      },
+      {
+        "word": "der Abend",
+        "pos": "NOUN",
+        "frequency": 342,
+        "cefr": "A1"
+      },
+      {
+        "word": "gehen",
+        "pos": "VERB",
+        "frequency": 66,
+        "cefr": "A1"
+      },
+      {
+        "word": "danken",
+        "pos": "VERB",
+        "frequency": 1276,
+        "cefr": "A1"
+      },
+      {
+        "word": "super",
+        "pos": "ADV",
+        "frequency": 1772,
+        "cefr": "A2"
+      },
+      {
+        "word": "Prima",
+        "pos": "NOUN",
+        "frequency": 8530,
+        "cefr": "B1"
+      },
+      {
+        "word": "sehr",
+        "pos": "ADV",
+        "frequency": 81,
+        "cefr": "A1"
+      },
+      {
+        "word": "nicht",
+        "pos": "PART",
+        "frequency": 11,
+        "cefr": "A1"
+      },
+      {
+        "word": "so",
+        "pos": "ADV",
+        "frequency": 28,
+        "cefr": "A1"
+      },
+      {
+        "word": "es",
+        "pos": "PRON",
+        "frequency": 12,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Klassensprache",
+        "pos": "NOUN"
+      },
+      {
+        "word": "was",
+        "pos": "PRON",
+        "frequency": 38,
+        "cefr": "A1"
+      },
+      {
+        "word": "sein",
+        "pos": "AUX",
+        "frequency": 4,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Tipp",
+        "pos": "NOUN",
+        "frequency": 3088,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Vokabel",
+        "pos": "NOUN",
+        "frequency": 20252,
+        "cefr": "B2"
+      },
+      {
+        "word": "melden",
+        "pos": "VERB",
+        "frequency": 1005,
+        "cefr": "B1"
+      },
+      {
+        "word": "sich",
+        "pos": "PRON",
+        "frequency": 14,
+        "cefr": "A1"
+      },
+      {
+        "word": "bitte",
+        "pos": "ADV",
+        "frequency": 471,
+        "cefr": "A1"
+      },
+      {
+        "word": "hören",
+        "pos": "VERB",
+        "frequency": 146,
+        "cefr": "A1"
+      },
+      {
+        "word": "zu",
+        "pos": "ADP",
+        "frequency": 21,
+        "cefr": "A1"
+      },
+      {
+        "word": "schreiben",
+        "pos": "VERB",
+        "frequency": 184,
+        "cefr": "A1"
+      },
+      {
+        "word": "haben",
+        "pos": "VERB",
+        "frequency": 6,
+        "cefr": "A1"
+      },
+      {
+        "word": "ein",
+        "pos": "DET",
+        "frequency": 5,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Frage",
+        "pos": "NOUN",
+        "frequency": 157,
+        "cefr": "A1"
+      },
+      {
+        "word": "langsam",
+        "pos": "ADV",
+        "frequency": 526,
+        "cefr": "A1"
+      },
+      {
+        "word": "welcher",
+        "pos": "DET",
+        "frequency": 122,
+        "cefr": "B1"
+      },
+      {
+        "word": "machen",
+        "pos": "VERB",
+        "frequency": 58,
+        "cefr": "A1"
+      },
+      {
+        "word": "ihr*e",
+        "pos": "PRON"
+      },
+      {
+        "word": "ihr",
+        "pos": "DET",
+        "frequency": 27,
+        "cefr": "A1"
+      },
+      {
+        "word": "sagen",
+        "pos": "VERB",
+        "frequency": 40,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Auto",
+        "pos": "NOUN",
+        "frequency": 361,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "fragen": {
+        "present": {
+          "ich": "frage",
+          "du": "fragst",
+          "Sie": "fragen"
+        }
+      },
+      "lesen": {
+        "present": {
+          "ich": "lese",
+          "du": "liest",
+          "Sie": "lesen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Wie heißt du?",
+      "Ich heiße Felix.",
+      "Und du?",
+      "Hallo Felix!",
+      "Ich heiße Sabine.",
+      "Grüß Gott!",
+      "Ich heiße X.",
+      "Bis bald!",
+      "Bis später!",
+      "Wie heißen Sie?",
+      "Guten Tag.",
+      "Ich heiße Charlie Müller.",
+      "Ich heiße Michael Peters.",
+      "Freut mich, Sie kennenzulernen.",
+      "Freut mich auch.",
+      "Auf Wiedersehen.",
+      "Ich heiße Anna Ball",
+      "Wie geht's?",
+      "Lesen Sie die Antworten auf den Karten.",
+      "Gut, danke.",
+      "Super, danke!",
+      "Sehr gut.",
+      "Nicht so gut.",
+      "Es geht.",
+      "So lala.",
+      "Schlecht, danke.",
+      "Was ist was?",
+      "Melden Sie sich bitte.",
+      "Hören Sie bitte zu.",
+      "Schreiben Sie bitte.",
+      "Lesen Sie bitte.",
+      "Ich habe eine Frage.",
+      "Wie heißt \"the car\" auf Deutsch?",
+      "Langsamer, bitte.",
+      "Auf welcher Seite, bitte?",
+      "Machen Sie, was Ihr*e Professor*in (ihr Professor, ihre Professorin) sagt.",
+      "Das Auto."
+    ],
+    "templated": [
+      {
+        "template": "Ich heiße [person_name].",
+        "source_literals": [
+          "Ich heiße Felix.",
+          "Ich heiße Sabine.",
+          "Ich heiße X."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present."
+      },
+      {
+        "template": "Ich heiße [person_name] [person_lastname].",
+        "source_literals": [
+          "Ich heiße Charlie Müller.",
+          "Ich heiße Michael Peters.",
+          "Ich heiße Anna Ball"
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present. Full name introduction."
+      }
+    ]
+  },
+  "placeholder_registry": {}
+}

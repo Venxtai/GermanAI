@@ -1,0 +1,531 @@
+{
+    "unit": "61",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 61,
+        "prerequisite": "1-60"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Handelswege vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Handel und Fair Trade"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "ändern",
+                "pos": "VERB",
+                "translation": "to change, alter"
+            },
+            {
+                "word": "lösen",
+                "pos": "VERB",
+                "translation": "to solve, resolve"
+            },
+            {
+                "word": "verdienen",
+                "pos": "VERB",
+                "translation": "to earn; deserve",
+                "frequency": 835,
+                "cefr": "A1"
+            },
+            {
+                "word": "verkaufen",
+                "pos": "VERB",
+                "translation": "to sell",
+                "frequency": 721,
+                "cefr": "A1"
+            },
+            {
+                "word": "versklaven",
+                "pos": "VERB",
+                "translation": "to enslave"
+            },
+            {
+                "word": "die Regel",
+                "pos": "NOUN",
+                "translation": "rule, norm, regulation",
+                "frequency": 438,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Zoll",
+                "pos": "NOUN",
+                "translation": "customs, duty, trade tariff",
+                "frequency": 8933,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Chemie",
+                "pos": "NOUN",
+                "translation": "chemistry",
+                "frequency": 486,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Hafen",
+                "pos": "NOUN",
+                "translation": "harbor, port, haven",
+                "frequency": 2687,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Schiff",
+                "pos": "NOUN",
+                "translation": "ship",
+                "frequency": 1176,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Rohstoff",
+                "pos": "NOUN",
+                "translation": "raw material",
+                "frequency": 3559,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Plantage",
+                "pos": "NOUN",
+                "translation": "plantation",
+                "frequency": 21351,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Anbau",
+                "pos": "NOUN",
+                "translation": "growing, cultivation, farming",
+                "frequency": 7302,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Handel",
+                "pos": "NOUN",
+                "translation": "trade, commerce",
+                "frequency": 1535,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Bauer*in",
+                "pos": "NOUN",
+                "translation": "farmer",
+                "frequency": 1548,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Arbeiter*in",
+                "pos": "NOUN",
+                "translation": "worker",
+                "frequency": 2404,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Besitzer*in",
+                "pos": "NOUN",
+                "translation": "owner",
+                "frequency": 2839,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Händler*in",
+                "pos": "NOUN",
+                "translation": "dealer, merchant, retailer, salesperson"
+            },
+            {
+                "word": "der*die Konsument*in",
+                "pos": "NOUN",
+                "translation": "consumer",
+                "frequency": 2284
+            },
+            {
+                "word": "die Gemeinschaft",
+                "pos": "NOUN",
+                "translation": "community",
+                "frequency": 2302,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Lösung",
+                "pos": "NOUN",
+                "translation": "solution"
+            },
+            {
+                "word": "zufrieden",
+                "pos": "ADJ",
+                "translation": "content, happy (with)",
+                "frequency": 1518,
+                "cefr": "A1"
+            },
+            {
+                "word": "gerecht",
+                "pos": "ADJ",
+                "translation": "fair; just",
+                "frequency": 2080,
+                "cefr": "B1"
+            },
+            {
+                "word": "billig",
+                "pos": "ADJ",
+                "translation": "cheap",
+                "frequency": 1738,
+                "cefr": "A1"
+            },
+            {
+                "word": "teuer",
+                "pos": "ADJ",
+                "translation": "expensive",
+                "frequency": 950,
+                "cefr": "A1"
+            },
+            {
+                "word": "maximal",
+                "pos": "ADV",
+                "translation": "maximum; at most; maximal",
+                "frequency": 1284,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Koloniale",
+                "pos": "NOUN",
+                "frequency": 25229
+            },
+            {
+                "word": "der Kolonialismus",
+                "pos": "NOUN",
+                "frequency": 27710
+            },
+            {
+                "word": "ungefähr",
+                "pos": "ADV",
+                "frequency": 1458,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Tabak",
+                "pos": "NOUN",
+                "frequency": 13326
+            },
+            {
+                "word": "Amerika",
+                "pos": "PROPN",
+                "frequency": 1209
+            },
+            {
+                "word": "der Kolonialist",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Textilie",
+                "pos": "NOUN",
+                "frequency": 28037
+            },
+            {
+                "word": "der Importeur",
+                "pos": "NOUN",
+                "frequency": 23480
+            },
+            {
+                "word": "knapp",
+                "pos": "ADV",
+                "frequency": 638,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Million",
+                "pos": "NOUN",
+                "frequency": 209,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tonne",
+                "pos": "NOUN",
+                "frequency": 2402
+            },
+            {
+                "word": "importiert",
+                "pos": "ADJ",
+                "frequency": 27092
+            },
+            {
+                "word": "der Luxus",
+                "pos": "NOUN",
+                "frequency": 9294,
+                "cefr": "B2"
+            },
+            {
+                "word": "fair",
+                "pos": "ADJ",
+                "frequency": 2803,
+                "cefr": "B1"
+            },
+            {
+                "word": "global",
+                "pos": "ADJ",
+                "frequency": 1463,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Süden",
+                "pos": "NOUN",
+                "frequency": 1771,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Kakao",
+                "pos": "NOUN",
+                "frequency": 18475,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Norden",
+                "pos": "NOUN",
+                "frequency": 1516,
+                "cefr": "A1"
+            },
+            {
+                "word": "sozial",
+                "pos": "ADJ",
+                "frequency": 430,
+                "cefr": "B1"
+            },
+            {
+                "word": "ökonomisch",
+                "pos": "ADJ",
+                "frequency": 1773
+            },
+            {
+                "word": "ökologisch",
+                "pos": "ADJ",
+                "frequency": 3085,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ändern": {
+                "present": {
+                    "ich": "ändere",
+                    "du": "änderst",
+                    "er": "ändert",
+                    "es": "ändert",
+                    "sie_singular": "ändert",
+                    "xier": "ändert",
+                    "wir": "ändern",
+                    "ihr": "ändert",
+                    "sie_plural": "ändern",
+                    "Sie": "ändern"
+                }
+            },
+            "lösen": {
+                "present": {
+                    "ich": "löse",
+                    "du": "löst",
+                    "er": "löst",
+                    "es": "löst",
+                    "sie_singular": "löst",
+                    "xier": "löst",
+                    "wir": "lösen",
+                    "ihr": "löst",
+                    "sie_plural": "lösen",
+                    "Sie": "lösen"
+                }
+            },
+            "verdienen": {
+                "present": {
+                    "ich": "verdiene",
+                    "du": "verdienst",
+                    "er": "verdient",
+                    "es": "verdient",
+                    "sie_singular": "verdient",
+                    "xier": "verdient",
+                    "wir": "verdienen",
+                    "ihr": "verdient",
+                    "sie_plural": "verdienen",
+                    "Sie": "verdienen"
+                }
+            },
+            "verkaufen": {
+                "present": {
+                    "ich": "verkaufe",
+                    "du": "verkaufst",
+                    "er": "verkauft",
+                    "es": "verkauft",
+                    "sie_singular": "verkauft",
+                    "xier": "verkauft",
+                    "wir": "verkaufen",
+                    "ihr": "verkauft",
+                    "sie_plural": "verkaufen",
+                    "Sie": "verkaufen"
+                }
+            },
+            "versklaven": {
+                "present": {
+                    "ich": "versklave",
+                    "du": "versklavst",
+                    "er": "versklavt",
+                    "es": "versklavt",
+                    "sie_singular": "versklavt",
+                    "xier": "versklavt",
+                    "wir": "versklaven",
+                    "ihr": "versklavt",
+                    "sie_plural": "versklaven",
+                    "Sie": "versklaven"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Kolonialzeit dauert ungefähr von 1490 bis 1950.",
+            "Was wissen Sie über den Handel im Kolonialismus?.",
+            "Was wissen Sie über den Handel ( trade ) im Kolonialismus?",
+            "Wählen Sie die richtige Antwort aus Rohstoffe kommen aus den Kolonien | Europa und Händler bringen sie in die Kolonien | nach Europa.",
+            "Tee, Kaffee, Zucker, Baumwolle und Tabak kommen aus Europa | Afrika | Amerika | Asien.",
+            "Pfeffer) kommen aus Europa | Afrika | Amerika | Asien.",
+            "Die Kolonialisten versklaven Menschen in Afrika und verkaufen diese Menschen in Europa | Amerika | Asien.",
+            "Fabriken in Europa | Amerika | Afrika | Asien produzieren Textilien etc.",
+            "Und bringen diese nach Europa | Amerika | Afrika | Asien.",
+            "Kolonialwarenläden in Europa | Amerika | Afrika | Asien verkaufen sie.",
+            "Zeichnen Sie die Handelswege in die Karte ein.",
+            "Vergleichen Sie die Karte aus Aktivität 190 mit der \"Schuh\"-Karte aus Aktivität 188.",
+            "Was ist anders und was ist gleich?",
+            "Woher kommen die Rohstoffe im Kolonialismus?",
+            "Woher kommen die Rohstoffe bei den Schuhen?",
+            "Wo ist die Produktion im Kolonialismus?",
+            "Wo ist die Produktion der Schuhe?",
+            "Die Banane und ihr Weg zu uns",
+            "Wer verdient wie viel Geld mit einer Banane?",
+            "Sagen wir, eine Banane kostet einen Euro: 39 cent 19 cent 19 cent 12 cent 10 cent 1 cent 1",
+            "Hören Sie zu.",
+            "Sind Ihre Ideen aus Teil 1 korrekt?",
+            "Wenn nicht, korrigieren Sie.",
+            "Nirgendwo in Europa sind Bananen so beliebt wie in Deutschland.",
+            "Knapp 1,4 Millionen Tonnen werden essen die Deutschen pro Jahr.",
+            "Ein Drittel aller nach Europa importierten Bananen gehen nach Deutschland.",
+            "Bananen sind beliebt, weil sie gesund sind, aber auch weil sie sehr billig sind.",
+            "Der Preis für Bananen ist in deutschen Supermärkten seit fast 20 Jahren gleich.",
+            "Die meisten Bananen kommen aus Costa Rica und Honduras, aber auch aus Ecuador und Nicaragua.",
+            "Der Anbau, Transport, Lagerung [Lager] und Verkauf kosten Geld.",
+            "Aber wer bekommt wie viel?",
+            "Und ist das gerecht?",
+            "Am Anfang steht der Plantagenarbeiter.",
+            "Wir nehmen als Beispiel, dass eine Banane einen Euro kostet.",
+            "Dann verdient der Plantagenarbeiter nur 1 Cent pro Banane.",
+            "Der Plantagenbesitzer*innen verdient 19 Cent an jeder Banane.",
+            "Für den Transport zum Hafen und die Schiffsfracht [Schiff] gibt es 12 Cent.",
+            "Der Zoll bekommt 10 Cent.",
+            "19 Cent gehen an den Importeur und den Großhandel [Handel] und von dort geht es weiter in den Einzelhandel [Handel].",
+            "Der Einzelhandel [Handel] verdient dann über ein Drittel an der Banane, nämlich 39 Cent.",
+            "Wie viel sollten die Gruppen bekommen?",
+            "Ist die Banane dann teurer?",
+            "Wie viel darf eine Banane maximal kosten, wenn sie kein Luxusprodukt sein soll?",
+            "Sie lesen gleich einen Text über fairen Handel.",
+            "Lesen Sie zuerst die Fragen und dann den Text.",
+            "Beantworten Sie die Fragen.",
+            "Welche Probleme gibt es im globalen Handel?",
+            "Warum gibt es diese Probleme?",
+            "Wie möchte Fairtrade die Probleme lösen?",
+            "Welche drei Regeln gibt es bei Fairtrade?",
+            "Sind Fairtrade Produkte teurer oder billiger?",
+            "Das Siegel für fairen Handel Fairtrade ist Englisch und bedeutet \"gerechter Handel\".",
+            "Ein Handel ist ein Geschäft zwischen zwei oder mehreren Menschen:",
+            "Eine Person stellt etwas her [ Hersteller] und verkauft es an eine andere Person.",
+            "Gerecht ist dieser Handel, wenn beide zufrieden sind und die Hersteller*innen und Verkäufer*innen genug Geld bekommen.",
+            "Aber der Handel in unserer Welt ist nicht immer gerecht.",
+            "Weil viele Menschen mit den Produkten Geld verdienen möchten und Konsument*innen im Globalen Norden nicht zu viel bezahlen können oder wollen.",
+            "Manche Leute wissen auch nicht, wer wie viel Geld mit den Produkten verdient.",
+            "Gerechter Handel.",
+            "Denn der will das ändern.",
+            "Der gerechte Handel funktioniert in vielen Ländern in Europa und Nordamerika durch die Organisation Fairtrade.",
+            "Sie kennt viele Bäuer *innen und Hersteller*innen, zum Beispiel in Ländern wie Peru, Ghana oder Vietnam.",
+            "Sie bringt diese Leute mit Händler*innen in Ländern wie Deutschland zusammen.",
+            "Diese Händler*innen kaufen Kaffee, Kakao, Orangen oder Pflanzen aus den Ländern und bezahlen mehr Geld als andere.",
+            "Fairtrade hat aber auch Regeln.",
+            "Es gibt soziale, ökonomische und ökologische Regeln, so sollen zum Beispiele Kinder nicht arbeiten müssen und die Produzent *innen sollen nur wenig Chemie benutzen.",
+            "Fairtrade möchte vor allem Kleinbäuer *innen und ihrer Gemeinschaft helfen.",
+            "Konsument*innen sollen durch das Fairtrade Label besser wissen, woher die Produkte kommen und wie die Bäuer *innen und Händler*innen arbeiten.",
+            "Welche Regeln gibt es bei Fairtrade?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

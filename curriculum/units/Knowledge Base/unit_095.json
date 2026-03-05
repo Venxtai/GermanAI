@@ -1,0 +1,401 @@
+{
+    "unit": "95",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 95,
+        "prerequisite": "1-94"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "lustige Erfindungen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "holen",
+                "pos": "VERB",
+                "translation": "to get sth., fetch sth.",
+                "frequency": 547,
+                "cefr": "A1"
+            },
+            {
+                "word": "Kosten reinbekommen",
+                "pos": "VERB",
+                "translation": "to get/make one's expenses back",
+                "frequency": 564,
+                "cefr": "B1"
+            },
+            {
+                "word": "aufwischen",
+                "pos": "VERB",
+                "translation": "to mop up; swap"
+            },
+            {
+                "word": "einsprühen",
+                "pos": "VERB",
+                "translation": "to inject"
+            },
+            {
+                "word": "krabbeln",
+                "pos": "VERB",
+                "translation": "to crawl"
+            },
+            {
+                "word": "die Innovation",
+                "pos": "NOUN",
+                "translation": "innovation",
+                "frequency": 2482,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gerät",
+                "pos": "NOUN",
+                "translation": "device, appliance"
+            },
+            {
+                "word": "das Zahlungsmittel",
+                "pos": "NOUN",
+                "translation": "means of payment",
+                "frequency": 23146,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Arbeitsplatz",
+                "pos": "NOUN",
+                "translation": "workplace; employment",
+                "frequency": 1671,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Quatsch",
+                "pos": "ADJ",
+                "translation": "malarkey; jabberwocky; nonsense (informal)",
+                "frequency": 3893,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Krawatte",
+                "pos": "NOUN",
+                "translation": "tie",
+                "frequency": 12653,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Privatsphäre",
+                "pos": "NOUN",
+                "translation": "privacy"
+            },
+            {
+                "word": "der Schutz",
+                "pos": "NOUN",
+                "translation": "protection",
+                "frequency": 1152,
+                "cefr": "B1"
+            },
+            {
+                "word": "klar",
+                "pos": "ADJ",
+                "translation": "clear",
+                "frequency": 239,
+                "cefr": "A1"
+            },
+            {
+                "word": "faul",
+                "pos": "ADJ",
+                "translation": "lazy",
+                "frequency": 4856,
+                "cefr": "A2"
+            },
+            {
+                "word": "trocken",
+                "pos": "ADJ",
+                "translation": "dry",
+                "frequency": 2363,
+                "cefr": "A2"
+            },
+            {
+                "word": "teuer, teurer, am teuersten",
+                "pos": "ADJ",
+                "translation": "expensive",
+                "frequency": 950,
+                "cefr": "A1"
+            },
+            {
+                "word": "endlich",
+                "pos": "ADV",
+                "translation": "finally",
+                "frequency": 454,
+                "cefr": "A2"
+            },
+            {
+                "word": "leider",
+                "pos": "ADV",
+                "translation": "unfortunately",
+                "frequency": 643,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Trinkkrawatte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "hydrieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Einrad",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Maske",
+                "pos": "NOUN",
+                "frequency": 4332
+            },
+            {
+                "word": "der Bohrer",
+                "pos": "NOUN",
+                "frequency": 23051
+            },
+            {
+                "word": "mechanisch",
+                "pos": "ADJ",
+                "frequency": 3223
+            },
+            {
+                "word": "der Mop",
+                "pos": "NOUN"
+            },
+            {
+                "word": "-Rad",
+                "pos": "NOUN"
+            },
+            {
+                "word": "hyperrealistisch",
+                "pos": "ADV"
+            },
+            {
+                "word": "reinbekommen",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Bananen-Fan",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Telefonsupport",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "holen": {
+                "present": {
+                    "ich": "hole",
+                    "du": "holst",
+                    "er": "holt",
+                    "es": "holt",
+                    "sie_singular": "holt",
+                    "xier": "holt",
+                    "wir": "holen",
+                    "ihr": "holt",
+                    "sie_plural": "holen",
+                    "Sie": "holen"
+                },
+                "Perfekt": {
+                    "ich": "habe geholt",
+                    "du": "hast geholt",
+                    "er": "hat geholt",
+                    "es": "hat geholt",
+                    "sie_singular": "hat geholt",
+                    "xier": "hat geholt",
+                    "wir": "haben geholt",
+                    "ihr": "habt geholt",
+                    "sie_plural": "haben geholt",
+                    "Sie": "haben geholt"
+                }
+            },
+            "reinbekommen": {
+                "Perfekt": {
+                    "ich": "habe reinbekommen",
+                    "du": "hast reinbekommen",
+                    "er": "hat reinbekommen",
+                    "es": "hat reinbekommen",
+                    "sie_singular": "hat reinbekommen",
+                    "xier": "hat reinbekommen",
+                    "wir": "haben reinbekommen",
+                    "ihr": "habt reinbekommen",
+                    "sie_plural": "haben reinbekommen",
+                    "Sie": "haben reinbekommen"
+                }
+            },
+            "aufwischen": {
+                "Perfekt": {
+                    "ich": "habe aufgewischt",
+                    "du": "hast aufgewischt",
+                    "er": "hat aufgewischt",
+                    "es": "hat aufgewischt",
+                    "sie_singular": "hat aufgewischt",
+                    "xier": "hat aufgewischt",
+                    "wir": "haben aufgewischt",
+                    "ihr": "habt aufgewischt",
+                    "sie_plural": "haben aufgewischt",
+                    "Sie": "haben aufgewischt"
+                }
+            },
+            "einsprühen": {
+                "Perfekt": {
+                    "ich": "habe eingesprüht",
+                    "du": "hast eingesprüht",
+                    "er": "hat eingesprüht",
+                    "es": "hat eingesprüht",
+                    "sie_singular": "hat eingesprüht",
+                    "xier": "hat eingesprüht",
+                    "wir": "haben eingesprüht",
+                    "ihr": "habt eingesprüht",
+                    "sie_plural": "haben eingesprüht",
+                    "Sie": "haben eingesprüht"
+                }
+            },
+            "krabbeln": {
+                "present": {
+                    "ich": "krabble",
+                    "du": "krabbelst",
+                    "er": "krabbelt",
+                    "es": "krabbelt",
+                    "sie_singular": "krabbelt",
+                    "xier": "krabbelt",
+                    "wir": "krabbeln",
+                    "ihr": "krabbelt",
+                    "sie_plural": "krabbeln",
+                    "Sie": "krabbeln"
+                },
+                "Perfekt": {
+                    "ich": "bin gekrabbelt",
+                    "du": "bist gekrabbelt",
+                    "er": "ist gekrabbelt",
+                    "es": "ist gekrabbelt",
+                    "sie_singular": "ist gekrabbelt",
+                    "xier": "ist gekrabbelt",
+                    "wir": "sind gekrabbelt",
+                    "ihr": "seid gekrabbelt",
+                    "sie_plural": "sind gekrabbelt",
+                    "Sie": "sind gekrabbelt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schauen Sie sich diese Erfindungen an und beschreiben Sie, was man mit den Erfindungen (wahrscheinlich) machen kann oder wofür sie gut sind.",
+            "Mit der Trinkkrawatte sind Sie immer gut hydriert am Arbeitsplatz.",
+            "Menschen, die keine Zeit für Pausen haben, können trotzdem genug trinken.",
+            "Auch für faule Menschen ist die Trinkkrawatte gut:",
+            "Sie müssen nicht aufstehen und kein Wasser aus der Küche holen.",
+            "Baby Mop] der Bananenschneider der Privatsphärenschal",
+            "Welche dieser Erfindungen finden Sie praktisch/interessant?",
+            "Welche sind Quatsch?",
+            "Lesen Sie diese Reviews und raten Sie, für welches Produkt die Bewertung ist.",
+            "Das Gerät ist teuer, aber die Qualität ist super!",
+            "Was immer man druckt, es sieht hyperrealistisch aus.",
+            "Ich habe die hohen Kosten reinbekommen, weil ich mein eigenes Geld mit dem Gerät gedruckt habe.",
+            "Einen Ferrari konnte ich mit dem Geld aber leider nicht kaufen, weil Ferrari keine Geldkoffer als Zahlungsmittel akzeptiert.",
+            "Wow, für Jahrhunderte musste man Bananen selbst schneiden oder wie ein Tier essen.",
+            "Mit diesem Produkt hat das endlich ein Ende.",
+            "Dieses Produkt machte mich zum Bananen-Fan!",
+            "Große Innovation!",
+            "Minuspunkte gibt es, weil leider nicht klar ist, was man machen muss, wenn die Banane in die falsche Richtung zeigt.",
+            "Auch der Telefonsupport hatte für dieses Problem keine Antwort.",
+            "Ich muss sagen, dass ich ihn liebe!",
+            "Ich habe einen Kindergarten und habe ihn für alle meine Kinder gekauft.",
+            "Meine Böden sind abends mega sauber.",
+            "Ganz sauber sind die Böden aber leider nicht, weil man keinen trockenen Dreck aufwischen kann.",
+            "Man könnte aber versuchen, die Kinder mit Wasser einzusprühen, wenn sie krabbeln.",
+            "Vielleicht hilft das ja.",
+            "Suchen Sie links eine Erfindung aus und schreiben Sie eine lustige Review.",
+            "Überlegen Sie sich jetzt ein \"interessantes\" neues Produkt.",
+            "Es kann mehr oder weniger sinnvoll sein.",
+            "Wählen Sie am Ende die interessanteste Idee."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

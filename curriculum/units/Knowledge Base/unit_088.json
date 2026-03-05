@@ -1,0 +1,571 @@
+{
+    "unit": "88",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 88,
+        "prerequisite": "1-87"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [
+            "When comparative or superlative adjectives appear before a noun, apply the same adjective ending rules: add the ending after -er (comparative) or -st (superlative), e.g., \"ein größeres Haus,\" \"das schönste Gebäude.\""
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Hundertwasserprojekte vergleichen und beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Hundertwasser und Architektur"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "notieren",
+                "pos": "VERB",
+                "translation": "to make a note; jot down",
+                "frequency": 3359,
+                "cefr": "A2"
+            },
+            {
+                "word": "spekulieren",
+                "pos": "VERB",
+                "translation": "to speculate",
+                "frequency": 7359,
+                "cefr": "B2"
+            },
+            {
+                "word": "erzeugen",
+                "pos": "VERB",
+                "translation": "to produce, create, generate (often uncountable or nonmaterial, e.g. electricity, wind, emotions, reactions)",
+                "frequency": 1330
+            },
+            {
+                "word": "liefern",
+                "pos": "VERB",
+                "translation": "to deliver; provide",
+                "frequency": 781,
+                "cefr": "A2"
+            },
+            {
+                "word": "verarbeiten",
+                "pos": "VERB",
+                "translation": "to process",
+                "frequency": 2831
+            },
+            {
+                "word": "parken",
+                "pos": "VERB",
+                "translation": "to park",
+                "frequency": 7891,
+                "cefr": "A2"
+            },
+            {
+                "word": "heizen",
+                "pos": "VERB",
+                "translation": "to heat",
+                "frequency": 8915,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Heizung",
+                "pos": "NOUN",
+                "translation": "heating; heater, radiator",
+                "frequency": 8853,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Anlage",
+                "pos": "NOUN",
+                "translation": "facility; plant",
+                "frequency": 1848,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Abfallbehandlungsanlage",
+                "pos": "NOUN",
+                "translation": "waste treatment plant",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Wärme",
+                "pos": "NOUN",
+                "translation": "warmth"
+            },
+            {
+                "word": "die Fernwärme",
+                "pos": "NOUN",
+                "translation": "long-distance heating, district heating"
+            },
+            {
+                "word": "die Wärmepumpe",
+                "pos": "NOUN",
+                "translation": "heat pump"
+            },
+            {
+                "word": "der Strom",
+                "pos": "NOUN",
+                "translation": "electricity",
+                "frequency": 1392,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Erdgas, -e",
+                "pos": "ADJ",
+                "translation": "natural gas"
+            },
+            {
+                "word": "die Kohle",
+                "pos": "NOUN",
+                "translation": "coal",
+                "frequency": 3468,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Umfrage",
+                "pos": "NOUN",
+                "translation": "survey, poll, questionnaire",
+                "frequency": 2176,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Autobahnraststätte",
+                "pos": "NOUN",
+                "translation": "(interstate) service area"
+            },
+            {
+                "word": "technisch",
+                "pos": "ADJ",
+                "translation": "technical(ly)",
+                "frequency": 656,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Energie",
+                "pos": "NOUN",
+                "translation": "energy",
+                "frequency": 455,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Versicherung",
+                "pos": "NOUN",
+                "translation": "insurance",
+                "frequency": 3922,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Fassade",
+                "pos": "NOUN",
+                "frequency": 4217
+            },
+            {
+                "word": "thermisch",
+                "pos": "ADJ",
+                "frequency": 3988,
+                "cefr": "B2"
+            },
+            {
+                "word": "simmeringer",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Spittelbau",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Megawattstunde",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Resultat",
+                "pos": "NOUN",
+                "frequency": 2848
+            },
+            {
+                "word": "die Strichliste",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Wohngemeinschaft",
+                "pos": "NOUN",
+                "frequency": 18480,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Grafik",
+                "pos": "NOUN",
+                "frequency": 3148,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Koks",
+                "pos": "NOUN",
+                "frequency": 30472
+            },
+            {
+                "word": "das Brikett",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Solar",
+                "pos": "NOUN",
+                "frequency": 16328
+            },
+            {
+                "word": "das Pellet",
+                "pos": "NOUN",
+                "frequency": 36723
+            },
+            {
+                "word": "das Holzbrikett",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Erdgas",
+                "pos": "NOUN",
+                "frequency": 9738
+            },
+            {
+                "word": "das Hundertwasser-Projekt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die tstätte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Ronald-McDonald-Haus",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Schlammverwertung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Indoor",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Zitadelle",
+                "pos": "NOUN",
+                "frequency": 20099
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "notieren": {
+                "present": {
+                    "ich": "notiere",
+                    "du": "notierst",
+                    "er": "notiert",
+                    "es": "notiert",
+                    "sie_singular": "notiert",
+                    "xier": "notiert",
+                    "wir": "notieren",
+                    "ihr": "notiert",
+                    "sie_plural": "notieren",
+                    "Sie": "notieren"
+                },
+                "Perfekt": {
+                    "ich": "habe notiert",
+                    "du": "hast notiert",
+                    "er": "hat notiert",
+                    "es": "hat notiert",
+                    "sie_singular": "hat notiert",
+                    "xier": "hat notiert",
+                    "wir": "haben notiert",
+                    "ihr": "habt notiert",
+                    "sie_plural": "haben notiert",
+                    "Sie": "haben notiert"
+                }
+            },
+            "spekulieren": {
+                "present": {
+                    "ich": "spekuliere",
+                    "du": "spekulierst",
+                    "er": "spekuliert",
+                    "es": "spekuliert",
+                    "sie_singular": "spekuliert",
+                    "xier": "spekuliert",
+                    "wir": "spekulieren",
+                    "ihr": "spekuliert",
+                    "sie_plural": "spekulieren",
+                    "Sie": "spekulieren"
+                },
+                "Perfekt": {
+                    "ich": "habe spekuliert",
+                    "du": "hast spekuliert",
+                    "er": "hat spekuliert",
+                    "es": "hat spekuliert",
+                    "sie_singular": "hat spekuliert",
+                    "xier": "hat spekuliert",
+                    "wir": "haben spekuliert",
+                    "ihr": "habt spekuliert",
+                    "sie_plural": "haben spekuliert",
+                    "Sie": "haben spekuliert"
+                }
+            },
+            "erzeugen": {
+                "present": {
+                    "ich": "erzeuge",
+                    "du": "erzeugst",
+                    "er": "erzeugt",
+                    "es": "erzeugt",
+                    "sie_singular": "erzeugt",
+                    "xier": "erzeugt",
+                    "wir": "erzeugen",
+                    "ihr": "erzeugt",
+                    "sie_plural": "erzeugen",
+                    "Sie": "erzeugen"
+                },
+                "Perfekt": {
+                    "ich": "habe erzeugt",
+                    "du": "hast erzeugt",
+                    "er": "hat erzeugt",
+                    "es": "hat erzeugt",
+                    "sie_singular": "hat erzeugt",
+                    "xier": "hat erzeugt",
+                    "wir": "haben erzeugt",
+                    "ihr": "habt erzeugt",
+                    "sie_plural": "haben erzeugt",
+                    "Sie": "haben erzeugt"
+                }
+            },
+            "liefern": {
+                "present": {
+                    "ich": "liefere",
+                    "du": "lieferst",
+                    "er": "liefert",
+                    "es": "liefert",
+                    "sie_singular": "liefert",
+                    "xier": "liefert",
+                    "wir": "liefern",
+                    "ihr": "liefert",
+                    "sie_plural": "liefern",
+                    "Sie": "liefern"
+                },
+                "Perfekt": {
+                    "ich": "habe geliefert",
+                    "du": "hast geliefert",
+                    "er": "hat geliefert",
+                    "es": "hat geliefert",
+                    "sie_singular": "hat geliefert",
+                    "xier": "hat geliefert",
+                    "wir": "haben geliefert",
+                    "ihr": "habt geliefert",
+                    "sie_plural": "haben geliefert",
+                    "Sie": "haben geliefert"
+                }
+            },
+            "verarbeiten": {
+                "present": {
+                    "ich": "verarbeite",
+                    "du": "verarbeitest",
+                    "er": "verarbeitet",
+                    "es": "verarbeitet",
+                    "sie_singular": "verarbeitet",
+                    "xier": "verarbeitet",
+                    "wir": "verarbeiten",
+                    "ihr": "verarbeitet",
+                    "sie_plural": "verarbeiten",
+                    "Sie": "verarbeiten"
+                },
+                "Perfekt": {
+                    "ich": "habe verarbeitet",
+                    "du": "hast verarbeitet",
+                    "er": "hat verarbeitet",
+                    "es": "hat verarbeitet",
+                    "sie_singular": "hat verarbeitet",
+                    "xier": "hat verarbeitet",
+                    "wir": "haben verarbeitet",
+                    "ihr": "habt verarbeitet",
+                    "sie_plural": "haben verarbeitet",
+                    "Sie": "haben verarbeitet"
+                }
+            },
+            "parken": {
+                "present": {
+                    "ich": "parke",
+                    "du": "parkst",
+                    "er": "parkt",
+                    "es": "parkt",
+                    "sie_singular": "parkt",
+                    "xier": "parkt",
+                    "wir": "parken",
+                    "ihr": "parkt",
+                    "sie_plural": "parken",
+                    "Sie": "parken"
+                },
+                "Perfekt": {
+                    "ich": "habe geparkt",
+                    "du": "hast geparkt",
+                    "er": "hat geparkt",
+                    "es": "hat geparkt",
+                    "sie_singular": "hat geparkt",
+                    "xier": "hat geparkt",
+                    "wir": "haben geparkt",
+                    "ihr": "habt geparkt",
+                    "sie_plural": "haben geparkt",
+                    "Sie": "haben geparkt"
+                }
+            },
+            "heizen": {
+                "present": {
+                    "ich": "heize",
+                    "du": "heizt",
+                    "er": "heizt",
+                    "es": "heizt",
+                    "sie_singular": "heizt",
+                    "xier": "heizt",
+                    "wir": "heizen",
+                    "ihr": "heizt",
+                    "sie_plural": "heizen",
+                    "Sie": "heizen"
+                },
+                "Perfekt": {
+                    "ich": "habe geheizt",
+                    "du": "hast geheizt",
+                    "er": "hat geheizt",
+                    "es": "hat geheizt",
+                    "sie_singular": "hat geheizt",
+                    "xier": "hat geheizt",
+                    "wir": "haben geheizt",
+                    "ihr": "habt geheizt",
+                    "sie_plural": "haben geheizt",
+                    "Sie": "haben geheizt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schauen Sie sich das Bild an und spekulieren Sie, was das für ein Gebäude ist.",
+            "Was macht man hier vielleicht?",
+            "Ist es eine Fabrik?",
+            "Ein Museum?",
+            "Ein Schloss?",
+            "Gibt es in dem Gebäude Wohnungen?",
+            "Oder Büros?",
+            "Oder Restaurants?",
+            "Warum gibt es einen Turm?",
+            "Wie finden Sie die Fassade?",
+            "Diese Anlage liegt in Spittelau bei Wien.",
+            "Suchen Sie im Internet nach Informationen über dieses Gebäude.",
+            "Womit assoziiert man es?",
+            "Wie finden Sie es, dass man dieses Gebäude so nutzt?",
+            "Sie bekommen Daten über die thermischen Abfallbehandlungsanlagen in Spittelau (Person 1), Flötzersteig (Person 2) und Simmeringer Haide (Person 3).",
+            "Stellen Sie Fragen und vergleichen Sie.",
+            "Die Abfallbehandlungsanlage Spittelau hat im Jahr 2016 im Jahr 253.417 Tonnen Müll verarbeitet.",
+            "Haben eure mehr oder weniger verarbeitet?",
+            "Die Abfallbehandlungsanlage Flötzersteig hat im Jahr 2016 194.807 Tonnen Müll verarbeitet.",
+            "Die Abfallbehandlungsanlage Simmeringer Haide hat im Jahr 2016 395.978 Tonnen Müll verarbeitet.",
+            "Die Anlage Spittelbau hat also mehr als die Anlage Flötzersteig verarbeitet und die Anlage Simmeringer Haide hat am meisten verarbeitet.",
+            "Thermische Abfallbehandlungsanlage Spittelau.",
+            "Thermische Abfallbehandlungsanlage Flötzersteig.",
+            "A hat mehr verarbeitet als B.",
+            "C hat am meisten verarbeitet.",
+            "X hat im Jahr 2016 Y Megawattstunden Strom produziert.",
+            "A hat mehr produziert als B.",
+            "X hat im Jahr 2016 Y Haushalte Fernwärme geliefert.",
+            "A hat mehr geliefert als B.",
+            "X hat im Jahr 2016 Y Megawattstunden thermische Energie erzeugt.",
+            "A hat mehr erzeugt als B.",
+            "C hat am meisten erzeugt.",
+            "Machen Sie eine Umfrage im Kurs.",
+            "Wo wohnst du?.",
+            "Wo wohnen Sie?",
+            "In einem Haus in einem Studierendenwohnheim in einer Wohngemeinschaft in einer Wohnung",
+            "Womit wird geheizt?",
+            "Mit Gas mit Holz oder Kohle mit Strom",
+            "Vergleichen Sie Ihre Statistik mit der Grafik.",
+            "Die Grafik zeigt, womit in Österreich geheizt wird.",
+            "Welche Funktion haben diese Hundertwasser-Projekte?",
+            "Was meinen Sie?",
+            "Sie bekommen einen Ort.",
+            "Suchen Sie dort nach einem Hundertwasser-Projekt.",
+            "Beschreiben Sie das Hundertwasser-Projekt und sein Bild.",
+            "Zeigen Sie nicht auf das Bild.",
+            "Die anderen müssen raten, welches Ihr Projekt ist.",
+            "Prüfen Sie Ihre Antworten in Teil 1.",
+            "Autobahnraststätte, essen, parken, auf Toilette gehen"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

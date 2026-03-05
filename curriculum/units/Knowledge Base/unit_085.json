@@ -1,0 +1,500 @@
+{
+    "unit": "85",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 85,
+        "prerequisite": "1-84"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die Lage von Gebäuden bestimmen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Wiener Stadtplanung"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "aussehen",
+                "pos": "VERB",
+                "translation": "to look [appearance]",
+                "frequency": 277,
+                "cefr": "A1"
+            },
+            {
+                "word": "verbinden",
+                "pos": "VERB",
+                "translation": "to connect, bring into contact",
+                "frequency": 452,
+                "cefr": "B1"
+            },
+            {
+                "word": "mitteilen",
+                "pos": "VERB",
+                "translation": "to inform",
+                "frequency": 875,
+                "cefr": "B1"
+            },
+            {
+                "word": "beschließen",
+                "pos": "VERB",
+                "translation": "to enact; decide"
+            },
+            {
+                "word": "zerstören",
+                "pos": "VERB",
+                "translation": "to destroy, demolish"
+            },
+            {
+                "word": "teilnehmen",
+                "pos": "VERB",
+                "translation": "to participate (in)",
+                "frequency": 1714,
+                "cefr": "A2"
+            },
+            {
+                "word": "skizzieren",
+                "pos": "VERB",
+                "translation": "to sketch; draft",
+                "frequency": 3511
+            },
+            {
+                "word": "die Einbahnstraße",
+                "pos": "NOUN",
+                "translation": "one-way street",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wettbewerb",
+                "pos": "NOUN",
+                "translation": "competition; contest",
+                "frequency": 1492,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Lage",
+                "pos": "NOUN",
+                "translation": "location, position; situation",
+                "frequency": 555,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Mauer",
+                "pos": "NOUN",
+                "translation": "wall [structure made of bricks]",
+                "frequency": 1659,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Kaiser*in",
+                "pos": "NOUN",
+                "translation": "imperial majesty",
+                "frequency": 2563
+            },
+            {
+                "word": "der*die Präsident*in",
+                "pos": "NOUN",
+                "translation": "president"
+            },
+            {
+                "word": "der*die Bauarbeiter*in",
+                "pos": "NOUN",
+                "translation": "builder; construction worker",
+                "frequency": 11266
+            },
+            {
+                "word": "bald",
+                "pos": "ADV",
+                "translation": "soon",
+                "frequency": 503,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Ehemann",
+                "pos": "NOUN",
+                "frequency": 4762,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Architektenwettbewerb",
+                "pos": "NOUN",
+                "frequency": 33520
+            },
+            {
+                "word": "inner",
+                "pos": "ADJ",
+                "frequency": 671
+            },
+            {
+                "word": "die Stadtmauer",
+                "pos": "NOUN",
+                "frequency": 10814
+            },
+            {
+                "word": "die Vorstadt",
+                "pos": "NOUN",
+                "frequency": 11585
+            },
+            {
+                "word": "der Stadtplaner",
+                "pos": "NOUN",
+                "frequency": 20592
+            },
+            {
+                "word": "modifizieren",
+                "pos": "VERB",
+                "frequency": 16553,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Gesamtplan",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Graben",
+                "pos": "NOUN",
+                "frequency": 6605
+            },
+            {
+                "word": "planieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "historistisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Pferdebahn",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Straßenbahnlinie",
+                "pos": "NOUN",
+                "frequency": 22193
+            },
+            {
+                "word": "die Fahrradspur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Stadtplanrecherche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "heraus",
+                "pos": "ADV",
+                "frequency": 1169,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Campus-Design-Wettbewerb",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "aussehen": {
+                "present": {
+                    "ich": "sehe aus",
+                    "du": "siehst aus",
+                    "er": "sieht aus",
+                    "es": "sieht aus",
+                    "sie_singular": "sieht aus",
+                    "xier": "sieht aus",
+                    "wir": "sehen aus",
+                    "ihr": "seht aus",
+                    "sie_plural": "sehen aus",
+                    "Sie": "sehen aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgesehen",
+                    "du": "hast ausgesehen",
+                    "er": "hat ausgesehen",
+                    "es": "hat ausgesehen",
+                    "sie_singular": "hat ausgesehen",
+                    "xier": "hat ausgesehen",
+                    "wir": "haben ausgesehen",
+                    "ihr": "habt ausgesehen",
+                    "sie_plural": "haben ausgesehen",
+                    "Sie": "haben ausgesehen"
+                }
+            },
+            "verbinden": {
+                "present": {
+                    "ich": "verbinde",
+                    "du": "verbindest",
+                    "er": "verbindet",
+                    "es": "verbindet",
+                    "sie_singular": "verbindet",
+                    "xier": "verbindet",
+                    "wir": "verbinden",
+                    "ihr": "verbindet",
+                    "sie_plural": "verbinden",
+                    "Sie": "verbinden"
+                },
+                "Perfekt": {
+                    "ich": "habe verbunden",
+                    "du": "hast verbunden",
+                    "er": "hat verbunden",
+                    "es": "hat verbunden",
+                    "sie_singular": "hat verbunden",
+                    "xier": "hat verbunden",
+                    "wir": "haben verbunden",
+                    "ihr": "habt verbunden",
+                    "sie_plural": "haben verbunden",
+                    "Sie": "haben verbunden"
+                }
+            },
+            "mitteilen": {
+                "present": {
+                    "ich": "teile mit",
+                    "du": "teilst mit",
+                    "er": "teilt mit",
+                    "es": "teilt mit",
+                    "sie_singular": "teilt mit",
+                    "xier": "teilt mit",
+                    "wir": "teilen mit",
+                    "ihr": "teilt mit",
+                    "sie_plural": "teilen mit",
+                    "Sie": "teilen mit"
+                },
+                "Perfekt": {
+                    "ich": "habe mitgeteilt",
+                    "du": "hast mitgeteilt",
+                    "er": "hat mitgeteilt",
+                    "es": "hat mitgeteilt",
+                    "sie_singular": "hat mitgeteilt",
+                    "xier": "hat mitgeteilt",
+                    "wir": "haben mitgeteilt",
+                    "ihr": "habt mitgeteilt",
+                    "sie_plural": "haben mitgeteilt",
+                    "Sie": "haben mitgeteilt"
+                }
+            },
+            "beschließen": {
+                "present": {
+                    "ich": "beschließe",
+                    "du": "beschließt",
+                    "er": "beschließt",
+                    "es": "beschließt",
+                    "sie_singular": "beschließt",
+                    "xier": "beschließt",
+                    "wir": "beschließen",
+                    "ihr": "beschließt",
+                    "sie_plural": "beschließen",
+                    "Sie": "beschließen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschlossen",
+                    "du": "hast beschlossen",
+                    "er": "hat beschlossen",
+                    "es": "hat beschlossen",
+                    "sie_singular": "hat beschlossen",
+                    "xier": "hat beschlossen",
+                    "wir": "haben beschlossen",
+                    "ihr": "habt beschlossen",
+                    "sie_plural": "haben beschlossen",
+                    "Sie": "haben beschlossen"
+                }
+            },
+            "zerstören": {
+                "present": {
+                    "ich": "zerstöre",
+                    "du": "zerstörst",
+                    "er": "zerstört",
+                    "es": "zerstört",
+                    "sie_singular": "zerstört",
+                    "xier": "zerstört",
+                    "wir": "zerstören",
+                    "ihr": "zerstört",
+                    "sie_plural": "zerstören",
+                    "Sie": "zerstören"
+                },
+                "Perfekt": {
+                    "ich": "habe zerstört",
+                    "du": "hast zerstört",
+                    "er": "hat zerstört",
+                    "es": "hat zerstört",
+                    "sie_singular": "hat zerstört",
+                    "xier": "hat zerstört",
+                    "wir": "haben zerstört",
+                    "ihr": "habt zerstört",
+                    "sie_plural": "haben zerstört",
+                    "Sie": "haben zerstört"
+                }
+            },
+            "teilnehmen": {
+                "present": {
+                    "ich": "nehme teil",
+                    "du": "nimmst teil",
+                    "er": "nimmt teil",
+                    "es": "nimmt teil",
+                    "sie_singular": "nimmt teil",
+                    "xier": "nimmt teil",
+                    "wir": "nehmen teil",
+                    "ihr": "nehmt teil",
+                    "sie_plural": "nehmen teil",
+                    "Sie": "nehmen teil"
+                },
+                "Perfekt": {
+                    "ich": "habe teilgenommen",
+                    "du": "hast teilgenommen",
+                    "er": "hat teilgenommen",
+                    "es": "hat teilgenommen",
+                    "sie_singular": "hat teilgenommen",
+                    "xier": "hat teilgenommen",
+                    "wir": "haben teilgenommen",
+                    "ihr": "habt teilgenommen",
+                    "sie_plural": "haben teilgenommen",
+                    "Sie": "haben teilgenommen"
+                }
+            },
+            "skizzieren": {
+                "present": {
+                    "ich": "skizziere",
+                    "du": "skizzierst",
+                    "er": "skizziert",
+                    "es": "skizziert",
+                    "sie_singular": "skizziert",
+                    "xier": "skizziert",
+                    "wir": "skizzieren",
+                    "ihr": "skizziert",
+                    "sie_plural": "skizzieren",
+                    "Sie": "skizzieren"
+                },
+                "Perfekt": {
+                    "ich": "habe skizziert",
+                    "du": "hast skizziert",
+                    "er": "hat skizziert",
+                    "es": "hat skizziert",
+                    "sie_singular": "hat skizziert",
+                    "xier": "hat skizziert",
+                    "wir": "haben skizziert",
+                    "ihr": "habt skizziert",
+                    "sie_plural": "haben skizziert",
+                    "Sie": "haben skizziert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Erinnern Sie sich an Franz Joseph I.?",
+            "Sisis Ehemann?",
+            "Lesen Sie den Text über seinen Architektenwettbewerb.",
+            "Bis zum 19.",
+            "Jahrhundert hat es um die innere Stadt in Wien eine Stadtmauer gegeben.",
+            "Dezember 1857 hat Kaiser Franz Joseph mitgeteilt, dass er die innere Stadt besser mit den Vorstädten verbinden wollte.",
+            "Es hat auch einen Wettbewerb gegeben, mit Plänen, wie die neue Straße aussehen sollte.",
+            "Sehr viele Wiener Architekten haben an dem Wettbewerb teilgenommen.",
+            "Der Plan von Friedrich Stache, von Ludwig Förster und von dem Team August Sicard von Sicardsburg und Eduard van der Nüll.",
+            "Die Stadtplaner haben die drei Pläne modifiziert und einen Gesamtplan kreiert.",
+            "Die Bauarbeiter haben die Mauer zerstört, den Graben planiert und die neue Straße und die Gebäude gebaut.",
+            "Mai 1865 haben die Wiener*innen die Ringstraße eröffnet, aber sie war erst viel später fertig.",
+            "Die meisten Gebäude sind im historistischen Stil gebaut.",
+            "Ab 1868 ist eine Pferdebahn zwischen Stubenring und Schottentor gefahren, bald danach bis zum Franz- Josef s-Kai.",
+            "Ab 1898 war die Straßenbahn elektrisch.",
+            "Heute fährt keine Straßenbahnlinie den ganzen Ring entlang, aber die Linien 1, 2, D und 71 fahren noch entlang der Ringstraße.",
+            "Am Anfang durften Autos in beide Richtungen fahren.",
+            "Seit 1972 ist der Ring eine Einbahnstraße, das heißt Autos dürfen nur in eine Richtung fahren.",
+            "Seit den 1990er Jahren gibt es auch eine Fahrradspur.",
+            "Ordnen Sie die Jahreszahlen aus dem Text den Ereignissen zu.",
+            "Kaiser Franz Joseph wollte die innere Stadt besser mit den Vorstädten verbinden.",
+            "Die Wiener*innen haben die Ringstraße eröffnet",
+            "Eine Pferdebahn ist auf der Ringstraße gefahren.",
+            "Die Straßenbahn war elektrisch.",
+            "Der Ring ist eine Einbahnstraße.",
+            "Es gibt eine Fahrradspur auf der Ringstraße.",
+            "Benutzen Sie Google Maps und finden Sie heraus:",
+            "Welche Sehenswürdigkeiten gibt es am Ring?",
+            "Links rechts gegenüber Wechseln Sie in Streetview und beschreiben Sie ein Gebäude.",
+            "Welche Farben sehen Sie?",
+            "Hat es viele oder wenige Fenster?",
+            "Welche Jahreszeit sehen Sie?",
+            "Der Präsident von Ihrer Uni schreibt einen Campus-Design-Wettbewerb aus.",
+            "Beschließen Sie im Kurs, welches Thema der Wettbewerb hat:",
+            "Soll Ihr Campus schöner oder effizienter oder umweltfreundlicher oder … werden?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,266 @@
+{
+    "unit": "26",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 26,
+        "prerequisite": "1-25"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Bilder zu Kleidung und Wetter beschreiben und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "ändern",
+                "pos": "VERB",
+                "translation": "to change, alter"
+            },
+            {
+                "word": "sammeln",
+                "pos": "VERB",
+                "translation": "to collect",
+                "frequency": 1219,
+                "cefr": "A2"
+            },
+            {
+                "word": "überraschend",
+                "pos": "ADJ",
+                "translation": "surprising"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Jahreszeitenbild",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Jahreszeit",
+                "pos": "NOUN",
+                "frequency": 4818,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Projekt",
+                "pos": "NOUN",
+                "frequency": 720,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Ort",
+                "pos": "NOUN",
+                "frequency": 341,
+                "cefr": "A1"
+            },
+            {
+                "word": "auswählen",
+                "pos": "VERB",
+                "frequency": 1884,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Region",
+                "pos": "NOUN",
+                "frequency": 803,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Staat",
+                "pos": "NOUN",
+                "frequency": 337,
+                "cefr": "B1"
+            },
+            {
+                "word": "konkret",
+                "pos": "ADJ",
+                "frequency": 830
+            },
+            {
+                "word": "generieren",
+                "pos": "VERB",
+                "frequency": 15767,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Tool",
+                "pos": "NOUN",
+                "frequency": 19980,
+                "cefr": "B2"
+            },
+            {
+                "word": "generier",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Prompt",
+                "pos": "NOUN",
+                "frequency": 7419
+            },
+            {
+                "word": "scheinen",
+                "pos": "VERB",
+                "frequency": 275,
+                "cefr": "A1"
+            },
+            {
+                "word": "die KI",
+                "pos": "NOUN",
+                "frequency": 25142
+            },
+            {
+                "word": "willkommen",
+                "pos": "ADV",
+                "frequency": 2519,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Präsentation",
+                "pos": "NOUN",
+                "frequency": 4334,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Sommerbild",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ändern": {
+                "present": {
+                    "ich": "ändere",
+                    "du": "änderst",
+                    "er": "ändert",
+                    "es": "ändert",
+                    "sie_singular": "ändert",
+                    "xier": "ändert",
+                    "wir": "ändern",
+                    "ihr": "ändert",
+                    "sie_plural": "ändern",
+                    "Sie": "ändern"
+                }
+            },
+            "sammeln": {
+                "present": {
+                    "ich": "sammle",
+                    "du": "sammelst",
+                    "er": "sammelt",
+                    "es": "sammelt",
+                    "sie_singular": "sammelt",
+                    "xier": "sammelt",
+                    "wir": "sammeln",
+                    "ihr": "sammelt",
+                    "sie_plural": "sammeln",
+                    "Sie": "sammeln"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Jahreszeitenbilder Wetter und Kleidung im Jahr Informationen sammeln.",
+            "Für das Projekt machen Sie Bilder zu den Jahreszeiten mit einem KI Tool.",
+            "Dann beantworten Sie die Fragen und schreiben Sie die Antworten auf.",
+            "Wie ist a n dem Ort das Wetter im Frühling, Sommer, Herbst und Winter?",
+            "Schreiben Sie viele Details.",
+            "Was tragen die Menschen da zu den vier Jahreszeiten?",
+            "Schreiben Sie über konkrete Outfits.",
+            "Frühling: Wie ist das Wetter?",
+            "Was tragen Menschen?",
+            "Wie ist das Wetter?",
+            "Bilder generieren.",
+            "Wählen Sie ein KI Tool aus.",
+            "Benutzen Sie erst den Satz \"Generier ein Bild\" und beschreiben Sie dann Ihre vier Bilder.",
+            "Schreiben Sie Ihre Prompts für die vier Bilder unten auf.",
+            "Generier ein Bild.",
+            "Es ist Sommer.",
+            "Die Sonne scheint.",
+            "Es gibt eine Frau.",
+            "Präsentieren Sie Ihre KI Bilder im Kurs.",
+            "Lesen Sie nicht Ihre Prompts, sprechen Sie frei.",
+            "Willkommen zu meiner Präsentation!",
+            "Ich präsentiere heute das Wetter in … im Frühling, Sommer, Herbst und Winter.",
+            "Du siehst einen Mann auf dem Bild. … Das ist mein Sommerbild.",
+            "Hast du eine Frage?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

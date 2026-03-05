@@ -1,0 +1,883 @@
+{
+    "unit": "B5",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 5,
+        "prerequisite": "core 1-104, B1-B4"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "den ökologischen Fußabdruck berechnen und besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Umwelt und ökologischer Fußabdruck"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "tun",
+                "pos": "VERB",
+                "translation": "to do (alternative to machen)",
+                "frequency": 123,
+                "cefr": "A1"
+            },
+            {
+                "word": "handeln",
+                "pos": "VERB",
+                "translation": "to take action; trade",
+                "frequency": 299,
+                "cefr": "B1"
+            },
+            {
+                "word": "halten",
+                "pos": "VERB",
+                "translation": "to hold; last",
+                "frequency": 155,
+                "cefr": "A1"
+            },
+            {
+                "word": "ändern",
+                "pos": "VERB",
+                "translation": "to change, alter"
+            },
+            {
+                "word": "schauen",
+                "pos": "VERB",
+                "translation": "to look",
+                "frequency": 510,
+                "cefr": "B1"
+            },
+            {
+                "word": "definieren",
+                "pos": "VERB",
+                "translation": "to define",
+                "frequency": 1034
+            },
+            {
+                "word": "vermeiden",
+                "pos": "VERB",
+                "translation": "to avoid",
+                "frequency": 1587,
+                "cefr": "B1"
+            },
+            {
+                "word": "verleihen",
+                "pos": "VERB",
+                "translation": "to lend",
+                "frequency": 2403
+            },
+            {
+                "word": "wegwerfen",
+                "pos": "VERB",
+                "translation": "to discard; throw away",
+                "frequency": 20620,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Erde",
+                "pos": "NOUN",
+                "translation": "earth; soil",
+                "frequency": 783,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Natur",
+                "pos": "NOUN",
+                "translation": "nature",
+                "frequency": 739,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nachhaltigkeit",
+                "pos": "NOUN",
+                "translation": "sustainability",
+                "frequency": 9754,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fußabdruck",
+                "pos": "NOUN",
+                "translation": "footprint",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schutz",
+                "pos": "NOUN",
+                "translation": "protection",
+                "frequency": 1152,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Verantwortung",
+                "pos": "NOUN",
+                "translation": "responsibility",
+                "frequency": 1103,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Verschwendung",
+                "pos": "NOUN",
+                "translation": "waste, wastefulness",
+                "frequency": 18026,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Handel",
+                "pos": "NOUN",
+                "translation": "trade, commerce",
+                "frequency": 1535,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Rücksendung",
+                "pos": "NOUN",
+                "translation": "return, sending back of packages",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ernährung",
+                "pos": "NOUN",
+                "translation": "diet, nutrition"
+            },
+            {
+                "word": "der Konsum",
+                "pos": "NOUN",
+                "translation": "consumption",
+                "frequency": 2217,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Umgang",
+                "pos": "NOUN",
+                "translation": "handling; contact",
+                "frequency": 1615,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Medium, Medien",
+                "pos": "NOUN",
+                "translation": "medium",
+                "frequency": 2764
+            },
+            {
+                "word": "der Ökostrom",
+                "pos": "NOUN",
+                "translation": "green electricity",
+                "frequency": 22292,
+                "cefr": "A1"
+            },
+            {
+                "word": "ökologisch",
+                "pos": "ADJ",
+                "translation": "ecological"
+            },
+            {
+                "word": "ökonomisch",
+                "pos": "ADJ",
+                "translation": "economical"
+            },
+            {
+                "word": "nachhaltig",
+                "pos": "ADJ",
+                "translation": "sustainable",
+                "frequency": 2181
+            },
+            {
+                "word": "selbst",
+                "pos": "ADV",
+                "translation": "by one self , -self",
+                "frequency": 101,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "testen",
+                "pos": "VERB",
+                "frequency": 2312,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Hektar",
+                "pos": "NOUN",
+                "frequency": 6315
+            },
+            {
+                "word": "verkleinern",
+                "pos": "VERB",
+                "frequency": 12085,
+                "cefr": "B2"
+            },
+            {
+                "word": "häufig",
+                "pos": "ADV",
+                "frequency": 407,
+                "cefr": "B1"
+            },
+            {
+                "word": "saisonal",
+                "pos": "ADJ",
+                "frequency": 16838,
+                "cefr": "B2"
+            },
+            {
+                "word": "respektieren",
+                "pos": "VERB",
+                "frequency": 8942
+            },
+            {
+                "word": "die Ressource",
+                "pos": "NOUN",
+                "frequency": 2380
+            },
+            {
+                "word": "der Planet",
+                "pos": "NOUN",
+                "frequency": 2744
+            },
+            {
+                "word": "das Transkript",
+                "pos": "NOUN"
+            },
+            {
+                "word": "parallel",
+                "pos": "ADV",
+                "frequency": 1905,
+                "cefr": "B1"
+            },
+            {
+                "word": "ignorieren",
+                "pos": "VERB",
+                "frequency": 3197
+            },
+            {
+                "word": "die Kosmetik",
+                "pos": "NOUN",
+                "frequency": 14880,
+                "cefr": "A2"
+            },
+            {
+                "word": "secondhand",
+                "pos": "ADV"
+            },
+            {
+                "word": "kompensieren",
+                "pos": "VERB",
+                "frequency": 9291
+            },
+            {
+                "word": "die Epilepsie",
+                "pos": "NOUN",
+                "frequency": 31987
+            },
+            {
+                "word": "das Kosmetikprodukt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die ürste",
+                "pos": "NOUN"
+            },
+            {
+                "word": "regenerieren",
+                "pos": "VERB",
+                "frequency": 37563
+            },
+            {
+                "word": "eduzieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Emission",
+                "pos": "NOUN",
+                "frequency": 10263
+            },
+            {
+                "word": "der Abfall",
+                "pos": "NOUN",
+                "frequency": 4370,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pluralität",
+                "pos": "NOUN",
+                "frequency": 42219
+            },
+            {
+                "word": "ethisch",
+                "pos": "ADJ",
+                "frequency": 4681
+            },
+            {
+                "word": "der Standard",
+                "pos": "NOUN",
+                "frequency": 1982,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Satzteil",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "tun": {
+                "present": {
+                    "ich": "tue",
+                    "du": "tust",
+                    "er": "tut",
+                    "es": "tut",
+                    "sie_singular": "tut",
+                    "xier": "tut",
+                    "wir": "tun",
+                    "ihr": "tut",
+                    "sie_plural": "tun",
+                    "Sie": "tun"
+                },
+                "Perfekt": {
+                    "ich": "habe getan",
+                    "du": "hast getan",
+                    "er": "hat getan",
+                    "es": "hat getan",
+                    "sie_singular": "hat getan",
+                    "xier": "hat getan",
+                    "wir": "haben getan",
+                    "ihr": "habt getan",
+                    "sie_plural": "haben getan",
+                    "Sie": "haben getan"
+                },
+                "Futur_I": {
+                    "ich": "werde tun",
+                    "du": "wirst tun",
+                    "er": "wird tun",
+                    "es": "wird tun",
+                    "sie_singular": "wird tun",
+                    "xier": "wird tun",
+                    "wir": "werden tun",
+                    "ihr": "werdet tun",
+                    "sie_plural": "werden tun",
+                    "Sie": "werden tun"
+                },
+                "imperative": {
+                    "du": "tue",
+                    "ihr": "tut",
+                    "Sie": "tun Sie"
+                }
+            },
+            "handeln": {
+                "present": {
+                    "ich": "handle",
+                    "du": "handelst",
+                    "er": "handelt",
+                    "es": "handelt",
+                    "sie_singular": "handelt",
+                    "xier": "handelt",
+                    "wir": "handeln",
+                    "ihr": "handelt",
+                    "sie_plural": "handeln",
+                    "Sie": "handeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gehandelt",
+                    "du": "hast gehandelt",
+                    "er": "hat gehandelt",
+                    "es": "hat gehandelt",
+                    "sie_singular": "hat gehandelt",
+                    "xier": "hat gehandelt",
+                    "wir": "haben gehandelt",
+                    "ihr": "habt gehandelt",
+                    "sie_plural": "haben gehandelt",
+                    "Sie": "haben gehandelt"
+                },
+                "Futur_I": {
+                    "ich": "werde handeln",
+                    "du": "wirst handeln",
+                    "er": "wird handeln",
+                    "es": "wird handeln",
+                    "sie_singular": "wird handeln",
+                    "xier": "wird handeln",
+                    "wir": "werden handeln",
+                    "ihr": "werdet handeln",
+                    "sie_plural": "werden handeln",
+                    "Sie": "werden handeln"
+                },
+                "imperative": {
+                    "du": "handle",
+                    "ihr": "handelt",
+                    "Sie": "handeln Sie"
+                }
+            },
+            "halten": {
+                "present": {
+                    "ich": "halte",
+                    "du": "hältst",
+                    "er": "hält",
+                    "es": "hält",
+                    "sie_singular": "hält",
+                    "xier": "hält",
+                    "wir": "halten",
+                    "ihr": "haltet",
+                    "sie_plural": "halten",
+                    "Sie": "halten"
+                },
+                "Perfekt": {
+                    "ich": "habe gehalten",
+                    "du": "hast gehalten",
+                    "er": "hat gehalten",
+                    "es": "hat gehalten",
+                    "sie_singular": "hat gehalten",
+                    "xier": "hat gehalten",
+                    "wir": "haben gehalten",
+                    "ihr": "habt gehalten",
+                    "sie_plural": "haben gehalten",
+                    "Sie": "haben gehalten"
+                },
+                "Futur_I": {
+                    "ich": "werde halten",
+                    "du": "wirst halten",
+                    "er": "wird halten",
+                    "es": "wird halten",
+                    "sie_singular": "wird halten",
+                    "xier": "wird halten",
+                    "wir": "werden halten",
+                    "ihr": "werdet halten",
+                    "sie_plural": "werden halten",
+                    "Sie": "werden halten"
+                },
+                "imperative": {
+                    "du": "halt",
+                    "ihr": "haltet",
+                    "Sie": "halten Sie"
+                }
+            },
+            "ändern": {
+                "present": {
+                    "ich": "ändere",
+                    "du": "änderst",
+                    "er": "ändert",
+                    "es": "ändert",
+                    "sie_singular": "ändert",
+                    "xier": "ändert",
+                    "wir": "ändern",
+                    "ihr": "ändert",
+                    "sie_plural": "ändern",
+                    "Sie": "ändern"
+                },
+                "Perfekt": {
+                    "ich": "habe geändert",
+                    "du": "hast geändert",
+                    "er": "hat geändert",
+                    "es": "hat geändert",
+                    "sie_singular": "hat geändert",
+                    "xier": "hat geändert",
+                    "wir": "haben geändert",
+                    "ihr": "habt geändert",
+                    "sie_plural": "haben geändert",
+                    "Sie": "haben geändert"
+                },
+                "Futur_I": {
+                    "ich": "werde ändern",
+                    "du": "wirst ändern",
+                    "er": "wird ändern",
+                    "es": "wird ändern",
+                    "sie_singular": "wird ändern",
+                    "xier": "wird ändern",
+                    "wir": "werden ändern",
+                    "ihr": "werdet ändern",
+                    "sie_plural": "werden ändern",
+                    "Sie": "werden ändern"
+                },
+                "imperative": {
+                    "du": "ändere",
+                    "ihr": "ändert",
+                    "Sie": "ändern Sie"
+                }
+            },
+            "schauen": {
+                "present": {
+                    "ich": "schaue",
+                    "du": "schaust",
+                    "er": "schaut",
+                    "es": "schaut",
+                    "sie_singular": "schaut",
+                    "xier": "schaut",
+                    "wir": "schauen",
+                    "ihr": "schaut",
+                    "sie_plural": "schauen",
+                    "Sie": "schauen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschaut",
+                    "du": "hast geschaut",
+                    "er": "hat geschaut",
+                    "es": "hat geschaut",
+                    "sie_singular": "hat geschaut",
+                    "xier": "hat geschaut",
+                    "wir": "haben geschaut",
+                    "ihr": "habt geschaut",
+                    "sie_plural": "haben geschaut",
+                    "Sie": "haben geschaut"
+                },
+                "Futur_I": {
+                    "ich": "werde schauen",
+                    "du": "wirst schauen",
+                    "er": "wird schauen",
+                    "es": "wird schauen",
+                    "sie_singular": "wird schauen",
+                    "xier": "wird schauen",
+                    "wir": "werden schauen",
+                    "ihr": "werdet schauen",
+                    "sie_plural": "werden schauen",
+                    "Sie": "werden schauen"
+                },
+                "imperative": {
+                    "du": "schaue",
+                    "ihr": "schaut",
+                    "Sie": "schauen Sie"
+                }
+            },
+            "definieren": {
+                "present": {
+                    "ich": "definiere",
+                    "du": "definierst",
+                    "er": "definiert",
+                    "es": "definiert",
+                    "sie_singular": "definiert",
+                    "xier": "definiert",
+                    "wir": "definieren",
+                    "ihr": "definiert",
+                    "sie_plural": "definieren",
+                    "Sie": "definieren"
+                },
+                "Perfekt": {
+                    "ich": "habe definiert",
+                    "du": "hast definiert",
+                    "er": "hat definiert",
+                    "es": "hat definiert",
+                    "sie_singular": "hat definiert",
+                    "xier": "hat definiert",
+                    "wir": "haben definiert",
+                    "ihr": "habt definiert",
+                    "sie_plural": "haben definiert",
+                    "Sie": "haben definiert"
+                },
+                "Futur_I": {
+                    "ich": "werde definieren",
+                    "du": "wirst definieren",
+                    "er": "wird definieren",
+                    "es": "wird definieren",
+                    "sie_singular": "wird definieren",
+                    "xier": "wird definieren",
+                    "wir": "werden definieren",
+                    "ihr": "werdet definieren",
+                    "sie_plural": "werden definieren",
+                    "Sie": "werden definieren"
+                },
+                "imperative": {
+                    "du": "definiere",
+                    "ihr": "definiert",
+                    "Sie": "definieren Sie"
+                }
+            },
+            "vermeiden": {
+                "present": {
+                    "ich": "vermeide",
+                    "du": "vermeidest",
+                    "er": "vermeidet",
+                    "es": "vermeidet",
+                    "sie_singular": "vermeidet",
+                    "xier": "vermeidet",
+                    "wir": "vermeiden",
+                    "ihr": "vermeidet",
+                    "sie_plural": "vermeiden",
+                    "Sie": "vermeiden"
+                },
+                "Perfekt": {
+                    "ich": "habe vermieden",
+                    "du": "hast vermieden",
+                    "er": "hat vermieden",
+                    "es": "hat vermieden",
+                    "sie_singular": "hat vermieden",
+                    "xier": "hat vermieden",
+                    "wir": "haben vermieden",
+                    "ihr": "habt vermieden",
+                    "sie_plural": "haben vermieden",
+                    "Sie": "haben vermieden"
+                },
+                "Futur_I": {
+                    "ich": "werde vermeiden",
+                    "du": "wirst vermeiden",
+                    "er": "wird vermeiden",
+                    "es": "wird vermeiden",
+                    "sie_singular": "wird vermeiden",
+                    "xier": "wird vermeiden",
+                    "wir": "werden vermeiden",
+                    "ihr": "werdet vermeiden",
+                    "sie_plural": "werden vermeiden",
+                    "Sie": "werden vermeiden"
+                },
+                "imperative": {
+                    "du": "vermeide",
+                    "ihr": "vermeidet",
+                    "Sie": "vermeiden Sie"
+                }
+            },
+            "verleihen": {
+                "present": {
+                    "ich": "verleihe",
+                    "du": "verleihst",
+                    "er": "verleiht",
+                    "es": "verleiht",
+                    "sie_singular": "verleiht",
+                    "xier": "verleiht",
+                    "wir": "verleihen",
+                    "ihr": "verleiht",
+                    "sie_plural": "verleihen",
+                    "Sie": "verleihen"
+                },
+                "Perfekt": {
+                    "ich": "habe verliehen",
+                    "du": "hast verliehen",
+                    "er": "hat verliehen",
+                    "es": "hat verliehen",
+                    "sie_singular": "hat verliehen",
+                    "xier": "hat verliehen",
+                    "wir": "haben verliehen",
+                    "ihr": "habt verliehen",
+                    "sie_plural": "haben verliehen",
+                    "Sie": "haben verliehen"
+                },
+                "Futur_I": {
+                    "ich": "werde verleihen",
+                    "du": "wirst verleihen",
+                    "er": "wird verleihen",
+                    "es": "wird verleihen",
+                    "sie_singular": "wird verleihen",
+                    "xier": "wird verleihen",
+                    "wir": "werden verleihen",
+                    "ihr": "werdet verleihen",
+                    "sie_plural": "werden verleihen",
+                    "Sie": "werden verleihen"
+                },
+                "imperative": {
+                    "du": "verleih",
+                    "ihr": "verleiht",
+                    "Sie": "verleihen Sie"
+                }
+            },
+            "wegwerfen": {
+                "present": {
+                    "ich": "werfe weg",
+                    "du": "wirfst weg",
+                    "er": "wirft weg",
+                    "es": "wirft weg",
+                    "sie_singular": "wirft weg",
+                    "xier": "wirft weg",
+                    "wir": "werfen weg",
+                    "ihr": "werft weg",
+                    "sie_plural": "werfen weg",
+                    "Sie": "werfen weg"
+                },
+                "Perfekt": {
+                    "ich": "habe weggeworfen",
+                    "du": "hast weggeworfen",
+                    "er": "hat weggeworfen",
+                    "es": "hat weggeworfen",
+                    "sie_singular": "hat weggeworfen",
+                    "xier": "hat weggeworfen",
+                    "wir": "haben weggeworfen",
+                    "ihr": "habt weggeworfen",
+                    "sie_plural": "haben weggeworfen",
+                    "Sie": "haben weggeworfen"
+                },
+                "Futur_I": {
+                    "ich": "werde wegwerfen",
+                    "du": "wirst wegwerfen",
+                    "er": "wird wegwerfen",
+                    "es": "wird wegwerfen",
+                    "sie_singular": "wird wegwerfen",
+                    "xier": "wird wegwerfen",
+                    "wir": "werden wegwerfen",
+                    "ihr": "werdet wegwerfen",
+                    "sie_plural": "werden wegwerfen",
+                    "Sie": "werden wegwerfen"
+                },
+                "imperative": {
+                    "du": "wirf weg",
+                    "ihr": "werft weg",
+                    "Sie": "werfen Sie weg"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Testen Sie Ihren ökologischen Fußabdruck und schreiben Sie die vier Kategorien aus dem Test auf.",
+            "Los geht's!",
+            "Bitte beantworte die nachfolgenden Fragen.",
+            "Für die vier Teilbereiche Essen, Wohnen, Mobilität und Konsum gibt es ein Zwischenergebnis.",
+            "Am Ende erscheint dein persönlicher, ökologischer Fußabdruck in globalen Hektar und seine Bewertung.",
+            "Dort erhältst du auch Tipps, wie du deinen Fußabdruck verkleinern kannst.",
+            "Viel Spaß!",
+            "Wie oft isst du andere tierische [Tiere] Produkte wie Eier, Milch, Butter, Käse?",
+            "Wie wichtig sind dir saisonale Lebensmittel aus der Region?",
+            "Wie wichtig ist dir bei Lebensmitteln Bio-Qualität",
+            "Bio- Qualität?",
+            "Wirfst du Lebensmittel weg?",
+            "Auf wie viel Grad heizt du deine Wohnung im Winter durchschnittlich?",
+            "Welchen Strom beziehst du?",
+            "Wie viel nutzt du folgende Verkehrsmittel?",
+            "Wie viel Geld gibst du pro Monat für Kleidung, Unterhaltungsmedien, Bücher, Spiele, Restaurantbesuche u.ä.",
+            "Wie häufig verleihst oder teilst du Dinge?",
+            "Wie lange nutzt du Video und Musik Streamings am Tag?",
+            "Sprechen Sie über Ihren individuellen ökologischen Fußabdruck.",
+            "Jede Person wählt eine Kategorie von Teil 1 aus.",
+            "Was können Sie machen, um Ihren Fußabdruck kleiner zu machen?",
+            "Schreiben Sie für Ihre Kategorie Sätze.",
+            "Versuchen Sie mindestens einen Relativsatz mit Nominativ oder Akkusativ zu benutzen, wie im Beispiel.",
+            "Wir können mehr Lebensmittel essen, die aus unserer Region kommen Die Lebensmittel, die wir essen, sollten aus unserer Region kommen.",
+            "Wir können weniger Dinge kaufen, die in Plastik verpackt sind.",
+            "Wir können Kleidung tragen, die nicht neu ist.",
+            "Vergleichen Sie die Ideen im Kurs.",
+            "Was können Sie leicht ändern?",
+            "Was nicht?",
+            "Schauen Sie sich das erste Video an.",
+            "Die Personen definieren Nachhaltigkeit.",
+            "Lesen Sie erst die Aussagen.",
+            "Dann hören Sie und achten Sie spezifisch auf die Informationen, die Sie gelesen haben.",
+            "Rdnen Sie die Definitionen zu.",
+            "Was bedeutet Nachhaltigkeit?",
+            "Nachhaltigkeit bedeutet für mich umweltfreundlich, umweltschonend, klimaschonend zu leben.",
+            "Ein gut überlegter Umgang mit den Ressourcen auf der Welt.",
+            "So leben, wie… damit unsere nächste Generation auch die Erde so gut wie wir benutzen kann.",
+            "Bei meinen heutigen Taten auch zukünftige Generationen im Bewusstsein zu haben und diese zu respektieren.",
+            "Auch mal einen Schritt zurück zu gehen und zu schauen was am besten für den Planeten ist.",
+            "Schauen Sie das zweite Video an.",
+            "Achten Sie auf das, was Sie verstehen.",
+            "Im nächsten Schritt arbeiten Sie weiter mit dem Text.",
+            "Sie bekommen jetzt das Transkript für das zweite Video.",
+            "Hören Sie zu und lesen Sie parallel das Transkript.",
+            "Was machen die Personen, um nachhaltig zu leben?",
+            "Tragen Sie die Ideen in die Tabelle ein.",
+            "Licht ausmachen, wenn man nicht in einem Raum ist;",
+            "Wasser beim Zähneputzen nicht laufen lassen;",
+            "Seife benutzen und kein Shampoo und Duschgel",
+            "Keine billige Kleidung, die nicht lange hält;",
+            "Versuchen Sie nachhaltig zu leben?",
+            "Was tun Sie und welche Tipps haben Sie?",
+            "Für mich spielt Nachhaltigkeit 'ne große Rolle.",
+            "Ich bin selbst im Verein tätig und hab schon mehrere Veranstaltungen zu dem Thema organisiert.",
+            "Ich selbst verzichte auf Inlandsflüge [Flüge im Land] und versuche das mit dem Zug zu machen.",
+            "Nur wenn ich über den Atlantik fliegen muss, benutze ich das Flugzeug und dann versuche ich aber diese Flüge zu kompensieren.",
+            "Da ich wegen meiner Epilepsie und Erkrankung kein Führerschein machen darf, mit E-Bike und Fahrrad zur Arbeit und zur Berufsschule so zu fahren.",
+            "Immer, wenn ich die Räume verlasse, sofort Licht aus zu machen - Strom damit gucken, das nicht zu viel hier so alles verbrauche.",
+            "Wasser auch nicht stundenlang, während man sich die Zähne putzt, dann nicht laufen lassen",
+            "Das was in Deutschland sehr aktuell ist, ist das Thema Plastik.",
+            "Deswegen versuche ich Lebensmittel ohne Plastik oder ohne Verpackung zu kaufen.",
+            "Und besonders auch jetzt im Badezimmer [Bad], also meine Kosmetikprodukte, irgendwie, Holzzahnbürste zu benutzen und einfach so möglichst wenig Müll wie möglich zu produzieren.",
+            "Ich habe mir einen Kaffeebecher gekauft.",
+            "Wenn ich jetzt Kaffee trinke, dann trinke ich ihn in meinem eigenen Becher.",
+            "Seitdem ich in Deutschland lebe, fange … fange ich auch mit der Mülltrennung an.",
+            "Das finde ich toll.",
+            "Ich vermeide Geschäfte mit billigen Kleidungen, die dafür bekannt sind, dass die Klamotten oder die Kleidung nur ein paar Monate halten.",
+            "Zum Beispiel kaufe ich viele meiner Klamotten second hand.",
+            "Also ich versuche so wenig wie möglich neu zu kaufen.",
+            "Second hand einkaufen, ist eigentlich das Beste, was man machen kann, um Geld zu sparen.",
+            "Das ist gut für die Umwelt, schadet dem Geldbeutel nicht.",
+            "Glaub das sind so Tipps, die die man auf jeden Fall umsetzen kann.",
+            "Ordnen Sie zu.",
+            "\" Hans Carl von Carlowitz hat 1713 gesagt: Nicht mehr Holz mehr fallen als der Wald in kurzer Zeit regenerieren kann.",
+            "Nachhaltigkeit heißt, dass Menschen jetzt und in der Zukunft auf der ganzen Welt ein gleich gutes oder besseres Leben haben sollen.",
+            "Elemente von ökologischer Nachhaltigkeit Natur, ökologische Systeme, R eduzieren von Emissionen und Abfall, Tierschutz e",
+            "Elemente von sozialer Nachhaltigkeit gleiche Chancen für alle, Pluralität, ethisches Verhalten, Recht auf Gesundheit, Verantwortung für d ie nächsten Generation f",
+            "Wer handelt wie nachhaltig?",
+            "Ordnen Sie die mittleren Satzteile zu.",
+            "Geschäfte, die Waren ohne Verpackung verkaufen, handeln nachhaltig.",
+            "Menschen, die saisonale und lokale Waren kaufen, essen nachhaltig.",
+            "Alle, die Fahrrad und nicht Auto fahren, leben nachhaltig.",
+            "Politik, die an die nächste Generation denkt, plant nachhaltig.",
+            "Der ökologische Fußabdruck, den wir alle haben, sagt, wie nachhaltig wir leben.",
+            "Die Ernährung, die wir wählen, ändert unseren Fußabdruck."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

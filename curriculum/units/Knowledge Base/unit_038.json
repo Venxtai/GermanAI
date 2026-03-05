@@ -1,0 +1,379 @@
+{
+    "unit": "38",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 38,
+        "prerequisite": "1-37"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Use the dative case after the preposition in to describe where something or someone is located: der→dem, das→dem, die→der, plural die→den (add -n to plural noun).",
+            "Contract in + dem to im: \"Ich kaufe im Supermarkt ein.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Wohnpräferenzen sprechen",
+            "sagen, wo man wohnt oder arbeitet"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Wohnen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "das Haus",
+                "pos": "NOUN",
+                "translation": "house",
+                "frequency": 147,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Einfamilienhaus",
+                "pos": "NOUN",
+                "translation": "single-family home",
+                "frequency": 9538,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Mehrfamilienhaus",
+                "pos": "NOUN",
+                "translation": "multi-family home",
+                "frequency": 12822,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Doppelhaus",
+                "pos": "NOUN",
+                "translation": "duplex",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hochhaus",
+                "pos": "NOUN",
+                "translation": "highrise building",
+                "frequency": 9073,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Wohnung",
+                "pos": "NOUN",
+                "translation": "apartment",
+                "frequency": 501,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Zimmer",
+                "pos": "NOUN",
+                "translation": "room",
+                "frequency": 665,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Berg",
+                "pos": "NOUN",
+                "translation": "mountain (in the mountains)",
+                "frequency": 934,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Berghütte",
+                "pos": "NOUN",
+                "translation": "mountain cabin",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Schloss",
+                "pos": "NOUN",
+                "translation": "castle",
+                "frequency": 1907,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Quadratmeter",
+                "pos": "NOUN",
+                "translation": "square meter",
+                "frequency": 3117,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vorort",
+                "pos": "NOUN",
+                "translation": "suburb",
+                "frequency": 9397,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Ort",
+                "pos": "NOUN",
+                "translation": "location; site; place",
+                "frequency": 341,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wohnmobil",
+                "pos": "NOUN",
+                "translation": "RV, camper",
+                "frequency": 19597,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Studierendenwohnheim",
+                "pos": "NOUN",
+                "translation": "dormitory",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hausboot",
+                "pos": "NOUN",
+                "translation": "houseboat",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Traum",
+                "pos": "NOUN",
+                "translation": "dream (dream house)",
+                "frequency": 992,
+                "cefr": "A2"
+            },
+            {
+                "word": "auf dem Land",
+                "pos": "PHRASE",
+                "translation": "in the countryside"
+            },
+            {
+                "word": "das Prozent",
+                "pos": "NOUN",
+                "translation": "percent",
+                "frequency": 172,
+                "cefr": "A1"
+            },
+            {
+                "word": "prozentual",
+                "pos": "ADJ",
+                "translation": "on a percentage basis",
+                "frequency": 15812,
+                "cefr": "B2"
+            },
+            {
+                "word": "etwa",
+                "pos": "PREP",
+                "translation": "about, approximately",
+                "frequency": 181,
+                "cefr": "B1"
+            },
+            {
+                "word": "ankreuzen",
+                "pos": "VERB",
+                "translation": "to check, mark sth. with a cross",
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Studentenwohnheim",
+                "pos": "NOUN",
+                "frequency": 42719
+            },
+            {
+                "word": "der Campingplatz",
+                "pos": "NOUN",
+                "frequency": 11361
+            },
+            {
+                "word": "die Universität",
+                "pos": "NOUN",
+                "frequency": 415,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Stelle",
+                "pos": "NOUN",
+                "frequency": 344,
+                "cefr": "A1"
+            },
+            {
+                "word": "Niederlande",
+                "pos": "PROPN",
+                "frequency": 3798
+            },
+            {
+                "word": "europäisch",
+                "pos": "ADJ",
+                "frequency": 335,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Typ",
+                "pos": "NOUN",
+                "frequency": 907,
+                "cefr": "B1"
+            },
+            {
+                "word": "interviewen",
+                "pos": "VERB",
+                "frequency": 19583,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ankreuzen": {
+                "present": {
+                    "ich": "kreuze an",
+                    "du": "kreuzt an",
+                    "er": "kreuzt an",
+                    "es": "kreuzt an",
+                    "sie_singular": "kreuzt an",
+                    "xier": "kreuzt an",
+                    "wir": "kreuzen an",
+                    "ihr": "kreuzt an",
+                    "sie_plural": "kreuzen an",
+                    "Sie": "kreuzen an"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Nummer 1 ist ein Mehrfamilienhaus.",
+            "Nummer 2 ist Hochhaus.",
+            "Nummer 3 ist ein Schloss.",
+            "Nummer 4 ist eine Berghütte.",
+            "Nummer 5 ist ein Wohnmobil.",
+            "Nummer 6 ist ein Einfamilienhaus.",
+            "Nummer 7 ist ein Hausboot.",
+            "Nummer 8 ist ein Doppelhaus.",
+            "Nummer 9 ist ein Studierendenwohnheim.",
+            "Wo gibt es die Häuser und Wohnungen in Ihrem Land??",
+            "Kreuzen Sie an.",
+            "In der Stadt, im Vorort, in den Bergen, auf dem Land, auf dem Campingplatz, gibt es nicht.",
+            "Sprechen Sie über die Bilder.",
+            "Sagen Sie, wo es Wohnungen gibt, wo die Häuser sind und was Sie (nicht) mögen.",
+            "In dem Wohnmobil gibt es keine Wohnungen.",
+            "Das Wohnmobil gibt es in meinem Land auf dem Campingplatz.",
+            "Ich mag das Wohnmobil.",
+            "Das Einfamilienhaus und das Doppelhaus gibt es in meinem Land in der Stadt, im Vorort und auf dem Land.",
+            "Das Das Mehrfamilienhaus und das Hochhaus gibt es in meinem Land in der Stadt.",
+            "Das Schloss gibt es nicht.",
+            "Das Schloss gibt es auf dem Land/in den Bergen.",
+            "Das Hausboot gibt es im Wasser.",
+            "Das Wohnmobil gibt es auf dem Campingplatz.",
+            "Das Studentenwohnheim gibt es in der Universität.",
+            "Wo wohnen Sie, Ihre Familie oder Freund*innen?",
+            "Stellen Sie Fragen.",
+            "Wo wohnst du (wohnt die Person)?",
+            "In einer Stadt?",
+            "In einem Vorort?",
+            "Auf dem Land?",
+            "In den Bergen?",
+            "Das Haus/die Wohnung ist in der Stadt, im Vorort, auf dem Land, in den Bergen.",
+            "Unten sehen Sie eine Statistik.",
+            "Stellen und beantworten Sie Fragen über die Statistik.",
+            "Wie viel Prozent wohnen in Deutschland/ in den USA ein einem Doppelhaus/Einfamilienhaus?",
+            "Etwa Prozent wohnen in Deutschland/in den USA in einem Doppelhaus/Einfamilienhaus.",
+            "In den USA wohnen 60,3% in einem Einfamilienhaus, 5,6% in einem Doppelhaus und 26,4% in einer Wohnung.",
+            "In der Schweiz wohnen 20,4% in einem Einfamilienhaus, 12,6% in einem Doppelhaus und 60,1% in einer Wohnung.",
+            "In Deutschland wohnen 25,5% in einem Einfamilienhaus, 15,8% in einem Doppelhaus und 57,3% in einer Wohnung.",
+            "In Österreich wohnen 48% in einem Einfamilienhaus, 6,9% in einem Doppelhaus und 44,5% in einer Wohnung.",
+            "In Frankreich wohnen 44,7% in einem Einfamilienhaus, 23,7% in einem Doppelhaus und 31,5% in einer Wohnung.",
+            "In den Niederlanden wohnen 16,6% in einem Einfamilienhaus, 59,9% in einem Doppelhaus und 19,9% in einer Wohnung.",
+            "Vergleichen Sie die USA mit den fünf europäischen Ländern.",
+            "Schreiben Sie die Sätze.",
+            "In den USA wohnen prozentual mehr Menschen in einem Einfamilienhaus (60,3%) als in der Schweiz (20,4%).",
+            "In den USA wohnen prozentual am meisten Menschen in einem Einfamilienhaus.",
+            "In den Niederlanden wohnen prozentual am meisten Menschen in einem Doppelhaus.",
+            "In der Schweiz wohnen prozentual am meisten Menschen in einer Wohnung.",
+            "In den USA wohnen mehr Menschen in einem Einfamilienhaus als in Europa.",
+            "In Österreich wohnen mehr Menschen in einem Einfamilienhaus als in Deutschland und der Schweiz.",
+            "In der Schweiz wohnen mehr Menschen in Wohnungen als in Deutschland und Österreich.",
+            "Andere, das Einfamilienhaus, das Doppelhaus, die Wohnung.",
+            "In einem Hochhaus.",
+            "In der Stadt.",
+            "Interviewen Sie vier Personen im Kurs und tragen Sie die Informationen über das Traumhaus /die Traumwohnung ein.",
+            "Möchtest du gern wohnen?",
+            "Wo möchtest du gern wohnen?",
+            "Wie groß ist das Haus/die Wohnung?",
+            "Das Haus/die Wohnung ist in der Stadt, auf dem Land, im Vorort, in den Bergen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

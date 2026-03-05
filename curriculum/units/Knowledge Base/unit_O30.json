@@ -1,0 +1,369 @@
+{
+    "unit": "O30",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 30,
+        "prerequisite": "core 1-104, O1-O29"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the passive voice with a conjugated form of werden + Partizip II; the former accusative object becomes the nominative subject; the agent is optionally expressed with von + dative."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Schweizer Erfindungen recherchieren und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die Schweiz und ihre Produkte"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "grenzen", "pos": "VERB", "translation": "to border (with)", "frequency": 7568 },
+            { "word": "fließen", "pos": "VERB", "translation": "to run (flow)" },
+            { "word": "der*die Einwohner*in", "pos": "NOUN", "translation": "inhabitant, resident, citizen", "frequency": 2311, "cefr": "B1" },
+            { "word": "die Lage", "pos": "NOUN", "translation": "location, position; situation", "frequency": 555, "cefr": "B1" },
+            { "word": "die Grenze", "pos": "NOUN", "translation": "border; boundary; limit", "frequency": 447, "cefr": "B1" },
+            { "word": "der Kanton", "pos": "NOUN", "translation": "canton", "frequency": 3091, "cefr": "B1" },
+            { "word": "die Amtssprache", "pos": "NOUN", "translation": "official language", "frequency": 19275, "cefr": "A1" },
+            { "word": "der Ursprung", "pos": "NOUN", "translation": "origin, source", "frequency": 3038, "cefr": "A1" },
+            { "word": "das Gebirge", "pos": "NOUN", "translation": "mountains (pl.)", "frequency": 5717, "cefr": "B1" },
+            { "word": "der Gipfel", "pos": "NOUN", "translation": "summit, peak", "frequency": 2293, "cefr": "A1" },
+            { "word": "die Alufolie", "pos": "NOUN", "translation": "aluminium foil", "frequency": 1, "cefr": "A1" },
+            { "word": "der Klettverschluss", "pos": "NOUN", "translation": "Velcro", "frequency": 1, "cefr": "A1" },
+            { "word": "die Reibe", "pos": "NOUN", "translation": "grater, rasp", "frequency": 1, "cefr": "A1" },
+            { "word": "der Reißverschluss", "pos": "NOUN", "translation": "zipper", "frequency": 1, "cefr": "A1" },
+            { "word": "der Sparschäler", "pos": "NOUN", "translation": "potato peeler" },
+            { "word": "die Seide", "pos": "NOUN", "translation": "silk", "frequency": 18102, "cefr": "A1" },
+            { "word": "die Kunstseide, -n", "pos": "ADJ", "translation": "artificial silk" },
+            { "word": "das Pulver", "pos": "NOUN", "translation": "powder", "frequency": 15483, "cefr": "B2" },
+            { "word": "die Schrift", "pos": "NOUN", "translation": "font; writing (e.g. handwriting)", "frequency": 2072, "cefr": "B1" },
+            { "word": "übrigens", "pos": "ADV", "translation": "by the way" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Distanz", "pos": "NOUN", "frequency": 2671, "cefr": "B1" },
+            { "word": "der Westen", "pos": "NOUN", "frequency": 1010, "cefr": "A1" },
+            { "word": "rätoromanisch", "pos": "ADV" },
+            { "word": "der Absinth", "pos": "NOUN" },
+            { "word": "das LCD", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "grenzen": {
+                "present": {
+                    "ich": "grenze",
+                    "du": "grenzt",
+                    "er": "grenzt",
+                    "es": "grenzt",
+                    "sie_singular": "grenzt",
+                    "xier": "grenzt",
+                    "wir": "grenzen",
+                    "ihr": "grenzt",
+                    "sie_plural": "grenzen",
+                    "Sie": "grenzen"
+                },
+                "Perfekt": {
+                    "ich": "habe gegrenzt",
+                    "du": "hast gegrenzt",
+                    "er": "hat gegrenzt",
+                    "es": "hat gegrenzt",
+                    "sie_singular": "hat gegrenzt",
+                    "xier": "hat gegrenzt",
+                    "wir": "haben gegrenzt",
+                    "ihr": "habt gegrenzt",
+                    "sie_plural": "haben gegrenzt",
+                    "Sie": "haben gegrenzt"
+                },
+                "Futur_I": {
+                    "ich": "werde grenzen",
+                    "du": "wirst grenzen",
+                    "er": "wird grenzen",
+                    "es": "wird grenzen",
+                    "sie_singular": "wird grenzen",
+                    "xier": "wird grenzen",
+                    "wir": "werden grenzen",
+                    "ihr": "werdet grenzen",
+                    "sie_plural": "werden grenzen",
+                    "Sie": "werden grenzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde grenzen",
+                    "du": "würdest grenzen",
+                    "er": "würde grenzen",
+                    "es": "würde grenzen",
+                    "sie_singular": "würde grenzen",
+                    "xier": "würde grenzen",
+                    "wir": "würden grenzen",
+                    "ihr": "würdet grenzen",
+                    "sie_plural": "würden grenzen",
+                    "Sie": "würden grenzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gegrenzt",
+                    "du": "hättest gegrenzt",
+                    "er": "hätte gegrenzt",
+                    "es": "hätte gegrenzt",
+                    "sie_singular": "hätte gegrenzt",
+                    "xier": "hätte gegrenzt",
+                    "wir": "hätten gegrenzt",
+                    "ihr": "hättet gegrenzt",
+                    "sie_plural": "hätten gegrenzt",
+                    "Sie": "hätten gegrenzt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gegrenzt",
+                    "du": "wirst gegrenzt",
+                    "er": "wird gegrenzt",
+                    "es": "wird gegrenzt",
+                    "sie_singular": "wird gegrenzt",
+                    "xier": "wird gegrenzt",
+                    "wir": "werden gegrenzt",
+                    "ihr": "werdet gegrenzt",
+                    "sie_plural": "werden gegrenzt",
+                    "Sie": "werden gegrenzt"
+                },
+                "imperative": {
+                    "du": "grenze",
+                    "ihr": "grenzt",
+                    "Sie": "grenzen Sie"
+                }
+            },
+            "fließen": {
+                "present": {
+                    "ich": "fließe",
+                    "du": "fließt",
+                    "er": "fließt",
+                    "es": "fließt",
+                    "sie_singular": "fließt",
+                    "xier": "fließt",
+                    "wir": "fließen",
+                    "ihr": "fließt",
+                    "sie_plural": "fließen",
+                    "Sie": "fließen"
+                },
+                "Perfekt": {
+                    "ich": "bin geflossen",
+                    "du": "bist geflossen",
+                    "er": "ist geflossen",
+                    "es": "ist geflossen",
+                    "sie_singular": "ist geflossen",
+                    "xier": "ist geflossen",
+                    "wir": "sind geflossen",
+                    "ihr": "seid geflossen",
+                    "sie_plural": "sind geflossen",
+                    "Sie": "sind geflossen"
+                },
+                "Futur_I": {
+                    "ich": "werde fließen",
+                    "du": "wirst fließen",
+                    "er": "wird fließen",
+                    "es": "wird fließen",
+                    "sie_singular": "wird fließen",
+                    "xier": "wird fließen",
+                    "wir": "werden fließen",
+                    "ihr": "werdet fließen",
+                    "sie_plural": "werden fließen",
+                    "Sie": "werden fließen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde fließen",
+                    "du": "würdest fließen",
+                    "er": "würde fließen",
+                    "es": "würde fließen",
+                    "sie_singular": "würde fließen",
+                    "xier": "würde fließen",
+                    "wir": "würden fließen",
+                    "ihr": "würdet fließen",
+                    "sie_plural": "würden fließen",
+                    "Sie": "würden fließen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre geflossen",
+                    "du": "wärst geflossen",
+                    "er": "wäre geflossen",
+                    "es": "wäre geflossen",
+                    "sie_singular": "wäre geflossen",
+                    "xier": "wäre geflossen",
+                    "wir": "wären geflossen",
+                    "ihr": "wärt geflossen",
+                    "sie_plural": "wären geflossen",
+                    "Sie": "wären geflossen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geflossen",
+                    "du": "wirst geflossen",
+                    "er": "wird geflossen",
+                    "es": "wird geflossen",
+                    "sie_singular": "wird geflossen",
+                    "xier": "wird geflossen",
+                    "wir": "werden geflossen",
+                    "ihr": "werdet geflossen",
+                    "sie_plural": "werden geflossen",
+                    "Sie": "werden geflossen"
+                },
+                "imperative": {
+                    "du": "fließ",
+                    "ihr": "fließt",
+                    "Sie": "fließen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie bekommen Informationen zur Schweiz.",
+            "Lesen Sie nur die linke Seite.",
+            "Dann hören einen Text über die Schweiz und kreuzen Sie auf der linken Seite die richtigen Informationen an.",
+            "Anzahl der Gipfel höher als 2.000 m Berg, der 3.967 m hoch ist",
+            "Welcher See ist der größte der Schweiz?",
+            "Welcher Fluss fließt durch Österreich und Deutschland?",
+            "Wie heißt der höchste Berg in der Schweiz?",
+            "Wo liegen die höchsten Gipfel der Schweiz?",
+            "Welche Sprache ist keine Amtssprache in der Schweiz?",
+            "Zu welchem Land hat die Schweiz die längste Staatsgrenze?",
+            "Wie viele Kantone hat die Schweiz?",
+            "Wie heißt die Hauptstadt der Schweiz?",
+            "Die Schweiz ist ein sehr interessantes Land.",
+            "Die Schweiz hat keine direkte Verbindung zum Meer – wie zum Beispiel Deutschland.",
+            "Aber es gibt in dem kleinen Land mehr als 1.500 Seen, zum Beispiel den Genfersee.",
+            "Das ist der größte See in der Schweiz.",
+            "In der Schweiz beginnen auch große Flüsse, zum Beispiel der Rhein, der durch Deutschland fließt und dann über die Niederlande in die Nordsee fließt.",
+            "Auch die Rhône, die nach Frankreich fließt, und der Inn, der von der Schweiz durch Österreich und Deutschland fließt, haben ihren Ursprung in der Schweiz.",
+            "Das Land selbst ist nicht groß.",
+            "Es sind nur 220 Kilometer von Norden nach Süden und 348 Kilometer von Westen nach Osten.",
+            "Das ist eine Gesamtfläche von 41.285 Quadratkilometern.",
+            "Die Schweiz liegt zwischen zwei Gebirgsketten, dem Jura und den Alpen.",
+            "Der höchste Punkt in der Schweiz ist die 4.634 Meter hohe Dufourspitze an der Grenze zu Italien.",
+            "In der Schweiz gibt es aber mehr als 3.350 Berge, die über 2.000 Meter Höhe liegen.",
+            "In den Walliser Alpen liegen die 16 größten Gipfel der Alpen.",
+            "Berge in der Schweiz sind das 4.487 Meter hohe Matterhorn, der 3.967 Meter hohe Eiger und die 4.158 Meter hohe Jungfrau.",
+            "Deutsch, Französisch und Italienisch.",
+            "Rätoromanisch ist die vierte offizielle Sprache, wird aber nicht zu den Amtssprachen gezählt.",
+            "Ist mit 782 Kilometern die Grenze zu Italien.",
+            "Die kürzeste Grenze, welche nur 41 Kilometer lang ist, hat die Schweiz zu Liechtenstein.",
+            "Die Schweiz hat 8,7 Millionen Einwohner*innen, die in 26 Kantonen leben.",
+            "Mit mehr als 400.000 Einwohner*innen ist Zürich die größte Stadt in der Schweiz.",
+            "Die Schweizer Hauptstadt ist Bern.",
+            "Hier leben etwas mehr als 140.000 Einwohner*innen.",
+            "Schweiz ist nur ein Kurzname für das Land, denn offiziell heißt das Land Confoederatio Helvetica.",
+            "Hören Sie den Text ein zweites Mal und konzentrieren Sie sich auf die Informationen, die noch fehlen.",
+            "Erzählen Sie der anderen Person, was Sie gelernt haben.",
+            "Die andere Person hört zu und kreuzt die richtigen Informationen auf der rechten Seite an.",
+            "Person 1 wählt einen Schweizer Kanton aus und beschreibt seine Lage.",
+            "Person 2 rät, welchen Kanton Person 1 beschreibt.",
+            "Dann beschreibt Person 2 die Lage von einem anderen Kanton und Person 1 rät.",
+            "Mein Kanton liegt westlich von Luzern.",
+            "Er ist auch nördlich von Wallis.",
+            "Heißt dein Kanton Bern?",
+            "Richtig, Bern ist mein Kanton.",
+            "Wie heißen die Erfindungen?",
+            "Kombinieren Sie.",
+            "Der Absinth die Alufolie das Müsli",
+            "Reibe das Zellophan die elektrische Zahnbürste",
+            "Zahn Bürste die Helvetic a Schrift die Knoblauchpresse",
+            "Der Reißverschluss der Sparschäler der Klettverschluss",
+            "Welche Schweizer Erfindungen Sie schon einmal benutzt, gekauft, probiert oder in der Hand gehabt haben?",
+            "Sie bekommen Informationen (individuell / zu zweit) im Passiv einer Schweizer Erfindung.",
+            "Hören Sie zu und ergänzen Sie den Kanton oder Land für Ihre Erfindung.",
+            "Dann machen Sie Aktivsätze aus den Passivsätzen.",
+            "Der Absinth wird von Pierre Ordinaire in Neuchâtel erfunden.",
+            "Pierre Ordinaire erfindet den Absinth in Neuchâtel.",
+            "Der Absinth wird von Dr.",
+            "Pierre Ordinaire in erfunden.",
+            "Die Helvetica Schrift wird von Max Miedinger in entwickelt.",
+            "Das Zellophan wird vom Schweizer Jacques E.",
+            "Brandenberger in erfunden.",
+            "Das Müsli wird von Dr.",
+            "Maximilian Bircher - Benner in entwickelt.",
+            "Die Alufolie wird von Heinrich Alfred Gautschi in hergestellt.",
+            "Die die Bircherreibe [Reibe] wird von Dr.",
+            "Bircher- Benner in erfunden.",
+            "Broxodent wird von Dr.",
+            "Philippe Guy Woog in erfunden.",
+            "Zur Erfindung von LCD wird von Martin Schadt und Wolfgang Helfrich in beigetragen.",
+            "Seide wird von Georges Audemars in entwickelt.",
+            "Der Instantkaffee wird von Henri Nestlé zum ersten Mal in industriell hergestellt.",
+            "Für Babys wird von Henri Nestlé in erfunden.",
+            "Der erste Y - Sparschäler mit beweglicher Klinge wird von Alfred Neweczerzal in erfunden.",
+            "Die Knoblauchpresse wird von Karl Zysset in erfunden.",
+            "Das erste Schweizer Taschenmesser wird von Karl Elsener in hergestellt.",
+            "Das Prinzip für den Klettverschluss wird von George de Mestral in entdeckt.",
+            "Der Reißverschluss wird vom Schweizer Martin Winterhalter zum ersten Mal in Serie hergestellt.",
+            "Erzählen Sie (im Aktiv ) wer Ihr Produkt wo erfindet."
+        ],
+        "templated": []
+    }
+}

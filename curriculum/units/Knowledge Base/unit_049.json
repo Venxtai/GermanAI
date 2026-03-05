@@ -1,0 +1,613 @@
+{
+    "unit": "49",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 49,
+        "prerequisite": "1-48"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use denn as a coordinating conjunction to give reasons; the verb stays in second position in the denn-clause, and the denn-clause cannot begin the sentence."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "den Uni-Alltag beschreiben und optimieren",
+            "Gründe nennen mit denn und weil"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "der Uni-Alltag"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "formulieren",
+                "pos": "VERB",
+                "translation": "to phrase; write sth. up [esp. to put in a definite form, clarify]",
+                "frequency": 1135
+            },
+            {
+                "word": "versuchen",
+                "pos": "VERB",
+                "translation": "to attempt, try",
+                "frequency": 247,
+                "cefr": "A2"
+            },
+            {
+                "word": "treffen (mit)",
+                "pos": "VERB",
+                "translation": "to meet (with)",
+                "frequency": 259,
+                "cefr": "A1"
+            },
+            {
+                "word": "vorbereiten",
+                "pos": "VERB",
+                "translation": "to prepare",
+                "frequency": 1421,
+                "cefr": "A2"
+            },
+            {
+                "word": "zu Mittag",
+                "pos": "VERB",
+                "translation": "to have lunch",
+                "frequency": 21,
+                "cefr": "A1"
+            },
+            {
+                "word": "ausleihen",
+                "pos": "VERB",
+                "translation": "to borrow; lend",
+                "frequency": 10094
+            },
+            {
+                "word": "hochladen",
+                "pos": "VERB",
+                "translation": "to upload",
+                "frequency": 22911,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausdrucken",
+                "pos": "VERB",
+                "translation": "to print out",
+                "frequency": 27288,
+                "cefr": "B1"
+            },
+            {
+                "word": "drucken",
+                "pos": "VERB",
+                "translation": "to print",
+                "frequency": 4205,
+                "cefr": "A1"
+            },
+            {
+                "word": "öffnen",
+                "pos": "VERB",
+                "translation": "to open"
+            },
+            {
+                "word": "die Nachricht",
+                "pos": "NOUN",
+                "translation": "message; piece of news",
+                "frequency": 1218,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Vorlesung",
+                "pos": "NOUN",
+                "translation": "lecture; reading",
+                "frequency": 703,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Prüfung",
+                "pos": "NOUN",
+                "translation": "test, exam",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bibliothek",
+                "pos": "NOUN",
+                "translation": "library",
+                "frequency": 2366,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Folie",
+                "pos": "NOUN",
+                "translation": "slide [presentation]; foil [tech.]",
+                "frequency": 692,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Mensa, Mensen",
+                "pos": "NOUN",
+                "translation": "dining hall [at a college]",
+                "frequency": 14422,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Labor",
+                "pos": "NOUN",
+                "translation": "laboratory",
+                "frequency": 2959,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Hörsaal, Hörsäle",
+                "pos": "NOUN",
+                "translation": "auditorium, lecture hall"
+            },
+            {
+                "word": "der Grund",
+                "pos": "NOUN",
+                "translation": "reason; ground",
+                "frequency": 249,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Welt",
+                "pos": "NOUN",
+                "translation": "world",
+                "frequency": 164,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Stelle",
+                "pos": "NOUN",
+                "translation": "location, place [text]; job",
+                "frequency": 344,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Politik",
+                "pos": "NOUN",
+                "translation": "politics; policies",
+                "frequency": 539,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kunst",
+                "pos": "NOUN",
+                "translation": "art",
+                "frequency": 554,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Prozess",
+                "pos": "NOUN",
+                "translation": "process",
+                "frequency": 595,
+                "cefr": "B1"
+            },
+            {
+                "word": "dort",
+                "pos": "ADV",
+                "translation": "there",
+                "frequency": 139,
+                "cefr": "A1"
+            },
+            {
+                "word": "hoch",
+                "pos": "ADJ",
+                "translation": "high",
+                "frequency": 118,
+                "cefr": "A1"
+            },
+            {
+                "word": "bedeuten",
+                "pos": "VERB",
+                "translation": "to mean; matter",
+                "frequency": 398,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Übung",
+                "pos": "NOUN",
+                "translation": "laboratory course [education]; exercise, practice",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Bestand",
+                "pos": "NOUN",
+                "translation": "inventory, stock",
+                "frequency": 3466,
+                "cefr": "A1"
+            },
+            {
+                "word": "denn",
+                "pos": "PREP",
+                "translation": "because",
+                "frequency": 93,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Hörsaal",
+                "pos": "NOUN",
+                "frequency": 14210
+            },
+            {
+                "word": "der Mittag",
+                "pos": "NOUN",
+                "frequency": 2768,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Lernplattform",
+                "pos": "NOUN"
+            },
+            {
+                "word": "starten",
+                "pos": "VERB",
+                "frequency": 1192,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Artikel",
+                "pos": "NOUN",
+                "frequency": 1378,
+                "cefr": "A2"
+            },
+            {
+                "word": "das PowerPoint",
+                "pos": "NOUN"
+            },
+            {
+                "word": "formatieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Slide",
+                "pos": "NOUN"
+            },
+            {
+                "word": "einloggen",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Plattform",
+                "pos": "NOUN",
+                "frequency": 2816,
+                "cefr": "B1"
+            },
+            {
+                "word": "studierend",
+                "pos": "ADJ",
+                "frequency": 24920
+            },
+            {
+                "word": "die Elementargeometrie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Theorie",
+                "pos": "NOUN",
+                "frequency": 1064,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Mikroökonomik",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "formulieren": {
+                "present": {
+                    "ich": "formuliere",
+                    "du": "formulierst",
+                    "er": "formuliert",
+                    "es": "formuliert",
+                    "sie_singular": "formuliert",
+                    "xier": "formuliert",
+                    "wir": "formulieren",
+                    "ihr": "formuliert",
+                    "sie_plural": "formulieren",
+                    "Sie": "formulieren"
+                }
+            },
+            "versuchen": {
+                "present": {
+                    "ich": "versuche",
+                    "du": "versuchst",
+                    "er": "versucht",
+                    "es": "versucht",
+                    "sie_singular": "versucht",
+                    "xier": "versucht",
+                    "wir": "versuchen",
+                    "ihr": "versucht",
+                    "sie_plural": "versuchen",
+                    "Sie": "versuchen"
+                }
+            },
+            "vorbereiten": {
+                "present": {
+                    "ich": "bereite vor",
+                    "du": "bereitest vor",
+                    "er": "bereitet vor",
+                    "es": "bereitet vor",
+                    "sie_singular": "bereitet vor",
+                    "xier": "bereitet vor",
+                    "wir": "bereiten vor",
+                    "ihr": "bereitet vor",
+                    "sie_plural": "bereiten vor",
+                    "Sie": "bereiten vor"
+                }
+            },
+            "ausleihen": {
+                "present": {
+                    "ich": "leihe aus",
+                    "du": "leihst aus",
+                    "er": "leiht aus",
+                    "es": "leiht aus",
+                    "sie_singular": "leiht aus",
+                    "xier": "leiht aus",
+                    "wir": "leihen aus",
+                    "ihr": "leiht aus",
+                    "sie_plural": "leihen aus",
+                    "Sie": "leihen aus"
+                }
+            },
+            "hochladen": {
+                "present": {
+                    "ich": "lade hoch",
+                    "du": "lädst hoch",
+                    "er": "lädt hoch",
+                    "es": "lädt hoch",
+                    "sie_singular": "lädt hoch",
+                    "xier": "lädt hoch",
+                    "wir": "laden hoch",
+                    "ihr": "ladet hoch",
+                    "sie_plural": "laden hoch",
+                    "Sie": "laden hoch"
+                }
+            },
+            "öffnen": {
+                "present": {
+                    "ich": "öffne",
+                    "du": "öffnest",
+                    "er": "öffnet",
+                    "es": "öffnet",
+                    "sie_singular": "öffnet",
+                    "xier": "öffnet",
+                    "wir": "öffnen",
+                    "ihr": "öffnet",
+                    "sie_plural": "öffnen",
+                    "Sie": "öffnen"
+                }
+            },
+            "bedeuten": {
+                "present": {
+                    "ich": "bedeute",
+                    "du": "bedeutest",
+                    "er": "bedeutet",
+                    "es": "bedeutet",
+                    "sie_singular": "bedeutet",
+                    "xier": "bedeutet",
+                    "wir": "bedeuten",
+                    "ihr": "bedeutet",
+                    "sie_plural": "bedeuten",
+                    "Sie": "bedeuten"
+                }
+            },
+            "ausdrucken": {
+                "present": {
+                    "ich": "drucke aus",
+                    "du": "druckst aus",
+                    "er": "druckt aus",
+                    "es": "druckt aus",
+                    "sie_singular": "druckt aus",
+                    "xier": "druckt aus",
+                    "wir": "drucken aus",
+                    "ihr": "druckt aus",
+                    "sie_plural": "drucken aus",
+                    "Sie": "drucken aus"
+                }
+            },
+            "drucken": {
+                "present": {
+                    "ich": "drucke",
+                    "du": "druckst",
+                    "er": "druckt",
+                    "es": "druckt",
+                    "sie_singular": "druckt",
+                    "xier": "druckt",
+                    "wir": "drucken",
+                    "ihr": "druckt",
+                    "sie_plural": "drucken",
+                    "Sie": "drucken"
+                }
+            },
+            "treffen": {
+                "present": {
+                    "ich": "treffe",
+                    "du": "triffst",
+                    "er": "trifft",
+                    "es": "trifft",
+                    "sie_singular": "trifft",
+                    "xier": "trifft",
+                    "wir": "treffen",
+                    "ihr": "trefft",
+                    "sie_plural": "treffen",
+                    "Sie": "treffen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie das Gespräch und tragen Sie die Zeiten in die Tabelle ein.",
+            "30 gehe ich aus dem Haus und fahre mit dem Bus zur Uni.",
+            "Dann gehe ich um 8 Uhr in den Hörsaal.",
+            "Ich habe eine Vorlesung.",
+            "Um 10 Uhr muss ich dann erstmal Kaffee trinken.",
+            "Da treffe ich auch Freunde und Freundinnen.",
+            "Um 13 Uhr gehen wir zusammen in die Mensa und essen Mittag.",
+            "Danach, so um 14 Uhr gehe ich ins Labor.",
+            "Dort habe ich eine Übung.",
+            "30 Uhr gehe ich dann in die Bibliothek und lerne.",
+            "Morgen habe ich eine Prüfung, also lerne ich heute.",
+            "30 Uhr mit dem Bus fahren",
+            "8 Uhr in den Hörsaal gehen",
+            "13 Uhr in die Mensa gehen und Mittag essen 14 Uhr ins Labor gehen",
+            "Uhr in die Bibliothek gehen und lernen",
+            "Sortieren Sie die Gründe zu den Aktivitäten und schreiben Sie sie in die Tabelle.",
+            "Eine Vorlesung haben",
+            "Nutzen Sie die Tabelle und formulieren Sie Sätze, erst mit \"weil\" und dann mit \"denn\".",
+            "Ich fahre um 7:30 Uhr mit dem Bus, weil ich in die Uni muss.",
+            "30 Uhr mit dem Bus, denn ich muss in die Uni.",
+            "Ich gehe um 8 Uhr in den Hörsaal, weil ich eine Vorlesung habe.",
+            "Ich trinke um 10 Uhr Kaffee, weil ich müde bin.",
+            "Ich gehe um 13 Uhr in die Mensa und esse zu Mittag, weil ich Hunger habe.",
+            "Ich gehe um 14 Uhr ins Labor, weil ich eine Übung habe.",
+            "30 in die Bibliothek und lerne, weil ich eine Prüfung habe.",
+            "Lesen Sie die Heikos Hausaufgaben und Aktivitäten.",
+            "Verstehen Sie alles?",
+            "\"Bereiten Sie eine kurze Präsentation (5 Folien) zum Thema Kunst vor.",
+            "Den Text zu den Bildern bitte nur als kurze Notizen.",
+            "Laden Sie die Präsentation auf unsere Lernplattform hoch",
+            "Was muss Heiko machen?",
+            "Was muss Heiko nicht machen?",
+            "Was darf man in Ihrer Unibibliothek (nicht) machen?",
+            "Ergänzen Sie die Listen.",
+            "Bücher ausleihen laut sprechen lernen lesen",
+            "Das darf man machen:",
+            "Man darf Bücher ausleihen.",
+            "Man darf lernen.",
+            "Man darf lesen.",
+            "Man in einer Gruppe arbeiten.",
+            "Man darf eine Hausarbeit schreiben.",
+            "Man darf eine Präsentation vorbereiten.",
+            "Man darf schlafen.",
+            "Man darf Musik hören.",
+            "Das darf man nicht machen:",
+            "Man darf nicht laut sprechen.",
+            "Man darf nicht schlafen.",
+            "Man darf keine Musik hören.",
+            "Man darf nicht tanzen.",
+            "Man darf nicht fotografieren.",
+            "Man darf keine Sprachnachrichten senden",
+            "Man darf keine Freund*innen anrufen.",
+            "Genug Bücher?",
+            "In der Universitätsbibliothek kann man auch Bücher für Kurse ausleihen.",
+            "Aber gibt es genug?",
+            "Sie bekommen Informationen.",
+            "Fragen Sie die andere Person nach den anderen Informationen.",
+            "\"Wie viele Studierende sind in \"Deutsch I\"?.",
+            "\"115 Studierende sind in \"Deutsch I\".",
+            "\"Wie viele Bücher hat die Bibliothek für \"Deutsch I?\" \"Die Bibliothek hat 150 Bücher für \"Deutsch I.\" Kurs Studierende Bücher",
+            "Wie viele Studierende sind in \"Deutsch I\"?",
+            "Studierende sind in \"Deutsch I\".",
+            "Wie viele Bücher hat die Bibliothek für \"Deutsch I?\"",
+            "Die Bibliothek hat X Bücher für \"Deutsch I.\"",
+            "Wie viele Studierende sind in \"Elementargeometrie\"?",
+            "Studierende sind in \"Elementargeometrie\".",
+            "Wie viele Bücher hat die Bibliothek für \"Elementargeometrie?\"",
+            "Die Bibliothek hat X Bücher für \"Elementargeometrie.",
+            "\" Wie viele Studierende sind in \"Filmtheorie\"?",
+            "Studierende sind in \"Filmtheorie\".",
+            "Wie viele Bücher hat die Bibliothek für \"Filmtheorie?",
+            "\" Die Bibliothek hat X Bücher für \"Filmtheorie.",
+            "\" Wie viele Studierende sind in \"Mikroökonomik\"?",
+            "Studierende sind in \"Mikroökonomik\".",
+            "Wie viele Bücher hat die Bibliothek für \"Mikroökonomik\"?",
+            "Die Bibliothek hat X Bücher für \"Mikroökonomik.",
+            "\" Wie viele Studierende sind in \"Weltliteratur\"?",
+            "Studierende sind in \"Weltliteratur \".",
+            "Wie viele Bücher hat die Bibliothek für \"Weltliteratur?",
+            "\" Die Bibliothek hat X Bücher für \"Weltliteratur",
+            "Wie viele Studierende sind in \"Internationale Politik\"?",
+            "Studierende sind in \"Internationale Politik\".",
+            "Wie viele Bücher hat die Bibliothek für \"Internationale Politik\"",
+            "Die Bibliothek hat X Bücher für \"Internationale Politik",
+            "Wie viele Studierende sind in \"Statistik I\"?",
+            "Studierende sind in \"Statistik I\".",
+            "Wie viele Bücher hat die Bibliothek für \"Statistik I?\"",
+            "Die Bibliothek hat X Bücher für \"Statistik I.",
+            "\" Wie viele Studierende sind in \"Kunstgeschichte\"?",
+            "Studierende sind in \"Kunstgeschichte\".",
+            "Wie viele Bücher hat die Bibliothek für \"Kunstgeschichte",
+            "\" Die Bibliothek hat X Bücher für \"Kunstgeschichte"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,578 @@
+{
+    "unit": "O22",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 22,
+        "prerequisite": "core 1-104, O1-O21"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da"
+        ],
+        "new_rules_in_this_unit": [
+            "Use da-compounds (da(r)- + preposition) to replace a previously mentioned prepositional phrase referring to things: dafür, dagegen, damit, darüber, darauf, etc.; insert -r- before vowels."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Automatisierung beschreiben, analysieren und beurteilen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Automatisierung und Gewerkschaften"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "einkreisen", "pos": "VERB", "translation": "to encircle" },
+            { "word": "Bezug", "pos": "VERB", "translation": "to refer (to)", "frequency": 1355 },
+            { "word": "entstehen", "pos": "VERB", "translation": "to emerge, develop", "frequency": 264, "cefr": "B1" },
+            { "word": "sich sorgen (um)", "pos": "VERB", "translation": "to worry (about)", "frequency": 618, "cefr": "B1" },
+            { "word": "ermöglichen", "pos": "VERB", "translation": "to render possible, allow for, enable" },
+            { "word": "automatisieren", "pos": "VERB", "translation": "to automate; automatize", "frequency": 47967, "cefr": "B2" },
+            { "word": "die Automatisierung", "pos": "NOUN", "translation": "automatization, automation", "frequency": 29460, "cefr": "A1" },
+            { "word": "der Roboter", "pos": "NOUN", "translation": "robot", "frequency": 4124, "cefr": "A1" },
+            { "word": "die Robotisierung", "pos": "NOUN", "translation": "robotization [technology]", "frequency": 1, "cefr": "A1" },
+            { "word": "die Digitalisierung", "pos": "NOUN", "translation": "digitalisation", "frequency": 3263, "cefr": "A1" },
+            { "word": "die Fähigkeit", "pos": "NOUN", "translation": "skill; faculty; capability; power" },
+            { "word": "die Arbeitslosigkeit", "pos": "NOUN", "translation": "unemployment; joblessness", "frequency": 2094, "cefr": "B1" },
+            { "word": "die Sorge", "pos": "NOUN", "translation": "worry; concern", "frequency": 888, "cefr": "B1" },
+            { "word": "die Gewerkschaft", "pos": "NOUN", "translation": "trade/labor union", "frequency": 2435, "cefr": "B1" },
+            { "word": "der Tarifvertrag", "pos": "NOUN", "translation": "labor agreement", "frequency": 9295, "cefr": "A1" },
+            { "word": "die Dienstleistung", "pos": "NOUN", "translation": "service [commercial]", "frequency": 2305, "cefr": "A1" },
+            { "word": "der Bergbau", "pos": "NOUN", "translation": "mining", "frequency": 9225, "cefr": "A1" },
+            { "word": "der Einzelhandel", "pos": "NOUN", "translation": "retail industry", "frequency": 7551, "cefr": "A1" },
+            { "word": "das Gewerbe", "pos": "NOUN", "translation": "industry", "frequency": 7229, "cefr": "B2" },
+            { "word": "die Studie", "pos": "NOUN", "translation": "study (research)", "frequency": 784, "cefr": "B1" },
+            { "word": "überraschend", "pos": "ADJ", "translation": "surprising" },
+            { "word": "gesamt", "pos": "ADJ", "translation": "altogether", "frequency": 557, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "verarbeitend", "pos": "ADJ", "frequency": 19918 },
+            { "word": "die Gastronomie", "pos": "NOUN", "frequency": 7932 },
+            { "word": "produzierend", "pos": "ADJ", "frequency": 19569 },
+            { "word": "die Logistik", "pos": "NOUN", "frequency": 10744 },
+            { "word": "wovor", "pos": "SCONJ", "frequency": 42377 },
+            { "word": "worum", "pos": "SCONJ", "frequency": 4025, "cefr": "B1" },
+            { "word": "darum", "pos": "ADV", "frequency": 518 },
+            { "word": "das Workshop", "pos": "NOUN", "frequency": 6752, "cefr": "A2" },
+            { "word": "das IT", "pos": "NOUN", "frequency": 6946 },
+            { "word": "-Komposita", "pos": "NOUN" },
+            { "word": "worin", "pos": "SCONJ", "frequency": 9959 },
+            { "word": "darin", "pos": "ADV", "frequency": 360 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "einkreisen": {
+                "present": {
+                    "ich": "kreise ein",
+                    "du": "kreist ein",
+                    "er": "kreist ein",
+                    "es": "kreist ein",
+                    "sie_singular": "kreist ein",
+                    "xier": "kreist ein",
+                    "wir": "kreisen ein",
+                    "ihr": "kreist ein",
+                    "sie_plural": "kreisen ein",
+                    "Sie": "kreisen ein"
+                },
+                "Perfekt": {
+                    "ich": "bin eingekreist",
+                    "du": "bist eingekreist",
+                    "er": "ist eingekreist",
+                    "es": "ist eingekreist",
+                    "sie_singular": "ist eingekreist",
+                    "xier": "ist eingekreist",
+                    "wir": "sind eingekreist",
+                    "ihr": "seid eingekreist",
+                    "sie_plural": "sind eingekreist",
+                    "Sie": "sind eingekreist"
+                },
+                "Futur_I": {
+                    "ich": "werde einkreisen",
+                    "du": "wirst einkreisen",
+                    "er": "wird einkreisen",
+                    "es": "wird einkreisen",
+                    "sie_singular": "wird einkreisen",
+                    "xier": "wird einkreisen",
+                    "wir": "werden einkreisen",
+                    "ihr": "werdet einkreisen",
+                    "sie_plural": "werden einkreisen",
+                    "Sie": "werden einkreisen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde einkreisen",
+                    "du": "würdest einkreisen",
+                    "er": "würde einkreisen",
+                    "es": "würde einkreisen",
+                    "sie_singular": "würde einkreisen",
+                    "xier": "würde einkreisen",
+                    "wir": "würden einkreisen",
+                    "ihr": "würdet einkreisen",
+                    "sie_plural": "würden einkreisen",
+                    "Sie": "würden einkreisen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre eingekreist",
+                    "du": "wärst eingekreist",
+                    "er": "wäre eingekreist",
+                    "es": "wäre eingekreist",
+                    "sie_singular": "wäre eingekreist",
+                    "xier": "wäre eingekreist",
+                    "wir": "wären eingekreist",
+                    "ihr": "wärt eingekreist",
+                    "sie_plural": "wären eingekreist",
+                    "Sie": "wären eingekreist"
+                },
+                "imperative": {
+                    "du": "kreis ein",
+                    "ihr": "kreist ein",
+                    "Sie": "kreisen Sie ein"
+                }
+            },
+            "Bezug": {
+                "Perfekt": {
+                    "ich": "habe genommen",
+                    "du": "hast genommen",
+                    "er": "hat genommen",
+                    "es": "hat genommen",
+                    "sie_singular": "hat genommen",
+                    "xier": "hat genommen",
+                    "wir": "haben genommen",
+                    "ihr": "habt genommen",
+                    "sie_plural": "haben genommen",
+                    "Sie": "haben genommen"
+                },
+                "Futur_I": {
+                    "ich": "werde Bezug",
+                    "du": "wirst Bezug",
+                    "er": "wird Bezug",
+                    "es": "wird Bezug",
+                    "sie_singular": "wird Bezug",
+                    "xier": "wird Bezug",
+                    "wir": "werden Bezug",
+                    "ihr": "werdet Bezug",
+                    "sie_plural": "werden Bezug",
+                    "Sie": "werden Bezug"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde Bezug",
+                    "du": "würdest Bezug",
+                    "er": "würde Bezug",
+                    "es": "würde Bezug",
+                    "sie_singular": "würde Bezug",
+                    "xier": "würde Bezug",
+                    "wir": "würden Bezug",
+                    "ihr": "würdet Bezug",
+                    "sie_plural": "würden Bezug",
+                    "Sie": "würden Bezug"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte genommen",
+                    "du": "hättest genommen",
+                    "er": "hätte genommen",
+                    "es": "hätte genommen",
+                    "sie_singular": "hätte genommen",
+                    "xier": "hätte genommen",
+                    "wir": "hätten genommen",
+                    "ihr": "hättet genommen",
+                    "sie_plural": "hätten genommen",
+                    "Sie": "hätten genommen"
+                }
+            },
+            "entstehen": {
+                "present": {
+                    "ich": "entstehe",
+                    "du": "entstehst",
+                    "er": "entsteht",
+                    "es": "entsteht",
+                    "sie_singular": "entsteht",
+                    "xier": "entsteht",
+                    "wir": "entstehen",
+                    "ihr": "entsteht",
+                    "sie_plural": "entstehen",
+                    "Sie": "entstehen"
+                },
+                "Perfekt": {
+                    "ich": "bin entstanden",
+                    "du": "bist entstanden",
+                    "er": "ist entstanden",
+                    "es": "ist entstanden",
+                    "sie_singular": "ist entstanden",
+                    "xier": "ist entstanden",
+                    "wir": "sind entstanden",
+                    "ihr": "seid entstanden",
+                    "sie_plural": "sind entstanden",
+                    "Sie": "sind entstanden"
+                },
+                "Futur_I": {
+                    "ich": "werde entstehen",
+                    "du": "wirst entstehen",
+                    "er": "wird entstehen",
+                    "es": "wird entstehen",
+                    "sie_singular": "wird entstehen",
+                    "xier": "wird entstehen",
+                    "wir": "werden entstehen",
+                    "ihr": "werdet entstehen",
+                    "sie_plural": "werden entstehen",
+                    "Sie": "werden entstehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde entstehen",
+                    "du": "würdest entstehen",
+                    "er": "würde entstehen",
+                    "es": "würde entstehen",
+                    "sie_singular": "würde entstehen",
+                    "xier": "würde entstehen",
+                    "wir": "würden entstehen",
+                    "ihr": "würdet entstehen",
+                    "sie_plural": "würden entstehen",
+                    "Sie": "würden entstehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre entstanden",
+                    "du": "wärst entstanden",
+                    "er": "wäre entstanden",
+                    "es": "wäre entstanden",
+                    "sie_singular": "wäre entstanden",
+                    "xier": "wäre entstanden",
+                    "wir": "wären entstanden",
+                    "ihr": "wärt entstanden",
+                    "sie_plural": "wären entstanden",
+                    "Sie": "wären entstanden"
+                },
+                "imperative": {
+                    "du": "entstehe",
+                    "ihr": "entsteht",
+                    "Sie": "entstehen Sie"
+                }
+            },
+            "sorgen": {
+                "present": {
+                    "ich": "sorge mich",
+                    "du": "sorgst dich",
+                    "er": "sorgt sich",
+                    "es": "sorgt sich",
+                    "sie_singular": "sorgt sich",
+                    "xier": "sorgt sich",
+                    "wir": "sorgen uns",
+                    "ihr": "sorgt euch",
+                    "sie_plural": "sorgen sich",
+                    "Sie": "sorgen sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich gesorgt",
+                    "du": "hast dich gesorgt",
+                    "er": "hat sich gesorgt",
+                    "es": "hat sich gesorgt",
+                    "sie_singular": "hat sich gesorgt",
+                    "xier": "hat sich gesorgt",
+                    "wir": "haben uns gesorgt",
+                    "ihr": "habt euch gesorgt",
+                    "sie_plural": "haben sich gesorgt",
+                    "Sie": "haben sich gesorgt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich sorgen",
+                    "du": "wirst dich sorgen",
+                    "er": "wird sich sorgen",
+                    "es": "wird sich sorgen",
+                    "sie_singular": "wird sich sorgen",
+                    "xier": "wird sich sorgen",
+                    "wir": "werden uns sorgen",
+                    "ihr": "werdet euch sorgen",
+                    "sie_plural": "werden sich sorgen",
+                    "Sie": "werden sich sorgen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde mich sorgen",
+                    "du": "würdest dich sorgen",
+                    "er": "würde sich sorgen",
+                    "es": "würde sich sorgen",
+                    "sie_singular": "würde sich sorgen",
+                    "xier": "würde sich sorgen",
+                    "wir": "würden uns sorgen",
+                    "ihr": "würdet euch sorgen",
+                    "sie_plural": "würden sich sorgen",
+                    "Sie": "würden sich sorgen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte mich gesorgt",
+                    "du": "hättest dich gesorgt",
+                    "er": "hätte sich gesorgt",
+                    "es": "hätte sich gesorgt",
+                    "sie_singular": "hätte sich gesorgt",
+                    "xier": "hätte sich gesorgt",
+                    "wir": "hätten uns gesorgt",
+                    "ihr": "hättet euch gesorgt",
+                    "sie_plural": "hätten sich gesorgt",
+                    "Sie": "hätten sich gesorgt"
+                },
+                "imperative": {
+                    "du": "sorg dich",
+                    "ihr": "sorgt euch",
+                    "Sie": "sorgen Sie sich"
+                }
+            },
+            "ermöglichen": {
+                "present": {
+                    "ich": "ermögliche",
+                    "du": "ermöglichst",
+                    "er": "ermöglicht",
+                    "es": "ermöglicht",
+                    "sie_singular": "ermöglicht",
+                    "xier": "ermöglicht",
+                    "wir": "ermöglichen",
+                    "ihr": "ermöglicht",
+                    "sie_plural": "ermöglichen",
+                    "Sie": "ermöglichen"
+                },
+                "Perfekt": {
+                    "ich": "habe ermöglicht",
+                    "du": "hast ermöglicht",
+                    "er": "hat ermöglicht",
+                    "es": "hat ermöglicht",
+                    "sie_singular": "hat ermöglicht",
+                    "xier": "hat ermöglicht",
+                    "wir": "haben ermöglicht",
+                    "ihr": "habt ermöglicht",
+                    "sie_plural": "haben ermöglicht",
+                    "Sie": "haben ermöglicht"
+                },
+                "Futur_I": {
+                    "ich": "werde ermöglichen",
+                    "du": "wirst ermöglichen",
+                    "er": "wird ermöglichen",
+                    "es": "wird ermöglichen",
+                    "sie_singular": "wird ermöglichen",
+                    "xier": "wird ermöglichen",
+                    "wir": "werden ermöglichen",
+                    "ihr": "werdet ermöglichen",
+                    "sie_plural": "werden ermöglichen",
+                    "Sie": "werden ermöglichen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ermöglichen",
+                    "du": "würdest ermöglichen",
+                    "er": "würde ermöglichen",
+                    "es": "würde ermöglichen",
+                    "sie_singular": "würde ermöglichen",
+                    "xier": "würde ermöglichen",
+                    "wir": "würden ermöglichen",
+                    "ihr": "würdet ermöglichen",
+                    "sie_plural": "würden ermöglichen",
+                    "Sie": "würden ermöglichen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte ermöglicht",
+                    "du": "hättest ermöglicht",
+                    "er": "hätte ermöglicht",
+                    "es": "hätte ermöglicht",
+                    "sie_singular": "hätte ermöglicht",
+                    "xier": "hätte ermöglicht",
+                    "wir": "hätten ermöglicht",
+                    "ihr": "hättet ermöglicht",
+                    "sie_plural": "hätten ermöglicht",
+                    "Sie": "hätten ermöglicht"
+                },
+                "imperative": {
+                    "du": "ermöglich",
+                    "ihr": "ermöglicht",
+                    "Sie": "ermöglichen Sie"
+                }
+            },
+            "automatisieren": {
+                "present": {
+                    "ich": "automatisiere",
+                    "du": "automatisierst",
+                    "er": "automatisiert",
+                    "es": "automatisiert",
+                    "sie_singular": "automatisiert",
+                    "xier": "automatisiert",
+                    "wir": "automatisieren",
+                    "ihr": "automatisiert",
+                    "sie_plural": "automatisieren",
+                    "Sie": "automatisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe automatisiert",
+                    "du": "hast automatisiert",
+                    "er": "hat automatisiert",
+                    "es": "hat automatisiert",
+                    "sie_singular": "hat automatisiert",
+                    "xier": "hat automatisiert",
+                    "wir": "haben automatisiert",
+                    "ihr": "habt automatisiert",
+                    "sie_plural": "haben automatisiert",
+                    "Sie": "haben automatisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde automatisieren",
+                    "du": "wirst automatisieren",
+                    "er": "wird automatisieren",
+                    "es": "wird automatisieren",
+                    "sie_singular": "wird automatisieren",
+                    "xier": "wird automatisieren",
+                    "wir": "werden automatisieren",
+                    "ihr": "werdet automatisieren",
+                    "sie_plural": "werden automatisieren",
+                    "Sie": "werden automatisieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde automatisieren",
+                    "du": "würdest automatisieren",
+                    "er": "würde automatisieren",
+                    "es": "würde automatisieren",
+                    "sie_singular": "würde automatisieren",
+                    "xier": "würde automatisieren",
+                    "wir": "würden automatisieren",
+                    "ihr": "würdet automatisieren",
+                    "sie_plural": "würden automatisieren",
+                    "Sie": "würden automatisieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte automatisiert",
+                    "du": "hättest automatisiert",
+                    "er": "hätte automatisiert",
+                    "es": "hätte automatisiert",
+                    "sie_singular": "hätte automatisiert",
+                    "xier": "hätte automatisiert",
+                    "wir": "hätten automatisiert",
+                    "ihr": "hättet automatisiert",
+                    "sie_plural": "hätten automatisiert",
+                    "Sie": "hätten automatisiert"
+                },
+                "imperative": {
+                    "du": "automatisiere",
+                    "ihr": "automatisiert",
+                    "Sie": "automatisieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Beschreiben Sie eine der beiden Statistiken.",
+            "Was zeigt die Statistik?",
+            "Robotisierung im Vergleich.",
+            "Roboter pro 10.000 Arbeiter*innen im Verarbeitenden Gewerbe.",
+            "Roboter pro 10.000 Arbeiter*innen.",
+            "So viele Jobs könnte die Automatisierung kosten",
+            "Dienstleistungen für Unternehmen, Wissenschaft und Technik",
+            "Arbeitsplätze insgesamt Arbeitsplätze, die man automatisieren kann",
+            "Arbeitsplätze, die man automatisieren kann.",
+            "Erzählen Sie von Ihrer Statistik.",
+            "Überlegen und sammeln Sie.",
+            "Wovor könnten Menschen bei den Statistiken Angst haben?",
+            "Worum könnten Sie sich sorgen?",
+            "Worum sorgen Sie sich, wenn Sie an die Zukunft und Arbeit denken?",
+            "Wovor haben Sie Angst?",
+            "Sie können die Ideen benutzen oder andere Antworten schreiben.",
+            "Arbeitslosigkeit, lange Arbeitszeiten {Arbeit Zeit, Automatisierung, Freizeit.",
+            "Fragen Sie Worum sorgen sich die Leute?",
+            "Und Wovor haben die Leute Angst?.",
+            "Nehmen Sie Bezug auf die Angst und Sorgen und benutzen Sie darum und davor.",
+            "Worum sorgen sich die Leute?",
+            "Bei uns sorgen sich die Leute um ihr Geld.",
+            "Was denkst du, warum sorgen sie sich darum?",
+            "Sie sorgen sich darum, weil sie nicht so viel Geld verdienen.",
+            "Wovor haben die Leute Angst?",
+            "Lesen Sie den Text einmal schnell und kreisen Sie alle Präpositionen ein.",
+            "48 % aller Arbeitsplätze in Deutschland könnten automatisiert werden.",
+            "In Deutschland sind noch relativ viele Menschen in der Industrie beschäftigt, z.",
+            "Im Autobau.",
+            "Dort können Roboter leichter Menschen ersetzen als in anderen Bereichen.",
+            "Laut Studien fallen viele Arbeitsplätze weg, aber es entstehen auch neue.",
+            "Die Arbeit wird sich in der Zukunft verändern.",
+            "In Deutschland arbeiten deshalb die Gewerkschaften an einer positiven Zukunft.",
+            "Deshalb hat zum Beispiel die Gewerkschaft Verdi, nach der IG Metall die zweitgrößte Gewerkschaft Deutschlands, Tarifverträge mit Unternehmen geschlossen.",
+            "Diese Tarifverträge sollen Arbeiter*innen Workshops für das Lernen von neuen Fähigkeiten ermöglichen.",
+            "In der Telekommunikations- und IT-Industrie gibt es schon Tarifverträge zum mobilen Arbeiten, z.",
+            "Durch Home-Office.",
+            "Bei den Versicherungen sollen Arbeiter*innen, deren Arbeitsplätze verloren gehen, neue Fähigkeiten lernen und dann andere Stellen im gleichen Unternehmen bekommen.",
+            "Stellen Sie zu zwei Präpositionen eine Frage mit wo -Komposita und zu zwei Präpositionen eine ja/nein-Frage {Ja Nein Frage.",
+            "Dann beantworten Sie die Fragen von einer anderen Person.",
+            "Wo-Frage {wo Frage: Worin sind in Deutschland noch relativ viele Menschen beschäftigt?",
+            "In der Industrie.",
+            "Sind in Deutschland viele Menschen in der Industrie beschäftigt?",
+            "Ja, in Deutschland sind relativ viele Menschen darin beschäftigt.",
+            "Lesen Sie den Text ein zweites Mal und markieren Sie, welche Veränderungen und Lösungen beschrieben werden.",
+            "Sprechen Sie mit einer oder zwei anderen Personen und vergleichen Sie, was sie markiert haben.",
+            "Was verändert sich?",
+            "Wie arbeiten die Gewerkschaften an Lösungen?",
+            "Wie beschreibt der Text die Zukunft von Arbeit: positiv, negativ oder neutral?",
+            "Teilen Sie diese Perspektive?",
+            "Was ist Ihrer Meinung nach positiver oder negativer, als es im Text steht?",
+            "Ich glaube, die Zukunft von Arbeit wird besser/schlechter sein, weil …"
+        ],
+        "templated": []
+    }
+}

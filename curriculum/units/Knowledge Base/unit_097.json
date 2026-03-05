@@ -1,0 +1,578 @@
+{
+    "unit": "97",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 97,
+        "prerequisite": "1-96"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu"
+        ],
+        "new_rules_in_this_unit": [
+            "Form Futur I with conjugated werden (ich werde, du wirst, er wird, wir werden, ihr werdet, sie werden) in position 2 and the infinitive at the end: \"In 30 Jahren wird es eine Zeitmaschine geben.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über die Zukunft spekulieren",
+            "Vorhersagen und Versprechen machen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die Zukunft"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "kommunizieren",
+                "pos": "VERB",
+                "translation": "to communicate",
+                "frequency": 3812,
+                "cefr": "B2"
+            },
+            {
+                "word": "schnüren",
+                "pos": "VERB",
+                "translation": "to strap; string; tie with a string"
+            },
+            {
+                "word": "steuern",
+                "pos": "VERB",
+                "translation": "to control, steer",
+                "frequency": 1908
+            },
+            {
+                "word": "speichern",
+                "pos": "VERB",
+                "translation": "to save [comp.]",
+                "frequency": 2616,
+                "cefr": "A2"
+            },
+            {
+                "word": "verbessern",
+                "pos": "VERB",
+                "translation": "to improve, enhance",
+                "frequency": 1194,
+                "cefr": "B1"
+            },
+            {
+                "word": "telefonieren",
+                "pos": "VERB",
+                "translation": "to phone; call",
+                "frequency": 3156,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Innovation",
+                "pos": "NOUN",
+                "translation": "innovation",
+                "frequency": 2482,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zeitmaschine",
+                "pos": "NOUN",
+                "translation": "time machine",
+                "frequency": 36858,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gerät",
+                "pos": "NOUN",
+                "translation": "device, appliance"
+            },
+            {
+                "word": "der Kopfhörer",
+                "pos": "NOUN",
+                "translation": "headphone"
+            },
+            {
+                "word": "die Steuerung",
+                "pos": "NOUN",
+                "translation": "control",
+                "frequency": 3660,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sprachsteuerung",
+                "pos": "NOUN",
+                "translation": "voice control",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sendung",
+                "pos": "NOUN",
+                "translation": "program, broadcast; shipment",
+                "frequency": 2360,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Realität",
+                "pos": "NOUN",
+                "translation": "reality"
+            },
+            {
+                "word": "der Unsinn",
+                "pos": "NOUN",
+                "translation": "nonsense",
+                "frequency": 3801,
+                "cefr": "A1"
+            },
+            {
+                "word": "möglich",
+                "pos": "ADJ",
+                "translation": "possible; potential"
+            },
+            {
+                "word": "unterwegs",
+                "pos": "ADV",
+                "translation": "on the road; on the way",
+                "frequency": 968,
+                "cefr": "A2"
+            },
+            {
+                "word": "zurück",
+                "pos": "ADV",
+                "translation": "back"
+            },
+            {
+                "word": "maximal",
+                "pos": "ADV",
+                "translation": "maximum; at most; maximal",
+                "frequency": 1284,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Software",
+                "pos": "NOUN",
+                "frequency": 3151,
+                "cefr": "B1"
+            },
+            {
+                "word": "der -Kopfhörer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "überall",
+                "pos": "ADV",
+                "frequency": 756,
+                "cefr": "A2"
+            },
+            {
+                "word": "telepathisch",
+                "pos": "ADV"
+            },
+            {
+                "word": "II",
+                "pos": "NUM",
+                "frequency": 5910
+            },
+            {
+                "word": "die Handsteuerung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Splitscreen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Reaktor",
+                "pos": "NOUN",
+                "frequency": 9103
+            },
+            {
+                "word": "fliegend",
+                "pos": "ADJ",
+                "frequency": 9221
+            },
+            {
+                "word": "der Videoanruf",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Drohne",
+                "pos": "NOUN",
+                "frequency": 20355
+            },
+            {
+                "word": "simulieren",
+                "pos": "VERB",
+                "frequency": 15355,
+                "cefr": "B2"
+            },
+            {
+                "word": "filmen",
+                "pos": "VERB",
+                "frequency": 8972,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Selbstschnür-Sneaker",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "kommunizieren": {
+                "present": {
+                    "ich": "kommuniziere",
+                    "du": "kommunizierst",
+                    "er": "kommuniziert",
+                    "es": "kommuniziert",
+                    "sie_singular": "kommuniziert",
+                    "xier": "kommuniziert",
+                    "wir": "kommunizieren",
+                    "ihr": "kommuniziert",
+                    "sie_plural": "kommunizieren",
+                    "Sie": "kommunizieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kommuniziert",
+                    "du": "hast kommuniziert",
+                    "er": "hat kommuniziert",
+                    "es": "hat kommuniziert",
+                    "sie_singular": "hat kommuniziert",
+                    "xier": "hat kommuniziert",
+                    "wir": "haben kommuniziert",
+                    "ihr": "habt kommuniziert",
+                    "sie_plural": "haben kommuniziert",
+                    "Sie": "haben kommuniziert"
+                },
+                "Futur_I": {
+                    "ich": "werde kommunizieren",
+                    "du": "wirst kommunizieren",
+                    "er": "wird kommunizieren",
+                    "es": "wird kommunizieren",
+                    "sie_singular": "wird kommunizieren",
+                    "xier": "wird kommunizieren",
+                    "wir": "werden kommunizieren",
+                    "ihr": "werdet kommunizieren",
+                    "sie_plural": "werden kommunizieren",
+                    "Sie": "werden kommunizieren"
+                }
+            },
+            "schnüren": {
+                "present": {
+                    "ich": "schnüre",
+                    "du": "schnürst",
+                    "er": "schnürt",
+                    "es": "schnürt",
+                    "sie_singular": "schnürt",
+                    "xier": "schnürt",
+                    "wir": "schnüren",
+                    "ihr": "schnürt",
+                    "sie_plural": "schnüren",
+                    "Sie": "schnüren"
+                },
+                "Perfekt": {
+                    "ich": "habe geschnürt",
+                    "du": "hast geschnürt",
+                    "er": "hat geschnürt",
+                    "es": "hat geschnürt",
+                    "sie_singular": "hat geschnürt",
+                    "xier": "hat geschnürt",
+                    "wir": "haben geschnürt",
+                    "ihr": "habt geschnürt",
+                    "sie_plural": "haben geschnürt",
+                    "Sie": "haben geschnürt"
+                },
+                "Futur_I": {
+                    "ich": "werde schnüren",
+                    "du": "wirst schnüren",
+                    "er": "wird schnüren",
+                    "es": "wird schnüren",
+                    "sie_singular": "wird schnüren",
+                    "xier": "wird schnüren",
+                    "wir": "werden schnüren",
+                    "ihr": "werdet schnüren",
+                    "sie_plural": "werden schnüren",
+                    "Sie": "werden schnüren"
+                }
+            },
+            "steuern": {
+                "present": {
+                    "ich": "steuere",
+                    "du": "steuerst",
+                    "er": "steuert",
+                    "es": "steuert",
+                    "sie_singular": "steuert",
+                    "xier": "steuert",
+                    "wir": "steuern",
+                    "ihr": "steuert",
+                    "sie_plural": "steuern",
+                    "Sie": "steuern"
+                },
+                "Perfekt": {
+                    "ich": "habe gesteuert",
+                    "du": "hast gesteuert",
+                    "er": "hat gesteuert",
+                    "es": "hat gesteuert",
+                    "sie_singular": "hat gesteuert",
+                    "xier": "hat gesteuert",
+                    "wir": "haben gesteuert",
+                    "ihr": "habt gesteuert",
+                    "sie_plural": "haben gesteuert",
+                    "Sie": "haben gesteuert"
+                },
+                "Futur_I": {
+                    "ich": "werde steuern",
+                    "du": "wirst steuern",
+                    "er": "wird steuern",
+                    "es": "wird steuern",
+                    "sie_singular": "wird steuern",
+                    "xier": "wird steuern",
+                    "wir": "werden steuern",
+                    "ihr": "werdet steuern",
+                    "sie_plural": "werden steuern",
+                    "Sie": "werden steuern"
+                }
+            },
+            "speichern": {
+                "present": {
+                    "ich": "speichere",
+                    "du": "speicherst",
+                    "er": "speichert",
+                    "es": "speichert",
+                    "sie_singular": "speichert",
+                    "xier": "speichert",
+                    "wir": "speichern",
+                    "ihr": "speichert",
+                    "sie_plural": "speichern",
+                    "Sie": "speichern"
+                },
+                "Perfekt": {
+                    "ich": "habe gespeichert",
+                    "du": "hast gespeichert",
+                    "er": "hat gespeichert",
+                    "es": "hat gespeichert",
+                    "sie_singular": "hat gespeichert",
+                    "xier": "hat gespeichert",
+                    "wir": "haben gespeichert",
+                    "ihr": "habt gespeichert",
+                    "sie_plural": "haben gespeichert",
+                    "Sie": "haben gespeichert"
+                },
+                "Futur_I": {
+                    "ich": "werde speichern",
+                    "du": "wirst speichern",
+                    "er": "wird speichern",
+                    "es": "wird speichern",
+                    "sie_singular": "wird speichern",
+                    "xier": "wird speichern",
+                    "wir": "werden speichern",
+                    "ihr": "werdet speichern",
+                    "sie_plural": "werden speichern",
+                    "Sie": "werden speichern"
+                }
+            },
+            "verbessern": {
+                "present": {
+                    "ich": "verbessere",
+                    "du": "verbesserst",
+                    "er": "verbessert",
+                    "es": "verbessert",
+                    "sie_singular": "verbessert",
+                    "xier": "verbessert",
+                    "wir": "verbessern",
+                    "ihr": "verbessert",
+                    "sie_plural": "verbessern",
+                    "Sie": "verbessern"
+                },
+                "Perfekt": {
+                    "ich": "habe verbessert",
+                    "du": "hast verbessert",
+                    "er": "hat verbessert",
+                    "es": "hat verbessert",
+                    "sie_singular": "hat verbessert",
+                    "xier": "hat verbessert",
+                    "wir": "haben verbessert",
+                    "ihr": "habt verbessert",
+                    "sie_plural": "haben verbessert",
+                    "Sie": "haben verbessert"
+                },
+                "Futur_I": {
+                    "ich": "werde verbessern",
+                    "du": "wirst verbessern",
+                    "er": "wird verbessern",
+                    "es": "wird verbessern",
+                    "sie_singular": "wird verbessern",
+                    "xier": "wird verbessern",
+                    "wir": "werden verbessern",
+                    "ihr": "werdet verbessern",
+                    "sie_plural": "werden verbessern",
+                    "Sie": "werden verbessern"
+                }
+            },
+            "telefonieren": {
+                "present": {
+                    "ich": "telefoniere",
+                    "du": "telefonierst",
+                    "er": "telefoniert",
+                    "es": "telefoniert",
+                    "sie_singular": "telefoniert",
+                    "xier": "telefoniert",
+                    "wir": "telefonieren",
+                    "ihr": "telefoniert",
+                    "sie_plural": "telefonieren",
+                    "Sie": "telefonieren"
+                },
+                "Perfekt": {
+                    "ich": "habe telefoniert",
+                    "du": "hast telefoniert",
+                    "er": "hat telefoniert",
+                    "es": "hat telefoniert",
+                    "sie_singular": "hat telefoniert",
+                    "xier": "hat telefoniert",
+                    "wir": "haben telefoniert",
+                    "ihr": "habt telefoniert",
+                    "sie_plural": "haben telefoniert",
+                    "Sie": "haben telefoniert"
+                },
+                "Futur_I": {
+                    "ich": "werde telefonieren",
+                    "du": "wirst telefonieren",
+                    "er": "wird telefonieren",
+                    "es": "wird telefonieren",
+                    "sie_singular": "wird telefonieren",
+                    "xier": "wird telefonieren",
+                    "wir": "werden telefonieren",
+                    "ihr": "werdet telefonieren",
+                    "sie_plural": "werden telefonieren",
+                    "Sie": "werden telefonieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ohne kann ich nicht leben!",
+            "Machen Sie rechts eine Liste.",
+            "Fragen Sie jetzt andere Personen im Kurs, was sie geschrieben haben.",
+            "Ergänzen Sie die Liste.",
+            "Wenn die Person etwas sagt, was Sie schon haben, fragen Sie: \"Was noch?\"",
+            "Welche Erfindung der letzten 30 Jahre benutzt du oft?",
+            "Mein Handy.",
+            "Handy habe ich schon auf meiner Liste.",
+            "Was noch?",
+            "Meine Bluetooth -Kopfhörer.",
+            "Das habe ich noch nicht auf meiner Liste.",
+            "Was konnte man vor 30 Jahren nicht machen (Vergangenheit), was kann man jetzt mit diesen Dingen machen (Gegenwart) und was wird man in der Zukunft mit den Dingen machen können (Zukunft)?",
+            "Ohne Handy konnte man früher nicht unterwegs mit Freunden kommunizieren.",
+            "Heute kann ich überall mit Freunden kommunizieren.",
+            "In der Zukunft wird es keine Handys geben, wir werden telepathisch kommunizieren.",
+            "In dem Film \"Zurück in die Zukunft II\" von 1985 reist Michael J.",
+            "Fox als Marty McFly mit der Zeitmaschine DeLorean 30 Jahre in die Zukunft.",
+            "Wie sieht das Jahr 2015 im Film aus?",
+            "Hier sind ein paar Innovationen, die der Film zeigt.",
+            "Kreuzen Sie an, was heute Realität ist.",
+            "Der Splitscreen im Fernseher der Mr.",
+            "Die Sprachsteuerung von Geräten die Selbstschnür-Sneakers das Hoverboard der Tabletcomputer das fliegende Auto der Flatscreen",
+            "Die Zeitmaschine der Hydrator der Videoanruf die Datenbrille",
+            "Welche Erfindungen aus Teil 1 haben und benutzen Sie?",
+            "Wann und warum?",
+            "Welche möchten Sie gerne haben?",
+            "Welche sind Unsinn?",
+            "Marty McFly ist wieder im Jahr 1985 und erzählt seinem besten Freund, was er im Jahr 2015 gesehen hat und was man damit machen wird.",
+            "Simulieren SIe das Gespräch.",
+            "Eine Person fragt nach Objekten, die andere Person sagt, was man damit machen wird.",
+            "Benutzen Sie Futur I wie im Beispiel.",
+            "Damit kann man arbeiten damit kann man Daten speichern damit kann man Energie bekommen damit kann man Essen machen damit kann man fernsehen damit kann man Filme in 3D sehen damit kann man fliegen",
+            "Damit kann man Geräte steuern",
+            "Damit kann man in die Zukunft reisen",
+            "Damit kann man telefonieren damit kann man Videos aus der Luft filmen damit kann man Videospiele ohne Hände spielen damit kann man zwei Sendungen zur gleichen Zeit sehen.",
+            "Damit schnürt man Schuhe automatisch.",
+            "Marty McFly: Ich habe Selbstschnür-Sneakers gesehen.",
+            "Was wird man damit machen?",
+            "Marty McFly: Damit wird man Schuhe automatisch schnüren.",
+            "Und im Jahr 2045?",
+            "Stellen Sie sich vor, dass Marty McFly weitere 30 Jahre in die Zukunft reist, in das Jahr 2045.",
+            "Was gibt es im Jahr 2045?",
+            "Denken Sie an 3 neue Erfindungen.",
+            "Seien Sie kreativ.",
+            "Wie heißen die Erfindungen?",
+            "Was wird man damit machen können?",
+            "Warum werden diese Erfindungen Ihr Leben verbessern?",
+            "Die Zukunft in anderen Serien und Filmen",
+            "Kennen Sie andere Serien und Filme, die eine mögliche Zukunft zeigen?",
+            "Was gibt es in dieser Vision der Zukunft?",
+            "Was ist positiv und was ist negativ?",
+            "Möchten Sie in dieser Zukunft leben?",
+            "Diskutieren Sie im Kurs."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

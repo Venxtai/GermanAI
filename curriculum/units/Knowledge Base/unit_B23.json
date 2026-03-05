@@ -1,0 +1,437 @@
+{
+    "unit": "B23",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 23,
+        "prerequisite": "core 1-104, B1-B22"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Gedicht interpretieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "deutsche Einheit",
+            "May Ayim"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "ansehen", "pos": "VERB", "translation": "to look at", "frequency": 507, "cefr": "A2" },
+            { "word": "vortragen", "pos": "VERB", "translation": "to recite; perform; report", "frequency": 4264 },
+            { "word": "ausschließen", "pos": "VERB", "translation": "to exclude; rule out" },
+            { "word": "gelten", "pos": "VERB", "translation": "to hold true; be valid", "frequency": 158, "cefr": "B1" },
+            { "word": "der Inhalt", "pos": "NOUN", "translation": "content", "frequency": 1065, "cefr": "B1" },
+            { "word": "der Aufbau", "pos": "NOUN", "translation": "composition; structure", "frequency": 1091, "cefr": "A1" },
+            { "word": "der Rand", "pos": "NOUN", "translation": "edge; rim; border", "frequency": 1203, "cefr": "B1" },
+            { "word": "die Öffnung", "pos": "NOUN", "translation": "opening", "frequency": 6666, "cefr": "A1" },
+            { "word": "der Ausschnitt", "pos": "NOUN", "translation": "excerpt, section", "frequency": 4947, "cefr": "A1" },
+            { "word": "der Schein", "pos": "NOUN", "translation": "illusiveness; pretense; shine", "frequency": 3383, "cefr": "B1" },
+            { "word": "scheinbar", "pos": "ADJ", "translation": "apparent(ly); seeming(ly)", "frequency": 2538 },
+            { "word": "befreit", "pos": "ADJ", "translation": "freed", "frequency": 20344, "cefr": "B1" },
+            { "word": "falls", "pos": "CONJ", "translation": "if; whether; in the event", "frequency": 1170, "cefr": "B1" },
+            { "word": "außen", "pos": "ADV", "translation": "outside; external, out" },
+            { "word": "gestrichelt", "pos": "ADJ", "translation": "dotted [line], dashed" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "legal", "pos": "ADV", "frequency": 4809 },
+            { "word": "der Optimismus", "pos": "NOUN", "frequency": 7876 },
+            { "word": "äußer", "pos": "ADJ", "frequency": 2236, "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ansehen": {
+                "present": {
+                    "ich": "sehe an",
+                    "du": "siehst an",
+                    "er": "sieht an",
+                    "es": "sieht an",
+                    "sie_singular": "sieht an",
+                    "xier": "sieht an",
+                    "wir": "sehen an",
+                    "ihr": "seht an",
+                    "sie_plural": "sehen an",
+                    "Sie": "sehen an"
+                },
+                "Präteritum": {
+                    "ich": "sah an",
+                    "du": "sahst an",
+                    "er": "sah an",
+                    "es": "sah an",
+                    "sie_singular": "sah an",
+                    "xier": "sah an",
+                    "wir": "sahen an",
+                    "ihr": "saht an",
+                    "sie_plural": "sahen an",
+                    "Sie": "sahen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesehen",
+                    "du": "hast angesehen",
+                    "er": "hat angesehen",
+                    "es": "hat angesehen",
+                    "sie_singular": "hat angesehen",
+                    "xier": "hat angesehen",
+                    "wir": "haben angesehen",
+                    "ihr": "habt angesehen",
+                    "sie_plural": "haben angesehen",
+                    "Sie": "haben angesehen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte angesehen",
+                    "du": "hattest angesehen",
+                    "er": "hatte angesehen",
+                    "es": "hatte angesehen",
+                    "sie_singular": "hatte angesehen",
+                    "xier": "hatte angesehen",
+                    "wir": "hatten angesehen",
+                    "ihr": "hattet angesehen",
+                    "sie_plural": "hatten angesehen",
+                    "Sie": "hatten angesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansehen",
+                    "du": "wirst ansehen",
+                    "er": "wird ansehen",
+                    "es": "wird ansehen",
+                    "sie_singular": "wird ansehen",
+                    "xier": "wird ansehen",
+                    "wir": "werden ansehen",
+                    "ihr": "werdet ansehen",
+                    "sie_plural": "werden ansehen",
+                    "Sie": "werden ansehen"
+                },
+                "imperative": {
+                    "du": "sieh an",
+                    "ihr": "seht an",
+                    "Sie": "sehen Sie an"
+                }
+            },
+            "vortragen": {
+                "present": {
+                    "ich": "trage vor",
+                    "du": "trägst vor",
+                    "er": "trägt vor",
+                    "es": "trägt vor",
+                    "sie_singular": "trägt vor",
+                    "xier": "trägt vor",
+                    "wir": "tragen vor",
+                    "ihr": "tragt vor",
+                    "sie_plural": "tragen vor",
+                    "Sie": "tragen vor"
+                },
+                "Präteritum": {
+                    "ich": "trug vor",
+                    "du": "trugst vor",
+                    "er": "trug vor",
+                    "es": "trug vor",
+                    "sie_singular": "trug vor",
+                    "xier": "trug vor",
+                    "wir": "trugen vor",
+                    "ihr": "trugt vor",
+                    "sie_plural": "trugen vor",
+                    "Sie": "trugen vor"
+                },
+                "Perfekt": {
+                    "ich": "habe vorgetragen",
+                    "du": "hast vorgetragen",
+                    "er": "hat vorgetragen",
+                    "es": "hat vorgetragen",
+                    "sie_singular": "hat vorgetragen",
+                    "xier": "hat vorgetragen",
+                    "wir": "haben vorgetragen",
+                    "ihr": "habt vorgetragen",
+                    "sie_plural": "haben vorgetragen",
+                    "Sie": "haben vorgetragen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vorgetragen",
+                    "du": "hattest vorgetragen",
+                    "er": "hatte vorgetragen",
+                    "es": "hatte vorgetragen",
+                    "sie_singular": "hatte vorgetragen",
+                    "xier": "hatte vorgetragen",
+                    "wir": "hatten vorgetragen",
+                    "ihr": "hattet vorgetragen",
+                    "sie_plural": "hatten vorgetragen",
+                    "Sie": "hatten vorgetragen"
+                },
+                "Futur_I": {
+                    "ich": "werde vortragen",
+                    "du": "wirst vortragen",
+                    "er": "wird vortragen",
+                    "es": "wird vortragen",
+                    "sie_singular": "wird vortragen",
+                    "xier": "wird vortragen",
+                    "wir": "werden vortragen",
+                    "ihr": "werdet vortragen",
+                    "sie_plural": "werden vortragen",
+                    "Sie": "werden vortragen"
+                },
+                "imperative": {
+                    "du": "trage vor",
+                    "ihr": "tragt vor",
+                    "Sie": "tragen Sie vor"
+                }
+            },
+            "ausschließen": {
+                "present": {
+                    "ich": "schließe aus",
+                    "du": "schließt aus",
+                    "er": "schließt aus",
+                    "es": "schließt aus",
+                    "sie_singular": "schließt aus",
+                    "xier": "schließt aus",
+                    "wir": "schließen aus",
+                    "ihr": "schließt aus",
+                    "sie_plural": "schließen aus",
+                    "Sie": "schließen aus"
+                },
+                "Präteritum": {
+                    "ich": "schloss aus",
+                    "du": "schlossest aus",
+                    "er": "schloss aus",
+                    "es": "schloss aus",
+                    "sie_singular": "schloss aus",
+                    "xier": "schloss aus",
+                    "wir": "schlossen aus",
+                    "ihr": "schlosst aus",
+                    "sie_plural": "schlossen aus",
+                    "Sie": "schlossen aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgeschlossen",
+                    "du": "hast ausgeschlossen",
+                    "er": "hat ausgeschlossen",
+                    "es": "hat ausgeschlossen",
+                    "sie_singular": "hat ausgeschlossen",
+                    "xier": "hat ausgeschlossen",
+                    "wir": "haben ausgeschlossen",
+                    "ihr": "habt ausgeschlossen",
+                    "sie_plural": "haben ausgeschlossen",
+                    "Sie": "haben ausgeschlossen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausgeschlossen",
+                    "du": "hattest ausgeschlossen",
+                    "er": "hatte ausgeschlossen",
+                    "es": "hatte ausgeschlossen",
+                    "sie_singular": "hatte ausgeschlossen",
+                    "xier": "hatte ausgeschlossen",
+                    "wir": "hatten ausgeschlossen",
+                    "ihr": "hattet ausgeschlossen",
+                    "sie_plural": "hatten ausgeschlossen",
+                    "Sie": "hatten ausgeschlossen"
+                },
+                "Futur_I": {
+                    "ich": "werde ausschließen",
+                    "du": "wirst ausschließen",
+                    "er": "wird ausschließen",
+                    "es": "wird ausschließen",
+                    "sie_singular": "wird ausschließen",
+                    "xier": "wird ausschließen",
+                    "wir": "werden ausschließen",
+                    "ihr": "werdet ausschließen",
+                    "sie_plural": "werden ausschließen",
+                    "Sie": "werden ausschließen"
+                },
+                "imperative": {
+                    "du": "schließ aus",
+                    "ihr": "schließt aus",
+                    "Sie": "schließen Sie aus"
+                }
+            },
+            "gelten": {
+                "present": {
+                    "ich": "gelte",
+                    "du": "giltst",
+                    "er": "gilt",
+                    "es": "gilt",
+                    "sie_singular": "gilt",
+                    "xier": "gilt",
+                    "wir": "gelten",
+                    "ihr": "geltet",
+                    "sie_plural": "gelten",
+                    "Sie": "gelten"
+                },
+                "Präteritum": {
+                    "ich": "galt",
+                    "du": "galtest",
+                    "er": "galt",
+                    "es": "galt",
+                    "sie_singular": "galt",
+                    "xier": "galt",
+                    "wir": "galten",
+                    "ihr": "galtet",
+                    "sie_plural": "galten",
+                    "Sie": "galten"
+                },
+                "Perfekt": {
+                    "ich": "habe gegolten",
+                    "du": "hast gegolten",
+                    "er": "hat gegolten",
+                    "es": "hat gegolten",
+                    "sie_singular": "hat gegolten",
+                    "xier": "hat gegolten",
+                    "wir": "haben gegolten",
+                    "ihr": "habt gegolten",
+                    "sie_plural": "haben gegolten",
+                    "Sie": "haben gegolten"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gegolten",
+                    "du": "hattest gegolten",
+                    "er": "hatte gegolten",
+                    "es": "hatte gegolten",
+                    "sie_singular": "hatte gegolten",
+                    "xier": "hatte gegolten",
+                    "wir": "hatten gegolten",
+                    "ihr": "hattet gegolten",
+                    "sie_plural": "hatten gegolten",
+                    "Sie": "hatten gegolten"
+                },
+                "Futur_I": {
+                    "ich": "werde gelten",
+                    "du": "wirst gelten",
+                    "er": "wird gelten",
+                    "es": "wird gelten",
+                    "sie_singular": "wird gelten",
+                    "xier": "wird gelten",
+                    "wir": "werden gelten",
+                    "ihr": "werdet gelten",
+                    "sie_plural": "werden gelten",
+                    "Sie": "werden gelten"
+                },
+                "imperative": {
+                    "du": "gilt",
+                    "ihr": "geltet",
+                    "Sie": "gelten Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie kam es zur Wende?",
+            "Bringen Sie die Ereignisse in die richtige Reihenfolge.",
+            "Schauen Sie sich noch einmal Aktivität 69 an, falls Sie sich nicht sicher sind.",
+            "Die Stasi erlaubt die Öffnung aller Grenzübergänge.",
+            "Die SED macht eine Pressekonferenz",
+            "Soldaten wissen nichts von der Regel.",
+            "Tausende Menschen gehen über die Grenze.",
+            "Reporter*innen fragen, ab wann die neue Regel gilt.",
+            "Schabowski sagt, dass permanente Reisen aus der DDR in die BRD legal sind.",
+            "Immer mehr Menschen kommen zu den Grenzübergängen.",
+            "Die Nachricht ist im Fernsehen und Radio.",
+            "Bürger*innen gehen zur Grenze und wollen in die BRD.",
+            "Erzählen Sie über die Ereignisse der Wende.",
+            "Benutzen Sie Präteritum und Plusquamperfekt.",
+            "Welche Emotionen haben Sie in den Aktivitäten 70 und 71 gesammelt?",
+            "Vergleichen Sie.",
+            "Lesen Sie vier Titel von Zeitungsartikeln aus deutschen Zeitungen vom November 1989.",
+            "Wie beschrieben die Zeitungen den Mauerfall hier?",
+            "Positiv oder negativ?",
+            "Unterstreichen Sie die Wörter, die die Emotionen zeigen.",
+            "Sind alle Emotionen, die Sie in Teil 1 gesammelt und verglichen haben, in den Zeitungsartikeln zu sehen?",
+            "In dieser Nacht war das deutsche Volk das glücklichste der Welt",
+            "Berlin wird leben und die Mauer wird fallen",
+            "Schauen Sie sich das Bild an und beschreiben Sie, was Sie sehen.",
+            "Benutzen Sie die Redemittel.",
+            "Auf dem Bild sehe ich … |",
+            "In der Mitte sehe ich … Bildelemente: weiße/schwarze Figuren | eine gestrichelte Linie | ein grauer Hintergrund",
+            "Die Figuren bleiben auf einer Seite",
+            "Das Bild gehört zu einem Artikel.",
+            "Der Artikel hat den Titel Das neue ‚Wir‘ ohne uns.",
+            "Wer, ist wir und wer ist uns auf dem Bild und in der Realität?",
+            "Lesen Sie jetzt einen Ausschnitt aus dem Artikel.",
+            "Welche Sätze passen zu dem Bild und dem Titel?",
+            "Markieren Sie sie.",
+            "Sagen Sie, welche Elemente auf dem Bild dazu passen.",
+            "Peggy Piesche sagt, dass der Optimismus am Anfang nicht lange blieb.",
+            "Für Schwarze Menschen und People of Color wurde es schnell gefährlich, erklärt sie.",
+            "Das neue“ Wir ” der Gesellschaft hat nicht weiße Menschen ausgeschlossen.",
+            "Das weiße Ost Deutschland wollte sich mit dem weißen West Deutschland sehr schnell verbinden, sagt sie:",
+            "“ Da wurde aus 'Wir sind das Volk', 'wir sind ein Volk' und 'Deutschland den Deutschen', 'Ausländer raus', und das ging sehr schnell ”.",
+            "May Ayim schrieb 1990 ein Gedicht.",
+            "Sehen Sie jetzt, wie May Ayim das Gedicht vorträgt.",
+            "Wo ist sie?",
+            "Was sehen Sie im Hintergrund?",
+            "Sie können das Gedicht auch lesen."
+        ],
+        "templated": []
+    }
+}

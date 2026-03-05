@@ -1,0 +1,502 @@
+{
+  "unit": "9",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 9,
+    "prerequisite": "1-8"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Use definite articles der (r-words), das (s-words), die (e-words) and indefinite articles ein (r-words), ein (s-words), eine (e-words) in the nominative case.",
+      "Replace nouns with pronouns matching their noun class: er for r-words, es for s-words, sie for e-words.",
+      "Form feminine profession nouns by adding -in to the masculine form, and use the Gendersternchen for inclusive forms."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "über Berufe sprechen",
+      "sagen, was man von Beruf ist, und danach fragen"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Berufe"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "arbeiten",
+        "pos": "VERB",
+        "translation": "to work",
+        "frequency": 234,
+        "cefr": "A1"
+      },
+      {
+        "word": "forschen",
+        "pos": "VERB",
+        "translation": "to do research",
+        "frequency": 4222,
+        "cefr": "B2"
+      },
+      {
+        "word": "der, das, die, der*die",
+        "pos": "ART",
+        "translation": "the",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "ein, eine, ein*e",
+        "pos": "ART",
+        "translation": "a(n)",
+        "frequency": 5,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Mensch",
+        "pos": "NOUN",
+        "translation": "human (being), person",
+        "frequency": 90,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Beruf",
+        "pos": "NOUN",
+        "translation": "profession, job, occupation",
+        "frequency": 1036,
+        "cefr": "A1"
+      },
+      {
+        "word": "der*die Professor*in",
+        "pos": "NOUN",
+        "translation": "professor",
+        "frequency": 282,
+        "cefr": "B1"
+      },
+      {
+        "word": "der*die Ärzt*in",
+        "pos": "NOUN",
+        "translation": "doctor"
+      },
+      {
+        "word": "der*die Künstler*in",
+        "pos": "NOUN",
+        "translation": "artist"
+      },
+      {
+        "word": "der*die Politiker*in",
+        "pos": "NOUN",
+        "translation": "politician",
+        "frequency": 1140,
+        "cefr": "B1"
+      },
+      {
+        "word": "der*die Forscher*in",
+        "pos": "NOUN",
+        "translation": "researcher, scientist",
+        "frequency": 1246
+      },
+      {
+        "word": "der*die Polizist*in",
+        "pos": "NOUN",
+        "translation": "police officer",
+        "frequency": 1433,
+        "cefr": "A2"
+      },
+      {
+        "word": "der*die Anwält*in",
+        "pos": "NOUN",
+        "translation": "lawyer"
+      },
+      {
+        "word": "der*die Verkäufer*in",
+        "pos": "NOUN",
+        "translation": "salesperson"
+      },
+      {
+        "word": "der*die Ingenieur*in",
+        "pos": "NOUN",
+        "translation": "engineer",
+        "frequency": 4005,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Maschine",
+        "pos": "NOUN",
+        "translation": "machine",
+        "frequency": 1237,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Pflanze",
+        "pos": "NOUN",
+        "translation": "plant",
+        "frequency": 1667,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Stuhl",
+        "pos": "NOUN",
+        "translation": "chair",
+        "frequency": 1661,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Tisch",
+        "pos": "NOUN",
+        "translation": "table",
+        "frequency": 529,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Tastatur",
+        "pos": "NOUN",
+        "translation": "keyboard",
+        "frequency": 17620,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Uhr",
+        "pos": "NOUN",
+        "translation": "clock; watch",
+        "frequency": 348,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Wasser",
+        "pos": "NOUN",
+        "translation": "water",
+        "frequency": 245,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Lampe",
+        "pos": "NOUN",
+        "translation": "lamp, light",
+        "frequency": 4144,
+        "cefr": "A2"
+      },
+      {
+        "word": "kreativ",
+        "pos": "ADJ",
+        "translation": "creative",
+        "frequency": 2664,
+        "cefr": "B1"
+      },
+      {
+        "word": "mit",
+        "pos": "PREP",
+        "translation": "with",
+        "frequency": 13,
+        "cefr": "A1"
+      },
+      {
+        "word": "über",
+        "pos": "PREP",
+        "translation": "about, concerning; over"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Uniform",
+        "pos": "NOUN",
+        "frequency": 3857,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Information",
+        "pos": "NOUN",
+        "frequency": 465,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Maus",
+        "pos": "NOUN",
+        "frequency": 3463,
+        "cefr": "B1"
+      },
+      {
+        "word": "einer",
+        "pos": "PRON",
+        "frequency": 5
+      },
+      {
+        "word": "der Computer",
+        "pos": "NOUN",
+        "frequency": 1252,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "arbeiten": {
+        "present": {
+          "ich": "arbeite",
+          "du": "arbeitest",
+          "er": "arbeitet",
+          "es": "arbeitet",
+          "sie_singular": "arbeitet",
+          "xier": "arbeitet",
+          "wir": "arbeiten",
+          "ihr": "arbeitet",
+          "sie_plural": "arbeiten",
+          "Sie": "arbeiten"
+        }
+      },
+      "forschen": {
+        "present": {
+          "ich": "forsche",
+          "du": "forschst",
+          "er": "forscht",
+          "es": "forscht",
+          "sie_singular": "forscht",
+          "xier": "forscht",
+          "wir": "forschen",
+          "ihr": "forscht",
+          "sie_plural": "forschen",
+          "Sie": "forschen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Wie heißen die Äquivalente?",
+      "Erst schreiben, dann hören, dann laut sagen.",
+      "Der Verkäufer die Verkäuferin der*die Verkäufer*in die Ingenieurin",
+      "Beantworten Sie die Fragen über die 9 Berufe.",
+      "Wer forscht gern?",
+      "Die Forscherin forscht gern.",
+      "Die Professorin forscht gern.",
+      "Wer arbeitet gern mit Menschen?",
+      "Der Verkäufer arbeitet gern mit Menschen.",
+      "Der*Die Politiker*in arbeitet gern mit Menschen.",
+      "Die Anwältin arbeitet gern mit Menschen.",
+      "Der Arzt arbeitet gern mit Menschen.",
+      "Die Professorin arbeitet gern mit Menschen.",
+      "Der Polizist arbeitet gern mit Menschen.",
+      "Wer arbeitet gern mit Maschinen?",
+      "Die Ingenieurin arbeitet gern mit Maschinen.",
+      "Wer ist gern kreativ?",
+      "Der Künstler ist gern kreativ.",
+      "Die Professorin ist gern kreativ.",
+      "Wer arbeitet in Uniform?",
+      "Der Arzt studiert.",
+      "Was ist Mandy von Beruf?",
+      "Fragen Sie nach den Informationen.",
+      "Was ist Stefanie von Beruf?",
+      "Stefanie ist Ärztin.",
+      "Was ist Sebastian von Beruf?",
+      "Sebastian ist Ingenieur.",
+      "Was ist Mika von Beruf?",
+      "Mika ist Polizist*in.",
+      "Was ist Nadine von Beruf?",
+      "Nadine ist Politikerin.",
+      "Was ist Franziska von Beruf?",
+      "Franziska ist Verkäuferin.",
+      "Was ist Sven von Beruf?",
+      "Sven ist Anwalt.",
+      "Was ist Ahmed von Beruf?",
+      "Ahmed ist Forscher.",
+      "Was ist Anne von Beruf?",
+      "Anne ist Künstlerin.",
+      "Was ist Frank von Beruf?",
+      "Frank ist Professor.",
+      "Fragen Sie \"Was ist das?\"",
+      "Nummer 3: Was ist das?",
+      "Das ist ein Handy.",
+      "Was ist das?",
+      "Das ist eine Maus.",
+      "Die eine der Computer das Foto das Handy",
+      "Die Lampe die Maus die Pflanze der Stuhl der Tisch die Tastatur die Uhr das Wasser",
+      "Das ist ein Computer.",
+      "Das ist ein Foto.",
+      "Das ist eine Lampe.",
+      "Das ist eine Pflanze.",
+      "Das ist ein Stuhl.",
+      "Das ist ein Tisch.",
+      "Das ist eine Tastatur.",
+      "Das ist eine Uhr.",
+      "Das ist ein Wasser."
+    ],
+    "templated": [
+      {
+        "template": "Was ist [person_name] von Beruf?",
+        "source_literals": [
+          "Was ist Mandy von Beruf?",
+          "Was ist Stefanie von Beruf?",
+          "Was ist Sebastian von Beruf?",
+          "Was ist Mika von Beruf?",
+          "Was ist Nadine von Beruf?",
+          "Was ist Franziska von Beruf?",
+          "Was ist Sven von Beruf?",
+          "Was ist Ahmed von Beruf?",
+          "Was ist Anne von Beruf?",
+          "Was ist Frank von Beruf?"
+        ],
+        "grammar_note": "Question: profession query with von Beruf."
+      },
+      {
+        "template": "[person_name] ist {PROFESSION_NOM}.",
+        "source_literals": [
+          "Stefanie ist Ärztin.",
+          "Sebastian ist Ingenieur.",
+          "Mika ist Polizist*in.",
+          "Nadine ist Politikerin.",
+          "Franziska ist Verkäuferin.",
+          "Sven ist Anwalt.",
+          "Ahmed ist Forscher.",
+          "Anne ist Künstlerin.",
+          "Frank ist Professor."
+        ],
+        "grammar_note": "Verb sein + profession, 3rd person singular nominative."
+      },
+      {
+        "template": "Das ist {IDENTIFIABLE_OBJECT_NOM_INDEF}.",
+        "source_literals": [
+          "Das ist ein Handy.",
+          "Das ist eine Maus.",
+          "Das ist ein Computer.",
+          "Das ist ein Foto.",
+          "Das ist eine Lampe.",
+          "Das ist eine Pflanze.",
+          "Das ist ein Stuhl.",
+          "Das ist ein Tisch.",
+          "Das ist eine Tastatur.",
+          "Das ist eine Uhr.",
+          "Das ist ein Wasser."
+        ],
+        "grammar_note": "Identification with indefinite article, nominative."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "IDENTIFIABLE_OBJECT_NOM_INDEF": {
+      "type": "closed",
+      "description": "Everyday/classroom objects for identification",
+      "grammar": "nominative, indefinite article included",
+      "options": [
+        "ein Auto",
+        "ein Foto",
+        "ein Fußball",
+        "ein Handy",
+        "ein Stuhl",
+        "ein Tisch",
+        "ein Videospiel",
+        "ein Wasser",
+        "eine Lampe",
+        "eine Pflanze",
+        "eine Tastatur",
+        "eine Uhr"
+      ]
+    },
+    "PROFESSION_NOM": {
+      "type": "closed",
+      "description": "Professions (masculine, feminine, and gender-inclusive *in forms)",
+      "grammar": "nominative, no article",
+      "options": [
+        "Anwalt",
+        "Anwalt*Anwältin",
+        "Anwältin",
+        "Arzt",
+        "Arzt*Ärztin",
+        "Autor",
+        "Autor*in",
+        "Autorin",
+        "Forscher",
+        "Forscher*in",
+        "Forscherin",
+        "Ingenieur",
+        "Ingenieur*in",
+        "Ingenieurin",
+        "Künstler",
+        "Künstler*in",
+        "Künstlerin",
+        "Politiker",
+        "Politiker*in",
+        "Politikerin",
+        "Polizist",
+        "Polizist*in",
+        "Polizistin",
+        "Professor",
+        "Professor*in",
+        "Professorin",
+        "Verkäufer",
+        "Verkäufer*in",
+        "Verkäuferin",
+        "Ärztin"
+      ]
+    }
+  }
+}

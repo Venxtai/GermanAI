@@ -1,0 +1,746 @@
+{
+    "unit": "O5",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 5,
+        "prerequisite": "core 1-104, O1-O4"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use würde gern + infinitive to express a hypothetical preference ('I would like toÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦') and würde lieber + infinitive for 'I would ratherÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦'; conjugate würde in position 2 with the infinitive at the end."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "erzählen, was man gerne machen würde",
+            "Präferenzen mit dem Konjunktiv II ausdrücken"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Volksfest und Kirmes"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "schaffen", "pos": "VERB", "translation": "to accomplish; create", "frequency": 285, "cefr": "A2" },
+            { "word": "verschicken", "pos": "VERB", "translation": "to post, send", "frequency": 9541 },
+            { "word": "umsetzen", "pos": "VERB", "translation": "to put into action", "frequency": 1310 },
+            { "word": "betreiben", "pos": "VERB", "translation": "to run (a business); practice", "frequency": 1311 },
+            { "word": "unterhalten", "pos": "VERB", "translation": "to entertain", "frequency": 1898, "cefr": "A2" },
+            { "word": "trauen", "pos": "VERB", "translation": "to dare, have the courage to do", "frequency": 2381 },
+            { "word": "weitergeben", "pos": "VERB", "translation": "to to pass on", "frequency": 3327 },
+            { "word": "bewerben", "pos": "VERB", "translation": "to apply; advertise", "frequency": 3775, "cefr": "A2" },
+            { "word": "schießen", "pos": "VERB", "translation": "to shoot; kick (a ball)" },
+            { "word": "werfen", "pos": "VERB", "translation": "to throw", "frequency": 718, "cefr": "B1" },
+            { "word": "das Fest", "pos": "NOUN", "translation": "celebration; festival", "frequency": 567, "cefr": "A2" },
+            { "word": "das Volk", "pos": "NOUN", "translation": "people; nation; tribe", "frequency": 1032, "cefr": "A1" },
+            { "word": "die Achterbahn", "pos": "NOUN", "translation": "roller coaster", "frequency": 21308, "cefr": "A1" },
+            { "word": "das Fahrgeschäft", "pos": "NOUN", "translation": "fun ride (business)" },
+            { "word": "das Karussell", "pos": "NOUN", "translation": "carousel", "frequency": 16639, "cefr": "B2" },
+            { "word": "der*die Schausteller*in", "pos": "NOUN", "translation": "show traveller; fairground person", "frequency": 19827, "cefr": "B2" },
+            { "word": "der Betrieb", "pos": "NOUN", "translation": "business, enterprise", "frequency": 957, "cefr": "B1" },
+            { "word": "das Internat", "pos": "NOUN", "translation": "boarding school; residential school", "frequency": 14351, "cefr": "B2" },
+            { "word": "der Wohnwagen", "pos": "NOUN", "translation": "caravan; trailer", "frequency": 17055, "cefr": "B2" },
+            { "word": "das Zelt", "pos": "NOUN", "translation": "tent", "frequency": 2880, "cefr": "A2" },
+            { "word": "die Reparatur", "pos": "NOUN", "translation": "repair", "frequency": 5823, "cefr": "A1" },
+            { "word": "die Bewerbung", "pos": "NOUN", "translation": "(job) application", "frequency": 6756, "cefr": "A2" },
+            { "word": "der Geist", "pos": "NOUN", "translation": "ghost", "frequency": 1426, "cefr": "A1" },
+            { "word": "unruhig", "pos": "ADJ", "translation": "agitated; anxious; choppy", "frequency": 12347 },
+            { "word": "stressig", "pos": "ADJ", "translation": "stressful; fraught", "frequency": 25611, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Attraktion", "pos": "NOUN", "frequency": 7400 },
+            { "word": "der Autoscooter", "pos": "NOUN" },
+            { "word": "die Bahn", "pos": "NOUN", "frequency": 1415, "cefr": "A1" },
+            { "word": "Hau", "pos": "NOUN", "frequency": 34708 },
+            { "word": "der Pfeil", "pos": "NOUN", "frequency": 4266, "cefr": "B2" },
+            { "word": "die Bude", "pos": "NOUN", "frequency": 14337 },
+            { "word": "das Geisterbahn", "pos": "NOUN", "frequency": 43973 },
+            { "word": "die ihr-Form", "pos": "NOUN" },
+            { "word": "stressfrei", "pos": "ADJ" },
+            { "word": "schicken", "pos": "VERB", "frequency": 928, "cefr": "A1" },
+            { "word": "divers", "pos": "ADJ", "frequency": 2961 },
+            { "word": "das Varieté", "pos": "NOUN" },
+            { "word": "installieren", "pos": "VERB", "frequency": 5819, "cefr": "B1" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schaffen": {
+                "present": {
+                    "ich": "schaffe",
+                    "du": "schaffst",
+                    "er": "schafft",
+                    "es": "schafft",
+                    "sie_singular": "schafft",
+                    "xier": "schafft",
+                    "wir": "schaffen",
+                    "ihr": "schafft",
+                    "sie_plural": "schaffen",
+                    "Sie": "schaffen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschaffen",
+                    "du": "hast geschaffen",
+                    "er": "hat geschaffen",
+                    "es": "hat geschaffen",
+                    "sie_singular": "hat geschaffen",
+                    "xier": "hat geschaffen",
+                    "wir": "haben geschaffen",
+                    "ihr": "habt geschaffen",
+                    "sie_plural": "haben geschaffen",
+                    "Sie": "haben geschaffen"
+                },
+                "Futur_I": {
+                    "ich": "werde schaffen",
+                    "du": "wirst schaffen",
+                    "er": "wird schaffen",
+                    "es": "wird schaffen",
+                    "sie_singular": "wird schaffen",
+                    "xier": "wird schaffen",
+                    "wir": "werden schaffen",
+                    "ihr": "werdet schaffen",
+                    "sie_plural": "werden schaffen",
+                    "Sie": "werden schaffen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schaffen",
+                    "du": "würdest schaffen",
+                    "er": "würde schaffen",
+                    "es": "würde schaffen",
+                    "sie_singular": "würde schaffen",
+                    "xier": "würde schaffen",
+                    "wir": "würden schaffen",
+                    "ihr": "würdet schaffen",
+                    "sie_plural": "würden schaffen",
+                    "Sie": "würden schaffen"
+                },
+                "imperative": {
+                    "du": "schaffe",
+                    "ihr": "schafft",
+                    "Sie": "schaffen Sie"
+                }
+            },
+            "verschicken": {
+                "present": {
+                    "ich": "verschicke",
+                    "du": "verschickst",
+                    "er": "verschickt",
+                    "es": "verschickt",
+                    "sie_singular": "verschickt",
+                    "xier": "verschickt",
+                    "wir": "verschicken",
+                    "ihr": "verschickt",
+                    "sie_plural": "verschicken",
+                    "Sie": "verschicken"
+                },
+                "Perfekt": {
+                    "ich": "habe verschickt",
+                    "du": "hast verschickt",
+                    "er": "hat verschickt",
+                    "es": "hat verschickt",
+                    "sie_singular": "hat verschickt",
+                    "xier": "hat verschickt",
+                    "wir": "haben verschickt",
+                    "ihr": "habt verschickt",
+                    "sie_plural": "haben verschickt",
+                    "Sie": "haben verschickt"
+                },
+                "Futur_I": {
+                    "ich": "werde verschicken",
+                    "du": "wirst verschicken",
+                    "er": "wird verschicken",
+                    "es": "wird verschicken",
+                    "sie_singular": "wird verschicken",
+                    "xier": "wird verschicken",
+                    "wir": "werden verschicken",
+                    "ihr": "werdet verschicken",
+                    "sie_plural": "werden verschicken",
+                    "Sie": "werden verschicken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verschicken",
+                    "du": "würdest verschicken",
+                    "er": "würde verschicken",
+                    "es": "würde verschicken",
+                    "sie_singular": "würde verschicken",
+                    "xier": "würde verschicken",
+                    "wir": "würden verschicken",
+                    "ihr": "würdet verschicken",
+                    "sie_plural": "würden verschicken",
+                    "Sie": "würden verschicken"
+                },
+                "imperative": {
+                    "du": "verschick",
+                    "ihr": "verschickt",
+                    "Sie": "verschicken Sie"
+                }
+            },
+            "umsetzen": {
+                "present": {
+                    "ich": "setze um",
+                    "du": "setzt um",
+                    "er": "setzt um",
+                    "es": "setzt um",
+                    "sie_singular": "setzt um",
+                    "xier": "setzt um",
+                    "wir": "setzen um",
+                    "ihr": "setzt um",
+                    "sie_plural": "setzen um",
+                    "Sie": "setzen um"
+                },
+                "Perfekt": {
+                    "ich": "habe umgesetzt",
+                    "du": "hast umgesetzt",
+                    "er": "hat umgesetzt",
+                    "es": "hat umgesetzt",
+                    "sie_singular": "hat umgesetzt",
+                    "xier": "hat umgesetzt",
+                    "wir": "haben umgesetzt",
+                    "ihr": "habt umgesetzt",
+                    "sie_plural": "haben umgesetzt",
+                    "Sie": "haben umgesetzt"
+                },
+                "Futur_I": {
+                    "ich": "werde umsetzen",
+                    "du": "wirst umsetzen",
+                    "er": "wird umsetzen",
+                    "es": "wird umsetzen",
+                    "sie_singular": "wird umsetzen",
+                    "xier": "wird umsetzen",
+                    "wir": "werden umsetzen",
+                    "ihr": "werdet umsetzen",
+                    "sie_plural": "werden umsetzen",
+                    "Sie": "werden umsetzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde umsetzen",
+                    "du": "würdest umsetzen",
+                    "er": "würde umsetzen",
+                    "es": "würde umsetzen",
+                    "sie_singular": "würde umsetzen",
+                    "xier": "würde umsetzen",
+                    "wir": "würden umsetzen",
+                    "ihr": "würdet umsetzen",
+                    "sie_plural": "würden umsetzen",
+                    "Sie": "würden umsetzen"
+                },
+                "imperative": {
+                    "du": "setze um",
+                    "ihr": "setzt um",
+                    "Sie": "setzen Sie um"
+                }
+            },
+            "betreiben": {
+                "present": {
+                    "ich": "betreibe",
+                    "du": "betreibst",
+                    "er": "betreibt",
+                    "es": "betreibt",
+                    "sie_singular": "betreibt",
+                    "xier": "betreibt",
+                    "wir": "betreiben",
+                    "ihr": "betreibt",
+                    "sie_plural": "betreiben",
+                    "Sie": "betreiben"
+                },
+                "Perfekt": {
+                    "ich": "habe betrieben",
+                    "du": "hast betrieben",
+                    "er": "hat betrieben",
+                    "es": "hat betrieben",
+                    "sie_singular": "hat betrieben",
+                    "xier": "hat betrieben",
+                    "wir": "haben betrieben",
+                    "ihr": "habt betrieben",
+                    "sie_plural": "haben betrieben",
+                    "Sie": "haben betrieben"
+                },
+                "Futur_I": {
+                    "ich": "werde betreiben",
+                    "du": "wirst betreiben",
+                    "er": "wird betreiben",
+                    "es": "wird betreiben",
+                    "sie_singular": "wird betreiben",
+                    "xier": "wird betreiben",
+                    "wir": "werden betreiben",
+                    "ihr": "werdet betreiben",
+                    "sie_plural": "werden betreiben",
+                    "Sie": "werden betreiben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde betreiben",
+                    "du": "würdest betreiben",
+                    "er": "würde betreiben",
+                    "es": "würde betreiben",
+                    "sie_singular": "würde betreiben",
+                    "xier": "würde betreiben",
+                    "wir": "würden betreiben",
+                    "ihr": "würdet betreiben",
+                    "sie_plural": "würden betreiben",
+                    "Sie": "würden betreiben"
+                },
+                "imperative": {
+                    "du": "betreibe",
+                    "ihr": "betreibt",
+                    "Sie": "betreiben Sie"
+                }
+            },
+            "unterhalten": {
+                "present": {
+                    "ich": "unterhalte",
+                    "du": "unterhältst",
+                    "er": "unterhält",
+                    "es": "unterhält",
+                    "sie_singular": "unterhält",
+                    "xier": "unterhält",
+                    "wir": "unterhalten",
+                    "ihr": "unterhaltet",
+                    "sie_plural": "unterhalten",
+                    "Sie": "unterhalten"
+                },
+                "Perfekt": {
+                    "ich": "habe unterhalten",
+                    "du": "hast unterhalten",
+                    "er": "hat unterhalten",
+                    "es": "hat unterhalten",
+                    "sie_singular": "hat unterhalten",
+                    "xier": "hat unterhalten",
+                    "wir": "haben unterhalten",
+                    "ihr": "habt unterhalten",
+                    "sie_plural": "haben unterhalten",
+                    "Sie": "haben unterhalten"
+                },
+                "Futur_I": {
+                    "ich": "werde unterhalten",
+                    "du": "wirst unterhalten",
+                    "er": "wird unterhalten",
+                    "es": "wird unterhalten",
+                    "sie_singular": "wird unterhalten",
+                    "xier": "wird unterhalten",
+                    "wir": "werden unterhalten",
+                    "ihr": "werdet unterhalten",
+                    "sie_plural": "werden unterhalten",
+                    "Sie": "werden unterhalten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde unterhalten",
+                    "du": "würdest unterhalten",
+                    "er": "würde unterhalten",
+                    "es": "würde unterhalten",
+                    "sie_singular": "würde unterhalten",
+                    "xier": "würde unterhalten",
+                    "wir": "würden unterhalten",
+                    "ihr": "würdet unterhalten",
+                    "sie_plural": "würden unterhalten",
+                    "Sie": "würden unterhalten"
+                },
+                "imperative": {
+                    "du": "unterhalte",
+                    "ihr": "unterhaltet",
+                    "Sie": "unterhalten Sie"
+                }
+            },
+            "trauen": {
+                "present": {
+                    "ich": "traue",
+                    "du": "traust",
+                    "er": "traut",
+                    "es": "traut",
+                    "sie_singular": "traut",
+                    "xier": "traut",
+                    "wir": "trauen",
+                    "ihr": "traut",
+                    "sie_plural": "trauen",
+                    "Sie": "trauen"
+                },
+                "Perfekt": {
+                    "ich": "habe getraut",
+                    "du": "hast getraut",
+                    "er": "hat getraut",
+                    "es": "hat getraut",
+                    "sie_singular": "hat getraut",
+                    "xier": "hat getraut",
+                    "wir": "haben getraut",
+                    "ihr": "habt getraut",
+                    "sie_plural": "haben getraut",
+                    "Sie": "haben getraut"
+                },
+                "Futur_I": {
+                    "ich": "werde trauen",
+                    "du": "wirst trauen",
+                    "er": "wird trauen",
+                    "es": "wird trauen",
+                    "sie_singular": "wird trauen",
+                    "xier": "wird trauen",
+                    "wir": "werden trauen",
+                    "ihr": "werdet trauen",
+                    "sie_plural": "werden trauen",
+                    "Sie": "werden trauen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde trauen",
+                    "du": "würdest trauen",
+                    "er": "würde trauen",
+                    "es": "würde trauen",
+                    "sie_singular": "würde trauen",
+                    "xier": "würde trauen",
+                    "wir": "würden trauen",
+                    "ihr": "würdet trauen",
+                    "sie_plural": "würden trauen",
+                    "Sie": "würden trauen"
+                },
+                "imperative": {
+                    "du": "trau",
+                    "ihr": "traut",
+                    "Sie": "trauen Sie"
+                }
+            },
+            "weitergeben": {
+                "present": {
+                    "ich": "gebe weiter",
+                    "du": "gibst weiter",
+                    "er": "gibt weiter",
+                    "es": "gibt weiter",
+                    "sie_singular": "gibt weiter",
+                    "xier": "gibt weiter",
+                    "wir": "geben weiter",
+                    "ihr": "gebt weiter",
+                    "sie_plural": "geben weiter",
+                    "Sie": "geben weiter"
+                },
+                "Perfekt": {
+                    "ich": "habe weitergegeben",
+                    "du": "hast weitergegeben",
+                    "er": "hat weitergegeben",
+                    "es": "hat weitergegeben",
+                    "sie_singular": "hat weitergegeben",
+                    "xier": "hat weitergegeben",
+                    "wir": "haben weitergegeben",
+                    "ihr": "habt weitergegeben",
+                    "sie_plural": "haben weitergegeben",
+                    "Sie": "haben weitergegeben"
+                },
+                "Futur_I": {
+                    "ich": "werde weitergeben",
+                    "du": "wirst weitergeben",
+                    "er": "wird weitergeben",
+                    "es": "wird weitergeben",
+                    "sie_singular": "wird weitergeben",
+                    "xier": "wird weitergeben",
+                    "wir": "werden weitergeben",
+                    "ihr": "werdet weitergeben",
+                    "sie_plural": "werden weitergeben",
+                    "Sie": "werden weitergeben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde weitergeben",
+                    "du": "würdest weitergeben",
+                    "er": "würde weitergeben",
+                    "es": "würde weitergeben",
+                    "sie_singular": "würde weitergeben",
+                    "xier": "würde weitergeben",
+                    "wir": "würden weitergeben",
+                    "ihr": "würdet weitergeben",
+                    "sie_plural": "würden weitergeben",
+                    "Sie": "würden weitergeben"
+                },
+                "imperative": {
+                    "du": "gib weiter",
+                    "ihr": "gebt weiter",
+                    "Sie": "geben Sie weiter"
+                }
+            },
+            "bewerben": {
+                "present": {
+                    "ich": "bewerbe",
+                    "du": "bewirbst",
+                    "er": "bewirbt",
+                    "es": "bewirbt",
+                    "sie_singular": "bewirbt",
+                    "xier": "bewirbt",
+                    "wir": "bewerben",
+                    "ihr": "bewerbt",
+                    "sie_plural": "bewerben",
+                    "Sie": "bewerben"
+                },
+                "Perfekt": {
+                    "ich": "habe beworben",
+                    "du": "hast beworben",
+                    "er": "hat beworben",
+                    "es": "hat beworben",
+                    "sie_singular": "hat beworben",
+                    "xier": "hat beworben",
+                    "wir": "haben beworben",
+                    "ihr": "habt beworben",
+                    "sie_plural": "haben beworben",
+                    "Sie": "haben beworben"
+                },
+                "Futur_I": {
+                    "ich": "werde bewerben",
+                    "du": "wirst bewerben",
+                    "er": "wird bewerben",
+                    "es": "wird bewerben",
+                    "sie_singular": "wird bewerben",
+                    "xier": "wird bewerben",
+                    "wir": "werden bewerben",
+                    "ihr": "werdet bewerben",
+                    "sie_plural": "werden bewerben",
+                    "Sie": "werden bewerben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde bewerben",
+                    "du": "würdest bewerben",
+                    "er": "würde bewerben",
+                    "es": "würde bewerben",
+                    "sie_singular": "würde bewerben",
+                    "xier": "würde bewerben",
+                    "wir": "würden bewerben",
+                    "ihr": "würdet bewerben",
+                    "sie_plural": "würden bewerben",
+                    "Sie": "würden bewerben"
+                },
+                "imperative": {
+                    "du": "bewirb",
+                    "ihr": "bewerbt",
+                    "Sie": "bewerben Sie"
+                }
+            },
+            "schießen": {
+                "present": {
+                    "ich": "schieße",
+                    "du": "schießt",
+                    "er": "schießt",
+                    "es": "schießt",
+                    "sie_singular": "schießt",
+                    "xier": "schießt",
+                    "wir": "schießen",
+                    "ihr": "schießt",
+                    "sie_plural": "schießen",
+                    "Sie": "schießen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschossen",
+                    "du": "hast geschossen",
+                    "er": "hat geschossen",
+                    "es": "hat geschossen",
+                    "sie_singular": "hat geschossen",
+                    "xier": "hat geschossen",
+                    "wir": "haben geschossen",
+                    "ihr": "habt geschossen",
+                    "sie_plural": "haben geschossen",
+                    "Sie": "haben geschossen"
+                },
+                "Futur_I": {
+                    "ich": "werde schießen",
+                    "du": "wirst schießen",
+                    "er": "wird schießen",
+                    "es": "wird schießen",
+                    "sie_singular": "wird schießen",
+                    "xier": "wird schießen",
+                    "wir": "werden schießen",
+                    "ihr": "werdet schießen",
+                    "sie_plural": "werden schießen",
+                    "Sie": "werden schießen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schießen",
+                    "du": "würdest schießen",
+                    "er": "würde schießen",
+                    "es": "würde schießen",
+                    "sie_singular": "würde schießen",
+                    "xier": "würde schießen",
+                    "wir": "würden schießen",
+                    "ihr": "würdet schießen",
+                    "sie_plural": "würden schießen",
+                    "Sie": "würden schießen"
+                },
+                "imperative": {
+                    "du": "schieß",
+                    "ihr": "schießt",
+                    "Sie": "schießen Sie"
+                }
+            },
+            "werfen": {
+                "present": {
+                    "ich": "werfe",
+                    "du": "wirfst",
+                    "er": "wirft",
+                    "es": "wirft",
+                    "sie_singular": "wirft",
+                    "xier": "wirft",
+                    "wir": "werfen",
+                    "ihr": "werft",
+                    "sie_plural": "werfen",
+                    "Sie": "werfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geworfen",
+                    "du": "hast geworfen",
+                    "er": "hat geworfen",
+                    "es": "hat geworfen",
+                    "sie_singular": "hat geworfen",
+                    "xier": "hat geworfen",
+                    "wir": "haben geworfen",
+                    "ihr": "habt geworfen",
+                    "sie_plural": "haben geworfen",
+                    "Sie": "haben geworfen"
+                },
+                "Futur_I": {
+                    "ich": "werde werfen",
+                    "du": "wirst werfen",
+                    "er": "wird werfen",
+                    "es": "wird werfen",
+                    "sie_singular": "wird werfen",
+                    "xier": "wird werfen",
+                    "wir": "werden werfen",
+                    "ihr": "werdet werfen",
+                    "sie_plural": "werden werfen",
+                    "Sie": "werden werfen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde werfen",
+                    "du": "würdest werfen",
+                    "er": "würde werfen",
+                    "es": "würde werfen",
+                    "sie_singular": "würde werfen",
+                    "xier": "würde werfen",
+                    "wir": "würden werfen",
+                    "ihr": "würdet werfen",
+                    "sie_plural": "würden werfen",
+                    "Sie": "würden werfen"
+                },
+                "imperative": {
+                    "du": "wirf",
+                    "ihr": "werft",
+                    "Sie": "werfen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Welche Attraktionen sehen Sie?",
+            "Ordnen Sie zu.",
+            "Die Achterbahn der Autoscooter das Dosenwerfen der Freifallturm",
+            "Der Hau den Lukas das Karussell",
+            "Das Riesenrad die Schießbude die Wildwasserbahn",
+            "Fragen Sie andere Personen im Kurs, was sie gerne auf einem Volksfest machen würden und was nicht.",
+            "Was würdest du gerne auf einem Volksfest machen?",
+            "Ich würde gerne eine Bratwurst essen und mit der Geisterbahn fahren.",
+            "Und was würdest du nicht gerne auf einem Volksfest machen?",
+            "Ich würde nicht gerne Dosenwerfen spielen.",
+            "Und du?",
+            "Fragen Sie, was die anderen zwei Personen lieber machen würden.",
+            "Benutzen Sie die „ihr-Form.",
+            "Würdet ihr lieber mit der Geisterbahn oder mit der Wildwasserbahn fahren?",
+            "Das Leben als Schausteller*in Lesen Sie die Aussagen.",
+            "Dann lesen Sie den Text und kreuzen Sie an.",
+            "Korrigieren Sie die falschen Aussagen.",
+            "Schausteller*innen sind mit ihrer Arbeit sehr wichtig für Volksfeste.",
+            "Sie bleiben nur für eine kurze Zeit an einem Ort.",
+            "Sie haben ein stressfreies Leben.",
+            "Das Leben ist besonders für Kinder stressig; viel Reisen;",
+            "Sie müssen im Winter nichts machen.",
+            "Sie müssen alles reparieren, Bewerbungen schreiben und neue Regeln umsetzen.",
+            "Sie schicken ihre Kinder von Stadt zu Stadt auf die Schule, wo sie im Moment sind.",
+            "Kinder müssen oft auf ein Internat.",
+            "Schon seit über 1500 Jahren arbeiten Schausteller*innen auf diversen Volksfesten",
+            "Vom kleinsten Dorffest bis zum weltberühmten Oktoberfest.",
+            "Sie bauen die großen Zelte auf und wieder ab, verkaufen Speisen und Getränke, betreiben Fahrgeschäfte, spielen Musik, tanzen auf Bühnen oder unterhalten die Menschen im Varieté.",
+            "Andere machen Reparaturen, backen Brot oder installieren neue elektrische Kabel.",
+            "Es gibt mehr als 5.500 Schausteller*innenbetriebe in Deutschland.",
+            "Jedes Jahr bauen sie bei fast 10.000 großen und kleinen Volksfesten ihre Geschäfte auf und ab.",
+            "Viele Familien arbeiten schon seit Generationen als Schausteller*innen auf Volksfesten",
+            "Und wissen genau, wie sie die richtige Volksfest-Atmosphäre schaffen.",
+            "Die Arbeit der Schausteller*innen ist aber nicht leicht.",
+            "Sie müssen mit den Volksfesten von Stadt zu Stadt reisen und leben meistens in Wohnwagen.",
+            "In den Wintermonaten können sie nur wenig Geld verdienen, weil es nicht viele Volksfeste gibt.",
+            "Aber auch im Winter gibt es viel zu machen:",
+            "Die Schausteller*innen müssen Fahrgeschäfte reparieren, sich für Volksfeste bewerben und neue Regeln umsetzen.",
+            "Dieses Leben ist oft stressig für Kinder, weil sie keinen festen Wohnort haben und oft auf ein Internat müssen, wenn die Eltern arbeiten.",
+            "Trotzdem sind viele Kinder von Schausteller*innen glücklich mit ihrem Leben auf Volksfesten und freuen sich, die Traditionen und das Wissen der Familien an die nächste Generation weiterzugeben.",
+            "Wer würde sich trauen, Schausteller*in zu sein?",
+            "Würden Sie gerne als Schausteller*in arbeiten?",
+            "Sammeln Sie Vor- und Nachteile.",
+            "B.: Es ist ein spannender Beruf.",
+            "Man reist viel.",
+            "Man hat viele Menschen um sich, mit denen man zusammenarbeitet und lebt.",
+            "Man kann Karussell fahren.",
+            "B.: Man wohnt meistens im Wohnwagen.",
+            "Man verdient nicht so viel Geld.",
+            "Es ist ein unruhiges Leben."
+        ],
+        "templated": []
+    }
+}

@@ -1,0 +1,571 @@
+{
+    "unit": "28",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 28,
+        "prerequisite": "1-27"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Use \"es gibt\" + accusative to state what exists or is available; for questions, use \"Gibt es…?\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Obst und Gemüse beschreiben",
+            "sagen, was es gibt und was es nicht gibt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "auf dem Markt einkaufen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "Sonst noch etwas?",
+                "pos": "PHRASE",
+                "translation": "Anything else?"
+            },
+            {
+                "word": "Bitte.",
+                "pos": "PHRASE",
+                "translation": "Please, here you go."
+            },
+            {
+                "word": "denken",
+                "pos": "VERB",
+                "translation": "to think (about/of)",
+                "frequency": 128,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Wochenmarkt",
+                "pos": "NOUN",
+                "translation": "farmers' market",
+                "frequency": 14398,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Obst",
+                "pos": "NOUN",
+                "translation": "fruit",
+                "frequency": 4980,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Lebensmittel",
+                "pos": "NOUN",
+                "translation": "food (item); groceries",
+                "frequency": 2317,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gemüse",
+                "pos": "NOUN",
+                "translation": "vegetable",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Apfel",
+                "pos": "NOUN",
+                "translation": "apple",
+                "frequency": 3490,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kartoffel",
+                "pos": "NOUN",
+                "translation": "potato",
+                "frequency": 3837,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tomate",
+                "pos": "NOUN",
+                "translation": "tomato",
+                "frequency": 11917,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Erdbeere",
+                "pos": "NOUN",
+                "translation": "strawberry",
+                "frequency": 15734,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Paprika",
+                "pos": "NOUN",
+                "translation": "bell pepper",
+                "frequency": 22610,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Banane",
+                "pos": "NOUN",
+                "translation": "banana",
+                "frequency": 13404,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zitrone",
+                "pos": "NOUN",
+                "translation": "lemon",
+                "frequency": 17782,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Birne",
+                "pos": "NOUN",
+                "translation": "pear",
+                "frequency": 14522,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zwiebel",
+                "pos": "NOUN",
+                "translation": "onion",
+                "frequency": 5727,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gurke",
+                "pos": "NOUN",
+                "translation": "cucumber",
+                "frequency": 16465,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Pilz",
+                "pos": "NOUN",
+                "translation": "mushroom",
+                "frequency": 3216,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Möhre",
+                "pos": "NOUN",
+                "translation": "carrot"
+            },
+            {
+                "word": "das Bund",
+                "pos": "NOUN",
+                "translation": "bunch",
+                "frequency": 1126,
+                "cefr": "B1"
+            },
+            {
+                "word": "auf",
+                "pos": "PREP",
+                "translation": "on top of (horizontal, surface area); at",
+                "frequency": 16,
+                "cefr": "A1"
+            },
+            {
+                "word": "nur",
+                "pos": "ADJ",
+                "translation": "only, just",
+                "frequency": 39,
+                "cefr": "A1"
+            },
+            {
+                "word": "pro",
+                "pos": "PREP",
+                "translation": "per",
+                "frequency": 412,
+                "cefr": "A2"
+            },
+            {
+                "word": "lecker",
+                "pos": "ADJ",
+                "translation": "tasty, delicious",
+                "frequency": 9912,
+                "cefr": "B1"
+            },
+            {
+                "word": "rund",
+                "pos": "ADJ",
+                "translation": "round",
+                "frequency": 296,
+                "cefr": "A2"
+            },
+            {
+                "word": "weich",
+                "pos": "ADJ",
+                "translation": "soft",
+                "frequency": 2201,
+                "cefr": "A2"
+            },
+            {
+                "word": "sauer",
+                "pos": "ADJ",
+                "translation": "sour",
+                "frequency": 2441,
+                "cefr": "A2"
+            },
+            {
+                "word": "süß",
+                "pos": "ADJ",
+                "translation": "sweet"
+            },
+            {
+                "word": "scharf",
+                "pos": "ADJ",
+                "translation": "spicy; sharp",
+                "frequency": 1442,
+                "cefr": "A2"
+            },
+            {
+                "word": "frisch",
+                "pos": "ADJ",
+                "translation": "fresh",
+                "frequency": 1260,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Cent",
+                "pos": "NOUN",
+                "frequency": 3926,
+                "cefr": "A1"
+            },
+            {
+                "word": "okay",
+                "pos": "ADV",
+                "frequency": 629,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Kilo",
+                "pos": "NOUN",
+                "frequency": 6719,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Salat",
+                "pos": "NOUN",
+                "frequency": 9957,
+                "cefr": "A1"
+            },
+            {
+                "word": "bitten",
+                "pos": "PART",
+                "frequency": 471,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Band",
+                "pos": "NOUN",
+                "frequency": 1025,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Single",
+                "pos": "NOUN",
+                "frequency": 6418,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Coach",
+                "pos": "NOUN",
+                "frequency": 6190
+            },
+            {
+                "word": "die Casting-Show",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Mandarine",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Vitamin",
+                "pos": "NOUN",
+                "frequency": 2685,
+                "cefr": "B1"
+            },
+            {
+                "word": "Leck",
+                "pos": "ADJ",
+                "frequency": 9912,
+                "cefr": "B1"
+            },
+            {
+                "word": "stark",
+                "pos": "ADV",
+                "frequency": 178,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Papa",
+                "pos": "NOUN",
+                "frequency": 1131,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Garten",
+                "pos": "NOUN",
+                "frequency": 1158,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Adjektiv",
+                "pos": "NOUN",
+                "frequency": 3682
+            },
+            {
+                "word": "hart",
+                "pos": "ADV",
+                "frequency": 728,
+                "cefr": "A2"
+            },
+            {
+                "word": "bitter",
+                "pos": "ADV",
+                "frequency": 2991,
+                "cefr": "A1"
+            },
+            {
+                "word": "krumm",
+                "pos": "ADV",
+                "frequency": 20092,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Grapefruit",
+                "pos": "NOUN"
+            },
+            {
+                "word": "oval",
+                "pos": "ADV",
+                "frequency": 15122,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "denken": {
+                "present": {
+                    "ich": "denke",
+                    "du": "denkst",
+                    "er": "denkt",
+                    "es": "denkt",
+                    "sie_singular": "denkt",
+                    "xier": "denkt",
+                    "wir": "denken",
+                    "ihr": "denkt",
+                    "sie_plural": "denken",
+                    "Sie": "denken"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie zu und markieren Sie unten, was es auf dem Wochenmarkt gibt.",
+            "Möhren, frische Möhren!",
+            "Ein Bund nur 99 Cent!",
+            "Guten Tag, 300 g Möhren, bitte.",
+            "Ein Bund sind ca. 600 g.",
+            "Ist das okay?",
+            "Ja, das ist okay.",
+            "Dann hätte ich gerne ein Bund Möhren.",
+            "Mit dem Rest mache ich einen Möhrenkuchen",
+            "Ein Bund Möhren, bitte schön!",
+            "Sonst noch etwas?",
+            "Ja, ein Sack Zwiebeln, 1 Kilo Kartoffeln, zwei gelbe Paprikas und eine Gurke, bitte.",
+            "Ein Sack Zwiebeln.",
+            "Bitte schön.",
+            "Und 1 Kilo Kartoffeln.",
+            "Wir haben leider keine Paprikas und keine Gurken mehr.",
+            "Sonst noch was?",
+            "Vielleicht Obst?",
+            "Ja, gerne.",
+            "Zwei Kilo Äpfel, drei Bananen, ein Kilo Birnen und eine Zitrone, bitte.",
+            "Ich will einen Obstsalat machen.",
+            "Ich nehme auch ein paar Erdbeeren.",
+            "Einen Moment bitte.",
+            "Erdbeeren haben wir momentan nicht, die gibt es dann wieder im Sommer.",
+            "Aber hier sind die Äpfel, die Bananen, die Birnen und die Zitrone.",
+            "Was gibt es auf dem Wochenmarkt und was gibt es nicht?",
+            "Gibt es Äpfel auf dem Wochenmarkt?",
+            "Ja, es gibt Äpfel auf dem Wochenmarkt.",
+            "Gibt es Erdbeeren auf dem Wochenmarkt?",
+            "Nein, es gibt keine Erdbeeren auf dem Wochenmarkt.",
+            "Ja, es gibt X auf dem Wochenmarkt.",
+            "Nein, es gibt X nicht auf dem Wochenmarkt.",
+            "Was ist Obst?",
+            "Was ist Gemüse?",
+            "Welches andere Obst und Gemüse essen Sie?",
+            "Ergänzen Sie.",
+            "Ich esse gern Gurken.",
+            "Ich esse Pilze lieber als Gurken.",
+            "Am liebsten esse ich Möhren.",
+            "Ich esse gern Birnen.",
+            "Bananen esse ich lieber als Birnen.",
+            "Äpfel esse ich am liebsten.",
+            "Florian Sump, Markus Pauli und Lukas Nimscheck sind die Band \"Deine Freunde\".",
+            "Die Band spielt Lieder für Kinder und Familien.",
+            "Ihre erste Single 2012 ist das Lied \"Schokolade\".",
+            "2020 sind Florian Sump und Lukas Nimscheck Coaches bei der Casting-Show The Voice Kids.",
+            "Mögen Sie Schokolade?",
+            "Schokolade oder Obst?",
+            "Ich mag Schokolade.",
+            "Ich mag Schokolade nicht.",
+            "Ich mag lieber Schokolade als Obst.",
+            "Welches Obst und Gemüse sehen Sie?",
+            "Ich esse jeden Tag Obst, mal weniger, mal mehr.",
+            "Bei uns zu Hause ist der Obstteller niemals leer.",
+            "\"Iss die Äpfel und Bananen\".",
+            "Birnen, Mandarinen und den ganzen anderen Kram.",
+            "Und dann erzählt sie mir, wie wichtig Vitamine sind und sagt: Komm, iss deinen Teller auf, sei ein liebes Kind.",
+            "Und ich bin lieb und der Liebste, den es gibt.",
+            "Aber wenn ich aufgegessen hab', dann sing ich dieses Lied.",
+            "Obst und lecker Gemüse, ja, das macht mich groß und stark.",
+            "Denn heute möcht ' ich zu Oma fahren, die gibt mir was ich mag.",
+            "Oma gibt mir Schokolade.",
+            "Lecker Schokolade.",
+            "Oma holt mir Naschi aus dem Schrank.",
+            "Sie hat da so eine Schublade, voller Schokolade.",
+            "Voll, so wie im Schlaraffenland.",
+            "Oma gibt mir Schokolade, lecker Schokolade.",
+            "Sie hat da so eine Schublade voller Schokolade.",
+            "Voll so wie im Schlaraffenland.",
+            "Ich will Schokolade.",
+            "Ja, ich will so gerne Schokolade.",
+            "Aber wisst ihr, was ich jeden Tag ess'?",
+            "Ich esse jeden Tag Gemüse, mal weniger, mal mehr.",
+            "Bei uns zuhause ist Gemüse wirklich niemals leer.",
+            "\"Iss die Gurken und Tomaten\".",
+            "Von mir aus aus'm Teller, am liebsten aus'm Garten.",
+            "Und dann erzählt er mir, wie wichtig Vitamine sind und sagt: \"Iss dein Gemüse auf, komm, sei ein liebes Kind\".",
+            "Ich bin lieb, der Liebste, den es gibt.",
+            "Aber wenn ich aufgegessen hab', dann sing ich dieses Lied",
+            "Ordnen Sie die Adjektive zu a) süß h) weich b) sauer",
+            "An welches Obst oder Gemüse denkt die andere Person?",
+            "Fragen Sie.",
+            "Ich denke an Obst.",
+            "Ist das Obst sauer?",
+            "Nein, es ist nicht sauer.",
+            "Ist es süß?",
+            "Ja, es ist süß.",
+            "Ist es rot?",
+            "Ja, es ist rot.",
+            "Denkst du an Erdbeeren?",
+            "Ja, ich denke an Erdbeeren.",
+            "Ich denke an Obst, Gemüse.",
+            "Ja, es ist X, nein es ist nicht X."
+        ],
+        "templated": [
+            {
+                "template": "Ich esse gern {FOOD_ITEM}.",
+                "source_literals": [
+                    "Ich esse gern Birnen.",
+                    "Ich esse gern Gurken."
+                ],
+                "description": "State food preference"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "FOOD_ITEM": {
+            "type": "closed",
+            "description": "Food nouns (bare, for use with gern essen)",
+            "usage_note": "accusative, no article needed for mass nouns",
+            "options": [
+                "Apfel",
+                "Banane",
+                "Birne",
+                "Erdbeere",
+                "Gemüse",
+                "Gurke",
+                "Kartoffel",
+                "Käse",
+                "Möhre",
+                "Obst",
+                "Paprika",
+                "Pilz",
+                "Schnitzel",
+                "Schokolade",
+                "Tomate",
+                "Wurst",
+                "Zitrone",
+                "Zwiebel"
+            ]
+        }
+    }
+}

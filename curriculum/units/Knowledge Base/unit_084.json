@@ -1,0 +1,720 @@
+{
+    "unit": "84",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 84,
+        "prerequisite": "1-83"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use aus + dative for origin from enclosed spaces, countries, and cities; use von + dative for origin from open spaces, persons, activities, or directions.",
+            "Use nach for destination to cities and countries without articles; use zu + dative (zum/zur) for destination to specific places and streets.",
+            "Give directions using Gehen Sie + geradeaus/links/rechts, Biegen Sie…ab, Gehen Sie an…vorbei."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "nach dem Weg fragen und Wege beschreiben",
+            "sagen, woher man kommt und wohin man geht"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Sehenswürdigkeiten"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "rechts/links abbiegen",
+                "pos": "VERB",
+                "translation": "to turn right/left"
+            },
+            {
+                "word": "ziehen",
+                "pos": "VERB",
+                "translation": "to pull, draw",
+                "frequency": 193,
+                "cefr": "A2"
+            },
+            {
+                "word": "bezeichnen",
+                "pos": "VERB",
+                "translation": "to refer to as, characterize",
+                "frequency": 405
+            },
+            {
+                "word": "interessieren (für)",
+                "pos": "VERB",
+                "translation": "to be interested (in)",
+                "frequency": 631,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Beschreibung",
+                "pos": "NOUN",
+                "translation": "description",
+                "frequency": 1666,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wegbeschreibung",
+                "pos": "NOUN",
+                "translation": "directions",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ampel, -n",
+                "pos": "ADJ",
+                "translation": "traffic light"
+            },
+            {
+                "word": "das Schild",
+                "pos": "NOUN",
+                "translation": "plate; sign; signpost",
+                "frequency": 3366,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kreuzung",
+                "pos": "NOUN",
+                "translation": "intersection; junction; crossway",
+                "frequency": 4990,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Leidenschaft",
+                "pos": "NOUN",
+                "translation": "passion",
+                "frequency": 3105,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Denkmal",
+                "pos": "NOUN",
+                "translation": "monument, memorial",
+                "frequency": 4789,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Säule",
+                "pos": "NOUN",
+                "translation": "pillar"
+            },
+            {
+                "word": "die Flagge",
+                "pos": "NOUN",
+                "translation": "flag",
+                "frequency": 7094,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Blume",
+                "pos": "NOUN",
+                "translation": "flower",
+                "frequency": 2463,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Klavier",
+                "pos": "NOUN",
+                "translation": "piano",
+                "frequency": 4340,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kirche",
+                "pos": "NOUN",
+                "translation": "church",
+                "frequency": 892,
+                "cefr": "A2"
+            },
+            {
+                "word": "riesig",
+                "pos": "ADJ",
+                "translation": "huge",
+                "frequency": 1075,
+                "cefr": "B1"
+            },
+            {
+                "word": "wunderbar",
+                "pos": "ADJ",
+                "translation": "wonderful; marvelous",
+                "frequency": 1603,
+                "cefr": "A1"
+            },
+            {
+                "word": "geradeaus",
+                "pos": "ADV",
+                "translation": "straight (directional)",
+                "frequency": 20627,
+                "cefr": "A1"
+            },
+            {
+                "word": "gegenüber",
+                "pos": "PREP",
+                "translation": "across from; opposite to"
+            },
+            {
+                "word": "entlang",
+                "pos": "PREP",
+                "translation": "along",
+                "frequency": 1601,
+                "cefr": "B1"
+            },
+            {
+                "word": "einige",
+                "pos": "PRON",
+                "translation": "some",
+                "frequency": 174,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nacht",
+                "pos": "NOUN",
+                "translation": "night",
+                "frequency": 325,
+                "cefr": "A1"
+            },
+            {
+                "word": "bekannt",
+                "pos": "ADJ",
+                "translation": "famous, known, renowned",
+                "frequency": 319,
+                "cefr": "A1"
+            },
+            {
+                "word": "erwähnen",
+                "pos": "VERB",
+                "translation": "to mention"
+            },
+            {
+                "word": "bleiben",
+                "pos": "VERB",
+                "translation": "to stay, remain",
+                "frequency": 113,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Johann-Strauß-Denkmal",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Theseustempel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "französisch-barock",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Rosengarten",
+                "pos": "NOUN",
+                "frequency": 11664,
+                "cefr": "B2"
+            },
+            {
+                "word": "die City",
+                "pos": "NOUN",
+                "frequency": 2163,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Stadtteil",
+                "pos": "NOUN",
+                "frequency": 3785
+            },
+            {
+                "word": "die Glasfassade",
+                "pos": "NOUN",
+                "frequency": 45897
+            },
+            {
+                "word": "barock",
+                "pos": "ADJ",
+                "frequency": 6832
+            },
+            {
+                "word": "die Alpen",
+                "pos": "NOUN",
+                "frequency": 4099
+            },
+            {
+                "word": "die Kuppel",
+                "pos": "NOUN",
+                "frequency": 13548,
+                "cefr": "B2"
+            },
+            {
+                "word": "neugotisch",
+                "pos": "ADJ",
+                "frequency": 23725
+            },
+            {
+                "word": "der Hauptturm",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Statue",
+                "pos": "NOUN",
+                "frequency": 9087
+            },
+            {
+                "word": "das Instrument",
+                "pos": "NOUN",
+                "frequency": 1572,
+                "cefr": "A2"
+            },
+            {
+                "word": "dahin",
+                "pos": "ADV",
+                "frequency": 1520,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Entschuldigung",
+                "pos": "NOUN",
+                "frequency": 2327,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Operngasse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Ampel",
+                "pos": "NOUN",
+                "frequency": 8300,
+                "cefr": "A2"
+            },
+            {
+                "word": "biegen",
+                "pos": "VERB",
+                "frequency": 3309
+            },
+            {
+                "word": "der Opernring",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Burggarten",
+                "pos": "NOUN",
+                "frequency": 47738
+            },
+            {
+                "word": "kunsthistorisch",
+                "pos": "ADJ",
+                "frequency": 37656
+            },
+            {
+                "word": "naturhistorisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "weiter",
+                "pos": "ADV",
+                "frequency": 221,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kaiserin-Elisabeth-Denkmal",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Bankgasse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Stift",
+                "pos": "NOUN",
+                "frequency": 7234,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Parlament",
+                "pos": "NOUN",
+                "frequency": 1623,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Votivkirche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Liedermacher",
+                "pos": "NOUN",
+                "frequency": 15370,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Austropop-Hit",
+                "pos": "NOUN"
+            },
+            {
+                "word": "japanisch-",
+                "pos": "ADJ"
+            },
+            {
+                "word": "DJ",
+                "pos": "NOUN",
+                "frequency": 6565
+            },
+            {
+                "word": "der Musikproduzent",
+                "pos": "NOUN",
+                "frequency": 23931
+            },
+            {
+                "word": "der Elektrotechniker",
+                "pos": "NOUN",
+                "frequency": 37125
+            },
+            {
+                "word": "der Volksgarten",
+                "pos": "NOUN",
+                "frequency": 36614
+            },
+            {
+                "word": "die Hofburg",
+                "pos": "NOUN",
+                "frequency": 20905
+            },
+            {
+                "word": "das Musikvideo",
+                "pos": "NOUN",
+                "frequency": 15343,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Naschmarkt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Staatsoper",
+                "pos": "NOUN",
+                "frequency": 9255
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "abbiegen": {
+                "present": {
+                    "ich": "biege ab",
+                    "du": "biegst ab",
+                    "er": "biegt ab",
+                    "es": "biegt ab",
+                    "sie_singular": "biegt ab",
+                    "xier": "biegt ab",
+                    "wir": "biegen ab",
+                    "ihr": "biegt ab",
+                    "sie_plural": "biegen ab",
+                    "Sie": "biegen ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgebogen",
+                    "du": "hast abgebogen",
+                    "er": "hat abgebogen",
+                    "es": "hat abgebogen",
+                    "sie_singular": "hat abgebogen",
+                    "xier": "hat abgebogen",
+                    "wir": "haben abgebogen",
+                    "ihr": "habt abgebogen",
+                    "sie_plural": "haben abgebogen",
+                    "Sie": "haben abgebogen"
+                }
+            },
+            "ziehen": {
+                "present": {
+                    "ich": "ziehe",
+                    "du": "ziehst",
+                    "er": "zieht",
+                    "es": "zieht",
+                    "sie_singular": "zieht",
+                    "xier": "zieht",
+                    "wir": "ziehen",
+                    "ihr": "zieht",
+                    "sie_plural": "ziehen",
+                    "Sie": "ziehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gezogen",
+                    "du": "hast gezogen",
+                    "er": "hat gezogen",
+                    "es": "hat gezogen",
+                    "sie_singular": "hat gezogen",
+                    "xier": "hat gezogen",
+                    "wir": "haben gezogen",
+                    "ihr": "habt gezogen",
+                    "sie_plural": "haben gezogen",
+                    "Sie": "haben gezogen"
+                }
+            },
+            "bezeichnen": {
+                "present": {
+                    "ich": "bezeichne",
+                    "du": "bezeichnest",
+                    "er": "bezeichnet",
+                    "es": "bezeichnet",
+                    "sie_singular": "bezeichnet",
+                    "xier": "bezeichnet",
+                    "wir": "bezeichnen",
+                    "ihr": "bezeichnet",
+                    "sie_plural": "bezeichnen",
+                    "Sie": "bezeichnen"
+                },
+                "Perfekt": {
+                    "ich": "habe bezeichnet",
+                    "du": "hast bezeichnet",
+                    "er": "hat bezeichnet",
+                    "es": "hat bezeichnet",
+                    "sie_singular": "hat bezeichnet",
+                    "xier": "hat bezeichnet",
+                    "wir": "haben bezeichnet",
+                    "ihr": "habt bezeichnet",
+                    "sie_plural": "haben bezeichnet",
+                    "Sie": "haben bezeichnet"
+                }
+            },
+            "interessieren": {
+                "present": {
+                    "ich": "interessiere",
+                    "du": "interessierst",
+                    "er": "interessiert",
+                    "es": "interessiert",
+                    "sie_singular": "interessiert",
+                    "xier": "interessiert",
+                    "wir": "interessieren",
+                    "ihr": "interessiert",
+                    "sie_plural": "interessieren",
+                    "Sie": "interessieren"
+                },
+                "Perfekt": {
+                    "ich": "habe interessiert",
+                    "du": "hast interessiert",
+                    "er": "hat interessiert",
+                    "es": "hat interessiert",
+                    "sie_singular": "hat interessiert",
+                    "xier": "hat interessiert",
+                    "wir": "haben interessiert",
+                    "ihr": "habt interessiert",
+                    "sie_plural": "haben interessiert",
+                    "Sie": "haben interessiert"
+                }
+            },
+            "erwähnen": {
+                "present": {
+                    "ich": "erwähne",
+                    "du": "erwähnst",
+                    "er": "erwähnt",
+                    "es": "erwähnt",
+                    "sie_singular": "erwähnt",
+                    "xier": "erwähnt",
+                    "wir": "erwähnen",
+                    "ihr": "erwähnt",
+                    "sie_plural": "erwähnen",
+                    "Sie": "erwähnen"
+                },
+                "Perfekt": {
+                    "ich": "habe erwähnt",
+                    "du": "hast erwähnt",
+                    "er": "hat erwähnt",
+                    "es": "hat erwähnt",
+                    "sie_singular": "hat erwähnt",
+                    "xier": "hat erwähnt",
+                    "wir": "haben erwähnt",
+                    "ihr": "habt erwähnt",
+                    "sie_plural": "haben erwähnt",
+                    "Sie": "haben erwähnt"
+                }
+            },
+            "bleiben": {
+                "present": {
+                    "ich": "bleibe",
+                    "du": "bleibst",
+                    "er": "bleibt",
+                    "es": "bleibt",
+                    "sie_singular": "bleibt",
+                    "xier": "bleibt",
+                    "wir": "bleiben",
+                    "ihr": "bleibt",
+                    "sie_plural": "bleiben",
+                    "Sie": "bleiben"
+                },
+                "Perfekt": {
+                    "ich": "bin geblieben",
+                    "du": "bist geblieben",
+                    "er": "ist geblieben",
+                    "es": "ist geblieben",
+                    "sie_singular": "ist geblieben",
+                    "xier": "ist geblieben",
+                    "wir": "sind geblieben",
+                    "ihr": "seid geblieben",
+                    "sie_plural": "sind geblieben",
+                    "Sie": "sind geblieben"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was gibt es in Wien zu sehen?",
+            "Ordnen Sie zu.",
+            "1 das Riesenrad 2 der Stephansdom 3 die Secession 4 das Hundertwasserhaus 5",
+            "Das Schloss Belvedere 6 die Hofburg 7 das Johann-Strauß-Denkmal 8 die Spanische Hofreitschule",
+            "Sie haben schon einiges über Wien gelernt.",
+            "Wer möchte wohin gehen?",
+            "Ergänzen Sie die Relativsätze.",
+            "Tourist*innen, sich für Geschichte interessieren, gehen",
+            "Ein Tourist, Kirchen mag, geht",
+            "Eine Touristin, Pferde liebt, geht Kinder, gerne Spaß haben möchten, gehen Zu zweit: Und Sie?",
+            "Erzählen zu welchen Sehenswürdigkeiten Sie gehen möchten, und sagen Sie warum.",
+            "Ich möchte zur Hofburg gehen, weil ich mich für Geschichte interessiere.",
+            "Sie hören Beschreibungen von vier bekannten Sehenswürdigkeiten.",
+            "Ordnen Sie die Beschreibungen den Bildern zu.",
+            "Der Volksgarten ist ein öffentlicher Park an der Ringstraße.",
+            "Der Park besteht aus einem Englischen Garten und dem weißen Theseustempel und einem französisch-barocken Rosengarten.",
+            "Die Donau City ist ein relativ neuer Stadtteil im 22.",
+            "Bezirk und liegt direkt an der Donau.",
+            "Dort stehen moderne Gebäude, wie zum Beispiel der DC Tower 1.",
+            "Der schlanke Turm ist das höchste Gebäude Österreichs und hat eine Glasfassade im modernen Stil.",
+            "Die Wiener Karlskirche steht auf dem Karlsplatz.",
+            "Sie ist eine der wichtigsten barocken Kirchen nördlich der Alpen.",
+            "Die weiße Kirche hat eine große Kuppel und zwei riesige Säulen.",
+            "Das Wiener Rathaus am Rathausplatz ist ein wunderbares Beispiel für den neugotischen Stil.",
+            "Der 98 Meter hohe Hauptturm ist vom Rathaus in Brüssel inspiriert.",
+            "Suchen Sie ein Bild von Aktivität 260 oder 261 aus.",
+            "Beschreiben Sie es einer anderen Person im Kurs.",
+            "Die andere Person muss raten, welches Bild Sie beschreiben.",
+            "Ich sehe eine Statue, die golden ist und ein Instrument hat, das auch golden ist.",
+            "Klein rot weiß grün golden bunt modern",
+            "Wie komme ich dahin?",
+            "Hören Sie zu und bringen Sie die Wegbeschreibung in die richtige Reihenfolge.",
+            "Entschuldigung, wie komme ich denn zum Burgtheater?",
+            "Wir sind jetzt an der Staatsoper.",
+            "Gehen Sie links in die Operngasse.",
+            "Gehen Sie geradeaus bis zur Kreuzung.",
+            "Sie sehen dort die U-Bahn Haltestelle für die Oper und eine Ampel.",
+            "Biegen Sie an der Ampel rechts in den Opernring ab.",
+            "Auf der rechten Seite sehen Sie viele fantastische Restaurants und dann den Burggarten mit Denkmälern von Goethe, Kaiser Franz Joseph und Mozart.",
+            "Gehen Sie geradeaus zum Burgring.",
+            "Hier gibt es viele Sehenswürdigkeiten.",
+            "Auf der linken Seite sehen Sie das Kunsthistorische Museum und das Naturhistorische Museum … und auf der rechten Seite den Heldenplatz und viele historische Gebäude, zum Beispiel die Hofburg.",
+            "So viele Sehenswürdigkeiten.",
+            "Das ist ja mega!",
+            "Und wie geht es dann weiter?",
+            "Direkt nach dem Heldenplatz biegen Sie rechts in den Volksgarten ab.",
+            "Auf dieser Straße parken auf der rechten und linken Straßenseite viele Autos und man kann auf der linken Seite den Theseustempel im Volksgarten sehen.",
+            "Biegen Sie jetzt links in die Löwelstraße ab.",
+            "Der Volksgarten ist jetzt links von Ihnen und Sie können das Kaiserin-Elisabeth-Denkmal sehen.",
+            "Gehen Sie geradeaus bis zur Bankgasse, die direkt nach dem Denkmal kommt.",
+            "Sie sehen jetzt das Burgtheater gegenüber, auf der anderen Straßenseite.",
+            "Vielen Dank!",
+            "Viel Spaß in Wien!",
+            "Sie sehen jetzt das Burgtheater gegenüber.",
+            "Biegen Sie rechts in den Volksgarten ab.",
+            "Gehen Sie geradeaus bis zur Bankgasse.",
+            "Biegen Sie links in die X ab.",
+            "Hören Sie die Wegbeschreibung noch einmal und folgen Sie der Beschreibung mit ihrem Finger oder Stift.",
+            "Sie sind in Wien.",
+            "Fragen Sie nach dem Weg.",
+            "Benutzen Sie die Karte.",
+            "Wie komme ich … von der Universität (1) zum Parlament (2)?",
+            "Vom Parlament (2) zum Kunsthistorischen Museum (3)?",
+            "Vom Kunsthistorischen Museum (3) zur Oper (4)?",
+            "Von der Oper (4) zum Stephansdom (5)?",
+            "Vom Stephansdom (5) zum Burgtheater (6)?",
+            "Vom Burgtheater (6) zur Votivkirche (7)?",
+            "Haben Sie Wien schon bei Nacht gesehen?",
+            "Rainhard Fendrich (*1955) ist ein österreichischer Liedermacher aus Wien.",
+            "Er hatte viele Hits, und seine Lieder zählen zum Genre \"Austropop\".",
+            "Sein Lied I am from Austria bezeichnet man als den größten Austropop-Hit aller Zeiten.",
+            "Ken Hayakawa (*1982) ist ein japanisch- österreichischer DJ und Musikproduzent aus Salzburg.",
+            "Als Kind hat er Klavier spielen gelernt;",
+            "Später hat er eine Ausbildung zum Elektrotechniker gemacht.",
+            "Musik ist aber immer seine Leidenschaft geblieben.",
+            "2004 ist er als DJ nach Wien gezogen.",
+            "Welche Sehenswürdigkeiten hören Sie?",
+            "Kreuzen Sie an.",
+            "Der Volksgarten der Stephansdom das Riesenrad",
+            "Schauen Sie jetzt das Musikvideo von Hayakawa an.",
+            "Im Video kommen verschiedene Orte und Verkehrsmittel in Wien vor.",
+            "Bringen Sie sie in die richtige Reihenfolge.",
+            "Der Naschmarkt der Fiaker der Stephansdom"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

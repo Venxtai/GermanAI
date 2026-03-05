@@ -1,0 +1,405 @@
+{
+    "unit": "82",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 82,
+        "prerequisite": "1-81"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Wien und lebenswerte Städte sprechen",
+            "Daten und Diagramme beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Wien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "erstellen",
+                "pos": "VERB",
+                "translation": "to create",
+                "frequency": 2389,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Gebäude",
+                "pos": "NOUN",
+                "translation": "building"
+            },
+            {
+                "word": "die Miete",
+                "pos": "NOUN",
+                "translation": "rent; lease",
+                "frequency": 3488,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Verkehr",
+                "pos": "NOUN",
+                "translation": "traffic",
+                "frequency": 2131,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Verkehrsmittel",
+                "pos": "NOUN",
+                "translation": "(means of) transportation",
+                "frequency": 9550,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Anteil",
+                "pos": "NOUN",
+                "translation": "amount; portion; share",
+                "frequency": 767,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Migrant*in",
+                "pos": "NOUN",
+                "translation": "migrant",
+                "frequency": 2893,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bezirk",
+                "pos": "NOUN",
+                "translation": "district",
+                "frequency": 3445,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Fläche",
+                "pos": "NOUN",
+                "translation": "area, surface"
+            },
+            {
+                "word": "die Kriminalität",
+                "pos": "NOUN",
+                "translation": "criminality"
+            },
+            {
+                "word": "die Daten",
+                "pos": "NOUN",
+                "translation": "data",
+                "frequency": 574,
+                "cefr": "B1"
+            },
+            {
+                "word": "lebenswert",
+                "pos": "ADJ",
+                "translation": "livable",
+                "frequency": 24859
+            },
+            {
+                "word": "öffentlich",
+                "pos": "ADJ",
+                "translation": "public"
+            },
+            {
+                "word": "außerdem",
+                "pos": "PREP",
+                "translation": "besides, furthermore"
+            },
+            {
+                "word": "die Großstadt, ⸚e",
+                "pos": "ADJ",
+                "translation": "big city"
+            },
+            {
+                "word": "vermuten",
+                "pos": "VERB",
+                "translation": "to guess; assume; suppose",
+                "frequency": 1517,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Schaubild",
+                "pos": "NOUN",
+                "translation": "chart, schematic",
+                "frequency": 1,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Gemeindebezirk",
+                "pos": "NOUN",
+                "frequency": 25298
+            },
+            {
+                "word": "das Grünland",
+                "pos": "NOUN",
+                "frequency": 26872
+            },
+            {
+                "word": "die Redewendung",
+                "pos": "NOUN",
+                "frequency": 21199
+            },
+            {
+                "word": "der Neubau",
+                "pos": "NOUN",
+                "frequency": 4344
+            },
+            {
+                "word": "das Beratungsunternehmen",
+                "pos": "NOUN",
+                "frequency": 32681
+            },
+            {
+                "word": "lebenswerte",
+                "pos": "ADJ"
+            },
+            {
+                "word": "neunmal",
+                "pos": "ADV",
+                "frequency": 30497
+            },
+            {
+                "word": "ranken",
+                "pos": "VERB",
+                "frequency": 26267
+            },
+            {
+                "word": "das Kulturangebot",
+                "pos": "NOUN",
+                "frequency": 39244
+            },
+            {
+                "word": "das Sportangebot",
+                "pos": "NOUN",
+                "frequency": 42197
+            },
+            {
+                "word": "die Diversität",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Standort",
+                "pos": "NOUN",
+                "frequency": 2207
+            },
+            {
+                "word": "los",
+                "pos": "ADV",
+                "frequency": 658,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Konzertveranstaltung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "davon",
+                "pos": "ADV",
+                "frequency": 214
+            },
+            {
+                "word": "das Kaffeehaus",
+                "pos": "NOUN",
+                "frequency": 22731,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Liesinger*innen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Herkunftsland",
+                "pos": "NOUN",
+                "frequency": 18263,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Wiener*innen",
+                "pos": "NOUN",
+                "frequency": 2003
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erstellen": {
+                "present": {
+                    "ich": "erstelle",
+                    "du": "erstellst",
+                    "er": "erstellt",
+                    "es": "erstellt",
+                    "sie_singular": "erstellt",
+                    "xier": "erstellt",
+                    "wir": "erstellen",
+                    "ihr": "erstellt",
+                    "sie_plural": "erstellen",
+                    "Sie": "erstellen"
+                },
+                "Perfekt": {
+                    "ich": "habe erstellt",
+                    "du": "hast erstellt",
+                    "er": "hat erstellt",
+                    "es": "hat erstellt",
+                    "sie_singular": "hat erstellt",
+                    "xier": "hat erstellt",
+                    "wir": "haben erstellt",
+                    "ihr": "habt erstellt",
+                    "sie_plural": "haben erstellt",
+                    "Sie": "haben erstellt"
+                }
+            },
+            "vermuten": {
+                "present": {
+                    "ich": "vermute",
+                    "du": "vermutest",
+                    "er": "vermutet",
+                    "es": "vermutet",
+                    "sie_singular": "vermutet",
+                    "xier": "vermutet",
+                    "wir": "vermuten",
+                    "ihr": "vermutet",
+                    "sie_plural": "vermuten",
+                    "Sie": "vermuten"
+                },
+                "Perfekt": {
+                    "ich": "habe vermutet",
+                    "du": "hast vermutet",
+                    "er": "hat vermutet",
+                    "es": "hat vermutet",
+                    "sie_singular": "hat vermutet",
+                    "xier": "hat vermutet",
+                    "wir": "haben vermutet",
+                    "ihr": "habt vermutet",
+                    "sie_plural": "haben vermutet",
+                    "Sie": "haben vermutet"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wien hat 23 Bezirke.",
+            "Sie bekommen eine Nummer.",
+            "Suchen Sie Bilder aus dem Bezirk mit Ihrer Nummer.",
+            "Wie sieht er aus?",
+            "Was gibt es dort?",
+            "Erstellen Sie eine Collage mit Bildern. '",
+            "Vergleichen Sie oben die Daten für Ihren Bezirk mit anderen und schauen Sie rechts, wo I hr Bezirk geografisch liegt.",
+            "Präsentieren Sie die Daten mit den Fotos.",
+            "Benutzen Sie die Redewendungen aus der grünen Box.",
+            "Rudolfsheim-Fünfhaus ist östlich von Penzing und westlich von Mariahilf und Neubau.",
+            "Der Bezirk ist kleiner als Penzig und größer als Mariahilf.",
+            "Er ist nicht so grün wie Penzig und hat mehr Verkehr als Penzig.",
+            "Der Bezirk ist so grün wie Brigittenau, hat aber mehr Gebäude …",
+            "Was macht die Stadt so lebenswert?",
+            "Jedes Jahr sucht das Beratungsunternehmen Mercer die lebenswerteste Stadt auf der Welt.",
+            "Wien hat schon neunmal Platz 1 belegt.",
+            "Was macht eine Stadt für Sie lebenswert?",
+            "Ranken Sie die Punkte individuell und vergleichen Sie dann.",
+            "Viele Parks viele Kulturangebote gute öffentliche Verkehrsmittel gute Schulen und/oder Unis",
+            "Viele Konzerte keine.",
+            "Günstige Mieten guter Standort für Reisen sicher, wenig Kriminalität schöne Gebäude Wasser (z.B.",
+            "Ein Fluss, ein See, das Meer)",
+            "Ergänzen Sie die beiden Relativsätze.",
+            "Ich mag eine Stadt, die Ich finde eine Stadt lebenswert, die Hören Sie den Text.",
+            "Welche Punkte von Teil 1 hören Sie?",
+            "Kreuzen Sie oben an.",
+            "Haben Sie Ihre Favoriten gehört?",
+            "Wien ist schon sehr oft zur Nummer 1 der lebenswerten Städte gewählt worden.",
+            "Weil Wien sicher und grün ist und viele Kulturangebote hat.",
+            "Fast 50% von Wien sind grün, Wien hat 990 Parks.",
+            "Wien ist aber auch im Verkehr grün.",
+            "Die öffentlichen Verkehrsmittel sind pünktlich, fahren 24 Stunden am Tag und sind günstig.",
+            "Und in Wien ist immer etwas los:",
+            "Es gibt über 100 Museen und 15.000 Konzertveranstaltungen im Jahr.",
+            "Viele davon kosten kein Geld und sind draußen.",
+            "Außerdem haben wir wunderschöne Gebäude in der Stadt und unsere ganzen Kaffeehäuser.",
+            "Nur bei den Sportangeboten ist hier nicht so viel los.",
+            "Das macht mir persönlich nichts, ich gehe gerne joggen, aber noch lieber probiere ich eins der vielen tollen Restaurants aus.",
+            "Kommt doch mal nach Wien und schaut es euch an.",
+            "Wer lebt in Wien?",
+            "Es gibt viele Sprachen und Kulturen in Wien.",
+            "In allen Bezirken wohnen Migrant*innen, aber in Liesing wohnen die wenigsten (27,9% der Liesinger*innen kommen aus anderen Ländern) und in Rudolfsheim-Fünfhaus wohnen die meisten (53,6%).",
+            "Sehen Sie sich die Statistik an und vergleichen Sie die Herkunftsländer der Wiener*innen.",
+            "Es wohnen mehr Menschen aus Polen in Wien als Menschen aus Ungarn.",
+            "Der Anteil von Menschen aus Polen ist 2,9 %.",
+            "Der Anteil von Menschen aus Ungarn ist 1,5%."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

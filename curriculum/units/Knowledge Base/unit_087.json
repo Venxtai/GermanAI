@@ -1,0 +1,615 @@
+{
+    "unit": "87",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 87,
+        "prerequisite": "1-86"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Bilder beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kunst und Museen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "erreichen",
+                "pos": "VERB",
+                "translation": "to achieve; reach",
+                "frequency": 309,
+                "cefr": "A2"
+            },
+            {
+                "word": "umarmen",
+                "pos": "VERB",
+                "translation": "to hug; embrace",
+                "frequency": 3807,
+                "cefr": "B1"
+            },
+            {
+                "word": "sich lohnen",
+                "pos": "VERB",
+                "translation": "to be worthwhile, worth it",
+                "frequency": 2103,
+                "cefr": "B1"
+            },
+            {
+                "word": "Rücksicht",
+                "pos": "VERB",
+                "translation": "to be considerate (of)"
+            },
+            {
+                "word": "die Kritik",
+                "pos": "NOUN",
+                "translation": "criticism, critique",
+                "frequency": 1001,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Kritiker*in",
+                "pos": "NOUN",
+                "translation": "critic, reviewer",
+                "frequency": 2621
+            },
+            {
+                "word": "die Bewertung",
+                "pos": "NOUN",
+                "translation": "review, evaluation, rating",
+                "frequency": 2028,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ausstellung",
+                "pos": "NOUN",
+                "translation": "exhibition, exposition, display",
+                "frequency": 1597,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Besuch",
+                "pos": "NOUN",
+                "translation": "visit",
+                "frequency": 1106,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Besucher*in",
+                "pos": "NOUN",
+                "translation": "visitor",
+                "frequency": 1369
+            },
+            {
+                "word": "das Gemälde",
+                "pos": "NOUN",
+                "translation": "painting"
+            },
+            {
+                "word": "die Stimmung",
+                "pos": "NOUN",
+                "translation": "mood; atmosphere",
+                "frequency": 1728,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Höhepunkt",
+                "pos": "NOUN",
+                "translation": "peak; climax; summit; highlight"
+            },
+            {
+                "word": "der Vordergrund",
+                "pos": "NOUN",
+                "translation": "foreground",
+                "frequency": 2908,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Hintergrund",
+                "pos": "NOUN",
+                "translation": "background",
+                "frequency": 1207,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Liebe",
+                "pos": "NOUN",
+                "translation": "love, affection",
+                "frequency": 844,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Haut",
+                "pos": "NOUN",
+                "translation": "skin",
+                "frequency": 1149,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schädel",
+                "pos": "NOUN",
+                "translation": "skull"
+            },
+            {
+                "word": "das Blatt",
+                "pos": "NOUN",
+                "translation": "leaf (of a plant/tree); sheet, page",
+                "frequency": 1270,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Kreuz",
+                "pos": "NOUN",
+                "translation": "cross",
+                "frequency": 2358,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wiese",
+                "pos": "NOUN",
+                "translation": "meadow",
+                "frequency": 2963,
+                "cefr": "B1"
+            },
+            {
+                "word": "hell",
+                "pos": "ADJ",
+                "translation": "bright; light",
+                "frequency": 1411,
+                "cefr": "A1"
+            },
+            {
+                "word": "berühmt",
+                "pos": "ADJ",
+                "translation": "famous, renowned"
+            },
+            {
+                "word": "bestehen",
+                "pos": "VERB",
+                "translation": "to consist of",
+                "frequency": 246,
+                "cefr": "A2"
+            },
+            {
+                "word": "kritisieren",
+                "pos": "VERB",
+                "translation": "to criticize",
+                "frequency": 1394,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Werk",
+                "pos": "NOUN",
+                "translation": "work, creation; factory",
+                "frequency": 681,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Raum",
+                "pos": "NOUN",
+                "translation": "room; space",
+                "frequency": 403,
+                "cefr": "A1"
+            },
+            {
+                "word": "besonder-",
+                "pos": "PREFIX",
+                "translation": "special, particular, outstanding"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Kunstmuseum",
+                "pos": "NOUN",
+                "frequency": 11119
+            },
+            {
+                "word": "Kuss&quot",
+                "pos": "NOUN"
+            },
+            {
+                "word": "verliebt",
+                "pos": "ADJ",
+                "frequency": 14342,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Blumenwiese",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Periode",
+                "pos": "NOUN",
+                "frequency": 2308
+            },
+            {
+                "word": "die Bronzefarbe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Gold",
+                "pos": "NOUN",
+                "frequency": 2413,
+                "cefr": "B1"
+            },
+            {
+                "word": "universell",
+                "pos": "ADJ",
+                "frequency": 16035,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Endung",
+                "pos": "NOUN",
+                "frequency": 27844
+            },
+            {
+                "word": "die Bildbeschreibung",
+                "pos": "NOUN",
+                "frequency": 18052,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Satzanfang",
+                "pos": "NOUN"
+            },
+            {
+                "word": "blass",
+                "pos": "ADV",
+                "frequency": 3876,
+                "cefr": "B1"
+            },
+            {
+                "word": "nack",
+                "pos": "NOUN"
+            },
+            {
+                "word": "allegorisch",
+                "pos": "ADV"
+            },
+            {
+                "word": "symbolhaft",
+                "pos": "ADV"
+            },
+            {
+                "word": "altmodisch",
+                "pos": "ADV",
+                "frequency": 15949,
+                "cefr": "B2"
+            },
+            {
+                "word": "geometrisch",
+                "pos": "ADV",
+                "frequency": 3928
+            },
+            {
+                "word": "zuletzt",
+                "pos": "ADV",
+                "frequency": 663,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Kunstwerk",
+                "pos": "NOUN",
+                "frequency": 3034
+            },
+            {
+                "word": "ober",
+                "pos": "ADJ",
+                "frequency": 1179,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Belvedere",
+                "pos": "NOUN",
+                "frequency": 23509
+            },
+            {
+                "word": "die Kunstausstellung",
+                "pos": "NOUN",
+                "frequency": 15896,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Schlossgarten",
+                "pos": "NOUN",
+                "frequency": 22574
+            },
+            {
+                "word": "das Klimt-Werk",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Selfie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "blockieren",
+                "pos": "VERB",
+                "frequency": 3803
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erreichen": {
+                "present": {
+                    "ich": "erreiche",
+                    "du": "erreichst",
+                    "er": "erreicht",
+                    "es": "erreicht",
+                    "sie_singular": "erreicht",
+                    "xier": "erreicht",
+                    "wir": "erreichen",
+                    "ihr": "erreicht",
+                    "sie_plural": "erreichen",
+                    "Sie": "erreichen"
+                },
+                "Perfekt": {
+                    "ich": "habe erreicht",
+                    "du": "hast erreicht",
+                    "er": "hat erreicht",
+                    "es": "hat erreicht",
+                    "sie_singular": "hat erreicht",
+                    "xier": "hat erreicht",
+                    "wir": "haben erreicht",
+                    "ihr": "habt erreicht",
+                    "sie_plural": "haben erreicht",
+                    "Sie": "haben erreicht"
+                }
+            },
+            "umarmen": {
+                "present": {
+                    "ich": "umarme",
+                    "du": "umarmst",
+                    "er": "umarmt",
+                    "es": "umarmt",
+                    "sie_singular": "umarmt",
+                    "xier": "umarmt",
+                    "wir": "umarmen",
+                    "ihr": "umarmt",
+                    "sie_plural": "umarmen",
+                    "Sie": "umarmen"
+                },
+                "Perfekt": {
+                    "ich": "habe umarmt",
+                    "du": "hast umarmt",
+                    "er": "hat umarmt",
+                    "es": "hat umarmt",
+                    "sie_singular": "hat umarmt",
+                    "xier": "hat umarmt",
+                    "wir": "haben umarmt",
+                    "ihr": "habt umarmt",
+                    "sie_plural": "haben umarmt",
+                    "Sie": "haben umarmt"
+                }
+            },
+            "lohnen": {
+                "present": {
+                    "ich": "lohne mich",
+                    "du": "lohnst dich",
+                    "er": "lohnt sich",
+                    "es": "lohnt sich",
+                    "sie_singular": "lohnt sich",
+                    "xier": "lohnt sich",
+                    "wir": "lohnen uns",
+                    "ihr": "lohnt euch",
+                    "sie_plural": "lohnen sich",
+                    "Sie": "lohnen sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich gelohnt",
+                    "du": "hast dich gelohnt",
+                    "er": "hat sich gelohnt",
+                    "es": "hat sich gelohnt",
+                    "sie_singular": "hat sich gelohnt",
+                    "xier": "hat sich gelohnt",
+                    "wir": "haben uns gelohnt",
+                    "ihr": "habt euch gelohnt",
+                    "sie_plural": "haben sich gelohnt",
+                    "Sie": "haben sich gelohnt"
+                }
+            },
+            "Rücksicht": {
+                "Perfekt": {
+                    "ich": "habe genommen",
+                    "du": "hast genommen",
+                    "er": "hat genommen",
+                    "es": "hat genommen",
+                    "sie_singular": "hat genommen",
+                    "xier": "hat genommen",
+                    "wir": "haben genommen",
+                    "ihr": "habt genommen",
+                    "sie_plural": "haben genommen",
+                    "Sie": "haben genommen"
+                }
+            },
+            "bestehen": {
+                "present": {
+                    "ich": "bestehe",
+                    "du": "bestehst",
+                    "er": "besteht",
+                    "es": "besteht",
+                    "sie_singular": "besteht",
+                    "xier": "besteht",
+                    "wir": "bestehen",
+                    "ihr": "besteht",
+                    "sie_plural": "bestehen",
+                    "Sie": "bestehen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestanden",
+                    "du": "hast bestanden",
+                    "er": "hat bestanden",
+                    "es": "hat bestanden",
+                    "sie_singular": "hat bestanden",
+                    "xier": "hat bestanden",
+                    "wir": "haben bestanden",
+                    "ihr": "habt bestanden",
+                    "sie_plural": "haben bestanden",
+                    "Sie": "haben bestanden"
+                }
+            },
+            "kritisieren": {
+                "present": {
+                    "ich": "kritisiere",
+                    "du": "kritisierst",
+                    "er": "kritisiert",
+                    "es": "kritisiert",
+                    "sie_singular": "kritisiert",
+                    "xier": "kritisiert",
+                    "wir": "kritisieren",
+                    "ihr": "kritisiert",
+                    "sie_plural": "kritisieren",
+                    "Sie": "kritisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kritisiert",
+                    "du": "hast kritisiert",
+                    "er": "hat kritisiert",
+                    "es": "hat kritisiert",
+                    "sie_singular": "hat kritisiert",
+                    "xier": "hat kritisiert",
+                    "wir": "haben kritisiert",
+                    "ihr": "habt kritisiert",
+                    "sie_plural": "haben kritisiert",
+                    "Sie": "haben kritisiert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Spielen Sie \"Ich sehe was, was du nicht siehst\".",
+            "Eine Person sagt \"Ich sehe was, was du nicht siehst und das ist …\" und eine Farbe.",
+            "Die anderen Personen raten, was es is t.",
+            "Ich sehe was, was du nicht siehst und das ist grün.",
+            "Ich sehe eine grüne Pflanze.",
+            "Ich sehe einen grünen Pullover.",
+            "Sie sind im Kunstmuseum in Wien.",
+            "Hören Sie eine Beschreibung von einem Gemälde.",
+            "Welches ist es?",
+            "Kreuzen Sie an.",
+            "Hier sehen Sie das berühmteste österreichische Gemälde \"Der Kuss\"",
+            "Das Gemälde zeigt ein verliebtes Paar, das sich auf einer bunten Blumenwiese umarmt.",
+            "Klimt malte das Bild 1907/1908 auf dem Höhepunkt seiner\"goldenen Periode\".",
+            "Er benutzte eine neue Technik, die Öl- und Bronzefarbe mit Gold kombinierte.",
+            "Die Liebe.",
+            "Der österreichische Staat kaufte das bekannte Bild 1908.",
+            "Seit dieser Zeit gibt es dieses Gemälde im schönen Schloss Belvedere.",
+            "Hören Sie die Beschreibung noch einmal an.",
+            "Ergänzen Sie die fehlenden Endungen und Informationen im Text.",
+            "Beschreiben Sie die anderen zwei Bilder.",
+            "Die Redemittel im grünen Kasten können helfen.",
+            "Welches Museum haben Sie zuletzt besucht?",
+            "Welche anderen Museen kennen Sie?",
+            "Kennen Sie andere Künstler*innen und Kunstwerke?",
+            "Beschreiben Sie sie.",
+            "Suchen Sie online nach dem Gemälde \"Adele Bloch-Bauer I\" von Gustav Klimt und beschreiben Sie es.",
+            "Was sehen Sie?",
+            "Benutzen Sie die Redemittel im grünen Kasten.",
+            "Welche Gemeinsamkeiten und Unterschiede gibt es?",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie die Bewertungen über das Schloss Belvedere und beantworten Sie die Fragen.",
+            "Sind die Bewertungen positiv oder negativ?",
+            "Gibt es Kritik?",
+            "Was gibt es im Schloss Belvedere?",
+            "Was kann man dort machen oder sehen?",
+            "Welche anderen Informationen bekommt man?",
+            "Dem oberen und dem unteren Belvedere.",
+            "In beiden gibt es Kunstausstellungen mit berühmten Werken u.a.",
+            "Von Klimt und Schiele.",
+            "Riesige Räume!",
+            "Zu Fuß ist das Schloss vom Hauptbahnhof sehr schnell zu erreichen.",
+            "Bei gutem Wetter kann man im Schlossgarten sehr schön laufen und eine entspannte Zeit haben.",
+            "Ein toller Garten, bekanntes Klimt-Werk und noch mehr zu sehen",
+            "Ein Besuch im Belvedere lohnt sich sehr.",
+            "Nicht nur \"der Kuss\", sondern auch viele andere tolle Bilder von anderen bekannten Künstlern kann man sehen.",
+            "Es gibt auch einen wunderschönen Garten.",
+            "Aber schade, dass viele Besucher*innen absolut keine Rücksicht auf andere nehmen und immer Selfies mit Klimts \"der Kuss\" machen wollen.",
+            "Sie stehen oft im Weg und blockieren das Gemälde.",
+            "Das sollte meiner Meinung nach verboten sein.",
+            "Was kann man dort sehen oder machen?",
+            "Was empfehlen Sie (nicht)?",
+            "Entscheiden Sie selbst, ob Sie eine positive oder negative Bewertung schreiben.",
+            "Benutzen Sie mindestens 3 Adjektive."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

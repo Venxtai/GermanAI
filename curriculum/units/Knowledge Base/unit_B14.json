@@ -1,0 +1,351 @@
+{
+    "unit": "B14",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 14,
+        "prerequisite": "core 1-104, B1-B13"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Kommunikationsstrategie zu nachhaltigem Leben entwickeln"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design, create",
+                "frequency": 1613
+            },
+            {
+                "word": "argumentieren",
+                "pos": "VERB",
+                "translation": "to argue, reason",
+                "frequency": 3315
+            },
+            {
+                "word": "kopieren",
+                "pos": "VERB",
+                "translation": "to copy",
+                "frequency": 8746,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wahl",
+                "pos": "NOUN",
+                "translation": "choice; voting, election",
+                "frequency": 799,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Strategie",
+                "pos": "NOUN",
+                "translation": "strategy",
+                "frequency": 1477,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Plakat",
+                "pos": "NOUN",
+                "translation": "poster",
+                "frequency": 4219,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Ratschlag",
+                "pos": "NOUN",
+                "translation": "advice",
+                "frequency": 9602,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gewohnheit",
+                "pos": "NOUN",
+                "translation": "habit, custom",
+                "frequency": 11631,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Veränderung",
+                "pos": "NOUN",
+                "translation": "change"
+            },
+            {
+                "word": "die Umgebung",
+                "pos": "NOUN",
+                "translation": "surroundings; environment",
+                "frequency": 1466,
+                "cefr": "B1"
+            },
+            {
+                "word": "zunächst",
+                "pos": "ADV",
+                "translation": "initially; to begin with"
+            },
+            {
+                "word": "moralisch",
+                "pos": "ADJ",
+                "translation": "moral(ly)",
+                "frequency": 2279
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Dimension",
+                "pos": "NOUN",
+                "frequency": 1998
+            },
+            {
+                "word": "brainstormen",
+                "pos": "VERB"
+            },
+            {
+                "word": "inklusiv",
+                "pos": "ADV"
+            },
+            {
+                "word": "das Lebensstil",
+                "pos": "NOUN",
+                "frequency": 12927
+            },
+            {
+                "word": "rational",
+                "pos": "ADJ",
+                "frequency": 4507
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestaltet",
+                    "du": "hast gestaltet",
+                    "er": "hat gestaltet",
+                    "es": "hat gestaltet",
+                    "sie_singular": "hat gestaltet",
+                    "xier": "hat gestaltet",
+                    "wir": "haben gestaltet",
+                    "ihr": "habt gestaltet",
+                    "sie_plural": "haben gestaltet",
+                    "Sie": "haben gestaltet"
+                },
+                "Futur_I": {
+                    "ich": "werde gestalten",
+                    "du": "wirst gestalten",
+                    "er": "wird gestalten",
+                    "es": "wird gestalten",
+                    "sie_singular": "wird gestalten",
+                    "xier": "wird gestalten",
+                    "wir": "werden gestalten",
+                    "ihr": "werdet gestalten",
+                    "sie_plural": "werden gestalten",
+                    "Sie": "werden gestalten"
+                },
+                "imperative": {
+                    "du": "gestalt",
+                    "ihr": "gestaltet",
+                    "Sie": "gestalten Sie"
+                }
+            },
+            "argumentieren": {
+                "present": {
+                    "ich": "argumentiere",
+                    "du": "argumentierst",
+                    "er": "argumentiert",
+                    "es": "argumentiert",
+                    "sie_singular": "argumentiert",
+                    "xier": "argumentiert",
+                    "wir": "argumentieren",
+                    "ihr": "argumentiert",
+                    "sie_plural": "argumentieren",
+                    "Sie": "argumentieren"
+                },
+                "Perfekt": {
+                    "ich": "habe argumentiert",
+                    "du": "hast argumentiert",
+                    "er": "hat argumentiert",
+                    "es": "hat argumentiert",
+                    "sie_singular": "hat argumentiert",
+                    "xier": "hat argumentiert",
+                    "wir": "haben argumentiert",
+                    "ihr": "habt argumentiert",
+                    "sie_plural": "haben argumentiert",
+                    "Sie": "haben argumentiert"
+                },
+                "Futur_I": {
+                    "ich": "werde argumentieren",
+                    "du": "wirst argumentieren",
+                    "er": "wird argumentieren",
+                    "es": "wird argumentieren",
+                    "sie_singular": "wird argumentieren",
+                    "xier": "wird argumentieren",
+                    "wir": "werden argumentieren",
+                    "ihr": "werdet argumentieren",
+                    "sie_plural": "werden argumentieren",
+                    "Sie": "werden argumentieren"
+                },
+                "imperative": {
+                    "du": "argumentiere",
+                    "ihr": "argumentiert",
+                    "Sie": "argumentieren Sie"
+                }
+            },
+            "kopieren": {
+                "present": {
+                    "ich": "kopiere",
+                    "du": "kopierst",
+                    "er": "kopiert",
+                    "es": "kopiert",
+                    "sie_singular": "kopiert",
+                    "xier": "kopiert",
+                    "wir": "kopieren",
+                    "ihr": "kopiert",
+                    "sie_plural": "kopieren",
+                    "Sie": "kopieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kopiert",
+                    "du": "hast kopiert",
+                    "er": "hat kopiert",
+                    "es": "hat kopiert",
+                    "sie_singular": "hat kopiert",
+                    "xier": "hat kopiert",
+                    "wir": "haben kopiert",
+                    "ihr": "habt kopiert",
+                    "sie_plural": "haben kopiert",
+                    "Sie": "haben kopiert"
+                },
+                "Futur_I": {
+                    "ich": "werde kopieren",
+                    "du": "wirst kopieren",
+                    "er": "wird kopieren",
+                    "es": "wird kopieren",
+                    "sie_singular": "wird kopieren",
+                    "xier": "wird kopieren",
+                    "wir": "werden kopieren",
+                    "ihr": "werdet kopieren",
+                    "sie_plural": "werden kopieren",
+                    "Sie": "werden kopieren"
+                },
+                "imperative": {
+                    "du": "kopier",
+                    "ihr": "kopiert",
+                    "Sie": "kopieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ihr Ziel ist, in Ihrer Umgebung/Region Menschen zu nachhaltigem Handeln zu bewegen.",
+            "Das Thema oder den Fokus wählen Sie selbst aus.",
+            "Überlegen Sie mögliche Themen.",
+            "Schreiben Sie drei Themen auf und diskutieren Sie dann in der Gruppe, welches Thema Sie aus wählen möchten.",
+            "Brainstormen Sie jetzt zu Ihrem Thema:",
+            "Was ist das Problem?",
+            "Wer ist Ihre Zielgruppe?",
+            "Was könnte man anders machen?",
+            "Welche Ratschläge wollen Sie geben?",
+            "Denken Sie auch an die verschiedenen Aspekte von Kommunikation.",
+            "Positive Beispiele, die man leicht kopieren kann, 7) emotionale und rationale Argumente, 8) Optionen für Veränderungen (konkrete Ratschläge).",
+            "Planen Sie jetzt Ihr Medium: Wollen Sie ein Video machen oder ein Plakat oder …?",
+            "Welche Elemente hat Ihr Produkt ( Textelemente, Bilder, Symbole, Farben)?",
+            "In der Box können Sie Notizen zu den verschiedenen Präsentationen machen.",
+            "Schreiben Sie eine Frage zu jeder Präsentation auf.",
+            "Beantworten Sie dann auch Fragen zu Ihrer Präsentation.",
+            "Schreiben Sie für jede Präsentation auf, was besonders effektiv war (z.B.",
+            "Die Wahl der Bilder, die Farben des Symbols, der Text, hat man emotional und rational argumentiert, etc.)"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

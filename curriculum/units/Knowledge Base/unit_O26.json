@@ -1,0 +1,483 @@
+{
+    "unit": "O26",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 26,
+        "prerequisite": "core 1-104, O1-O25"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [
+            "Use obwohl (although) as a subordinating conjunction with the verb at the end to express concession."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Formen der Erinnerung vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Erinnerungskultur und Stolpersteine"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "Schau mal!", "pos": "PHRASE", "translation": "Look!" },
+            { "word": "erlauben", "pos": "VERB", "translation": "to allow", "frequency": 963, "cefr": "A1" },
+            { "word": "treten", "pos": "VERB", "translation": "to step; kick", "frequency": 367, "cefr": "B1" },
+            { "word": "unterbrechen", "pos": "VERB", "translation": "to disrupt, interrupt", "frequency": 2107, "cefr": "B1" },
+            { "word": "verlegen", "pos": "VERB", "translation": "to transfer; publish; misplace", "frequency": 3479 },
+            { "word": "der*die Bewohner*in", "pos": "NOUN", "translation": "resident", "frequency": 2252, "cefr": "B1" },
+            { "word": "der Nationalsozialismus (NS)", "pos": "ADJ", "translation": "National Socialism (NS)" },
+            { "word": "die Gewalt", "pos": "NOUN", "translation": "violence", "frequency": 1361, "cefr": "B1" },
+            { "word": "die Tat", "pos": "NOUN", "translation": "action", "frequency": 1178, "cefr": "B1" },
+            { "word": "das Grundstück", "pos": "NOUN", "translation": "property, premise", "frequency": 1, "cefr": "A1" },
+            { "word": "der Stein", "pos": "NOUN", "translation": "stone, brick", "frequency": 1181, "cefr": "B1" },
+            { "word": "der Stolperstein", "pos": "NOUN", "translation": "stumbling stone", "frequency": 15953, "cefr": "B2" },
+            { "word": "obwohl", "pos": "CONJ", "translation": "although, though, despite", "frequency": 390, "cefr": "B1" },
+            { "word": "niemand", "pos": "PRON", "translation": "nobody", "frequency": 362, "cefr": "A2" },
+            { "word": "theoretisch", "pos": "ADJ", "translation": "theoretical", "frequency": 1129, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "traumatisch", "pos": "ADJ", "frequency": 24244 },
+            { "word": "die Positive", "pos": "NOUN", "frequency": 10301 },
+            { "word": "die Balance", "pos": "NOUN", "frequency": 10271 },
+            { "word": "metaphorisch", "pos": "ADV" },
+            { "word": "die Pandemie", "pos": "NOUN", "frequency": 35311 },
+            { "word": "das Archiv", "pos": "NOUN", "frequency": 4825 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erlauben": {
+                "present": {
+                    "ich": "erlaube",
+                    "du": "erlaubst",
+                    "er": "erlaubt",
+                    "es": "erlaubt",
+                    "sie_singular": "erlaubt",
+                    "xier": "erlaubt",
+                    "wir": "erlauben",
+                    "ihr": "erlaubt",
+                    "sie_plural": "erlauben",
+                    "Sie": "erlauben"
+                },
+                "Perfekt": {
+                    "ich": "habe erlaubt",
+                    "du": "hast erlaubt",
+                    "er": "hat erlaubt",
+                    "es": "hat erlaubt",
+                    "sie_singular": "hat erlaubt",
+                    "xier": "hat erlaubt",
+                    "wir": "haben erlaubt",
+                    "ihr": "habt erlaubt",
+                    "sie_plural": "haben erlaubt",
+                    "Sie": "haben erlaubt"
+                },
+                "Futur_I": {
+                    "ich": "werde erlauben",
+                    "du": "wirst erlauben",
+                    "er": "wird erlauben",
+                    "es": "wird erlauben",
+                    "sie_singular": "wird erlauben",
+                    "xier": "wird erlauben",
+                    "wir": "werden erlauben",
+                    "ihr": "werdet erlauben",
+                    "sie_plural": "werden erlauben",
+                    "Sie": "werden erlauben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erlauben",
+                    "du": "würdest erlauben",
+                    "er": "würde erlauben",
+                    "es": "würde erlauben",
+                    "sie_singular": "würde erlauben",
+                    "xier": "würde erlauben",
+                    "wir": "würden erlauben",
+                    "ihr": "würdet erlauben",
+                    "sie_plural": "würden erlauben",
+                    "Sie": "würden erlauben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erlaubt",
+                    "du": "hättest erlaubt",
+                    "er": "hätte erlaubt",
+                    "es": "hätte erlaubt",
+                    "sie_singular": "hätte erlaubt",
+                    "xier": "hätte erlaubt",
+                    "wir": "hätten erlaubt",
+                    "ihr": "hättet erlaubt",
+                    "sie_plural": "hätten erlaubt",
+                    "Sie": "hätten erlaubt"
+                },
+                "imperative": {
+                    "du": "erlaube",
+                    "ihr": "erlaubt",
+                    "Sie": "erlauben Sie"
+                }
+            },
+            "treten": {
+                "present": {
+                    "ich": "trete",
+                    "du": "trittst",
+                    "er": "tritt",
+                    "es": "tritt",
+                    "sie_singular": "tritt",
+                    "xier": "tritt",
+                    "wir": "treten",
+                    "ihr": "tretet",
+                    "sie_plural": "treten",
+                    "Sie": "treten"
+                },
+                "Perfekt": {
+                    "ich": "habe getreten",
+                    "du": "hast getreten",
+                    "er": "hat getreten",
+                    "es": "hat getreten",
+                    "sie_singular": "hat getreten",
+                    "xier": "hat getreten",
+                    "wir": "haben getreten",
+                    "ihr": "habt getreten",
+                    "sie_plural": "haben getreten",
+                    "Sie": "haben getreten"
+                },
+                "Futur_I": {
+                    "ich": "werde treten",
+                    "du": "wirst treten",
+                    "er": "wird treten",
+                    "es": "wird treten",
+                    "sie_singular": "wird treten",
+                    "xier": "wird treten",
+                    "wir": "werden treten",
+                    "ihr": "werdet treten",
+                    "sie_plural": "werden treten",
+                    "Sie": "werden treten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde treten",
+                    "du": "würdest treten",
+                    "er": "würde treten",
+                    "es": "würde treten",
+                    "sie_singular": "würde treten",
+                    "xier": "würde treten",
+                    "wir": "würden treten",
+                    "ihr": "würdet treten",
+                    "sie_plural": "würden treten",
+                    "Sie": "würden treten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte getreten",
+                    "du": "hättest getreten",
+                    "er": "hätte getreten",
+                    "es": "hätte getreten",
+                    "sie_singular": "hätte getreten",
+                    "xier": "hätte getreten",
+                    "wir": "hätten getreten",
+                    "ihr": "hättet getreten",
+                    "sie_plural": "hätten getreten",
+                    "Sie": "hätten getreten"
+                },
+                "imperative": {
+                    "du": "tritt",
+                    "ihr": "tretet",
+                    "Sie": "treten Sie"
+                }
+            },
+            "unterbrechen": {
+                "present": {
+                    "ich": "unterbreche",
+                    "du": "unterbrichst",
+                    "er": "unterbricht",
+                    "es": "unterbricht",
+                    "sie_singular": "unterbricht",
+                    "xier": "unterbricht",
+                    "wir": "unterbrechen",
+                    "ihr": "unterbrecht",
+                    "sie_plural": "unterbrechen",
+                    "Sie": "unterbrechen"
+                },
+                "Perfekt": {
+                    "ich": "habe unterbrochen",
+                    "du": "hast unterbrochen",
+                    "er": "hat unterbrochen",
+                    "es": "hat unterbrochen",
+                    "sie_singular": "hat unterbrochen",
+                    "xier": "hat unterbrochen",
+                    "wir": "haben unterbrochen",
+                    "ihr": "habt unterbrochen",
+                    "sie_plural": "haben unterbrochen",
+                    "Sie": "haben unterbrochen"
+                },
+                "Futur_I": {
+                    "ich": "werde unterbrechen",
+                    "du": "wirst unterbrechen",
+                    "er": "wird unterbrechen",
+                    "es": "wird unterbrechen",
+                    "sie_singular": "wird unterbrechen",
+                    "xier": "wird unterbrechen",
+                    "wir": "werden unterbrechen",
+                    "ihr": "werdet unterbrechen",
+                    "sie_plural": "werden unterbrechen",
+                    "Sie": "werden unterbrechen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde unterbrechen",
+                    "du": "würdest unterbrechen",
+                    "er": "würde unterbrechen",
+                    "es": "würde unterbrechen",
+                    "sie_singular": "würde unterbrechen",
+                    "xier": "würde unterbrechen",
+                    "wir": "würden unterbrechen",
+                    "ihr": "würdet unterbrechen",
+                    "sie_plural": "würden unterbrechen",
+                    "Sie": "würden unterbrechen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte unterbrochen",
+                    "du": "hättest unterbrochen",
+                    "er": "hätte unterbrochen",
+                    "es": "hätte unterbrochen",
+                    "sie_singular": "hätte unterbrochen",
+                    "xier": "hätte unterbrochen",
+                    "wir": "hätten unterbrochen",
+                    "ihr": "hättet unterbrochen",
+                    "sie_plural": "hätten unterbrochen",
+                    "Sie": "hätten unterbrochen"
+                },
+                "imperative": {
+                    "du": "unterbrich",
+                    "ihr": "unterbrecht",
+                    "Sie": "unterbrechen Sie"
+                }
+            },
+            "verlegen": {
+                "present": {
+                    "ich": "verlege",
+                    "du": "verlegst",
+                    "er": "verlegt",
+                    "es": "verlegt",
+                    "sie_singular": "verlegt",
+                    "xier": "verlegt",
+                    "wir": "verlegen",
+                    "ihr": "verlegt",
+                    "sie_plural": "verlegen",
+                    "Sie": "verlegen"
+                },
+                "Perfekt": {
+                    "ich": "habe verlegt",
+                    "du": "hast verlegt",
+                    "er": "hat verlegt",
+                    "es": "hat verlegt",
+                    "sie_singular": "hat verlegt",
+                    "xier": "hat verlegt",
+                    "wir": "haben verlegt",
+                    "ihr": "habt verlegt",
+                    "sie_plural": "haben verlegt",
+                    "Sie": "haben verlegt"
+                },
+                "Futur_I": {
+                    "ich": "werde verlegen",
+                    "du": "wirst verlegen",
+                    "er": "wird verlegen",
+                    "es": "wird verlegen",
+                    "sie_singular": "wird verlegen",
+                    "xier": "wird verlegen",
+                    "wir": "werden verlegen",
+                    "ihr": "werdet verlegen",
+                    "sie_plural": "werden verlegen",
+                    "Sie": "werden verlegen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verlegen",
+                    "du": "würdest verlegen",
+                    "er": "würde verlegen",
+                    "es": "würde verlegen",
+                    "sie_singular": "würde verlegen",
+                    "xier": "würde verlegen",
+                    "wir": "würden verlegen",
+                    "ihr": "würdet verlegen",
+                    "sie_plural": "würden verlegen",
+                    "Sie": "würden verlegen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verlegt",
+                    "du": "hättest verlegt",
+                    "er": "hätte verlegt",
+                    "es": "hätte verlegt",
+                    "sie_singular": "hätte verlegt",
+                    "xier": "hätte verlegt",
+                    "wir": "hätten verlegt",
+                    "ihr": "hättet verlegt",
+                    "sie_plural": "hätten verlegt",
+                    "Sie": "hätten verlegt"
+                },
+                "imperative": {
+                    "du": "verlege",
+                    "ihr": "verlegt",
+                    "Sie": "verlegen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie erinnern wir uns?",
+            "Denkmal vs.",
+            "Zu Hause haben Sie den Unterschied zwischen den Begriffen „Denkmal und „Mahnmal kennengelernt.",
+            "Lesen Sie die Definitionen und Beispiele.",
+            "Tragen Sie ein, ob sie zu „Denkmal (D) oder „Mahnmal (M) gehören.",
+            "Es erinnert an positive Ereignisse.",
+            "Menschen möchten sie in guter Erinnerung halten.",
+            "Es erinnert an negative oder traumatische Ereignisse.",
+            "Menschen möchten vor ihnen warnen.",
+            "Orte/Gebäude, die an Krieg oder Gewalt erinnern.",
+            "Statuen für berühmte Personen, die etwas Positives gemacht haben.",
+            "Schreiben Sie einen obwohl Satz zum Begriff „Mahnmal und einen weil Satz zum Begriff „Denkmal.",
+            "Das Mahnmal erinnert an Ereignisse, obwohl sie negativ sind.",
+            "Das Denkmal erinnert an Ereignisse, weil sie positiv sind, weil Menschen sie in guter Erinnerung halten möchten.",
+            "Wählen Sie ein Denkmal oder Mahnmal aus Ihrer Region aus.",
+            "Erklären, warum es ein Denkmal oder Mahnmal ist.",
+            "Eine Person „stolpert, wenn sie beim Laufen die Balance verliert.",
+            "S kann passieren, dass sie fällt.",
+            "Stolpern stoppt also plötzlich eine Bewegung.",
+            "Welche Ereignisse oder Dinge unterbrechen Sie in Ihrem Leben?",
+            "Welche negativen und positiven Konsequenzen hat das?",
+            "Dann hören Sie den Text über das Projekt „Stolpersteine und beantworten Sie die Fragen.",
+            "Wer hat das Stolpersteinprojekt begonnen?",
+            "Der Künstler Gunter Demnig hat das Projekt begonnen.",
+            "An wen erinnern die Stolpersteine?",
+            "Die Stolpersteine erinnern an die Opfer im Nationalsozialismus.",
+            "Wie viel kostet ein Stolperstein?",
+            "Ein Stolperstein kostet 120 Euro.",
+            "Wer kann einen Stolperstein vorschlagen?",
+            "Wie lange dauert es, bis ein Stolperstein liegt?",
+            "Es dauert lange, circa 9 Monate.",
+            "Wie weiß man, ob es schon einen Stolperstein für eine Person gibt?",
+            "Man kann sich bei der Stadt oder einen lokalen Stolperstein-Gruppe informieren.",
+            "Hey, schau mal, was hier auf dem Boden ist.",
+            "Das ist so ein goldener Stein mit Namen.",
+            "Ja, das ist ein Stolperstein.",
+            "Diese Steine kann man in vielen Städten vor Häusern sehen, in denen Opfer von den Nazis gewohnt haben.",
+            "Interessante Idee.",
+            "Wer hat das gemacht?",
+            "Die Idee kommt von dem Künstler Gunter Demnig.",
+            "Wie schreibt man das denn?",
+            "Gunter wie man es spricht und Demnig schreibt man D-E-M-N-I-G.",
+            "Und für wen hat Demnig diese Stolpersteine gemacht?",
+            "Demnig möchte, dass die Stolpersteine an die Opfer im Nationalsozialismus erinnern.",
+            "Und kann jeder so einen Stolperstein legen?",
+            "Ja, theoretisch schon.",
+            "Aber beim ersten Stolperstein in einer Stadt muss man die Stadt fragen.",
+            "Kostet ein Stolperstein etwas?",
+            "Ja, ein Stolperstein kostet 120 Euro und es dauert auch eine lange Zeit, bis er liegt.",
+            "Wie lange denn?",
+            "Circa 9 Monate.",
+            "Und wenn ich jetzt einen Stolperstein legen möchte, wo kann ich mich informieren?",
+            "Bei der Stadt oder bei einer lokalen Stolperstein-Gruppe.",
+            "Die haben ein Archiv und wissen für welche Personen es schon Stolpersteine gibt.",
+            "Sehr interessant, da werde ich mich weiter informieren.",
+            "Der Künstler hat Stolpersteine für die Erinnerung an Opfer der NS-Zeit gewählt, damit man im Kopf stolpert.",
+            "Man soll an die Opfer denken und über die Taten der Nazis nachdenken.",
+            "Wie finden Sie das Konzept?",
+            "Lesen Sie den Text und markieren Sie, wo es in den Städten (keine) Stolpersteine gibt.",
+            "Stolpersteine gibt es in vielen Städten.",
+            "Manche Städte erlauben das Verlegen der Stolpersteine aber nicht.",
+            "In München dürfen Menschen Stolpersteine zum Beispiel nur auf privatem Boden verlegen.",
+            "Auf öffentlichem Boden verbietet die Stadt das Setzen von Stolpersteinen.",
+            "Niemand soll auf die Opfer treten.",
+            "Der Stadt entscheidet sich also für Tafeln an Hauswänden.",
+            "[ Haus Besitzer*innen ] können sich aber informieren, ob es in ihren Häusern Opfer des Nationalsozialismus gegeben hat.",
+            "Sie können dann Stolpersteine auf ihrem privaten Grundstück verlegen.",
+            "Es gibt schon über hundert Stolpersteine in München, die jede*r mit einer App finden kann.",
+            "Sind gegen diese Tafeln.",
+            "Sie haben Angst, dass jemand ihre Häuser kaputt machen könnte.",
+            "Mehrere Initiativen legen deshalb die „Steine der Erinnerung vor die Häuser.",
+            "Es gibt in Wien inzwischen über hundert „Steine der Erinnerung oder „Steine des Gedenkens, wie sie hier heißen.",
+            "Welche Aussagen passen zu München (M) und welche zu Wien (W)?",
+            "Dürfen Stolpersteine auf privatem Grund verlegt werden. … dürfen Stolpersteine nicht auf öffentlichem Grund verlegt werden.",
+            "Die Hausb ewohner *innen [ Haus Bewohner *innen ] finden Stolpersteine besser. …",
+            "Heißen die Stolpersteine „Steine des Gedenkens oder „Steine der Erinnerung. …",
+            "Kann die Position der Stolpersteine mit einer App herausgefunden werden.",
+            "Welche Argumente gibt es im Text für und gegen Orte des Gedenkens?",
+            "Verstehen Sie die Argumente?",
+            "Beschreiben Sie die Formen von öffentlichem Erinnern in München und in Wien.",
+            "Benutzen Sie dabei auch die Konnektoren „weil, „dass und „obwohl.",
+            "In München darf man keine Stolpersteine verlegen, weil man nicht auf die Opfer treten soll.",
+            "Obwohl man nicht auf die Opfer treten soll, finden manche Hausbesitzer*innen Stolpersteine besser.",
+            "Obwohl die Stadt München keine Stolpersteine will, dürfen privat Hausbesitzer*innen",
+            "Obwohl München Stolpersteine verbietet, gibt es schon über hundert Stolpersteine in München.",
+            "Die Hausbesitzer*innen in Wien haben Angst, dass jemand die Häuser kaputt macht.",
+            "Weil sie Angst haben, legen die Hausbesitzer*innen in Wien lieber Stolpersteine."
+        ],
+        "templated": []
+    }
+}

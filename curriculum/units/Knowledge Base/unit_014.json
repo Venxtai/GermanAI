@@ -1,0 +1,412 @@
+{
+  "unit": "14",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 14,
+    "prerequisite": "1-13"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative",
+      "accusative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "Fragen stellen und beantworten"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": []
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "kennen",
+        "pos": "VERB",
+        "translation": "to be familiar with; know",
+        "frequency": 216,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Wohnort",
+        "pos": "NOUN",
+        "translation": "residence",
+        "frequency": 9102,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Herkunft",
+        "pos": "NOUN",
+        "translation": "origin",
+        "frequency": 2697,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Studium, Studien",
+        "pos": "NOUN",
+        "translation": "study",
+        "frequency": 1398,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Hobby",
+        "pos": "NOUN",
+        "translation": "hobby",
+        "frequency": 3608,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Laptop",
+        "pos": "NOUN",
+        "translation": "laptop",
+        "frequency": 10960,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Liste",
+        "pos": "NOUN",
+        "translation": "list",
+        "frequency": 1792,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Minute",
+        "pos": "NOUN",
+        "translation": "minute",
+        "frequency": 324,
+        "cefr": "A1"
+      },
+      {
+        "word": "dann",
+        "pos": "ADV",
+        "translation": "then",
+        "frequency": 41,
+        "cefr": "A1"
+      },
+      {
+        "word": "erst",
+        "pos": "ADV",
+        "translation": "first",
+        "frequency": 132,
+        "cefr": "A2"
+      },
+      {
+        "word": "interessant",
+        "pos": "ADJ",
+        "translation": "interesting",
+        "frequency": 810,
+        "cefr": "A2"
+      },
+      {
+        "word": "jetzt",
+        "pos": "ADV",
+        "translation": "now",
+        "frequency": 72,
+        "cefr": "A1"
+      },
+      {
+        "word": "schon",
+        "pos": "ADV",
+        "translation": "already",
+        "frequency": 61,
+        "cefr": "A1"
+      },
+      {
+        "word": "unter",
+        "pos": "PREP",
+        "translation": "below; under; underneath",
+        "frequency": 89,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Wortfrage",
+        "pos": "NOUN"
+      },
+      {
+        "word": "die Satzfrage",
+        "pos": "NOUN"
+      },
+      {
+        "word": "kombinieren",
+        "pos": "VERB",
+        "frequency": 3864
+      },
+      {
+        "word": "wiederschauen",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "kennen": {
+        "present": {
+          "ich": "kenne",
+          "du": "kennst",
+          "er": "kennt",
+          "es": "kennt",
+          "sie_singular": "kennt",
+          "xier": "kennt",
+          "wir": "kennen",
+          "ihr": "kennt",
+          "sie_plural": "kennen",
+          "Sie": "kennen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Welche Fragen kennen Sie schon?",
+      "Machen Sie eine Liste.",
+      "Wie heißt du?",
+      "Woher kommst du?",
+      "Wo wohnst du?",
+      "Wie alt bist du?",
+      "Was studierst du?",
+      "Studierst du X?",
+      "Wie schreibt man das?",
+      "Ist das X?",
+      "Hast du X?",
+      "Was machst du gern?",
+      "Reisen, singen, Fußball spielen Kai Pronomen:",
+      "Wie ist Ranas Pronomen?",
+      "Ranas Pronomen ist sie.",
+      "Wie alt ist sie?",
+      "Sie ist 17 Jahre alt.",
+      "Was studiert sie?",
+      "Sie studiert Chemie",
+      "Woher kommt sie?",
+      "Sie kommt aus München",
+      "Wo wohnt sie?",
+      "Sie wohnt in München.",
+      "Was macht sie gern?",
+      "Sie reist gern, sie singt gern und sie spielt gern Fußball.",
+      "Was ist Kais Pronomen?",
+      "Kais Pronomen ist er.",
+      "Wie alt ist er?",
+      "Er ist 19 Jahre alt.",
+      "Was studiert er?",
+      "Er studiert Geschichte",
+      "Woher kommt er?",
+      "Er kommt aus Los Angeles.",
+      "Wo wohnt er?",
+      "Er wohnt in Hamburg.",
+      "Was macht er gern?",
+      "Er kocht gern, er spielt gern Videospiele und er lernt gern Deutsch.",
+      "Ist Rana 28 Jahre alt?",
+      "Nein, sie ist nicht 28 Jahre ist.",
+      "Studiert Kai Wirtschaft?",
+      "Nein, er studiert nicht Wirtschaft.",
+      "Schreiben Sie die Nominativartikel (der, die, das) unter die Dinge.",
+      "Der Beamer der Fußball das Auto",
+      "Das Handy die Pflanze der Tisch",
+      "Die Katze die Uhr der Laptop",
+      "Was ist das?",
+      "Das schreibt man L-A-P-T-O-P",
+      "Fragen Sie nach Dingen.",
+      "Wo ist das Auto?",
+      "Da ist es!",
+      "Stellen Sie Satzfragen über die Dinge.",
+      "Ist das ein Tisch?",
+      "Nein, das ist kein Tisch.",
+      "Das ist eine Stuhl.",
+      "Ist das eine Uhr?",
+      "Nein, das ist keine Uhr.",
+      "Das ist ein Buch.",
+      "Was hat er?",
+      "Was hat sie?",
+      "Hat sie eine Wasserflasche?",
+      "Ja, sie hat eine Wasserflasche.",
+      "Hat er einen Fußball?",
+      "Nein, er hat keinen Fußball.",
+      "Er hat ein e Lampe.",
+      "Sie hat einen Fußball.",
+      "Ist es ihr Ding oder sein Ding?",
+      "Ist das sein Buch?",
+      "Nein, das ist nicht sein Buch.",
+      "Das ist ihr Buch.",
+      "Ist das ihre Uhr?",
+      "Ja, das ist ihre Uhr.",
+      "Fragen Sie jetzt über Dinge im Kurs.",
+      "Kombinieren Sie die Fragetypen.",
+      "Schreiben Sie sechs interessante Fragen aus X auf.",
+      "Machen Sie drei Minuten Smalltalk auf Deutsch.",
+      "Stellen und beantworten Sie Fragen.",
+      "Fragen Sie auch \"und du?",
+      "\" Grüß Gott!",
+      "Auf Wiedersehen!",
+      "Guten Morgen!",
+      "Auf Wiederschauen!",
+      "Uf Wiederluege!",
+      "Und du?"
+    ],
+    "templated": [
+      {
+        "template": "Nein, er studiert nicht {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Nein, er studiert nicht Wirtschaft."
+        ],
+        "grammar_note": "Negation with nicht, verb studieren, 3rd person singular."
+      },
+      {
+        "template": "Wo ist {LOCATABLE_OBJECT_NOM_DEF}?",
+        "source_literals": [
+          "Wo ist das Auto?"
+        ],
+        "grammar_note": "Location question with definite article, nominative."
+      },
+      {
+        "template": "Das ist {IDENTIFIABLE_OBJECT_NOM_INDEF}.",
+        "source_literals": [
+          "Das ist eine Stuhl.",
+          "Das ist ein Buch."
+        ],
+        "grammar_note": "Identification with indefinite article, nominative."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "IDENTIFIABLE_OBJECT_NOM_INDEF": {
+      "type": "closed",
+      "description": "Everyday/classroom objects for identification",
+      "grammar": "nominative, indefinite article included",
+      "options": [
+        "ein Auto",
+        "ein Beamer",
+        "ein Buch",
+        "ein Fenster",
+        "ein Foto",
+        "ein Fußball",
+        "ein Handy",
+        "ein Hund",
+        "ein Laptop",
+        "ein Stuhl",
+        "ein Tisch",
+        "ein Videospiel",
+        "ein Wasser",
+        "eine Katze",
+        "eine Lampe",
+        "eine Leinwand",
+        "eine Pflanze",
+        "eine Tafel",
+        "eine Tastatur",
+        "eine Tür",
+        "eine Uhr",
+        "eine Wand"
+      ]
+    },
+    "LOCATABLE_OBJECT_NOM_DEF": {
+      "type": "closed",
+      "description": "Everyday/classroom objects for location questions",
+      "grammar": "nominative, definite article included",
+      "options": [
+        "das Auto",
+        "das Buch",
+        "das Fenster",
+        "das Foto",
+        "das Handy",
+        "das Videospiel",
+        "das Wasser",
+        "der Beamer",
+        "der Fußball",
+        "der Hund",
+        "der Laptop",
+        "der Stuhl",
+        "der Tisch",
+        "die Katze",
+        "die Lampe",
+        "die Leinwand",
+        "die Pflanze",
+        "die Tafel",
+        "die Tastatur",
+        "die Tür",
+        "die Uhr",
+        "die Wand"
+      ]
+    },
+    "STUDYABLE_SUBJECT_NP_ACC": {
+      "type": "closed",
+      "description": "Academic subjects one can study",
+      "grammar": "accusative, no article",
+      "options": [
+        "Deutsch",
+        "Germanistik",
+        "Geschichte",
+        "Informatik",
+        "Mathematik",
+        "Musik",
+        "Wirtschaft"
+      ]
+    }
+  }
+}

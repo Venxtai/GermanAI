@@ -1,0 +1,400 @@
+{
+    "unit": "B12",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 12,
+        "prerequisite": "core 1-104, B1-B11"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die vier Seiten einer Nachricht interpretieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kommunikation"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "erwarten",
+                "pos": "VERB",
+                "translation": "to expect",
+                "frequency": 389,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausrauben",
+                "pos": "VERB",
+                "translation": "to rob",
+                "frequency": 21758
+            },
+            {
+                "word": "die Selbstaussage",
+                "pos": "NOUN",
+                "translation": "self-revelation",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Sachinhalt",
+                "pos": "NOUN",
+                "translation": "content; facts",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Appell",
+                "pos": "NOUN",
+                "translation": "appeal",
+                "frequency": 7690,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Beziehungsebene",
+                "pos": "NOUN",
+                "translation": "interpersonal level",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Beziehung",
+                "pos": "NOUN",
+                "translation": "relationship, relation",
+                "frequency": 649,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ebene",
+                "pos": "NOUN",
+                "translation": "level; layer; aspect",
+                "frequency": 819,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Termin",
+                "pos": "NOUN",
+                "translation": "appointment",
+                "frequency": 2213,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Lawine",
+                "pos": "NOUN",
+                "translation": "avalanche",
+                "frequency": 13354,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mannschaft",
+                "pos": "NOUN",
+                "translation": "team (sports)",
+                "frequency": 1099,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Kommunikationsmodell",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Anweisung",
+                "pos": "NOUN",
+                "frequency": 4271,
+                "cefr": "B2"
+            },
+            {
+                "word": "nerven",
+                "pos": "ADV",
+                "frequency": 3610
+            },
+            {
+                "word": "der Parkplatz",
+                "pos": "NOUN",
+                "frequency": 3106
+            },
+            {
+                "word": "annschaften",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Model",
+                "pos": "NOUN",
+                "frequency": 7813,
+                "cefr": "A2"
+            },
+            {
+                "word": "rollen",
+                "pos": "VERB",
+                "frequency": 2490
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erwarten": {
+                "present": {
+                    "ich": "erwarte",
+                    "du": "erwartest",
+                    "er": "erwartet",
+                    "es": "erwartet",
+                    "sie_singular": "erwartet",
+                    "xier": "erwartet",
+                    "wir": "erwarten",
+                    "ihr": "erwartet",
+                    "sie_plural": "erwarten",
+                    "Sie": "erwarten"
+                },
+                "Perfekt": {
+                    "ich": "habe erwartet",
+                    "du": "hast erwartet",
+                    "er": "hat erwartet",
+                    "es": "hat erwartet",
+                    "sie_singular": "hat erwartet",
+                    "xier": "hat erwartet",
+                    "wir": "haben erwartet",
+                    "ihr": "habt erwartet",
+                    "sie_plural": "haben erwartet",
+                    "Sie": "haben erwartet"
+                },
+                "Futur_I": {
+                    "ich": "werde erwarten",
+                    "du": "wirst erwarten",
+                    "er": "wird erwarten",
+                    "es": "wird erwarten",
+                    "sie_singular": "wird erwarten",
+                    "xier": "wird erwarten",
+                    "wir": "werden erwarten",
+                    "ihr": "werdet erwarten",
+                    "sie_plural": "werden erwarten",
+                    "Sie": "werden erwarten"
+                },
+                "imperative": {
+                    "du": "erwarte",
+                    "ihr": "erwartet",
+                    "Sie": "erwarten Sie"
+                }
+            },
+            "ausrauben": {
+                "present": {
+                    "ich": "raube aus",
+                    "du": "raubst aus",
+                    "er": "raubt aus",
+                    "es": "raubt aus",
+                    "sie_singular": "raubt aus",
+                    "xier": "raubt aus",
+                    "wir": "rauben aus",
+                    "ihr": "raubt aus",
+                    "sie_plural": "rauben aus",
+                    "Sie": "rauben aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgeraubt",
+                    "du": "hast ausgeraubt",
+                    "er": "hat ausgeraubt",
+                    "es": "hat ausgeraubt",
+                    "sie_singular": "hat ausgeraubt",
+                    "xier": "hat ausgeraubt",
+                    "wir": "haben ausgeraubt",
+                    "ihr": "habt ausgeraubt",
+                    "sie_plural": "haben ausgeraubt",
+                    "Sie": "haben ausgeraubt"
+                },
+                "Futur_I": {
+                    "ich": "werde ausrauben",
+                    "du": "wirst ausrauben",
+                    "er": "wird ausrauben",
+                    "es": "wird ausrauben",
+                    "sie_singular": "wird ausrauben",
+                    "xier": "wird ausrauben",
+                    "wir": "werden ausrauben",
+                    "ihr": "werdet ausrauben",
+                    "sie_plural": "werden ausrauben",
+                    "Sie": "werden ausrauben"
+                },
+                "imperative": {
+                    "du": "raub aus",
+                    "ihr": "raubt aus",
+                    "Sie": "rauben Sie aus"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Zu Hause haben Sie ein Kommunikationsmodell mit vier Ebenen kennengelernt.",
+            "Ordnen Sie die Fragen den vier Ebenen zu.",
+            "Gehören Sie zur Person, die spricht (Mund) oder zur Person, die zuhört (Ohr)?",
+            "Was sagt die Person über sich selbst?",
+            "Was bedeutet das für unsere Beziehung?",
+            "Was will ich über mich selbst sagen?",
+            "Was will ich über unsere Beziehung sagen?",
+            "Welche Fakten soll ich verstehen?",
+            "Was soll ich machen?",
+            "Welche Fakten möchte ich kommunizieren?",
+            "Welche Aktion erwarte ich von der Person?",
+            "Was will die Person kommunizieren?",
+            "Was empfängt die andere Person?",
+            "Hören Sie die drei Dialoge.",
+            "Dann lesen Sie sie laut.",
+            "Ich fahr' ja schon!",
+            "Ich wollte dir nur sagen, d ass die Ampel grün ist.",
+            "Atima: Danke?!",
+            "Ich komme noch zu spät!",
+            "Warum willst du auch immer erst so spät fahren, auch wenn du einen Termin hast?",
+            "Der Termin ist mir nicht so wichtig, ich will dir nur helfen.",
+            "Sie meint Fatima in den drei Dialogen (Was will sie kommunizieren)?",
+            "Und wie hat es Herbert verstanden (Was hat er empfangen)?",
+            "Kreuzen Sie an.",
+            "Die Ampel ist grün.",
+            "Ich muss schnell zu einem Termin.",
+            "Ich will dir helfen..",
+            "Du brauchst meine Hilfe.",
+            "Fatima sitzt in der Badewanne und sagt Das Wasser ist kalt.",
+            "Sie will einen Appell kommunizieren.",
+            "Was meint sie?",
+            "Mach bitte das Wasser wärmer.",
+            "Sie bekommen eine grüne Nachrichtenkarte oder eine gelbe Reaktionskarte.",
+            "Lesen Sie die Anweisungen auf Ihrer Karte.",
+            "Hast du ein neues Rezept für die Pizza benutzt?",
+            "Sie wollen kommunizieren, dass die Pizza gut schmeck t.",
+            "Sagen Sie den Satz ganz freundlich.",
+            "Betonen Sie das Wort neues.",
+            "Der Mülleimer ist voll!",
+            "Sie wollen kommunizieren, dass Sie volle Mülleimer gar nicht mögen.",
+            "Sprechen Sie sehr laut.",
+            "Sagen Sie den Satz wütend.",
+            "Betonen Sie das Wort Mülleimer.",
+            "Da ist etwas Grünes in der Suppe.",
+            "Sie wollen kommunizieren, dass Sie nicht wissen, was das Grüne ist.",
+            "Sagen Sie den Satz neutral.",
+            "Zeigen Sie dem Vater, dass Sie wissen wollen, was da in der Suppe ist.",
+            "Betonen Sie das Wort Grünes.",
+            "Die Musik hier ist laut.",
+            "S ie wollen kommunizieren, dass es nicht okay ist, so laut Musik zu hören.",
+            "Sie sind aber ganz nett und ruhig.",
+            "Zeigen Sie der anderen Person, dass Sie nicht böse sind, aber wollen, dass sie die Musik leiser macht.",
+            "Betonen Sie laut.",
+            "In der Stadt gibt es ein neues Restaurant.",
+            "S ie wollen nur den Fakt kommunizieren, dass es ein neues Restaurant gibt.",
+            "Betonen Sie die Wörter neues Restaurant.",
+            "Man darf hier 100 km/h fahren.",
+            "Sie wollen kommunizieren, dass die andere Person schneller fahren soll.",
+            "Sie sind sehr genervt und sagen den Satz etwas aggressiv.",
+            "Wann hast du denn die Wand im Wohnzimmer gelb gestrichen?",
+            "Sie lieben die Farbe gelb.",
+            "Kommunizieren Sie, wie toll Sie die neue Farbe finden.",
+            "Sagen Sie Ihren Satz ganz enthusiastisch.",
+            "Betonen Sie das Wort gelb.",
+            "Dieser Parkplatz ist sehr klein.",
+            "Sie wollen kommunizieren, dass Sie Angst um das Auto haben.",
+            "Ihre Aussage ist ein Appell an die andere Person, einen größeren Parkplatz zu finden.",
+            "Betonen Sie das Wort sehr.",
+            "Wenn Ihre Lehrkraft ein Signal gibt, kommen immer eine Person mit einer gelben und eine Person mit einer grünen Karte zusammen.",
+            "Machen Sie, was auf Ihrer Karte steht:",
+            "Die Person mit der grünen Karte liest eine Nachricht vor und die Person mit der gelben Karte reagiert.",
+            "Beim nächsten Signal suchen Sie eine neue Person.",
+            "Jetzt bekommen Personen mit einer grünen Karte bekommen eine gelbe Karte und Personen mit einer gelben Karte bekommen jetzt eine grüne.",
+            "Marten Laciny aus Rostock ist seit seinem 16.",
+            "Lebensjahr als Rapper unter dem Namen Marteria aktiv.",
+            "Er wurde 1982 geboren.",
+            "Er benutzt auch den Künstlernamen Marsimoto.",
+            "Seit 2003 lebt er in Berlin -Friedrichshain.",
+            "In seiner Jugend war er auch ein Fußballspieler.",
+            "Er hat in den Jugend M annschaften bei Hansa Rostock gespielt und auch für die deutsche Jugendnationalmannschaft.",
+            "1999 hat ihn ei n Modelscout in New York City entdeckt, er hat dann als Model in der ganzen Welt gearbeitet.",
+            "Als Musiker war er zuerst als Mitglied der Gruppe Underdog Cru aktiv.",
+            "Seit 2008 veröffentlicht er Musik über das Label Four Music.",
+            "Schauen Sie sich das Video zum Lied an.",
+            "Wie ist Ihr erster Eindruck?",
+            "Welche Stimmung haben das Lied und die Bilder?",
+            "Fröhlich | melancholisch | nachdenklich | romantisch | traurig | pessimistisch | optimistisch | positiv | negativ",
+            "Sie sehen drei Sätze aus dem Liedtext.",
+            "Jede Gruppe arbeitet mit eine m Satz und überlegt, was die vier Seiten der Nachricht sind.",
+            "Was ist der Sachinhalt?",
+            "Welche Selbstaussage gibt es?",
+            "Welche Beziehung gibt es zu den Menschen, die den Satz im Liedtext hören?",
+            "Was ist der Appell?",
+            "Machen Sie sich Notizen und präsentieren Sie diese dann im Kurs.",
+            "Und du glaubst nicht an Wunder.",
+            "Lawinen aus Metall rollen jeden Morgen durch die Stadt.",
+            "Wir rauben sie [Mutter Erde] aus."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

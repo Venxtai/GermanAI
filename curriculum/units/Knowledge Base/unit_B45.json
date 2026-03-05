@@ -1,0 +1,465 @@
+{
+    "unit": "B45",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 45,
+        "prerequisite": "core 1-104, B1-B44"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Zusammenfassung schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "vertrauen", "pos": "VERB", "translation": "to trust", "frequency": 1122, "cefr": "B1" },
+            { "word": "orientieren", "pos": "VERB", "translation": "to orient; position", "frequency": 1807 },
+            { "word": "spazieren", "pos": "VERB", "translation": "to go for a walk", "frequency": 3312 },
+            { "word": "kopieren", "pos": "VERB", "translation": "to copy", "frequency": 8746, "cefr": "B1" },
+            { "word": "nacherzählen", "pos": "VERB", "translation": "to retell, renarrate" },
+            { "word": "die Nacherzählung", "pos": "NOUN", "translation": "retelling, renarration" },
+            { "word": "die Lücke", "pos": "NOUN", "translation": "gap", "frequency": 1, "cefr": "A1" },
+            { "word": "die Einleitung", "pos": "NOUN", "translation": "introduction", "frequency": 3606, "cefr": "B1" },
+            { "word": "die Handlung", "pos": "NOUN", "translation": "plot; action", "frequency": 2191, "cefr": "B2" },
+            { "word": "der Inhalt", "pos": "NOUN", "translation": "content", "frequency": 1065, "cefr": "B1" },
+            { "word": "theatralisch", "pos": "ADJ", "translation": "theatrical", "frequency": 20446, "cefr": "B2" },
+            { "word": "niemand", "pos": "PRON", "translation": "nobody", "frequency": 362, "cefr": "A2" },
+            { "word": "bisher", "pos": "ADV", "translation": "until now, so far", "frequency": 441, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "gewählt", "pos": "ADJ", "frequency": 6648 },
+            { "word": "kollaboratives", "pos": "ADJ" },
+            { "word": "die Buchgruppe", "pos": "NOUN" },
+            { "word": "III", "pos": "NUM", "frequency": 6298 },
+            { "word": "chronologisch", "pos": "ADV", "frequency": 13393, "cefr": "B2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vertrauen": {
+                "present": {
+                    "ich": "vertraue",
+                    "du": "vertraust",
+                    "er": "vertraut",
+                    "es": "vertraut",
+                    "sie_singular": "vertraut",
+                    "xier": "vertraut",
+                    "wir": "vertrauen",
+                    "ihr": "vertraut",
+                    "sie_plural": "vertrauen",
+                    "Sie": "vertrauen"
+                },
+                "Präteritum": {
+                    "ich": "vertraute",
+                    "du": "vertrautest",
+                    "er": "vertraute",
+                    "es": "vertraute",
+                    "sie_singular": "vertraute",
+                    "xier": "vertraute",
+                    "wir": "vertrauten",
+                    "ihr": "vertrautet",
+                    "sie_plural": "vertrauten",
+                    "Sie": "vertrauten"
+                },
+                "Perfekt": {
+                    "ich": "habe vertraut",
+                    "du": "hast vertraut",
+                    "er": "hat vertraut",
+                    "es": "hat vertraut",
+                    "sie_singular": "hat vertraut",
+                    "xier": "hat vertraut",
+                    "wir": "haben vertraut",
+                    "ihr": "habt vertraut",
+                    "sie_plural": "haben vertraut",
+                    "Sie": "haben vertraut"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vertraut",
+                    "du": "hattest vertraut",
+                    "er": "hatte vertraut",
+                    "es": "hatte vertraut",
+                    "sie_singular": "hatte vertraut",
+                    "xier": "hatte vertraut",
+                    "wir": "hatten vertraut",
+                    "ihr": "hattet vertraut",
+                    "sie_plural": "hatten vertraut",
+                    "Sie": "hatten vertraut"
+                },
+                "Futur_I": {
+                    "ich": "werde vertrauen",
+                    "du": "wirst vertrauen",
+                    "er": "wird vertrauen",
+                    "es": "wird vertrauen",
+                    "sie_singular": "wird vertrauen",
+                    "xier": "wird vertrauen",
+                    "wir": "werden vertrauen",
+                    "ihr": "werdet vertrauen",
+                    "sie_plural": "werden vertrauen",
+                    "Sie": "werden vertrauen"
+                },
+                "imperative": {
+                    "du": "vertraue",
+                    "ihr": "vertraut",
+                    "Sie": "vertrauen Sie"
+                }
+            },
+            "orientieren": {
+                "present": {
+                    "ich": "orientiere",
+                    "du": "orientierst",
+                    "er": "orientiert",
+                    "es": "orientiert",
+                    "sie_singular": "orientiert",
+                    "xier": "orientiert",
+                    "wir": "orientieren",
+                    "ihr": "orientiert",
+                    "sie_plural": "orientieren",
+                    "Sie": "orientieren"
+                },
+                "Präteritum": {
+                    "ich": "orientierte",
+                    "du": "orientiertest",
+                    "er": "orientierte",
+                    "es": "orientierte",
+                    "sie_singular": "orientierte",
+                    "xier": "orientierte",
+                    "wir": "orientierten",
+                    "ihr": "orientiertet",
+                    "sie_plural": "orientierten",
+                    "Sie": "orientierten"
+                },
+                "Perfekt": {
+                    "ich": "habe orientiert",
+                    "du": "hast orientiert",
+                    "er": "hat orientiert",
+                    "es": "hat orientiert",
+                    "sie_singular": "hat orientiert",
+                    "xier": "hat orientiert",
+                    "wir": "haben orientiert",
+                    "ihr": "habt orientiert",
+                    "sie_plural": "haben orientiert",
+                    "Sie": "haben orientiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte orientiert",
+                    "du": "hattest orientiert",
+                    "er": "hatte orientiert",
+                    "es": "hatte orientiert",
+                    "sie_singular": "hatte orientiert",
+                    "xier": "hatte orientiert",
+                    "wir": "hatten orientiert",
+                    "ihr": "hattet orientiert",
+                    "sie_plural": "hatten orientiert",
+                    "Sie": "hatten orientiert"
+                },
+                "Futur_I": {
+                    "ich": "werde orientieren",
+                    "du": "wirst orientieren",
+                    "er": "wird orientieren",
+                    "es": "wird orientieren",
+                    "sie_singular": "wird orientieren",
+                    "xier": "wird orientieren",
+                    "wir": "werden orientieren",
+                    "ihr": "werdet orientieren",
+                    "sie_plural": "werden orientieren",
+                    "Sie": "werden orientieren"
+                },
+                "imperative": {
+                    "du": "orientiere",
+                    "ihr": "orientiert",
+                    "Sie": "orientieren Sie"
+                }
+            },
+            "spazieren": {
+                "present": {
+                    "ich": "spaziere",
+                    "du": "spazierst",
+                    "er": "spaziert",
+                    "es": "spaziert",
+                    "sie_singular": "spaziert",
+                    "xier": "spaziert",
+                    "wir": "spazieren",
+                    "ihr": "spaziert",
+                    "sie_plural": "spazieren",
+                    "Sie": "spazieren"
+                },
+                "Präteritum": {
+                    "ich": "spazierte",
+                    "du": "spaziertest",
+                    "er": "spazierte",
+                    "es": "spazierte",
+                    "sie_singular": "spazierte",
+                    "xier": "spazierte",
+                    "wir": "spazierten",
+                    "ihr": "spaziertet",
+                    "sie_plural": "spazierten",
+                    "Sie": "spazierten"
+                },
+                "Perfekt": {
+                    "ich": "bin spaziert",
+                    "du": "bist spaziert",
+                    "er": "ist spaziert",
+                    "es": "ist spaziert",
+                    "sie_singular": "ist spaziert",
+                    "xier": "ist spaziert",
+                    "wir": "sind spaziert",
+                    "ihr": "seid spaziert",
+                    "sie_plural": "sind spaziert",
+                    "Sie": "sind spaziert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war spaziert",
+                    "du": "warst spaziert",
+                    "er": "war spaziert",
+                    "es": "war spaziert",
+                    "sie_singular": "war spaziert",
+                    "xier": "war spaziert",
+                    "wir": "waren spaziert",
+                    "ihr": "wart spaziert",
+                    "sie_plural": "waren spaziert",
+                    "Sie": "waren spaziert"
+                },
+                "Futur_I": {
+                    "ich": "werde spazieren",
+                    "du": "wirst spazieren",
+                    "er": "wird spazieren",
+                    "es": "wird spazieren",
+                    "sie_singular": "wird spazieren",
+                    "xier": "wird spazieren",
+                    "wir": "werden spazieren",
+                    "ihr": "werdet spazieren",
+                    "sie_plural": "werden spazieren",
+                    "Sie": "werden spazieren"
+                },
+                "imperative": {
+                    "du": "spaziere",
+                    "ihr": "spaziert",
+                    "Sie": "spazieren Sie"
+                }
+            },
+            "kopieren": {
+                "present": {
+                    "ich": "kopiere",
+                    "du": "kopierst",
+                    "er": "kopiert",
+                    "es": "kopiert",
+                    "sie_singular": "kopiert",
+                    "xier": "kopiert",
+                    "wir": "kopieren",
+                    "ihr": "kopiert",
+                    "sie_plural": "kopieren",
+                    "Sie": "kopieren"
+                },
+                "Präteritum": {
+                    "ich": "kopierte",
+                    "du": "kopiertest",
+                    "er": "kopierte",
+                    "es": "kopierte",
+                    "sie_singular": "kopierte",
+                    "xier": "kopierte",
+                    "wir": "kopierten",
+                    "ihr": "kopiertet",
+                    "sie_plural": "kopierten",
+                    "Sie": "kopierten"
+                },
+                "Perfekt": {
+                    "ich": "habe kopiert",
+                    "du": "hast kopiert",
+                    "er": "hat kopiert",
+                    "es": "hat kopiert",
+                    "sie_singular": "hat kopiert",
+                    "xier": "hat kopiert",
+                    "wir": "haben kopiert",
+                    "ihr": "habt kopiert",
+                    "sie_plural": "haben kopiert",
+                    "Sie": "haben kopiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte kopiert",
+                    "du": "hattest kopiert",
+                    "er": "hatte kopiert",
+                    "es": "hatte kopiert",
+                    "sie_singular": "hatte kopiert",
+                    "xier": "hatte kopiert",
+                    "wir": "hatten kopiert",
+                    "ihr": "hattet kopiert",
+                    "sie_plural": "hatten kopiert",
+                    "Sie": "hatten kopiert"
+                },
+                "Futur_I": {
+                    "ich": "werde kopieren",
+                    "du": "wirst kopieren",
+                    "er": "wird kopieren",
+                    "es": "wird kopieren",
+                    "sie_singular": "wird kopieren",
+                    "xier": "wird kopieren",
+                    "wir": "werden kopieren",
+                    "ihr": "werdet kopieren",
+                    "sie_plural": "werden kopieren",
+                    "Sie": "werden kopieren"
+                },
+                "imperative": {
+                    "du": "kopier",
+                    "ihr": "kopiert",
+                    "Sie": "kopieren Sie"
+                }
+            },
+            "nacherzählen": {
+                "Perfekt": {
+                    "ich": "habe nacherzählt",
+                    "du": "hast nacherzählt",
+                    "er": "hat nacherzählt",
+                    "es": "hat nacherzählt",
+                    "sie_singular": "hat nacherzählt",
+                    "xier": "hat nacherzählt",
+                    "wir": "haben nacherzählt",
+                    "ihr": "habt nacherzählt",
+                    "sie_plural": "haben nacherzählt",
+                    "Sie": "haben nacherzählt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte nacherzählt",
+                    "du": "hattest nacherzählt",
+                    "er": "hatte nacherzählt",
+                    "es": "hatte nacherzählt",
+                    "sie_singular": "hatte nacherzählt",
+                    "xier": "hatte nacherzählt",
+                    "wir": "hatten nacherzählt",
+                    "ihr": "hattet nacherzählt",
+                    "sie_plural": "hatten nacherzählt",
+                    "Sie": "hatten nacherzählt"
+                },
+                "Futur_I": {
+                    "ich": "werde nacherzählen",
+                    "du": "wirst nacherzählen",
+                    "er": "wird nacherzählen",
+                    "es": "wird nacherzählen",
+                    "sie_singular": "wird nacherzählen",
+                    "xier": "wird nacherzählen",
+                    "wir": "werden nacherzählen",
+                    "ihr": "werdet nacherzählen",
+                    "sie_plural": "werden nacherzählen",
+                    "Sie": "werden nacherzählen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wer bin ich?",
+            "Sie haben die ersten Seiten Ihres Krimis aus der Reihe „Tatort DaF“ gelesen.",
+            "Wählen Sie eine Figur aus Ihrer Geschichte aus und erinnern Sie sich an diese Figur und ihre Handlungen.",
+            "Ergänzen Sie die Tabelle mit Informationen über diese Figur.",
+            "Bilden Sie Gruppen mit Studierenden, die das gleiche Buch wie Sie lesen.",
+            "Präsentieren Sie den anderen Personen Ihrer Gruppe die gewählte Figur, ohne den Namen zu nennen.",
+            "Orientieren Sie sich an Ihrer Tabelle und benutzen Sie eine Zeitform der Vergangenheit, wenn Sie über die Handlungen/Aktionen sprechen.",
+            "Die anderen raten, welche Figur gemeint ist.",
+            "Ich habe keine Freund*innen, weil mir niemand vertraut.",
+            "Mein größte s Problem ist der alte Polizist, der versucht hat, mich ins Gefängnis zu bringen.",
+            "Bist du Gerd Fischer?",
+            "Ja, ich bin Gerd Fischer..",
+            "Ja, der bin ich.",
+            "Was ist bisher passiert?",
+            "Sie schreiben mit Ihrer Buchgruppe eine Nacherzählung der Geschichte (also das, was bisher passiert ist) in einem digitalen Dokument.",
+            "Erstellen Sie zuerst eine Liste der wichtigsten Ereignisse Ihrer Geschichte im Perfekt.",
+            "Formulieren Sie im digitalen Dokument eine Einleitung:",
+            "Welche Figuren hat es im Text gegeben?",
+            "Wo und wann (z.",
+            "Zu welcher Zeit) hat die Handlung gespielt?",
+            "Die ersten drei Kapitel haben im Winter auf dem Berg Säntis und in der Stadt St.",
+            "Gallen in der Schweiz gespielt.",
+            "Es hat viel Schnee gegeben und es war sehr kalt.",
+            "In diesen Kapiteln waren Urs Hägi und Hanna Perner … Kollaboratives Schreiben III:",
+            "Nun kommt der Hauptteil.",
+            "Benutzen Sie die Liste aus Teil 1 und erzählen Sie die Handlung im Perfekt nach: chronologisch und ohne Lücken.",
+            "Am Anfang war Klaus Hansen in Hamburg, um Nele zu treffen.",
+            "Weil er aber zu früh war, ist er am Hafen zwei Stunden spazieren gegangen …",
+            "Nehmen Sie den Text aus Ihrem Hauptteil der Nacherzählung und kopieren Sie ihn in ein neues Dokument.",
+            "Machen Sie jetzt aus den Sätzen eine Version mit Lücken, wie im Beispiel.",
+            "Versuchen Sie, unterschiedliche Wortkategorien zu ersetzen, aber mindestens vier Verben.",
+            "Teilen Sie Ihren Lückentext mit einer anderen Gruppe.",
+            "Sie bekommen auch die Version mit Lücken einer anderen Gruppe.",
+            "Ergänzen Sie.",
+            "Es darf auch lustig sein.",
+            "Jede Gruppe präsentiert die neue Version.",
+            "Ihre Präsentation darf/soll so theatralisch wie möglich sein.",
+            "Welche Version finden Sie am lustigsten?"
+        ],
+        "templated": []
+    }
+}

@@ -1,0 +1,637 @@
+{
+    "unit": "O9",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 9,
+        "prerequisite": "core 1-104, O1-O8"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish"
+        ],
+        "new_rules_in_this_unit": [
+            "Use Konjunktiv II for polite requests: 'Könnte ichÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦?', 'Würdest duÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦?', 'Dürfte ichÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦?' instead of blunt imperatives.",
+            "Express irreal wishes with wenn + doch/nur + Konjunktiv II verb at end: 'Wenn ich doch mehr Zeit hätte!'; or verb-first + doch/nur: 'Hätte ich doch genug Geld!'"
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "positive und negative Aspekte diskutieren",
+            "höfliche Bitten formulieren",
+            "irreale Wünsche ausdrücken"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Parks und Nachbarschaft"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "doch", "pos": "ADJ", "translation": "if only, however", "frequency": 73, "cefr": "A2" },
+            { "word": "Wenn ich doch ein neues Handy hätte!", "pos": "ADJ", "translation": "If only I had a new phone!" },
+            { "word": "Doch!", "pos": "PHRASE", "translation": "On the contrary!" },
+            { "word": "Bist du nicht im Wohnzimmer? - Doch!", "pos": "PHRASE", "translation": "Aren't you in the living room? - On the contrary (= I AM in the living room)!" },
+            { "word": "schließen", "pos": "VERB", "translation": "to close" },
+            { "word": "hoffen", "pos": "VERB", "translation": "to hope", "frequency": 689, "cefr": "A2" },
+            { "word": "mithalten", "pos": "VERB", "translation": "to keep up (with)", "frequency": 8242 },
+            { "word": "erweitern", "pos": "VERB", "translation": "to expand, extend, broaden", "frequency": 1849 },
+            { "word": "pflanzen", "pos": "VERB", "translation": "to plant", "frequency": 8285, "cefr": "B1" },
+            { "word": "stören", "pos": "VERB", "translation": "to disturb; bother" },
+            { "word": "schreien", "pos": "VERB", "translation": "to scream; shout; yell", "frequency": 1104, "cefr": "B1" },
+            { "word": "die Natur", "pos": "NOUN", "translation": "nature", "frequency": 739, "cefr": "A2" },
+            { "word": "die Region", "pos": "NOUN", "translation": "region; area", "frequency": 803, "cefr": "B1" },
+            { "word": "die Umgebung", "pos": "NOUN", "translation": "surroundings; environment", "frequency": 1466, "cefr": "B1" },
+            { "word": "das Zuhause", "pos": "NOUN", "translation": "home", "frequency": 2856, "cefr": "B1" },
+            { "word": "der Umzug", "pos": "NOUN", "translation": "move, relocation; parade", "frequency": 4954, "cefr": "A2" },
+            { "word": "die Erweiterung", "pos": "NOUN", "translation": "expansion, extension", "frequency": 3694, "cefr": "A1" },
+            { "word": "der Arbeitsplatz", "pos": "NOUN", "translation": "workplace; employment", "frequency": 1671, "cefr": "A1" },
+            { "word": "der*die Arbeitgeber*in", "pos": "NOUN", "translation": "employer", "frequency": 2865, "cefr": "B2" },
+            { "word": "der*die Meister*in", "pos": "NOUN", "translation": "master; chief; foreman; technician", "frequency": 1749, "cefr": "B1" },
+            { "word": "der Gedanke", "pos": "NOUN", "translation": "thought, notion, idea", "frequency": 585, "cefr": "B1" },
+            { "word": "das Verhältnis", "pos": "NOUN", "translation": "relationship, affair" },
+            { "word": "die Steuer", "pos": "NOUN", "translation": "tax", "frequency": 1524, "cefr": "B1" },
+            { "word": "die Auswirkung", "pos": "NOUN", "translation": "repercussion", "frequency": 1820, "cefr": "A1" },
+            { "word": "das Feuerwerk", "pos": "NOUN", "translation": "fireworks (display)", "frequency": 8294, "cefr": "A1" },
+            { "word": "der Lärm", "pos": "NOUN", "translation": "noise, clamor" },
+            { "word": "in der Nähe (von)", "pos": "PHRASE", "translation": "in the vicinity (of)" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "benachbart", "pos": "ADJ", "frequency": 3126 },
+            { "word": "das Phantasialand", "pos": "NOUN" },
+            { "word": "das Entertainment", "pos": "NOUN", "frequency": 11462 },
+            { "word": "der Parkplatz", "pos": "NOUN", "frequency": 3106 },
+            { "word": "der Fan", "pos": "NOUN", "frequency": 1473, "cefr": "A2" },
+            { "word": "das Sommerfest", "pos": "NOUN", "frequency": 7963 },
+            { "word": "die Explosion", "pos": "NOUN", "frequency": 4297 },
+            { "word": "der*die Anwohner*innen", "pos": "NOUN", "frequency": 4958 },
+            { "word": "das Chaos", "pos": "NOUN", "frequency": 3742 },
+            { "word": "der Hektar", "pos": "NOUN", "frequency": 6315 },
+            { "word": "die Biologin", "pos": "NOUN", "frequency": 32573 },
+            { "word": "irreal", "pos": "ADJ" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schließen": {
+                "present": {
+                    "ich": "schließe",
+                    "du": "schließt",
+                    "er": "schließt",
+                    "es": "schließt",
+                    "sie_singular": "schließt",
+                    "xier": "schließt",
+                    "wir": "schließen",
+                    "ihr": "schließt",
+                    "sie_plural": "schließen",
+                    "Sie": "schließen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschlossen",
+                    "du": "hast geschlossen",
+                    "er": "hat geschlossen",
+                    "es": "hat geschlossen",
+                    "sie_singular": "hat geschlossen",
+                    "xier": "hat geschlossen",
+                    "wir": "haben geschlossen",
+                    "ihr": "habt geschlossen",
+                    "sie_plural": "haben geschlossen",
+                    "Sie": "haben geschlossen"
+                },
+                "Futur_I": {
+                    "ich": "werde schließen",
+                    "du": "wirst schließen",
+                    "er": "wird schließen",
+                    "es": "wird schließen",
+                    "sie_singular": "wird schließen",
+                    "xier": "wird schließen",
+                    "wir": "werden schließen",
+                    "ihr": "werdet schließen",
+                    "sie_plural": "werden schließen",
+                    "Sie": "werden schließen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schließen",
+                    "du": "würdest schließen",
+                    "er": "würde schließen",
+                    "es": "würde schließen",
+                    "sie_singular": "würde schließen",
+                    "xier": "würde schließen",
+                    "wir": "würden schließen",
+                    "ihr": "würdet schließen",
+                    "sie_plural": "würden schließen",
+                    "Sie": "würden schließen"
+                },
+                "imperative": {
+                    "du": "schließe",
+                    "ihr": "schließt",
+                    "Sie": "schließen Sie"
+                }
+            },
+            "hoffen": {
+                "present": {
+                    "ich": "hoffe",
+                    "du": "hoffst",
+                    "er": "hofft",
+                    "es": "hofft",
+                    "sie_singular": "hofft",
+                    "xier": "hofft",
+                    "wir": "hoffen",
+                    "ihr": "hofft",
+                    "sie_plural": "hoffen",
+                    "Sie": "hoffen"
+                },
+                "Perfekt": {
+                    "ich": "habe gehofft",
+                    "du": "hast gehofft",
+                    "er": "hat gehofft",
+                    "es": "hat gehofft",
+                    "sie_singular": "hat gehofft",
+                    "xier": "hat gehofft",
+                    "wir": "haben gehofft",
+                    "ihr": "habt gehofft",
+                    "sie_plural": "haben gehofft",
+                    "Sie": "haben gehofft"
+                },
+                "Futur_I": {
+                    "ich": "werde hoffen",
+                    "du": "wirst hoffen",
+                    "er": "wird hoffen",
+                    "es": "wird hoffen",
+                    "sie_singular": "wird hoffen",
+                    "xier": "wird hoffen",
+                    "wir": "werden hoffen",
+                    "ihr": "werdet hoffen",
+                    "sie_plural": "werden hoffen",
+                    "Sie": "werden hoffen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde hoffen",
+                    "du": "würdest hoffen",
+                    "er": "würde hoffen",
+                    "es": "würde hoffen",
+                    "sie_singular": "würde hoffen",
+                    "xier": "würde hoffen",
+                    "wir": "würden hoffen",
+                    "ihr": "würdet hoffen",
+                    "sie_plural": "würden hoffen",
+                    "Sie": "würden hoffen"
+                },
+                "imperative": {
+                    "du": "hoff",
+                    "ihr": "hofft",
+                    "Sie": "hoffen Sie"
+                }
+            },
+            "mithalten": {
+                "present": {
+                    "ich": "halte mit",
+                    "du": "hältst mit",
+                    "er": "hält mit",
+                    "es": "hält mit",
+                    "sie_singular": "hält mit",
+                    "xier": "hält mit",
+                    "wir": "halten mit",
+                    "ihr": "haltet mit",
+                    "sie_plural": "halten mit",
+                    "Sie": "halten mit"
+                },
+                "Perfekt": {
+                    "ich": "habe mitgehalten",
+                    "du": "hast mitgehalten",
+                    "er": "hat mitgehalten",
+                    "es": "hat mitgehalten",
+                    "sie_singular": "hat mitgehalten",
+                    "xier": "hat mitgehalten",
+                    "wir": "haben mitgehalten",
+                    "ihr": "habt mitgehalten",
+                    "sie_plural": "haben mitgehalten",
+                    "Sie": "haben mitgehalten"
+                },
+                "Futur_I": {
+                    "ich": "werde mithalten",
+                    "du": "wirst mithalten",
+                    "er": "wird mithalten",
+                    "es": "wird mithalten",
+                    "sie_singular": "wird mithalten",
+                    "xier": "wird mithalten",
+                    "wir": "werden mithalten",
+                    "ihr": "werdet mithalten",
+                    "sie_plural": "werden mithalten",
+                    "Sie": "werden mithalten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde mithalten",
+                    "du": "würdest mithalten",
+                    "er": "würde mithalten",
+                    "es": "würde mithalten",
+                    "sie_singular": "würde mithalten",
+                    "xier": "würde mithalten",
+                    "wir": "würden mithalten",
+                    "ihr": "würdet mithalten",
+                    "sie_plural": "würden mithalten",
+                    "Sie": "würden mithalten"
+                },
+                "imperative": {
+                    "du": "halte mit",
+                    "ihr": "haltet mit",
+                    "Sie": "halten Sie mit"
+                }
+            },
+            "erweitern": {
+                "present": {
+                    "ich": "erweitere",
+                    "du": "erweiterst",
+                    "er": "erweitert",
+                    "es": "erweitert",
+                    "sie_singular": "erweitert",
+                    "xier": "erweitert",
+                    "wir": "erweitern",
+                    "ihr": "erweitert",
+                    "sie_plural": "erweitern",
+                    "Sie": "erweitern"
+                },
+                "Perfekt": {
+                    "ich": "habe erweitert",
+                    "du": "hast erweitert",
+                    "er": "hat erweitert",
+                    "es": "hat erweitert",
+                    "sie_singular": "hat erweitert",
+                    "xier": "hat erweitert",
+                    "wir": "haben erweitert",
+                    "ihr": "habt erweitert",
+                    "sie_plural": "haben erweitert",
+                    "Sie": "haben erweitert"
+                },
+                "Futur_I": {
+                    "ich": "werde erweitern",
+                    "du": "wirst erweitern",
+                    "er": "wird erweitern",
+                    "es": "wird erweitern",
+                    "sie_singular": "wird erweitern",
+                    "xier": "wird erweitern",
+                    "wir": "werden erweitern",
+                    "ihr": "werdet erweitern",
+                    "sie_plural": "werden erweitern",
+                    "Sie": "werden erweitern"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erweitern",
+                    "du": "würdest erweitern",
+                    "er": "würde erweitern",
+                    "es": "würde erweitern",
+                    "sie_singular": "würde erweitern",
+                    "xier": "würde erweitern",
+                    "wir": "würden erweitern",
+                    "ihr": "würdet erweitern",
+                    "sie_plural": "würden erweitern",
+                    "Sie": "würden erweitern"
+                },
+                "imperative": {
+                    "du": "erweitere",
+                    "ihr": "erweitert",
+                    "Sie": "erweitern Sie"
+                }
+            },
+            "pflanzen": {
+                "present": {
+                    "ich": "pflanze",
+                    "du": "pflanzt",
+                    "er": "pflanzt",
+                    "es": "pflanzt",
+                    "sie_singular": "pflanzt",
+                    "xier": "pflanzt",
+                    "wir": "pflanzen",
+                    "ihr": "pflanzt",
+                    "sie_plural": "pflanzen",
+                    "Sie": "pflanzen"
+                },
+                "Perfekt": {
+                    "ich": "habe gepflanzt",
+                    "du": "hast gepflanzt",
+                    "er": "hat gepflanzt",
+                    "es": "hat gepflanzt",
+                    "sie_singular": "hat gepflanzt",
+                    "xier": "hat gepflanzt",
+                    "wir": "haben gepflanzt",
+                    "ihr": "habt gepflanzt",
+                    "sie_plural": "haben gepflanzt",
+                    "Sie": "haben gepflanzt"
+                },
+                "Futur_I": {
+                    "ich": "werde pflanzen",
+                    "du": "wirst pflanzen",
+                    "er": "wird pflanzen",
+                    "es": "wird pflanzen",
+                    "sie_singular": "wird pflanzen",
+                    "xier": "wird pflanzen",
+                    "wir": "werden pflanzen",
+                    "ihr": "werdet pflanzen",
+                    "sie_plural": "werden pflanzen",
+                    "Sie": "werden pflanzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde pflanzen",
+                    "du": "würdest pflanzen",
+                    "er": "würde pflanzen",
+                    "es": "würde pflanzen",
+                    "sie_singular": "würde pflanzen",
+                    "xier": "würde pflanzen",
+                    "wir": "würden pflanzen",
+                    "ihr": "würdet pflanzen",
+                    "sie_plural": "würden pflanzen",
+                    "Sie": "würden pflanzen"
+                },
+                "imperative": {
+                    "du": "pflanze",
+                    "ihr": "pflanzt",
+                    "Sie": "pflanzen Sie"
+                }
+            },
+            "stören": {
+                "present": {
+                    "ich": "störe",
+                    "du": "störst",
+                    "er": "stört",
+                    "es": "stört",
+                    "sie_singular": "stört",
+                    "xier": "stört",
+                    "wir": "stören",
+                    "ihr": "stört",
+                    "sie_plural": "stören",
+                    "Sie": "stören"
+                },
+                "Perfekt": {
+                    "ich": "habe gestört",
+                    "du": "hast gestört",
+                    "er": "hat gestört",
+                    "es": "hat gestört",
+                    "sie_singular": "hat gestört",
+                    "xier": "hat gestört",
+                    "wir": "haben gestört",
+                    "ihr": "habt gestört",
+                    "sie_plural": "haben gestört",
+                    "Sie": "haben gestört"
+                },
+                "Futur_I": {
+                    "ich": "werde stören",
+                    "du": "wirst stören",
+                    "er": "wird stören",
+                    "es": "wird stören",
+                    "sie_singular": "wird stören",
+                    "xier": "wird stören",
+                    "wir": "werden stören",
+                    "ihr": "werdet stören",
+                    "sie_plural": "werden stören",
+                    "Sie": "werden stören"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde stören",
+                    "du": "würdest stören",
+                    "er": "würde stören",
+                    "es": "würde stören",
+                    "sie_singular": "würde stören",
+                    "xier": "würde stören",
+                    "wir": "würden stören",
+                    "ihr": "würdet stören",
+                    "sie_plural": "würden stören",
+                    "Sie": "würden stören"
+                },
+                "imperative": {
+                    "du": "stör",
+                    "ihr": "stört",
+                    "Sie": "stören Sie"
+                }
+            },
+            "schreien": {
+                "present": {
+                    "ich": "schreie",
+                    "du": "schreist",
+                    "er": "schreit",
+                    "es": "schreit",
+                    "sie_singular": "schreit",
+                    "xier": "schreit",
+                    "wir": "schreien",
+                    "ihr": "schreit",
+                    "sie_plural": "schreien",
+                    "Sie": "schreien"
+                },
+                "Perfekt": {
+                    "ich": "habe geschrien",
+                    "du": "hast geschrien",
+                    "er": "hat geschrien",
+                    "es": "hat geschrien",
+                    "sie_singular": "hat geschrien",
+                    "xier": "hat geschrien",
+                    "wir": "haben geschrien",
+                    "ihr": "habt geschrien",
+                    "sie_plural": "haben geschrien",
+                    "Sie": "haben geschrien"
+                },
+                "Futur_I": {
+                    "ich": "werde schreien",
+                    "du": "wirst schreien",
+                    "er": "wird schreien",
+                    "es": "wird schreien",
+                    "sie_singular": "wird schreien",
+                    "xier": "wird schreien",
+                    "wir": "werden schreien",
+                    "ihr": "werdet schreien",
+                    "sie_plural": "werden schreien",
+                    "Sie": "werden schreien"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schreien",
+                    "du": "würdest schreien",
+                    "er": "würde schreien",
+                    "es": "würde schreien",
+                    "sie_singular": "würde schreien",
+                    "xier": "würde schreien",
+                    "wir": "würden schreien",
+                    "ihr": "würdet schreien",
+                    "sie_plural": "würden schreien",
+                    "Sie": "würden schreien"
+                },
+                "imperative": {
+                    "du": "schreie",
+                    "ihr": "schreit",
+                    "Sie": "schreien Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Stellen Sie sich vor, dass Sie in Ihrer Stadt einen großen Freizeitpark mit 2 Millionen Besucher*innen pro Jahr haben.",
+            "Welche positiven Auswirkungen könnte der Freizeitpark auf die Umgebung haben, zum Beispiel auf die Stadt, Region und die direkten Nachbar *innen?",
+            "Welche Probleme könnte es für die benachbarte(n) Menschen, Tiere und Natur geben?",
+            "Machen Sie sich zuerst individuell Notizen.",
+            "Sammeln Sie dann zu dritt oder viert.",
+            "Hören Sie jetzt mehrere Menschen, die über weitere Aspekte sprechen.",
+            "Tragen Sie diese in die Tabelle ein.",
+            "Eins Ich arbeite im Phantasialand und wir haben eigentlich ein sehr gutes Verhältnis zu unseren Nachbarn.",
+            "Unser Park macht den meisten Nachbarn viel Spaß und er ist auch einer der größten Arbeitgeber in der Stadt.",
+            "Zwei Ich arbeite als Feuerwerksmeisterin im Hans a Park.",
+            "Da wir so viele Nachbarn haben, überlegen wir immer, wie wir tolles Entertainment haben können, ohne die Nachbarn zu stören.",
+            "Unser Parkdirektor hat ein offenes Ohr für die Nachbarn.",
+            "Lautes Feuerwerk ist besonders das, was oben am Himmel ist.",
+            "Deshalb haben wir jetzt weniger Feuerwerke.",
+            "Und wir arbeiten an Feuerwerk, das nicht mehr so laut ist.",
+            "Drei Wir wohnen in der Nähe vom Movie Park Germany und die Parkbesucher*innen parken ihre Autos in unserer Straße, um kein Geld für den Parkplatz am Park zahlen zu müssen.",
+            "Manchmal finden wir deshalb keinen Parkplatz.",
+            "Und die Kinder schreien immer laut, wenn sie ein- und aussteigen.",
+            "Es gibt jetzt auch eine sehr laute neue Bahn.",
+            "Vielleicht sollte die Bahn nicht am Wochenende fahren.",
+            "Vier Ich bin ein großer Fan von Phantasialand, jedes Jahr fahre ich den ganzen Weg von Hessen bis nach Brühl.",
+            "Der Park hat tolle Themen und Attraktionen.",
+            "Die Achterbahn „Taron finde ich zum Beispiel super cool.",
+            "Touristen wie ich bringen bestimmt viel Geld in die Stadt.",
+            "Fünf Ich wohne in der Nähe vom Europa-Park, und bei uns ist es eigentlich immer hell.",
+            "Es wird nicht wirklich Nacht bei uns, und ich kann deshalb nicht gut schlafen.",
+            "Cool finde ich aber, dass es jedes Jahr ein Sommerfest für die Nachbar*innen gibt.",
+            "Das macht großen Spaß und ich fahre auch mega gerne Achterbahn.",
+            "Also ist es manchmal auch sehr praktisch, so nah am Park zu wohnen.",
+            "Vielleicht kann ich als Student auch einen Job dort bekommen.",
+            "Mal sehen.",
+            "Restaurants und Hotels haben mehr Gäste;",
+            "Park auch an religiösen Feiertagen auf;",
+            "Bei Veranstaltungen am Abend trinken Menschen viel Alkohol …",
+            "Diskutieren Sie über die Vor- und Nachteile von Parks für die Nachbar*innen.",
+            "Welche Aspekte könnten für welche Personen wichtig sein?",
+            "Was denken Sie?",
+            "Was könnten Lösungen für diese Probleme sein?",
+            "Für die Anwohner*innen ist der Lärm besonders schlimm.",
+            "Eine Lösung könnte es sein, dass von Sonntag bis Donnerstag ab 20 Uhr keine lauten Shows oder Feuerwerke stattfinden dürfen.",
+            "Das Phantasialand möchte den Park erweitern und neue Hotels und Attraktionen bauen.",
+            "Lesen Sie die Aussagen.",
+            "Dann hören Sie, was die drei Personen sagen und ordnen Sie die Aussagen den Personen zu.",
+            "Der Park ist der größte Arbeitgeber der Stadt und wichtig für die Region.",
+            "Mit der Erweiterung kann man 800 neue Arbeitsplätze schaffen.",
+            "Der Park ist zu klein, kleiner als andere Parks.",
+            "Im Wald leben viele Tiere, die ihr Zuhause verlieren würden.",
+            "Tiere würden vielleicht sterben oder in eine andere Region gehen.",
+            "Der Park möchte an einer anderen Stelle Bäume pflanzen.",
+            "Ich arbeite im Phantasialand.",
+            "Unser Park ist recht klein",
+            "Wir können nicht mit anderen, größeren Parks mithalten.",
+            "Der Europa-Park ist zum Beispiel 95 Hektar groß, aber wir hier in Brühl haben nur 27 Hektar.",
+            "Deshalb möchten wir jetzt einen Teil von einem Wald vom Bundesland Nordrhein- Westfalen kaufen und den Park dort erweitern.",
+            "Mit der Erweiterung schaffen wir 800 neue Arbeitsplätze.",
+            "Wir verstehen natürlich die Menschen, die die Natur schützen möchten.",
+            "Deshalb möchten wir an einem anderen Ort Bäume pflanzen.",
+            "Ich bin Biologin und ich erforsche den Wald beim Phantasialand.",
+            "Dort leben viele Tiere, die ihr Zuhause verlieren würden, wenn das Phantasialand dort ein Hotel oder eine neue Attraktion bauen sollte.",
+            "Das wäre stressig für die Tiere, vielleicht würden einige Tiere sterben oder der Region verloren gehen.",
+            "Der Wald sollte bleiben und das Phantasialand besser an einem anderen Ort bauen.",
+            "Ich liebe das Phantasialand und bin oft im Park.",
+            "Sehe ich aber auch.",
+            "Der Park hat meine Lieblingsachterbahn abgebaut, um Platz für eine neue Bahn zu haben.",
+            "Das ist doof.",
+            "Ich hoffe, dass das Phantasialand den Park erweitern kann, damit es noch viele Jahre besteht.",
+            "Ich habe Angst, dass der Park sonst bald schließen muss.",
+            "Und das wäre nicht nur für mich schlecht, sondern auch schlecht für die Stadt, weil die Stadt durch die Touristen und Steuern viel Geld bekommt.",
+            "Welche Vorteile und Probleme hätte die Erweiterung?",
+            "Welchen Kompromiss gibt es?",
+            "Erst denken, dann sprechen Zu zwei: Hören Sie zu.",
+            "Dann lesen Sie den Dialog.",
+            "Schützen Sie die Tiere!",
+            "Wir brauchen Tiere.",
+            "Aber wir brauchen auch den Platz.",
+            "Bringen Sie doch die Tiere in einen anderen Wald!",
+            "Aber denken Sie doch bitte an die Tiere – ein Umzug ist sehr stressig.",
+            "Das verstehe ich, aber unser Park ist zu klein.",
+            "Können Sie nicht an einem anderen Ort bauen?",
+            "Das funktioniert nicht, da wohnen ja auch Menschen.",
+            "Aber Tiere sind so wichtig wie Menschen.",
+            "Das stimmt.",
+            "Wir überlegen, wie wir das am besten für alle machen können.",
+            "Bevor die Personen sprechen, denken sie.",
+            "Ergänzen Sie die irrealen Wünsche in den Gedanken (grau).",
+            "Dann lesen Sie den Dialog noch einmal.",
+            "Sagen Sie die Gedanken leise, den Dialog laut.",
+            "Er schützt die Tiere.",
+            "Wenn er die Tiere doch nur schützen würde.",
+            "Wir brauchen den Platz nicht.",
+            "Wenn wir den Platz doch nur nicht brauchen würden.",
+            "Sie bringt die Tiere in einen anderen Wald.",
+            "Wenn Sie die Tiere doch nur in einen anderen Wald bringen würde.",
+            "Er denkt an die Tiere.",
+            "Wenn er doch nur an die Tiere denken würde.",
+            "Der Park ist nicht zu klein.",
+            "Wenn der Park doch nur nicht zu klein wäre.",
+            "Er baut an einem anderen Ort.",
+            "Wenn er doch nur an einem anderen Ort bauen würde.",
+            "Die Menschen wohnen da nicht.",
+            "Wenn das Menschen doch nur nicht da wohnen würden.",
+            "Wenn für ihn die Menschen durch nur so wichtig wie Menschen wären.",
+            "Für ihn sind Tiere so wichtig wie Menschen."
+        ],
+        "templated": []
+    }
+}

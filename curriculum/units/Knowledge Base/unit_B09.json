@@ -1,0 +1,510 @@
+{
+    "unit": "B9",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 9,
+        "prerequisite": "core 1-104, B1-B8"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative"
+        ],
+        "new_rules_in_this_unit": [
+            "Form genitive case for possession: des + r-word/s-word noun + -s/-es, der + e-word noun, der + plural noun; the genitive modifier follows the main noun.",
+            "Add -s to proper names for genitive (no apostrophe), unless the name ends in -s/-ß/-x/-z.",
+            "Apply n-declension for r-words like der Mensch: add -n/-en in accusative, dative, and genitive (des Menschen) instead of -s/-es."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über die Nachhaltigkeit von Kleidung und Essen sprechen",
+            "Besitzverhältnisse und Zugehörigkeit mit dem Genitiv ausdrücken"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "nachhaltiges Leben: Essen und Mode"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "berücksichtigen",
+                "pos": "VERB",
+                "translation": "to take into account, consider"
+            },
+            {
+                "word": "ernähren",
+                "pos": "VERB",
+                "translation": "to feed on sth., live on sth."
+            },
+            {
+                "word": "fehlen",
+                "pos": "VERB",
+                "translation": "to lack, be missing",
+                "frequency": 420,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bedingung",
+                "pos": "NOUN",
+                "translation": "condition",
+                "frequency": 673,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Verwendung",
+                "pos": "NOUN",
+                "translation": "usage",
+                "frequency": 1606,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vorschlag",
+                "pos": "NOUN",
+                "translation": "suggestion, recommendation; proposal",
+                "frequency": 1619,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Bedarf",
+                "pos": "NOUN",
+                "translation": "need, necessity, requirement, demand",
+                "frequency": 2550,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kreuzfahrt",
+                "pos": "NOUN",
+                "translation": "cruise (naut.)",
+                "frequency": 19072,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Textilien",
+                "pos": "NOUN",
+                "translation": "textiles, textile fabrics",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Einkommen",
+                "pos": "NOUN",
+                "translation": "income; earnings",
+                "frequency": 1417,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Milliarde",
+                "pos": "NOUN",
+                "translation": "billion",
+                "frequency": 453,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Billion",
+                "pos": "NOUN",
+                "translation": "trillion",
+                "frequency": 10503,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Treibhaus",
+                "pos": "NOUN",
+                "translation": "greenhouse",
+                "frequency": 37426,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Getreide",
+                "pos": "NOUN",
+                "translation": "crop, grain",
+                "frequency": 4848,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Hülsenfrucht",
+                "pos": "NOUN",
+                "translation": "pulses, legumes",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Futter",
+                "pos": "NOUN",
+                "translation": "feed, food (for animals)",
+                "frequency": 10673,
+                "cefr": "A1"
+            },
+            {
+                "word": "Gesamt-",
+                "pos": "PREFIX",
+                "translation": "total, overall",
+                "cefr": "B1"
+            },
+            {
+                "word": "Ach so!",
+                "pos": "PHRASE",
+                "translation": "I see!"
+            },
+            {
+                "word": "nämlich",
+                "pos": "ADJ",
+                "translation": "that is to say; because"
+            },
+            {
+                "word": "essbar",
+                "pos": "ADJ",
+                "translation": "edible",
+                "frequency": 46088
+            },
+            {
+                "word": "empfohlen",
+                "pos": "ADJ",
+                "translation": "recommended",
+                "frequency": 19985
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "herkommen",
+                "pos": "VERB",
+                "frequency": 2336
+            },
+            {
+                "word": "das Pestizid",
+                "pos": "NOUN",
+                "frequency": 20935
+            },
+            {
+                "word": "die Chemikalie",
+                "pos": "NOUN",
+                "frequency": 11187
+            },
+            {
+                "word": "der Flyer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Textil",
+                "pos": "NOUN",
+                "frequency": 28037
+            },
+            {
+                "word": "der Upcycling",
+                "pos": "NOUN"
+            },
+            {
+                "word": "-s",
+                "pos": "PRON"
+            },
+            {
+                "word": "der Faser",
+                "pos": "NOUN",
+                "frequency": 2648,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Kreuzfahrtschiff",
+                "pos": "NOUN",
+                "frequency": 21858
+            },
+            {
+                "word": "upcyceln",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Diät",
+                "pos": "NOUN",
+                "frequency": 12784,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kuh",
+                "pos": "NOUN",
+                "frequency": 2935,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "berücksichtigen": {
+                "present": {
+                    "ich": "berücksichtige",
+                    "du": "berücksichtigst",
+                    "er": "berücksichtigt",
+                    "es": "berücksichtigt",
+                    "sie_singular": "berücksichtigt",
+                    "xier": "berücksichtigt",
+                    "wir": "berücksichtigen",
+                    "ihr": "berücksichtigt",
+                    "sie_plural": "berücksichtigen",
+                    "Sie": "berücksichtigen"
+                },
+                "Perfekt": {
+                    "ich": "habe berücksichtigt",
+                    "du": "hast berücksichtigt",
+                    "er": "hat berücksichtigt",
+                    "es": "hat berücksichtigt",
+                    "sie_singular": "hat berücksichtigt",
+                    "xier": "hat berücksichtigt",
+                    "wir": "haben berücksichtigt",
+                    "ihr": "habt berücksichtigt",
+                    "sie_plural": "haben berücksichtigt",
+                    "Sie": "haben berücksichtigt"
+                },
+                "Futur_I": {
+                    "ich": "werde berücksichtigen",
+                    "du": "wirst berücksichtigen",
+                    "er": "wird berücksichtigen",
+                    "es": "wird berücksichtigen",
+                    "sie_singular": "wird berücksichtigen",
+                    "xier": "wird berücksichtigen",
+                    "wir": "werden berücksichtigen",
+                    "ihr": "werdet berücksichtigen",
+                    "sie_plural": "werden berücksichtigen",
+                    "Sie": "werden berücksichtigen"
+                },
+                "imperative": {
+                    "du": "berücksichtige",
+                    "ihr": "berücksichtigt",
+                    "Sie": "berücksichtigen Sie"
+                }
+            },
+            "ernähren": {
+                "present": {
+                    "ich": "ernähre",
+                    "du": "ernährst",
+                    "er": "ernährt",
+                    "es": "ernährt",
+                    "sie_singular": "ernährt",
+                    "xier": "ernährt",
+                    "wir": "ernähren",
+                    "ihr": "ernährt",
+                    "sie_plural": "ernähren",
+                    "Sie": "ernähren"
+                },
+                "Perfekt": {
+                    "ich": "habe ernährt",
+                    "du": "hast ernährt",
+                    "er": "hat ernährt",
+                    "es": "hat ernährt",
+                    "sie_singular": "hat ernährt",
+                    "xier": "hat ernährt",
+                    "wir": "haben ernährt",
+                    "ihr": "habt ernährt",
+                    "sie_plural": "haben ernährt",
+                    "Sie": "haben ernährt"
+                },
+                "Futur_I": {
+                    "ich": "werde ernähren",
+                    "du": "wirst ernähren",
+                    "er": "wird ernähren",
+                    "es": "wird ernähren",
+                    "sie_singular": "wird ernähren",
+                    "xier": "wird ernähren",
+                    "wir": "werden ernähren",
+                    "ihr": "werdet ernähren",
+                    "sie_plural": "werden ernähren",
+                    "Sie": "werden ernähren"
+                },
+                "imperative": {
+                    "du": "ernähr",
+                    "ihr": "ernährt",
+                    "Sie": "ernähren Sie"
+                }
+            },
+            "fehlen": {
+                "present": {
+                    "ich": "fehle",
+                    "du": "fehlst",
+                    "er": "fehlt",
+                    "es": "fehlt",
+                    "sie_singular": "fehlt",
+                    "xier": "fehlt",
+                    "wir": "fehlen",
+                    "ihr": "fehlt",
+                    "sie_plural": "fehlen",
+                    "Sie": "fehlen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefehlt",
+                    "du": "hast gefehlt",
+                    "er": "hat gefehlt",
+                    "es": "hat gefehlt",
+                    "sie_singular": "hat gefehlt",
+                    "xier": "hat gefehlt",
+                    "wir": "haben gefehlt",
+                    "ihr": "habt gefehlt",
+                    "sie_plural": "haben gefehlt",
+                    "Sie": "haben gefehlt"
+                },
+                "Futur_I": {
+                    "ich": "werde fehlen",
+                    "du": "wirst fehlen",
+                    "er": "wird fehlen",
+                    "es": "wird fehlen",
+                    "sie_singular": "wird fehlen",
+                    "xier": "wird fehlen",
+                    "wir": "werden fehlen",
+                    "ihr": "werdet fehlen",
+                    "sie_plural": "werden fehlen",
+                    "Sie": "werden fehlen"
+                },
+                "imperative": {
+                    "du": "fehle",
+                    "ihr": "fehlt",
+                    "Sie": "fehlen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was ist nachhaltig in der Kleidungsindustrie?",
+            "Was nicht?",
+            "Wählen Sie bei den Paaren jeweils aus.",
+            "Vergleichen Sie dann Ihre Antworten.",
+            "Die Kleidung kann man viele Jahre lang tragen.",
+            "-- Die Kleidung kann man nur für eine Saison tragen.",
+            "Die Kleidung kommt von weit her in die USA, z.B.",
+            "Aus Asien.",
+            "-- Die Kleidung kommt aus meiner eigenen Region.",
+            "Die Arbeiter*innen haben ein faires Einkommen.",
+            "-- Die Arbeiter*innen bekommen nur wenig Geld.",
+            "Die Firmen benutzen gute Textilien und Produkte.",
+            "-- Die Firmen benutzen viele Pestizide und Chemikalien.",
+            "Hören Sie den Text und ergänzen Sie die Wörter, die auf dem Flyer fehlen.",
+            "Schon gewusst?",
+            "Nachhaltige Kleidung nennt man Kleidung, die die ökologischen ökonomischen und sozialen Aspekte entlang der gesamten Produktionskette berücksichtigt.",
+            "Die Textilindustrie produziert im Jahr circa 1,2 Billionen Tonnen CO2 mehr als internationale Flüge und Kreuzfahrten zusammen.",
+            "Verwendung von zu viel Wasser, Chemikalien und Polyester.",
+            "Weniger Kleidung kaufen oder sie länger tragen, Reparieren Upcycling von Kleidung, Second-Hand Kleidung kaufen, nachhaltige und faire Kleidung kaufen.",
+            "Ergänzen Sie dann die Genitivartikel und entscheiden Sie, ob das Nomen ein -s braucht.",
+            "Beantworten Sie die Fragen mit Hilfe der Informationen auf dem Flyer.",
+            "Welche drei Aspekte der Nachhaltigkeit berücksichtigt nachhaltige Kleidung?",
+            "Gibt es?",
+            "Verwendung von zu viel Wasser, Chemikalien und Polyesterfasern.",
+            "Womit vergleicht der Flyer des Projekts die die CO2 Emission der Textilindustrie?",
+            "Mit der CO2 Emission von internationalen Flügen und Kreuzfahrtschiffen.",
+            "Wie ist die Textilindustrie im Vergleich zur CO2-Emission des Reisens mit Flugzeugen und Kreuzfahrtschiffen?",
+            "Die CO2 Emission der Textilindustrie ist grösser als die CO2 Emission des Reisens mit Flugzeugen und Kreuzfahrtschiffen.",
+            "Was sind die Vorschläge des Flyers für individuelle Personen?",
+            "Tina und Marie sprechen über Kleidung.",
+            "Für Tina ist nachhaltige Kleidung sehr wichtig, für Marie nicht so sehr.",
+            "Spielen Sie einen Dialog, bei dem Tina eine Frage stellt, Marie eine Antwort gibt und Tina einen Vorschlag macht.",
+            "Welcher Anteil deiner Kleidung ist nachhaltig?",
+            "Wo kaufst du deine Kleidung?",
+            "Warum willst du keine nachhaltige Kleidung?",
+            "Bei großen Ketten oder im Internet.",
+            "Nachhaltige Kleidung ist teuer.",
+            "Ich möchte neue Kleidung haben.",
+            "Das weiß ich nicht.",
+            "Du kannst die Labels lesen.",
+            "Du kannst im Second-Hand Laden einkaufen gehen.",
+            "Du kannst alte Kleidung upcyceln.",
+            "Hören Sie ein Gespräch über die Planeten Diät und ergänzen Sie die Informationen.",
+            "Wir haben heute in der Schule über Ernährung gesprochen.",
+            "Papa, du isst zu viel Fleisch.",
+            "Man soll wenig Fleisch essen, nur einen Burger pro Woche und du isst ja jeden Tag Fleisch und Wurst.",
+            "Wer sagt das?",
+            "Die Planeten Diät.",
+            "Was ist denn die Planeten Diät?",
+            "Das ist eine Ernährungsweise, die dem Planeten und den Menschen hilft.",
+            "Wir ernähren uns nämlich sehr ungesund.",
+            "Wer ist denn wir?",
+            "Ich bin Vegetarierin.",
+            "Wir alle, also alle Menschen.",
+            "Was sagt denn die Planeten Diät noch?",
+            "Was soll man essen?",
+            "Warte ich muss schauen.",
+            "Das ist aber wirklich wenig Fleisch, da ist meine Ernährung weit weg von der Planeten Diät.",
+            "Meine Ernährung ist nicht so weit weg.",
+            "Ich esse genug Obst und Gemüse und Nüsse und kein Fleisch, aber ich esse und trinke mehr Milchprodukte.",
+            "Ja, ich auch.",
+            "Ich essen von allem ein bisschen zu viel und von Obst und Gemüse etwas zu wenig, aber sonst …..",
+            "Ich glaube, ich könnte das.",
+            "Ich könnte das nicht und will es auch nicht.",
+            "Ich glaube nicht, dass ich damit viel ändern kann.",
+            "Hm, ich weiß nicht.",
+            "Ich möchte über die Planeten Diät noch mehr lesen.",
+            "Auf jeden Fall gibt es ab jetzt mehr Gemüse.",
+            "Hören Sie das Gespräch ein zweites Mal.",
+            "Dann ergänzen Sie die Sätze mit den Genitivartikeln und -s, wenn das Nomen eins braucht.",
+            "Wählen Sie die korrekten Satzteile aus.",
+            "Noch eine Lösung?!",
+            "Ergänzen Sie erst die Genitivartikel und entscheiden Sie, ob das Nomen ein - s braucht.",
+            "Sagen Sie dann der anderen Person wie im Beispieldialog, was sie vergleichen soll.",
+            "_ Kuh__ ist viermal so groß wie der Futterbedarf"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

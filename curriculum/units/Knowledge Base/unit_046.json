@@ -1,0 +1,578 @@
+{
+    "unit": "46",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 46,
+        "prerequisite": "1-45"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use dass-clauses with opinion verbs (denken, finden, glauben, meinen, wissen) to express opinions; dass is a verb kicker that sends the conjugated verb to the end of the clause."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die eigene Meinung sagen mit dass-Sätzen",
+            "Sportarten vergleichen und ihren Nutzen beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Sport und Fitness"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "erklären",
+                "pos": "VERB",
+                "translation": "to explain; declare"
+            },
+            {
+                "word": "aufbauen",
+                "pos": "VERB",
+                "translation": "to build; set up",
+                "frequency": 863
+            },
+            {
+                "word": "rudern",
+                "pos": "VERB",
+                "translation": "to row",
+                "frequency": 29218,
+                "cefr": "B2"
+            },
+            {
+                "word": "stärken",
+                "pos": "VERB",
+                "translation": "to strengthen"
+            },
+            {
+                "word": "die Meinung",
+                "pos": "NOUN",
+                "translation": "opinion",
+                "frequency": 787,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Anfänger*in",
+                "pos": "NOUN",
+                "translation": "beginner"
+            },
+            {
+                "word": "die Übung",
+                "pos": "NOUN",
+                "translation": "exercise, practice",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Herz",
+                "pos": "NOUN",
+                "translation": "heart",
+                "frequency": 532,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Rücken",
+                "pos": "NOUN",
+                "translation": "back, spine",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Schulter",
+                "pos": "NOUN",
+                "translation": "shoulder",
+                "frequency": 1023,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bein",
+                "pos": "NOUN",
+                "translation": "leg",
+                "frequency": 884,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kraft",
+                "pos": "NOUN",
+                "translation": "strength; force",
+                "frequency": 458,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ausdauer",
+                "pos": "NOUN",
+                "translation": "endurance",
+                "frequency": 12796,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Spaß,",
+                "pos": "NOUN",
+                "translation": "fun"
+            },
+            {
+                "word": "dick",
+                "pos": "ADJ",
+                "translation": "thick, fat",
+                "frequency": 1074,
+                "cefr": "A2"
+            },
+            {
+                "word": "genug",
+                "pos": "ADV",
+                "translation": "enough",
+                "frequency": 498,
+                "cefr": "A2"
+            },
+            {
+                "word": "ideal",
+                "pos": "ADJ",
+                "translation": "ideal",
+                "frequency": 1234,
+                "cefr": "B1"
+            },
+            {
+                "word": "toll",
+                "pos": "ADJ",
+                "translation": "awesome, great",
+                "frequency": 972,
+                "cefr": "A2"
+            },
+            {
+                "word": "draußen",
+                "pos": "ADV",
+                "translation": "outside, outdoors"
+            },
+            {
+                "word": "ab",
+                "pos": "PREP",
+                "translation": "from",
+                "frequency": 544,
+                "cefr": "A1"
+            },
+            {
+                "word": "Ich denke, dass …",
+                "pos": "PHRASE",
+                "translation": "I think that …"
+            },
+            {
+                "word": "denn",
+                "pos": "PREP",
+                "translation": "because",
+                "frequency": 93,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Arm",
+                "pos": "NOUN",
+                "translation": "arm",
+                "frequency": 527,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Bauch",
+                "pos": "NOUN",
+                "translation": "abdomen, stomach, belly",
+                "frequency": 2147,
+                "cefr": "A1"
+            },
+            {
+                "word": "klettern",
+                "pos": "VERB",
+                "translation": "to climb",
+                "frequency": 2601,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausgebildet",
+                "pos": "ADJ",
+                "translation": "trained, developed",
+                "frequency": 7858,
+                "cefr": "B1"
+            },
+            {
+                "word": "schaden",
+                "pos": "VERB",
+                "translation": "to damage, harm, hurt",
+                "frequency": 3276,
+                "cefr": "B1"
+            },
+            {
+                "word": "sondern",
+                "pos": "CONJ",
+                "translation": "but rather",
+                "frequency": 115,
+                "cefr": "B1"
+            },
+            {
+                "word": "sofort",
+                "pos": "ADV",
+                "translation": "immediately",
+                "frequency": 446,
+                "cefr": "A1"
+            },
+            {
+                "word": "wofür",
+                "pos": "ADV",
+                "translation": "for what"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "realistisch",
+                "pos": "ADV",
+                "frequency": 3351,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Workout",
+                "pos": "NOUN"
+            },
+            {
+                "word": "trainieren",
+                "pos": "VERB",
+                "frequency": 2255,
+                "cefr": "A2"
+            },
+            {
+                "word": "effektiv",
+                "pos": "ADV",
+                "frequency": 2503
+            },
+            {
+                "word": "optimal",
+                "pos": "ADV",
+                "frequency": 1880
+            },
+            {
+                "word": "extrem",
+                "pos": "ADV",
+                "frequency": 1127,
+                "cefr": "B1"
+            },
+            {
+                "word": "monoton",
+                "pos": "ADV",
+                "frequency": 37206
+            },
+            {
+                "word": "der Basketball",
+                "pos": "NOUN",
+                "frequency": 7651,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Tennis",
+                "pos": "NOUN",
+                "frequency": 4671,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Baseball",
+                "pos": "NOUN",
+                "frequency": 17292,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Football",
+                "pos": "NOUN",
+                "frequency": 8670
+            },
+            {
+                "word": "joggen",
+                "pos": "VERB",
+                "frequency": 21279,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Yoga",
+                "pos": "NOUN",
+                "frequency": 14542,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Fitnessstudio",
+                "pos": "NOUN",
+                "frequency": 29598
+            },
+            {
+                "word": "das Training",
+                "pos": "NOUN",
+                "frequency": 2092,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Gewichtheben",
+                "pos": "NOUN",
+                "frequency": 23721
+            },
+            {
+                "word": "der Spaß",
+                "pos": "NOUN",
+                "frequency": 1045,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Natur",
+                "pos": "NOUN",
+                "frequency": 739,
+                "cefr": "A2"
+            },
+            {
+                "word": "fit",
+                "pos": "ADV",
+                "frequency": 4079,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Muskeltraining",
+                "pos": "NOUN"
+            },
+            {
+                "word": "gesünde",
+                "pos": "ADJ",
+                "frequency": 27177
+            },
+            {
+                "word": "die Muskulatur",
+                "pos": "NOUN",
+                "frequency": 3538
+            },
+            {
+                "word": "der Bizep",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Immunsystem",
+                "pos": "NOUN",
+                "frequency": 3995
+            },
+            {
+                "word": "die Technik",
+                "pos": "NOUN",
+                "frequency": 1269,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Trainer",
+                "pos": "NOUN",
+                "frequency": 1003,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erklären": {
+                "present": {
+                    "ich": "erkläre",
+                    "du": "erklärst",
+                    "er": "erklärt",
+                    "es": "erklärt",
+                    "sie_singular": "erklärt",
+                    "xier": "erklärt",
+                    "wir": "erklären",
+                    "ihr": "erklärt",
+                    "sie_plural": "erklären",
+                    "Sie": "erklären"
+                }
+            },
+            "aufbauen": {
+                "present": {
+                    "ich": "baue auf",
+                    "du": "baust auf",
+                    "er": "baut auf",
+                    "es": "baut auf",
+                    "sie_singular": "baut auf",
+                    "xier": "baut auf",
+                    "wir": "bauen auf",
+                    "ihr": "baut auf",
+                    "sie_plural": "bauen auf",
+                    "Sie": "bauen auf"
+                }
+            },
+            "rudern": {
+                "present": {
+                    "ich": "rudere",
+                    "du": "ruderst",
+                    "er": "rudert",
+                    "es": "rudert",
+                    "sie_singular": "rudert",
+                    "xier": "rudert",
+                    "wir": "rudern",
+                    "ihr": "rudert",
+                    "sie_plural": "rudern",
+                    "Sie": "rudern"
+                }
+            },
+            "stärken": {
+                "present": {
+                    "ich": "stärke",
+                    "du": "stärkst",
+                    "er": "stärkt",
+                    "es": "stärkt",
+                    "sie_singular": "stärkt",
+                    "xier": "stärkt",
+                    "wir": "stärken",
+                    "ihr": "stärkt",
+                    "sie_plural": "stärken",
+                    "Sie": "stärken"
+                }
+            },
+            "klettern": {
+                "present": {
+                    "ich": "klettere",
+                    "du": "kletterst",
+                    "er": "klettert",
+                    "es": "klettert",
+                    "sie_singular": "klettert",
+                    "xier": "klettert",
+                    "wir": "klettern",
+                    "ihr": "klettert",
+                    "sie_plural": "klettern",
+                    "Sie": "klettern"
+                }
+            },
+            "schaden": {
+                "present": {
+                    "ich": "schade",
+                    "du": "schadest",
+                    "er": "schadet",
+                    "es": "schadet",
+                    "sie_singular": "schadet",
+                    "xier": "schadet",
+                    "wir": "schaden",
+                    "ihr": "schadet",
+                    "sie_plural": "schaden",
+                    "Sie": "schaden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Thorsten, Hans und Maria trainieren zusammen im Home Gym.",
+            "Sie wollen Muskeln aufbauen.",
+            "Alle drei sind Anfänger*innen.",
+            "Schauen Sie sich die Trainings pläne [Plan] für die drei Freund*innen an: Welcher Trainings plan ist am besten/am realistischsten?",
+            "Ich denke, dass das Workout von Person X am besten ist.",
+            "Ich denke, dass das Workout von Hans am besten ist.",
+            "Thorsten macht zu viel.",
+            "Maria macht nur zwei Übungen.",
+            "Sie macht keine Kniebeugen, Klimmzüge oder Langhantel Curls.",
+            "Hans macht alles und nicht so viel.",
+            "Er macht vier Sätze und nur zehn Übungen.",
+            "Er macht etwas für alle Muskeln.",
+            "Fragen Sie im Kurs.",
+            "Wer im Kurs macht (keinen) Sport?",
+            "Was, wo, wie oft und warum (nicht)?",
+            "Was glauben Sie?",
+            "Für was sind die Sportarten [Sport] gut oder schlecht?",
+            "Ich denke, dass Schwimmen gut/schlecht für X ist.",
+            "Ich finde, dass X Spaß macht.",
+            "Ich denke, dass.",
+            "Ich glaube, dass.",
+            "Ich finde, dass.",
+            "Ich bin sicher, dass.",
+            "Welche anderen Sportarten [Sport] kennen Sie?",
+            "Was können Sie über diese Sportarten [Sport] sagen?",
+            "Sind sie gut oder schlecht?",
+            "Welche Sportarten [Sport] finden Sie besonders gesund?",
+            "Sie sind gut für die Ausdauer und für die Muskeln.",
+            "Sie sind nicht gesund, weil sie nicht gut für die Knochen sind.",
+            "Sie machen Spaß.",
+            "Lesen Sie den Text über Rudersport",
+            "Warum Rudern ein Sport für Jung und Alt ist.",
+            "Rudern ist auf dem ersten Platz in den Top Ten der gesündesten Sportarten",
+            "Sport, weil Rudern die Ausdauer trainiert und gut für das Herz und die Muskulatur ist.",
+            "\"Rudern ist ein sehr gesunder Sport\", sagt Dr.",
+            "Joachim Schubert.",
+            "In diesem Sport ist fast alles in Bewegung.",
+            "Es trainiert die Ausdauer und baut Muskeln auf, sagt Schuber.",
+            "Rudern ist ein idealer Sport für alle.",
+            "Einen dicken Bizeps braucht man nicht, rund 70 Prozent der Kraft kommt beim Rudern aus den Beinen.",
+            "Und die Bewegung draußen ist auch gut für das Immunsystem.",
+            "Das ideale Alter für das erste Rudern ist zwischen zehn und zwölf Jahren, sagt Rudertrainer Frank Flörke.",
+            "Eine Altersbegrenzung gibt es nicht, wenn man gesund und fit ist.",
+            "In manchen Ruderklubs gibt es auch Ü-80-Teams.",
+            "Joachim Schubert beginnt mit 30 mit dem Rudern und findet: \"Es ist ein toller Sport.\"",
+            "Warum ist Rudern so gesund?",
+            "Wer sollte (nicht) rudern und warum?",
+            "Gibt es auch Gefahren?",
+            "Rudern Sie gern und wollen Sie auch rudern?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

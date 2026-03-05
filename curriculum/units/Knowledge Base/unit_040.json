@@ -1,0 +1,490 @@
+{
+    "unit": "40",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 40,
+        "prerequisite": "1-39"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Use two-way prepositions (an, auf, hinter, in, neben, über, unter, vor, zwischen) with the dative case to describe where something is located (Wo?).",
+            "Use stehen, liegen, hängen, and sitzen with dative two-way prepositions to describe the position of objects: stehen for objects with a base, liegen for flat/baseless objects, hängen for hanging objects, sitzen for seated things."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die Lage von Möbeln und Gegenständen in einem Raum beschreiben",
+            "sagen, wo etwas steht, liegt, hängt oder sitzt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Zimmer und Möbel"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "stehen",
+                "pos": "VERB",
+                "translation": "to stand; be standing [things that are located upright, e.g. on a foot]",
+                "frequency": 85,
+                "cefr": "A1"
+            },
+            {
+                "word": "liegen",
+                "pos": "VERB",
+                "translation": "to lie; be lying [things that are located flat]",
+                "frequency": 107,
+                "cefr": "A1"
+            },
+            {
+                "word": "sitzen",
+                "pos": "VERB",
+                "translation": "to sit; be sitting [only things that have knee-like joints to bend}",
+                "frequency": 231,
+                "cefr": "A1"
+            },
+            {
+                "word": "hängen",
+                "pos": "VERB",
+                "translation": "to hang; be hanging"
+            },
+            {
+                "word": "das Schlafzimmer",
+                "pos": "NOUN",
+                "translation": "bedroom",
+                "frequency": 3738,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Bad",
+                "pos": "NOUN",
+                "translation": "bath [bathroom]",
+                "frequency": 1637,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Sofa",
+                "pos": "NOUN",
+                "translation": "sofa",
+                "frequency": 3572,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bett",
+                "pos": "NOUN",
+                "translation": "bed",
+                "frequency": 659,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Regal",
+                "pos": "NOUN",
+                "translation": "shelf",
+                "frequency": 3179,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schrank",
+                "pos": "NOUN",
+                "translation": "cabinet [closet/wardrobe]",
+                "frequency": 3247,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Teppich",
+                "pos": "NOUN",
+                "translation": "rug, carpet",
+                "frequency": 3637,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fernseher",
+                "pos": "NOUN",
+                "translation": "TV",
+                "frequency": 2827,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Spiegel",
+                "pos": "NOUN",
+                "translation": "mirror",
+                "frequency": 1468,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Ofen",
+                "pos": "NOUN",
+                "translation": "stove, oven",
+                "frequency": 4981,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Decke",
+                "pos": "NOUN",
+                "translation": "ceiling; blanket",
+                "frequency": 1951,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Puppe",
+                "pos": "NOUN",
+                "translation": "doll; puppet",
+                "frequency": 4674,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Herausforderung",
+                "pos": "NOUN",
+                "translation": "challenge",
+                "frequency": 1191,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Bewegung",
+                "pos": "NOUN",
+                "translation": "movement",
+                "frequency": 709,
+                "cefr": "B1"
+            },
+            {
+                "word": "neben",
+                "pos": "ADJ",
+                "translation": "next to",
+                "frequency": 266,
+                "cefr": "A2"
+            },
+            {
+                "word": "zwischen",
+                "pos": "PREP",
+                "translation": "between",
+                "frequency": 105,
+                "cefr": "A1"
+            },
+            {
+                "word": "an",
+                "pos": "PREP",
+                "translation": "at, on [vertical / horizontal boundary]",
+                "frequency": 19,
+                "cefr": "A1"
+            },
+            {
+                "word": "in",
+                "pos": "PREP",
+                "translation": "in; into",
+                "frequency": 3,
+                "cefr": "A1"
+            },
+            {
+                "word": "vor",
+                "pos": "PREP",
+                "translation": "before; in front of",
+                "frequency": 50,
+                "cefr": "A1"
+            },
+            {
+                "word": "hinter",
+                "pos": "PREP",
+                "translation": "behind",
+                "frequency": 269,
+                "cefr": "A2"
+            },
+            {
+                "word": "auf",
+                "pos": "PREP",
+                "translation": "on top of [horizontal, surface area]; at",
+                "frequency": 16,
+                "cefr": "A1"
+            },
+            {
+                "word": "über",
+                "pos": "PREP",
+                "translation": "about, concerning; over"
+            },
+            {
+                "word": "unter",
+                "pos": "PREP",
+                "translation": "below; under; underneath",
+                "frequency": 89,
+                "cefr": "A1"
+            },
+            {
+                "word": "fast",
+                "pos": "ADV",
+                "translation": "almost",
+                "frequency": 202,
+                "cefr": "A2"
+            },
+            {
+                "word": "normalerweise",
+                "pos": "ADV",
+                "translation": "usually, typically",
+                "frequency": 2062,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausführen",
+                "pos": "VERB",
+                "translation": "to do, perform, carry out"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Wohnzimmer",
+                "pos": "NOUN",
+                "frequency": 2555,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Arbeitszimmer",
+                "pos": "NOUN",
+                "frequency": 22439
+            },
+            {
+                "word": "logisch",
+                "pos": "ADJ",
+                "frequency": 2780
+            },
+            {
+                "word": "der Toaster",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "stehen": {
+                "present": {
+                    "ich": "stehe",
+                    "du": "stehst",
+                    "er": "steht",
+                    "es": "steht",
+                    "sie_singular": "steht",
+                    "xier": "steht",
+                    "wir": "stehen",
+                    "ihr": "steht",
+                    "sie_plural": "stehen",
+                    "Sie": "stehen"
+                }
+            },
+            "liegen": {
+                "present": {
+                    "ich": "liege",
+                    "du": "liegst",
+                    "er": "liegt",
+                    "es": "liegt",
+                    "sie_singular": "liegt",
+                    "xier": "liegt",
+                    "wir": "liegen",
+                    "ihr": "liegt",
+                    "sie_plural": "liegen",
+                    "Sie": "liegen"
+                }
+            },
+            "sitzen": {
+                "present": {
+                    "ich": "sitze",
+                    "du": "sitzt",
+                    "er": "sitzt",
+                    "es": "sitzt",
+                    "sie_singular": "sitzt",
+                    "xier": "sitzt",
+                    "wir": "sitzen",
+                    "ihr": "sitzt",
+                    "sie_plural": "sitzen",
+                    "Sie": "sitzen"
+                }
+            },
+            "hängen": {
+                "present": {
+                    "ich": "hänge",
+                    "du": "hängst",
+                    "er": "hängt",
+                    "es": "hängt",
+                    "sie_singular": "hängt",
+                    "xier": "hängt",
+                    "wir": "hängen",
+                    "ihr": "hängt",
+                    "sie_plural": "hängen",
+                    "Sie": "hängen"
+                }
+            },
+            "ausführen": {
+                "present": {
+                    "ich": "führe aus",
+                    "du": "führst aus",
+                    "er": "führt aus",
+                    "es": "führt aus",
+                    "sie_singular": "führt aus",
+                    "xier": "führt aus",
+                    "wir": "führen aus",
+                    "ihr": "führt aus",
+                    "sie_plural": "führen aus",
+                    "Sie": "führen aus"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sprechen Sie zusammen und machen Sie die Bewegungen.",
+            "Ihre Lehrkraft spricht und Sie machen die Bewegungen.",
+            "Ihre Lehrkraft spricht immer schneller.",
+            "Jetzt Sie!",
+            "Eine Person aus dem Kurs spricht.",
+            "Machen Sie die Bewegungen.",
+            "Ihre Lehrkraft spricht, macht aber eine andere Bewegung.",
+            "Machen Sie, was sie hören, nicht was sie sehen.",
+            "Stehen - liegen - sitzen – hängen",
+            "Was kann (normalerweise) stehen, liegen, sitzen und hängen?",
+            "Schreiben Sie die richtigen Verben.",
+            "Die Katze kann stehen, liegen und sitzen (und manchmal hängen).",
+            "Eine Lampe kann stehen und hängen.",
+            "Ein Sofa kann stehen.",
+            "Ein Buch kann stehen und liegen.",
+            "Ein Teppich kann liegen.",
+            "Ein Bild kann hängen.",
+            "Eine Puppe kann stehen, liegen und sitzen.",
+            "Ein Tisch kann stehen.",
+            "Ein Bett kann stehen.",
+            "In welchem Zimmer stehen, liegen oder hängen die Dinge normalerweise?",
+            "Eine Banane liegt oder hängt normalerweise in der Küche.",
+            "Ein Bett steht normalerweise im Schlafzimmer.",
+            "Ein Bild liegt oder hängt oder steht normalerweise im Wohnzimmer, Schlafzimmer, Arbeitszimmer oder Bad.",
+            "Ein Fernseher steht normalerweise im Wohnzimmer oder Schlafzimmer.",
+            "Eine Hose liegt oder hängt normalerweise im Schlafzimmer.",
+            "Eine Lampe steht oder hängt normalerweise im Wohnzimmer, im Schlafzimmer, in der Küche, im Arbeitszimmer oder im Bad.",
+            "Ein Ofen steht normalerweise in der Küche.",
+            "Ein Regal steht oder hängt normalerweise im Wohnzimmer, im Schlafzimmer, in der Küche, im Arbeitszimmer oder im Bad.",
+            "Ein Schrank steht normalerweise im Wohnzimmer, im Schlafzimmer, in der Küche, im Arbeitszimmer oder im Bad.",
+            "Ein Sofa steht normalerweise im Wohnzimmer.",
+            "Ein Spiegel hängt normalerweise im Bad.",
+            "Eine Tastatur liegt normalerweise im Arbeitszimmer.",
+            "Ein Teppich liegt normalerweise im Wohnzimmer, Esszimmer ( Essen Zimmer ), oder Schlafzimmer.",
+            "Ein Tisch steht normalerweise im Esszimmer ( Essen Zimmer ), im Wohnzimmer oder im Arbeitszimmer.",
+            "Eine Uhr hängt normalerweise im Wohnzimmer, im Schlafzimmer, in der Küche, im Arbeitszimmer oder im Bad.",
+            "Schreiben Sie logische Sätze mit den Zimmern und Dingen aus Teil 2.",
+            "Welches Wohnzimmer ist es?",
+            "Dieses Haus hat sechs fast identische Wohnzimmer.",
+            "Ergänzen Sie die (Nominativ-)Artikel für die Dinge in allen Wohnzimmern.",
+            "Person 1 wählt ein Wohnzimmer aus, sagt aber die Nummer nicht.",
+            "Person 2 stellt ja nein Fragen.",
+            "Kann sie das richtige Wohnzimmer finden?",
+            "Steht der Fernseher auf dem Tisch",
+            "Hängt der Stuhl an der Decke?",
+            "Steht die Pflanze neben dem Sofa?",
+            "Steht der Tisch neben dem Sofa?",
+            "Ist es Wohnzimmer 5?",
+            "Ja, es ist Wohnzimmer 5.",
+            "Steht der Fernseher auf dem Tisch/auf dem Sofa?",
+            "Ja/Nein, der Fernseher steht (nicht) auf dem Sofa/auf dem Tisch.",
+            "Steht die Pflanze auf dem Tisch/auf dem Sofa/neben dem Sofa?",
+            "Hängt das Bild neben/über dem Sofa?",
+            "Das Bild hängt neben/über dem Sofa.",
+            "Steht der Tisch neben/hinter dem Sofa?",
+            "Ja/nein, der Tisch steht (nicht) neben/hinter dem Sofa.",
+            "Hängt der Stuhl an der Decke/Wand?",
+            "Ja/nein, der Stuhl hängt (nicht) an der Decke/Wand.",
+            "Lesen Sie die Sätze über das verdrehte Haus von Dennis.",
+            "Was ist oft/immer so und was nicht?",
+            "Das Sofa steht im Bad.",
+            "Ist das immer so?",
+            "Nein, das ist nicht immer so.",
+            "Das Bild von Tina liegt auf dem Teppich.",
+            "Ein Bild hängt normalerweise an der Wand oder steht auf dem Regal/dem Tisch.",
+            "Das Videospiel hängt an der Decke.",
+            "Das Videospiel hängen an der Decke.",
+            "Videospiele stehen normalerweise im Schrank.",
+            "Der Laptop liegt im Wasser.",
+            "Ein Laptop liegt normalerweise auf dem Tisch.",
+            "Die Stühle stehen auf dem Tisch.",
+            "Das ist manchmal so.",
+            "Stühle stehen normalerweise am Tisch.",
+            "Der Hund sitzt hinter dem Schrank.",
+            "Der Hund sitzt hinter Schrank.",
+            "Hunde sitzen normalerweise auf dem Sofa.",
+            "Der Ofen steht im Arbeitszimmer.",
+            "Nein, ein Ofen steht normalerweise in der Küche.",
+            "Seine Oma sitzt auf unter dem Sofa.",
+            "Seine Oma sitzt unter dem Sofa.",
+            "Nein, eine Oma sitzt normalerweise auf dem Sofa.",
+            "Die Hose liegt im Ofen.",
+            "Eine Hose liegt normalerweise im Schrank.",
+            "Der Toaster steht neben dem Bett.",
+            "Ein Toaster steht normalerweise in der Küche.",
+            "Ein Sofa ist meistens im Wohnzimmer."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

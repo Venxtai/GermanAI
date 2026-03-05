@@ -1,0 +1,651 @@
+{
+    "unit": "O15",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 15,
+        "prerequisite": "core 1-104, O1-O14"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Sicherheit und Gefahr spekulieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Sicherheit und TÃƒÆ’Ã…â€œV"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "regulieren", "pos": "VERB", "translation": "to regulate", "frequency": 3888, "cefr": "B2" },
+            { "word": "prüfen", "pos": "VERB", "translation": "to check, inspect" },
+            { "word": "kontrollieren", "pos": "VERB", "translation": "to check, monitor, control", "frequency": 1546, "cefr": "A2" },
+            { "word": "festziehen", "pos": "VERB", "translation": "to torque down, tighten" },
+            { "word": "brechen", "pos": "VERB", "translation": "to break; throw up", "frequency": 1143, "cefr": "B1" },
+            { "word": "reißen", "pos": "VERB", "translation": "to rip, tear" },
+            { "word": "zusammenstoßen", "pos": "VERB", "translation": "to collide; bang together" },
+            { "word": "die Milliarde", "pos": "NOUN", "translation": "billion", "frequency": 453, "cefr": "A1" },
+            { "word": "die Sicherheit", "pos": "NOUN", "translation": "safety, security; certainty", "frequency": 776, "cefr": "B1" },
+            { "word": "die Verantwortung", "pos": "NOUN", "translation": "responsibility", "frequency": 1103, "cefr": "B1" },
+            { "word": "die Verletzung", "pos": "NOUN", "translation": "injury; violation", "frequency": 2039, "cefr": "B1" },
+            { "word": "das Schleudertrauma", "pos": "NOUN", "translation": "whiplash", "frequency": 1, "cefr": "A1" },
+            { "word": "das Schiff", "pos": "NOUN", "translation": "ship", "frequency": 1176, "cefr": "A2" },
+            { "word": "der Gurt", "pos": "NOUN", "translation": "belt, strap", "frequency": 24305, "cefr": "A1" },
+            { "word": "der Bügel", "pos": "NOUN", "translation": "(lab/shoulder) bar [on an amusement ride]; coat hanger; bracket", "frequency": 1, "cefr": "A1" },
+            { "word": "der*die Prüfer*in", "pos": "NOUN", "translation": "examiner, inspector" },
+            { "word": "der*die Fahrer*innen", "pos": "NOUN", "translation": "driver, rider", "frequency": 1554, "cefr": "A1" },
+            { "word": "die Mücke", "pos": "NOUN", "translation": "mosquito", "frequency": 1, "cefr": "A1" },
+            { "word": "landesweit", "pos": "ADJ", "translation": "across the country; nationwide; national", "frequency": 6930 },
+            { "word": "niemand", "pos": "PRON", "translation": "nobody", "frequency": 362, "cefr": "A2" },
+            { "word": "unabhängig", "pos": "ADJ", "translation": "independent(ly)" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der*die Pilot*innen", "pos": "NOUN", "frequency": 2956 },
+            { "word": "der Airbag", "pos": "NOUN", "frequency": 17427, "cefr": "B2" },
+            { "word": "das Virus", "pos": "NOUN", "frequency": 2720, "cefr": "B1" },
+            { "word": "die Fähre", "pos": "NOUN", "frequency": 9799, "cefr": "B1" },
+            { "word": "der Blitz", "pos": "NOUN", "frequency": 9473, "cefr": "B1" },
+            { "word": "der Schock", "pos": "NOUN", "frequency": 3747 },
+            { "word": "der Standard", "pos": "NOUN", "frequency": 1982, "cefr": "B2" },
+            { "word": "herausragend", "pos": "ADV", "frequency": 6845 },
+            { "word": "der US-Staat", "pos": "NOUN", "frequency": 20257 },
+            { "word": "die Checkliste", "pos": "NOUN", "frequency": 37456 },
+            { "word": "die Elektronik", "pos": "NOUN", "frequency": 10260 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "regulieren": {
+                "present": {
+                    "ich": "reguliere",
+                    "du": "regulierst",
+                    "er": "reguliert",
+                    "es": "reguliert",
+                    "sie_singular": "reguliert",
+                    "xier": "reguliert",
+                    "wir": "regulieren",
+                    "ihr": "reguliert",
+                    "sie_plural": "regulieren",
+                    "Sie": "regulieren"
+                },
+                "Perfekt": {
+                    "ich": "habe reguliert",
+                    "du": "hast reguliert",
+                    "er": "hat reguliert",
+                    "es": "hat reguliert",
+                    "sie_singular": "hat reguliert",
+                    "xier": "hat reguliert",
+                    "wir": "haben reguliert",
+                    "ihr": "habt reguliert",
+                    "sie_plural": "haben reguliert",
+                    "Sie": "haben reguliert"
+                },
+                "Futur_I": {
+                    "ich": "werde regulieren",
+                    "du": "wirst regulieren",
+                    "er": "wird regulieren",
+                    "es": "wird regulieren",
+                    "sie_singular": "wird regulieren",
+                    "xier": "wird regulieren",
+                    "wir": "werden regulieren",
+                    "ihr": "werdet regulieren",
+                    "sie_plural": "werden regulieren",
+                    "Sie": "werden regulieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde regulieren",
+                    "du": "würdest regulieren",
+                    "er": "würde regulieren",
+                    "es": "würde regulieren",
+                    "sie_singular": "würde regulieren",
+                    "xier": "würde regulieren",
+                    "wir": "würden regulieren",
+                    "ihr": "würdet regulieren",
+                    "sie_plural": "würden regulieren",
+                    "Sie": "würden regulieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte reguliert",
+                    "du": "hättest reguliert",
+                    "er": "hätte reguliert",
+                    "es": "hätte reguliert",
+                    "sie_singular": "hätte reguliert",
+                    "xier": "hätte reguliert",
+                    "wir": "hätten reguliert",
+                    "ihr": "hättet reguliert",
+                    "sie_plural": "hätten reguliert",
+                    "Sie": "hätten reguliert"
+                },
+                "imperative": {
+                    "du": "reguliere",
+                    "ihr": "reguliert",
+                    "Sie": "regulieren Sie"
+                }
+            },
+            "prüfen": {
+                "present": {
+                    "ich": "prüfe",
+                    "du": "prüfst",
+                    "er": "prüft",
+                    "es": "prüft",
+                    "sie_singular": "prüft",
+                    "xier": "prüft",
+                    "wir": "prüfen",
+                    "ihr": "prüft",
+                    "sie_plural": "prüfen",
+                    "Sie": "prüfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geprüft",
+                    "du": "hast geprüft",
+                    "er": "hat geprüft",
+                    "es": "hat geprüft",
+                    "sie_singular": "hat geprüft",
+                    "xier": "hat geprüft",
+                    "wir": "haben geprüft",
+                    "ihr": "habt geprüft",
+                    "sie_plural": "haben geprüft",
+                    "Sie": "haben geprüft"
+                },
+                "Futur_I": {
+                    "ich": "werde prüfen",
+                    "du": "wirst prüfen",
+                    "er": "wird prüfen",
+                    "es": "wird prüfen",
+                    "sie_singular": "wird prüfen",
+                    "xier": "wird prüfen",
+                    "wir": "werden prüfen",
+                    "ihr": "werdet prüfen",
+                    "sie_plural": "werden prüfen",
+                    "Sie": "werden prüfen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde prüfen",
+                    "du": "würdest prüfen",
+                    "er": "würde prüfen",
+                    "es": "würde prüfen",
+                    "sie_singular": "würde prüfen",
+                    "xier": "würde prüfen",
+                    "wir": "würden prüfen",
+                    "ihr": "würdet prüfen",
+                    "sie_plural": "würden prüfen",
+                    "Sie": "würden prüfen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geprüft",
+                    "du": "hättest geprüft",
+                    "er": "hätte geprüft",
+                    "es": "hätte geprüft",
+                    "sie_singular": "hätte geprüft",
+                    "xier": "hätte geprüft",
+                    "wir": "hätten geprüft",
+                    "ihr": "hättet geprüft",
+                    "sie_plural": "hätten geprüft",
+                    "Sie": "hätten geprüft"
+                },
+                "imperative": {
+                    "du": "prüf",
+                    "ihr": "prüft",
+                    "Sie": "prüfen Sie"
+                }
+            },
+            "kontrollieren": {
+                "present": {
+                    "ich": "kontrolliere",
+                    "du": "kontrollierst",
+                    "er": "kontrolliert",
+                    "es": "kontrolliert",
+                    "sie_singular": "kontrolliert",
+                    "xier": "kontrolliert",
+                    "wir": "kontrollieren",
+                    "ihr": "kontrolliert",
+                    "sie_plural": "kontrollieren",
+                    "Sie": "kontrollieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kontrolliert",
+                    "du": "hast kontrolliert",
+                    "er": "hat kontrolliert",
+                    "es": "hat kontrolliert",
+                    "sie_singular": "hat kontrolliert",
+                    "xier": "hat kontrolliert",
+                    "wir": "haben kontrolliert",
+                    "ihr": "habt kontrolliert",
+                    "sie_plural": "haben kontrolliert",
+                    "Sie": "haben kontrolliert"
+                },
+                "Futur_I": {
+                    "ich": "werde kontrollieren",
+                    "du": "wirst kontrollieren",
+                    "er": "wird kontrollieren",
+                    "es": "wird kontrollieren",
+                    "sie_singular": "wird kontrollieren",
+                    "xier": "wird kontrollieren",
+                    "wir": "werden kontrollieren",
+                    "ihr": "werdet kontrollieren",
+                    "sie_plural": "werden kontrollieren",
+                    "Sie": "werden kontrollieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde kontrollieren",
+                    "du": "würdest kontrollieren",
+                    "er": "würde kontrollieren",
+                    "es": "würde kontrollieren",
+                    "sie_singular": "würde kontrollieren",
+                    "xier": "würde kontrollieren",
+                    "wir": "würden kontrollieren",
+                    "ihr": "würdet kontrollieren",
+                    "sie_plural": "würden kontrollieren",
+                    "Sie": "würden kontrollieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte kontrolliert",
+                    "du": "hättest kontrolliert",
+                    "er": "hätte kontrolliert",
+                    "es": "hätte kontrolliert",
+                    "sie_singular": "hätte kontrolliert",
+                    "xier": "hätte kontrolliert",
+                    "wir": "hätten kontrolliert",
+                    "ihr": "hättet kontrolliert",
+                    "sie_plural": "hätten kontrolliert",
+                    "Sie": "hätten kontrolliert"
+                },
+                "imperative": {
+                    "du": "kontrolliere",
+                    "ihr": "kontrolliert",
+                    "Sie": "kontrollieren Sie"
+                }
+            },
+            "festziehen": {
+                "Perfekt": {
+                    "ich": "habe festgezogen",
+                    "du": "hast festgezogen",
+                    "er": "hat festgezogen",
+                    "es": "hat festgezogen",
+                    "sie_singular": "hat festgezogen",
+                    "xier": "hat festgezogen",
+                    "wir": "haben festgezogen",
+                    "ihr": "habt festgezogen",
+                    "sie_plural": "haben festgezogen",
+                    "Sie": "haben festgezogen"
+                },
+                "Futur_I": {
+                    "ich": "werde festziehen",
+                    "du": "wirst festziehen",
+                    "er": "wird festziehen",
+                    "es": "wird festziehen",
+                    "sie_singular": "wird festziehen",
+                    "xier": "wird festziehen",
+                    "wir": "werden festziehen",
+                    "ihr": "werdet festziehen",
+                    "sie_plural": "werden festziehen",
+                    "Sie": "werden festziehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde festziehen",
+                    "du": "würdest festziehen",
+                    "er": "würde festziehen",
+                    "es": "würde festziehen",
+                    "sie_singular": "würde festziehen",
+                    "xier": "würde festziehen",
+                    "wir": "würden festziehen",
+                    "ihr": "würdet festziehen",
+                    "sie_plural": "würden festziehen",
+                    "Sie": "würden festziehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte festgezogen",
+                    "du": "hättest festgezogen",
+                    "er": "hätte festgezogen",
+                    "es": "hätte festgezogen",
+                    "sie_singular": "hätte festgezogen",
+                    "xier": "hätte festgezogen",
+                    "wir": "hätten festgezogen",
+                    "ihr": "hättet festgezogen",
+                    "sie_plural": "hätten festgezogen",
+                    "Sie": "hätten festgezogen"
+                }
+            },
+            "brechen": {
+                "present": {
+                    "ich": "breche",
+                    "du": "brichst",
+                    "er": "bricht",
+                    "es": "bricht",
+                    "sie_singular": "bricht",
+                    "xier": "bricht",
+                    "wir": "brechen",
+                    "ihr": "brecht",
+                    "sie_plural": "brechen",
+                    "Sie": "brechen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebrochen",
+                    "du": "hast gebrochen",
+                    "er": "hat gebrochen",
+                    "es": "hat gebrochen",
+                    "sie_singular": "hat gebrochen",
+                    "xier": "hat gebrochen",
+                    "wir": "haben gebrochen",
+                    "ihr": "habt gebrochen",
+                    "sie_plural": "haben gebrochen",
+                    "Sie": "haben gebrochen"
+                },
+                "Futur_I": {
+                    "ich": "werde brechen",
+                    "du": "wirst brechen",
+                    "er": "wird brechen",
+                    "es": "wird brechen",
+                    "sie_singular": "wird brechen",
+                    "xier": "wird brechen",
+                    "wir": "werden brechen",
+                    "ihr": "werdet brechen",
+                    "sie_plural": "werden brechen",
+                    "Sie": "werden brechen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde brechen",
+                    "du": "würdest brechen",
+                    "er": "würde brechen",
+                    "es": "würde brechen",
+                    "sie_singular": "würde brechen",
+                    "xier": "würde brechen",
+                    "wir": "würden brechen",
+                    "ihr": "würdet brechen",
+                    "sie_plural": "würden brechen",
+                    "Sie": "würden brechen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gebrochen",
+                    "du": "hättest gebrochen",
+                    "er": "hätte gebrochen",
+                    "es": "hätte gebrochen",
+                    "sie_singular": "hätte gebrochen",
+                    "xier": "hätte gebrochen",
+                    "wir": "hätten gebrochen",
+                    "ihr": "hättet gebrochen",
+                    "sie_plural": "hätten gebrochen",
+                    "Sie": "hätten gebrochen"
+                },
+                "imperative": {
+                    "du": "brich",
+                    "ihr": "brecht",
+                    "Sie": "brechen Sie"
+                }
+            },
+            "reißen": {
+                "present": {
+                    "ich": "reiße",
+                    "du": "reißt",
+                    "er": "reißt",
+                    "es": "reißt",
+                    "sie_singular": "reißt",
+                    "xier": "reißt",
+                    "wir": "reißen",
+                    "ihr": "reißt",
+                    "sie_plural": "reißen",
+                    "Sie": "reißen"
+                },
+                "Perfekt": {
+                    "ich": "habe gerissen",
+                    "du": "hast gerissen",
+                    "er": "hat gerissen",
+                    "es": "hat gerissen",
+                    "sie_singular": "hat gerissen",
+                    "xier": "hat gerissen",
+                    "wir": "haben gerissen",
+                    "ihr": "habt gerissen",
+                    "sie_plural": "haben gerissen",
+                    "Sie": "haben gerissen"
+                },
+                "Futur_I": {
+                    "ich": "werde reißen",
+                    "du": "wirst reißen",
+                    "er": "wird reißen",
+                    "es": "wird reißen",
+                    "sie_singular": "wird reißen",
+                    "xier": "wird reißen",
+                    "wir": "werden reißen",
+                    "ihr": "werdet reißen",
+                    "sie_plural": "werden reißen",
+                    "Sie": "werden reißen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde reißen",
+                    "du": "würdest reißen",
+                    "er": "würde reißen",
+                    "es": "würde reißen",
+                    "sie_singular": "würde reißen",
+                    "xier": "würde reißen",
+                    "wir": "würden reißen",
+                    "ihr": "würdet reißen",
+                    "sie_plural": "würden reißen",
+                    "Sie": "würden reißen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gerissen",
+                    "du": "hättest gerissen",
+                    "er": "hätte gerissen",
+                    "es": "hätte gerissen",
+                    "sie_singular": "hätte gerissen",
+                    "xier": "hätte gerissen",
+                    "wir": "hätten gerissen",
+                    "ihr": "hättet gerissen",
+                    "sie_plural": "hätten gerissen",
+                    "Sie": "hätten gerissen"
+                },
+                "imperative": {
+                    "du": "reiße",
+                    "ihr": "reißt",
+                    "Sie": "reißen Sie"
+                }
+            },
+            "zusammenstoßen": {
+                "present": {
+                    "ich": "stoße zusammen",
+                    "du": "stößt zusammen",
+                    "er": "stößt zusammen",
+                    "es": "stößt zusammen",
+                    "sie_singular": "stößt zusammen",
+                    "xier": "stößt zusammen",
+                    "wir": "stoßen zusammen",
+                    "ihr": "stoßt zusammen",
+                    "sie_plural": "stoßen zusammen",
+                    "Sie": "stoßen zusammen"
+                },
+                "Perfekt": {
+                    "ich": "bin zusammengestoßen",
+                    "du": "bist zusammengestoßen",
+                    "er": "ist zusammengestoßen",
+                    "es": "ist zusammengestoßen",
+                    "sie_singular": "ist zusammengestoßen",
+                    "xier": "ist zusammengestoßen",
+                    "wir": "sind zusammengestoßen",
+                    "ihr": "seid zusammengestoßen",
+                    "sie_plural": "sind zusammengestoßen",
+                    "Sie": "sind zusammengestoßen"
+                },
+                "Futur_I": {
+                    "ich": "werde zusammenstoßen",
+                    "du": "wirst zusammenstoßen",
+                    "er": "wird zusammenstoßen",
+                    "es": "wird zusammenstoßen",
+                    "sie_singular": "wird zusammenstoßen",
+                    "xier": "wird zusammenstoßen",
+                    "wir": "werden zusammenstoßen",
+                    "ihr": "werdet zusammenstoßen",
+                    "sie_plural": "werden zusammenstoßen",
+                    "Sie": "werden zusammenstoßen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde zusammenstoßen",
+                    "du": "würdest zusammenstoßen",
+                    "er": "würde zusammenstoßen",
+                    "es": "würde zusammenstoßen",
+                    "sie_singular": "würde zusammenstoßen",
+                    "xier": "würde zusammenstoßen",
+                    "wir": "würden zusammenstoßen",
+                    "ihr": "würdet zusammenstoßen",
+                    "sie_plural": "würden zusammenstoßen",
+                    "Sie": "würden zusammenstoßen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre zusammengestoßen",
+                    "du": "wärst zusammengestoßen",
+                    "er": "wäre zusammengestoßen",
+                    "es": "wäre zusammengestoßen",
+                    "sie_singular": "wäre zusammengestoßen",
+                    "xier": "wäre zusammengestoßen",
+                    "wir": "wären zusammengestoßen",
+                    "ihr": "wärt zusammengestoßen",
+                    "sie_plural": "wären zusammengestoßen",
+                    "Sie": "wären zusammengestoßen"
+                },
+                "imperative": {
+                    "du": "stoße zusammen",
+                    "ihr": "stoßt zusammen",
+                    "Sie": "stoßen Sie zusammen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Gefährlich oder sicher?",
+            "Warum könnten diese Dinge gefährlich oder sicher sein?",
+            "Das Flugzeug könnte gefährlich sein, weil es hoch fliegt.",
+            "Das Flugzeug könnte sicher sein, weil die Technik gut erforscht ist.",
+            "Das Auto der Hai der Zug",
+            "Fragen Sie die andere Person, was gefährlicher sein könnte.",
+            "Was könnte gefährlicher sein, das Flugzeug oder das Auto?",
+            "Ich denke, dass das Flugzeug gefährlicher als das Auto sein könnte.",
+            "Sie bekommen Statistiken.",
+            "Was ist wirklich am gefährlichsten?",
+            "Was kann man einfach vergleichen und was nicht so einfach?",
+            "Welche Unfälle könnten auf diesen vier Fahrgeschäften passieren?",
+            "Ordnen Sie die passenden Unfälle und Konsequenzen zu.",
+            "Sie können auch kreativ sein und eigene Unfälle und Konsequenzen schreiben.",
+            "F ) durch die Luft fliegen",
+            "_ Schreiben Sie über die vier Unfälle Sätze mit „wenn.",
+            "Lesen Sie Ihre Sätze einer anderen Person vor.",
+            "Unfälle in Freizeitparks in den USA",
+            "Lesen Sie die Fragen über Unfälle und Sicherheit in amerikanischen Freizeitparks.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Wie viele Kinder haben sich von 1990 bis 2010 in den USA auf Fahrgeschäften verletzt?",
+            "Von 1990 bis 2010 haben sich 92.885 Kinder auf Fahrgeschäften verletzt.",
+            "Wann passieren die meisten Unfälle?",
+            "Die meisten Unfälle passieren im Sommer.",
+            "Wie viele Personen besuchen amerikanische Parks pro Jahr?",
+            "Wie viele Fahrten auf Fahrgeschäften sind es pro Jahr?",
+            "Die Parks besuchen pro Jahr 385 Millionen Personen.",
+            "Es sind 1,7 Milliarden Fahrten.",
+            "Was sagt die Organisation „Children’s Hospital zur Sicherheit in Freizeitparks?",
+            "Sie sagt, dass Freizeitparks generell sicher sind, man aber noch viel mehr machen müsste.",
+            "In den USA?",
+            "Wer prüft sie in Deutschland?",
+            "In den USA prüft niemand die Sicherheitsstandards.",
+            "In Deutschland prüft sie der TÜV.",
+            "Wie gut findet die IAAPA die Sicherheit in Freizeitparks?",
+            "Sie findet sie herausragend.",
+            "Sind die Freizeitparks in den USA unsicher?",
+            "Es gibt keine offizielle Statistik zu Unfällen in Freizeitparks.",
+            "Das letzte Mal hat die Organisation „Children's Hospital im Jahr 2013 über Unfällen in Freizeitparks von 1990 bis 2010 geschrieben.",
+            "In den 20 Jahren sind 92.885 Kinder ins Krankenhaus gekommen sind, weil sie sich bei Fahrgeschäften, zum Beispiel Achterbahnen, verletzt haben.",
+            "Pro Jahr sind das 4.423 Verletzungen.",
+            "Die meisten ( 70 % ) passieren im Sommer, jeden Tag durchschnittlich 20 Verletzungen.",
+            "Es besuchen aber auch jeden Tag sehr viele Menschen amerikanische Freizeitparks.",
+            "Die Organisation „Children's Hospital denkt, dass die Freizeitparks generell sicher sind, aber man müsste noch viel mehr machen.",
+            "Ein effektives Sicherheitssystem gibt es nicht.",
+            "Es gibt offizielle Standards für Freizeitparks von ASTM International, aber es gibt in den USA keine landesweite Organisation, die die Standards für Parks kontrolliert.",
+            "Es gibt auch keine unabhängige Prüforganisation, wie zum Beispiel in Deutschland den TÜV.",
+            "Die Verantwortung haben die US-Staaten oder die Parks selbst.",
+            "Im Jahr 2025 hatten 44 US-Staaten Regeln für Freizeitparks.",
+            "Die anderen Staaten ( Alabama, Mississippi, Montana, Nevada, Wyoming und Utah ) haben Fahrgeschäfte nicht reguliert.",
+            "Die IAAPA glaubt aber nicht, dass ein landesweites Programm in den USA die Sicherheit verbessern würde, weil die Sicherheit schon sehr gut ist.",
+            "In Deutschland prüft der TÜV alle Karussells und andere Fahrgeschäfte.",
+            "Suchen Sie sich ein Fahrgeschäft aus, das Sie jetzt kennen, und erstellen Sie eine Checkliste mit Fragen für die Prüfer*innen.",
+            "Steht das Fahrgeschäft sicher?",
+            "Ist die Elektronik an?",
+            "Schließen die Türen?",
+            "Ist die Beschleunigung schnell genug?",
+            "Ist die Kette nicht zu schnell?",
+            "Sind die Schrauben festgezogen",
+            "Sind die Gondeln fest verbunden?",
+            "Ist der Bügel sicher?",
+            "Steht das Karussell sicher?"
+        ],
+        "templated": []
+    }
+}

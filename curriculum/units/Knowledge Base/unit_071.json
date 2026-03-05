@@ -1,0 +1,1428 @@
+{
+    "unit": "71",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 71,
+        "prerequisite": "1-70"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the Perfekt of weak verbs with a conjugated helping verb (haben or sein) in position 2 and the past participle (ge- + stem + -t) in final position.",
+            "For weak verb stems ending in -d or -t, add -et instead of -t to the past participle: warten → gewartet."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Aktivitäten aus der Kindheit vergleichen",
+            "über vergangene Erlebnisse sprechen im Perfekt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "draußen spielen und Freiheit für Kinder"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "sagen",
+                "pos": "VERB",
+                "translation": "to say",
+                "frequency": 40,
+                "cefr": "A1"
+            },
+            {
+                "word": "machen",
+                "pos": "VERB",
+                "translation": "to do; make",
+                "frequency": 58,
+                "cefr": "A1"
+            },
+            {
+                "word": "leben",
+                "pos": "VERB",
+                "translation": "to live",
+                "frequency": 98,
+                "cefr": "A1"
+            },
+            {
+                "word": "zeigen",
+                "pos": "VERB",
+                "translation": "to show, demonstrate",
+                "frequency": 136,
+                "cefr": "A2"
+            },
+            {
+                "word": "fragen",
+                "pos": "VERB",
+                "translation": "to ask",
+                "frequency": 153,
+                "cefr": "A1"
+            },
+            {
+                "word": "spielen",
+                "pos": "VERB",
+                "translation": "to play",
+                "frequency": 205,
+                "cefr": "A1"
+            },
+            {
+                "word": "arbeiten",
+                "pos": "VERB",
+                "translation": "to work",
+                "frequency": 234,
+                "cefr": "A1"
+            },
+            {
+                "word": "lernen",
+                "pos": "VERB",
+                "translation": "to learn; study",
+                "frequency": 288,
+                "cefr": "A1"
+            },
+            {
+                "word": "hören",
+                "pos": "VERB",
+                "translation": "to hear"
+            },
+            {
+                "word": "suchen",
+                "pos": "VERB",
+                "translation": "to look for, search",
+                "frequency": 293,
+                "cefr": "A1"
+            },
+            {
+                "word": "kaufen",
+                "pos": "VERB",
+                "translation": "to buy",
+                "frequency": 506,
+                "cefr": "A1"
+            },
+            {
+                "word": "wohnen",
+                "pos": "VERB",
+                "translation": "to live (in)",
+                "frequency": 560,
+                "cefr": "A1"
+            },
+            {
+                "word": "freuen (auf)",
+                "pos": "VERB",
+                "translation": "to look forward (to); be happy about",
+                "frequency": 589,
+                "cefr": "A2"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "zählen",
+                "pos": "VERB",
+                "translation": "to count"
+            },
+            {
+                "word": "reisen",
+                "pos": "VERB",
+                "translation": "to travel",
+                "frequency": 933,
+                "cefr": "A1"
+            },
+            {
+                "word": "kämpfen",
+                "pos": "VERB",
+                "translation": "to fight"
+            },
+            {
+                "word": "töten",
+                "pos": "VERB",
+                "translation": "to kill"
+            },
+            {
+                "word": "sammeln",
+                "pos": "VERB",
+                "translation": "to collect",
+                "frequency": 1219,
+                "cefr": "A2"
+            },
+            {
+                "word": "retten",
+                "pos": "VERB",
+                "translation": "to save; rescue",
+                "frequency": 1358,
+                "cefr": "B1"
+            },
+            {
+                "word": "gucken",
+                "pos": "VERB",
+                "translation": "to peek; peer; look",
+                "frequency": 1362,
+                "cefr": "B1"
+            },
+            {
+                "word": "kochen",
+                "pos": "VERB",
+                "translation": "to cook",
+                "frequency": 1481,
+                "cefr": "A1"
+            },
+            {
+                "word": "wandern",
+                "pos": "VERB",
+                "translation": "to hike; migrate",
+                "frequency": 1803,
+                "cefr": "A1"
+            },
+            {
+                "word": "malen",
+                "pos": "VERB",
+                "translation": "to draw; paint",
+                "frequency": 1925,
+                "cefr": "A2"
+            },
+            {
+                "word": "fischen",
+                "pos": "VERB",
+                "translation": "to fish",
+                "frequency": 11023,
+                "cefr": "B2"
+            },
+            {
+                "word": "nähen",
+                "pos": "VERB",
+                "translation": "to sew"
+            },
+            {
+                "word": "schaukeln",
+                "pos": "VERB",
+                "translation": "to rock; swing; go on the swings",
+                "frequency": 30583
+            },
+            {
+                "word": "impfen",
+                "pos": "VERB",
+                "translation": "to vaccinate",
+                "frequency": 14041
+            },
+            {
+                "word": "aufpassen",
+                "pos": "VERB",
+                "translation": "to look after, watch out, pay attention (to so./sth.)",
+                "frequency": 2038,
+                "cefr": "A2"
+            },
+            {
+                "word": "Verstecken",
+                "pos": "VERB",
+                "translation": "to play hide and seek",
+                "frequency": 1575,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Wald",
+                "pos": "NOUN",
+                "translation": "forest, woods",
+                "frequency": 1028,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Stock",
+                "pos": "NOUN",
+                "translation": "stick; floor of building",
+                "frequency": 2273,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Rollstuhl",
+                "pos": "NOUN",
+                "translation": "wheelchair",
+                "frequency": 10401,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Bankkonto, Bankkonten",
+                "pos": "NOUN",
+                "translation": "bank account",
+                "frequency": 24567
+            },
+            {
+                "word": "die Überwachung",
+                "pos": "NOUN",
+                "translation": "surveillance",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Freiheit",
+                "pos": "NOUN",
+                "translation": "freedom",
+                "frequency": 814,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kontrolle",
+                "pos": "NOUN",
+                "translation": "control",
+                "frequency": 1097,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Fremde",
+                "pos": "NOUN",
+                "translation": "stranger",
+                "frequency": 4285
+            },
+            {
+                "word": "das Selbstvertrauen",
+                "pos": "NOUN",
+                "translation": "self-confidence; self-efficacy",
+                "frequency": 7926,
+                "cefr": "A1"
+            },
+            {
+                "word": "da",
+                "pos": "ADV",
+                "translation": "there; since (because)",
+                "frequency": 48,
+                "cefr": "A1"
+            },
+            {
+                "word": "drinnen",
+                "pos": "ADV",
+                "translation": "inside",
+                "frequency": 360,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Entführung",
+                "pos": "NOUN",
+                "translation": "abduction",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Pferd",
+                "pos": "NOUN",
+                "translation": "horse",
+                "frequency": 1504,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Pfütze",
+                "pos": "NOUN",
+                "translation": "puddle",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Polizei",
+                "pos": "NOUN",
+                "translation": "police",
+                "frequency": 550,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Nacht",
+                "pos": "NOUN",
+                "translation": "night",
+                "frequency": 325,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Baum",
+                "pos": "NOUN",
+                "translation": "tree",
+                "frequency": 1013,
+                "cefr": "A1"
+            },
+            {
+                "word": "nass",
+                "pos": "ADJ",
+                "translation": "wet",
+                "frequency": 3116,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Verein",
+                "pos": "NOUN",
+                "translation": "association; club",
+                "frequency": 899,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Schaukel",
+                "pos": "NOUN",
+                "translation": "swing",
+                "frequency": 23530,
+                "cefr": "A1"
+            },
+            {
+                "word": "ganz",
+                "pos": "ADV",
+                "translation": "all; completely",
+                "frequency": 69,
+                "cefr": "A2"
+            },
+            {
+                "word": "berühmt",
+                "pos": "ADJ",
+                "translation": "famous, renowned"
+            },
+            {
+                "word": "die Bude, n",
+                "pos": "NOUN",
+                "translation": "hut, shack",
+                "frequency": 14337
+            },
+            {
+                "word": "der Spielplatz",
+                "pos": "NOUN",
+                "translation": "playground, play area",
+                "frequency": 6990,
+                "cefr": "B1"
+            },
+            {
+                "word": "böse",
+                "pos": "ADJ",
+                "translation": "angry; evil, bad, vicious"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Stöck",
+                "pos": "NOUN",
+                "frequency": 2273,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Stöcker",
+                "pos": "NOUN",
+                "frequency": 43976
+            },
+            {
+                "word": "ähen",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Gleichaltrigen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Korrespondentin",
+                "pos": "NOUN",
+                "frequency": 19910,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Webcam",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Helikopter",
+                "pos": "ADJ",
+                "frequency": 12830
+            },
+            {
+                "word": "geplant",
+                "pos": "ADJ",
+                "frequency": 5928
+            },
+            {
+                "word": "organisiert",
+                "pos": "ADJ",
+                "frequency": 7105
+            },
+            {
+                "word": "die App",
+                "pos": "NOUN",
+                "frequency": 4458
+            },
+            {
+                "word": "das Baby",
+                "pos": "NOUN",
+                "frequency": 2297,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Pädagog*innen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Komplikation",
+                "pos": "NOUN",
+                "frequency": 15187,
+                "cefr": "B2"
+            },
+            {
+                "word": "perfekt",
+                "pos": "ADV",
+                "frequency": 1567,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Taxi",
+                "pos": "NOUN",
+                "frequency": 2999,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Note",
+                "pos": "NOUN",
+                "frequency": 2952,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "sagen": {
+                "present": {
+                    "ich": "sage",
+                    "du": "sagst",
+                    "er": "sagt",
+                    "es": "sagt",
+                    "sie_singular": "sagt",
+                    "xier": "sagt",
+                    "wir": "sagen",
+                    "ihr": "sagt",
+                    "sie_plural": "sagen",
+                    "Sie": "sagen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesagt",
+                    "du": "hast gesagt",
+                    "er": "hat gesagt",
+                    "es": "hat gesagt",
+                    "sie_singular": "hat gesagt",
+                    "xier": "hat gesagt",
+                    "wir": "haben gesagt",
+                    "ihr": "habt gesagt",
+                    "sie_plural": "haben gesagt",
+                    "Sie": "haben gesagt"
+                }
+            },
+            "machen": {
+                "present": {
+                    "ich": "mache",
+                    "du": "machst",
+                    "er": "macht",
+                    "es": "macht",
+                    "sie_singular": "macht",
+                    "xier": "macht",
+                    "wir": "machen",
+                    "ihr": "macht",
+                    "sie_plural": "machen",
+                    "Sie": "machen"
+                },
+                "Perfekt": {
+                    "ich": "habe gemacht",
+                    "du": "hast gemacht",
+                    "er": "hat gemacht",
+                    "es": "hat gemacht",
+                    "sie_singular": "hat gemacht",
+                    "xier": "hat gemacht",
+                    "wir": "haben gemacht",
+                    "ihr": "habt gemacht",
+                    "sie_plural": "haben gemacht",
+                    "Sie": "haben gemacht"
+                }
+            },
+            "leben": {
+                "present": {
+                    "ich": "lebe",
+                    "du": "lebst",
+                    "er": "lebt",
+                    "es": "lebt",
+                    "sie_singular": "lebt",
+                    "xier": "lebt",
+                    "wir": "leben",
+                    "ihr": "lebt",
+                    "sie_plural": "leben",
+                    "Sie": "leben"
+                },
+                "Perfekt": {
+                    "ich": "habe gelebt",
+                    "du": "hast gelebt",
+                    "er": "hat gelebt",
+                    "es": "hat gelebt",
+                    "sie_singular": "hat gelebt",
+                    "xier": "hat gelebt",
+                    "wir": "haben gelebt",
+                    "ihr": "habt gelebt",
+                    "sie_plural": "haben gelebt",
+                    "Sie": "haben gelebt"
+                }
+            },
+            "zeigen": {
+                "present": {
+                    "ich": "zeige",
+                    "du": "zeigst",
+                    "er": "zeigt",
+                    "es": "zeigt",
+                    "sie_singular": "zeigt",
+                    "xier": "zeigt",
+                    "wir": "zeigen",
+                    "ihr": "zeigt",
+                    "sie_plural": "zeigen",
+                    "Sie": "zeigen"
+                },
+                "Perfekt": {
+                    "ich": "habe gezeigt",
+                    "du": "hast gezeigt",
+                    "er": "hat gezeigt",
+                    "es": "hat gezeigt",
+                    "sie_singular": "hat gezeigt",
+                    "xier": "hat gezeigt",
+                    "wir": "haben gezeigt",
+                    "ihr": "habt gezeigt",
+                    "sie_plural": "haben gezeigt",
+                    "Sie": "haben gezeigt"
+                }
+            },
+            "fragen": {
+                "present": {
+                    "ich": "frage",
+                    "du": "fragst",
+                    "er": "fragt",
+                    "es": "fragt",
+                    "sie_singular": "fragt",
+                    "xier": "fragt",
+                    "wir": "fragen",
+                    "ihr": "fragt",
+                    "sie_plural": "fragen",
+                    "Sie": "fragen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefragt",
+                    "du": "hast gefragt",
+                    "er": "hat gefragt",
+                    "es": "hat gefragt",
+                    "sie_singular": "hat gefragt",
+                    "xier": "hat gefragt",
+                    "wir": "haben gefragt",
+                    "ihr": "habt gefragt",
+                    "sie_plural": "haben gefragt",
+                    "Sie": "haben gefragt"
+                }
+            },
+            "spielen": {
+                "present": {
+                    "ich": "spiele",
+                    "du": "spielst",
+                    "er": "spielt",
+                    "es": "spielt",
+                    "sie_singular": "spielt",
+                    "xier": "spielt",
+                    "wir": "spielen",
+                    "ihr": "spielt",
+                    "sie_plural": "spielen",
+                    "Sie": "spielen"
+                },
+                "Perfekt": {
+                    "ich": "habe gespielt",
+                    "du": "hast gespielt",
+                    "er": "hat gespielt",
+                    "es": "hat gespielt",
+                    "sie_singular": "hat gespielt",
+                    "xier": "hat gespielt",
+                    "wir": "haben gespielt",
+                    "ihr": "habt gespielt",
+                    "sie_plural": "haben gespielt",
+                    "Sie": "haben gespielt"
+                }
+            },
+            "arbeiten": {
+                "present": {
+                    "ich": "arbeite",
+                    "du": "arbeitest",
+                    "er": "arbeitet",
+                    "es": "arbeitet",
+                    "sie_singular": "arbeitet",
+                    "xier": "arbeitet",
+                    "wir": "arbeiten",
+                    "ihr": "arbeitet",
+                    "sie_plural": "arbeiten",
+                    "Sie": "arbeiten"
+                },
+                "Perfekt": {
+                    "ich": "habe gearbeitet",
+                    "du": "hast gearbeitet",
+                    "er": "hat gearbeitet",
+                    "es": "hat gearbeitet",
+                    "sie_singular": "hat gearbeitet",
+                    "xier": "hat gearbeitet",
+                    "wir": "haben gearbeitet",
+                    "ihr": "habt gearbeitet",
+                    "sie_plural": "haben gearbeitet",
+                    "Sie": "haben gearbeitet"
+                }
+            },
+            "lernen": {
+                "present": {
+                    "ich": "lerne",
+                    "du": "lernst",
+                    "er": "lernt",
+                    "es": "lernt",
+                    "sie_singular": "lernt",
+                    "xier": "lernt",
+                    "wir": "lernen",
+                    "ihr": "lernt",
+                    "sie_plural": "lernen",
+                    "Sie": "lernen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelernt",
+                    "du": "hast gelernt",
+                    "er": "hat gelernt",
+                    "es": "hat gelernt",
+                    "sie_singular": "hat gelernt",
+                    "xier": "hat gelernt",
+                    "wir": "haben gelernt",
+                    "ihr": "habt gelernt",
+                    "sie_plural": "haben gelernt",
+                    "Sie": "haben gelernt"
+                }
+            },
+            "hören": {
+                "present": {
+                    "ich": "höre",
+                    "du": "hörst",
+                    "er": "hört",
+                    "es": "hört",
+                    "sie_singular": "hört",
+                    "xier": "hört",
+                    "wir": "hören",
+                    "ihr": "hört",
+                    "sie_plural": "hören",
+                    "Sie": "hören"
+                },
+                "Perfekt": {
+                    "ich": "habe gehört",
+                    "du": "hast gehört",
+                    "er": "hat gehört",
+                    "es": "hat gehört",
+                    "sie_singular": "hat gehört",
+                    "xier": "hat gehört",
+                    "wir": "haben gehört",
+                    "ihr": "habt gehört",
+                    "sie_plural": "haben gehört",
+                    "Sie": "haben gehört"
+                }
+            },
+            "suchen": {
+                "present": {
+                    "ich": "suche",
+                    "du": "suchst",
+                    "er": "sucht",
+                    "es": "sucht",
+                    "sie_singular": "sucht",
+                    "xier": "sucht",
+                    "wir": "suchen",
+                    "ihr": "sucht",
+                    "sie_plural": "suchen",
+                    "Sie": "suchen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesucht",
+                    "du": "hast gesucht",
+                    "er": "hat gesucht",
+                    "es": "hat gesucht",
+                    "sie_singular": "hat gesucht",
+                    "xier": "hat gesucht",
+                    "wir": "haben gesucht",
+                    "ihr": "habt gesucht",
+                    "sie_plural": "haben gesucht",
+                    "Sie": "haben gesucht"
+                }
+            },
+            "kaufen": {
+                "present": {
+                    "ich": "kaufe",
+                    "du": "kaufst",
+                    "er": "kauft",
+                    "es": "kauft",
+                    "sie_singular": "kauft",
+                    "xier": "kauft",
+                    "wir": "kaufen",
+                    "ihr": "kauft",
+                    "sie_plural": "kaufen",
+                    "Sie": "kaufen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekauft",
+                    "du": "hast gekauft",
+                    "er": "hat gekauft",
+                    "es": "hat gekauft",
+                    "sie_singular": "hat gekauft",
+                    "xier": "hat gekauft",
+                    "wir": "haben gekauft",
+                    "ihr": "habt gekauft",
+                    "sie_plural": "haben gekauft",
+                    "Sie": "haben gekauft"
+                }
+            },
+            "wohnen": {
+                "present": {
+                    "ich": "wohne",
+                    "du": "wohnst",
+                    "er": "wohnt",
+                    "es": "wohnt",
+                    "sie_singular": "wohnt",
+                    "xier": "wohnt",
+                    "wir": "wohnen",
+                    "ihr": "wohnt",
+                    "sie_plural": "wohnen",
+                    "Sie": "wohnen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewohnt",
+                    "du": "hast gewohnt",
+                    "er": "hat gewohnt",
+                    "es": "hat gewohnt",
+                    "sie_singular": "hat gewohnt",
+                    "xier": "hat gewohnt",
+                    "wir": "haben gewohnt",
+                    "ihr": "habt gewohnt",
+                    "sie_plural": "haben gewohnt",
+                    "Sie": "haben gewohnt"
+                }
+            },
+            "freuen": {
+                "present": {
+                    "ich": "freue",
+                    "du": "freust",
+                    "er": "freut",
+                    "es": "freut",
+                    "sie_singular": "freut",
+                    "xier": "freut",
+                    "wir": "freuen",
+                    "ihr": "freut",
+                    "sie_plural": "freuen",
+                    "Sie": "freuen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefreut",
+                    "du": "hast gefreut",
+                    "er": "hat gefreut",
+                    "es": "hat gefreut",
+                    "sie_singular": "hat gefreut",
+                    "xier": "hat gefreut",
+                    "wir": "haben gefreut",
+                    "ihr": "habt gefreut",
+                    "sie_plural": "haben gefreut",
+                    "Sie": "haben gefreut"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebaut",
+                    "du": "hast gebaut",
+                    "er": "hat gebaut",
+                    "es": "hat gebaut",
+                    "sie_singular": "hat gebaut",
+                    "xier": "hat gebaut",
+                    "wir": "haben gebaut",
+                    "ihr": "habt gebaut",
+                    "sie_plural": "haben gebaut",
+                    "Sie": "haben gebaut"
+                }
+            },
+            "zählen": {
+                "present": {
+                    "ich": "zähle",
+                    "du": "zählst",
+                    "er": "zählt",
+                    "es": "zählt",
+                    "sie_singular": "zählt",
+                    "xier": "zählt",
+                    "wir": "zählen",
+                    "ihr": "zählt",
+                    "sie_plural": "zählen",
+                    "Sie": "zählen"
+                },
+                "Perfekt": {
+                    "ich": "habe gezählt",
+                    "du": "hast gezählt",
+                    "er": "hat gezählt",
+                    "es": "hat gezählt",
+                    "sie_singular": "hat gezählt",
+                    "xier": "hat gezählt",
+                    "wir": "haben gezählt",
+                    "ihr": "habt gezählt",
+                    "sie_plural": "haben gezählt",
+                    "Sie": "haben gezählt"
+                }
+            },
+            "reisen": {
+                "present": {
+                    "ich": "reise",
+                    "du": "reist",
+                    "er": "reist",
+                    "es": "reist",
+                    "sie_singular": "reist",
+                    "xier": "reist",
+                    "wir": "reisen",
+                    "ihr": "reist",
+                    "sie_plural": "reisen",
+                    "Sie": "reisen"
+                },
+                "Perfekt": {
+                    "ich": "bin gereist",
+                    "du": "bist gereist",
+                    "er": "ist gereist",
+                    "es": "ist gereist",
+                    "sie_singular": "ist gereist",
+                    "xier": "ist gereist",
+                    "wir": "sind gereist",
+                    "ihr": "seid gereist",
+                    "sie_plural": "sind gereist",
+                    "Sie": "sind gereist"
+                }
+            },
+            "kämpfen": {
+                "present": {
+                    "ich": "kämpfe",
+                    "du": "kämpfst",
+                    "er": "kämpft",
+                    "es": "kämpft",
+                    "sie_singular": "kämpft",
+                    "xier": "kämpft",
+                    "wir": "kämpfen",
+                    "ihr": "kämpft",
+                    "sie_plural": "kämpfen",
+                    "Sie": "kämpfen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekämpft",
+                    "du": "hast gekämpft",
+                    "er": "hat gekämpft",
+                    "es": "hat gekämpft",
+                    "sie_singular": "hat gekämpft",
+                    "xier": "hat gekämpft",
+                    "wir": "haben gekämpft",
+                    "ihr": "habt gekämpft",
+                    "sie_plural": "haben gekämpft",
+                    "Sie": "haben gekämpft"
+                }
+            },
+            "töten": {
+                "present": {
+                    "ich": "töte",
+                    "du": "tötest",
+                    "er": "tötet",
+                    "es": "tötet",
+                    "sie_singular": "tötet",
+                    "xier": "tötet",
+                    "wir": "töten",
+                    "ihr": "tötet",
+                    "sie_plural": "töten",
+                    "Sie": "töten"
+                },
+                "Perfekt": {
+                    "ich": "habe getötet",
+                    "du": "hast getötet",
+                    "er": "hat getötet",
+                    "es": "hat getötet",
+                    "sie_singular": "hat getötet",
+                    "xier": "hat getötet",
+                    "wir": "haben getötet",
+                    "ihr": "habt getötet",
+                    "sie_plural": "haben getötet",
+                    "Sie": "haben getötet"
+                }
+            },
+            "sammeln": {
+                "present": {
+                    "ich": "sammle",
+                    "du": "sammelst",
+                    "er": "sammelt",
+                    "es": "sammelt",
+                    "sie_singular": "sammelt",
+                    "xier": "sammelt",
+                    "wir": "sammeln",
+                    "ihr": "sammelt",
+                    "sie_plural": "sammeln",
+                    "Sie": "sammeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gesammelt",
+                    "du": "hast gesammelt",
+                    "er": "hat gesammelt",
+                    "es": "hat gesammelt",
+                    "sie_singular": "hat gesammelt",
+                    "xier": "hat gesammelt",
+                    "wir": "haben gesammelt",
+                    "ihr": "habt gesammelt",
+                    "sie_plural": "haben gesammelt",
+                    "Sie": "haben gesammelt"
+                }
+            },
+            "retten": {
+                "present": {
+                    "ich": "rette",
+                    "du": "rettest",
+                    "er": "rettet",
+                    "es": "rettet",
+                    "sie_singular": "rettet",
+                    "xier": "rettet",
+                    "wir": "retten",
+                    "ihr": "rettet",
+                    "sie_plural": "retten",
+                    "Sie": "retten"
+                },
+                "Perfekt": {
+                    "ich": "habe gerettet",
+                    "du": "hast gerettet",
+                    "er": "hat gerettet",
+                    "es": "hat gerettet",
+                    "sie_singular": "hat gerettet",
+                    "xier": "hat gerettet",
+                    "wir": "haben gerettet",
+                    "ihr": "habt gerettet",
+                    "sie_plural": "haben gerettet",
+                    "Sie": "haben gerettet"
+                }
+            },
+            "gucken": {
+                "present": {
+                    "ich": "gucke",
+                    "du": "guckst",
+                    "er": "guckt",
+                    "es": "guckt",
+                    "sie_singular": "guckt",
+                    "xier": "guckt",
+                    "wir": "gucken",
+                    "ihr": "guckt",
+                    "sie_plural": "gucken",
+                    "Sie": "gucken"
+                },
+                "Perfekt": {
+                    "ich": "habe geguckt",
+                    "du": "hast geguckt",
+                    "er": "hat geguckt",
+                    "es": "hat geguckt",
+                    "sie_singular": "hat geguckt",
+                    "xier": "hat geguckt",
+                    "wir": "haben geguckt",
+                    "ihr": "habt geguckt",
+                    "sie_plural": "haben geguckt",
+                    "Sie": "haben geguckt"
+                }
+            },
+            "kochen": {
+                "present": {
+                    "ich": "koche",
+                    "du": "kochst",
+                    "er": "kocht",
+                    "es": "kocht",
+                    "sie_singular": "kocht",
+                    "xier": "kocht",
+                    "wir": "kochen",
+                    "ihr": "kocht",
+                    "sie_plural": "kochen",
+                    "Sie": "kochen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekocht",
+                    "du": "hast gekocht",
+                    "er": "hat gekocht",
+                    "es": "hat gekocht",
+                    "sie_singular": "hat gekocht",
+                    "xier": "hat gekocht",
+                    "wir": "haben gekocht",
+                    "ihr": "habt gekocht",
+                    "sie_plural": "haben gekocht",
+                    "Sie": "haben gekocht"
+                }
+            },
+            "wandern": {
+                "present": {
+                    "ich": "wandere",
+                    "du": "wanderst",
+                    "er": "wandert",
+                    "es": "wandert",
+                    "sie_singular": "wandert",
+                    "xier": "wandert",
+                    "wir": "wandern",
+                    "ihr": "wandert",
+                    "sie_plural": "wandern",
+                    "Sie": "wandern"
+                },
+                "Perfekt": {
+                    "ich": "bin gewandert",
+                    "du": "bist gewandert",
+                    "er": "ist gewandert",
+                    "es": "ist gewandert",
+                    "sie_singular": "ist gewandert",
+                    "xier": "ist gewandert",
+                    "wir": "sind gewandert",
+                    "ihr": "seid gewandert",
+                    "sie_plural": "sind gewandert",
+                    "Sie": "sind gewandert"
+                }
+            },
+            "malen": {
+                "present": {
+                    "ich": "male",
+                    "du": "malst",
+                    "er": "malt",
+                    "es": "malt",
+                    "sie_singular": "malt",
+                    "xier": "malt",
+                    "wir": "malen",
+                    "ihr": "malt",
+                    "sie_plural": "malen",
+                    "Sie": "malen"
+                },
+                "Perfekt": {
+                    "ich": "habe gemalt",
+                    "du": "hast gemalt",
+                    "er": "hat gemalt",
+                    "es": "hat gemalt",
+                    "sie_singular": "hat gemalt",
+                    "xier": "hat gemalt",
+                    "wir": "haben gemalt",
+                    "ihr": "habt gemalt",
+                    "sie_plural": "haben gemalt",
+                    "Sie": "haben gemalt"
+                }
+            },
+            "fischen": {
+                "present": {
+                    "ich": "fische",
+                    "du": "fischst",
+                    "er": "fischt",
+                    "es": "fischt",
+                    "sie_singular": "fischt",
+                    "xier": "fischt",
+                    "wir": "fischen",
+                    "ihr": "fischt",
+                    "sie_plural": "fischen",
+                    "Sie": "fischen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefischt",
+                    "du": "hast gefischt",
+                    "er": "hat gefischt",
+                    "es": "hat gefischt",
+                    "sie_singular": "hat gefischt",
+                    "xier": "hat gefischt",
+                    "wir": "haben gefischt",
+                    "ihr": "habt gefischt",
+                    "sie_plural": "haben gefischt",
+                    "Sie": "haben gefischt"
+                }
+            },
+            "nähen": {
+                "present": {
+                    "ich": "nähe",
+                    "du": "nähst",
+                    "er": "näht",
+                    "es": "näht",
+                    "sie_singular": "näht",
+                    "xier": "näht",
+                    "wir": "nähen",
+                    "ihr": "näht",
+                    "sie_plural": "nähen",
+                    "Sie": "nähen"
+                },
+                "Perfekt": {
+                    "ich": "habe genäht",
+                    "du": "hast genäht",
+                    "er": "hat genäht",
+                    "es": "hat genäht",
+                    "sie_singular": "hat genäht",
+                    "xier": "hat genäht",
+                    "wir": "haben genäht",
+                    "ihr": "habt genäht",
+                    "sie_plural": "haben genäht",
+                    "Sie": "haben genäht"
+                }
+            },
+            "schaukeln": {
+                "present": {
+                    "ich": "schaukle",
+                    "du": "schaukelst",
+                    "er": "schaukelt",
+                    "es": "schaukelt",
+                    "sie_singular": "schaukelt",
+                    "xier": "schaukelt",
+                    "wir": "schaukeln",
+                    "ihr": "schaukelt",
+                    "sie_plural": "schaukeln",
+                    "Sie": "schaukeln"
+                },
+                "Perfekt": {
+                    "ich": "habe geschaukelt",
+                    "du": "hast geschaukelt",
+                    "er": "hat geschaukelt",
+                    "es": "hat geschaukelt",
+                    "sie_singular": "hat geschaukelt",
+                    "xier": "hat geschaukelt",
+                    "wir": "haben geschaukelt",
+                    "ihr": "habt geschaukelt",
+                    "sie_plural": "haben geschaukelt",
+                    "Sie": "haben geschaukelt"
+                }
+            },
+            "impfen": {
+                "present": {
+                    "ich": "impfe",
+                    "du": "impfst",
+                    "er": "impft",
+                    "es": "impft",
+                    "sie_singular": "impft",
+                    "xier": "impft",
+                    "wir": "impfen",
+                    "ihr": "impft",
+                    "sie_plural": "impfen",
+                    "Sie": "impfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geimpft",
+                    "du": "hast geimpft",
+                    "er": "hat geimpft",
+                    "es": "hat geimpft",
+                    "sie_singular": "hat geimpft",
+                    "xier": "hat geimpft",
+                    "wir": "haben geimpft",
+                    "ihr": "habt geimpft",
+                    "sie_plural": "haben geimpft",
+                    "Sie": "haben geimpft"
+                }
+            },
+            "aufpassen": {
+                "present": {
+                    "ich": "passe auf",
+                    "du": "passt auf",
+                    "er": "passt auf",
+                    "es": "passt auf",
+                    "sie_singular": "passt auf",
+                    "xier": "passt auf",
+                    "wir": "passen auf",
+                    "ihr": "passt auf",
+                    "sie_plural": "passen auf",
+                    "Sie": "passen auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgepasst",
+                    "du": "hast aufgepasst",
+                    "er": "hat aufgepasst",
+                    "es": "hat aufgepasst",
+                    "sie_singular": "hat aufgepasst",
+                    "xier": "hat aufgepasst",
+                    "wir": "haben aufgepasst",
+                    "ihr": "habt aufgepasst",
+                    "sie_plural": "haben aufgepasst",
+                    "Sie": "haben aufgepasst"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Draußen und drinnen spielen Patrick und Lisa erzählen von Ihrer Kindheit.",
+            "Hören Sie zu.",
+            "Dann hören sie noch einmal und ordnen Sie zu:",
+            "Was haben Patrick (P) und Lisa (L) oft in ihrer Kindheit gemacht?",
+            "Nintendo spielen Stöck e suchen und sammeln im Baumhaus",
+            "Hallo, ich heiße Patrick",
+            "Als Kind habe ich mit meiner Mutter fast jedes Wochenende gefischt und mein Vater hat den Fisch dann gekocht.",
+            "Wenn es geschneit hat, haben wir nicht gefischt.",
+            "Dann haben wir einen Schneemann gebaut.",
+            "Ich war als Kind auch gerne im Wald und habe Stöcker gesucht und gesammelt.",
+            "Wenn es geregnet hat, habe ich besonders gern mit meinen Gummistiefeln i m Regenwasser gespielt.",
+            "Ich war dann immer patschnass [nass]!",
+            "Mein Lieblingsspiel mit meiner Schwester war Verstecken.",
+            "Sie hatte immer die besten Verstecke und es war manchmal schwer sie zu finden!",
+            "Ich habe als Kind schon sehr früh n ähen gelernt und fand das Nähen immer cool, weil ich meine kaputte Kleidung allein reparieren konnte, ohne meine Eltern.",
+            "Am liebsten habe ich Fußball gespielt.",
+            "Ich habe schon Fußball gespielt als ich drei Jahre alt war und spiele auch heute noch in einem Team.",
+            "Hallo, ich bin Lisa!",
+            "Ich habe auch in einem Team gespielt, aber keinen Fußball, wie Patrick, sondern Rollstuhlbasketball, mit anderen Kindern, die auch im Rollstuhl waren.",
+            "Als Kind habe ich besonders gern geschaukelt.",
+            "In unserer Stadt gibt es einen tollen Spielplatz mit einer Schaukel für rollstuhlfahrende Kinder.",
+            "Da war ich als Kind ganz oft!",
+            "Als wir im draußen waren, habe ich immer mit meinem Bruder Autos gezählt.",
+            "Habe ich alle roten und alle blauen Autos gezählt und die Person mit den meisten Autos hat gewonnen!",
+            "Mit meinen Freundinnen habe ich oft Häuser gebaut und einmal haben wir ein Baumhaus gebaut und in einem Baumhaus gewohnt.",
+            "Das war mega!",
+            "Im Kindergarten habe ich gerne Bilder von Pferden gemalt und am Wochenende war ich oft mit meinem Pferd im Wald wandern.",
+            "Mein Vater hatte auch ein Pferd und wir haben das gerne zusammen mit unseren Pferden gewandert.",
+            "Oh, und ich liebe Nintendo!",
+            "Ich habe am Wochenende oft mit meinen Freundinnen Nintendo gespielt.",
+            "Was hat Patrick als Kind gern gemacht?",
+            "Was hat Lisa als Kind gern gemacht?",
+            "Patrick hat als Kind gern Verstecken gespielt.",
+            "Patrick hat als Kind Verstecken gespielt, Fußball gespielt, in Pfützen gespielt, genäht, Stöck e gesucht und gesammelt, gefischt und einen Schneemann gebaut.",
+            "Hat die andere Person diese Aktivitäten als Kind gern gemacht?",
+            "Fragen Sie.",
+            "Hast du als Kind gern Verstecken gespielt?",
+            "Ja, ich habe als Kind gern Verstecken gespielt.",
+            "Und du, hast du gern Verstecken gespielt?",
+            "Wie oft haben Sie in Ihrer Kindheit draußen oder drinnen gespielt?",
+            "Ich habe in meiner Kindheit oft drinnen und draußen gespielt.",
+            "Ganz alleine?",
+            "Beantworten Sie die Fragen und vergleichen Sie Ihre Antworten.",
+            "Was ist jeweils das Durchschnittsalter?",
+            "Wie alt waren Sie, als Sie … alleine nach der Schule Freund*innen besucht haben?",
+            "Alleine etwas in einem Supermarkt gekauft haben?",
+            "Einen eigenen Haustürschlüssel (Haus Tür Schlüssel) hatten?",
+            "Über Nacht bei Freund*innen waren?",
+            "Mit Gleichaltrigen im Schwimmbad waren?",
+            "Alleine am Abend zu Hause waren?",
+            "Einen eigenen Fernseher hatten?",
+            "Ein eigenes Handy ohne Kontrolle von Erwachsenen hatten?",
+            "Ihr erstes Bankkonto hatten?",
+            "Über's Wochenende alleine zu Hause waren?",
+            "Ich war X Jahre alt, als ich alleine nach der Schule Freunde besucht habe.",
+            "Alleine etwas in einem Supermarkt gekauft habe.",
+            "Einen eigenen Haustürschlüssel (Haus Tür Schlüssel) hatte.",
+            "Über Nacht bei Freund*innen war.",
+            "Mit Gleichaltrigen im Schwimmbad war.",
+            "Alleine am Abend zu Hause war.",
+            "Einen eigenen Fernseher hatte.",
+            "Ein eigenes Handy ohne Kontrolle von Erwachsenen hatte.",
+            "Ihr erstes Bankkonto hatte.",
+            "Übers Wochenende alleine zu Hause war.",
+            "Sie bekommen eine Statistik aus Deutschland.",
+            "Vergleichen Sie die Statistik mit den Fragen und dem Durchschnittsalter Ihrer Gruppe aus Teil 1..",
+            "Waren die deutschen Kinder älter oder jünger als Sie und Ihre Gruppe?",
+            "Unten sehen Sie einen Artikel über das Leben mit Kindern in den USA, aus der Perspektive einer Korrespondentin aus Deutschland.",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Aus welchem Land kommt Sandra Ratzow und in welchen Ländern hat Sie gewohnt, gelebt und gearbeitet?",
+            "Sie kommt aus Deutschland und hat in den USA, in X und X gewohnt, gelebt und gearbeitet.",
+            "Haben Ihre Kinder oft draußen gespielt?",
+            "Sie haben nicht oft draußen alleine gespielt.",
+            "Können Kinder, nach Meinung von Ratzow, alleine ins Schwimmbad gehen?",
+            "Die Eltern haben Angst vor Unfällen, Entführung oder dass man die Kinder tötet.",
+            "Wie ist die Situation in Kindergärten?",
+            "Es gibt Kindergärten eine Überwachung mit Webcams.",
+            "Was haben Kinder mit Helikoptereltern oft wenig?",
+            "Helikopter Eltern haben oft wenig Selbstvertrauen.",
+            "Warum war Lenore Skenazy die \"schlechteste Mutter der USA\"?",
+            "Weil ihr Kind in New York allein mit der Subway gereist ist.",
+            "Womit gibt Lenore Skenazy anderen Eltern Tipps?",
+            "Amerikas Eltern im Kontrollwahn?",
+            "Die deutsche Korrespondentin Sandra Ratzow hat in den USA gearbeitet und dort mit ihren drei Kindern (im Kindergarten- und Grundschulalter ) gewohnt und gelebt.",
+            "Sie denkt, dass die Kindheit in den USA ganz anders ist.",
+            "Ihre Kinder haben nicht oft draußen alleine gespielt.",
+            "Ratzow hatte Angst, dass sonst die Polizei kommt.",
+            "Das Land der Freiheit ist auch ein Land der Angst – der Angst um die Kinder.",
+            "In den USA machen nur wenige Kinder etwas ohne Kontrolle ihrer Eltern.",
+            "Spielen auf der anderen Straßenseite?",
+            "Nachbar*innen rufen dann die Polizei.",
+            "Alleine einkaufen?",
+            "Geht gar nicht.",
+            "Die Eltern haben Angst vor Unfällen oder dass Fremde die Kinder mitnehmen oder töten.",
+            "Oft machen Kinder in ihrer Freizeit nur geplante Aktivitäten.",
+            "Treffen sie nur mit den Eltern – bei organisierten Playdates.",
+            "Und wenn die Eltern nicht da sein können, nutzen sie technische Überwachung, zum Beispiel mit Webcams in Kindergärten.",
+            "Viele Eltern können mit Apps auch die privaten Nachrichten ihrer Kinder lesen.",
+            "Vom Babyalter bis zum Studium gibt es eine komplette Überwachung.",
+            "In den USA ist Sandra Ratzow durch das Land gereist.",
+            "Sie hat Eltern gefragt, warum es im Land der Freiheit so viel Angst gibt.",
+            "Sie hat von Pädagog*innen gelernt, dass Kinder mit Helikoptereltern oft wenig Selbstvertrauen haben.",
+            "Und auch nach der High-School wissen viele nicht, was sie wollen, weil sie ihre Eltern immer an der Seite haben.",
+            "Sie hat auch vom stranger danger gelernt.",
+            "Sandra Ratzow hat sich gefreut, Amerikas Worst Mum Lenore Skenazy zu treffen.",
+            "Lenore Skenazy war die \"schlechteste Mutter der USA\", weil ihr Kind in New York allein mit der Subway gereist ist.",
+            "How Parents and Teachers Can Let Go and Let Grow viele Tipps.",
+            "Auch in Deutschland gibt es immer mehr Helikoptereltern.",
+            "Josef Kraus identifiziert drei Typen von Helikoptereltern",
+            "Ordnen Sie zu.",
+            "Meine Eltern waren für mich da und haben mich vor Komplikationen gerettet.",
+            "Mein Leben sollte perfekt sein.",
+            "Meine Eltern wollten mich mit dem Auto zu Playdates, zum Sport und zur Schule fahren, wie ein Taxi.",
+            "Meine Eltern waren oft in der Schule und haben für mich und guten Noten mit den Lehrer*innen gekämpft."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

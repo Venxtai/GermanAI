@@ -1,0 +1,544 @@
+{
+    "unit": "90",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 90,
+        "prerequisite": "1-89"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use accusative relative pronouns (den, das, die, die) when the relative pronoun functions as a direct object or follows an accusative preposition in the relative clause: \"Das ist der Apfel, den ich gekauft habe.\""
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Cafés und Vorlieben sprechen",
+            "Dinge und Personen mit Relativsätzen im Nominativ und Akkusativ näher beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kaffeehäuser"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "gründen",
+                "pos": "VERB",
+                "translation": "to establish, found"
+            },
+            {
+                "word": "informieren",
+                "pos": "VERB",
+                "translation": "to inform",
+                "frequency": 1515,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Rechnung",
+                "pos": "NOUN",
+                "translation": "check, bill; invoice",
+                "frequency": 1856,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Torte, -n",
+                "pos": "ADJ",
+                "translation": "rich multilayered cake, gateau"
+            },
+            {
+                "word": "das Mitglied",
+                "pos": "NOUN",
+                "translation": "member",
+                "frequency": 839,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Gedicht",
+                "pos": "NOUN",
+                "translation": "poem",
+                "frequency": 1897,
+                "cefr": "B1"
+            },
+            {
+                "word": "das WLAN",
+                "pos": "NOUN",
+                "translation": "wifi",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Erdapfel",
+                "pos": "NOUN",
+                "translation": "potato (Austria)",
+                "frequency": 37716,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Semmel",
+                "pos": "NOUN",
+                "translation": "roll; bun (Austria, Bavaria)",
+                "frequency": 32424,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gewohnheit",
+                "pos": "NOUN",
+                "translation": "habit, custom",
+                "frequency": 11631,
+                "cefr": "B1"
+            },
+            {
+                "word": "Sonstiges",
+                "pos": "ADJ",
+                "translation": "other (noun)"
+            },
+            {
+                "word": "ideal",
+                "pos": "ADJ",
+                "translation": "ideal(ly)",
+                "frequency": 1234,
+                "cefr": "B1"
+            },
+            {
+                "word": "gemütlich",
+                "pos": "ADJ",
+                "translation": "cozy, comfortable, homey"
+            },
+            {
+                "word": "altmodisch",
+                "pos": "ADJ",
+                "translation": "old-fashioned; vintage; dated",
+                "frequency": 15949,
+                "cefr": "B2"
+            },
+            {
+                "word": "passend",
+                "pos": "ADJ",
+                "translation": "suitable; appropriate",
+                "frequency": 6233
+            },
+            {
+                "word": "jeweilig",
+                "pos": "ADJ",
+                "translation": "particular, relative, respective",
+                "frequency": 1055
+            },
+            {
+                "word": "das Gericht",
+                "pos": "NOUN",
+                "translation": "dish; court",
+                "frequency": 1293,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Generation",
+                "pos": "NOUN",
+                "translation": "generation",
+                "frequency": 1153,
+                "cefr": "B1"
+            },
+            {
+                "word": "unkonventionell",
+                "pos": "ADJ",
+                "translation": "unconventional(ly); out of the left field, edgy",
+                "frequency": 14282
+            },
+            {
+                "word": "darstellen",
+                "pos": "VERB",
+                "translation": "to depict, represent",
+                "frequency": 402,
+                "cefr": "B1"
+            },
+            {
+                "word": "einmal",
+                "pos": "ADV",
+                "translation": "once",
+                "frequency": 124,
+                "cefr": "A1"
+            },
+            {
+                "word": "täglich",
+                "pos": "ADJ",
+                "translation": "daily"
+            },
+            {
+                "word": "traditionell",
+                "pos": "ADJ",
+                "translation": "traditional(ly)",
+                "frequency": 1555,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Kaffeehauskultur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Café",
+                "pos": "NOUN",
+                "frequency": 2492,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kaffeegewohnheit",
+                "pos": "NOUN"
+            },
+            {
+                "word": "dar",
+                "pos": "ADV",
+                "frequency": 6055
+            },
+            {
+                "word": "alternativ",
+                "pos": "ADJ",
+                "frequency": 2767,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Coffeeshop-kette",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Impuls",
+                "pos": "NOUN",
+                "frequency": 2224
+            },
+            {
+                "word": "das Learning",
+                "pos": "NOUN"
+            },
+            {
+                "word": "keine*n",
+                "pos": "DET"
+            },
+            {
+                "word": "die Melange",
+                "pos": "NOUN",
+                "frequency": 32430
+            },
+            {
+                "word": "die Kaffeehauskarte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Definition",
+                "pos": "NOUN",
+                "frequency": 1057
+            },
+            {
+                "word": "verlängert",
+                "pos": "ADJ",
+                "frequency": 11651
+            },
+            {
+                "word": "der Salon",
+                "pos": "NOUN",
+                "frequency": 5770,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Einspänner",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Handsemmel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Erdäpfelsuppe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Apfelstrudel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Gulaschsuppe",
+                "pos": "NOUN",
+                "frequency": 47350
+            },
+            {
+                "word": "die Vanillesauce",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Verlängerte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Espresso",
+                "pos": "NOUN",
+                "frequency": 25026
+            },
+            {
+                "word": "der Likör",
+                "pos": "NOUN",
+                "frequency": 29144
+            },
+            {
+                "word": "servieren",
+                "pos": "VERB",
+                "frequency": 3998
+            },
+            {
+                "word": "die Relativpronoma",
+                "pos": "NOUN"
+            },
+            {
+                "word": "minimalistisch",
+                "pos": "ADV",
+                "frequency": 43859
+            },
+            {
+                "word": "die Torte",
+                "pos": "NOUN",
+                "frequency": 15976,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Student*innen",
+                "pos": "NOUN",
+                "frequency": 1017,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Dekor",
+                "pos": "NOUN",
+                "frequency": 29941
+            },
+            {
+                "word": "die LGBTQIA+-Community",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gründen": {
+                "present": {
+                    "ich": "gründe",
+                    "du": "gründest",
+                    "er": "gründet",
+                    "es": "gründet",
+                    "sie_singular": "gründet",
+                    "xier": "gründet",
+                    "wir": "gründen",
+                    "ihr": "gründet",
+                    "sie_plural": "gründen",
+                    "Sie": "gründen"
+                },
+                "Perfekt": {
+                    "ich": "habe gegründet",
+                    "du": "hast gegründet",
+                    "er": "hat gegründet",
+                    "es": "hat gegründet",
+                    "sie_singular": "hat gegründet",
+                    "xier": "hat gegründet",
+                    "wir": "haben gegründet",
+                    "ihr": "habt gegründet",
+                    "sie_plural": "haben gegründet",
+                    "Sie": "haben gegründet"
+                }
+            },
+            "informieren": {
+                "present": {
+                    "ich": "informiere",
+                    "du": "informierst",
+                    "er": "informiert",
+                    "es": "informiert",
+                    "sie_singular": "informiert",
+                    "xier": "informiert",
+                    "wir": "informieren",
+                    "ihr": "informiert",
+                    "sie_plural": "informieren",
+                    "Sie": "informieren"
+                },
+                "Perfekt": {
+                    "ich": "habe informiert",
+                    "du": "hast informiert",
+                    "er": "hat informiert",
+                    "es": "hat informiert",
+                    "sie_singular": "hat informiert",
+                    "xier": "hat informiert",
+                    "wir": "haben informiert",
+                    "ihr": "habt informiert",
+                    "sie_plural": "haben informiert",
+                    "Sie": "haben informiert"
+                }
+            },
+            "darstellen": {
+                "present": {
+                    "ich": "stelle dar",
+                    "du": "stellst dar",
+                    "er": "stellt dar",
+                    "es": "stellt dar",
+                    "sie_singular": "stellt dar",
+                    "xier": "stellt dar",
+                    "wir": "stellen dar",
+                    "ihr": "stellt dar",
+                    "sie_plural": "stellen dar",
+                    "Sie": "stellen dar"
+                },
+                "Perfekt": {
+                    "ich": "habe dargestellt",
+                    "du": "hast dargestellt",
+                    "er": "hat dargestellt",
+                    "es": "hat dargestellt",
+                    "sie_singular": "hat dargestellt",
+                    "xier": "hat dargestellt",
+                    "wir": "haben dargestellt",
+                    "ihr": "habt dargestellt",
+                    "sie_plural": "haben dargestellt",
+                    "Sie": "haben dargestellt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Gehen Sie gern ins Café?",
+            "Was sind beliebte Cafés auf dem Campus oder in Ihrer Stadt?",
+            "Was kann man dort machen?",
+            "Machen Sie eine Liste.",
+            "Musik hören ein Buch lesen etwas essen",
+            "Lesen Sie die Fragen.",
+            "Dann schauen Sie die Infografiken an und beantworten Sie die Fragen.",
+            "Was stellt das linke Diagramm dar?",
+            "Was stellt das rechte Diagramm dar?",
+            "Das linke Schaubild stellt die Kaffeegewohnheiten der Wiener*innen dar.",
+            "Es zeigt, wo die Wiener*innen am liebsten ihren Kaffee trinken.",
+            "Es zeigt, was für ein Kaffeehaus sie am liebsten besuchen.",
+            "Das rechte Schaubild stellt dar, wie oft Wiener*innen ins Kaffeehaus gehen.",
+            "Wie oft gehen die meisten Wiener*innen in ein Café oder Kaffeehaus?",
+            "Die meisten Wiener*innen gehen mindestens einmal pro Monat ins Kaffeehaus.",
+            "Was für ein Kaffeehaus besuchen die Wiener*innen am liebsten?",
+            "Wiener*innen besuchen traditionelle Kaffeehäuser am liebsten.",
+            "Wie viele Wiener*innen besuchen normalerweise ein Café wie Starbucks?",
+            "12% der Wiener*innen besuchen normalerweise ein Café wie Starbucks.",
+            "Wie oft gehen Wiener*innen ins Kaffeehaus?",
+            "Mindestens einmal pro Jahr 2 1% mindestens einmal pro Monat 41%",
+            "Ins Kaffeehaus!",
+            "In LERNEN haben Sie \"Kaffeehaus\" von Peter Altenberg gelesen.",
+            "Lesen Sie jetzt die Impuls Deutsch Version, inspiriert vom Original.",
+            "Wohin gehen Sie in diesen Situationen?",
+            "Was ist das \"Kaffeehaus\" in Ihrem Leben?",
+            "Schreiben Sie zwei neue Sätze für das Gedicht.",
+            "Du hast Probleme mit den Eltern – ins Kaffeehaus!",
+            "Deine Freund*innen haben nie Zeit – ins Kaffeehaus!",
+            "Du hast 400 Euro und gibst 500 aus – Kaffeehaus!",
+            "Du möchtest Ärzt*in sein, studierst aber Politik – Kaffeehaus!",
+            "Du findest keine*n Partner*in, der*die zu dir passt – Kaffeehaus!",
+            "Du bist Vegetarier*in, auf der Speisekarte ist nur Fleisch – Kaffeehaus!",
+            "Dein Auto ist kaputt –",
+            "Du magst keine Menschen, bist aber nicht gern allein – Kaffeehaus!",
+            "Eine Melange, bitte!",
+            "Schauen Sie die Kaffeehauskarte von Café Central an.",
+            "Was möchten Sie essen oder trinken?",
+            "Dann suchen Sie auf der Karte nach diesen Getränken und Speisen und ordnen Sie die Definitionen zu.",
+            "Gulaschsuppe Backhendl eine süße Speise, die gut mit Vanillesauce oder Eis schmeckt.",
+            "Eine Speise, die mit einer Handsemmel kommt.",
+            "Ein Kaffee mit Sahne, den man aus einem Glas trinkt.",
+            "Ein Verlängerter, der auch Milch hat.",
+            "Ein Kaffee, der aus Espresso, Likör und Sahne besteht.",
+            "Ein kleines Brötchen, das das Café selbst backt.",
+            "Ein Essen, das man auf einem Foto mit Kartoffeln und Gurken sieht.",
+            "Ein Getränk, das aus Espresso und viel Wasser besteht.",
+            "Eine Speise, die das Café mit Pilzen serviert und vegetarisch ist.",
+            "Markieren Sie in den Definitionen von Teil 1 die Relativpronomen.",
+            "Sind sie im Nominativ oder Akkusativ?",
+            "Hören Sie, was Armin und Dominik im Café bestellen und kreuzen Sie die Getränke und Speisen in Teil 1 an.",
+            "Im Café.",
+            "Was möchten Sie probieren?",
+            "Spielen Sie einen Dialog im Café Central.",
+            "Grüß Gott!",
+            "Was kann ich Ihnen bringen?",
+            "Kommt sofort!",
+            "Sonst noch etwas?",
+            "Zahlen, bitte! / Die Rechnung, bitte.",
+            "Das stimmt so. / 15 Euro, bitte.",
+            "In Wien gibt es rund 800 Cafés – da gibt es für jede* n ein passendes.",
+            "Jede Person recherchiert ein Café, füllt die Tabelle aus und informiert dann die anderen.",
+            "Ergänzen Sie die Relativpronomen und raten Sie, welches Café zu den jeweiligen Beschreibungen passt.",
+            "Hier kann man die berühmte Torte essen, die so wie das Café heißt.",
+            "Hier treffen sich oft berühmte Wiener*innen, die sich für Politik und Wirtschaft interessieren.",
+            "Der ideale Ort für junge Student*innen, die WLAN suchen und gerne Flat Whites trinken.",
+            "Ein kitschiges Café mit Kuchen, den coole Omas und Opas für alle Generationen backen und an den Tisch bringen",
+            "Nur minimalistisches Dekor hat dieses kleine Café, das Mitglieder *innen der LGBTQIA+-Community gegründet haben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

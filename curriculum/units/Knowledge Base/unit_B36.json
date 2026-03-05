@@ -1,0 +1,658 @@
+{
+    "unit": "B36",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 36,
+        "prerequisite": "core 1-104, B1-B35"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "die eigene Heimat definieren und reflektieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Heimat"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "sich wohlfühlen", "pos": "VERB", "translation": "to feel comfortable", "frequency": 14, "cefr": "A1" },
+            { "word": "verschwinden", "pos": "VERB", "translation": "to disappear, vanish", "frequency": 559, "cefr": "B1" },
+            { "word": "erfahren", "pos": "VERB", "translation": "to experience; come to know", "frequency": 690, "cefr": "B1" },
+            { "word": "egal", "pos": "VERB", "translation": "to be all the same, not matter", "frequency": 932, "cefr": "A2" },
+            { "word": "riechen", "pos": "VERB", "translation": "to smell", "frequency": 1365, "cefr": "A1" },
+            { "word": "begegnen", "pos": "VERB", "translation": "to encounter", "frequency": 1505, "cefr": "B1" },
+            { "word": "betreten", "pos": "VERB", "translation": "to enter", "frequency": 1712, "cefr": "B2" },
+            { "word": "das Erlebnis", "pos": "NOUN", "translation": "experience (event, occasion), adventure", "frequency": 2703, "cefr": "B1" },
+            { "word": "der*die Verwandte", "pos": "NOUN", "translation": "relative", "frequency": 6526, "cefr": "A1" },
+            { "word": "die Wurzel", "pos": "NOUN", "translation": "root", "frequency": 2526, "cefr": "A1" },
+            { "word": "die Heimat", "pos": "NOUN", "translation": "home [country/region]", "frequency": 1305, "cefr": "A1" },
+            { "word": "das Zuhause", "pos": "NOUN", "translation": "home", "frequency": 2856, "cefr": "B1" },
+            { "word": "das Heim", "pos": "NOUN", "translation": "home; asylum", "frequency": 3781, "cefr": "B1" },
+            { "word": "die Moschee", "pos": "NOUN", "translation": "mosque", "frequency": 7996, "cefr": "A1" },
+            { "word": "das Geräusch", "pos": "NOUN", "translation": "sound" },
+            { "word": "der Geruch", "pos": "NOUN", "translation": "smell; odor", "frequency": 2335, "cefr": "A1" },
+            { "word": "der Geschmack", "pos": "NOUN", "translation": "taste; flavor", "frequency": 2995, "cefr": "B1" },
+            { "word": "unangenehm", "pos": "ADJ", "translation": "uncomfortable", "frequency": 2870, "cefr": "B1" },
+            { "word": "sogar", "pos": "ADV", "translation": "even, actually", "frequency": 226, "cefr": "A2" },
+            { "word": "irgendwie", "pos": "ADV", "translation": "somehow", "frequency": 626 },
+            { "word": "mittlerweile", "pos": "ADV", "translation": "(by) now, meanwhile", "frequency": 862, "cefr": "B1" },
+            { "word": "raus", "pos": "ADV", "translation": "out", "frequency": 6219, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "rappen", "pos": "VERB", "cefr": "B2" },
+            { "word": "feindlich", "pos": "ADV", "frequency": 9406 },
+            { "word": "esen", "pos": "VERB" },
+            { "word": "prechen", "pos": "VERB" },
+            { "word": "die Geschmäcke", "pos": "NOUN" },
+            { "word": "die Attraktion", "pos": "NOUN", "frequency": 7400 },
+            { "word": "die Yuppie", "pos": "NOUN" },
+            { "word": "das Paradies", "pos": "NOUN", "frequency": 4764 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wohlfühlen": {
+                "present": {
+                    "ich": "fühle mich wohl",
+                    "du": "fühlst dich wohl",
+                    "er": "fühlt sich wohl",
+                    "es": "fühlt sich wohl",
+                    "sie_singular": "fühlt sich wohl",
+                    "xier": "fühlt sich wohl",
+                    "wir": "fühlen uns wohl",
+                    "ihr": "fühlt euch wohl",
+                    "sie_plural": "fühlen sich wohl",
+                    "Sie": "fühlen sich wohl"
+                },
+                "Präteritum": {
+                    "ich": "fühlte mich wohl",
+                    "du": "fühltest dich wohl",
+                    "er": "fühlte sich wohl",
+                    "es": "fühlte sich wohl",
+                    "sie_singular": "fühlte sich wohl",
+                    "xier": "fühlte sich wohl",
+                    "wir": "fühlten uns wohl",
+                    "ihr": "fühltet euch wohl",
+                    "sie_plural": "fühlten sich wohl",
+                    "Sie": "fühlten sich wohl"
+                },
+                "Perfekt": {
+                    "ich": "habe mich wohlgefühlt",
+                    "du": "hast dich wohlgefühlt",
+                    "er": "hat sich wohlgefühlt",
+                    "es": "hat sich wohlgefühlt",
+                    "sie_singular": "hat sich wohlgefühlt",
+                    "xier": "hat sich wohlgefühlt",
+                    "wir": "haben uns wohlgefühlt",
+                    "ihr": "habt euch wohlgefühlt",
+                    "sie_plural": "haben sich wohlgefühlt",
+                    "Sie": "haben sich wohlgefühlt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte mich wohlgefühlt",
+                    "du": "hattest dich wohlgefühlt",
+                    "er": "hatte sich wohlgefühlt",
+                    "es": "hatte sich wohlgefühlt",
+                    "sie_singular": "hatte sich wohlgefühlt",
+                    "xier": "hatte sich wohlgefühlt",
+                    "wir": "hatten uns wohlgefühlt",
+                    "ihr": "hattet euch wohlgefühlt",
+                    "sie_plural": "hatten sich wohlgefühlt",
+                    "Sie": "hatten sich wohlgefühlt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich wohlfühlen",
+                    "du": "wirst dich wohlfühlen",
+                    "er": "wird sich wohlfühlen",
+                    "es": "wird sich wohlfühlen",
+                    "sie_singular": "wird sich wohlfühlen",
+                    "xier": "wird sich wohlfühlen",
+                    "wir": "werden uns wohlfühlen",
+                    "ihr": "werdet euch wohlfühlen",
+                    "sie_plural": "werden sich wohlfühlen",
+                    "Sie": "werden sich wohlfühlen"
+                },
+                "imperative": {
+                    "du": "fühl dich wohl",
+                    "ihr": "fühlt euch wohl",
+                    "Sie": "fühlen Sie sich wohl"
+                }
+            },
+            "verschwinden": {
+                "present": {
+                    "ich": "verschwinde",
+                    "du": "verschwindest",
+                    "er": "verschwindet",
+                    "es": "verschwindet",
+                    "sie_singular": "verschwindet",
+                    "xier": "verschwindet",
+                    "wir": "verschwinden",
+                    "ihr": "verschwindet",
+                    "sie_plural": "verschwinden",
+                    "Sie": "verschwinden"
+                },
+                "Präteritum": {
+                    "ich": "verschwand",
+                    "du": "verschwandest",
+                    "er": "verschwand",
+                    "es": "verschwand",
+                    "sie_singular": "verschwand",
+                    "xier": "verschwand",
+                    "wir": "verschwanden",
+                    "ihr": "verschwandet",
+                    "sie_plural": "verschwanden",
+                    "Sie": "verschwanden"
+                },
+                "Perfekt": {
+                    "ich": "bin verschwunden",
+                    "du": "bist verschwunden",
+                    "er": "ist verschwunden",
+                    "es": "ist verschwunden",
+                    "sie_singular": "ist verschwunden",
+                    "xier": "ist verschwunden",
+                    "wir": "sind verschwunden",
+                    "ihr": "seid verschwunden",
+                    "sie_plural": "sind verschwunden",
+                    "Sie": "sind verschwunden"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war verschwunden",
+                    "du": "warst verschwunden",
+                    "er": "war verschwunden",
+                    "es": "war verschwunden",
+                    "sie_singular": "war verschwunden",
+                    "xier": "war verschwunden",
+                    "wir": "waren verschwunden",
+                    "ihr": "wart verschwunden",
+                    "sie_plural": "waren verschwunden",
+                    "Sie": "waren verschwunden"
+                },
+                "Futur_I": {
+                    "ich": "werde verschwinden",
+                    "du": "wirst verschwinden",
+                    "er": "wird verschwinden",
+                    "es": "wird verschwinden",
+                    "sie_singular": "wird verschwinden",
+                    "xier": "wird verschwinden",
+                    "wir": "werden verschwinden",
+                    "ihr": "werdet verschwinden",
+                    "sie_plural": "werden verschwinden",
+                    "Sie": "werden verschwinden"
+                },
+                "imperative": {
+                    "du": "verschwinde",
+                    "ihr": "verschwindet",
+                    "Sie": "verschwinden Sie"
+                }
+            },
+            "erfahren": {
+                "present": {
+                    "ich": "erfahre",
+                    "du": "erfährst",
+                    "er": "erfährt",
+                    "es": "erfährt",
+                    "sie_singular": "erfährt",
+                    "xier": "erfährt",
+                    "wir": "erfahren",
+                    "ihr": "erfahrt",
+                    "sie_plural": "erfahren",
+                    "Sie": "erfahren"
+                },
+                "Präteritum": {
+                    "ich": "erfuhr",
+                    "du": "erfuhrst",
+                    "er": "erfuhr",
+                    "es": "erfuhr",
+                    "sie_singular": "erfuhr",
+                    "xier": "erfuhr",
+                    "wir": "erfuhren",
+                    "ihr": "erfuhrt",
+                    "sie_plural": "erfuhren",
+                    "Sie": "erfuhren"
+                },
+                "Perfekt": {
+                    "ich": "habe erfahren",
+                    "du": "hast erfahren",
+                    "er": "hat erfahren",
+                    "es": "hat erfahren",
+                    "sie_singular": "hat erfahren",
+                    "xier": "hat erfahren",
+                    "wir": "haben erfahren",
+                    "ihr": "habt erfahren",
+                    "sie_plural": "haben erfahren",
+                    "Sie": "haben erfahren"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erfahren",
+                    "du": "hattest erfahren",
+                    "er": "hatte erfahren",
+                    "es": "hatte erfahren",
+                    "sie_singular": "hatte erfahren",
+                    "xier": "hatte erfahren",
+                    "wir": "hatten erfahren",
+                    "ihr": "hattet erfahren",
+                    "sie_plural": "hatten erfahren",
+                    "Sie": "hatten erfahren"
+                },
+                "Futur_I": {
+                    "ich": "werde erfahren",
+                    "du": "wirst erfahren",
+                    "er": "wird erfahren",
+                    "es": "wird erfahren",
+                    "sie_singular": "wird erfahren",
+                    "xier": "wird erfahren",
+                    "wir": "werden erfahren",
+                    "ihr": "werdet erfahren",
+                    "sie_plural": "werden erfahren",
+                    "Sie": "werden erfahren"
+                },
+                "imperative": {
+                    "du": "erfahr",
+                    "ihr": "erfahrt",
+                    "Sie": "erfahren Sie"
+                }
+            },
+            "egal": {
+                "Perfekt": {
+                    "ich": "bin gewesen",
+                    "du": "bist gewesen",
+                    "er": "ist gewesen",
+                    "es": "ist gewesen",
+                    "sie_singular": "ist gewesen",
+                    "xier": "ist gewesen",
+                    "wir": "sind gewesen",
+                    "ihr": "seid gewesen",
+                    "sie_plural": "sind gewesen",
+                    "Sie": "sind gewesen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war gewesen",
+                    "du": "warst gewesen",
+                    "er": "war gewesen",
+                    "es": "war gewesen",
+                    "sie_singular": "war gewesen",
+                    "xier": "war gewesen",
+                    "wir": "waren gewesen",
+                    "ihr": "wart gewesen",
+                    "sie_plural": "waren gewesen",
+                    "Sie": "waren gewesen"
+                },
+                "Futur_I": {
+                    "ich": "werde egal",
+                    "du": "wirst egal",
+                    "er": "wird egal",
+                    "es": "wird egal",
+                    "sie_singular": "wird egal",
+                    "xier": "wird egal",
+                    "wir": "werden egal",
+                    "ihr": "werdet egal",
+                    "sie_plural": "werden egal",
+                    "Sie": "werden egal"
+                }
+            },
+            "riechen": {
+                "present": {
+                    "ich": "rieche",
+                    "du": "riechst",
+                    "er": "riecht",
+                    "es": "riecht",
+                    "sie_singular": "riecht",
+                    "xier": "riecht",
+                    "wir": "riechen",
+                    "ihr": "riecht",
+                    "sie_plural": "riechen",
+                    "Sie": "riechen"
+                },
+                "Präteritum": {
+                    "ich": "roch",
+                    "du": "rochst",
+                    "er": "roch",
+                    "es": "roch",
+                    "sie_singular": "roch",
+                    "xier": "roch",
+                    "wir": "rochen",
+                    "ihr": "rocht",
+                    "sie_plural": "rochen",
+                    "Sie": "rochen"
+                },
+                "Perfekt": {
+                    "ich": "habe gerochen",
+                    "du": "hast gerochen",
+                    "er": "hat gerochen",
+                    "es": "hat gerochen",
+                    "sie_singular": "hat gerochen",
+                    "xier": "hat gerochen",
+                    "wir": "haben gerochen",
+                    "ihr": "habt gerochen",
+                    "sie_plural": "haben gerochen",
+                    "Sie": "haben gerochen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gerochen",
+                    "du": "hattest gerochen",
+                    "er": "hatte gerochen",
+                    "es": "hatte gerochen",
+                    "sie_singular": "hatte gerochen",
+                    "xier": "hatte gerochen",
+                    "wir": "hatten gerochen",
+                    "ihr": "hattet gerochen",
+                    "sie_plural": "hatten gerochen",
+                    "Sie": "hatten gerochen"
+                },
+                "Futur_I": {
+                    "ich": "werde riechen",
+                    "du": "wirst riechen",
+                    "er": "wird riechen",
+                    "es": "wird riechen",
+                    "sie_singular": "wird riechen",
+                    "xier": "wird riechen",
+                    "wir": "werden riechen",
+                    "ihr": "werdet riechen",
+                    "sie_plural": "werden riechen",
+                    "Sie": "werden riechen"
+                },
+                "imperative": {
+                    "du": "rieche",
+                    "ihr": "riecht",
+                    "Sie": "riechen Sie"
+                }
+            },
+            "begegnen": {
+                "present": {
+                    "ich": "begegne",
+                    "du": "begegnest",
+                    "er": "begegnet",
+                    "es": "begegnet",
+                    "sie_singular": "begegnet",
+                    "xier": "begegnet",
+                    "wir": "begegnen",
+                    "ihr": "begegnet",
+                    "sie_plural": "begegnen",
+                    "Sie": "begegnen"
+                },
+                "Präteritum": {
+                    "ich": "begegnete",
+                    "du": "begegnetest",
+                    "er": "begegnete",
+                    "es": "begegnete",
+                    "sie_singular": "begegnete",
+                    "xier": "begegnete",
+                    "wir": "begegneten",
+                    "ihr": "begegnetet",
+                    "sie_plural": "begegneten",
+                    "Sie": "begegneten"
+                },
+                "Perfekt": {
+                    "ich": "bin begegnet",
+                    "du": "bist begegnet",
+                    "er": "ist begegnet",
+                    "es": "ist begegnet",
+                    "sie_singular": "ist begegnet",
+                    "xier": "ist begegnet",
+                    "wir": "sind begegnet",
+                    "ihr": "seid begegnet",
+                    "sie_plural": "sind begegnet",
+                    "Sie": "sind begegnet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war begegnet",
+                    "du": "warst begegnet",
+                    "er": "war begegnet",
+                    "es": "war begegnet",
+                    "sie_singular": "war begegnet",
+                    "xier": "war begegnet",
+                    "wir": "waren begegnet",
+                    "ihr": "wart begegnet",
+                    "sie_plural": "waren begegnet",
+                    "Sie": "waren begegnet"
+                },
+                "Futur_I": {
+                    "ich": "werde begegnen",
+                    "du": "wirst begegnen",
+                    "er": "wird begegnen",
+                    "es": "wird begegnen",
+                    "sie_singular": "wird begegnen",
+                    "xier": "wird begegnen",
+                    "wir": "werden begegnen",
+                    "ihr": "werdet begegnen",
+                    "sie_plural": "werden begegnen",
+                    "Sie": "werden begegnen"
+                },
+                "imperative": {
+                    "du": "begegne",
+                    "ihr": "begegnet",
+                    "Sie": "begegnen Sie"
+                }
+            },
+            "betreten": {
+                "present": {
+                    "ich": "betrete",
+                    "du": "betrittst",
+                    "er": "betritt",
+                    "es": "betritt",
+                    "sie_singular": "betritt",
+                    "xier": "betritt",
+                    "wir": "betreten",
+                    "ihr": "betretet",
+                    "sie_plural": "betreten",
+                    "Sie": "betreten"
+                },
+                "Präteritum": {
+                    "ich": "betrat",
+                    "du": "betratest",
+                    "er": "betrat",
+                    "es": "betrat",
+                    "sie_singular": "betrat",
+                    "xier": "betrat",
+                    "wir": "betraten",
+                    "ihr": "betratet",
+                    "sie_plural": "betraten",
+                    "Sie": "betraten"
+                },
+                "Perfekt": {
+                    "ich": "habe betreten",
+                    "du": "hast betreten",
+                    "er": "hat betreten",
+                    "es": "hat betreten",
+                    "sie_singular": "hat betreten",
+                    "xier": "hat betreten",
+                    "wir": "haben betreten",
+                    "ihr": "habt betreten",
+                    "sie_plural": "haben betreten",
+                    "Sie": "haben betreten"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte betreten",
+                    "du": "hattest betreten",
+                    "er": "hatte betreten",
+                    "es": "hatte betreten",
+                    "sie_singular": "hatte betreten",
+                    "xier": "hatte betreten",
+                    "wir": "hatten betreten",
+                    "ihr": "hattet betreten",
+                    "sie_plural": "hatten betreten",
+                    "Sie": "hatten betreten"
+                },
+                "Futur_I": {
+                    "ich": "werde betreten",
+                    "du": "wirst betreten",
+                    "er": "wird betreten",
+                    "es": "wird betreten",
+                    "sie_singular": "wird betreten",
+                    "xier": "wird betreten",
+                    "wir": "werden betreten",
+                    "ihr": "werdet betreten",
+                    "sie_plural": "werden betreten",
+                    "Sie": "werden betreten"
+                },
+                "imperative": {
+                    "du": "betritt",
+                    "ihr": "betretet",
+                    "Sie": "betreten Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ein kleines Wort mit großer Bedeutung.",
+            "Ergänzen Sie die korrekten Relativpronomen für die Sätze über Heimat.",
+            "Welche Themen, Orte, Leute und Gefühle verbinden Sie mit dem Begriff“ Heimat ”?",
+            "Schreiben Sie.",
+            "Welche drei Elemente aus der Grafik sind Ihnen persönlich am wichtigsten, wenn Sie an Ihre Heimat denken?",
+            "Lesen Sie den kurzen Text über die Hip-Hopper Alpa Gun und Eko Fresh und ergänzen Sie die Informationen.",
+            "Wie viele andere People of Color in Deutschland",
+            "Haben die türkisch-deutschen Hip-Hopper Alpa Gun und Eko Fresh komplexe Ideen zum Thema“ Heimat ”.",
+            "Beide rappen oft über die rassistische und ausländerfeindliche Diskriminierung, der sie in Deutschland begegnen.",
+            "Sie sind aber beide in Deutschland geboren.",
+            "Alpa Gun ist 1980 geboren und rappt in seinem Lied“ Berlin Berlin ” ( 2015 ) über seine Heimatstadt.",
+            "Er rappt auch auf Türkisch und nennt sich“ die Stimme der Straße ”.",
+            "Für Eko Fresh, der 1983 geboren ist, ist Köln eine Heimat.",
+            "Er rappt in seinem Lied“ Orient Express ” (2014) auch über die Heimatstadt seines Opas.",
+            "Sie heißt Sivas und liegt in der Türkei.",
+            "Eine Gruppe schaut sich das Musikvideo zu Alpa Guns Lied und die andere Gruppe Eko Freshs Lied an.",
+            "Esen Sie auch die Songtexte.",
+            "S prechen Sie über die folgenden Fragen und machen Sie sich Notizen (auch gerne visuell) in der Tabelle.",
+            "Welche Elemente von Heimat sind dem Künstler am wichtigsten?",
+            "Nennen Sie Beispiele aus dem Text.",
+            "Welche Bilder, Gefühle, Geräusche, Gerüche oder Geschmäcke verbinden die Musiker mit der Erfahrung von Heimat?",
+            "Du bist meine Stadt, Du bist mein Berlin Berlin, Berlin Berlin, Berlin Berlin",
+            "Wir beide kennen uns jetzt seit über 30 Jahren",
+            "Damals saß ich in der BVG und spürte deinen Atem Reise durch das Land, doch es zieht mich immer wieder her",
+            "Ich fühle mich zu Hause -",
+            "Hier leben Menschen aus jeder Nation",
+            "Mittlerweile ist die Stadt eine Touristenattraktion",
+            "Man ich liebe die Falafel, dein Köfte und Gemüse Döner",
+            "Mit jedem neuen Tag werden meine Gefühle größer",
+            "Für deine Bürger bist du mehr als nur die Hauptstadt",
+            "Sogar wenn es im Sommer regnet, ist es traumhaft",
+            "Du bist meine Weltmetropole",
+            "Manchmal will ich raus, doch es geht nicht mehr ohne Berlin",
+            "Mein zuhause, meine Heimat ist Berlin Berlin, Berlin Berlin, Berlin Berlin",
+            "Ich kann nicht weg hier, denn ich liebe mein Berlin Berlin, Berlin Berlin, Berlin Berlin",
+            "Ich seh die Siegessäule und das Brandenburger Tor",
+            "Ich find es schön bei dir zu sein egal an welchem Ort Dein Berliner Dom und deine Gedächtniskirche",
+            "Ich bin mehr Berliner als Deutscher oder Türke Gebor e n in Schöneberg",
+            "Ich lebe hier am Ghettoblock Heute sind wir alle etwas älter doch wir kennen uns noch Ich fahr nach Kreuzberg, besuch die Jungs von WonderWaffel Chille auf der Terrasse, und esse ne WonderWaffel",
+            "Klein Istanbul ist ein anderes Erlebnis",
+            "Yuppies sitzen auf der Straße und wir im Mercedes Leben in der Weltstadt",
+            "Ich fühl mich hier so wohl, denn ich liebe mein Ich habe hier alles was ich brauche, ich bin hier zuhause",
+            "Nein ich will nicht weg von hier, denn ich liebe mein Bruder, sag mir, was ist Heimat",
+            "Heimat ist dort, wo ich ein Heim habe Doch stell' dir vor, dort war ich noch kein mal Köln ist in meinem Herzen drin, doch“ Nerelisin?",
+            "” Das ist eine ganz wichtige Frage bei uns, woher wir sind Die kommt dir schnell in den Sinn, nach“ Hallo, wie heißt du?",
+            "” Ich bin Ek und komm' aus Sivas, so, jetzt weißt du es",
+            "Und wenn du deine Heimat auch nur ab und zu heimsuchst",
+            "Bist du klar im Vorteil, denn ich kam noch kein mal dazu",
+            "Es ist mir unangenehm, ich habe nie meine Wurzeln gesehen",
+            "Und es versäumt, mal diese Stadt durch zu gehen",
+            "Denn es ist leider eine Schande, dass ich sie einfach nicht kannte",
+            "Von wo meine Verwandten und ich ja eigentlich stammten",
+            "Irgendwie schäme ich mich dafür, dass ich nie da gewesen bin Ist es nicht grad des Lebens Sinn, dass wir erfahren, wer wir sind?",
+            "Ich nehme den Orient Express, auf der Suche nach dem Paradies",
+            "Dass man in Zukunft sieht, welches Blut in meinen Adern fließt Schwester, sag mir, was ist Heimat Heimat ist, was dein Leben frei macht",
+            "Doch wenn du nicht mal weißt, wo, ist das nicht einfach",
+            "Ich bleib wach bei Nacht in meinem Abteil",
+            "Und denke nach, wie wird meine Heimat wohl sein Ist es ein toller Ort, bin ich willkommen dort",
+            "Oder kräht kein Hahn nach mir, wenn ich durch die Stadt spaziere '",
+            "Ich kann es fast nicht mehr sprechen",
+            "Aber irgendwie verbindet mich hier was mit den Menschen",
+            "Denn ihr seht so aus wie ich und ich sehe so aus wie ihr Sivas, ich kenn' dich nicht, warum sehn'",
+            "Meine Seele, sie gefriert, es war so, wie es mein Herz befahl",
+            "Denn ich betrete deinen Boden jetzt zum ersten Mal",
+            "Und weil ich bis jetzt meinem Opa auf den Fersen war",
+            "Möchte ich wissen, wie die Sonne oben auf die Berge strahlt",
+            "Zeig mir den Weg, wenn ich mich auf die Reise begab '",
+            "Dede, ich habe es geschafft, doch du kannst es leider nicht sehen Wenn du auf den Wegen von Sivas im Leben noch nie warst",
+            "Und es dein ewiges Ziel war, einmal hier hinzukommen",
+            "Nimm den Orient Express, denn dann holt er dich hier weg Und den sogenannten Fleck Erde findest du schon",
+            "Denn das ist Heimat für mich und was ist Heimat für dich Jeder hat so einen Ort, doch vielleicht weißt du's noch nicht",
+            "Wenn die andere Gruppe präsentiert, ergänzen Sie die Tabelle.",
+            "Vergleichen Sie dann im Kurs die Elemente und Definitionen von“ Heimat ” der beiden Künstler.",
+            "Wie unterscheiden sie sich?",
+            "Gibt es Ähnlichkeiten?",
+            "Wie definiere ich meine Heimat?",
+            "Wie definieren Sie Ihre eigene Heimat?",
+            "Wo liegt sie?",
+            "Denken Sie an ein Bild, ein Gefühl, ein Geräusch, einen Geruch und einen Geschmack.",
+            "Machen Sie sich Notizen zu diesen fünf Elementen.",
+            "Was bedeutet Heimat für die Studierenden im Kurs?",
+            "Sprechen Sie mit so vielen anderen Personen wie möglich.",
+            "Heimat ist der Apfelstrudel, den ich rieche, wenn ich an meine Oma denke."
+        ],
+        "templated": []
+    }
+}

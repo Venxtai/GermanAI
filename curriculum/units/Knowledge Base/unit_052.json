@@ -1,0 +1,386 @@
+{
+    "unit": "52",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 52,
+        "prerequisite": "1-51"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Party planen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "einladen",
+                "pos": "VERB",
+                "translation": "to invite",
+                "frequency": 1279,
+                "cefr": "A1"
+            },
+            {
+                "word": "jdm. helfen",
+                "pos": "VERB",
+                "translation": "to help s.o. (with)"
+            },
+            {
+                "word": "abholen",
+                "pos": "VERB",
+                "translation": "to pick up",
+                "frequency": 2377,
+                "cefr": "A1"
+            },
+            {
+                "word": "organisieren",
+                "pos": "VERB",
+                "translation": "to organize",
+                "frequency": 1295,
+                "cefr": "A2"
+            },
+            {
+                "word": "senden",
+                "pos": "VERB",
+                "translation": "to send",
+                "frequency": 3243,
+                "cefr": "B1"
+            },
+            {
+                "word": "verleihen",
+                "pos": "VERB",
+                "translation": "to lend",
+                "frequency": 2403
+            },
+            {
+                "word": "kreieren",
+                "pos": "VERB",
+                "translation": "to create",
+                "frequency": 10289
+            },
+            {
+                "word": "die Hochzeit",
+                "pos": "NOUN",
+                "translation": "wedding",
+                "frequency": 3281,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Einladung",
+                "pos": "NOUN",
+                "translation": "invitation",
+                "frequency": 2863,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Rolle",
+                "pos": "NOUN",
+                "translation": "role",
+                "frequency": 385,
+                "cefr": "B1"
+            },
+            {
+                "word": "selbst",
+                "pos": "PRON",
+                "translation": "by oneself",
+                "frequency": 101,
+                "cefr": "A2"
+            },
+            {
+                "word": "noch",
+                "pos": "ADV",
+                "translation": "still",
+                "frequency": 33,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "informell",
+                "pos": "ADJ",
+                "frequency": 13975
+            },
+            {
+                "word": "die Kurznachricht",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Caterer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Eventverleih",
+                "pos": "NOUN"
+            },
+            {
+                "word": "formell",
+                "pos": "ADJ",
+                "frequency": 9911,
+                "cefr": "B2"
+            },
+            {
+                "word": "ihnen",
+                "pos": "PRON",
+                "frequency": 125
+            },
+            {
+                "word": "die Organisation",
+                "pos": "NOUN",
+                "frequency": 1113,
+                "cefr": "B1"
+            },
+            {
+                "word": "leihen",
+                "pos": "VERB",
+                "frequency": 10390,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Deko",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Besteck",
+                "pos": "NOUN",
+                "frequency": 28473
+            },
+            {
+                "word": "der Markt",
+                "pos": "NOUN",
+                "frequency": 476,
+                "cefr": "A2"
+            },
+            {
+                "word": "optional",
+                "pos": "ADV",
+                "frequency": 30109
+            },
+            {
+                "word": "der Screenshot",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Kommunikation",
+                "pos": "NOUN",
+                "frequency": 1523,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "einladen": {
+                "present": {
+                    "ich": "lade ein",
+                    "du": "lädst ein",
+                    "er": "lädt ein",
+                    "es": "lädt ein",
+                    "sie_singular": "lädt ein",
+                    "xier": "lädt ein",
+                    "wir": "laden ein",
+                    "ihr": "ladet ein",
+                    "sie_plural": "laden ein",
+                    "Sie": "laden ein"
+                }
+            },
+            "helfen": {
+                "present": {
+                    "ich": "helfe",
+                    "du": "hilfst",
+                    "er": "hilft",
+                    "es": "hilft",
+                    "sie_singular": "hilft",
+                    "xier": "hilft",
+                    "wir": "helfen",
+                    "ihr": "helft",
+                    "sie_plural": "helfen",
+                    "Sie": "helfen"
+                }
+            },
+            "abholen": {
+                "present": {
+                    "ich": "hole ab",
+                    "du": "holst ab",
+                    "er": "holt ab",
+                    "es": "holt ab",
+                    "sie_singular": "holt ab",
+                    "xier": "holt ab",
+                    "wir": "holen ab",
+                    "ihr": "holt ab",
+                    "sie_plural": "holen ab",
+                    "Sie": "holen ab"
+                }
+            },
+            "organisieren": {
+                "present": {
+                    "ich": "organisiere",
+                    "du": "organisierst",
+                    "er": "organisiert",
+                    "es": "organisiert",
+                    "sie_singular": "organisiert",
+                    "xier": "organisiert",
+                    "wir": "organisieren",
+                    "ihr": "organisiert",
+                    "sie_plural": "organisieren",
+                    "Sie": "organisieren"
+                }
+            },
+            "senden": {
+                "present": {
+                    "ich": "sende",
+                    "du": "sendest",
+                    "er": "sendet",
+                    "es": "sendet",
+                    "sie_singular": "sendet",
+                    "xier": "sendet",
+                    "wir": "senden",
+                    "ihr": "sendet",
+                    "sie_plural": "senden",
+                    "Sie": "senden"
+                }
+            },
+            "verleihen": {
+                "present": {
+                    "ich": "verleihe",
+                    "du": "verleihst",
+                    "er": "verleiht",
+                    "es": "verleiht",
+                    "sie_singular": "verleiht",
+                    "xier": "verleiht",
+                    "wir": "verleihen",
+                    "ihr": "verleiht",
+                    "sie_plural": "verleihen",
+                    "Sie": "verleihen"
+                }
+            },
+            "kreieren": {
+                "present": {
+                    "ich": "kreiere",
+                    "du": "kreierst",
+                    "er": "kreiert",
+                    "es": "kreiert",
+                    "sie_singular": "kreiert",
+                    "xier": "kreiert",
+                    "wir": "kreieren",
+                    "ihr": "kreiert",
+                    "sie_plural": "kreieren",
+                    "Sie": "kreieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie arbeiten in einem Team und organisieren eine Party für Ihre Freundin Kim.",
+            "Schreiben Sie im Team (informelle) E-Mails oder Kurznachrichten ( GroupMe, SMS, WhatsApp, etc.) und diskutieren Sie die wichtigen Fragen unten.",
+            "Am Ende sollen Sie einen Plan für die Party haben.",
+            "Sie können auch einen Caterer oder Eventverleih nutzen.",
+            "Dann schreiben Sie eine (formelle) E-Mail.",
+            "Ihre Lehrkraft spielt die Rolle vom Caterer oder Eventverleih.",
+            "Diese Fragen helfen Ihnen bei der Organisation:",
+            "Was ist das Thema für Ihre Party?",
+            "Wann ist Ihre Party?",
+            "Welche Kleidung sollen die Gäst *innen tragen?",
+            "Wie viele Gäst * innen laden Sie ein?",
+            "Brauchen Sie Möbel für Ihre Party (z.B.",
+            "Tische und Stühle)?",
+            "Wie viele?",
+            "Woher bekommen Sie die Möbel (Eventverleih oder privat)?",
+            "Wie möchten Sie dekorieren?",
+            "Woher bekommen Sie die Dekoration?",
+            "Machen Sie sie selbst oder leihen Sie sich die Deko (Eventverleih)?",
+            "Was möchten Sie essen?",
+            "Kochen Sie selbst?",
+            "Kochen Freunde?",
+            "Bringen die Gäste das Essen mit?",
+            "Nutzen Sie einen Caterer?",
+            "Woher bekommen Sie es?",
+            "Wer holt es ab?",
+            "Was möchten Sie trinken?",
+            "Wann holen Sie die Getränke beim Getränkemarkt ab?",
+            "Was brauchen Sie noch?",
+            "Kreieren Sie auch eine Einladung für die Party.",
+            "Ist der Plan fertig?",
+            "Machen Sie Screenshots von der Kommunikation für Ihre Lehrkraft.",
+            "Senden Sie die Screenshots an Ihre Lehrkraft.",
+            "Haben Sie eine Einladung?",
+            "Dann senden Sie die Einladung an den Kurs."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

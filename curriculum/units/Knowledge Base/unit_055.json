@@ -1,0 +1,668 @@
+{
+    "unit": "55",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 55,
+        "prerequisite": "1-54"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "haben",
+                "pos": "VERB",
+                "translation": "to have",
+                "frequency": 6,
+                "cefr": "A1"
+            },
+            {
+                "word": "sein",
+                "pos": "VERB",
+                "translation": "to be",
+                "frequency": 4,
+                "cefr": "A1"
+            },
+            {
+                "word": "werden",
+                "pos": "VERB",
+                "translation": "to become",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "sitzen",
+                "pos": "VERB",
+                "translation": "to sit; be sitting (only things that have knee-like joints to bend)",
+                "frequency": 231,
+                "cefr": "A1"
+            },
+            {
+                "word": "stehen",
+                "pos": "VERB",
+                "translation": "to stand; be standing (things that are located upright, e.g. on a foot)",
+                "frequency": 85,
+                "cefr": "A1"
+            },
+            {
+                "word": "liegen",
+                "pos": "VERB",
+                "translation": "to lie; be lying [things that are located flat]",
+                "frequency": 107,
+                "cefr": "A1"
+            },
+            {
+                "word": "hängen",
+                "pos": "VERB",
+                "translation": "to hang; be hanging"
+            },
+            {
+                "word": "setzen",
+                "pos": "VERB",
+                "translation": "to set down, put (things that have knee-like joints to bend)",
+                "frequency": 228,
+                "cefr": "A2"
+            },
+            {
+                "word": "stellen",
+                "pos": "VERB",
+                "translation": "to place; put (things that are located upright, e.g. on a foot)",
+                "frequency": 135,
+                "cefr": "A1"
+            },
+            {
+                "word": "legen",
+                "pos": "VERB",
+                "translation": "to lay; put (horizontal)",
+                "frequency": 352,
+                "cefr": "A1"
+            },
+            {
+                "word": "neben",
+                "pos": "ADJ",
+                "translation": "next to",
+                "frequency": 266,
+                "cefr": "A2"
+            },
+            {
+                "word": "zwischen",
+                "pos": "PREP",
+                "translation": "between",
+                "frequency": 105,
+                "cefr": "A1"
+            },
+            {
+                "word": "an",
+                "pos": "PREP",
+                "translation": "at, on (vertical / horizontal boundary)",
+                "frequency": 19,
+                "cefr": "A1"
+            },
+            {
+                "word": "in",
+                "pos": "PREP",
+                "translation": "in; into",
+                "frequency": 3,
+                "cefr": "A1"
+            },
+            {
+                "word": "vor",
+                "pos": "PREP",
+                "translation": "before; in front of",
+                "frequency": 50,
+                "cefr": "A1"
+            },
+            {
+                "word": "hinter",
+                "pos": "PREP",
+                "translation": "behind",
+                "frequency": 269,
+                "cefr": "A2"
+            },
+            {
+                "word": "auf",
+                "pos": "PREP",
+                "translation": "on top of (horizontal, surface area); at",
+                "frequency": 16,
+                "cefr": "A1"
+            },
+            {
+                "word": "über",
+                "pos": "PREP",
+                "translation": "about; above; over"
+            },
+            {
+                "word": "unter",
+                "pos": "PREP",
+                "translation": "below; under; underneath",
+                "frequency": 89,
+                "cefr": "A1"
+            },
+            {
+                "word": "bis",
+                "pos": "PREP",
+                "translation": "until, as far as, by",
+                "frequency": 77,
+                "cefr": "A1"
+            },
+            {
+                "word": "durch",
+                "pos": "PREP",
+                "translation": "through",
+                "frequency": 55,
+                "cefr": "A1"
+            },
+            {
+                "word": "für",
+                "pos": "PREP",
+                "translation": "for"
+            },
+            {
+                "word": "ohne",
+                "pos": "PREP",
+                "translation": "without",
+                "frequency": 120,
+                "cefr": "A1"
+            },
+            {
+                "word": "gegen",
+                "pos": "PREP",
+                "translation": "against, toward;",
+                "frequency": 104,
+                "cefr": "A1"
+            },
+            {
+                "word": "um",
+                "pos": "PREP",
+                "translation": "around",
+                "frequency": 44,
+                "cefr": "A1"
+            },
+            {
+                "word": "Wer?",
+                "pos": "PHRASE",
+                "translation": "Who?"
+            },
+            {
+                "word": "Wen?",
+                "pos": "PHRASE",
+                "translation": "Whom?"
+            },
+            {
+                "word": "Wo?",
+                "pos": "PHRASE",
+                "translation": "Where?"
+            },
+            {
+                "word": "Wann?",
+                "pos": "PHRASE",
+                "translation": "When?"
+            },
+            {
+                "word": "Wohin?",
+                "pos": "PHRASE",
+                "translation": "Where to?"
+            },
+            {
+                "word": "Woher?",
+                "pos": "PHRASE",
+                "translation": "Where from?"
+            },
+            {
+                "word": "Warum?",
+                "pos": "PHRASE",
+                "translation": "Why?"
+            },
+            {
+                "word": "Wie?",
+                "pos": "PHRASE",
+                "translation": "How?"
+            },
+            {
+                "word": "Was?",
+                "pos": "PHRASE",
+                "translation": "What?"
+            },
+            {
+                "word": "Welch-?",
+                "pos": "PHRASE",
+                "translation": "Which?"
+            },
+            {
+                "word": "dies- (dieser",
+                "pos": "NOUN",
+                "translation": "this, that, these"
+            },
+            {
+                "word": "zuerst",
+                "pos": "ADJ",
+                "translation": "first(ly)",
+                "frequency": 880,
+                "cefr": "A2"
+            },
+            {
+                "word": "dann",
+                "pos": "ADV",
+                "translation": "then",
+                "frequency": 41,
+                "cefr": "A1"
+            },
+            {
+                "word": "auch",
+                "pos": "ADV",
+                "translation": "too",
+                "frequency": 18,
+                "cefr": "A1"
+            },
+            {
+                "word": "wichtig",
+                "pos": "ADJ",
+                "translation": "important",
+                "frequency": 144,
+                "cefr": "A1"
+            },
+            {
+                "word": "jetzt",
+                "pos": "ADV",
+                "translation": "now",
+                "frequency": 72,
+                "cefr": "A1"
+            },
+            {
+                "word": "heute",
+                "pos": "ADV",
+                "translation": "today",
+                "frequency": 116,
+                "cefr": "A1"
+            },
+            {
+                "word": "besonders",
+                "pos": "ADV",
+                "translation": "particular(ly), especially",
+                "frequency": 270,
+                "cefr": "A2"
+            },
+            {
+                "word": "nur",
+                "pos": "ADJ",
+                "translation": "only, just",
+                "frequency": 39,
+                "cefr": "A1"
+            },
+            {
+                "word": "und",
+                "pos": "CONJ",
+                "translation": "and",
+                "frequency": 2,
+                "cefr": "A1"
+            },
+            {
+                "word": "oder",
+                "pos": "CONJ",
+                "translation": "or",
+                "frequency": 35,
+                "cefr": "A1"
+            },
+            {
+                "word": "weil",
+                "pos": "PREP",
+                "translation": "because",
+                "frequency": 88,
+                "cefr": "A2"
+            },
+            {
+                "word": "aber",
+                "pos": "CONJ",
+                "translation": "but",
+                "frequency": 31,
+                "cefr": "A1"
+            },
+            {
+                "word": "jed- (jeder",
+                "pos": "NOUN",
+                "translation": "every"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die -Gymnastik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "führen",
+                "pos": "VERB",
+                "frequency": 162,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Katzen-Position",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Gardine",
+                "pos": "NOUN",
+                "frequency": 29367
+            },
+            {
+                "word": "der Vorhang",
+                "pos": "NOUN",
+                "frequency": 3513
+            },
+            {
+                "word": "die Präposition",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Blatt",
+                "pos": "NOUN",
+                "frequency": 1270,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Busch",
+                "pos": "NOUN",
+                "frequency": 7169,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Wiese",
+                "pos": "NOUN",
+                "frequency": 2963,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Präpositionen-Spiel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Stapel",
+                "pos": "NOUN",
+                "frequency": 13576
+            },
+            {
+                "word": "bestimmt",
+                "pos": "ADJ",
+                "frequency": 280,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Anzahl",
+                "pos": "NOUN",
+                "frequency": 853,
+                "cefr": "B1"
+            },
+            {
+                "word": "abdecken",
+                "pos": "VERB",
+                "frequency": 4787
+            },
+            {
+                "word": "der*der",
+                "pos": "DET"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "haben": {
+                "present": {
+                    "ich": "habe",
+                    "du": "hast",
+                    "er": "hat",
+                    "es": "hat",
+                    "sie_singular": "hat",
+                    "xier": "hat",
+                    "wir": "haben",
+                    "ihr": "habt",
+                    "sie_plural": "haben",
+                    "Sie": "haben"
+                }
+            },
+            "sein": {
+                "present": {
+                    "ich": "bin",
+                    "du": "bist",
+                    "er": "ist",
+                    "es": "ist",
+                    "sie_singular": "ist",
+                    "xier": "ist",
+                    "wir": "sind",
+                    "ihr": "seid",
+                    "sie_plural": "sind",
+                    "Sie": "sind"
+                }
+            },
+            "werden": {
+                "present": {
+                    "ich": "werde",
+                    "du": "wirst",
+                    "er": "wird",
+                    "es": "wird",
+                    "sie_singular": "wird",
+                    "xier": "wird",
+                    "wir": "werden",
+                    "ihr": "werdet",
+                    "sie_plural": "werden",
+                    "Sie": "werden"
+                }
+            },
+            "sitzen": {
+                "present": {
+                    "ich": "sitze",
+                    "du": "sitzt",
+                    "er": "sitzt",
+                    "es": "sitzt",
+                    "sie_singular": "sitzt",
+                    "xier": "sitzt",
+                    "wir": "sitzen",
+                    "ihr": "sitzt",
+                    "sie_plural": "sitzen",
+                    "Sie": "sitzen"
+                }
+            },
+            "stehen": {
+                "present": {
+                    "ich": "stehe",
+                    "du": "stehst",
+                    "er": "steht",
+                    "es": "steht",
+                    "sie_singular": "steht",
+                    "xier": "steht",
+                    "wir": "stehen",
+                    "ihr": "steht",
+                    "sie_plural": "stehen",
+                    "Sie": "stehen"
+                }
+            },
+            "liegen": {
+                "present": {
+                    "ich": "liege",
+                    "du": "liegst",
+                    "er": "liegt",
+                    "es": "liegt",
+                    "sie_singular": "liegt",
+                    "xier": "liegt",
+                    "wir": "liegen",
+                    "ihr": "liegt",
+                    "sie_plural": "liegen",
+                    "Sie": "liegen"
+                }
+            },
+            "hängen": {
+                "present": {
+                    "ich": "hänge",
+                    "du": "hängst",
+                    "er": "hängt",
+                    "es": "hängt",
+                    "sie_singular": "hängt",
+                    "xier": "hängt",
+                    "wir": "hängen",
+                    "ihr": "hängt",
+                    "sie_plural": "hängen",
+                    "Sie": "hängen"
+                }
+            },
+            "setzen": {
+                "present": {
+                    "ich": "setze",
+                    "du": "setzt",
+                    "er": "setzt",
+                    "es": "setzt",
+                    "sie_singular": "setzt",
+                    "xier": "setzt",
+                    "wir": "setzen",
+                    "ihr": "setzt",
+                    "sie_plural": "setzen",
+                    "Sie": "setzen"
+                }
+            },
+            "stellen": {
+                "present": {
+                    "ich": "stelle",
+                    "du": "stellst",
+                    "er": "stellt",
+                    "es": "stellt",
+                    "sie_singular": "stellt",
+                    "xier": "stellt",
+                    "wir": "stellen",
+                    "ihr": "stellt",
+                    "sie_plural": "stellen",
+                    "Sie": "stellen"
+                }
+            },
+            "legen": {
+                "present": {
+                    "ich": "lege",
+                    "du": "legst",
+                    "er": "legt",
+                    "es": "legt",
+                    "sie_singular": "legt",
+                    "xier": "legt",
+                    "wir": "legen",
+                    "ihr": "legt",
+                    "sie_plural": "legen",
+                    "Sie": "legen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ihr*e Professor*in spricht immer schneller.",
+            "Ein*e Student*in spricht, Sie führen die Bewegungen aus.",
+            "Ihr*e Professor*in spricht, führt aber eine andere Bewegung aus.",
+            "Machen Sie, was Sie hören, nicht was Sie sehen.",
+            "Schreiben Sie zu jedem Bild einen Satz.",
+            "Dann vergleichen Sie mit einer Person.",
+            "Die Katze sitzt vor dem Fenster, der Tür.",
+            "Die Katze steht neben dem Fahrrad.",
+            "Die Katze sitzt in der Tasse.",
+            "Die Katze liegt auf der Tür.",
+            "Die Katze sitzt unter der Lampe, in der Lampe.",
+            "Die Katze sitzt zwischen den Hunden.",
+            "Die Katze hänge an der Gardine, vor dem Fenster, neben dem Vorhang.",
+            "Die Katze steht hinter dem Baum.",
+            "Die Katze sitzt vor dem Computer, Laptop.",
+            "Wo rennt der Hund?",
+            "Wohin rennt der Hund?",
+            "Benutzen Sie viele Präpositionen und sprechen Sie.",
+            "Das Blatt, die Blätter der Busch, die Büsche der Baum, die Bäume die Wiese",
+            "Der Hund rennt vor den Busch.",
+            "Der Hund rennt zwischen die Bäume.",
+            "Der Hund rennt auf die Wiese.",
+            "Der Hund rennt unter die Blätter.",
+            "Wohin stellen, setzen oder legen Sie den Hund?",
+            "Beschreiben Sie Bilder und schreiben Sie mehr.",
+            "Ich stelle den Hund zwischen die Bäume.",
+            "Ich setze den Hund vor den Busch.",
+            "Ich lege den Hund auf die Wiese.",
+            "Zu zweit oder dritt das Präpositionen-Spiel.",
+            "Nehmen Sie eine Karte.",
+            "Sagen Sie dann einen Satz mit dem Wort auf der Karte und einer Präposition.",
+            "Ist der Satz logisch und korrekt, legen Sie die Karte auf die Präposition.",
+            "Ist der Satz nicht logisch oder nicht korrekt, legen Sie die Karte wieder unter den Stapel.",
+            "Wer als erstes alle (Variante: eine bestimmte Anzahl) Präpositionen abdeckt, gewinnt.",
+            "Der*die Freund*in die Eltern die Geschwister der*die",
+            "Der Tisch der Stuhl das Bett das Regal",
+            "Das Buch der Spiegel durch in auf für gegen um an zwischen unter vor neben ohne"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

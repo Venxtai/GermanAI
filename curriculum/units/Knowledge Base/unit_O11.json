@@ -1,0 +1,742 @@
+{
+    "unit": "O11",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 11,
+        "prerequisite": "core 1-104, O1-O10"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Achterbahnen berechnen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "gelten", "pos": "VERB", "translation": "to hold true; be valid", "frequency": 158, "cefr": "B1" },
+            { "word": "wirken", "pos": "VERB", "translation": "to be at work (forces); be effective; look (appearance)", "frequency": 401, "cefr": "B1" },
+            { "word": "einsetzen", "pos": "VERB", "translation": "to insert", "frequency": 461, "cefr": "B1" },
+            { "word": "erhöhen", "pos": "VERB", "translation": "to increase; raise" },
+            { "word": "drücken", "pos": "VERB", "translation": "to push" },
+            { "word": "wiegen", "pos": "VERB", "translation": "to weigh", "frequency": 3259, "cefr": "B1" },
+            { "word": "addieren", "pos": "VERB", "translation": "to add (to)", "frequency": 4608, "cefr": "B2" },
+            { "word": "multiplizieren", "pos": "VERB", "translation": "to multiply (by)", "frequency": 39893 },
+            { "word": "Gesamt-", "pos": "PREFIX", "translation": "total, overall", "cefr": "B1" },
+            { "word": "die Mitfahrenden", "pos": "NOUN", "translation": "passengers (pl.)", "frequency": 1, "cefr": "A1" },
+            { "word": "die Erde", "pos": "NOUN", "translation": "earth, globe; soil", "frequency": 783, "cefr": "B1" },
+            { "word": "die Höhe", "pos": "NOUN", "translation": "height" },
+            { "word": "die Berechnung", "pos": "NOUN", "translation": "calculation", "frequency": 1754, "cefr": "A1" },
+            { "word": "die Gleichung", "pos": "NOUN", "translation": "equation [math]", "frequency": 1180, "cefr": "B2" },
+            { "word": "das Quadrat", "pos": "NOUN", "translation": "square", "frequency": 11571, "cefr": "A1" },
+            { "word": "die Summe", "pos": "NOUN", "translation": "sum; total", "frequency": 1114, "cefr": "B1" },
+            { "word": "das Tal", "pos": "NOUN", "translation": "valley", "frequency": 2622, "cefr": "B1" },
+            { "word": "der Hügel", "pos": "NOUN", "translation": "hill", "frequency": 1, "cefr": "A1" },
+            { "word": "die Reibung", "pos": "NOUN", "translation": "friction", "frequency": 27010, "cefr": "A1" },
+            { "word": "die Lage", "pos": "NOUN", "translation": "location, position; situation", "frequency": 555, "cefr": "B1" },
+            { "word": "die Schwere", "pos": "NOUN", "translation": "heaviness; gravity", "frequency": 14866, "cefr": "A1" },
+            { "word": "die Schwerkraft", "pos": "NOUN", "translation": "gravity, gravitational force", "frequency": 20788, "cefr": "A1" },
+            { "word": "die Fliehkraft", "pos": "NOUN", "translation": "centrifugal force", "frequency": 1, "cefr": "A1" },
+            { "word": "die Physik", "pos": "NOUN", "translation": "physics", "frequency": 1917, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Skala", "pos": "NOUN", "frequency": 4394, "cefr": "B2" },
+            { "word": "das Sechzehntel", "pos": "NOUN" },
+            { "word": "die Wurzel", "pos": "NOUN", "frequency": 2526 },
+            { "word": "einhundertfünfundzwanzig", "pos": "NUM" },
+            { "word": "das Achtel", "pos": "NOUN", "frequency": 39723 },
+            { "word": "fünfeinhalb", "pos": "NUM", "frequency": 23700 },
+            { "word": "das Dreißigstel", "pos": "NOUN" },
+            { "word": "das Fünfzehntel", "pos": "NOUN" },
+            { "word": "das Komma", "pos": "NOUN", "frequency": 16303 },
+            { "word": "variable", "pos": "ADJ", "frequency": 1789, "cefr": "B2" },
+            { "word": "die Formelsammlung", "pos": "NOUN" },
+            { "word": "newtonsch", "pos": "ADJ" },
+            { "word": "die Gravitation", "pos": "NOUN", "frequency": 28115 },
+            { "word": "konstant", "pos": "ADV", "frequency": 1222 },
+            { "word": "der Zentrifugal", "pos": "NOUN" },
+            { "word": "FZENT=", "pos": "NOUN" },
+            { "word": "der Radius", "pos": "NOUN", "frequency": 3672, "cefr": "B2" },
+            { "word": "potentiell", "pos": "ADJ", "frequency": 8672 },
+            { "word": "kinetisch", "pos": "ADJ", "frequency": 3010 },
+            { "word": "das Aktionsprinzip", "pos": "NOUN" },
+            { "word": "die Lageenergie", "pos": "NOUN" },
+            { "word": "die Bewegungsenergie", "pos": "NOUN" },
+            { "word": "die Gesamtenergie", "pos": "NOUN" },
+            { "word": "die g-Kraft", "pos": "NOUN" },
+            { "word": "die Mitfahrende", "pos": "NOUN" },
+            { "word": "die fünffache", "pos": "NOUN", "frequency": 48198 },
+            { "word": "die g-Zahl", "pos": "NOUN" },
+            { "word": "das Faktor", "pos": "NOUN", "frequency": 911, "cefr": "B1" },
+            { "word": "das agesamt", "pos": "NOUN" },
+            { "word": "der azent", "pos": "NOUN" },
+            { "word": "die Luftzeit", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gelten": {
+                "present": {
+                    "ich": "gelte",
+                    "du": "giltst",
+                    "er": "gilt",
+                    "es": "gilt",
+                    "sie_singular": "gilt",
+                    "xier": "gilt",
+                    "wir": "gelten",
+                    "ihr": "geltet",
+                    "sie_plural": "gelten",
+                    "Sie": "gelten"
+                },
+                "Perfekt": {
+                    "ich": "habe gegolten",
+                    "du": "hast gegolten",
+                    "er": "hat gegolten",
+                    "es": "hat gegolten",
+                    "sie_singular": "hat gegolten",
+                    "xier": "hat gegolten",
+                    "wir": "haben gegolten",
+                    "ihr": "habt gegolten",
+                    "sie_plural": "haben gegolten",
+                    "Sie": "haben gegolten"
+                },
+                "Futur_I": {
+                    "ich": "werde gelten",
+                    "du": "wirst gelten",
+                    "er": "wird gelten",
+                    "es": "wird gelten",
+                    "sie_singular": "wird gelten",
+                    "xier": "wird gelten",
+                    "wir": "werden gelten",
+                    "ihr": "werdet gelten",
+                    "sie_plural": "werden gelten",
+                    "Sie": "werden gelten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde gelten",
+                    "du": "würdest gelten",
+                    "er": "würde gelten",
+                    "es": "würde gelten",
+                    "sie_singular": "würde gelten",
+                    "xier": "würde gelten",
+                    "wir": "würden gelten",
+                    "ihr": "würdet gelten",
+                    "sie_plural": "würden gelten",
+                    "Sie": "würden gelten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gegolten",
+                    "du": "hättest gegolten",
+                    "er": "hätte gegolten",
+                    "es": "hätte gegolten",
+                    "sie_singular": "hätte gegolten",
+                    "xier": "hätte gegolten",
+                    "wir": "hätten gegolten",
+                    "ihr": "hättet gegolten",
+                    "sie_plural": "hätten gegolten",
+                    "Sie": "hätten gegolten"
+                },
+                "imperative": {
+                    "du": "gilt",
+                    "ihr": "geltet",
+                    "Sie": "gelten Sie"
+                }
+            },
+            "wirken": {
+                "present": {
+                    "ich": "wirke",
+                    "du": "wirkst",
+                    "er": "wirkt",
+                    "es": "wirkt",
+                    "sie_singular": "wirkt",
+                    "xier": "wirkt",
+                    "wir": "wirken",
+                    "ihr": "wirkt",
+                    "sie_plural": "wirken",
+                    "Sie": "wirken"
+                },
+                "Perfekt": {
+                    "ich": "habe gewirkt",
+                    "du": "hast gewirkt",
+                    "er": "hat gewirkt",
+                    "es": "hat gewirkt",
+                    "sie_singular": "hat gewirkt",
+                    "xier": "hat gewirkt",
+                    "wir": "haben gewirkt",
+                    "ihr": "habt gewirkt",
+                    "sie_plural": "haben gewirkt",
+                    "Sie": "haben gewirkt"
+                },
+                "Futur_I": {
+                    "ich": "werde wirken",
+                    "du": "wirst wirken",
+                    "er": "wird wirken",
+                    "es": "wird wirken",
+                    "sie_singular": "wird wirken",
+                    "xier": "wird wirken",
+                    "wir": "werden wirken",
+                    "ihr": "werdet wirken",
+                    "sie_plural": "werden wirken",
+                    "Sie": "werden wirken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde wirken",
+                    "du": "würdest wirken",
+                    "er": "würde wirken",
+                    "es": "würde wirken",
+                    "sie_singular": "würde wirken",
+                    "xier": "würde wirken",
+                    "wir": "würden wirken",
+                    "ihr": "würdet wirken",
+                    "sie_plural": "würden wirken",
+                    "Sie": "würden wirken"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gewirkt",
+                    "du": "hättest gewirkt",
+                    "er": "hätte gewirkt",
+                    "es": "hätte gewirkt",
+                    "sie_singular": "hätte gewirkt",
+                    "xier": "hätte gewirkt",
+                    "wir": "hätten gewirkt",
+                    "ihr": "hättet gewirkt",
+                    "sie_plural": "hätten gewirkt",
+                    "Sie": "hätten gewirkt"
+                },
+                "imperative": {
+                    "du": "wirk",
+                    "ihr": "wirkt",
+                    "Sie": "wirken Sie"
+                }
+            },
+            "einsetzen": {
+                "present": {
+                    "ich": "setze ein",
+                    "du": "setzt ein",
+                    "er": "setzt ein",
+                    "es": "setzt ein",
+                    "sie_singular": "setzt ein",
+                    "xier": "setzt ein",
+                    "wir": "setzen ein",
+                    "ihr": "setzt ein",
+                    "sie_plural": "setzen ein",
+                    "Sie": "setzen ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingesetzt",
+                    "du": "hast eingesetzt",
+                    "er": "hat eingesetzt",
+                    "es": "hat eingesetzt",
+                    "sie_singular": "hat eingesetzt",
+                    "xier": "hat eingesetzt",
+                    "wir": "haben eingesetzt",
+                    "ihr": "habt eingesetzt",
+                    "sie_plural": "haben eingesetzt",
+                    "Sie": "haben eingesetzt"
+                },
+                "Futur_I": {
+                    "ich": "werde einsetzen",
+                    "du": "wirst einsetzen",
+                    "er": "wird einsetzen",
+                    "es": "wird einsetzen",
+                    "sie_singular": "wird einsetzen",
+                    "xier": "wird einsetzen",
+                    "wir": "werden einsetzen",
+                    "ihr": "werdet einsetzen",
+                    "sie_plural": "werden einsetzen",
+                    "Sie": "werden einsetzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde einsetzen",
+                    "du": "würdest einsetzen",
+                    "er": "würde einsetzen",
+                    "es": "würde einsetzen",
+                    "sie_singular": "würde einsetzen",
+                    "xier": "würde einsetzen",
+                    "wir": "würden einsetzen",
+                    "ihr": "würdet einsetzen",
+                    "sie_plural": "würden einsetzen",
+                    "Sie": "würden einsetzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte eingesetzt",
+                    "du": "hättest eingesetzt",
+                    "er": "hätte eingesetzt",
+                    "es": "hätte eingesetzt",
+                    "sie_singular": "hätte eingesetzt",
+                    "xier": "hätte eingesetzt",
+                    "wir": "hätten eingesetzt",
+                    "ihr": "hättet eingesetzt",
+                    "sie_plural": "hätten eingesetzt",
+                    "Sie": "hätten eingesetzt"
+                },
+                "imperative": {
+                    "du": "setze ein",
+                    "ihr": "setzt ein",
+                    "Sie": "setzen Sie ein"
+                }
+            },
+            "erhöhen": {
+                "present": {
+                    "ich": "erhöhe",
+                    "du": "erhöhst",
+                    "er": "erhöht",
+                    "es": "erhöht",
+                    "sie_singular": "erhöht",
+                    "xier": "erhöht",
+                    "wir": "erhöhen",
+                    "ihr": "erhöht",
+                    "sie_plural": "erhöhen",
+                    "Sie": "erhöhen"
+                },
+                "Perfekt": {
+                    "ich": "habe erhöht",
+                    "du": "hast erhöht",
+                    "er": "hat erhöht",
+                    "es": "hat erhöht",
+                    "sie_singular": "hat erhöht",
+                    "xier": "hat erhöht",
+                    "wir": "haben erhöht",
+                    "ihr": "habt erhöht",
+                    "sie_plural": "haben erhöht",
+                    "Sie": "haben erhöht"
+                },
+                "Futur_I": {
+                    "ich": "werde erhöhen",
+                    "du": "wirst erhöhen",
+                    "er": "wird erhöhen",
+                    "es": "wird erhöhen",
+                    "sie_singular": "wird erhöhen",
+                    "xier": "wird erhöhen",
+                    "wir": "werden erhöhen",
+                    "ihr": "werdet erhöhen",
+                    "sie_plural": "werden erhöhen",
+                    "Sie": "werden erhöhen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erhöhen",
+                    "du": "würdest erhöhen",
+                    "er": "würde erhöhen",
+                    "es": "würde erhöhen",
+                    "sie_singular": "würde erhöhen",
+                    "xier": "würde erhöhen",
+                    "wir": "würden erhöhen",
+                    "ihr": "würdet erhöhen",
+                    "sie_plural": "würden erhöhen",
+                    "Sie": "würden erhöhen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erhöht",
+                    "du": "hättest erhöht",
+                    "er": "hätte erhöht",
+                    "es": "hätte erhöht",
+                    "sie_singular": "hätte erhöht",
+                    "xier": "hätte erhöht",
+                    "wir": "hätten erhöht",
+                    "ihr": "hättet erhöht",
+                    "sie_plural": "hätten erhöht",
+                    "Sie": "hätten erhöht"
+                },
+                "imperative": {
+                    "du": "erhöhe",
+                    "ihr": "erhöht",
+                    "Sie": "erhöhen Sie"
+                }
+            },
+            "drücken": {
+                "present": {
+                    "ich": "drücke",
+                    "du": "drückst",
+                    "er": "drückt",
+                    "es": "drückt",
+                    "sie_singular": "drückt",
+                    "xier": "drückt",
+                    "wir": "drücken",
+                    "ihr": "drückt",
+                    "sie_plural": "drücken",
+                    "Sie": "drücken"
+                },
+                "Perfekt": {
+                    "ich": "habe gedrückt",
+                    "du": "hast gedrückt",
+                    "er": "hat gedrückt",
+                    "es": "hat gedrückt",
+                    "sie_singular": "hat gedrückt",
+                    "xier": "hat gedrückt",
+                    "wir": "haben gedrückt",
+                    "ihr": "habt gedrückt",
+                    "sie_plural": "haben gedrückt",
+                    "Sie": "haben gedrückt"
+                },
+                "Futur_I": {
+                    "ich": "werde drücken",
+                    "du": "wirst drücken",
+                    "er": "wird drücken",
+                    "es": "wird drücken",
+                    "sie_singular": "wird drücken",
+                    "xier": "wird drücken",
+                    "wir": "werden drücken",
+                    "ihr": "werdet drücken",
+                    "sie_plural": "werden drücken",
+                    "Sie": "werden drücken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde drücken",
+                    "du": "würdest drücken",
+                    "er": "würde drücken",
+                    "es": "würde drücken",
+                    "sie_singular": "würde drücken",
+                    "xier": "würde drücken",
+                    "wir": "würden drücken",
+                    "ihr": "würdet drücken",
+                    "sie_plural": "würden drücken",
+                    "Sie": "würden drücken"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gedrückt",
+                    "du": "hättest gedrückt",
+                    "er": "hätte gedrückt",
+                    "es": "hätte gedrückt",
+                    "sie_singular": "hätte gedrückt",
+                    "xier": "hätte gedrückt",
+                    "wir": "hätten gedrückt",
+                    "ihr": "hättet gedrückt",
+                    "sie_plural": "hätten gedrückt",
+                    "Sie": "hätten gedrückt"
+                },
+                "imperative": {
+                    "du": "drück",
+                    "ihr": "drückt",
+                    "Sie": "drücken Sie"
+                }
+            },
+            "wiegen": {
+                "present": {
+                    "ich": "wiege",
+                    "du": "wiegst",
+                    "er": "wiegt",
+                    "es": "wiegt",
+                    "sie_singular": "wiegt",
+                    "xier": "wiegt",
+                    "wir": "wiegen",
+                    "ihr": "wiegt",
+                    "sie_plural": "wiegen",
+                    "Sie": "wiegen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewogen",
+                    "du": "hast gewogen",
+                    "er": "hat gewogen",
+                    "es": "hat gewogen",
+                    "sie_singular": "hat gewogen",
+                    "xier": "hat gewogen",
+                    "wir": "haben gewogen",
+                    "ihr": "habt gewogen",
+                    "sie_plural": "haben gewogen",
+                    "Sie": "haben gewogen"
+                },
+                "Futur_I": {
+                    "ich": "werde wiegen",
+                    "du": "wirst wiegen",
+                    "er": "wird wiegen",
+                    "es": "wird wiegen",
+                    "sie_singular": "wird wiegen",
+                    "xier": "wird wiegen",
+                    "wir": "werden wiegen",
+                    "ihr": "werdet wiegen",
+                    "sie_plural": "werden wiegen",
+                    "Sie": "werden wiegen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde wiegen",
+                    "du": "würdest wiegen",
+                    "er": "würde wiegen",
+                    "es": "würde wiegen",
+                    "sie_singular": "würde wiegen",
+                    "xier": "würde wiegen",
+                    "wir": "würden wiegen",
+                    "ihr": "würdet wiegen",
+                    "sie_plural": "würden wiegen",
+                    "Sie": "würden wiegen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gewogen",
+                    "du": "hättest gewogen",
+                    "er": "hätte gewogen",
+                    "es": "hätte gewogen",
+                    "sie_singular": "hätte gewogen",
+                    "xier": "hätte gewogen",
+                    "wir": "hätten gewogen",
+                    "ihr": "hättet gewogen",
+                    "sie_plural": "hätten gewogen",
+                    "Sie": "hätten gewogen"
+                },
+                "imperative": {
+                    "du": "wieg",
+                    "ihr": "wiegt",
+                    "Sie": "wiegen Sie"
+                }
+            },
+            "addieren": {
+                "present": {
+                    "ich": "addiere",
+                    "du": "addierst",
+                    "er": "addiert",
+                    "es": "addiert",
+                    "sie_singular": "addiert",
+                    "xier": "addiert",
+                    "wir": "addieren",
+                    "ihr": "addiert",
+                    "sie_plural": "addieren",
+                    "Sie": "addieren"
+                },
+                "Perfekt": {
+                    "ich": "habe addiert",
+                    "du": "hast addiert",
+                    "er": "hat addiert",
+                    "es": "hat addiert",
+                    "sie_singular": "hat addiert",
+                    "xier": "hat addiert",
+                    "wir": "haben addiert",
+                    "ihr": "habt addiert",
+                    "sie_plural": "haben addiert",
+                    "Sie": "haben addiert"
+                },
+                "Futur_I": {
+                    "ich": "werde addieren",
+                    "du": "wirst addieren",
+                    "er": "wird addieren",
+                    "es": "wird addieren",
+                    "sie_singular": "wird addieren",
+                    "xier": "wird addieren",
+                    "wir": "werden addieren",
+                    "ihr": "werdet addieren",
+                    "sie_plural": "werden addieren",
+                    "Sie": "werden addieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde addieren",
+                    "du": "würdest addieren",
+                    "er": "würde addieren",
+                    "es": "würde addieren",
+                    "sie_singular": "würde addieren",
+                    "xier": "würde addieren",
+                    "wir": "würden addieren",
+                    "ihr": "würdet addieren",
+                    "sie_plural": "würden addieren",
+                    "Sie": "würden addieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte addiert",
+                    "du": "hättest addiert",
+                    "er": "hätte addiert",
+                    "es": "hätte addiert",
+                    "sie_singular": "hätte addiert",
+                    "xier": "hätte addiert",
+                    "wir": "hätten addiert",
+                    "ihr": "hättet addiert",
+                    "sie_plural": "hätten addiert",
+                    "Sie": "hätten addiert"
+                },
+                "imperative": {
+                    "du": "addier",
+                    "ihr": "addiert",
+                    "Sie": "addieren Sie"
+                }
+            },
+            "multiplizieren": {
+                "present": {
+                    "ich": "multipliziere",
+                    "du": "multiplizierst",
+                    "er": "multipliziert",
+                    "es": "multipliziert",
+                    "sie_singular": "multipliziert",
+                    "xier": "multipliziert",
+                    "wir": "multiplizieren",
+                    "ihr": "multipliziert",
+                    "sie_plural": "multiplizieren",
+                    "Sie": "multiplizieren"
+                },
+                "Perfekt": {
+                    "ich": "habe multipliziert",
+                    "du": "hast multipliziert",
+                    "er": "hat multipliziert",
+                    "es": "hat multipliziert",
+                    "sie_singular": "hat multipliziert",
+                    "xier": "hat multipliziert",
+                    "wir": "haben multipliziert",
+                    "ihr": "habt multipliziert",
+                    "sie_plural": "haben multipliziert",
+                    "Sie": "haben multipliziert"
+                },
+                "Futur_I": {
+                    "ich": "werde multiplizieren",
+                    "du": "wirst multiplizieren",
+                    "er": "wird multiplizieren",
+                    "es": "wird multiplizieren",
+                    "sie_singular": "wird multiplizieren",
+                    "xier": "wird multiplizieren",
+                    "wir": "werden multiplizieren",
+                    "ihr": "werdet multiplizieren",
+                    "sie_plural": "werden multiplizieren",
+                    "Sie": "werden multiplizieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde multiplizieren",
+                    "du": "würdest multiplizieren",
+                    "er": "würde multiplizieren",
+                    "es": "würde multiplizieren",
+                    "sie_singular": "würde multiplizieren",
+                    "xier": "würde multiplizieren",
+                    "wir": "würden multiplizieren",
+                    "ihr": "würdet multiplizieren",
+                    "sie_plural": "würden multiplizieren",
+                    "Sie": "würden multiplizieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte multipliziert",
+                    "du": "hättest multipliziert",
+                    "er": "hätte multipliziert",
+                    "es": "hätte multipliziert",
+                    "sie_singular": "hätte multipliziert",
+                    "xier": "hätte multipliziert",
+                    "wir": "hätten multipliziert",
+                    "ihr": "hättet multipliziert",
+                    "sie_plural": "hätten multipliziert",
+                    "Sie": "hätten multipliziert"
+                },
+                "imperative": {
+                    "du": "multipliziere",
+                    "ihr": "multipliziert",
+                    "Sie": "multiplizieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Auf einer Skala von 1 bis 5: Wie sehr mögen Sie Mathematik und Physik?",
+            "Bilden Sie basierend auf Ihren Zahlen kleine Gruppen.",
+            "In jeder Gruppe soll es Mathe-Fans [Mathematik Expert*innen] geben 2",
+            "In welcher Reihenfolge hören Sie diese Aufgaben?",
+            "Sortieren Sie.",
+            "Vergleichen Sie Ihre Antworten und lesen Sie die Aufgaben dann laut vor.",
+            "Lesen Sie die folgenden Aufgaben erst laut vor, dann überlegen Sie, wie man sie mathematisch schreibt.",
+            "Ordnen Sie sie dann der anderen Seite von der Gleichung zu.",
+            "Zwölf geteilt durch zwei ist gleich sechs fünf Sechzehntel plus drei Sechzehntel ist ein halb",
+            "Zwei Mal Klammer auf sieben plus zwei Klammer zu gleich achtzehn",
+            "Die Wurzel aus sechzehn ist vier vier Quadrat plus acht ist sechzehn a Quadrat plus b Quadrat gleich c Quadrat",
+            "Drei Viertel plus ein Achtel ist sieben Achtel",
+            "Fünfeinhalb mal Klammer auf eins plus eins",
+            "Klammer zu ist gleich elf drei dreizehn Dreißigstel plus zwei ein Fünfzehntel gleich fünfeinhalb zwei hoch drei plus drei Komma fünf",
+            "Ist gleich elf Komma",
+            "Fünf Klammer auf zwei plus vier Klammer",
+            "Zu mal drei ist achtzehn eine Variable Periode drei",
+            "In LERNEN haben Sie einen Text über die Physik von Achterbahnen gelesen.",
+            "Wie nennt man sonst noch die folgenden Gesetze und Kräfte aus der Formelsammlung?",
+            "Formelsammlung das 2.",
+            "Welche Form(en) von Energie gibt es an den vier Punkten?",
+            "Wie schnell ist die Achterbahn?",
+            "Gibt es keine Reibung.",
+            "Das heißt, die Summe der potentiellen und kinetischen Energie ist konstant.",
+            "Sie ist also für alle vier Punkte gleich.",
+            "Die Geschwindigkeit in Punkt A ist gegeben, also müssen wir die Zahlen in die Formel für E einsetzen:",
+            "Berechnen Sie jetzt die Geschwindigkeit für die anderen drei Punkte.",
+            "Es gibt beide Energien.",
+            "Es gibt nur kinetische Energie.",
+            "Punkt C 17,78 m/s Punkt D 30,08 m/s",
+            "Für Geschwindigkeiten ist in deutschsprachigen Ländern km/h typisch, nicht m/s.",
+            "Berechnen Sie die Werte in km/h.",
+            "Welche Kräfte wirken in der Achterbahn?",
+            "Wie viel g wirken im Tal B (sein Radius ist 30 m)?",
+            "Lesen Sie den Text und schauen Sie sich die Berechnung an.",
+            "In einer Achterbahn wirken unterschiedliche g-Kräfte auf die Mitfahrenden.",
+            "Im Tal (B) der Achterbahn fühlen sich die Mitfahrenden schwerer, auf dem Hügel (C) fühlen sie sich leichter.",
+            "In diesem Moment wiegen sie das Fünffache ihres Körpergewichts.",
+            "Die g-Zahl bezeichnet den Faktor, um den sich das Körpergewicht erhöht.",
+            "Im Tal wirken die Zentrifugalkraft und die Schwerkraft auf die Mitfahrenden.",
+            "Die Zentrifugalkraft ist zentral für die Schwere der Personen, weil sie zur Schwerkraft addiert wird.",
+            "Die Fahrgäste wiegen also das 4,07-fache ihres Körpergewichts",
+            "Wie viel g wirken im Tal D (sein Radius ist 35 m)?",
+            "Berechnen Sie, wie viel g auf dem Hügel C wirken.",
+            "Der Radius ist 20 m.",
+            "Die Mitfahrenden werden aus dem Sitz gedrückt.",
+            "Das nennt man Luftzeit oder auch in Deutschland ganz einfach „Airtime.",
+            "So wie Tal B, aber mit 35 m, nicht 30 m."
+        ],
+        "templated": []
+    }
+}

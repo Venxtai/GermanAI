@@ -1,0 +1,620 @@
+{
+    "unit": "17",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 17,
+        "prerequisite": "1-16"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Tell colloquial time using vor, nach, halb, and Viertel without the word Uhr, and read halb + next hour for half past (e.g., halb acht = 7:30).",
+            "For separable-prefix verbs (ab-, an-, auf-, aus-, ein-, mit-, etc.), place the conjugated stem in second position and move the prefix to the end of the clause.",
+            "Do not separate inseparable-prefix verbs (be-, ent-, er-, ge-, miss-, ver-, zer-)."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "den eigenen Tagesablauf beschreiben",
+            "die Uhrzeit umgangssprachlich nennen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "der eigene Tagesablauf"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "ankommen",
+                "pos": "VERB",
+                "translation": "to arrive",
+                "frequency": 653,
+                "cefr": "A1"
+            },
+            {
+                "word": "anmachen",
+                "pos": "VERB",
+                "translation": "to turn on",
+                "frequency": 4457,
+                "cefr": "A1"
+            },
+            {
+                "word": "anrufen",
+                "pos": "VERB",
+                "translation": "to call someone",
+                "frequency": 1146,
+                "cefr": "A1"
+            },
+            {
+                "word": "anschauen",
+                "pos": "VERB",
+                "translation": "to look at; watch",
+                "frequency": 949
+            },
+            {
+                "word": "anziehen",
+                "pos": "VERB",
+                "translation": "to put on (clothes)",
+                "frequency": 1436,
+                "cefr": "A1"
+            },
+            {
+                "word": "aufstehen",
+                "pos": "VERB",
+                "translation": "to get up",
+                "frequency": 966,
+                "cefr": "A1"
+            },
+            {
+                "word": "ausgehen",
+                "pos": "VERB",
+                "translation": "to go out",
+                "frequency": 483,
+                "cefr": "A2"
+            },
+            {
+                "word": "fernsehen",
+                "pos": "VERB",
+                "translation": "to watch TV",
+                "frequency": 1444,
+                "cefr": "A1"
+            },
+            {
+                "word": "einkaufen",
+                "pos": "VERB",
+                "translation": "to shop",
+                "frequency": 2877,
+                "cefr": "A1"
+            },
+            {
+                "word": "zuhören",
+                "pos": "VERB",
+                "translation": "to listen"
+            },
+            {
+                "word": "zuordnen",
+                "pos": "VERB",
+                "translation": "to match",
+                "frequency": 2241,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Uni(versität)",
+                "pos": "NOUN",
+                "translation": "uni(versity)"
+            },
+            {
+                "word": "die Kleidung",
+                "pos": "NOUN",
+                "translation": "clothing",
+                "frequency": 2820,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Tag",
+                "pos": "NOUN",
+                "translation": "day",
+                "frequency": 111,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Montag",
+                "pos": "NOUN",
+                "translation": "Monday",
+                "frequency": 1044,
+                "cefr": "A1"
+            },
+            {
+                "word": "am Montag",
+                "pos": "PHRASE",
+                "translation": "on Monday"
+            },
+            {
+                "word": "(der) Dienstag",
+                "pos": "NOUN",
+                "translation": "Tuesday",
+                "frequency": 1356,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Mittwoch",
+                "pos": "NOUN",
+                "translation": "Wednesday",
+                "frequency": 1187,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Donnerstag",
+                "pos": "NOUN",
+                "translation": "Thursday",
+                "frequency": 1244,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Freitag",
+                "pos": "NOUN",
+                "translation": "Friday",
+                "frequency": 981,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Samstag",
+                "pos": "NOUN",
+                "translation": "Saturday",
+                "frequency": 1112,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Sonntag",
+                "pos": "NOUN",
+                "translation": "Sunday",
+                "frequency": 804,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Woche",
+                "pos": "NOUN",
+                "translation": "week",
+                "frequency": 219,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wochenende",
+                "pos": "NOUN",
+                "translation": "weekend",
+                "frequency": 1243,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Viertel",
+                "pos": "NOUN",
+                "translation": "quarter; neighborhood",
+                "frequency": 1997,
+                "cefr": "A1"
+            },
+            {
+                "word": "um",
+                "pos": "PREP",
+                "translation": "at",
+                "frequency": 44,
+                "cefr": "A1"
+            },
+            {
+                "word": "vor",
+                "pos": "PREP",
+                "translation": "before; in front of",
+                "frequency": 50,
+                "cefr": "A1"
+            },
+            {
+                "word": "nach",
+                "pos": "PREP",
+                "translation": "after; to [cities and countries without an article]",
+                "frequency": 34,
+                "cefr": "A1"
+            },
+            {
+                "word": "halb",
+                "pos": "ADV",
+                "translation": "half",
+                "frequency": 443,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "offiziell",
+                "pos": "ADJ",
+                "frequency": 1287,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Video",
+                "pos": "NOUN",
+                "frequency": 1963,
+                "cefr": "B1"
+            },
+            {
+                "word": "fünfundfünfzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "die Uni",
+                "pos": "NOUN",
+                "frequency": 415,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kalender",
+                "pos": "NOUN",
+                "frequency": 7784,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ankommen": {
+                "present": {
+                    "ich": "komme an",
+                    "du": "kommst an",
+                    "er": "kommt an",
+                    "es": "kommt an",
+                    "sie_singular": "kommt an",
+                    "xier": "kommt an",
+                    "wir": "kommen an",
+                    "ihr": "kommt an",
+                    "sie_plural": "kommen an",
+                    "Sie": "kommen an"
+                }
+            },
+            "anmachen": {
+                "present": {
+                    "ich": "mache an",
+                    "du": "machst an",
+                    "er": "macht an",
+                    "es": "macht an",
+                    "sie_singular": "macht an",
+                    "xier": "macht an",
+                    "wir": "machen an",
+                    "ihr": "macht an",
+                    "sie_plural": "machen an",
+                    "Sie": "machen an"
+                }
+            },
+            "anrufen": {
+                "present": {
+                    "ich": "rufe an",
+                    "du": "rufst an",
+                    "er": "ruft an",
+                    "es": "ruft an",
+                    "sie_singular": "ruft an",
+                    "xier": "ruft an",
+                    "wir": "rufen an",
+                    "ihr": "ruft an",
+                    "sie_plural": "rufen an",
+                    "Sie": "rufen an"
+                }
+            },
+            "anschauen": {
+                "present": {
+                    "ich": "schaue an",
+                    "du": "schaust an",
+                    "er": "schaut an",
+                    "es": "schaut an",
+                    "sie_singular": "schaut an",
+                    "xier": "schaut an",
+                    "wir": "schauen an",
+                    "ihr": "schaut an",
+                    "sie_plural": "schauen an",
+                    "Sie": "schauen an"
+                }
+            },
+            "anziehen": {
+                "present": {
+                    "ich": "ziehe an",
+                    "du": "ziehst an",
+                    "er": "zieht an",
+                    "es": "zieht an",
+                    "sie_singular": "zieht an",
+                    "xier": "zieht an",
+                    "wir": "ziehen an",
+                    "ihr": "zieht an",
+                    "sie_plural": "ziehen an",
+                    "Sie": "ziehen an"
+                }
+            },
+            "aufstehen": {
+                "present": {
+                    "ich": "stehe auf",
+                    "du": "stehst auf",
+                    "er": "steht auf",
+                    "es": "steht auf",
+                    "sie_singular": "steht auf",
+                    "xier": "steht auf",
+                    "wir": "stehen auf",
+                    "ihr": "steht auf",
+                    "sie_plural": "stehen auf",
+                    "Sie": "stehen auf"
+                }
+            },
+            "ausgehen": {
+                "present": {
+                    "ich": "gehe aus",
+                    "du": "gehst aus",
+                    "er": "geht aus",
+                    "es": "geht aus",
+                    "sie_singular": "geht aus",
+                    "xier": "geht aus",
+                    "wir": "gehen aus",
+                    "ihr": "geht aus",
+                    "sie_plural": "gehen aus",
+                    "Sie": "gehen aus"
+                }
+            },
+            "fernsehen": {
+                "present": {
+                    "ich": "sehe fern",
+                    "du": "siehst fern",
+                    "er": "sieht fern",
+                    "es": "sieht fern",
+                    "sie_singular": "sieht fern",
+                    "xier": "sieht fern",
+                    "wir": "sehen fern",
+                    "ihr": "seht fern",
+                    "sie_plural": "sehen fern",
+                    "Sie": "sehen fern"
+                }
+            },
+            "einkaufen": {
+                "present": {
+                    "ich": "kaufe ein",
+                    "du": "kaufst ein",
+                    "er": "kauft ein",
+                    "es": "kauft ein",
+                    "sie_singular": "kauft ein",
+                    "xier": "kauft ein",
+                    "wir": "kaufen ein",
+                    "ihr": "kauft ein",
+                    "sie_plural": "kaufen ein",
+                    "Sie": "kaufen ein"
+                }
+            },
+            "zuhören": {
+                "present": {
+                    "ich": "höre zu",
+                    "du": "hörst zu",
+                    "er": "hört zu",
+                    "es": "hört zu",
+                    "sie_singular": "hört zu",
+                    "xier": "hört zu",
+                    "wir": "hören zu",
+                    "ihr": "hört zu",
+                    "sie_plural": "hören zu",
+                    "Sie": "hören zu"
+                }
+            },
+            "zuordnen": {
+                "present": {
+                    "ich": "ordne zu",
+                    "du": "ordnest zu",
+                    "er": "ordnet zu",
+                    "es": "ordnet zu",
+                    "sie_singular": "ordnet zu",
+                    "xier": "ordnet zu",
+                    "wir": "ordnen zu",
+                    "ihr": "ordnet zu",
+                    "sie_plural": "ordnen zu",
+                    "Sie": "ordnen zu"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schauen Sie das Video an.",
+            "Wie spät ist es?",
+            "Sagen Sie die Uhrzeiten laut.",
+            "Team 1 schreibt eine Uhrzeit.",
+            "Team 2 sagt die zwei Versionen.",
+            "Team 1 fragt: Wie spät ist es?",
+            "Team 2 sagt: Es ist siebzehn Uhr fünfzig",
+            "Es ist zehn vor sechs.",
+            "Wie spät ist es?.",
+            "Welche Person macht was wann?",
+            "Anna ( xier ), Frau Bärmann (sie) oder Niklas (er).",
+            "Hi Niklas, ich stehe um sieben auf.",
+            "Und du?",
+            "Ich stehe um acht auf.",
+            "Und Sie, Frau Bärmann.",
+            "Wann stehen Sie auf?",
+            "Ich stehe um halb sieben auf.",
+            "Wann kommen Sie an der Uni an",
+            "Frau Bärmann?",
+            "Ich komme um fünf an.",
+            "Und du Anna?",
+            "Ich komme um halb zwei an.",
+            "Und du, Niklas, wann kommst du an der Uni an?",
+            "Ich komme um zehn an der Uni an.",
+            "Wann siehst du fern, Niklas?",
+            "Ich sehe um Viertel nach acht fern.",
+            "Und Sie, Frau Bärmann?",
+            "Ich sehe um halb acht fern.",
+            "Und du, Anna, wann siehst du fern?",
+            "Ich sehe um zwanzig nach fünf fern.",
+            "Reden Sie über die Informationen.",
+            "Wann steht Frau Bärmann auf?",
+            "Sie steht um halb sieben auf.",
+            "Wann kommt Anna an der Uni an?",
+            "Xier kommt um halb zwei an.",
+            "Wann steht Anna auf?",
+            "Xier steht um sieben auf.",
+            "Wann steht Niklas auf?",
+            "Er steht um acht auf.",
+            "Wann kommt Frau Bärmann n der Uni an?",
+            "Sie kommt normalerweise um fünf an.",
+            "Wann kommt Niklas an der Uni an?",
+            "Er kommt um zehn an.",
+            "Wann sieht Frau Bärmann fern?",
+            "Sie sieht um halb acht fern.",
+            "Wann sieht Anna fern?",
+            "Xier sieht um zwanzig nach fünf fern.",
+            "Wann sieht Niklas fern?",
+            "Er sieht um Viertel nach acht fern.",
+            "Svens Kalender.",
+            "Was macht Sven wann?",
+            "Stellen Sie Fragen.",
+            "Was macht Sven am Donnerstag um Viertel nach acht?",
+            "Am Donnerstag um Viertel nach acht schaut er einen Film an.",
+            "Wann steht Sven am Samstag auf?",
+            "Am Samstag steht er um fünf nach neun auf.",
+            "Wann steht Sven am Montag, Dienstag, Mittwoch, Donnerstag und Freitag auf?",
+            "Am … steht er um sieben auf.",
+            "Wann macht Sven am Montag, Dienstag, Mittwoch, Donnerstag und Freitag Musik an?",
+            "Am … macht er um fünf nach sieben Musik an.",
+            "Wann zieht Sven am Montag, Dienstag, Mittwoch, Donnerstag und Freitag seine Kleidung an?",
+            "Am … zieht er um zehn vor acht seine Kleidung an.",
+            "Wann kommt Sven am Montag, Dienstag, Mittwoch, Donnerstag und Freitag an der Uni an?",
+            "Am … kommt er um halb neun an der Uni an.",
+            "Was macht Sven Montag um zehn?",
+            "Am Montag um zehn hat er einen Mathekurs.",
+            "Was macht Sven Dienstag um Viertel nach elf?",
+            "Am Dienstag um Viertel nach elf hat er einen Englischkurs.",
+            "Was macht Sven Dienstag um halb zwei?",
+            "Am Dienstag um halb zwei hat er einen Informatikkurs.",
+            "Was macht Sven Mittwoch um zehn?",
+            "Am Mittwoch um zehn hat er einen Mathekurs.",
+            "Was macht Sven Donnerstag um Viertel nach elf?",
+            "Am Donnerstag um Viertel nach elf hat er einen Englischkurs.",
+            "Was macht Sven Donnerstag um halb zwei?",
+            "Am Donnerstag um halb zwei einen Informatikkurs.",
+            "Was macht Sven Freitag um zehn?",
+            "Am Freitag um zehn hat er einen Mathekurs.",
+            "Was macht Sven am Montag um fünf vor halb sechs?",
+            "Am Montag um fünf vor halb sechs kommt er beim Fußball an.",
+            "Was macht Sven am Montag um halb sechs?",
+            "Am Montag um halb sechs spielt er Fußball.",
+            "Wann kocht Sven am Dienstag?",
+            "Am Dienstag kocht er um fünf Uhr.",
+            "Wann spielt Sven am Mittwoch Videospiele?",
+            "Am Mittwoch spielt er um sechs Videospiele.",
+            "Was macht Sven am Mittwoch um vier?",
+            "Am Mittwoch um vier macht er Hausaufgaben.",
+            "Was macht Sven am Donnerstag um fünf?",
+            "Am Donnerstag um fünf hört er Musik.",
+            "Was macht Sven am Freitag um sieben?",
+            "Am Freitag um sieben geht er mit Freund*innen aus.",
+            "Wann kauft Sven am Samstag ein?",
+            "Am Samstag kauft er um zwei ein.",
+            "Was macht Sven am Samstag um fünf?",
+            "Am Samstag um fünf lernt er Englisch.",
+            "Was macht Sven am Samstag um zwanzig nach acht?",
+            "Am Samstag um zwanzig nach acht geht er mit Freund*innen aus.",
+            "Wann singt Sven am Samstag?",
+            "Am Samstag sing er um zehn.",
+            "Wann steht Sven am Sonntag auf?",
+            "Am Sonntag steht er um Viertel nach zehn auf.",
+            "Was macht Sven am Sonntag um zwanzig nach zehn?",
+            "Am Sonntag um zwanzig nach zehn macht der den Computer an.",
+            "Was macht Sven am Sonntag um fünf vor halb elf?",
+            "Am Sonntag um fünf vor halb elf macht er Hausaufgaben.",
+            "Wann ruft Sven am Sonntag seine Mutter an?",
+            "Am Sonntag ruft er seine Mutter um zehn nach vier an.",
+            "Reden Sie (in der Umgangssprache ) über Ihren Tag.",
+            "Ich stehe um sieben Uhr auf.",
+            "Wann stehst du auf?",
+            "Ich stehe um halb acht auf.",
+            "Ich koche um Viertel nach acht.",
+            "Wann kochst du?",
+            "Ich koche nicht.",
+            "Ich stehe um X auf.",
+            "Wann ziehst du deine Kleidung an?",
+            "Ich ziehe um X meine Kleidung an.",
+            "Wann machst du den Computer an?",
+            "Ich mache um X den Computer an.",
+            "Ich koche um X.",
+            "Wann kommst du an der Uni an?",
+            "Ich komme um X an der Uni an.",
+            "Wann hast du einen Kurs?",
+            "Ich habe um X einen Kurs.",
+            "Wann rufst du deine X an?",
+            "Ich rufe um X deine X an.",
+            "Wann spielst du X?",
+            "Ich spiele um X X.",
+            "Wann gehst du mit Freund*innen aus?",
+            "Ich gehe um X mit Freund*innen aus."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

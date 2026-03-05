@@ -1,0 +1,1087 @@
+{
+    "unit": "72",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 72,
+        "prerequisite": "1-71"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the Perfekt of strong verbs with ge- + (changed) stem + -en: geben → gegeben, kommen → gekommen, sehen → gesehen; memorize the vowel changes and the correct helping verb (haben or sein)."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Geschichte hören, erzählen und schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Benjamin Blümchen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "geben",
+                "pos": "VERB",
+                "translation": "to give; exist, occur",
+                "frequency": 49,
+                "cefr": "A1"
+            },
+            {
+                "word": "kommen",
+                "pos": "VERB",
+                "translation": "to come",
+                "frequency": 62,
+                "cefr": "A1"
+            },
+            {
+                "word": "gehen",
+                "pos": "VERB",
+                "translation": "to go, walk",
+                "frequency": 66,
+                "cefr": "A1"
+            },
+            {
+                "word": "sehen",
+                "pos": "VERB",
+                "translation": "to see; watch",
+                "frequency": 79,
+                "cefr": "A1"
+            },
+            {
+                "word": "stehen",
+                "pos": "VERB",
+                "translation": "to stand; be standing (things that are located upright, e.g. on a foot)",
+                "frequency": 85,
+                "cefr": "A1"
+            },
+            {
+                "word": "finden",
+                "pos": "VERB",
+                "translation": "to find",
+                "frequency": 103,
+                "cefr": "A1"
+            },
+            {
+                "word": "erfinden",
+                "pos": "VERB",
+                "translation": "to invent (sth.)",
+                "frequency": 2127,
+                "cefr": "B1"
+            },
+            {
+                "word": "nehmen",
+                "pos": "VERB",
+                "translation": "to take",
+                "frequency": 142,
+                "cefr": "A1"
+            },
+            {
+                "word": "schreiben",
+                "pos": "VERB",
+                "translation": "to write",
+                "frequency": 184,
+                "cefr": "A1"
+            },
+            {
+                "word": "sitzen",
+                "pos": "VERB",
+                "translation": "to sit; be sitting (things that have knee-like joints to bend)",
+                "frequency": 231,
+                "cefr": "A1"
+            },
+            {
+                "word": "tragen",
+                "pos": "VERB",
+                "translation": "to wear; carry",
+                "frequency": 271,
+                "cefr": "A2"
+            },
+            {
+                "word": "lesen",
+                "pos": "VERB",
+                "translation": "to read",
+                "frequency": 305,
+                "cefr": "A1"
+            },
+            {
+                "word": "essen",
+                "pos": "VERB",
+                "translation": "to eat",
+                "frequency": 323,
+                "cefr": "A1"
+            },
+            {
+                "word": "helfen",
+                "pos": "VERB",
+                "translation": "to give help to",
+                "frequency": 338,
+                "cefr": "A1"
+            },
+            {
+                "word": "sterben",
+                "pos": "VERB",
+                "translation": "to die, pass away",
+                "frequency": 475,
+                "cefr": "A2"
+            },
+            {
+                "word": "rufen",
+                "pos": "VERB",
+                "translation": "to call (out), exclaim, shout",
+                "frequency": 530,
+                "cefr": "A2"
+            },
+            {
+                "word": "waschen",
+                "pos": "VERB",
+                "translation": "to wash",
+                "frequency": 2315,
+                "cefr": "A1"
+            },
+            {
+                "word": "gebären",
+                "pos": "VERB",
+                "translation": "to give birth to so.; be born"
+            },
+            {
+                "word": "fliehen",
+                "pos": "VERB",
+                "translation": "to flee, escape (from)",
+                "frequency": 2467,
+                "cefr": "B1"
+            },
+            {
+                "word": "fernsehen",
+                "pos": "VERB",
+                "translation": "to watch TV",
+                "frequency": 1444,
+                "cefr": "A1"
+            },
+            {
+                "word": "herauskommen",
+                "pos": "VERB",
+                "translation": "to get out; be published",
+                "frequency": 2137
+            },
+            {
+                "word": "weitergehen",
+                "pos": "VERB",
+                "translation": "to continue; keep going",
+                "frequency": 1231
+            },
+            {
+                "word": "das Hörspiel",
+                "pos": "NOUN",
+                "translation": "radio play"
+            },
+            {
+                "word": "der Laut",
+                "pos": "NOUN",
+                "translation": "sound",
+                "frequency": 572,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Serie",
+                "pos": "NOUN",
+                "translation": "show (TV, radio); sequence",
+                "frequency": 2338,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Folge",
+                "pos": "NOUN",
+                "translation": "episode; consequence",
+                "frequency": 431,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Elefant",
+                "pos": "NOUN",
+                "translation": "elephant",
+                "frequency": 9095,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Kätzchen",
+                "pos": "NOUN",
+                "translation": "kitten"
+            },
+            {
+                "word": "die Feuerwehr",
+                "pos": "NOUN",
+                "translation": "fire department",
+                "frequency": 3778,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hilfe",
+                "pos": "NOUN",
+                "translation": "help",
+                "frequency": 481,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Rettung",
+                "pos": "NOUN",
+                "translation": "rescue",
+                "frequency": 5003,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zukunft",
+                "pos": "NOUN",
+                "translation": "future",
+                "frequency": 469,
+                "cefr": "B1"
+            },
+            {
+                "word": "herunter",
+                "pos": "ADV",
+                "translation": "downward(s)",
+                "frequency": 3460,
+                "cefr": "B1"
+            },
+            {
+                "word": "deshalb",
+                "pos": "ADV",
+                "translation": "therefore, hence, thus",
+                "frequency": 229,
+                "cefr": "A2"
+            },
+            {
+                "word": "bestimmt",
+                "pos": "ADJ",
+                "translation": "certain(ly), particular(ly)",
+                "frequency": 280,
+                "cefr": "B1"
+            },
+            {
+                "word": "danach",
+                "pos": "ADV",
+                "translation": "after that , afterwards",
+                "frequency": 457,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Baum",
+                "pos": "NOUN",
+                "translation": "tree",
+                "frequency": 1013,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Kuckuck",
+                "pos": "NOUN",
+                "frequency": 29015
+            },
+            {
+                "word": "der Wolf",
+                "pos": "NOUN",
+                "frequency": 6046
+            },
+            {
+                "word": "die Ente",
+                "pos": "NOUN",
+                "frequency": 10558,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Löwe",
+                "pos": "NOUN",
+                "frequency": 4160,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ziege",
+                "pos": "NOUN",
+                "frequency": 10415
+            },
+            {
+                "word": "das Esel",
+                "pos": "NOUN",
+                "frequency": 13040
+            },
+            {
+                "word": "das Schaf",
+                "pos": "NOUN",
+                "frequency": 3673,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Hahn",
+                "pos": "NOUN",
+                "frequency": 6320
+            },
+            {
+                "word": "phonetisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Transkription",
+                "pos": "NOUN",
+                "frequency": 19465,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Klassiker",
+                "pos": "NOUN",
+                "frequency": 6822
+            },
+            {
+                "word": "die Journalistin",
+                "pos": "NOUN",
+                "frequency": 8917,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Zoo",
+                "pos": "NOUN",
+                "frequency": 7276,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Reporterin",
+                "pos": "NOUN",
+                "frequency": 23032,
+                "cefr": "B1"
+            },
+            {
+                "word": "bestimmen",
+                "pos": "ADV",
+                "frequency": 280,
+                "cefr": "B1"
+            },
+            {
+                "word": "fettgedruckt",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das Präteritum",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Markierung",
+                "pos": "NOUN",
+                "frequency": 14881
+            },
+            {
+                "word": "das Telefon",
+                "pos": "NOUN",
+                "frequency": 1595,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "geben": {
+                "present": {
+                    "ich": "gebe",
+                    "du": "gibst",
+                    "er": "gibt",
+                    "es": "gibt",
+                    "sie_singular": "gibt",
+                    "xier": "gibt",
+                    "wir": "geben",
+                    "ihr": "gebt",
+                    "sie_plural": "geben",
+                    "Sie": "geben"
+                },
+                "Perfekt": {
+                    "ich": "habe gegeben",
+                    "du": "hast gegeben",
+                    "er": "hat gegeben",
+                    "es": "hat gegeben",
+                    "sie_singular": "hat gegeben",
+                    "xier": "hat gegeben",
+                    "wir": "haben gegeben",
+                    "ihr": "habt gegeben",
+                    "sie_plural": "haben gegeben",
+                    "Sie": "haben gegeben"
+                }
+            },
+            "kommen": {
+                "present": {
+                    "ich": "komme",
+                    "du": "kommst",
+                    "er": "kommt",
+                    "es": "kommt",
+                    "sie_singular": "kommt",
+                    "xier": "kommt",
+                    "wir": "kommen",
+                    "ihr": "kommt",
+                    "sie_plural": "kommen",
+                    "Sie": "kommen"
+                },
+                "Perfekt": {
+                    "ich": "bin gekommen",
+                    "du": "bist gekommen",
+                    "er": "ist gekommen",
+                    "es": "ist gekommen",
+                    "sie_singular": "ist gekommen",
+                    "xier": "ist gekommen",
+                    "wir": "sind gekommen",
+                    "ihr": "seid gekommen",
+                    "sie_plural": "sind gekommen",
+                    "Sie": "sind gekommen"
+                }
+            },
+            "gehen": {
+                "present": {
+                    "ich": "gehe",
+                    "du": "gehst",
+                    "er": "geht",
+                    "es": "geht",
+                    "sie_singular": "geht",
+                    "xier": "geht",
+                    "wir": "gehen",
+                    "ihr": "geht",
+                    "sie_plural": "gehen",
+                    "Sie": "gehen"
+                },
+                "Perfekt": {
+                    "ich": "bin gegangen",
+                    "du": "bist gegangen",
+                    "er": "ist gegangen",
+                    "es": "ist gegangen",
+                    "sie_singular": "ist gegangen",
+                    "xier": "ist gegangen",
+                    "wir": "sind gegangen",
+                    "ihr": "seid gegangen",
+                    "sie_plural": "sind gegangen",
+                    "Sie": "sind gegangen"
+                }
+            },
+            "sehen": {
+                "present": {
+                    "ich": "sehe",
+                    "du": "siehst",
+                    "er": "sieht",
+                    "es": "sieht",
+                    "sie_singular": "sieht",
+                    "xier": "sieht",
+                    "wir": "sehen",
+                    "ihr": "seht",
+                    "sie_plural": "sehen",
+                    "Sie": "sehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesehen",
+                    "du": "hast gesehen",
+                    "er": "hat gesehen",
+                    "es": "hat gesehen",
+                    "sie_singular": "hat gesehen",
+                    "xier": "hat gesehen",
+                    "wir": "haben gesehen",
+                    "ihr": "habt gesehen",
+                    "sie_plural": "haben gesehen",
+                    "Sie": "haben gesehen"
+                }
+            },
+            "stehen": {
+                "present": {
+                    "ich": "stehe",
+                    "du": "stehst",
+                    "er": "steht",
+                    "es": "steht",
+                    "sie_singular": "steht",
+                    "xier": "steht",
+                    "wir": "stehen",
+                    "ihr": "steht",
+                    "sie_plural": "stehen",
+                    "Sie": "stehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gestanden",
+                    "du": "hast gestanden",
+                    "er": "hat gestanden",
+                    "es": "hat gestanden",
+                    "sie_singular": "hat gestanden",
+                    "xier": "hat gestanden",
+                    "wir": "haben gestanden",
+                    "ihr": "habt gestanden",
+                    "sie_plural": "haben gestanden",
+                    "Sie": "haben gestanden"
+                }
+            },
+            "finden": {
+                "present": {
+                    "ich": "finde",
+                    "du": "findest",
+                    "er": "findet",
+                    "es": "findet",
+                    "sie_singular": "findet",
+                    "xier": "findet",
+                    "wir": "finden",
+                    "ihr": "findet",
+                    "sie_plural": "finden",
+                    "Sie": "finden"
+                },
+                "Perfekt": {
+                    "ich": "habe gefunden",
+                    "du": "hast gefunden",
+                    "er": "hat gefunden",
+                    "es": "hat gefunden",
+                    "sie_singular": "hat gefunden",
+                    "xier": "hat gefunden",
+                    "wir": "haben gefunden",
+                    "ihr": "habt gefunden",
+                    "sie_plural": "haben gefunden",
+                    "Sie": "haben gefunden"
+                }
+            },
+            "erfinden": {
+                "present": {
+                    "ich": "erfinde",
+                    "du": "erfindest",
+                    "er": "erfindet",
+                    "es": "erfindet",
+                    "sie_singular": "erfindet",
+                    "xier": "erfindet",
+                    "wir": "erfinden",
+                    "ihr": "erfindet",
+                    "sie_plural": "erfinden",
+                    "Sie": "erfinden"
+                },
+                "Perfekt": {
+                    "ich": "habe erfunden",
+                    "du": "hast erfunden",
+                    "er": "hat erfunden",
+                    "es": "hat erfunden",
+                    "sie_singular": "hat erfunden",
+                    "xier": "hat erfunden",
+                    "wir": "haben erfunden",
+                    "ihr": "habt erfunden",
+                    "sie_plural": "haben erfunden",
+                    "Sie": "haben erfunden"
+                }
+            },
+            "nehmen": {
+                "present": {
+                    "ich": "nehme",
+                    "du": "nimmst",
+                    "er": "nimmt",
+                    "es": "nimmt",
+                    "sie_singular": "nimmt",
+                    "xier": "nimmt",
+                    "wir": "nehmen",
+                    "ihr": "nehmt",
+                    "sie_plural": "nehmen",
+                    "Sie": "nehmen"
+                },
+                "Perfekt": {
+                    "ich": "habe genommen",
+                    "du": "hast genommen",
+                    "er": "hat genommen",
+                    "es": "hat genommen",
+                    "sie_singular": "hat genommen",
+                    "xier": "hat genommen",
+                    "wir": "haben genommen",
+                    "ihr": "habt genommen",
+                    "sie_plural": "haben genommen",
+                    "Sie": "haben genommen"
+                }
+            },
+            "schreiben": {
+                "present": {
+                    "ich": "schreibe",
+                    "du": "schreibst",
+                    "er": "schreibt",
+                    "es": "schreibt",
+                    "sie_singular": "schreibt",
+                    "xier": "schreibt",
+                    "wir": "schreiben",
+                    "ihr": "schreibt",
+                    "sie_plural": "schreiben",
+                    "Sie": "schreiben"
+                },
+                "Perfekt": {
+                    "ich": "habe geschrieben",
+                    "du": "hast geschrieben",
+                    "er": "hat geschrieben",
+                    "es": "hat geschrieben",
+                    "sie_singular": "hat geschrieben",
+                    "xier": "hat geschrieben",
+                    "wir": "haben geschrieben",
+                    "ihr": "habt geschrieben",
+                    "sie_plural": "haben geschrieben",
+                    "Sie": "haben geschrieben"
+                }
+            },
+            "sitzen": {
+                "present": {
+                    "ich": "sitze",
+                    "du": "sitzt",
+                    "er": "sitzt",
+                    "es": "sitzt",
+                    "sie_singular": "sitzt",
+                    "xier": "sitzt",
+                    "wir": "sitzen",
+                    "ihr": "sitzt",
+                    "sie_plural": "sitzen",
+                    "Sie": "sitzen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesessen",
+                    "du": "hast gesessen",
+                    "er": "hat gesessen",
+                    "es": "hat gesessen",
+                    "sie_singular": "hat gesessen",
+                    "xier": "hat gesessen",
+                    "wir": "haben gesessen",
+                    "ihr": "habt gesessen",
+                    "sie_plural": "haben gesessen",
+                    "Sie": "haben gesessen"
+                }
+            },
+            "tragen": {
+                "present": {
+                    "ich": "trage",
+                    "du": "trägst",
+                    "er": "trägt",
+                    "es": "trägt",
+                    "sie_singular": "trägt",
+                    "xier": "trägt",
+                    "wir": "tragen",
+                    "ihr": "tragt",
+                    "sie_plural": "tragen",
+                    "Sie": "tragen"
+                },
+                "Perfekt": {
+                    "ich": "habe getragen",
+                    "du": "hast getragen",
+                    "er": "hat getragen",
+                    "es": "hat getragen",
+                    "sie_singular": "hat getragen",
+                    "xier": "hat getragen",
+                    "wir": "haben getragen",
+                    "ihr": "habt getragen",
+                    "sie_plural": "haben getragen",
+                    "Sie": "haben getragen"
+                }
+            },
+            "lesen": {
+                "present": {
+                    "ich": "lese",
+                    "du": "liest",
+                    "er": "liest",
+                    "es": "liest",
+                    "sie_singular": "liest",
+                    "xier": "liest",
+                    "wir": "lesen",
+                    "ihr": "lest",
+                    "sie_plural": "lesen",
+                    "Sie": "lesen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelesen",
+                    "du": "hast gelesen",
+                    "er": "hat gelesen",
+                    "es": "hat gelesen",
+                    "sie_singular": "hat gelesen",
+                    "xier": "hat gelesen",
+                    "wir": "haben gelesen",
+                    "ihr": "habt gelesen",
+                    "sie_plural": "haben gelesen",
+                    "Sie": "haben gelesen"
+                }
+            },
+            "essen": {
+                "present": {
+                    "ich": "esse",
+                    "du": "isst",
+                    "er": "isst",
+                    "es": "isst",
+                    "sie_singular": "isst",
+                    "xier": "isst",
+                    "wir": "essen",
+                    "ihr": "esst",
+                    "sie_plural": "essen",
+                    "Sie": "essen"
+                },
+                "Perfekt": {
+                    "ich": "habe gegessen",
+                    "du": "hast gegessen",
+                    "er": "hat gegessen",
+                    "es": "hat gegessen",
+                    "sie_singular": "hat gegessen",
+                    "xier": "hat gegessen",
+                    "wir": "haben gegessen",
+                    "ihr": "habt gegessen",
+                    "sie_plural": "haben gegessen",
+                    "Sie": "haben gegessen"
+                }
+            },
+            "helfen": {
+                "present": {
+                    "ich": "helfe",
+                    "du": "hilfst",
+                    "er": "hilft",
+                    "es": "hilft",
+                    "sie_singular": "hilft",
+                    "xier": "hilft",
+                    "wir": "helfen",
+                    "ihr": "helft",
+                    "sie_plural": "helfen",
+                    "Sie": "helfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geholfen",
+                    "du": "hast geholfen",
+                    "er": "hat geholfen",
+                    "es": "hat geholfen",
+                    "sie_singular": "hat geholfen",
+                    "xier": "hat geholfen",
+                    "wir": "haben geholfen",
+                    "ihr": "habt geholfen",
+                    "sie_plural": "haben geholfen",
+                    "Sie": "haben geholfen"
+                }
+            },
+            "sterben": {
+                "present": {
+                    "ich": "sterbe",
+                    "du": "stirbst",
+                    "er": "stirbt",
+                    "es": "stirbt",
+                    "sie_singular": "stirbt",
+                    "xier": "stirbt",
+                    "wir": "sterben",
+                    "ihr": "sterbt",
+                    "sie_plural": "sterben",
+                    "Sie": "sterben"
+                },
+                "Perfekt": {
+                    "ich": "bin gestorben",
+                    "du": "bist gestorben",
+                    "er": "ist gestorben",
+                    "es": "ist gestorben",
+                    "sie_singular": "ist gestorben",
+                    "xier": "ist gestorben",
+                    "wir": "sind gestorben",
+                    "ihr": "seid gestorben",
+                    "sie_plural": "sind gestorben",
+                    "Sie": "sind gestorben"
+                }
+            },
+            "rufen": {
+                "present": {
+                    "ich": "rufe",
+                    "du": "rufst",
+                    "er": "ruft",
+                    "es": "ruft",
+                    "sie_singular": "ruft",
+                    "xier": "ruft",
+                    "wir": "rufen",
+                    "ihr": "ruft",
+                    "sie_plural": "rufen",
+                    "Sie": "rufen"
+                },
+                "Perfekt": {
+                    "ich": "habe gerufen",
+                    "du": "hast gerufen",
+                    "er": "hat gerufen",
+                    "es": "hat gerufen",
+                    "sie_singular": "hat gerufen",
+                    "xier": "hat gerufen",
+                    "wir": "haben gerufen",
+                    "ihr": "habt gerufen",
+                    "sie_plural": "haben gerufen",
+                    "Sie": "haben gerufen"
+                }
+            },
+            "waschen": {
+                "present": {
+                    "ich": "wasche",
+                    "du": "wäschst",
+                    "er": "wäscht",
+                    "es": "wäscht",
+                    "sie_singular": "wäscht",
+                    "xier": "wäscht",
+                    "wir": "waschen",
+                    "ihr": "wascht",
+                    "sie_plural": "waschen",
+                    "Sie": "waschen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewaschen",
+                    "du": "hast gewaschen",
+                    "er": "hat gewaschen",
+                    "es": "hat gewaschen",
+                    "sie_singular": "hat gewaschen",
+                    "xier": "hat gewaschen",
+                    "wir": "haben gewaschen",
+                    "ihr": "habt gewaschen",
+                    "sie_plural": "haben gewaschen",
+                    "Sie": "haben gewaschen"
+                }
+            },
+            "gebären": {
+                "present": {
+                    "ich": "gebäre",
+                    "du": "gebierst",
+                    "er": "gebiert",
+                    "es": "gebiert",
+                    "sie_singular": "gebiert",
+                    "xier": "gebiert",
+                    "wir": "gebären",
+                    "ihr": "gebärt",
+                    "sie_plural": "gebären",
+                    "Sie": "gebären"
+                },
+                "Perfekt": {
+                    "ich": "habe geboren",
+                    "du": "hast geboren",
+                    "er": "hat geboren",
+                    "es": "hat geboren",
+                    "sie_singular": "hat geboren",
+                    "xier": "hat geboren",
+                    "wir": "haben geboren",
+                    "ihr": "habt geboren",
+                    "sie_plural": "haben geboren",
+                    "Sie": "haben geboren"
+                }
+            },
+            "fliehen": {
+                "present": {
+                    "ich": "fliehe",
+                    "du": "fliehst",
+                    "er": "flieht",
+                    "es": "flieht",
+                    "sie_singular": "flieht",
+                    "xier": "flieht",
+                    "wir": "fliehen",
+                    "ihr": "flieht",
+                    "sie_plural": "fliehen",
+                    "Sie": "fliehen"
+                },
+                "Perfekt": {
+                    "ich": "bin geflohen",
+                    "du": "bist geflohen",
+                    "er": "ist geflohen",
+                    "es": "ist geflohen",
+                    "sie_singular": "ist geflohen",
+                    "xier": "ist geflohen",
+                    "wir": "sind geflohen",
+                    "ihr": "seid geflohen",
+                    "sie_plural": "sind geflohen",
+                    "Sie": "sind geflohen"
+                }
+            },
+            "fernsehen": {
+                "present": {
+                    "ich": "sehe fern",
+                    "du": "siehst fern",
+                    "er": "sieht fern",
+                    "es": "sieht fern",
+                    "sie_singular": "sieht fern",
+                    "xier": "sieht fern",
+                    "wir": "sehen fern",
+                    "ihr": "seht fern",
+                    "sie_plural": "sehen fern",
+                    "Sie": "sehen fern"
+                },
+                "Perfekt": {
+                    "ich": "habe ferngesehen",
+                    "du": "hast ferngesehen",
+                    "er": "hat ferngesehen",
+                    "es": "hat ferngesehen",
+                    "sie_singular": "hat ferngesehen",
+                    "xier": "hat ferngesehen",
+                    "wir": "haben ferngesehen",
+                    "ihr": "habt ferngesehen",
+                    "sie_plural": "haben ferngesehen",
+                    "Sie": "haben ferngesehen"
+                }
+            },
+            "herauskommen": {
+                "present": {
+                    "ich": "komme heraus",
+                    "du": "kommst heraus",
+                    "er": "kommt heraus",
+                    "es": "kommt heraus",
+                    "sie_singular": "kommt heraus",
+                    "xier": "kommt heraus",
+                    "wir": "kommen heraus",
+                    "ihr": "kommt heraus",
+                    "sie_plural": "kommen heraus",
+                    "Sie": "kommen heraus"
+                },
+                "Perfekt": {
+                    "ich": "bin herausgekommen",
+                    "du": "bist herausgekommen",
+                    "er": "ist herausgekommen",
+                    "es": "ist herausgekommen",
+                    "sie_singular": "ist herausgekommen",
+                    "xier": "ist herausgekommen",
+                    "wir": "sind herausgekommen",
+                    "ihr": "seid herausgekommen",
+                    "sie_plural": "sind herausgekommen",
+                    "Sie": "sind herausgekommen"
+                }
+            },
+            "weitergehen": {
+                "Perfekt": {
+                    "ich": "bin weitergegangen",
+                    "du": "bist weitergegangen",
+                    "er": "ist weitergegangen",
+                    "es": "ist weitergegangen",
+                    "sie_singular": "ist weitergegangen",
+                    "xier": "ist weitergegangen",
+                    "wir": "sind weitergegangen",
+                    "ihr": "seid weitergegangen",
+                    "sie_plural": "sind weitergegangen",
+                    "Sie": "sind weitergegangen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Tiere stellen sich vor … Hören Sie zu.",
+            "Zu welchem Tier gehört der Laut?",
+            "Schreiben Sie die Zahl in die Kreise.",
+            "Welche phonetische Transkription passt zu welchem Tierlaut",
+            "Schreiben Sie sie auf die Linie n von Teil 1.",
+            "Auuuu | töröö | grunz | quak quak | blub | kuckuck |",
+            "Wieher | woah | miau | i-ah | mäh",
+            "\"Benjamin Blümchen\" ist eine deutsche Hörspiel- und TV Serie für Kinder.",
+            "Es gibt diese Serie schon seit über 40 Jahren.",
+            "Lesen Sie die Fragen.",
+            "Dann suchen Sie online nach den Antworten.",
+            "Wann hat es die erste Folge der Serie gegeben?",
+            "Die erste Folge hat es 1977 gegeben.",
+            "Wer hat die Serie ins Leben erfunden?",
+            "Elfie Donnelly hat die Serie erfunden.",
+            "Wie heißt der beste Freund von Benjamin?",
+            "Wie heißt die Journalistin?",
+            "Wie heißen Folgen?",
+            "Lesen Sie die Teile.",
+            "Dann hören Sie gut zu und bringen Sie die Teile in die richtige Reihenfolge.",
+            "Hey Benny, hast du schon deine neue Benjamin Blümchen Geschichte gehört, dein Geburtstagsgeschenk von Opa?",
+            "Oh super, erzähl mal.",
+            "Also, zuerst sehen wir den Zoo am Morgen.",
+            "Das Wetter ist sehr schön und Otto und Benjamin sind glücklich.",
+            "Dann finden Otto und Benjamin eine Frau.",
+            "Die Frau ist traurig.",
+            "Ihre Katze sitzt im Baum und kann nicht herunter.",
+            "Die Feuerwehr kann die Katze nicht retten.",
+            "Sie muss ein Feuer löschen.",
+            "Deshalb rettet Benjamin das Kätzchen.",
+            "Die Reporterin Karla Kolumna sieht die Rettung.",
+            "Sie schreibt eine Geschichte für die Zeitung.",
+            "Benjamin sieht, dass die Feuerwehr Hilfe braucht.",
+            "Bestimmt [bestimmt] auch in der Zukunft.",
+            "Benjamin will Rettungselefant werden.",
+            "Otto und Karla Kolumna helfen ihm.",
+            "Es war eine tolle Folge!",
+            "Willst du Opa gleich mal anrufen und ihm sagen, wie toll du das Geschenk findest?",
+            "Mach ich gleich nach dem Abendessen.",
+            "Otto und Benjamin finden eine Frau.",
+            "Wir sehen den Zoo am Morgen.",
+            "Schreiben Sie hinter die fettgedruckten Verben ein \"P\" für alle Modalverben /haben/ sein, ein \"T\" für alle schwache Verben und ein \"EN\" für alle starke Verben.",
+            "Schreiben Sie die Geschichte in der Vergangenheit.",
+            "Sie müssen nur die Verben ändern.",
+            "Nutzen Sie Ihre Markierungen aus Teil 2.",
+            "Wir haben den Zoo am Morgen gesehen.",
+            "Das Wetter war sehr schön und Otto und Benjamin waren glücklich.",
+            "Otto und Benjamin haben eine Frau gefunden.",
+            "Die Frau war traurig.",
+            "Ihre Katze hat im Baum gesessen und konnte nicht herunter.",
+            "Die Feuerwehr konnte die Katze nicht retten.",
+            "Sie musste ein Feuer löschen.",
+            "Deshalb hat Benjamin das Kätzchen gerettet.",
+            "Die Reporterin Karla Kolumna hat die Rettung gesehen.",
+            "Sie hat eine Geschichte für die Zeitung geschrieben.",
+            "Benjamin hat gesehen, dass die Feuerwehr Hilfe braucht.",
+            "Benjamin wollte Rettungselefant werden.",
+            "Otto und Karla Kolumna haben ihm geholfen.",
+            "Überlegen Sie, wie die Geschichte weitergehen kann.",
+            "Sprechen Sie ü ber die Ideen.",
+            "Also, Benjamin will Rettungselefant werden.",
+            "Die anderen Personen helfen ihm.",
+            "Was denkst du?",
+            "Hmm, vielleicht schreibt Karla Kolumna einen Artikel mit einer Telefonnummer { Telefon Nummer für Benjamin.",
+            "Ja, da ist ist eine Option.",
+            "Aber sie brauchen auch ein Auto oder Fahrrad.",
+            "Welche Ideen finden Sie am besten?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,486 @@
+{
+    "unit": "O23",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 23,
+        "prerequisite": "core 1-104, O1-O22"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Street-Art-Werk planen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Street Art und Graffiti"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "mitgestalten", "pos": "VERB", "translation": "to help shape", "frequency": 11798 },
+            { "word": "ablenken", "pos": "VERB", "translation": "to distract, divert", "frequency": 3962 },
+            { "word": "begründen", "pos": "VERB", "translation": "to explain, state reasons" },
+            { "word": "gestalten", "pos": "VERB", "translation": "to design, create", "frequency": 1613 },
+            { "word": "lächeln", "pos": "VERB", "translation": "to smile" },
+            { "word": "der Entwurf", "pos": "NOUN", "translation": "draft", "frequency": 2886, "cefr": "A1" },
+            { "word": "das Kriterium, die Kriterien", "pos": "NOUN", "translation": "criterion", "frequency": 1626 },
+            { "word": "die Entscheidung", "pos": "NOUN", "translation": "decision", "frequency": 449, "cefr": "B1" },
+            { "word": "der*die Befürworter*in", "pos": "NOUN", "translation": "proponent, advocat" },
+            { "word": "aus der Sicht (von + dat.)", "pos": "PHRASE", "translation": "from the standpoint (of )" },
+            { "word": "zeitlos", "pos": "ADJ", "translation": "timeless", "frequency": 17522, "cefr": "B2" },
+            { "word": "wichtig", "pos": "ADJ", "translation": "important", "frequency": 144, "cefr": "A1" },
+            { "word": "unwichtig", "pos": "ADJ", "translation": "unimportant", "frequency": 13683 },
+            { "word": "gemeinsam", "pos": "ADJ", "translation": "together; common", "frequency": 295, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "ringen", "pos": "VERB", "frequency": 3703 },
+            { "word": "die neue", "pos": "NOUN", "frequency": 6169 },
+            { "word": "einigen", "pos": "VERB", "frequency": 2980, "cefr": "B1" },
+            { "word": "scannen", "pos": "VERB" },
+            { "word": "die QR-Code", "pos": "NOUN" },
+            { "word": "legal", "pos": "ADV", "frequency": 4809 },
+            { "word": "das Graffiti", "pos": "NOUN" },
+            { "word": "der Stress", "pos": "NOUN", "frequency": 2745, "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "mitgestalten": {
+                "Perfekt": {
+                    "ich": "habe mitgestaltet",
+                    "du": "hast mitgestaltet",
+                    "er": "hat mitgestaltet",
+                    "es": "hat mitgestaltet",
+                    "sie_singular": "hat mitgestaltet",
+                    "xier": "hat mitgestaltet",
+                    "wir": "haben mitgestaltet",
+                    "ihr": "habt mitgestaltet",
+                    "sie_plural": "haben mitgestaltet",
+                    "Sie": "haben mitgestaltet"
+                },
+                "Futur_I": {
+                    "ich": "werde mitgestalten",
+                    "du": "wirst mitgestalten",
+                    "er": "wird mitgestalten",
+                    "es": "wird mitgestalten",
+                    "sie_singular": "wird mitgestalten",
+                    "xier": "wird mitgestalten",
+                    "wir": "werden mitgestalten",
+                    "ihr": "werdet mitgestalten",
+                    "sie_plural": "werden mitgestalten",
+                    "Sie": "werden mitgestalten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde mitgestalten",
+                    "du": "würdest mitgestalten",
+                    "er": "würde mitgestalten",
+                    "es": "würde mitgestalten",
+                    "sie_singular": "würde mitgestalten",
+                    "xier": "würde mitgestalten",
+                    "wir": "würden mitgestalten",
+                    "ihr": "würdet mitgestalten",
+                    "sie_plural": "würden mitgestalten",
+                    "Sie": "würden mitgestalten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte mitgestaltet",
+                    "du": "hättest mitgestaltet",
+                    "er": "hätte mitgestaltet",
+                    "es": "hätte mitgestaltet",
+                    "sie_singular": "hätte mitgestaltet",
+                    "xier": "hätte mitgestaltet",
+                    "wir": "hätten mitgestaltet",
+                    "ihr": "hättet mitgestaltet",
+                    "sie_plural": "hätten mitgestaltet",
+                    "Sie": "hätten mitgestaltet"
+                }
+            },
+            "ablenken": {
+                "present": {
+                    "ich": "lenke ab",
+                    "du": "lenkst ab",
+                    "er": "lenkt ab",
+                    "es": "lenkt ab",
+                    "sie_singular": "lenkt ab",
+                    "xier": "lenkt ab",
+                    "wir": "lenken ab",
+                    "ihr": "lenkt ab",
+                    "sie_plural": "lenken ab",
+                    "Sie": "lenken ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgelenkt",
+                    "du": "hast abgelenkt",
+                    "er": "hat abgelenkt",
+                    "es": "hat abgelenkt",
+                    "sie_singular": "hat abgelenkt",
+                    "xier": "hat abgelenkt",
+                    "wir": "haben abgelenkt",
+                    "ihr": "habt abgelenkt",
+                    "sie_plural": "haben abgelenkt",
+                    "Sie": "haben abgelenkt"
+                },
+                "Futur_I": {
+                    "ich": "werde ablenken",
+                    "du": "wirst ablenken",
+                    "er": "wird ablenken",
+                    "es": "wird ablenken",
+                    "sie_singular": "wird ablenken",
+                    "xier": "wird ablenken",
+                    "wir": "werden ablenken",
+                    "ihr": "werdet ablenken",
+                    "sie_plural": "werden ablenken",
+                    "Sie": "werden ablenken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ablenken",
+                    "du": "würdest ablenken",
+                    "er": "würde ablenken",
+                    "es": "würde ablenken",
+                    "sie_singular": "würde ablenken",
+                    "xier": "würde ablenken",
+                    "wir": "würden ablenken",
+                    "ihr": "würdet ablenken",
+                    "sie_plural": "würden ablenken",
+                    "Sie": "würden ablenken"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte abgelenkt",
+                    "du": "hättest abgelenkt",
+                    "er": "hätte abgelenkt",
+                    "es": "hätte abgelenkt",
+                    "sie_singular": "hätte abgelenkt",
+                    "xier": "hätte abgelenkt",
+                    "wir": "hätten abgelenkt",
+                    "ihr": "hättet abgelenkt",
+                    "sie_plural": "hätten abgelenkt",
+                    "Sie": "hätten abgelenkt"
+                },
+                "imperative": {
+                    "du": "lenk ab",
+                    "ihr": "lenkt ab",
+                    "Sie": "lenken Sie ab"
+                }
+            },
+            "begründen": {
+                "present": {
+                    "ich": "begründe",
+                    "du": "begründest",
+                    "er": "begründet",
+                    "es": "begründet",
+                    "sie_singular": "begründet",
+                    "xier": "begründet",
+                    "wir": "begründen",
+                    "ihr": "begründet",
+                    "sie_plural": "begründen",
+                    "Sie": "begründen"
+                },
+                "Perfekt": {
+                    "ich": "habe begründet",
+                    "du": "hast begründet",
+                    "er": "hat begründet",
+                    "es": "hat begründet",
+                    "sie_singular": "hat begründet",
+                    "xier": "hat begründet",
+                    "wir": "haben begründet",
+                    "ihr": "habt begründet",
+                    "sie_plural": "haben begründet",
+                    "Sie": "haben begründet"
+                },
+                "Futur_I": {
+                    "ich": "werde begründen",
+                    "du": "wirst begründen",
+                    "er": "wird begründen",
+                    "es": "wird begründen",
+                    "sie_singular": "wird begründen",
+                    "xier": "wird begründen",
+                    "wir": "werden begründen",
+                    "ihr": "werdet begründen",
+                    "sie_plural": "werden begründen",
+                    "Sie": "werden begründen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde begründen",
+                    "du": "würdest begründen",
+                    "er": "würde begründen",
+                    "es": "würde begründen",
+                    "sie_singular": "würde begründen",
+                    "xier": "würde begründen",
+                    "wir": "würden begründen",
+                    "ihr": "würdet begründen",
+                    "sie_plural": "würden begründen",
+                    "Sie": "würden begründen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte begründet",
+                    "du": "hättest begründet",
+                    "er": "hätte begründet",
+                    "es": "hätte begründet",
+                    "sie_singular": "hätte begründet",
+                    "xier": "hätte begründet",
+                    "wir": "hätten begründet",
+                    "ihr": "hättet begründet",
+                    "sie_plural": "hätten begründet",
+                    "Sie": "hätten begründet"
+                },
+                "imperative": {
+                    "du": "begründe",
+                    "ihr": "begründet",
+                    "Sie": "begründen Sie"
+                }
+            },
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestaltet",
+                    "du": "hast gestaltet",
+                    "er": "hat gestaltet",
+                    "es": "hat gestaltet",
+                    "sie_singular": "hat gestaltet",
+                    "xier": "hat gestaltet",
+                    "wir": "haben gestaltet",
+                    "ihr": "habt gestaltet",
+                    "sie_plural": "haben gestaltet",
+                    "Sie": "haben gestaltet"
+                },
+                "Futur_I": {
+                    "ich": "werde gestalten",
+                    "du": "wirst gestalten",
+                    "er": "wird gestalten",
+                    "es": "wird gestalten",
+                    "sie_singular": "wird gestalten",
+                    "xier": "wird gestalten",
+                    "wir": "werden gestalten",
+                    "ihr": "werdet gestalten",
+                    "sie_plural": "werden gestalten",
+                    "Sie": "werden gestalten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde gestalten",
+                    "du": "würdest gestalten",
+                    "er": "würde gestalten",
+                    "es": "würde gestalten",
+                    "sie_singular": "würde gestalten",
+                    "xier": "würde gestalten",
+                    "wir": "würden gestalten",
+                    "ihr": "würdet gestalten",
+                    "sie_plural": "würden gestalten",
+                    "Sie": "würden gestalten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gestaltet",
+                    "du": "hättest gestaltet",
+                    "er": "hätte gestaltet",
+                    "es": "hätte gestaltet",
+                    "sie_singular": "hätte gestaltet",
+                    "xier": "hätte gestaltet",
+                    "wir": "hätten gestaltet",
+                    "ihr": "hättet gestaltet",
+                    "sie_plural": "hätten gestaltet",
+                    "Sie": "hätten gestaltet"
+                },
+                "imperative": {
+                    "du": "gestalt",
+                    "ihr": "gestaltet",
+                    "Sie": "gestalten Sie"
+                }
+            },
+            "lächeln": {
+                "present": {
+                    "ich": "lächle",
+                    "du": "lächelst",
+                    "er": "lächelt",
+                    "es": "lächelt",
+                    "sie_singular": "lächelt",
+                    "xier": "lächelt",
+                    "wir": "lächeln",
+                    "ihr": "lächelt",
+                    "sie_plural": "lächeln",
+                    "Sie": "lächeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gelächelt",
+                    "du": "hast gelächelt",
+                    "er": "hat gelächelt",
+                    "es": "hat gelächelt",
+                    "sie_singular": "hat gelächelt",
+                    "xier": "hat gelächelt",
+                    "wir": "haben gelächelt",
+                    "ihr": "habt gelächelt",
+                    "sie_plural": "haben gelächelt",
+                    "Sie": "haben gelächelt"
+                },
+                "Futur_I": {
+                    "ich": "werde lächeln",
+                    "du": "wirst lächeln",
+                    "er": "wird lächeln",
+                    "es": "wird lächeln",
+                    "sie_singular": "wird lächeln",
+                    "xier": "wird lächeln",
+                    "wir": "werden lächeln",
+                    "ihr": "werdet lächeln",
+                    "sie_plural": "werden lächeln",
+                    "Sie": "werden lächeln"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde lächeln",
+                    "du": "würdest lächeln",
+                    "er": "würde lächeln",
+                    "es": "würde lächeln",
+                    "sie_singular": "würde lächeln",
+                    "xier": "würde lächeln",
+                    "wir": "würden lächeln",
+                    "ihr": "würdet lächeln",
+                    "sie_plural": "würden lächeln",
+                    "Sie": "würden lächeln"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gelächelt",
+                    "du": "hättest gelächelt",
+                    "er": "hätte gelächelt",
+                    "es": "hätte gelächelt",
+                    "sie_singular": "hätte gelächelt",
+                    "xier": "hätte gelächelt",
+                    "wir": "hätten gelächelt",
+                    "ihr": "hättet gelächelt",
+                    "sie_plural": "hätten gelächelt",
+                    "Sie": "hätten gelächelt"
+                },
+                "imperative": {
+                    "du": "lächle",
+                    "ihr": "lächelt",
+                    "Sie": "lächeln Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ist das Kunst?",
+            "Es gibt viele Kriterien dafür, ob etwas (gute) Kunst ist.",
+            "Ranken Sie Ihre persönlichen Top 5-Kriterien.",
+            "Hat soziale und politische Probleme als Thema.",
+            "Ist schön.",
+            "Ist technisch gut gemacht.",
+            "Ist teuer.",
+            "Ist zeitlos.",
+            "Sagt mehr als Worte.",
+            "Ist innovativ.",
+            "Ist anders.",
+            "Fällt auf.",
+            "Haben bekannte Künstler*innen gemacht.",
+            "Welche Kriterien finden alle wichtig?",
+            "Bei welchen gibt es unterschiedliche Meinungen?",
+            "Warum ist ein Kriterium für einige Personen ( un )wichtig [wichtig unwichtig]?",
+            "Benutzen Sie dabei die Konnektoren „weil und „dass.",
+            "Präsentieren Sie Ihre Kriterien mit dem Beispiel.",
+            "Benutzen Sie die Redemittel.",
+            "Sollten Street Art und oder Graffiti überall legal sein?",
+            "Finden Sie in Ihrer Gruppe jeweils ein Argument aus der Sicht einer Person, die dafür ist (Befürworter*in), und aus der Sicht einer Person, die dagegen ist (Kritiker*in).",
+            "B.: Schlechtes Graffiti ist nicht schön",
+            "B.: Städte sind oft grau und langweilig;",
+            "Street Art macht sie schöner.",
+            "Sammeln Sie Ihre Argumente an der Tafel.",
+            "Was ist Ihre Meinung?",
+            "Street Art für den Campus?",
+            "Schreiben Sie gemeinsam einen Vorschlag für ein Street Art Werk für Ihren Campus oder Ihre Stadt.",
+            "Denken Sie an die folgenden Punkte:",
+            "WIE wollen Sie den öffentlichen Raum mitgestalten – wollen Sie kritisch sein, protestieren oder ihn schöner machen?",
+            "WIE soll Ihr Werk sein: lustig, informativ …?",
+            "Soll es eine Botschaft vermitteln?",
+            "WAS zeigt das Street Art Werk?",
+            "WO kann man es sehen?",
+            "Campus oder Stadt?",
+            "WIE LANGE soll es dort sein?",
+            "Wir machen für unseren Campus ein lustiges und dekoratives Street Art Werk (WIE), weil wir die Menschen auf dem Campus vom Semesterstress ablenken und zum Lächeln bringen wollen (WARUM).",
+            "Unser Street Art Werk zeigt einen kleinen Hund, der Blumen gießt (WAS).",
+            "Wir malen es auf den Boden vor der Bibliothek (WO).",
+            "Wenn es regnet, ist es nach ein paar Tagen weg (WIE LANGE).",
+            "Machen Sie eine Skizze von Ihre m Entwurf."
+        ],
+        "templated": []
+    }
+}

@@ -1,0 +1,637 @@
+{
+  "unit": "6",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 6,
+    "prerequisite": "1-5"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Conjugate sein as an irregular verb: ich bin, du bist, er/es/sie/xier ist, wir sind, ihr seid, sie/Sie sind."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:yes_no_question",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "Zahlen-Interviews machen",
+      "sagen, wie alt man ist, und danach fragen"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Zahlen und Alter"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "sein",
+        "pos": "VERB",
+        "translation": "to be",
+        "frequency": 4,
+        "cefr": "A1"
+      },
+      {
+        "word": "zählen",
+        "pos": "VERB",
+        "translation": "to count"
+      },
+      {
+        "word": "rechnen",
+        "pos": "VERB",
+        "translation": "to calculate; do math",
+        "frequency": 740,
+        "cefr": "A2"
+      },
+      {
+        "word": "beantworten",
+        "pos": "VERB",
+        "translation": "to answer",
+        "frequency": 1865,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Frage",
+        "pos": "NOUN",
+        "translation": "question",
+        "frequency": 157,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Antwort",
+        "pos": "NOUN",
+        "translation": "answer",
+        "frequency": 522,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Alter",
+        "pos": "NOUN",
+        "translation": "age",
+        "frequency": 775,
+        "cefr": "A1"
+      },
+      {
+        "word": "Wie alt bist du?",
+        "pos": "PHRASE",
+        "translation": "How old are you?"
+      },
+      {
+        "word": "Ich bin 18 Jahre alt.",
+        "pos": "PHRASE",
+        "translation": "I am 18 years old."
+      },
+      {
+        "word": "die Größe",
+        "pos": "NOUN",
+        "translation": "size"
+      },
+      {
+        "word": "Wie groß bist du?",
+        "pos": "PHRASE",
+        "translation": "How tall are you?"
+      },
+      {
+        "word": "die Zahl",
+        "pos": "NOUN",
+        "translation": "number [mathematical value, entity]",
+        "frequency": 297,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Nummer",
+        "pos": "NOUN",
+        "translation": "number [identifier, enumeration, ranking]",
+        "frequency": 806,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Handy",
+        "pos": "NOUN",
+        "translation": "mobile phone, cell phone",
+        "frequency": 1693,
+        "cefr": "A2"
+      },
+      {
+        "word": "Wie ist deine Handy Nummer?",
+        "pos": "PHRASE",
+        "translation": "What's your cell phone number?"
+      },
+      {
+        "word": "das Auto",
+        "pos": "NOUN",
+        "translation": "car",
+        "frequency": 361,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Gruppe",
+        "pos": "NOUN",
+        "translation": "group",
+        "frequency": 369,
+        "cefr": "A1"
+      },
+      {
+        "word": "plus",
+        "pos": "PARTICLE",
+        "translation": "plus",
+        "frequency": 2429,
+        "cefr": "A1"
+      },
+      {
+        "word": "minus",
+        "pos": "PARTICLE",
+        "translation": "minus",
+        "frequency": 3043,
+        "cefr": "A1"
+      },
+      {
+        "word": "bis",
+        "pos": "PREP",
+        "translation": "until",
+        "frequency": 77,
+        "cefr": "A1"
+      },
+      {
+        "word": "eins",
+        "pos": "NUM",
+        "translation": "one",
+        "frequency": 774,
+        "cefr": "A1"
+      },
+      {
+        "word": "zwei",
+        "pos": "NUM",
+        "translation": "two",
+        "frequency": 70,
+        "cefr": "A1"
+      },
+      {
+        "word": "drei",
+        "pos": "NUM",
+        "translation": "three",
+        "frequency": 106,
+        "cefr": "A1"
+      },
+      {
+        "word": "vier",
+        "pos": "NUM",
+        "translation": "four",
+        "frequency": 200,
+        "cefr": "A1"
+      },
+      {
+        "word": "fünf",
+        "pos": "NUM",
+        "translation": "five"
+      },
+      {
+        "word": "sechs",
+        "pos": "NUM",
+        "translation": "six",
+        "frequency": 428,
+        "cefr": "A1"
+      },
+      {
+        "word": "sieben",
+        "pos": "NUM",
+        "translation": "seven",
+        "frequency": 611,
+        "cefr": "A1"
+      },
+      {
+        "word": "acht",
+        "pos": "NUM",
+        "translation": "eight",
+        "frequency": 645,
+        "cefr": "A1"
+      },
+      {
+        "word": "neun",
+        "pos": "NUM",
+        "translation": "nine",
+        "frequency": 1053,
+        "cefr": "A1"
+      },
+      {
+        "word": "zehn",
+        "pos": "NUM",
+        "translation": "ten",
+        "frequency": 333,
+        "cefr": "A1"
+      },
+      {
+        "word": "elf",
+        "pos": "NUM",
+        "translation": "eleven",
+        "frequency": 1507,
+        "cefr": "A1"
+      },
+      {
+        "word": "zwölf",
+        "pos": "NUM",
+        "translation": "twelve"
+      },
+      {
+        "word": "einhundert",
+        "pos": "NUM",
+        "translation": "one hundred",
+        "frequency": 22135,
+        "cefr": "A1"
+      },
+      {
+        "word": "eintausend",
+        "pos": "NUM",
+        "translation": "one thousand",
+        "frequency": 46349,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "dreizehn",
+        "pos": "NUM",
+        "frequency": 4772,
+        "cefr": "A1"
+      },
+      {
+        "word": "vierzehn",
+        "pos": "NUM",
+        "frequency": 3950,
+        "cefr": "A1"
+      },
+      {
+        "word": "fünfzehn",
+        "pos": "NUM",
+        "frequency": 2858,
+        "cefr": "A1"
+      },
+      {
+        "word": "sechzehn",
+        "pos": "NUM",
+        "frequency": 4924,
+        "cefr": "A1"
+      },
+      {
+        "word": "siebzehn",
+        "pos": "NUM",
+        "frequency": 5722,
+        "cefr": "A1"
+      },
+      {
+        "word": "achtzehn",
+        "pos": "NUM",
+        "frequency": 3741,
+        "cefr": "A1"
+      },
+      {
+        "word": "neunzehn",
+        "pos": "NUM",
+        "frequency": 33403,
+        "cefr": "A1"
+      },
+      {
+        "word": "zwanzig",
+        "pos": "NUM",
+        "frequency": 1359,
+        "cefr": "A1"
+      },
+      {
+        "word": "einundzwanzig",
+        "pos": "NUM",
+        "cefr": "A1"
+      },
+      {
+        "word": "zweiundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "dreiundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "vierundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "fünfundzwanzig",
+        "pos": "NUM",
+        "frequency": 5815
+      },
+      {
+        "word": "sechsundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "siebenundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "achtundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "neunundzwanzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "dreißig",
+        "pos": "NUM",
+        "frequency": 2046,
+        "cefr": "A1"
+      },
+      {
+        "word": "vierzig",
+        "pos": "NUM",
+        "frequency": 2907,
+        "cefr": "A1"
+      },
+      {
+        "word": "fünfzig",
+        "pos": "NUM",
+        "frequency": 2390,
+        "cefr": "A1"
+      },
+      {
+        "word": "sechzig",
+        "pos": "NUM",
+        "frequency": 2448,
+        "cefr": "A1"
+      },
+      {
+        "word": "siebzig",
+        "pos": "NUM",
+        "frequency": 2609,
+        "cefr": "A1"
+      },
+      {
+        "word": "achtzig",
+        "pos": "NUM",
+        "frequency": 3301,
+        "cefr": "A1"
+      },
+      {
+        "word": "neunzig",
+        "pos": "NUM",
+        "frequency": 3028,
+        "cefr": "A1"
+      },
+      {
+        "word": "null",
+        "pos": "NUM",
+        "frequency": 1680,
+        "cefr": "A1"
+      },
+      {
+        "word": "neunundsechzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "vierundfünfzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "dreiundachtzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "sechsundneunzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "einhundertzwölf",
+        "pos": "NUM"
+      },
+      {
+        "word": "zweihundertelf",
+        "pos": "NUM"
+      },
+      {
+        "word": "fünfhundertachtzehn",
+        "pos": "NUM"
+      },
+      {
+        "word": "eintausendsieben",
+        "pos": "NUM"
+      },
+      {
+        "word": "zweitausendeinhundertunddreiundachtzig",
+        "pos": "NUM"
+      },
+      {
+        "word": "das Jahr",
+        "pos": "NOUN",
+        "frequency": 53,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Meter",
+        "pos": "NOUN",
+        "frequency": 479,
+        "cefr": "A1"
+      },
+      {
+        "word": "dreiundneunzig",
+        "pos": "ADV"
+      },
+      {
+        "word": "der Liebling",
+        "pos": "NOUN",
+        "frequency": 11644
+      },
+      {
+        "word": "die Handynummer",
+        "pos": "NOUN",
+        "frequency": 48320
+      },
+      {
+        "word": "das Nummernschild",
+        "pos": "NOUN",
+        "frequency": 26797
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "sein": {
+        "present": {
+          "ich": "bin",
+          "du": "bist",
+          "er": "ist",
+          "es": "ist",
+          "sie_singular": "ist",
+          "xier": "ist",
+          "wir": "sind",
+          "ihr": "seid",
+          "sie_plural": "sind",
+          "Sie": "sind"
+        }
+      },
+      "zählen": {
+        "present": {
+          "ich": "zähle",
+          "du": "zählst",
+          "er": "zählt",
+          "es": "zählt",
+          "sie_singular": "zählt",
+          "xier": "zählt",
+          "wir": "zählen",
+          "ihr": "zählt",
+          "sie_plural": "zählen",
+          "Sie": "zählen"
+        }
+      },
+      "rechnen": {
+        "present": {
+          "ich": "rechne",
+          "du": "rechnest",
+          "er": "rechnet",
+          "es": "rechnet",
+          "sie_singular": "rechnet",
+          "xier": "rechnet",
+          "wir": "rechnen",
+          "ihr": "rechnet",
+          "sie_plural": "rechnen",
+          "Sie": "rechnen"
+        }
+      },
+      "beantworten": {
+        "present": {
+          "ich": "beantworte",
+          "du": "beantwortest",
+          "er": "beantwortet",
+          "es": "beantwortet",
+          "sie_singular": "beantwortet",
+          "xier": "beantwortet",
+          "wir": "beantworten",
+          "ihr": "beantwortet",
+          "sie_plural": "beantworten",
+          "Sie": "beantworten"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Hören Sie die Zahlen.",
+      "Rechnen Sie.",
+      "Welche Zahlen hören Sie?",
+      "Schreiben Sie die Zahlen.",
+      "Wie alt bist du?",
+      "Lesen Sie die Fragen und Antworten.",
+      "Ich bin 17 Jahre alt.",
+      "Wie groß bist du?",
+      "Ich bin ein Meter dreiundneunzig groß.",
+      "Was ist deine Lieblingszahl?",
+      "Meine Lieblingszahl ist 99.",
+      "Wie ist deine Handynummer?",
+      "Und Sie?",
+      "Beantworten Sie die Fragen.",
+      "Wie alt sind Sie?",
+      "Ich bin X Jahre alt.",
+      "Wie groß sind Sie?",
+      "Ich bin X.",
+      "Was ist Ihre Lieblingszahl?",
+      "Meine Lieblingszahl ist X.",
+      "Wie ist Ihre Handynummer?",
+      "Meine Handynummer ist X.",
+      "Fragen Sie drei Personen.",
+      "Wie alt bist?",
+      "Ich bin X Meter groß.",
+      "Wie ist deine Nummer?",
+      "Meine Nummer ist X.",
+      "Woher kommt das Auto?",
+      "Das Nummernschild ist E-MQ-22.",
+      "Das Auto kommt aus Essen in Deutschland.",
+      "Das Nummernschild ist X.",
+      "Das Auto kommt aus X in Deutschland / Österreich / der Schweiz."
+    ],
+    "templated": [
+      {
+        "template": "Ich bin [number] Jahre alt.",
+        "source_literals": [
+          "Ich bin 17 Jahre alt.",
+          "Ich bin X Jahre alt."
+        ],
+        "grammar_note": "Verb sein + age expression, 1st person singular."
+      },
+      {
+        "template": "Meine Lieblingszahl ist [number].",
+        "source_literals": [
+          "Meine Lieblingszahl ist 99.",
+          "Meine Lieblingszahl ist X."
+        ],
+        "grammar_note": "Possessive + Lieblingszahl + sein, nominative."
+      }
+    ]
+  },
+  "placeholder_registry": {}
+}

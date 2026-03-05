@@ -1,0 +1,103 @@
+{
+  "unit": "1",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 1,
+    "prerequisite": "none"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [],
+    "sentence_types": [],
+    "new_rules_in_this_unit": [],
+    "forbidden": []
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": []
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": []
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": []
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": []
+  },
+  "universal_fillers": {
+    "description": "Discourse markers, fillers, and function words available to all units. These are considered 'always known' and do not count against vocabulary constraints. Both the buddy and the student may use these freely from unit 1 onward.",
+    "affirmation_negation": [
+      "ja",
+      "nein",
+      "okay",
+      "genau",
+      "richtig",
+      "korrekt"
+    ],
+    "reactions": [
+      "oh",
+      "ach so",
+      "ah",
+      "cool",
+      "wow",
+      "toll",
+      "super",
+      "prima",
+      "schön",
+      "interessant",
+      "mega",
+      "wirklich?"
+    ],
+    "hesitation_thinking": [
+      "hm",
+      "ähm",
+      "na ja",
+      "also",
+      "mal sehen",
+      "Moment"
+    ],
+    "politeness": [
+      "bitte",
+      "danke",
+      "danke schön",
+      "bitte schön",
+      "Entschuldigung",
+      "kein Problem"
+    ],
+    "confirmation_seeking": [
+      "ja?",
+      "korrekt?",
+      "okay?"
+    ],
+    "backchanneling": [
+      "aha",
+      "mhm",
+      "klar"
+    ],
+    "meta_conversation": [
+      "Wie bitte?",
+      "Noch einmal, bitte.",
+      "Deutsch, bitte!"
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {}
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [],
+    "templated": []
+  }
+}

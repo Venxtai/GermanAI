@@ -1,0 +1,515 @@
+{
+    "unit": "B34",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 34,
+        "prerequisite": "core 1-104, B1-B33"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Wörter und Sätze aus Dialekten und Sprachen übersetzen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Dialekte und Sprachen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erkennen", "pos": "VERB", "translation": "to identify", "frequency": 356, "cefr": "B1" },
+            { "word": "ausdrücken", "pos": "VERB", "translation": "to express" },
+            { "word": "vertauschen", "pos": "VERB", "translation": "to swap; invert; interchange", "frequency": 26865 },
+            { "word": "vereinfachen", "pos": "VERB", "translation": "to simplify", "frequency": 4035 },
+            { "word": "hassen", "pos": "VERB", "translation": "to hate", "frequency": 2673, "cefr": "B1" },
+            { "word": "das Hochdeutsch", "pos": "ADJ", "translation": "High German; standard German", "frequency": 18597, "cefr": "B2" },
+            { "word": "die Einführung", "pos": "NOUN", "translation": "introduction", "frequency": 1, "cefr": "A1" },
+            { "word": "der Ausdruck", "pos": "NOUN", "translation": "expression", "frequency": 970, "cefr": "B1" },
+            { "word": "die Nachbarschaft", "pos": "NOUN", "translation": "neighborhood", "frequency": 4065, "cefr": "B2" },
+            { "word": "der Kiez", "pos": "NOUN", "translation": "quarter [district in town]; (neighbor)hood", "frequency": 18814, "cefr": "B2" },
+            { "word": "das Platt", "pos": "NOUN", "translation": "dialect, low German", "frequency": 9532, "cefr": "A1" },
+            { "word": "das Pech", "pos": "NOUN", "translation": "misfortune", "frequency": 7203, "cefr": "B1" },
+            { "word": "der/das Schlamassel", "pos": "NOUN", "translation": "chaotic, difficult or problematic situation" },
+            { "word": "sprachlich", "pos": "ADJ", "translation": "linguistic(ally)", "frequency": 1552 },
+            { "word": "umgangssprachlich", "pos": "ADJ", "translation": "colloquial", "frequency": 13520, "cefr": "B2" },
+            { "word": "dumm", "pos": "ADJ", "translation": "dumb, stupid", "frequency": 2270, "cefr": "A2" },
+            { "word": "verrückt", "pos": "ADJ", "translation": "crazy; displaced" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "aschkenasisch", "pos": "ADJ" },
+            { "word": "der Einfluß", "pos": "NOUN", "frequency": 6007 },
+            { "word": "verrücken", "pos": "ADV", "frequency": 15408 },
+            { "word": "das Schlamassel", "pos": "NOUN", "frequency": 30963 },
+            { "word": "die Nachbarschaftssprache", "pos": "NOUN" },
+            { "word": "der Soziolekt", "pos": "NOUN" },
+            { "word": "die Varietät", "pos": "NOUN", "frequency": 21913 },
+            { "word": "multiethnisch", "pos": "ADJ" },
+            { "word": "der*die Linguist*innen", "pos": "NOUN", "frequency": 27097 },
+            { "word": "das Phänomen", "pos": "NOUN", "frequency": 1936 },
+            { "word": "neunt", "pos": "ADJ", "frequency": 7467 },
+            { "word": "erkürzen", "pos": "VERB" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erkennen": {
+                "present": {
+                    "ich": "erkenne",
+                    "du": "erkennst",
+                    "er": "erkennt",
+                    "es": "erkennt",
+                    "sie_singular": "erkennt",
+                    "xier": "erkennt",
+                    "wir": "erkennen",
+                    "ihr": "erkennt",
+                    "sie_plural": "erkennen",
+                    "Sie": "erkennen"
+                },
+                "Präteritum": {
+                    "ich": "erkannte",
+                    "du": "erkanntest",
+                    "er": "erkannte",
+                    "es": "erkannte",
+                    "sie_singular": "erkannte",
+                    "xier": "erkannte",
+                    "wir": "erkannten",
+                    "ihr": "erkanntet",
+                    "sie_plural": "erkannten",
+                    "Sie": "erkannten"
+                },
+                "Perfekt": {
+                    "ich": "habe erkannt",
+                    "du": "hast erkannt",
+                    "er": "hat erkannt",
+                    "es": "hat erkannt",
+                    "sie_singular": "hat erkannt",
+                    "xier": "hat erkannt",
+                    "wir": "haben erkannt",
+                    "ihr": "habt erkannt",
+                    "sie_plural": "haben erkannt",
+                    "Sie": "haben erkannt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erkannt",
+                    "du": "hattest erkannt",
+                    "er": "hatte erkannt",
+                    "es": "hatte erkannt",
+                    "sie_singular": "hatte erkannt",
+                    "xier": "hatte erkannt",
+                    "wir": "hatten erkannt",
+                    "ihr": "hattet erkannt",
+                    "sie_plural": "hatten erkannt",
+                    "Sie": "hatten erkannt"
+                },
+                "Futur_I": {
+                    "ich": "werde erkennen",
+                    "du": "wirst erkennen",
+                    "er": "wird erkennen",
+                    "es": "wird erkennen",
+                    "sie_singular": "wird erkennen",
+                    "xier": "wird erkennen",
+                    "wir": "werden erkennen",
+                    "ihr": "werdet erkennen",
+                    "sie_plural": "werden erkennen",
+                    "Sie": "werden erkennen"
+                },
+                "imperative": {
+                    "du": "erkenn",
+                    "ihr": "erkennt",
+                    "Sie": "erkennen Sie"
+                }
+            },
+            "ausdrücken": {
+                "present": {
+                    "ich": "drücke aus",
+                    "du": "drückst aus",
+                    "er": "drückt aus",
+                    "es": "drückt aus",
+                    "sie_singular": "drückt aus",
+                    "xier": "drückt aus",
+                    "wir": "drücken aus",
+                    "ihr": "drückt aus",
+                    "sie_plural": "drücken aus",
+                    "Sie": "drücken aus"
+                },
+                "Präteritum": {
+                    "ich": "drückte aus",
+                    "du": "drücktest aus",
+                    "er": "drückte aus",
+                    "es": "drückte aus",
+                    "sie_singular": "drückte aus",
+                    "xier": "drückte aus",
+                    "wir": "drückten aus",
+                    "ihr": "drücktet aus",
+                    "sie_plural": "drückten aus",
+                    "Sie": "drückten aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgedrückt",
+                    "du": "hast ausgedrückt",
+                    "er": "hat ausgedrückt",
+                    "es": "hat ausgedrückt",
+                    "sie_singular": "hat ausgedrückt",
+                    "xier": "hat ausgedrückt",
+                    "wir": "haben ausgedrückt",
+                    "ihr": "habt ausgedrückt",
+                    "sie_plural": "haben ausgedrückt",
+                    "Sie": "haben ausgedrückt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausgedrückt",
+                    "du": "hattest ausgedrückt",
+                    "er": "hatte ausgedrückt",
+                    "es": "hatte ausgedrückt",
+                    "sie_singular": "hatte ausgedrückt",
+                    "xier": "hatte ausgedrückt",
+                    "wir": "hatten ausgedrückt",
+                    "ihr": "hattet ausgedrückt",
+                    "sie_plural": "hatten ausgedrückt",
+                    "Sie": "hatten ausgedrückt"
+                },
+                "Futur_I": {
+                    "ich": "werde ausdrücken",
+                    "du": "wirst ausdrücken",
+                    "er": "wird ausdrücken",
+                    "es": "wird ausdrücken",
+                    "sie_singular": "wird ausdrücken",
+                    "xier": "wird ausdrücken",
+                    "wir": "werden ausdrücken",
+                    "ihr": "werdet ausdrücken",
+                    "sie_plural": "werden ausdrücken",
+                    "Sie": "werden ausdrücken"
+                },
+                "imperative": {
+                    "du": "drücke aus",
+                    "ihr": "drückt aus",
+                    "Sie": "drücken Sie aus"
+                }
+            },
+            "vertauschen": {
+                "present": {
+                    "ich": "vertausche",
+                    "du": "vertauschst",
+                    "er": "vertauscht",
+                    "es": "vertauscht",
+                    "sie_singular": "vertauscht",
+                    "xier": "vertauscht",
+                    "wir": "vertauschen",
+                    "ihr": "vertauscht",
+                    "sie_plural": "vertauschen",
+                    "Sie": "vertauschen"
+                },
+                "Präteritum": {
+                    "ich": "vertauschte",
+                    "du": "vertauschtest",
+                    "er": "vertauschte",
+                    "es": "vertauschte",
+                    "sie_singular": "vertauschte",
+                    "xier": "vertauschte",
+                    "wir": "vertauschten",
+                    "ihr": "vertauschtet",
+                    "sie_plural": "vertauschten",
+                    "Sie": "vertauschten"
+                },
+                "Perfekt": {
+                    "ich": "habe vertauscht",
+                    "du": "hast vertauscht",
+                    "er": "hat vertauscht",
+                    "es": "hat vertauscht",
+                    "sie_singular": "hat vertauscht",
+                    "xier": "hat vertauscht",
+                    "wir": "haben vertauscht",
+                    "ihr": "habt vertauscht",
+                    "sie_plural": "haben vertauscht",
+                    "Sie": "haben vertauscht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vertauscht",
+                    "du": "hattest vertauscht",
+                    "er": "hatte vertauscht",
+                    "es": "hatte vertauscht",
+                    "sie_singular": "hatte vertauscht",
+                    "xier": "hatte vertauscht",
+                    "wir": "hatten vertauscht",
+                    "ihr": "hattet vertauscht",
+                    "sie_plural": "hatten vertauscht",
+                    "Sie": "hatten vertauscht"
+                },
+                "Futur_I": {
+                    "ich": "werde vertauschen",
+                    "du": "wirst vertauschen",
+                    "er": "wird vertauschen",
+                    "es": "wird vertauschen",
+                    "sie_singular": "wird vertauschen",
+                    "xier": "wird vertauschen",
+                    "wir": "werden vertauschen",
+                    "ihr": "werdet vertauschen",
+                    "sie_plural": "werden vertauschen",
+                    "Sie": "werden vertauschen"
+                },
+                "imperative": {
+                    "du": "vertausch",
+                    "ihr": "vertauscht",
+                    "Sie": "vertauschen Sie"
+                }
+            },
+            "vereinfachen": {
+                "present": {
+                    "ich": "vereinfache",
+                    "du": "vereinfachst",
+                    "er": "vereinfacht",
+                    "es": "vereinfacht",
+                    "sie_singular": "vereinfacht",
+                    "xier": "vereinfacht",
+                    "wir": "vereinfachen",
+                    "ihr": "vereinfacht",
+                    "sie_plural": "vereinfachen",
+                    "Sie": "vereinfachen"
+                },
+                "Präteritum": {
+                    "ich": "vereinfachte",
+                    "du": "vereinfachtest",
+                    "er": "vereinfachte",
+                    "es": "vereinfachte",
+                    "sie_singular": "vereinfachte",
+                    "xier": "vereinfachte",
+                    "wir": "vereinfachten",
+                    "ihr": "vereinfachtet",
+                    "sie_plural": "vereinfachten",
+                    "Sie": "vereinfachten"
+                },
+                "Perfekt": {
+                    "ich": "habe vereinfacht",
+                    "du": "hast vereinfacht",
+                    "er": "hat vereinfacht",
+                    "es": "hat vereinfacht",
+                    "sie_singular": "hat vereinfacht",
+                    "xier": "hat vereinfacht",
+                    "wir": "haben vereinfacht",
+                    "ihr": "habt vereinfacht",
+                    "sie_plural": "haben vereinfacht",
+                    "Sie": "haben vereinfacht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vereinfacht",
+                    "du": "hattest vereinfacht",
+                    "er": "hatte vereinfacht",
+                    "es": "hatte vereinfacht",
+                    "sie_singular": "hatte vereinfacht",
+                    "xier": "hatte vereinfacht",
+                    "wir": "hatten vereinfacht",
+                    "ihr": "hattet vereinfacht",
+                    "sie_plural": "hatten vereinfacht",
+                    "Sie": "hatten vereinfacht"
+                },
+                "Futur_I": {
+                    "ich": "werde vereinfachen",
+                    "du": "wirst vereinfachen",
+                    "er": "wird vereinfachen",
+                    "es": "wird vereinfachen",
+                    "sie_singular": "wird vereinfachen",
+                    "xier": "wird vereinfachen",
+                    "wir": "werden vereinfachen",
+                    "ihr": "werdet vereinfachen",
+                    "sie_plural": "werden vereinfachen",
+                    "Sie": "werden vereinfachen"
+                },
+                "imperative": {
+                    "du": "vereinfach",
+                    "ihr": "vereinfacht",
+                    "Sie": "vereinfachen Sie"
+                }
+            },
+            "hassen": {
+                "present": {
+                    "ich": "hasse",
+                    "du": "hasst",
+                    "er": "hasst",
+                    "es": "hasst",
+                    "sie_singular": "hasst",
+                    "xier": "hasst",
+                    "wir": "hassen",
+                    "ihr": "hasst",
+                    "sie_plural": "hassen",
+                    "Sie": "hassen"
+                },
+                "Präteritum": {
+                    "ich": "hasste",
+                    "du": "hasstest",
+                    "er": "hasste",
+                    "es": "hasste",
+                    "sie_singular": "hasste",
+                    "xier": "hasste",
+                    "wir": "hassten",
+                    "ihr": "hasstet",
+                    "sie_plural": "hassten",
+                    "Sie": "hassten"
+                },
+                "Perfekt": {
+                    "ich": "habe gehasst",
+                    "du": "hast gehasst",
+                    "er": "hat gehasst",
+                    "es": "hat gehasst",
+                    "sie_singular": "hat gehasst",
+                    "xier": "hat gehasst",
+                    "wir": "haben gehasst",
+                    "ihr": "habt gehasst",
+                    "sie_plural": "haben gehasst",
+                    "Sie": "haben gehasst"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gehasst",
+                    "du": "hattest gehasst",
+                    "er": "hatte gehasst",
+                    "es": "hatte gehasst",
+                    "sie_singular": "hatte gehasst",
+                    "xier": "hatte gehasst",
+                    "wir": "hatten gehasst",
+                    "ihr": "hattet gehasst",
+                    "sie_plural": "hatten gehasst",
+                    "Sie": "hatten gehasst"
+                },
+                "Futur_I": {
+                    "ich": "werde hassen",
+                    "du": "wirst hassen",
+                    "er": "wird hassen",
+                    "es": "wird hassen",
+                    "sie_singular": "wird hassen",
+                    "xier": "wird hassen",
+                    "wir": "werden hassen",
+                    "ihr": "werdet hassen",
+                    "sie_plural": "werden hassen",
+                    "Sie": "werden hassen"
+                },
+                "imperative": {
+                    "du": "hasse",
+                    "ihr": "hasst",
+                    "Sie": "hassen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sprechen Sie Platt?",
+            "Sie sehen unten plattdeutsche Wörter und Sätze.",
+            "Plattdeutsch wird im Norden Deutschlands gesprochen.",
+            "Können Sie erkennen, was diese Wörter und Sätze auf Hochdeutsch heißen?",
+            "Raten Sie.",
+            "Welche Laute oder Buchstaben werden vom Plattdeutschen zum Hochdeutschen verändert?",
+            "Sehen Sie sich das Video an und lernen Sie mit Yared Dibaba die Zahlen auf Plattdeutsch.",
+            "Wie weit können Sie zählen?",
+            "Wir lernen jiddische Worte, die es auch so ähnlich im Deutschen gibt.",
+            "Wie man die Wörter schreibt und was sie bedeuten ist unterschiedlich.",
+            "Was bedeutet das jiddische Wort?",
+            "Wie heißt das Wort auf Deutsch?",
+            "Was bedeutet das deutsche Wort?",
+            "Jiddische Vokabeln und Grammatik zeigen Einflüsse von älterem Deutsch, Althebräisch und slawischen Sprachen.",
+            "Es gibt auch Ladino, die Sprache von sephardischen Jüd*innen aus Spanien und Portugal.",
+            "Der Mensch eine Person jemand, der Pech hat oder sich dumm verhält verrückt",
+            "Der oder das Schlamassel schwierige, unglückliche [nicht glücklich] Situation verrückt משוגע",
+            "Meshuge Kennen Sie andere jiddische Worte, die wir im Englischen benutzen?",
+            "Was bedeuten sie?",
+            "Wort“ Kiez ” ist ein umgangssprachliches Wort in Berlin für“ Nachbarschaft ”.",
+            "Deutsch kann als eine Form von“ Nachbarschaftssprache ” verstanden werden, es ist ein Soziolekt, den eine bestimmte Community spricht.",
+            "Sie hören nun eine kleine Einführung in das Thema“ Kiezdeutsch ”.",
+            "Hören Sie gut zu und ergänzen Sie die fehlenden Wörter.",
+            "Deutsch ist eine Varietät der deutschen Sprache.",
+            "Wir hören sie vor allem in größeren Städten, wo Menschen wohnen, die viele verschiedene Sprachen sprechen.",
+            "In den letzten 30 Jahren hat sich Kiezdeutsch zu einer multiethnischen Jugendsprache entwickelt.",
+            "Deutsch hat mit Nachbarschaft und einem Gefühl von Gemeinschaft zu tun.",
+            "Deutsch] ist also der Ausdruck einer Gruppenidentität, die sich in einer gemeinsamen Sprache vor allem bei Jugendlichen zeigt.",
+            "Linguist*innen haben gezeigt, dass Kiezdeutsch die deutsche Sprache interessanter macht und Menschen erlaubt, ihre Identität durch Sprache auszudrücken.",
+            "Lesen Sie den Text noch einmal und schreiben Sie zwei Fragen dazu.",
+            "Stellen Sie zwei anderen Personen die Fragen.",
+            "Unten sehen Sie sechs Sätze auf Kiezdeutsch",
+            ", die drei sprachliche Phänomene dieser Varietät zeigen",
+            "Überlegen Sie gemeinsam, wie diese Sätze auf Hochdeutsch heißen würden.",
+            "Gehst du heute Fitnessstudio?",
+            "Ich werde neunter Juli zwanzig.",
+            "Früher waren wir Freunde, aber jetzt ich hasse ihn.",
+            "Seine Musik war immer gut, aber jetzt er ist ein Loser.",
+            "Musst d u deine Hausaufgaben machen.",
+            "Lesen Sie die Sätze in Teil 3 noch einmal.",
+            "Was passiert hier?",
+            "Können Sie erkennen, was sich hier von Standard zu Kiezdeutsch verändert?",
+            "Versuchen Sie, für jedes Phänomen die richtige Grammatikregel zu finden.",
+            "Deutsch zieht zwei Wörter zusammen und vertauscht die Reihenfolge.",
+            "Deutsch benutzt oft keine Präpositionen und keine Artikel.",
+            "Deutsch] verändert die typische deutsche Wortstellung, bei der das Verb an der zweiten Position steht."
+        ],
+        "templated": []
+    }
+}

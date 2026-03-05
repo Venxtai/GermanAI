@@ -1,0 +1,316 @@
+{
+    "unit": "93",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 93,
+        "prerequisite": "1-92"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Stadttour planen und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design, create",
+                "frequency": 1613
+            },
+            {
+                "word": "kennenlernen",
+                "pos": "VERB",
+                "translation": "to get to know, learn about",
+                "frequency": 2303,
+                "cefr": "A1"
+            },
+            {
+                "word": "kreieren",
+                "pos": "VERB",
+                "translation": "to create",
+                "frequency": 10289
+            },
+            {
+                "word": "die Einführung",
+                "pos": "NOUN",
+                "translation": "introduction",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Spur",
+                "pos": "NOUN",
+                "translation": "track, trace",
+                "frequency": 1189,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Tourist*in",
+                "pos": "NOUN",
+                "translation": "tourist",
+                "frequency": 1318,
+                "cefr": "A2"
+            },
+            {
+                "word": "etw. Bestimmtes",
+                "pos": "ADJ",
+                "translation": "sth. specific"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "thematisch",
+                "pos": "ADJ",
+                "frequency": 10388
+            },
+            {
+                "word": "der Schwerpunkt",
+                "pos": "NOUN",
+                "frequency": 2395
+            },
+            {
+                "word": "berichten",
+                "pos": "VERB",
+                "frequency": 591,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Urlaub",
+                "pos": "NOUN",
+                "frequency": 1570,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tour",
+                "pos": "NOUN",
+                "frequency": 2640,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Service",
+                "pos": "NOUN",
+                "frequency": 1551,
+                "cefr": "A2"
+            },
+            {
+                "word": "photoshoppen",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Bericht",
+                "pos": "NOUN",
+                "frequency": 1201,
+                "cefr": "B1"
+            },
+            {
+                "word": "bewerten",
+                "pos": "VERB",
+                "frequency": 1968,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Walk",
+                "pos": "NOUN",
+                "frequency": 19892
+            },
+            {
+                "word": "die Hälfte",
+                "pos": "NOUN",
+                "frequency": 929,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestaltet",
+                    "du": "hast gestaltet",
+                    "er": "hat gestaltet",
+                    "es": "hat gestaltet",
+                    "sie_singular": "hat gestaltet",
+                    "xier": "hat gestaltet",
+                    "wir": "haben gestaltet",
+                    "ihr": "habt gestaltet",
+                    "sie_plural": "haben gestaltet",
+                    "Sie": "haben gestaltet"
+                }
+            },
+            "kennenlernen": {
+                "present": {
+                    "ich": "lerne kennen",
+                    "du": "lernst kennen",
+                    "er": "lernt kennen",
+                    "es": "lernt kennen",
+                    "sie_singular": "lernt kennen",
+                    "xier": "lernt kennen",
+                    "wir": "lernen kennen",
+                    "ihr": "lernt kennen",
+                    "sie_plural": "lernen kennen",
+                    "Sie": "lernen kennen"
+                },
+                "Perfekt": {
+                    "ich": "habe kennengelernt",
+                    "du": "hast kennengelernt",
+                    "er": "hat kennengelernt",
+                    "es": "hat kennengelernt",
+                    "sie_singular": "hat kennengelernt",
+                    "xier": "hat kennengelernt",
+                    "wir": "haben kennengelernt",
+                    "ihr": "habt kennengelernt",
+                    "sie_plural": "haben kennengelernt",
+                    "Sie": "haben kennengelernt"
+                }
+            },
+            "kreieren": {
+                "present": {
+                    "ich": "kreiere",
+                    "du": "kreierst",
+                    "er": "kreiert",
+                    "es": "kreiert",
+                    "sie_singular": "kreiert",
+                    "xier": "kreiert",
+                    "wir": "kreieren",
+                    "ihr": "kreiert",
+                    "sie_plural": "kreieren",
+                    "Sie": "kreieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kreiert",
+                    "du": "hast kreiert",
+                    "er": "hat kreiert",
+                    "es": "hat kreiert",
+                    "sie_singular": "hat kreiert",
+                    "xier": "hat kreiert",
+                    "wir": "haben kreiert",
+                    "ihr": "habt kreiert",
+                    "sie_plural": "haben kreiert",
+                    "Sie": "haben kreiert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In diesem Kapitel haben Sie viel über Wien und die Sehenswürdigkeiten gelernt.",
+            "Sie haben auch besondere thematische Schwerpunkte kennengelernt (z.B.",
+            "Sie waren letztes Jahr in Wien.",
+            "Berichten Sie von Ihrem Urlaub.",
+            "Planen Sie.",
+            "Wann waren Sie in Wien?",
+            "Wo waren Sie?",
+            "Wie war der Service?",
+            "Wie waren die Verkehrsmittel?",
+            "Wie waren die Wiener*innen?",
+            "Wie war das Wetter?",
+            "Wie hat das Essen geschmeckt?",
+            "Haben Sie die Wiener*innen verstanden?",
+            "Gestalten Sie Fotos.",
+            "Suchen Sie im Internet Fotos von den Orten und photoshoppen Sie sich selbst in die Fotos.",
+            "Schreiben Sie eine Beschreibung mit vielen Adjektiven für jedes Foto.",
+            "Schreiben Sie einen Bericht.",
+            "Schreiben Sie über Ihren Urlaub.",
+            "Benutzen Sie das Perfekt und erzählen Sie, was Sie alles gemacht, gesehen, gegessen und getrunken haben.",
+            "Was hat Ihnen ( nicht) gut gefallen?",
+            "Empfehlen Sie Wien?",
+            "Gestalten Sie ein Poster mit Ihren Fotos.",
+            "Sie können auch kurze Texte unter die Fotos schreiben.",
+            "Dann machen Sie einen Gallery Walk im Kurs.",
+            "Die Hälfte präsentiert, die andere Hälfte schaut sich die Poster an.",
+            "Dann tauschen Sie.",
+            "Füllen Sie beim Hören die Karten aus.",
+            "Sagen Sie danach, was die beste Reise war und warum."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

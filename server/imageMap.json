@@ -1,0 +1,26 @@
+{
+  "imageMap": {
+    "5": {
+      "triggerKeywords": ["apple", "banana", "fruit", "orange", "apfel", "banane", "obst"],
+      "images": [
+        {
+          "keywords": ["apple", "banana", "fruit", "orange", "eat", "apfel", "banane", "obst", "isst", "essen"],
+          "path": "/images/unit-05/apple.svg",
+          "duration": 5000,
+          "description": "A red apple"
+        }
+      ]
+    },
+    "6": {
+      "triggerKeywords": ["classroom", "see", "room", "table", "chair", "klassenzimmer", "siehst", "sehen", "zimmer", "tisch", "stuhl"],
+      "images": [
+        {
+          "keywords": ["classroom", "see", "room", "table", "chair", "what", "klassenzimmer", "siehst", "sehen", "zimmer", "tisch", "stuhl"],
+          "path": "/images/unit-06/classroom.svg",
+          "duration": 7000,
+          "description": "A classroom with desk, chair, and whiteboard"
+        }
+      ]
+    }
+  }
+}

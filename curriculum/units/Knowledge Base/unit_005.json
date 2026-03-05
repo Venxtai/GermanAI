@@ -1,0 +1,330 @@
+{
+  "unit": "5",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 5,
+    "prerequisite": "1-4"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:yes_no_question",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "buchstabieren"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "Namen"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "schreiben",
+        "pos": "VERB",
+        "translation": "to write",
+        "frequency": 184,
+        "cefr": "A1"
+      },
+      {
+        "word": "Wie schreibt man das?",
+        "pos": "PHRASE",
+        "translation": "How do you spell that?"
+      },
+      {
+        "word": "nummerieren",
+        "pos": "VERB",
+        "translation": "to number"
+      },
+      {
+        "word": "markieren",
+        "pos": "VERB",
+        "translation": "to mark, highlight",
+        "frequency": 2065,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Buchstabe",
+        "pos": "NOUN",
+        "translation": "letter",
+        "frequency": 2905,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Abkürzung",
+        "pos": "NOUN",
+        "translation": "abbreviation, acronym",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Lied",
+        "pos": "NOUN",
+        "translation": "song",
+        "frequency": 1733,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Land",
+        "pos": "NOUN",
+        "translation": "country",
+        "frequency": 134,
+        "cefr": "A1"
+      },
+      {
+        "word": "(Bundesrepublik) Deutschland",
+        "pos": "NOUN",
+        "translation": "(Federal Republic of) Germany",
+        "frequency": 140,
+        "cefr": "A1"
+      },
+      {
+        "word": "Österreich",
+        "pos": "NOUN",
+        "translation": "Austria"
+      },
+      {
+        "word": "die Schweiz",
+        "pos": "NOUN",
+        "translation": "Switzerland",
+        "frequency": 763,
+        "cefr": "A2"
+      },
+      {
+        "word": "Wie bitte?",
+        "pos": "PHRASE",
+        "translation": "Pardon?"
+      },
+      {
+        "word": "von",
+        "pos": "PREP",
+        "translation": "by; from; of",
+        "frequency": 9,
+        "cefr": "A1"
+      },
+      {
+        "word": "welch-",
+        "pos": "PRON",
+        "translation": "which"
+      },
+      {
+        "word": "laut",
+        "pos": "ADJ",
+        "translation": "loud",
+        "frequency": 572,
+        "cefr": "A1"
+      },
+      {
+        "word": "beliebt",
+        "pos": "ADJ",
+        "translation": "popular, liked",
+        "frequency": 1873,
+        "cefr": "A2"
+      },
+      {
+        "word": "Lieblings-",
+        "pos": "PREFIX",
+        "translation": "favorite",
+        "cefr": "A1"
+      },
+      {
+        "word": "ja",
+        "pos": "PARTICLE",
+        "translation": "yes",
+        "frequency": 45,
+        "cefr": "A1"
+      },
+      {
+        "word": "nein",
+        "pos": "PARTICLE",
+        "translation": "no",
+        "frequency": 148,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "Musik-",
+        "pos": "NOUN",
+        "frequency": 13660
+      },
+      {
+        "word": "belieben",
+        "pos": "ADV",
+        "frequency": 1873,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Favorit",
+        "pos": "NOUN",
+        "frequency": 4218
+      },
+      {
+        "word": "gebären",
+        "pos": "VERB",
+        "frequency": 5917
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "schreiben": {
+        "present": {
+          "ich": "schreibe",
+          "du": "schreibst",
+          "er": "schreibt",
+          "es": "schreibt",
+          "sie_singular": "schreibt",
+          "xier": "schreibt",
+          "wir": "schreiben",
+          "ihr": "schreibt",
+          "sie_plural": "schreiben",
+          "Sie": "schreiben"
+        }
+      },
+      "nummerieren": {
+        "present": {
+          "ich": "nummeriere",
+          "du": "nummerierst",
+          "er": "nummeriert",
+          "es": "nummeriert",
+          "sie_singular": "nummeriert",
+          "xier": "nummeriert",
+          "wir": "nummerieren",
+          "ihr": "nummeriert",
+          "sie_plural": "nummerieren",
+          "Sie": "nummerieren"
+        }
+      },
+      "markieren": {
+        "present": {
+          "ich": "markiere",
+          "du": "markierst",
+          "er": "markiert",
+          "es": "markiert",
+          "sie_singular": "markiert",
+          "xier": "markiert",
+          "wir": "markieren",
+          "ihr": "markiert",
+          "sie_plural": "markieren",
+          "Sie": "markieren"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Hören Sie die Buchstaben.",
+      "Lesen Sie die Buchstaben laut.",
+      "Was hören Sie?",
+      "Schreiben Sie die Buchstaben.",
+      "In dem Lied \"MfG\" von den Fantastischen Vier gibt es viele Abkürzungen.",
+      "Hören Sie das Lied.",
+      "Welche Abkürzungen hören Sie?",
+      "Hören Sie und nummerieren Sie.",
+      "Ich heiße Benjamin.",
+      "Wie heißt du?",
+      "Ich heiße Alexander.",
+      "Wie bitte?",
+      "Wie schreibt man das?",
+      "Ich heiße X.",
+      "Wie heiße ich?",
+      "Heißt du Darsan?",
+      "Heißt du Ardans?",
+      "Heißt du Sandra?",
+      "Mein Name hat die Buchstaben X.",
+      "Du heißt X.",
+      "Welche Namen sind in Deutschland, Liechtenstein, Österreich, und der Schweiz beliebt?",
+      "Welche Namen sind in einem Land (in zwei Ländern, in drei Ländern) beliebt?",
+      "Anna ist in Deutschland, Liechtenstein, Österreich und der Schweiz beliebt.",
+      "Paul ist in Deutschland beliebt.",
+      "Maximilian ist in Deutschland, Liechtenstein und Österreich beliebt.",
+      "Alexander ist in Deutschland, Liechtenstein und Österreich beliebt.",
+      "Leon ist in Deutschland, Liechtenstein und der Schweiz beliebt.",
+      "Und in Ihrem Land?",
+      "Was ist Ihr Favorit?"
+    ],
+    "templated": [
+      {
+        "template": "Ich heiße [person_name].",
+        "source_literals": [
+          "Ich heiße Benjamin.",
+          "Ich heiße Alexander.",
+          "Ich heiße X."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present."
+      }
+    ]
+  },
+  "placeholder_registry": {}
+}

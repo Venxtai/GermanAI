@@ -1,0 +1,375 @@
+{
+    "unit": "23",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 23,
+        "prerequisite": "1-22"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the comparative by adding -er to the adjective and using als for comparisons: \"kleiner als.\"",
+            "Express equality with so + adjective + wie: \"so groß wie.\"",
+            "Form the superlative with am + adjective + -sten; add -esten after -t or -s sounds.",
+            "Add an Umlaut in comparative and superlative for one-syllable adjectives with a, o, or u: alt→älter→am ältesten."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Personen vergleichen",
+            "Temperaturen und Wetter in verschiedenen Städten vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Vergleiche zwischen Personen und Orten"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "vergleichen",
+                "pos": "VERB",
+                "translation": "to compare",
+                "frequency": 387,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Durchschnitt",
+                "pos": "NOUN",
+                "translation": "average",
+                "frequency": 3145,
+                "cefr": "B1"
+            },
+            {
+                "word": "jung, jünger, am jüngsten",
+                "pos": "ADJ",
+                "translation": "young, younger, the youngest",
+                "frequency": 199,
+                "cefr": "A1"
+            },
+            {
+                "word": "alt, älter, am ältesten",
+                "pos": "ADJ",
+                "translation": "old, older, the oldest",
+                "frequency": 138,
+                "cefr": "A1"
+            },
+            {
+                "word": "kalt, kälter, am kältesten",
+                "pos": "ADJ",
+                "translation": "cold, colder, the coldest",
+                "frequency": 887,
+                "cefr": "A2"
+            },
+            {
+                "word": "warm, wärmer, am wärmsten",
+                "pos": "ADJ",
+                "translation": "warm, warner, the warmest",
+                "frequency": 1281,
+                "cefr": "A2"
+            },
+            {
+                "word": "klein, kleiner, am kleinsten",
+                "pos": "ADJ",
+                "translation": "small/short, smaller/shorter, the smallest/shortest",
+                "frequency": 110,
+                "cefr": "A1"
+            },
+            {
+                "word": "viel, mehr am meisten",
+                "pos": "ADV",
+                "translation": "a lot, more, the most",
+                "frequency": 56,
+                "cefr": "A1"
+            },
+            {
+                "word": "gut, besser, am besten",
+                "pos": "ADJ",
+                "translation": "good, better, the best",
+                "frequency": 76,
+                "cefr": "A1"
+            },
+            {
+                "word": "stark, stärker, am stärksten",
+                "pos": "ADJ",
+                "translation": "strong, stronger, the strongest",
+                "frequency": 178,
+                "cefr": "A2"
+            },
+            {
+                "word": "groß, größer, am größten",
+                "pos": "ADJ",
+                "translation": "big/tall, bigger/taller, the biggest/tallest"
+            },
+            {
+                "word": "größer als",
+                "pos": "PHRASE",
+                "translation": "bigger/taller than"
+            },
+            {
+                "word": "so ... wie",
+                "pos": "PHRASE",
+                "translation": "as ... as"
+            },
+            {
+                "word": "jeweils",
+                "pos": "ADV",
+                "translation": "respectively, in each case",
+                "frequency": 609,
+                "cefr": "B1"
+            },
+            {
+                "word": "alle",
+                "pos": "PRON",
+                "translation": "all; everybody",
+                "frequency": 36,
+                "cefr": "A1"
+            },
+            {
+                "word": "beide",
+                "pos": "PRON",
+                "translation": "both",
+                "frequency": 117,
+                "cefr": "A1"
+            },
+            {
+                "word": "zusammen",
+                "pos": "ADJ",
+                "translation": "together",
+                "frequency": 533,
+                "cefr": "A1"
+            },
+            {
+                "word": "mittlere",
+                "pos": "ADJ",
+                "translation": "middle, average, mean",
+                "frequency": 1183,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "jung",
+                "pos": "ADV",
+                "frequency": 199,
+                "cefr": "A1"
+            },
+            {
+                "word": "zweiundachtzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "innen",
+                "pos": "ADV",
+                "frequency": 2165,
+                "cefr": "B1"
+            },
+            {
+                "word": "mittler",
+                "pos": "ADJ",
+                "frequency": 1183,
+                "cefr": "B1"
+            },
+            {
+                "word": "Ah",
+                "pos": "NOUN",
+                "frequency": 1796
+            },
+            {
+                "word": "der Trend",
+                "pos": "NOUN",
+                "frequency": 2152,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vergleichen": {
+                "present": {
+                    "ich": "vergleiche",
+                    "du": "vergleichst",
+                    "er": "vergleicht",
+                    "es": "vergleicht",
+                    "sie_singular": "vergleicht",
+                    "xier": "vergleicht",
+                    "wir": "vergleichen",
+                    "ihr": "vergleicht",
+                    "sie_plural": "vergleichen",
+                    "Sie": "vergleichen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "18 Jahre Geburtstag: 13.",
+            "19 Jahre Geburtstag: 21.",
+            "20 Jahre Geburtstag: 2.",
+            "19 Jahre Geburtstag: 17.",
+            "20 Jahre Geburtstag: 5.",
+            "19 Jahre Geburtstag: 1.",
+            "18 Jahre Geburtstag: 28.",
+            "Stellen Sie Fragen.",
+            "Wer ist älter?",
+            "Wer ist jünger?",
+            "Wer ist größer?",
+            "Wer ist kleiner?",
+            "Wer ist größer, Kevin oder Jakob?",
+            "Kevin ist 1,82 m groß und Jakob ist 1,85 m groß.",
+            "Jakob ist größer.",
+            "Wer ist älter, Nora oder Alina?",
+            "Nora und Alina sind 19 Jahre alt und beide haben am 17.",
+            "Januar Geburtstag.",
+            "Nora ist so alt wie Alina.",
+            "Wer ist älter, X oder X?",
+            "X ist X Jahre alt und X ist X Jahre alt.",
+            "X ist älter.",
+            "Wer ist jünger, X oder X?",
+            "X ist jünger.",
+            "Wer ist größer, X oder X?",
+            "X ist X groß und X ist X groß.",
+            "X ist größer.",
+            "Wer ist kleiner, X oder X?",
+            "X ist kleiner.",
+            "Und wer ist am größten?",
+            "Wer ist am kleinsten?",
+            "Wer ist am ältesten?",
+            "Wer ist am jüngsten?",
+            "Wie groß sind die neun Freund*innen im Durchschnitt?",
+            "X ist am größten.",
+            "X ist am kleinsten.",
+            "X ist am ältesten.",
+            "X ist am jüngsten.",
+            "Die neun Freund*innen sind im Durchschnitt X groß.",
+            "Die neun Freunde sprechen.",
+            "Hören Sie zu und ordnen Sie die Namen zu.",
+            "Ich habe im Sommer Geburtstag und bin 19 Jahre alt.",
+            "Wie heiße ich?",
+            "Ich bin größer als Jakob und kleiner als Michael.",
+            "Wer bin ich?",
+            "Ich bin eins zweiundachtzig groß.",
+            "( Kevin ) Hallo!",
+            "Ich bin kleiner als Nora, kleiner als Jule und kleiner als Sophie und Alina.",
+            "Mein Geburtstag ist im Winter und bin so groß wie Sophie.",
+            "( Alina ) Ich bin am größten.",
+            "Hallo zusammen.",
+            "Ich bin größer als Antonia und kleiner als Kevin.",
+            "Ich bin 20 Jahre alt.",
+            "( Jule ) Hallo.",
+            "Ich bin älter als Michael.",
+            "Ich bin kleiner als Jan und größer als Kevin.",
+            "Ich bin älter als Antonia und jünger als Jule.",
+            "Ich bin größer als Sophie und kleiner als Kevin.",
+            "Und im Kurs?",
+            "Vergleichen Sie jeweils zwei oder drei Personen.",
+            "Fragen Sie Personen im Kurs.",
+            "Wann hast du Geburtstag?",
+            "Wie alt bist du?",
+            "Wie groß bist du?",
+            "Und deine Freund *innen?",
+            "Sind sie älter oder jünger?",
+            "Sind sie größer oder kleiner?",
+            "Ich habe am X Geburtstag.",
+            "Ich bin X Jahre alt.",
+            "Ich bin X groß.",
+            "Sind deine Freund*innen älter oder jünger?",
+            "Sind deine Freund*innen größer oder kleiner?",
+            "Sie bekommen die Daten der durchschnittlichen Jahrestemperatur von einer Stadt.",
+            "Stellen Sie Fragen über die Temperaturen in einem Jahr.",
+            "Dann vergleichen Sie.",
+            "Im Jahr 1903 waren es in Wien 8,9 Grad",
+            "Wie warm war es in Wien und Basel?",
+            "In Wien waren es 9,3 Grad Julia: In Basel waren es 8,9 Grad.",
+            "Im Jahr 1903 war es in Basel so warm wie in Wien.",
+            "In Wien war es wärmer als in Basel und in Wien.",
+            "Im Jahr 1951 waren es in Wien 10,3 Grad.",
+            "In Wien waren es 9,7 Grad Julia:",
+            "In Basel waren es 9,6 Grad.",
+            "Im Jahr 1951 war es in Wien wärmer als in Basel und in Wien (war es) wärmer als in Wien.",
+            "Es war in Wien am wärmsten.",
+            "In Basel war es am kältesten.",
+            "Im Jahr X waren es in Wien X Grad.",
+            "In Wien waren es X Grad",
+            "In Basel waren es X Grad.",
+            "Im Jahr X war es in Basel so warm wie in Wien.",
+            "Im Jahr X war es in Wien wärmer als in Basel und in Wien (war es) wärmer als in Wien.",
+            "Was waren die zehn wärmsten und zehn kältesten Jahre in Ihrer Stadt ( Wien, Wien oder Basel )?",
+            "Welche Trends sehen Sie?",
+            "Die zehn wärmsten Jahre waren alle um 1900.",
+            "Die zehn kältesten Jahre waren alle heute.",
+            "Es ist heute wärmer."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

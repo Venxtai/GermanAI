@@ -1,0 +1,665 @@
+{
+    "unit": "75",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 75,
+        "prerequisite": "1-74"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the Perfekt of mixed verbs with ge- + changed stem + -t: wissen → gewusst, denken → gedacht, bringen → gebracht, kennen → gekannt."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Kinderbücher zusammenfassen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kinderbücher"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "wissen",
+                "pos": "VERB",
+                "translation": "to know (as a fact)",
+                "frequency": 78,
+                "cefr": "A1"
+            },
+            {
+                "word": "denken",
+                "pos": "VERB",
+                "translation": "to think (about/of)",
+                "frequency": 128,
+                "cefr": "A2"
+            },
+            {
+                "word": "bringen",
+                "pos": "VERB",
+                "translation": "to bring",
+                "frequency": 163,
+                "cefr": "A1"
+            },
+            {
+                "word": "mögen",
+                "pos": "VERB",
+                "translation": "to like"
+            },
+            {
+                "word": "nennen",
+                "pos": "VERB",
+                "translation": "to name",
+                "frequency": 191,
+                "cefr": "A2"
+            },
+            {
+                "word": "kennen",
+                "pos": "VERB",
+                "translation": "to be familiar with; know",
+                "frequency": 216,
+                "cefr": "A1"
+            },
+            {
+                "word": "rennen",
+                "pos": "VERB",
+                "translation": "to run; race; sprint",
+                "frequency": 2052,
+                "cefr": "B1"
+            },
+            {
+                "word": "brennen",
+                "pos": "VERB",
+                "translation": "to burn",
+                "frequency": 1651,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Sachbuch",
+                "pos": "NOUN",
+                "translation": "non-fiction book",
+                "frequency": 16740,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Märchen",
+                "pos": "NOUN",
+                "translation": "fairy tale"
+            },
+            {
+                "word": "das Abenteuer",
+                "pos": "NOUN",
+                "translation": "adventure",
+                "frequency": 3634,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hexe",
+                "pos": "NOUN",
+                "translation": "witch",
+                "frequency": 9074,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Besen",
+                "pos": "NOUN",
+                "translation": "broom, brush",
+                "frequency": 18060,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Rabe",
+                "pos": "NOUN",
+                "translation": "raven",
+                "frequency": 12080,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Ente",
+                "pos": "NOUN",
+                "translation": "duck",
+                "frequency": 10558,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Angel",
+                "pos": "NOUN",
+                "translation": "fishing rod",
+                "frequency": 11496,
+                "cefr": "A1"
+            },
+            {
+                "word": "der See",
+                "pos": "NOUN",
+                "translation": "lake",
+                "frequency": 1317,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fluss",
+                "pos": "NOUN",
+                "translation": "river",
+                "frequency": 1687,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Dorf",
+                "pos": "NOUN",
+                "translation": "village",
+                "frequency": 959,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Rad",
+                "pos": "NOUN",
+                "translation": "wheel",
+                "frequency": 2392,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kiste",
+                "pos": "NOUN",
+                "translation": "box; case",
+                "frequency": 3205,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Krieg",
+                "pos": "NOUN",
+                "translation": "war",
+                "frequency": 575,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Soldat*in",
+                "pos": "NOUN",
+                "translation": "soldier",
+                "frequency": 1267,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Gefangene",
+                "pos": "NOUN",
+                "translation": "prisoner, captive, convict",
+                "frequency": 6639,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Flucht",
+                "pos": "NOUN",
+                "translation": "escape, flight",
+                "frequency": 2008,
+                "cefr": "B1"
+            },
+            {
+                "word": "spannend",
+                "pos": "ADJ",
+                "translation": "suspenseful, thrilling, gripping",
+                "frequency": 1810,
+                "cefr": "A2"
+            },
+            {
+                "word": "magisch",
+                "pos": "ADJ",
+                "translation": "magical",
+                "frequency": 4931
+            },
+            {
+                "word": "geheimnisvoll",
+                "pos": "ADJ",
+                "translation": "arcane, mysterious, mystic",
+                "frequency": 10066
+            },
+            {
+                "word": "fantasievoll",
+                "pos": "ADJ",
+                "translation": "fanciful, imaginative",
+                "frequency": 21051
+            },
+            {
+                "word": "böse",
+                "pos": "ADJ",
+                "translation": "angry; evil, bad, vicious"
+            },
+            {
+                "word": "unbekannt",
+                "pos": "ADJ",
+                "translation": "unknown, unfamiliar",
+                "frequency": 1292
+            },
+            {
+                "word": "das Wunder",
+                "pos": "NOUN",
+                "translation": "miracle; wonder",
+                "frequency": 1909,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "fantastisch",
+                "pos": "ADJ",
+                "frequency": 10460,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Comic",
+                "pos": "NOUN",
+                "frequency": 9041,
+                "cefr": "A2"
+            },
+            {
+                "word": "Haupt",
+                "pos": "NOUN",
+                "frequency": 8218
+            },
+            {
+                "word": "die Zusammenfassung",
+                "pos": "NOUN",
+                "frequency": 3001
+            },
+            {
+                "word": "die Infinitive",
+                "pos": "NOUN"
+            },
+            {
+                "word": "mochen",
+                "pos": "VERB"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wissen": {
+                "present": {
+                    "ich": "weiß",
+                    "du": "weißt",
+                    "er": "weiß",
+                    "es": "weiß",
+                    "sie_singular": "weiß",
+                    "xier": "weiß",
+                    "wir": "wissen",
+                    "ihr": "wisst",
+                    "sie_plural": "wissen",
+                    "Sie": "wissen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewusst",
+                    "du": "hast gewusst",
+                    "er": "hat gewusst",
+                    "es": "hat gewusst",
+                    "sie_singular": "hat gewusst",
+                    "xier": "hat gewusst",
+                    "wir": "haben gewusst",
+                    "ihr": "habt gewusst",
+                    "sie_plural": "haben gewusst",
+                    "Sie": "haben gewusst"
+                }
+            },
+            "denken": {
+                "present": {
+                    "ich": "denke",
+                    "du": "denkst",
+                    "er": "denkt",
+                    "es": "denkt",
+                    "sie_singular": "denkt",
+                    "xier": "denkt",
+                    "wir": "denken",
+                    "ihr": "denkt",
+                    "sie_plural": "denken",
+                    "Sie": "denken"
+                },
+                "Perfekt": {
+                    "ich": "habe gedacht",
+                    "du": "hast gedacht",
+                    "er": "hat gedacht",
+                    "es": "hat gedacht",
+                    "sie_singular": "hat gedacht",
+                    "xier": "hat gedacht",
+                    "wir": "haben gedacht",
+                    "ihr": "habt gedacht",
+                    "sie_plural": "haben gedacht",
+                    "Sie": "haben gedacht"
+                }
+            },
+            "bringen": {
+                "present": {
+                    "ich": "bringe",
+                    "du": "bringst",
+                    "er": "bringt",
+                    "es": "bringt",
+                    "sie_singular": "bringt",
+                    "xier": "bringt",
+                    "wir": "bringen",
+                    "ihr": "bringt",
+                    "sie_plural": "bringen",
+                    "Sie": "bringen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebracht",
+                    "du": "hast gebracht",
+                    "er": "hat gebracht",
+                    "es": "hat gebracht",
+                    "sie_singular": "hat gebracht",
+                    "xier": "hat gebracht",
+                    "wir": "haben gebracht",
+                    "ihr": "habt gebracht",
+                    "sie_plural": "haben gebracht",
+                    "Sie": "haben gebracht"
+                }
+            },
+            "mögen": {
+                "present": {
+                    "ich": "mag",
+                    "du": "magst",
+                    "er": "mag",
+                    "es": "mag",
+                    "sie_singular": "mag",
+                    "xier": "mag",
+                    "wir": "mögen",
+                    "ihr": "mögt",
+                    "sie_plural": "mögen",
+                    "Sie": "mögen"
+                },
+                "Präteritum": {
+                    "ich": "mochte",
+                    "du": "mochtest",
+                    "er": "mochte",
+                    "es": "mochte",
+                    "sie_singular": "mochte",
+                    "xier": "mochte",
+                    "wir": "mochten",
+                    "ihr": "mochtet",
+                    "sie_plural": "mochten",
+                    "Sie": "mochten"
+                },
+                "Perfekt": {
+                    "ich": "habe gemocht",
+                    "du": "hast gemocht",
+                    "er": "hat gemocht",
+                    "es": "hat gemocht",
+                    "sie_singular": "hat gemocht",
+                    "xier": "hat gemocht",
+                    "wir": "haben gemocht",
+                    "ihr": "habt gemocht",
+                    "sie_plural": "haben gemocht",
+                    "Sie": "haben gemocht"
+                }
+            },
+            "nennen": {
+                "present": {
+                    "ich": "nenne",
+                    "du": "nennst",
+                    "er": "nennt",
+                    "es": "nennt",
+                    "sie_singular": "nennt",
+                    "xier": "nennt",
+                    "wir": "nennen",
+                    "ihr": "nennt",
+                    "sie_plural": "nennen",
+                    "Sie": "nennen"
+                },
+                "Perfekt": {
+                    "ich": "habe genannt",
+                    "du": "hast genannt",
+                    "er": "hat genannt",
+                    "es": "hat genannt",
+                    "sie_singular": "hat genannt",
+                    "xier": "hat genannt",
+                    "wir": "haben genannt",
+                    "ihr": "habt genannt",
+                    "sie_plural": "haben genannt",
+                    "Sie": "haben genannt"
+                }
+            },
+            "kennen": {
+                "present": {
+                    "ich": "kenne",
+                    "du": "kennst",
+                    "er": "kennt",
+                    "es": "kennt",
+                    "sie_singular": "kennt",
+                    "xier": "kennt",
+                    "wir": "kennen",
+                    "ihr": "kennt",
+                    "sie_plural": "kennen",
+                    "Sie": "kennen"
+                },
+                "Perfekt": {
+                    "ich": "habe gekannt",
+                    "du": "hast gekannt",
+                    "er": "hat gekannt",
+                    "es": "hat gekannt",
+                    "sie_singular": "hat gekannt",
+                    "xier": "hat gekannt",
+                    "wir": "haben gekannt",
+                    "ihr": "habt gekannt",
+                    "sie_plural": "haben gekannt",
+                    "Sie": "haben gekannt"
+                }
+            },
+            "rennen": {
+                "present": {
+                    "ich": "renne",
+                    "du": "rennst",
+                    "er": "rennt",
+                    "es": "rennt",
+                    "sie_singular": "rennt",
+                    "xier": "rennt",
+                    "wir": "rennen",
+                    "ihr": "rennt",
+                    "sie_plural": "rennen",
+                    "Sie": "rennen"
+                },
+                "Perfekt": {
+                    "ich": "bin gerannt",
+                    "du": "bist gerannt",
+                    "er": "ist gerannt",
+                    "es": "ist gerannt",
+                    "sie_singular": "ist gerannt",
+                    "xier": "ist gerannt",
+                    "wir": "sind gerannt",
+                    "ihr": "seid gerannt",
+                    "sie_plural": "sind gerannt",
+                    "Sie": "sind gerannt"
+                }
+            },
+            "brennen": {
+                "present": {
+                    "ich": "brenne",
+                    "du": "brennst",
+                    "er": "brennt",
+                    "es": "brennt",
+                    "sie_singular": "brennt",
+                    "xier": "brennt",
+                    "wir": "brennen",
+                    "ihr": "brennt",
+                    "sie_plural": "brennen",
+                    "Sie": "brennen"
+                },
+                "Perfekt": {
+                    "ich": "habe gebrannt",
+                    "du": "hast gebrannt",
+                    "er": "hat gebrannt",
+                    "es": "hat gebrannt",
+                    "sie_singular": "hat gebrannt",
+                    "xier": "hat gebrannt",
+                    "wir": "haben gebrannt",
+                    "ihr": "habt gebrannt",
+                    "sie_plural": "haben gebrannt",
+                    "Sie": "haben gebrannt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Welche Adjektive passen zu welchen Arten von Kinderbücher [Kinder Buch]?",
+            "Ordnen Sie die Adjektive (Zahlen) den Genres zu.",
+            "Fantastische Geschichten Comics.",
+            "Beantworten Sie die Fragen zu Ihrem Lieblingskinderbuch im grauen Teil der Tabelle.",
+            "Welche Figuren gibt es in dem Buch?",
+            "Wie war das Buch?",
+            "Wie war dein Buch?",
+            "Interessant, spannend, lustig Fragen Sie jetzt zwei andere Studierende im Kurs und machen Sie Notizen im weißen Teil der Tabelle.",
+            "Erzählen Sie etwas über die Lieblingskinderbuch von Ihren Partner *innen.",
+            "Meine Partner waren Tim, Nele und Neila.",
+            "War Harry Potter.",
+            "Zu Hause haben Sie vier Kinderbücher [Kinder Buch] kennengelernt.",
+            "Sprechen Sie über die Bücher.",
+            "Lesen Sie auf der rechten Seite d en Text.",
+            "Zu welchem der vier Bücher passt er?",
+            "Ein kleiner Junge hat in einem Dorf gelebt.",
+            "In dem Dorf hat es einen schlimmen Krieg gegeben hat.",
+            "Deshalb ist der Junge aus dem Dorf gegangen.",
+            "Auf der Flucht hat er seine Familie verloren.",
+            "Er hat gedacht, dass er für immer allein ist.",
+            "Aber eine unbekannte Frau hat auf ihn aufgepasst.",
+            "Dann ist die Situation aber viel schlimmer geworden:",
+            "Soldaten sind gekommen und haben ihn zu ihrem Gefangenen gemacht.",
+            "Dann ist er wieder geflohen.",
+            "Er ist tagelang gerannt.",
+            "Dann ist er in ein Lager auf der anderen Flussseite gekommen.",
+            "Dort hat es ein Wunder gegeben:",
+            "Er hat seine Mutter gefunden.",
+            "Markieren Sie rechts in der Zusammenfassung alle Partizip-Perfekt-Formen.",
+            "Wie heißen die Infinitive?",
+            "Leben ist gegangen",
+            "Gehen hat verloren",
+            "Verlieren hat gedacht",
+            "Aufgepasst aufpassen ist",
+            "Werden sind gekommen",
+            "Kommen haben gemacht machen",
+            "Fliehen ist gerannt",
+            "Rennen ist gekommen",
+            "Kommen hat gegeben",
+            "Geben hat gefunden finden",
+            "Oh, wie schön ist Panama",
+            "\"Oh, wie schön ist Panama\"",
+            "Erzählt die Geschichte von zwei Freunden: dem kleinen Tiger und dem kleinen Bären.",
+            "Unten sehen Sie ein Foto.",
+            "Beschreiben Sie die beiden.",
+            "Wie sehen sie aus?",
+            "Welche Körperteile haben sie?",
+            "Welche Farben sehen Sie?",
+            "Was tragen sie wo?",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie, wie \"Oh, wie schön ist Panama\" beginnt, und beantworten die Fragen.",
+            "Wo leben der Tiger und der Bär?",
+            "Was machen der Bär und der Tiger oft / jeden Tag?",
+            "Was findet der Bär?",
+            "Was ist der Plan?",
+            "Was nehmen sie mit?",
+            "Ich kenne einen kleinen Bären und einen kleinen Tiger.",
+            "Sie leben unten am Fluss neben dem großen Baum.",
+            "Sie haben ein Boot und wohnen in einem kleinen Haus.",
+            "Der kleine Tiger bringt oft Pilze aus dem Wald.",
+            "Er hat eine kleine gelbschwarz gestreifte Holzente mit Rädern.",
+            "Er nennt sie \"Tigerente\".",
+            "Der kleine Bär mag Fische.",
+            "Er fischt jeden Tag am See mit seiner Angel.",
+            "Eines Tages fischt er eine Holzkiste aus dem Fluss.",
+            "Auf der Kiste steht \"Panama\".",
+            "Der kleine Bär denkt, dass Panama das Land der Träume ist.",
+            "Er rennt schnell nach Hause und erzählt dem Tiger von der Kiste und Panama.",
+            "Sie wollen nach Panama reisen.",
+            "Sie bringen einen Topf, eine Angel und die Tigerente.",
+            "Und so beginnt ihr Abenteuer … Quelle: Beltz &",
+            "Markieren Sie im Text alle Verben.",
+            "Schreiben Sie die Verben im Präteritum oder Perfekt (haben/sein + Partizip) auf.",
+            "Kennen – hat gekannt leben – hat gelebt haben – hatte bringen – hat",
+            "Hat gemocht fischen – hat gefischt stehen – hat gestanden denken – hat gedacht nennen – ist gerannt erzählen –",
+            "Hat erzählt wissen – hat gewusst",
+            "Bringen – hat gebracht beginnen –",
+            "Die Geschichte ist im Präsens.",
+            "Nutzen Sie die Liste aus Teil 4.",
+            "Ich habe einen kleinen Bären und einen kleinen Tiger gekannt.",
+            "Sie haben unten am Fluss neben dem großen Baum gelebt.",
+            "Sie hatten ein Boot und haben in einem kleinen Haus gewohnt.",
+            "Der kleine Tiger hat oft Pilze aus dem Wald gebracht.",
+            "Er hatte eine kleine gelbschwarz gestreifte Holzente mit Rädern.",
+            "Er hat sie \"Tigerente\" genannt.",
+            "Der kleine Bär hat Fische gemocht.",
+            "Er hat jeden Tag am See mit seiner Angel gefischt.",
+            "Eines Tages hat er eine Holzkiste aus dem Fluss gefischt.",
+            "Auf der Kiste hat \"Panama\" gestanden.",
+            "Der kleine Bär hat gedacht, dass Panama das Land der Träume ist.",
+            "Er ist schnell nach Hause gerannt und hat dem Tiger von der Kiste und Panama erzählt.",
+            "Sie wollten nach Panama reisen.",
+            "Sie haben einen Topf, eine Angel, die Tigerente gebracht."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

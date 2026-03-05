@@ -1,0 +1,144 @@
+{
+    "unit": "O39",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 39,
+        "prerequisite": "core 1-104, O1-O38"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Werbung konzipieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Werbung und Marketing"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "dran sein, war dran, ist dran gewesen", "pos": "PHRASE", "translation": "it is so.'s turn" },
+            { "word": "die Wahl", "pos": "NOUN", "translation": "choice; voting, election", "frequency": 799, "cefr": "B1" },
+            { "word": "die Mehrsprachigkeit", "pos": "NOUN", "translation": "multilingualism", "frequency": 41181, "cefr": "A1" },
+            { "word": "die Kompetenz", "pos": "NOUN", "translation": "competence", "frequency": 2556, "cefr": "A1" },
+            { "word": "interkulturell", "pos": "ADJ", "translation": "intercultural", "frequency": 2752, "cefr": "B1" },
+            { "word": "kognitiv", "pos": "ADJ", "translation": "cognitive", "frequency": 3403 },
+            { "word": "differenziert", "pos": "ADJ", "translation": "differentiated; sophisticated", "frequency": 10238 },
+            { "word": "flexibel", "pos": "ADJ", "translation": "flexible; agile", "frequency": 2899, "cefr": "B1" },
+            { "word": "konkret", "pos": "ADJ", "translation": "concrete", "frequency": 830 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": []
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {}
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sehen Sie sich die Schweizer Webseite (.",
+            "Ch ) von einem der Produkte unten an und recherchieren Sie die Antworten auf die Fragen.",
+            "In welchen Sprachen gibt es Informationen?",
+            "Welche offiziellen Sprachen der Schweiz werden auf der Webseite benutzt?",
+            "Welche offiziellen Sprachen der Schweiz gibt es auf der Produktseite nicht?",
+            "Englisch ist eine Werbesprache, die auch im Deutschen gerne benutzt wird.",
+            "Finden Sie auch auf den Schweizer Seiten englische Wörter oder Sätze?",
+            "Erzählen Sie den anderen Gruppen von Option A, was Sie gefunden haben.",
+            "Was sehen Sie?",
+            "Verstehen Sie Wörter?",
+            "Dann schauen Sie auf die Rivella Webseite.",
+            "Welche Informationen verstehen Sie?",
+            "Wie möchte Rivella sich präsentieren?",
+            "Vergleichen Sie mit zwei oder drei anderen Studierenden.",
+            "Sie bekommen einen Text über Mehrsprachigkeit.",
+            "Jede Person liest einen der drei Teile.",
+            "Ordnen Sie das Thema Ihrem Teil zu und identifizieren Sie wichtige Wörter für Ihren Teil.",
+            "Vorteil von Mehrsprachigkeit - Andere Vorteile von Mehrsprachigkeit - Mehrsprachigkeit in der Welt",
+            "Wichtige Wörter: Gro - 7000 Sprachen | Europa | 75% der Weltbevölkerung |",
+            "Standard - differenzierte Sicht | andere Perspektiven | flexibel |",
+            "Interkulturelle Kompetenzen - kognitive Vorteile | besser konzentrieren | schneller lesen lernen |",
+            "Erzählen Sie den anderen Personen in Ihrer 3er Gruppe von Ihrem Teil.",
+            "Ihre wichtigen Wörter helfen.",
+            "Jetzt sind Sie dran.",
+            "Gestalten Sie in Ihrer Gruppe ein eigenes Produktmarketing für ein Produkt Ihrer Wahl.",
+            "Das kann ein Schweizer Produkt sein, das Sie in diesem Kapitel kennengelernt haben oder ein anderes Produkt, das es in vielen Ländern gibt.",
+            "Versuchen Sie außer Deutsch noch mindestens eine andere Sprache in Ihrer Werbung zu benutzen.",
+            "Stellen Sie Ihr Produkt und das Marketing im Kurs vor.",
+            "Gestalten Sie jetzt ein „Produktmarketing fürs Sprachenlernen.",
+            "Sie können konkret eine Sprache bewerben oder ganz allgemein das Sprachenlernen.",
+            "Sie können zeichnen, schreiben oder auch Bilder aus dem Internet benutzen.",
+            "Stellen Sie Ihr Produktmarketing im Kurs vor."
+        ],
+        "templated": []
+    }
+}

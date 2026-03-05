@@ -1,0 +1,287 @@
+{
+    "unit": "O31",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 31,
+        "prerequisite": "core 1-104, O1-O30"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [
+            "Build passive sentences step by step: accusative object ÃƒÂ¢Ã¢€Â Ã¢€â„¢ nominative subject, verb ÃƒÂ¢Ã¢€Â Ã¢€â„¢ werden (conjugated) + Partizip II (end), original subject ÃƒÂ¢Ã¢€Â Ã¢€â„¢ optional von + dative phrase, all other elements stay unchanged."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Tag in Genf rekonstruieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die französische Schweiz und Genf"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "Es geht weiter.", "pos": "PHRASE", "translation": "It goes on." },
+            { "word": "lösen", "pos": "VERB", "translation": "to solve, resolve" },
+            { "word": "Genf", "pos": "NOUN", "translation": "Geneva (city in Switzerland)", "frequency": 6438 },
+            { "word": "der*die Physiker*in", "pos": "NOUN", "translation": "physicist", "frequency": 5822 },
+            { "word": "der*die Wissenschaftler*in", "pos": "NOUN", "translation": "scientist", "frequency": 1522, "cefr": "B1" },
+            { "word": "das Experiment", "pos": "NOUN", "translation": "experiment", "frequency": 1695, "cefr": "A1" },
+            { "word": "das Teilchen", "pos": "NOUN", "translation": "particle", "frequency": 1249, "cefr": "A1" },
+            { "word": "der Beschleuniger", "pos": "NOUN", "translation": "accelerator; catalyst", "frequency": 1, "cefr": "A1" },
+            { "word": "der Blick", "pos": "NOUN", "translation": "view; sight", "frequency": 306, "cefr": "A1" },
+            { "word": "die Erde", "pos": "NOUN", "translation": "earth; soil", "frequency": 783, "cefr": "B1" },
+            { "word": "der Bau", "pos": "NOUN", "translation": "construction, building", "frequency": 1598, "cefr": "B1" },
+            { "word": "das Rennen", "pos": "NOUN", "translation": "race", "frequency": 2052, "cefr": "B1" },
+            { "word": "die Strecke", "pos": "NOUN", "translation": "track [as in race track], route, distance", "frequency": 1456, "cefr": "B1" },
+            { "word": "die Wasserfontäne", "pos": "NOUN", "translation": "water fountain; water-jet" },
+            { "word": "die Milliarde", "pos": "NOUN", "translation": "billion", "frequency": 453, "cefr": "A1" },
+            { "word": "die Billion", "pos": "NOUN", "translation": "trillion", "frequency": 10503, "cefr": "B2" },
+            { "word": "die Pflaume", "pos": "NOUN", "translation": "plum", "frequency": 27618, "cefr": "B1" },
+            { "word": "kompliziert", "pos": "ADJ", "translation": "complicated", "frequency": 1868, "cefr": "B1" },
+            { "word": "nochmal", "pos": "ADV", "translation": "again", "frequency": 1984 },
+            { "word": "das Zentrum, Zentren", "pos": "NOUN", "translation": "center", "frequency": 1145, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Fontäne", "pos": "NOUN", "frequency": 45542 },
+            { "word": "das Universum", "pos": "NOUN", "frequency": 3948 },
+            { "word": "genfer", "pos": "ADJ", "frequency": 8472 },
+            { "word": "das Partikel", "pos": "NOUN", "frequency": 18326, "cefr": "B2" },
+            { "word": "elementar", "pos": "ADJ", "frequency": 3677 },
+            { "word": "das Mikroskop", "pos": "NOUN", "frequency": 27329 },
+            { "word": "das Elektron", "pos": "NOUN", "frequency": 812, "cefr": "B2" },
+            { "word": "der Proton", "pos": "NOUN", "frequency": 2756 },
+            { "word": "das Neutron", "pos": "NOUN", "frequency": 4478 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "lösen": {
+                "present": {
+                    "ich": "löse",
+                    "du": "löst",
+                    "er": "löst",
+                    "es": "löst",
+                    "sie_singular": "löst",
+                    "xier": "löst",
+                    "wir": "lösen",
+                    "ihr": "löst",
+                    "sie_plural": "lösen",
+                    "Sie": "lösen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelöst",
+                    "du": "hast gelöst",
+                    "er": "hat gelöst",
+                    "es": "hat gelöst",
+                    "sie_singular": "hat gelöst",
+                    "xier": "hat gelöst",
+                    "wir": "haben gelöst",
+                    "ihr": "habt gelöst",
+                    "sie_plural": "haben gelöst",
+                    "Sie": "haben gelöst"
+                },
+                "Futur_I": {
+                    "ich": "werde lösen",
+                    "du": "wirst lösen",
+                    "er": "wird lösen",
+                    "es": "wird lösen",
+                    "sie_singular": "wird lösen",
+                    "xier": "wird lösen",
+                    "wir": "werden lösen",
+                    "ihr": "werdet lösen",
+                    "sie_plural": "werden lösen",
+                    "Sie": "werden lösen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde lösen",
+                    "du": "würdest lösen",
+                    "er": "würde lösen",
+                    "es": "würde lösen",
+                    "sie_singular": "würde lösen",
+                    "xier": "würde lösen",
+                    "wir": "würden lösen",
+                    "ihr": "würdet lösen",
+                    "sie_plural": "würden lösen",
+                    "Sie": "würden lösen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gelöst",
+                    "du": "hättest gelöst",
+                    "er": "hätte gelöst",
+                    "es": "hätte gelöst",
+                    "sie_singular": "hätte gelöst",
+                    "xier": "hätte gelöst",
+                    "wir": "hätten gelöst",
+                    "ihr": "hättet gelöst",
+                    "sie_plural": "hätten gelöst",
+                    "Sie": "hätten gelöst"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gelöst",
+                    "du": "wirst gelöst",
+                    "er": "wird gelöst",
+                    "es": "wird gelöst",
+                    "sie_singular": "wird gelöst",
+                    "xier": "wird gelöst",
+                    "wir": "werden gelöst",
+                    "ihr": "werdet gelöst",
+                    "sie_plural": "werden gelöst",
+                    "Sie": "werden gelöst"
+                },
+                "imperative": {
+                    "du": "löse",
+                    "ihr": "löst",
+                    "Sie": "lösen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie den Text und ergänzen Sie die Verben in den Aktivsätze.",
+            "Hey Leute, ich fahre heute nach Genf.",
+            "Das ist eine mega schöne Stadt.",
+            "Als erstes gehe ich in die Altstadt.",
+            "Ich sehe die Kathedrale St.",
+            "Ich gehe auch auf den Turm.",
+            "Vom Turm habe ich einen tollen Blick über die Stadt.",
+            "Ich sehe auch den Genfersee [See] von oben.",
+            "Dann besuche ich das Reformationsdenkmal.",
+            "Jetzt habe ich Hunger.",
+            "Ich suche ein Restaurant.",
+            "Ich finde ein kleines Restaurant im Viertel Carouge.",
+            "Hier sieht es ganz italienisch aus.",
+            "Dann geht es weiter.",
+            "Ich fahre Tram zum Genfersee [See].",
+            "Die Wasserfontäne ist so cool.",
+            "Genfer Bäckereien machen einen leckeren Pflaumenkuchen.",
+            "Den muss ich probieren und er ist wirklich toll.",
+            "Dann gehe ich noch zum Science Gateway am CERN.",
+            "Hier lerne ich Fakten über das Universum.",
+            "Am Abend esse ich Raclette.",
+            "Ich liebe Käse.",
+            "Ich hatte einen tollen Tag, ihr müsst auch mal nach Genf reisen!",
+            "Schreiben Sie die Partizipien von den Verben rechts neben die Aktivsätze.",
+            "Schreiben Sie dann die Aktivsätze in Passivsätze um.",
+            "Peter wird gesehen.",
+            "Gehabt Passiv: Ein toller Blick über die Stadt wird gehabt.",
+            "Besucht Passiv: Das Reformationsdenkbal wird besucht.",
+            "Ein Restaurant wird gesucht.",
+            "Ein kleines Restaurant im Viertel Carouge wird gefunden.",
+            "Gemacht Passiv: Ein leckerer Pflaumenkuchen wird gemacht.",
+            "Fakten über das Universum werden gelernt.",
+            "Raclette wird gegessen.",
+            "Käse wird geliebt.",
+            "Lesen Sie den Text über den LHC am CERN in der Nähe von Genf.",
+            "Markieren Sie beim ersten Lesen alle Zahlen.",
+            "Er kostet so viel wie 20 Fußballstadien",
+            "Und ist länger als jede Formel-1- Strecke:",
+            "Wissenschaftler*innen finden es toll.",
+            "Das ist das komplizierteste Ding, das Menschen gebaut haben.",
+            "Der LHC ist der größte Teilchenbeschleuniger in der Welt.",
+            "Er ist so groß, dass er nur unter der Erde Platz hat.",
+            "Müssen 100 m unter die Erde fahren, um ihn zu besuchen.",
+            "Dort unten finden sie dann einen langen Tunnel.",
+            "Der Tunnel ist 27 km lang.",
+            "Es gibt auch große Magnete, die so groß wie Kirchen sind und so schwer wie 2000 Elefanten.",
+            "Der Bau hat über drei Milliarden Euro gekostet.",
+            "26 Länder haben Geld gegeben.",
+            "Und der LHC ist so kompliziert, dass nur große Teams mit ihm arbeiten können.",
+            "Obwohl der LHC so groß ist, geht es um die kleinsten Partikel:",
+            "Es geht um Elementarteilchen.",
+            "Sie sind so klein, dass man sie nicht unter einem Mikroskop sehen kann.",
+            "Stellen Sie sich die Sonne vor und machen Sie die Sonne so klein wie diesen Punkt.",
+            "Dann machen Sie den Punkt nochmal so viel kleiner:",
+            "Das ist die Größe von einem Elementarteilchen.",
+            "Und warum sind Elementarteilchen interessant?",
+            "Forscher*innen glauben, dass alles in unserem Universum aus diesen Partikeln gebaut ist.",
+            "In Atomen sind Elektronen, Protonen und Neutronen.",
+            "Die Physiker*innen wollen wissen, was in Protonen ist.",
+            "Aber Protonen sind sehr stabil.",
+            "Sie gehen erst kaputt, wenn sie sehr sehr schnell sind und dann auf ein anderes Teilchen stoßen.",
+            "Deshalb beschleunigt der LHC Protonen auf Lichtgeschwindigkeit, also auf 300.000 km pro Sekunde.",
+            "Der LHC ist also eine Rennstrecke für Teilchen.",
+            "Mit Experimenten wollen die Forscher*innen am CERN so viele Fragen über unser Universum beantworten.",
+            "Eine Person schreibt Fragen über die ersten drei Zahlen im Text, die zweite Person schreibt Fragen über die letzten drei Zahlen im Text.",
+            "Eine Frage pro Zahl.",
+            "Die Antwort der Frage soll die Zahl sein.",
+            "Stellen Sie Ihre Fragen und beantworten Sie die Fragen der anderen Person.",
+            "Wählen Sie einen Aktivsatz mit einem Akkusativ ( fettgedruckt ) und machen Sie einen Passivsatz daraus.",
+            "Besuchen Sie die Webseite vom CERN Science Gateway:",
+            "Was kann man dort machen?",
+            "Suchen Sie sich einen interessanten Workshop, ein interessantes Lab etc., finden Sie drei Information darüber und erzählen Sie einer anderen Person davon."
+        ],
+        "templated": []
+    }
+}

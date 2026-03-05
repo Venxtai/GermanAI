@@ -1,0 +1,583 @@
+{
+    "unit": "16",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 16,
+        "prerequisite": "1-15"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Place frequency adverbs (immer, meistens, oft, manchmal, selten, nie) directly after the conjugated verb.",
+            "Ask for the time with \"Wie viel Uhr ist es?\" or \"Wie spät ist es?\" and answer with \"Es ist + [time] + Uhr.\"",
+            "Tell official (24-hour) time by stating the hour, the word Uhr, and the minutes: \"vierzehn Uhr dreiundzwanzig.\"",
+            "State temperatures with \"Es ist + [temperature] + Grad\" using ist for singular and sind for plural."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über das Wetter sprechen",
+            "sagen, wie oft etwas passiert",
+            "nach der Uhrzeit fragen und sie nennen",
+            "Temperaturen nennen und vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Wetter"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "regnen",
+                "pos": "VERB",
+                "translation": "to rain",
+                "frequency": 3558,
+                "cefr": "A1"
+            },
+            {
+                "word": "blitzen",
+                "pos": "VERB",
+                "translation": "to flash (here: in the context of lightning)",
+                "frequency": 12783,
+                "cefr": "B1"
+            },
+            {
+                "word": "schneien",
+                "pos": "VERB",
+                "translation": "to snow",
+                "frequency": 18692,
+                "cefr": "A2"
+            },
+            {
+                "word": "donnern",
+                "pos": "VERB",
+                "translation": "to thunder",
+                "frequency": 22381,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Stadt",
+                "pos": "NOUN",
+                "translation": "city",
+                "frequency": 204,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Frühling",
+                "pos": "NOUN",
+                "translation": "spring",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Sommer",
+                "pos": "NOUN",
+                "translation": "summer",
+                "frequency": 771,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Herbst",
+                "pos": "NOUN",
+                "translation": "fall",
+                "frequency": 1596,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Winter",
+                "pos": "NOUN",
+                "translation": "winter",
+                "frequency": 1206,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Temperatur",
+                "pos": "NOUN",
+                "translation": "temperature",
+                "frequency": 873,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Grad",
+                "pos": "NOUN",
+                "translation": "degree",
+                "frequency": 1117,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wetter",
+                "pos": "NOUN",
+                "translation": "weather",
+                "frequency": 1881,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zeit",
+                "pos": "NOUN",
+                "translation": "time",
+                "frequency": 96,
+                "cefr": "A1"
+            },
+            {
+                "word": "Wie spät ist es?",
+                "pos": "PHRASE",
+                "translation": "What time is it?"
+            },
+            {
+                "word": "wann",
+                "pos": "ADV",
+                "translation": "at what time; when [time]",
+                "frequency": 657,
+                "cefr": "A1"
+            },
+            {
+                "word": "sonnig",
+                "pos": "ADJ",
+                "translation": "sunny",
+                "frequency": 8122,
+                "cefr": "A2"
+            },
+            {
+                "word": "windig",
+                "pos": "ADJ",
+                "translation": "windy",
+                "frequency": 25817,
+                "cefr": "A2"
+            },
+            {
+                "word": "neblig",
+                "pos": "ADJ",
+                "translation": "foggy",
+                "cefr": "A2"
+            },
+            {
+                "word": "bewölkt",
+                "pos": "ADJ",
+                "translation": "cloudy; overcast"
+            },
+            {
+                "word": "teils",
+                "pos": "ADV",
+                "translation": "partly",
+                "frequency": 2693
+            },
+            {
+                "word": "immer",
+                "pos": "ADV",
+                "translation": "always",
+                "frequency": 64,
+                "cefr": "A1"
+            },
+            {
+                "word": "meistens",
+                "pos": "ADV",
+                "translation": "mostly, usually",
+                "frequency": 1261,
+                "cefr": "A2"
+            },
+            {
+                "word": "oft",
+                "pos": "ADV",
+                "translation": "often",
+                "frequency": 223,
+                "cefr": "A1"
+            },
+            {
+                "word": "manchmal",
+                "pos": "ADV",
+                "translation": "sometimes",
+                "frequency": 382,
+                "cefr": "A2"
+            },
+            {
+                "word": "selten",
+                "pos": "ADJ",
+                "translation": "rare(ly)",
+                "frequency": 669,
+                "cefr": "B1"
+            },
+            {
+                "word": "nie",
+                "pos": "ADV",
+                "translation": "never",
+                "frequency": 186,
+                "cefr": "A1"
+            },
+            {
+                "word": "durchschnittlich",
+                "pos": "ADJ",
+                "translation": "(on) average",
+                "frequency": 1965,
+                "cefr": "B1"
+            },
+            {
+                "word": "andere",
+                "pos": "ADJ",
+                "translation": "other, another",
+                "frequency": 59,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "bewölken",
+                "pos": "ADV",
+                "frequency": 21735,
+                "cefr": "A2"
+            },
+            {
+                "word": "Japan",
+                "pos": "PROPN",
+                "frequency": 2162
+            },
+            {
+                "word": "warm",
+                "pos": "ADV",
+                "frequency": 1281,
+                "cefr": "A2"
+            },
+            {
+                "word": "nach",
+                "pos": "ADP",
+                "frequency": 34,
+                "cefr": "A1"
+            },
+            {
+                "word": "fünfundvierzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "fünfunddreißig",
+                "pos": "NUM"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "regnen": {
+                "present": {
+                    "ich": "—",
+                    "du": "—",
+                    "er": "regnet",
+                    "es": "regnet",
+                    "sie_singular": "regnet",
+                    "xier": "regnet",
+                    "wir": "regnen",
+                    "ihr": "regnet",
+                    "sie_plural": "regnen",
+                    "Sie": "regnen"
+                }
+            },
+            "blitzen": {
+                "present": {
+                    "ich": "blitze",
+                    "du": "blitzt",
+                    "er": "blitzt",
+                    "es": "blitzt",
+                    "sie_singular": "blitzt",
+                    "xier": "blitzt",
+                    "wir": "blitzen",
+                    "ihr": "blitzt",
+                    "sie_plural": "blitzen",
+                    "Sie": "blitzen"
+                }
+            },
+            "schneien": {
+                "present": {
+                    "ich": "schneie",
+                    "du": "schneist",
+                    "er": "schneit",
+                    "es": "schneit",
+                    "sie_singular": "schneit",
+                    "xier": "schneit",
+                    "wir": "schneien",
+                    "ihr": "schneit",
+                    "sie_plural": "schneien",
+                    "Sie": "schneien"
+                }
+            },
+            "donnern": {
+                "present": {
+                    "ich": "donnere",
+                    "du": "donnerst",
+                    "er": "donnert",
+                    "es": "donnert",
+                    "sie_singular": "donnert",
+                    "xier": "donnert",
+                    "wir": "donnern",
+                    "ihr": "donnert",
+                    "sie_plural": "donnern",
+                    "Sie": "donnern"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wetter in Deutschland, Liechtenstein, Österreich und der Schweiz 1",
+            "Lesen Sie die Vokabeln laut.",
+            "Es ist sonnig.",
+            "Es ist teils bewölkt.",
+            "Es ist bewölkt.",
+            "Es ist windig.",
+            "Es ist neblig.",
+            "Es regnet.",
+            "Es blitzt und donnert.",
+            "Es schneit.",
+            "Wie ist das Wetter in Wien?",
+            "Es ist ein Grad in Wien und es ist sonnig.",
+            "Wie ist das Wetter in Bern?",
+            "Es sind acht Grad in Bern und es regnet.",
+            "Wie ist das Wetter in Kiel.",
+            "Es sind zwei Grad und es ist windig.",
+            "Wie ist das Wetter in Schwerin?",
+            "Es ist minus ein Grad und es ist teils bewölkt.",
+            "Wie ist das Wetter in Hamburg?",
+            "Es ist minus ein Grad und es schneit.",
+            "Wie ist das Wetter in Bremen?",
+            "Es ist minus ein Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Hannover?",
+            "Es ist null Grad und es regnet.",
+            "Wie ist das Wetter in Potsdam?",
+            "Es ist null Grad und es ist sonnig.",
+            "Es ist ein Grad und es ist sonnig.",
+            "Wie ist das Wetter in Magdeburg?",
+            "Es ist ein Grad und es ist teils bewölkt.",
+            "Wie ist das Wetter in Düsseldorf?",
+            "Es sind fünf Grad und es regnet.",
+            "Wie ist das Wetter in Erfurt?",
+            "Es sind zwei Grad und es regnet.",
+            "Wie ist das Wetter in Dresden?",
+            "Es sind zwei Grad und es ist sonnig.",
+            "Wie ist das Wetter in Wiesbaden?",
+            "Es sind vier Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Mainz?",
+            "Es sind fünf Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Saarbrücken?",
+            "Es sind acht Grad und es regnet.",
+            "Wie ist das Wetter in Stuttgart?",
+            "Es sind acht Grad und es ist teils bewölkt.",
+            "Wie ist das Wetter in München.",
+            "Es sind acht Grad und.",
+            "Wie ist das Wetter in Linz.",
+            "Es sind zwei Grad und es ist teils bewölkt.",
+            "Wie ist das Wetter in Wien.",
+            "Es sind drei Grad und es ist windig.",
+            "Wie ist das Wetter in St.",
+            "Es sind vier Grad und es ist sonnig.",
+            "Wie ist das Wetter in Eisenstadt.",
+            "Es sind vier Grad und es ist teils bewölkt.",
+            "Wie ist das Wetter in Salzburg.",
+            "Es sind fünf Grad und.es ist bewölkt.",
+            "Wie ist das Wetter in Graz.",
+            "Wie ist das Wetter in Klagenfurt.",
+            "Wie ist das Wetter in Innsbruck.",
+            "Es sind sieben Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Bregenz.",
+            "Es sind sieben Grad und es ist neblig.",
+            "Wie ist das Wetter in Vaduz.",
+            "Es sind zehn Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Zürich.",
+            "Es sind acht Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Basel.",
+            "Es sind elf Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Bern.",
+            "Wie ist das Wetter in Lausanne.",
+            "Es sind neun Grad und es ist bewölkt.",
+            "Wie ist das Wetter in Genf.",
+            "Wie ist das Wetter in Lugano.",
+            "Hören Sie.",
+            "Welche Informationen sind richtig?",
+            "Ich heiße Susie.",
+            "Meine Familie ist in vielen Ländern.",
+            "Meine Tante Martha wohnt in Hilo auf Hawaii.",
+            "Mein Opa Uschi wohnt in Sapporo in Japan und mein Vater Uwe wohnt in Yuma, in Arizona.",
+            "Das ist in den USA.",
+            "Das Wetter in Hilo ist tropisch.",
+            "Es regnet oft und es ist oft bewölkt.",
+            "Im Winter regnet es immer und es ist selten sonnig.",
+            "Im Sommer regnet es oft und es ist manchmal sonnig.",
+            "Es schneit selten in Hilo.",
+            "Die durchschnittliche Temperatur ist 25 Grad.",
+            "28 Grad im Sommer und 23 Grad im Winter.",
+            "Sapporo ist in Japan.",
+            "Im Winter schneit es meistens und es regnet manchmal.",
+            "Im Winter ist es oft kalt, mit durchschnittlich -5 Grad.",
+            "Im Sommer schneit es nie und es ist immer sonnig.",
+            "Die durchschnittliche Temperatur im Sommer ist 27 Grad.",
+            "Das Wetter in Yuma, Arizona ist warm und es ist immer sonnig.",
+            "Im Sommer und Winter regnet es selten und es schneit nie.",
+            "Im Sommer sind es durchschnittlich 36 Grad und im Winter sind es 14 Grad.",
+            "Im Winter regnet es immer.",
+            "Im Sommer ist es oft sonnig.",
+            "Im Sommer schneit es meistens.",
+            "Im Winter regnet es manchmal.",
+            "Es ist immer sonnig.",
+            "Es schneit manchmal.",
+            "Sie bekommen Informationen.",
+            "Fragen Sie nach den anderen Informationen.",
+            "Wie oft regnet es im Sommer in Sydney?",
+            "Es regnet im Sommer selten in Sydney.",
+            "Wann regnet es oft in Hamburg?",
+            "Es regnet im Winter oft in Hamburg.",
+            "Wo regnet es im Sommer nie?.",
+            "Es regnet im Sommer selten in Quillagua.",
+            "Woher kommen Sie?",
+            "Wie ist das Wetter im Frühling, Sommer, Herbst und Winter?",
+            "Regnet es oft?",
+            "Ist es oft sonnig?",
+            "Reden Sie über das Wetter in Ihrer Stadt.",
+            "Im Winter schneit es selten.",
+            "Es regnet manchmal und es ist oft bewölkt.",
+            "Im Frühling ist es manchmal sonnig und es ist manchmal bewölkt.",
+            "Im Sommer ist es meistens sonnig und es regnet manchmal.",
+            "Ich komme aus X.",
+            "Im Winter.",
+            "Im Frühling.",
+            "Im Sommer.",
+            "Hören Sie und nummerieren Sie.",
+            "Es ist zwölf Uhr fünfundvierzig.",
+            "Es ist sechzehn Uhr zehn.",
+            "Es ist neun Uhr dreißig.",
+            "Es ist zwanzig Uhr fünfzehn.",
+            "Es ist vierzehn Uhr fünfzig.",
+            "Es ist ein Uhr fünfunddreißig.",
+            "Hören Sie und ergänzen Sie die Uhrzeiten.",
+            "Sagen Sie eine Uhrzeit.",
+            "Die andere Person ergänzt die Uhrzeit.",
+            "Hören Sie und ergänzen Sie die Uhrzeiten und das Wetter.",
+            "Hallo Mama.",
+            "Es ist acht Uhr und ich bin in jetzt Wien.",
+            "Boah, es ist so windig.",
+            "Es ist zehn Uhr dreißig.",
+            "Es schneit!",
+            "Es ist vierzehn Uhr fünfzehn und ich sitze im Uni-Café und warte auf dich.",
+            "Es ist jetzt sonnig.",
+            "Es ist achtzehn Uhr und ich bin endlich zu Hause.",
+            "Es regnet jetzt.",
+            "Um acht Uhr ist es windig, um zehn Uhr dreißig schneit es, um vierzehn Uhr fünfzehn ist es sonnig und um achtzehn Uhr regnet es."
+        ],
+        "templated": [
+            {
+                "template": "Es ist {WEATHER_CONDITION}.",
+                "source_literals": [
+                    "Es ist bewölkt.",
+                    "Es ist neblig.",
+                    "Es ist sonnig.",
+                    "Es ist teils bewölkt.",
+                    "Es ist windig."
+                ],
+                "description": "Weather condition statement"
+            },
+            {
+                "template": "Es {WEATHER_VERB_3SG}.",
+                "source_literals": [
+                    "Es regnet.",
+                    "Es schneit."
+                ],
+                "description": "Weather verb statement"
+            },
+            {
+                "template": "Ich heiße [person_name].",
+                "source_literals": [
+                    "Ich heiße Susie."
+                ],
+                "description": "Self-introduction with first name"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "WEATHER_CONDITION": {
+            "type": "closed",
+            "description": "Weather condition adjectives",
+            "usage_note": "predicate adjective after \"Es ist\"",
+            "options": [
+                "bewölkt",
+                "neblig",
+                "sonnig",
+                "windig"
+            ]
+        },
+        "WEATHER_VERB_3SG": {
+            "type": "closed",
+            "description": "Weather verbs (3sg present)",
+            "usage_note": "3rd person singular present",
+            "options": [
+                "blitzt",
+                "donnert",
+                "regnet",
+                "schneit"
+            ]
+        }
+    }
+}

@@ -1,0 +1,628 @@
+{
+    "unit": "60",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 60,
+        "prerequisite": "1-59"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use dative-only prepositions (aus, außer, bei, mit, nach, seit, von, zu) â€â€ all nouns following these prepositions take dative case markers.",
+            "Use common contractions: ans, am, aufs, beim, ins, im, vom, zum, zur.",
+            "Form wo-compound questions by combining wo + preposition (wofür, womit, woraus) to ask about things; insert -r- if the preposition begins with a vowel."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "beschreiben, woraus etwas besteht, wofür man es braucht und womit man es transportiert",
+            "über die Herkunft von Materialien und Produkten sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Produkte und ihre Herkunft"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "produzieren",
+                "pos": "VERB",
+                "translation": "to produce, manufacture",
+                "frequency": 1000,
+                "cefr": "B1"
+            },
+            {
+                "word": "herstellen",
+                "pos": "VERB",
+                "translation": "to manufacture",
+                "frequency": 1046,
+                "cefr": "A2"
+            },
+            {
+                "word": "transportieren",
+                "pos": "VERB",
+                "translation": "to carry, transport",
+                "frequency": 2438,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Produktion",
+                "pos": "NOUN",
+                "translation": "production",
+                "frequency": 923,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Hersteller*in",
+                "pos": "NOUN",
+                "translation": "manufacturer",
+                "frequency": 2061,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Material",
+                "pos": "NOUN",
+                "translation": "material",
+                "frequency": 1390,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Lager",
+                "pos": "NOUN",
+                "translation": "storage; warehouse",
+                "frequency": 1559,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bestandteil",
+                "pos": "NOUN",
+                "translation": "component; part",
+                "frequency": 1956,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Leder",
+                "pos": "NOUN",
+                "translation": "leather",
+                "frequency": 8126,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Baumwolle",
+                "pos": "NOUN",
+                "translation": "cotton",
+                "frequency": 18871,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Gummi",
+                "pos": "NOUN",
+                "translation": "rubber",
+                "frequency": 22754,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Unternehmen",
+                "pos": "NOUN",
+                "translation": "company, corporation",
+                "frequency": 236,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Generation",
+                "pos": "NOUN",
+                "translation": "generation",
+                "frequency": 1153,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Handelsweg",
+                "pos": "NOUN",
+                "translation": "trade route",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Kolleg*in",
+                "pos": "NOUN",
+                "translation": "colleague",
+                "frequency": 24434
+            },
+            {
+                "word": "die Fabrik",
+                "pos": "NOUN",
+                "translation": "factory",
+                "frequency": 3851,
+                "cefr": "B1"
+            },
+            {
+                "word": "aus",
+                "pos": "PREP",
+                "translation": "from, of",
+                "frequency": 37,
+                "cefr": "A1"
+            },
+            {
+                "word": "außer",
+                "pos": "PREP",
+                "translation": "apart from; except"
+            },
+            {
+                "word": "bei",
+                "pos": "PREP",
+                "translation": "at; near",
+                "frequency": 29,
+                "cefr": "A1"
+            },
+            {
+                "word": "mit",
+                "pos": "PREP",
+                "translation": "with",
+                "frequency": 13,
+                "cefr": "A1"
+            },
+            {
+                "word": "nach",
+                "pos": "VERB",
+                "translation": "to (cities and countries without an article); after",
+                "frequency": 34,
+                "cefr": "A1"
+            },
+            {
+                "word": "seit",
+                "pos": "PREP",
+                "translation": "since (time); for",
+                "frequency": 130,
+                "cefr": "A1"
+            },
+            {
+                "word": "von",
+                "pos": "PREP",
+                "translation": "by; from; of",
+                "frequency": 9,
+                "cefr": "A1"
+            },
+            {
+                "word": "zu",
+                "pos": "PREP",
+                "translation": "to",
+                "frequency": 21,
+                "cefr": "A1"
+            },
+            {
+                "word": "woraus",
+                "pos": "ADV",
+                "translation": "from what; of what",
+                "frequency": 15368
+            },
+            {
+                "word": "womit",
+                "pos": "ADV",
+                "translation": "with what",
+                "frequency": 2801
+            },
+            {
+                "word": "wofür",
+                "pos": "ADV",
+                "translation": "for what"
+            },
+            {
+                "word": "nächst-",
+                "pos": "ADJ",
+                "translation": "next"
+            },
+            {
+                "word": "noch",
+                "pos": "ADV",
+                "translation": "still",
+                "frequency": 33,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sohle",
+                "pos": "NOUN",
+                "translation": "sole",
+                "frequency": 16327,
+                "cefr": "B2"
+            },
+            {
+                "word": "echt",
+                "pos": "ADV",
+                "translation": "real, really",
+                "frequency": 685,
+                "cefr": "A2"
+            },
+            {
+                "word": "sich vorstellen",
+                "pos": "VERB",
+                "translation": "imagine; introduce sth.",
+                "frequency": 14,
+                "cefr": "A1"
+            },
+            {
+                "word": "unterschiedlich",
+                "pos": "ADJ",
+                "translation": "different, various",
+                "frequency": 345,
+                "cefr": "B1"
+            },
+            {
+                "word": "lagern",
+                "pos": "VERB",
+                "translation": "store",
+                "frequency": 3252,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Teil",
+                "pos": "NOUN",
+                "translation": "part; fraction",
+                "frequency": 198,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Studio",
+                "pos": "NOUN",
+                "frequency": 4606,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Designerin",
+                "pos": "NOUN",
+                "frequency": 24313
+            },
+            {
+                "word": "der Hammer",
+                "pos": "NOUN",
+                "frequency": 7156,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Utensilium",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Oberleder",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Außensohle",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Zwischensohle",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Futter",
+                "pos": "NOUN",
+                "frequency": 10673
+            },
+            {
+                "word": "das Obermaterial",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Innensohle",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das EVA-Schaum",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Polyester",
+                "pos": "NOUN"
+            },
+            {
+                "word": "flexibel",
+                "pos": "ADV",
+                "frequency": 2899,
+                "cefr": "B1"
+            },
+            {
+                "word": "Türkei",
+                "pos": "PROPN",
+                "frequency": 922,
+                "cefr": "B1"
+            },
+            {
+                "word": "Belgien",
+                "pos": "PROPN",
+                "frequency": 3605
+            },
+            {
+                "word": "inkorrekt",
+                "pos": "ADV",
+                "frequency": 48604
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "produzieren": {
+                "present": {
+                    "ich": "produziere",
+                    "du": "produzierst",
+                    "er": "produziert",
+                    "es": "produziert",
+                    "sie_singular": "produziert",
+                    "xier": "produziert",
+                    "wir": "produzieren",
+                    "ihr": "produziert",
+                    "sie_plural": "produzieren",
+                    "Sie": "produzieren"
+                }
+            },
+            "herstellen": {
+                "present": {
+                    "ich": "stelle her",
+                    "du": "stellst her",
+                    "er": "stellt her",
+                    "es": "stellt her",
+                    "sie_singular": "stellt her",
+                    "xier": "stellt her",
+                    "wir": "stellen her",
+                    "ihr": "stellt her",
+                    "sie_plural": "stellen her",
+                    "Sie": "stellen her"
+                }
+            },
+            "transportieren": {
+                "present": {
+                    "ich": "transportiere",
+                    "du": "transportierst",
+                    "er": "transportiert",
+                    "es": "transportiert",
+                    "sie_singular": "transportiert",
+                    "xier": "transportiert",
+                    "wir": "transportieren",
+                    "ihr": "transportiert",
+                    "sie_plural": "transportieren",
+                    "Sie": "transportieren"
+                }
+            },
+            "vorstellen": {
+                "present": {
+                    "ich": "stelle mir vor",
+                    "du": "stellst dir vor",
+                    "er": "stellt sich vor",
+                    "es": "stellt sich vor",
+                    "sie_singular": "stellt sich vor",
+                    "xier": "stellt sich vor",
+                    "wir": "stellen uns vor",
+                    "ihr": "stellt euch vor",
+                    "sie_plural": "stellen sich vor",
+                    "Sie": "stellen sich vor"
+                }
+            },
+            "lagern": {
+                "present": {
+                    "ich": "lagere",
+                    "du": "lagerst",
+                    "er": "lagert",
+                    "es": "lagert",
+                    "sie_singular": "lagert",
+                    "xier": "lagert",
+                    "wir": "lagern",
+                    "ihr": "lagert",
+                    "sie_plural": "lagern",
+                    "Sie": "lagern"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Rainer und Gaby arbeiten beide mit Schuhen.",
+            "Hören Sie das Interview mit Rainer und Gaby.",
+            "Welche Informationen sind über Rainer (R) und welche über Gaby (G)?",
+            "Unser Thema heute sind Schuhe und ihre Herstellung, und wir haben Rainer Koth und Gaby Neumeister hier im Studio.",
+            "Beide kommen aus Nordrhein-Westfalen, Gaby aus dem Münsterland und Rainer aus dem Ruhrgebiet.",
+            "Ja, ich bin definitiv ein Kind des Ruhrgebiet s!",
+            "Und arbeitest du auch im Ruhrgebiet?",
+            "Ja, ich arbeite bei einem Schuhreparaturservice in Marl, zusammen mit meinen Eltern und meiner Frau.",
+            "Oh, ein Familienunternehmen?",
+            "Ja, seit vielen Generationen.",
+            "Ich arbeite seit meinem 13.",
+            "Und meine Frau, meine Eltern und ich wohnen und arbeiten seit 4 Jahren zusammen in einem Haus.",
+            "Und du, Gaby, bist du auch Teil eines Familienunternehmen?",
+            "Nein, Ich arbeite seit dem 1.",
+            "November als Designerin bei einer Schuhmanufaktur in Münster, zusammen mit meiner besten Freundin Sandra.",
+            "Ich wohne mit meinem Mann Klaus zusammen, er ist Ingenieur.",
+            "Arbeit und Privatleben sind bei mir also komplett getrennt.",
+            "Wie kann man sich die Arbeit in einer Schuhmanufaktur vorstellen?",
+            "Ich bin Designerin.",
+            "Deshalb arbeite ich oft mit meinem Computer, aber auch ganz einfach mit einem Zettel und Bleistift.",
+            "Ich habe die Ideen, und Sandra versucht diese dann im Anschluss in die Realität umzusetzen.",
+            "Mit dem Computer wird bei Ihnen bestimmt nicht viel gearbeitet…",
+            "Nein, wir arbeiten noch viel mit den Händen.",
+            "Oft auch mit einem Hammer oder Nägeln.",
+            "Schätzen Kunden heute noch individuelle Schuhe aus einer Manufaktur und lassen sie Schuhe noch oft reparieren oder sieht man einen Trend zu Wegwerfschuhen?",
+            "November der 26.",
+            "April der 18.",
+            "Geburtstag der 13.",
+            "Schreiben Sie Sätze über Gaby.",
+            "Nutzen Sie die Verben und Präpositionen.",
+            "Sie kommt aus dem Münsterland.",
+            "Sie arbeitet bei einer Schuhmanufaktur.",
+            "Sie arbeitet mit einem Computer.",
+            "Sie arbeitet seit dem 1.",
+            "Sie wohnt mit ihrem Mann.",
+            "Sie arbeitet mit ihrer besten Freundin.",
+            "Schauen Sie sich die Bestandteile der Schuhe an und lesen Sie die Wörter laut.",
+            "Lesen Sie die Fragen.",
+            "Dann hören Sie zu und beantworten Sie die Fragen mit den Informationen.",
+            "Wofür brauchen die Hersteller*innen die Baumwolle?",
+            "Wofür brauchen die Hersteller*innen den EVA-Schaum?",
+            "Wofür brauchen die Hersteller*innen den Polyester?",
+            "Wofür brauchen die Hersteller*innen den Gummi?",
+            "Wofür brauchen die Hersteller*innen das (Kunst-)Leder?",
+            "Er braucht die Baumwolle für den Schnürsenkel.",
+            "Schuhe sind aus vielen verschiedenen Materialien.",
+            "In der Schuhproduktion findet man unter anderem Baumwolle, Polyester, Leder oder Kunstleder, EVA-Schaum und Gummi.",
+            "Es gibt viele Schuhtypen und je nach Schuhtyp und Preis nutzen Hersteller*innen verschiedene Materialien.",
+            "Die Außensohle ist oft aus Gummi.",
+            "Das Material ist gut bei Kälte und Hitze und sehr flexibel.",
+            "Neben der Außensohle gibt es noch eine Zwischensohle und eine Innensohle.",
+            "Hierfür benutzen Hersteller*innen oft EVA-Schaum.",
+            "Polyester benutzen Hersteller*innen für viele Schuhbestandteile, z.B.",
+            "Für Schnürsenkel oder Obermaterial.",
+            "Eine Alternative für Polyester im Obermaterial ist Baumwolle.",
+            "Baumwolle kann man aber nicht nur für das Obermaterial benutzen, sondern unter anderem auch für das Futter.",
+            "Schuhe benutzen keine Baumwolle oder Polyester.",
+            "Sie benutzen Leder.",
+            "Dieses Material ist besonders vielseitig.",
+            "Lederschuhe haben mindestens ein Obermaterial aus Leder.",
+            "Manche Luxusschuhe haben aber auch die Innensohle, Teile der Außensohle, das Futter oder die Schnürsenkel aus Leder.",
+            "Leder ist eine Alternative zu echtem Leder.",
+            "Es ist vegan und kostet nicht so viel Geld.",
+            "Für das Obermaterial und das Futter",
+            "Für die Innensohle und die Zwischensohle",
+            "Für die Schnürsenkel und das Obermaterial.",
+            "Für die Außensohle.",
+            "Für das Oberleder, das Futter, die Außensohle und die Schnürsenkel.",
+            "Woraus stellen die Hersteller*innen was her?",
+            "Woraus stellen die Hersteller*innen die Zwischensohle her?",
+            "Aus dem EVA-Schaum her.",
+            "Woraus stellen die Hersteller*innen das Oberleder her?",
+            "Er stellen es aus Leder he r.",
+            "Woraus stellen die Hersteller*innen der Schnürsenkel her?",
+            "Er stellen sie aus Polyester he r.",
+            "Woraus stellen die Hersteller*innen die Außensohle her?",
+            "Er stellen sie aus Gummi he r..",
+            "Er stellen sie aus EVA-Schaum he r.",
+            "Woraus stellen die Hersteller*innen das Futter her?",
+            "Er stellen es aus Baumwolle oder Leder he",
+            "Woraus stellen die Hersteller*innen das Obermaterial her?",
+            "Er stellen es aus Baumwolle, Polyester oder Leder he r.",
+            "Woraus stellen die Hersteller*innen die Innensohle her?",
+            "Er stellt es aus EVA-Schaum he r.",
+            "Was passiert wo?",
+            "Auf der Karte sehen Sie, woher die Materialien einer großen Schuhmarke kommen und wo die Hersteller*innen ihre Schuhe produzieren und wo die Lager sind.",
+            "Woher kommen die Materialien?",
+            "Baumwolle kommt aus der Türkei, EVA-Schaum kommt aus China, Gummi kommt aus Indonesien, Kunstleder",
+            "Leder kommt aus Taiwan, Polyester kommt aus Indien.",
+            "Wo haben produzieren die Hersteller*innen die Schuhe?",
+            "Die Hersteller*innen produzieren die Schuhe in Vietnam.",
+            "Wo sind die Lager?",
+            "Die Lager sind in den USA, in Belgien und in China.",
+            "Zuerst transportiert die Hersteller*innen alle Materialien zum Produktionsort",
+            "Dann transportiert er die fertigen Schuhe zu den drei Lagern.",
+            "Sprechen Sie über die Materialien und die Handelswege.",
+            "Die Hersteller*innen transportiert die Baumwolle von … nach",
+            "Die Hersteller*innen transportiert die Baumwolle von der Türkei nach Vietnam.",
+            "Die Hersteller*innen transportiert den EVA-Schaum von China nach Vietnam.",
+            "Die Hersteller*innen transportiert den Gummi von Indonesien nach Vietnam.",
+            "Die Hersteller*innen transportiert das Kunstleder von Taiwan nach Vietnam.",
+            "Die Hersteller*innen transportiert den Polyester von Indien nach Vietnam.",
+            "Die Hersteller*innen produziert die Schuhe in Vietnam.",
+            "Die Hersteller*innen transportiert die fertigen Schuhe nach den USA, Belgien und China.",
+            "Spielen Sie Jeopardy.",
+            "Team 1 wählt die erste Kategorie aus.",
+            "Das Team hört eine Antwort und muss eine Frage formulieren.",
+            "Team 1 wählt aus: \"Orte für 100 Euro, bitte.",
+            "Team 1 fragt: \"Woher kommt Gummi?\"",
+            "Orte 100 Aus Indonesien.",
+            "Woher kommt Gummi?",
+            "In Vietnam.",
+            "Wo produziert die Hersteller*innen die Schuhe?",
+            "300 Aus der Türkei.",
+            "Woher kommt Baumwolle?",
+            "400 In den USA, Belgien und China.",
+            "Wo haben die Hersteller*innen Lager für die Schuhe?",
+            "Materialien 100 Baumwolle.",
+            "Was kommt aus der Türkei?",
+            "Welches Material kommt aus Indien?",
+            "Welches Material brauchen die Hersteller*innen für die Schnürsenkel?",
+            "Welches Material brauchen die Hersteller*innen für das Obermaterial?",
+            "300 EVA-Schaum und Gummi.",
+            "Welches Material brauchen die Hersteller*innen für die Sohle?",
+            "Welche Materialien kommen aus China und Indonesien?",
+            "400 Baumwolle, Polyester oder (Kunst)leder.",
+            "Welches Material braucht/benutzt die Hersteller*innen für das Obermaterial?",
+            "Von Indonesien nach Vietnam.",
+            "Wohin (von wo nach wo) transportiert die Hersteller*innen das Gummi?",
+            "Von der Türkei nach Vietnam.",
+            "Wohin (von wo nach wo) transportiert die Hersteller*innen die Baumwolle?",
+            "Von China nach Vietnam.",
+            "Wohin (von wo nach wo) transportiert die Hersteller*innen den EVA-Schaum?",
+            "400 In die USA, Belgien und China.",
+            "Wohin transportiert der Hersteller die (fertigen) Schuhe?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

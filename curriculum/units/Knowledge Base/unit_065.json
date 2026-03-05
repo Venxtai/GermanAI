@@ -1,0 +1,515 @@
+{
+    "unit": "65",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 65,
+        "prerequisite": "1-64"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "den Umgang mit Müll besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "tauchen",
+                "pos": "VERB",
+                "translation": "to dive, plunge",
+                "frequency": 1581,
+                "cefr": "B1"
+            },
+            {
+                "word": "wachsen",
+                "pos": "VERB",
+                "translation": "to grow, increase",
+                "frequency": 470,
+                "cefr": "B1"
+            },
+            {
+                "word": "werfen",
+                "pos": "VERB",
+                "translation": "to throw",
+                "frequency": 718,
+                "cefr": "B1"
+            },
+            {
+                "word": "retten",
+                "pos": "VERB",
+                "translation": "to save; rescue",
+                "frequency": 1358,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bewusstsein",
+                "pos": "VERB",
+                "translation": "to create awareness of sth.",
+                "frequency": 2084,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Personal",
+                "pos": "NOUN",
+                "translation": "staff",
+                "frequency": 2537,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Meeresforscher*in",
+                "pos": "NOUN",
+                "translation": "oceanographer"
+            },
+            {
+                "word": "der Ozean",
+                "pos": "NOUN",
+                "translation": "ocean",
+                "frequency": 4042,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Strand",
+                "pos": "NOUN",
+                "translation": "beach",
+                "frequency": 1966,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Insel",
+                "pos": "NOUN",
+                "translation": "island",
+                "frequency": 1029,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Erde",
+                "pos": "NOUN",
+                "translation": "earth, globe; soil",
+                "frequency": 783,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Gras",
+                "pos": "NOUN",
+                "translation": "grass",
+                "frequency": 2779,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Wald",
+                "pos": "NOUN",
+                "translation": "forest, woods",
+                "frequency": 1028,
+                "cefr": "A2"
+            },
+            {
+                "word": "der See",
+                "pos": "NOUN",
+                "translation": "lake",
+                "frequency": 1317,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Brennstoffzelle",
+                "pos": "NOUN",
+                "translation": "fuel cell",
+                "frequency": 23990,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wasserstoff",
+                "pos": "NOUN",
+                "translation": "hydrogen",
+                "frequency": 3142,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Ziel",
+                "pos": "NOUN",
+                "translation": "goal",
+                "frequency": 320,
+                "cefr": "A2"
+            },
+            {
+                "word": "sinnvoll",
+                "pos": "ADJ",
+                "translation": "useful, reasonable",
+                "frequency": 1354,
+                "cefr": "B1"
+            },
+            {
+                "word": "wütend",
+                "pos": "ADJ",
+                "translation": "angry, mad"
+            },
+            {
+                "word": "biologisch abbaubar",
+                "pos": "ADJ",
+                "translation": "biodegradable",
+                "frequency": 2416,
+                "cefr": "B1"
+            },
+            {
+                "word": "breit",
+                "pos": "ADJ",
+                "translation": "broad; wide",
+                "frequency": 847,
+                "cefr": "A1"
+            },
+            {
+                "word": "eigen-",
+                "pos": "ADJ",
+                "translation": "own"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Architektin",
+                "pos": "NOUN",
+                "frequency": 21649,
+                "cefr": "B1"
+            },
+            {
+                "word": "fischen",
+                "pos": "VERB",
+                "frequency": 11023,
+                "cefr": "B2"
+            },
+            {
+                "word": "tend",
+                "pos": "ADV"
+            },
+            {
+                "word": "rfen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Protest",
+                "pos": "NOUN",
+                "frequency": 2639,
+                "cefr": "B1"
+            },
+            {
+                "word": "ttert",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Alge",
+                "pos": "NOUN",
+                "frequency": 17774,
+                "cefr": "B2"
+            },
+            {
+                "word": "biologisch",
+                "pos": "ADV",
+                "frequency": 2416,
+                "cefr": "B1"
+            },
+            {
+                "word": "abbaubar",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das Computermodell",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Industrie",
+                "pos": "NOUN",
+                "frequency": 1743,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Konzept",
+                "pos": "NOUN",
+                "frequency": 1186
+            },
+            {
+                "word": "der Test",
+                "pos": "NOUN",
+                "frequency": 1770,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Materialexperte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Experte",
+                "pos": "NOUN",
+                "frequency": 1437,
+                "cefr": "B1"
+            },
+            {
+                "word": "die VHS-Kassette",
+                "pos": "NOUN"
+            },
+            {
+                "word": "welchenr",
+                "pos": "DET"
+            },
+            {
+                "word": "Kalifornien",
+                "pos": "PROPN",
+                "frequency": 6687
+            },
+            {
+                "word": "eigen",
+                "pos": "ADJ",
+                "frequency": 166,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Sand",
+                "pos": "NOUN",
+                "frequency": 2474,
+                "cefr": "B1"
+            },
+            {
+                "word": "reflektieren",
+                "pos": "VERB",
+                "frequency": 3755
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                }
+            },
+            "tauchen": {
+                "present": {
+                    "ich": "tauche",
+                    "du": "tauchst",
+                    "er": "taucht",
+                    "es": "taucht",
+                    "sie_singular": "taucht",
+                    "xier": "taucht",
+                    "wir": "tauchen",
+                    "ihr": "taucht",
+                    "sie_plural": "tauchen",
+                    "Sie": "tauchen"
+                }
+            },
+            "wachsen": {
+                "present": {
+                    "ich": "wachse",
+                    "du": "wächst",
+                    "er": "wächst",
+                    "es": "wächst",
+                    "sie_singular": "wächst",
+                    "xier": "wächst",
+                    "wir": "wachsen",
+                    "ihr": "wachst",
+                    "sie_plural": "wachsen",
+                    "Sie": "wachsen"
+                }
+            },
+            "werfen": {
+                "present": {
+                    "ich": "werfe",
+                    "du": "wirfst",
+                    "er": "wirft",
+                    "es": "wirft",
+                    "sie_singular": "wirft",
+                    "xier": "wirft",
+                    "wir": "werfen",
+                    "ihr": "werft",
+                    "sie_plural": "werfen",
+                    "Sie": "werfen"
+                }
+            },
+            "retten": {
+                "present": {
+                    "ich": "rette",
+                    "du": "rettest",
+                    "er": "rettet",
+                    "es": "rettet",
+                    "sie_singular": "rettet",
+                    "xier": "rettet",
+                    "wir": "retten",
+                    "ihr": "rettet",
+                    "sie_plural": "retten",
+                    "Sie": "retten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Eine Person liest den ersten Teil, die andere den zweiten.",
+            "Hören Sie gut zu.",
+            "Immer wenn Sie eine Präposition hören, sagen Sie \"Stopp!\"und unterstreichen Sie die Präposition.",
+            "Wie eine Deutsche die Ozeane retten will",
+            "Die Architektin Marcella Hansch will den Plastikmüll [ Plastikmüll ] aus dem Atlantik und Pazifik fischen und aus dem Plastik dann Energie machen.",
+            "Dass die Ozeane voll mit Plastikmüll [ Plastikmüll ] sind, macht sie w",
+            "\"Wir d ü rfen die Natur nicht weiter kaputt machen\", sagt sie.",
+            "Aber Protest ist f",
+            "Sie will etwas gegen den Müll machen und sie hat auch einen Plan.",
+            "Plattformen im Meer sollen den Plastikmüll [ Plastikmüll ] aus dem Meer fischen.",
+            "Aber das ist nicht alles:",
+            "Die Plattformen machen aus dem Müll Wasserstoff und Kohlendioxid.",
+            "Brennstoffzellen machen aus dem Wasserstoff Energie.",
+            "Das Kohlendioxid f ü ttert Algen.",
+            "Aus Algen kann man biologisch abbaubare n Plastik machen.",
+            "Frau Hansch hat auch schon Geld",
+            "R dieses Projekt.",
+            "Frau Hansch kommt vom Land und hat die Natur gern.",
+            "Und schon in ihrem Architekturstudium sucht sie nach Alternativen für die Umwelt.",
+            "Die Idee mit dem Plastik hatte sie beim Tauch en.",
+            "Zwischen Hawaii und Nordamerika schwimmt eine Insel aus Plastik, die zweimal so groß wie Deutschland ist.",
+            "Müll braucht man auch ein großes Projekt.",
+            "Die Plattform ist 400 m lang und 400 m breit.",
+            "Im Computermodell funktioniert sie.",
+            "Frau Hanschs Team hat Hydrolog *innen, Bau- und Umwelttechniker*innen, Geograph*innen, Maschinenbauer*innen und Materialexpert *innen.",
+            "Die Industrie mag ihr Konzept.",
+            "Der erste Test soll im Rhein sein.",
+            "Sind die Präpositionen im Text Akkusativpräpositionen, Dativpräpositionen oder Wechselpräpositionen?",
+            "Sind sie im Akkusativ oder im Dativ?",
+            "Tragen Sie sie mit den Nomen in die Tabelle ein.",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text noch einmal.",
+            "Was ist richtig und was ist falsch?",
+            "Frau Hansch ist Meeresforscherin.",
+            "Die Plattform ist größer als ein Fußballfeld",
+            "Brennstoffzellen brauchen Wasserstoff.",
+            "Mit Kohlendioxid wachsen Algen besser.",
+            "Frau Hansch hat kein Geld.",
+            "Frau Hansch kann tauchen.",
+            "Materialexperten sind gegen dieses Projekt.",
+            "Die Industrie findet Frau Hanschs Idee gut.",
+            "Nordamerika bringt seinen Plastikmüll [ Plastikmüll ]",
+            "Nach Hawaii.",
+            "Müll will man normalerweise nicht im Haus haben.",
+            "Aber ein Haus aus Müll?",
+            "Ein Forscher in Großbritannien baut als Experiment ein Waste House.",
+            "Lesen Sie zuerst die vier Sätze.",
+            "Dann lesen Sie den Text und entscheiden Sie, welche der Sätze richtig (r) und welche falsch (f) sind?",
+            "Es gibt in Europ a mehr Projekte mit Häusern aus Müll.",
+            "Man will mit dem Waste House zeigen, dass man Müll sinnvoll nutzen kann.",
+            "Das Waste House kostet viel weniger Geld als ein konventionelles Haus.",
+            "Baker-Brown möchte mit dem gleichen Plan ein neues Waste House bauen.",
+            "Auf dem Campus der University of Brighton baut der Architekt zusammen mit Studierenden ein Haus aus diesen Dingen.",
+            "Seit Juni 2014 ist es fertig.",
+            "The Guardian gibt dem Projekt den Namen Waste House.",
+            "Es ist das erste Waste House in Großbritannien, und auch europaweit gibt es nur wenige Häuser aus Müll.",
+            "Duncan Baker-Brown will, dass die Menschen ein größeres Bewusstsein bekommen:",
+            "Was werfen wir täglich in den Müll?",
+            "Und wie viel kann man noch nutzen?",
+            "Die Baumaterialien für das Haus kosten nichts oder nicht viel.",
+            "Die Kosten vom Waste House sind aber fast so hoch wie für einen normalen Neubau.",
+            "Die Kosten für das Personal.",
+            "Man muss das Material suchen, das braucht Arbeitsstunden.",
+            "Das nächste Mal will Baker-Brown zuerst den Müll sammeln und dann das Haus planen..",
+            "Beschreiben Sie das Foto.",
+            "Was sehen Sie?",
+            "Welchen Müll können Sie sehen?",
+            "Die Person liegt im Müll.",
+            "Sie trägt keine Kleidung.",
+            "Ich sehe Müll.",
+            "Lesen Sie den Text.",
+            "Was ist das Ziel von diesem Projekt?",
+            "Gregg Segal lebt in Kalifornien und will wissen, wie viel Müll Leute in Kalifornien in sieben Tagen produzieren.",
+            "Er macht dann Fotos von den Menschen, die im eigenen Müll liegen.",
+            "Er macht alle Fotos in seinem Garten und bringt Sand f ü r einen \"Strand\", Erde und Gras f",
+            "Die Leute bringen ihren Müll und legen sich mit ihrem Müll aus der letzten Woche auf den \"Strand\", auf den \"Waldboden\" oder in s \"Wasser\" und Gregg Segal fotografiert sie.",
+            "Mit seinen Fotos will er, dass Leute ü ber den Müll in Amerika reflektieren.",
+            "Der Fotograf zeigt, wie viel Müll eine Person in sieben Tagen produziert.",
+            "Sehen Sie sich die Fotos auf der Webseite an."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

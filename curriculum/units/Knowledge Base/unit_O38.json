@@ -1,0 +1,386 @@
+{
+    "unit": "O38",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 38,
+        "prerequisite": "core 1-104, O1-O37"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [
+            "In passive sentences, express the direct agent with von + dative and the indirect agent or means with durch + accusative."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Schweizerdeutsch übersetzen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die vielsprachige Schweiz"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "unterrichten", "pos": "VERB", "translation": "to teach", "frequency": 3188, "cefr": "B1" },
+            { "word": "klingen", "pos": "VERB", "translation": "to sound", "frequency": 700, "cefr": "B1" },
+            { "word": "die Bevölkerung", "pos": "NOUN", "translation": "population" },
+            { "word": "die Gemeinde", "pos": "NOUN", "translation": "community; municipality", "frequency": 1440, "cefr": "B1" },
+            { "word": "das Gebiet", "pos": "NOUN", "translation": "area; territory", "frequency": 1110, "cefr": "B1" },
+            { "word": "die Schwierigkeit", "pos": "NOUN", "translation": "difficulty", "frequency": 1541, "cefr": "B1" },
+            { "word": "das Hochdeutsch", "pos": "ADJ", "translation": "High German; standard German", "frequency": 18597, "cefr": "B2" },
+            { "word": "die Gebärdensprache", "pos": "NOUN", "translation": "sign language" },
+            { "word": "der*die Dolmetscher*in", "pos": "NOUN", "translation": "interpreter", "frequency": 5784, "cefr": "B2" },
+            { "word": "der Akzent", "pos": "NOUN", "translation": "accent", "frequency": 2740, "cefr": "B2" },
+            { "word": "der Unterricht", "pos": "NOUN", "translation": "classes [school]; lessons", "frequency": 1823, "cefr": "A1" },
+            { "word": "die Werbung", "pos": "NOUN", "translation": "advertisement", "frequency": 2462, "cefr": "B1" },
+            { "word": "der Dienst", "pos": "NOUN", "translation": "service", "frequency": 1558, "cefr": "B1" },
+            { "word": "gehörlos", "pos": "ADJ", "translation": "deaf" },
+            { "word": "sogar", "pos": "ADV", "translation": "even, actually", "frequency": 226, "cefr": "A2" },
+            { "word": "spätestens", "pos": "ADV", "translation": "at the latest" },
+            { "word": "inoffiziell", "pos": "ADJ", "translation": "unofficial", "frequency": 9580 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "Beispiel-", "pos": "NOUN" },
+            { "word": "hörend", "pos": "ADJ" },
+            { "word": "authentisch", "pos": "ADJ", "frequency": 8849 },
+            { "word": "die Unterrichtssprache", "pos": "NOUN" },
+            { "word": "anbieten", "pos": "VERB", "frequency": 627, "cefr": "A1" },
+            { "word": "der Schulhof", "pos": "NOUN", "frequency": 11486 },
+            { "word": "der Sportunterricht", "pos": "NOUN", "frequency": 27499 },
+            { "word": "öfter", "pos": "ADV", "frequency": 6614, "cefr": "B1" },
+            { "word": "die Varietät", "pos": "NOUN", "frequency": 21913 },
+            { "word": "die Schweizerin", "pos": "NOUN", "frequency": 11548, "cefr": "A2" },
+            { "word": "versto", "pos": "VERB" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "unterrichten": {
+                "present": {
+                    "ich": "unterrichte",
+                    "du": "unterrichtest",
+                    "er": "unterrichtet",
+                    "es": "unterrichtet",
+                    "sie_singular": "unterrichtet",
+                    "xier": "unterrichtet",
+                    "wir": "unterrichten",
+                    "ihr": "unterrichtet",
+                    "sie_plural": "unterrichten",
+                    "Sie": "unterrichten"
+                },
+                "Perfekt": {
+                    "ich": "habe unterrichtet",
+                    "du": "hast unterrichtet",
+                    "er": "hat unterrichtet",
+                    "es": "hat unterrichtet",
+                    "sie_singular": "hat unterrichtet",
+                    "xier": "hat unterrichtet",
+                    "wir": "haben unterrichtet",
+                    "ihr": "habt unterrichtet",
+                    "sie_plural": "haben unterrichtet",
+                    "Sie": "haben unterrichtet"
+                },
+                "Futur_I": {
+                    "ich": "werde unterrichten",
+                    "du": "wirst unterrichten",
+                    "er": "wird unterrichten",
+                    "es": "wird unterrichten",
+                    "sie_singular": "wird unterrichten",
+                    "xier": "wird unterrichten",
+                    "wir": "werden unterrichten",
+                    "ihr": "werdet unterrichten",
+                    "sie_plural": "werden unterrichten",
+                    "Sie": "werden unterrichten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde unterrichten",
+                    "du": "würdest unterrichten",
+                    "er": "würde unterrichten",
+                    "es": "würde unterrichten",
+                    "sie_singular": "würde unterrichten",
+                    "xier": "würde unterrichten",
+                    "wir": "würden unterrichten",
+                    "ihr": "würdet unterrichten",
+                    "sie_plural": "würden unterrichten",
+                    "Sie": "würden unterrichten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte unterrichtet",
+                    "du": "hättest unterrichtet",
+                    "er": "hätte unterrichtet",
+                    "es": "hätte unterrichtet",
+                    "sie_singular": "hätte unterrichtet",
+                    "xier": "hätte unterrichtet",
+                    "wir": "hätten unterrichtet",
+                    "ihr": "hättet unterrichtet",
+                    "sie_plural": "hätten unterrichtet",
+                    "Sie": "hätten unterrichtet"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde unterrichtet",
+                    "du": "wirst unterrichtet",
+                    "er": "wird unterrichtet",
+                    "es": "wird unterrichtet",
+                    "sie_singular": "wird unterrichtet",
+                    "xier": "wird unterrichtet",
+                    "wir": "werden unterrichtet",
+                    "ihr": "werdet unterrichtet",
+                    "sie_plural": "werden unterrichtet",
+                    "Sie": "werden unterrichtet"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde unterrichtet",
+                    "du": "wurdest unterrichtet",
+                    "er": "wurde unterrichtet",
+                    "es": "wurde unterrichtet",
+                    "sie_singular": "wurde unterrichtet",
+                    "xier": "wurde unterrichtet",
+                    "wir": "wurden unterrichtet",
+                    "ihr": "wurdet unterrichtet",
+                    "sie_plural": "wurden unterrichtet",
+                    "Sie": "wurden unterrichtet"
+                },
+                "imperative": {
+                    "du": "unterrichte",
+                    "ihr": "unterrichtet",
+                    "Sie": "unterrichten Sie"
+                }
+            },
+            "klingen": {
+                "present": {
+                    "ich": "klinge",
+                    "du": "klingst",
+                    "er": "klingt",
+                    "es": "klingt",
+                    "sie_singular": "klingt",
+                    "xier": "klingt",
+                    "wir": "klingen",
+                    "ihr": "klingt",
+                    "sie_plural": "klingen",
+                    "Sie": "klingen"
+                },
+                "Perfekt": {
+                    "ich": "habe geklungen",
+                    "du": "hast geklungen",
+                    "er": "hat geklungen",
+                    "es": "hat geklungen",
+                    "sie_singular": "hat geklungen",
+                    "xier": "hat geklungen",
+                    "wir": "haben geklungen",
+                    "ihr": "habt geklungen",
+                    "sie_plural": "haben geklungen",
+                    "Sie": "haben geklungen"
+                },
+                "Futur_I": {
+                    "ich": "werde klingen",
+                    "du": "wirst klingen",
+                    "er": "wird klingen",
+                    "es": "wird klingen",
+                    "sie_singular": "wird klingen",
+                    "xier": "wird klingen",
+                    "wir": "werden klingen",
+                    "ihr": "werdet klingen",
+                    "sie_plural": "werden klingen",
+                    "Sie": "werden klingen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde klingen",
+                    "du": "würdest klingen",
+                    "er": "würde klingen",
+                    "es": "würde klingen",
+                    "sie_singular": "würde klingen",
+                    "xier": "würde klingen",
+                    "wir": "würden klingen",
+                    "ihr": "würdet klingen",
+                    "sie_plural": "würden klingen",
+                    "Sie": "würden klingen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geklungen",
+                    "du": "hättest geklungen",
+                    "er": "hätte geklungen",
+                    "es": "hätte geklungen",
+                    "sie_singular": "hätte geklungen",
+                    "xier": "hätte geklungen",
+                    "wir": "hätten geklungen",
+                    "ihr": "hättet geklungen",
+                    "sie_plural": "hätten geklungen",
+                    "Sie": "hätten geklungen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geklungen",
+                    "du": "wirst geklungen",
+                    "er": "wird geklungen",
+                    "es": "wird geklungen",
+                    "sie_singular": "wird geklungen",
+                    "xier": "wird geklungen",
+                    "wir": "werden geklungen",
+                    "ihr": "werdet geklungen",
+                    "sie_plural": "werden geklungen",
+                    "Sie": "werden geklungen"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde geklungen",
+                    "du": "wurdest geklungen",
+                    "er": "wurde geklungen",
+                    "es": "wurde geklungen",
+                    "sie_singular": "wurde geklungen",
+                    "xier": "wurde geklungen",
+                    "wir": "wurden geklungen",
+                    "ihr": "wurdet geklungen",
+                    "sie_plural": "wurden geklungen",
+                    "Sie": "wurden geklungen"
+                },
+                "imperative": {
+                    "du": "klinge",
+                    "ihr": "klingt",
+                    "Sie": "klingen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Welche Sprachen werden in der Schweiz gesprochen?",
+            "Schauen Sie sich die Grafik an.",
+            "Sprechen Sie und formulieren Sie Sätze wie in der Beispiel- Struktur.",
+            "Zu Hause oder bei der Arbeit?",
+            "Welche anderen Sprachen werden mehr als welche offiziellen Schweizer Sprachen gesprochen?",
+            "Andere Sprachen zwei oder mehr Sprachen zu Hause / mit der Familie",
+            "Zwei oder mehr Sprachen bei der Arbeit",
+            "10.000 Menschen in der Schweiz sind gehörlos.",
+            "Deutsch-schweizerische, französische und italienische Gebärdensprache.",
+            "Gebärdensprache wird von gehörlosen Menschen, ihrer hörenden Familie und Dolmetscher*innen gesprochen.",
+            "Das sind in der Schweiz wahrscheinlich ca. 20.000 Menschen.",
+            "Lernen eine oder mehrere Sprachen oder verbessern ihre Sprach fähigkeiten",
+            "Wie und warum werden diese Sprachen gelernt?",
+            "Weil man auch alleine lernen kann.",
+            "Hören Sie den Text und schreiben Sie in die Kantone auf der Karte, welche Sprachen wo gesprochen werden: Deutsch (D), Französisch (F), Italienisch (I) oder Rätoromanisch (R).",
+            "Deutsch, Französisch, Italienisch und Rätoromanisch.",
+            "In der deutschsprachigen Schweiz leben die meisten Schweizer*innen.",
+            "In 19 Kantonen werden schweizerdeutsche Dialekte gesprochen.",
+            "Deutsch wird damit von 6 2 Prozent der Menschen gesprochen.",
+            "Hochdeutsch mit Schweizer Akzent wird vor allem in der Schule benutzt.",
+            "Schweizer*innen schreiben auch Hochdeutsch.",
+            "Die meisten deutschsprachigen Schweizer*innen sprechen aber Dialekt, eine Form von Schweizerdeutsch.",
+            "In der Westschweiz, auch „Suisse Romande genannt, wird Französisch gesprochen.",
+            "Die Kantone Genf, Waadt, Neuenburg und Jura sind französischsprachig, außerdem werden in drei Kantone n zwei Sprachen gesprochen.",
+            "In Bern, Freiburg und im Wallis werden Deutsch und Französisch gesprochen.",
+            "Italienisch wird von 8 Prozent gesprochen.",
+            "Die italienischsprachigen Schweizer*innen leben im Süden, im Kanton Tessin und in den südlichen Gebieten von Graubünden.",
+            "Nur von 0,5 Prozent wird Rätoromanisch gesprochen.",
+            "Die Sprache wird vor allem im Kanton Graubünden gesprochen, in dem aber mehrere Sprachen gesprochen werden.",
+            "Auch Deutsch und Italienisch werden hier gesprochen.",
+            "Die meisten Menschen in der Schweiz sprechen mehr als eine Sprache.",
+            "3 9 Prozent benutzen zwei oder mehr Sprachen bei der Arbeit und 2 2 Prozent zu Hause.",
+            "Dabei liegt hinter Deutsch, Schweizerdeutsch und Französisch, Englisch als Fremdsprache auf dem vierten Platz.",
+            "Was wird in der Schule gemacht?",
+            "Benutzen Sie das (unpersönliche) Passiv und formulieren Sie Sätze im Präsens.",
+            "Was wurde gestern gemacht?",
+            "Erzählen Sie jetzt im Passiv Präteritum.",
+            "Für welche dieser Aktivitäten wird Sprache gebraucht?",
+            "Lesen Sie die Fragen zu Sprachen in Schweizer Schulen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Welche Regeln gibt es in den Schweizer Schulen zur Unterrichtssprache und zu Fremdsprachen?",
+            "Wie viele Sprachen müssen pro Kanton angeboten werden?",
+            "Wo wird wohl Deutsch und wo wird Schweizerdeutsch gesprochen (in den deutschsprachigen Kantonen)?",
+            "Auf dem Schulhof?",
+            "Im Unterricht?",
+            "Im Sportunterricht?",
+            "Warum wird in den Schweizer Schulen so viel Wert auf Sprache gelegt?",
+            "Wie ist das in den USA / Ihrem Heimatland?",
+            "Gibt es in den Schulen mehrere Unterrichtssprachen?",
+            "Sprache] ist nach der Hauptsprache in einem Kanton Deutsch, Französisch, Italienisch oder Rätoromanisch.",
+            "In den deutschsprachigen Kantonen wird Dialekt gesprochen und Hochdeutsch geschrieben.",
+            "Schon früh werden zwei Fremdsprachen (eine zweite offizielle Sprache und Englisch) unterrichtet.",
+            "Ie erste Fremdsprache wird spätestens ab der dritten Klasse, die zweite Fremdsprache spätestens ab der fünften Klasse unterrichtet.",
+            "Ie Kantone Tessin und Graubünden können das anders machen, wenn dort zusätzlich eine dritte Hauptsprache unterrichtet wird.",
+            "Lesen und hören Sie die Sätze im schweizerdeutschen",
+            "Deutsch Dialekt.",
+            "Was heißen die Sätze in Hochdeutsch?",
+            "Was fällt Ihnen auf?",
+            "Was passiert von Hochdeutsch zu Schweizerdeutsch?",
+            "Das Schweizer Hochdeutsch benutzt die typischen Laute vom Dialekt öfter als das deutsche Hochdeutsch (z.B.",
+            "Das R und das CH auch anders als in Deutschland.",
+            "Hören Sie drei Personen und ordnen Sie zu.",
+            "Dialekte sind regionale Varietäten von Sprachen.",
+            "Deutsch wird also in Teilen von Deutschland, Österreich und der Schweiz ganz unterschiedlich gesprochen.",
+            "Deutsch ist die Varietät von Deutsch, die in der Schweiz besonders häufig gesprochen wird.",
+            "Aber auch hier gibt es Unterschiede.",
+            "Es gibt Hunderte von Schweizerdeutschen Dialekten.",
+            "Manchmal sind diese Varietäten so unterschiedlich, dass eine Deutschschweizerin Schwierigkeiten hat, eine Deutschschweizerin mit einem anderen Dialekt zu verstehen.",
+            "Schwierigkeite hät, ä Schwyzeri mit äme andere Dialeckt z’versto."
+        ],
+        "templated": []
+    }
+}

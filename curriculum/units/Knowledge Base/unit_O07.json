@@ -1,0 +1,431 @@
+{
+    "unit": "O7",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 7,
+        "prerequisite": "core 1-104, O1-O6"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Tatverdächtige spekulieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Krimis"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erwarten", "pos": "VERB", "translation": "to expect", "frequency": 389, "cefr": "B1" },
+            { "word": "verschwinden", "pos": "VERB", "translation": "to disappear, vanish", "frequency": 559, "cefr": "B1" },
+            { "word": "lächeln", "pos": "VERB", "translation": "to smile" },
+            { "word": "zittern", "pos": "VERB", "translation": "to shiver, shake", "frequency": 2458 },
+            { "word": "die Kriminalgeschichte", "pos": "NOUN", "translation": "mystery story; murder mystery", "frequency": 39873, "cefr": "A1" },
+            { "word": "der*die Verbrecher*in", "pos": "NOUN", "translation": "criminal", "frequency": 10740, "cefr": "B1" },
+            { "word": "der*die Täter*in", "pos": "NOUN", "translation": "perpetrator, offender" },
+            { "word": "der*die Detektiv*in", "pos": "NOUN", "translation": "detective", "frequency": 14523 },
+            { "word": "die Wahrheit", "pos": "NOUN", "translation": "truth", "frequency": 1156, "cefr": "B1" },
+            { "word": "der Fall", "pos": "NOUN", "translation": "case; fall", "frequency": 187, "cefr": "B1" },
+            { "word": "der Schreck", "pos": "NOUN", "translation": "fright; scare", "frequency": 2970, "cefr": "B1" },
+            { "word": "der Zweifel", "pos": "NOUN", "translation": "doubt", "frequency": 1495, "cefr": "B1" },
+            { "word": "das Gefängnis", "pos": "NOUN", "translation": "prison" },
+            { "word": "die Geldbörse", "pos": "NOUN", "translation": "wallet" },
+            { "word": "die Alarmstufe", "pos": "NOUN", "translation": "alert stage", "frequency": 29342, "cefr": "A1" },
+            { "word": "die Klimapolitik", "pos": "NOUN", "translation": "climate policy", "frequency": 25886, "cefr": "A1" },
+            { "word": "gestohlen", "pos": "ADJ", "translation": "stolen", "frequency": 11427 },
+            { "word": "streng", "pos": "ADJ", "translation": "strict; severe", "frequency": 1375, "cefr": "A2" },
+            { "word": "verbrecherisch", "pos": "ADJ", "translation": "felonious, criminal", "frequency": 26875 },
+            { "word": "nämlich", "pos": "ADJ", "translation": "that is to say; because" },
+            { "word": "unbekannt", "pos": "ADJ", "translation": "unknown, unfamiliar", "frequency": 1292 },
+            { "word": "sowieso", "pos": "ADV", "translation": "anyway; in any case", "frequency": 1547, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Contra-Argument", "pos": "NOUN" },
+            { "word": "das Opfer", "pos": "NOUN", "frequency": 1007, "cefr": "B1" },
+            { "word": "drin", "pos": "ADV", "frequency": 360, "cefr": "B1" },
+            { "word": "drauf", "pos": "ADV", "frequency": 195 },
+            { "word": "der Monster", "pos": "NOUN", "frequency": 10112 },
+            { "word": "der Shooter", "pos": "NOUN" },
+            { "word": "die Affe", "pos": "NOUN", "frequency": 4743, "cefr": "B1" },
+            { "word": "grinsen", "pos": "VERB", "frequency": 2386 },
+            { "word": "hypnotisieren", "pos": "VERB" },
+            { "word": "der Blutbach", "pos": "NOUN" },
+            { "word": "starren", "pos": "VERB", "frequency": 2144, "cefr": "B2" },
+            { "word": "der Taschenspiegel", "pos": "NOUN" },
+            { "word": "die Blutbach-Familie", "pos": "NOUN" },
+            { "word": "davor", "pos": "ADV", "frequency": 1479 },
+            { "word": "generell", "pos": "ADJ", "frequency": 1933 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erwarten": {
+                "present": {
+                    "ich": "erwarte",
+                    "du": "erwartest",
+                    "er": "erwartet",
+                    "es": "erwartet",
+                    "sie_singular": "erwartet",
+                    "xier": "erwartet",
+                    "wir": "erwarten",
+                    "ihr": "erwartet",
+                    "sie_plural": "erwarten",
+                    "Sie": "erwarten"
+                },
+                "Perfekt": {
+                    "ich": "habe erwartet",
+                    "du": "hast erwartet",
+                    "er": "hat erwartet",
+                    "es": "hat erwartet",
+                    "sie_singular": "hat erwartet",
+                    "xier": "hat erwartet",
+                    "wir": "haben erwartet",
+                    "ihr": "habt erwartet",
+                    "sie_plural": "haben erwartet",
+                    "Sie": "haben erwartet"
+                },
+                "Futur_I": {
+                    "ich": "werde erwarten",
+                    "du": "wirst erwarten",
+                    "er": "wird erwarten",
+                    "es": "wird erwarten",
+                    "sie_singular": "wird erwarten",
+                    "xier": "wird erwarten",
+                    "wir": "werden erwarten",
+                    "ihr": "werdet erwarten",
+                    "sie_plural": "werden erwarten",
+                    "Sie": "werden erwarten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erwarten",
+                    "du": "würdest erwarten",
+                    "er": "würde erwarten",
+                    "es": "würde erwarten",
+                    "sie_singular": "würde erwarten",
+                    "xier": "würde erwarten",
+                    "wir": "würden erwarten",
+                    "ihr": "würdet erwarten",
+                    "sie_plural": "würden erwarten",
+                    "Sie": "würden erwarten"
+                },
+                "imperative": {
+                    "du": "erwarte",
+                    "ihr": "erwartet",
+                    "Sie": "erwarten Sie"
+                }
+            },
+            "verschwinden": {
+                "present": {
+                    "ich": "verschwinde",
+                    "du": "verschwindest",
+                    "er": "verschwindet",
+                    "es": "verschwindet",
+                    "sie_singular": "verschwindet",
+                    "xier": "verschwindet",
+                    "wir": "verschwinden",
+                    "ihr": "verschwindet",
+                    "sie_plural": "verschwinden",
+                    "Sie": "verschwinden"
+                },
+                "Perfekt": {
+                    "ich": "bin verschwunden",
+                    "du": "bist verschwunden",
+                    "er": "ist verschwunden",
+                    "es": "ist verschwunden",
+                    "sie_singular": "ist verschwunden",
+                    "xier": "ist verschwunden",
+                    "wir": "sind verschwunden",
+                    "ihr": "seid verschwunden",
+                    "sie_plural": "sind verschwunden",
+                    "Sie": "sind verschwunden"
+                },
+                "Futur_I": {
+                    "ich": "werde verschwinden",
+                    "du": "wirst verschwinden",
+                    "er": "wird verschwinden",
+                    "es": "wird verschwinden",
+                    "sie_singular": "wird verschwinden",
+                    "xier": "wird verschwinden",
+                    "wir": "werden verschwinden",
+                    "ihr": "werdet verschwinden",
+                    "sie_plural": "werden verschwinden",
+                    "Sie": "werden verschwinden"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verschwinden",
+                    "du": "würdest verschwinden",
+                    "er": "würde verschwinden",
+                    "es": "würde verschwinden",
+                    "sie_singular": "würde verschwinden",
+                    "xier": "würde verschwinden",
+                    "wir": "würden verschwinden",
+                    "ihr": "würdet verschwinden",
+                    "sie_plural": "würden verschwinden",
+                    "Sie": "würden verschwinden"
+                },
+                "imperative": {
+                    "du": "verschwinde",
+                    "ihr": "verschwindet",
+                    "Sie": "verschwinden Sie"
+                }
+            },
+            "lächeln": {
+                "present": {
+                    "ich": "lächle",
+                    "du": "lächelst",
+                    "er": "lächelt",
+                    "es": "lächelt",
+                    "sie_singular": "lächelt",
+                    "xier": "lächelt",
+                    "wir": "lächeln",
+                    "ihr": "lächelt",
+                    "sie_plural": "lächeln",
+                    "Sie": "lächeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gelächelt",
+                    "du": "hast gelächelt",
+                    "er": "hat gelächelt",
+                    "es": "hat gelächelt",
+                    "sie_singular": "hat gelächelt",
+                    "xier": "hat gelächelt",
+                    "wir": "haben gelächelt",
+                    "ihr": "habt gelächelt",
+                    "sie_plural": "haben gelächelt",
+                    "Sie": "haben gelächelt"
+                },
+                "Futur_I": {
+                    "ich": "werde lächeln",
+                    "du": "wirst lächeln",
+                    "er": "wird lächeln",
+                    "es": "wird lächeln",
+                    "sie_singular": "wird lächeln",
+                    "xier": "wird lächeln",
+                    "wir": "werden lächeln",
+                    "ihr": "werdet lächeln",
+                    "sie_plural": "werden lächeln",
+                    "Sie": "werden lächeln"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde lächeln",
+                    "du": "würdest lächeln",
+                    "er": "würde lächeln",
+                    "es": "würde lächeln",
+                    "sie_singular": "würde lächeln",
+                    "xier": "würde lächeln",
+                    "wir": "würden lächeln",
+                    "ihr": "würdet lächeln",
+                    "sie_plural": "würden lächeln",
+                    "Sie": "würden lächeln"
+                },
+                "imperative": {
+                    "du": "lächle",
+                    "ihr": "lächelt",
+                    "Sie": "lächeln Sie"
+                }
+            },
+            "zittern": {
+                "present": {
+                    "ich": "zittere",
+                    "du": "zitterst",
+                    "er": "zittert",
+                    "es": "zittert",
+                    "sie_singular": "zittert",
+                    "xier": "zittert",
+                    "wir": "zittern",
+                    "ihr": "zittert",
+                    "sie_plural": "zittern",
+                    "Sie": "zittern"
+                },
+                "Perfekt": {
+                    "ich": "habe gezittert",
+                    "du": "hast gezittert",
+                    "er": "hat gezittert",
+                    "es": "hat gezittert",
+                    "sie_singular": "hat gezittert",
+                    "xier": "hat gezittert",
+                    "wir": "haben gezittert",
+                    "ihr": "habt gezittert",
+                    "sie_plural": "haben gezittert",
+                    "Sie": "haben gezittert"
+                },
+                "Futur_I": {
+                    "ich": "werde zittern",
+                    "du": "wirst zittern",
+                    "er": "wird zittern",
+                    "es": "wird zittern",
+                    "sie_singular": "wird zittern",
+                    "xier": "wird zittern",
+                    "wir": "werden zittern",
+                    "ihr": "werdet zittern",
+                    "sie_plural": "werden zittern",
+                    "Sie": "werden zittern"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde zittern",
+                    "du": "würdest zittern",
+                    "er": "würde zittern",
+                    "es": "würde zittern",
+                    "sie_singular": "würde zittern",
+                    "xier": "würde zittern",
+                    "wir": "würden zittern",
+                    "ihr": "würdet zittern",
+                    "sie_plural": "würden zittern",
+                    "Sie": "würden zittern"
+                },
+                "imperative": {
+                    "du": "zittere",
+                    "ihr": "zittert",
+                    "Sie": "zittern Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Zu Hause haben Sie aufgeschrieben, warum Sie Kriminalgeschichten (nicht) mögen.",
+            "Sammeln Sie zusammen mehr Pro- und Contra-Argumente für Kriminalgeschichten.",
+            "Interessant, spannend, manchmal kann man etwas lernen;",
+            "Sammeln Sie die Argumente in einer Tabelle an der Tafel.",
+            "Penny und ihre Freundinnen sind auf einem Volksfest, um Spaß zu haben.",
+            "Aber dann gibt es einen Fall für die Detektivinnen.",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Wie reagiert Penny und wie reagieren ihre Freundinnen?",
+            "Warum ist Flora optimistisch, dass sie das gestohlene Objekt finden können?",
+            "Wo suchen die Freundinnen nach dem Objekt?",
+            "Können sie es finden?",
+            "Ist nur Penny ein Opfer?",
+            "Es war etwas ganz Schlimmes passiert!",
+            "Meine Geldbörse war weg!",
+            "Mit dem ganzen Geld von Oma drin",
+            "Ich hatte Omas Geld verloren!:-( Und alles, was sonst noch drin war.",
+            "Vor Schreck habe ich gezittert.",
+            "Ida, Marie und Flora haben gesagt, dass wir die Geldbörse schon finden werden.",
+            "Flora meinte, sie hat ja kleine Hunde drauf und ist leichter zu sehen, als wenn sie zum Beispiel grau wäre oder so.",
+            "Flora ist eigentlich auch sehr clever.",
+            "Wir haben dann überall geguckt, wo wir vorher waren: Beim Eis",
+            "Wir haben meine Geldbörse aber nicht gefunden.",
+            "Als Flora ihr Handy aus der Tasche nehmen wollte, wurde uns jetzt allen ganz kalt im Bauch!!!",
+            "Floras Handy war weg!",
+            "Was würden Sie alles verlieren, wenn jemand Ihre Geldbörse stehlen würde?",
+            "Machen Sie eine Liste.",
+            "Benutzen Sie Ihre Liste aus Teil 2 und erzählen Sie einer anderen Person, was Sie alles verlieren.",
+            "B.: Ich würde mein Busticket verlieren.",
+            "Immer mehr Dinge verschwinden auf dem Volksfest",
+            "Aber Penny und ihre Freundinnen haben schon drei mögliche Täter*innen.",
+            "Für jede Person schreiben die Freundinnen ein Profil und eine Alarmstufe auf.",
+            "Dann lesen Sie die Profile und beantworten Sie die Fragen.",
+            "Was macht Konrad zu einem möglichen Täter mit der Alarmstufe feuerrot?",
+            "Er grinst, er liebt Geld und er hat einen verbrecherischen Charakter.",
+            "Was glauben die Freundinnen, wer der Polizist wirklich ist?",
+            "Und wie versucht er, von Menschen Geld zu bekommen?",
+            "Der Polizist ist ein Verbrecher aus dem Gefängnis.",
+            "Er hypnotisiert Menschen und nimmt ihr Geld.",
+            "Was machen die Blutbachs, wenn sie kein Geld haben?",
+            "Sie leihen sich Eier und Milch.",
+            "Meine [Pennys] Idee!",
+            "Da gibt es keinen Zweifel.",
+            "Er ist ja zum Stehlen geboren.",
+            "Der falsche Polizist: mit dem falschen Lächeln.",
+            "Idas Idee!",
+            "Warum sonst zieht er sich hinter einer Bude um?",
+            "Und vor allem – warum starrt er so lange in den Taschenspiegel und lächelt sich selbst an?",
+            "Vielleicht ist er ja in Wahrheit ein Verbrecher, der aus dem Gefängnis geflohen ist?",
+            "Und jetzt braucht er Geld und lächelt deshalb Leute an, und wenn er sie mit seinem falschen Lächeln hypnotisiert hat, dann zieht er ihnen das Geld aus der Tasche und sie merken es nicht!",
+            "Floras Idee!",
+            "Orange Mutter und Tochter Blutbach.",
+            "Das könnte sein.",
+            "Woher sonst haben die so viel Geld, um so viele Bilder von sich malen zu lassen?",
+            "Sonst haben die Blutbachs nämlich nie Geld und sich immer Eier und Milch und so was von uns ausgeliehen!",
+            "Maries Idee!",
+            "Es könnte ja auch jemand sein, den wir NICHT kennen.???",
+            "Wer ist basierend auf den Profilen der*die Täter*in?",
+            "Warum denken Sie das?",
+            "Wie hat/haben der*die Täter*in( nen ) Pennys Geldbörse und andere Dinge gestohlen?",
+            "Wollen Sie wissen, wer wirklich der*die Täter*in war?",
+            "Das sehen Sie zu Hause in ZEIGEN.",
+            "Rechts sehen Sie eine Statistik zu gestohlenen Taschen auf dem Oktoberfest.",
+            "Wie viele Taschen haben Menschen im Jahr 2023 gestohlen?",
+            "Ist das mehr oder weniger als in den Jahren davor?",
+            "Haben Sie eine Erklärung für die Zahl im Jahr 2022 und die generelle Entwicklung seit 2016?",
+            "Weniger als 2018.",
+            "Strengere Regeln bzgl.",
+            "Haben Sie mehr oder weniger gestohlene Taschen auf dem Oktoberfest erwartet?"
+        ],
+        "templated": []
+    }
+}

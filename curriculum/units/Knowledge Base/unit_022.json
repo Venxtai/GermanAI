@@ -1,0 +1,455 @@
+{
+    "unit": "22",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 22,
+        "prerequisite": "1-21"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Use temporal prepositions: um for specific times, im for months/seasons/years, am for days/parts of days/dates.",
+            "Use von…bis for time frames: \"von August bis Dezember,\" \"von Freitag bis Sonntag.\"",
+            "Form ordinal numbers by adding -t (1–19) or -st (20+) to cardinal numbers, with irregulars erst-, dritt-, siebt-.",
+            "State dates with am + ordinal number + -en ending: \"am vierten September.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Geburtstage und Feiertage sprechen",
+            "sagen, wann etwas stattfindet",
+            "das Wetter zu verschiedenen Jahreszeiten vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Geburtstage, Feiertage und Jahreszeiten"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "feiern",
+                "pos": "VERB",
+                "translation": "to celebrate",
+                "frequency": 869,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tabelle",
+                "pos": "NOUN",
+                "translation": "table",
+                "frequency": 979,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Datum, Daten",
+                "pos": "NOUN",
+                "translation": "date",
+                "frequency": 3203,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Januar",
+                "pos": "NOUN",
+                "translation": "January",
+                "frequency": 1052,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Februar",
+                "pos": "NOUN",
+                "translation": "February",
+                "frequency": 1093,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) März",
+                "pos": "NOUN",
+                "translation": "March"
+            },
+            {
+                "word": "(der) April",
+                "pos": "NOUN",
+                "translation": "April",
+                "frequency": 1004,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Mai",
+                "pos": "NOUN",
+                "translation": "May",
+                "frequency": 1048,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Juni",
+                "pos": "NOUN",
+                "translation": "June",
+                "frequency": 1148,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Juli",
+                "pos": "NOUN",
+                "translation": "July",
+                "frequency": 1544,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) August, e",
+                "pos": "NOUN",
+                "translation": "August",
+                "frequency": 1929,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) September",
+                "pos": "NOUN",
+                "translation": "September",
+                "frequency": 1035,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Oktober",
+                "pos": "NOUN",
+                "translation": "October",
+                "frequency": 1223,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) November",
+                "pos": "NOUN",
+                "translation": "November",
+                "frequency": 1273,
+                "cefr": "A1"
+            },
+            {
+                "word": "(der) Dezember",
+                "pos": "NOUN",
+                "translation": "December",
+                "frequency": 1527,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Geburtstag",
+                "pos": "NOUN",
+                "translation": "birthday",
+                "frequency": 1779,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Feiertag",
+                "pos": "NOUN",
+                "translation": "holiday",
+                "frequency": 6577,
+                "cefr": "A1"
+            },
+            {
+                "word": "Ostern",
+                "pos": "NOUN",
+                "translation": "Easter",
+                "frequency": 7338,
+                "cefr": "A2"
+            },
+            {
+                "word": "Pessach",
+                "pos": "NOUN",
+                "translation": "Passover"
+            },
+            {
+                "word": "Weihnachten",
+                "pos": "NOUN",
+                "translation": "Christmas",
+                "frequency": 5672,
+                "cefr": "A2"
+            },
+            {
+                "word": "Silvester",
+                "pos": "ADJ",
+                "translation": "New Year's Eve",
+                "frequency": 10123,
+                "cefr": "A2"
+            },
+            {
+                "word": "zwischen",
+                "pos": "PREP",
+                "translation": "between",
+                "frequency": 105,
+                "cefr": "A1"
+            },
+            {
+                "word": "für",
+                "pos": "PREP",
+                "translation": "for"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "zweit",
+                "pos": "ADJ",
+                "frequency": 5863,
+                "cefr": "B2"
+            },
+            {
+                "word": "dritt",
+                "pos": "ADJ",
+                "frequency": 5881
+            },
+            {
+                "word": "viert",
+                "pos": "ADJ",
+                "frequency": 5956
+            },
+            {
+                "word": "fünft",
+                "pos": "ADJ",
+                "frequency": 6038
+            },
+            {
+                "word": "die Arbeit",
+                "pos": "NOUN",
+                "frequency": 208,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Zuckerfest",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Thanksgiving",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kulturpunkt",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "feiern": {
+                "present": {
+                    "ich": "feiere",
+                    "du": "feierst",
+                    "er": "feiert",
+                    "es": "feiert",
+                    "sie_singular": "feiert",
+                    "xier": "feiert",
+                    "wir": "feiern",
+                    "ihr": "feiert",
+                    "sie_plural": "feiern",
+                    "Sie": "feiern"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "\"Wann hast du Geburtstag?\".",
+            "Wann hast du Geburtstag?",
+            "Ich habe am 13.",
+            "August Geburtstag.",
+            "Ich bin 25 Jahre alt.",
+            "Ich bin X Jahre alt.",
+            "Recherchieren Sie die Daten.",
+            "Wann sind die Feiertage?",
+            "Wann ist Weihnachten?",
+            "Weihnachten ist am 25.",
+            "Wir feiern am 7.",
+            "Januar Weihnachten.",
+            "Wir sind orthodox Grammatik",
+            "Muttertag, Tag der Arbeit, Zuckerfest ( Eid al- Fitr ) und und Vatertag sind im Frühling Halloween, Thanksgiving, Jom Kipur und Diwali sind im Herbst.",
+            "Silvester und Weihnachten sind im Winter.",
+            "Welche (anderen) Tage kennen Sie?",
+            "Suchen Sie die Daten für Muttertag, Mother's Day, Vatertagund Father's Day.",
+            "Was ist interessant?",
+            "Schauen Sie sich die Tabelle an und fragen Sie nach den Temperaturen.",
+            "Wie warm ist es im Juni?",
+            "Im Juni sind es zwischen 10,5 und 20 Grad.",
+            "Wie warm ist es im Januar?",
+            "Im Januar sind es zwischen -2,8 und 2,1 Grad.",
+            "Wie warm ist es im Februar?",
+            "Im Februar sind es zwischen -2,4 und 3,5 Grad.",
+            "Wie warm ist es im März?",
+            "Im März sind es zwischen 0,2 und 7,4 Grad.",
+            "Wie warm ist es im April?",
+            "Im April sind es zwischen 3,0 und 11,7 Grad.",
+            "Wie warm ist es im Mai?",
+            "Im Mai sind es zwischen 7,2 und 16,8 Grad.",
+            "Im Juni sind es zwischen 10,5 und 20,0 Grad.",
+            "Wie warm ist es im Juli?",
+            "Im Juli sind es zwischen 12,3 und 21,8 Grad.",
+            "Wie warm ist es im August?",
+            "Im August sind es zwischen 12,2 und 21,7 Grad.",
+            "Wie warm ist es im September?",
+            "Im September sind es zwischen 9,6 und 18,3 Grad.",
+            "Wie warm ist es im Oktober?",
+            "Im Oktober sind es zwischen 5,9 und 13,2 Grad.",
+            "Wie warm ist es im November?",
+            "Im November sind es zwischen 1,7 und 7,0 Grad.",
+            "Wie warm ist es im Dezember?",
+            "Im Dezember sind es zwischen -1,3 und 3,4 Grad.",
+            "Sie bekommen ein Land (1-6).",
+            "Fragen Sie nach den Temperaturen der anderen Länder im Januar, April, Juli und Oktober.",
+            "Schreiben Sie die Daten in die Tabellen.",
+            "Wie warm ist es im Januar in Land 1?",
+            "Im Januar sind es in Land 1 zwischen 10,5 und 20 Grad.",
+            "Im Januar sind es in Land 1 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 1?",
+            "Im April sind es in Land 1 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 1?",
+            "Im Juli sind es in Land 1 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 1?",
+            "Im Oktober sind es in Land 1 zwischen X und X Grad.",
+            "Wie warm ist es im Januar in Land 2?",
+            "Im Januar sind es in Land 2 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 2?",
+            "Im April sind es in Land 2 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 2?",
+            "Im Juli sind es in Land 2 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 2?",
+            "Im Oktober sind es in Land 2 zwischen X und X Grad.",
+            "Wie warm ist es im Januar in Land 3?",
+            "Im Januar sind es in Land 3 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 3?",
+            "Im April sind es in Land 3 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 3?",
+            "Im Juli sind es in Land 3 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 3?",
+            "Im Oktober sind es in Land 3 zwischen X und X Grad.",
+            "Wie warm ist es im Januar in Land 4?",
+            "Im Januar sind es in Land 4 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 4?",
+            "Im April sind es in Land 4 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 4?",
+            "Im Juli sind es in Land 4 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 4?",
+            "Im Oktober sind es in Land 4 zwischen X und X Grad.",
+            "Wie warm ist es im Januar in Land 5?",
+            "Im Januar sind es in Land 5 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 5?",
+            "Im April sind es in Land 5 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 5?",
+            "Im Juli sind es in Land 5 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 5?",
+            "Im Oktober sind es in Land 5 zwischen X und X Grad.",
+            "Wie warm ist es im Januar in Land 6?",
+            "Im Januar sind es in Land 6 zwischen X und X Grad.",
+            "Wie warm ist es im April in Land 6?",
+            "Im April sind es in Land 6 zwischen X und X Grad.",
+            "Wie warm ist es im Juli in Land 6?",
+            "Im Juli sind es in Land 6 zwischen X und X Grad.",
+            "Wie warm ist es im Oktober in Land 6?",
+            "Im Oktober sind es in Land 6 zwischen X und X Grad.",
+            "Schauen Sie sich die Daten aus 2) an und ordnen Sie zu."
+        ],
+        "templated": [
+            {
+                "template": "Wie warm ist es im {MONTH}?",
+                "source_literals": [
+                    "Wie warm ist es im April?",
+                    "Wie warm ist es im Dezember?",
+                    "Wie warm ist es im Februar?",
+                    "Wie warm ist es im Januar?",
+                    "Wie warm ist es im Juli?",
+                    "Wie warm ist es im Juni?",
+                    "Wie warm ist es im Mai?",
+                    "Wie warm ist es im März?",
+                    "Wie warm ist es im November?",
+                    "Wie warm ist es im Oktober?",
+                    "Wie warm ist es im September?"
+                ],
+                "description": "Ask temperature for a month"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "MONTH": {
+            "type": "closed",
+            "description": "Month names",
+            "usage_note": "used after \"im\"",
+            "options": [
+                "April",
+                "Dezember",
+                "Februar",
+                "Januar",
+                "Juli",
+                "Juni",
+                "Mai",
+                "März",
+                "November",
+                "Oktober",
+                "September"
+            ]
+        }
+    }
+}

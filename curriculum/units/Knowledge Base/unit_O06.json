@@ -1,0 +1,470 @@
+{
+    "unit": "O6",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 6,
+        "prerequisite": "core 1-104, O1-O5"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [
+            "Form Konjunktiv II of modal verbs by adding Umlaut to their Präteritum forms: könnte, müsste, dürfte, möchte (wollte and sollte stay the same); use with infinitive at end for polite suggestions."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Speisekarten lesen und besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Oktoberfest"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "schunkeln", "pos": "VERB", "translation": "to sway to music while sitting down or standing, arms linked with at least one person", "frequency": 44246 },
+            { "word": "übernehmen", "pos": "VERB", "translation": "to take over" },
+            { "word": "binden", "pos": "VERB", "translation": "to bind; bundle; braid", "frequency": 842 },
+            { "word": "teilnehmen", "pos": "VERB", "translation": "to participate", "frequency": 1714, "cefr": "A2" },
+            { "word": "abbauen", "pos": "VERB", "translation": "to dismantle, take apart", "frequency": 2353 },
+            { "word": "der Lebkuchen", "pos": "NOUN", "translation": "gingerbread", "frequency": 24378, "cefr": "A1" },
+            { "word": "die Maß", "pos": "NOUN", "translation": "liter (of beer served in a stein)", "frequency": 1, "cefr": "A1" },
+            { "word": "das Maß", "pos": "NOUN", "translation": "measure(ment)", "frequency": 1, "cefr": "A1" },
+            { "word": "das Plakat", "pos": "NOUN", "translation": "poster", "frequency": 4219, "cefr": "A2" },
+            { "word": "die Jungfrau", "pos": "NOUN", "translation": "virgin; maiden", "frequency": 4808, "cefr": "A1" },
+            { "word": "der Mönch", "pos": "NOUN", "translation": "monk; friar" },
+            { "word": "die Schleife", "pos": "NOUN", "translation": "bow", "frequency": 13251, "cefr": "A1" },
+            { "word": "die Halle", "pos": "NOUN", "translation": "hall", "frequency": 2237, "cefr": "A1" },
+            { "word": "bayerisch", "pos": "ADJ", "translation": "Bavarian", "frequency": 5968 },
+            { "word": "historisch", "pos": "ADJ", "translation": "historic(al)", "frequency": 901, "cefr": "B1" },
+            { "word": "frei", "pos": "ADJ", "translation": "free", "frequency": 289, "cefr": "A1" },
+            { "word": "inzwischen", "pos": "ADV", "translation": "in the meantime; meanwhile", "frequency": 534, "cefr": "B1" },
+            { "word": "interessanterweise", "pos": "ADV", "translation": "interestingly" },
+            { "word": "damals", "pos": "ADV", "translation": "back then, in those days", "frequency": 286, "cefr": "A2" },
+            { "word": "eher", "pos": "ADV", "translation": "rather; earlier", "frequency": 322, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Festplakat", "pos": "NOUN" },
+            { "word": "die Mass", "pos": "NOUN" },
+            { "word": "die Breze", "pos": "NOUN" },
+            { "word": "das Kindl", "pos": "NOUN", "frequency": 43735 },
+            { "word": "der Mini-Kulturpunkt", "pos": "NOUN" },
+            { "word": "das Maskottchen", "pos": "NOUN", "frequency": 19842, "cefr": "B2" },
+            { "word": "chronologisch", "pos": "ADV", "frequency": 13393, "cefr": "B2" },
+            { "word": "einordnen", "pos": "VERB", "frequency": 4790 },
+            { "word": "die Bavaria-Statue", "pos": "NOUN" },
+            { "word": "die Festleitung", "pos": "NOUN" },
+            { "word": "die Arbeitskraft", "pos": "NOUN", "frequency": 4304, "cefr": "B2" },
+            { "word": "das Königshaus", "pos": "NOUN", "frequency": 13849, "cefr": "B2" },
+            { "word": "aufstellen", "pos": "VERB", "frequency": 1454 },
+            { "word": "die Bavaria-Figur", "pos": "NOUN" },
+            { "word": "der Bierbrauer", "pos": "NOUN", "frequency": 33890 },
+            { "word": "glutenfrei", "pos": "ADV" },
+            { "word": "der*die Ehepartner*in", "pos": "NOUN", "frequency": 16367, "cefr": "A2" },
+            { "word": "der Hut", "pos": "NOUN", "frequency": 2763, "cefr": "B1" },
+            { "word": "musizieren", "pos": "VERB", "frequency": 7628, "cefr": "B2" },
+            { "word": "die Schunkelmusik", "pos": "NOUN" },
+            { "word": "das Fliegerlied", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schunkeln": {
+                "present": {
+                    "ich": "schunkle",
+                    "du": "schunkelst",
+                    "er": "schunkelt",
+                    "es": "schunkelt",
+                    "sie_singular": "schunkelt",
+                    "xier": "schunkelt",
+                    "wir": "schunkeln",
+                    "ihr": "schunkelt",
+                    "sie_plural": "schunkeln",
+                    "Sie": "schunkeln"
+                },
+                "Perfekt": {
+                    "ich": "habe geschunkelt",
+                    "du": "hast geschunkelt",
+                    "er": "hat geschunkelt",
+                    "es": "hat geschunkelt",
+                    "sie_singular": "hat geschunkelt",
+                    "xier": "hat geschunkelt",
+                    "wir": "haben geschunkelt",
+                    "ihr": "habt geschunkelt",
+                    "sie_plural": "haben geschunkelt",
+                    "Sie": "haben geschunkelt"
+                },
+                "Futur_I": {
+                    "ich": "werde schunkeln",
+                    "du": "wirst schunkeln",
+                    "er": "wird schunkeln",
+                    "es": "wird schunkeln",
+                    "sie_singular": "wird schunkeln",
+                    "xier": "wird schunkeln",
+                    "wir": "werden schunkeln",
+                    "ihr": "werdet schunkeln",
+                    "sie_plural": "werden schunkeln",
+                    "Sie": "werden schunkeln"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schunkeln",
+                    "du": "würdest schunkeln",
+                    "er": "würde schunkeln",
+                    "es": "würde schunkeln",
+                    "sie_singular": "würde schunkeln",
+                    "xier": "würde schunkeln",
+                    "wir": "würden schunkeln",
+                    "ihr": "würdet schunkeln",
+                    "sie_plural": "würden schunkeln",
+                    "Sie": "würden schunkeln"
+                },
+                "imperative": {
+                    "du": "schunkle",
+                    "ihr": "schunkelt",
+                    "Sie": "schunkeln Sie"
+                }
+            },
+            "übernehmen": {
+                "present": {
+                    "ich": "übernehme",
+                    "du": "übernimmst",
+                    "er": "übernimmt",
+                    "es": "übernimmt",
+                    "sie_singular": "übernimmt",
+                    "xier": "übernimmt",
+                    "wir": "übernehmen",
+                    "ihr": "übernehmt",
+                    "sie_plural": "übernehmen",
+                    "Sie": "übernehmen"
+                },
+                "Perfekt": {
+                    "ich": "habe übernommen",
+                    "du": "hast übernommen",
+                    "er": "hat übernommen",
+                    "es": "hat übernommen",
+                    "sie_singular": "hat übernommen",
+                    "xier": "hat übernommen",
+                    "wir": "haben übernommen",
+                    "ihr": "habt übernommen",
+                    "sie_plural": "haben übernommen",
+                    "Sie": "haben übernommen"
+                },
+                "Futur_I": {
+                    "ich": "werde übernehmen",
+                    "du": "wirst übernehmen",
+                    "er": "wird übernehmen",
+                    "es": "wird übernehmen",
+                    "sie_singular": "wird übernehmen",
+                    "xier": "wird übernehmen",
+                    "wir": "werden übernehmen",
+                    "ihr": "werdet übernehmen",
+                    "sie_plural": "werden übernehmen",
+                    "Sie": "werden übernehmen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde übernehmen",
+                    "du": "würdest übernehmen",
+                    "er": "würde übernehmen",
+                    "es": "würde übernehmen",
+                    "sie_singular": "würde übernehmen",
+                    "xier": "würde übernehmen",
+                    "wir": "würden übernehmen",
+                    "ihr": "würdet übernehmen",
+                    "sie_plural": "würden übernehmen",
+                    "Sie": "würden übernehmen"
+                },
+                "imperative": {
+                    "du": "übernimm",
+                    "ihr": "übernehmt",
+                    "Sie": "übernehmen Sie"
+                }
+            },
+            "binden": {
+                "present": {
+                    "ich": "binde",
+                    "du": "bindest",
+                    "er": "bindet",
+                    "es": "bindet",
+                    "sie_singular": "bindet",
+                    "xier": "bindet",
+                    "wir": "binden",
+                    "ihr": "bindet",
+                    "sie_plural": "binden",
+                    "Sie": "binden"
+                },
+                "Perfekt": {
+                    "ich": "habe gebunden",
+                    "du": "hast gebunden",
+                    "er": "hat gebunden",
+                    "es": "hat gebunden",
+                    "sie_singular": "hat gebunden",
+                    "xier": "hat gebunden",
+                    "wir": "haben gebunden",
+                    "ihr": "habt gebunden",
+                    "sie_plural": "haben gebunden",
+                    "Sie": "haben gebunden"
+                },
+                "Futur_I": {
+                    "ich": "werde binden",
+                    "du": "wirst binden",
+                    "er": "wird binden",
+                    "es": "wird binden",
+                    "sie_singular": "wird binden",
+                    "xier": "wird binden",
+                    "wir": "werden binden",
+                    "ihr": "werdet binden",
+                    "sie_plural": "werden binden",
+                    "Sie": "werden binden"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde binden",
+                    "du": "würdest binden",
+                    "er": "würde binden",
+                    "es": "würde binden",
+                    "sie_singular": "würde binden",
+                    "xier": "würde binden",
+                    "wir": "würden binden",
+                    "ihr": "würdet binden",
+                    "sie_plural": "würden binden",
+                    "Sie": "würden binden"
+                },
+                "imperative": {
+                    "du": "binde",
+                    "ihr": "bindet",
+                    "Sie": "binden Sie"
+                }
+            },
+            "teilnehmen": {
+                "present": {
+                    "ich": "nehme teil",
+                    "du": "nimmst teil",
+                    "er": "nimmt teil",
+                    "es": "nimmt teil",
+                    "sie_singular": "nimmt teil",
+                    "xier": "nimmt teil",
+                    "wir": "nehmen teil",
+                    "ihr": "nehmt teil",
+                    "sie_plural": "nehmen teil",
+                    "Sie": "nehmen teil"
+                },
+                "Perfekt": {
+                    "ich": "habe teilgenommen",
+                    "du": "hast teilgenommen",
+                    "er": "hat teilgenommen",
+                    "es": "hat teilgenommen",
+                    "sie_singular": "hat teilgenommen",
+                    "xier": "hat teilgenommen",
+                    "wir": "haben teilgenommen",
+                    "ihr": "habt teilgenommen",
+                    "sie_plural": "haben teilgenommen",
+                    "Sie": "haben teilgenommen"
+                },
+                "Futur_I": {
+                    "ich": "werde teilnehmen",
+                    "du": "wirst teilnehmen",
+                    "er": "wird teilnehmen",
+                    "es": "wird teilnehmen",
+                    "sie_singular": "wird teilnehmen",
+                    "xier": "wird teilnehmen",
+                    "wir": "werden teilnehmen",
+                    "ihr": "werdet teilnehmen",
+                    "sie_plural": "werden teilnehmen",
+                    "Sie": "werden teilnehmen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde teilnehmen",
+                    "du": "würdest teilnehmen",
+                    "er": "würde teilnehmen",
+                    "es": "würde teilnehmen",
+                    "sie_singular": "würde teilnehmen",
+                    "xier": "würde teilnehmen",
+                    "wir": "würden teilnehmen",
+                    "ihr": "würdet teilnehmen",
+                    "sie_plural": "würden teilnehmen",
+                    "Sie": "würden teilnehmen"
+                },
+                "imperative": {
+                    "du": "nimm teil",
+                    "ihr": "nehmt teil",
+                    "Sie": "nehmen Sie teil"
+                }
+            },
+            "abbauen": {
+                "present": {
+                    "ich": "baue ab",
+                    "du": "baust ab",
+                    "er": "baut ab",
+                    "es": "baut ab",
+                    "sie_singular": "baut ab",
+                    "xier": "baut ab",
+                    "wir": "bauen ab",
+                    "ihr": "baut ab",
+                    "sie_plural": "bauen ab",
+                    "Sie": "bauen ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgebaut",
+                    "du": "hast abgebaut",
+                    "er": "hat abgebaut",
+                    "es": "hat abgebaut",
+                    "sie_singular": "hat abgebaut",
+                    "xier": "hat abgebaut",
+                    "wir": "haben abgebaut",
+                    "ihr": "habt abgebaut",
+                    "sie_plural": "haben abgebaut",
+                    "Sie": "haben abgebaut"
+                },
+                "Futur_I": {
+                    "ich": "werde abbauen",
+                    "du": "wirst abbauen",
+                    "er": "wird abbauen",
+                    "es": "wird abbauen",
+                    "sie_singular": "wird abbauen",
+                    "xier": "wird abbauen",
+                    "wir": "werden abbauen",
+                    "ihr": "werdet abbauen",
+                    "sie_plural": "werden abbauen",
+                    "Sie": "werden abbauen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde abbauen",
+                    "du": "würdest abbauen",
+                    "er": "würde abbauen",
+                    "es": "würde abbauen",
+                    "sie_singular": "würde abbauen",
+                    "xier": "würde abbauen",
+                    "wir": "würden abbauen",
+                    "ihr": "würdet abbauen",
+                    "sie_plural": "würden abbauen",
+                    "Sie": "würden abbauen"
+                },
+                "imperative": {
+                    "du": "baue ab",
+                    "ihr": "bauet ab",
+                    "Sie": "bauen Sie ab"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was wissen Sie über das Oktoberfest in München?",
+            "Waren Sie schon mal auf einem Oktoberfest in Ihrem Land?",
+            "Was haben Sie dort gesehen, gegessen, gemacht?",
+            "Wie war es?",
+            "Schauen Sie sich die Oktoberfestplakate seit 1953 auf der Webseite an und zählen Sie, wie oft Sie die sechs Motive sehen.",
+            "Welches Plakat gefällt Ihnen am besten?",
+            "Wie würde Ihr Plakat aussehen?",
+            "Was würden Sie auf dem Plakat zeigen?",
+            "Der Name „München kommt von „Mönch, weil die Stadt „bei den Mönchen gebaut wurde.",
+            "Deshalb sieht das Maskottchen, das „Münchner Kindl, auch aus wie ein Mönch, inzwischen aber auch wie eine junge Frau.",
+            "Hören Sie die Informationen und ordnen Sie sie chronologisch ein (Nr. 1–6).",
+            "Ergänzen Sie die Rekorde.",
+            "Festhallen, die man abbauen kann",
+            "_ Mit mehr als 6 Millionen Besucher*innen und 13.000 Arbeitskräften ist das Oktoberfest in München das größte Volksfest der Welt.",
+            "Das Fest findet Ende September bis Anfang Oktober auf der Theresienwiese statt [stattfinden, wo Kronprinz [ Kron Prinz] Ludwig I.",
+            "Im Jahr 1810 Prinzessin Therese geheiratet hat.",
+            "So hat eine mehr als 200 Jahre lange Tradition begonnen.",
+            "Damals haben das Königshaus und das Volk die Hochzeit fünf Tage lang mit Freibier und Pferderennen gefeiert.",
+            "Heute feiert man das Oktoberfest 16 bis 18 Tage lang.",
+            "1818 hat man zum ersten Mal ein Karussell auf der Theresienwiese aufgestellt, und ein Jahr später hat München offiziell die Festleitung übernommen.",
+            "1850 hat die Stadt München eine 20 Meter große Statue der Bavaria-Figur gebaut.",
+            "Im Jahr 1896 haben die Bierbrauer begonnen, große Festhallen",
+            "Neben 7,3 Millionen Maß oder Liter Bier, werden heute auf dem Oktoberfest jedes Jahr 105 Millionen Liter Wasser verbraucht.",
+            "Seit 2011 gibt es die Oide Wiesn, mit historischen Fahrgeschäften und nostalgischen Spielen.",
+            "Familien mit Kindern freuen sich über diesen historischen Park, da er kleiner und ruhiger als die Theresienwiese ist.",
+            "Typisch Bayerisch?!",
+            "Schauen Sie sich die Speisekarte aus dem Schottenhamel Festzelt und beantworten Sie die Fragen.",
+            "Was könnten Menschen, die bayerisch essen wollen, bestellen?",
+            "Was könnten Vegetarier*innen essen?",
+            "Was dürften Menschen, die glutenfrei essen, bestellen?",
+            "Was würden Sie essen und trinken?",
+            "Wie viel müssten Sie bezahlen?",
+            "Lesen Sie den Text zum Dirndl und sprechen Sie über den Text.",
+            "Wie finden Sie diese bayerische Tradition?",
+            "Gibt es ähnliche Traditionen in Ihrem Land?",
+            "Würden Sie auf dem Oktoberfest auch ein Dirndl tragen?",
+            "Wenn ja, würden Sie bei der Tradition der Dirndlschleife mitmachen?",
+            "Es ist eine Tradition, dass Mädchen und Frauen ein Dirndl zum Oktoberfest tragen.",
+            "Wo sie die Dirndlschleife binden, hat eine Bedeutung.",
+            "Machen sie die Schleife rechts, haben sie eine*n Partner*in.",
+            "Binden sie die Schleife links, sind sie single.",
+            "Kinder und junge Mädchen machen die Schleife in der Mitte.",
+            "Ist die Schleife hinten, bedeutet das, dass die Frau entweder eine Bedienung ist oder eine*n Ehepartner*in hatte, die*der gestorben ist.",
+            "Denken Sie, dass auch Personen, die sich nicht als Frauen identifizieren und/oder kein Dirndl tragen, an dieser Tradition teilnehmen sollten?",
+            "Was könnten diese Personen tragen, wenn sie eine*n Partner* in haben, wenn sie single sind, wenn sie Bedienung sind oder eine*n Ehepartner*in hatten, die*der gestorben ist?",
+            "Ihr*e Professor*in spielt Schunkelmusik.",
+            "Schunkeln Sie mit."
+        ],
+        "templated": []
+    }
+}

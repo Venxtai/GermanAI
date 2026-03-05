@@ -1,0 +1,929 @@
+{
+    "unit": "O33",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 33,
+        "prerequisite": "core 1-104, O1-O32"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [
+            "Combine passive with modal verbs: conjugated modal in position 2 + Partizip II + werden (infinitive) at the end."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Ratschläge bei Krankheiten geben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Krankheiten und Gesundheit",
+            "Drei-Länder-Grenzverkehr"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "Auf jeden Fall!", "pos": "PHRASE", "translation": "Definitely! (In any case!)" },
+            { "word": "Auf keinen Fall!", "pos": "PHRASE", "translation": "Certainly not! (In no case!)" },
+            { "word": "heilen", "pos": "VERB", "translation": "to heal", "frequency": 4911, "cefr": "B2" },
+            { "word": "zurückgreifen", "pos": "VERB", "translation": "to come/fall back; resort (to)" },
+            { "word": "aufsuchen", "pos": "VERB", "translation": "to go to see, to find", "frequency": 4221 },
+            { "word": "ausgeben", "pos": "VERB", "translation": "to spend (money)", "frequency": 1748, "cefr": "A2" },
+            { "word": "investieren", "pos": "VERB", "translation": "to invest", "frequency": 1656 },
+            { "word": "berücksichtigen", "pos": "VERB", "translation": "to take into account, consider" },
+            { "word": "benötigen", "pos": "VERB", "translation": "to require, need" },
+            { "word": "massieren", "pos": "VERB", "translation": "to massage" },
+            { "word": "aufwachsen", "pos": "VERB", "translation": "to grow up", "frequency": 2355 },
+            { "word": "die Sache", "pos": "NOUN", "translation": "thing (alternative to Ding)", "frequency": 318, "cefr": "A2" },
+            { "word": "die Spende", "pos": "NOUN", "translation": "donation", "frequency": 6105, "cefr": "A1" },
+            { "word": "die Behandlung", "pos": "NOUN", "translation": "treatment", "frequency": 1870, "cefr": "A1" },
+            { "word": "das Medikament", "pos": "NOUN", "translation": "drug, medication", "frequency": 2257, "cefr": "A2" },
+            { "word": "die Tablette", "pos": "NOUN", "translation": "pill (e.g. painkiller), tablet", "frequency": 5005, "cefr": "A2" },
+            { "word": "die Erkältung, -en", "pos": "ADJ", "translation": "(common) cold" },
+            { "word": "die Grippe", "pos": "NOUN", "translation": "flu", "frequency": 11019, "cefr": "A2" },
+            { "word": "der Husten", "pos": "NOUN", "translation": "cough", "frequency": 23053, "cefr": "B1" },
+            { "word": "der Schnupfen", "pos": "NOUN", "translation": "the sniffles", "frequency": 29067, "cefr": "B1" },
+            { "word": "das Fieber", "pos": "NOUN", "translation": "fever, temperature", "frequency": 4774, "cefr": "A1" },
+            { "word": "der Verlauf", "pos": "NOUN", "translation": "course; progression; trend", "frequency": 1697, "cefr": "A1" },
+            { "word": "die Homöopathie", "pos": "NOUN", "translation": "homeopathy" },
+            { "word": "homöopathisch", "pos": "ADJ", "translation": "homeopathic" },
+            { "word": "grundsätzlich", "pos": "ADJ", "translation": "basic; fundamental" },
+            { "word": "allgemein", "pos": "ADJ", "translation": "general (alternative to generell)", "frequency": 393, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "dahinter", "pos": "ADV", "frequency": 1888 },
+            { "word": "das Pharma", "pos": "NOUN", "frequency": 23894 },
+            { "word": "das Budget", "pos": "NOUN", "frequency": 3649 },
+            { "word": "die Diagnostik", "pos": "NOUN", "frequency": 15908, "cefr": "B2" },
+            { "word": "kranke", "pos": "ADJ", "frequency": 7396, "cefr": "B1" },
+            { "word": "wodurch", "pos": "ADV", "frequency": 2903 },
+            { "word": "wobei", "pos": "ADV", "frequency": 608 },
+            { "word": "die Video-Ecke", "pos": "NOUN" },
+            { "word": "worüber", "pos": "SCONJ", "frequency": 4716, "cefr": "B1" },
+            { "word": "die Erkältung", "pos": "NOUN", "frequency": 16652, "cefr": "B1" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "heilen": {
+                "present": {
+                    "ich": "heile",
+                    "du": "heilst",
+                    "er": "heilt",
+                    "es": "heilt",
+                    "sie_singular": "heilt",
+                    "xier": "heilt",
+                    "wir": "heilen",
+                    "ihr": "heilt",
+                    "sie_plural": "heilen",
+                    "Sie": "heilen"
+                },
+                "Perfekt": {
+                    "ich": "habe geheilt",
+                    "du": "hast geheilt",
+                    "er": "hat geheilt",
+                    "es": "hat geheilt",
+                    "sie_singular": "hat geheilt",
+                    "xier": "hat geheilt",
+                    "wir": "haben geheilt",
+                    "ihr": "habt geheilt",
+                    "sie_plural": "haben geheilt",
+                    "Sie": "haben geheilt"
+                },
+                "Futur_I": {
+                    "ich": "werde heilen",
+                    "du": "wirst heilen",
+                    "er": "wird heilen",
+                    "es": "wird heilen",
+                    "sie_singular": "wird heilen",
+                    "xier": "wird heilen",
+                    "wir": "werden heilen",
+                    "ihr": "werdet heilen",
+                    "sie_plural": "werden heilen",
+                    "Sie": "werden heilen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde heilen",
+                    "du": "würdest heilen",
+                    "er": "würde heilen",
+                    "es": "würde heilen",
+                    "sie_singular": "würde heilen",
+                    "xier": "würde heilen",
+                    "wir": "würden heilen",
+                    "ihr": "würdet heilen",
+                    "sie_plural": "würden heilen",
+                    "Sie": "würden heilen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geheilt",
+                    "du": "hättest geheilt",
+                    "er": "hätte geheilt",
+                    "es": "hätte geheilt",
+                    "sie_singular": "hätte geheilt",
+                    "xier": "hätte geheilt",
+                    "wir": "hätten geheilt",
+                    "ihr": "hättet geheilt",
+                    "sie_plural": "hätten geheilt",
+                    "Sie": "hätten geheilt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geheilt",
+                    "du": "wirst geheilt",
+                    "er": "wird geheilt",
+                    "es": "wird geheilt",
+                    "sie_singular": "wird geheilt",
+                    "xier": "wird geheilt",
+                    "wir": "werden geheilt",
+                    "ihr": "werdet geheilt",
+                    "sie_plural": "werden geheilt",
+                    "Sie": "werden geheilt"
+                },
+                "imperative": {
+                    "du": "heile",
+                    "ihr": "heilt",
+                    "Sie": "heilen Sie"
+                }
+            },
+            "zurückgreifen": {
+                "present": {
+                    "ich": "greife zurück",
+                    "du": "greifst zurück",
+                    "er": "greift zurück",
+                    "es": "greift zurück",
+                    "sie_singular": "greift zurück",
+                    "xier": "greift zurück",
+                    "wir": "greifen zurück",
+                    "ihr": "greift zurück",
+                    "sie_plural": "greifen zurück",
+                    "Sie": "greifen zurück"
+                },
+                "Perfekt": {
+                    "ich": "habe zurückgegriffen",
+                    "du": "hast zurückgegriffen",
+                    "er": "hat zurückgegriffen",
+                    "es": "hat zurückgegriffen",
+                    "sie_singular": "hat zurückgegriffen",
+                    "xier": "hat zurückgegriffen",
+                    "wir": "haben zurückgegriffen",
+                    "ihr": "habt zurückgegriffen",
+                    "sie_plural": "haben zurückgegriffen",
+                    "Sie": "haben zurückgegriffen"
+                },
+                "Futur_I": {
+                    "ich": "werde zurückgreifen",
+                    "du": "wirst zurückgreifen",
+                    "er": "wird zurückgreifen",
+                    "es": "wird zurückgreifen",
+                    "sie_singular": "wird zurückgreifen",
+                    "xier": "wird zurückgreifen",
+                    "wir": "werden zurückgreifen",
+                    "ihr": "werdet zurückgreifen",
+                    "sie_plural": "werden zurückgreifen",
+                    "Sie": "werden zurückgreifen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde zurückgreifen",
+                    "du": "würdest zurückgreifen",
+                    "er": "würde zurückgreifen",
+                    "es": "würde zurückgreifen",
+                    "sie_singular": "würde zurückgreifen",
+                    "xier": "würde zurückgreifen",
+                    "wir": "würden zurückgreifen",
+                    "ihr": "würdet zurückgreifen",
+                    "sie_plural": "würden zurückgreifen",
+                    "Sie": "würden zurückgreifen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte zurückgegriffen",
+                    "du": "hättest zurückgegriffen",
+                    "er": "hätte zurückgegriffen",
+                    "es": "hätte zurückgegriffen",
+                    "sie_singular": "hätte zurückgegriffen",
+                    "xier": "hätte zurückgegriffen",
+                    "wir": "hätten zurückgegriffen",
+                    "ihr": "hättet zurückgegriffen",
+                    "sie_plural": "hätten zurückgegriffen",
+                    "Sie": "hätten zurückgegriffen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde zurückgegriffen",
+                    "du": "wirst zurückgegriffen",
+                    "er": "wird zurückgegriffen",
+                    "es": "wird zurückgegriffen",
+                    "sie_singular": "wird zurückgegriffen",
+                    "xier": "wird zurückgegriffen",
+                    "wir": "werden zurückgegriffen",
+                    "ihr": "werdet zurückgegriffen",
+                    "sie_plural": "werden zurückgegriffen",
+                    "Sie": "werden zurückgegriffen"
+                },
+                "imperative": {
+                    "du": "greif zurück",
+                    "ihr": "greift zurück",
+                    "Sie": "greifen Sie zurück"
+                }
+            },
+            "aufsuchen": {
+                "present": {
+                    "ich": "suche auf",
+                    "du": "suchst auf",
+                    "er": "sucht auf",
+                    "es": "sucht auf",
+                    "sie_singular": "sucht auf",
+                    "xier": "sucht auf",
+                    "wir": "suchen auf",
+                    "ihr": "sucht auf",
+                    "sie_plural": "suchen auf",
+                    "Sie": "suchen auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgesucht",
+                    "du": "hast aufgesucht",
+                    "er": "hat aufgesucht",
+                    "es": "hat aufgesucht",
+                    "sie_singular": "hat aufgesucht",
+                    "xier": "hat aufgesucht",
+                    "wir": "haben aufgesucht",
+                    "ihr": "habt aufgesucht",
+                    "sie_plural": "haben aufgesucht",
+                    "Sie": "haben aufgesucht"
+                },
+                "Futur_I": {
+                    "ich": "werde aufsuchen",
+                    "du": "wirst aufsuchen",
+                    "er": "wird aufsuchen",
+                    "es": "wird aufsuchen",
+                    "sie_singular": "wird aufsuchen",
+                    "xier": "wird aufsuchen",
+                    "wir": "werden aufsuchen",
+                    "ihr": "werdet aufsuchen",
+                    "sie_plural": "werden aufsuchen",
+                    "Sie": "werden aufsuchen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde aufsuchen",
+                    "du": "würdest aufsuchen",
+                    "er": "würde aufsuchen",
+                    "es": "würde aufsuchen",
+                    "sie_singular": "würde aufsuchen",
+                    "xier": "würde aufsuchen",
+                    "wir": "würden aufsuchen",
+                    "ihr": "würdet aufsuchen",
+                    "sie_plural": "würden aufsuchen",
+                    "Sie": "würden aufsuchen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte aufgesucht",
+                    "du": "hättest aufgesucht",
+                    "er": "hätte aufgesucht",
+                    "es": "hätte aufgesucht",
+                    "sie_singular": "hätte aufgesucht",
+                    "xier": "hätte aufgesucht",
+                    "wir": "hätten aufgesucht",
+                    "ihr": "hättet aufgesucht",
+                    "sie_plural": "hätten aufgesucht",
+                    "Sie": "hätten aufgesucht"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde aufgesucht",
+                    "du": "wirst aufgesucht",
+                    "er": "wird aufgesucht",
+                    "es": "wird aufgesucht",
+                    "sie_singular": "wird aufgesucht",
+                    "xier": "wird aufgesucht",
+                    "wir": "werden aufgesucht",
+                    "ihr": "werdet aufgesucht",
+                    "sie_plural": "werden aufgesucht",
+                    "Sie": "werden aufgesucht"
+                },
+                "imperative": {
+                    "du": "such auf",
+                    "ihr": "sucht auf",
+                    "Sie": "suchen Sie auf"
+                }
+            },
+            "ausgeben": {
+                "present": {
+                    "ich": "gebe aus",
+                    "du": "gibst aus",
+                    "er": "gibt aus",
+                    "es": "gibt aus",
+                    "sie_singular": "gibt aus",
+                    "xier": "gibt aus",
+                    "wir": "geben aus",
+                    "ihr": "gebt aus",
+                    "sie_plural": "geben aus",
+                    "Sie": "geben aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgegeben",
+                    "du": "hast ausgegeben",
+                    "er": "hat ausgegeben",
+                    "es": "hat ausgegeben",
+                    "sie_singular": "hat ausgegeben",
+                    "xier": "hat ausgegeben",
+                    "wir": "haben ausgegeben",
+                    "ihr": "habt ausgegeben",
+                    "sie_plural": "haben ausgegeben",
+                    "Sie": "haben ausgegeben"
+                },
+                "Futur_I": {
+                    "ich": "werde ausgeben",
+                    "du": "wirst ausgeben",
+                    "er": "wird ausgeben",
+                    "es": "wird ausgeben",
+                    "sie_singular": "wird ausgeben",
+                    "xier": "wird ausgeben",
+                    "wir": "werden ausgeben",
+                    "ihr": "werdet ausgeben",
+                    "sie_plural": "werden ausgeben",
+                    "Sie": "werden ausgeben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ausgeben",
+                    "du": "würdest ausgeben",
+                    "er": "würde ausgeben",
+                    "es": "würde ausgeben",
+                    "sie_singular": "würde ausgeben",
+                    "xier": "würde ausgeben",
+                    "wir": "würden ausgeben",
+                    "ihr": "würdet ausgeben",
+                    "sie_plural": "würden ausgeben",
+                    "Sie": "würden ausgeben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte ausgegeben",
+                    "du": "hättest ausgegeben",
+                    "er": "hätte ausgegeben",
+                    "es": "hätte ausgegeben",
+                    "sie_singular": "hätte ausgegeben",
+                    "xier": "hätte ausgegeben",
+                    "wir": "hätten ausgegeben",
+                    "ihr": "hättet ausgegeben",
+                    "sie_plural": "hätten ausgegeben",
+                    "Sie": "hätten ausgegeben"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde ausgegeben",
+                    "du": "wirst ausgegeben",
+                    "er": "wird ausgegeben",
+                    "es": "wird ausgegeben",
+                    "sie_singular": "wird ausgegeben",
+                    "xier": "wird ausgegeben",
+                    "wir": "werden ausgegeben",
+                    "ihr": "werdet ausgegeben",
+                    "sie_plural": "werden ausgegeben",
+                    "Sie": "werden ausgegeben"
+                },
+                "imperative": {
+                    "du": "gib aus",
+                    "ihr": "gebt aus",
+                    "Sie": "geben Sie aus"
+                }
+            },
+            "investieren": {
+                "present": {
+                    "ich": "investiere",
+                    "du": "investierst",
+                    "er": "investiert",
+                    "es": "investiert",
+                    "sie_singular": "investiert",
+                    "xier": "investiert",
+                    "wir": "investieren",
+                    "ihr": "investiert",
+                    "sie_plural": "investieren",
+                    "Sie": "investieren"
+                },
+                "Perfekt": {
+                    "ich": "habe investiert",
+                    "du": "hast investiert",
+                    "er": "hat investiert",
+                    "es": "hat investiert",
+                    "sie_singular": "hat investiert",
+                    "xier": "hat investiert",
+                    "wir": "haben investiert",
+                    "ihr": "habt investiert",
+                    "sie_plural": "haben investiert",
+                    "Sie": "haben investiert"
+                },
+                "Futur_I": {
+                    "ich": "werde investieren",
+                    "du": "wirst investieren",
+                    "er": "wird investieren",
+                    "es": "wird investieren",
+                    "sie_singular": "wird investieren",
+                    "xier": "wird investieren",
+                    "wir": "werden investieren",
+                    "ihr": "werdet investieren",
+                    "sie_plural": "werden investieren",
+                    "Sie": "werden investieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde investieren",
+                    "du": "würdest investieren",
+                    "er": "würde investieren",
+                    "es": "würde investieren",
+                    "sie_singular": "würde investieren",
+                    "xier": "würde investieren",
+                    "wir": "würden investieren",
+                    "ihr": "würdet investieren",
+                    "sie_plural": "würden investieren",
+                    "Sie": "würden investieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte investiert",
+                    "du": "hättest investiert",
+                    "er": "hätte investiert",
+                    "es": "hätte investiert",
+                    "sie_singular": "hätte investiert",
+                    "xier": "hätte investiert",
+                    "wir": "hätten investiert",
+                    "ihr": "hättet investiert",
+                    "sie_plural": "hätten investiert",
+                    "Sie": "hätten investiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde investiert",
+                    "du": "wirst investiert",
+                    "er": "wird investiert",
+                    "es": "wird investiert",
+                    "sie_singular": "wird investiert",
+                    "xier": "wird investiert",
+                    "wir": "werden investiert",
+                    "ihr": "werdet investiert",
+                    "sie_plural": "werden investiert",
+                    "Sie": "werden investiert"
+                },
+                "imperative": {
+                    "du": "investiere",
+                    "ihr": "investiert",
+                    "Sie": "investieren Sie"
+                }
+            },
+            "berücksichtigen": {
+                "present": {
+                    "ich": "berücksichtige",
+                    "du": "berücksichtigst",
+                    "er": "berücksichtigt",
+                    "es": "berücksichtigt",
+                    "sie_singular": "berücksichtigt",
+                    "xier": "berücksichtigt",
+                    "wir": "berücksichtigen",
+                    "ihr": "berücksichtigt",
+                    "sie_plural": "berücksichtigen",
+                    "Sie": "berücksichtigen"
+                },
+                "Perfekt": {
+                    "ich": "habe berücksichtigt",
+                    "du": "hast berücksichtigt",
+                    "er": "hat berücksichtigt",
+                    "es": "hat berücksichtigt",
+                    "sie_singular": "hat berücksichtigt",
+                    "xier": "hat berücksichtigt",
+                    "wir": "haben berücksichtigt",
+                    "ihr": "habt berücksichtigt",
+                    "sie_plural": "haben berücksichtigt",
+                    "Sie": "haben berücksichtigt"
+                },
+                "Futur_I": {
+                    "ich": "werde berücksichtigen",
+                    "du": "wirst berücksichtigen",
+                    "er": "wird berücksichtigen",
+                    "es": "wird berücksichtigen",
+                    "sie_singular": "wird berücksichtigen",
+                    "xier": "wird berücksichtigen",
+                    "wir": "werden berücksichtigen",
+                    "ihr": "werdet berücksichtigen",
+                    "sie_plural": "werden berücksichtigen",
+                    "Sie": "werden berücksichtigen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde berücksichtigen",
+                    "du": "würdest berücksichtigen",
+                    "er": "würde berücksichtigen",
+                    "es": "würde berücksichtigen",
+                    "sie_singular": "würde berücksichtigen",
+                    "xier": "würde berücksichtigen",
+                    "wir": "würden berücksichtigen",
+                    "ihr": "würdet berücksichtigen",
+                    "sie_plural": "würden berücksichtigen",
+                    "Sie": "würden berücksichtigen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte berücksichtigt",
+                    "du": "hättest berücksichtigt",
+                    "er": "hätte berücksichtigt",
+                    "es": "hätte berücksichtigt",
+                    "sie_singular": "hätte berücksichtigt",
+                    "xier": "hätte berücksichtigt",
+                    "wir": "hätten berücksichtigt",
+                    "ihr": "hättet berücksichtigt",
+                    "sie_plural": "hätten berücksichtigt",
+                    "Sie": "hätten berücksichtigt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde berücksichtigt",
+                    "du": "wirst berücksichtigt",
+                    "er": "wird berücksichtigt",
+                    "es": "wird berücksichtigt",
+                    "sie_singular": "wird berücksichtigt",
+                    "xier": "wird berücksichtigt",
+                    "wir": "werden berücksichtigt",
+                    "ihr": "werdet berücksichtigt",
+                    "sie_plural": "werden berücksichtigt",
+                    "Sie": "werden berücksichtigt"
+                },
+                "imperative": {
+                    "du": "berücksichtige",
+                    "ihr": "berücksichtigt",
+                    "Sie": "berücksichtigen Sie"
+                }
+            },
+            "benötigen": {
+                "present": {
+                    "ich": "benötige",
+                    "du": "benötigst",
+                    "er": "benötigt",
+                    "es": "benötigt",
+                    "sie_singular": "benötigt",
+                    "xier": "benötigt",
+                    "wir": "benötigen",
+                    "ihr": "benötigt",
+                    "sie_plural": "benötigen",
+                    "Sie": "benötigen"
+                },
+                "Perfekt": {
+                    "ich": "habe benötigt",
+                    "du": "hast benötigt",
+                    "er": "hat benötigt",
+                    "es": "hat benötigt",
+                    "sie_singular": "hat benötigt",
+                    "xier": "hat benötigt",
+                    "wir": "haben benötigt",
+                    "ihr": "habt benötigt",
+                    "sie_plural": "haben benötigt",
+                    "Sie": "haben benötigt"
+                },
+                "Futur_I": {
+                    "ich": "werde benötigen",
+                    "du": "wirst benötigen",
+                    "er": "wird benötigen",
+                    "es": "wird benötigen",
+                    "sie_singular": "wird benötigen",
+                    "xier": "wird benötigen",
+                    "wir": "werden benötigen",
+                    "ihr": "werdet benötigen",
+                    "sie_plural": "werden benötigen",
+                    "Sie": "werden benötigen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde benötigen",
+                    "du": "würdest benötigen",
+                    "er": "würde benötigen",
+                    "es": "würde benötigen",
+                    "sie_singular": "würde benötigen",
+                    "xier": "würde benötigen",
+                    "wir": "würden benötigen",
+                    "ihr": "würdet benötigen",
+                    "sie_plural": "würden benötigen",
+                    "Sie": "würden benötigen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte benötigt",
+                    "du": "hättest benötigt",
+                    "er": "hätte benötigt",
+                    "es": "hätte benötigt",
+                    "sie_singular": "hätte benötigt",
+                    "xier": "hätte benötigt",
+                    "wir": "hätten benötigt",
+                    "ihr": "hättet benötigt",
+                    "sie_plural": "hätten benötigt",
+                    "Sie": "hätten benötigt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde benötigt",
+                    "du": "wirst benötigt",
+                    "er": "wird benötigt",
+                    "es": "wird benötigt",
+                    "sie_singular": "wird benötigt",
+                    "xier": "wird benötigt",
+                    "wir": "werden benötigt",
+                    "ihr": "werdet benötigt",
+                    "sie_plural": "werden benötigt",
+                    "Sie": "werden benötigt"
+                },
+                "imperative": {
+                    "du": "benötige",
+                    "ihr": "benötigt",
+                    "Sie": "benötigen Sie"
+                }
+            },
+            "massieren": {
+                "present": {
+                    "ich": "massiere",
+                    "du": "massierst",
+                    "er": "massiert",
+                    "es": "massiert",
+                    "sie_singular": "massiert",
+                    "xier": "massiert",
+                    "wir": "massieren",
+                    "ihr": "massiert",
+                    "sie_plural": "massieren",
+                    "Sie": "massieren"
+                },
+                "Perfekt": {
+                    "ich": "habe massiert",
+                    "du": "hast massiert",
+                    "er": "hat massiert",
+                    "es": "hat massiert",
+                    "sie_singular": "hat massiert",
+                    "xier": "hat massiert",
+                    "wir": "haben massiert",
+                    "ihr": "habt massiert",
+                    "sie_plural": "haben massiert",
+                    "Sie": "haben massiert"
+                },
+                "Futur_I": {
+                    "ich": "werde massieren",
+                    "du": "wirst massieren",
+                    "er": "wird massieren",
+                    "es": "wird massieren",
+                    "sie_singular": "wird massieren",
+                    "xier": "wird massieren",
+                    "wir": "werden massieren",
+                    "ihr": "werdet massieren",
+                    "sie_plural": "werden massieren",
+                    "Sie": "werden massieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde massieren",
+                    "du": "würdest massieren",
+                    "er": "würde massieren",
+                    "es": "würde massieren",
+                    "sie_singular": "würde massieren",
+                    "xier": "würde massieren",
+                    "wir": "würden massieren",
+                    "ihr": "würdet massieren",
+                    "sie_plural": "würden massieren",
+                    "Sie": "würden massieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte massiert",
+                    "du": "hättest massiert",
+                    "er": "hätte massiert",
+                    "es": "hätte massiert",
+                    "sie_singular": "hätte massiert",
+                    "xier": "hätte massiert",
+                    "wir": "hätten massiert",
+                    "ihr": "hättet massiert",
+                    "sie_plural": "hätten massiert",
+                    "Sie": "hätten massiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde massiert",
+                    "du": "wirst massiert",
+                    "er": "wird massiert",
+                    "es": "wird massiert",
+                    "sie_singular": "wird massiert",
+                    "xier": "wird massiert",
+                    "wir": "werden massiert",
+                    "ihr": "werdet massiert",
+                    "sie_plural": "werden massiert",
+                    "Sie": "werden massiert"
+                },
+                "imperative": {
+                    "du": "massiere",
+                    "ihr": "massiert",
+                    "Sie": "massieren Sie"
+                }
+            },
+            "aufwachsen": {
+                "present": {
+                    "ich": "wachse auf",
+                    "du": "wächst auf",
+                    "er": "wächst auf",
+                    "es": "wächst auf",
+                    "sie_singular": "wächst auf",
+                    "xier": "wächst auf",
+                    "wir": "wachsen auf",
+                    "ihr": "wachst auf",
+                    "sie_plural": "wachsen auf",
+                    "Sie": "wachsen auf"
+                },
+                "Perfekt": {
+                    "ich": "bin aufgewachsen",
+                    "du": "bist aufgewachsen",
+                    "er": "ist aufgewachsen",
+                    "es": "ist aufgewachsen",
+                    "sie_singular": "ist aufgewachsen",
+                    "xier": "ist aufgewachsen",
+                    "wir": "sind aufgewachsen",
+                    "ihr": "seid aufgewachsen",
+                    "sie_plural": "sind aufgewachsen",
+                    "Sie": "sind aufgewachsen"
+                },
+                "Futur_I": {
+                    "ich": "werde aufwachsen",
+                    "du": "wirst aufwachsen",
+                    "er": "wird aufwachsen",
+                    "es": "wird aufwachsen",
+                    "sie_singular": "wird aufwachsen",
+                    "xier": "wird aufwachsen",
+                    "wir": "werden aufwachsen",
+                    "ihr": "werdet aufwachsen",
+                    "sie_plural": "werden aufwachsen",
+                    "Sie": "werden aufwachsen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde aufwachsen",
+                    "du": "würdest aufwachsen",
+                    "er": "würde aufwachsen",
+                    "es": "würde aufwachsen",
+                    "sie_singular": "würde aufwachsen",
+                    "xier": "würde aufwachsen",
+                    "wir": "würden aufwachsen",
+                    "ihr": "würdet aufwachsen",
+                    "sie_plural": "würden aufwachsen",
+                    "Sie": "würden aufwachsen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre aufgewachsen",
+                    "du": "wärst aufgewachsen",
+                    "er": "wäre aufgewachsen",
+                    "es": "wäre aufgewachsen",
+                    "sie_singular": "wäre aufgewachsen",
+                    "xier": "wäre aufgewachsen",
+                    "wir": "wären aufgewachsen",
+                    "ihr": "wärt aufgewachsen",
+                    "sie_plural": "wären aufgewachsen",
+                    "Sie": "wären aufgewachsen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde aufgewachsen",
+                    "du": "wirst aufgewachsen",
+                    "er": "wird aufgewachsen",
+                    "es": "wird aufgewachsen",
+                    "sie_singular": "wird aufgewachsen",
+                    "xier": "wird aufgewachsen",
+                    "wir": "werden aufgewachsen",
+                    "ihr": "werdet aufgewachsen",
+                    "sie_plural": "werden aufgewachsen",
+                    "Sie": "werden aufgewachsen"
+                },
+                "imperative": {
+                    "du": "wachse auf",
+                    "ihr": "wachst auf",
+                    "Sie": "wachsen Sie auf"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was kann dagegen gemacht werden?",
+            "Unten sehen Sie drei Krankheiten.",
+            "Verbinden Sie die Tipps mit den Krankheiten.",
+            "Manche Tipps passen für mehrere Krankheiten.",
+            "Fieber den Kopf massieren keine scharfen Sachen essen eine Schmerztablette",
+            "Tablette nehmen zum Arzt gehen nicht auf",
+            "Screens schauen einen starken Kaffee trinken",
+            "Tee trinken viel Wasser trinken das Licht ausmachen eine Wärmflasche",
+            "Flasche auf den Bauch legen ein heißes, kurzes Bad nehmen keinen Alkohol trinken",
+            "Wählen Sie das beste Modalverb für jeden Tipp (kann, soll, muss oder darf nicht) und schreiben Sie es dahinter.",
+            "Dann schreiben Sie zwei Sätze mit Modalverben im Passiv zu jeder Krankheit.",
+            "Benutzen Sie das Modell.",
+            "Bei [Krankheit] [ Modalverb ] werden.",
+            "Bei Kopfschmerzen kann der Kopf massiert werden.",
+            "Lesen Sie die folgenden Fragen über das Basler Pharmaunternehmen Roche.",
+            "Dann hören Sie zu und beantworten Sie die Fragen.",
+            "Wann wird Roche gegründet?",
+            "Wie viel Prozent vom Forschungsbudget werden in der Schweiz ausgegeben?",
+            "Von wie vielen Menschen wird be i Roche in der Schweiz eine Ausbildung gemacht?",
+            "In welchen drei Kategorien werden von Roche Produkte hergestellt?",
+            "Die Firma F.",
+            "Hoffmann-La Roche AG, heute Roche Holding AG, wird 1896 in Basel von Fritz Hoffmann-La Roche gegründet.",
+            "Roche ist ein multinationales Pharmaunternehmen mit einem Gewinn von 57 Milliarden Schweizer Franken.",
+            "Der Hauptsitz der Firma ist immer noch in der Schweiz.",
+            "Dort wird jedes Jahr viel Geld in Forschung und Entwicklung investiert:",
+            "25 Prozent von Roche s Forschungsbudget",
+            "Wird in der Schweiz ausgegeben.",
+            "Roche ist es auch sehr wichtig, dass sie junge Menschen für Berufe in der Pharmaindustrie vorbereiten.",
+            "In der Schweiz allein werden ca. 400 junge Menschen in die Ausbildung aufgenommen.",
+            "Roche produziert Medikamente, Diagnostik Produkte und Produkte für die Forschung.",
+            "Wie viel Geld investieren Schweizer Pharmaunternehmen",
+            "Gesundheit Industrie?",
+            "Schweizer Pharma unternehmen investieren jedes Jahr ca. 140 Millionen Franken ( CHF) in die Gesundheitsindustrie.",
+            "Hier sehen Sie ein Diagramm, das zeigt, wie viel die Top 5 im Jahr 2016 investiert haben.",
+            "Wie viel Geld haben diese fünf Unternehmen insgesamt investiert?",
+            "Hier sehen Sie Argumente von Expert*innen dazu, wenn Pharmaunternehmen in die Gesundheitsindustrie investieren.",
+            "Machen Sie aus den Passivsätzen Aktiv sätze, mit den orangenen Satzteilen als Subjekt.",
+            "Neue Behandlungen sollen mit dem Geld von Ärzt *innen erforscht werden.",
+            "*innen sollen mit dem Geld neue Behandlungen erforschen.",
+            "Durch innovative Methoden können kranke Menschen besser von Ärzt *innen behandelt werden.",
+            "Ärzt *innen können kranke Menschen durch innovative Methoden besser behandeln.",
+            "Unternehmen kann durch das Geld Einfluss gekauft werden.",
+            "Unternehmen können durch das Geld Einfluss kaufen.",
+            "Spenden dürfen von Ärzt *innen bei der Krankenbehandlung nicht berücksichtigt werden.",
+            "Ärzt *innen dürfen Spenden bei der Krankenbehandlung nicht berücksichtigen.",
+            "Fragen Sie nach den unterstrichenen Satzteilen.",
+            "Benutzen Sie dabei wo-Komposita.",
+            "Womit sollen von Ärzt *innen neue Behandlungen erforscht werden?",
+            "Wodurch können kranke Menschen besser von Ärztinnen behandelt werden?",
+            "Wodurch kann von Pharmaunternehmen Einfluss gekauft werden?",
+            "Wobei dürfen Spenden von Ärzt *innen nicht berücksichtigt werden?",
+            "Schauen Sie sich das erste Video an und notieren Sie was Jana (J), Charlotte (C) und Nardos (N) sagen.",
+            "Ich persönlich benutze eigentlich keine homöopathischen Medikamente.",
+            "Ich bin auf jeden Fall für Homöopathie.",
+            "Also grundsätzlich finde ich homöopathische Medizin gut.",
+            "Es gibt natürlich auch Krankheiten, die die Schulmedizin benötigen.",
+            "Ich glaube, dass man auch viele Sachen mit natürlichen Medikamenten heilen kann.",
+            "Was halten Sie von homöopathischen Medikamenten?",
+            "Ich hab e damit gute Erfahrungen, auch allgemein mit alternativer Medizin.",
+            "Ich glaube, dass man auch viele Sachen mit natürlichen Medikamenten heilen kann, natürlich nicht alles.",
+            "Ich habe keinen Grund, warum ich’s mache, aber ich setze dann wahrscheinlich doch eher so in die Medizin, also richtige Medizin, wenn man das so sagen kann.",
+            "Also grundsätzlich finde ich homöopathische Medizin gut und auch Medikamente gut.",
+            "Ich denk nicht, dass man immer auf Schulmedizin zurückgreifen muss.",
+            "Aber es gibt natürlich Krankheiten, die Schulmedizin benötigen und wo man noch auf jeden Fall einen Arzt aufsuchen sollte, der ja Schulmediziner ist.",
+            "Schauen Sie sich das zweite Video an und notieren Sie, wofür Personen homöopathische Medizin benutzen (j), wofür sie sie nicht benutzen (n) und worüber keine Person spricht (x).",
+            "Bei welchen Krankheiten benutzen Sie homöopathische Medizin?",
+            "Und bei welchen nicht?",
+            "Also ich benutz homöopathische Arzneimittel, seit ich ein kleines Kind bin.",
+            "Meine Schwester und meine Mutter auch und wir benutzen sie, wenn wir zum Beispiel Schnupfen haben oder Husten, Halsweh.",
+            "Ich würde Homöopathie auf jeden Fall nehmen, wenn ich krank bin und die Krankheit einen milden Verlauf hat.",
+            "Das könnte eine ganz normale Erkältung sein oder eine Grippe, die einen milden Verlauf hat.",
+            "Auf keinen Fall würde ich Homöopathie nehmen, wenn es um schwere Erkrankungen geht.",
+            "Homöopathische Medikamente?",
+            "Wann und wann nicht?"
+        ],
+        "templated": []
+    }
+}

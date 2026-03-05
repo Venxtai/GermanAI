@@ -1,0 +1,577 @@
+{
+    "unit": "25",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 25,
+        "prerequisite": "1-24"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Person interviewen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "lachen",
+                "pos": "VERB",
+                "translation": "to laugh",
+                "frequency": 444,
+                "cefr": "A1"
+            },
+            {
+                "word": "vergessen",
+                "pos": "VERB",
+                "translation": "to forget",
+                "frequency": 584,
+                "cefr": "A2"
+            },
+            {
+                "word": "tanzen",
+                "pos": "VERB",
+                "translation": "to dance",
+                "frequency": 1497,
+                "cefr": "A1"
+            },
+            {
+                "word": "fotografieren",
+                "pos": "VERB",
+                "translation": "to take pictures",
+                "frequency": 3861,
+                "cefr": "A2"
+            },
+            {
+                "word": "wandern",
+                "pos": "VERB",
+                "translation": "to hike; migrate",
+                "frequency": 1803,
+                "cefr": "A1"
+            },
+            {
+                "word": "aufschreiben",
+                "pos": "VERB",
+                "translation": "to make a note, write down",
+                "frequency": 3748,
+                "cefr": "B1"
+            },
+            {
+                "word": "herausfinden",
+                "pos": "VERB",
+                "translation": "to find out",
+                "frequency": 2069,
+                "cefr": "B1"
+            },
+            {
+                "word": "einen Kurs belegen",
+                "pos": "VERB",
+                "translation": "to take a course"
+            },
+            {
+                "word": "der Abend",
+                "pos": "NOUN",
+                "translation": "evening",
+                "frequency": 342,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Fahrrad",
+                "pos": "NOUN",
+                "translation": "bicycle",
+                "frequency": 2138,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kino",
+                "pos": "NOUN",
+                "translation": "cinema, the movies",
+                "frequency": 2020,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Studierenden",
+                "pos": "NOUN",
+                "translation": "students (plural, inclusive)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sprache",
+                "pos": "NOUN",
+                "translation": "language",
+                "frequency": 421,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Biologie",
+                "pos": "NOUN",
+                "translation": "biology",
+                "frequency": 3617,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Fremdsprache, -n",
+                "pos": "ADJ",
+                "translation": "foreign language"
+            },
+            {
+                "word": "die Betriebswirtschaftslehre (BWL)",
+                "pos": "NOUN",
+                "translation": "business (administration)"
+            },
+            {
+                "word": "die Statistik",
+                "pos": "NOUN",
+                "translation": "statistic(s)",
+                "frequency": 1304,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Literatur",
+                "pos": "NOUN",
+                "translation": "literature",
+                "frequency": 913,
+                "cefr": "B1"
+            },
+            {
+                "word": "Spanien",
+                "pos": "NOUN",
+                "translation": "Spain",
+                "frequency": 1744
+            },
+            {
+                "word": "mindestens",
+                "pos": "ADV",
+                "translation": "at least",
+                "frequency": 604,
+                "cefr": "A2"
+            },
+            {
+                "word": "spezifisch",
+                "pos": "ADJ",
+                "translation": "specific",
+                "frequency": 1499
+            },
+            {
+                "word": "unten",
+                "pos": "PREP",
+                "translation": "below; down",
+                "frequency": 710,
+                "cefr": "A1"
+            },
+            {
+                "word": "rechts",
+                "pos": "ADJ",
+                "translation": "right, on the right side",
+                "frequency": 829,
+                "cefr": "A1"
+            },
+            {
+                "word": "links",
+                "pos": "ADV",
+                "translation": "left, on the left side",
+                "frequency": 893,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Interview",
+                "pos": "NOUN",
+                "frequency": 931,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Radio",
+                "pos": "NOUN",
+                "frequency": 2575,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Studierende",
+                "pos": "NOUN",
+                "frequency": 24920,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Fremdsprache",
+                "pos": "NOUN",
+                "frequency": 3770,
+                "cefr": "B1"
+            },
+            {
+                "word": "China",
+                "pos": "PROPN",
+                "frequency": 846
+            },
+            {
+                "word": "die Linguistik",
+                "pos": "NOUN",
+                "frequency": 22800
+            },
+            {
+                "word": "der Dialekt",
+                "pos": "NOUN",
+                "frequency": 4650,
+                "cefr": "B1"
+            },
+            {
+                "word": "belegen",
+                "pos": "VERB",
+                "frequency": 1686,
+                "cefr": "B2"
+            },
+            {
+                "word": "gerne",
+                "pos": "ADV",
+                "frequency": 278,
+                "cefr": "A1"
+            },
+            {
+                "word": "dreiundziebzig",
+                "pos": "NUM"
+            },
+            {
+                "word": "fünfundsechzig",
+                "pos": "ADV"
+            },
+            {
+                "word": "siebzehnt",
+                "pos": "ADJ"
+            },
+            {
+                "word": "vielenr",
+                "pos": "DET"
+            },
+            {
+                "word": "der Dank",
+                "pos": "NOUN",
+                "frequency": 597,
+                "cefr": "A1"
+            },
+            {
+                "word": "die BWL",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Semester",
+                "pos": "NOUN",
+                "frequency": 3007,
+                "cefr": "B1"
+            },
+            {
+                "word": "Chinesisch",
+                "pos": "NOUN",
+                "frequency": 1154
+            },
+            {
+                "word": "Französisch",
+                "pos": "NOUN",
+                "frequency": 816,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Notiz",
+                "pos": "NOUN",
+                "frequency": 4519,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Theater",
+                "pos": "NOUN",
+                "frequency": 1086,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "lachen": {
+                "present": {
+                    "ich": "lache",
+                    "du": "lachst",
+                    "er": "lacht",
+                    "es": "lacht",
+                    "sie_singular": "lacht",
+                    "xier": "lacht",
+                    "wir": "lachen",
+                    "ihr": "lacht",
+                    "sie_plural": "lachen",
+                    "Sie": "lachen"
+                }
+            },
+            "vergessen": {
+                "present": {
+                    "ich": "vergesse",
+                    "du": "vergisst",
+                    "er": "vergisst",
+                    "es": "vergisst",
+                    "sie_singular": "vergisst",
+                    "xier": "vergisst",
+                    "wir": "vergessen",
+                    "ihr": "vergesst",
+                    "sie_plural": "vergessen",
+                    "Sie": "vergessen"
+                }
+            },
+            "tanzen": {
+                "present": {
+                    "ich": "tanze",
+                    "du": "tanzt",
+                    "er": "tanzt",
+                    "es": "tanzt",
+                    "sie_singular": "tanzt",
+                    "xier": "tanzt",
+                    "wir": "tanzen",
+                    "ihr": "tanzt",
+                    "sie_plural": "tanzen",
+                    "Sie": "tanzen"
+                }
+            },
+            "fotografieren": {
+                "present": {
+                    "ich": "fotografiere",
+                    "du": "fotografierst",
+                    "er": "fotografiert",
+                    "es": "fotografiert",
+                    "sie_singular": "fotografiert",
+                    "xier": "fotografiert",
+                    "wir": "fotografieren",
+                    "ihr": "fotografiert",
+                    "sie_plural": "fotografieren",
+                    "Sie": "fotografieren"
+                }
+            },
+            "wandern": {
+                "present": {
+                    "ich": "wandere",
+                    "du": "wanderst",
+                    "er": "wandert",
+                    "es": "wandert",
+                    "sie_singular": "wandert",
+                    "xier": "wandert",
+                    "wir": "wandern",
+                    "ihr": "wandert",
+                    "sie_plural": "wandern",
+                    "Sie": "wandern"
+                }
+            },
+            "aufschreiben": {
+                "present": {
+                    "ich": "schreibe auf",
+                    "du": "schreibst auf",
+                    "er": "schreibt auf",
+                    "es": "schreibt auf",
+                    "sie_singular": "schreibt auf",
+                    "xier": "schreibt auf",
+                    "wir": "schreiben auf",
+                    "ihr": "schreibt auf",
+                    "sie_plural": "schreiben auf",
+                    "Sie": "schreiben auf"
+                }
+            },
+            "herausfinden": {
+                "present": {
+                    "ich": "finde heraus",
+                    "du": "findest heraus",
+                    "er": "findet heraus",
+                    "es": "findet heraus",
+                    "sie_singular": "findet heraus",
+                    "xier": "findet heraus",
+                    "wir": "finden heraus",
+                    "ihr": "findet heraus",
+                    "sie_plural": "finden heraus",
+                    "Sie": "finden heraus"
+                }
+            },
+            "belegen": {
+                "present": {
+                    "ich": "belege",
+                    "du": "belegst",
+                    "er": "belegt",
+                    "es": "belegt",
+                    "sie_singular": "belegt",
+                    "xier": "belegt",
+                    "wir": "belegen",
+                    "ihr": "belegt",
+                    "sie_plural": "belegen",
+                    "Sie": "belegen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Roberts Interview im Uniradio {Uni Radio",
+            "Robert spricht mit zwei Studierenden.",
+            "Hören Sie zu und schreiben Sie die Informationen auf (keine Sätze).",
+            "Wandern, fotografieren, singen und tanzen.",
+            "Ein C1-Deutschkurs, ein Statistikkurs, Strömungsmechanik.",
+            "21 Jahre alt.",
+            "Sprachen lernen, lachen, ins Kino gehen.",
+            "Zwei Mitbewohnerinnen, Marie und Sandra.",
+            "Sie sind 18 Jahre alt.",
+            "Sandra studiert Biologie.",
+            "Marie studiert BWL.",
+            "Mein Name is Ahmet.",
+            "Die erste Person ist Carmen.",
+            "Wie heißt du?",
+            "Ich heiße Carmen Diego.",
+            "Woher kommst du und wo wohnst du?",
+            "Ich komme aus Spanien und bin Austausschstudentin.",
+            "Ich wohne in Basel.",
+            "Wie alt bist du und wann hast du Geburtstag?",
+            "Ich habe am fünften Mai Geburtstag und bin 18 Jahre alt.",
+            "Was studierst du an der Impuls Deutsch Uni?",
+            "Ich studiere Deutsch als Fremdsprache und Maschinenbau, das ist Mechanical Engineering auf Englisch.",
+            "Welche Kurse belegst du?",
+            "Ich belege einen C1 Deutschkurs, einen Statistikkurs",
+            "Und Strömungsmechanik.",
+            "Das schreibt man S",
+            "Das ist ein typischer Kurs für Maschinenbaustudierende.",
+            "Was sind deine Hobbys?",
+            "Ich wandere gern, ich fotografiere gern… und ich singe und tanze gern.",
+            "Aber das war nur neun Fragen, nicht zehn.",
+            "Wie groß bist du?",
+            "Ich bin ein Meter dreiundziebzig groß.",
+            "Woher kommst du?",
+            "Wo wohnst du?",
+            "Ich heiße Bing.",
+            "Ich komme aus STADT in China und wohne auch in Basel.",
+            "Ich bin eins fünfundsechzig.",
+            "Wie alt bist du und wann ist dein Geburtstag?",
+            "Ich bin 21 Jahre alt und habe am siebzehnten November Geburtstag.",
+            "Oh, das ist ja heute!",
+            "Vielen Dank!",
+            "Ja, ich gehe heute Abend mit meiner besten Freundin feiern.",
+            "Wohnst du mit anderen Personen?",
+            "Ich glaub ich die Frage auch vergessen.",
+            "Ja, ich wohne mit zwei Mitbewohnerinnen: Sandra und Marie.",
+            "Sie sind beide",
+            "Sandra studiert Biologie und Marie studiert BWL.",
+            "Was studierst du?",
+            "Auch Biologie oder BWL?",
+            "Und welche Kurse hast du?",
+            "Nein, ich studiere Deutsche Linguistik und Literatur.",
+            "Ich habe dieses Semester einen Dialektkurs.",
+            "Was machst du gern?",
+            "Ich lerne gern Sprachen.",
+            "Ich spreche Deutsch, Chinesisch, Englisch und Französisch.",
+            "Ich lache auch gern und ich gehe gern ins Kino.",
+            "Vielen Dank für das Interview.",
+            "Wie alt bist du?",
+            "Wo kommst du her?",
+            "Wann hast du Geburtstag?",
+            "Wann ist dein Geburtstag?",
+            "Was studierst du an der X Uni?",
+            "Welche Kurse hast du?",
+            "Sprechen Sie für 5 Minuten.",
+            "Finden Sie viele neue Informationen über die Person heraus.",
+            "Stellen Sie mindestens die Fragen von X.",
+            "Machen Sie rechts Notizen (keine Sätze).",
+            "Sprechen Sie für 5 Minuten über das Wetter heute und Ihre Kleidung.",
+            "Was tragen Sie heute?",
+            "Was tragen Sie, wenn es sonnig ist, wenn es regnet oder wenn es schneit?",
+            "Was machen Sie immer, oft, selten, nie?",
+            "Was machen Sie zu einer spezifischen Zeit?",
+            "Was machen Sie immer?",
+            "Was machen Sie oft?",
+            "Was machen Sie manchmal?",
+            "Was machen Sie selten?",
+            "Was machen Sie nie?",
+            "Sprechen Sie für 5 Minuten über Ihren Tag.",
+            "Machen Sie unten Notizen (keine Sätze)."
+        ],
+        "templated": [
+            {
+                "template": "Ich heiße [person_name] [person_lastname].",
+                "source_literals": [
+                    "Ich heiße Carmen Diego."
+                ],
+                "description": "Self-introduction with full name"
+            },
+            {
+                "template": "Ich heiße [person_name].",
+                "source_literals": [
+                    "Ich heiße Bing."
+                ],
+                "description": "Self-introduction with first name"
+            }
+        ]
+    },
+    "placeholder_registry": {}
+}

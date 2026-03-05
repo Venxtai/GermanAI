@@ -1,0 +1,330 @@
+{
+    "unit": "O1",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 1,
+        "prerequisite": "core 1-104"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Umfrage machen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "herausfinden", "pos": "VERB", "translation": "to find out", "frequency": 2069, "cefr": "B1" },
+            { "word": "zuteilen", "pos": "VERB", "translation": "to assign", "frequency": 12018 },
+            { "word": "korrigieren", "pos": "VERB", "translation": "to correct", "frequency": 3026, "cefr": "B1" },
+            { "word": "unterstreichen", "pos": "VERB", "translation": "to underline", "frequency": 4347, "cefr": "B1" },
+            { "word": "unterstrichen", "pos": "ADJ", "translation": "underlined" },
+            { "word": "das Interesse", "pos": "NOUN", "translation": "interest", "frequency": 606, "cefr": "A2" },
+            { "word": "das Feld", "pos": "NOUN", "translation": "space, field", "frequency": 834, "cefr": "B1" },
+            { "word": "das Signal", "pos": "NOUN", "translation": "signal; sign", "frequency": 1545, "cefr": "A1" },
+            { "word": "der Artikel", "pos": "NOUN", "translation": "article", "frequency": 1378, "cefr": "A2" },
+            { "word": "das Wort", "pos": "NOUN", "translation": "word", "frequency": 194, "cefr": "A2" },
+            { "word": "der Satz", "pos": "NOUN", "translation": "sentence", "frequency": 432, "cefr": "A1" },
+            { "word": "das Nomen", "pos": "NOUN", "translation": "noun [ling.]", "frequency": 36474, "cefr": "A1" },
+            { "word": "das Verb", "pos": "NOUN", "translation": "verb [ling.]", "frequency": 4557, "cefr": "B2" },
+            { "word": "der Infinitiv", "pos": "NOUN", "translation": "infinitive [ling.]", "frequency": 1, "cefr": "A1" },
+            { "word": "das Hilfsverb", "pos": "NOUN", "translation": "auxiliary verb [ling.]", "frequency": 1, "cefr": "A1" },
+            { "word": "das Adjektiv", "pos": "NOUN", "translation": "adjective [ling.]", "frequency": 3682, "cefr": "A1" },
+            { "word": "das Partizip", "pos": "NOUN", "translation": "participle [ling.]", "frequency": 1, "cefr": "A1" },
+            { "word": "die Vergangenheit", "pos": "NOUN", "translation": "past", "frequency": 1196, "cefr": "B1" },
+            { "word": "das Perfekt", "pos": "NOUN", "translation": "perfect [ling.]", "frequency": 1567, "cefr": "B1" },
+            { "word": "das Präteritum", "pos": "NOUN", "translation": "preterit, simple past [ling.]" },
+            { "word": "die Gegenwart", "pos": "NOUN", "translation": "present", "frequency": 1932, "cefr": "A1" },
+            { "word": "das Präsens", "pos": "NOUN", "translation": "present tense [ling.]" },
+            { "word": "die Zukunft", "pos": "NOUN", "translation": "future", "frequency": 469, "cefr": "B1" },
+            { "word": "das Futur", "pos": "NOUN", "translation": "future tense [ling.]", "frequency": 1, "cefr": "A1" },
+            { "word": "die Aktivität", "pos": "NOUN", "translation": "activity" },
+            { "word": "die Lösung", "pos": "NOUN", "translation": "solution" },
+            { "word": "richtig", "pos": "ADJ", "translation": "correct; right", "frequency": 177, "cefr": "A1" },
+            { "word": "falsch", "pos": "ADJ", "translation": "wrong", "frequency": 524, "cefr": "A1" },
+            { "word": "fertig", "pos": "ADJ", "translation": "done; ready", "frequency": 5585, "cefr": "A1" },
+            { "word": "direkt", "pos": "ADJ", "translation": "direct(ly)", "frequency": 353, "cefr": "A2" },
+            { "word": "außen", "pos": "ADV", "translation": "outside; external, out" },
+            { "word": "innen", "pos": "ADV", "translation": "inside; internal; interior", "frequency": 2165, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "fern", "pos": "ADV", "frequency": 1573 },
+            { "word": "die Semesterpause", "pos": "NOUN" },
+            { "word": "die Perfektform", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "herausfinden": {
+                "present": {
+                    "ich": "finde heraus",
+                    "du": "findest heraus",
+                    "er": "findet heraus",
+                    "es": "findet heraus",
+                    "sie_singular": "findet heraus",
+                    "xier": "findet heraus",
+                    "wir": "finden heraus",
+                    "ihr": "findet heraus",
+                    "sie_plural": "finden heraus",
+                    "Sie": "finden heraus"
+                },
+                "Perfekt": {
+                    "ich": "habe herausgefunden",
+                    "du": "hast herausgefunden",
+                    "er": "hat herausgefunden",
+                    "es": "hat herausgefunden",
+                    "sie_singular": "hat herausgefunden",
+                    "xier": "hat herausgefunden",
+                    "wir": "haben herausgefunden",
+                    "ihr": "habt herausgefunden",
+                    "sie_plural": "haben herausgefunden",
+                    "Sie": "haben herausgefunden"
+                },
+                "Futur_I": {
+                    "ich": "werde herausfinden",
+                    "du": "wirst herausfinden",
+                    "er": "wird herausfinden",
+                    "es": "wird herausfinden",
+                    "sie_singular": "wird herausfinden",
+                    "xier": "wird herausfinden",
+                    "wir": "werden herausfinden",
+                    "ihr": "werdet herausfinden",
+                    "sie_plural": "werden herausfinden",
+                    "Sie": "werden herausfinden"
+                },
+                "imperative": {
+                    "du": "finde heraus",
+                    "ihr": "findet heraus",
+                    "Sie": "finden Sie heraus"
+                }
+            },
+            "zuteilen": {
+                "Perfekt": {
+                    "ich": "habe zugeteilt",
+                    "du": "hast zugeteilt",
+                    "er": "hat zugeteilt",
+                    "es": "hat zugeteilt",
+                    "sie_singular": "hat zugeteilt",
+                    "xier": "hat zugeteilt",
+                    "wir": "haben zugeteilt",
+                    "ihr": "habt zugeteilt",
+                    "sie_plural": "haben zugeteilt",
+                    "Sie": "haben zugeteilt"
+                },
+                "Futur_I": {
+                    "ich": "werde zuteilen",
+                    "du": "wirst zuteilen",
+                    "er": "wird zuteilen",
+                    "es": "wird zuteilen",
+                    "sie_singular": "wird zuteilen",
+                    "xier": "wird zuteilen",
+                    "wir": "werden zuteilen",
+                    "ihr": "werdet zuteilen",
+                    "sie_plural": "werden zuteilen",
+                    "Sie": "werden zuteilen"
+                }
+            },
+            "korrigieren": {
+                "present": {
+                    "ich": "korrigiere",
+                    "du": "korrigierst",
+                    "er": "korrigiert",
+                    "es": "korrigiert",
+                    "sie_singular": "korrigiert",
+                    "xier": "korrigiert",
+                    "wir": "korrigieren",
+                    "ihr": "korrigiert",
+                    "sie_plural": "korrigieren",
+                    "Sie": "korrigieren"
+                },
+                "Perfekt": {
+                    "ich": "habe korrigiert",
+                    "du": "hast korrigiert",
+                    "er": "hat korrigiert",
+                    "es": "hat korrigiert",
+                    "sie_singular": "hat korrigiert",
+                    "xier": "hat korrigiert",
+                    "wir": "haben korrigiert",
+                    "ihr": "habt korrigiert",
+                    "sie_plural": "haben korrigiert",
+                    "Sie": "haben korrigiert"
+                },
+                "Futur_I": {
+                    "ich": "werde korrigieren",
+                    "du": "wirst korrigieren",
+                    "er": "wird korrigieren",
+                    "es": "wird korrigieren",
+                    "sie_singular": "wird korrigieren",
+                    "xier": "wird korrigieren",
+                    "wir": "werden korrigieren",
+                    "ihr": "werdet korrigieren",
+                    "sie_plural": "werden korrigieren",
+                    "Sie": "werden korrigieren"
+                },
+                "imperative": {
+                    "du": "korrigiere",
+                    "ihr": "korrigiert",
+                    "Sie": "korrigieren Sie"
+                }
+            },
+            "unterstreichen": {
+                "present": {
+                    "ich": "unterstreiche",
+                    "du": "unterstreichst",
+                    "er": "unterstreicht",
+                    "es": "unterstreicht",
+                    "sie_singular": "unterstreicht",
+                    "xier": "unterstreicht",
+                    "wir": "unterstreichen",
+                    "ihr": "unterstreicht",
+                    "sie_plural": "unterstreichen",
+                    "Sie": "unterstreichen"
+                },
+                "Perfekt": {
+                    "ich": "habe unterstrichen",
+                    "du": "hast unterstrichen",
+                    "er": "hat unterstrichen",
+                    "es": "hat unterstrichen",
+                    "sie_singular": "hat unterstrichen",
+                    "xier": "hat unterstrichen",
+                    "wir": "haben unterstrichen",
+                    "ihr": "habt unterstrichen",
+                    "sie_plural": "haben unterstrichen",
+                    "Sie": "haben unterstrichen"
+                },
+                "Futur_I": {
+                    "ich": "werde unterstreichen",
+                    "du": "wirst unterstreichen",
+                    "er": "wird unterstreichen",
+                    "es": "wird unterstreichen",
+                    "sie_singular": "wird unterstreichen",
+                    "xier": "wird unterstreichen",
+                    "wir": "werden unterstreichen",
+                    "ihr": "werdet unterstreichen",
+                    "sie_plural": "werden unterstreichen",
+                    "Sie": "werden unterstreichen"
+                },
+                "imperative": {
+                    "du": "unterstreich",
+                    "ihr": "unterstreicht",
+                    "Sie": "unterstreichen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Das ist mir wichtig",
+            "Schreiben Sie Ihren Namen in die Mitte der Tabelle.",
+            "In die anderen Felder schreiben Sie wichtige Personen, Plätze, Interessen und Begriffe aus Ihrem Leben.",
+            "Jedes Feld sollte nur ein Wort haben.",
+            "Sprechen Sie vier Minuten lang mit der Person, die Ihnen direkt gegenüber ist.",
+            "In den ersten zwei Minuten erzählt die Person im Innenkreis",
+            "Dann hat die Person aus dem Außenkrei s",
+            "Nach vier Minuten gibt Ihr*e Professor*in Ihnen ein Signal und die Personen im Außenkrei s",
+            "Sprechen Sie jetzt mit der neuen Person.",
+            "Sie bekommen eine der 15 Fragen zugeteilt.",
+            "Starten Sie mit Ihrer Frage eine Umfrage im Kurs.",
+            "Alle 20 Sekunden müssen Sie mit einer neuen Person sprechen.",
+            "Machen Sie sich dazu Notizen.",
+            "Was machst du gern?",
+            "Siehst du gerne fern?",
+            "Liest du gerne?",
+            "Machst du gerne Sport?",
+            "Welche Sportart?",
+            "Reist du gerne?",
+            "Triffst du dich gerne mit Freunden?",
+            "Was macht ihr dann?",
+            "Wann hast du zum letzten Mal ferngesehen?",
+            "Wann hast du zum letzten Mal ein Selfie gemacht?",
+            "Wann hast du zum letzten Mal einen Brief geschrieben?",
+            "Wann hast du zum letzten Mal gefeiert?",
+            "Wann hast du zum letzten Mal gelacht?",
+            "Wann bist du das letzte Mal ins Kino gegangen?",
+            "Was hast du gesehen?",
+            "Wann bist du das letzte Mal im Meer geschwommen?",
+            "Wann bist du das letzte Mal geflogen?",
+            "Wann bist du das letzte Mal zu spät gekommen?",
+            "Wann bist du das letzte Mal glücklich gewesen?",
+            "Was haben Sie in der Semesterpause gemacht?",
+            "Schreiben Sie mindestens vier Sätze.",
+            "Denken Sie an die Perfektformen ( Partizipien und Hilfsverb).",
+            "Erzählen Sie einer anderen Person von Ihrer Semesterpause.",
+            "Wenn die andere Person erzählt, hören Sie gut zu und stellen Sie dann eine Frage."
+        ],
+        "templated": []
+    }
+}

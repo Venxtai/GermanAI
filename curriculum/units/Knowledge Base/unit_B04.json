@@ -1,0 +1,599 @@
+{
+    "unit": "B4",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 4,
+        "prerequisite": "core 1-104, B1-B3"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bekommen",
+                "pos": "VERB",
+                "translation": "to get",
+                "frequency": 212,
+                "cefr": "A1"
+            },
+            {
+                "word": "beschreiben",
+                "pos": "VERB",
+                "translation": "to describe",
+                "frequency": 435,
+                "cefr": "A2"
+            },
+            {
+                "word": "vergleichen",
+                "pos": "VERB",
+                "translation": "to compare",
+                "frequency": 387,
+                "cefr": "A2"
+            },
+            {
+                "word": "überlegen",
+                "pos": "VERB",
+                "translation": "to consider, reflect , think"
+            },
+            {
+                "word": "vergessen",
+                "pos": "VERB",
+                "translation": "to forget",
+                "frequency": 584,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Folge",
+                "pos": "NOUN",
+                "translation": "episode; consequence",
+                "frequency": 431,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Nachricht",
+                "pos": "NOUN",
+                "translation": "message; news",
+                "frequency": 1218,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Umwelt",
+                "pos": "NOUN",
+                "translation": "environment",
+                "frequency": 1664,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Verhalten",
+                "pos": "NOUN",
+                "translation": "behavior",
+                "frequency": 603,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Angebot",
+                "pos": "NOUN",
+                "translation": "offer; quote; proposal",
+                "frequency": 719,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Himmel",
+                "pos": "NOUN",
+                "translation": "sky",
+                "frequency": 889,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Anteil",
+                "pos": "NOUN",
+                "translation": "amount; portion; share",
+                "frequency": 767,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schritt",
+                "pos": "NOUN",
+                "translation": "step",
+                "frequency": 376,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wirtschaft",
+                "pos": "NOUN",
+                "translation": "economy",
+                "frequency": 687,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Dorf",
+                "pos": "NOUN",
+                "translation": "village",
+                "frequency": 959,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Wolke",
+                "pos": "NOUN",
+                "translation": "cloud",
+                "frequency": 2114,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Hilfe",
+                "pos": "NOUN",
+                "translation": "help",
+                "frequency": 481,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Strom",
+                "pos": "NOUN",
+                "translation": "electricity",
+                "frequency": 1392,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Raum",
+                "pos": "NOUN",
+                "translation": "room; space",
+                "frequency": 403,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zukunft",
+                "pos": "NOUN",
+                "translation": "future",
+                "frequency": 469,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ware",
+                "pos": "NOUN",
+                "translation": "goods, merchandise",
+                "frequency": 1979,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Licht, -er",
+                "pos": "ADJ",
+                "translation": "light"
+            },
+            {
+                "word": "der Wald",
+                "pos": "NOUN",
+                "translation": "forest, woods",
+                "frequency": 1028,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Aufgabe",
+                "pos": "NOUN",
+                "translation": "task",
+                "frequency": 256,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Gesellschaft",
+                "pos": "NOUN",
+                "translation": "society; community",
+                "frequency": 363,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Aussage",
+                "pos": "NOUN",
+                "translation": "statement",
+                "frequency": 577,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Verkehr",
+                "pos": "NOUN",
+                "translation": "traffic",
+                "frequency": 2131,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Veranstaltung",
+                "pos": "NOUN",
+                "translation": "event",
+                "frequency": 1921,
+                "cefr": "A2"
+            },
+            {
+                "word": "spät",
+                "pos": "ADJ",
+                "translation": "late"
+            },
+            {
+                "word": "berühmt",
+                "pos": "ADJ",
+                "translation": "famous"
+            },
+            {
+                "word": "zusammen",
+                "pos": "ADJ",
+                "translation": "together",
+                "frequency": 533,
+                "cefr": "A1"
+            },
+            {
+                "word": "täglich",
+                "pos": "ADJ",
+                "translation": "daily"
+            },
+            {
+                "word": "manchmal",
+                "pos": "ADV",
+                "translation": "sometimes",
+                "frequency": 382,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "pantomimisch",
+                "pos": "ADV"
+            },
+            {
+                "word": "das Kreuzworträtsel",
+                "pos": "NOUN",
+                "frequency": 36563
+            },
+            {
+                "word": "horizontal",
+                "pos": "ADV",
+                "frequency": 4287,
+                "cefr": "B2"
+            },
+            {
+                "word": "vertikal",
+                "pos": "ADV",
+                "frequency": 4986,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Gegenteil",
+                "pos": "NOUN",
+                "frequency": 1471,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bekommen": {
+                "present": {
+                    "ich": "bekomme",
+                    "du": "bekommst",
+                    "er": "bekommt",
+                    "es": "bekommt",
+                    "sie_singular": "bekommt",
+                    "xier": "bekommt",
+                    "wir": "bekommen",
+                    "ihr": "bekommt",
+                    "sie_plural": "bekommen",
+                    "Sie": "bekommen"
+                },
+                "Perfekt": {
+                    "ich": "habe bekommen",
+                    "du": "hast bekommen",
+                    "er": "hat bekommen",
+                    "es": "hat bekommen",
+                    "sie_singular": "hat bekommen",
+                    "xier": "hat bekommen",
+                    "wir": "haben bekommen",
+                    "ihr": "habt bekommen",
+                    "sie_plural": "haben bekommen",
+                    "Sie": "haben bekommen"
+                },
+                "Futur_I": {
+                    "ich": "werde bekommen",
+                    "du": "wirst bekommen",
+                    "er": "wird bekommen",
+                    "es": "wird bekommen",
+                    "sie_singular": "wird bekommen",
+                    "xier": "wird bekommen",
+                    "wir": "werden bekommen",
+                    "ihr": "werdet bekommen",
+                    "sie_plural": "werden bekommen",
+                    "Sie": "werden bekommen"
+                },
+                "imperative": {
+                    "du": "bekomm",
+                    "ihr": "bekommt",
+                    "Sie": "bekommen Sie"
+                }
+            },
+            "beschreiben": {
+                "present": {
+                    "ich": "beschreibe",
+                    "du": "beschreibst",
+                    "er": "beschreibt",
+                    "es": "beschreibt",
+                    "sie_singular": "beschreibt",
+                    "xier": "beschreibt",
+                    "wir": "beschreiben",
+                    "ihr": "beschreibt",
+                    "sie_plural": "beschreiben",
+                    "Sie": "beschreiben"
+                },
+                "Perfekt": {
+                    "ich": "habe beschrieben",
+                    "du": "hast beschrieben",
+                    "er": "hat beschrieben",
+                    "es": "hat beschrieben",
+                    "sie_singular": "hat beschrieben",
+                    "xier": "hat beschrieben",
+                    "wir": "haben beschrieben",
+                    "ihr": "habt beschrieben",
+                    "sie_plural": "haben beschrieben",
+                    "Sie": "haben beschrieben"
+                },
+                "Futur_I": {
+                    "ich": "werde beschreiben",
+                    "du": "wirst beschreiben",
+                    "er": "wird beschreiben",
+                    "es": "wird beschreiben",
+                    "sie_singular": "wird beschreiben",
+                    "xier": "wird beschreiben",
+                    "wir": "werden beschreiben",
+                    "ihr": "werdet beschreiben",
+                    "sie_plural": "werden beschreiben",
+                    "Sie": "werden beschreiben"
+                },
+                "imperative": {
+                    "du": "beschreibe",
+                    "ihr": "beschreibt",
+                    "Sie": "beschreiben Sie"
+                }
+            },
+            "vergleichen": {
+                "present": {
+                    "ich": "vergleiche",
+                    "du": "vergleichst",
+                    "er": "vergleicht",
+                    "es": "vergleicht",
+                    "sie_singular": "vergleicht",
+                    "xier": "vergleicht",
+                    "wir": "vergleichen",
+                    "ihr": "vergleicht",
+                    "sie_plural": "vergleichen",
+                    "Sie": "vergleichen"
+                },
+                "Perfekt": {
+                    "ich": "habe verglichen",
+                    "du": "hast verglichen",
+                    "er": "hat verglichen",
+                    "es": "hat verglichen",
+                    "sie_singular": "hat verglichen",
+                    "xier": "hat verglichen",
+                    "wir": "haben verglichen",
+                    "ihr": "habt verglichen",
+                    "sie_plural": "haben verglichen",
+                    "Sie": "haben verglichen"
+                },
+                "Futur_I": {
+                    "ich": "werde vergleichen",
+                    "du": "wirst vergleichen",
+                    "er": "wird vergleichen",
+                    "es": "wird vergleichen",
+                    "sie_singular": "wird vergleichen",
+                    "xier": "wird vergleichen",
+                    "wir": "werden vergleichen",
+                    "ihr": "werdet vergleichen",
+                    "sie_plural": "werden vergleichen",
+                    "Sie": "werden vergleichen"
+                },
+                "imperative": {
+                    "du": "vergleich",
+                    "ihr": "vergleicht",
+                    "Sie": "vergleichen Sie"
+                }
+            },
+            "überlegen": {
+                "present": {
+                    "ich": "überlege",
+                    "du": "überlegst",
+                    "er": "überlegt",
+                    "es": "überlegt",
+                    "sie_singular": "überlegt",
+                    "xier": "überlegt",
+                    "wir": "überlegen",
+                    "ihr": "überlegt",
+                    "sie_plural": "überlegen",
+                    "Sie": "überlegen"
+                },
+                "Perfekt": {
+                    "ich": "habe überlegt",
+                    "du": "hast überlegt",
+                    "er": "hat überlegt",
+                    "es": "hat überlegt",
+                    "sie_singular": "hat überlegt",
+                    "xier": "hat überlegt",
+                    "wir": "haben überlegt",
+                    "ihr": "habt überlegt",
+                    "sie_plural": "haben überlegt",
+                    "Sie": "haben überlegt"
+                },
+                "Futur_I": {
+                    "ich": "werde überlegen",
+                    "du": "wirst überlegen",
+                    "er": "wird überlegen",
+                    "es": "wird überlegen",
+                    "sie_singular": "wird überlegen",
+                    "xier": "wird überlegen",
+                    "wir": "werden überlegen",
+                    "ihr": "werdet überlegen",
+                    "sie_plural": "werden überlegen",
+                    "Sie": "werden überlegen"
+                },
+                "imperative": {
+                    "du": "überlege",
+                    "ihr": "überlegt",
+                    "Sie": "überlegen Sie"
+                }
+            },
+            "vergessen": {
+                "present": {
+                    "ich": "vergesse",
+                    "du": "vergisst",
+                    "er": "vergisst",
+                    "es": "vergisst",
+                    "sie_singular": "vergisst",
+                    "xier": "vergisst",
+                    "wir": "vergessen",
+                    "ihr": "vergesst",
+                    "sie_plural": "vergessen",
+                    "Sie": "vergessen"
+                },
+                "Perfekt": {
+                    "ich": "habe vergessen",
+                    "du": "hast vergessen",
+                    "er": "hat vergessen",
+                    "es": "hat vergessen",
+                    "sie_singular": "hat vergessen",
+                    "xier": "hat vergessen",
+                    "wir": "haben vergessen",
+                    "ihr": "habt vergessen",
+                    "sie_plural": "haben vergessen",
+                    "Sie": "haben vergessen"
+                },
+                "Futur_I": {
+                    "ich": "werde vergessen",
+                    "du": "wirst vergessen",
+                    "er": "wird vergessen",
+                    "es": "wird vergessen",
+                    "sie_singular": "wird vergessen",
+                    "xier": "wird vergessen",
+                    "wir": "werden vergessen",
+                    "ihr": "werdet vergessen",
+                    "sie_plural": "werden vergessen",
+                    "Sie": "werden vergessen"
+                },
+                "imperative": {
+                    "du": "vergiss",
+                    "ihr": "vergesst",
+                    "Sie": "vergessen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Jede Gruppe bekommt Vokabelkarten.",
+            "Auf jeder Karte steht ein Nomen.",
+            "Die erste Person nimmt eine Karte und präsentiert das Wort auf der Karte pantomimisch.",
+            "Die anderen Personen müssen das Wort raten.",
+            "Die Person, die das Wort zuerst sagt, bekommt die Karte und einen Punkt.",
+            "Ihre Lehrkraft gibt einer Person eine Karte, auf der ein Wort steht.",
+            "Die erste Person muss dann ein Wort sagen, das mit dem letzten Buchstaben des Wortes auf der Karte beginnt.",
+            "Die nächste Person muss ein Wort mit dem letzten Buchstaben des Wortes der ersten Person sagen.",
+            "Die Person, die das letzte Wort sagt, gewinnt.",
+            "Lesen Sie die acht Satzanfänge und schreiben Sie das fehlende Wort in das Kreuzworträtsel.",
+            "Wenn Sie alle Wörter gefunden haben, dann Schreiben Sie das Lösungswort in den grauen Kasten.",
+            "Wenn man etwas nicht alleine machen kann, braucht man … 6.",
+            "Die Kinder … im Herbst bunte Blätter und machen ein Bild.",
+            "7. … Sie bitte die linke und die rechte Lampe.",
+            "Welche ist größer?",
+            "Ich mache viel für die Umwelt, Umweltschutz",
+            "Die Person ist sehr bekannt, sie ist ….",
+            "Ein anderes Wort für Konsequenz ist … 16.",
+            "Elektronische Geräte funktionieren nur mit … 20.",
+            "Oh je, ist das … Ich sollte schon um 24 Uhr zu Hause sein.",
+            "Ich lese gern Gedichte, aber … lese ich Comics.",
+            "Ein anderes Verb für nachdenken ist … 27.",
+            "Die Professorin … das Bild im Detail.",
+            "Er weiß nicht mehr, wie das geht.",
+            "Das Gegenteil von Vergangenheit ist … 9.",
+            "Wir gehen nicht oft ins Kino, aber … 10.",
+            "Am Himmel sehe ich eine weiße … 12.",
+            "Wie heißt die Person?",
+            "Wenn mir jemand etwas schenkt, … ich ein Geschenk.",
+            "Die Tomate ist zu grün, nehmen wir diese hier, sie ist ….",
+            "Etwas passiert jeden Tag, es passiert ….",
+            "Das Haus ist aber nicht groß, es ist ….",
+            "Der Opa … seinem Enkelkind eine Geschichte.",
+            "Die Studierenden … eine von drei Optionen"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

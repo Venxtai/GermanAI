@@ -1,0 +1,184 @@
+{
+    "unit": "O2",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 2,
+        "prerequisite": "core 1-104, O1-O1"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Elfchen schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "der Frühling", "pos": "NOUN", "translation": "spring", "frequency": 1, "cefr": "A1" },
+            { "word": "der Sommer", "pos": "NOUN", "translation": "summer", "frequency": 771, "cefr": "A1" },
+            { "word": "der Herbst", "pos": "NOUN", "translation": "fall", "frequency": 1596, "cefr": "A1" },
+            { "word": "der Winter", "pos": "NOUN", "translation": "winter", "frequency": 1206, "cefr": "A2" },
+            { "word": "der Badeanzug", "pos": "NOUN", "translation": "bathing suit, swimsuit", "frequency": 48149, "cefr": "A1" },
+            { "word": "die Badehose", "pos": "NOUN", "translation": "swim trunks", "frequency": 32171, "cefr": "A1" },
+            { "word": "das Kleid", "pos": "NOUN", "translation": "dress", "frequency": 1780, "cefr": "A2" },
+            { "word": "die Hose", "pos": "NOUN", "translation": "pants", "frequency": 2156, "cefr": "A2" },
+            { "word": "die Socke", "pos": "NOUN", "translation": "sock", "frequency": 12800, "cefr": "B1" },
+            { "word": "die Kappe", "pos": "NOUN", "translation": "cap; hat", "frequency": 16957, "cefr": "A1" },
+            { "word": "der Schuh", "pos": "NOUN", "translation": "shoe", "frequency": 1678, "cefr": "A1" },
+            { "word": "die Jacke", "pos": "NOUN", "translation": "jacket", "frequency": 3287, "cefr": "A1" },
+            { "word": "der Sturm", "pos": "NOUN", "translation": "storm", "frequency": 2913, "cefr": "B1" },
+            { "word": "das Gras", "pos": "NOUN", "translation": "grass", "frequency": 2779, "cefr": "B1" },
+            { "word": "die Pflanze", "pos": "NOUN", "translation": "plant", "frequency": 1667, "cefr": "A2" },
+            { "word": "der Wald", "pos": "NOUN", "translation": "forest, woods", "frequency": 1028, "cefr": "A2" },
+            { "word": "der Wind", "pos": "NOUN", "translation": "wind", "frequency": 1124, "cefr": "A1" },
+            { "word": "das Blatt", "pos": "NOUN", "translation": "leaf (of a plant/tree); sheet, page", "frequency": 1270, "cefr": "A2" },
+            { "word": "das Feuer", "pos": "NOUN", "translation": "fire", "frequency": 1576, "cefr": "A1" },
+            { "word": "der Vogel", "pos": "NOUN", "translation": "bird", "frequency": 1701, "cefr": "A2" },
+            { "word": "der Bär", "pos": "NOUN", "translation": "bear" },
+            { "word": "der Regen", "pos": "NOUN", "translation": "rain", "frequency": 1957, "cefr": "A1" },
+            { "word": "die Wolke", "pos": "NOUN", "translation": "cloud", "frequency": 2114, "cefr": "A2" },
+            { "word": "der Tisch", "pos": "NOUN", "translation": "table", "frequency": 529, "cefr": "A1" },
+            { "word": "das Sofa", "pos": "NOUN", "translation": "sofa", "frequency": 3572, "cefr": "A1" },
+            { "word": "der Sessel", "pos": "NOUN", "translation": "armchair", "frequency": 3999, "cefr": "B1" },
+            { "word": "die Stufe", "pos": "NOUN", "translation": "step", "frequency": 1757, "cefr": "B1" },
+            { "word": "die Treppe", "pos": "NOUN", "translation": "stairs, staircase, stairway", "frequency": 1950, "cefr": "A1" },
+            { "word": "der Boden", "pos": "NOUN", "translation": "ground, floor", "frequency": 536, "cefr": "B1" },
+            { "word": "das Geld,", "pos": "NOUN", "translation": "money", "frequency": 235, "cefr": "A1" },
+            { "word": "das Buch", "pos": "NOUN", "translation": "book", "frequency": 300, "cefr": "A1" },
+            { "word": "die Kamera, s", "pos": "NOUN", "translation": "camera", "frequency": 1501, "cefr": "A2" },
+            { "word": "das Handy", "pos": "NOUN", "translation": "mobile phone, cell phone", "frequency": 1693, "cefr": "A2" },
+            { "word": "die Farbe", "pos": "NOUN", "translation": "color", "frequency": 1079, "cefr": "A1" },
+            { "word": "das Ostern", "pos": "NOUN", "translation": "Easter", "frequency": 7338, "cefr": "A2" },
+            { "word": "die Ferien", "pos": "NOUN", "translation": "holidays, vacation", "frequency": 3448, "cefr": "A2" },
+            { "word": "der Urlaub", "pos": "NOUN", "translation": "vacation", "frequency": 1570, "cefr": "A1" },
+            { "word": "der Reisepass", "pos": "NOUN", "translation": "passport", "frequency": 22414, "cefr": "A1" },
+            { "word": "der Apfel", "pos": "NOUN", "translation": "apple", "frequency": 3490, "cefr": "A1" },
+            { "word": "der Mais", "pos": "NOUN", "translation": "corn", "frequency": 11237, "cefr": "A1" },
+            { "word": "die Birne", "pos": "NOUN", "translation": "pear", "frequency": 14522, "cefr": "A1" },
+            { "word": "der Kürbis", "pos": "NOUN", "translation": "pumpkin, squash", "frequency": 1, "cefr": "A1" },
+            { "word": "der Pilz", "pos": "NOUN", "translation": "mushroom", "frequency": 3216, "cefr": "B1" },
+            { "word": "schön", "pos": "ADJ", "translation": "beautiful; nice" },
+            { "word": "windig", "pos": "ADJ", "translation": "windy", "frequency": 25817, "cefr": "A2" },
+            { "word": "rot", "pos": "ADJ", "translation": "red", "frequency": 477, "cefr": "A1" },
+            { "word": "dunkel", "pos": "ADJ", "translation": "dark", "frequency": 706, "cefr": "A2" },
+            { "word": "kalt", "pos": "ADJ", "translation": "cold", "frequency": 887, "cefr": "A2" },
+            { "word": "gelb", "pos": "ADJ", "translation": "yellow", "frequency": 1446, "cefr": "A1" },
+            { "word": "braun", "pos": "ADJ", "translation": "brown", "frequency": 2320, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Ostereier", "pos": "NOUN" },
+            { "word": "daran", "pos": "ADV", "frequency": 292 },
+            { "word": "der Sommerurlaub", "pos": "NOUN", "frequency": 32051 },
+            { "word": "-shirts", "pos": "NOUN" },
+            { "word": "das Ticket", "pos": "NOUN", "frequency": 4769, "cefr": "A1" },
+            { "word": "unbestimmt", "pos": "ADJ", "frequency": 10670 },
+            { "word": "das Elfchen", "pos": "NOUN" },
+            { "word": "der Schirm", "pos": "NOUN", "frequency": 13546, "cefr": "A2" },
+            { "word": "feucht", "pos": "ADV", "frequency": 3165, "cefr": "B1" },
+            { "word": "das Halloween", "pos": "NOUN" },
+            { "word": "die Dunkelheit", "pos": "NOUN", "frequency": 3138 },
+            { "word": "das Datum", "pos": "NOUN", "frequency": 3203, "cefr": "A1" },
+            { "word": "das Neujahr", "pos": "NOUN", "frequency": 16115, "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {}
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Viele Menschen in deutschsprachigen Ländern verstecken im Frühling Ostereier.",
+            "Aber wo?",
+            "Markieren Sie in Ihrem Garten, wo fünf Eier liegen.",
+            "Die andere Person rät und versucht die Eier zu finden.",
+            "Liegen + Präposition + Dativ.",
+            "Liegt ein Ei auf dem Tisch?",
+            "-- Nein, auf dem Tisch liegt kein Ei..",
+            "Ja, auf dem Tisch liegt ein Ei.",
+            "Schreiben Sie Wörter von Dingen (mit Artikel) auf, die Sie in einen Sommerurlaub mitnehmen können.",
+            "Spielen Sie jetzt „Ich packe meinen Koffer in der großen Gruppe.",
+            "Sammeln Sie Adjektive und Nomen, die zum Herbst passen.",
+            "Kombinieren Sie dann Adjektive und Nomen und schreiben Sie ein Elfchen zum Herbst.",
+            "Feiertage im Winter.",
+            "Sammeln Sie mit einer anderen Person alle Feiertage, die im Winter stattfinden.",
+            "Schreiben Sie den Feiertag und das Datum auf.",
+            "Schreiben Sie jeweils einen Satz, wann der Feiertag stattfindet.",
+            "Suchen Sie sich einen Feiertag aus, den Sie selbst feiern und schreiben Sie drei bis vier Sätze: Was machen/essen/ trinken Sie an dem Tag?",
+            "Haben Sie Traditionen für diesen Tag?",
+            "Erzählen Sie in der kleinen Gruppe von Ihrem Feiertag."
+        ],
+        "templated": []
+    }
+}

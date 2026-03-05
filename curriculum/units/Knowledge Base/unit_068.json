@@ -1,0 +1,592 @@
+{
+    "unit": "68",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 68,
+        "prerequisite": "1-67"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate haben in Präteritum: ich hatte, du hattest, er hatte, wir hatten, ihr hattet, sie hatten.",
+            "Conjugate sein in Präteritum: ich war, du warst, er war, wir waren, ihr wart, sie waren.",
+            "Use wann in direct and indirect questions about time, als for single completed past events, and wenn for repeated past events or conditions."
+        ],
+        "forbidden": [
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über die Vergangenheit sprechen mit hatte und war",
+            "über Lieblingsspielzeug aus der Kindheit sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kindheitserinnerungen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "haben",
+                "pos": "VERB",
+                "translation": "to have",
+                "frequency": 6,
+                "cefr": "A1"
+            },
+            {
+                "word": "sein",
+                "pos": "VERB",
+                "translation": "to be",
+                "frequency": 4,
+                "cefr": "A1"
+            },
+            {
+                "word": "(sich) erinnern",
+                "pos": "VERB",
+                "translation": "to remember; remind; bring to mind",
+                "frequency": 396,
+                "cefr": "A2"
+            },
+            {
+                "word": "antworten",
+                "pos": "VERB",
+                "translation": "to answer",
+                "frequency": 826,
+                "cefr": "A1"
+            },
+            {
+                "word": "kritisieren",
+                "pos": "VERB",
+                "translation": "to criticize",
+                "frequency": 1394,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Erinnerung",
+                "pos": "NOUN",
+                "translation": "memory; reminder",
+                "frequency": 938,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Vergangenheit",
+                "pos": "NOUN",
+                "translation": "past",
+                "frequency": 1196,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kindheit",
+                "pos": "NOUN",
+                "translation": "childhood",
+                "frequency": 2323,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kindergarten",
+                "pos": "NOUN",
+                "translation": "preschool",
+                "frequency": 3371,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Klasse",
+                "pos": "NOUN",
+                "translation": "grade [school], class; category",
+                "frequency": 961,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Taschengeld",
+                "pos": "NOUN",
+                "translation": "pocket money",
+                "frequency": 17628,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Ereignis",
+                "pos": "NOUN",
+                "translation": "event, incident",
+                "frequency": 1067,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Reise",
+                "pos": "NOUN",
+                "translation": "travel, journey, trip, tour",
+                "frequency": 734,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Emotion",
+                "pos": "NOUN",
+                "translation": "emotion, feeling",
+                "frequency": 2784,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Spielzeug",
+                "pos": "NOUN",
+                "translation": "toy",
+                "frequency": 9207,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Burg",
+                "pos": "NOUN",
+                "translation": "fortress, castle",
+                "frequency": 4235,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Zug",
+                "pos": "NOUN",
+                "translation": "train; procession, parade",
+                "frequency": 675,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Gitarre",
+                "pos": "NOUN",
+                "translation": "guitar",
+                "frequency": 6483,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Schlagzeug",
+                "pos": "NOUN",
+                "translation": "drums, drum kit/set",
+                "frequency": 8188,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Angabe",
+                "pos": "NOUN",
+                "translation": "readings, information, specifications",
+                "frequency": 768,
+                "cefr": "B1"
+            },
+            {
+                "word": "glücklich",
+                "pos": "ADJ",
+                "translation": "happy; lucky; fortunate"
+            },
+            {
+                "word": "traurig",
+                "pos": "ADJ",
+                "translation": "sad; unhappy",
+                "frequency": 1752,
+                "cefr": "A2"
+            },
+            {
+                "word": "nachdenklich",
+                "pos": "ADJ",
+                "translation": "pensive; thoughtful; reflexive",
+                "frequency": 4635
+            },
+            {
+                "word": "immer noch",
+                "pos": "ADV",
+                "translation": "still",
+                "frequency": 64,
+                "cefr": "A1"
+            },
+            {
+                "word": "eigen-",
+                "pos": "ADJ",
+                "translation": "own"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Pop-Rock-Band",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Charts",
+                "pos": "NOUN"
+            },
+            {
+                "word": "politisch",
+                "pos": "ADV",
+                "frequency": 304,
+                "cefr": "B1"
+            },
+            {
+                "word": "aktiv",
+                "pos": "ADV",
+                "frequency": 790,
+                "cefr": "A2"
+            },
+            {
+                "word": "parodieren",
+                "pos": "VERB",
+                "frequency": 45719
+            },
+            {
+                "word": "der Rassismus",
+                "pos": "NOUN",
+                "frequency": 8227
+            },
+            {
+                "word": "das Konzert",
+                "pos": "NOUN",
+                "frequency": 2350,
+                "cefr": "A2"
+            },
+            {
+                "word": "CD",
+                "pos": "NOUN",
+                "frequency": 3408,
+                "cefr": "A1"
+            },
+            {
+                "word": "dein*e",
+                "pos": "DET"
+            },
+            {
+                "word": "depressiv",
+                "pos": "ADV",
+                "frequency": 16811,
+                "cefr": "B2"
+            },
+            {
+                "word": "enthusiastisch",
+                "pos": "ADV",
+                "frequency": 29832
+            },
+            {
+                "word": "euphorisch",
+                "pos": "ADV",
+                "frequency": 14191
+            },
+            {
+                "word": "faszinieren",
+                "pos": "ADV",
+                "frequency": 9036
+            },
+            {
+                "word": "nervös",
+                "pos": "ADV",
+                "frequency": 2793,
+                "cefr": "A2"
+            },
+            {
+                "word": "optimistisch",
+                "pos": "ADV",
+                "frequency": 4686,
+                "cefr": "B1"
+            },
+            {
+                "word": "pessimistisch",
+                "pos": "ADV",
+                "frequency": 16875,
+                "cefr": "B2"
+            },
+            {
+                "word": "nostalgisch",
+                "pos": "ADV",
+                "frequency": 15468
+            },
+            {
+                "word": "melancholisch",
+                "pos": "ADV",
+                "frequency": 12391
+            },
+            {
+                "word": "der Teddybär",
+                "pos": "NOUN",
+                "frequency": 26219
+            },
+            {
+                "word": "das Set",
+                "pos": "NOUN",
+                "frequency": 12564,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Xylophon",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Action",
+                "pos": "NOUN",
+                "frequency": 9375
+            },
+            {
+                "word": "die Actionfigur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Figur",
+                "pos": "NOUN",
+                "frequency": 1285,
+                "cefr": "B1"
+            },
+            {
+                "word": "siebt",
+                "pos": "ADJ",
+                "frequency": 6716
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "haben": {
+                "present": {
+                    "ich": "habe",
+                    "du": "hast",
+                    "er": "hat",
+                    "es": "hat",
+                    "sie_singular": "hat",
+                    "xier": "hat",
+                    "wir": "haben",
+                    "ihr": "habt",
+                    "sie_plural": "haben",
+                    "Sie": "haben"
+                },
+                "Präteritum": {
+                    "ich": "hatte",
+                    "du": "hattest",
+                    "er": "hatte",
+                    "es": "hatte",
+                    "sie_singular": "hatte",
+                    "xier": "hatte",
+                    "wir": "hatten",
+                    "ihr": "hattet",
+                    "sie_plural": "hatten",
+                    "Sie": "hatten"
+                }
+            },
+            "sein": {
+                "present": {
+                    "ich": "bin",
+                    "du": "bist",
+                    "er": "ist",
+                    "es": "ist",
+                    "sie_singular": "ist",
+                    "xier": "ist",
+                    "wir": "sind",
+                    "ihr": "seid",
+                    "sie_plural": "sind",
+                    "Sie": "sind"
+                },
+                "Präteritum": {
+                    "ich": "war",
+                    "du": "warst",
+                    "er": "war",
+                    "es": "war",
+                    "sie_singular": "war",
+                    "xier": "war",
+                    "wir": "waren",
+                    "ihr": "wart",
+                    "sie_plural": "waren",
+                    "Sie": "waren"
+                }
+            },
+            "erinnern": {
+                "present": {
+                    "ich": "erinnere",
+                    "du": "erinnerst",
+                    "er": "erinnert",
+                    "es": "erinnert",
+                    "sie_singular": "erinnert",
+                    "xier": "erinnert",
+                    "wir": "erinnern",
+                    "ihr": "erinnert",
+                    "sie_plural": "erinnern",
+                    "Sie": "erinnern"
+                }
+            },
+            "antworten": {
+                "present": {
+                    "ich": "antworte",
+                    "du": "antwortest",
+                    "er": "antwortet",
+                    "es": "antwortet",
+                    "sie_singular": "antwortet",
+                    "xier": "antwortet",
+                    "wir": "antworten",
+                    "ihr": "antwortet",
+                    "sie_plural": "antworten",
+                    "Sie": "antworten"
+                }
+            },
+            "kritisieren": {
+                "present": {
+                    "ich": "kritisiere",
+                    "du": "kritisierst",
+                    "er": "kritisiert",
+                    "es": "kritisiert",
+                    "sie_singular": "kritisiert",
+                    "xier": "kritisiert",
+                    "wir": "kritisieren",
+                    "ihr": "kritisiert",
+                    "sie_plural": "kritisieren",
+                    "Sie": "kritisieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Revolverheld ist eine deutsche Pop-Rock-Band aus Hamburg.",
+            "Die Gruppe heißt erst \"Manga\", dann \"Tsunamikiller\".",
+            "Seit 2004 heißt sie \"Revolverheld\".",
+            "Die erste Single, \"Generation Rock\" aus dem Jahr 2005 ist gleich in den deutschen Charts.",
+            "Johannes Strate singt und spielt mit Kristoffer H ü necke und Niels Kristian Hansen Gitarre.",
+            "Jakob Sinn sitzt am Schlagzeug..",
+            "Die Band ist auch politisch aktiv.",
+            "Zum Beispiel parodieren und kritisieren sie Rassismus im Fußball mit ihrem Lied \"Lass uns gehen\".",
+            "Das Lied \"Immer noch fühlen\" aus dem Jahr 2018 feiert wichtige Momente im Leben.",
+            "In \"Immer noch fühlen\" erinnert sich Revolverheld an \"erste Male\".",
+            "Hören Sie das Lied und kreuzen Sie an, was Sie hören.",
+            "Weil wir es fühlen das erste Konzert",
+            "Die erste Freundin das erste Lieblingslied",
+            "Die erste CD das erste Mal Disko",
+            "Die erste Zigarette das erste Bier",
+            "Das erste Geld die erste eigene Band",
+            "Und Sie?",
+            "Erinnern Sie sich auch an dieser Dinge oder Ereignisse?",
+            "Fragen und antworten Sie.",
+            "Was war dein erstes Lieblingslied?",
+            "Wie alt warst du?",
+            "Wann war dein erstes Konzert?",
+            "Was war dein erstes Konzert?",
+            "Was war deine Lieblingsband, als du 14 Jahre alt warst?",
+            "Wer war dein*e Freund*in, als du in der Schule warst?",
+            "Wann und wo war deine erste Reise?",
+            "Wann hattest du dein erstes Geld?",
+            "War es Taschengeld oder ein Job?",
+            "Was war dein erster Job?",
+            "Mein erstes Lieblingslied war \"Life is Life\" von Opus.",
+            "Ich war fünf Jahre alt, als es mein Lieblingslied war.",
+            "Mein erstes Lieblingslied X.",
+            "Ich war X Jahre alt, als es mein Lieblingslied war.",
+            "Mein erstes Konzert war X.",
+            "Ich war X Jahre alt.",
+            "Mein Freund war X, als ich in der Schule war.",
+            "Ich hatte mein erstes Geld, als ich X Jahre als war.",
+            "Es war Taschengeld.",
+            "Mein erster Job war bei X.",
+            "Meine erste Reise war, als ich X Jahre als war.",
+            "Ich war in X.",
+            "Die Reise war mit dem Flugzeug, Auto, Zug.",
+            "\"Wir können es immer noch fühlen\".",
+            "Welche Emotionen haben Sie bei Kindheitserinnerungen",
+            "Hören Sie das Gespräch von unseren Grammatik-Expert*innen.",
+            "Ordnen Sie die Personen dem Lieblingsspielzeug zu.",
+            "Auch als Kind habe ich gerne gespielt.",
+            "Hey Leute was war euer Lieblingsspielzeug, als ihr klein wart?",
+            "Was war es bei dir, Marco?",
+            "Mein Lieblingsspielzeug war ein Teddybär.",
+            "Er war weich und braun.",
+            "Ich hatte ihn immer bei mir.",
+            "Und was war dein Lieblingsspielzeug, Kim?",
+            "Als ich ein kleines Kind war, hatte ich eine Spielzeugzug.",
+            "Die war super.",
+            "Und du Michael?",
+            "Playmobil war in der Schule mein Lieblingsspielzeug.",
+            "Ich hatte viele Sets, mein Lieblingsset war eine Burg.",
+            "Und was war dein Lieblingsspielzeug, Anna?",
+            "Musik war für mich wichtig.",
+            "Mein Lieblingsspielzeug im Kindergarten war ein Xylophon.",
+            "Später hatte ich auch eine Gitarre.",
+            "Und wie war es bei dir Philipp?",
+            "Ich mochte Spiele.",
+            "Mein Lieblingsspiel, als ich zehn Jahre alt war, war Siedler.",
+            "Aber ich habe auch viele andere Spiele gespielt.",
+            "Ich hatte fast alle Spiele des Jahres.",
+            "Und Harika, womit hast du gern gespielt?",
+            "Mein Lieblingsspielzeug war eine Puppe.",
+            "Sie war ein Geschenk zu meinem achten Geburtstag.",
+            "Sie hatte schwarze Haare und tolle Kleider.",
+            "Ich mag ja Action, also hatte ich auch ganz viele Actionfiguren.",
+            "Meine Lieblingsactionfigur war Black Widow.",
+            "Hören Sie das Gespräch ein zweites Mal.",
+            "Hören Sie?",
+            "In der Schule.",
+            "Im Kindergarten.",
+            "Als ich zehn Jahre al t war.",
+            "Zu meinem achten Geburtstag.",
+            "Stellen Sie Fragen zu 1 und 2 und antworten Sie.",
+            "Ergänzen Sie die Sätze und schreiben Sie Sätze mit war/hatte über Ihr Lieblingsspielzeug.",
+            "Als ich ein kleines Kind war, hatte ich",
+            "In der Schule war mein Lieblingsspielzeug",
+            "Als ich zehn Jahre alt war, In der siebten Klasse",
+            "Im Kurs: Fragen Sie vier Personen \"Was war wann dein Lieblingsspielzeug?\"",
+            "Antworten Sie mit den Infos aus Teil 4. Person?",
+            "Welches Spielzeug?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

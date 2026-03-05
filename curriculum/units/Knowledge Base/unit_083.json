@@ -1,0 +1,453 @@
+{
+    "unit": "83",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 83,
+        "prerequisite": "1-82"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use einsteigen in + accusative, aussteigen aus + dative, and umsteigen in + accusative to describe getting on, off, and changing public transport."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Präferenzen zu Verkehrsmitteln diskutieren",
+            "öffentliche Verkehrsmittel benutzen und beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "öffentliche Verkehrsmittel"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "ansteigen",
+                "pos": "VERB",
+                "translation": "to rise",
+                "frequency": 2579
+            },
+            {
+                "word": "einsteigen",
+                "pos": "VERB",
+                "translation": "to step in, get in",
+                "frequency": 2835,
+                "cefr": "A1"
+            },
+            {
+                "word": "aussteigen",
+                "pos": "VERB",
+                "translation": "to step out, get out",
+                "frequency": 2398,
+                "cefr": "A1"
+            },
+            {
+                "word": "umsteigen",
+                "pos": "VERB",
+                "translation": "to transfer (to); change (train, bus, etc.)",
+                "frequency": 11329,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Heimatland",
+                "pos": "NOUN",
+                "translation": "home country",
+                "frequency": 8768,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Heimatstadt",
+                "pos": "NOUN",
+                "translation": "hometown",
+                "frequency": 7544,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Rathaus",
+                "pos": "NOUN",
+                "translation": "townhall, city hall",
+                "frequency": 3960,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Bahnhof",
+                "pos": "NOUN",
+                "translation": "train station",
+                "frequency": 2027,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Hauptbahnhof, ⸚e",
+                "pos": "ADJ",
+                "translation": "main station, central station"
+            },
+            {
+                "word": "die Haltestelle",
+                "pos": "NOUN",
+                "translation": "stop; station",
+                "frequency": 7555,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Fahrt",
+                "pos": "NOUN",
+                "translation": "ride, drive",
+                "frequency": 1569,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Linie",
+                "pos": "NOUN",
+                "translation": "line; route",
+                "frequency": 926,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bus",
+                "pos": "NOUN",
+                "translation": "bus",
+                "frequency": 1562,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Straßenbahn",
+                "pos": "NOUN",
+                "translation": "streetcar; tram; trolley",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die U-Bahn",
+                "pos": "NOUN",
+                "translation": "subway",
+                "frequency": 8314,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pferdekutsche",
+                "pos": "NOUN",
+                "translation": "horse-drawn carriage",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fiaker",
+                "pos": "NOUN",
+                "translation": "horse-drawn carriage (Austria)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sehenswürdigkeit",
+                "pos": "NOUN",
+                "translation": "sight; attraction",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Riesenrad",
+                "pos": "NOUN",
+                "translation": "Ferris wheel",
+                "frequency": 26642,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Brunnen",
+                "pos": "NOUN",
+                "translation": "fountain; well; spring",
+                "frequency": 7034,
+                "cefr": "A1"
+            },
+            {
+                "word": "sinnvoll",
+                "pos": "ADJ",
+                "translation": "useful, reasonable",
+                "frequency": 1354,
+                "cefr": "B1"
+            },
+            {
+                "word": "vorher",
+                "pos": "PREP",
+                "translation": "before, beforehand",
+                "frequency": 866,
+                "cefr": "A2"
+            },
+            {
+                "word": "umweltfreundlich",
+                "pos": "ADJ",
+                "translation": "environmentally friendly",
+                "frequency": 11209
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Fahrgäst",
+                "pos": "NOUN",
+                "frequency": 7038
+            },
+            {
+                "word": "wiener",
+                "pos": "ADJ",
+                "frequency": 2003
+            },
+            {
+                "word": "der Fahrgast",
+                "pos": "NOUN",
+                "frequency": 7038
+            },
+            {
+                "word": "der Westbahnhof",
+                "pos": "NOUN",
+                "frequency": 38822
+            },
+            {
+                "word": "die Route",
+                "pos": "NOUN",
+                "frequency": 3217
+            },
+            {
+                "word": "is",
+                "pos": "AUX",
+                "frequency": 6229
+            },
+            {
+                "word": "die Map",
+                "pos": "NOUN",
+                "frequency": 42919
+            },
+            {
+                "word": "der Einstieg",
+                "pos": "NOUN",
+                "frequency": 4893
+            },
+            {
+                "word": "die Ausstiegshaltestelle",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Terminal",
+                "pos": "NOUN",
+                "frequency": 11384,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ansteigen": {
+                "present": {
+                    "ich": "steige an",
+                    "du": "steigst an",
+                    "er": "steigt an",
+                    "es": "steigt an",
+                    "sie_singular": "steigt an",
+                    "xier": "steigt an",
+                    "wir": "steigen an",
+                    "ihr": "steigt an",
+                    "sie_plural": "steigen an",
+                    "Sie": "steigen an"
+                },
+                "Perfekt": {
+                    "ich": "bin angestiegen",
+                    "du": "bist angestiegen",
+                    "er": "ist angestiegen",
+                    "es": "ist angestiegen",
+                    "sie_singular": "ist angestiegen",
+                    "xier": "ist angestiegen",
+                    "wir": "sind angestiegen",
+                    "ihr": "seid angestiegen",
+                    "sie_plural": "sind angestiegen",
+                    "Sie": "sind angestiegen"
+                }
+            },
+            "einsteigen": {
+                "present": {
+                    "ich": "steige ein",
+                    "du": "steigst ein",
+                    "er": "steigt ein",
+                    "es": "steigt ein",
+                    "sie_singular": "steigt ein",
+                    "xier": "steigt ein",
+                    "wir": "steigen ein",
+                    "ihr": "steigt ein",
+                    "sie_plural": "steigen ein",
+                    "Sie": "steigen ein"
+                },
+                "Perfekt": {
+                    "ich": "bin eingestiegen",
+                    "du": "bist eingestiegen",
+                    "er": "ist eingestiegen",
+                    "es": "ist eingestiegen",
+                    "sie_singular": "ist eingestiegen",
+                    "xier": "ist eingestiegen",
+                    "wir": "sind eingestiegen",
+                    "ihr": "seid eingestiegen",
+                    "sie_plural": "sind eingestiegen",
+                    "Sie": "sind eingestiegen"
+                }
+            },
+            "aussteigen": {
+                "present": {
+                    "ich": "steige aus",
+                    "du": "steigst aus",
+                    "er": "steigt aus",
+                    "es": "steigt aus",
+                    "sie_singular": "steigt aus",
+                    "xier": "steigt aus",
+                    "wir": "steigen aus",
+                    "ihr": "steigt aus",
+                    "sie_plural": "steigen aus",
+                    "Sie": "steigen aus"
+                },
+                "Perfekt": {
+                    "ich": "bin ausgestiegen",
+                    "du": "bist ausgestiegen",
+                    "er": "ist ausgestiegen",
+                    "es": "ist ausgestiegen",
+                    "sie_singular": "ist ausgestiegen",
+                    "xier": "ist ausgestiegen",
+                    "wir": "sind ausgestiegen",
+                    "ihr": "seid ausgestiegen",
+                    "sie_plural": "sind ausgestiegen",
+                    "Sie": "sind ausgestiegen"
+                }
+            },
+            "umsteigen": {
+                "present": {
+                    "ich": "steige um",
+                    "du": "steigst um",
+                    "er": "steigt um",
+                    "es": "steigt um",
+                    "sie_singular": "steigt um",
+                    "xier": "steigt um",
+                    "wir": "steigen um",
+                    "ihr": "steigt um",
+                    "sie_plural": "steigen um",
+                    "Sie": "steigen um"
+                },
+                "Perfekt": {
+                    "ich": "bin umgestiegen",
+                    "du": "bist umgestiegen",
+                    "er": "ist umgestiegen",
+                    "es": "ist umgestiegen",
+                    "sie_singular": "ist umgestiegen",
+                    "xier": "ist umgestiegen",
+                    "wir": "sind umgestiegen",
+                    "ihr": "seid umgestiegen",
+                    "sie_plural": "sind umgestiegen",
+                    "Sie": "sind umgestiegen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In Wien gibt es viele Verkehrsmittel.",
+            "Schauen Sie sich die Fotos an und finden Sie den richtigen Namen für die unterschiedlichen Verkehrsmittel.",
+            "Was glauben Sie, wie oft (immer, oft, manchmal, selten, nie) benutzen Tourist*innen und wie oft benutzen Wiener*innen die Verkehrsmittel oben?",
+            "Ich denke, sie benutzen … Zu zweit: Sprechen Sie über die Verkehrsmittel in Ihrer Heimatstadt und einer Großstadt in Ihrem Heimatland.",
+            "Welche benutzen Sie und warum?",
+            "Welche Verkehrsmittel gibt es in deiner Heimatstadt?",
+            "Ich komme aus Chapel Hill.",
+            "In Chapel Hill gibt es nur Busse und Taxis und ich habe ein Fahrrad.",
+            "Ich fahre oft mit dem Bus, weil er günstiger als das Auto und schnell ist.",
+            "Ich fahre auch oft mit dem Fahrrad, weil es umweltfreundlich und praktisch ist.",
+            "Und du?",
+            "Ich komme aus NYC.",
+            "Beantworten Sie die Fragen über die Statistik.",
+            "Welches öffentliche Verkehrsmittel benutzen Menschen in Wien am meisten?",
+            "Die Menschen in Wien benutzen am meisten die U-Bahn.",
+            "Wie viele Menschen haben dieses Verkehrsmittel 2011 benutzt?",
+            "Im Jahr 2011 haben dieses Verkehrsmittel 11,6 Millionen Menschen benutzt.",
+            "Benutzen Menschen in Wien den Bus mehr oder weniger als die Straßenbahn?",
+            "Die Menschen in Wien benutzen die Straßenbahn mehr als den Bus.",
+            "Welche Verkehrsmittel benutzen die Menschen ab 2012 mehr als vorher?",
+            "Ab 2012 benutzten die Menschen den Bus und die Straßenbahn mehr als vorher.",
+            "Um wie viel Prozent sind die Fahrgäst *innen Zahlen von 2011 bis 2012 angestiegen?",
+            "Sie sind von 2011 bis 2012 um 47 Prozent (Bus) und 52 Prozent (Straßenbahn) angestiegen.",
+            "Sie wollen das Wiener Riesenrad, das Wiener Rathaus und den Leopoldsbrunnen besuchen und starten am Westbahnhof.",
+            "Welche Route is am sinnvollsten und wie lange dauert die Fahrt (Minuten)?",
+            "Benutzen Sie die Webseite und Google Maps und tragen Sie die Informationen in die Tabelle ein.",
+            "Was sehen?",
+            "Welche Sehenswürdigkeit?",
+            "Erzählen Sie von Ihrer Route.",
+            "Ich steige an der Haltestelle Rathaus/Universität in die Linie U2 ein.",
+            "Ich fahre bis zur Haltestelle Wien Schottentor.",
+            "Dort steige ich in die VAL3 um.",
+            "An der Haltestelle Flughafen Wien steige ich aus und laufe zum Terminal."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

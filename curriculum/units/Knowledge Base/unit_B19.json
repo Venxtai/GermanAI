@@ -1,0 +1,572 @@
+{
+    "unit": "B19",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 19,
+        "prerequisite": "core 1-104, B1-B18"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Ampelfiguren vergleichen und eine Präferenz formulieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "der Ampelmann"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "ansehen", "pos": "VERB", "translation": "to look at", "frequency": 507, "cefr": "A2" },
+            { "word": "annehmen", "pos": "VERB", "translation": "to assume; adopt; accept", "frequency": 523, "cefr": "B1" },
+            { "word": "erlauben", "pos": "VERB", "translation": "to allow", "frequency": 963, "cefr": "A1" },
+            { "word": "beschließen", "pos": "VERB", "translation": "to enact; decide" },
+            { "word": "wahrnehmen", "pos": "VERB", "translation": "to perceive", "frequency": 1542, "cefr": "B2" },
+            { "word": "herausfinden", "pos": "VERB", "translation": "to find out", "frequency": 2069, "cefr": "B1" },
+            { "word": "flüstern", "pos": "VERB", "translation": "to whisper" },
+            { "word": "die Sicherheit", "pos": "NOUN", "translation": "safety, security; certainty", "frequency": 776, "cefr": "B1" },
+            { "word": "die Studie", "pos": "NOUN", "translation": "study (research)", "frequency": 784, "cefr": "B1" },
+            { "word": "das Prinzip", "pos": "NOUN", "translation": "principle", "frequency": 865, "cefr": "A1" },
+            { "word": "der Abschnitt", "pos": "NOUN", "translation": "paragraph; section", "frequency": 917, "cefr": "B1" },
+            { "word": "die Wiedervereinigung", "pos": "NOUN", "translation": "reunification", "frequency": 4416, "cefr": "A1" },
+            { "word": "die Wende (hist.: Wiedervereinigung Deutschlands)", "pos": "NOUN", "translation": "turning point (hist.: German reunification)" },
+            { "word": "der*die Psycholog*in", "pos": "NOUN", "translation": "psychologist" },
+            { "word": "der Hut", "pos": "NOUN", "translation": "hat", "frequency": 2763, "cefr": "B1" },
+            { "word": "der Bauch", "pos": "NOUN", "translation": "abdomen, stomach, belly", "frequency": 2147, "cefr": "A1" },
+            { "word": "weiter", "pos": "ADV", "translation": "in addition; further; next", "frequency": 221, "cefr": "A1" },
+            { "word": "inzwischen", "pos": "ADV", "translation": "in the meantime; meanwhile", "frequency": 534, "cefr": "B1" },
+            { "word": "seitdem", "pos": "ADV", "translation": "since then", "frequency": 1949, "cefr": "B1" },
+            { "word": "psychologisch", "pos": "ADJ", "translation": "psychological", "frequency": 3411 },
+            { "word": "sympathisch", "pos": "ADJ", "translation": "likable; personable; friendly", "frequency": 3854, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "berliner", "pos": "ADJ", "frequency": 1190 },
+            { "word": "die Kommission", "pos": "NOUN", "frequency": 2584 },
+            { "word": "Welchen", "pos": "DET" },
+            { "word": "die Wende", "pos": "NOUN", "frequency": 4036 },
+            { "word": "der Ost", "pos": "NOUN", "frequency": 1208 },
+            { "word": "der Designer", "pos": "NOUN", "frequency": 8730 },
+            { "word": "der Shop", "pos": "NOUN", "frequency": 12106 },
+            { "word": "der Fan", "pos": "NOUN", "frequency": 1473, "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ansehen": {
+                "present": {
+                    "ich": "sehe an",
+                    "du": "siehst an",
+                    "er": "sieht an",
+                    "es": "sieht an",
+                    "sie_singular": "sieht an",
+                    "xier": "sieht an",
+                    "wir": "sehen an",
+                    "ihr": "seht an",
+                    "sie_plural": "sehen an",
+                    "Sie": "sehen an"
+                },
+                "Präteritum": {
+                    "ich": "sah an",
+                    "du": "sahst an",
+                    "er": "sah an",
+                    "es": "sah an",
+                    "sie_singular": "sah an",
+                    "xier": "sah an",
+                    "wir": "sahen an",
+                    "ihr": "saht an",
+                    "sie_plural": "sahen an",
+                    "Sie": "sahen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesehen",
+                    "du": "hast angesehen",
+                    "er": "hat angesehen",
+                    "es": "hat angesehen",
+                    "sie_singular": "hat angesehen",
+                    "xier": "hat angesehen",
+                    "wir": "haben angesehen",
+                    "ihr": "habt angesehen",
+                    "sie_plural": "haben angesehen",
+                    "Sie": "haben angesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansehen",
+                    "du": "wirst ansehen",
+                    "er": "wird ansehen",
+                    "es": "wird ansehen",
+                    "sie_singular": "wird ansehen",
+                    "xier": "wird ansehen",
+                    "wir": "werden ansehen",
+                    "ihr": "werdet ansehen",
+                    "sie_plural": "werden ansehen",
+                    "Sie": "werden ansehen"
+                },
+                "imperative": {
+                    "du": "sieh an",
+                    "ihr": "seht an",
+                    "Sie": "sehen Sie an"
+                }
+            },
+            "annehmen": {
+                "present": {
+                    "ich": "nehme an",
+                    "du": "nimmst an",
+                    "er": "nimmt an",
+                    "es": "nimmt an",
+                    "sie_singular": "nimmt an",
+                    "xier": "nimmt an",
+                    "wir": "nehmen an",
+                    "ihr": "nehmt an",
+                    "sie_plural": "nehmen an",
+                    "Sie": "nehmen an"
+                },
+                "Präteritum": {
+                    "ich": "nahm an",
+                    "du": "nahmst an",
+                    "er": "nahm an",
+                    "es": "nahm an",
+                    "sie_singular": "nahm an",
+                    "xier": "nahm an",
+                    "wir": "nahmen an",
+                    "ihr": "nahmt an",
+                    "sie_plural": "nahmen an",
+                    "Sie": "nahmen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angenommen",
+                    "du": "hast angenommen",
+                    "er": "hat angenommen",
+                    "es": "hat angenommen",
+                    "sie_singular": "hat angenommen",
+                    "xier": "hat angenommen",
+                    "wir": "haben angenommen",
+                    "ihr": "habt angenommen",
+                    "sie_plural": "haben angenommen",
+                    "Sie": "haben angenommen"
+                },
+                "Futur_I": {
+                    "ich": "werde annehmen",
+                    "du": "wirst annehmen",
+                    "er": "wird annehmen",
+                    "es": "wird annehmen",
+                    "sie_singular": "wird annehmen",
+                    "xier": "wird annehmen",
+                    "wir": "werden annehmen",
+                    "ihr": "werdet annehmen",
+                    "sie_plural": "werden annehmen",
+                    "Sie": "werden annehmen"
+                },
+                "imperative": {
+                    "du": "nimm an",
+                    "ihr": "nehmt an",
+                    "Sie": "nehmen Sie an"
+                }
+            },
+            "erlauben": {
+                "present": {
+                    "ich": "erlaube",
+                    "du": "erlaubst",
+                    "er": "erlaubt",
+                    "es": "erlaubt",
+                    "sie_singular": "erlaubt",
+                    "xier": "erlaubt",
+                    "wir": "erlauben",
+                    "ihr": "erlaubt",
+                    "sie_plural": "erlauben",
+                    "Sie": "erlauben"
+                },
+                "Präteritum": {
+                    "ich": "erlaubte",
+                    "du": "erlaubtest",
+                    "er": "erlaubte",
+                    "es": "erlaubte",
+                    "sie_singular": "erlaubte",
+                    "xier": "erlaubte",
+                    "wir": "erlaubten",
+                    "ihr": "erlaubtet",
+                    "sie_plural": "erlaubten",
+                    "Sie": "erlaubten"
+                },
+                "Perfekt": {
+                    "ich": "habe erlaubt",
+                    "du": "hast erlaubt",
+                    "er": "hat erlaubt",
+                    "es": "hat erlaubt",
+                    "sie_singular": "hat erlaubt",
+                    "xier": "hat erlaubt",
+                    "wir": "haben erlaubt",
+                    "ihr": "habt erlaubt",
+                    "sie_plural": "haben erlaubt",
+                    "Sie": "haben erlaubt"
+                },
+                "Futur_I": {
+                    "ich": "werde erlauben",
+                    "du": "wirst erlauben",
+                    "er": "wird erlauben",
+                    "es": "wird erlauben",
+                    "sie_singular": "wird erlauben",
+                    "xier": "wird erlauben",
+                    "wir": "werden erlauben",
+                    "ihr": "werdet erlauben",
+                    "sie_plural": "werden erlauben",
+                    "Sie": "werden erlauben"
+                },
+                "imperative": {
+                    "du": "erlaube",
+                    "ihr": "erlaubt",
+                    "Sie": "erlauben Sie"
+                }
+            },
+            "beschließen": {
+                "present": {
+                    "ich": "beschließe",
+                    "du": "beschließt",
+                    "er": "beschließt",
+                    "es": "beschließt",
+                    "sie_singular": "beschließt",
+                    "xier": "beschließt",
+                    "wir": "beschließen",
+                    "ihr": "beschließt",
+                    "sie_plural": "beschließen",
+                    "Sie": "beschließen"
+                },
+                "Präteritum": {
+                    "ich": "beschloss",
+                    "du": "beschlossest",
+                    "er": "beschloss",
+                    "es": "beschloss",
+                    "sie_singular": "beschloss",
+                    "xier": "beschloss",
+                    "wir": "beschlossen",
+                    "ihr": "beschlosst",
+                    "sie_plural": "beschlossen",
+                    "Sie": "beschlossen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschlossen",
+                    "du": "hast beschlossen",
+                    "er": "hat beschlossen",
+                    "es": "hat beschlossen",
+                    "sie_singular": "hat beschlossen",
+                    "xier": "hat beschlossen",
+                    "wir": "haben beschlossen",
+                    "ihr": "habt beschlossen",
+                    "sie_plural": "haben beschlossen",
+                    "Sie": "haben beschlossen"
+                },
+                "Futur_I": {
+                    "ich": "werde beschließen",
+                    "du": "wirst beschließen",
+                    "er": "wird beschließen",
+                    "es": "wird beschließen",
+                    "sie_singular": "wird beschließen",
+                    "xier": "wird beschließen",
+                    "wir": "werden beschließen",
+                    "ihr": "werdet beschließen",
+                    "sie_plural": "werden beschließen",
+                    "Sie": "werden beschließen"
+                },
+                "imperative": {
+                    "du": "beschließe",
+                    "ihr": "beschließt",
+                    "Sie": "beschließen Sie"
+                }
+            },
+            "wahrnehmen": {
+                "present": {
+                    "ich": "nehme wahr",
+                    "du": "nimmst wahr",
+                    "er": "nimmt wahr",
+                    "es": "nimmt wahr",
+                    "sie_singular": "nimmt wahr",
+                    "xier": "nimmt wahr",
+                    "wir": "nehmen wahr",
+                    "ihr": "nehmt wahr",
+                    "sie_plural": "nehmen wahr",
+                    "Sie": "nehmen wahr"
+                },
+                "Präteritum": {
+                    "ich": "nahm wahr",
+                    "du": "nahmst wahr",
+                    "er": "nahm wahr",
+                    "es": "nahm wahr",
+                    "sie_singular": "nahm wahr",
+                    "xier": "nahm wahr",
+                    "wir": "nahmen wahr",
+                    "ihr": "nahmt wahr",
+                    "sie_plural": "nahmen wahr",
+                    "Sie": "nahmen wahr"
+                },
+                "Perfekt": {
+                    "ich": "habe wahrgenommen",
+                    "du": "hast wahrgenommen",
+                    "er": "hat wahrgenommen",
+                    "es": "hat wahrgenommen",
+                    "sie_singular": "hat wahrgenommen",
+                    "xier": "hat wahrgenommen",
+                    "wir": "haben wahrgenommen",
+                    "ihr": "habt wahrgenommen",
+                    "sie_plural": "haben wahrgenommen",
+                    "Sie": "haben wahrgenommen"
+                },
+                "Futur_I": {
+                    "ich": "werde wahrnehmen",
+                    "du": "wirst wahrnehmen",
+                    "er": "wird wahrnehmen",
+                    "es": "wird wahrnehmen",
+                    "sie_singular": "wird wahrnehmen",
+                    "xier": "wird wahrnehmen",
+                    "wir": "werden wahrnehmen",
+                    "ihr": "werdet wahrnehmen",
+                    "sie_plural": "werden wahrnehmen",
+                    "Sie": "werden wahrnehmen"
+                },
+                "imperative": {
+                    "du": "nimm wahr",
+                    "ihr": "nehmt wahr",
+                    "Sie": "nehmen Sie wahr"
+                }
+            },
+            "herausfinden": {
+                "present": {
+                    "ich": "finde heraus",
+                    "du": "findest heraus",
+                    "er": "findet heraus",
+                    "es": "findet heraus",
+                    "sie_singular": "findet heraus",
+                    "xier": "findet heraus",
+                    "wir": "finden heraus",
+                    "ihr": "findet heraus",
+                    "sie_plural": "finden heraus",
+                    "Sie": "finden heraus"
+                },
+                "Präteritum": {
+                    "ich": "fand heraus",
+                    "du": "fandest heraus",
+                    "er": "fand heraus",
+                    "es": "fand heraus",
+                    "sie_singular": "fand heraus",
+                    "xier": "fand heraus",
+                    "wir": "fanden heraus",
+                    "ihr": "fandet heraus",
+                    "sie_plural": "fanden heraus",
+                    "Sie": "fanden heraus"
+                },
+                "Perfekt": {
+                    "ich": "habe herausgefunden",
+                    "du": "hast herausgefunden",
+                    "er": "hat herausgefunden",
+                    "es": "hat herausgefunden",
+                    "sie_singular": "hat herausgefunden",
+                    "xier": "hat herausgefunden",
+                    "wir": "haben herausgefunden",
+                    "ihr": "habt herausgefunden",
+                    "sie_plural": "haben herausgefunden",
+                    "Sie": "haben herausgefunden"
+                },
+                "Futur_I": {
+                    "ich": "werde herausfinden",
+                    "du": "wirst herausfinden",
+                    "er": "wird herausfinden",
+                    "es": "wird herausfinden",
+                    "sie_singular": "wird herausfinden",
+                    "xier": "wird herausfinden",
+                    "wir": "werden herausfinden",
+                    "ihr": "werdet herausfinden",
+                    "sie_plural": "werden herausfinden",
+                    "Sie": "werden herausfinden"
+                },
+                "imperative": {
+                    "du": "finde heraus",
+                    "ihr": "findet heraus",
+                    "Sie": "finden Sie heraus"
+                }
+            },
+            "flüstern": {
+                "present": {
+                    "ich": "flüstere",
+                    "du": "flüsterst",
+                    "er": "flüstert",
+                    "es": "flüstert",
+                    "sie_singular": "flüstert",
+                    "xier": "flüstert",
+                    "wir": "flüstern",
+                    "ihr": "flüstert",
+                    "sie_plural": "flüstern",
+                    "Sie": "flüstern"
+                },
+                "Präteritum": {
+                    "ich": "flüsterte",
+                    "du": "flüstertest",
+                    "er": "flüsterte",
+                    "es": "flüsterte",
+                    "sie_singular": "flüsterte",
+                    "xier": "flüsterte",
+                    "wir": "flüsterten",
+                    "ihr": "flüstertet",
+                    "sie_plural": "flüsterten",
+                    "Sie": "flüsterten"
+                },
+                "Perfekt": {
+                    "ich": "habe geflüstert",
+                    "du": "hast geflüstert",
+                    "er": "hat geflüstert",
+                    "es": "hat geflüstert",
+                    "sie_singular": "hat geflüstert",
+                    "xier": "hat geflüstert",
+                    "wir": "haben geflüstert",
+                    "ihr": "habt geflüstert",
+                    "sie_plural": "haben geflüstert",
+                    "Sie": "haben geflüstert"
+                },
+                "Futur_I": {
+                    "ich": "werde flüstern",
+                    "du": "wirst flüstern",
+                    "er": "wird flüstern",
+                    "es": "wird flüstern",
+                    "sie_singular": "wird flüstern",
+                    "xier": "wird flüstern",
+                    "wir": "werden flüstern",
+                    "ihr": "werdet flüstern",
+                    "sie_plural": "werden flüstern",
+                    "Sie": "werden flüstern"
+                },
+                "imperative": {
+                    "du": "flüstere",
+                    "ihr": "flüstert",
+                    "Sie": "flüstern Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sehen Sie sich die Ampelfiguren aus den verschiedenen Ländern an und beschreiben Sie die Unterschiede.",
+            "Welche Ampelfiguren gefällt Ihnen gut oder nicht so gut?",
+            "Welche Ampelfiguren sind sicher zu verstehen für Fußgänger*innen?",
+            "Warum denken Sie das?",
+            "Karl Peglau und das DDR Ampelmännchen",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie die Geschichte vom DDR Ampelmännchen [Ampel Mann] und beantworten Sie die Fragen.",
+            ", hatte im Oktober 1961 einen Plan für neue Ampelsymbole und auch für ein Ampelmännchen [Ampel Mann].",
+            "Eine Kommission nahm seinen Vorschlag an.",
+            "Als Verkehrspsychologe ging es Peglau um Emotionen.",
+            "Er meinte, dass ein Ampelmännchen [Ampel Mann] dann gut und sicher ist, wenn es sympathisch aussieht, weil die Leute es dann besser wahrnehmen.",
+            "Deshalb bekam das Männchen [Mann] eine Nase und einen etwas dickeren Bauch.",
+            "Außerdem trug es einen Hut.",
+            "So sah das Ampelmännchen [Ampel Mann] süß aus.",
+            "Die nette Figur hatte aber auch noch einen anderen Vorteil:",
+            "Weil sie dicker war, hatte sie eine größere Fläche und es gab es mehr Licht.",
+            "Mehr Licht bedeutete auch mehr Sicherheit.",
+            "Welchen psychologischen Grund gibt es für die Form vom DDR Ampelmännchen",
+            "Warum ist das DDR Ampelmännchen",
+            "Noch gut für die Verkehrssicherheit?",
+            "Basierend auf den beiden Prinzipien, welche Ampelfiguren aus Aktivität 59 sind besonders sicher oder nicht so sicher?",
+            "Das Ost Ampelmännchen [Ampel Mann] nach der Wende",
+            "Lesen Sie jetzt, wie es nach der Wende weiter ging.",
+            "Beantworten Sie die Fragen nach jedem Textabschnitt.",
+            "Nach der Wiedervereinigung sollte es nur noch ein Ampelmännchen [Ampel Mann] geben.",
+            "Wie bei so vielen Dinge, entschieden sich die Politiker*innen für das West Ampelmännchen [Ampel Mann].",
+            "Die Menschen wollten ihr nettes Ost Ampelmännchen [Ampel Mann] aber nicht verlieren und protestierten.",
+            "Am Ende beschlossen die Politiker*innen, dass auch das Ost Ampelmännchen [Ampel Mann] erlaubt ist.",
+            "Seitdem gibt es in vielen ost - und auch westdeutschen Städten das Ost Ampelmännchen [Ampel Mann].",
+            "Wie kam es, dass das Ost Ampelmännchen [Ampel Mann] erlaubt ist?",
+            "Aber mit Ampeln war es noch nicht genug.",
+            "Das Ost Ampelmännchen [Ampel Mann] ist heute eine Ikone.",
+            "Als der Designer Markus Heckhausen in Berlin die Ost Ampelmännchen [Ampel Mann] sah, fand er sie so toll, dass auch er sie retten wollte.",
+            "Er baute aus einer alten Ampel eine Lampe und präsentierte sie an seinem Haus.",
+            "Den Leuten gefiel die Lampe und so machte er weiter.",
+            "Später eröffnete er den ersten Ampelmännchen [Ampel Mann] Shop, wo es viele Dinge mit den Ampelmännchen [Ampel Mann] zu kaufen gibt.",
+            "Wie wurde das Ost Ampelmännchen [Ampel Mann] zur Ikone?",
+            "Inzwischen gibt es viele Fans vom Ost Ampelmännchen [Ampel Mann].",
+            "Und viele Menschen finden das Ost Ampelmännchen [Ampel Mann] schöner als das West Ampelmännchen [Ampel Mann].",
+            "Dass es auch sicherer ist, fand Dr.",
+            "Claudia Peschke von der Jacobs University in Bremen heraus.",
+            "In einer Studie aus dem Jahr 2013 reagierten die Testpersonen schneller auf das Ost Ampelmännchen",
+            "Als auf das West Ampelmännchen [Ampel Mann]",
+            "Die Forscher*innen sagten, dass die Arme vom roten Ampelmännchen [Ampel Mann] ein klareres Signal senden als das West Ampelmännchen [Ampel Mann].",
+            "Ist das Ost Ampelmännchen [Ampel Mann] sicherer?",
+            "Woher wissen wir das?",
+            "Gehen Sie auf die Webseite des Ampelmännchen [Ampel Mann] Shop.",
+            "Welche Dinge gibt es mit dem Ampelmännchen [Ampel Mann] Motiv?",
+            "Schreiben Sie Ihre drei bis fünf Favoriten auf.",
+            "Stellen Sie sie dann im Kurs vor und sagen Sie, warum Sie diese Dinge gewählt haben.",
+            "Bilden Sie eine Kette.",
+            "Eine Person flüstert ein Wort aus ihrer Favoritenliste ins Ohr der zweiten Person, die es dann der dritten Person zu flüstert und so weiter.",
+            "Schaffen Sie es am Ende komplette Wörter zu haben?"
+        ],
+        "templated": []
+    }
+}

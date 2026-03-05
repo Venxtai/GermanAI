@@ -1,0 +1,355 @@
+{
+    "unit": "B47",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 47,
+        "prerequisite": "core 1-104, B1-B46"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Leseerfahrungen austauschen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "flüstern", "pos": "VERB", "translation": "to whisper" },
+            { "word": "ausfüllen", "pos": "VERB", "translation": "to fill out/in, complete" },
+            { "word": "überraschen", "pos": "VERB", "translation": "to surprise" },
+            { "word": "die Strategie", "pos": "NOUN", "translation": "strategy", "frequency": 1477, "cefr": "A1" },
+            { "word": "die Empfehlung", "pos": "NOUN", "translation": "recommendation", "frequency": 3394, "cefr": "B1" },
+            { "word": "die Spekulation", "pos": "NOUN", "translation": "speculation", "frequency": 4765, "cefr": "A1" },
+            { "word": "weiter", "pos": "ADV", "translation": "in addition; further; next", "frequency": 221, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Sprechaufgabe", "pos": "NOUN" },
+            { "word": "die Lese", "pos": "NOUN", "frequency": 6935 },
+            { "word": "der Rang", "pos": "NOUN", "frequency": 2067 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "flüstern": {
+                "present": {
+                    "ich": "flüstere",
+                    "du": "flüsterst",
+                    "er": "flüstert",
+                    "es": "flüstert",
+                    "sie_singular": "flüstert",
+                    "xier": "flüstert",
+                    "wir": "flüstern",
+                    "ihr": "flüstert",
+                    "sie_plural": "flüstern",
+                    "Sie": "flüstern"
+                },
+                "Präteritum": {
+                    "ich": "flüsterte",
+                    "du": "flüstertest",
+                    "er": "flüsterte",
+                    "es": "flüsterte",
+                    "sie_singular": "flüsterte",
+                    "xier": "flüsterte",
+                    "wir": "flüsterten",
+                    "ihr": "flüstertet",
+                    "sie_plural": "flüsterten",
+                    "Sie": "flüsterten"
+                },
+                "Perfekt": {
+                    "ich": "habe geflüstert",
+                    "du": "hast geflüstert",
+                    "er": "hat geflüstert",
+                    "es": "hat geflüstert",
+                    "sie_singular": "hat geflüstert",
+                    "xier": "hat geflüstert",
+                    "wir": "haben geflüstert",
+                    "ihr": "habt geflüstert",
+                    "sie_plural": "haben geflüstert",
+                    "Sie": "haben geflüstert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte geflüstert",
+                    "du": "hattest geflüstert",
+                    "er": "hatte geflüstert",
+                    "es": "hatte geflüstert",
+                    "sie_singular": "hatte geflüstert",
+                    "xier": "hatte geflüstert",
+                    "wir": "hatten geflüstert",
+                    "ihr": "hattet geflüstert",
+                    "sie_plural": "hatten geflüstert",
+                    "Sie": "hatten geflüstert"
+                },
+                "Futur_I": {
+                    "ich": "werde flüstern",
+                    "du": "wirst flüstern",
+                    "er": "wird flüstern",
+                    "es": "wird flüstern",
+                    "sie_singular": "wird flüstern",
+                    "xier": "wird flüstern",
+                    "wir": "werden flüstern",
+                    "ihr": "werdet flüstern",
+                    "sie_plural": "werden flüstern",
+                    "Sie": "werden flüstern"
+                },
+                "imperative": {
+                    "du": "flüstere",
+                    "ihr": "flüstert",
+                    "Sie": "flüstern Sie"
+                }
+            },
+            "ausfüllen": {
+                "present": {
+                    "ich": "fülle aus",
+                    "du": "füllst aus",
+                    "er": "füllt aus",
+                    "es": "füllt aus",
+                    "sie_singular": "füllt aus",
+                    "xier": "füllt aus",
+                    "wir": "füllen aus",
+                    "ihr": "füllt aus",
+                    "sie_plural": "füllen aus",
+                    "Sie": "füllen aus"
+                },
+                "Präteritum": {
+                    "ich": "füllte aus",
+                    "du": "fülltest aus",
+                    "er": "füllte aus",
+                    "es": "füllte aus",
+                    "sie_singular": "füllte aus",
+                    "xier": "füllte aus",
+                    "wir": "füllten aus",
+                    "ihr": "fülltet aus",
+                    "sie_plural": "füllten aus",
+                    "Sie": "füllten aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgefüllt",
+                    "du": "hast ausgefüllt",
+                    "er": "hat ausgefüllt",
+                    "es": "hat ausgefüllt",
+                    "sie_singular": "hat ausgefüllt",
+                    "xier": "hat ausgefüllt",
+                    "wir": "haben ausgefüllt",
+                    "ihr": "habt ausgefüllt",
+                    "sie_plural": "haben ausgefüllt",
+                    "Sie": "haben ausgefüllt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausgefüllt",
+                    "du": "hattest ausgefüllt",
+                    "er": "hatte ausgefüllt",
+                    "es": "hatte ausgefüllt",
+                    "sie_singular": "hatte ausgefüllt",
+                    "xier": "hatte ausgefüllt",
+                    "wir": "hatten ausgefüllt",
+                    "ihr": "hattet ausgefüllt",
+                    "sie_plural": "hatten ausgefüllt",
+                    "Sie": "hatten ausgefüllt"
+                },
+                "Futur_I": {
+                    "ich": "werde ausfüllen",
+                    "du": "wirst ausfüllen",
+                    "er": "wird ausfüllen",
+                    "es": "wird ausfüllen",
+                    "sie_singular": "wird ausfüllen",
+                    "xier": "wird ausfüllen",
+                    "wir": "werden ausfüllen",
+                    "ihr": "werdet ausfüllen",
+                    "sie_plural": "werden ausfüllen",
+                    "Sie": "werden ausfüllen"
+                },
+                "imperative": {
+                    "du": "fülle aus",
+                    "ihr": "füllt aus",
+                    "Sie": "füllen Sie aus"
+                }
+            },
+            "überraschen": {
+                "present": {
+                    "ich": "überrasche",
+                    "du": "überraschst",
+                    "er": "überrascht",
+                    "es": "überrascht",
+                    "sie_singular": "überrascht",
+                    "xier": "überrascht",
+                    "wir": "überraschen",
+                    "ihr": "überrascht",
+                    "sie_plural": "überraschen",
+                    "Sie": "überraschen"
+                },
+                "Präteritum": {
+                    "ich": "überraschte",
+                    "du": "überraschtest",
+                    "er": "überraschte",
+                    "es": "überraschte",
+                    "sie_singular": "überraschte",
+                    "xier": "überraschte",
+                    "wir": "überraschten",
+                    "ihr": "überraschtet",
+                    "sie_plural": "überraschten",
+                    "Sie": "überraschten"
+                },
+                "Perfekt": {
+                    "ich": "habe überrascht",
+                    "du": "hast überrascht",
+                    "er": "hat überrascht",
+                    "es": "hat überrascht",
+                    "sie_singular": "hat überrascht",
+                    "xier": "hat überrascht",
+                    "wir": "haben überrascht",
+                    "ihr": "habt überrascht",
+                    "sie_plural": "haben überrascht",
+                    "Sie": "haben überrascht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte überrascht",
+                    "du": "hattest überrascht",
+                    "er": "hatte überrascht",
+                    "es": "hatte überrascht",
+                    "sie_singular": "hatte überrascht",
+                    "xier": "hatte überrascht",
+                    "wir": "hatten überrascht",
+                    "ihr": "hattet überrascht",
+                    "sie_plural": "hatten überrascht",
+                    "Sie": "hatten überrascht"
+                },
+                "Futur_I": {
+                    "ich": "werde überraschen",
+                    "du": "wirst überraschen",
+                    "er": "wird überraschen",
+                    "es": "wird überraschen",
+                    "sie_singular": "wird überraschen",
+                    "xier": "wird überraschen",
+                    "wir": "werden überraschen",
+                    "ihr": "werdet überraschen",
+                    "sie_plural": "werden überraschen",
+                    "Sie": "werden überraschen"
+                },
+                "imperative": {
+                    "du": "überrasche",
+                    "ihr": "überrascht",
+                    "Sie": "überraschen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Richtig spekuliert?",
+            "In Einheit 46 haben Sie spekuliert, wie Ihre Geschichte weitergeht.",
+            "Diese Spekulationen haben Sie hier notiert.",
+            "Sprechen Sie mit einer anderen Person, die auch Ihr Buch liest, ob Ihre Spekulationen richtig waren.",
+            "Füllen Sie dazu zuerst die rechte Seite der Tabelle aus.",
+            "Erzählen Sie kurz den anderen Studierenden von Ihren Spekulationen.",
+            "Wir haben spekuliert, dass Urs, Hanna und Gerd zu Urs’ Sommerhaus fahren werden.",
+            "Die drei sind aber nach Konstanz gefahren",
+            "Sie haben die letzten Kapitel Ihrer Kriminalgeschichte gelesen.",
+            "Gehen Sie jetzt mit den anderen Studierenden, die das gleiche Buch gelesen haben, in eine Gruppe.",
+            "Sie arbeiten gemeinsam an einer kreativen Sprechaufgabe und flüstern, wie im Beispiel.",
+            "Die erste Person sagt Person 2 einen Satz über ein Ereignis, das ganz am Anfang der Geschichte passiert.",
+            "Nur Person 2 darf den Satz hören.",
+            "Person 2 sagt Person 3 einen neuen Satz und erzählt, was in der Geschichte als nächstes passierte.",
+            "Person 3 hört nur den Satz von Person 2 und sagt der nächsten Person (Person 4) einen neuen Satz.",
+            "Schritt 4, 5, etc.",
+            ": Machen Sie weiter, bis Sie mit den Sätzen am Ende der Geschichte ankommen.",
+            "In diesem Kapitel haben Sie ein komplettes Buch gelesen.",
+            "Was hat Ihnen (keinen) Spaß gemacht?",
+            "Welche relevanten neuen Wörter und Lesestrategien",
+            "Haben Sie gelernt?",
+            "Das war einfach / hat Spaß gemacht:",
+            "Das war schwer / hat keinen Spaß gemacht:",
+            "Das habe ich gelernt:",
+            "Überlegen Sie sich nun, wie Ihnen die Geschichte im „Tatort DaF“-Krimi gefallen hat:",
+            "Wie war der Schreibstil?",
+            "War die Geschichte spannend?",
+            "Welche Elemente und Figuren haben Ihnen (nicht) gut gefallen?",
+            "Was hat Sie überrascht?",
+            "Machen Sie sich zu diesen Fragen hier ein paar Notizen.",
+            "Das hat mir gefallen:",
+            "Das hat mir nicht gefallen:",
+            "Das hat mich überrascht:",
+            "Haben Sie auch etwas über Deutschland, den Ort, an dem der Krimi spielt, oder die deutsche Kultur im Allgemeinen gelernt?",
+            "Entscheiden Sie, ob Sie anderen Studierenden das Buch empfehlen möchten.",
+            "Sprechen Sie mit so vielen anderen Personen wie möglich über Ihre Bewertung.",
+            "Sagen Sie, wie Sie das Buch finden, und warum Sie es (nicht) empfehlen.",
+            "Benutzen Sie die Informationen, die Sie oben aufgeschrieben haben.",
+            "Sie haben mit vielen Studierenden über deren Bücher gesprochen.",
+            "Erstellen Sie an der Tafel eine Rangliste der sechs Bücher.",
+            "Platz 1 ist das Buch, das die meisten positiven Empfehlungen bekommen hat."
+        ],
+        "templated": []
+    }
+}

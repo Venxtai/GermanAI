@@ -1,0 +1,556 @@
+{
+  "unit": "13",
+  "is_optional": true,
+  "sequence_info": {
+    "track": "core",
+    "position": 13,
+    "prerequisite": "1-12"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative",
+      "accusative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": []
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": []
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "existieren",
+        "pos": "VERB",
+        "translation": "to exist",
+        "frequency": 1061
+      },
+      {
+        "word": "der*die Rentner*in",
+        "pos": "NOUN",
+        "translation": "retiree",
+        "frequency": 4393,
+        "cefr": "A2"
+      },
+      {
+        "word": "der*die Cousin*e",
+        "pos": "NOUN",
+        "translation": "cousin"
+      },
+      {
+        "word": "die Mathematik",
+        "pos": "NOUN",
+        "translation": "mathematics",
+        "frequency": 1636,
+        "cefr": "A2"
+      },
+      {
+        "word": "Russland",
+        "pos": "NOUN",
+        "translation": "Russia",
+        "frequency": 798
+      },
+      {
+        "word": "als",
+        "pos": "PARTICLE",
+        "translation": "as",
+        "frequency": 22,
+        "cefr": "A2"
+      },
+      {
+        "word": "schon",
+        "pos": "ADV",
+        "translation": "already",
+        "frequency": 61,
+        "cefr": "A1"
+      },
+      {
+        "word": "toll",
+        "pos": "ADJ",
+        "translation": "awesome, great",
+        "frequency": 972,
+        "cefr": "A2"
+      },
+      {
+        "word": "arbeitslos",
+        "pos": "ADJ",
+        "translation": "jobless, unemployed",
+        "frequency": 2777,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "tragen",
+        "pos": "VERB",
+        "frequency": 271,
+        "cefr": "A2"
+      },
+      {
+        "word": "also",
+        "pos": "ADV",
+        "frequency": 71,
+        "cefr": "A1"
+      },
+      {
+        "word": "unser",
+        "pos": "DET",
+        "frequency": 86,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Großeltern",
+        "pos": "NOUN",
+        "frequency": 8961,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Studentin",
+        "pos": "NOUN",
+        "frequency": 8460,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Student",
+        "pos": "NOUN",
+        "frequency": 1017,
+        "cefr": "A1"
+      },
+      {
+        "word": "arbeitlos",
+        "pos": "ADV"
+      },
+      {
+        "word": "korrekt",
+        "pos": "ADV",
+        "frequency": 1912,
+        "cefr": "B1"
+      },
+      {
+        "word": "können",
+        "pos": "AUX",
+        "frequency": 23,
+        "cefr": "A1"
+      },
+      {
+        "word": "folgend",
+        "pos": "ADJ",
+        "frequency": 5883,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Cousine",
+        "pos": "NOUN",
+        "frequency": 19902,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Identität",
+        "pos": "NOUN",
+        "frequency": 2272
+      },
+      {
+        "word": "identisch",
+        "pos": "ADJ",
+        "frequency": 2489
+      },
+      {
+        "word": "cool",
+        "pos": "ADV",
+        "frequency": 3050,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Team",
+        "pos": "NOUN",
+        "frequency": 769,
+        "cefr": "A2"
+      },
+      {
+        "word": "euer",
+        "pos": "DET",
+        "frequency": 1309,
+        "cefr": "A1"
+      },
+      {
+        "word": "Ha",
+        "pos": "INTJ",
+        "frequency": 3108
+      },
+      {
+        "word": "letzt",
+        "pos": "ADJ",
+        "frequency": 152,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Kreis",
+        "pos": "NOUN",
+        "frequency": 1289,
+        "cefr": "B1"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "existieren": {
+        "present": {
+          "ich": "existiere",
+          "du": "existierst",
+          "er": "existiert",
+          "es": "existiert",
+          "sie_singular": "existiert",
+          "xier": "existiert",
+          "wir": "existieren",
+          "ihr": "existiert",
+          "sie_plural": "existieren",
+          "Sie": "existieren"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Tatjana Petrow redet über ihre Familie.",
+      "Tragen Sie die Informationen ein.",
+      "Ja, also ich bin Tatjana, Tatjana Petrow.",
+      "Ich bin 24 Jahre alt und studiere Mathematik.",
+      "Ich habe einen Bruder.",
+      "Er ist 17 Jahre alt und studiert Wirtschaft.",
+      "Er heißt Alexej.",
+      "Unser Eltern heißen Uschi und Sergey.",
+      "Mein Vater ist 42 Jahre alt und von Beruf Arzt.",
+      "Meine Mutter Uschi ist 44 und momentan arbeitslos.",
+      "Sie arbeitet also momentan nicht.",
+      "Die Eltern von meinem Vater, also meine Großeltern, kommen aus Russland.",
+      "Meine Oma heißt Irina.",
+      "Sie ist 62 Jahre alt und Künstlerin von Beruf.",
+      "Mein Opa Wladimir ist Rentner.",
+      "Er ist schon 67 Jahre alt.",
+      "Mein Vater hat keine Geschwister.",
+      "Meine Mutter hat zwei Geschwister.",
+      "Ihre Schwester heißt Bärbel.",
+      "Sie ist 20 Jahre alt und arbeitet als Anwältin.",
+      "Bärbel hat auch eine Tochter, Anna.",
+      "Anna ist 30 Jahre alt und arbeitet als Verkäuferin.",
+      "Meine Mutter hat auch einen Bruder.",
+      "Er heißt Wolfgang, ist 52 Jahre alt und arbeitet als Ingenieur.",
+      "Seine Mutter, also meine Oma, heißt Linda.",
+      "Oma Linda ist 73 Jahre alt und Rentnerin.",
+      "Ihr Mann, mein Opa Werner, ist auch 73 und auch Rentner.",
+      "Ich habe eine tolle Familie.",
+      "Welche Information ist nicht korrekt?",
+      "Welche Person in Tatjanas Familie kann so nicht existieren?",
+      "Das Alter von Bärbel kann nicht korrekt sein.",
+      "Sie ist 20 Jahre alt und ihre Tochter ist 30 Jahre alt.",
+      "So kann so nicht existieren.",
+      "Beantworten Sie mit einer Person aus dem Kurs die folgenden Fragen.",
+      "Ist sie 27 Jahre alt?",
+      "Nein, sie ist nicht 27 Jahre alt.",
+      "Sie ist 24 Jahre alt.",
+      "Wie heißt Tatjanas Vater?",
+      "Vater heißt Sergey.",
+      "Was ist ihre Cousine von Beruf?",
+      "Ihre Cousine ist Verkäuferin von Beruf.",
+      "Ist sie Ärztin?",
+      "Nein, sie ist keine Autorin.",
+      "Sie ist Studentin.",
+      "Sie studiert Mathematik.",
+      "Wie heißt ihre Mutter?",
+      "Ihre Mutter heißt Uschi.",
+      "Wie alt ist ihr Vater?",
+      "Ihr Vater ist 42 Jahre alt.",
+      "Wie alt ist seine Frau?",
+      "Seine Frau ist 44 Jahre alt.",
+      "Ist er Verkäufer?",
+      "Nein, er ist kein Verkäufer.",
+      "Er ist Arzt.",
+      "Ist sein Vater 64?",
+      "Nein, sein Vater ist nicht 64.",
+      "Er ist 67.",
+      "Wie heißt seine Mutter?",
+      "Seine Mutter heißt Irina.",
+      "Wie alt ist sein Schwager?",
+      "Sein Schwager heißt Wolfgang.",
+      "Hat sie Geschwister?",
+      "Ja, sie hat einen Bruder und eine Schwester.",
+      "Ist ihr Bruder Rentner?",
+      "Nein, ihr Bruder ist kein Rentner.",
+      "Ihr Bruder ist Ingenieur.",
+      "Wie alt ist ihre Mutter?",
+      "Ihre Mutter ist 73 Jahre alt.",
+      "Sie bekommen eine Karte.",
+      "Ihre Karte ist Ihre Identität.",
+      "Finden Sie (2, 3 oder 4) Personen mit identischen Informationen.",
+      "Wie heißt du?",
+      "Ich heiße Jennifer.",
+      "Und du?",
+      "Ich heiße Zoey.",
+      "Wie heißt dein Hund?",
+      "Mein Hund heißt Zelda.",
+      "Und wie heißt dein Hund?",
+      "Mein Hund heißt Tim.",
+      "Woher kommst du?",
+      "Ich komme aus Frankfurt.",
+      "Ich komme auch aus Frankfurt.",
+      "Wir sind Team Frankfurt!",
+      "Reden Sie mit anderen Teams.",
+      "Welche Information haben die Teams identisch?",
+      "Wie heißt ihr?",
+      "Wir heißen Jennifer und Zoey.",
+      "Und wie heißen eure Hunde?",
+      "Unsere Hunde heißen Zelda und Tim.",
+      "Und woher kommt ihr?",
+      "Wir kommen aus Frankfurt.",
+      "Ha, ihr seid Team Frankfurt!",
+      "Die letzten Teams stehen im Kreis.",
+      "Präsentieren Sie.",
+      "Wir sind Team Frankfurt.",
+      "Ihr kommt aus Frankfurt.",
+      "Ihr seid Team Frankfurt.",
+      "Sie kommen aus Frankfurt.",
+      "Sie sind Team Tobias.",
+      "Unsere Katzen heißen Pascal.",
+      "Wir sind Team Pascal.",
+      "Eure Katzen heißen Pascal.",
+      "Ihr seid Team Pascal.",
+      "Ihre Katzen heißen Pascal.",
+      "Sie sind Team Pascal.",
+      "Wir wohnen in Berlin.",
+      "Wir sind Team Berlin."
+    ],
+    "templated": [
+      {
+        "template": "Meine {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Meine Oma heißt Irina."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      },
+      {
+        "template": "Ihre {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Ihre Schwester heißt Bärbel.",
+          "Ihre Mutter heißt Uschi."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      },
+      {
+        "template": "[person_name] ist {PROFESSION_NOM}.",
+        "source_literals": [
+          "Sie ist Studentin."
+        ],
+        "grammar_note": "Verb sein + profession, 3rd person singular nominative."
+      },
+      {
+        "template": "Sie studiert {STUDYABLE_SUBJECT_NP_ACC}.",
+        "source_literals": [
+          "Sie studiert Mathematik."
+        ],
+        "grammar_note": "Verb studieren + accusative NP, 3rd person singular."
+      },
+      {
+        "template": "Ihr {FAMILY_MEMBER_NOM_MASC} ist [number] Jahre alt.",
+        "source_literals": [
+          "Ihr Vater ist 42 Jahre alt."
+        ],
+        "grammar_note": "Possessive + masculine family member + age."
+      },
+      {
+        "template": "Seine {FAMILY_MEMBER_NOM_FEM} ist [number] Jahre alt.",
+        "source_literals": [
+          "Seine Frau ist 44 Jahre alt."
+        ],
+        "grammar_note": "Possessive + feminine family member + age."
+      },
+      {
+        "template": "Seine {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Seine Mutter heißt Irina."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      },
+      {
+        "template": "Sein {FAMILY_MEMBER_NOM_MASC} heißt [person_name].",
+        "source_literals": [
+          "Sein Schwager heißt Wolfgang."
+        ],
+        "grammar_note": "Possessive + masculine family member + heißen."
+      },
+      {
+        "template": "Ihre {FAMILY_MEMBER_NOM_FEM} ist [number] Jahre alt.",
+        "source_literals": [
+          "Ihre Mutter ist 73 Jahre alt."
+        ],
+        "grammar_note": "Possessive + feminine family member + age."
+      },
+      {
+        "template": "Ich heiße [person_name].",
+        "source_literals": [
+          "Ich heiße Jennifer.",
+          "Ich heiße Zoey."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "FAMILY_MEMBER_NOM_FEM": {
+      "type": "closed",
+      "description": "Feminine family members/relations",
+      "grammar": "nominative, no article, used with meine/seine/ihre",
+      "options": [
+        "Frau",
+        "Freundin",
+        "Mitbewohnerin",
+        "Mutter",
+        "Nichte",
+        "Oma",
+        "Schwester",
+        "Schwiegermutter",
+        "Schwägerin",
+        "Tante",
+        "Tochter"
+      ]
+    },
+    "FAMILY_MEMBER_NOM_MASC": {
+      "type": "closed",
+      "description": "Masculine family members/relations",
+      "grammar": "nominative, no article, used with mein/sein/ihr",
+      "options": [
+        "Bruder",
+        "Enkelkind",
+        "Freund",
+        "Mann",
+        "Mitbewohner",
+        "Neffe",
+        "Onkel",
+        "Opa",
+        "Schwager",
+        "Schwiegervater",
+        "Sohn",
+        "Vater"
+      ]
+    },
+    "PROFESSION_NOM": {
+      "type": "closed",
+      "description": "Professions (masculine, feminine, and gender-inclusive *in forms)",
+      "grammar": "nominative, no article",
+      "options": [
+        "Anwalt",
+        "Anwalt*Anwältin",
+        "Anwältin",
+        "Arzt",
+        "Arzt*Ärztin",
+        "Autor",
+        "Autor*in",
+        "Autorin",
+        "Forscher",
+        "Forscher*in",
+        "Forscherin",
+        "Ingenieur",
+        "Ingenieur*in",
+        "Ingenieurin",
+        "Künstler",
+        "Künstler*in",
+        "Künstlerin",
+        "Politiker",
+        "Politiker*in",
+        "Politikerin",
+        "Polizist",
+        "Polizist*in",
+        "Polizistin",
+        "Professor",
+        "Professor*in",
+        "Professorin",
+        "Rentner",
+        "Rentner*in",
+        "Rentnerin",
+        "Verkäufer",
+        "Verkäufer*in",
+        "Verkäuferin",
+        "Ärztin"
+      ]
+    },
+    "STUDYABLE_SUBJECT_NP_ACC": {
+      "type": "closed",
+      "description": "Academic subjects one can study",
+      "grammar": "accusative, no article",
+      "options": [
+        "Deutsch",
+        "Germanistik",
+        "Geschichte",
+        "Informatik",
+        "Mathematik",
+        "Musik",
+        "Wirtschaft"
+      ]
+    }
+  }
+}

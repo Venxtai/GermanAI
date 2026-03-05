@@ -1,0 +1,492 @@
+{
+    "unit": "45",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 45,
+        "prerequisite": "1-44"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn"
+        ],
+        "new_rules_in_this_unit": [
+            "Use wenn to introduce conditional clauses (\"if\"); wenn is a verb kicker that sends the conjugated verb to the end of the wenn-clause.",
+            "Place a wenn-clause after the main clause with a comma, or before it â€â€ in which case the main clause has subject-verb inversion."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Haus planen und präsentieren",
+            "Bedingungen ausdrücken mit wenn"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Traumhaus"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "werden",
+                "pos": "VERB",
+                "translation": "to become",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "fühlen",
+                "pos": "VERB",
+                "translation": "to feel; sense"
+            },
+            {
+                "word": "schlafen",
+                "pos": "VERB",
+                "translation": "to sleep",
+                "frequency": 679,
+                "cefr": "A1"
+            },
+            {
+                "word": "streichen",
+                "pos": "VERB",
+                "translation": "to paint",
+                "frequency": 1609
+            },
+            {
+                "word": "saugen",
+                "pos": "VERB",
+                "translation": "to vacuum; suck",
+                "frequency": 19739
+            },
+            {
+                "word": "sammeln",
+                "pos": "VERB",
+                "translation": "to collect",
+                "frequency": 1219,
+                "cefr": "A2"
+            },
+            {
+                "word": "entspannen",
+                "pos": "VERB",
+                "translation": "to relax",
+                "frequency": 2406
+            },
+            {
+                "word": "das Argument",
+                "pos": "NOUN",
+                "translation": "argument, point",
+                "frequency": 2018,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Tier",
+                "pos": "NOUN",
+                "translation": "animal",
+                "frequency": 614,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Leute",
+                "pos": "NOUN",
+                "translation": "people",
+                "frequency": 224,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Stockwerk",
+                "pos": "NOUN",
+                "translation": "story, floor",
+                "frequency": 4935,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Erdgeschoss",
+                "pos": "NOUN",
+                "translation": "ground floor (= 1st floor in the USA)",
+                "cefr": "A2",
+                "frequency": 1
+            },
+            {
+                "word": "die Möbel",
+                "pos": "NOUN",
+                "translation": "furniture"
+            },
+            {
+                "word": "der Sessel",
+                "pos": "NOUN",
+                "translation": "armchair",
+                "frequency": 3999,
+                "cefr": "B1"
+            },
+            {
+                "word": "ruhig",
+                "pos": "ADJ",
+                "translation": "calm; quiet",
+                "frequency": 991,
+                "cefr": "A1"
+            },
+            {
+                "word": "entspannt",
+                "pos": "ADJ",
+                "translation": "relaxed",
+                "frequency": 8518
+            },
+            {
+                "word": "aggressiv",
+                "pos": "ADJ",
+                "translation": "aggressive",
+                "frequency": 3430
+            },
+            {
+                "word": "letzt-",
+                "pos": "PREFIX",
+                "translation": "last"
+            },
+            {
+                "word": "manch-",
+                "pos": "PRON",
+                "translation": "some"
+            },
+            {
+                "word": "der*die Nachbar*in",
+                "pos": "NOUN",
+                "translation": "neighbor",
+                "frequency": 1283,
+                "cefr": "A2"
+            },
+            {
+                "word": "wenn",
+                "pos": "CONJ",
+                "translation": "when; if",
+                "frequency": 42,
+                "cefr": "A2"
+            },
+            {
+                "word": "passend",
+                "pos": "ADJ",
+                "translation": "appropriate, fitting, suitable",
+                "frequency": 6233
+            },
+            {
+                "word": "schön",
+                "pos": "ADJ",
+                "translation": "beautiful; nice"
+            },
+            {
+                "word": "hell",
+                "pos": "ADJ",
+                "translation": "bright; light",
+                "frequency": 1411,
+                "cefr": "A1"
+            },
+            {
+                "word": "nah",
+                "pos": "ADJ",
+                "translation": "near, nearby, close",
+                "frequency": 480,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Balkon",
+                "pos": "NOUN",
+                "frequency": 4026,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Esszimmer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Kinderzimmer",
+                "pos": "NOUN",
+                "frequency": 17296,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Terrasse",
+                "pos": "NOUN",
+                "frequency": 4220,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Nebensatz",
+                "pos": "NOUN",
+                "frequency": 28735
+            },
+            {
+                "word": "das Verb",
+                "pos": "NOUN",
+                "frequency": 4557,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Position",
+                "pos": "NOUN",
+                "frequency": 944,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Effekt",
+                "pos": "NOUN",
+                "frequency": 1253
+            },
+            {
+                "word": "positiv",
+                "pos": "ADV",
+                "frequency": 516,
+                "cefr": "B1"
+            },
+            {
+                "word": "toasten",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Roboter",
+                "pos": "NOUN",
+                "frequency": 4124
+            },
+            {
+                "word": "der Alarm",
+                "pos": "NOUN",
+                "frequency": 8687,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Smarthome",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Toilette",
+                "pos": "NOUN",
+                "frequency": 3477,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "werden": {
+                "present": {
+                    "ich": "werde",
+                    "du": "wirst",
+                    "er": "wird",
+                    "es": "wird",
+                    "sie_singular": "wird",
+                    "xier": "wird",
+                    "wir": "werden",
+                    "ihr": "werdet",
+                    "sie_plural": "werden",
+                    "Sie": "werden"
+                }
+            },
+            "fühlen": {
+                "present": {
+                    "ich": "fühle",
+                    "du": "fühlst",
+                    "er": "fühlt",
+                    "es": "fühlt",
+                    "sie_singular": "fühlt",
+                    "xier": "fühlt",
+                    "wir": "fühlen",
+                    "ihr": "fühlt",
+                    "sie_plural": "fühlen",
+                    "Sie": "fühlen"
+                }
+            },
+            "schlafen": {
+                "present": {
+                    "ich": "schlafe",
+                    "du": "schläfst",
+                    "er": "schläft",
+                    "es": "schläft",
+                    "sie_singular": "schläft",
+                    "xier": "schläft",
+                    "wir": "schlafen",
+                    "ihr": "schlaft",
+                    "sie_plural": "schlafen",
+                    "Sie": "schlafen"
+                }
+            },
+            "streichen": {
+                "present": {
+                    "ich": "streiche",
+                    "du": "streichst",
+                    "er": "streicht",
+                    "es": "streicht",
+                    "sie_singular": "streicht",
+                    "xier": "streicht",
+                    "wir": "streichen",
+                    "ihr": "streicht",
+                    "sie_plural": "streichen",
+                    "Sie": "streichen"
+                }
+            },
+            "saugen": {
+                "present": {
+                    "ich": "sauge",
+                    "du": "saugst",
+                    "er": "saugt",
+                    "es": "saugt",
+                    "sie_singular": "saugt",
+                    "xier": "saugt",
+                    "wir": "saugen",
+                    "ihr": "saugt",
+                    "sie_plural": "saugen",
+                    "Sie": "saugen"
+                }
+            },
+            "sammeln": {
+                "present": {
+                    "ich": "sammle",
+                    "du": "sammelst",
+                    "er": "sammelt",
+                    "es": "sammelt",
+                    "sie_singular": "sammelt",
+                    "xier": "sammelt",
+                    "wir": "sammeln",
+                    "ihr": "sammelt",
+                    "sie_plural": "sammeln",
+                    "Sie": "sammeln"
+                }
+            },
+            "entspannen": {
+                "present": {
+                    "ich": "entspanne",
+                    "du": "entspannst",
+                    "er": "entspannt",
+                    "es": "entspannt",
+                    "sie_singular": "entspannt",
+                    "xier": "entspannt",
+                    "wir": "entspannen",
+                    "ihr": "entspannt",
+                    "sie_plural": "entspannen",
+                    "Sie": "entspannen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wo ist Ihr Traumhaus?",
+            "Sammeln Sie Argumente für jeden Ort.",
+            "Land, Großstadt, Kleinstadt, Vorort.",
+            "Wenn man auf dem Land wohnt, kann man laut sein und viele Haustiere haben.",
+            "Wenn man in der Großstadt wohnt, gibt es viel zu sehen und machen und braucht man kein Auto.",
+            "Wenn man in der Kleinstadt wohnt, kennt man die Menschen, ist es grüner als in der Stadt und sind die Häuser größer.",
+            "Wenn man im Vorort wohnt, wohnt man an der Stadt und hat mehr Platz.",
+            "Welche Option finden Sie am besten?",
+            "Sie wohnen zusammen in einem großen Haus.",
+            "Was gibt es in Ihrem Haus im Erdgeschoss und im ersten Stockwerk?",
+            "Das Verb steht auf der letzten Position.",
+            "Erdgeschoss, 1. Stockwerk.",
+            "Welche Möbel hat Ihr Haus?",
+            "Nutzen Sie den Link zu dieser Aktivität und schreiben Sie sieben Möbel in die Liste.",
+            "Rechnen Sie.",
+            "Die Möbel kosten X Euro.",
+            "Beschreiben Sie für 5 Farben.",
+            "Nutzen Sie die Liste aus LERNEN (Aktivität).",
+            "Wenn ein Zimmer rot ist, werden manche Leute aggressiv.",
+            "Wenn ein Zimmer gelb ist, fühlt man positiv.",
+            "Wenn ein Zimmer blau ist, kann man gut schlafen.",
+            "Blau entspannt.",
+            "Wenn ein Zimmer grün ist, ist man kreativ.",
+            "Wenn ein Zimmer weiß ist, ist es ruhiger.",
+            "Welches Zimmer in Ihrem Haus möchten Sie in welcher Farbe streichen?",
+            "Schreiben Sie die Farben neben die Zimmer in Aktivität Teil.",
+            "Wir wollen das Schlafzimmer blau streichen, das Arbeitszimmer grün, das Wohnzimmer gelb und die Küche rot.",
+            "Ihr Haus ist ein Smarthome.",
+            "Maschine macht Kaffee, der Toaster toastet Brot, der Roboter saugt, der Alarm geht an/aus, mein Haus macht meine Hausaufgaben,",
+            "Wenn ich in das Wohnzimmer gehe, geht der Fernseher an.",
+            "Wenn ich in die Küche gehe, geht das Licht an.",
+            "Wenn ich in das Schlafzimmer komme, geht der Fernseher an.",
+            "Wenn ich aus dem Wohnzimmer gehe, geht das Licht aus.",
+            "Wenn ich in das Haus komme, wird es wärmer.",
+            "Präsentieren Sie Ihr Haus im Kurs.",
+            "Die anderen hören zu und machen Notizen.",
+            "Welche Zimmer hat es?",
+            "Welche Farben haben sie?",
+            "Welche Möbel stehen in den Zimmern?",
+            "Was macht Ihr Smarthome?",
+            "In unserem Haus wohnen X Leute und Tiere.",
+            "Die Zimmer sind groß.",
+            "Es gibt im Wohnzimmer ein Sofa, einen Sessel, ein Regal, einen Tisch, Pflanzen.",
+            "Im Schlafzimmer gibt es ein Bett und einen Kleiderschrank.",
+            "Im Arbeitszimmer gibt es einen Schreibtisch und Regale.",
+            "Im Bad gibt es eine Toilette.",
+            "Im Kinderzimmer gibt es ein Bett, einen Kleiderschrank",
+            "Und einen Schreibtisch.",
+            "Welches Haus ist Ihr Lieblingshaus?",
+            "Unser Lieblingshaus ist X, weil es schön/interessant/ smart ist."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

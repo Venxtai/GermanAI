@@ -1,0 +1,342 @@
+{
+    "unit": "57",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 57,
+        "prerequisite": "1-56"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use the question word welch- with endings matching noun class and case (welcher for r-words, welches for s-words, welche for e-words and plural) to ask \"which.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Kleidung beschreiben",
+            "fragen, welches Kleidungsstück gemeint ist"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kleidung"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "eintragen",
+                "pos": "VERB",
+                "translation": "to enter (e.g. into a list)",
+                "frequency": 2878,
+                "cefr": "A2"
+            },
+            {
+                "word": "rufen",
+                "pos": "VERB",
+                "translation": "to call (out), exclaim, shout",
+                "frequency": 530,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Sinn",
+                "pos": "NOUN",
+                "translation": "sense",
+                "frequency": 380,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Geschäft",
+                "pos": "NOUN",
+                "translation": "shop; business"
+            },
+            {
+                "word": "die Marke",
+                "pos": "NOUN",
+                "translation": "brand",
+                "frequency": 2192,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Körper",
+                "pos": "NOUN",
+                "translation": "body"
+            },
+            {
+                "word": "der Körperteil",
+                "pos": "NOUN",
+                "translation": "body part"
+            },
+            {
+                "word": "der Kopf",
+                "pos": "NOUN",
+                "translation": "head",
+                "frequency": 250,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gesicht",
+                "pos": "NOUN",
+                "translation": "face",
+                "frequency": 346,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Mund",
+                "pos": "NOUN",
+                "translation": "mouth",
+                "frequency": 856,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Nase",
+                "pos": "NOUN",
+                "translation": "nose",
+                "frequency": 1264,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Ohr",
+                "pos": "NOUN",
+                "translation": "ear",
+                "frequency": 1088,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Hals",
+                "pos": "NOUN",
+                "translation": "neck; throat",
+                "frequency": 1591,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Arm",
+                "pos": "NOUN",
+                "translation": "arm",
+                "frequency": 527,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Finger",
+                "pos": "NOUN",
+                "translation": "finger",
+                "frequency": 1019,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fuß",
+                "pos": "NOUN",
+                "translation": "foot",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Reihe",
+                "pos": "NOUN",
+                "translation": "row",
+                "frequency": 738,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Ring",
+                "pos": "NOUN",
+                "translation": "ring",
+                "frequency": 2258,
+                "cefr": "A2"
+            },
+            {
+                "word": "selber",
+                "pos": "PRON",
+                "translation": "by oneself",
+                "frequency": 101,
+                "cefr": "B1"
+            },
+            {
+                "word": "voll",
+                "pos": "ADJ",
+                "translation": "full(y)",
+                "frequency": 388,
+                "cefr": "A2"
+            },
+            {
+                "word": "welch-",
+                "pos": "PRON",
+                "translation": "which"
+            },
+            {
+                "word": "komisch",
+                "pos": "ADJ",
+                "translation": "strange, odd; funny",
+                "frequency": 1875,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Socke",
+                "pos": "NOUN",
+                "translation": "sock",
+                "frequency": 12800,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Oberkörper",
+                "pos": "NOUN",
+                "frequency": 15437,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Unterkörper",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Bingo",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "eintragen": {
+                "present": {
+                    "ich": "trage ein",
+                    "du": "trägst ein",
+                    "er": "trägt ein",
+                    "es": "trägt ein",
+                    "sie_singular": "trägt ein",
+                    "xier": "trägt ein",
+                    "wir": "tragen ein",
+                    "ihr": "tragt ein",
+                    "sie_plural": "tragen ein",
+                    "Sie": "tragen ein"
+                }
+            },
+            "rufen": {
+                "present": {
+                    "ich": "rufe",
+                    "du": "rufst",
+                    "er": "ruft",
+                    "es": "ruft",
+                    "sie_singular": "ruft",
+                    "xier": "ruft",
+                    "wir": "rufen",
+                    "ihr": "ruft",
+                    "sie_plural": "rufen",
+                    "Sie": "rufen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was tragen Sie heute?",
+            "Schreiben Sie, welche Kleidung Sie tragen.",
+            "Ihre Lehrkraft zeigt Ihnen Bilder von Kleidung.",
+            "Fragen Sie.",
+            "Welches Kleid findest du am schönsten?",
+            "Ich finde Kleid Nummer 2 am schönsten.",
+            "Und du?",
+            "Das Kleid das Hemd die Kappe die Jacke der Pullover der Anzug",
+            "Welche Kleidung tragen die Personen wo?",
+            "Fragen Sie nach.",
+            "Welches Kleidung trägt Joyce auf dem Kopf?",
+            "Sie trägt eine Kappe auf dem Kopf.",
+            "Die Arme der Oberkörper die Hand die Hände",
+            "Der Unterkörper der Fuß die Füße",
+            "Spielen Sie Bingo.",
+            "Sie bekommen eine Bingokarte mit Positionen am Körper.",
+            "Ihr*e Professor*in liest Kleidung vor.",
+            "Wenn Sie Kleidung hören (z.B.",
+            "\"Handschuhe \"), die für eine Position auf Ihrer Bingokarte Sinn macht (z.B.",
+            "\"an den Händen\"), tragen die das Kleidung da ein.",
+            "Wenn Sie eine Reihe voll haben, rufen Sie \"Bingo\".",
+            "Es gibt viele Optionen.",
+            "Eine Brille kann man z.B.",
+            "\"auf der Nase\", \"vor den Augen\" oder \"in der Hand\" tragen.",
+            "Lesen Sie vor, welche Kombinationen von Positionen und Kleidung n Sie in Ihre Bingokarte eingetragen haben.",
+            "Ich trage die Brille in der Hand.",
+            "Welche Marken mögen Sie?",
+            "In welchen Geschäften oder auf welchen Internetseiten kaufen Sie gerne ein?",
+            "Tragen Sie Ihre Antworten auf die Fragen in die Tabelle ein.",
+            "Dann fragen Sie drei andere Personen.",
+            "In welchen Geschäften kaufst du gern Kleidung?",
+            "Ich kaufe gern bei X ein.",
+            "Welche Kleidung kaufst du besonders gern?",
+            "Ich kaufe besonders gern X.",
+            "Welche Kleidung kaufst du nicht gern?",
+            "Ich kaufe nicht gern X.",
+            "Welche Farben magst du für deine Kleidung",
+            "Welche Geschäfte, Kleidung und Farben sind im Kurs besonders beliebt?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

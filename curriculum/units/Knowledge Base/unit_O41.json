@@ -1,0 +1,477 @@
+{
+    "unit": "O41",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 41,
+        "prerequisite": "core 1-104, O1-O40"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein regionales Produkt beschreiben und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "vermarkten", "pos": "VERB", "translation": "to market, put on the market", "frequency": 8445 },
+            { "word": "erstellen", "pos": "VERB", "translation": "to create", "frequency": 2389, "cefr": "B1" },
+            { "word": "beschriften", "pos": "VERB", "translation": "to label, annotate; superscribe", "frequency": 32056 },
+            { "word": "dokumentieren", "pos": "VERB", "translation": "to document; keep records", "frequency": 3835 },
+            { "word": "das Werkzeug", "pos": "NOUN", "translation": "tool", "frequency": 3681, "cefr": "B1" },
+            { "word": "die Zeichnung", "pos": "NOUN", "translation": "drawing, illustration", "frequency": 3419, "cefr": "B1" },
+            { "word": "sowohl ... als auch", "pos": "CONJ", "translation": "both ... and â€¦; â€¦ as well as â€¦" },
+            { "word": "einzeln", "pos": "ADJ", "translation": "single; individual, sole", "frequency": 308, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "sowohl", "pos": "CCONJ", "frequency": 678, "cefr": "B1" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vermarkten": {
+                "Perfekt": {
+                    "ich": "habe vermarktet",
+                    "du": "hast vermarktet",
+                    "er": "hat vermarktet",
+                    "es": "hat vermarktet",
+                    "sie_singular": "hat vermarktet",
+                    "xier": "hat vermarktet",
+                    "wir": "haben vermarktet",
+                    "ihr": "habt vermarktet",
+                    "sie_plural": "haben vermarktet",
+                    "Sie": "haben vermarktet"
+                },
+                "Futur_I": {
+                    "ich": "werde vermarkten",
+                    "du": "wirst vermarkten",
+                    "er": "wird vermarkten",
+                    "es": "wird vermarkten",
+                    "sie_singular": "wird vermarkten",
+                    "xier": "wird vermarkten",
+                    "wir": "werden vermarkten",
+                    "ihr": "werdet vermarkten",
+                    "sie_plural": "werden vermarkten",
+                    "Sie": "werden vermarkten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde vermarkten",
+                    "du": "würdest vermarkten",
+                    "er": "würde vermarkten",
+                    "es": "würde vermarkten",
+                    "sie_singular": "würde vermarkten",
+                    "xier": "würde vermarkten",
+                    "wir": "würden vermarkten",
+                    "ihr": "würdet vermarkten",
+                    "sie_plural": "würden vermarkten",
+                    "Sie": "würden vermarkten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte vermarktet",
+                    "du": "hättest vermarktet",
+                    "er": "hätte vermarktet",
+                    "es": "hätte vermarktet",
+                    "sie_singular": "hätte vermarktet",
+                    "xier": "hätte vermarktet",
+                    "wir": "hätten vermarktet",
+                    "ihr": "hättet vermarktet",
+                    "sie_plural": "hätten vermarktet",
+                    "Sie": "hätten vermarktet"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde vermarktet",
+                    "du": "wirst vermarktet",
+                    "er": "wird vermarktet",
+                    "es": "wird vermarktet",
+                    "sie_singular": "wird vermarktet",
+                    "xier": "wird vermarktet",
+                    "wir": "werden vermarktet",
+                    "ihr": "werdet vermarktet",
+                    "sie_plural": "werden vermarktet",
+                    "Sie": "werden vermarktet"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde vermarktet",
+                    "du": "wurdest vermarktet",
+                    "er": "wurde vermarktet",
+                    "es": "wurde vermarktet",
+                    "sie_singular": "wurde vermarktet",
+                    "xier": "wurde vermarktet",
+                    "wir": "wurden vermarktet",
+                    "ihr": "wurdet vermarktet",
+                    "sie_plural": "wurden vermarktet",
+                    "Sie": "wurden vermarktet"
+                }
+            },
+            "erstellen": {
+                "present": {
+                    "ich": "erstelle",
+                    "du": "erstellst",
+                    "er": "erstellt",
+                    "es": "erstellt",
+                    "sie_singular": "erstellt",
+                    "xier": "erstellt",
+                    "wir": "erstellen",
+                    "ihr": "erstellt",
+                    "sie_plural": "erstellen",
+                    "Sie": "erstellen"
+                },
+                "Perfekt": {
+                    "ich": "habe erstellt",
+                    "du": "hast erstellt",
+                    "er": "hat erstellt",
+                    "es": "hat erstellt",
+                    "sie_singular": "hat erstellt",
+                    "xier": "hat erstellt",
+                    "wir": "haben erstellt",
+                    "ihr": "habt erstellt",
+                    "sie_plural": "haben erstellt",
+                    "Sie": "haben erstellt"
+                },
+                "Futur_I": {
+                    "ich": "werde erstellen",
+                    "du": "wirst erstellen",
+                    "er": "wird erstellen",
+                    "es": "wird erstellen",
+                    "sie_singular": "wird erstellen",
+                    "xier": "wird erstellen",
+                    "wir": "werden erstellen",
+                    "ihr": "werdet erstellen",
+                    "sie_plural": "werden erstellen",
+                    "Sie": "werden erstellen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erstellen",
+                    "du": "würdest erstellen",
+                    "er": "würde erstellen",
+                    "es": "würde erstellen",
+                    "sie_singular": "würde erstellen",
+                    "xier": "würde erstellen",
+                    "wir": "würden erstellen",
+                    "ihr": "würdet erstellen",
+                    "sie_plural": "würden erstellen",
+                    "Sie": "würden erstellen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erstellt",
+                    "du": "hättest erstellt",
+                    "er": "hätte erstellt",
+                    "es": "hätte erstellt",
+                    "sie_singular": "hätte erstellt",
+                    "xier": "hätte erstellt",
+                    "wir": "hätten erstellt",
+                    "ihr": "hättet erstellt",
+                    "sie_plural": "hätten erstellt",
+                    "Sie": "hätten erstellt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde erstellt",
+                    "du": "wirst erstellt",
+                    "er": "wird erstellt",
+                    "es": "wird erstellt",
+                    "sie_singular": "wird erstellt",
+                    "xier": "wird erstellt",
+                    "wir": "werden erstellt",
+                    "ihr": "werdet erstellt",
+                    "sie_plural": "werden erstellt",
+                    "Sie": "werden erstellt"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde erstellt",
+                    "du": "wurdest erstellt",
+                    "er": "wurde erstellt",
+                    "es": "wurde erstellt",
+                    "sie_singular": "wurde erstellt",
+                    "xier": "wurde erstellt",
+                    "wir": "wurden erstellt",
+                    "ihr": "wurdet erstellt",
+                    "sie_plural": "wurden erstellt",
+                    "Sie": "wurden erstellt"
+                },
+                "imperative": {
+                    "du": "erstelle",
+                    "ihr": "erstellt",
+                    "Sie": "erstellen Sie"
+                }
+            },
+            "beschriften": {
+                "present": {
+                    "ich": "beschrifte",
+                    "du": "beschriftest",
+                    "er": "beschriftet",
+                    "es": "beschriftet",
+                    "sie_singular": "beschriftet",
+                    "xier": "beschriftet",
+                    "wir": "beschriften",
+                    "ihr": "beschriftet",
+                    "sie_plural": "beschriften",
+                    "Sie": "beschriften"
+                },
+                "Perfekt": {
+                    "ich": "habe beschriftet",
+                    "du": "hast beschriftet",
+                    "er": "hat beschriftet",
+                    "es": "hat beschriftet",
+                    "sie_singular": "hat beschriftet",
+                    "xier": "hat beschriftet",
+                    "wir": "haben beschriftet",
+                    "ihr": "habt beschriftet",
+                    "sie_plural": "haben beschriftet",
+                    "Sie": "haben beschriftet"
+                },
+                "Futur_I": {
+                    "ich": "werde beschriften",
+                    "du": "wirst beschriften",
+                    "er": "wird beschriften",
+                    "es": "wird beschriften",
+                    "sie_singular": "wird beschriften",
+                    "xier": "wird beschriften",
+                    "wir": "werden beschriften",
+                    "ihr": "werdet beschriften",
+                    "sie_plural": "werden beschriften",
+                    "Sie": "werden beschriften"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde beschriften",
+                    "du": "würdest beschriften",
+                    "er": "würde beschriften",
+                    "es": "würde beschriften",
+                    "sie_singular": "würde beschriften",
+                    "xier": "würde beschriften",
+                    "wir": "würden beschriften",
+                    "ihr": "würdet beschriften",
+                    "sie_plural": "würden beschriften",
+                    "Sie": "würden beschriften"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte beschriftet",
+                    "du": "hättest beschriftet",
+                    "er": "hätte beschriftet",
+                    "es": "hätte beschriftet",
+                    "sie_singular": "hätte beschriftet",
+                    "xier": "hätte beschriftet",
+                    "wir": "hätten beschriftet",
+                    "ihr": "hättet beschriftet",
+                    "sie_plural": "hätten beschriftet",
+                    "Sie": "hätten beschriftet"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde beschriftet",
+                    "du": "wirst beschriftet",
+                    "er": "wird beschriftet",
+                    "es": "wird beschriftet",
+                    "sie_singular": "wird beschriftet",
+                    "xier": "wird beschriftet",
+                    "wir": "werden beschriftet",
+                    "ihr": "werdet beschriftet",
+                    "sie_plural": "werden beschriftet",
+                    "Sie": "werden beschriftet"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde beschriftet",
+                    "du": "wurdest beschriftet",
+                    "er": "wurde beschriftet",
+                    "es": "wurde beschriftet",
+                    "sie_singular": "wurde beschriftet",
+                    "xier": "wurde beschriftet",
+                    "wir": "wurden beschriftet",
+                    "ihr": "wurdet beschriftet",
+                    "sie_plural": "wurden beschriftet",
+                    "Sie": "wurden beschriftet"
+                },
+                "imperative": {
+                    "du": "beschrift",
+                    "ihr": "beschriftet",
+                    "Sie": "beschriften Sie"
+                }
+            },
+            "dokumentieren": {
+                "present": {
+                    "ich": "dokumentiere",
+                    "du": "dokumentierst",
+                    "er": "dokumentiert",
+                    "es": "dokumentiert",
+                    "sie_singular": "dokumentiert",
+                    "xier": "dokumentiert",
+                    "wir": "dokumentieren",
+                    "ihr": "dokumentiert",
+                    "sie_plural": "dokumentieren",
+                    "Sie": "dokumentieren"
+                },
+                "Perfekt": {
+                    "ich": "habe dokumentiert",
+                    "du": "hast dokumentiert",
+                    "er": "hat dokumentiert",
+                    "es": "hat dokumentiert",
+                    "sie_singular": "hat dokumentiert",
+                    "xier": "hat dokumentiert",
+                    "wir": "haben dokumentiert",
+                    "ihr": "habt dokumentiert",
+                    "sie_plural": "haben dokumentiert",
+                    "Sie": "haben dokumentiert"
+                },
+                "Futur_I": {
+                    "ich": "werde dokumentieren",
+                    "du": "wirst dokumentieren",
+                    "er": "wird dokumentieren",
+                    "es": "wird dokumentieren",
+                    "sie_singular": "wird dokumentieren",
+                    "xier": "wird dokumentieren",
+                    "wir": "werden dokumentieren",
+                    "ihr": "werdet dokumentieren",
+                    "sie_plural": "werden dokumentieren",
+                    "Sie": "werden dokumentieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde dokumentieren",
+                    "du": "würdest dokumentieren",
+                    "er": "würde dokumentieren",
+                    "es": "würde dokumentieren",
+                    "sie_singular": "würde dokumentieren",
+                    "xier": "würde dokumentieren",
+                    "wir": "würden dokumentieren",
+                    "ihr": "würdet dokumentieren",
+                    "sie_plural": "würden dokumentieren",
+                    "Sie": "würden dokumentieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte dokumentiert",
+                    "du": "hättest dokumentiert",
+                    "er": "hätte dokumentiert",
+                    "es": "hätte dokumentiert",
+                    "sie_singular": "hätte dokumentiert",
+                    "xier": "hätte dokumentiert",
+                    "wir": "hätten dokumentiert",
+                    "ihr": "hättet dokumentiert",
+                    "sie_plural": "hätten dokumentiert",
+                    "Sie": "hätten dokumentiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde dokumentiert",
+                    "du": "wirst dokumentiert",
+                    "er": "wird dokumentiert",
+                    "es": "wird dokumentiert",
+                    "sie_singular": "wird dokumentiert",
+                    "xier": "wird dokumentiert",
+                    "wir": "werden dokumentiert",
+                    "ihr": "werdet dokumentiert",
+                    "sie_plural": "werden dokumentiert",
+                    "Sie": "werden dokumentiert"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde dokumentiert",
+                    "du": "wurdest dokumentiert",
+                    "er": "wurde dokumentiert",
+                    "es": "wurde dokumentiert",
+                    "sie_singular": "wurde dokumentiert",
+                    "xier": "wurde dokumentiert",
+                    "wir": "wurden dokumentiert",
+                    "ihr": "wurdet dokumentiert",
+                    "sie_plural": "wurden dokumentiert",
+                    "Sie": "wurden dokumentiert"
+                },
+                "imperative": {
+                    "du": "dokumentier",
+                    "ihr": "dokumentiert",
+                    "Sie": "dokumentieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Recherchieren Sie, welche Produkte in Ihrer Region produziert werden.",
+            "Wählen Sie eines der Produkte aus, für das Ihre Region besonders bekannt ist.",
+            "Recherchieren Sie, wie das Produkt hergestellt wird.",
+            "Welche Materialien werden benutzt?",
+            "Schritte gibt es?",
+            "Benutzen Sie die Informationen Ihrer Recherche und erstellen Sie eine Prozessbeschreibung.",
+            "Diese Beschreibung soll die einzelnen Herstellungsschritte dokumentieren.",
+            "Stellen Sie die Produktionsschritte visuell dar, damit sie einfacher zu verstehen sind.",
+            "Wählen Sie das Medium für die Darstellung (Video, PowerPoint, Zeichnung etc.).",
+            "Die Bilder sollen auch beschriftet werden.",
+            "Überlegen Sie jetzt, wie Sie das Produkt vermarkten können.",
+            "Warum ist es ein Produkt, das gekauft werden sollte?",
+            "Was kann damit gemacht werden?",
+            "Wo kann das Produkt gekauft werden?",
+            "Stellen Sie nun Ihr Produkt im Kurs vor.",
+            "Präsentieren Sie sowohl Ihre Prozessbeschreibung als auch das Produktmarketing.",
+            "Sie können die Form der Präsentation frei wählen.",
+            "Die anderen Personen im Kurs dürfen dann Fragen stellen und entscheiden, ob sie das Produkt kaufen würden."
+        ],
+        "templated": []
+    }
+}

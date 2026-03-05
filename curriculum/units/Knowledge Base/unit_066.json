@@ -1,0 +1,682 @@
+{
+    "unit": "66",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 66,
+        "prerequisite": "1-65"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "When a sentence has two noun objects, place dative before accusative: \"Ich kaufe meinem Opa ein Buch.\"",
+            "When one object is a pronoun and one is a noun, place the pronoun first: \"Ich kaufe ihm ein Buch.\"",
+            "When both objects are pronouns, place accusative before dative: \"Ich kaufe es ihm.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Müll dem richtigen Behälter zuordnen",
+            "Gegenstände und Personen mit Pronomen im Dativ und Akkusativ ersetzen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Mülltrennung und Recycling"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "trennen",
+                "pos": "VERB",
+                "translation": "to separate",
+                "frequency": 936,
+                "cefr": "B1"
+            },
+            {
+                "word": "verdienen",
+                "pos": "VERB",
+                "translation": "to earn; deserve",
+                "frequency": 835,
+                "cefr": "A1"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "schieben",
+                "pos": "VERB",
+                "translation": "to push",
+                "frequency": 1251,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Strophe",
+                "pos": "NOUN",
+                "translation": "stanza, verse",
+                "frequency": 13786,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Straße",
+                "pos": "NOUN",
+                "translation": "street",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Gasse",
+                "pos": "NOUN",
+                "translation": "alley",
+                "frequency": 4276,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tonne",
+                "pos": "NOUN",
+                "translation": "bin; ton",
+                "frequency": 2402,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Sack",
+                "pos": "NOUN",
+                "translation": "sack, bag",
+                "frequency": 4191,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Pfand",
+                "pos": "NOUN",
+                "translation": "deposit",
+                "frequency": 21583,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zigarette",
+                "pos": "NOUN",
+                "translation": "cigarette",
+                "frequency": 1816,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Dreck",
+                "pos": "NOUN",
+                "translation": "dirt, mud, filth",
+                "frequency": 4309,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Scham",
+                "pos": "NOUN",
+                "translation": "shame",
+                "frequency": 15314,
+                "cefr": "B2"
+            },
+            {
+                "word": "arbeitslos",
+                "pos": "ADJ",
+                "translation": "jobless, unemployed",
+                "frequency": 2777,
+                "cefr": "A1"
+            },
+            {
+                "word": "leer",
+                "pos": "ADJ",
+                "translation": "empty",
+                "frequency": 874,
+                "cefr": "A2"
+            },
+            {
+                "word": "eng",
+                "pos": "ADJ",
+                "translation": "narrow",
+                "frequency": 593,
+                "cefr": "A2"
+            },
+            {
+                "word": "genau",
+                "pos": "ADJ",
+                "translation": "exact(ly)",
+                "frequency": 167,
+                "cefr": "A2"
+            },
+            {
+                "word": "einst",
+                "pos": "ADJ",
+                "translation": "long ago",
+                "frequency": 1550
+            },
+            {
+                "word": "vorher",
+                "pos": "PREP",
+                "translation": "before, beforehand",
+                "frequency": 866,
+                "cefr": "A2"
+            },
+            {
+                "word": "ganz",
+                "pos": "ADV",
+                "translation": "all; completely",
+                "frequency": 69,
+                "cefr": "A2"
+            },
+            {
+                "word": "ob",
+                "pos": "CONJ",
+                "translation": "if, whether",
+                "frequency": 127,
+                "cefr": "B1"
+            },
+            {
+                "word": "zusätzlich",
+                "pos": "ADJ",
+                "translation": "additional(ly)"
+            },
+            {
+                "word": "zurück",
+                "pos": "ADV",
+                "translation": "back"
+            },
+            {
+                "word": "öffnen",
+                "pos": "VERB",
+                "translation": "to open"
+            },
+            {
+                "word": "merken",
+                "pos": "VERB",
+                "translation": "to remember sth.",
+                "frequency": 566,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Schale",
+                "pos": "NOUN",
+                "translation": "peel",
+                "frequency": 3943,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Staat",
+                "pos": "NOUN",
+                "translation": "state",
+                "frequency": 337,
+                "cefr": "B1"
+            },
+            {
+                "word": "Bio-",
+                "pos": "ADJ",
+                "translation": "organic",
+                "frequency": 32340,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Becher",
+                "pos": "NOUN",
+                "translation": "cup (container often used for joghurt)",
+                "frequency": 11343,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Karton",
+                "pos": "NOUN",
+                "translation": "cardboard box",
+                "frequency": 11657,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tüte",
+                "pos": "NOUN",
+                "translation": "bag (made out of plastic)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wattestäbchen",
+                "pos": "NOUN",
+                "translation": "cotton swab"
+            },
+            {
+                "word": "der Schwamm",
+                "pos": "NOUN",
+                "translation": "sponge, eraser",
+                "frequency": 26134,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Einnahme",
+                "pos": "NOUN",
+                "translation": "revenue, earnings",
+                "frequency": 2874,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Dreck",
+                "pos": "NOUN",
+                "translation": "dirt, mud, filth",
+                "frequency": 4309,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Container",
+                "pos": "NOUN",
+                "frequency": 4086
+            },
+            {
+                "word": "gelber",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Staubsaugerbeutel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Zahnbürste",
+                "pos": "NOUN",
+                "frequency": 35483,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Küchenbürste",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Bananenschale",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Essensrest",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Orangenschale",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Mehltüte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Kekspackung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Shampooflasche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Plastikcontainer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Chipstüte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Milchkarton",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Joghurtbecher",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Coladose",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Styropor",
+                "pos": "NOUN",
+                "frequency": 41193
+            },
+            {
+                "word": "die Milchflasche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Weinflasche",
+                "pos": "NOUN",
+                "frequency": 46771
+            },
+            {
+                "word": "das Marmeladenglas",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Joghurtglas",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Gurkenglas",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Bierflasche",
+                "pos": "NOUN",
+                "frequency": 23978
+            },
+            {
+                "word": "die Wasserflasche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Musiker",
+                "pos": "NOUN",
+                "frequency": 2577,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Album",
+                "pos": "NOUN",
+                "frequency": 3630
+            },
+            {
+                "word": "zentral",
+                "pos": "ADV",
+                "frequency": 818,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Biene",
+                "pos": "NOUN",
+                "frequency": 9618,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Revolutionär",
+                "pos": "NOUN",
+                "frequency": 7460
+            },
+            {
+                "word": "deposit",
+                "pos": "ADV"
+            },
+            {
+                "word": "rekonstruieren",
+                "pos": "VERB",
+                "frequency": 11253
+            },
+            {
+                "word": "unterstichenen",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Reporter",
+                "pos": "NOUN",
+                "frequency": 3745,
+                "cefr": "B1"
+            },
+            {
+                "word": "höchster",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Motivation",
+                "pos": "NOUN",
+                "frequency": 3150
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "trennen": {
+                "present": {
+                    "ich": "trenne",
+                    "du": "trennst",
+                    "er": "trennt",
+                    "es": "trennt",
+                    "sie_singular": "trennt",
+                    "xier": "trennt",
+                    "wir": "trennen",
+                    "ihr": "trennt",
+                    "sie_plural": "trennen",
+                    "Sie": "trennen"
+                }
+            },
+            "verdienen": {
+                "present": {
+                    "ich": "verdiene",
+                    "du": "verdienst",
+                    "er": "verdient",
+                    "es": "verdient",
+                    "sie_singular": "verdient",
+                    "xier": "verdient",
+                    "wir": "verdienen",
+                    "ihr": "verdient",
+                    "sie_plural": "verdienen",
+                    "Sie": "verdienen"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                }
+            },
+            "schieben": {
+                "present": {
+                    "ich": "schiebe",
+                    "du": "schiebst",
+                    "er": "schiebt",
+                    "es": "schiebt",
+                    "sie_singular": "schiebt",
+                    "xier": "schiebt",
+                    "wir": "schieben",
+                    "ihr": "schiebt",
+                    "sie_plural": "schieben",
+                    "Sie": "schieben"
+                }
+            },
+            "öffnen": {
+                "present": {
+                    "ich": "öffne",
+                    "du": "öffnest",
+                    "er": "öffnet",
+                    "es": "öffnet",
+                    "sie_singular": "öffnet",
+                    "xier": "öffnet",
+                    "wir": "öffnen",
+                    "ihr": "öffnet",
+                    "sie_plural": "öffnen",
+                    "Sie": "öffnen"
+                }
+            },
+            "merken": {
+                "present": {
+                    "ich": "merke",
+                    "du": "merkst",
+                    "er": "merkt",
+                    "es": "merkt",
+                    "sie_singular": "merkt",
+                    "xier": "merkt",
+                    "wir": "merken",
+                    "ihr": "merkt",
+                    "sie_plural": "merken",
+                    "Sie": "merken"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Schauen Sie sich an, wie die Stadt Ulm den Müll trennt.",
+            "Was gehört wohin?",
+            "Person 1 bekommt sechs Dinge.",
+            "Sie gibt Person 2 drei Dinge und gibt sich selbst auch drei Dinge.",
+            "Person 2 sagt, was Person 1 macht.",
+            "Folgen Sie dem Beispiel.",
+            "Das ist die Bananenschale",
+            "Ich gebe dir die Bananenschale.",
+            "Du gibst sie mir.",
+            "Das ist das Joghurtglas.",
+            "Ich nehme mir das Joghurtglas.",
+            "Du nimmst es dir.",
+            "Jetzt bekommt die andere Person sechs Dinge.",
+            "Folgen Sie wieder dem Beispiel in Teil.",
+            "Sie haben jetzt sechs Dinge (drei von Ihnen, drei von der anderen Person).",
+            "Wohin gehören die Wattestäbchen?",
+            "Die Wattestäbchen gehören in die Restmülltonne",
+            "Rest Müll Tonne.",
+            "Wohin kommt die Chipstüte?",
+            "Die Chipstüte kommt in den gelben Sack.",
+            "Andreas Dorau ist im Jahr 1964 geboren und ist Musiker der Neuen Deutschen Welle.",
+            "Er schreibt auch Filmmusik.",
+            "\"Flaschenpfand \" ist auf seinem Album \"Aus der Bibliothèque\".",
+            "Für das Album inspirieren ihn Hamburg und die Zentralbibliothek.",
+            "Es gibt Lieder über das Ausleihen von Büchern und Flaschenpfand und Bienen.",
+            "Was bedeutet \"Flaschenpfand \"?",
+            "Hören Sie das Lied und lesen Sie den Text.",
+            "Wie hoch ist das Flaschenpfand in Deutschland?",
+            "Einst war er ein großer Revolutionär.",
+            "Dann wurde er älter und wollte nicht mehr.",
+            "Ein Witz war schuld, dass er was Neues erfand, das war die Idee mit dem Flaschenpfand.",
+            "Auf Plätzen und Straßen und den engen Gassen, da suchen heute Menschen nach leeren Flaschen.",
+            "Und sie sammeln die Flaschen, sie sammeln die Flaschen, kassieren den Pfand und füllen die Taschen.",
+            "8, 15, 25 Cent, ein jeder diese Zahlen kennt.",
+            "Die Kinder rufen im ganzen Land, Fli - Fli - Fla - Fla",
+            "Sie öffnen die Taschen.",
+            "Sie schieben die Flaschen, hinein in den Schlund, den Maschinenschlund, Flasche und Flasche, Tasche und Tasche.",
+            "Kein Mensch weiß vorher ganz genau ob alle Flaschen wirklich passen und gebe ich euch den guten Rat auch mal welche stehen zu lassen.",
+            "Wer ist der Mann, der da rumläuft.",
+            "Der mit den vollen Taschen?",
+            "Hat er die Flaschen selber gekauft, oder nur leer gewaschen?",
+            "Flaschenpfand ist deposit.",
+            "Das Flaschenpfand ist 8, 15 und 25 Cent in Deutschland.",
+            "Gibt es auch in Ihrem Land Flaschenpfand?",
+            "Wie hoch ist es?",
+            "In Deutschland werden 95.9% der Flaschen zurückgebracht.",
+            "Wie viel Prozent sind es in Ihrem Land?",
+            "Bringen Sie Flaschen zurück in den Laden?",
+            "In meinem Land gibt es auch Flaschenpfand.",
+            "Ich denke es sind weniger Prozent, weil das Flaschenpfand nur 5 cent ist.",
+            "Ich bringe Flaschen nicht zurück in den Laden.",
+            "Ich habe keine Zeit.",
+            "Ab der zweiten Strophe singt Andreas Dorau über \"Flaschensammler*innen \".",
+            "Lesen Sie die Strophen.",
+            "Was machen diese Personen?",
+            "Diese Personen suchen auf Plätzen und in Straßen nach leeren Flaschen.",
+            "Sie sammeln die Flaschen und bekommen das Pfand.",
+            "Lesen Sie den Text über einen Flaschensammler.",
+            "Die Informationen für den Text kommen von einem Interview.",
+            "Rekonstruieren Sie die Fragen zu den unterstichenen Informationen.",
+            "Klaus Peter Ihle ist 45 Jahre alt und arbeitet manchmal bei einer Tischlerei und ist sonst arbeitslos.",
+            "Mit den Flaschen verdient er am Tag € 1,20 zusätzlich.",
+            "Er sammelt die Flaschen am liebsten bei einem Fußballstadion.",
+            "Wenn Herr Ihle arbeitslos ist, strukturiert das Flaschensammeln seinen Tag.",
+            "Mit dem Geld kann er sich manchmal Luxusartikel kaufen.",
+            "Das ist sein Traum:",
+            "Er will so viel Geld zu sammeln, dass er ein Haus für Menschen ohne Wohnung bauen kann.",
+            "Wie heißen Sie?",
+            "Wie alt sind Sie?",
+            "Wo arbeiten Sie?",
+            "Was sind Sie von Beruf?",
+            "Wie viel verdienen Sie?",
+            "Wo sammeln Sie Flaschen am liebsten?",
+            "Was kaufen Sie sich mit dem Geld?",
+            "Was ist Ihr Traum?",
+            "Ein Reporter interviewt eine andere Person.",
+            "Spielen Sie das Interview.",
+            "Ich heiße Heiko Auerbach.",
+            "Wie alt sind sie?",
+            "Ich bin 21 Jahre alt.",
+            "Was ist ihr Beruf?",
+            "Ich bin arbeitslos.",
+            "Wie viel verdienen Sie mit Flaschensammeln",
+            "Flasche sammeln pro Tag?",
+            "Ich verdiene 3 Euro pro Tag.",
+            "Was war ihr Höchstverdienst?",
+            "Mein Höchstverdienst war 22,50 EUR, nach dem Karneval der Kulturen.",
+            "Und wo sammeln Sie die Flaschen?",
+            "Ich sammele die Flaschen in der Oranienstraße.",
+            "Was ist ihre Motivation?",
+            "Meine Motivation ist aus Müll Geld zu machen.",
+            "Hat Ihre Freundin ein Problem mit dem Flaschensammeln?",
+            "Ja, ihr Problem ist Scham und Dreck."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

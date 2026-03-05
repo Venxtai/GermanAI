@@ -1,0 +1,566 @@
+{
+    "unit": "B25",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 25,
+        "prerequisite": "core 1-104, B1-B24"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [
+            "In the middle field of a German sentence, place temporal information before locational information (Zeit vor Ort)."
+        ],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "zwei Filme vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Good Bye, Lenin! und Das Leben der Anderen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "wünschen", "pos": "VERB", "translation": "to wish" },
+            { "word": "umgehen", "pos": "VERB", "translation": "to deal (with)", "frequency": 1224, "cefr": "B1" },
+            { "word": "unterdrücken", "pos": "VERB", "translation": "to suppress; repress; subdue" },
+            { "word": "überwachen", "pos": "VERB", "translation": "to surveil, observe" },
+            { "word": "ausspionieren", "pos": "VERB", "translation": "to spy (on)", "frequency": 43424 },
+            { "word": "der Blick", "pos": "NOUN", "translation": "view; sight", "frequency": 306, "cefr": "A1" },
+            { "word": "die Veränderung", "pos": "NOUN", "translation": "change" },
+            { "word": "die Hoffnung", "pos": "NOUN", "translation": "hope; aspiration; promise", "frequency": 1102, "cefr": "B1" },
+            { "word": "die Wahrheit", "pos": "NOUN", "translation": "truth", "frequency": 1156, "cefr": "B1" },
+            { "word": "die Menschlichkeit", "pos": "NOUN", "translation": "humanity; humanness", "frequency": 10463, "cefr": "A1" },
+            { "word": "die Demonstration", "pos": "NOUN", "translation": "demonstration, rally", "frequency": 3235, "cefr": "A1" },
+            { "word": "der*die (Bundes)kanzler*in", "pos": "NOUN", "translation": "(Federal) Chancellor", "frequency": 1983 },
+            { "word": "der*die Offizier*in", "pos": "NOUN", "translation": "officer (military)", "frequency": 3830 },
+            { "word": "das Weltall", "pos": "NOUN", "translation": "outer space", "frequency": 15318, "cefr": "B2" },
+            { "word": "der Ausflug", "pos": "NOUN", "translation": "trip; excursion", "frequency": 4014, "cefr": "A1" },
+            { "word": "die Komödie", "pos": "NOUN", "translation": "comedy" },
+            { "word": "der Ton", "pos": "NOUN", "translation": "tone; sound; note [music]", "frequency": 1662, "cefr": "B2" },
+            { "word": "unterschiedlich", "pos": "ADJ", "translation": "different(ly), various", "frequency": 345, "cefr": "B1" },
+            { "word": "schwierig", "pos": "ADJ", "translation": "difficult", "frequency": 580, "cefr": "A2" },
+            { "word": "ernst", "pos": "ADJ", "translation": "serious", "frequency": 1050, "cefr": "B1" },
+            { "word": "stolz", "pos": "ADJ", "translation": "proud (of)", "frequency": 1372, "cefr": "B1" },
+            { "word": "schließlich", "pos": "ADJ", "translation": "finally" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Thriller", "pos": "NOUN", "frequency": 10976 },
+            { "word": "ironisch", "pos": "ADJ", "frequency": 2726 },
+            { "word": "die Hauptfigur", "pos": "NOUN", "frequency": 11511, "cefr": "B2" },
+            { "word": "geraten", "pos": "VERB", "frequency": 971 },
+            { "word": "das Koma", "pos": "NOUN", "frequency": 13746, "cefr": "B2" },
+            { "word": "der Schock", "pos": "NOUN", "frequency": 3747 },
+            { "word": "produziern", "pos": "VERB" },
+            { "word": "die richtige", "pos": "NOUN", "frequency": 11636 },
+            { "word": "die Empathie", "pos": "NOUN", "frequency": 27321 },
+            { "word": "der Protagonist", "pos": "NOUN", "frequency": 3831 },
+            { "word": "der Pionier", "pos": "NOUN", "frequency": 9258 },
+            { "word": "der Kosmonaut", "pos": "NOUN", "frequency": 24741 },
+            { "word": "der*die Demonstrat*innen", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wünschen": {
+                "present": {
+                    "ich": "wünsche",
+                    "du": "wünschst",
+                    "er": "wünscht",
+                    "es": "wünscht",
+                    "sie_singular": "wünscht",
+                    "xier": "wünscht",
+                    "wir": "wünschen",
+                    "ihr": "wünscht",
+                    "sie_plural": "wünschen",
+                    "Sie": "wünschen"
+                },
+                "Präteritum": {
+                    "ich": "wünschte",
+                    "du": "wünschtest",
+                    "er": "wünschte",
+                    "es": "wünschte",
+                    "sie_singular": "wünschte",
+                    "xier": "wünschte",
+                    "wir": "wünschten",
+                    "ihr": "wünschtet",
+                    "sie_plural": "wünschten",
+                    "Sie": "wünschten"
+                },
+                "Perfekt": {
+                    "ich": "habe gewünscht",
+                    "du": "hast gewünscht",
+                    "er": "hat gewünscht",
+                    "es": "hat gewünscht",
+                    "sie_singular": "hat gewünscht",
+                    "xier": "hat gewünscht",
+                    "wir": "haben gewünscht",
+                    "ihr": "habt gewünscht",
+                    "sie_plural": "haben gewünscht",
+                    "Sie": "haben gewünscht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gewünscht",
+                    "du": "hattest gewünscht",
+                    "er": "hatte gewünscht",
+                    "es": "hatte gewünscht",
+                    "sie_singular": "hatte gewünscht",
+                    "xier": "hatte gewünscht",
+                    "wir": "hatten gewünscht",
+                    "ihr": "hattet gewünscht",
+                    "sie_plural": "hatten gewünscht",
+                    "Sie": "hatten gewünscht"
+                },
+                "Futur_I": {
+                    "ich": "werde wünschen",
+                    "du": "wirst wünschen",
+                    "er": "wird wünschen",
+                    "es": "wird wünschen",
+                    "sie_singular": "wird wünschen",
+                    "xier": "wird wünschen",
+                    "wir": "werden wünschen",
+                    "ihr": "werdet wünschen",
+                    "sie_plural": "werden wünschen",
+                    "Sie": "werden wünschen"
+                },
+                "imperative": {
+                    "du": "wünsche",
+                    "ihr": "wünscht",
+                    "Sie": "wünschen Sie"
+                }
+            },
+            "umgehen": {
+                "present": {
+                    "ich": "umgehe",
+                    "du": "umgehest",
+                    "er": "umgehet",
+                    "es": "umgehet",
+                    "sie_singular": "umgehet",
+                    "xier": "umgehet",
+                    "wir": "umgehen",
+                    "ihr": "umgeht",
+                    "sie_plural": "umgehen",
+                    "Sie": "umgehen"
+                },
+                "Präteritum": {
+                    "ich": "umging",
+                    "du": "umgingst",
+                    "er": "umging",
+                    "es": "umging",
+                    "sie_singular": "umging",
+                    "xier": "umging",
+                    "wir": "umgingen",
+                    "ihr": "umgingt",
+                    "sie_plural": "umgingen",
+                    "Sie": "umgingen"
+                },
+                "Perfekt": {
+                    "ich": "habe umgangen",
+                    "du": "hast umgangen",
+                    "er": "hat umgangen",
+                    "es": "hat umgangen",
+                    "sie_singular": "hat umgangen",
+                    "xier": "hat umgangen",
+                    "wir": "haben umgangen",
+                    "ihr": "habt umgangen",
+                    "sie_plural": "haben umgangen",
+                    "Sie": "haben umgangen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte umgangen",
+                    "du": "hattest umgangen",
+                    "er": "hatte umgangen",
+                    "es": "hatte umgangen",
+                    "sie_singular": "hatte umgangen",
+                    "xier": "hatte umgangen",
+                    "wir": "hatten umgangen",
+                    "ihr": "hattet umgangen",
+                    "sie_plural": "hatten umgangen",
+                    "Sie": "hatten umgangen"
+                },
+                "Futur_I": {
+                    "ich": "werde umgehen",
+                    "du": "wirst umgehen",
+                    "er": "wird umgehen",
+                    "es": "wird umgehen",
+                    "sie_singular": "wird umgehen",
+                    "xier": "wird umgehen",
+                    "wir": "werden umgehen",
+                    "ihr": "werdet umgehen",
+                    "sie_plural": "werden umgehen",
+                    "Sie": "werden umgehen"
+                },
+                "imperative": {
+                    "du": "umgehe",
+                    "ihr": "umgehet",
+                    "Sie": "umgehen Sie"
+                }
+            },
+            "unterdrücken": {
+                "present": {
+                    "ich": "unterdrücke",
+                    "du": "unterdrückst",
+                    "er": "unterdrückt",
+                    "es": "unterdrückt",
+                    "sie_singular": "unterdrückt",
+                    "xier": "unterdrückt",
+                    "wir": "unterdrücken",
+                    "ihr": "unterdrückt",
+                    "sie_plural": "unterdrücken",
+                    "Sie": "unterdrücken"
+                },
+                "Präteritum": {
+                    "ich": "unterdrückte",
+                    "du": "unterdrücktest",
+                    "er": "unterdrückte",
+                    "es": "unterdrückte",
+                    "sie_singular": "unterdrückte",
+                    "xier": "unterdrückte",
+                    "wir": "unterdrückten",
+                    "ihr": "unterdrücktet",
+                    "sie_plural": "unterdrückten",
+                    "Sie": "unterdrückten"
+                },
+                "Perfekt": {
+                    "ich": "habe unterdrückt",
+                    "du": "hast unterdrückt",
+                    "er": "hat unterdrückt",
+                    "es": "hat unterdrückt",
+                    "sie_singular": "hat unterdrückt",
+                    "xier": "hat unterdrückt",
+                    "wir": "haben unterdrückt",
+                    "ihr": "habt unterdrückt",
+                    "sie_plural": "haben unterdrückt",
+                    "Sie": "haben unterdrückt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte unterdrückt",
+                    "du": "hattest unterdrückt",
+                    "er": "hatte unterdrückt",
+                    "es": "hatte unterdrückt",
+                    "sie_singular": "hatte unterdrückt",
+                    "xier": "hatte unterdrückt",
+                    "wir": "hatten unterdrückt",
+                    "ihr": "hattet unterdrückt",
+                    "sie_plural": "hatten unterdrückt",
+                    "Sie": "hatten unterdrückt"
+                },
+                "Futur_I": {
+                    "ich": "werde unterdrücken",
+                    "du": "wirst unterdrücken",
+                    "er": "wird unterdrücken",
+                    "es": "wird unterdrücken",
+                    "sie_singular": "wird unterdrücken",
+                    "xier": "wird unterdrücken",
+                    "wir": "werden unterdrücken",
+                    "ihr": "werdet unterdrücken",
+                    "sie_plural": "werden unterdrücken",
+                    "Sie": "werden unterdrücken"
+                },
+                "imperative": {
+                    "du": "unterdrücke",
+                    "ihr": "unterdrückt",
+                    "Sie": "unterdrücken Sie"
+                }
+            },
+            "überwachen": {
+                "present": {
+                    "ich": "überwache",
+                    "du": "überwachst",
+                    "er": "überwacht",
+                    "es": "überwacht",
+                    "sie_singular": "überwacht",
+                    "xier": "überwacht",
+                    "wir": "überwachen",
+                    "ihr": "überwacht",
+                    "sie_plural": "überwachen",
+                    "Sie": "überwachen"
+                },
+                "Präteritum": {
+                    "ich": "überwachte",
+                    "du": "überwachtest",
+                    "er": "überwachte",
+                    "es": "überwachte",
+                    "sie_singular": "überwachte",
+                    "xier": "überwachte",
+                    "wir": "überwachten",
+                    "ihr": "überwachtet",
+                    "sie_plural": "überwachten",
+                    "Sie": "überwachten"
+                },
+                "Perfekt": {
+                    "ich": "habe überwacht",
+                    "du": "hast überwacht",
+                    "er": "hat überwacht",
+                    "es": "hat überwacht",
+                    "sie_singular": "hat überwacht",
+                    "xier": "hat überwacht",
+                    "wir": "haben überwacht",
+                    "ihr": "habt überwacht",
+                    "sie_plural": "haben überwacht",
+                    "Sie": "haben überwacht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte überwacht",
+                    "du": "hattest überwacht",
+                    "er": "hatte überwacht",
+                    "es": "hatte überwacht",
+                    "sie_singular": "hatte überwacht",
+                    "xier": "hatte überwacht",
+                    "wir": "hatten überwacht",
+                    "ihr": "hattet überwacht",
+                    "sie_plural": "hatten überwacht",
+                    "Sie": "hatten überwacht"
+                },
+                "Futur_I": {
+                    "ich": "werde überwachen",
+                    "du": "wirst überwachen",
+                    "er": "wird überwachen",
+                    "es": "wird überwachen",
+                    "sie_singular": "wird überwachen",
+                    "xier": "wird überwachen",
+                    "wir": "werden überwachen",
+                    "ihr": "werdet überwachen",
+                    "sie_plural": "werden überwachen",
+                    "Sie": "werden überwachen"
+                },
+                "imperative": {
+                    "du": "überwache",
+                    "ihr": "überwacht",
+                    "Sie": "überwachen Sie"
+                }
+            },
+            "ausspionieren": {
+                "present": {
+                    "ich": "spioniere aus",
+                    "du": "spionierst aus",
+                    "er": "spioniert aus",
+                    "es": "spioniert aus",
+                    "sie_singular": "spioniert aus",
+                    "xier": "spioniert aus",
+                    "wir": "spionieren aus",
+                    "ihr": "spioniert aus",
+                    "sie_plural": "spionieren aus",
+                    "Sie": "spionieren aus"
+                },
+                "Präteritum": {
+                    "ich": "spionierte aus",
+                    "du": "spioniertest aus",
+                    "er": "spionierte aus",
+                    "es": "spionierte aus",
+                    "sie_singular": "spionierte aus",
+                    "xier": "spionierte aus",
+                    "wir": "spionierten aus",
+                    "ihr": "spioniertet aus",
+                    "sie_plural": "spionierten aus",
+                    "Sie": "spionierten aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausspioniert",
+                    "du": "hast ausspioniert",
+                    "er": "hat ausspioniert",
+                    "es": "hat ausspioniert",
+                    "sie_singular": "hat ausspioniert",
+                    "xier": "hat ausspioniert",
+                    "wir": "haben ausspioniert",
+                    "ihr": "habt ausspioniert",
+                    "sie_plural": "haben ausspioniert",
+                    "Sie": "haben ausspioniert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte ausspioniert",
+                    "du": "hattest ausspioniert",
+                    "er": "hatte ausspioniert",
+                    "es": "hatte ausspioniert",
+                    "sie_singular": "hatte ausspioniert",
+                    "xier": "hatte ausspioniert",
+                    "wir": "hatten ausspioniert",
+                    "ihr": "hattet ausspioniert",
+                    "sie_plural": "hatten ausspioniert",
+                    "Sie": "hatten ausspioniert"
+                },
+                "Futur_I": {
+                    "ich": "werde ausspionieren",
+                    "du": "wirst ausspionieren",
+                    "er": "wird ausspionieren",
+                    "es": "wird ausspionieren",
+                    "sie_singular": "wird ausspionieren",
+                    "xier": "wird ausspionieren",
+                    "wir": "werden ausspionieren",
+                    "ihr": "werdet ausspionieren",
+                    "sie_plural": "werden ausspionieren",
+                    "Sie": "werden ausspionieren"
+                },
+                "imperative": {
+                    "du": "spionier aus",
+                    "ihr": "spioniert aus",
+                    "Sie": "spionieren Sie aus"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Eine Komödie oder ein Drama?",
+            "Zwei bekannte Filme über die DDR sind Good Bye, Lenin!",
+            "(2003) und Das Leben der Anderen (2006).",
+            "Beide Filme haben viele Preise gewonnen, aber sie sind ganz unterschiedlich.",
+            "Ein Film ist eine Komödie und ein Film ist ein Drama oder Thriller (das Genre ist nicht ganz klar).",
+            "Was passt du zu einer Komödie (K) und was passt zu einem Drama (D)?",
+            "Fokus auf kritische Situation, eher negativ viel Alltag, vielleicht positiv und negativ",
+            "Hören Sie jetzt die beiden Trailer.",
+            "Noch sehen Sie nicht das Bild.",
+            "Wie ist die Musik?",
+            "Wie sind die Stimmen?",
+            "Wie ist die Stimmung?",
+            "Welcher Film ist wahrscheinlich die Komödie, welcher das Drama?",
+            "Die Stimmen im ersten/zweiten Trailer sind … Die Stimmung im ersten/zweiten Trailer ist",
+            "Ich denke, dass der erste/zweite Trailer für die Komödie/das Drama ist.",
+            "Fröhlich | traurig | dramatisch | dunkel | optimistisch | wild | langsam | schnell | ruhig | romantisch | wütend | aggressiv |",
+            "Sehen Sie jetzt die Trailer ohne Ton.",
+            "Was sehen Sie?",
+            "Was glauben, Sie: Welcher Film ist die Komödie?",
+            "Welcher ist das Drama?",
+            "Die Farben sind",
+            "Ich denke der erste/zweite Trailer ist für die Komödie/das Drama.",
+            "Sehen Sie jetzt die Trailer mit Ton.",
+            "Haben Sie richtig geraten?",
+            "Passen Bild und Ton zusammen?",
+            "Welche dramatischen Elemente gibt es in der Komödie?",
+            "Ich denke, dass Bild und Ton bei … (nicht) zusammen passen.",
+            "Sie bekommen Sätze für einen der Filme.",
+            "Bringen Sie die Sätze in d ie richtige Reihenfolge.",
+            "“ Good Bye, Lenin! ” ist ein deutscher Film über eine Familie in Ost Berlin.",
+            "Die Hauptperson ist Alex Kerner.",
+            "Alex ' Mutter ist eine stolze DDR Bürgerin.",
+            "Als sie sieht, wie Alex gegen die DDR demonstriert, fällt sie ins Koma.",
+            "Als sie acht Monate später aufwacht, hat sich alles verändert.",
+            "Die DDR gibt es nicht mehr und der Kapitalismus hat begonnen.",
+            "Alex hat Angst, dass seine Mutter einen Schock bekommt, wenn sie die Wahrheit weiß.",
+            "Deshalb tut er so, als ob es die DDR noch gibt.",
+            "Er sucht nach alten ost deutschen Produkten, versteckt west Deutsche Produkte und produzier falsche Nachrichten.",
+            "Seine Mutter glaubt ihm und ist glücklich in ihrer alten Welt.",
+            "Aber es wird immer schwieriger, ihr nicht die Wahrheit zu sagen, weil sich zu viel verändert.",
+            "Schließlich erfindet Alex eine alternative, utopische Einheit von Ost- und West Deutschland.",
+            "Der Film ist lustig und traurig.",
+            "Er zeigt, wie Menschen mit Veränderungen umgehen und wie wichtig Familie ist.",
+            "Der Film“ Das Leben der Anderen ” spielt in den 1980er Jahren in Ost Berlin.",
+            "Er handelt von einem Stasi Offizier, Gerd Wiesler, der einen Schriftsteller und seine Freundin ausspionieren soll.",
+            "Die Stasi hat in der DDR viele Menschen überwacht und unterdrückt.",
+            "Wiesler hört bei den Gesprächen der beiden zu und beobachtet sie.",
+            "Er entdeckt, dass der Schriftsteller einen kritischen Artikel über die DDR schreiben will.",
+            "Aber er hört auch, dass der Schriftsteller und seine Freundin sich lieben und gute Menschen sind.",
+            "Er weiß nicht mehr, ob er und die Stasi das Richtige machen und hat Empathie mit den beiden Menschen, denen er jeden Tag zuhört.",
+            "Schließlich hilft Wiesler ihnen und versteckt wichtige Informationen vor der Stasi.",
+            "Der Film zeigt, wie die Stasi Menschen unterdrückt hat und wie wichtig es ist, für das Gute zu kämpfen.",
+            "Er zeigt aber auch, dass es auch in schwierigen Zeiten Hoffnung und Menschlichkeit geben kann.",
+            "Lesen Sie die Sätze aus Teil 5 der anderen Gruppe vor",
+            "Welche Informationen gehören zu Good Bye, Lenin!",
+            "(G), welche zu Das Leben der Anderen (D) und welche zu keinem der beiden Filme (K)?",
+            "Der Film spielt in den 1980er Jahren in Ost Berlin.",
+            "Der Film zeigt Demonstrationen kurz vor dem Fall der Mauer.",
+            "Der Film handelt von einem jungen Mann und seiner Mutter, die krank ist.",
+            "Der Film handelt von jungen Menschen in Ost und West Deutschland.",
+            "Der Film handelt von einem Stasi Offizier und einem Schriftsteller.",
+            "In dem Film erfindet der Protagonist eine alternative DDR.",
+            "Durch den Film lernt man, wie es zum Fall der Mauer kam.",
+            "In dem Film sieht man wie die Stasi Leute ausspioniert.",
+            "Wann und wo spielt der Film?",
+            "Wählen Sie die passenden Orte und Zeiten aus.",
+            "Achten Sie auf Kontext und Satzbau.",
+            "Alex Vater floh ◯ ◯.",
+            "Christiane war ◯ von Alex Vater ◯ depressiv.",
+            "Nachdem Christiane ◯ ◯ gekommen war, war sie in der DDR sehr aktiv.",
+            "Alex war ◯ mit den Pionieren ◯.",
+            "Er war ein großer Fan von Sigmund Jähn, einem deutschen Kosmonauten, der ◯ als erster Deutscher ◯ flog.",
+            "Als aktive Bürgerin lud die DDR Christiane ◯ ◯ ein.",
+            "Christiane sah ◯ Alex und andere Demonstrat*innen ◯ und fiel um.",
+            "Sie war ◯ ◯.",
+            "Als sie nach Hause kam, schuf Alex ◯ eine utopische DDR.",
+            "Eine andere DDR in Good Bye, Lenin!",
+            "Um seine kranke Mutter zu schützen, erfindet Alex seine eigene Vision der Einheit.",
+            "Lesen Sie die Sätze, die beschreiben wie Alex und sein Freund die Geschichte erzählen und schreiben Sie Sätze im Präteritum oder Perfekt, wie es wirklich war.",
+            "Bürger*innen flüchten in die DDR.",
+            "Sigmund Jähn wird Kanzler der DDR.",
+            "Die DDR hat Coca-Cola und Burger King erfunden.",
+            "Die DDR exportiert DDR Autos nach West Deutschland.",
+            "Der Tag der Einheit ist ein sozialistisches Fest.",
+            "Am Ende vom Film hört man Alex ’ Stimme aus dem Off, die sagt: Die DDR, die ich für meine Mutter schuf, hätte ich mir vielleicht so gewünscht.",
+            "Was meint er damit?",
+            "Gibt es ein Genre, das besonders gut oder nicht so gut für Filme über Geschichte ist?",
+            "Macht es einen Unterschied, wenn die Geschichte für manche Menschen schlimm war und es Opfer gab, z.",
+            "Von einer Diktatur?"
+        ],
+        "templated": []
+    }
+}

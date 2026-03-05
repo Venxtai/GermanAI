@@ -1,0 +1,488 @@
+{
+    "unit": "94",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 94,
+        "prerequisite": "1-93"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Erfindungen aus Deutschland recherchieren und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "deutsche Erfindungen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "beitragen",
+                "pos": "VERB",
+                "translation": "to contribute (to)",
+                "frequency": 1257
+            },
+            {
+                "word": "üben",
+                "pos": "VERB",
+                "translation": "to practice"
+            },
+            {
+                "word": "rutschen",
+                "pos": "VERB",
+                "translation": "to slip; slide",
+                "frequency": 3067
+            },
+            {
+                "word": "entdecken",
+                "pos": "VERB",
+                "translation": "to discover",
+                "frequency": 743,
+                "cefr": "B1"
+            },
+            {
+                "word": "lüften",
+                "pos": "VERB",
+                "translation": "to ventilate"
+            },
+            {
+                "word": "die Entdeckung",
+                "pos": "NOUN",
+                "translation": "discovery",
+                "frequency": 3447,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Erfindung",
+                "pos": "NOUN",
+                "translation": "invention",
+                "frequency": 3993,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Erfinder*in",
+                "pos": "NOUN",
+                "translation": "inventor",
+                "frequency": 7960
+            },
+            {
+                "word": "der Druck",
+                "pos": "NOUN",
+                "translation": "printing; pressure",
+                "frequency": 558,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Aussprache",
+                "pos": "NOUN",
+                "translation": "pronunciation",
+                "frequency": 7002,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Hubschrauber",
+                "pos": "NOUN",
+                "translation": "helicopter",
+                "frequency": 7519,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Röntgenstrahl",
+                "pos": "NOUN",
+                "translation": "X-ray"
+            },
+            {
+                "word": "der Rhabarber",
+                "pos": "NOUN",
+                "translation": "rhubarb",
+                "frequency": 48607,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fallschirm",
+                "pos": "NOUN",
+                "translation": "parachute",
+                "frequency": 28021,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gleitflugzeug",
+                "pos": "NOUN",
+                "translation": "glider [aviation]",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "in der Nähe (von + dat.)",
+                "pos": "PHRASE",
+                "translation": "in the vicinity (of)"
+            },
+            {
+                "word": "leicht",
+                "pos": "ADJ",
+                "translation": "easy [opposite of heavy]; light; simple",
+                "frequency": 311,
+                "cefr": "A1"
+            },
+            {
+                "word": "maximal",
+                "pos": "ADV",
+                "translation": "maximum; at most; maximal",
+                "frequency": 1284,
+                "cefr": "B1"
+            },
+            {
+                "word": "erfinden",
+                "pos": "VERB",
+                "translation": "to invent (sth.)",
+                "frequency": 2127,
+                "cefr": "B1"
+            },
+            {
+                "word": "melden",
+                "pos": "VERB",
+                "translation": "to announce; report; raise one's hand (in class)",
+                "frequency": 1005,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Entdecker*in",
+                "pos": "NOUN",
+                "translation": "discoverer, explorer",
+                "frequency": 15179,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "Hannover",
+                "pos": "PROPN",
+                "frequency": 5967
+            },
+            {
+                "word": "Dresden",
+                "pos": "PROPN",
+                "frequency": 6115
+            },
+            {
+                "word": "Kiel",
+                "pos": "PROPN",
+                "frequency": 6471
+            },
+            {
+                "word": "die Thermos",
+                "pos": "NOUN"
+            },
+            {
+                "word": "anti",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Motor",
+                "pos": "NOUN",
+                "frequency": 2359,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "beitragen": {
+                "present": {
+                    "ich": "trage bei",
+                    "du": "trägst bei",
+                    "er": "trägt bei",
+                    "es": "trägt bei",
+                    "sie_singular": "trägt bei",
+                    "xier": "trägt bei",
+                    "wir": "tragen bei",
+                    "ihr": "tragt bei",
+                    "sie_plural": "tragen bei",
+                    "Sie": "tragen bei"
+                },
+                "Perfekt": {
+                    "ich": "habe beigetragen",
+                    "du": "hast beigetragen",
+                    "er": "hat beigetragen",
+                    "es": "hat beigetragen",
+                    "sie_singular": "hat beigetragen",
+                    "xier": "hat beigetragen",
+                    "wir": "haben beigetragen",
+                    "ihr": "habt beigetragen",
+                    "sie_plural": "haben beigetragen",
+                    "Sie": "haben beigetragen"
+                }
+            },
+            "üben": {
+                "present": {
+                    "ich": "übe",
+                    "du": "übst",
+                    "er": "übt",
+                    "es": "übt",
+                    "sie_singular": "übt",
+                    "xier": "übt",
+                    "wir": "üben",
+                    "ihr": "übt",
+                    "sie_plural": "üben",
+                    "Sie": "üben"
+                },
+                "Perfekt": {
+                    "ich": "habe geübt",
+                    "du": "hast geübt",
+                    "er": "hat geübt",
+                    "es": "hat geübt",
+                    "sie_singular": "hat geübt",
+                    "xier": "hat geübt",
+                    "wir": "haben geübt",
+                    "ihr": "habt geübt",
+                    "sie_plural": "haben geübt",
+                    "Sie": "haben geübt"
+                }
+            },
+            "rutschen": {
+                "present": {
+                    "ich": "rutsche",
+                    "du": "rutschst",
+                    "er": "rutscht",
+                    "es": "rutscht",
+                    "sie_singular": "rutscht",
+                    "xier": "rutscht",
+                    "wir": "rutschen",
+                    "ihr": "rutscht",
+                    "sie_plural": "rutschen",
+                    "Sie": "rutschen"
+                },
+                "Perfekt": {
+                    "ich": "bin gerutscht",
+                    "du": "bist gerutscht",
+                    "er": "ist gerutscht",
+                    "es": "ist gerutscht",
+                    "sie_singular": "ist gerutscht",
+                    "xier": "ist gerutscht",
+                    "wir": "sind gerutscht",
+                    "ihr": "seid gerutscht",
+                    "sie_plural": "sind gerutscht",
+                    "Sie": "sind gerutscht"
+                }
+            },
+            "entdecken": {
+                "present": {
+                    "ich": "entdecke",
+                    "du": "entdeckst",
+                    "er": "entdeckt",
+                    "es": "entdeckt",
+                    "sie_singular": "entdeckt",
+                    "xier": "entdeckt",
+                    "wir": "entdecken",
+                    "ihr": "entdeckt",
+                    "sie_plural": "entdecken",
+                    "Sie": "entdecken"
+                },
+                "Perfekt": {
+                    "ich": "habe entdeckt",
+                    "du": "hast entdeckt",
+                    "er": "hat entdeckt",
+                    "es": "hat entdeckt",
+                    "sie_singular": "hat entdeckt",
+                    "xier": "hat entdeckt",
+                    "wir": "haben entdeckt",
+                    "ihr": "habt entdeckt",
+                    "sie_plural": "haben entdeckt",
+                    "Sie": "haben entdeckt"
+                }
+            },
+            "lüften": {
+                "present": {
+                    "ich": "lüfte",
+                    "du": "lüftest",
+                    "er": "lüftet",
+                    "es": "lüftet",
+                    "sie_singular": "lüftet",
+                    "xier": "lüftet",
+                    "wir": "lüften",
+                    "ihr": "lüftet",
+                    "sie_plural": "lüften",
+                    "Sie": "lüften"
+                },
+                "Perfekt": {
+                    "ich": "habe gelüftet",
+                    "du": "hast gelüftet",
+                    "er": "hat gelüftet",
+                    "es": "hat gelüftet",
+                    "sie_singular": "hat gelüftet",
+                    "xier": "hat gelüftet",
+                    "wir": "haben gelüftet",
+                    "ihr": "habt gelüftet",
+                    "sie_plural": "haben gelüftet",
+                    "Sie": "haben gelüftet"
+                }
+            },
+            "erfinden": {
+                "present": {
+                    "ich": "erfinde",
+                    "du": "erfindest",
+                    "er": "erfindet",
+                    "es": "erfindet",
+                    "sie_singular": "erfindet",
+                    "xier": "erfindet",
+                    "wir": "erfinden",
+                    "ihr": "erfindet",
+                    "sie_plural": "erfinden",
+                    "Sie": "erfinden"
+                },
+                "Perfekt": {
+                    "ich": "habe erfunden",
+                    "du": "hast erfunden",
+                    "er": "hat erfunden",
+                    "es": "hat erfunden",
+                    "sie_singular": "hat erfunden",
+                    "xier": "hat erfunden",
+                    "wir": "haben erfunden",
+                    "ihr": "habt erfunden",
+                    "sie_plural": "haben erfunden",
+                    "Sie": "haben erfunden"
+                }
+            },
+            "melden": {
+                "present": {
+                    "ich": "melde",
+                    "du": "meldest",
+                    "er": "meldet",
+                    "es": "meldet",
+                    "sie_singular": "meldet",
+                    "xier": "meldet",
+                    "wir": "melden",
+                    "ihr": "meldet",
+                    "sie_plural": "melden",
+                    "Sie": "melden"
+                },
+                "Perfekt": {
+                    "ich": "habe gemeldet",
+                    "du": "hast gemeldet",
+                    "er": "hat gemeldet",
+                    "es": "hat gemeldet",
+                    "sie_singular": "hat gemeldet",
+                    "xier": "hat gemeldet",
+                    "wir": "haben gemeldet",
+                    "ihr": "habt gemeldet",
+                    "sie_plural": "haben gemeldet",
+                    "Sie": "haben gemeldet"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was wissen Sie über Deutschland?",
+            "Interviewen Sie die anderen Personen.",
+            "Benutzen Sie die Fragen unten und machen Sie sich Notizen.",
+            "Welche Städte in Deutschland kennst du?",
+            "Was ist typisch deutsches Essen?",
+            "Welche Sehenswürdigkeiten gibt es?",
+            "Was sind \"typisch deutsche\" Aktivitäten?",
+            "Welche Nummern haben die Bundesländer auf der rechten Karte?",
+            "Üben Sie im Kurs die Aussprache der Bundesländer und Hauptstädte.",
+            "Sie sagen ein Bundesland.",
+            "Ihr*e Partner*in zeigt es auf der Karte und sagt die Hauptstadt.",
+            "Unten sehen Sie eine Liste mit Erfindungen und Entdeckungen.",
+            "Hören Sie zu und melden Sie sich, wenn Sie die Erfindung oder Entdeckung kennen.",
+            "Schreiben Sie noch nicht in die Kästen.",
+            "Das kommt erst bei Teil 3!",
+            "Das Auto die Thermosflasche der Hubschrauber der Buchdruck das MP3-Format der Computer die Straßenbahn das Rhabarberleder",
+            "Der Fernseher das Gleitflugzeug der Kaffeefilter",
+            "Anti rutschen Socken das leichte Brillenglas",
+            "Brille Glas Ihr*e Professor*in sagt Ihnen, welche Person sie recherchieren.",
+            "In welchem Bundesland ist die Person geboren?",
+            "Von wann bis wann hat sie gelebt?",
+            "Was von Teil 1 hat die Person erfunden/entdeckt bzw.",
+            "Zu welcher Erfindung hat sie beigetragen?",
+            "Schreiben Sie nicht in die Kästen.",
+            "Präsentieren Sie die Person und Erfindung in maximal 30 Sekunden.",
+            "Jetzt schreiben Sie in die Kästen!",
+            "Wenn die anderen präsentieren, tragen Sie die Zahl für das passende Bundesland bei den Namen (Teil 2 ) und bei den Erfindungen/Entdeckungen (Teil 3 ) ein.",
+            "Bei welcher Person konnten Sie das Bundesland nicht finden?",
+            "Aus welchem Bundesland gibt es keine Person?",
+            "In Baden-Württemberg erfinden Karl Benz und Gottlieb Daimler das Auto.",
+            "Das war um 1885.",
+            "Beide Männer leben in der Nähe von Stuttgart.",
+            "Ihr erstes Auto fährt mit Motor, ist laut und langsam.",
+            "Aber eine Revolution!",
+            "Heute fahren Millionen Menschen mit ihrer Idee."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

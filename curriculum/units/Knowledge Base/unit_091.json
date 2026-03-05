@@ -1,0 +1,698 @@
+{
+    "unit": "91",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 91,
+        "prerequisite": "1-90"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Wiener Bälle vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Ballkultur in Wien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "wünschen",
+                "pos": "VERB",
+                "translation": "to wish"
+            },
+            {
+                "word": "stattfinden",
+                "pos": "VERB",
+                "translation": "to take place",
+                "frequency": 652,
+                "cefr": "A2"
+            },
+            {
+                "word": "drehen",
+                "pos": "VERB",
+                "translation": "to turn, spin",
+                "frequency": 788,
+                "cefr": "B1"
+            },
+            {
+                "word": "integrieren",
+                "pos": "VERB",
+                "translation": "to integrate",
+                "frequency": 2077,
+                "cefr": "B1"
+            },
+            {
+                "word": "bewegen",
+                "pos": "VERB",
+                "translation": "to move",
+                "frequency": 561,
+                "cefr": "B1"
+            },
+            {
+                "word": "platzieren",
+                "pos": "VERB",
+                "translation": "to place",
+                "frequency": 10796
+            },
+            {
+                "word": "das Glück",
+                "pos": "NOUN",
+                "translation": "luck, fortune",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Geschlecht",
+                "pos": "NOUN",
+                "translation": "gender; sex",
+                "frequency": 2443,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Mond",
+                "pos": "NOUN",
+                "translation": "moon",
+                "frequency": 3005,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Frack",
+                "pos": "NOUN",
+                "translation": "tails, tailcoat (white tie)",
+                "frequency": 26935,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Smoking",
+                "pos": "NOUN",
+                "translation": "tuxedo, dinner jacket (black tie)",
+                "frequency": 29304,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Jänner",
+                "pos": "NOUN",
+                "translation": "January (Austria)"
+            },
+            {
+                "word": "der*die Jäger*in",
+                "pos": "NOUN",
+                "translation": "hunter"
+            },
+            {
+                "word": "die Initiative",
+                "pos": "NOUN",
+                "translation": "initiative, campaign",
+                "frequency": 1775,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Einladung",
+                "pos": "NOUN",
+                "translation": "invitation",
+                "frequency": 2863,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Behinderung",
+                "pos": "NOUN",
+                "translation": "disability",
+                "frequency": 3228,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Fliege",
+                "pos": "NOUN",
+                "translation": "bow tie, fly [animal]",
+                "frequency": 3994,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gebärdensprache",
+                "pos": "NOUN",
+                "translation": "sign language"
+            },
+            {
+                "word": "locker",
+                "pos": "ADJ",
+                "translation": "loose, casual",
+                "frequency": 2988,
+                "cefr": "B1"
+            },
+            {
+                "word": "unkonventionell",
+                "pos": "ADJ",
+                "translation": "unconventional(ly); edgy",
+                "frequency": 14282
+            },
+            {
+                "word": "rückwärts",
+                "pos": "ADV",
+                "translation": "backward(s)"
+            },
+            {
+                "word": "vorwärts",
+                "pos": "ADV",
+                "translation": "forward(s)"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Ballsaison",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Saison",
+                "pos": "NOUN",
+                "frequency": 1245,
+                "cefr": "B1"
+            },
+            {
+                "word": "die besondere",
+                "pos": "NOUN",
+                "frequency": 512,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Tanz",
+                "pos": "NOUN",
+                "frequency": 3946,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Gärtner*innen",
+                "pos": "NOUN",
+                "frequency": 8471
+            },
+            {
+                "word": "die Reservierung",
+                "pos": "NOUN",
+                "frequency": 15585,
+                "cefr": "B1"
+            },
+            {
+                "word": "-Ball",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Walzer",
+                "pos": "NOUN",
+                "frequency": 13827
+            },
+            {
+                "word": "der Jazz",
+                "pos": "NOUN",
+                "frequency": 5739,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Salsa",
+                "pos": "NOUN",
+                "frequency": 22172
+            },
+            {
+                "word": "der Fasching",
+                "pos": "NOUN",
+                "frequency": 13867,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Motto",
+                "pos": "NOUN",
+                "frequency": 2921
+            },
+            {
+                "word": "die Charity",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Regenbogen",
+                "pos": "NOUN",
+                "frequency": 14105
+            },
+            {
+                "word": "homosexuelle",
+                "pos": "ADJ",
+                "frequency": 12037
+            },
+            {
+                "word": "die Parade",
+                "pos": "NOUN",
+                "frequency": 8442
+            },
+            {
+                "word": "LSBTIQ*-",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der*die Mitglieder*innen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Event",
+                "pos": "NOUN",
+                "frequency": 9884
+            },
+            {
+                "word": "das Dirndl",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Trachtenanzug",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Komitee",
+                "pos": "NOUN",
+                "frequency": 7047
+            },
+            {
+                "word": "die Loge",
+                "pos": "NOUN",
+                "frequency": 15188,
+                "cefr": "B2"
+            },
+            {
+                "word": "basieren",
+                "pos": "VERB",
+                "frequency": 2876
+            },
+            {
+                "word": "der HipHop",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Dresscode",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Moderne",
+                "pos": "NOUN",
+                "frequency": 4063
+            },
+            {
+                "word": "die Inklusion",
+                "pos": "NOUN",
+                "frequency": 22848
+            },
+            {
+                "word": "die Interpretation",
+                "pos": "NOUN",
+                "frequency": 2119
+            },
+            {
+                "word": "die Balltradition",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Korsage",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Schmuck",
+                "pos": "NOUN",
+                "frequency": 7103,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Community",
+                "pos": "NOUN",
+                "frequency": 13391
+            },
+            {
+                "word": "nonbinär",
+                "pos": "ADV"
+            },
+            {
+                "word": "das Walzerlied",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Takt",
+                "pos": "NOUN",
+                "frequency": 8640
+            },
+            {
+                "word": "-Takt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Fingerwalzer",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "wünschen": {
+                "present": {
+                    "ich": "wünsche",
+                    "du": "wünschst",
+                    "er": "wünscht",
+                    "es": "wünscht",
+                    "sie_singular": "wünscht",
+                    "xier": "wünscht",
+                    "wir": "wünschen",
+                    "ihr": "wünscht",
+                    "sie_plural": "wünschen",
+                    "Sie": "wünschen"
+                },
+                "Perfekt": {
+                    "ich": "habe gewünscht",
+                    "du": "hast gewünscht",
+                    "er": "hat gewünscht",
+                    "es": "hat gewünscht",
+                    "sie_singular": "hat gewünscht",
+                    "xier": "hat gewünscht",
+                    "wir": "haben gewünscht",
+                    "ihr": "habt gewünscht",
+                    "sie_plural": "haben gewünscht",
+                    "Sie": "haben gewünscht"
+                }
+            },
+            "stattfinden": {
+                "present": {
+                    "ich": "finde statt",
+                    "du": "findest statt",
+                    "er": "findet statt",
+                    "es": "findet statt",
+                    "sie_singular": "findet statt",
+                    "xier": "findet statt",
+                    "wir": "finden statt",
+                    "ihr": "findet statt",
+                    "sie_plural": "finden statt",
+                    "Sie": "finden statt"
+                },
+                "Perfekt": {
+                    "ich": "habe stattgefunden",
+                    "du": "hast stattgefunden",
+                    "er": "hat stattgefunden",
+                    "es": "hat stattgefunden",
+                    "sie_singular": "hat stattgefunden",
+                    "xier": "hat stattgefunden",
+                    "wir": "haben stattgefunden",
+                    "ihr": "habt stattgefunden",
+                    "sie_plural": "haben stattgefunden",
+                    "Sie": "haben stattgefunden"
+                }
+            },
+            "drehen": {
+                "present": {
+                    "ich": "drehe",
+                    "du": "drehst",
+                    "er": "dreht",
+                    "es": "dreht",
+                    "sie_singular": "dreht",
+                    "xier": "dreht",
+                    "wir": "drehen",
+                    "ihr": "dreht",
+                    "sie_plural": "drehen",
+                    "Sie": "drehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gedreht",
+                    "du": "hast gedreht",
+                    "er": "hat gedreht",
+                    "es": "hat gedreht",
+                    "sie_singular": "hat gedreht",
+                    "xier": "hat gedreht",
+                    "wir": "haben gedreht",
+                    "ihr": "habt gedreht",
+                    "sie_plural": "haben gedreht",
+                    "Sie": "haben gedreht"
+                }
+            },
+            "integrieren": {
+                "present": {
+                    "ich": "integriere",
+                    "du": "integrierst",
+                    "er": "integriert",
+                    "es": "integriert",
+                    "sie_singular": "integriert",
+                    "xier": "integriert",
+                    "wir": "integrieren",
+                    "ihr": "integriert",
+                    "sie_plural": "integrieren",
+                    "Sie": "integrieren"
+                },
+                "Perfekt": {
+                    "ich": "habe integriert",
+                    "du": "hast integriert",
+                    "er": "hat integriert",
+                    "es": "hat integriert",
+                    "sie_singular": "hat integriert",
+                    "xier": "hat integriert",
+                    "wir": "haben integriert",
+                    "ihr": "habt integriert",
+                    "sie_plural": "haben integriert",
+                    "Sie": "haben integriert"
+                }
+            },
+            "bewegen": {
+                "present": {
+                    "ich": "bewege",
+                    "du": "bewegst",
+                    "er": "bewegt",
+                    "es": "bewegt",
+                    "sie_singular": "bewegt",
+                    "xier": "bewegt",
+                    "wir": "bewegen",
+                    "ihr": "bewegt",
+                    "sie_plural": "bewegen",
+                    "Sie": "bewegen"
+                },
+                "Perfekt": {
+                    "ich": "habe bewegt",
+                    "du": "hast bewegt",
+                    "er": "hat bewegt",
+                    "es": "hat bewegt",
+                    "sie_singular": "hat bewegt",
+                    "xier": "hat bewegt",
+                    "wir": "haben bewegt",
+                    "ihr": "habt bewegt",
+                    "sie_plural": "haben bewegt",
+                    "Sie": "haben bewegt"
+                }
+            },
+            "platzieren": {
+                "present": {
+                    "ich": "platziere",
+                    "du": "platzierst",
+                    "er": "platziert",
+                    "es": "platziert",
+                    "sie_singular": "platziert",
+                    "xier": "platziert",
+                    "wir": "platzieren",
+                    "ihr": "platziert",
+                    "sie_plural": "platzieren",
+                    "Sie": "platzieren"
+                },
+                "Perfekt": {
+                    "ich": "habe platziert",
+                    "du": "hast platziert",
+                    "er": "hat platziert",
+                    "es": "hat platziert",
+                    "sie_singular": "hat platziert",
+                    "xier": "hat platziert",
+                    "wir": "haben platziert",
+                    "ihr": "habt platziert",
+                    "sie_plural": "haben platziert",
+                    "Sie": "haben platziert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Wiener Ballsaison findet jedes Jahr von November bis Februar statt, mit den größten Bällen im Jänner (Januar) und Februar.",
+            "Den berühmtesten Ball gibt es in der Wiener Staatsoper, der Opernball.",
+            "Jedes Jahr finden aber mehr als 450 andere Bälle in Wien statt.",
+            "Sie bekommen einen Text zu einem Ball.",
+            "Lesen Sie den Text in der Gruppe und tragen Sie die Informationen in die Tabelle ein.",
+            "Seit wann?",
+            "Preis pro Karte?",
+            "- Die Wiener Bäcker*in nen organisieren jedes Jahr im Jänner den ZuckerBäckerball",
+            "Auf dem Ball gibt es Musik, Tanz und auch viele süße Speisen.",
+            "Der Ball hat eine lange Tradition:",
+            "Seit 1901 findet er in der Wiener Hofburg statt.",
+            "Die Stimmung ist beim ZuckerBäckerball",
+            "Etwas lockerer als bei den klassischen Bällen",
+            "Karten gibt es für 140 Euro, Jugendliche zahlen 65 Euro.",
+            "Organisieren den Blumenball jedes Jahr im Jänner.",
+            "Er findet schon seit 1924 jedes Jahr im Wiener Rathaus statt.",
+            "Das Besondere ist, wie der Name sagt, dass es in den Räumen 100. 000 Blumen aus den Wiener Stadtgärten gibt.",
+            "Karten gibt es ohne Platzreservierung ab 75 Euro, mit Platzreservierung ab 130 Euro.",
+            "Zahlen 55 Euro.",
+            "Der TU -Ball, also der Ball der Technischen Universität Wien, findet jedes Jahr im Jänner in der Hofburg statt.",
+            "Der TU-Ball findet seit über 30 Jahren statt, aber die Tradition ist älter:",
+            "Das\" Techniker-Kränzen \" vom Polytechnischen Institut gibt es schon seit 1815.",
+            "Vom klassischen Walzer bis Jazz und Salsa gibt es hier alles.",
+            "Karten kosten 140 Euro, Student*innen zahlen 50 Euro und Personen, die an der TU Wien arbeiten, zahlen 70 Euro.",
+            "- Der Ärzteball findet im Fasching /Karneval statt und hat jedes Jahr ein anderes Motto.",
+            "Die Ärzte organisieren den Ball seit 1949.",
+            "Erst war der Ball im Wiener Konzerthaus, jetzt ist er in der Wiener Hofburg.",
+            "Zum Ball kommen 3.500 Gäst*innen, nicht nur Ärzt*innen.",
+            "Jedes Jahr geht es auch Charity bei diesem Ball.",
+            "Karten gibt es ab 145 Euro, Schüler*innen und Student*innen zahlen ab 60 Euro.",
+            "- Der Wiener Regenbogenball sagt von sich, dass er bunter als andere Bälle ist.",
+            "Der Regenbogenball verbindet Tanz (auch klassisch) und Aktivismus.",
+            "HOSI (Homosexuelle Initiative) Wien organisiert den Ball seit 2004 und benutzt das Geld für seine Aktivitäten, z.B.",
+            "Die Wiener Regenbogenparade, Kampagnen und Informationen zu LSBTIQ*- Themen.",
+            "Der Ball findet im Jänner im Parkhotel Schönbrunn statt.",
+            "Elegant müssen sich alle anziehen, aber geschlechtsstereotype",
+            "Regeln für die Kleidung gibt es nicht.",
+            "Die Karten kosten 70 Euro, Mitglieder*innen zahlen 55 Euro und Schüler*innen und Student*innen 50 Euro.",
+            "Der Verein\" Grünes Kreuz \" organisiert seit mehr als 100 Jahren den Jägerball als Charity Event.",
+            "Der Verein wollte Jäger*innen und ihren Familien helfen.",
+            "Er findet jedes Jahr im Jänner in der Spanischen Hofreitschule und der Hofburg statt.",
+            "Die Jäger*innen tragen keine klassische Abendkleidung sondern traditionelle Kleidung (also ein Dirndl oder Trachtenanzug.",
+            "Die Karte kostet ab 180 Euro, Jugendliche und junge Erwachsene ( 16-25 Jahre ) zahlen ab 80 Euro.",
+            "Der Wiener Opernball.",
+            "- Traditionell findet der Opernball.",
+            "Im Februar in der Wiener Staatsoper statt.",
+            "Das erste Mal fand er 1935 statt.",
+            "Er ist der berühmteste Ball in Wien und viele bekannte Menschen kommen zu dem Ball.",
+            "Ein Komitee organisiert den Ball.",
+            "Karten kosten ab 385 Euro.",
+            "Die teuersten Plätze in der Loge kosten über 20.000 Euro.",
+            "Im Februar findet in den Sofiensälen der traditionelle Chinesische Neujahrsball",
+            "Er basiert auf einer langen Tradition von Taiwanes*innen in Wien.",
+            "Sie wollten die chinesische Kultur in Wien feiern und Glück für das neue Jahr wünschen.",
+            "Das chinesische Neujahrsfest nutzt den Mondkalender.",
+            "Die Karte kostet 75 Euro, Student*innen unter 26 Jahren zahlen 30 Euro.",
+            "Ein neuer Ball in Wien ist der HipHop Ball, den es seit 2016 gibt, der aber nicht jedes Jahr stattfindet.",
+            "Sajeh Tavassoli hatte die Idee, klassische Musik und HipHop zu verbinden.",
+            "Auch der Dresscode verbindet Tradition und Moderne:",
+            "Personen können zum Beispiel ein Kleid und Sneakers tragen und alle Personen sollen den Dresscode nach ihrer individuelle Geschlechtsidentität wählen.",
+            "Diversität und Inklusion steht im Fokus von diesem modernen Ball.",
+            "2024 findet der Ball im März im Kursalon statt.",
+            "D ie Karte kostet 85 Euro, Student*innen zahlen 55 Euro.",
+            "Es gibt auch eine VIP Karte für 145 Euro.",
+            "Die meisten Bälle finden im Winter statt, aber den Diversity Ball gibt es im September im Wiener Rathaus.",
+            "Monika Haider hat den Ball 2007 gestartet, um die Gebärdensprache zu integrieren.",
+            "Wichtig für diesen Ball ist, wie der Name sagt, Diversität.",
+            "Die Karte kostet 65 Euro.",
+            "Zahlen 45 Euro.",
+            "Das Geld benutzt der Ball für Projekte von und mit Menschen mit Behinderung.",
+            "Präsentieren Sie den Ball mit den Informationen aus Teil 2.",
+            "Eine unkonventionelle Interpretation der Wiener Balltradition",
+            "Sehen Sie sich online das Video zum Thema \"Life Ball History von 1993 bis 2017\" an und beantworten Sie die Fragen.",
+            "Seit wann gibt es den Life Ball?",
+            "Vor welchem berühmten Gebäude findet der Ball statt?",
+            "Beschreiben Sie den Ball mit Adjektiven.",
+            "Vergleichen Sie die Bilder vom Life Ball mit den Bildern vom Opernball.",
+            "Welche Unterschiede gibt es?",
+            "Was glauben Sie, warum sagen Menschen, dass der Life Ball \"unkonventionell\" ist?",
+            "Lesen Sie die folgenden Tipps zur richtigen Ballkleidung",
+            "Auf einem Ball gibt es viele Regeln.",
+            "Hier sind Tipps für die richtige Ballkleidung",
+            "Auf der Einladung steht \"White Tie\" oder \"Cravate Blanche\": Männer tragen einen schwarzen Frack mit weißer Fliege.",
+            "Frauen ziehen ein bodenlanges Abendkleid mit Korsage und einem weiten Rock an.",
+            "Sie müssen in dem Kleid gut Walzer tanzen können.",
+            "Auf der Einladung steht \"Black T ie\": Männer ziehen einen schwarzen Smoking mit einer schwarzen Fliege an.",
+            "Frauen tragen ein Abendkleid, das bis zum Fuß oder Boden geht.",
+            "Es ist wichtig, dass man den Dresscode kennt.",
+            "Ist man nicht richtig angezogen ist, darf man nicht zum Ball.",
+            "Sophie Grau und Iris Klopfer sind das erste Paar der LSBTIQ*- Community auf dem Wiener Opernball.",
+            "Sophie identifiziert sich als nonbinär und trägt den Frack, weil eine Person ein Kleid und die andere einen Frack tragen muss.",
+            "Waren Sie schon einmal auf einem Event mit Dresscode?",
+            "Was war der Dresscode?",
+            "Wie haben Sie ihn gefunden?",
+            "Planen Sie einen neuen Ball für Ihre Uni.",
+            "Wie heißt der Ball und was ist das Thema?",
+            "Wann und wo findet er statt?",
+            "Wie viel kosten die Karten?",
+            "Was sollen die Gäst*innen tragen?",
+            "Gibt es berühmte Gäste?",
+            "Präsentieren Sie.",
+            "Hören Sie als erstes ein Walzerlied.",
+            "Machen Sie die Augen zu und achten Sie auf den Takt.",
+            "Der Takt beim Walzer ist ein 3/4 -Takt (also zählen wir 1-2-3, 1-2-3).",
+            "Zählen Sie leise mit.",
+            "Sehen Sie jetzt ein Video von Paaren, die Walzer tanzen (es gibt auch Videos von Paaren mit einem oder zwei Rollstühlen wie auf dem Bild).",
+            "Wie bewegen sich die Paare?",
+            "Tanzen Sie jetzt Fingerwalzer.",
+            "Platzieren Sie zwei Finger auf dem Paar Schuhe in der Grafik und folgen Sie den Zahlen.",
+            "Erst ohne Musik, sprechen Sie mit: Finger 1 vorwärts, Finger 2 zur Seite, Finger 1 schließt.",
+            "Finger 2 rückwärts, Finger 1 zur Seite, Finger 2 schließt.",
+            "Wenn Sie sicher sind, zählen Sie stattdessen: 1-2-3-4-5-6.",
+            "Tanzen Sie jetzt zur Musik, versuchen Sie erst langsam Ihre Finger zu bewegen und dann immer schneller, bis Ihre Finger Wiener Walzer tanzen können."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

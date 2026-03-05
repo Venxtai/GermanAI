@@ -1,0 +1,625 @@
+{
+  "unit": "4",
+  "is_optional": true,
+  "sequence_info": {
+    "track": "core",
+    "position": 4,
+    "prerequisite": "1-3"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:yes_no_question",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "Smalltalk machen"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "bekannte Personen"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "strukturieren",
+        "pos": "VERB",
+        "translation": "to structure",
+        "frequency": 4637,
+        "cefr": "B2"
+      },
+      {
+        "word": "kennen",
+        "pos": "VERB",
+        "translation": "to be familiar with; know",
+        "frequency": 216,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Aktivismus",
+        "pos": "NOUN",
+        "translation": "activism",
+        "frequency": 44509,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Mode",
+        "pos": "NOUN",
+        "translation": "fashion",
+        "frequency": 3867,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Kunst",
+        "pos": "NOUN",
+        "translation": "art, the arts",
+        "frequency": 554,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Wissenschaft",
+        "pos": "NOUN",
+        "translation": "science",
+        "frequency": 1462,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Gen",
+        "pos": "NOUN",
+        "translation": "gene",
+        "frequency": 1830,
+        "cefr": "A1"
+      },
+      {
+        "word": "der*die Autor*in",
+        "pos": "NOUN",
+        "translation": "author, writer",
+        "frequency": 723,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Röntgenstrahlen",
+        "pos": "NOUN",
+        "translation": "X-rays"
+      },
+      {
+        "word": "bekannt",
+        "pos": "ADJ",
+        "translation": "known, famous (for)",
+        "frequency": 6520,
+        "cefr": "A1"
+      },
+      {
+        "word": "neu",
+        "pos": "ADJ",
+        "translation": "new",
+        "frequency": 84,
+        "cefr": "A1"
+      },
+      {
+        "word": "(Bundesrepublik) Deutschland",
+        "pos": "NOUN",
+        "translation": "(Federal Republic of) Germany",
+        "frequency": 140,
+        "cefr": "A1"
+      },
+      {
+        "word": "Österreich",
+        "pos": "NOUN",
+        "translation": "Austria"
+      },
+      {
+        "word": "die Schweiz",
+        "pos": "NOUN",
+        "translation": "Switzerland",
+        "frequency": 763,
+        "cefr": "A2"
+      },
+      {
+        "word": "Frankreich",
+        "pos": "NOUN",
+        "translation": "France",
+        "frequency": 813
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "die Persönlichkeit",
+        "pos": "NOUN",
+        "frequency": 2842,
+        "cefr": "B2"
+      },
+      {
+        "word": "laut",
+        "pos": "ADV",
+        "frequency": 572,
+        "cefr": "A1"
+      },
+      {
+        "word": "Argentinien",
+        "pos": "PROPN",
+        "frequency": 4915
+      },
+      {
+        "word": "England",
+        "pos": "PROPN",
+        "frequency": 1762
+      },
+      {
+        "word": "Indien",
+        "pos": "PROPN",
+        "frequency": 2102
+      },
+      {
+        "word": "Mexiko",
+        "pos": "PROPN",
+        "frequency": 4062
+      },
+      {
+        "word": "Pakistan",
+        "pos": "PROPN",
+        "frequency": 4043
+      },
+      {
+        "word": "Polen",
+        "pos": "PROPN",
+        "frequency": 2023
+      },
+      {
+        "word": "Schweden",
+        "pos": "PROPN",
+        "frequency": 2478
+      },
+      {
+        "word": "Südafrika",
+        "pos": "PROPN",
+        "frequency": 6296
+      },
+      {
+        "word": "USA",
+        "pos": "PROPN",
+        "frequency": 5878
+      },
+      {
+        "word": "für",
+        "pos": "ADP",
+        "frequency": 17,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Film",
+        "pos": "NOUN",
+        "frequency": 505,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Literatur",
+        "pos": "NOUN",
+        "frequency": 913,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Musik",
+        "pos": "NOUN",
+        "frequency": 509,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Politik",
+        "pos": "NOUN",
+        "frequency": 539,
+        "cefr": "B1"
+      },
+      {
+        "word": "der Sport",
+        "pos": "NOUN",
+        "frequency": 945,
+        "cefr": "A1"
+      },
+      {
+        "word": "wofür",
+        "pos": "ADV",
+        "frequency": 3161
+      },
+      {
+        "word": "welche",
+        "pos": "DET",
+        "frequency": 122,
+        "cefr": "B1"
+      },
+      {
+        "word": "oder",
+        "pos": "CCONJ",
+        "frequency": 35,
+        "cefr": "A1"
+      },
+      {
+        "word": "Liechtenstein",
+        "pos": "PROPN",
+        "frequency": 8073
+      },
+      {
+        "word": "deutschsprachig",
+        "pos": "ADJ",
+        "frequency": 38527
+      },
+      {
+        "word": "der*die Nobelpreisträger*innen",
+        "pos": "NOUN",
+        "frequency": 17445,
+        "cefr": "B2"
+      },
+      {
+        "word": "die Kategorie",
+        "pos": "NOUN",
+        "frequency": 1564,
+        "cefr": "B2"
+      },
+      {
+        "word": "der Nobelpreis",
+        "pos": "NOUN",
+        "frequency": 12446
+      },
+      {
+        "word": "der Text",
+        "pos": "NOUN",
+        "frequency": 473,
+        "cefr": "A1"
+      },
+      {
+        "word": "mit",
+        "pos": "ADP",
+        "frequency": 13,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Röntgenstrahl",
+        "pos": "NOUN",
+        "frequency": 44317
+      },
+      {
+        "word": "ja",
+        "pos": "PART",
+        "frequency": 45,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Embryogenese",
+        "pos": "NOUN"
+      },
+      {
+        "word": "Rumänien",
+        "pos": "PROPN",
+        "frequency": 6445
+      },
+      {
+        "word": "über",
+        "pos": "ADP",
+        "frequency": 47,
+        "cefr": "A1"
+      },
+      {
+        "word": "kommunistisch",
+        "pos": "ADJ",
+        "frequency": 6563,
+        "cefr": "B2"
+      },
+      {
+        "word": "der Singular",
+        "pos": "NOUN",
+        "frequency": 25837
+      },
+      {
+        "word": "genau",
+        "pos": "ADV",
+        "frequency": 167,
+        "cefr": "A2"
+      },
+      {
+        "word": "die Celebrity-Party",
+        "pos": "NOUN"
+      },
+      {
+        "word": "bekommen",
+        "pos": "VERB",
+        "frequency": 212,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Karte",
+        "pos": "NOUN",
+        "frequency": 1474,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Smalltalk",
+        "pos": "NOUN",
+        "frequency": 40443
+      },
+      {
+        "word": "die Frau",
+        "pos": "NOUN",
+        "frequency": 99,
+        "cefr": "A1"
+      },
+      {
+        "word": "Aha",
+        "pos": "INTJ",
+        "frequency": 1924,
+        "cefr": "B2"
+      },
+      {
+        "word": "toll",
+        "pos": "ADV",
+        "frequency": 972,
+        "cefr": "A2"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "strukturieren": {
+        "present": {
+          "ich": "strukturiere",
+          "du": "strukturierst",
+          "er": "strukturiert",
+          "es": "strukturiert",
+          "sie_singular": "strukturiert",
+          "xier": "strukturiert",
+          "wir": "strukturieren",
+          "ihr": "strukturiert",
+          "sie_plural": "strukturieren",
+          "Sie": "strukturieren"
+        }
+      },
+      "kennen": {
+        "present": {
+          "ich": "kenne",
+          "du": "kennst",
+          "er": "kennt",
+          "es": "kennt",
+          "sie_singular": "kennt",
+          "xier": "kennt",
+          "wir": "kennen",
+          "ihr": "kennt",
+          "sie_plural": "kennen",
+          "Sie": "kennen"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Hören Sie die Vokabeln und sagen Sie die Vokabeln laut.",
+      "Wie heißt die Person?",
+      "Woher kommt die Person?",
+      "Wofür ist die Person bekannt?",
+      "Die Person heißt Albert Einstein.",
+      "Die Person kommt aus Deutschland und aus den USA.",
+      "Die Person ist bekannt für Wissenschaft.",
+      "Die Person kommt aus Deutschland.",
+      "Die Person heißt Amanda Gorman.",
+      "Die Person kommt aus den USA.",
+      "Die Person ist bekannt für Literatur.",
+      "Die Person heißt Frida Kahlo.",
+      "Die Person kommt aus Mexiko.",
+      "Die Person ist bekannt für Kunst.",
+      "Die Person heißt Gigi Hadid.",
+      "Die Person ist bekannt für Mode.",
+      "Die Person heißt Greta Thunberg.",
+      "Die Person kommt aus Schweden.",
+      "Die Person ist bekannt für Aktivismus.",
+      "Die Person heißt Lionel Messi.",
+      "Die Person kommt aus Argentinien.",
+      "Die Person ist bekannt für Sport.",
+      "Die Person heißt Malala Yousafzai.",
+      "Die Person kommt aus Pakistan.",
+      "Die Person heißt Marie Curie.",
+      "Die Person kommt aus Polen / Frankreich.",
+      "Die Person heißt Mozart.",
+      "Die Person kommt aus der Schweiz.",
+      "Die Person ist bekannt für Musik.",
+      "Die Person heißt Nelson Mandela.",
+      "Die Person kommt aus Südafrika.",
+      "Die Person ist bekannt für Politik.",
+      "Die Person heißt Priyanka Chopra.",
+      "Die Person kommt aus Indien.",
+      "Die Person ist bekannt für Film.",
+      "Die Person heißt Roger Federer.",
+      "Die Person heißt RuPaul.",
+      "Die Person ist bekannt für Drag.",
+      "Die Person heißt Sam Smith.",
+      "Die Person kommt aus England.",
+      "Die Person heißt Zendaya.",
+      "Welche Personen aus Deutschland, Österreich, der Schweiz oder Liechtenstein kennen Sie?",
+      "In welcher Kategorie ist der Nobelpreis für die Person?",
+      "Ihr*e Professor*in liest die Texte.",
+      "Lesen Sie mit.",
+      "Ich heiße Wilhelm Conrad Röntgen.",
+      "Ich komme aus Deutschland.",
+      "Ich bin bekannt für \"X -Rays\", auf Deutsch \"Röntgenstrahlen\".",
+      "Ja, korrekt!",
+      "\"Röntgen\" wie in \"Wilhelm Conrad Röntgen\"",
+      "Eine Revolution für die Medizin!",
+      "Ich heiße Christiane Nüsslein-Volhard.",
+      "Ich bin Biologi n, Mein Fokus sind Gene.",
+      "Welche biochemischen Prozesse strukturieren die Embryogenese?",
+      "Das ist die Frage!",
+      "Ich heiße Herta Müller.",
+      "Ich komme aus Rumänien.",
+      "Ich bin Autorin.",
+      "Ich schreibe deutsche Texte über die kommunistische Diktatur in Rumänien.",
+      "Ein bekannter Text heißt \"Atemschaukel\".",
+      "Schreiben Sie die Texte neu, in der 3. Person Singular.",
+      "Er heißt Wilhelm Conrad Röntgen.",
+      "Er kommt aus Deutschland.",
+      "Er ist bekannt für \"X -Rays\", auf Deutsch \"Röntgenstrahlen\".",
+      "\"Röntgen\" wie in \"Wilhelm Conrad Röntgen\" Eine Revolution für die Medizin!",
+      "Sie heißt Christiane Nüsslein-Volhard.",
+      "Sie kommt aus Deutschland.",
+      "Sie studiert Biologie, genauer Gene.",
+      "Sie heißt Herta Müller.",
+      "Sie kommt aus Rumänien.",
+      "Sie ist Autorin.",
+      "Sie schreibt Texte über die kommunistische Diktatur in Rumänien.",
+      "Sie sind auf einer Celebrity-Party.",
+      "Sie bekommen eine Karte.",
+      "Ihre Karte ist Ihre Identität.",
+      "Machen Sie Smalltalk.",
+      "Guten Tag!",
+      "Ich heiße Joana Zimmer.",
+      "Wie heißen Sie?",
+      "Moin, Frau Zimmer!",
+      "Ich heiße Karl Lagerfeld.",
+      "Woher kommen Sie?",
+      "Ich komme aus Freiburg im Breisgau, Deutschland.",
+      "Und Sie?",
+      "Ich komme aus Hamburg, Deutschland.",
+      "Auf Wiedersehen."
+    ],
+    "templated": [
+      {
+        "template": "Die Person kommt aus [place_country].",
+        "source_literals": [
+          "Die Person kommt aus Deutschland.",
+          "Die Person kommt aus Mexiko.",
+          "Die Person kommt aus Schweden.",
+          "Die Person kommt aus Argentinien.",
+          "Die Person kommt aus Pakistan.",
+          "Die Person kommt aus Südafrika.",
+          "Die Person kommt aus Indien.",
+          "Die Person kommt aus England."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 3rd person. Country without article."
+      },
+      {
+        "template": "Ich komme aus [place_country].",
+        "source_literals": [
+          "Ich komme aus Deutschland.",
+          "Ich komme aus Rumänien."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 1st person singular."
+      },
+      {
+        "template": "Ich heiße [person_name] [person_lastname].",
+        "source_literals": [
+          "Ich heiße Christiane Nüsslein-Volhard.",
+          "Ich heiße Herta Müller.",
+          "Ich heiße Joana Zimmer.",
+          "Ich heiße Karl Lagerfeld."
+        ],
+        "grammar_note": "Verb heißen, 1st person singular present. Full name introduction."
+      },
+      {
+        "template": "Ich bin {PROFESSION_NOM}.",
+        "source_literals": [
+          "Ich bin Autorin."
+        ],
+        "grammar_note": "Verb sein + profession, 1st person singular nominative. No article."
+      },
+      {
+        "template": "Sie heißt [person_name] [person_lastname].",
+        "source_literals": [
+          "Sie heißt Christiane Nüsslein-Volhard.",
+          "Sie heißt Herta Müller."
+        ],
+        "grammar_note": "Verb heißen, 3rd person singular. Full name."
+      },
+      {
+        "template": "Sie kommt aus [place_country].",
+        "source_literals": [
+          "Sie kommt aus Deutschland.",
+          "Sie kommt aus Rumänien."
+        ],
+        "grammar_note": "Verb kommen + aus + dative, 3rd person singular."
+      },
+      {
+        "template": "[person_name] ist {PROFESSION_NOM}.",
+        "source_literals": [
+          "Sie ist Autorin."
+        ],
+        "grammar_note": "Verb sein + profession, 3rd person singular nominative."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "PROFESSION_NOM": {
+      "type": "closed",
+      "description": "Professions (masculine, feminine, and gender-inclusive *in forms)",
+      "grammar": "nominative, no article",
+      "options": [
+        "Autor",
+        "Autor*in",
+        "Autorin"
+      ]
+    }
+  }
+}

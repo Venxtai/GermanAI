@@ -1,0 +1,811 @@
+{
+    "unit": "74",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 74,
+        "prerequisite": "1-73"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Verbs with inseparable prefixes (be-, ent-, er-, ge-, miss-, ver-, zer-) form their past participle without ge-: erzählen → erzählt, bekommen → bekommen.",
+            "Verbs ending in -ieren form their past participle without ge-: organisieren → organisiert, reagieren → reagiert."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Lieblingsstofftiere"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bekommen",
+                "pos": "VERB",
+                "translation": "to get",
+                "frequency": 212,
+                "cefr": "A1"
+            },
+            {
+                "word": "beginnen",
+                "pos": "VERB",
+                "translation": "to begin, start",
+                "frequency": 251,
+                "cefr": "A1"
+            },
+            {
+                "word": "erzählen",
+                "pos": "VERB",
+                "translation": "to tell; narrate; recount"
+            },
+            {
+                "word": "gehören",
+                "pos": "VERB",
+                "translation": "to belong (to)"
+            },
+            {
+                "word": "verkaufen",
+                "pos": "VERB",
+                "translation": "to sell",
+                "frequency": 721,
+                "cefr": "A1"
+            },
+            {
+                "word": "verbreiten",
+                "pos": "VERB",
+                "translation": "to spread",
+                "frequency": 1819
+            },
+            {
+                "word": "verlieren",
+                "pos": "VERB",
+                "translation": "to lose",
+                "frequency": 313,
+                "cefr": "A2"
+            },
+            {
+                "word": "verdienen",
+                "pos": "VERB",
+                "translation": "to earn; deserve",
+                "frequency": 835,
+                "cefr": "A1"
+            },
+            {
+                "word": "isolieren",
+                "pos": "VERB",
+                "translation": "to isolate; segregate; insulate",
+                "frequency": 3082
+            },
+            {
+                "word": "infizieren",
+                "pos": "VERB",
+                "translation": "to infect",
+                "frequency": 5719
+            },
+            {
+                "word": "exportieren",
+                "pos": "VERB",
+                "translation": "to export",
+                "frequency": 11252,
+                "cefr": "B2"
+            },
+            {
+                "word": "reagieren",
+                "pos": "VERB",
+                "translation": "to react (to)",
+                "frequency": 722,
+                "cefr": "B1"
+            },
+            {
+                "word": "organisieren",
+                "pos": "VERB",
+                "translation": "to organize",
+                "frequency": 1295,
+                "cefr": "A2"
+            },
+            {
+                "word": "produzieren",
+                "pos": "VERB",
+                "translation": "to produce, manufacture, output",
+                "frequency": 1000,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Jahrhundert",
+                "pos": "NOUN",
+                "translation": "century",
+                "frequency": 492,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Krankheit",
+                "pos": "NOUN",
+                "translation": "disease, illness",
+                "frequency": 1132,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Schmerz",
+                "pos": "NOUN",
+                "translation": "pain",
+                "frequency": 1483,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Symptom",
+                "pos": "NOUN",
+                "translation": "symptom",
+                "frequency": 3030,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Infektion",
+                "pos": "NOUN",
+                "translation": "infection",
+                "frequency": 4082,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Impfstoff",
+                "pos": "NOUN",
+                "translation": "vaccine",
+                "frequency": 14707,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Lähmung",
+                "pos": "NOUN",
+                "translation": "paralysis"
+            },
+            {
+                "word": "der Stahl",
+                "pos": "NOUN",
+                "translation": "steel",
+                "frequency": 6834,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kinderlähmung",
+                "pos": "NOUN",
+                "translation": "polio"
+            },
+            {
+                "word": "das Stofftier",
+                "pos": "NOUN",
+                "translation": "stuffed animal",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Bär",
+                "pos": "NOUN",
+                "translation": "bear"
+            },
+            {
+                "word": "bekannt",
+                "pos": "ADJ",
+                "translation": "known, famous (for)",
+                "frequency": 319,
+                "cefr": "A1"
+            },
+            {
+                "word": "das / der Virus",
+                "pos": "NOUN",
+                "translation": "virus"
+            },
+            {
+                "word": "typisch",
+                "pos": "ADJ",
+                "translation": "typical(ly)",
+                "frequency": 1109,
+                "cefr": "A2"
+            },
+            {
+                "word": "kuschelig",
+                "pos": "ADJ",
+                "translation": "cuddly"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Kurzbiografie",
+                "pos": "NOUN",
+                "frequency": 22603
+            },
+            {
+                "word": "die gute",
+                "pos": "NOUN",
+                "frequency": 10120
+            },
+            {
+                "word": "der Monat",
+                "pos": "NOUN",
+                "frequency": 316,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Stilmittel",
+                "pos": "NOUN",
+                "frequency": 28348
+            },
+            {
+                "word": "eissen",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Alliteration",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Tiger",
+                "pos": "NOUN",
+                "frequency": 6879
+            },
+            {
+                "word": "bakteriell",
+                "pos": "ADJ",
+                "frequency": 30746
+            },
+            {
+                "word": "infiziert",
+                "pos": "ADJ",
+                "frequency": 23574
+            },
+            {
+                "word": "das Poliovirus",
+                "pos": "NOUN"
+            },
+            {
+                "word": "rechter",
+                "pos": "ADJ",
+                "frequency": 786
+            },
+            {
+                "word": "recht",
+                "pos": "ADJ",
+                "frequency": 786,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Physiotherapeut",
+                "pos": "NOUN",
+                "frequency": 19502,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Kongress",
+                "pos": "NOUN",
+                "frequency": 4438
+            },
+            {
+                "word": "die schlimme",
+                "pos": "NOUN",
+                "frequency": 14010
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bekommen": {
+                "present": {
+                    "ich": "bekomme",
+                    "du": "bekommst",
+                    "er": "bekommt",
+                    "es": "bekommt",
+                    "sie_singular": "bekommt",
+                    "xier": "bekommt",
+                    "wir": "bekommen",
+                    "ihr": "bekommt",
+                    "sie_plural": "bekommen",
+                    "Sie": "bekommen"
+                },
+                "Perfekt": {
+                    "ich": "habe bekommen",
+                    "du": "hast bekommen",
+                    "er": "hat bekommen",
+                    "es": "hat bekommen",
+                    "sie_singular": "hat bekommen",
+                    "xier": "hat bekommen",
+                    "wir": "haben bekommen",
+                    "ihr": "habt bekommen",
+                    "sie_plural": "haben bekommen",
+                    "Sie": "haben bekommen"
+                }
+            },
+            "beginnen": {
+                "present": {
+                    "ich": "beginne",
+                    "du": "beginnst",
+                    "er": "beginnt",
+                    "es": "beginnt",
+                    "sie_singular": "beginnt",
+                    "xier": "beginnt",
+                    "wir": "beginnen",
+                    "ihr": "beginnt",
+                    "sie_plural": "beginnen",
+                    "Sie": "beginnen"
+                },
+                "Perfekt": {
+                    "ich": "habe begonnen",
+                    "du": "hast begonnen",
+                    "er": "hat begonnen",
+                    "es": "hat begonnen",
+                    "sie_singular": "hat begonnen",
+                    "xier": "hat begonnen",
+                    "wir": "haben begonnen",
+                    "ihr": "habt begonnen",
+                    "sie_plural": "haben begonnen",
+                    "Sie": "haben begonnen"
+                }
+            },
+            "erzählen": {
+                "present": {
+                    "ich": "erzähle",
+                    "du": "erzählst",
+                    "er": "erzählt",
+                    "es": "erzählt",
+                    "sie_singular": "erzählt",
+                    "xier": "erzählt",
+                    "wir": "erzählen",
+                    "ihr": "erzählt",
+                    "sie_plural": "erzählen",
+                    "Sie": "erzählen"
+                },
+                "Perfekt": {
+                    "ich": "habe erzählt",
+                    "du": "hast erzählt",
+                    "er": "hat erzählt",
+                    "es": "hat erzählt",
+                    "sie_singular": "hat erzählt",
+                    "xier": "hat erzählt",
+                    "wir": "haben erzählt",
+                    "ihr": "habt erzählt",
+                    "sie_plural": "haben erzählt",
+                    "Sie": "haben erzählt"
+                }
+            },
+            "gehören": {
+                "present": {
+                    "ich": "gehöre",
+                    "du": "gehörst",
+                    "er": "gehört",
+                    "es": "gehört",
+                    "sie_singular": "gehört",
+                    "xier": "gehört",
+                    "wir": "gehören",
+                    "ihr": "gehört",
+                    "sie_plural": "gehören",
+                    "Sie": "gehören"
+                },
+                "Perfekt": {
+                    "ich": "habe gehört",
+                    "du": "hast gehört",
+                    "er": "hat gehört",
+                    "es": "hat gehört",
+                    "sie_singular": "hat gehört",
+                    "xier": "hat gehört",
+                    "wir": "haben gehört",
+                    "ihr": "habt gehört",
+                    "sie_plural": "haben gehört",
+                    "Sie": "haben gehört"
+                }
+            },
+            "verkaufen": {
+                "present": {
+                    "ich": "verkaufe",
+                    "du": "verkaufst",
+                    "er": "verkauft",
+                    "es": "verkauft",
+                    "sie_singular": "verkauft",
+                    "xier": "verkauft",
+                    "wir": "verkaufen",
+                    "ihr": "verkauft",
+                    "sie_plural": "verkaufen",
+                    "Sie": "verkaufen"
+                },
+                "Perfekt": {
+                    "ich": "habe verkauft",
+                    "du": "hast verkauft",
+                    "er": "hat verkauft",
+                    "es": "hat verkauft",
+                    "sie_singular": "hat verkauft",
+                    "xier": "hat verkauft",
+                    "wir": "haben verkauft",
+                    "ihr": "habt verkauft",
+                    "sie_plural": "haben verkauft",
+                    "Sie": "haben verkauft"
+                }
+            },
+            "verbreiten": {
+                "present": {
+                    "ich": "verbreite",
+                    "du": "verbreitest",
+                    "er": "verbreitet",
+                    "es": "verbreitet",
+                    "sie_singular": "verbreitet",
+                    "xier": "verbreitet",
+                    "wir": "verbreiten",
+                    "ihr": "verbreitet",
+                    "sie_plural": "verbreiten",
+                    "Sie": "verbreiten"
+                },
+                "Perfekt": {
+                    "ich": "habe verbreitet",
+                    "du": "hast verbreitet",
+                    "er": "hat verbreitet",
+                    "es": "hat verbreitet",
+                    "sie_singular": "hat verbreitet",
+                    "xier": "hat verbreitet",
+                    "wir": "haben verbreitet",
+                    "ihr": "habt verbreitet",
+                    "sie_plural": "haben verbreitet",
+                    "Sie": "haben verbreitet"
+                }
+            },
+            "verlieren": {
+                "present": {
+                    "ich": "verliere",
+                    "du": "verlierst",
+                    "er": "verliert",
+                    "es": "verliert",
+                    "sie_singular": "verliert",
+                    "xier": "verliert",
+                    "wir": "verlieren",
+                    "ihr": "verliert",
+                    "sie_plural": "verlieren",
+                    "Sie": "verlieren"
+                },
+                "Perfekt": {
+                    "ich": "habe verloren",
+                    "du": "hast verloren",
+                    "er": "hat verloren",
+                    "es": "hat verloren",
+                    "sie_singular": "hat verloren",
+                    "xier": "hat verloren",
+                    "wir": "haben verloren",
+                    "ihr": "habt verloren",
+                    "sie_plural": "haben verloren",
+                    "Sie": "haben verloren"
+                }
+            },
+            "verdienen": {
+                "present": {
+                    "ich": "verdiene",
+                    "du": "verdienst",
+                    "er": "verdient",
+                    "es": "verdient",
+                    "sie_singular": "verdient",
+                    "xier": "verdient",
+                    "wir": "verdienen",
+                    "ihr": "verdient",
+                    "sie_plural": "verdienen",
+                    "Sie": "verdienen"
+                },
+                "Perfekt": {
+                    "ich": "habe verdient",
+                    "du": "hast verdient",
+                    "er": "hat verdient",
+                    "es": "hat verdient",
+                    "sie_singular": "hat verdient",
+                    "xier": "hat verdient",
+                    "wir": "haben verdient",
+                    "ihr": "habt verdient",
+                    "sie_plural": "haben verdient",
+                    "Sie": "haben verdient"
+                }
+            },
+            "isolieren": {
+                "present": {
+                    "ich": "isoliere",
+                    "du": "isolierst",
+                    "er": "isoliert",
+                    "es": "isoliert",
+                    "sie_singular": "isoliert",
+                    "xier": "isoliert",
+                    "wir": "isolieren",
+                    "ihr": "isoliert",
+                    "sie_plural": "isolieren",
+                    "Sie": "isolieren"
+                },
+                "Perfekt": {
+                    "ich": "habe isoliert",
+                    "du": "hast isoliert",
+                    "er": "hat isoliert",
+                    "es": "hat isoliert",
+                    "sie_singular": "hat isoliert",
+                    "xier": "hat isoliert",
+                    "wir": "haben isoliert",
+                    "ihr": "habt isoliert",
+                    "sie_plural": "haben isoliert",
+                    "Sie": "haben isoliert"
+                }
+            },
+            "infizieren": {
+                "present": {
+                    "ich": "infiziere",
+                    "du": "infizierst",
+                    "er": "infiziert",
+                    "es": "infiziert",
+                    "sie_singular": "infiziert",
+                    "xier": "infiziert",
+                    "wir": "infizieren",
+                    "ihr": "infiziert",
+                    "sie_plural": "infizieren",
+                    "Sie": "infizieren"
+                },
+                "Perfekt": {
+                    "ich": "habe infiziert",
+                    "du": "hast infiziert",
+                    "er": "hat infiziert",
+                    "es": "hat infiziert",
+                    "sie_singular": "hat infiziert",
+                    "xier": "hat infiziert",
+                    "wir": "haben infiziert",
+                    "ihr": "habt infiziert",
+                    "sie_plural": "haben infiziert",
+                    "Sie": "haben infiziert"
+                }
+            },
+            "exportieren": {
+                "present": {
+                    "ich": "exportiere",
+                    "du": "exportierst",
+                    "er": "exportiert",
+                    "es": "exportiert",
+                    "sie_singular": "exportiert",
+                    "xier": "exportiert",
+                    "wir": "exportieren",
+                    "ihr": "exportiert",
+                    "sie_plural": "exportieren",
+                    "Sie": "exportieren"
+                },
+                "Perfekt": {
+                    "ich": "habe exportiert",
+                    "du": "hast exportiert",
+                    "er": "hat exportiert",
+                    "es": "hat exportiert",
+                    "sie_singular": "hat exportiert",
+                    "xier": "hat exportiert",
+                    "wir": "haben exportiert",
+                    "ihr": "habt exportiert",
+                    "sie_plural": "haben exportiert",
+                    "Sie": "haben exportiert"
+                }
+            },
+            "reagieren": {
+                "present": {
+                    "ich": "reagiere",
+                    "du": "reagierst",
+                    "er": "reagiert",
+                    "es": "reagiert",
+                    "sie_singular": "reagiert",
+                    "xier": "reagiert",
+                    "wir": "reagieren",
+                    "ihr": "reagiert",
+                    "sie_plural": "reagieren",
+                    "Sie": "reagieren"
+                },
+                "Perfekt": {
+                    "ich": "habe reagiert",
+                    "du": "hast reagiert",
+                    "er": "hat reagiert",
+                    "es": "hat reagiert",
+                    "sie_singular": "hat reagiert",
+                    "xier": "hat reagiert",
+                    "wir": "haben reagiert",
+                    "ihr": "habt reagiert",
+                    "sie_plural": "haben reagiert",
+                    "Sie": "haben reagiert"
+                }
+            },
+            "organisieren": {
+                "present": {
+                    "ich": "organisiere",
+                    "du": "organisierst",
+                    "er": "organisiert",
+                    "es": "organisiert",
+                    "sie_singular": "organisiert",
+                    "xier": "organisiert",
+                    "wir": "organisieren",
+                    "ihr": "organisiert",
+                    "sie_plural": "organisieren",
+                    "Sie": "organisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe organisiert",
+                    "du": "hast organisiert",
+                    "er": "hat organisiert",
+                    "es": "hat organisiert",
+                    "sie_singular": "hat organisiert",
+                    "xier": "hat organisiert",
+                    "wir": "haben organisiert",
+                    "ihr": "habt organisiert",
+                    "sie_plural": "haben organisiert",
+                    "Sie": "haben organisiert"
+                }
+            },
+            "produzieren": {
+                "present": {
+                    "ich": "produziere",
+                    "du": "produzierst",
+                    "er": "produziert",
+                    "es": "produziert",
+                    "sie_singular": "produziert",
+                    "xier": "produziert",
+                    "wir": "produzieren",
+                    "ihr": "produziert",
+                    "sie_plural": "produzieren",
+                    "Sie": "produzieren"
+                },
+                "Perfekt": {
+                    "ich": "habe produziert",
+                    "du": "hast produziert",
+                    "er": "hat produziert",
+                    "es": "hat produziert",
+                    "sie_singular": "hat produziert",
+                    "xier": "hat produziert",
+                    "wir": "haben produziert",
+                    "ihr": "habt produziert",
+                    "sie_plural": "haben produziert",
+                    "Sie": "haben produziert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie haben in LERNEN die Kurzbiografie von Margarete Steiff gelesen.",
+            "Sie bekommen Informationen.",
+            "Stellen Sie der anderen Person Fragen mit \"wann\" und antworten Sie in ganzen Sätzen.",
+            "Sie ist geboren:",
+            "Sie hat Kinderlähmung bekommen:",
+            "Sie hat nähen gelernt:",
+            "Als sie in der Schule war",
+            "Sie hat ihre erste Nähmaschine gekauft:",
+            "Sie hat einen Elefanten genäht und verkauft:",
+            "Das Geschäft hat Stofftiere in die USA exportiert:",
+            "Sie ist gestorben:",
+            "Suchen Sie auf der Webseite Ihre Lieblingsstofftier",
+            "Haben Sie verschiedene Favoriten oder die gleichen?",
+            "Was ist anders?",
+            "Warum finden Sie diese Stofftiere am besten?",
+            "Wir haben verschiedene Favoriten.",
+            "Mein Stofftier ist X und ihr/sein.",
+            "Xier Stofftier ist X.",
+            "Ich finde mein Stofftier am besten, weil es süß ist und große Augen hat.",
+            "Was war Ihr Lieblingsstofftier, als Sie 5 Jahre alt waren?",
+            "Was war sein Name?",
+            "Wer hat es Ihnen geschenkt?",
+            "Wo ist es jetzt?",
+            "Als ich 5 Jahre alt war, war mein Lieblingsstofftier",
+            "Die Steiff Tiere haben Namen wie Kitty Katze und Basti Braunbär.",
+            "Die ses Stilmittel h eißt Alliteration.",
+            "Tiger, Biene, Maus, Wolf und Fisch finden?",
+            "Hat eine Person im Kurs einen Namen mit Alliteration?",
+            "Kinderlähmung, das war einmal?",
+            "Lesen Sie die Aussagen.",
+            "Dann lesen Sie den Text und kreuzen Sie an, ob die Aussagen richtig oder falsch sind.",
+            "Kinderlähmung ist eine bakterielle Infektion.",
+            "Die meisten infizierten Menschen haben keine Symptome.",
+            "Die typischen Symptome sind Lähmungen an Armen und Beinen.",
+            "Es gibt seit zehn Jahren Impfstoffe gegen Kinderlähmung.",
+            "Früher hat die Krankheit nicht viele Menschen infiziert.",
+            "Wenn alle geimpft sind, gibt es diese Krankheit nicht mehr.",
+            "Wenn keine Person geimpft ist, werden viele Menschen krank.",
+            "Kinderlähmung kommt von Infektionen mit dem Poliovirus, vor allem bei Kindern unter fünf Jahren.",
+            "Oft gibt es keine Symptome, aber es kommt manchmal zu schweren Lähmungen, vor allem an den Armen und Beinen.",
+            "Seit etwa 1950 gibt es Impfstoffe gegen Kinderlähmung.",
+            "Jahrhundert hat die Krankheit jedes Jahr tausende Menschen infiziert.",
+            "Heute gibt es sie in Deutschland nicht mehr.",
+            "Wenn in einem Land wenig Menschen geimpft sind, kann sich die Krankheit schnell wieder verbreiten.",
+            "Dann werden viele Menschen krank.",
+            "Wenn man krank wird, kann man nicht viel gegen diese Krankheit machen.",
+            "Und wer noch außer Margarete Steiff?",
+            "Welche berühmten Personen hatten noch Kinderlähmung?",
+            "Schauen Sie sich die Bilder an und lesen Sie die Texte.",
+            "Wissen Sie, wie die Personen heißen?",
+            "Wenn nicht, schauen Sie die Tipps an und suchen Sie die Personen online.",
+            "War Künstlerin.",
+            "Sie hat Polio mit sechs Jahren bekommen.",
+            "\"Das erste waren große Schmerzen in meinem rechten Bein.",
+            "Man hat mir das Bein gewaschen und heiße T ü cher um das Bein gemacht.\"",
+            "Sie ist von der Krankheit nicht gestorben.",
+            "Sie hat aber immer lange Röcke getragen:",
+            "Die anderen sollten nicht sehen, dass ihr rechtes Bein d ü nner und k ü rzer war.",
+            "Ist Regisseur.",
+            "Er hat die Krankheit als kleiner Junge bekommen.",
+            "Ein Physiotherapeut hat ihm geholfen, das Laufen neu zu lernen.",
+            "\"Als ich neun Jahre alt war, hatten die Leute Angst die Kinderlähmung von mir zu bekommen.",
+            "Das hat mich isoliert.",
+            "In der Zeit der Lähmung habe ich ferngesehen und Radio gehört.\"",
+            "War ein Präsident.",
+            "Er hat sich im Sommer 1921 mit Polio infiziert.",
+            "Er alles gemacht um seine Krankheit zu verstecken.",
+            "Das war schwer, weil er nach der Infektion nicht gut laufen konnte.",
+            "Bei Veranstaltungen hat er oft einen Stock zum Gehen benutzt oder Stahl um sein Bein getragen.",
+            "1945 hat er bei einem Kongress gesessen und gesagt: \"Es ist schön, nicht zehn Pfund Stahl an den Beinen tragen zu müssen.\"",
+            "Person 1 ist in Mexiko geboren und war bekannt für (Selbst-)Portraits.",
+            "Person 2 war Regisseur der Filme \"Der Pate\" (The Godfather) \"Apocalypse Now\" und \"Dracula\".",
+            "Person 3 war der 32.",
+            "Präsident der Vereinigten Staaten von Amerika.",
+            "Welche Themen können Sie in diesen drei Kurzbiografien finden?",
+            "Wann haben sie sich infiziert?",
+            "Wie haben die anderen Menschen reagiert?",
+            "Was war das Schlimmste?",
+            "Was noch?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

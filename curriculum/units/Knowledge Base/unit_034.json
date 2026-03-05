@@ -1,0 +1,537 @@
+{
+    "unit": "34",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 34,
+        "prerequisite": "1-33"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "chemische Prozesse beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bestehen",
+                "pos": "VERB",
+                "translation": "to consist of",
+                "frequency": 246,
+                "cefr": "A2"
+            },
+            {
+                "word": "entstehen",
+                "pos": "VERB",
+                "translation": "to emerge, develop",
+                "frequency": 264,
+                "cefr": "B1"
+            },
+            {
+                "word": "gießen",
+                "pos": "VERB",
+                "translation": "to pour; water (plants)"
+            },
+            {
+                "word": "produzieren",
+                "pos": "VERB",
+                "translation": "to produce, manufacture, output",
+                "frequency": 1000,
+                "cefr": "B1"
+            },
+            {
+                "word": "reagieren",
+                "pos": "VERB",
+                "translation": "to react (to)",
+                "frequency": 722,
+                "cefr": "B1"
+            },
+            {
+                "word": "schäumen",
+                "pos": "VERB",
+                "translation": "to foam, froth"
+            },
+            {
+                "word": "die Chemie",
+                "pos": "NOUN",
+                "translation": "chemistry",
+                "frequency": 486,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Experiment",
+                "pos": "NOUN",
+                "translation": "experiment",
+                "frequency": 1695,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Material",
+                "pos": "NOUN",
+                "translation": "material",
+                "frequency": 1390,
+                "cefr": "B1"
+            },
+            {
+                "word": "Ablauf",
+                "pos": "NOUN",
+                "translation": "process; workflow",
+                "frequency": 2485
+            },
+            {
+                "word": "die Beobachtung",
+                "pos": "NOUN",
+                "translation": "observation",
+                "frequency": 2126,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Erklärung",
+                "pos": "NOUN",
+                "translation": "explanation"
+            },
+            {
+                "word": "der Körper",
+                "pos": "NOUN",
+                "translation": "body"
+            },
+            {
+                "word": "die Flüssigkeit",
+                "pos": "NOUN",
+                "translation": "liquid, fluid",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Essig",
+                "pos": "NOUN",
+                "translation": "vinegar",
+                "frequency": 21961,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Sauerstoff",
+                "pos": "NOUN",
+                "translation": "oxygen",
+                "frequency": 2432,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wasserstoff",
+                "pos": "NOUN",
+                "translation": "hydrogen",
+                "frequency": 3142,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Kohlenstoff",
+                "pos": "NOUN",
+                "translation": "carbon",
+                "frequency": 3977,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Stickstoff",
+                "pos": "NOUN",
+                "translation": "nitrogen",
+                "frequency": 4874,
+                "cefr": "A1"
+            },
+            {
+                "word": "lang",
+                "pos": "ADJ",
+                "translation": "long",
+                "frequency": 97,
+                "cefr": "A1"
+            },
+            {
+                "word": "kurz",
+                "pos": "ADJ",
+                "translation": "short",
+                "frequency": 176,
+                "cefr": "A1"
+            },
+            {
+                "word": "letzt- (letzter",
+                "pos": "NOUN",
+                "translation": "last"
+            },
+            {
+                "word": "klar",
+                "pos": "ADJ",
+                "translation": "clear",
+                "frequency": 239,
+                "cefr": "A1"
+            },
+            {
+                "word": "unterschiedlich",
+                "pos": "ADJ",
+                "translation": "different(ly), various",
+                "frequency": 345,
+                "cefr": "B1"
+            },
+            {
+                "word": "ähnlich",
+                "pos": "ADJ",
+                "translation": "similar"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "chemisch",
+                "pos": "ADJ",
+                "frequency": 761
+            },
+            {
+                "word": "das Element",
+                "pos": "NOUN",
+                "frequency": 699
+            },
+            {
+                "word": "Lateinische",
+                "pos": "NOUN",
+                "frequency": 18856
+            },
+            {
+                "word": "Griechische",
+                "pos": "NOUN",
+                "frequency": 26575
+            },
+            {
+                "word": "identifizieren",
+                "pos": "VERB",
+                "frequency": 2420
+            },
+            {
+                "word": "das Aluminium",
+                "pos": "NOUN",
+                "frequency": 11861
+            },
+            {
+                "word": "die Molekülformel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Atom",
+                "pos": "NOUN",
+                "frequency": 900
+            },
+            {
+                "word": "das Molekül",
+                "pos": "NOUN",
+                "frequency": 651
+            },
+            {
+                "word": "englische",
+                "pos": "NOUN",
+                "frequency": 9251
+            },
+            {
+                "word": "anders",
+                "pos": "ADV",
+                "frequency": 303,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Wortakzent",
+                "pos": "NOUN"
+            },
+            {
+                "word": "molekular",
+                "pos": "ADV",
+                "frequency": 4064
+            },
+            {
+                "word": "die Fruktose",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Traubenzucker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Glukose",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Molekularstruktur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Monosaccharid",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Zweifachzucker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Oligosaccharid",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Polysaccharid",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Struktur",
+                "pos": "NOUN",
+                "frequency": 489,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Saccharose",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Fruktose-Molekül",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Fotosynthese",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Kohlendioxid",
+                "pos": "NOUN",
+                "frequency": 12161
+            },
+            {
+                "word": "das Natron",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Glas",
+                "pos": "NOUN",
+                "frequency": 885,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Natriumhydrogencarbonat",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Natriumacetat",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Gas",
+                "pos": "NOUN",
+                "frequency": 927,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bestehen": {
+                "present": {
+                    "ich": "bestehe",
+                    "du": "bestehst",
+                    "er": "besteht",
+                    "es": "besteht",
+                    "sie_singular": "besteht",
+                    "xier": "besteht",
+                    "wir": "bestehen",
+                    "ihr": "besteht",
+                    "sie_plural": "bestehen",
+                    "Sie": "bestehen"
+                }
+            },
+            "entstehen": {
+                "present": {
+                    "ich": "entstehe",
+                    "du": "entstehst",
+                    "er": "entsteht",
+                    "es": "entsteht",
+                    "sie_singular": "entsteht",
+                    "xier": "entsteht",
+                    "wir": "entstehen",
+                    "ihr": "entsteht",
+                    "sie_plural": "entstehen",
+                    "Sie": "entstehen"
+                }
+            },
+            "gießen": {
+                "present": {
+                    "ich": "gieße",
+                    "du": "gießt",
+                    "er": "gießt",
+                    "es": "gießt",
+                    "sie_singular": "gießt",
+                    "xier": "gießt",
+                    "wir": "gießen",
+                    "ihr": "gießt",
+                    "sie_plural": "gießen",
+                    "Sie": "gießen"
+                }
+            },
+            "produzieren": {
+                "present": {
+                    "ich": "produziere",
+                    "du": "produzierst",
+                    "er": "produziert",
+                    "es": "produziert",
+                    "sie_singular": "produziert",
+                    "xier": "produziert",
+                    "wir": "produzieren",
+                    "ihr": "produziert",
+                    "sie_plural": "produzieren",
+                    "Sie": "produzieren"
+                }
+            },
+            "reagieren": {
+                "present": {
+                    "ich": "reagiere",
+                    "du": "reagierst",
+                    "er": "reagiert",
+                    "es": "reagiert",
+                    "sie_singular": "reagiert",
+                    "xier": "reagiert",
+                    "wir": "reagieren",
+                    "ihr": "reagiert",
+                    "sie_plural": "reagieren",
+                    "Sie": "reagieren"
+                }
+            },
+            "schäumen": {
+                "present": {
+                    "ich": "schäume",
+                    "du": "schäumst",
+                    "er": "schäumt",
+                    "es": "schäumt",
+                    "sie_singular": "schäumt",
+                    "xier": "schäumt",
+                    "wir": "schäumen",
+                    "ihr": "schäumt",
+                    "sie_plural": "schäumen",
+                    "Sie": "schäumen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Namen von vielen chemischen Elementen kommen aus dem Lateinischen oder Griechischen.",
+            "Sie können sie schnell identifizieren, z.B.",
+            "H ist Wasserstoff, O ist Sauerstoff, C ist Kohlenstoff und N ist Stickstoff.",
+            "Eine Molekülformel sagt, wie viele Atome in einem Molekül sind.",
+            "Zum Beispiel hat Wasser die Molekülformel H₂O (H zwei O), weil Wasser (H₂O) zwei Wasserstoffatome und ein Sauerstoffatom hat.",
+            "Beschreiben Sie die Moleküle.",
+            "Kohlendioxid (COâ'') hat ein Kohlenstoffatom und zwei Sauerstoffatome.",
+            "Methan (CHâ'\") hat ein Kohlenstoffatom und vier Wasserstoffatome.",
+            "Ammoniak (NH₃) hat ein Stickstoffatom und drei Wasserstoffatome.",
+            "Viele Wörter sind im Englischen und Deutschen ähnlich, aber man sagt sie anders.",
+            "Markieren Sie den Wortakzent für die englischen Wörter.",
+            "Englische Wörter haben den Wortakzent oft auf der ersten, zweiten oder letzten Silbe.",
+            "Jetzt hören Sie die deutschen Wörter.",
+            "Markieren Sie lange und kurze Vokale und den Wortakzent.",
+            "Wörter aus anderen Sprachen haben haben den Wortakzent oft auf der ersten, zweiten oder letzten Silbe.",
+            "Lebensmittel bestehen aus Kohlenhydraten, Proteinen ( Eiweiß ) und Fett.",
+            "Zucker besteht zu 100 Prozent aus Kohlenhydrate n und hat 400 Kalorien pro 100g.",
+            "Weißer und brauner Zucker, Fruchtzucker (Fruktose) und Traubenzucker (Glukose) haben die gleichen Kalorien.",
+            "Ihre Molekularstruktur ist aber unterschiedlich.",
+            "Es gibt Monosaccharide ( Einfachzucker ), Disaccharide (Zweifachzucker), Oligosaccharide und Polysaccharide.",
+            "Beschreiben Sie die Struktur von Glukose und Saccharose ( Haushaltszucker ).",
+            "Es hat sechs Kohlenstoffatome zweiundzwanzig Wasserstoffatome",
+            "Atome] und sechs Sauerstoffatome.",
+            "Identifizieren Sie die Moleküle.",
+            "Wie kommt der Zucker in das Gemüse und Obst?",
+            "Pflanzen produzieren Zucker in der Fotosynthese.",
+            "Die Reaktion ist 6 CO₂ + 6 H₂O C₆H₁₂O₆ + 6 O₂.",
+            "Ergänzen Sie.",
+            "Die Pflanze macht aus Sauerstoff und Wasser Glukose und Kohlendioxid",
+            "Ein Experiment mit Natron und Essig",
+            "Ergänzen Sie den Ablauf, die Beobachtung und die Erklärung für ein Experiment mit Natron und Essig.",
+            "Benutzen Sie \"man\" für den Ablauf.",
+            "Für das Experiment braucht man ein Glas, Natron und Essig ( Glas, Natron und Essig brauchen).",
+            "Erst nimmt man ein Glas.",
+            "Dann gibt man Natron in das Glas.",
+            "(Natron in Glas geben ).",
+            "Jetzt gießt man Essig in das Glas.",
+            "Erst schäumt es.",
+            "Dann ist die Flüssigkeit klar.",
+            "(klare Flüssigkeit sein).",
+            "NaHCO₃ (Natriumhydrogencarbonat) + CH₃COOH ( Essigsäure ) CH₃COONa (Natriumacetat) + H₂O + CO₂.",
+            "Natron und Essig reagieren.",
+            "Es entstehen ein Salz, Sauerstoff und Wasser.",
+            "Das Gas, Sauerstoff schäumt."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

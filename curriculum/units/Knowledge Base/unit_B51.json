@@ -1,0 +1,483 @@
+{
+    "unit": "B51",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 51,
+        "prerequisite": "core 1-104, B1-B50"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Erinnerungskultur diskutieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Erinnerungskultur"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erhalten", "pos": "VERB", "translation": "to preserve; receive", "frequency": 287, "cefr": "B1" },
+            { "word": "sich entschuldigen", "pos": "VERB", "translation": "to apologize; excuse", "frequency": 1958, "cefr": "A1" },
+            { "word": "bedauern", "pos": "VERB", "translation": "to regret; pity; lament", "frequency": 3727 },
+            { "word": "beschämen", "pos": "VERB", "translation": "to embarrass, shame" },
+            { "word": "sonnen", "pos": "VERB", "translation": "to (bathe in the) sun" },
+            { "word": "der*die Angehörige", "pos": "NOUN", "translation": "relative" },
+            { "word": "die Absicht", "pos": "NOUN", "translation": "intention; purpose; aim", "frequency": 2738, "cefr": "B1" },
+            { "word": "der Treffpunkt", "pos": "NOUN", "translation": "meeting point; venue", "frequency": 6271, "cefr": "B1" },
+            { "word": "die Respektlosigkeit", "pos": "NOUN", "translation": "disrespect; irreverence", "frequency": 44740, "cefr": "A1" },
+            { "word": "respektlos", "pos": "ADJ", "translation": "disrespectful", "frequency": 31468 },
+            { "word": "ermordet", "pos": "ADJ", "translation": "murdered", "frequency": 11331 },
+            { "word": "unwichtig", "pos": "ADJ", "translation": "unimportant", "frequency": 13683 },
+            { "word": "solch- (solcher", "pos": "NOUN", "translation": "such" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "deutsch-israelisch", "pos": "ADJ" },
+            { "word": "solcher", "pos": "DET", "frequency": 185 },
+            { "word": "picknicken", "pos": "VERB", "cefr": "C1/C2" },
+            { "word": "die Intention", "pos": "NOUN", "frequency": 12331, "cefr": "B2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erhalten": {
+                "present": {
+                    "ich": "erhalte",
+                    "du": "erhältst",
+                    "er": "erhält",
+                    "es": "erhält",
+                    "sie_singular": "erhält",
+                    "xier": "erhält",
+                    "wir": "erhalten",
+                    "ihr": "erhaltet",
+                    "sie_plural": "erhalten",
+                    "Sie": "erhalten"
+                },
+                "Präteritum": {
+                    "ich": "erhielt",
+                    "du": "erhieltest",
+                    "er": "erhielt",
+                    "es": "erhielt",
+                    "sie_singular": "erhielt",
+                    "xier": "erhielt",
+                    "wir": "erhielten",
+                    "ihr": "erhieltet",
+                    "sie_plural": "erhielten",
+                    "Sie": "erhielten"
+                },
+                "Perfekt": {
+                    "ich": "habe erhalten",
+                    "du": "hast erhalten",
+                    "er": "hat erhalten",
+                    "es": "hat erhalten",
+                    "sie_singular": "hat erhalten",
+                    "xier": "hat erhalten",
+                    "wir": "haben erhalten",
+                    "ihr": "habt erhalten",
+                    "sie_plural": "haben erhalten",
+                    "Sie": "haben erhalten"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erhalten",
+                    "du": "hattest erhalten",
+                    "er": "hatte erhalten",
+                    "es": "hatte erhalten",
+                    "sie_singular": "hatte erhalten",
+                    "xier": "hatte erhalten",
+                    "wir": "hatten erhalten",
+                    "ihr": "hattet erhalten",
+                    "sie_plural": "hatten erhalten",
+                    "Sie": "hatten erhalten"
+                },
+                "Futur_I": {
+                    "ich": "werde erhalten",
+                    "du": "wirst erhalten",
+                    "er": "wird erhalten",
+                    "es": "wird erhalten",
+                    "sie_singular": "wird erhalten",
+                    "xier": "wird erhalten",
+                    "wir": "werden erhalten",
+                    "ihr": "werdet erhalten",
+                    "sie_plural": "werden erhalten",
+                    "Sie": "werden erhalten"
+                },
+                "imperative": {
+                    "du": "erhalt",
+                    "ihr": "erhaltet",
+                    "Sie": "erhalten Sie"
+                }
+            },
+            "entschuldigen": {
+                "present": {
+                    "ich": "entschuldige mich",
+                    "du": "entschuldigst dich",
+                    "er": "entschuldigt sich",
+                    "es": "entschuldigt sich",
+                    "sie_singular": "entschuldigt sich",
+                    "xier": "entschuldigt sich",
+                    "wir": "entschuldigen uns",
+                    "ihr": "entschuldigt euch",
+                    "sie_plural": "entschuldigen sich",
+                    "Sie": "entschuldigen sich"
+                },
+                "Präteritum": {
+                    "ich": "entschuldigte mich",
+                    "du": "entschuldigtest dich",
+                    "er": "entschuldigte sich",
+                    "es": "entschuldigte sich",
+                    "sie_singular": "entschuldigte sich",
+                    "xier": "entschuldigte sich",
+                    "wir": "entschuldigten uns",
+                    "ihr": "entschuldigtet euch",
+                    "sie_plural": "entschuldigten sich",
+                    "Sie": "entschuldigten sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich entschuldigt",
+                    "du": "hast dich entschuldigt",
+                    "er": "hat sich entschuldigt",
+                    "es": "hat sich entschuldigt",
+                    "sie_singular": "hat sich entschuldigt",
+                    "xier": "hat sich entschuldigt",
+                    "wir": "haben uns entschuldigt",
+                    "ihr": "habt euch entschuldigt",
+                    "sie_plural": "haben sich entschuldigt",
+                    "Sie": "haben sich entschuldigt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte mich entschuldigt",
+                    "du": "hattest dich entschuldigt",
+                    "er": "hatte sich entschuldigt",
+                    "es": "hatte sich entschuldigt",
+                    "sie_singular": "hatte sich entschuldigt",
+                    "xier": "hatte sich entschuldigt",
+                    "wir": "hatten uns entschuldigt",
+                    "ihr": "hattet euch entschuldigt",
+                    "sie_plural": "hatten sich entschuldigt",
+                    "Sie": "hatten sich entschuldigt"
+                },
+                "Futur_I": {
+                    "ich": "werde mich entschuldigen",
+                    "du": "wirst dich entschuldigen",
+                    "er": "wird sich entschuldigen",
+                    "es": "wird sich entschuldigen",
+                    "sie_singular": "wird sich entschuldigen",
+                    "xier": "wird sich entschuldigen",
+                    "wir": "werden uns entschuldigen",
+                    "ihr": "werdet euch entschuldigen",
+                    "sie_plural": "werden sich entschuldigen",
+                    "Sie": "werden sich entschuldigen"
+                },
+                "imperative": {
+                    "du": "entschuldige dich",
+                    "ihr": "entschuldigt euch",
+                    "Sie": "entschuldigen Sie sich"
+                }
+            },
+            "bedauern": {
+                "present": {
+                    "ich": "bedauere",
+                    "du": "bedauerst",
+                    "er": "bedauert",
+                    "es": "bedauert",
+                    "sie_singular": "bedauert",
+                    "xier": "bedauert",
+                    "wir": "bedauern",
+                    "ihr": "bedauert",
+                    "sie_plural": "bedauern",
+                    "Sie": "bedauern"
+                },
+                "Präteritum": {
+                    "ich": "bedauerte",
+                    "du": "bedauertest",
+                    "er": "bedauerte",
+                    "es": "bedauerte",
+                    "sie_singular": "bedauerte",
+                    "xier": "bedauerte",
+                    "wir": "bedauerten",
+                    "ihr": "bedauertet",
+                    "sie_plural": "bedauerten",
+                    "Sie": "bedauerten"
+                },
+                "Perfekt": {
+                    "ich": "habe bedauert",
+                    "du": "hast bedauert",
+                    "er": "hat bedauert",
+                    "es": "hat bedauert",
+                    "sie_singular": "hat bedauert",
+                    "xier": "hat bedauert",
+                    "wir": "haben bedauert",
+                    "ihr": "habt bedauert",
+                    "sie_plural": "haben bedauert",
+                    "Sie": "haben bedauert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte bedauert",
+                    "du": "hattest bedauert",
+                    "er": "hatte bedauert",
+                    "es": "hatte bedauert",
+                    "sie_singular": "hatte bedauert",
+                    "xier": "hatte bedauert",
+                    "wir": "hatten bedauert",
+                    "ihr": "hattet bedauert",
+                    "sie_plural": "hatten bedauert",
+                    "Sie": "hatten bedauert"
+                },
+                "Futur_I": {
+                    "ich": "werde bedauern",
+                    "du": "wirst bedauern",
+                    "er": "wird bedauern",
+                    "es": "wird bedauern",
+                    "sie_singular": "wird bedauern",
+                    "xier": "wird bedauern",
+                    "wir": "werden bedauern",
+                    "ihr": "werdet bedauern",
+                    "sie_plural": "werden bedauern",
+                    "Sie": "werden bedauern"
+                },
+                "imperative": {
+                    "du": "bedauere",
+                    "ihr": "bedauert",
+                    "Sie": "bedauern Sie"
+                }
+            },
+            "beschämen": {
+                "present": {
+                    "ich": "beschäme",
+                    "du": "beschämst",
+                    "er": "beschämt",
+                    "es": "beschämt",
+                    "sie_singular": "beschämt",
+                    "xier": "beschämt",
+                    "wir": "beschämen",
+                    "ihr": "beschämt",
+                    "sie_plural": "beschämen",
+                    "Sie": "beschämen"
+                },
+                "Präteritum": {
+                    "ich": "beschämte",
+                    "du": "beschämtest",
+                    "er": "beschämte",
+                    "es": "beschämte",
+                    "sie_singular": "beschämte",
+                    "xier": "beschämte",
+                    "wir": "beschämten",
+                    "ihr": "beschämtet",
+                    "sie_plural": "beschämten",
+                    "Sie": "beschämten"
+                },
+                "Perfekt": {
+                    "ich": "habe beschämt",
+                    "du": "hast beschämt",
+                    "er": "hat beschämt",
+                    "es": "hat beschämt",
+                    "sie_singular": "hat beschämt",
+                    "xier": "hat beschämt",
+                    "wir": "haben beschämt",
+                    "ihr": "habt beschämt",
+                    "sie_plural": "haben beschämt",
+                    "Sie": "haben beschämt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte beschämt",
+                    "du": "hattest beschämt",
+                    "er": "hatte beschämt",
+                    "es": "hatte beschämt",
+                    "sie_singular": "hatte beschämt",
+                    "xier": "hatte beschämt",
+                    "wir": "hatten beschämt",
+                    "ihr": "hattet beschämt",
+                    "sie_plural": "hatten beschämt",
+                    "Sie": "hatten beschämt"
+                },
+                "Futur_I": {
+                    "ich": "werde beschämen",
+                    "du": "wirst beschämen",
+                    "er": "wird beschämen",
+                    "es": "wird beschämen",
+                    "sie_singular": "wird beschämen",
+                    "xier": "wird beschämen",
+                    "wir": "werden beschämen",
+                    "ihr": "werdet beschämen",
+                    "sie_plural": "werden beschämen",
+                    "Sie": "werden beschämen"
+                },
+                "imperative": {
+                    "du": "beschäme",
+                    "ihr": "beschämt",
+                    "Sie": "beschämen Sie"
+                }
+            },
+            "sonnen": {
+                "present": {
+                    "ich": "sonne",
+                    "du": "sonnst",
+                    "er": "sonnt",
+                    "es": "sonnt",
+                    "sie_singular": "sonnt",
+                    "xier": "sonnt",
+                    "wir": "sonnen",
+                    "ihr": "sonnt",
+                    "sie_plural": "sonnen",
+                    "Sie": "sonnen"
+                },
+                "Präteritum": {
+                    "ich": "sonnte",
+                    "du": "sonntest",
+                    "er": "sonnte",
+                    "es": "sonnte",
+                    "sie_singular": "sonnte",
+                    "xier": "sonnte",
+                    "wir": "sonnten",
+                    "ihr": "sonntet",
+                    "sie_plural": "sonnten",
+                    "Sie": "sonnten"
+                },
+                "Perfekt": {
+                    "ich": "habe gesonnt",
+                    "du": "hast gesonnt",
+                    "er": "hat gesonnt",
+                    "es": "hat gesonnt",
+                    "sie_singular": "hat gesonnt",
+                    "xier": "hat gesonnt",
+                    "wir": "haben gesonnt",
+                    "ihr": "habt gesonnt",
+                    "sie_plural": "haben gesonnt",
+                    "Sie": "haben gesonnt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gesonnt",
+                    "du": "hattest gesonnt",
+                    "er": "hatte gesonnt",
+                    "es": "hatte gesonnt",
+                    "sie_singular": "hatte gesonnt",
+                    "xier": "hatte gesonnt",
+                    "wir": "hatten gesonnt",
+                    "ihr": "hattet gesonnt",
+                    "sie_plural": "hatten gesonnt",
+                    "Sie": "hatten gesonnt"
+                },
+                "Futur_I": {
+                    "ich": "werde sonnen",
+                    "du": "wirst sonnen",
+                    "er": "wird sonnen",
+                    "es": "wird sonnen",
+                    "sie_singular": "wird sonnen",
+                    "xier": "wird sonnen",
+                    "wir": "werden sonnen",
+                    "ihr": "werdet sonnen",
+                    "sie_plural": "werden sonnen",
+                    "Sie": "werden sonnen"
+                },
+                "imperative": {
+                    "du": "sonn",
+                    "ihr": "sonnt",
+                    "Sie": "sonnen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was ist „Yolocaust“?",
+            "Überlegen Sie, ohne Hilfsmittel, was das Wort „Yolocaust“ bedeuten könnte.",
+            "Suchen Sie online nach Bildern.",
+            "Dann lesen Sie den Text und tragen Sie Informationen in die Tabelle ein.",
+            "Der deutsch-israelische Künstler, Schriftsteller und Satiriker Shahak Shapira begann 2017 das Projekt „Yolocaust“.",
+            "Shapira wollte zeigen, dass die Selfies respektlos sind:",
+            "Das Mahnmal erinnert an den Holocaust und die von den Nazis ermordeten Jüd*innen.",
+            "Das Projekt dauerte nur eine Woche.",
+            "In dieser Zeit hatten sich alle zwölf Personen bei Shapira gemeldet und sich für die Bilder entschuldigt.",
+            "Sie wollten sich „entdouchen“ lassen.",
+            "Die Webseite besuchten 2,5 Millionen Menschen, ein Video über das Projekt sehen 65 Millionen Menschen auf Facebook.",
+            "Wer darf das?",
+            "Eine zentrale Frage für das „Yolocaust“ Projekt ist: „Darf man das?“",
+            "Kombinieren Sie die Personen, Aktivitäten und das Verb „dürfen“ und sammeln Sie verschiedene Perspektiven in der Form von Fragen.",
+            "Dürfen Kinder auf dem Mahnmal spielen?",
+            "Undouche me!",
+            "Im „Yolocaust“ Projekt konnten eine E-Mail an Shahak Shapira schreiben, um ihre Fotos zu löschen.",
+            "Er nennt das „undouche me“.",
+            "Besuchen Sie die Webseite und lesen Sie eine der E-Mails, die der Künstler erhalten hat.",
+            "Beantworten oder diskutieren Sie folgende Fragen:",
+            "Was hat die Person (nicht) gelernt?",
+            "Tut es der Person (wirklich) leid?",
+            "Wie wichtig (oder unwichtig) ist der Person die Intention/Absicht?",
+            "Was bedauert die Person?",
+            "War das „Yolocaust“ Projekt erfolgreich?",
+            "Notieren Sie unten Ihre Gedanken zum Projekt."
+        ],
+        "templated": []
+    }
+}

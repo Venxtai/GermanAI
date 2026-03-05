@@ -1,0 +1,675 @@
+{
+    "unit": "O14",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 14,
+        "prerequisite": "core 1-104, O1-O13"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal"
+        ],
+        "new_rules_in_this_unit": [
+            "Form irreal conditional sentences with wenn + Konjunktiv II in both clauses: present irreal 'Wenn ich Zeit hätte, würde ich gehen'; past irreal 'Wenn ich Zeit gehabt hätte, wäre ich gegangen.' Use direct Konjunktiv II forms for sein (wäre), haben (hätte), and modals; use würde + infinitive for all other verbs."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Vor- und Nachteile von Angst besprechen",
+            "irreale Bedingungen formulieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Angst und Phobien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "umgehen", "pos": "VERB", "translation": "to deal with", "frequency": 1224, "cefr": "B1" },
+            { "word": "erschrecken", "pos": "VERB", "translation": "to frighten", "frequency": 1902, "cefr": "B1" },
+            { "word": "tränen", "pos": "VERB", "translation": "to tear, water (of eyes)" },
+            { "word": "klopfen", "pos": "VERB", "translation": "to knock; beat; throb", "frequency": 2112, "cefr": "B1" },
+            { "word": "zittern", "pos": "VERB", "translation": "to shiver, shake", "frequency": 2458 },
+            { "word": "wehtun", "pos": "VERB", "translation": "to hurt, ache", "frequency": 27272, "cefr": "A2" },
+            { "word": "schwitzen", "pos": "VERB", "translation": "to sweat", "frequency": 19005, "cefr": "B1" },
+            { "word": "wegrennen", "pos": "VERB", "translation": "to take to one's heels" },
+            { "word": "die Polizei", "pos": "NOUN", "translation": "police", "frequency": 550, "cefr": "A1" },
+            { "word": "der*die Einbrecher*in", "pos": "NOUN", "translation": "burglar, intruder", "frequency": 7602, "cefr": "B1" },
+            { "word": "der Kontakt", "pos": "NOUN", "translation": "contact", "frequency": 930, "cefr": "A2" },
+            { "word": "die Strategie", "pos": "NOUN", "translation": "strategy", "frequency": 1477, "cefr": "A1" },
+            { "word": "das Gefühl", "pos": "NOUN", "translation": "feeling, emotion; sense", "frequency": 1, "cefr": "A1" },
+            { "word": "das Knie", "pos": "NOUN", "translation": "knee", "frequency": 1679, "cefr": "B1" },
+            { "word": "der Atem", "pos": "NOUN", "translation": "breath; breathing", "frequency": 2670, "cefr": "B1" },
+            { "word": "die Dunkelheit", "pos": "ADJ", "translation": "dark(ness)", "frequency": 3138, "cefr": "A1" },
+            { "word": "die Spinne", "pos": "NOUN", "translation": "spider", "frequency": 13418, "cefr": "A1" },
+            { "word": "die Ausrede", "pos": "NOUN", "translation": "excuse", "frequency": 13031, "cefr": "A1" },
+            { "word": "sozial", "pos": "ADJ", "translation": "social", "frequency": 430, "cefr": "B1" },
+            { "word": "plötzlich", "pos": "ADJ", "translation": "suddenly, all of a sudden" },
+            { "word": "dringend", "pos": "ADJ", "translation": "urgent(ly)", "frequency": 1766, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Lebenskosten", "pos": "NOUN" },
+            { "word": "der Clown", "pos": "NOUN", "frequency": 9671 },
+            { "word": "weh", "pos": "ADV", "frequency": 2798 },
+            { "word": "der Konjunktiv", "pos": "NOUN", "frequency": 25116 },
+            { "word": "das Szenario", "pos": "NOUN", "frequency": 9796 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "umgehen": {
+                "present": {
+                    "ich": "umgehe",
+                    "du": "umgehest",
+                    "er": "umgehet",
+                    "es": "umgehet",
+                    "sie_singular": "umgehet",
+                    "xier": "umgehet",
+                    "wir": "umgehen",
+                    "ihr": "umgeht",
+                    "sie_plural": "umgehen",
+                    "Sie": "umgehen"
+                },
+                "Perfekt": {
+                    "ich": "habe umgangen",
+                    "du": "hast umgangen",
+                    "er": "hat umgangen",
+                    "es": "hat umgangen",
+                    "sie_singular": "hat umgangen",
+                    "xier": "hat umgangen",
+                    "wir": "haben umgangen",
+                    "ihr": "habt umgangen",
+                    "sie_plural": "haben umgangen",
+                    "Sie": "haben umgangen"
+                },
+                "Futur_I": {
+                    "ich": "werde umgehen",
+                    "du": "wirst umgehen",
+                    "er": "wird umgehen",
+                    "es": "wird umgehen",
+                    "sie_singular": "wird umgehen",
+                    "xier": "wird umgehen",
+                    "wir": "werden umgehen",
+                    "ihr": "werdet umgehen",
+                    "sie_plural": "werden umgehen",
+                    "Sie": "werden umgehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde umgehen",
+                    "du": "würdest umgehen",
+                    "er": "würde umgehen",
+                    "es": "würde umgehen",
+                    "sie_singular": "würde umgehen",
+                    "xier": "würde umgehen",
+                    "wir": "würden umgehen",
+                    "ihr": "würdet umgehen",
+                    "sie_plural": "würden umgehen",
+                    "Sie": "würden umgehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte umgangen",
+                    "du": "hättest umgangen",
+                    "er": "hätte umgangen",
+                    "es": "hätte umgangen",
+                    "sie_singular": "hätte umgangen",
+                    "xier": "hätte umgangen",
+                    "wir": "hätten umgangen",
+                    "ihr": "hättet umgangen",
+                    "sie_plural": "hätten umgangen",
+                    "Sie": "hätten umgangen"
+                },
+                "imperative": {
+                    "du": "umgehe",
+                    "ihr": "umgehet",
+                    "Sie": "umgehen Sie"
+                }
+            },
+            "erschrecken": {
+                "present": {
+                    "ich": "erschrecke",
+                    "du": "erschreckst",
+                    "er": "erschreckt",
+                    "es": "erschreckt",
+                    "sie_singular": "erschreckt",
+                    "xier": "erschreckt",
+                    "wir": "erschrecken",
+                    "ihr": "erschreckt",
+                    "sie_plural": "erschrecken",
+                    "Sie": "erschrecken"
+                },
+                "Perfekt": {
+                    "ich": "habe erschreckt",
+                    "du": "hast erschreckt",
+                    "er": "hat erschreckt",
+                    "es": "hat erschreckt",
+                    "sie_singular": "hat erschreckt",
+                    "xier": "hat erschreckt",
+                    "wir": "haben erschreckt",
+                    "ihr": "habt erschreckt",
+                    "sie_plural": "haben erschreckt",
+                    "Sie": "haben erschreckt"
+                },
+                "Futur_I": {
+                    "ich": "werde erschrecken",
+                    "du": "wirst erschrecken",
+                    "er": "wird erschrecken",
+                    "es": "wird erschrecken",
+                    "sie_singular": "wird erschrecken",
+                    "xier": "wird erschrecken",
+                    "wir": "werden erschrecken",
+                    "ihr": "werdet erschrecken",
+                    "sie_plural": "werden erschrecken",
+                    "Sie": "werden erschrecken"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erschrecken",
+                    "du": "würdest erschrecken",
+                    "er": "würde erschrecken",
+                    "es": "würde erschrecken",
+                    "sie_singular": "würde erschrecken",
+                    "xier": "würde erschrecken",
+                    "wir": "würden erschrecken",
+                    "ihr": "würdet erschrecken",
+                    "sie_plural": "würden erschrecken",
+                    "Sie": "würden erschrecken"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erschreckt",
+                    "du": "hättest erschreckt",
+                    "er": "hätte erschreckt",
+                    "es": "hätte erschreckt",
+                    "sie_singular": "hätte erschreckt",
+                    "xier": "hätte erschreckt",
+                    "wir": "hätten erschreckt",
+                    "ihr": "hättet erschreckt",
+                    "sie_plural": "hätten erschreckt",
+                    "Sie": "hätten erschreckt"
+                },
+                "imperative": {
+                    "du": "erschrecke",
+                    "ihr": "erschreckt",
+                    "Sie": "erschrecken Sie"
+                }
+            },
+            "tränen": {
+                "Perfekt": {
+                    "ich": "habe getränt",
+                    "du": "hast getränt",
+                    "er": "hat getränt",
+                    "es": "hat getränt",
+                    "sie_singular": "hat getränt",
+                    "xier": "hat getränt",
+                    "wir": "haben getränt",
+                    "ihr": "habt getränt",
+                    "sie_plural": "haben getränt",
+                    "Sie": "haben getränt"
+                },
+                "Futur_I": {
+                    "ich": "werde tränen",
+                    "du": "wirst tränen",
+                    "er": "wird tränen",
+                    "es": "wird tränen",
+                    "sie_singular": "wird tränen",
+                    "xier": "wird tränen",
+                    "wir": "werden tränen",
+                    "ihr": "werdet tränen",
+                    "sie_plural": "werden tränen",
+                    "Sie": "werden tränen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde tränen",
+                    "du": "würdest tränen",
+                    "er": "würde tränen",
+                    "es": "würde tränen",
+                    "sie_singular": "würde tränen",
+                    "xier": "würde tränen",
+                    "wir": "würden tränen",
+                    "ihr": "würdet tränen",
+                    "sie_plural": "würden tränen",
+                    "Sie": "würden tränen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte getränt",
+                    "du": "hättest getränt",
+                    "er": "hätte getränt",
+                    "es": "hätte getränt",
+                    "sie_singular": "hätte getränt",
+                    "xier": "hätte getränt",
+                    "wir": "hätten getränt",
+                    "ihr": "hättet getränt",
+                    "sie_plural": "hätten getränt",
+                    "Sie": "hätten getränt"
+                }
+            },
+            "klopfen": {
+                "present": {
+                    "ich": "klopfe",
+                    "du": "klopfst",
+                    "er": "klopft",
+                    "es": "klopft",
+                    "sie_singular": "klopft",
+                    "xier": "klopft",
+                    "wir": "klopfen",
+                    "ihr": "klopft",
+                    "sie_plural": "klopfen",
+                    "Sie": "klopfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geklopft",
+                    "du": "hast geklopft",
+                    "er": "hat geklopft",
+                    "es": "hat geklopft",
+                    "sie_singular": "hat geklopft",
+                    "xier": "hat geklopft",
+                    "wir": "haben geklopft",
+                    "ihr": "habt geklopft",
+                    "sie_plural": "haben geklopft",
+                    "Sie": "haben geklopft"
+                },
+                "Futur_I": {
+                    "ich": "werde klopfen",
+                    "du": "wirst klopfen",
+                    "er": "wird klopfen",
+                    "es": "wird klopfen",
+                    "sie_singular": "wird klopfen",
+                    "xier": "wird klopfen",
+                    "wir": "werden klopfen",
+                    "ihr": "werdet klopfen",
+                    "sie_plural": "werden klopfen",
+                    "Sie": "werden klopfen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde klopfen",
+                    "du": "würdest klopfen",
+                    "er": "würde klopfen",
+                    "es": "würde klopfen",
+                    "sie_singular": "würde klopfen",
+                    "xier": "würde klopfen",
+                    "wir": "würden klopfen",
+                    "ihr": "würdet klopfen",
+                    "sie_plural": "würden klopfen",
+                    "Sie": "würden klopfen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geklopft",
+                    "du": "hättest geklopft",
+                    "er": "hätte geklopft",
+                    "es": "hätte geklopft",
+                    "sie_singular": "hätte geklopft",
+                    "xier": "hätte geklopft",
+                    "wir": "hätten geklopft",
+                    "ihr": "hättet geklopft",
+                    "sie_plural": "hätten geklopft",
+                    "Sie": "hätten geklopft"
+                },
+                "imperative": {
+                    "du": "klopf",
+                    "ihr": "klopft",
+                    "Sie": "klopfen Sie"
+                }
+            },
+            "zittern": {
+                "present": {
+                    "ich": "zittere",
+                    "du": "zitterst",
+                    "er": "zittert",
+                    "es": "zittert",
+                    "sie_singular": "zittert",
+                    "xier": "zittert",
+                    "wir": "zittern",
+                    "ihr": "zittert",
+                    "sie_plural": "zittern",
+                    "Sie": "zittern"
+                },
+                "Perfekt": {
+                    "ich": "habe gezittert",
+                    "du": "hast gezittert",
+                    "er": "hat gezittert",
+                    "es": "hat gezittert",
+                    "sie_singular": "hat gezittert",
+                    "xier": "hat gezittert",
+                    "wir": "haben gezittert",
+                    "ihr": "habt gezittert",
+                    "sie_plural": "haben gezittert",
+                    "Sie": "haben gezittert"
+                },
+                "Futur_I": {
+                    "ich": "werde zittern",
+                    "du": "wirst zittern",
+                    "er": "wird zittern",
+                    "es": "wird zittern",
+                    "sie_singular": "wird zittern",
+                    "xier": "wird zittern",
+                    "wir": "werden zittern",
+                    "ihr": "werdet zittern",
+                    "sie_plural": "werden zittern",
+                    "Sie": "werden zittern"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde zittern",
+                    "du": "würdest zittern",
+                    "er": "würde zittern",
+                    "es": "würde zittern",
+                    "sie_singular": "würde zittern",
+                    "xier": "würde zittern",
+                    "wir": "würden zittern",
+                    "ihr": "würdet zittern",
+                    "sie_plural": "würden zittern",
+                    "Sie": "würden zittern"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gezittert",
+                    "du": "hättest gezittert",
+                    "er": "hätte gezittert",
+                    "es": "hätte gezittert",
+                    "sie_singular": "hätte gezittert",
+                    "xier": "hätte gezittert",
+                    "wir": "hätten gezittert",
+                    "ihr": "hättet gezittert",
+                    "sie_plural": "hätten gezittert",
+                    "Sie": "hätten gezittert"
+                },
+                "imperative": {
+                    "du": "zittere",
+                    "ihr": "zittert",
+                    "Sie": "zittern Sie"
+                }
+            },
+            "wehtun": {
+                "present": {
+                    "ich": "tu weh",
+                    "du": "tust weh",
+                    "er": "tut weh",
+                    "es": "tut weh",
+                    "sie_singular": "tut weh",
+                    "xier": "tut weh",
+                    "wir": "tun weh",
+                    "ihr": "tut weh",
+                    "sie_plural": "tun weh",
+                    "Sie": "tun weh"
+                },
+                "Perfekt": {
+                    "ich": "habe wehgetan",
+                    "du": "hast wehgetan",
+                    "er": "hat wehgetan",
+                    "es": "hat wehgetan",
+                    "sie_singular": "hat wehgetan",
+                    "xier": "hat wehgetan",
+                    "wir": "haben wehgetan",
+                    "ihr": "habt wehgetan",
+                    "sie_plural": "haben wehgetan",
+                    "Sie": "haben wehgetan"
+                },
+                "Futur_I": {
+                    "ich": "werde wehtun",
+                    "du": "wirst wehtun",
+                    "er": "wird wehtun",
+                    "es": "wird wehtun",
+                    "sie_singular": "wird wehtun",
+                    "xier": "wird wehtun",
+                    "wir": "werden wehtun",
+                    "ihr": "werdet wehtun",
+                    "sie_plural": "werden wehtun",
+                    "Sie": "werden wehtun"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde wehtun",
+                    "du": "würdest wehtun",
+                    "er": "würde wehtun",
+                    "es": "würde wehtun",
+                    "sie_singular": "würde wehtun",
+                    "xier": "würde wehtun",
+                    "wir": "würden wehtun",
+                    "ihr": "würdet wehtun",
+                    "sie_plural": "würden wehtun",
+                    "Sie": "würden wehtun"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte wehgetan",
+                    "du": "hättest wehgetan",
+                    "er": "hätte wehgetan",
+                    "es": "hätte wehgetan",
+                    "sie_singular": "hätte wehgetan",
+                    "xier": "hätte wehgetan",
+                    "wir": "hätten wehgetan",
+                    "ihr": "hättet wehgetan",
+                    "sie_plural": "hätten wehgetan",
+                    "Sie": "hätten wehgetan"
+                },
+                "imperative": {
+                    "du": "tu weh",
+                    "ihr": "tut weh",
+                    "Sie": "tun Sie weh"
+                }
+            },
+            "schwitzen": {
+                "present": {
+                    "ich": "schwitze",
+                    "du": "schwitzt",
+                    "er": "schwitzt",
+                    "es": "schwitzt",
+                    "sie_singular": "schwitzt",
+                    "xier": "schwitzt",
+                    "wir": "schwitzen",
+                    "ihr": "schwitzt",
+                    "sie_plural": "schwitzen",
+                    "Sie": "schwitzen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschwitzt",
+                    "du": "hast geschwitzt",
+                    "er": "hat geschwitzt",
+                    "es": "hat geschwitzt",
+                    "sie_singular": "hat geschwitzt",
+                    "xier": "hat geschwitzt",
+                    "wir": "haben geschwitzt",
+                    "ihr": "habt geschwitzt",
+                    "sie_plural": "haben geschwitzt",
+                    "Sie": "haben geschwitzt"
+                },
+                "Futur_I": {
+                    "ich": "werde schwitzen",
+                    "du": "wirst schwitzen",
+                    "er": "wird schwitzen",
+                    "es": "wird schwitzen",
+                    "sie_singular": "wird schwitzen",
+                    "xier": "wird schwitzen",
+                    "wir": "werden schwitzen",
+                    "ihr": "werdet schwitzen",
+                    "sie_plural": "werden schwitzen",
+                    "Sie": "werden schwitzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schwitzen",
+                    "du": "würdest schwitzen",
+                    "er": "würde schwitzen",
+                    "es": "würde schwitzen",
+                    "sie_singular": "würde schwitzen",
+                    "xier": "würde schwitzen",
+                    "wir": "würden schwitzen",
+                    "ihr": "würdet schwitzen",
+                    "sie_plural": "würden schwitzen",
+                    "Sie": "würden schwitzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geschwitzt",
+                    "du": "hättest geschwitzt",
+                    "er": "hätte geschwitzt",
+                    "es": "hätte geschwitzt",
+                    "sie_singular": "hätte geschwitzt",
+                    "xier": "hätte geschwitzt",
+                    "wir": "hätten geschwitzt",
+                    "ihr": "hättet geschwitzt",
+                    "sie_plural": "hätten geschwitzt",
+                    "Sie": "hätten geschwitzt"
+                },
+                "imperative": {
+                    "du": "schwitz",
+                    "ihr": "schwitzt",
+                    "Sie": "schwitzen Sie"
+                }
+            },
+            "wegrennen": {
+                "Perfekt": {
+                    "ich": "bin weggerannt",
+                    "du": "bist weggerannt",
+                    "er": "ist weggerannt",
+                    "es": "ist weggerannt",
+                    "sie_singular": "ist weggerannt",
+                    "xier": "ist weggerannt",
+                    "wir": "sind weggerannt",
+                    "ihr": "seid weggerannt",
+                    "sie_plural": "sind weggerannt",
+                    "Sie": "sind weggerannt"
+                },
+                "Futur_I": {
+                    "ich": "werde wegrennen",
+                    "du": "wirst wegrennen",
+                    "er": "wird wegrennen",
+                    "es": "wird wegrennen",
+                    "sie_singular": "wird wegrennen",
+                    "xier": "wird wegrennen",
+                    "wir": "werden wegrennen",
+                    "ihr": "werdet wegrennen",
+                    "sie_plural": "werden wegrennen",
+                    "Sie": "werden wegrennen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde wegrennen",
+                    "du": "würdest wegrennen",
+                    "er": "würde wegrennen",
+                    "es": "würde wegrennen",
+                    "sie_singular": "würde wegrennen",
+                    "xier": "würde wegrennen",
+                    "wir": "würden wegrennen",
+                    "ihr": "würdet wegrennen",
+                    "sie_plural": "würden wegrennen",
+                    "Sie": "würden wegrennen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre weggerannt",
+                    "du": "wärst weggerannt",
+                    "er": "wäre weggerannt",
+                    "es": "wäre weggerannt",
+                    "sie_singular": "wäre weggerannt",
+                    "xier": "wäre weggerannt",
+                    "wir": "wären weggerannt",
+                    "ihr": "wärt weggerannt",
+                    "sie_plural": "wären weggerannt",
+                    "Sie": "wären weggerannt"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie fühlt sich Angst an?",
+            "Vor welchen Dingen oder Situationen haben Sie Angst?",
+            "Schreiben Sie erst individuell Dinge oder Situationen auf.",
+            "Dann finden Sie die Top 5 im Kurs.",
+            "Ordnen Sie die passenden Körperteile zu.",
+            "Für einige Körperteile gibt es mehrere Optionen.",
+            "Der Atem die Augen der Bauch die Knie",
+            "Die Hände das Herz klopfen stoppen",
+            "Der Atem stoppt die Augen tränen",
+            "Die Hände schwitzen das Herz klopft",
+            "Erzählen Sie einander, in welchen Situationen Sie diese Gefühle fühlen oder gefühlt haben.",
+            "Kombinieren Sie die Dinge und Situationen aus Teil 1 mit den Reaktionen aus Teil.",
+            "Meine Knie zittern, wenn ich Spinnen sehe.",
+            "Mein Herz klopft, wenn ich an den Tod denke.",
+            "Mein Herz klopft, wenn ich im Wasser schwimmen muss.",
+            "Wie kann man mit Situationen umgehen, in denen Menschen Angst haben?",
+            "Schreiben Sie mindestens drei Tipps und Strategien.",
+            "Benutzen Sie den Konjunktiv.",
+            "Wenn ich Angst vor einer Präsentation hätte, würde ich vorher in einer kleinen Gruppe üben.",
+            "Was würden Sie in den Szenarien machen?",
+            "Fragen Sie die andere Person.",
+            "Sie laufen zu zweit durch einen dunklen Wald.",
+            "Plötzlich sehen Sie etwas.",
+            "Eine Schlange?!?",
+            "Wegrennen, Hilfe rufen, laut schreien, die Schlange erschrecken.",
+            "Sie sind alleine zu Hause und hören auf einmal Schritte.",
+            "Ein Einbrecher?!?!",
+            "Mich verstecken, die Polizei rufen, das Licht anmachen, laute Musik spielen.",
+            "Wie würdest du in Szenario 1 reagieren?",
+            "Ich würde mich zuerst sehr erschrecken.",
+            "Und dann?",
+            "Sie sind mit Ihren Freund *innen im Freizeitpark, aber Sie möchten nicht mit den Achterbahnen und Geisterbahnen fahren.",
+            "Überlegen Sie sich drei kreative Ausreden.",
+            "Benutzen Sie den Konjunktiv II.",
+            "Ich würde ja mitfahren, wenn ich nicht so dringend auf die Toilette müsste.",
+            "Ich würde ja mitkommen, wenn meine Oma es mir nicht verboten hätte.",
+            "Sprechen Sie mit vielen Personen im Kurs und laden Sie sie zu einer Fahrt auf einer Achterbahn ein.",
+            "Wenn Sie gefragt werden, benutzen Sie natürlich eine von den drei Ausreden.",
+            "Wer hat die kreativste Ausrede in welcher Situation?"
+        ],
+        "templated": []
+    }
+}

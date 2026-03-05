@@ -1,0 +1,543 @@
+{
+    "unit": "21",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 21,
+        "prerequisite": "1-20"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Bilder beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Kunst und Wetter"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "besuchen",
+                "pos": "VERB",
+                "translation": "to visit",
+                "frequency": 820,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kunst",
+                "pos": "NOUN",
+                "translation": "art, the arts",
+                "frequency": 554,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Maler*in",
+                "pos": "NOUN",
+                "translation": "painter",
+                "frequency": 2731,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bild",
+                "pos": "NOUN",
+                "translation": "image; painting",
+                "frequency": 253,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gedicht",
+                "pos": "NOUN",
+                "translation": "poem",
+                "frequency": 1897,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Zeile",
+                "pos": "NOUN",
+                "translation": "line",
+                "frequency": 2318,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Landschaft",
+                "pos": "NOUN",
+                "translation": "landscape",
+                "frequency": 1669,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Dorf",
+                "pos": "NOUN",
+                "translation": "village",
+                "frequency": 959,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Haus",
+                "pos": "NOUN",
+                "translation": "house",
+                "frequency": 147,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Baum",
+                "pos": "NOUN",
+                "translation": "tree",
+                "frequency": 1013,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Birke, n",
+                "pos": "NOUN",
+                "translation": "birch (tree)",
+                "frequency": 15729
+            },
+            {
+                "word": "das Gras",
+                "pos": "NOUN",
+                "translation": "grass",
+                "frequency": 2779,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fluss",
+                "pos": "NOUN",
+                "translation": "river",
+                "frequency": 1687,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Himmel",
+                "pos": "NOUN",
+                "translation": "sky",
+                "frequency": 889,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kirche",
+                "pos": "NOUN",
+                "translation": "church",
+                "frequency": 892,
+                "cefr": "A2"
+            },
+            {
+                "word": "es gibt",
+                "pos": "PHRASE",
+                "translation": "there is/are"
+            },
+            {
+                "word": "es liegt in",
+                "pos": "PHRASE",
+                "translation": "it's located in"
+            },
+            {
+                "word": "hell",
+                "pos": "ADJ",
+                "translation": "bright; light",
+                "frequency": 1411,
+                "cefr": "A1"
+            },
+            {
+                "word": "dunkel",
+                "pos": "ADJ",
+                "translation": "dark",
+                "frequency": 706,
+                "cefr": "A2"
+            },
+            {
+                "word": "ruhig",
+                "pos": "ADJ",
+                "translation": "calm; quiet",
+                "frequency": 991,
+                "cefr": "A1"
+            },
+            {
+                "word": "traurig",
+                "pos": "ADJ",
+                "translation": "sad",
+                "frequency": 1752,
+                "cefr": "A2"
+            },
+            {
+                "word": "fröhlich",
+                "pos": "ADJ",
+                "translation": "cheerful; happy"
+            },
+            {
+                "word": "man",
+                "pos": "PRON",
+                "translation": "one, you (referring to people in general]",
+                "frequency": 32,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Kolonie",
+                "pos": "NOUN",
+                "frequency": 8055
+            },
+            {
+                "word": "liegen",
+                "pos": "VERB",
+                "frequency": 107,
+                "cefr": "A1"
+            },
+            {
+                "word": "nordöstlich",
+                "pos": "ADV",
+                "frequency": 8478,
+                "cefr": "B2"
+            },
+            {
+                "word": "fasziniert",
+                "pos": "ADV",
+                "frequency": 9036
+            },
+            {
+                "word": "zusammen",
+                "pos": "ADV",
+                "frequency": 533,
+                "cefr": "A1"
+            },
+            {
+                "word": "gründen",
+                "pos": "VERB",
+                "frequency": 1247,
+                "cefr": "B1"
+            },
+            {
+                "word": "vieler",
+                "pos": "DET"
+            },
+            {
+                "word": "inspirieren",
+                "pos": "VERB",
+                "frequency": 7722
+            },
+            {
+                "word": "das Moor",
+                "pos": "NOUN",
+                "frequency": 7464
+            },
+            {
+                "word": "malen",
+                "pos": "VERB",
+                "frequency": 1925,
+                "cefr": "A2"
+            },
+            {
+                "word": "geben",
+                "pos": "VERB",
+                "frequency": 49,
+                "cefr": "A1"
+            },
+            {
+                "word": "impressionistisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "expressionistisch",
+                "pos": "ADJ",
+                "frequency": 39875
+            },
+            {
+                "word": "noch",
+                "pos": "ADV",
+                "frequency": 33,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Museum",
+                "pos": "NOUN",
+                "frequency": 1078,
+                "cefr": "A2"
+            },
+            {
+                "word": "korrigieren",
+                "pos": "VERB",
+                "frequency": 3026,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Aussage",
+                "pos": "NOUN",
+                "frequency": 577,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Meile",
+                "pos": "NOUN",
+                "frequency": 9265
+            },
+            {
+                "word": "recherchieren",
+                "pos": "VERB",
+                "frequency": 8397
+            },
+            {
+                "word": "helfen",
+                "pos": "VERB",
+                "frequency": 338,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Atmosphäre",
+                "pos": "NOUN",
+                "frequency": 2423
+            },
+            {
+                "word": "das Modell",
+                "pos": "NOUN",
+                "frequency": 708,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Laterne",
+                "pos": "NOUN",
+                "frequency": 10795
+            },
+            {
+                "word": "die Windmühle",
+                "pos": "NOUN",
+                "frequency": 17525,
+                "cefr": "B2"
+            },
+            {
+                "word": "bei",
+                "pos": "ADP",
+                "frequency": 29,
+                "cefr": "A1"
+            },
+            {
+                "word": "sterben",
+                "pos": "VERB",
+                "frequency": 475,
+                "cefr": "A2"
+            },
+            {
+                "word": "werden",
+                "pos": "AUX",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "rotes",
+                "pos": "ADJ"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "besuchen": {
+                "present": {
+                    "ich": "besuche",
+                    "du": "besuchst",
+                    "er": "besucht",
+                    "es": "besucht",
+                    "sie_singular": "besucht",
+                    "xier": "besucht",
+                    "wir": "besuchen",
+                    "ihr": "besucht",
+                    "sie_plural": "besuchen",
+                    "Sie": "besuchen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie den Text über die Künsterkolonie Worpswede.",
+            "Das Dorf Worpswede liegt im Norden von Deutschland, in Niedersachsen.",
+            "Es liegt 18 km nordöstlich von Bremen im Teufelsmoor.¹",
+            "1884 besucht Fritz Mackensen Worpswede und ist fasziniert.",
+            "Zusammen mit anderen Künstler*innen gründet er eine Künsterkolonie.",
+            "Viele Künstler*innen wohnen und arbeiten in Worpswede.",
+            "Es gibt impressionistische und expressionistische Künstler*innen in Worpswede.",
+            "Auch heute wohnen noch Künstler*innen im Dorf.",
+            "Man kann das Dorf besuchen und die Kunst in vier Museen sehen.",
+            "Was ist richtig?",
+            "Was ist falsch?",
+            "Korrigieren Sie die falschen Aussagen.",
+            "Worpswede ist eine große Stadt.",
+            "Nein, es ist ein Dorf.",
+            "Worpswede liegt in Norddeutschland.",
+            "Künstler*innen wohnen in Worpswede.",
+            "Worpswede liegt 14 Meilen von Bremen.",
+            "Nein, es liegt 14 Meilen von Bremen.",
+            "Wie heißt das Bild?",
+            "Wie heißt der*die Künstler*in?",
+            "Was sehen Sie?",
+            "Wie ist das Wetter?",
+            "Ist es Frühling, Sommer, Herbst oder Winter?",
+            "Welche Farben sehen Sie?",
+            "Ist das Bild hell oder dunkel?",
+            "Ist die Atmosphäre fröhlich, ruhig oder traurig?",
+            "Der Künstler heißt Hans am Ende.",
+            "Das Bild heißt \"Winter in Worpswede\".",
+            "Das Bild ist impressionistisch.",
+            "Ich sehe ein Haus, Bäume, eine Sonne, einen Himmel und Schnee.",
+            "Es ist Winter.",
+            "Es ist teils bewölkt.",
+            "Ich sehe weiß, braun, rot und grün.",
+            "Das Bild ist nicht hell und nicht dunkel.",
+            "Die Atmosphäre ist ruhig.",
+            "Das Bild heißt \"Worpsweder Kirche mit Weyerberg\".",
+            "Ich sehe ein Haus, Wolken, Bäume und Gras.",
+            "Es ist Herbst.",
+            "Es ist bewölkt.",
+            "Das Bild ist dunkel.",
+            "Die Atmosphäre ist traurig.",
+            "Der Künstler heißt Otto Modersohn.",
+            "Das Bild heißt \"Sommerlicher Moorgraben\".",
+            "Ich sehe Bäume, einen Fluss, und einen Himmel.",
+            "Es ist Sommer.",
+            "Es ist sonnig und teils bewölkt.",
+            "Das Bild ist hell.",
+            "Die Atmosphäre ist fröhlich.",
+            "Der Künstler heißt Fritz Overbeck.",
+            "Das Bild heißt \"Im Moor\" \".",
+            "Ich sehe Bäume und einen Himmel.",
+            "Die Atmosphäre ist ruhig und fröhlich.",
+            "Die Künstlerin heißt Paula Modersohn-Becker.",
+            "Das Bild heißt \"Graue Landschaft mit Moorkanal\" \".",
+            "Ich sehe Bäume und einen Fluss.",
+            "Die Atmosphäre ist traurig und ruhig.",
+            "Die Künstlerin heißt Lisel Oppel.",
+            "Das Bild heißt \"Kinder mit Laternen\" \".",
+            "Ich sehe Kinder, einen Fluss, einen Himmel und Laternen.",
+            "Der Künstler heißt Carl Vinnen.",
+            "Das Bild heißt \"Landschaft mit Windmühle\" \".",
+            "Ich sehe eine Windmühle.",
+            "Es ist bewölkt und windig.",
+            "Lesen Sie den Text über Paula Modersohn-Becker.",
+            "Paula Becker kommt aus Dresden.",
+            "Ihre Familie wohnt später in Bremen.",
+            "Pa ula Becker kommt zu einem Kunstkurs bei Fritz Mackensen nach Worpswede.",
+            "Sie reist auch nach Paris und lernt mehr über Kunst.",
+            "Sie ist eine expressionistische Künstlerin.",
+            "1901 heiratet (verheiratet) sie Otto Modersohn in Worpswede.",
+            "1907 bekommt sie eine Tochter, Mathilde.",
+            "Paula Modersohn - Becker stirbt kurz nach der Geburt.",
+            "Sie wird 31 Jahre alt.",
+            "Das Haus rotes Haus das rote Haus die Birke der Baum die Bäume die Landschaft der Himmel die Wolken das Gras",
+            "Ein Gedicht schreiben Schreiben Sie ein Gedicht über \"Rotes Haus mit Birke\".",
+            "Schreiben Sie ein Gedicht zu Ihrem Bild aus Aktivität 60."
+        ],
+        "templated": [
+            {
+                "template": "Es ist {SEASON}.",
+                "source_literals": [
+                    "Es ist Herbst.",
+                    "Es ist Winter."
+                ],
+                "description": "State the season"
+            },
+            {
+                "template": "Es ist {WEATHER_CONDITION}.",
+                "source_literals": [
+                    "Es ist bewölkt.",
+                    "Es ist teils bewölkt."
+                ],
+                "description": "Weather condition statement"
+            }
+        ]
+    },
+    "placeholder_registry": {
+        "SEASON": {
+            "type": "closed",
+            "description": "Season names",
+            "usage_note": "bare nominative",
+            "options": [
+                "Frühling",
+                "Herbst",
+                "Sommer",
+                "Winter"
+            ]
+        },
+        "WEATHER_CONDITION": {
+            "type": "closed",
+            "description": "Weather condition adjectives",
+            "usage_note": "predicate adjective after \"Es ist\"",
+            "options": [
+                "bewölkt",
+                "neblig",
+                "sonnig",
+                "windig"
+            ]
+        }
+    }
+}

@@ -1,0 +1,293 @@
+{
+    "unit": "79",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 79,
+        "prerequisite": "1-78"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine internationale Spielzeugmesse organisieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design, create",
+                "frequency": 1613
+            },
+            {
+                "word": "verlinken",
+                "pos": "VERB",
+                "translation": "to link",
+                "frequency": 7625
+            },
+            {
+                "word": "stattfinden",
+                "pos": "VERB",
+                "translation": "to take place, happen, occur",
+                "frequency": 652,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Messe, -n",
+                "pos": "ADJ",
+                "translation": "exhibition; exposition; fair"
+            },
+            {
+                "word": "der*die Aussteller*in",
+                "pos": "NOUN",
+                "translation": "exhibitor",
+                "frequency": 7258
+            },
+            {
+                "word": "das Exponat",
+                "pos": "NOUN",
+                "translation": "exhibit",
+                "frequency": 8372,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Spielzeugmesse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Messe",
+                "pos": "NOUN",
+                "frequency": 3450,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Buchmesse",
+                "pos": "NOUN",
+                "frequency": 11618
+            },
+            {
+                "word": "die Automesse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Nürnberg",
+                "pos": "PROPN",
+                "frequency": 5923
+            },
+            {
+                "word": "speziell",
+                "pos": "ADJ",
+                "frequency": 815,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Epoche",
+                "pos": "NOUN",
+                "frequency": 4296
+            },
+            {
+                "word": "-Messe",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Postermesse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "ordnen",
+                "pos": "VERB",
+                "frequency": 2055,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestaltet",
+                    "du": "hast gestaltet",
+                    "er": "hat gestaltet",
+                    "es": "hat gestaltet",
+                    "sie_singular": "hat gestaltet",
+                    "xier": "hat gestaltet",
+                    "wir": "haben gestaltet",
+                    "ihr": "habt gestaltet",
+                    "sie_plural": "haben gestaltet",
+                    "Sie": "haben gestaltet"
+                }
+            },
+            "verlinken": {
+                "present": {
+                    "ich": "verlinke",
+                    "du": "verlinkst",
+                    "er": "verlinkt",
+                    "es": "verlinkt",
+                    "sie_singular": "verlinkt",
+                    "xier": "verlinkt",
+                    "wir": "verlinken",
+                    "ihr": "verlinkt",
+                    "sie_plural": "verlinken",
+                    "Sie": "verlinken"
+                },
+                "Perfekt": {
+                    "ich": "habe verlinkt",
+                    "du": "hast verlinkt",
+                    "er": "hat verlinkt",
+                    "es": "hat verlinkt",
+                    "sie_singular": "hat verlinkt",
+                    "xier": "hat verlinkt",
+                    "wir": "haben verlinkt",
+                    "ihr": "habt verlinkt",
+                    "sie_plural": "haben verlinkt",
+                    "Sie": "haben verlinkt"
+                }
+            },
+            "stattfinden": {
+                "present": {
+                    "ich": "finde statt",
+                    "du": "findest statt",
+                    "er": "findet statt",
+                    "es": "findet statt",
+                    "sie_singular": "findet statt",
+                    "xier": "findet statt",
+                    "wir": "finden statt",
+                    "ihr": "findet statt",
+                    "sie_plural": "finden statt",
+                    "Sie": "finden statt"
+                },
+                "Perfekt": {
+                    "ich": "habe stattgefunden",
+                    "du": "hast stattgefunden",
+                    "er": "hat stattgefunden",
+                    "es": "hat stattgefunden",
+                    "sie_singular": "hat stattgefunden",
+                    "xier": "hat stattgefunden",
+                    "wir": "haben stattgefunden",
+                    "ihr": "habt stattgefunden",
+                    "sie_plural": "haben stattgefunden",
+                    "Sie": "haben stattgefunden"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In Deutschland gibt es viele Messen, z.B.",
+            "Buchmessen, eine Automesse und natürlich auch eine Spielzeugmesse.",
+            "Sie findet jedes Jahr in Nürnberg statt.",
+            "Mit Spielzeug aus verschiedenen Ländern und aus verschiedenen Epochen.",
+            "Überlegen Sie, wie Sie Ihre Spielzeugmesse präsentieren möchten.",
+            "Ist es eine Instagram -Messe?",
+            "Oder vielleicht eine Postermesse?",
+            "Oder wollen Sie lieber Google-Maps nehmen und Ihre Bilder und Texte in den Ländern verlinken?",
+            "Machen Sie Notizen.",
+            "Sprechen Sie jetzt im Kurs über die Fragen und machen Sie Notizen.",
+            "Welche Gruppe recherchiert Spielzeug aus welchen Ländern?",
+            "Oder möchten Sie die Messe lieber nach Themen ordnen?",
+            "Und welche Jahrzehnte finden Sie interessant?",
+            "Oder etwas anderes?",
+            "Wählen Sie drei oder vier Spielzeuge als Exponate aus.",
+            "Drucken Sie Bilder von den Spielzeugen, wenn Sie die Objekte nicht haben.",
+            "Schreiben Sie auch einen kurzen Text im Perfekt über jedes Spielzeug.",
+            "Gibt es eine Geschichte?",
+            "Wie spielt man mit dem Spielzeug?",
+            "Wer spielt mit dem Spielzeug?",
+            "Wie teuer ist das Spielzeug?",
+            "Wer macht das Spielzeug wo?",
+            "Gibt es das Spielzeug heute noch?",
+            "Besuchen Sie die Spielzeugmesse und sprechen Sie mit den Aussteller*innen.",
+            "Viel Spaß!"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,639 @@
+{
+  "unit": "10",
+  "is_optional": false,
+  "sequence_info": {
+    "track": "core",
+    "position": 10,
+    "prerequisite": "1-9"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [
+      "Use possessive articles in the nominative: mein, dein, sein, ihr, xies, unser, euer, Ihr, with no ending for r-words and s-words, and -e ending for e-words."
+    ],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:accusative",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "über wichtige Personen im eigenen Umfeld sprechen",
+      "Besitzverhältnisse ausdrücken"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "das eigene Umfeld"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "die Frau",
+        "pos": "NOUN",
+        "translation": "woman; wife",
+        "frequency": 99,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Mann",
+        "pos": "NOUN",
+        "translation": "man; husband",
+        "frequency": 121,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Kind",
+        "pos": "NOUN",
+        "translation": "child",
+        "frequency": 133,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Bruder",
+        "pos": "NOUN",
+        "translation": "brother",
+        "frequency": 730,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Schwester",
+        "pos": "NOUN",
+        "translation": "sister",
+        "frequency": 974,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Geschwister",
+        "pos": "NOUN",
+        "translation": "siblings",
+        "frequency": 3929,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Halbgeschwister",
+        "pos": "NOUN",
+        "translation": "half siblings",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Mutter",
+        "pos": "NOUN",
+        "translation": "mother",
+        "frequency": 218,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Vater",
+        "pos": "NOUN",
+        "translation": "father",
+        "frequency": 232,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Eltern",
+        "pos": "NOUN",
+        "translation": "parents",
+        "frequency": 404,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Stiefeltern",
+        "pos": "NOUN",
+        "translation": "stepparents",
+        "frequency": 1,
+        "cefr": "A1"
+      },
+      {
+        "word": "der*die Freund*in",
+        "pos": "NOUN",
+        "translation": "friend",
+        "frequency": 273,
+        "cefr": "A1"
+      },
+      {
+        "word": "der*die Mitbewohner*in",
+        "pos": "NOUN",
+        "translation": "roommate",
+        "frequency": 23417
+      },
+      {
+        "word": "der Hund",
+        "pos": "NOUN",
+        "translation": "dog",
+        "frequency": 825,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Katze",
+        "pos": "NOUN",
+        "translation": "cat",
+        "frequency": 2235,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Neffe",
+        "pos": "NOUN",
+        "translation": "nephew",
+        "frequency": 9750,
+        "cefr": "B1"
+      },
+      {
+        "word": "die Nichte",
+        "pos": "NOUN",
+        "translation": "niece",
+        "frequency": 14463,
+        "cefr": "B1"
+      },
+      {
+        "word": "der Schwager",
+        "pos": "NOUN",
+        "translation": "brother-in-law",
+        "frequency": 12528,
+        "cefr": "B2"
+      },
+      {
+        "word": "die Tochter",
+        "pos": "NOUN",
+        "translation": "daughter",
+        "frequency": 694,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Leben",
+        "pos": "NOUN",
+        "translation": "life",
+        "frequency": 98,
+        "cefr": "A1"
+      },
+      {
+        "word": "mein",
+        "pos": "PRON",
+        "translation": "my",
+        "frequency": 51,
+        "cefr": "A1"
+      },
+      {
+        "word": "dein",
+        "pos": "PRON",
+        "translation": "your (informal)",
+        "frequency": 233,
+        "cefr": "A1"
+      },
+      {
+        "word": "Ihr",
+        "pos": "PRON",
+        "translation": "your (formal)",
+        "frequency": 27,
+        "cefr": "A1"
+      },
+      {
+        "word": "sein",
+        "pos": "PRON",
+        "translation": "his",
+        "frequency": 4,
+        "cefr": "A1"
+      },
+      {
+        "word": "ihr",
+        "pos": "PRON",
+        "translation": "her",
+        "frequency": 27,
+        "cefr": "A1"
+      },
+      {
+        "word": "xies",
+        "pos": "PRON",
+        "translation": "their (gender-neutral)"
+      },
+      {
+        "word": "unser€",
+        "pos": "PRON",
+        "translation": "our"
+      },
+      {
+        "word": "euer/eure",
+        "pos": "PRON",
+        "translation": "your (plural)"
+      },
+      {
+        "word": "wichtig",
+        "pos": "ADJ",
+        "translation": "important",
+        "frequency": 144,
+        "cefr": "A1"
+      },
+      {
+        "word": "geschieden",
+        "pos": "ADJ",
+        "translation": "divorced",
+        "frequency": 15576,
+        "cefr": "A2"
+      },
+      {
+        "word": "verheiratet",
+        "pos": "ADJ",
+        "translation": "married",
+        "frequency": 3076,
+        "cefr": "A1"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "der Stiefvater",
+        "pos": "NOUN",
+        "frequency": 22835
+      },
+      {
+        "word": "die Halbschwester",
+        "pos": "NOUN",
+        "frequency": 38419
+      },
+      {
+        "word": "surfen",
+        "pos": "VERB",
+        "frequency": 12353,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Ski",
+        "pos": "NOUN",
+        "frequency": 6862,
+        "cefr": "A2"
+      },
+      {
+        "word": "scheiden",
+        "pos": "VERB",
+        "frequency": 3451
+      },
+      {
+        "word": "heiraten",
+        "pos": "VERB",
+        "frequency": 1953,
+        "cefr": "A1"
+      },
+      {
+        "word": "verheiraten",
+        "pos": "VERB",
+        "frequency": 5637
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {}
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Ergänzen Sie die Informationen.",
+      "Meine Freunde Peter ( 19 ), Ben ( 21 ) und Keith ( 19 ).",
+      "Mein Mitbewohner Sven ( 29 ) meine Mitbewohnerin Ute ( 20 ) Hallo!",
+      "Ich heiße Laura.",
+      "Ich bin 19 Jahre alt und komme aus Ohio.",
+      "Ich habe eine Katze und einen Hund.",
+      "Meine Katze heißt Kessi und mein Hund heißt Bello.",
+      "Mein Freund Marcus ist richtig cool.",
+      "Er ist Ingenieur und er arbeitet bei BMW.",
+      "Er surft gern und er fährt gern Ski.",
+      "Mein Bruder heißt Patrick.",
+      "Er ist Anwalt.",
+      "Meine Nichte Sara.",
+      "Sara ist adoptiert.",
+      "Sie ist 2 Jahre alt und sehr süß!",
+      "Mein Vater Richard und meine Mutter Beate sind nicht mehr zusammen.",
+      "Sie sind geschieden.",
+      "Meine Mutter kommt aus Deutschland und sie spricht Deutsch.",
+      "Mein Vater kommt aus Ohio.",
+      "Meine Mutter hat ein zweites Mal geheiratet.",
+      "Ihr neuer Mann heißt Thomas und er ist 62 Jahre alt.",
+      "Meine Halbschwester Anna.",
+      "Meine Freunde Ruth, Joyce und Ben sind 21 Jahre alt, Peter und Keith sind 19 Jahre alt und Kerstin ist 22 Jahre alt.",
+      "Meine beste Freundin heißt Sarah, wie meine Nichte, aber mit H am Ende: S-A-R-A-H.",
+      "Meine beste Freundin Sarah und ich studieren Deutsch.",
+      "Wir reisen gern, kochen gern und singen gern.",
+      "Mein Mitbewohner Sven ist 19 und kommt aus Köln.",
+      "Meine Mitbewohnerin Ute, das schreibt man U-T-E, ist 20 Jahre alt und kommt aus Oberhausen.",
+      "Wie alt?",
+      "Wie heißen die Personen?",
+      "Wie alt sind sie?",
+      "Wie heißt ihr ( Lauras ) Freund?",
+      "Wie alt sind ihre Freunde?",
+      "Wie heißt ihr Freund?",
+      "Ihr Freund heißt Marcus.",
+      "Wie heißt ihr Bruder?",
+      "Ihr Bruder heißt Patrick.",
+      "Wie heißt ihr Schwager?",
+      "Ihr Schwager heißt Michael.",
+      "Wie heißt ihr Vater?",
+      "Ihr Vater heißt Richard.",
+      "Wie heißt ihre Mutter?",
+      "Ihre Mutter heißt Beate.",
+      "Wie heißt ihr Stiefvater?",
+      "Ihr Stiefvater heißt Thomas.",
+      "Wie heißt ihre Halbschwester?",
+      "Ihre Halbschwester heißt X.",
+      "Wie heißt ihre Nichte?",
+      "Ihre Nichte heißt Sara.",
+      "Wie heißt ihre beste Freundin?",
+      "Ihre beste Freundin heißt Sarah.",
+      "Wie heißt ihre Katze?",
+      "Ihre Katze heißt Kessi.",
+      "Wie heißt ihr Hund?",
+      "Ihr Hund heißt Bello.",
+      "Wie heißen ihre Freunde?",
+      "Wie heißt ihr Mitbewohner?",
+      "Ihr Mitbewohner heißt Sven.",
+      "Wie heißt ihre Mitbewohnerin?",
+      "Ihre Mitbewohnerin heißt Ute.",
+      "Wie alt ist ihr Freund?",
+      "Ihr Freund ist X Jahre alt.",
+      "Wie alt ist ihr Bruder?",
+      "Ihr Bruder ist X Jahre alt.",
+      "Wie alt ist ihr Schwager?",
+      "Ihr Schwager ist X Jahre alt.",
+      "Wie alt ist ihr Vater?",
+      "Ihr Vater ist X Jahre alt.",
+      "Wie alt ist ihre Mutter?",
+      "Ihre Mutter ist X Jahre alt.",
+      "Wie alt ist ihr Stiefvater?",
+      "Ihr Stiefvater ist X Jahre alt.",
+      "Wie alt ist ihre Halbschwester?",
+      "Ihre Halbschwester ist X Jahre alt.",
+      "Wie alt ist ihre Nichte?",
+      "Ihre Nichte ist X Jahre alt.",
+      "Wie alt ist ihre beste Freundin?",
+      "Ihre beste Freundin ist X Jahre alt.",
+      "Wie alt ist ihre Katze?",
+      "Ihre Katze ist X Jahre alt.",
+      "Wie alt ist ihr Hund?",
+      "Ihr Hund ist X Jahre alt.",
+      "Wie alt ist ihre Freunde?",
+      "Ihre Freunde sind X Jahre alt",
+      "Wie alt ist ihr Mitbewohner?",
+      "Ihr Mitbewohner ist X Jahre alt.",
+      "Wie alt ist ihre Mitbewohnerin?",
+      "Ihre Mitbewohnerin ist X Jahre alt.",
+      "Was machen Laura und Sarah gern?",
+      "Laura und Sarah reisen gern, kochen gern und singen gern.",
+      "Was studieren sie?",
+      "Sie studieren Deutsch.",
+      "Was macht Marcus gern?",
+      "Surfen, Ski.",
+      "Wo arbeitet er?",
+      "Ist er ihr Bruder?",
+      "Schreiben Sie die Antworten.",
+      "Ist Sven Lauras bester Freund?",
+      "Nein, Sven ist nicht ihr bester Freund.",
+      "Er ist ihr Mitbewohner.",
+      "Ist Kessie Lauras Hund?",
+      "Nein, Kessie ist nicht ihr Hund.",
+      "Sie ist ihre Katze.",
+      "Ist Michael Patrick s Bruder?",
+      "Nein, Michael ist nicht Patrick s Bruder.",
+      "Er ist Patrick s Mann.",
+      "Ist Sarah Lauras beste Freundin?",
+      "Ja, Sarah ist Lauras beste Freundin.",
+      "Ist Anna Richards Tochter?",
+      "Nein, Anna ist nicht Richards Tochter.",
+      "Sie ist Thomas ' Tochter.",
+      "Ist Marcus Lauras Bruder?",
+      "Nein, Marcus ist nicht Lauras Bruder.",
+      "Er ist Lauras Partner.",
+      "Ist Thomas Lauras Vater?",
+      "Nein, Thomas ist nicht Lauras Vater.",
+      "Er ist Lauras Stiefvater.",
+      "Richard ist Lauras Vater.",
+      "Ist Richard Patrick s Bruder?",
+      "Nein, Richard ist nicht Patrick s Bruder.",
+      "Er ist Patrick s Vater.",
+      "Ist Anna 19 Jahre alt?",
+      "Nein, Anna ist nicht 19 Jahre alt.",
+      "Sie ist 13 Jahre alt.",
+      "Sind Richard und Beate verheiratet?",
+      "Nein, Richard und Beate sind nicht verheiratet.",
+      "Schreiben Sie die Fragen über Laura und Richard.",
+      "Ist Peter Lauras Freund?",
+      "Ja, Peter ist Lauras Freund.",
+      "Ist Keith Lauras Mitbewohner?",
+      "Nein, Keith ist nicht Lauras Mitbewohner.",
+      "Er ist Lauras Freund.",
+      "Ist Sara Lauras Neffe?",
+      "Nein, Sara ist nicht Lauras Neffe.",
+      "Sie ist Lauras Nichte.",
+      "Ist Laura Richards Tochter?",
+      "Ja, Laura ist Richards Tochter.",
+      "Ist Richard verheiratet?",
+      "Nein, Richard ist nicht verheiratet.",
+      "Er ist geschieden.",
+      "Ist Richard 60 Jahre alt?",
+      "Nein, Richard ist nicht 60 Jahre alt.",
+      "Er ist 57 Jahre alt.",
+      "Beantworten Sie die Fragen aus 2)."
+    ],
+    "templated": [
+      {
+        "template": "Mein {FAMILY_MEMBER_NOM_MASC} heißt [person_name].",
+        "source_literals": [
+          "Mein Bruder heißt Patrick."
+        ],
+        "grammar_note": "Possessive + masculine family member + heißen."
+      },
+      {
+        "template": "[person_name] ist {PROFESSION_NOM}.",
+        "source_literals": [
+          "Er ist Anwalt."
+        ],
+        "grammar_note": "Verb sein + profession, 3rd person singular nominative."
+      },
+      {
+        "template": "Meine {FAMILY_MEMBER_NOM_FEM} kommt aus [place_origin].",
+        "source_literals": [
+          "Meine Mutter kommt aus Deutschland und sie spricht Deutsch."
+        ],
+        "grammar_note": "Possessive + feminine family member + origin."
+      },
+      {
+        "template": "Mein {FAMILY_MEMBER_NOM_MASC} kommt aus [place_origin].",
+        "source_literals": [
+          "Mein Vater kommt aus Ohio."
+        ],
+        "grammar_note": "Possessive + masculine family member + origin."
+      },
+      {
+        "template": "Ihr {FAMILY_MEMBER_NOM_MASC} heißt [person_name].",
+        "source_literals": [
+          "Ihr Freund heißt Marcus.",
+          "Ihr Bruder heißt Patrick.",
+          "Ihr Schwager heißt Michael.",
+          "Ihr Vater heißt Richard.",
+          "Ihr Stiefvater heißt Thomas.",
+          "Ihr Mitbewohner heißt Sven."
+        ],
+        "grammar_note": "Possessive + masculine family member + heißen."
+      },
+      {
+        "template": "Ihre {FAMILY_MEMBER_NOM_FEM} heißt [person_name].",
+        "source_literals": [
+          "Ihre Mutter heißt Beate.",
+          "Ihre Halbschwester heißt X.",
+          "Ihre Nichte heißt Sara.",
+          "Ihre Mitbewohnerin heißt Ute."
+        ],
+        "grammar_note": "Possessive + feminine family member + heißen."
+      },
+      {
+        "template": "Ihr {FAMILY_MEMBER_NOM_MASC} ist [number] Jahre alt.",
+        "source_literals": [
+          "Ihr Freund ist X Jahre alt.",
+          "Ihr Bruder ist X Jahre alt.",
+          "Ihr Schwager ist X Jahre alt.",
+          "Ihr Vater ist X Jahre alt.",
+          "Ihr Stiefvater ist X Jahre alt.",
+          "Ihr Mitbewohner ist X Jahre alt."
+        ],
+        "grammar_note": "Possessive + masculine family member + age."
+      },
+      {
+        "template": "Ihre {FAMILY_MEMBER_NOM_FEM} ist [number] Jahre alt.",
+        "source_literals": [
+          "Ihre Mutter ist X Jahre alt.",
+          "Ihre Halbschwester ist X Jahre alt.",
+          "Ihre Nichte ist X Jahre alt.",
+          "Ihre Mitbewohnerin ist X Jahre alt."
+        ],
+        "grammar_note": "Possessive + feminine family member + age."
+      }
+    ]
+  },
+  "placeholder_registry": {
+    "FAMILY_MEMBER_NOM_FEM": {
+      "type": "closed",
+      "description": "Feminine family members/relations",
+      "grammar": "nominative, no article, used with meine/seine/ihre",
+      "options": [
+        "Frau",
+        "Freundin",
+        "Mitbewohnerin",
+        "Mutter",
+        "Nichte",
+        "Schwester",
+        "Tochter"
+      ]
+    },
+    "FAMILY_MEMBER_NOM_MASC": {
+      "type": "closed",
+      "description": "Masculine family members/relations",
+      "grammar": "nominative, no article, used with mein/sein/ihr",
+      "options": [
+        "Bruder",
+        "Freund",
+        "Mann",
+        "Mitbewohner",
+        "Neffe",
+        "Schwager",
+        "Vater"
+      ]
+    },
+    "PROFESSION_NOM": {
+      "type": "closed",
+      "description": "Professions (masculine, feminine, and gender-inclusive *in forms)",
+      "grammar": "nominative, no article",
+      "options": [
+        "Anwalt",
+        "Anwalt*Anwältin",
+        "Anwältin",
+        "Arzt",
+        "Arzt*Ärztin",
+        "Autor",
+        "Autor*in",
+        "Autorin",
+        "Forscher",
+        "Forscher*in",
+        "Forscherin",
+        "Ingenieur",
+        "Ingenieur*in",
+        "Ingenieurin",
+        "Künstler",
+        "Künstler*in",
+        "Künstlerin",
+        "Politiker",
+        "Politiker*in",
+        "Politikerin",
+        "Polizist",
+        "Polizist*in",
+        "Polizistin",
+        "Professor",
+        "Professor*in",
+        "Professorin",
+        "Verkäufer",
+        "Verkäufer*in",
+        "Verkäuferin",
+        "Ärztin"
+      ]
+    }
+  }
+}

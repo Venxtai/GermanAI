@@ -1,0 +1,515 @@
+{
+    "unit": "B50",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 50,
+        "prerequisite": "core 1-104, B1-B49"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Videospiel für den Campus konzipieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Videospiele und virtuelle Realitäten"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "umsetzen", "pos": "VERB", "translation": "to put into action", "frequency": 1310 },
+            { "word": "antreten", "pos": "VERB", "translation": "to compete (against)", "frequency": 2036 },
+            { "word": "jagen", "pos": "VERB", "translation": "to hunt", "frequency": 3041, "cefr": "B2" },
+            { "word": "erweitert", "pos": "VERB", "translation": "to expand; enlarge; extend", "frequency": 7205 },
+            { "word": "vermarkten", "pos": "VERB", "translation": "to market, put on the market", "frequency": 8445 },
+            { "word": "platzieren", "pos": "VERB", "translation": "to place", "frequency": 10796 },
+            { "word": "die Ecke", "pos": "NOUN", "translation": "corner", "frequency": 1376, "cefr": "A1" },
+            { "word": "der*die Teilnehmer*in", "pos": "NOUN", "translation": "participant", "frequency": 1920, "cefr": "B1" },
+            { "word": "weltweit", "pos": "ADJ", "translation": "worldwide", "frequency": 843, "cefr": "B1" },
+            { "word": "mehrmals", "pos": "ADV", "translation": "repeatedly, multiple times", "frequency": 2868 },
+            { "word": "übrigens", "pos": "ADV", "translation": "by the way" },
+            { "word": "tatsächlich", "pos": "ADJ", "translation": "actually, indeed" },
+            { "word": "möglicherweise", "pos": "ADV", "translation": "maybe; possibly; potentially" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "-Fan", "pos": "NOUN" },
+            { "word": "virtuell", "pos": "ADJ", "frequency": 3055, "cefr": "B1" },
+            { "word": "fitte", "pos": "ADJ" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "umsetzen": {
+                "present": {
+                    "ich": "setze um",
+                    "du": "setzt um",
+                    "er": "setzt um",
+                    "es": "setzt um",
+                    "sie_singular": "setzt um",
+                    "xier": "setzt um",
+                    "wir": "setzen um",
+                    "ihr": "setzt um",
+                    "sie_plural": "setzen um",
+                    "Sie": "setzen um"
+                },
+                "Präteritum": {
+                    "ich": "setzte um",
+                    "du": "setztest um",
+                    "er": "setzte um",
+                    "es": "setzte um",
+                    "sie_singular": "setzte um",
+                    "xier": "setzte um",
+                    "wir": "setzten um",
+                    "ihr": "setztet um",
+                    "sie_plural": "setzten um",
+                    "Sie": "setzten um"
+                },
+                "Perfekt": {
+                    "ich": "habe umgesetzt",
+                    "du": "hast umgesetzt",
+                    "er": "hat umgesetzt",
+                    "es": "hat umgesetzt",
+                    "sie_singular": "hat umgesetzt",
+                    "xier": "hat umgesetzt",
+                    "wir": "haben umgesetzt",
+                    "ihr": "habt umgesetzt",
+                    "sie_plural": "haben umgesetzt",
+                    "Sie": "haben umgesetzt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte umgesetzt",
+                    "du": "hattest umgesetzt",
+                    "er": "hatte umgesetzt",
+                    "es": "hatte umgesetzt",
+                    "sie_singular": "hatte umgesetzt",
+                    "xier": "hatte umgesetzt",
+                    "wir": "hatten umgesetzt",
+                    "ihr": "hattet umgesetzt",
+                    "sie_plural": "hatten umgesetzt",
+                    "Sie": "hatten umgesetzt"
+                },
+                "Futur_I": {
+                    "ich": "werde umsetzen",
+                    "du": "wirst umsetzen",
+                    "er": "wird umsetzen",
+                    "es": "wird umsetzen",
+                    "sie_singular": "wird umsetzen",
+                    "xier": "wird umsetzen",
+                    "wir": "werden umsetzen",
+                    "ihr": "werdet umsetzen",
+                    "sie_plural": "werden umsetzen",
+                    "Sie": "werden umsetzen"
+                },
+                "imperative": {
+                    "du": "setze um",
+                    "ihr": "setzt um",
+                    "Sie": "setzen Sie um"
+                }
+            },
+            "antreten": {
+                "present": {
+                    "ich": "trete an",
+                    "du": "trittst an",
+                    "er": "tritt an",
+                    "es": "tritt an",
+                    "sie_singular": "tritt an",
+                    "xier": "tritt an",
+                    "wir": "treten an",
+                    "ihr": "tretet an",
+                    "sie_plural": "treten an",
+                    "Sie": "treten an"
+                },
+                "Präteritum": {
+                    "ich": "trat an",
+                    "du": "tratest an",
+                    "er": "trat an",
+                    "es": "trat an",
+                    "sie_singular": "trat an",
+                    "xier": "trat an",
+                    "wir": "traten an",
+                    "ihr": "tratet an",
+                    "sie_plural": "traten an",
+                    "Sie": "traten an"
+                },
+                "Perfekt": {
+                    "ich": "habe angetreten",
+                    "du": "hast angetreten",
+                    "er": "hat angetreten",
+                    "es": "hat angetreten",
+                    "sie_singular": "hat angetreten",
+                    "xier": "hat angetreten",
+                    "wir": "haben angetreten",
+                    "ihr": "habt angetreten",
+                    "sie_plural": "haben angetreten",
+                    "Sie": "haben angetreten"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte angetreten",
+                    "du": "hattest angetreten",
+                    "er": "hatte angetreten",
+                    "es": "hatte angetreten",
+                    "sie_singular": "hatte angetreten",
+                    "xier": "hatte angetreten",
+                    "wir": "hatten angetreten",
+                    "ihr": "hattet angetreten",
+                    "sie_plural": "hatten angetreten",
+                    "Sie": "hatten angetreten"
+                },
+                "Futur_I": {
+                    "ich": "werde antreten",
+                    "du": "wirst antreten",
+                    "er": "wird antreten",
+                    "es": "wird antreten",
+                    "sie_singular": "wird antreten",
+                    "xier": "wird antreten",
+                    "wir": "werden antreten",
+                    "ihr": "werdet antreten",
+                    "sie_plural": "werden antreten",
+                    "Sie": "werden antreten"
+                },
+                "imperative": {
+                    "du": "tritt an",
+                    "ihr": "tretet an",
+                    "Sie": "treten Sie an"
+                }
+            },
+            "jagen": {
+                "present": {
+                    "ich": "jage",
+                    "du": "jagst",
+                    "er": "jagt",
+                    "es": "jagt",
+                    "sie_singular": "jagt",
+                    "xier": "jagt",
+                    "wir": "jagen",
+                    "ihr": "jagt",
+                    "sie_plural": "jagen",
+                    "Sie": "jagen"
+                },
+                "Präteritum": {
+                    "ich": "jagte",
+                    "du": "jagtest",
+                    "er": "jagte",
+                    "es": "jagte",
+                    "sie_singular": "jagte",
+                    "xier": "jagte",
+                    "wir": "jagten",
+                    "ihr": "jagtet",
+                    "sie_plural": "jagten",
+                    "Sie": "jagten"
+                },
+                "Perfekt": {
+                    "ich": "habe gejagt",
+                    "du": "hast gejagt",
+                    "er": "hat gejagt",
+                    "es": "hat gejagt",
+                    "sie_singular": "hat gejagt",
+                    "xier": "hat gejagt",
+                    "wir": "haben gejagt",
+                    "ihr": "habt gejagt",
+                    "sie_plural": "haben gejagt",
+                    "Sie": "haben gejagt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gejagt",
+                    "du": "hattest gejagt",
+                    "er": "hatte gejagt",
+                    "es": "hatte gejagt",
+                    "sie_singular": "hatte gejagt",
+                    "xier": "hatte gejagt",
+                    "wir": "hatten gejagt",
+                    "ihr": "hattet gejagt",
+                    "sie_plural": "hatten gejagt",
+                    "Sie": "hatten gejagt"
+                },
+                "Futur_I": {
+                    "ich": "werde jagen",
+                    "du": "wirst jagen",
+                    "er": "wird jagen",
+                    "es": "wird jagen",
+                    "sie_singular": "wird jagen",
+                    "xier": "wird jagen",
+                    "wir": "werden jagen",
+                    "ihr": "werdet jagen",
+                    "sie_plural": "werden jagen",
+                    "Sie": "werden jagen"
+                },
+                "imperative": {
+                    "du": "jag",
+                    "ihr": "jagt",
+                    "Sie": "jagen Sie"
+                }
+            },
+            "erweitert": {
+                "Perfekt": {
+                    "ich": "habe erweitert",
+                    "du": "hast erweitert",
+                    "er": "hat erweitert",
+                    "es": "hat erweitert",
+                    "sie_singular": "hat erweitert",
+                    "xier": "hat erweitert",
+                    "wir": "haben erweitert",
+                    "ihr": "habt erweitert",
+                    "sie_plural": "haben erweitert",
+                    "Sie": "haben erweitert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erweitert",
+                    "du": "hattest erweitert",
+                    "er": "hatte erweitert",
+                    "es": "hatte erweitert",
+                    "sie_singular": "hatte erweitert",
+                    "xier": "hatte erweitert",
+                    "wir": "hatten erweitert",
+                    "ihr": "hattet erweitert",
+                    "sie_plural": "hatten erweitert",
+                    "Sie": "hatten erweitert"
+                },
+                "Futur_I": {
+                    "ich": "werde erweitert",
+                    "du": "wirst erweitert",
+                    "er": "wird erweitert",
+                    "es": "wird erweitert",
+                    "sie_singular": "wird erweitert",
+                    "xier": "wird erweitert",
+                    "wir": "werden erweitert",
+                    "ihr": "werdet erweitert",
+                    "sie_plural": "werden erweitert",
+                    "Sie": "werden erweitert"
+                }
+            },
+            "vermarkten": {
+                "Perfekt": {
+                    "ich": "habe vermarktet",
+                    "du": "hast vermarktet",
+                    "er": "hat vermarktet",
+                    "es": "hat vermarktet",
+                    "sie_singular": "hat vermarktet",
+                    "xier": "hat vermarktet",
+                    "wir": "haben vermarktet",
+                    "ihr": "habt vermarktet",
+                    "sie_plural": "haben vermarktet",
+                    "Sie": "haben vermarktet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte vermarktet",
+                    "du": "hattest vermarktet",
+                    "er": "hatte vermarktet",
+                    "es": "hatte vermarktet",
+                    "sie_singular": "hatte vermarktet",
+                    "xier": "hatte vermarktet",
+                    "wir": "hatten vermarktet",
+                    "ihr": "hattet vermarktet",
+                    "sie_plural": "hatten vermarktet",
+                    "Sie": "hatten vermarktet"
+                },
+                "Futur_I": {
+                    "ich": "werde vermarkten",
+                    "du": "wirst vermarkten",
+                    "er": "wird vermarkten",
+                    "es": "wird vermarkten",
+                    "sie_singular": "wird vermarkten",
+                    "xier": "wird vermarkten",
+                    "wir": "werden vermarkten",
+                    "ihr": "werdet vermarkten",
+                    "sie_plural": "werden vermarkten",
+                    "Sie": "werden vermarkten"
+                }
+            },
+            "platzieren": {
+                "present": {
+                    "ich": "platziere",
+                    "du": "platzierst",
+                    "er": "platziert",
+                    "es": "platziert",
+                    "sie_singular": "platziert",
+                    "xier": "platziert",
+                    "wir": "platzieren",
+                    "ihr": "platziert",
+                    "sie_plural": "platzieren",
+                    "Sie": "platzieren"
+                },
+                "Präteritum": {
+                    "ich": "platzierte",
+                    "du": "platziertest",
+                    "er": "platzierte",
+                    "es": "platzierte",
+                    "sie_singular": "platzierte",
+                    "xier": "platzierte",
+                    "wir": "platzierten",
+                    "ihr": "platziertet",
+                    "sie_plural": "platzierten",
+                    "Sie": "platzierten"
+                },
+                "Perfekt": {
+                    "ich": "habe platziert",
+                    "du": "hast platziert",
+                    "er": "hat platziert",
+                    "es": "hat platziert",
+                    "sie_singular": "hat platziert",
+                    "xier": "hat platziert",
+                    "wir": "haben platziert",
+                    "ihr": "habt platziert",
+                    "sie_plural": "haben platziert",
+                    "Sie": "haben platziert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte platziert",
+                    "du": "hattest platziert",
+                    "er": "hatte platziert",
+                    "es": "hatte platziert",
+                    "sie_singular": "hatte platziert",
+                    "xier": "hatte platziert",
+                    "wir": "hatten platziert",
+                    "ihr": "hattet platziert",
+                    "sie_plural": "hatten platziert",
+                    "Sie": "hatten platziert"
+                },
+                "Futur_I": {
+                    "ich": "werde platzieren",
+                    "du": "wirst platzieren",
+                    "er": "wird platzieren",
+                    "es": "wird platzieren",
+                    "sie_singular": "wird platzieren",
+                    "xier": "wird platzieren",
+                    "wir": "werden platzieren",
+                    "ihr": "werdet platzieren",
+                    "sie_plural": "werden platzieren",
+                    "Sie": "werden platzieren"
+                },
+                "imperative": {
+                    "du": "platzier",
+                    "ihr": "platziert",
+                    "Sie": "platzieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Machen Sie eine Umfrage und notieren Sie die Ergebnisse.",
+            "Wie viele spielten als Kind … Computerspiele?",
+            "Wie oft spielen Studierende?",
+            "Wie oft spielten sie als Kind?",
+            "Täglich täglich mehrmals pro Woche mehrmals pro Woche wöchentlich wöchentlich weniger als 1/Woche weniger als 1/Woche Gruppe 3:",
+            "Was spielen Sie heute gerne?",
+            "Was haben Sie als Kind gespielt?",
+            "Teilen Sie die Ergebnisse im Kurs und schreiben Sie die Informationen der anderen Gruppen auf.",
+            "Lesen Sie den Text.",
+            "Es ist ein Stereotyp, dass Menschen, die Videospiele spielen, immer allein zu Hause sitzen.",
+            "Das Spielen alleine veränderte sich mit Multi-Player-Spielen und dem Internet.",
+            "Es gibt zum Beispiel ungefähr eine Million Menschen in Deutschland, die „World of Warcraft“ online spielen.",
+            "Bei einem anderen Spiel aber sind die Spieler*innen tatsächlich in der realen Welt: „Pokémon GO“.",
+            "Im Jahr 2016 jagten weltweit gleich in der ersten Woche, nachdem die App auf den Markt gekommen war, über 20 Millionen Menschen die kleinen Pokémon -Monster.",
+            "Die Pokémon waren bekannt, weil Nintendo das Spiel schon 1996 für den Gameboy vermarktet hatte.",
+            "Jetzt aber ging es mit Smartphone und GPS auf die Straße und in die Natur.",
+            "Ziel des Spiels ist es, Pokémon zu finden und zu fangen.",
+            "Dann müssen die Pokémon -Fans sie trainieren;",
+            "Deshalb nennt man Spieler*innen auch Trainer*innen.",
+            "Nach dem Training treten die Trainer*innen in virtuellen Arenen gegen andere Spieler*innen an.",
+            "Im Juli 2019 organisierte die Stadt Dortmund ein viertägiges [vier Tage] Pokémon Go-Fest.",
+            "Im Westfalenpark, wo sonst der BVB Fußball spielt, trafen sich tausende Pokémon -Trainer*innen aus aller Welt.",
+            "Wissenschaftler*innen glauben übrigens, dass Pokémon jagen gut für die Gesundheit ist, vor allem weil sich die Spieler*innen an der frischen Luft bewegen.",
+            "So liefen die Dortmunder Festival Teilnehmer*innen zusammen 400.000 km, um über 28 Millionen Pokémon zu sammeln.",
+            "Diese neue Art des Spielens wird also vielleicht zu einem ganz neuen Stereotyp führen:",
+            "Fitte Menschen, die gerne in der Natur sind, werden dann möglicherweise die typischen neuen Spieler*innen sein.",
+            "Plusquamperfekt, Präteritum, Präsens und Futur.",
+            "Hinter zehn Sätzen sehen Sie Zahlen.",
+            "Tragen Sie die Zahlen auf der Timeline ein.",
+            "Gruppenpuzzle (Zahl): Setzen Sie sich jetzt mit den anderen Personen mit der gleichen Zahl zusammen.",
+            "Schreiben Sie mindestens drei Fragen zum Text.",
+            "Setzen Sie sich jetzt mit den anderen Personen zusammen, die den gleichen Buchstaben haben.",
+            "Stellen Sie einer anderen Gruppe Ihre Fragen und beantworten Sie deren Fragen.",
+            "Für Ihr Projekt können Sie auch ein Konzept für ein Spiel schreiben:",
+            "Welches Spiel, welche Gebäude oder Figuren möchten Sie auf Ihren Campus oder in Ihre Stadt bringen?",
+            "Wo können diese sein?",
+            "Was sollen die Figuren erzählen?",
+            "Was können sie in Ihrer Welt der erweiterten Realität erleben?",
+            "S prechen Sie über Ihr Thema und die Elemente.",
+            "Ich bin für das Thema „Erfinder*innen“?",
+            "Hm, ich finde das Thema „Märchen“ besser.",
+            "Ja, gute Idee.",
+            "Was brauchen wir für ein Märchenspiel?",
+            "Wir brauchen … Formulieren Sie Sätze im Futur:",
+            "Wie werden Sie Ihren Plan umsetzen?",
+            "Sprechen Sie zuerst, schreiben Sie danach die Sätze auf.",
+            "Wir werden vier Märchenfiguren programmieren.",
+            "Diese Figuren werden … In Gruppen: Sie bekommen einen Stadt- oder Campusplan.",
+            "Markieren Sie, wo welche Elemente zu finden sind.",
+            "Sprechen Sie, was Sie machen."
+        ],
+        "templated": []
+    }
+}

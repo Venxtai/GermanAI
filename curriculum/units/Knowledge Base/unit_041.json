@@ -1,0 +1,702 @@
+{
+    "unit": "41",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 41,
+        "prerequisite": "1-40"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Use two-way prepositions with the accusative case to describe where something is being moved to (Wohin?), and contract an + das → ans, in + das → ins.",
+            "Use stellen, legen, hängen, and setzen with accusative two-way prepositions to describe putting objects somewhere: stellen for vertical placement, legen for horizontal, hängen for hanging, setzen for seating.",
+            "Convert any infinitive into a neuter noun by capitalizing it: bügeln → das Bügeln."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "sagen, wohin man etwas stellt, legt, hängt oder setzt",
+            "die Küche oder das Haus aufräumen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Haushalt"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "stellen",
+                "pos": "VERB",
+                "translation": "to place; put (things that are located upright, e.g. on a foot)",
+                "frequency": 135,
+                "cefr": "A1"
+            },
+            {
+                "word": "legen",
+                "pos": "VERB",
+                "translation": "to lay; put (horizontal)",
+                "frequency": 352,
+                "cefr": "A1"
+            },
+            {
+                "word": "setzen",
+                "pos": "VERB",
+                "translation": "to set down, put (things that have knee-like joints to bend)",
+                "frequency": 228,
+                "cefr": "A2"
+            },
+            {
+                "word": "begreifen",
+                "pos": "VERB",
+                "translation": "to grasp, comprehend, understand",
+                "frequency": 1346
+            },
+            {
+                "word": "waschen",
+                "pos": "VERB",
+                "translation": "to wash",
+                "frequency": 2315,
+                "cefr": "A1"
+            },
+            {
+                "word": "aufräumen",
+                "pos": "VERB",
+                "translation": "to clean (up)"
+            },
+            {
+                "word": "putzen",
+                "pos": "VERB",
+                "translation": "to clean",
+                "frequency": 3586,
+                "cefr": "A2"
+            },
+            {
+                "word": "wischen",
+                "pos": "VERB",
+                "translation": "to mop",
+                "frequency": 3666
+            },
+            {
+                "word": "bügeln",
+                "pos": "VERB",
+                "translation": "to iron"
+            },
+            {
+                "word": "abwaschen",
+                "pos": "VERB",
+                "translation": "to do the dishes, wash up",
+                "cefr": "B1"
+            },
+            {
+                "word": "sterben",
+                "pos": "VERB",
+                "translation": "to die",
+                "frequency": 475,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Messer",
+                "pos": "NOUN",
+                "translation": "knife",
+                "frequency": 2692,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Teller",
+                "pos": "NOUN",
+                "translation": "plate",
+                "frequency": 3187,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Tasse",
+                "pos": "NOUN",
+                "translation": "cup",
+                "frequency": 3518,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Topf",
+                "pos": "NOUN",
+                "translation": "pot, (sauce)pan",
+                "frequency": 4136,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Schublade",
+                "pos": "NOUN",
+                "translation": "drawer",
+                "frequency": 4797,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Gabel, n",
+                "pos": "NOUN",
+                "translation": "fork",
+                "frequency": 20152,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Löffel",
+                "pos": "NOUN",
+                "translation": "spoon"
+            },
+            {
+                "word": "der Boden",
+                "pos": "NOUN",
+                "translation": "ground, floor",
+                "frequency": 536,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Herd",
+                "pos": "NOUN",
+                "translation": "stove(top)",
+                "frequency": 12471,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Haushalt",
+                "pos": "NOUN",
+                "translation": "household; housekeeping",
+                "frequency": 1157,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Wäsche",
+                "pos": "NOUN",
+                "translation": "laundry, clothes, linen"
+            },
+            {
+                "word": "der Rasen",
+                "pos": "NOUN",
+                "translation": "lawn",
+                "frequency": 4521,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Firma, Firmen",
+                "pos": "NOUN",
+                "translation": "firm, company",
+                "frequency": 686,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Sänger*in",
+                "pos": "NOUN",
+                "translation": "singer"
+            },
+            {
+                "word": "allein",
+                "pos": "ADJ",
+                "translation": "alone",
+                "frequency": 267,
+                "cefr": "A1"
+            },
+            {
+                "word": "schlimm",
+                "pos": "ADJ",
+                "translation": "bad; severe",
+                "frequency": 762,
+                "cefr": "A2"
+            },
+            {
+                "word": "wohin",
+                "pos": "ADV",
+                "translation": "whereto, where (destination)",
+                "frequency": 1811,
+                "cefr": "A1"
+            },
+            {
+                "word": "ein bisschen",
+                "pos": "PARTICLE",
+                "translation": "a little bit",
+                "frequency": 5516,
+                "cefr": "A2"
+            },
+            {
+                "word": "nichts",
+                "pos": "PRON",
+                "translation": "nothing",
+                "frequency": 109,
+                "cefr": "A1"
+            },
+            {
+                "word": "laufen",
+                "pos": "VERB",
+                "translation": "to walk; run",
+                "frequency": 252,
+                "cefr": "A1"
+            },
+            {
+                "word": "wissen",
+                "pos": "VERB",
+                "translation": "to know (as a fact)",
+                "frequency": 78,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Garage",
+                "pos": "NOUN",
+                "frequency": 8168,
+                "cefr": "A2"
+            },
+            {
+                "word": "konventionell",
+                "pos": "ADV",
+                "frequency": 4477
+            },
+            {
+                "word": "der Plan",
+                "pos": "NOUN",
+                "frequency": 954,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Geschirr",
+                "pos": "NOUN",
+                "frequency": 17015,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Musical",
+                "pos": "NOUN",
+                "frequency": 6545
+            },
+            {
+                "word": "der Hit",
+                "pos": "NOUN",
+                "frequency": 6654,
+                "cefr": "B1"
+            },
+            {
+                "word": "beklagen",
+                "pos": "VERB",
+                "frequency": 2979
+            },
+            {
+                "word": "wild",
+                "pos": "ADV",
+                "frequency": 1643,
+                "cefr": "B1"
+            },
+            {
+                "word": "ganz",
+                "pos": "ADV",
+                "frequency": 69,
+                "cefr": "A2"
+            },
+            {
+                "word": "genauso",
+                "pos": "ADV",
+                "frequency": 808,
+                "cefr": "B1"
+            },
+            {
+                "word": "gelten",
+                "pos": "VERB",
+                "frequency": 158,
+                "cefr": "B1"
+            },
+            {
+                "word": "heuen",
+                "pos": "ADV",
+                "frequency": 11839
+            },
+            {
+                "word": "wohl",
+                "pos": "ADV",
+                "frequency": 261,
+                "cefr": "B1"
+            },
+            {
+                "word": "tun",
+                "pos": "VERB",
+                "frequency": 123,
+                "cefr": "A1"
+            },
+            {
+                "word": "tagein",
+                "pos": "ADV",
+                "frequency": 48500
+            },
+            {
+                "word": "tagaus",
+                "pos": "ADV",
+                "frequency": 47606
+            },
+            {
+                "word": "das Knie",
+                "pos": "NOUN",
+                "frequency": 1679,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schöpfer",
+                "pos": "NOUN",
+                "frequency": 11172
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "stellen": {
+                "present": {
+                    "ich": "stelle",
+                    "du": "stellst",
+                    "er": "stellt",
+                    "es": "stellt",
+                    "sie_singular": "stellt",
+                    "xier": "stellt",
+                    "wir": "stellen",
+                    "ihr": "stellt",
+                    "sie_plural": "stellen",
+                    "Sie": "stellen"
+                }
+            },
+            "legen": {
+                "present": {
+                    "ich": "lege",
+                    "du": "legst",
+                    "er": "legt",
+                    "es": "legt",
+                    "sie_singular": "legt",
+                    "xier": "legt",
+                    "wir": "legen",
+                    "ihr": "legt",
+                    "sie_plural": "legen",
+                    "Sie": "legen"
+                }
+            },
+            "setzen": {
+                "present": {
+                    "ich": "setze",
+                    "du": "setzt",
+                    "er": "setzt",
+                    "es": "setzt",
+                    "sie_singular": "setzt",
+                    "xier": "setzt",
+                    "wir": "setzen",
+                    "ihr": "setzt",
+                    "sie_plural": "setzen",
+                    "Sie": "setzen"
+                }
+            },
+            "begreifen": {
+                "present": {
+                    "ich": "begreife",
+                    "du": "begreifst",
+                    "er": "begreift",
+                    "es": "begreift",
+                    "sie_singular": "begreift",
+                    "xier": "begreift",
+                    "wir": "begreifen",
+                    "ihr": "begreift",
+                    "sie_plural": "begreifen",
+                    "Sie": "begreifen"
+                }
+            },
+            "waschen": {
+                "present": {
+                    "ich": "wasche",
+                    "du": "wäschst",
+                    "er": "wäscht",
+                    "es": "wäscht",
+                    "sie_singular": "wäscht",
+                    "xier": "wäscht",
+                    "wir": "waschen",
+                    "ihr": "wascht",
+                    "sie_plural": "waschen",
+                    "Sie": "waschen"
+                }
+            },
+            "aufräumen": {
+                "present": {
+                    "ich": "räume auf",
+                    "du": "räumst auf",
+                    "er": "räumt auf",
+                    "es": "räumt auf",
+                    "sie_singular": "räumt auf",
+                    "xier": "räumt auf",
+                    "wir": "räumen auf",
+                    "ihr": "räumt auf",
+                    "sie_plural": "räumen auf",
+                    "Sie": "räumen auf"
+                }
+            },
+            "putzen": {
+                "present": {
+                    "ich": "putze",
+                    "du": "putzt",
+                    "er": "putzt",
+                    "es": "putzt",
+                    "sie_singular": "putzt",
+                    "xier": "putzt",
+                    "wir": "putzen",
+                    "ihr": "putzt",
+                    "sie_plural": "putzen",
+                    "Sie": "putzen"
+                }
+            },
+            "wischen": {
+                "present": {
+                    "ich": "wische",
+                    "du": "wischst",
+                    "er": "wischt",
+                    "es": "wischt",
+                    "sie_singular": "wischt",
+                    "xier": "wischt",
+                    "wir": "wischen",
+                    "ihr": "wischt",
+                    "sie_plural": "wischen",
+                    "Sie": "wischen"
+                }
+            },
+            "bügeln": {
+                "present": {
+                    "ich": "bügle",
+                    "du": "bügelst",
+                    "er": "bügelt",
+                    "es": "bügelt",
+                    "sie_singular": "bügelt",
+                    "xier": "bügelt",
+                    "wir": "bügeln",
+                    "ihr": "bügelt",
+                    "sie_plural": "bügeln",
+                    "Sie": "bügeln"
+                }
+            },
+            "abwaschen": {
+                "present": {
+                    "ich": "wasche ab",
+                    "du": "wäschst ab",
+                    "er": "wäscht ab",
+                    "es": "wäscht ab",
+                    "sie_singular": "wäscht ab",
+                    "xier": "wäscht ab",
+                    "wir": "waschen ab",
+                    "ihr": "wascht ab",
+                    "sie_plural": "waschen ab",
+                    "Sie": "waschen ab"
+                }
+            },
+            "sterben": {
+                "present": {
+                    "ich": "sterbe",
+                    "du": "stirbst",
+                    "er": "stirbt",
+                    "es": "stirbt",
+                    "sie_singular": "stirbt",
+                    "xier": "stirbt",
+                    "wir": "sterben",
+                    "ihr": "sterbt",
+                    "sie_plural": "sterben",
+                    "Sie": "sterben"
+                }
+            },
+            "laufen": {
+                "present": {
+                    "ich": "laufe",
+                    "du": "läufst",
+                    "er": "läuft",
+                    "es": "läuft",
+                    "sie_singular": "läuft",
+                    "xier": "läuft",
+                    "wir": "laufen",
+                    "ihr": "lauft",
+                    "sie_plural": "laufen",
+                    "Sie": "laufen"
+                }
+            },
+            "wissen": {
+                "present": {
+                    "ich": "weiß",
+                    "du": "weißt",
+                    "er": "weiß",
+                    "es": "weiß",
+                    "sie_singular": "weiß",
+                    "xier": "weiß",
+                    "wir": "wissen",
+                    "ihr": "wisst",
+                    "sie_plural": "wissen",
+                    "Sie": "wissen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Räumen Sie die Küche auf.",
+            "Sagen Sie, wohin Sie die Dinge stellen, legen oder hängen.",
+            "Ich lege die Messer in die Schublade.",
+            "Ich lege die Messer/sie in Schublade.",
+            "Ich stelle das Fahrrad/es in die Garage.",
+            "Ich stelle die Töpfe in den Schrank.",
+            "Ich stelle die Teller in den Schrank.",
+            "Ich stelle die Tassen/die Teller in den Schrank/in das Regal.",
+            "Ich stelle die Pflanze auf den Tisch.",
+            "Ich stelle den Stuhl an den Tisch.",
+            "Alexa, Kevin und Selina räumen auch auf..",
+            "Hören Sie zu.",
+            "Welche Wohnung ist von Alexa, Kevin und Selina?",
+            "Los geht's.",
+            "Ich stelle die Messer auf den Tisch und hänge die Tassen an die Wand.",
+            "Das Fahrrad hänge ich in die Garage.",
+            "Und dann setze ich die Katze auf das Sofa.",
+            "Ich hänge die Töpfe an die Wand.",
+            "Die Katze stelle ich auf den Boden.",
+            "Die Teller und die Tassen lege ich hin.",
+            "Die Messer lege ich in die Schublade und die Tassen lege ich in den Schrank.",
+            "Ich räume auch auf.",
+            "Ich lege mein Fahrrad auf den Boden, auf den Boden im Wohnzimmer.",
+            "Die Tassen stelle ich auf das Regal und die Töpfe stelle ich in den Schrank.",
+            "Zum Schluss lege ich meine Katze auf den Boden.",
+            "Kevin ist die erste Wohnung.",
+            "Alexa die zweite und Selina die dritte.",
+            "Schauen Sie sich das verdrehte Haus von Dennis in Aktivität an.",
+            "Dennis will konventionell sein.",
+            "Wie räumt er auf?",
+            "Er stellt das Sofa in das Wohnzimmer.",
+            "Er hängt das Bild von Tina an die Wand.",
+            "Er legt das Videospiel in den Schrank.",
+            "Er stellt den Laptop auf den Tisch.",
+            "Er stellt die Stühle unter den Tisch.",
+            "Er setzt den Hund auf das Sofa.",
+            "Er stellt den Ofen in die Küche.",
+            "Er setzt die Oma auf den Stuhl.",
+            "Er legt die Hose in den Schrank.",
+            "Er stellt den Toaster in die Küche.",
+            "Ordnen Sie die Dinge den Verben zu.",
+            "Das Bett abwaschen der Boden bügeln",
+            "Der Ofen machen die Pflanzen putzen",
+            "Die Teller waschen die Wäsche wischen",
+            "Was machen Sie (nicht) gern?",
+            "Ich wische nie den Boden.",
+            "Ich wasche immer die Teller ab.",
+            "Ich wasche gerne Wäsche.",
+            "Ich schneide nicht gern den Rasen.",
+            "Wann macht Öslem was?",
+            "Ergänzen Sie den Wochenplan.",
+            "Heute ist Montag und ich wische das Haus.",
+            "Am Dienstag putze ich das Bad.",
+            "Und am Mittwoch mache ich die Wäsche.",
+            "Ich wasche und bügele.",
+            "Am Donnerstag schneide ich den Rasen und putze mein Arbeitszimmer.",
+            "Am Freitag mache ich nichts.",
+            "Am Samstag putze ich die Küche und am Sonntag gieße ich die Pflanzen.",
+            "Ich wasche jeden Tag das Geschirr ab.",
+            "Geschirr sind z.B.",
+            "Die Teller, Tassen und Messer.",
+            "Am Montag wischt sie das Haus und wäscht sie das Geschirr ab.",
+            "Am Dienstag putzt sie das Bad und wäscht sie das Geschirr ab.",
+            "Am Mittwoch wäscht und bügelt sie die Wäsche und wäscht sie das Geschirr ab.",
+            "Am Donnerstag schneidet sie den Rasen, putzt sie ihr Arbeitszimmer und wäscht sie das Geschirr ab.",
+            "Am Freitag wäscht sie das Geschirr ab.",
+            "Am Samstag putzt sie die Küche und wäscht sie das Geschirr ab.",
+            "Am Sonntag gießt die Pflanzen und wäscht sie das Geschirr ab.",
+            "Die Sängerin Johanna von Koczian ist 1933 in Berlin geboren und spielt sie in vielen Musicals und Filmen.",
+            "Sie ist auch Synchronsprecherin, zum Beispiel spricht sie in Filmen für Elizabeth Taylor.",
+            "Als Sängerin hat sie in den 1970er Jahren die größten Hits.",
+            "Später schreibt sie auch Kinder und Jugendliteratur.",
+            "Im Jahr 2024 stirbt Johanna von Koczian mit 90 Jahren in Berlin.",
+            "\"Das bisschen Haushalt macht sich von allein.\"",
+            "- Sagt mein Mann.",
+            "\"Das bisschen Haushalt kann so schlimm nicht sein.\"",
+            "\"Wie eine Frau sich überhaupt beklagen kann, ist unbegreiflich.\"",
+            "\"Das bisschen Kochen ist doch halb so wild.\"",
+            "\"Was für den Abwasch ganz genauso gilt.\"",
+            "Wie eine Frau von heut' darüber stöhnen kann, ist ihm ein Rätsel.",
+            "Und was mein Mann sagt, stimmt haargenau.",
+            "Ich muss das wissen, ich bin ja seine Frau.",
+            "Das bisschen Wäsche ist doch kein Problem.\"",
+            "Und auch das Bügeln schafft man ganz bequem.\"",
+            "\"Wie eine Frau von heut' da gleich verzweifeln kann, ist nicht zu fassen.\"",
+            "\"Das bisschen Garten, oh, wie wohl das tut.\"",
+            "\"Das Rasen schneiden ist für den Kreislauf gut.\"",
+            "\"Wie eine Frau von heut' das nicht begreifen kann, ist unverständlich.\"",
+            "\"Er muss zur Firma gehen, tagein tagaus.\"",
+            "Die Frau Gemahlin ruht sich aus zuhause.\"",
+            "\"Dass ich auf Knien meinem Schöpfer danken kann, Wie gut ich's habe.\"",
+            "Was macht die Frau im Lied jeden Tag und was macht der Mann jeden Tag?",
+            "Die Frau kocht, wäscht ab, wäscht Wäsche, bügelt und schneidet den Rasen.",
+            "Der Mann geht in die Firma.",
+            "Arbeitet die Frau?",
+            "Der Mann denkt nein.",
+            "Die Frau denkt ja."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,527 @@
+{
+    "unit": "O3",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 3,
+        "prerequisite": "core 1-104, O1-O2"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "bewegen", "pos": "VERB", "translation": "to move", "frequency": 561, "cefr": "B1" },
+            { "word": "wiederholen", "pos": "VERB", "translation": "to repeat", "frequency": 988, "cefr": "A1" },
+            { "word": "sich ärgern (über)", "pos": "VERB", "translation": "to be/get annoyed (at)" },
+            { "word": "hinfahren", "pos": "VERB", "translation": "to go there (with a vehicle); drive there", "frequency": 4881 },
+            { "word": "hingehen", "pos": "VERB", "translation": "to go there (on foot)", "frequency": 2457, "cefr": "B2" },
+            { "word": "merken", "pos": "VERB", "translation": "to notice", "frequency": 566, "cefr": "A2" },
+            { "word": "schleichen", "pos": "VERB", "translation": "to creep; sneak; tiptoe", "frequency": 3838, "cefr": "B2" },
+            { "word": "halten", "pos": "VERB", "translation": "to hold", "frequency": 155, "cefr": "A1" },
+            { "word": "der Prozess", "pos": "NOUN", "translation": "process", "frequency": 595, "cefr": "B1" },
+            { "word": "die Veränderung", "pos": "NOUN", "translation": "change" },
+            { "word": "der Wunsch", "pos": "NOUN", "translation": "wish", "frequency": 1072, "cefr": "A2" },
+            { "word": "das Diktat", "pos": "NOUN", "translation": "dictation", "frequency": 20870, "cefr": "A1" },
+            { "word": "vorne", "pos": "ADV", "translation": "in front; ahead, front", "frequency": 785, "cefr": "A2" },
+            { "word": "hinten", "pos": "ADV", "translation": "back, behind", "frequency": 1159, "cefr": "A1" },
+            { "word": "oben", "pos": "PREP", "translation": "above; up", "frequency": 417, "cefr": "A1" },
+            { "word": "unten", "pos": "PREP", "translation": "below; down", "frequency": 710, "cefr": "A1" },
+            { "word": "Wer?", "pos": "PHRASE", "translation": "Who?" },
+            { "word": "Wen?", "pos": "PHRASE", "translation": "Whom?" },
+            { "word": "Wem", "pos": "VERB", "translation": "To Whom?" },
+            { "word": "Was?", "pos": "PHRASE", "translation": "What?" },
+            { "word": "Wann?", "pos": "PHRASE", "translation": "When?" },
+            { "word": "Warum?", "pos": "PHRASE", "translation": "Why?" },
+            { "word": "Wie?", "pos": "PHRASE", "translation": "How?" },
+            { "word": "Wie lange?", "pos": "PHRASE", "translation": "How long?" },
+            { "word": "Wie viele?", "pos": "PHRASE", "translation": "How many?" },
+            { "word": "Wie viel?", "pos": "PHRASE", "translation": "How much?" },
+            { "word": "Wo?", "pos": "PHRASE", "translation": "Where?" },
+            { "word": "Wohin?", "pos": "PHRASE", "translation": "Where to?" },
+            { "word": "Woher?", "pos": "PHRASE", "translation": "Where from?" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Schleichdiktat", "pos": "NOUN" },
+            { "word": "der Diktattext", "pos": "NOUN" },
+            { "word": "gesp", "pos": "VERB" },
+            { "word": "nächstes", "pos": "ADJ", "frequency": 237 },
+            { "word": "die W-Frage", "pos": "NOUN" },
+            { "word": "die Hilfsverbe", "pos": "NOUN" },
+            { "word": "die Spalte", "pos": "NOUN", "frequency": 3284 },
+            { "word": "die du-Form", "pos": "NOUN" },
+            { "word": "der Stammvokal", "pos": "NOUN" },
+            { "word": "die Konjugationstabelle", "pos": "NOUN" },
+            { "word": "das Vollverb", "pos": "NOUN" },
+            { "word": "die Geburtstagsparty", "pos": "NOUN", "frequency": 32097 },
+            { "word": "der Berufswunsch", "pos": "NOUN", "frequency": 32905 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bewegen": {
+                "present": {
+                    "ich": "bewege",
+                    "du": "bewegst",
+                    "er": "bewegt",
+                    "es": "bewegt",
+                    "sie_singular": "bewegt",
+                    "xier": "bewegt",
+                    "wir": "bewegen",
+                    "ihr": "bewegt",
+                    "sie_plural": "bewegen",
+                    "Sie": "bewegen"
+                },
+                "Perfekt": {
+                    "ich": "habe bewegt",
+                    "du": "hast bewegt",
+                    "er": "hat bewegt",
+                    "es": "hat bewegt",
+                    "sie_singular": "hat bewegt",
+                    "xier": "hat bewegt",
+                    "wir": "haben bewegt",
+                    "ihr": "habt bewegt",
+                    "sie_plural": "haben bewegt",
+                    "Sie": "haben bewegt"
+                },
+                "Futur_I": {
+                    "ich": "werde bewegen",
+                    "du": "wirst bewegen",
+                    "er": "wird bewegen",
+                    "es": "wird bewegen",
+                    "sie_singular": "wird bewegen",
+                    "xier": "wird bewegen",
+                    "wir": "werden bewegen",
+                    "ihr": "werdet bewegen",
+                    "sie_plural": "werden bewegen",
+                    "Sie": "werden bewegen"
+                },
+                "imperative": {
+                    "du": "bewege",
+                    "ihr": "bewegt",
+                    "Sie": "bewegen Sie"
+                }
+            },
+            "wiederholen": {
+                "present": {
+                    "ich": "wiederhole",
+                    "du": "wiederholst",
+                    "er": "wiederholt",
+                    "es": "wiederholt",
+                    "sie_singular": "wiederholt",
+                    "xier": "wiederholt",
+                    "wir": "wiederholen",
+                    "ihr": "wiederholt",
+                    "sie_plural": "wiederholen",
+                    "Sie": "wiederholen"
+                },
+                "Perfekt": {
+                    "ich": "habe wiederholt",
+                    "du": "hast wiederholt",
+                    "er": "hat wiederholt",
+                    "es": "hat wiederholt",
+                    "sie_singular": "hat wiederholt",
+                    "xier": "hat wiederholt",
+                    "wir": "haben wiederholt",
+                    "ihr": "habt wiederholt",
+                    "sie_plural": "haben wiederholt",
+                    "Sie": "haben wiederholt"
+                },
+                "Futur_I": {
+                    "ich": "werde wiederholen",
+                    "du": "wirst wiederholen",
+                    "er": "wird wiederholen",
+                    "es": "wird wiederholen",
+                    "sie_singular": "wird wiederholen",
+                    "xier": "wird wiederholen",
+                    "wir": "werden wiederholen",
+                    "ihr": "werdet wiederholen",
+                    "sie_plural": "werden wiederholen",
+                    "Sie": "werden wiederholen"
+                },
+                "imperative": {
+                    "du": "wiederhol",
+                    "ihr": "wiederholt",
+                    "Sie": "wiederholen Sie"
+                }
+            },
+            "ärgern": {
+                "present": {
+                    "ich": "ärgere mich",
+                    "du": "ärgerst dich",
+                    "er": "ärgert sich",
+                    "es": "ärgert sich",
+                    "sie_singular": "ärgert sich",
+                    "xier": "ärgert sich",
+                    "wir": "ärgern uns",
+                    "ihr": "ärgert euch",
+                    "sie_plural": "ärgern sich",
+                    "Sie": "ärgern sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich geärgert",
+                    "du": "hast dich geärgert",
+                    "er": "hat sich geärgert",
+                    "es": "hat sich geärgert",
+                    "sie_singular": "hat sich geärgert",
+                    "xier": "hat sich geärgert",
+                    "wir": "haben uns geärgert",
+                    "ihr": "habt euch geärgert",
+                    "sie_plural": "haben sich geärgert",
+                    "Sie": "haben sich geärgert"
+                },
+                "Futur_I": {
+                    "ich": "werde mich ärgern",
+                    "du": "wirst dich ärgern",
+                    "er": "wird sich ärgern",
+                    "es": "wird sich ärgern",
+                    "sie_singular": "wird sich ärgern",
+                    "xier": "wird sich ärgern",
+                    "wir": "werden uns ärgern",
+                    "ihr": "werdet euch ärgern",
+                    "sie_plural": "werden sich ärgern",
+                    "Sie": "werden sich ärgern"
+                },
+                "imperative": {
+                    "du": "ärgere dich",
+                    "ihr": "ärgert euch",
+                    "Sie": "ärgern Sie sich"
+                }
+            },
+            "hinfahren": {
+                "Perfekt": {
+                    "ich": "bin hingefahren",
+                    "du": "bist hingefahren",
+                    "er": "ist hingefahren",
+                    "es": "ist hingefahren",
+                    "sie_singular": "ist hingefahren",
+                    "xier": "ist hingefahren",
+                    "wir": "sind hingefahren",
+                    "ihr": "seid hingefahren",
+                    "sie_plural": "sind hingefahren",
+                    "Sie": "sind hingefahren"
+                },
+                "Futur_I": {
+                    "ich": "werde hinfahren",
+                    "du": "wirst hinfahren",
+                    "er": "wird hinfahren",
+                    "es": "wird hinfahren",
+                    "sie_singular": "wird hinfahren",
+                    "xier": "wird hinfahren",
+                    "wir": "werden hinfahren",
+                    "ihr": "werdet hinfahren",
+                    "sie_plural": "werden hinfahren",
+                    "Sie": "werden hinfahren"
+                }
+            },
+            "hingehen": {
+                "present": {
+                    "ich": "gehe hin",
+                    "du": "gehst hin",
+                    "er": "geht hin",
+                    "es": "geht hin",
+                    "sie_singular": "geht hin",
+                    "xier": "geht hin",
+                    "wir": "gehen hin",
+                    "ihr": "geht hin",
+                    "sie_plural": "gehen hin",
+                    "Sie": "gehen hin"
+                },
+                "Perfekt": {
+                    "ich": "bin hingegangen",
+                    "du": "bist hingegangen",
+                    "er": "ist hingegangen",
+                    "es": "ist hingegangen",
+                    "sie_singular": "ist hingegangen",
+                    "xier": "ist hingegangen",
+                    "wir": "sind hingegangen",
+                    "ihr": "seid hingegangen",
+                    "sie_plural": "sind hingegangen",
+                    "Sie": "sind hingegangen"
+                },
+                "Futur_I": {
+                    "ich": "werde hingehen",
+                    "du": "wirst hingehen",
+                    "er": "wird hingehen",
+                    "es": "wird hingehen",
+                    "sie_singular": "wird hingehen",
+                    "xier": "wird hingehen",
+                    "wir": "werden hingehen",
+                    "ihr": "werdet hingehen",
+                    "sie_plural": "werden hingehen",
+                    "Sie": "werden hingehen"
+                },
+                "imperative": {
+                    "du": "geh hin",
+                    "ihr": "geht hin",
+                    "Sie": "gehen Sie hin"
+                }
+            },
+            "merken": {
+                "present": {
+                    "ich": "merke",
+                    "du": "merkst",
+                    "er": "merkt",
+                    "es": "merkt",
+                    "sie_singular": "merkt",
+                    "xier": "merkt",
+                    "wir": "merken",
+                    "ihr": "merkt",
+                    "sie_plural": "merken",
+                    "Sie": "merken"
+                },
+                "Perfekt": {
+                    "ich": "habe gemerkt",
+                    "du": "hast gemerkt",
+                    "er": "hat gemerkt",
+                    "es": "hat gemerkt",
+                    "sie_singular": "hat gemerkt",
+                    "xier": "hat gemerkt",
+                    "wir": "haben gemerkt",
+                    "ihr": "habt gemerkt",
+                    "sie_plural": "haben gemerkt",
+                    "Sie": "haben gemerkt"
+                },
+                "Futur_I": {
+                    "ich": "werde merken",
+                    "du": "wirst merken",
+                    "er": "wird merken",
+                    "es": "wird merken",
+                    "sie_singular": "wird merken",
+                    "xier": "wird merken",
+                    "wir": "werden merken",
+                    "ihr": "werdet merken",
+                    "sie_plural": "werden merken",
+                    "Sie": "werden merken"
+                },
+                "imperative": {
+                    "du": "merke",
+                    "ihr": "merkt",
+                    "Sie": "merken Sie"
+                }
+            },
+            "schleichen": {
+                "present": {
+                    "ich": "schleiche",
+                    "du": "schleichst",
+                    "er": "schleicht",
+                    "es": "schleicht",
+                    "sie_singular": "schleicht",
+                    "xier": "schleicht",
+                    "wir": "schleichen",
+                    "ihr": "schleicht",
+                    "sie_plural": "schleichen",
+                    "Sie": "schleichen"
+                },
+                "Perfekt": {
+                    "ich": "bin geschlichen",
+                    "du": "bist geschlichen",
+                    "er": "ist geschlichen",
+                    "es": "ist geschlichen",
+                    "sie_singular": "ist geschlichen",
+                    "xier": "ist geschlichen",
+                    "wir": "sind geschlichen",
+                    "ihr": "seid geschlichen",
+                    "sie_plural": "sind geschlichen",
+                    "Sie": "sind geschlichen"
+                },
+                "Futur_I": {
+                    "ich": "werde schleichen",
+                    "du": "wirst schleichen",
+                    "er": "wird schleichen",
+                    "es": "wird schleichen",
+                    "sie_singular": "wird schleichen",
+                    "xier": "wird schleichen",
+                    "wir": "werden schleichen",
+                    "ihr": "werdet schleichen",
+                    "sie_plural": "werden schleichen",
+                    "Sie": "werden schleichen"
+                },
+                "imperative": {
+                    "du": "schleiche",
+                    "ihr": "schleicht",
+                    "Sie": "schleichen Sie"
+                }
+            },
+            "halten": {
+                "present": {
+                    "ich": "halte",
+                    "du": "hältst",
+                    "er": "hält",
+                    "es": "hält",
+                    "sie_singular": "hält",
+                    "xier": "hält",
+                    "wir": "halten",
+                    "ihr": "haltet",
+                    "sie_plural": "halten",
+                    "Sie": "halten"
+                },
+                "Perfekt": {
+                    "ich": "habe gehalten",
+                    "du": "hast gehalten",
+                    "er": "hat gehalten",
+                    "es": "hat gehalten",
+                    "sie_singular": "hat gehalten",
+                    "xier": "hat gehalten",
+                    "wir": "haben gehalten",
+                    "ihr": "habt gehalten",
+                    "sie_plural": "haben gehalten",
+                    "Sie": "haben gehalten"
+                },
+                "Futur_I": {
+                    "ich": "werde halten",
+                    "du": "wirst halten",
+                    "er": "wird halten",
+                    "es": "wird halten",
+                    "sie_singular": "wird halten",
+                    "xier": "wird halten",
+                    "wir": "werden halten",
+                    "ihr": "werdet halten",
+                    "sie_plural": "werden halten",
+                    "Sie": "werden halten"
+                },
+                "imperative": {
+                    "du": "halt",
+                    "ihr": "haltet",
+                    "Sie": "halten Sie"
+                }
+            },
+            "Wem": {
+                "Futur_I": {
+                    "ich": "werde Wem",
+                    "du": "wirst Wem",
+                    "er": "wird Wem",
+                    "es": "wird Wem",
+                    "sie_singular": "wird Wem",
+                    "xier": "wird Wem",
+                    "wir": "werden Wem",
+                    "ihr": "werdet Wem",
+                    "sie_plural": "werden Wem",
+                    "Sie": "werden Wem"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Vorne liegt ein Diktattext.",
+            "Bewegen Sie sich zum Text.",
+            "Merken Sie sich so viele Wörter, wie Sie möchten und können.",
+            "Kommen Sie zurück zum Buch und schreiben Sie unten die Wörter auf.",
+            "Dann merken Sie sich die nächsten Wörter und schreiben sie auf.",
+            "Wiederholen Sie den Prozess, bis Sie den ganzen Text geschrieben haben.",
+            "Vergleichen Sie Ihren Text mit dem Original und korrigieren Sie Fehler.",
+            "Ich bin letztes Wochenende Onkel geworden.",
+            "Mein Bruder und seine Freundin haben ihr erstes Kind bekommen.",
+            "Ich bin sofort zu ihnen gefahren.",
+            "Ich wollte meine Nichte die ganze Zeit halten.",
+            "Das durfte ich aber nicht, weil das Baby viel trinken und schlafen musste.",
+            "Und sie konnte nicht sprechen, also haben alle ganz komisch mit ihr gesp Roche",
+            "Nächstes Wochenende werde ich wieder hinfahren.",
+            "Da werde ich sechs Jahre alt und meine Nichte wird eine Woche.",
+            "Und sie konnte nicht sprechen, also haben alle ganz komisch mit ihr gesp Roche n.",
+            "Schreiben Sie individuell zwei W-Fragen (wer?",
+            "Wie?) zu dem Diktattext.",
+            "Stellen Sie die Fragen der anderen Person.",
+            "Suchen Sie alle Perfektformen im Text.",
+            "Schreiben Sie die Partizipien und Hilfsverben in die linke Spalte.",
+            "Ergänzen Sie die Infinitive und die du-Form (achten Sie auf den Stammvokal).",
+            "Im Text von Aktivität 8 stehen Modalverben im Präteritum.",
+            "Markieren Sie die Sätze.",
+            "Ergänzen Sie die Konjugationstabelle im Präsens und Präteritum.",
+            "Schreiben Sie zu jedem der drei Modalverben einen Satz im Präsens und einen im Präteritum.",
+            "Benutzen Sie verschiedene Personalpronomen.",
+            "Im Text links stehen Sätze mit „werden.",
+            "Suchen Sie alle Sätze.",
+            "Schreiben Sie die Sätze in die richtige Spalte.",
+            "Werden als Vollverb werden als Hilfsverb",
+            "„Werden ist ein Vollverb, das heißt es braucht kein/ein anderes Verb.",
+            "„Werden ist auch ein Hilfsverb sein, das heißt es braucht kein/ein anderes Verb.",
+            "Als Vollverb/Hilfsverb meint „werden eine Entwicklung oder Veränderung.",
+            "Als Vollverb.",
+            "Hilfsverb brauchen wir „werden für das Futur.",
+            "Vollverb [V] oder HIlfsverb [H]?",
+            "Ich werde zwanzig Jahre alt.",
+            "Ich werde eine große Geburtstagsparty machen.",
+            "Ich werde Ingenieur*in.",
+            "Das ist mein Berufswunsch.",
+            "Er wird rot, wenn er sich ärgert.",
+            "Morgen werden wir ins Kino gehen."
+        ],
+        "templated": []
+    }
+}

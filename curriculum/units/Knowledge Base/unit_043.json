@@ -1,0 +1,659 @@
+{
+    "unit": "43",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 43,
+        "prerequisite": "1-42"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Architektur und Möbel beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Bauhaus und Architektur"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "werden",
+                "pos": "VERB",
+                "translation": "to become",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "folgen",
+                "pos": "VERB",
+                "translation": "to follow",
+                "frequency": 160,
+                "cefr": "B1"
+            },
+            {
+                "word": "nennen",
+                "pos": "VERB",
+                "translation": "to name",
+                "frequency": 191,
+                "cefr": "A2"
+            },
+            {
+                "word": "schließen",
+                "pos": "VERB",
+                "translation": "to close"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "gründen",
+                "pos": "VERB",
+                "translation": "to establish, found"
+            },
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design; create",
+                "frequency": 1613
+            },
+            {
+                "word": "das Gebäude",
+                "pos": "NOUN",
+                "translation": "building"
+            },
+            {
+                "word": "die Ausstellung",
+                "pos": "NOUN",
+                "translation": "exhibition",
+                "frequency": 1597,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Möbel",
+                "pos": "NOUN",
+                "translation": "furniture"
+            },
+            {
+                "word": "die Schule",
+                "pos": "NOUN",
+                "translation": "school",
+                "frequency": 359,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kirche",
+                "pos": "NOUN",
+                "translation": "church",
+                "frequency": 892,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Handwerker*in",
+                "pos": "NOUN",
+                "translation": "craftsperson; mechanic; artisan",
+                "frequency": 5789,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Zukunft",
+                "pos": "NOUN",
+                "translation": "future",
+                "frequency": 469,
+                "cefr": "B1"
+            },
+            {
+                "word": "bekannt",
+                "pos": "ADJ",
+                "translation": "famous, known, renowned",
+                "frequency": 319,
+                "cefr": "A1"
+            },
+            {
+                "word": "schlicht",
+                "pos": "ADJ",
+                "translation": "plain, simple",
+                "frequency": 2546
+            },
+            {
+                "word": "einfach",
+                "pos": "ADJ",
+                "translation": "easy, simple",
+                "frequency": 131,
+                "cefr": "A1"
+            },
+            {
+                "word": "klar",
+                "pos": "ADJ",
+                "translation": "clear",
+                "frequency": 239,
+                "cefr": "A1"
+            },
+            {
+                "word": "noch aus",
+                "pos": "ADV",
+                "translation": "still",
+                "frequency": 33,
+                "cefr": "A1"
+            },
+            {
+                "word": "selbst",
+                "pos": "PRON",
+                "translation": "by one self , -self",
+                "frequency": 101,
+                "cefr": "A2"
+            },
+            {
+                "word": "gleich",
+                "pos": "ADJ",
+                "translation": "equal; soon",
+                "frequency": 141,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Architektur",
+                "pos": "NOUN",
+                "frequency": 3616
+            },
+            {
+                "word": "das Stil",
+                "pos": "NOUN",
+                "frequency": 2422,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Galerie",
+                "pos": "NOUN",
+                "frequency": 4328,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Oper",
+                "pos": "NOUN",
+                "frequency": 3910,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Antike",
+                "pos": "NOUN",
+                "frequency": 8209
+            },
+            {
+                "word": "die Romanik",
+                "pos": "NOUN",
+                "frequency": 34469
+            },
+            {
+                "word": "die Gotik",
+                "pos": "NOUN",
+                "frequency": 25271
+            },
+            {
+                "word": "sozialistisch",
+                "pos": "ADJ",
+                "frequency": 4090,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Jugendstil",
+                "pos": "NOUN",
+                "frequency": 17846,
+                "cefr": "B2"
+            },
+            {
+                "word": "un",
+                "pos": "NOUN",
+                "frequency": 6785
+            },
+            {
+                "word": "uninteressant",
+                "pos": "ADV",
+                "frequency": 19859,
+                "cefr": "B2"
+            },
+            {
+                "word": "eckig",
+                "pos": "ADV",
+                "frequency": 29830,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Station",
+                "pos": "NOUN",
+                "frequency": 2562,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Design",
+                "pos": "NOUN",
+                "frequency": 4816
+            },
+            {
+                "word": "modern",
+                "pos": "ADV",
+                "frequency": 747,
+                "cefr": "A2"
+            },
+            {
+                "word": "abstrakt",
+                "pos": "ADV",
+                "frequency": 3335
+            },
+            {
+                "word": "die Reichsparteitagsgelände",
+                "pos": "NOUN",
+                "frequency": 42753
+            },
+            {
+                "word": "der Nazi",
+                "pos": "NOUN",
+                "frequency": 2946,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Dekoration",
+                "pos": "NOUN",
+                "frequency": 12145
+            },
+            {
+                "word": "die Linie",
+                "pos": "NOUN",
+                "frequency": 926,
+                "cefr": "B1"
+            },
+            {
+                "word": "beenden",
+                "pos": "VERB",
+                "frequency": 1405,
+                "cefr": "A2"
+            },
+            {
+                "word": "architektonisch",
+                "pos": "ADJ",
+                "frequency": 9283
+            },
+            {
+                "word": "das Direktor",
+                "pos": "NOUN",
+                "frequency": 2041,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Kunstschule",
+                "pos": "NOUN",
+                "frequency": 27782
+            },
+            {
+                "word": "konzipieren",
+                "pos": "VERB",
+                "frequency": 5820
+            },
+            {
+                "word": "en",
+                "pos": "NOUN",
+                "frequency": 6274
+            },
+            {
+                "word": "emigrieren",
+                "pos": "VERB",
+                "frequency": 16808,
+                "cefr": "B2"
+            },
+            {
+                "word": "zusammenbringen",
+                "pos": "VERB",
+                "frequency": 13090,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Prototyp",
+                "pos": "NOUN",
+                "frequency": 9628
+            },
+            {
+                "word": "die Massenproduktion",
+                "pos": "NOUN",
+                "frequency": 32436
+            },
+            {
+                "word": "künstlerisch",
+                "pos": "ADJ",
+                "frequency": 2222
+            },
+            {
+                "word": "die Revolution",
+                "pos": "NOUN",
+                "frequency": 2240,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Prinzip",
+                "pos": "NOUN",
+                "frequency": 865
+            },
+            {
+                "word": "die Funktion",
+                "pos": "NOUN",
+                "frequency": 406,
+                "cefr": "B2"
+            },
+            {
+                "word": "radikal",
+                "pos": "ADJ",
+                "frequency": 2508
+            },
+            {
+                "word": "konservative",
+                "pos": "NOUN",
+                "frequency": 8952
+            },
+            {
+                "word": "linker",
+                "pos": "ADJ",
+                "frequency": 871
+            },
+            {
+                "word": "internationalistisch",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der*die Nationalsozialist*innen",
+                "pos": "NOUN",
+                "frequency": 2946
+            },
+            {
+                "word": "die Fotografie",
+                "pos": "NOUN",
+                "frequency": 4327,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Bauwerk",
+                "pos": "NOUN",
+                "frequency": 6417
+            },
+            {
+                "word": "die Designschule",
+                "pos": "NOUN"
+            },
+            {
+                "word": "funktional",
+                "pos": "ADV",
+                "frequency": 4806,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Accessoire",
+                "pos": "NOUN",
+                "frequency": 14454,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "werden": {
+                "present": {
+                    "ich": "werde",
+                    "du": "wirst",
+                    "er": "wird",
+                    "es": "wird",
+                    "sie_singular": "wird",
+                    "xier": "wird",
+                    "wir": "werden",
+                    "ihr": "werdet",
+                    "sie_plural": "werden",
+                    "Sie": "werden"
+                }
+            },
+            "folgen": {
+                "present": {
+                    "ich": "folge",
+                    "du": "folgst",
+                    "er": "folgt",
+                    "es": "folgt",
+                    "sie_singular": "folgt",
+                    "xier": "folgt",
+                    "wir": "folgen",
+                    "ihr": "folgt",
+                    "sie_plural": "folgen",
+                    "Sie": "folgen"
+                }
+            },
+            "nennen": {
+                "present": {
+                    "ich": "nenne",
+                    "du": "nennst",
+                    "er": "nennt",
+                    "es": "nennt",
+                    "sie_singular": "nennt",
+                    "xier": "nennt",
+                    "wir": "nennen",
+                    "ihr": "nennt",
+                    "sie_plural": "nennen",
+                    "Sie": "nennen"
+                }
+            },
+            "schließen": {
+                "present": {
+                    "ich": "schließe",
+                    "du": "schließt",
+                    "er": "schließt",
+                    "es": "schließt",
+                    "sie_singular": "schließt",
+                    "xier": "schließt",
+                    "wir": "schließen",
+                    "ihr": "schließt",
+                    "sie_plural": "schließen",
+                    "Sie": "schließen"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                }
+            },
+            "gründen": {
+                "present": {
+                    "ich": "gründe",
+                    "du": "gründest",
+                    "er": "gründet",
+                    "es": "gründet",
+                    "sie_singular": "gründet",
+                    "xier": "gründet",
+                    "wir": "gründen",
+                    "ihr": "gründet",
+                    "sie_plural": "gründen",
+                    "Sie": "gründen"
+                }
+            },
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In den deutschsprachigen Ländern gibt es viele verschiedene Architekturstile.",
+            "Ordnen Sie die Stile den Gebäuden zu.",
+            "Das Bauhaus Dessau.",
+            "Die Antike ist Bild 2.",
+            "Die Romanik ist Bild 10.",
+            "Die Gotik ist Bild 4.",
+            "Die Renaissance ist Bild 7.",
+            "Der Barock ist Bild 1.",
+            "Der Neoklassizismus ist Bild 12.",
+            "Der sozialistische Klassizismus ist Bild 6.",
+            "Der Jugendstil ist Bild 11.",
+            "Der Funktionalismus ist Bild 3.",
+            "Die Postmoderne ist Bild 5.",
+            "Sagen Sie, welches Gebäude Sie (nicht) schön oder (un)interessant finden und warum..",
+            "Ich finde den Kölner Dom schön, weil ich Kirchen mag.",
+            "Ich finde die Neue Staatsgalerie schön, weil viele Farben hat.",
+            "Ich finde die Semperoper toll, weil sie schön ist.",
+            "Ich finde das Bauhaus uninteressant, weil es weiß und eckig ist.",
+            "Ich finde die Porta Nigra interessant, weil sie alt ist.",
+            "Ich finde das Grossmünster schön, weil die Kirche vor Bergen steht.",
+            "Ich finde die Station Karlsplatz schön, weil ich Jugendstil mag.",
+            "Ich finde das Vitra Design Museum interessant, weil es modern und abstrakt ist.",
+            "Ich finde das Reichsparteitagsgelände nicht schön, weil es von den Nazis ist.",
+            "Nehmen Sie Bild 3 und kreuzen Sie an.",
+            "Das Haus ist modern / altmodisch [alt].",
+            "Es hat viele Farben / is grau und weiß.",
+            "Es hat viele Fenster / wenige Fenster.",
+            "Hören Sie zu und ergänzen Sie die Informationen.",
+            "Walter Gropius ist am 18.",
+            "Mai in Berlin geboren.",
+            "Er studiert Architektur in München, aber beendet das Studium nicht.",
+            "Er arbeitet beim Deutschen Werkbund und im Deutschen Museum für Kunst und Handel.",
+            "Dort organisiert er Ausstellungen.",
+            "Seine erste architektonische Arbeit ist das Fargus Werk in Alfeld an der Leine.",
+            "1919 wird er Direktor an einer Kunstschule und nennt sie Staatliches Bauhaus in Weimar.",
+            "Er ist erst Direktor in Weimar und dann in Dessau.",
+            "Und baut Wohnsiedlung en.",
+            "Die Siemensstadt in Berlin (1929/1930) ist sehr bekannt.",
+            "1934 emigriert Gropius erst nach England und dann in die USA.",
+            "Er stirbt am 5.",
+            "Juli 1969 in Boston.",
+            "Lesen Sie den Text über das Design und die Architektur im Bauhaus -Stil.",
+            "1919 gründet Walter Gropius in Weimar das Bauhaus.",
+            "Die Schule will Architektur, Bildhauerei und Malerei zusammenbringen und ein Gebäude für die Zukunft gestalten.",
+            "Für Gropius sind Künstler*innen und Handwerker*innen gleich.",
+            "Ein gutes Beispiel ist das Bauhaus in Dessau.",
+            "Er plant und baut es im Jahr 1926.",
+            "Die Schüler*innen von dem Bauhaus bauen Prototypen für Möbel und andere Dinge.",
+            "Seit 1925 gibt es die \"",
+            "Und die Möbel und anderen Dinge gehen in Massenproduktion.",
+            "Die Gegenstände sollen für alle Menschen und für die Zukunft sein.",
+            "Die Produkte sind einfach und schlicht.",
+            "Das ist eine künstlerische Revolution.",
+            ", also der Form folgt die Funktion.",
+            "Die radikalen Ideen der Bauhaus-Künstler*innen sind kontrovers.",
+            "Konservative sind gegen die linken und internationalistischen Bauhaus-Mitglieder.",
+            "1933 schließen die Nationalsozialist*innen das Bauhaus.",
+            "Viele Bauhaus-Künstler*innen emigrieren nach Frankreich, Großbritannien, in die Schweiz oder die USA.",
+            "Laszlo Moholy-Nagy gründet 1937 in Chicago das New Bauhaus, heute heißt es das Institute of Design at Illinois Tech.",
+            "Diese Schule nutzt die Ideen des Bauhaus noch als Orientierung, konzentriert sich aber auf die Fotografie.",
+            "Architekt*innen wie Walter Gropius oder Ludwig Mies van der Rohe sind in den USA und international bekannt.",
+            "Ihre Bauwerke sind bis heute Beispiele der modernen Architektur.",
+            "Richtig oder falsch?",
+            "Kreuzen Sie an.",
+            "Das Bauhaus ist eine Designschule.",
+            "Die Schule will ein Gebäude für die Zukunft gestalten.",
+            "Bauhaus Möbel sind funktional.",
+            "Alle Bauhaus-Künstler*innen sind Architekt*innen.",
+            "Die Nationalsozialist*innen mögen das Bauhaus.",
+            "Das Bauhaus ist heute nicht mehr bekannt.",
+            "Sehen Sie sich Beispiele von Bauhaus Möbeln auf designklassiker.com an.",
+            "Wählen Sie als\"Stilepoche\" das\" Bauhaus \" aus.",
+            "Welche Möbel gibt es?",
+            "Kann man sie heute kaufen?",
+            "Sind sie funktional?",
+            "Haben Sie Bauhaus Möbel?",
+            "Sie sind funktional.",
+            "Ja, man kann sie heute kaufen.",
+            "Ja, ich habe Bauhaus Möbel.",
+            "Nein, ich habe keine Bauhaus Möbel."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,977 @@
+{
+    "unit": "B49",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 49,
+        "prerequisite": "core 1-104, B1-B48"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Tanzkurs planen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Tanz und Performance"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erhalten", "pos": "VERB", "translation": "to preserve; receive", "frequency": 287, "cefr": "B1" },
+            { "word": "zusammenfassen", "pos": "VERB", "translation": "to summarize", "frequency": 1858, "cefr": "B1" },
+            { "word": "lächeln", "pos": "VERB", "translation": "to smile" },
+            { "word": "greifen", "pos": "VERB", "translation": "to grab; grasp; grip", "frequency": 976, "cefr": "B1" },
+            { "word": "wach", "pos": "VERB", "translation": "to wake up", "frequency": 3153, "cefr": "A2" },
+            { "word": "strecken", "pos": "VERB", "translation": "to stretch", "frequency": 3155 },
+            { "word": "einseifen", "pos": "VERB", "translation": "to soap; lather; dupe" },
+            { "word": "abbrausen", "pos": "VERB", "translation": "to shower off" },
+            { "word": "beten", "pos": "VERB", "translation": "to pray", "frequency": 3560 },
+            { "word": "angehen", "pos": "VERB", "translation": "to go on", "frequency": 1225 },
+            { "word": "verursachen", "pos": "VERB", "translation": "to cause", "frequency": 1767, "cefr": "B1" },
+            { "word": "übersehen", "pos": "VERB", "translation": "to miss, overlook" },
+            { "word": "Nee", "pos": "PARTICLE", "translation": "nah (coll.)", "frequency": 148 },
+            { "word": "die Eigenschaft", "pos": "NOUN", "translation": "characteristic, trait, property", "frequency": 794, "cefr": "B2" },
+            { "word": "der Zugang", "pos": "NOUN", "translation": "access; admission; approach", "frequency": 1506, "cefr": "B1" },
+            { "word": "die Störung", "pos": "NOUN", "translation": "disturbance" },
+            { "word": "die Zeile", "pos": "NOUN", "translation": "line", "frequency": 2318, "cefr": "B1" },
+            { "word": "der*die Empfänger*in", "pos": "NOUN", "translation": "recipient; receiver" },
+            { "word": "die Dusche", "pos": "NOUN", "translation": "shower", "frequency": 4570, "cefr": "A1" },
+            { "word": "das Handtuch", "pos": "NOUN", "translation": "(hand) towel", "frequency": 12937, "cefr": "A2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Meeting", "pos": "NOUN", "frequency": 12234 },
+            { "word": "die Wichtige", "pos": "NOUN", "frequency": 20491 },
+            { "word": "verbal", "pos": "ADJ", "frequency": 4427 },
+            { "word": "nonverbal", "pos": "ADJ" },
+            { "word": "physisch", "pos": "ADJ", "frequency": 3389 },
+            { "word": "das Vehikel", "pos": "NOUN", "frequency": 21286 },
+            { "word": "das Faktor", "pos": "NOUN", "frequency": 911, "cefr": "B1" },
+            { "word": "abhängen", "pos": "VERB", "frequency": 1232, "cefr": "B1" },
+            { "word": "die Augenweide", "pos": "NOUN", "frequency": 29186 },
+            { "word": "derb", "pos": "ADJ", "frequency": 17826, "cefr": "B2" },
+            { "word": "öde", "pos": "ADV", "frequency": 21674 },
+            { "word": "die Schöne", "pos": "NOUN", "frequency": 7463 },
+            { "word": "Tja", "pos": "INTJ", "frequency": 3278, "cefr": "B2" },
+            { "word": "die Perle", "pos": "NOUN", "frequency": 10664, "cefr": "B2" },
+            { "word": "modeln", "pos": "NOUN" },
+            { "word": "der Bikini", "pos": "NOUN", "frequency": 30270, "cefr": "B1" },
+            { "word": "das Defizit", "pos": "NOUN", "frequency": 3804 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erhalten": {
+                "present": {
+                    "ich": "erhalte",
+                    "du": "erhältst",
+                    "er": "erhält",
+                    "es": "erhält",
+                    "sie_singular": "erhält",
+                    "xier": "erhält",
+                    "wir": "erhalten",
+                    "ihr": "erhaltet",
+                    "sie_plural": "erhalten",
+                    "Sie": "erhalten"
+                },
+                "Präteritum": {
+                    "ich": "erhielt",
+                    "du": "erhieltest",
+                    "er": "erhielt",
+                    "es": "erhielt",
+                    "sie_singular": "erhielt",
+                    "xier": "erhielt",
+                    "wir": "erhielten",
+                    "ihr": "erhieltet",
+                    "sie_plural": "erhielten",
+                    "Sie": "erhielten"
+                },
+                "Perfekt": {
+                    "ich": "habe erhalten",
+                    "du": "hast erhalten",
+                    "er": "hat erhalten",
+                    "es": "hat erhalten",
+                    "sie_singular": "hat erhalten",
+                    "xier": "hat erhalten",
+                    "wir": "haben erhalten",
+                    "ihr": "habt erhalten",
+                    "sie_plural": "haben erhalten",
+                    "Sie": "haben erhalten"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erhalten",
+                    "du": "hattest erhalten",
+                    "er": "hatte erhalten",
+                    "es": "hatte erhalten",
+                    "sie_singular": "hatte erhalten",
+                    "xier": "hatte erhalten",
+                    "wir": "hatten erhalten",
+                    "ihr": "hattet erhalten",
+                    "sie_plural": "hatten erhalten",
+                    "Sie": "hatten erhalten"
+                },
+                "Futur_I": {
+                    "ich": "werde erhalten",
+                    "du": "wirst erhalten",
+                    "er": "wird erhalten",
+                    "es": "wird erhalten",
+                    "sie_singular": "wird erhalten",
+                    "xier": "wird erhalten",
+                    "wir": "werden erhalten",
+                    "ihr": "werdet erhalten",
+                    "sie_plural": "werden erhalten",
+                    "Sie": "werden erhalten"
+                },
+                "imperative": {
+                    "du": "erhalt",
+                    "ihr": "erhaltet",
+                    "Sie": "erhalten Sie"
+                }
+            },
+            "zusammenfassen": {
+                "present": {
+                    "ich": "fasse zusammen",
+                    "du": "fasst zusammen",
+                    "er": "fasst zusammen",
+                    "es": "fasst zusammen",
+                    "sie_singular": "fasst zusammen",
+                    "xier": "fasst zusammen",
+                    "wir": "fassen zusammen",
+                    "ihr": "fasst zusammen",
+                    "sie_plural": "fassen zusammen",
+                    "Sie": "fassen zusammen"
+                },
+                "Präteritum": {
+                    "ich": "fasste zusammen",
+                    "du": "fasstest zusammen",
+                    "er": "fasste zusammen",
+                    "es": "fasste zusammen",
+                    "sie_singular": "fasste zusammen",
+                    "xier": "fasste zusammen",
+                    "wir": "fassten zusammen",
+                    "ihr": "fasstet zusammen",
+                    "sie_plural": "fassten zusammen",
+                    "Sie": "fassten zusammen"
+                },
+                "Perfekt": {
+                    "ich": "habe zusammengefasst",
+                    "du": "hast zusammengefasst",
+                    "er": "hat zusammengefasst",
+                    "es": "hat zusammengefasst",
+                    "sie_singular": "hat zusammengefasst",
+                    "xier": "hat zusammengefasst",
+                    "wir": "haben zusammengefasst",
+                    "ihr": "habt zusammengefasst",
+                    "sie_plural": "haben zusammengefasst",
+                    "Sie": "haben zusammengefasst"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte zusammengefasst",
+                    "du": "hattest zusammengefasst",
+                    "er": "hatte zusammengefasst",
+                    "es": "hatte zusammengefasst",
+                    "sie_singular": "hatte zusammengefasst",
+                    "xier": "hatte zusammengefasst",
+                    "wir": "hatten zusammengefasst",
+                    "ihr": "hattet zusammengefasst",
+                    "sie_plural": "hatten zusammengefasst",
+                    "Sie": "hatten zusammengefasst"
+                },
+                "Futur_I": {
+                    "ich": "werde zusammenfassen",
+                    "du": "wirst zusammenfassen",
+                    "er": "wird zusammenfassen",
+                    "es": "wird zusammenfassen",
+                    "sie_singular": "wird zusammenfassen",
+                    "xier": "wird zusammenfassen",
+                    "wir": "werden zusammenfassen",
+                    "ihr": "werdet zusammenfassen",
+                    "sie_plural": "werden zusammenfassen",
+                    "Sie": "werden zusammenfassen"
+                },
+                "imperative": {
+                    "du": "fass zusammen",
+                    "ihr": "fasst zusammen",
+                    "Sie": "fassen Sie zusammen"
+                }
+            },
+            "lächeln": {
+                "present": {
+                    "ich": "lächle",
+                    "du": "lächelst",
+                    "er": "lächelt",
+                    "es": "lächelt",
+                    "sie_singular": "lächelt",
+                    "xier": "lächelt",
+                    "wir": "lächeln",
+                    "ihr": "lächelt",
+                    "sie_plural": "lächeln",
+                    "Sie": "lächeln"
+                },
+                "Präteritum": {
+                    "ich": "lächelte",
+                    "du": "lächeltest",
+                    "er": "lächelte",
+                    "es": "lächelte",
+                    "sie_singular": "lächelte",
+                    "xier": "lächelte",
+                    "wir": "lächelten",
+                    "ihr": "lächeltet",
+                    "sie_plural": "lächelten",
+                    "Sie": "lächelten"
+                },
+                "Perfekt": {
+                    "ich": "habe gelächelt",
+                    "du": "hast gelächelt",
+                    "er": "hat gelächelt",
+                    "es": "hat gelächelt",
+                    "sie_singular": "hat gelächelt",
+                    "xier": "hat gelächelt",
+                    "wir": "haben gelächelt",
+                    "ihr": "habt gelächelt",
+                    "sie_plural": "haben gelächelt",
+                    "Sie": "haben gelächelt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gelächelt",
+                    "du": "hattest gelächelt",
+                    "er": "hatte gelächelt",
+                    "es": "hatte gelächelt",
+                    "sie_singular": "hatte gelächelt",
+                    "xier": "hatte gelächelt",
+                    "wir": "hatten gelächelt",
+                    "ihr": "hattet gelächelt",
+                    "sie_plural": "hatten gelächelt",
+                    "Sie": "hatten gelächelt"
+                },
+                "Futur_I": {
+                    "ich": "werde lächeln",
+                    "du": "wirst lächeln",
+                    "er": "wird lächeln",
+                    "es": "wird lächeln",
+                    "sie_singular": "wird lächeln",
+                    "xier": "wird lächeln",
+                    "wir": "werden lächeln",
+                    "ihr": "werdet lächeln",
+                    "sie_plural": "werden lächeln",
+                    "Sie": "werden lächeln"
+                },
+                "imperative": {
+                    "du": "lächle",
+                    "ihr": "lächelt",
+                    "Sie": "lächeln Sie"
+                }
+            },
+            "greifen": {
+                "present": {
+                    "ich": "greife",
+                    "du": "greifst",
+                    "er": "greift",
+                    "es": "greift",
+                    "sie_singular": "greift",
+                    "xier": "greift",
+                    "wir": "greifen",
+                    "ihr": "greift",
+                    "sie_plural": "greifen",
+                    "Sie": "greifen"
+                },
+                "Präteritum": {
+                    "ich": "griff",
+                    "du": "griffst",
+                    "er": "griff",
+                    "es": "griff",
+                    "sie_singular": "griff",
+                    "xier": "griff",
+                    "wir": "griffen",
+                    "ihr": "grifft",
+                    "sie_plural": "griffen",
+                    "Sie": "griffen"
+                },
+                "Perfekt": {
+                    "ich": "habe gegriffen",
+                    "du": "hast gegriffen",
+                    "er": "hat gegriffen",
+                    "es": "hat gegriffen",
+                    "sie_singular": "hat gegriffen",
+                    "xier": "hat gegriffen",
+                    "wir": "haben gegriffen",
+                    "ihr": "habt gegriffen",
+                    "sie_plural": "haben gegriffen",
+                    "Sie": "haben gegriffen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gegriffen",
+                    "du": "hattest gegriffen",
+                    "er": "hatte gegriffen",
+                    "es": "hatte gegriffen",
+                    "sie_singular": "hatte gegriffen",
+                    "xier": "hatte gegriffen",
+                    "wir": "hatten gegriffen",
+                    "ihr": "hattet gegriffen",
+                    "sie_plural": "hatten gegriffen",
+                    "Sie": "hatten gegriffen"
+                },
+                "Futur_I": {
+                    "ich": "werde greifen",
+                    "du": "wirst greifen",
+                    "er": "wird greifen",
+                    "es": "wird greifen",
+                    "sie_singular": "wird greifen",
+                    "xier": "wird greifen",
+                    "wir": "werden greifen",
+                    "ihr": "werdet greifen",
+                    "sie_plural": "werden greifen",
+                    "Sie": "werden greifen"
+                },
+                "imperative": {
+                    "du": "greife",
+                    "ihr": "greift",
+                    "Sie": "greifen Sie"
+                }
+            },
+            "wach": {
+                "Perfekt": {
+                    "ich": "bin geworden",
+                    "du": "bist geworden",
+                    "er": "ist geworden",
+                    "es": "ist geworden",
+                    "sie_singular": "ist geworden",
+                    "xier": "ist geworden",
+                    "wir": "sind geworden",
+                    "ihr": "seid geworden",
+                    "sie_plural": "sind geworden",
+                    "Sie": "sind geworden"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war geworden",
+                    "du": "warst geworden",
+                    "er": "war geworden",
+                    "es": "war geworden",
+                    "sie_singular": "war geworden",
+                    "xier": "war geworden",
+                    "wir": "waren geworden",
+                    "ihr": "wart geworden",
+                    "sie_plural": "waren geworden",
+                    "Sie": "waren geworden"
+                },
+                "Futur_I": {
+                    "ich": "werde wach",
+                    "du": "wirst wach",
+                    "er": "wird wach",
+                    "es": "wird wach",
+                    "sie_singular": "wird wach",
+                    "xier": "wird wach",
+                    "wir": "werden wach",
+                    "ihr": "werdet wach",
+                    "sie_plural": "werden wach",
+                    "Sie": "werden wach"
+                }
+            },
+            "strecken": {
+                "present": {
+                    "ich": "strecke",
+                    "du": "streckst",
+                    "er": "streckt",
+                    "es": "streckt",
+                    "sie_singular": "streckt",
+                    "xier": "streckt",
+                    "wir": "strecken",
+                    "ihr": "streckt",
+                    "sie_plural": "strecken",
+                    "Sie": "strecken"
+                },
+                "Präteritum": {
+                    "ich": "streckte",
+                    "du": "strecktest",
+                    "er": "streckte",
+                    "es": "streckte",
+                    "sie_singular": "streckte",
+                    "xier": "streckte",
+                    "wir": "streckten",
+                    "ihr": "strecktet",
+                    "sie_plural": "streckten",
+                    "Sie": "streckten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestreckt",
+                    "du": "hast gestreckt",
+                    "er": "hat gestreckt",
+                    "es": "hat gestreckt",
+                    "sie_singular": "hat gestreckt",
+                    "xier": "hat gestreckt",
+                    "wir": "haben gestreckt",
+                    "ihr": "habt gestreckt",
+                    "sie_plural": "haben gestreckt",
+                    "Sie": "haben gestreckt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gestreckt",
+                    "du": "hattest gestreckt",
+                    "er": "hatte gestreckt",
+                    "es": "hatte gestreckt",
+                    "sie_singular": "hatte gestreckt",
+                    "xier": "hatte gestreckt",
+                    "wir": "hatten gestreckt",
+                    "ihr": "hattet gestreckt",
+                    "sie_plural": "hatten gestreckt",
+                    "Sie": "hatten gestreckt"
+                },
+                "Futur_I": {
+                    "ich": "werde strecken",
+                    "du": "wirst strecken",
+                    "er": "wird strecken",
+                    "es": "wird strecken",
+                    "sie_singular": "wird strecken",
+                    "xier": "wird strecken",
+                    "wir": "werden strecken",
+                    "ihr": "werdet strecken",
+                    "sie_plural": "werden strecken",
+                    "Sie": "werden strecken"
+                },
+                "imperative": {
+                    "du": "streck",
+                    "ihr": "streckt",
+                    "Sie": "strecken Sie"
+                }
+            },
+            "einseifen": {
+                "present": {
+                    "ich": "seife ein",
+                    "du": "seifst ein",
+                    "er": "seift ein",
+                    "es": "seift ein",
+                    "sie_singular": "seift ein",
+                    "xier": "seift ein",
+                    "wir": "seifen ein",
+                    "ihr": "seift ein",
+                    "sie_plural": "seifen ein",
+                    "Sie": "seifen ein"
+                },
+                "Präteritum": {
+                    "ich": "seifte ein",
+                    "du": "seiftest ein",
+                    "er": "seifte ein",
+                    "es": "seifte ein",
+                    "sie_singular": "seifte ein",
+                    "xier": "seifte ein",
+                    "wir": "seiften ein",
+                    "ihr": "seiftet ein",
+                    "sie_plural": "seiften ein",
+                    "Sie": "seiften ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingeseift",
+                    "du": "hast eingeseift",
+                    "er": "hat eingeseift",
+                    "es": "hat eingeseift",
+                    "sie_singular": "hat eingeseift",
+                    "xier": "hat eingeseift",
+                    "wir": "haben eingeseift",
+                    "ihr": "habt eingeseift",
+                    "sie_plural": "haben eingeseift",
+                    "Sie": "haben eingeseift"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte eingeseift",
+                    "du": "hattest eingeseift",
+                    "er": "hatte eingeseift",
+                    "es": "hatte eingeseift",
+                    "sie_singular": "hatte eingeseift",
+                    "xier": "hatte eingeseift",
+                    "wir": "hatten eingeseift",
+                    "ihr": "hattet eingeseift",
+                    "sie_plural": "hatten eingeseift",
+                    "Sie": "hatten eingeseift"
+                },
+                "Futur_I": {
+                    "ich": "werde einseifen",
+                    "du": "wirst einseifen",
+                    "er": "wird einseifen",
+                    "es": "wird einseifen",
+                    "sie_singular": "wird einseifen",
+                    "xier": "wird einseifen",
+                    "wir": "werden einseifen",
+                    "ihr": "werdet einseifen",
+                    "sie_plural": "werden einseifen",
+                    "Sie": "werden einseifen"
+                },
+                "imperative": {
+                    "du": "seif ein",
+                    "ihr": "seift ein",
+                    "Sie": "seifen Sie ein"
+                }
+            },
+            "abbrausen": {
+                "Perfekt": {
+                    "ich": "habe abgebraust",
+                    "du": "hast abgebraust",
+                    "er": "hat abgebraust",
+                    "es": "hat abgebraust",
+                    "sie_singular": "hat abgebraust",
+                    "xier": "hat abgebraust",
+                    "wir": "haben abgebraust",
+                    "ihr": "habt abgebraust",
+                    "sie_plural": "haben abgebraust",
+                    "Sie": "haben abgebraust"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte abgebraust",
+                    "du": "hattest abgebraust",
+                    "er": "hatte abgebraust",
+                    "es": "hatte abgebraust",
+                    "sie_singular": "hatte abgebraust",
+                    "xier": "hatte abgebraust",
+                    "wir": "hatten abgebraust",
+                    "ihr": "hattet abgebraust",
+                    "sie_plural": "hatten abgebraust",
+                    "Sie": "hatten abgebraust"
+                },
+                "Futur_I": {
+                    "ich": "werde abbrausen",
+                    "du": "wirst abbrausen",
+                    "er": "wird abbrausen",
+                    "es": "wird abbrausen",
+                    "sie_singular": "wird abbrausen",
+                    "xier": "wird abbrausen",
+                    "wir": "werden abbrausen",
+                    "ihr": "werdet abbrausen",
+                    "sie_plural": "werden abbrausen",
+                    "Sie": "werden abbrausen"
+                }
+            },
+            "beten": {
+                "present": {
+                    "ich": "bete",
+                    "du": "betest",
+                    "er": "betet",
+                    "es": "betet",
+                    "sie_singular": "betet",
+                    "xier": "betet",
+                    "wir": "beten",
+                    "ihr": "betet",
+                    "sie_plural": "beten",
+                    "Sie": "beten"
+                },
+                "Präteritum": {
+                    "ich": "betete",
+                    "du": "betetest",
+                    "er": "betete",
+                    "es": "betete",
+                    "sie_singular": "betete",
+                    "xier": "betete",
+                    "wir": "beteten",
+                    "ihr": "betetet",
+                    "sie_plural": "beteten",
+                    "Sie": "beteten"
+                },
+                "Perfekt": {
+                    "ich": "habe gebetet",
+                    "du": "hast gebetet",
+                    "er": "hat gebetet",
+                    "es": "hat gebetet",
+                    "sie_singular": "hat gebetet",
+                    "xier": "hat gebetet",
+                    "wir": "haben gebetet",
+                    "ihr": "habt gebetet",
+                    "sie_plural": "haben gebetet",
+                    "Sie": "haben gebetet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gebetet",
+                    "du": "hattest gebetet",
+                    "er": "hatte gebetet",
+                    "es": "hatte gebetet",
+                    "sie_singular": "hatte gebetet",
+                    "xier": "hatte gebetet",
+                    "wir": "hatten gebetet",
+                    "ihr": "hattet gebetet",
+                    "sie_plural": "hatten gebetet",
+                    "Sie": "hatten gebetet"
+                },
+                "Futur_I": {
+                    "ich": "werde beten",
+                    "du": "wirst beten",
+                    "er": "wird beten",
+                    "es": "wird beten",
+                    "sie_singular": "wird beten",
+                    "xier": "wird beten",
+                    "wir": "werden beten",
+                    "ihr": "werdet beten",
+                    "sie_plural": "werden beten",
+                    "Sie": "werden beten"
+                },
+                "imperative": {
+                    "du": "bete",
+                    "ihr": "betet",
+                    "Sie": "beten Sie"
+                }
+            },
+            "angehen": {
+                "present": {
+                    "ich": "gehe an",
+                    "du": "gehst an",
+                    "er": "geht an",
+                    "es": "geht an",
+                    "sie_singular": "geht an",
+                    "xier": "geht an",
+                    "wir": "gehen an",
+                    "ihr": "geht an",
+                    "sie_plural": "gehen an",
+                    "Sie": "gehen an"
+                },
+                "Präteritum": {
+                    "ich": "ging an",
+                    "du": "gingst an",
+                    "er": "ging an",
+                    "es": "ging an",
+                    "sie_singular": "ging an",
+                    "xier": "ging an",
+                    "wir": "gingen an",
+                    "ihr": "gingt an",
+                    "sie_plural": "gingen an",
+                    "Sie": "gingen an"
+                },
+                "Perfekt": {
+                    "ich": "bin angegangen",
+                    "du": "bist angegangen",
+                    "er": "ist angegangen",
+                    "es": "ist angegangen",
+                    "sie_singular": "ist angegangen",
+                    "xier": "ist angegangen",
+                    "wir": "sind angegangen",
+                    "ihr": "seid angegangen",
+                    "sie_plural": "sind angegangen",
+                    "Sie": "sind angegangen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war angegangen",
+                    "du": "warst angegangen",
+                    "er": "war angegangen",
+                    "es": "war angegangen",
+                    "sie_singular": "war angegangen",
+                    "xier": "war angegangen",
+                    "wir": "waren angegangen",
+                    "ihr": "wart angegangen",
+                    "sie_plural": "waren angegangen",
+                    "Sie": "waren angegangen"
+                },
+                "Futur_I": {
+                    "ich": "werde angehen",
+                    "du": "wirst angehen",
+                    "er": "wird angehen",
+                    "es": "wird angehen",
+                    "sie_singular": "wird angehen",
+                    "xier": "wird angehen",
+                    "wir": "werden angehen",
+                    "ihr": "werdet angehen",
+                    "sie_plural": "werden angehen",
+                    "Sie": "werden angehen"
+                },
+                "imperative": {
+                    "du": "geh an",
+                    "ihr": "geht an",
+                    "Sie": "gehen Sie an"
+                }
+            },
+            "verursachen": {
+                "present": {
+                    "ich": "verursache",
+                    "du": "verursachst",
+                    "er": "verursacht",
+                    "es": "verursacht",
+                    "sie_singular": "verursacht",
+                    "xier": "verursacht",
+                    "wir": "verursachen",
+                    "ihr": "verursacht",
+                    "sie_plural": "verursachen",
+                    "Sie": "verursachen"
+                },
+                "Präteritum": {
+                    "ich": "verursachte",
+                    "du": "verursachtest",
+                    "er": "verursachte",
+                    "es": "verursachte",
+                    "sie_singular": "verursachte",
+                    "xier": "verursachte",
+                    "wir": "verursachten",
+                    "ihr": "verursachtet",
+                    "sie_plural": "verursachten",
+                    "Sie": "verursachten"
+                },
+                "Perfekt": {
+                    "ich": "habe verursacht",
+                    "du": "hast verursacht",
+                    "er": "hat verursacht",
+                    "es": "hat verursacht",
+                    "sie_singular": "hat verursacht",
+                    "xier": "hat verursacht",
+                    "wir": "haben verursacht",
+                    "ihr": "habt verursacht",
+                    "sie_plural": "haben verursacht",
+                    "Sie": "haben verursacht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte verursacht",
+                    "du": "hattest verursacht",
+                    "er": "hatte verursacht",
+                    "es": "hatte verursacht",
+                    "sie_singular": "hatte verursacht",
+                    "xier": "hatte verursacht",
+                    "wir": "hatten verursacht",
+                    "ihr": "hattet verursacht",
+                    "sie_plural": "hatten verursacht",
+                    "Sie": "hatten verursacht"
+                },
+                "Futur_I": {
+                    "ich": "werde verursachen",
+                    "du": "wirst verursachen",
+                    "er": "wird verursachen",
+                    "es": "wird verursachen",
+                    "sie_singular": "wird verursachen",
+                    "xier": "wird verursachen",
+                    "wir": "werden verursachen",
+                    "ihr": "werdet verursachen",
+                    "sie_plural": "werden verursachen",
+                    "Sie": "werden verursachen"
+                },
+                "imperative": {
+                    "du": "verursach",
+                    "ihr": "verursacht",
+                    "Sie": "verursachen Sie"
+                }
+            },
+            "übersehen": {
+                "present": {
+                    "ich": "übersehe",
+                    "du": "übersiehst",
+                    "er": "übersieht",
+                    "es": "übersieht",
+                    "sie_singular": "übersieht",
+                    "xier": "übersieht",
+                    "wir": "übersehen",
+                    "ihr": "überseht",
+                    "sie_plural": "übersehen",
+                    "Sie": "übersehen"
+                },
+                "Präteritum": {
+                    "ich": "übersah",
+                    "du": "übersahst",
+                    "er": "übersah",
+                    "es": "übersah",
+                    "sie_singular": "übersah",
+                    "xier": "übersah",
+                    "wir": "übersahen",
+                    "ihr": "übersaht",
+                    "sie_plural": "übersahen",
+                    "Sie": "übersahen"
+                },
+                "Perfekt": {
+                    "ich": "habe übersehen",
+                    "du": "hast übersehen",
+                    "er": "hat übersehen",
+                    "es": "hat übersehen",
+                    "sie_singular": "hat übersehen",
+                    "xier": "hat übersehen",
+                    "wir": "haben übersehen",
+                    "ihr": "habt übersehen",
+                    "sie_plural": "haben übersehen",
+                    "Sie": "haben übersehen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte übersehen",
+                    "du": "hattest übersehen",
+                    "er": "hatte übersehen",
+                    "es": "hatte übersehen",
+                    "sie_singular": "hatte übersehen",
+                    "xier": "hatte übersehen",
+                    "wir": "hatten übersehen",
+                    "ihr": "hattet übersehen",
+                    "sie_plural": "hatten übersehen",
+                    "Sie": "hatten übersehen"
+                },
+                "Futur_I": {
+                    "ich": "werde übersehen",
+                    "du": "wirst übersehen",
+                    "er": "wird übersehen",
+                    "es": "wird übersehen",
+                    "sie_singular": "wird übersehen",
+                    "xier": "wird übersehen",
+                    "wir": "werden übersehen",
+                    "ihr": "werdet übersehen",
+                    "sie_plural": "werden übersehen",
+                    "Sie": "werden übersehen"
+                },
+                "imperative": {
+                    "du": "übersieh",
+                    "ihr": "überseht",
+                    "Sie": "übersehen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lisa führt Sie durch eine Morgenroutine.",
+            "Hören Sie zu und machen Sie die Bewegungen.",
+            "Schließen Sie zuerst Ihre Augen.",
+            "Sie sitzen ganz entspannt.",
+            "Es ist früh am Morgen und langsam werden wir wach.",
+            "Wir haben gut geschlafen.",
+            "Unsere Augen sind zu, aber wir sehen das Sonnenlicht und wir fühlen die Wärme auf unseren Gesichtern.",
+            "Wir lächeln und öffnen die Augen.",
+            "Wir strecken uns und stehen auf.",
+            "Jetzt gehen wir ins Bad.",
+            "Wir drehen das Wasser in der Dusche an.",
+            "Ist das Wasser warm genug?",
+            "Wir testen mit dem linken Fuß.",
+            "Noch zu kalt.",
+            "Wir testen mit dem rechten Fuß.",
+            "Jetzt ist es schön warm.",
+            "Wir nehmen die Seife und seifen uns von Kopf bis Fuß ein.",
+            "Dann brausen wir uns ab und halten das Gesicht in d as Wasser.",
+            "Wir machen das Wasser a us [a usmache n], greifen nach dem Handtuch, trocknen uns ab und ziehen uns an: Unterhose und Unterhemd.",
+            "Erst der linke Fuß, dann der rechte.",
+            "Die Hose und das T-Shirt.",
+            "Jetzt putzen wir uns die Zähne.",
+            "Wir geben die Zahnpasta auf die Zahnbürste und putzen uns die Zähne.",
+            "Zum Kämmen nehmen wir jetzt die andere Hand.",
+            "Wir kämmen uns einmal schnell durch das Haar.",
+            "Dann cremen wir unser Gesicht noch ein.",
+            "Jetzt sind wir fertig für den Tag.",
+            "Ist das ein Medium?",
+            "Tanzen Sie gerne?",
+            "Machen Sie an der Tafel eine Liste mit allen Tänzen, die Sie kennen.",
+            "Im Before-Class Book LERNEN haben Sie die Definition für ein Medium kennengelernt.",
+            "Fassen Sie das Modell noch einmal mündlich zusammen.",
+            "Diskutieren Sie dann, ob Tanz- und Performance Medien sind und warum (nicht).",
+            "Notieren Sie das Ergebnis Ihrer Diskussion schriftlich.",
+            "Die ist die Nachricht, die die Sender*innen mit Hilfe eines Kanals senden.",
+            "Oft sind es informative Nachrichten, z.",
+            "B.: „Wir haben morgen um drei ein Meeting.“",
+            "Künstler*innen aber versuchen eine zu transportieren, die etwas Wichtiges über unsere Gesellschaft sagt.",
+            "Zur gehören verbale und nonverbale Informationen.",
+            "Das können technische Probleme sein, wie z.",
+            "Schlechte s Internet, aber auch physischer Zugang zum Kanal.",
+            "Der ist das Vehikel, mit dem die Botschaften der Sender*innen transportiert werden.",
+            "Ein kann ein Fernsehsender oder ein Telefonkabel sein.",
+            "Aber auch ein Buch oder ein Kunstwerk sind.",
+            "Deshalb ist der auch ein Medium.",
+            "Die erhalten die Nachricht der Sender*innen.",
+            "Ob sie die Nachricht so verstehen, wie die Sender*innen sie gemeint haben, hängt von vielen Faktoren ab: Sprache, Kultur, Emotionen etc.",
+            "Das ist die kodierte Botschaft der Sender*innen, nachdem sie durch den Kanal (oder das Medium) transportiert wurde.",
+            ", kann das falsch bei den Empfänger*innen ankommen.",
+            "Wählen Sie von der Liste aus Teil 1 einen Tanz aus und recherchieren Sie online Informationen über die Kategorien in der Tabelle.",
+            "Füllen Sie die graue Zeile wie im Beispiel aus.",
+            "Präsentieren Sie die Informationen über den Tanz.",
+            "Sie können auch tanzen oder ein Video zeigen.",
+            "Die anderen Studierenden ergänzen die Informationen zum Tanz in den weißen Zeilen der Tabelle.",
+            "„Sie kann nicht tanzen“",
+            "Sehen Sie sich im Internet das Video zu dem Lied „Sie kann nicht tanzen“ an.",
+            "Was ist Ihr erster Eindruck?",
+            "Was gefällt Ihnen (nicht)?",
+            "Was ist das Thema des Liedes?",
+            "Schauen Sie sich das Video noch einmal an.",
+            "Wer identifiziert die meisten Tanzstile und Filme, die das Video zeigt?",
+            "Machen Sie eine Liste.",
+            "Suchen Sie online nach dem Liedtext von „Sie kann nicht tanzen“.",
+            "Welche Eigenschaften hat die Frau, über die Jan Delay in dem Lied singt?",
+            "Wie findet der Sänger es, dass die Frau nicht tanzen kann?",
+            "Ist sie Königin",
+            "Kein Photoshop der Welt kriegt sowas [so etwas] Schönes hin",
+            "Tja und auch innen drinnen.",
+            "Ist sie Lisa Simpson?",
+            "Man so 'ne derbe Perle wirst du nie wieder finden",
+            "Ja sie ist wunderschön [schön], Da ist nur ein Problem: Sie kann nicht tanzen Oh-Ah",
+            "Sie hört am liebsten Wu-Tang Modelt für Bikinis.",
+            "Auf Kuba baut sie Brunnen, Und arbeitet für Greenpeace Ja",
+            "Sie ist wunderschön [schön],, Da ist nur ein Problem, Sie kann nicht tanzen Oh-Ah",
+            "Immer wenn die Musik angeht, Ist nicht zu übersehen, Sie kann nich",
+            "\"Bitte steig nicht auf den Tresen!\"",
+            "Geht sie auf der Straße, Stehen die Münder auf",
+            "Ist sie Günther Jauch",
+            "Ich glaub ich find' das gut, Weil unsere schöne Erde, Ohne Defizite, Vollkommen öde wäre Ja",
+            "Sie ist wunderschön [schön],, Da ist nur ein Problem, Sie kann nicht tanzen.",
+            "Immer wenn die Musik angeht, Dann kann es jeder sehen, Sie kann nicht tanzen (Nee Nee Nee), Oh-Ah, (Nee Nee Nee), Oh-Ah Sie kann nicht tanzen (Nee) Was ist Ihnen bei einem*einer Partner*in wichtig?",
+            "Sollte die Person tanzen können?",
+            "Schreiben Sie hier ein paar eigene Zeilen für das Lied, in denen Sie die Eigenschaften beschreiben.",
+            "Let’s Dance!",
+            "Welchen Tanz möchten Sie gerne lernen?",
+            "Suchen Sie online nach einem Tanzkurs und berichten Sie im Futur:",
+            "Welchen Tanz werden Sie lernen?",
+            "Wo und wann wird der Kurs stattfinden?",
+            "Werden Sie den Kurs alleine oder mit anderen Personen machen?"
+        ],
+        "templated": []
+    }
+}

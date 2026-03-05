@@ -1,0 +1,843 @@
+{
+    "unit": "81",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 81,
+        "prerequisite": "1-80"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "à–sterreichs Geschichte besprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die Habsburger"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "führen",
+                "pos": "VERB",
+                "translation": "to lead (to)"
+            },
+            {
+                "word": "bestehen",
+                "pos": "VERB",
+                "translation": "to consist (of)",
+                "frequency": 246,
+                "cefr": "A2"
+            },
+            {
+                "word": "entstehen",
+                "pos": "VERB",
+                "translation": "to emerge, develop",
+                "frequency": 264,
+                "cefr": "B1"
+            },
+            {
+                "word": "einen Kompromiss",
+                "pos": "VERB",
+                "translation": "to compromise",
+                "frequency": 5
+            },
+            {
+                "word": "bestimmen",
+                "pos": "VERB",
+                "translation": "to determine",
+                "frequency": 419
+            },
+            {
+                "word": "verlassen",
+                "pos": "VERB",
+                "translation": "to leave",
+                "frequency": 450,
+                "cefr": "B1"
+            },
+            {
+                "word": "regieren",
+                "pos": "VERB",
+                "translation": "to govern",
+                "frequency": 2794
+            },
+            {
+                "word": "annektieren",
+                "pos": "VERB",
+                "translation": "to annex",
+                "frequency": 37584
+            },
+            {
+                "word": "das Gefühl",
+                "pos": "NOUN",
+                "translation": "feeling, emotion; sense",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Attentat",
+                "pos": "NOUN",
+                "translation": "assassination",
+                "frequency": 4946,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Vertrag",
+                "pos": "NOUN",
+                "translation": "treaty; contract",
+                "frequency": 969,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Kaiser*in",
+                "pos": "NOUN",
+                "translation": "imperial majesty",
+                "frequency": 2563
+            },
+            {
+                "word": "das Reich",
+                "pos": "NOUN",
+                "translation": "empire; realm",
+                "frequency": 1568,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Weltkrieg",
+                "pos": "NOUN",
+                "translation": "world war",
+                "frequency": 1867,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bevölkerung",
+                "pos": "NOUN",
+                "translation": "population"
+            },
+            {
+                "word": "die Unruhe",
+                "pos": "NOUN",
+                "translation": "riot; disturbance",
+                "frequency": 3368,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Minderheit",
+                "pos": "NOUN",
+                "translation": "minority",
+                "frequency": 4256,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gleichstellung",
+                "pos": "NOUN",
+                "translation": "equalization; equality of treatment and opportunity",
+                "frequency": 10799,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ungerechtigkeit",
+                "pos": "NOUN",
+                "translation": "injustice",
+                "frequency": 12383,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Schauspieler*in",
+                "pos": "NOUN",
+                "translation": "actor",
+                "frequency": 1704,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Fernsehserie",
+                "pos": "NOUN",
+                "translation": "TV series",
+                "frequency": 7027,
+                "cefr": "A1"
+            },
+            {
+                "word": "kitschig",
+                "pos": "ADJ",
+                "translation": "corny, kitschy",
+                "frequency": 33399
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Zeitstrahl",
+                "pos": "NOUN"
+            },
+            {
+                "word": "habsburger",
+                "pos": "ADJ",
+                "frequency": 17905
+            },
+            {
+                "word": "die Doppelmonarchie",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Monarchie",
+                "pos": "NOUN",
+                "frequency": 10090,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Jahreszahl",
+                "pos": "NOUN",
+                "frequency": 12317,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Anarchist",
+                "pos": "NOUN",
+                "frequency": 20717
+            },
+            {
+                "word": "der Mord",
+                "pos": "NOUN",
+                "frequency": 2266
+            },
+            {
+                "word": "erster",
+                "pos": "ADJ",
+                "frequency": 95,
+                "cefr": "B1"
+            },
+            {
+                "word": "Doppel-",
+                "pos": "NOUN",
+                "frequency": 32883,
+                "cefr": "B1"
+            },
+            {
+                "word": "ungarisch",
+                "pos": "ADV",
+                "frequency": 6422
+            },
+            {
+                "word": "der Kompromiss",
+                "pos": "NOUN",
+                "frequency": 3509,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kronprinz",
+                "pos": "NOUN",
+                "frequency": 11732
+            },
+            {
+                "word": "mitten",
+                "pos": "ADV",
+                "frequency": 1412,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Kaiserreich",
+                "pos": "NOUN",
+                "frequency": 11202
+            },
+            {
+                "word": "das Exil",
+                "pos": "NOUN",
+                "frequency": 7702
+            },
+            {
+                "word": "tragisch",
+                "pos": "ADV",
+                "frequency": 4945
+            },
+            {
+                "word": "der Mythos",
+                "pos": "NOUN",
+                "frequency": 4576
+            },
+            {
+                "word": "präsent",
+                "pos": "ADV",
+                "frequency": 4626
+            },
+            {
+                "word": "das Fitnesszimmer",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Souvenir",
+                "pos": "NOUN",
+                "frequency": 17917,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Schicksalsjahr",
+                "pos": "NOUN"
+            },
+            {
+                "word": "populär",
+                "pos": "ADV",
+                "frequency": 4210,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Star",
+                "pos": "NOUN",
+                "frequency": 2585,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Publikum",
+                "pos": "NOUN",
+                "frequency": 1368,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Trailer",
+                "pos": "NOUN",
+                "frequency": 25135
+            },
+            {
+                "word": "dramatisch",
+                "pos": "ADV",
+                "frequency": 2453
+            },
+            {
+                "word": "die Komödie",
+                "pos": "NOUN",
+                "frequency": 6558
+            },
+            {
+                "word": "der Liebesfilm",
+                "pos": "NOUN",
+                "frequency": 45372
+            },
+            {
+                "word": "das Drama",
+                "pos": "NOUN",
+                "frequency": 2216
+            },
+            {
+                "word": "der Abenteuerfilm",
+                "pos": "NOUN",
+                "frequency": 35692
+            },
+            {
+                "word": "das Multikultireich",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Vielvölkerstaat",
+                "pos": "NOUN",
+                "frequency": 45278
+            },
+            {
+                "word": "die Ethnie",
+                "pos": "NOUN",
+                "frequency": 22516,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Nationalität",
+                "pos": "NOUN",
+                "frequency": 10606,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Muttersprache",
+                "pos": "NOUN",
+                "frequency": 12448,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gesamtbevölkerung",
+                "pos": "NOUN",
+                "frequency": 19702
+            },
+            {
+                "word": "Polnisch",
+                "pos": "NOUN",
+                "frequency": 3237
+            },
+            {
+                "word": "der Serbokroatisch",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Serbisch",
+                "pos": "NOUN",
+                "frequency": 6399
+            },
+            {
+                "word": "Bosnisch",
+                "pos": "NOUN",
+                "frequency": 8106
+            },
+            {
+                "word": "Ruthenisch",
+                "pos": "NOUN"
+            },
+            {
+                "word": "Ukrainisch",
+                "pos": "NOUN",
+                "frequency": 4116,
+                "cefr": "B1"
+            },
+            {
+                "word": "Rumänisch",
+                "pos": "NOUN",
+                "frequency": 7660
+            },
+            {
+                "word": "Slowakisch",
+                "pos": "NOUN",
+                "frequency": 8665
+            },
+            {
+                "word": "Slowenisch",
+                "pos": "NOUN",
+                "frequency": 10741
+            },
+            {
+                "word": "multinational",
+                "pos": "ADV",
+                "frequency": 20501,
+                "cefr": "B2"
+            },
+            {
+                "word": "osmanische",
+                "pos": "ADJ",
+                "frequency": 15835
+            },
+            {
+                "word": "die Priorität",
+                "pos": "NOUN",
+                "frequency": 4281
+            },
+            {
+                "word": "der Konflikt",
+                "pos": "NOUN",
+                "frequency": 1414,
+                "cefr": "B1"
+            },
+            {
+                "word": "das eichen",
+                "pos": "NOUN",
+                "frequency": 15697
+            },
+            {
+                "word": "der Österreicher",
+                "pos": "NOUN",
+                "frequency": 3036,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Privileg",
+                "pos": "NOUN",
+                "frequency": 14362
+            },
+            {
+                "word": "slawisch",
+                "pos": "ADJ",
+                "frequency": 13911
+            },
+            {
+                "word": "drittgrößt",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Tscheche",
+                "pos": "NOUN",
+                "frequency": 8547
+            },
+            {
+                "word": "kulturell",
+                "pos": "ADJ",
+                "frequency": 1033,
+                "cefr": "A1"
+            },
+            {
+                "word": "föderal",
+                "pos": "ADJ",
+                "frequency": 22584
+            },
+            {
+                "word": "die Syste",
+                "pos": "NOUN"
+            },
+            {
+                "word": "separat",
+                "pos": "ADJ",
+                "frequency": 8351
+            },
+            {
+                "word": "der Nationalismus",
+                "pos": "NOUN",
+                "frequency": 12062
+            },
+            {
+                "word": "der Nationalitätenkonflikt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Nationalstaat",
+                "pos": "NOUN",
+                "frequency": 18089,
+                "cefr": "B2"
+            },
+            {
+                "word": "das System",
+                "pos": "NOUN",
+                "frequency": 384,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "führen": {
+                "present": {
+                    "ich": "führe",
+                    "du": "führst",
+                    "er": "führt",
+                    "es": "führt",
+                    "sie_singular": "führt",
+                    "xier": "führt",
+                    "wir": "führen",
+                    "ihr": "führt",
+                    "sie_plural": "führen",
+                    "Sie": "führen"
+                },
+                "Perfekt": {
+                    "ich": "habe geführt",
+                    "du": "hast geführt",
+                    "er": "hat geführt",
+                    "es": "hat geführt",
+                    "sie_singular": "hat geführt",
+                    "xier": "hat geführt",
+                    "wir": "haben geführt",
+                    "ihr": "habt geführt",
+                    "sie_plural": "haben geführt",
+                    "Sie": "haben geführt"
+                }
+            },
+            "bestehen": {
+                "present": {
+                    "ich": "bestehe",
+                    "du": "bestehst",
+                    "er": "besteht",
+                    "es": "besteht",
+                    "sie_singular": "besteht",
+                    "xier": "besteht",
+                    "wir": "bestehen",
+                    "ihr": "besteht",
+                    "sie_plural": "bestehen",
+                    "Sie": "bestehen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestanden",
+                    "du": "hast bestanden",
+                    "er": "hat bestanden",
+                    "es": "hat bestanden",
+                    "sie_singular": "hat bestanden",
+                    "xier": "hat bestanden",
+                    "wir": "haben bestanden",
+                    "ihr": "habt bestanden",
+                    "sie_plural": "haben bestanden",
+                    "Sie": "haben bestanden"
+                }
+            },
+            "entstehen": {
+                "present": {
+                    "ich": "entstehe",
+                    "du": "entstehst",
+                    "er": "entsteht",
+                    "es": "entsteht",
+                    "sie_singular": "entsteht",
+                    "xier": "entsteht",
+                    "wir": "entstehen",
+                    "ihr": "entsteht",
+                    "sie_plural": "entstehen",
+                    "Sie": "entstehen"
+                },
+                "Perfekt": {
+                    "ich": "bin entstanden",
+                    "du": "bist entstanden",
+                    "er": "ist entstanden",
+                    "es": "ist entstanden",
+                    "sie_singular": "ist entstanden",
+                    "xier": "ist entstanden",
+                    "wir": "sind entstanden",
+                    "ihr": "seid entstanden",
+                    "sie_plural": "sind entstanden",
+                    "Sie": "sind entstanden"
+                }
+            },
+            "Kompromiss": {
+                "Perfekt": {
+                    "ich": "habe geschlossen",
+                    "du": "hast geschlossen",
+                    "er": "hat geschlossen",
+                    "es": "hat geschlossen",
+                    "sie_singular": "hat geschlossen",
+                    "xier": "hat geschlossen",
+                    "wir": "haben geschlossen",
+                    "ihr": "habt geschlossen",
+                    "sie_plural": "haben geschlossen",
+                    "Sie": "haben geschlossen"
+                }
+            },
+            "bestimmen": {
+                "present": {
+                    "ich": "bestimme",
+                    "du": "bestimmst",
+                    "er": "bestimmt",
+                    "es": "bestimmt",
+                    "sie_singular": "bestimmt",
+                    "xier": "bestimmt",
+                    "wir": "bestimmen",
+                    "ihr": "bestimmt",
+                    "sie_plural": "bestimmen",
+                    "Sie": "bestimmen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestimmt",
+                    "du": "hast bestimmt",
+                    "er": "hat bestimmt",
+                    "es": "hat bestimmt",
+                    "sie_singular": "hat bestimmt",
+                    "xier": "hat bestimmt",
+                    "wir": "haben bestimmt",
+                    "ihr": "habt bestimmt",
+                    "sie_plural": "haben bestimmt",
+                    "Sie": "haben bestimmt"
+                }
+            },
+            "verlassen": {
+                "present": {
+                    "ich": "verlasse",
+                    "du": "verlässt",
+                    "er": "verlässt",
+                    "es": "verlässt",
+                    "sie_singular": "verlässt",
+                    "xier": "verlässt",
+                    "wir": "verlassen",
+                    "ihr": "verlasst",
+                    "sie_plural": "verlassen",
+                    "Sie": "verlassen"
+                },
+                "Perfekt": {
+                    "ich": "habe verlassen",
+                    "du": "hast verlassen",
+                    "er": "hat verlassen",
+                    "es": "hat verlassen",
+                    "sie_singular": "hat verlassen",
+                    "xier": "hat verlassen",
+                    "wir": "haben verlassen",
+                    "ihr": "habt verlassen",
+                    "sie_plural": "haben verlassen",
+                    "Sie": "haben verlassen"
+                }
+            },
+            "regieren": {
+                "present": {
+                    "ich": "regiere",
+                    "du": "regierst",
+                    "er": "regiert",
+                    "es": "regiert",
+                    "sie_singular": "regiert",
+                    "xier": "regiert",
+                    "wir": "regieren",
+                    "ihr": "regiert",
+                    "sie_plural": "regieren",
+                    "Sie": "regieren"
+                },
+                "Perfekt": {
+                    "ich": "habe regiert",
+                    "du": "hast regiert",
+                    "er": "hat regiert",
+                    "es": "hat regiert",
+                    "sie_singular": "hat regiert",
+                    "xier": "hat regiert",
+                    "wir": "haben regiert",
+                    "ihr": "habt regiert",
+                    "sie_plural": "haben regiert",
+                    "Sie": "haben regiert"
+                }
+            },
+            "annektieren": {
+                "present": {
+                    "ich": "annektiere",
+                    "du": "annektierst",
+                    "er": "annektiert",
+                    "es": "annektiert",
+                    "sie_singular": "annektiert",
+                    "xier": "annektiert",
+                    "wir": "annektieren",
+                    "ihr": "annektiert",
+                    "sie_plural": "annektieren",
+                    "Sie": "annektieren"
+                },
+                "Perfekt": {
+                    "ich": "habe annektiert",
+                    "du": "hast annektiert",
+                    "er": "hat annektiert",
+                    "es": "hat annektiert",
+                    "sie_singular": "hat annektiert",
+                    "xier": "hat annektiert",
+                    "wir": "haben annektiert",
+                    "ihr": "habt annektiert",
+                    "sie_plural": "haben annektiert",
+                    "Sie": "haben annektiert"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie haben zu Hause einen Text über die Habsburger Monarchie gelesen.",
+            "Hören Sie zu ordnen Sie die Ereignisse den Jahreszahlen auf dem Zeitstrahl zu.",
+            "Ein Anarchist hat Kaiserin Elisabeth getötet.",
+            "Ist gestorben..",
+            "Kaiser Karl hat ab jetzt regiert.",
+            "Franz Joseph ist Kaiser von Österreich geworden.",
+            "Ende von der Doppelmonarchie.",
+            "Kaiser Karl musste Österreich verlassen.",
+            "Mord an Franz Ferdinand.",
+            "Der Erste Weltkrieg hat begonnen.",
+            "Österreich-Ungarn hat Bosnien- Herzegowina annektiert.",
+            "Beginn der Doppel- monarchie (K.u.K.).",
+            "Hochzeit von Franz Joseph I.",
+            "Und Elisabeth (Sisi).",
+            "Die Habsburg Familie hat in Österreich viele Jahre regiert.",
+            "1848 ist Franz Josef der Erste Kaiser von Österreich geworden.",
+            "1854 haben Franz Josef und Elisabeth, die auch Sisi genannt wird, geheiratet.",
+            "Sie haben vier Kinder bekommen, aber zwei ihrer Kinder sind gestorben.",
+            "Elisabeth hat Ungarn sehr gemocht und hat ungarisch gelernt.",
+            "Sie hat ihrem Mann geholfen, einen Kompromiss mit Ungarn zu schließen, und 1867 ist so die Doppelmonarchie entstanden.",
+            "Im Jahr 1898 hat ein Anarchist Kaiserin Elisabeth getötet.",
+            "Ein paar Jahre später, 1908, hat Österreich-Ungarn Bosnien-Herzegowina annektiert.",
+            "Es ist zu Unruhen gekommen.",
+            "Diese Unruhen haben zum Ersten Weltkrieg geführt, als Kronprinz Franz Ferdinand am 28.",
+            "Juni 1914 bei einem Attentat in Sarajewo gestorben ist.",
+            "Mitten im Ersten Weltkrieg, im Jahr 1916, ist Kaiser Franz Josef der Erste gestorben und Karl der Erste ist Kaiser geworden.",
+            "Das Kaiserreich hat aber nur noch zwei Jahre bestanden.",
+            "1918 hat der erste Weltkrieg und auch die Doppelmonarchie geendet.",
+            "Kaiser Karl musste Österreich verlassen und ins Exil gehen.",
+            "Lesen Sie den Text.",
+            "Jede Person in der Gruppe schreibt dann drei Informationen über Elisabeth (Sisi/Sissi) auf, die sie interessant findet.",
+            "Formulieren Sie mindestens einen Relativsatz.",
+            "Sprechen Sie dann in der Gruppe über die Informationen.",
+            "Elisabeth war jung und schön und ihre Geschichte, die viele Menschen kennen, tragisch.",
+            "Sie ist zu einem Mythos geworden und ihr Bild ist in Wien sehr präsent.",
+            "Es hängt zum Beispiel im Café Central und in der Hofburg kann man ihr Fitnesszimmer sehen.",
+            "Es gibt auch viele Souvenirs, die Sisis Bild zeigen.",
+            "In den 50er Jahren hat der Regisseur Ernst Marischka drei Filme über Elisabeth gemacht: \"Sissi\" (1955), \"Sissi – Die junge Kaiserin\" (1956) und \"Sissi – Schicksalsjahre einer Kaiserin\" (1957).",
+            "Sie waren etwas kitschig, aber sehr populär und haben die Schauspielerin Romy Schneider zum Star gemacht.",
+            "Sie kommen jetzt noch jedes Jahr an Weihnachten im deutschen Fernsehen.",
+            "Seit 1992 gibt es auch ein Musical, das \"Elisabeth\" heißt.",
+            "Man konnte es erst in Wien sehen, dann aber auch in vielen anderen Ländern.",
+            "2021 hat es eine neue Fernsehserie \"Sisi\" auf RTL gegeben und mit \"Die Kaiserin\" konnte auch ein internationales Publikum auf Netflix die Geschichte kennenlernen.",
+            "Ist Elisabeth eine starke Figur?",
+            "Welches Genre ist es vielleicht (Komödie, Liebesfilm, Drama, Abenteuerfilm)?",
+            "Suchen Sie sich ein Medium aus:",
+            "Was möchten Sie sehen?",
+            "Den Film, eine Serie oder das Musical?",
+            "Die Habsburger Monarchie ein Multikultireich?",
+            "Die Doppelmonarchie war ein \"Vielvölkerstaat\", das heißt, es haben viele Ethnien oder Nationalitäten in Österreich- Ungarn gelebt.",
+            "In einer Umfrage zur Muttersprache von 1910 ist es zu diesem Ergebnis gekommen:",
+            "Viele Kaiserreiche waren multinational ( so z.",
+            "Auch das Osmanische Reich).",
+            "Meistens hatte eine Gruppe Priorität, was zu Ungerechtigkeiten und dann auch Konflikten geführt hat.",
+            "Im Habsburger R eich hatten Österreicher und an zweiter Stelle Ungarn die meisten Privilegien.",
+            "Die slawischen Gruppen, vor allem die drittgrößte Gruppe (Tschechen) wollten politische und kulturelle Gleichstellung.",
+            "Sie wollten ein föderales Syste m.",
+            "Manche Minderheiten hatten das Gefühl, dass sie mehr zu einer separaten Nationalität als zum Kaiserreich gehört haben (auch weil sie nicht gleich sind oder keine Privilegien haben).",
+            "Franz Joseph hat diesen modernen Nationalismus und Nationalitätenkonflikte nicht verstanden.",
+            "Diese Konflikte hat es aber in vielen Teilen der Doppelmonarchie gegeben.",
+            "Die verschiedenen Gruppen wollten selbst bestimmen, wie sie leben und sie wollte n nicht, dass ein Kaiser sie regiert..",
+            "Nach dem Ersten Weltkrieg hat das Konzept des Nationalstaates gewonnen.",
+            "Beantworten Sie die Fragen zum Text.",
+            "Wie viele Sprachen hat es in der Doppelmonarchie gegeben?",
+            "Welche Gruppe(n) hatte(n) die meisten Privilegien?",
+            "Im Habsburger Reich hatten Österreicher die meisten Privilegien.",
+            "Welche Gruppen wollten ein föderales System?",
+            "Die slawischen Gruppen, weil sie politische und kulturelle Gleichstellung wollten",
+            "Konnte Kaiser Franz Joseph eine Lösung für diese Konflikte finden?",
+            "Was ist nach dem Ersten Weltkrieg passiert Nein.",
+            "Er hat es nicht verstanden.",
+            "Nach dem Ersten Weltkrieg hat der Nationalstaat gewonnen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

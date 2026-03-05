@@ -1,0 +1,538 @@
+{
+    "unit": "31",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 31,
+        "prerequisite": "1-30"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate möchten (ich möchte, du möchtest, er möchte, wir möchten, ihr möchtet, sie möchten) with a verb or noun to express wishes.",
+            "Conjugate hätten (ich hätte, du hättest, er hätte, wir hätten, ihr hättet, sie hätten) with gern + noun to make polite requests, especially in transactional situations."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "im Restaurant bestellen",
+            "höfliche Wünsche ausdrücken mit möchte und hätte gern",
+            "im Restaurant bezahlen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Essen gehen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "Ich möchte gern ...",
+                "pos": "PHRASE",
+                "translation": "I would like ..."
+            },
+            {
+                "word": "Ich hätte gern ...",
+                "pos": "PHRASE",
+                "translation": "I would like to have ..."
+            },
+            {
+                "word": "Stimmt so.",
+                "pos": "PHRASE",
+                "translation": "Keep the change."
+            },
+            {
+                "word": "Getrennt, bitte.",
+                "pos": "ADJ",
+                "translation": "Separate, please.",
+                "frequency": 6733,
+                "cefr": "A2"
+            },
+            {
+                "word": "Hat es geschmeckt?",
+                "pos": "PHRASE",
+                "translation": "Was it tasty?"
+            },
+            {
+                "word": "planen",
+                "pos": "VERB",
+                "translation": "to plan",
+                "frequency": 579,
+                "cefr": "A2"
+            },
+            {
+                "word": "ankreuzen",
+                "pos": "VERB",
+                "translation": "to check, mark with a cross",
+                "cefr": "A1"
+            },
+            {
+                "word": "bestellen",
+                "pos": "VERB",
+                "translation": "to order",
+                "frequency": 1657,
+                "cefr": "A1"
+            },
+            {
+                "word": "kosten",
+                "pos": "VERB",
+                "translation": "to cost",
+                "frequency": 903,
+                "cefr": "A1"
+            },
+            {
+                "word": "bezahlen",
+                "pos": "VERB",
+                "translation": "to pay",
+                "frequency": 793,
+                "cefr": "A1"
+            },
+            {
+                "word": "zahlen",
+                "pos": "VERB",
+                "translation": "to pay",
+                "frequency": 832,
+                "cefr": "A1"
+            },
+            {
+                "word": "erzählen",
+                "pos": "VERB",
+                "translation": "to tell; narrate; recount"
+            },
+            {
+                "word": "der Platz",
+                "pos": "NOUN",
+                "translation": "place; space",
+                "frequency": 326,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Bedienung",
+                "pos": "NOUN",
+                "translation": "service staff",
+                "frequency": 12824,
+                "cefr": "B2"
+            },
+            {
+                "word": "der*die Gäst*in",
+                "pos": "NOUN",
+                "translation": "guest"
+            },
+            {
+                "word": "die Zutat",
+                "pos": "NOUN",
+                "translation": "ingredient",
+                "frequency": 38430,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Getränk",
+                "pos": "NOUN",
+                "translation": "drink, beverage"
+            },
+            {
+                "word": "das Bier",
+                "pos": "NOUN",
+                "translation": "beer",
+                "frequency": 1213,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wein",
+                "pos": "NOUN",
+                "translation": "wine",
+                "frequency": 1736,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Preis",
+                "pos": "NOUN",
+                "translation": "price; award",
+                "frequency": 334,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Punkt",
+                "pos": "NOUN",
+                "translation": "point",
+                "frequency": 248,
+                "cefr": "A2"
+            },
+            {
+                "word": "bei [einkaufen bei]",
+                "pos": "PREP",
+                "translation": "at [to shop at]"
+            },
+            {
+                "word": "hier",
+                "pos": "ADV",
+                "translation": "here",
+                "frequency": 68,
+                "cefr": "A1"
+            },
+            {
+                "word": "sehr",
+                "pos": "ADV",
+                "translation": "very (much)",
+                "frequency": 81,
+                "cefr": "A1"
+            },
+            {
+                "word": "vielleicht",
+                "pos": "ADV",
+                "translation": "maybe",
+                "frequency": 145,
+                "cefr": "A1"
+            },
+            {
+                "word": "traditionell",
+                "pos": "ADJ",
+                "translation": "traditional(ly)",
+                "frequency": 1555,
+                "cefr": "B1"
+            },
+            {
+                "word": "man",
+                "pos": "PRON",
+                "translation": "one, you (people in general]",
+                "frequency": 32,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Restaurant",
+                "pos": "NOUN",
+                "translation": "restaurant",
+                "frequency": 1802,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Speisekarte",
+                "pos": "NOUN",
+                "translation": "menu",
+                "frequency": 15081,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Pommes",
+                "pos": "NOUN",
+                "frequency": 16349
+            },
+            {
+                "word": "die Pasta",
+                "pos": "NOUN",
+                "frequency": 23780
+            },
+            {
+                "word": "österreicher*innen",
+                "pos": "ADV",
+                "frequency": 3036,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nachspeise",
+                "pos": "NOUN",
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pizzeria",
+                "pos": "NOUN",
+                "frequency": 20256,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Pizzaname",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Redemittel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kasten",
+                "pos": "NOUN",
+                "frequency": 4018,
+                "cefr": "B1"
+            },
+            {
+                "word": "getrennt",
+                "pos": "ADV",
+                "frequency": 6733,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Euro",
+                "pos": "NOUN",
+                "frequency": 207,
+                "cefr": "A1"
+            },
+            {
+                "word": "stimmen",
+                "pos": "VERB",
+                "frequency": 490,
+                "cefr": "B1"
+            },
+            {
+                "word": "trennen",
+                "pos": "VERB",
+                "frequency": 936,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "planen": {
+                "present": {
+                    "ich": "plane",
+                    "du": "planst",
+                    "er": "plant",
+                    "es": "plant",
+                    "sie_singular": "plant",
+                    "xier": "plant",
+                    "wir": "planen",
+                    "ihr": "plant",
+                    "sie_plural": "planen",
+                    "Sie": "planen"
+                }
+            },
+            "ankreuzen": {
+                "present": {
+                    "ich": "kreuze an",
+                    "du": "kreuzt an",
+                    "er": "kreuzt an",
+                    "es": "kreuzt an",
+                    "sie_singular": "kreuzt an",
+                    "xier": "kreuzt an",
+                    "wir": "kreuzen an",
+                    "ihr": "kreuzt an",
+                    "sie_plural": "kreuzen an",
+                    "Sie": "kreuzen an"
+                }
+            },
+            "bestellen": {
+                "present": {
+                    "ich": "bestelle",
+                    "du": "bestellst",
+                    "er": "bestellt",
+                    "es": "bestellt",
+                    "sie_singular": "bestellt",
+                    "xier": "bestellt",
+                    "wir": "bestellen",
+                    "ihr": "bestellt",
+                    "sie_plural": "bestellen",
+                    "Sie": "bestellen"
+                }
+            },
+            "kosten": {
+                "present": {
+                    "ich": "koste",
+                    "du": "kostest",
+                    "er": "kostet",
+                    "es": "kostet",
+                    "sie_singular": "kostet",
+                    "xier": "kostet",
+                    "wir": "kosten",
+                    "ihr": "kostet",
+                    "sie_plural": "kosten",
+                    "Sie": "kosten"
+                }
+            },
+            "bezahlen": {
+                "present": {
+                    "ich": "bezahle",
+                    "du": "bezahlst",
+                    "er": "bezahlt",
+                    "es": "bezahlt",
+                    "sie_singular": "bezahlt",
+                    "xier": "bezahlt",
+                    "wir": "bezahlen",
+                    "ihr": "bezahlt",
+                    "sie_plural": "bezahlen",
+                    "Sie": "bezahlen"
+                }
+            },
+            "zahlen": {
+                "present": {
+                    "ich": "zahle",
+                    "du": "zahlst",
+                    "er": "zahlt",
+                    "es": "zahlt",
+                    "sie_singular": "zahlt",
+                    "xier": "zahlt",
+                    "wir": "zahlen",
+                    "ihr": "zahlt",
+                    "sie_plural": "zahlen",
+                    "Sie": "zahlen"
+                }
+            },
+            "erzählen": {
+                "present": {
+                    "ich": "erzähle",
+                    "du": "erzählst",
+                    "er": "erzählt",
+                    "es": "erzählt",
+                    "sie_singular": "erzählt",
+                    "xier": "erzählt",
+                    "wir": "erzählen",
+                    "ihr": "erzählt",
+                    "sie_plural": "erzählen",
+                    "Sie": "erzählen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Im deutschen Restaurant Kennen Sie diese deutschen Speisen?",
+            "Ordnen Sie die Fotos den Speisen zu.",
+            "Germknödel mit Vanillesoße Schnitzel mit Kartoffelsalat",
+            "Nordseekrabben im Brötchen Matjesfilet mit Bratkartoffeln",
+            "Currywurst mit Pommes und Mayo Rinderroulade mit Rotkohl und Knödeln",
+            "Was essen die Personen?",
+            "Was bekommen Sie?",
+            "Guten Tag!",
+            "Ich hätte gern die Käsespätzle.",
+            "Was hätten Sie gern?",
+            "Eine Currywurst mit Pommes bitte.",
+            "Was möchten Sie essen?",
+            "Ich hätte gern ein Schnitzel mit Kartoffelsalat.",
+            "Ich hätte gern das Matjesfilet mit Bratkartoffeln.",
+            "Käsespätzle Currywurst mit Pommes Schnitzel mit Kartoffelsalat Matjesfilet mit Bratkartoffeln",
+            "Was essen die Menschen in Deutschland, Österreich und der Schweiz?",
+            "Sie bekommen einen Text.",
+            "Lesen Sie den Text und schreiben Sie die wichtigsten Punkte auf.",
+            "Die Deutschen essen gerne Fleisch und Pasta.",
+            "Spaghetti Bolognese ist oft das Lieblingsessen, oder Pizza.",
+            "Bei den Top 10 in Fast Food ist die Currywurst mit Pommes und Ketchup auf Platz 1 und auf Platz 2 ist Döner im Brot.",
+            "Auch traditionelle Speisen sind in der Top 10:",
+            "Auf Platz 7 ist der Sauerbraten.",
+            "Österreicher*innen essen am liebsten Italienisch.",
+            "50 % essen am liebsten Pasta.",
+            "Bei den Männern sind es bei über 40 % das Wiener Schnitzel.",
+            "Junge Menschen essen oft Pizza.",
+            "Bei den Nachspeisen sind es Eis, Sorbet und Tiramisu.",
+            "In der Schweiz isst man am liebsten Pasta oder andere italienische Speisen.",
+            "Auf Platz 2 ist in der Schweiz das Fleisch.",
+            "Die traditionellen Käsespeisen ( Raclette und Fondue ) isst man in der Westschweiz gerne.",
+            "Erzählen Sie von ihrem Text.",
+            "Was erzählen die anderen Gruppen?",
+            "Was essen Menschen in Deutschland, Österreich und der Schweiz besonders gern?",
+            "Planen Sie eine Pizzeria mit vier interessanten Pizzas (vielleicht Fusion- Pizzas?!)!",
+            "Suchen Sie einen Namen für Ihre Pizzeria.",
+            "Wie heißt die Pizzeria?",
+            "Präsentieren Sie Ihre Pizzeria im Kurs.",
+            "Lesen Sie die Redemittel im Kasten.",
+            "Was sagen die Gäst *innen (G)?",
+            "Was sagt die Bedienung (B)?",
+            "Wir möchten bitte bestellen.",
+            "Was möchten Sie trinken?",
+            "Ein Wasser bitte.",
+            "Und können wir die Speisekarte bekommen?",
+            "Hier sind die Getränke.",
+            "Ich hätte gern eine Pizza Margarita.",
+            "Und was bekommen Sie?",
+            "Und was hätten Sie gern?",
+            "Sonst noch etwas?",
+            "Hat es geschmeckt?",
+            "Danke, es war lecker.",
+            "Möchten Sie eine Nachspeise?",
+            "Nein, danke.",
+            "Wir möchten bitte bezahlen.",
+            "Zusammen oder getrennt?",
+            "Getrennt bitte.",
+            "Das macht 15 Euro für Sie, 18 Euro für Sie und 22 Euro für Sie.",
+            "Stimmt so.",
+            "Essen Sie in den Restaurants von den anderen Gruppen.",
+            "Ein (Wasser), bitte.",
+            "Ich hätte gern (eine Pizza) Was bekommen Sie?",
+            "Möchten Sie (eine Nachspeise)?",
+            "Ja, bitte.",
+            "Getrennt, bitte.",
+            "Das macht (15) Euro.",
+            "Stimmt so!"
+        ],
+        "templated": [
+            {
+                "template": "Ich hätte gern [dish_name].",
+                "source_literals": [
+                    "Ich hätte gern das Matjesfilet mit Bratkartoffeln.",
+                    "Ich hätte gern die Käsespätzle.",
+                    "Ich hätte gern ein Schnitzel mit Kartoffelsalat.",
+                    "Ich hätte gern eine Pizza Margarita."
+                ],
+                "description": "Order a dish (restaurant)"
+            }
+        ]
+    },
+    "placeholder_registry": {}
+}

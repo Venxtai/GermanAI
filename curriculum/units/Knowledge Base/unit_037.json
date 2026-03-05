@@ -1,0 +1,231 @@
+{
+    "unit": "37",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 37,
+        "prerequisite": "1-36"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Umfrage zu Ernährungsweisen machen und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "darstellen",
+                "pos": "VERB",
+                "translation": "to depict, represent",
+                "frequency": 402,
+                "cefr": "B1"
+            },
+            {
+                "word": "interessieren",
+                "pos": "VERB",
+                "translation": "to be interested (in)",
+                "frequency": 631,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Geld",
+                "pos": "NOUN",
+                "translation": "money",
+                "frequency": 235,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Ergebnis",
+                "pos": "NOUN",
+                "translation": "outcome, result",
+                "frequency": 386,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Umfrage",
+                "pos": "NOUN",
+                "translation": "survey, poll",
+                "frequency": 2176,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Diagramm",
+                "pos": "NOUN",
+                "translation": "diagram; chart",
+                "frequency": 4447,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Intoleranz",
+                "pos": "NOUN",
+                "translation": "intolerance",
+                "frequency": 21471,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Klischee",
+                "pos": "NOUN",
+                "frequency": 8330
+            },
+            {
+                "word": "differenziert",
+                "pos": "ADJ",
+                "frequency": 10238
+            },
+            {
+                "word": "formulieren",
+                "pos": "VERB",
+                "frequency": 1135
+            },
+            {
+                "word": "zuerst",
+                "pos": "ADV",
+                "frequency": 880,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Deutschkurs",
+                "pos": "NOUN",
+                "frequency": 41727
+            },
+            {
+                "word": "komplett",
+                "pos": "ADJ",
+                "frequency": 1215,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Poster",
+                "pos": "NOUN",
+                "frequency": 20916,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "darstellen": {
+                "present": {
+                    "ich": "stelle dar",
+                    "du": "stellst dar",
+                    "er": "stellt dar",
+                    "es": "stellt dar",
+                    "sie_singular": "stellt dar",
+                    "xier": "stellt dar",
+                    "wir": "stellen dar",
+                    "ihr": "stellt dar",
+                    "sie_plural": "stellen dar",
+                    "Sie": "stellen dar"
+                }
+            },
+            "interessieren": {
+                "present": {
+                    "ich": "interessiere",
+                    "du": "interessierst",
+                    "er": "interessiert",
+                    "es": "interessiert",
+                    "sie_singular": "interessiert",
+                    "xier": "interessiert",
+                    "wir": "interessieren",
+                    "ihr": "interessiert",
+                    "sie_plural": "interessieren",
+                    "Sie": "interessieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In Deutschland gibt es viele Klischees über die Ernährungsweisen in Ihrem Land.",
+            "Sie wollen ein differenziertes Bild geben.",
+            "Wer isst was und warum (nicht)?",
+            "Was finden Sie am interessantesten?",
+            "Wählen Sie fünf Fragen.",
+            "Was sind Ihre Antworten auf die Fragen?",
+            "Wen wollen Sie fragen?",
+            "Machen Sie jetzt die Interviews.",
+            "Machen Sie mindestens ein Interview auf Deutsch.",
+            "Dann stellen Sie die Interviewfragen.",
+            "Machen Sie Notizen.",
+            "Wie wollen Sie Ihre Ergebnisse darstellen (präsentieren)?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

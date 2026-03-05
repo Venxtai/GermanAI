@@ -1,0 +1,441 @@
+{
+    "unit": "24",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 24,
+        "prerequisite": "1-23"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Bade- und Schneetage sprechen",
+            "Klimaprognosen machen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Freizeitaktivitäten je nach Jahreszeit"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "trinken",
+                "pos": "VERB",
+                "translation": "to drink",
+                "frequency": 634,
+                "cefr": "A1"
+            },
+            {
+                "word": "wandern",
+                "pos": "VERB",
+                "translation": "to hike",
+                "frequency": 1803,
+                "cefr": "A1"
+            },
+            {
+                "word": "schwimmen",
+                "pos": "VERB",
+                "translation": "to swim",
+                "frequency": 1863,
+                "cefr": "A1"
+            },
+            {
+                "word": "baden",
+                "pos": "VERB",
+                "translation": "to bath",
+                "frequency": 6343,
+                "cefr": "A1"
+            },
+            {
+                "word": "bauen",
+                "pos": "VERB",
+                "translation": "to build, construct",
+                "frequency": 667,
+                "cefr": "A2"
+            },
+            {
+                "word": "ankreuzen",
+                "pos": "VERB",
+                "translation": "to check, mark with a cross",
+                "cefr": "A1"
+            },
+            {
+                "word": "denken",
+                "pos": "VERB",
+                "translation": "to think (about/of)",
+                "frequency": 128,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Boot",
+                "pos": "NOUN",
+                "translation": "boat",
+                "frequency": 2109,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Fahrrad",
+                "pos": "NOUN",
+                "translation": "bicycle",
+                "frequency": 2138,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Berg",
+                "pos": "NOUN",
+                "translation": "mountain",
+                "frequency": 934,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Höhe",
+                "pos": "NOUN",
+                "translation": "height"
+            },
+            {
+                "word": "der See",
+                "pos": "NOUN",
+                "translation": "lake",
+                "frequency": 1317,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schlitten",
+                "pos": "NOUN",
+                "translation": "sled",
+                "frequency": 15061,
+                "cefr": "B2"
+            },
+            {
+                "word": "die heiße Schokolade",
+                "pos": "ADJ",
+                "translation": "hot chocolate"
+            },
+            {
+                "word": "wenig",
+                "pos": "ADV",
+                "translation": "few, little",
+                "frequency": 102,
+                "cefr": "A1"
+            },
+            {
+                "word": "lang",
+                "pos": "ADJ",
+                "translation": "long",
+                "frequency": 97,
+                "cefr": "A1"
+            },
+            {
+                "word": "toll",
+                "pos": "ADJ",
+                "translation": "awesome, great",
+                "frequency": 972,
+                "cefr": "A2"
+            },
+            {
+                "word": "seit",
+                "pos": "PREP",
+                "translation": "since (time); for",
+                "frequency": 130,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Architekt",
+                "pos": "NOUN",
+                "frequency": 3176,
+                "cefr": "B1"
+            },
+            {
+                "word": "viel",
+                "pos": "DET",
+                "frequency": 56,
+                "cefr": "A1"
+            },
+            {
+                "word": "cm",
+                "pos": "NOUN",
+                "frequency": 1338
+            },
+            {
+                "word": "der Stiefel",
+                "pos": "NOUN",
+                "frequency": 12806,
+                "cefr": "A2"
+            },
+            {
+                "word": "circa",
+                "pos": "ADV",
+                "frequency": 7983,
+                "cefr": "A1"
+            },
+            {
+                "word": "relativ",
+                "pos": "ADV",
+                "frequency": 571,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Beachvolleyball",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Picknick",
+                "pos": "NOUN",
+                "frequency": 18795,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Badetag",
+                "pos": "NOUN"
+            },
+            {
+                "word": "weniger",
+                "pos": "PRON",
+                "frequency": 5908
+            },
+            {
+                "word": "viele",
+                "pos": "PRON",
+                "frequency": 5860,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Schokolade",
+                "pos": "NOUN",
+                "frequency": 4532,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "trinken": {
+                "present": {
+                    "ich": "trinke",
+                    "du": "trinkst",
+                    "er": "trinkt",
+                    "es": "trinkt",
+                    "sie_singular": "trinkt",
+                    "xier": "trinkt",
+                    "wir": "trinken",
+                    "ihr": "trinkt",
+                    "sie_plural": "trinken",
+                    "Sie": "trinken"
+                }
+            },
+            "wandern": {
+                "present": {
+                    "ich": "wandere",
+                    "du": "wanderst",
+                    "er": "wandert",
+                    "es": "wandert",
+                    "sie_singular": "wandert",
+                    "xier": "wandert",
+                    "wir": "wandern",
+                    "ihr": "wandert",
+                    "sie_plural": "wandern",
+                    "Sie": "wandern"
+                }
+            },
+            "schwimmen": {
+                "present": {
+                    "ich": "schwimme",
+                    "du": "schwimmst",
+                    "er": "schwimmt",
+                    "es": "schwimmt",
+                    "sie_singular": "schwimmt",
+                    "xier": "schwimmt",
+                    "wir": "schwimmen",
+                    "ihr": "schwimmt",
+                    "sie_plural": "schwimmen",
+                    "Sie": "schwimmen"
+                }
+            },
+            "baden": {
+                "present": {
+                    "ich": "bade",
+                    "du": "badest",
+                    "er": "badet",
+                    "es": "badet",
+                    "sie_singular": "badet",
+                    "xier": "badet",
+                    "wir": "baden",
+                    "ihr": "badet",
+                    "sie_plural": "baden",
+                    "Sie": "baden"
+                }
+            },
+            "bauen": {
+                "present": {
+                    "ich": "baue",
+                    "du": "baust",
+                    "er": "baut",
+                    "es": "baut",
+                    "sie_singular": "baut",
+                    "xier": "baut",
+                    "wir": "bauen",
+                    "ihr": "baut",
+                    "sie_plural": "bauen",
+                    "Sie": "bauen"
+                }
+            },
+            "ankreuzen": {
+                "present": {
+                    "ich": "kreuze an",
+                    "du": "kreuzt an",
+                    "er": "kreuzt an",
+                    "es": "kreuzt an",
+                    "sie_singular": "kreuzt an",
+                    "xier": "kreuzt an",
+                    "wir": "kreuzen an",
+                    "ihr": "kreuzt an",
+                    "sie_plural": "kreuzen an",
+                    "Sie": "kreuzen an"
+                }
+            },
+            "denken": {
+                "present": {
+                    "ich": "denke",
+                    "du": "denkst",
+                    "er": "denkt",
+                    "es": "denkt",
+                    "sie_singular": "denkt",
+                    "xier": "denkt",
+                    "wir": "denken",
+                    "ihr": "denkt",
+                    "sie_plural": "denken",
+                    "Sie": "denken"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Grüß Gott, mein Name ist Hasan Ümcek.",
+            "Ich bin 36 Jahre alt und komme aus Izmir in der Türkei.",
+            "Ich bin Architekt von Beruf und arbeite und wohne seit zwei Jahren in Sonthofen im Oberallgäu.",
+            "Das Oberallgäu ist in Süddeutschland.",
+            "Das Leben und das Wetter im Oberallgäu sind sehr neu für mich.",
+            "In Izmir ist es auch im Winter mild, aber in Sonthofen ist der Winter kälter wie haben viel Schnee, durchschnittlich 26 cm.",
+            "Ich fahre dann Ski in den Allgäuer Alpen.",
+            "Im Winter trage ich eine lange Hose, eine Winterjacke und Stiefel.",
+            "Im April kommt dann der Frühling und alles ist grün.",
+            "Dann sind es circa 20 Grad Celsius.",
+            "Im Frühling und im Herbst ist das Wetter toll.",
+            "Es ist nicht heiß und es ist nicht kalt.",
+            "Ich gehe gern in den Bergen wandern.",
+            "Ich trage dann eine kurze Hose, ein Hemd und Sneakers.",
+            "Im Sommer ist es sonnig.",
+            "Im August ist es am wärmsten, circa 35 Grad Celsius.",
+            "Wenn es sonnig und warm ist, gehen meine Freunde und ich im See baden.",
+            "Der See ist auch im Sommer relativ kalt, durchschnittlich circa 19 Grad Celsius.",
+            "Was ist richtig?",
+            "Was ist falsch?",
+            "Korrigieren Sie.",
+            "Hasan Ümcek kommt aus Izmir und wohnt seit Januar 2017 in Sonthofen.",
+            "Das Oberallgäu ist in Norddeutschland.",
+            "Die Durchschnittstemperatur im Allgäu ist im Winter 26 Grad Celsius.",
+            "Hasan trägt im Winter eine Badehose ein Hemd und Stiefel.",
+            "Im Sommer ist es im Oberallgäu am wärmsten.",
+            "Wenn es kalt ist, gehen Hasan und seine Freunde gern im See baden.",
+            "Beantworten Sie die Fragen zum Text.",
+            "Ist es im Oberallgäu im Frühling oder im Winter wärmer?",
+            "Es ist im Sommer wärmer.",
+            "Welche Durchschnittstemperatur hat der See im Sommer?",
+            "Die Durchschnittstemperatur ist 19 Grad Celsius.",
+            "Ist das Wetter im Winter in Izmir oder in Sonthofen milder?",
+            "Das Wetter im Winter ist in Izmir milder.",
+            "Badetage vs.",
+            "Beantworten Sie die Fragen Badetag: Wie ist das Wetter an einem Badetag?",
+            "Was machen die Menschen?",
+            "Wie viele Badetage gibt es von 1900 bis 1960 und von 1960 bis 2020 im Durchschnitt?",
+            "Rechnen Sie.",
+            "Kreuzen Sie an.",
+            "1900–1960 sind es mehr als weniger als so viele wie 1960–2020.",
+            "Beantworten Sie die Fragen Schneetag: Wie ist das Wetter an einem Schneetag",
+            "Wie ist die Schneehöhe von 1900 bis 1960 und von 1960 bis 2020 im Durchschnitt?",
+            "1900–1960 ist es mehr als weniger als so viel wie 1960–2020",
+            "Beantworten Sie die Fragen.",
+            "Wann kommen heute mehr Touristen, im Sommer oder Winter?",
+            "Was machen Touristen heute im Oberallgäu?",
+            "Wie ist das Wetter im Jahr 2100?",
+            "Was machen Touristen im Oberallgäu im Jahr 2100?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

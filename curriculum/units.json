@@ -1,239 +1,57 @@
-{
+﻿{
   "units": [
     {
-      "unit": 1,
-      "title": "Greetings and Introductions",
-      "description": "Basic greetings, introductions, and classroom vocabulary",
-      "vocabulary": [
-        "Hallo", "Tschüss", "Auf Wiedersehen", "die Seite", "die Hausaufgabe",
-        "der Name", "die Lehrkraft", "deutsch", "wie", "heißt", "heißen", "du", "Sie",
-        "ich", "auf", "Englisch", "Deutsch", "geht's", "gut", "schlecht",
-        "Freut", "mich", "kennenzulernen", "danke", "auch", "und",
-        "fragen", "fragte", "hat", "gefragt", "lesen", "liest", "las", "gelesen"
-      ],
-      "phrases": [
-        "Hallo!",
-        "Tschüss!",
-        "Auf Wiedersehen!",
-        "Wie heißt du?",
-        "Wie heißen Sie?",
-        "Wie heißt X auf Deutsch?",
-        "Wie geht's?",
-        "Freut mich, Sie kennenzulernen.",
-        "gut",
-        "schlecht",
-        "danke",
-        "auch",
-        "und"
-      ],
-      "grammar": [
-        "Present tense only (Präsens)",
-        "Verbs: heißen, fragen (fragte, hat gefragt), lesen (liest, las, hat gelesen)",
-        "Personal pronouns: ich, du, Sie",
-        "W-questions with 'wie'",
-        "No subordinate clauses"
-      ],
-      "communicative_goals": [
-        "Greet people (formal and informal)",
-        "Introduce yourself",
-        "Ask for someone's name",
-        "Say goodbye",
-        "Ask how something is said in German/English",
-        "Ask how someone is doing"
-      ]
-    },
-    {
-      "unit": 2,
-      "title": "Personal Information and Studies",
-      "description": "Talking about where you live, where you're from, pronouns, and what you study",
-      "vocabulary": [
-        "heißen", "hieß", "hat", "geheißen",
-        "ich", "du", "Sie", "er", "es", "sie", "xier", "wir", "ihr",
-        "wohnen", "wohnte", "gewohnt", "in",
-        "kommen", "kam", "ist", "gekommen", "aus",
-        "studieren", "studierte", "studiert",
-        "lernen", "lernte", "gelernt",
-        "die Geschichte", "die Wirtschaft", "die Informatik", "die Germanistik",
-        "das Beispiel", "hören", "hörte", "gehört",
-        "ergänzen", "ergänzte", "ergänzt",
-        "präsentieren", "präsentierte", "präsentiert",
-        "die Person", "das Gespräch",
-        "Wo", "Woher", "Was", "dein", "Mein", "Pronomen"
-      ],
-      "phrases": [
-        "Was ist dein Pronomen?",
-        "Mein Pronomen ist X.",
-        "Wo wohnst du?",
-        "Ich wohne in Berlin.",
-        "Woher kommst du?",
-        "Ich komme aus Berlin.",
-        "Was studierst du?",
-        "Ich studiere Germanistik."
-      ],
-      "grammar": [
-        "Present tense and past participles",
-        "Verbs: heißen, wohnen, kommen, studieren, lernen, hören, ergänzen, präsentieren",
-        "Personal pronouns: ich, du, Sie, er, es, sie, xier, wir, ihr",
-        "Prepositions: in + dative, aus + dative",
-        "W-questions: Wo, Woher, Was",
-        "Academic subjects vocabulary"
-      ],
-      "communicative_goals": [
-        "Ask and tell where someone lives",
-        "Ask and tell where someone is from",
-        "Ask and tell about pronouns",
-        "Ask and tell what someone studies",
-        "Talk about academic subjects",
-        "Use all personal pronouns correctly"
-      ]
-    },
-    {
-      "unit": 4,
-      "title": "Spelling, Countries, and Preferences",
-      "description": "Learning to spell, talk about countries, and express preferences",
-      "vocabulary": [
-        "schreiben", "schrieb", "hat", "geschrieben",
-        "nummerieren", "nummerierte", "nummeriert",
-        "markieren", "markierte", "markiert",
-        "der Buchstabe",
-        "die Abkürzung",
-        "das Lied",
-        "das Land",
-        "Deutschland", "Bundesrepublik Deutschland",
-        "Österreich",
-        "die Schweiz",
-        "von",
-        "welch",
-        "laut",
-        "beliebt",
-        "Lieblings",
-        "ja",
-        "nein"
-      ],
-      "phrases": [
-        "Wie schreibt man das?",
-        "Wie bitte?"
-      ],
-      "grammar": [
-        "Present tense and past participles",
-        "Verbs: schreiben, nummerieren, markieren",
-        "Preposition: von + dative",
-        "Question word: welch-",
-        "Adjectives: laut, beliebt",
-        "Prefix: Lieblings-",
-        "Country names with articles"
-      ],
-      "communicative_goals": [
-        "Ask how to spell something",
-        "Ask for repetition or clarification",
-        "Talk about countries (Germany, Austria, Switzerland)",
-        "Express preferences using Lieblings-",
-        "Describe things as loud or popular",
-        "Use basic yes/no responses"
-      ]
-    },
-    {
-      "unit": 5,
-      "title": "Numbers, Age, and Personal Information",
-      "description": "Learning numbers, asking about age and size, and basic math",
-      "vocabulary": [
-        "sein", "ist", "war", "gewesen",
-        "rechnen", "rechnete", "hat", "gerechnet",
-        "plus",
-        "zählen", "zählte", "gezählt",
-        "die Antwort",
-        "beantworten", "beantwortete", "beantwortet",
-        "das Alter",
-        "die Größe",
-        "das Auto",
-        "die Nummer",
-        "die Zahl",
-        "die Gruppe",
-        "die Frage",
-        "minus",
-        "bis",
-        "eins", "zwei", "drei", "vier", "fünf",
-        "sechs", "sieben", "acht", "neun", "zehn",
-        "elf", "zwölf",
-        "einhundert",
-        "eintausend",
-        "null",
-        "Jahre", "alt", "groß", "deine", "Handy"
-      ],
-      "phrases": [
-        "Wie alt bist du?",
-        "Ich bin 18 Jahre alt.",
-        "Wie groß bist du?",
-        "Wie ist deine HandyNummer?"
-      ],
-      "grammar": [
-        "Verb sein (irregular): ist, war, ist gewesen",
-        "Verbs: rechnen, zählen, beantworten",
-        "Numbers 0-12, 100, 1000",
-        "Question words: Wie alt, Wie groß",
-        "Possessive: deine",
-        "Basic math vocabulary: plus, minus"
-      ],
-      "communicative_goals": [
-        "Ask and tell age",
-        "Ask and tell height/size",
-        "Ask for and give phone numbers",
-        "Count from 0 to 12",
-        "Use hundreds and thousands",
-        "Do basic math in German",
-        "Ask and answer questions"
-      ]
-    },
-    {
-      "unit": 6,
-      "title": "Activities and Hobbies",
-      "description": "Talking about activities, hobbies, music, sports, and what you like to do",
-      "vocabulary": [
-        "sagen", "sagte", "hat", "gesagt",
-        "machen", "machte", "gemacht",
-        "spielen", "spielte", "gespielt",
-        "reisen", "reiste", "ist", "gereist",
-        "singen", "sang", "gesungen",
-        "kochen", "kochte", "gekocht",
-        "die Aktivität",
-        "die Musik",
-        "der Fußball",
-        "das Videospiel",
-        "das Foto",
-        "der Partner", "die Partnerin",
-        "schnell",
-        "langsam",
-        "leise",
-        "nicht",
-        "aber",
-        "gern", "gerne",
-        "wer"
-      ],
-      "phrases": [],
-      "grammar": [
-        "Present tense and past participles",
-        "Verbs: sagen, machen, spielen, reisen, singen, kochen",
-        "Irregular verb: singen (sang, hat gesungen)",
-        "Movement verb: reisen (ist gereist)",
-        "Adverbs: schnell, langsam, leise, nicht, gern(e)",
-        "Conjunction: aber",
-        "Question word: wer"
-      ],
-      "communicative_goals": [
-        "Talk about activities and hobbies",
-        "Express what you like to do (gern(e))",
-        "Talk about sports, music, and games",
-        "Describe how you do things (fast, slow, quiet)",
-        "Use negative form (nicht)",
-        "Connect ideas with 'aber'",
-        "Ask who does something"
-      ]
+      "unit": "1",
+      "is_optional": false,
+      "sequence_info": {
+        "track": "core",
+        "position": 1,
+        "prerequisite": "none"
+      },
+      "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": ["present"],
+        "allowed_cases": ["nominative"],
+        "allowed_persons": [],
+        "sentence_types": [],
+        "new_rules_in_this_unit": [],
+        "forbidden": []
+      },
+      "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+      },
+      "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+      },
+      "active_vocabulary": {
+        "description": "Words students must actively produce",
+        "items": []
+      },
+      "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet",
+        "items": []
+      },
+      "universal_fillers": {
+        "description": "Discourse markers, fillers, and function words available to all units.",
+        "affirmation_negation": ["ja","nein","okay","genau","richtig","korrekt"],
+        "reactions": ["oh","ach so","ah","cool","wow","toll","super","prima","schön","interessant","mega","wirklich?"],
+        "hesitation_thinking": ["hm","ähm","na ja","also","mal sehen","Moment"],
+        "politeness": ["bitte","danke","danke schön","bitte schön","Entschuldigung","kein Problem"],
+        "confirmation_seeking": ["ja?","korrekt?","okay?"],
+        "backchanneling": ["aha","mhm","klar"],
+        "meta_conversation": ["Wie bitte?","Noch einmal, bitte.","Deutsch, bitte!"]
+      },
+      "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use",
+        "verbs": {}
+      },
+      "model_sentences": {
+        "description": "Examples from textbook",
+        "literal": [],
+        "templated": []
+      }
     }
-  ],
-  "metadata": {
-    "total_units": 104,
-    "language": "German",
-    "target_level": "A1-C1",
-    "notes": "Every unit contains actual curriculum vocabulary. Each unit has its own vocabulary list that the AI can ONLY use when talking to students for that specific unit."
-  }
+  ]
 }

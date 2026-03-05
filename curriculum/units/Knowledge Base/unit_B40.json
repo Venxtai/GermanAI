@@ -1,0 +1,416 @@
+{
+    "unit": "B40",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 40,
+        "prerequisite": "core 1-104, B1-B39"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Podcast mit Hilfe eines Storyboards planen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Podcasts"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "ansehen", "pos": "VERB", "translation": "to look at", "frequency": 507, "cefr": "A2" },
+            { "word": "aufnehmen", "pos": "VERB", "translation": "to absorb; admit (e.g. in school); incorporate", "frequency": 563, "cefr": "B1" },
+            { "word": "bearbeiten", "pos": "VERB", "translation": "to edit; tool; work on", "frequency": 2898 },
+            { "word": "behandeln", "pos": "VERB", "translation": "to treat", "frequency": 993, "cefr": "B1" },
+            { "word": "die Aufnahme", "pos": "NOUN", "translation": "recording", "frequency": 1403, "cefr": "B1" },
+            { "word": "die Ausstattung", "pos": "NOUN", "translation": "equipment", "frequency": 4590, "cefr": "A1" },
+            { "word": "der Beitrag", "pos": "NOUN", "translation": "article; contribution", "frequency": 1092, "cefr": "B1" },
+            { "word": "die Möglichkeit", "pos": "NOUN", "translation": "possibility; opportunity; option" },
+            { "word": "der*die Sprecher*in", "pos": "NOUN", "translation": "speaker", "frequency": 999, "cefr": "B2" },
+            { "word": "der Ständer", "pos": "NOUN", "translation": "stand" },
+            { "word": "der Stichpunkt", "pos": "NOUN", "translation": "bullet point", "frequency": 1, "cefr": "A1" },
+            { "word": "die Unterhaltung", "pos": "NOUN", "translation": "conversation; entertainment", "frequency": 4164, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Equipment", "pos": "NOUN", "frequency": 23373 },
+            { "word": "der*die Podcaster*innen", "pos": "NOUN" },
+            { "word": "der Audiorecorder", "pos": "NOUN" },
+            { "word": "der Audiomixer", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "ansehen": {
+                "present": {
+                    "ich": "sehe an",
+                    "du": "siehst an",
+                    "er": "sieht an",
+                    "es": "sieht an",
+                    "sie_singular": "sieht an",
+                    "xier": "sieht an",
+                    "wir": "sehen an",
+                    "ihr": "seht an",
+                    "sie_plural": "sehen an",
+                    "Sie": "sehen an"
+                },
+                "Präteritum": {
+                    "ich": "sah an",
+                    "du": "sahst an",
+                    "er": "sah an",
+                    "es": "sah an",
+                    "sie_singular": "sah an",
+                    "xier": "sah an",
+                    "wir": "sahen an",
+                    "ihr": "saht an",
+                    "sie_plural": "sahen an",
+                    "Sie": "sahen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesehen",
+                    "du": "hast angesehen",
+                    "er": "hat angesehen",
+                    "es": "hat angesehen",
+                    "sie_singular": "hat angesehen",
+                    "xier": "hat angesehen",
+                    "wir": "haben angesehen",
+                    "ihr": "habt angesehen",
+                    "sie_plural": "haben angesehen",
+                    "Sie": "haben angesehen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte angesehen",
+                    "du": "hattest angesehen",
+                    "er": "hatte angesehen",
+                    "es": "hatte angesehen",
+                    "sie_singular": "hatte angesehen",
+                    "xier": "hatte angesehen",
+                    "wir": "hatten angesehen",
+                    "ihr": "hattet angesehen",
+                    "sie_plural": "hatten angesehen",
+                    "Sie": "hatten angesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansehen",
+                    "du": "wirst ansehen",
+                    "er": "wird ansehen",
+                    "es": "wird ansehen",
+                    "sie_singular": "wird ansehen",
+                    "xier": "wird ansehen",
+                    "wir": "werden ansehen",
+                    "ihr": "werdet ansehen",
+                    "sie_plural": "werden ansehen",
+                    "Sie": "werden ansehen"
+                },
+                "imperative": {
+                    "du": "sieh an",
+                    "ihr": "seht an",
+                    "Sie": "sehen Sie an"
+                }
+            },
+            "aufnehmen": {
+                "present": {
+                    "ich": "nehme auf",
+                    "du": "nimmst auf",
+                    "er": "nimmt auf",
+                    "es": "nimmt auf",
+                    "sie_singular": "nimmt auf",
+                    "xier": "nimmt auf",
+                    "wir": "nehmen auf",
+                    "ihr": "nehmt auf",
+                    "sie_plural": "nehmen auf",
+                    "Sie": "nehmen auf"
+                },
+                "Präteritum": {
+                    "ich": "nahm auf",
+                    "du": "nahmst auf",
+                    "er": "nahm auf",
+                    "es": "nahm auf",
+                    "sie_singular": "nahm auf",
+                    "xier": "nahm auf",
+                    "wir": "nahmen auf",
+                    "ihr": "nahmt auf",
+                    "sie_plural": "nahmen auf",
+                    "Sie": "nahmen auf"
+                },
+                "Perfekt": {
+                    "ich": "habe aufgenommen",
+                    "du": "hast aufgenommen",
+                    "er": "hat aufgenommen",
+                    "es": "hat aufgenommen",
+                    "sie_singular": "hat aufgenommen",
+                    "xier": "hat aufgenommen",
+                    "wir": "haben aufgenommen",
+                    "ihr": "habt aufgenommen",
+                    "sie_plural": "haben aufgenommen",
+                    "Sie": "haben aufgenommen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte aufgenommen",
+                    "du": "hattest aufgenommen",
+                    "er": "hatte aufgenommen",
+                    "es": "hatte aufgenommen",
+                    "sie_singular": "hatte aufgenommen",
+                    "xier": "hatte aufgenommen",
+                    "wir": "hatten aufgenommen",
+                    "ihr": "hattet aufgenommen",
+                    "sie_plural": "hatten aufgenommen",
+                    "Sie": "hatten aufgenommen"
+                },
+                "Futur_I": {
+                    "ich": "werde aufnehmen",
+                    "du": "wirst aufnehmen",
+                    "er": "wird aufnehmen",
+                    "es": "wird aufnehmen",
+                    "sie_singular": "wird aufnehmen",
+                    "xier": "wird aufnehmen",
+                    "wir": "werden aufnehmen",
+                    "ihr": "werdet aufnehmen",
+                    "sie_plural": "werden aufnehmen",
+                    "Sie": "werden aufnehmen"
+                },
+                "imperative": {
+                    "du": "nimm auf",
+                    "ihr": "nehmt auf",
+                    "Sie": "nehmen Sie auf"
+                }
+            },
+            "bearbeiten": {
+                "present": {
+                    "ich": "bearbeite",
+                    "du": "bearbeitest",
+                    "er": "bearbeitet",
+                    "es": "bearbeitet",
+                    "sie_singular": "bearbeitet",
+                    "xier": "bearbeitet",
+                    "wir": "bearbeiten",
+                    "ihr": "bearbeitet",
+                    "sie_plural": "bearbeiten",
+                    "Sie": "bearbeiten"
+                },
+                "Präteritum": {
+                    "ich": "bearbeitete",
+                    "du": "bearbeitetest",
+                    "er": "bearbeitete",
+                    "es": "bearbeitete",
+                    "sie_singular": "bearbeitete",
+                    "xier": "bearbeitete",
+                    "wir": "bearbeiteten",
+                    "ihr": "bearbeitetet",
+                    "sie_plural": "bearbeiteten",
+                    "Sie": "bearbeiteten"
+                },
+                "Perfekt": {
+                    "ich": "habe bearbeitet",
+                    "du": "hast bearbeitet",
+                    "er": "hat bearbeitet",
+                    "es": "hat bearbeitet",
+                    "sie_singular": "hat bearbeitet",
+                    "xier": "hat bearbeitet",
+                    "wir": "haben bearbeitet",
+                    "ihr": "habt bearbeitet",
+                    "sie_plural": "haben bearbeitet",
+                    "Sie": "haben bearbeitet"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte bearbeitet",
+                    "du": "hattest bearbeitet",
+                    "er": "hatte bearbeitet",
+                    "es": "hatte bearbeitet",
+                    "sie_singular": "hatte bearbeitet",
+                    "xier": "hatte bearbeitet",
+                    "wir": "hatten bearbeitet",
+                    "ihr": "hattet bearbeitet",
+                    "sie_plural": "hatten bearbeitet",
+                    "Sie": "hatten bearbeitet"
+                },
+                "Futur_I": {
+                    "ich": "werde bearbeiten",
+                    "du": "wirst bearbeiten",
+                    "er": "wird bearbeiten",
+                    "es": "wird bearbeiten",
+                    "sie_singular": "wird bearbeiten",
+                    "xier": "wird bearbeiten",
+                    "wir": "werden bearbeiten",
+                    "ihr": "werdet bearbeiten",
+                    "sie_plural": "werden bearbeiten",
+                    "Sie": "werden bearbeiten"
+                },
+                "imperative": {
+                    "du": "bearbeite",
+                    "ihr": "bearbeitet",
+                    "Sie": "bearbeiten Sie"
+                }
+            },
+            "behandeln": {
+                "present": {
+                    "ich": "behandele",
+                    "du": "behandelst",
+                    "er": "behandelt",
+                    "es": "behandelt",
+                    "sie_singular": "behandelt",
+                    "xier": "behandelt",
+                    "wir": "behandeln",
+                    "ihr": "behandelt",
+                    "sie_plural": "behandeln",
+                    "Sie": "behandeln"
+                },
+                "Präteritum": {
+                    "ich": "behandelte",
+                    "du": "behandeltest",
+                    "er": "behandelte",
+                    "es": "behandelte",
+                    "sie_singular": "behandelte",
+                    "xier": "behandelte",
+                    "wir": "behandelten",
+                    "ihr": "behandeltet",
+                    "sie_plural": "behandelten",
+                    "Sie": "behandelten"
+                },
+                "Perfekt": {
+                    "ich": "habe behandelt",
+                    "du": "hast behandelt",
+                    "er": "hat behandelt",
+                    "es": "hat behandelt",
+                    "sie_singular": "hat behandelt",
+                    "xier": "hat behandelt",
+                    "wir": "haben behandelt",
+                    "ihr": "habt behandelt",
+                    "sie_plural": "haben behandelt",
+                    "Sie": "haben behandelt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte behandelt",
+                    "du": "hattest behandelt",
+                    "er": "hatte behandelt",
+                    "es": "hatte behandelt",
+                    "sie_singular": "hatte behandelt",
+                    "xier": "hatte behandelt",
+                    "wir": "hatten behandelt",
+                    "ihr": "hattet behandelt",
+                    "sie_plural": "hatten behandelt",
+                    "Sie": "hatten behandelt"
+                },
+                "Futur_I": {
+                    "ich": "werde behandeln",
+                    "du": "wirst behandeln",
+                    "er": "wird behandeln",
+                    "es": "wird behandeln",
+                    "sie_singular": "wird behandeln",
+                    "xier": "wird behandeln",
+                    "wir": "werden behandeln",
+                    "ihr": "werdet behandeln",
+                    "sie_plural": "werden behandeln",
+                    "Sie": "werden behandeln"
+                },
+                "imperative": {
+                    "du": "behandele",
+                    "ihr": "behandelt",
+                    "Sie": "behandeln Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie Podcasts?",
+            "Welche Themen haben diese Podcasts?",
+            "Welche Kategorien und Themen finden Sie?",
+            "Welche Podcasts sind in den Podcast Charts?",
+            "Gibt es Podcasts zu Themen, die Sie besonders interessieren?",
+            "Machen Sie sich dazu einige Stichpunkte und schreiben Sie die Titel der Podcasts auf.",
+            "Welche deutschen Podcasts möchten Sie hören?",
+            "Sie sehen hier die technische Ausstattung, das Equipment, das Sie brauchen, um Podcasts aufzunehmen und die Aktivitäten.",
+            "Verbinden Sie Ausstattung mit Aktivität und formulieren Sie Sätze mit um…zu.",
+            "Podcaster*innen brauchen die Software, um die Aufnahme zu bearbeiten.",
+            "Der Computer die Software das USB Mikrofon der Mikrofonständer",
+            "Der Audiorecorder der Kopfhörer der Audiomixer das Mikrofon stabil hinstellen die Aufnahme bearbeiten den Ton hören den Ton aufnehmen",
+            "Aufnahmen machen die Aufnahmen mehrerer Personen",
+            "Mischen die Aufnahme schneiden Stimmen ohne andere Geräusche aufnehmen",
+            "Für das Projekt in diesem Kapitel erstellen Sie einen Medienbeitrag.",
+            "Eine Möglichkeit ist ein Podcast.",
+            "Diese Aufgabe kann der Startpunkt sein, funktioniert aber auch ohne Projekt.",
+            "Überlegen Sie sich ein oder zwei Themen, über die Sie einen Podcast machen wollen.",
+            "Entscheiden Sie als Gruppe, welche Idee Sie am besten finden.",
+            "Dann erstellen Sie eine Vokabelliste (nicht mehr als zehn Wörter), die Sie für Ihr Thema brauchen.",
+            "Machen Sie ein Storyboard für Ihre Podcast Folge.",
+            "Welche Themen wollen Sie recherchieren, bevor Sie den Podcast aufnehmen?",
+            "Welche Person behandelt welches Unterthema?",
+            "Planen Sie 3–4 Abschnitte für einen Podcast.",
+            "Dann schreiben Sie die ersten Texte für den Podcast im Perfekt.",
+            "Sie Ihre Podcast Ideen mit einer anderen Gruppe.",
+            "Geben Sie der anderen Gruppe Feedback."
+        ],
+        "templated": []
+    }
+}

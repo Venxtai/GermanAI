@@ -1,0 +1,480 @@
+{
+    "unit": "B11",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 11,
+        "prerequisite": "core 1-104, B1-B10"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [
+            "Use von + dative as a spoken alternative to genitive for expressing possession.",
+            "Use genitive relative pronouns dessen (r-words/s-words) and deren (e-words/plural) meaning 'whose.'"
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Notfallplan erstellen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Die Wolke"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "enden",
+                "pos": "VERB",
+                "translation": "to end",
+                "frequency": 1313,
+                "cefr": "A1"
+            },
+            {
+                "word": "beenden",
+                "pos": "VERB",
+                "translation": "to end; finish",
+                "frequency": 1405,
+                "cefr": "A2"
+            },
+            {
+                "word": "schütteln",
+                "pos": "VERB",
+                "translation": "to shake"
+            },
+            {
+                "word": "der Roman",
+                "pos": "NOUN",
+                "translation": "novel",
+                "frequency": 1051,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Regierung",
+                "pos": "NOUN",
+                "translation": "government",
+                "frequency": 521,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Änderung",
+                "pos": "NOUN",
+                "translation": "change, alteration"
+            },
+            {
+                "word": "der Notfall",
+                "pos": "NOUN",
+                "translation": "emergency",
+                "frequency": 7689,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Alarm",
+                "pos": "NOUN",
+                "translation": "alarm, alert",
+                "frequency": 8687,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sirene",
+                "pos": "NOUN",
+                "translation": "siren",
+                "frequency": 16885,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Lautsprecher",
+                "pos": "NOUN",
+                "translation": "speaker, loud speaker",
+                "frequency": 10846,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hitze",
+                "pos": "NOUN",
+                "translation": "heat",
+                "frequency": 3357,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Kraftwerk",
+                "pos": "NOUN",
+                "translation": "power station; power plant",
+                "frequency": 4175,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Erdbeben",
+                "pos": "NOUN",
+                "translation": "earthquake",
+                "frequency": 7469,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Hochwasser",
+                "pos": "NOUN",
+                "translation": "flood, high water level",
+                "frequency": 7643,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Flut",
+                "pos": "NOUN",
+                "translation": "flood, high tide (vs. low tide)",
+                "frequency": 7685,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kirschblüte",
+                "pos": "NOUN",
+                "translation": "cherry blossom",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schatten",
+                "pos": "NOUN",
+                "translation": "shadow",
+                "frequency": 1502,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Stimme",
+                "pos": "NOUN",
+                "translation": "voice",
+                "frequency": 399,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Gefühl",
+                "pos": "NOUN",
+                "translation": "feeling, emotion; sense",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Sicht",
+                "pos": "NOUN",
+                "translation": "view",
+                "frequency": 940,
+                "cefr": "A1"
+            },
+            {
+                "word": "nett",
+                "pos": "ADJ",
+                "translation": "nice",
+                "frequency": 1565,
+                "cefr": "A2"
+            },
+            {
+                "word": "wütend",
+                "pos": "ADJ",
+                "translation": "angry"
+            },
+            {
+                "word": "wessen",
+                "pos": "ADV",
+                "translation": "whose"
+            },
+            {
+                "word": "plötzlich",
+                "pos": "ADJ",
+                "translation": "suddenly, all of a sudden"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Stadtrat",
+                "pos": "NOUN",
+                "frequency": 4968
+            },
+            {
+                "word": "beschr",
+                "pos": "VERB"
+            },
+            {
+                "word": "eiben",
+                "pos": "VERB"
+            },
+            {
+                "word": "orgen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Asphalt",
+                "pos": "NOUN",
+                "frequency": 12420
+            },
+            {
+                "word": "genitiv",
+                "pos": "ADV",
+                "frequency": 32624
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "enden": {
+                "present": {
+                    "ich": "ende",
+                    "du": "endest",
+                    "er": "endet",
+                    "es": "endet",
+                    "sie_singular": "endet",
+                    "xier": "endet",
+                    "wir": "enden",
+                    "ihr": "endet",
+                    "sie_plural": "enden",
+                    "Sie": "enden"
+                },
+                "Perfekt": {
+                    "ich": "habe geendet",
+                    "du": "hast geendet",
+                    "er": "hat geendet",
+                    "es": "hat geendet",
+                    "sie_singular": "hat geendet",
+                    "xier": "hat geendet",
+                    "wir": "haben geendet",
+                    "ihr": "habt geendet",
+                    "sie_plural": "haben geendet",
+                    "Sie": "haben geendet"
+                },
+                "Futur_I": {
+                    "ich": "werde enden",
+                    "du": "wirst enden",
+                    "er": "wird enden",
+                    "es": "wird enden",
+                    "sie_singular": "wird enden",
+                    "xier": "wird enden",
+                    "wir": "werden enden",
+                    "ihr": "werdet enden",
+                    "sie_plural": "werden enden",
+                    "Sie": "werden enden"
+                },
+                "imperative": {
+                    "du": "ende",
+                    "ihr": "endet",
+                    "Sie": "enden Sie"
+                }
+            },
+            "beenden": {
+                "present": {
+                    "ich": "beende",
+                    "du": "beendest",
+                    "er": "beendet",
+                    "es": "beendet",
+                    "sie_singular": "beendet",
+                    "xier": "beendet",
+                    "wir": "beenden",
+                    "ihr": "beendet",
+                    "sie_plural": "beenden",
+                    "Sie": "beenden"
+                },
+                "Perfekt": {
+                    "ich": "habe beendet",
+                    "du": "hast beendet",
+                    "er": "hat beendet",
+                    "es": "hat beendet",
+                    "sie_singular": "hat beendet",
+                    "xier": "hat beendet",
+                    "wir": "haben beendet",
+                    "ihr": "habt beendet",
+                    "sie_plural": "haben beendet",
+                    "Sie": "haben beendet"
+                },
+                "Futur_I": {
+                    "ich": "werde beenden",
+                    "du": "wirst beenden",
+                    "er": "wird beenden",
+                    "es": "wird beenden",
+                    "sie_singular": "wird beenden",
+                    "xier": "wird beenden",
+                    "wir": "werden beenden",
+                    "ihr": "werdet beenden",
+                    "sie_plural": "werden beenden",
+                    "Sie": "werden beenden"
+                },
+                "imperative": {
+                    "du": "beende",
+                    "ihr": "beendet",
+                    "Sie": "beenden Sie"
+                }
+            },
+            "schütteln": {
+                "present": {
+                    "ich": "schüttle",
+                    "du": "schüttelst",
+                    "er": "schüttelt",
+                    "es": "schüttelt",
+                    "sie_singular": "schüttelt",
+                    "xier": "schüttelt",
+                    "wir": "schütteln",
+                    "ihr": "schüttelt",
+                    "sie_plural": "schütteln",
+                    "Sie": "schütteln"
+                },
+                "Perfekt": {
+                    "ich": "habe geschüttelt",
+                    "du": "hast geschüttelt",
+                    "er": "hat geschüttelt",
+                    "es": "hat geschüttelt",
+                    "sie_singular": "hat geschüttelt",
+                    "xier": "hat geschüttelt",
+                    "wir": "haben geschüttelt",
+                    "ihr": "habt geschüttelt",
+                    "sie_plural": "haben geschüttelt",
+                    "Sie": "haben geschüttelt"
+                },
+                "Futur_I": {
+                    "ich": "werde schütteln",
+                    "du": "wirst schütteln",
+                    "er": "wird schütteln",
+                    "es": "wird schütteln",
+                    "sie_singular": "wird schütteln",
+                    "xier": "wird schütteln",
+                    "wir": "werden schütteln",
+                    "ihr": "werdet schütteln",
+                    "sie_plural": "werden schütteln",
+                    "Sie": "werden schütteln"
+                },
+                "imperative": {
+                    "du": "schüttle",
+                    "ihr": "schüttelt",
+                    "Sie": "schütteln Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Ein Tag, an dem sich dein Leben veränderte Individuell:",
+            "Denken Sie an einen Tag, der Ihr Leben verändert hat, positiv oder negativ.",
+            "Zeigen Sie Ihre Wolke einer anderen Person.",
+            "Die andere Person soll raten, an welchen Tag oder an welches Ereignis Sie sich erinnern.",
+            "Beschreiben Sie jetzt einer anderen Person mit mehr Details den Tag, an dem sich Ihr Leben verändert hat.",
+            "Wo warst du?",
+            "Mit wem?",
+            "Wie hat dieser Tag dein Leben verändert?",
+            "Mit welchen Emotionen verbindest du diesen Tag?",
+            "Der Roman Die Wolke beschreibt einen Unfall in einem Atomkraftwerk.",
+            "Es gibt aber auch andere Notfälle und Katastrophen.",
+            "Machen Sie eine Liste von Notfällen und Katastrophen, die passieren können.",
+            "Von Ihrer Liste aus und füllen Sie die Tabelle mit Ideen für einen Fluchtplan aus.",
+            "Vergleichen Sie Ihre Tabelle mit anderen Personen im Kurs.",
+            "Was nehmen Sie mit?",
+            "Mit welchen Personen kommunizieren Sie?",
+            "Wie oder womit fliehen Sie?",
+            "Wer braucht Hilfe?",
+            "Lesen Sie den ersten Teil des Roman s Die Wolke und markieren Sie Wörter, die die Stimmung und die Atmosphäre beschr eiben.",
+            "An diesem M orgen gibt es einen leichten Wind.",
+            "Als Janna-Berta aus dem Fenster schaut, sieht sie die jungen Blätter des Baumes in der Sonne.",
+            "Man kann die Schatten des Baumes auf dem Asphalt Boden de r Schule sehen.",
+            "Auf die Dächer schneit es Kirschblütenblätter.",
+            "Der Himmel ist dunkel blau.",
+            "Man kann nur wenige Wolken am Himmel sehen und die sind ganz weiß und leicht.",
+            "Für einen Morgen im Mai ist es sehr warm.",
+            "Die Sicht ist klar.",
+            "Plötzlich kann man eine Sirene hören.",
+            "Der Lehrer, Herr Benzig, beendet seinen Kommentar zur nächsten Französischstunde in der Mitte des Satz es und schaut auf seine Uhr.",
+            "Wie ist die Stimmung in diesem Teil des Romans?",
+            "Ist es ein schöner Tag?",
+            "Wo im Text kann man das sehen?",
+            "An welcher Stelle ändert sich die Stimmung?",
+            "Lesen Sie den nächsten Teil.",
+            "An wen denkt sie?",
+            "ABC Alarm!",
+            "Der Unterricht endet sofort.",
+            "Alle gehen so schnell wie möglich nach Hause.",
+            "Er sagt noch mehr, aber alle laufen zum Fenster.",
+            "Verstehst du, was das soll?, fragt Meike.",
+            "Janna-Berta schüttelt den Kopf.",
+            "Ihr wird kalt.",
+            "Etwas ist passiert.",
+            "Aber was?",
+            "Sie denkt an Uli, ihren kleinen Bruder.",
+            "Stellen Sie sich vor, dass Sie in der Janna-Berta s Schule sind und den ABC Alarm hören.",
+            "An wen denken Sie?",
+            "Mit wem kommunizieren Sie?",
+            "Um wen kümmern Sie sich?",
+            "Ergänzen Sie die Relativsätze.",
+            "Versuchen Sie zu Nominativ, Akkusativ, Dativ und Genitiv jeweils mindestens zwei S ä tze zu formulieren.",
+            "Ich denke an meinen Hund, dem ich helfen muss.",
+            "Ich kommuniziere mit meiner Nachbarin, deren Haus vielleicht nicht sicher ist.",
+            "Ein Auto haben jemanden nach Hilfe fragen jemandem etwas kaufen sein.",
+            "Ihr Haus ist vielleicht nicht sicher jung.",
+            "Alt sein jemanden lieben.",
+            "Haben jemanden lange nicht gesehen haben"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

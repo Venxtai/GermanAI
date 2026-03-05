@@ -1,0 +1,711 @@
+{
+    "unit": "101",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 101,
+        "prerequisite": "1-100"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the formal imperative (Sie): invert subject and verb â€â€ \"Gehen Sie bitte nach links!\"; for sein use \"Seien Sie.\"",
+            "Form the informal singular imperative (du): use the verb stem without du and ending â€â€ \"Koch bitte!\"; keep -e for stems ending in -d/-t â€â€ \"Warte bitte!\"; stem-vowel changing verbs with e→i/ie keep the change but drop Umlaut changes â€â€ \"Iss!\" / \"Lies!\"; for sein use \"Sei.\"",
+            "Form the informal plural imperative (ihr): drop ihr from the ihr-form â€â€ \"Esst bitte!\" \"Geht bitte nach Hause!\"; for sein use \"Seid.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Befehle, Ratschläge und Anweisungen geben",
+            "den Imperativ formell und informell verwenden"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "beschäftigen (mit)",
+                "pos": "VERB",
+                "translation": "to to engage (with); keep busy (with)"
+            },
+            {
+                "word": "beschäftigen (mit)",
+                "pos": "VERB",
+                "translation": "to employ"
+            },
+            {
+                "word": "hinzufügen",
+                "pos": "VERB",
+                "translation": "to add, append"
+            },
+            {
+                "word": "verändern",
+                "pos": "VERB",
+                "translation": "to change"
+            },
+            {
+                "word": "integrieren",
+                "pos": "VERB",
+                "translation": "to integrate",
+                "frequency": 2077,
+                "cefr": "B1"
+            },
+            {
+                "word": "generieren",
+                "pos": "VERB",
+                "translation": "to generate",
+                "frequency": 15767,
+                "cefr": "B2"
+            },
+            {
+                "word": "drehen",
+                "pos": "VERB",
+                "translation": "to turn, spin",
+                "frequency": 788,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Begriff",
+                "pos": "NOUN",
+                "translation": "term; definition; notion",
+                "frequency": 569,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Befehl",
+                "pos": "NOUN",
+                "translation": "order; command [computer]",
+                "frequency": 3421,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Motiv",
+                "pos": "NOUN",
+                "translation": "motif; reason",
+                "frequency": 2063,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Mittelgrund",
+                "pos": "NOUN",
+                "translation": "middle ground/plane [art.]",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fortschritt",
+                "pos": "NOUN",
+                "translation": "progress, technological change",
+                "frequency": 1635,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gesellschaft",
+                "pos": "NOUN",
+                "translation": "society; community",
+                "frequency": 363,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Demokratie",
+                "pos": "NOUN",
+                "translation": "democracy",
+                "frequency": 1401,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Militär",
+                "pos": "NOUN",
+                "translation": "military"
+            },
+            {
+                "word": "der Weltkrieg",
+                "pos": "NOUN",
+                "translation": "world war",
+                "frequency": 1867,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Beginn",
+                "pos": "NOUN",
+                "translation": "beginning, start",
+                "frequency": 845,
+                "cefr": "B1"
+            },
+            {
+                "word": "gleichzeitig",
+                "pos": "ADJ",
+                "translation": "simultaneous(ly)",
+                "frequency": 637,
+                "cefr": "B1"
+            },
+            {
+                "word": "künstlich",
+                "pos": "ADJ",
+                "translation": "artificial"
+            },
+            {
+                "word": "provokant",
+                "pos": "ADJ",
+                "translation": "provocative",
+                "frequency": 19921,
+                "cefr": "B2"
+            },
+            {
+                "word": "echt",
+                "pos": "ADJ",
+                "translation": "real(ly)",
+                "frequency": 685,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Gegensatz",
+                "pos": "NOUN",
+                "translation": "contrast; antipode; opposite",
+                "frequency": 1161,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kreis",
+                "pos": "NOUN",
+                "translation": "circle",
+                "frequency": 1289,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Avantgarde",
+                "pos": "NOUN",
+                "frequency": 12839
+            },
+            {
+                "word": "weimarer",
+                "pos": "ADJ",
+                "frequency": 8198
+            },
+            {
+                "word": "die Avant­garde",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Vorhut",
+                "pos": "NOUN",
+                "frequency": 35075
+            },
+            {
+                "word": "der Expressionismus",
+                "pos": "NOUN",
+                "frequency": 19774
+            },
+            {
+                "word": "Zürich",
+                "pos": "PROPN",
+                "frequency": 5938
+            },
+            {
+                "word": "das Unsinnswort",
+                "pos": "NOUN"
+            },
+            {
+                "word": "worauf",
+                "pos": "ADV",
+                "frequency": 2480
+            },
+            {
+                "word": "das Lautgedicht",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Simultangedicht",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Avantgarde-Bewegung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Futurist",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Simultanität",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Aggressivität",
+                "pos": "NOUN",
+                "frequency": 15341,
+                "cefr": "B2"
+            },
+            {
+                "word": "idealisieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Antikunst",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Karawane",
+                "pos": "NOUN",
+                "frequency": 28282
+            },
+            {
+                "word": "generativ",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das KI-Programm",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Intelligenz",
+                "pos": "NOUN",
+                "frequency": 2890,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Dada-Gedicht",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Indikativ-Sätze",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Imperativ",
+                "pos": "NOUN",
+                "frequency": 33285
+            },
+            {
+                "word": "duzen",
+                "pos": "VERB",
+                "cefr": "B1"
+            },
+            {
+                "word": "indikativ",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Produzier",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "beschäftigen": {
+                "present": {
+                    "ich": "beschäftige",
+                    "du": "beschäftigst",
+                    "er": "beschäftigt",
+                    "es": "beschäftigt",
+                    "sie_singular": "beschäftigt",
+                    "xier": "beschäftigt",
+                    "wir": "beschäftigen",
+                    "ihr": "beschäftigt",
+                    "sie_plural": "beschäftigen",
+                    "Sie": "beschäftigen"
+                },
+                "Perfekt": {
+                    "ich": "habe beschäftigt",
+                    "du": "hast beschäftigt",
+                    "er": "hat beschäftigt",
+                    "es": "hat beschäftigt",
+                    "sie_singular": "hat beschäftigt",
+                    "xier": "hat beschäftigt",
+                    "wir": "haben beschäftigt",
+                    "ihr": "habt beschäftigt",
+                    "sie_plural": "haben beschäftigt",
+                    "Sie": "haben beschäftigt"
+                },
+                "Futur_I": {
+                    "ich": "werde beschäftigen",
+                    "du": "wirst beschäftigen",
+                    "er": "wird beschäftigen",
+                    "es": "wird beschäftigen",
+                    "sie_singular": "wird beschäftigen",
+                    "xier": "wird beschäftigen",
+                    "wir": "werden beschäftigen",
+                    "ihr": "werdet beschäftigen",
+                    "sie_plural": "werden beschäftigen",
+                    "Sie": "werden beschäftigen"
+                },
+                "imperative": {
+                    "du": "beschäftige",
+                    "ihr": "beschäftigt",
+                    "Sie": "beschäftigen Sie"
+                }
+            },
+            "hinzufügen": {
+                "present": {
+                    "ich": "füge hinzu",
+                    "du": "fügst hinzu",
+                    "er": "fügt hinzu",
+                    "es": "fügt hinzu",
+                    "sie_singular": "fügt hinzu",
+                    "xier": "fügt hinzu",
+                    "wir": "fügen hinzu",
+                    "ihr": "fügt hinzu",
+                    "sie_plural": "fügen hinzu",
+                    "Sie": "fügen hinzu"
+                },
+                "Perfekt": {
+                    "ich": "habe hinzugefügt",
+                    "du": "hast hinzugefügt",
+                    "er": "hat hinzugefügt",
+                    "es": "hat hinzugefügt",
+                    "sie_singular": "hat hinzugefügt",
+                    "xier": "hat hinzugefügt",
+                    "wir": "haben hinzugefügt",
+                    "ihr": "habt hinzugefügt",
+                    "sie_plural": "haben hinzugefügt",
+                    "Sie": "haben hinzugefügt"
+                },
+                "Futur_I": {
+                    "ich": "werde hinzufügen",
+                    "du": "wirst hinzufügen",
+                    "er": "wird hinzufügen",
+                    "es": "wird hinzufügen",
+                    "sie_singular": "wird hinzufügen",
+                    "xier": "wird hinzufügen",
+                    "wir": "werden hinzufügen",
+                    "ihr": "werdet hinzufügen",
+                    "sie_plural": "werden hinzufügen",
+                    "Sie": "werden hinzufügen"
+                },
+                "imperative": {
+                    "du": "füg hinzu",
+                    "ihr": "fügt hinzu",
+                    "Sie": "fügen Sie hinzu"
+                }
+            },
+            "verändern": {
+                "present": {
+                    "ich": "verändere",
+                    "du": "veränderst",
+                    "er": "verändert",
+                    "es": "verändert",
+                    "sie_singular": "verändert",
+                    "xier": "verändert",
+                    "wir": "verändern",
+                    "ihr": "verändert",
+                    "sie_plural": "verändern",
+                    "Sie": "verändern"
+                },
+                "Perfekt": {
+                    "ich": "habe verändert",
+                    "du": "hast verändert",
+                    "er": "hat verändert",
+                    "es": "hat verändert",
+                    "sie_singular": "hat verändert",
+                    "xier": "hat verändert",
+                    "wir": "haben verändert",
+                    "ihr": "habt verändert",
+                    "sie_plural": "haben verändert",
+                    "Sie": "haben verändert"
+                },
+                "Futur_I": {
+                    "ich": "werde verändern",
+                    "du": "wirst verändern",
+                    "er": "wird verändern",
+                    "es": "wird verändern",
+                    "sie_singular": "wird verändern",
+                    "xier": "wird verändern",
+                    "wir": "werden verändern",
+                    "ihr": "werdet verändern",
+                    "sie_plural": "werden verändern",
+                    "Sie": "werden verändern"
+                },
+                "imperative": {
+                    "du": "veränder",
+                    "ihr": "verändert",
+                    "Sie": "verändern Sie"
+                }
+            },
+            "integrieren": {
+                "present": {
+                    "ich": "integriere",
+                    "du": "integrierst",
+                    "er": "integriert",
+                    "es": "integriert",
+                    "sie_singular": "integriert",
+                    "xier": "integriert",
+                    "wir": "integrieren",
+                    "ihr": "integriert",
+                    "sie_plural": "integrieren",
+                    "Sie": "integrieren"
+                },
+                "Perfekt": {
+                    "ich": "habe integriert",
+                    "du": "hast integriert",
+                    "er": "hat integriert",
+                    "es": "hat integriert",
+                    "sie_singular": "hat integriert",
+                    "xier": "hat integriert",
+                    "wir": "haben integriert",
+                    "ihr": "habt integriert",
+                    "sie_plural": "haben integriert",
+                    "Sie": "haben integriert"
+                },
+                "Futur_I": {
+                    "ich": "werde integrieren",
+                    "du": "wirst integrieren",
+                    "er": "wird integrieren",
+                    "es": "wird integrieren",
+                    "sie_singular": "wird integrieren",
+                    "xier": "wird integrieren",
+                    "wir": "werden integrieren",
+                    "ihr": "werdet integrieren",
+                    "sie_plural": "werden integrieren",
+                    "Sie": "werden integrieren"
+                },
+                "imperative": {
+                    "du": "integriere",
+                    "ihr": "integriert",
+                    "Sie": "integrieren Sie"
+                }
+            },
+            "generieren": {
+                "present": {
+                    "ich": "generiere",
+                    "du": "generierst",
+                    "er": "generiert",
+                    "es": "generiert",
+                    "sie_singular": "generiert",
+                    "xier": "generiert",
+                    "wir": "generieren",
+                    "ihr": "generiert",
+                    "sie_plural": "generieren",
+                    "Sie": "generieren"
+                },
+                "Perfekt": {
+                    "ich": "habe generiert",
+                    "du": "hast generiert",
+                    "er": "hat generiert",
+                    "es": "hat generiert",
+                    "sie_singular": "hat generiert",
+                    "xier": "hat generiert",
+                    "wir": "haben generiert",
+                    "ihr": "habt generiert",
+                    "sie_plural": "haben generiert",
+                    "Sie": "haben generiert"
+                },
+                "Futur_I": {
+                    "ich": "werde generieren",
+                    "du": "wirst generieren",
+                    "er": "wird generieren",
+                    "es": "wird generieren",
+                    "sie_singular": "wird generieren",
+                    "xier": "wird generieren",
+                    "wir": "werden generieren",
+                    "ihr": "werdet generieren",
+                    "sie_plural": "werden generieren",
+                    "Sie": "werden generieren"
+                },
+                "imperative": {
+                    "du": "generier",
+                    "ihr": "generiert",
+                    "Sie": "generieren Sie"
+                }
+            },
+            "drehen": {
+                "present": {
+                    "ich": "drehe",
+                    "du": "drehst",
+                    "er": "dreht",
+                    "es": "dreht",
+                    "sie_singular": "dreht",
+                    "xier": "dreht",
+                    "wir": "drehen",
+                    "ihr": "dreht",
+                    "sie_plural": "drehen",
+                    "Sie": "drehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gedreht",
+                    "du": "hast gedreht",
+                    "er": "hat gedreht",
+                    "es": "hat gedreht",
+                    "sie_singular": "hat gedreht",
+                    "xier": "hat gedreht",
+                    "wir": "haben gedreht",
+                    "ihr": "habt gedreht",
+                    "sie_plural": "haben gedreht",
+                    "Sie": "haben gedreht"
+                },
+                "Futur_I": {
+                    "ich": "werde drehen",
+                    "du": "wirst drehen",
+                    "er": "wird drehen",
+                    "es": "wird drehen",
+                    "sie_singular": "wird drehen",
+                    "xier": "wird drehen",
+                    "wir": "werden drehen",
+                    "ihr": "werdet drehen",
+                    "sie_plural": "werden drehen",
+                    "Sie": "werden drehen"
+                },
+                "imperative": {
+                    "du": "drehe",
+                    "ihr": "dreht",
+                    "Sie": "drehen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Womit hat sich die Kunst zu Beginn des 20.",
+            "Jahrhunderts beschäftigt?",
+            "Was waren die Motive?",
+            "Sie hat sich mit dem technischen Fortschritt, dem Ersten Weltkrieg, der ersten deutschen Demokratie (Weimarer Republik) oder dem \"Wilden 20ern\" beschäftigt.",
+            "Motive waren oft die Großstadt, Verkehr und die Massengesellschaft.",
+            "Woher kommt der Begriff \"Avant­garde\"?",
+            "Der Begriff \"Avant­garde\" kommt aus der französischen Militärsprache und heißt Vorhut ( advance party/vanguard ).",
+            "Was gehörte in deutschsprachigen Ländern zur Avantgarde?",
+            "In den deutschsprachigen Ländern haben vor allem der Expressionismus und Dada zur Avantgarde gehört.",
+            "Wer hat Dada gegründet?",
+            "Ist das Wort \"Dada\" ein echtes Wort?",
+            "Eine Künstler *innen gruppe [Künstler*innen Gruppe]",
+            "In Zürich hat Dada gegründet.",
+            "Nein, es ist kein echtes Wort.",
+            "Es ist ein Unsinnswort.",
+            "Worauf hat Dada reagiert?",
+            "Was für eine Kunst war es?",
+            "Wofür war Dada bekannt?",
+            "Dada hat auch die neue Technik und immer schnellere Zeit reagiert.",
+            "Dada war bekannt für Lautgedichte und Simultangedichte.",
+            "Motive waren oft die Großstadt, Verkehr und die Massengesellschaft..",
+            "Der Begriff \"Avantgarde\" kommt aus der französischen Militärsprache",
+            "Und heißt Vorhut ( advance party/vanguard ).",
+            "In der Politik und Kunst meint Avantgarde neue und oft radikale und provokante Ideen.",
+            "Eine der wichtigsten Avantgarde-Bewegungen in der Kunst waren die italienischen Futuristen.",
+            "Sie haben den technischen Fortschritt, Geschwindigkeit, Simultanität, Kraft und Aggressivität idealisiert.",
+            "Auch diese Kunstrichtungen haben auf die neue Technik und immer schnellere Zeit reagiert.",
+            "Dada war eine Antikunst und der Expressionismus war eine Protestkunst.",
+            "Beim Expressionismus waren Emotionen sehr wichtig.",
+            "Eine Künstler*innengruppe [ Nerue ] in Zürich hat Dada gegründet.",
+            "Man hat es erfunden.",
+            "Dada war bekannt für Lautgedichte (die Gedichte hatten nur Laute, keine Wörter) und Simultangedichte (mehrere Personen haben in verschiedenen Sprachen gleichzeitig geredet).",
+            "Lesen Sie das Lautgedicht \"Karawane\" von Hugo Ball erst leise.",
+            "Dann lesen Sie es ein zweites Mal.",
+            "Jetzt können Sie laut lesen (der ganze Kurs gleichzeitig).",
+            "Bilden Sie einen Kreis.",
+            "Person 1 liest \"Karawane\" für Person 2 laut vor.",
+            "Dann dreht sich Person 2 zu Person 3 um und liest das Gedicht laut vor und so weiter.",
+            "Es gibt keine richtige Version.",
+            "Probieren Sie viele Varianten.",
+            "Was ist an \"Karawane\" ein Gedicht?",
+            "Wie finden Sie es?",
+            "Lassen Sie ein generatives KI-Programm (KI steht für künstliche Intelligenz) ein Dada-Gedicht generieren.",
+            "Schreiben Sie erst die Indikativ-Sätze in Imperativ um (Sie können das KI-Programm duzen).",
+            "Fällt Ihnen noch ein anderer Befehl ein?",
+            "Dann markieren Sie, welche Befehle Sie dem Programm geben wollen und in welcher Reihenfolge.",
+            "Du schreibst ein Dada-Gedicht mit vielen Adjektiven.",
+            "Du machst das Gedicht stärker.",
+            "Du bringst mehr Unsinnswörter in das Gedicht.",
+            "Du benutzt keine Verben.",
+            "Du nimmst drei Adjektive mit -los.",
+            "Du schreibst falsche Grammatik.",
+            "Du produzierst ein schnelles Gedicht.",
+            "Imperativ Schreib ein Dada-Gedicht mit vielen Adjektiven.",
+            "Mach das Gedicht stärker.",
+            "Unsinn Wörter in das Gedicht.",
+            "Benutz keine Verben.",
+            "Nimm drei Adjektive mit -los.",
+            "Schreib falsche Grammatik.",
+            "Produzier ein schnelles Gedicht.",
+            "Jetzt geben Sie einem generativen KI-Programm die Befehle.",
+            "Machen Sie Screenshots von allen Ergebnissen.",
+            "Dann wählen Sie eine Version aus und üben Sie, das Gedicht zu lesen.",
+            "Sie müssen es nicht verstehen.",
+            "Tragen Sie das Gedicht in kleinen Gruppen vor.",
+            "Hat das Programm verschiedene oder ähnliche Gedichte generiert?",
+            "In Teil 5 werden Sie das KI-Programm ein Bild zu Ihrem Gedicht generieren lassen.",
+            "Ergänzen Sie erst einige Sätze im Indikativ.",
+            "Dann machen Sie aus den Sätzen Befehle im Imperativ für das KI-Programm.",
+            "Das Bild zeigt einen Hund.",
+            "Generier ein Bild von einem Hund.",
+            "Im Hintergrund sieht man Im Mittelgrund steht/liegt/sitzt",
+            "Im Vordergrund ist",
+            "Die Atmosphäre ist",
+            "Geben Sie Befehle in das Programm ein.",
+            "Sie können auch mit den Befehlen spielen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

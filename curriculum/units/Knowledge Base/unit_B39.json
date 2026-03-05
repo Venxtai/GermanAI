@@ -1,0 +1,374 @@
+{
+    "unit": "B39",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 39,
+        "prerequisite": "core 1-104, B1-B38"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über den Konsum verschiedener Medien sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Radio und Medienkonsum"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "anhören", "pos": "VERB", "translation": "to listen (to)" },
+            { "word": "losgehen", "pos": "VERB", "translation": "to begin", "frequency": 4095 },
+            { "word": "konsumieren", "pos": "VERB", "translation": "to consume", "frequency": 4510, "cefr": "B1" },
+            { "word": "der Rundfunk", "pos": "NOUN", "translation": "broadcasting", "frequency": 3889, "cefr": "B2" },
+            { "word": "der Hörfunk", "pos": "NOUN", "translation": "radio broadcasting" },
+            { "word": "das Telefon", "pos": "NOUN", "translation": "telephone", "frequency": 1595, "cefr": "A1" },
+            { "word": "das Mikrofon", "pos": "NOUN", "translation": "microphone", "frequency": 9724, "cefr": "B2" },
+            { "word": "der Draht", "pos": "NOUN", "translation": "wire", "frequency": 8935, "cefr": "A1" },
+            { "word": "die Armee", "pos": "NOUN", "translation": "army", "frequency": 2209, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Streaming", "pos": "NOUN" },
+            { "word": "Elch", "pos": "ADJ", "frequency": 21789 },
+            { "word": "die Propaganda", "pos": "NOUN", "frequency": 8850 },
+            { "word": "die Telegrafie", "pos": "NOUN" },
+            { "word": "der Funk", "pos": "NOUN", "frequency": 8265 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "anhören": {
+                "present": {
+                    "ich": "höre an",
+                    "du": "hörst an",
+                    "er": "hört an",
+                    "es": "hört an",
+                    "sie_singular": "hört an",
+                    "xier": "hört an",
+                    "wir": "hören an",
+                    "ihr": "hört an",
+                    "sie_plural": "hören an",
+                    "Sie": "hören an"
+                },
+                "Präteritum": {
+                    "ich": "hörte an",
+                    "du": "hörtest an",
+                    "er": "hörte an",
+                    "es": "hörte an",
+                    "sie_singular": "hörte an",
+                    "xier": "hörte an",
+                    "wir": "hörten an",
+                    "ihr": "hörtet an",
+                    "sie_plural": "hörten an",
+                    "Sie": "hörten an"
+                },
+                "Perfekt": {
+                    "ich": "habe angehört",
+                    "du": "hast angehört",
+                    "er": "hat angehört",
+                    "es": "hat angehört",
+                    "sie_singular": "hat angehört",
+                    "xier": "hat angehört",
+                    "wir": "haben angehört",
+                    "ihr": "habt angehört",
+                    "sie_plural": "haben angehört",
+                    "Sie": "haben angehört"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte angehört",
+                    "du": "hattest angehört",
+                    "er": "hatte angehört",
+                    "es": "hatte angehört",
+                    "sie_singular": "hatte angehört",
+                    "xier": "hatte angehört",
+                    "wir": "hatten angehört",
+                    "ihr": "hattet angehört",
+                    "sie_plural": "hatten angehört",
+                    "Sie": "hatten angehört"
+                },
+                "Futur_I": {
+                    "ich": "werde anhören",
+                    "du": "wirst anhören",
+                    "er": "wird anhören",
+                    "es": "wird anhören",
+                    "sie_singular": "wird anhören",
+                    "xier": "wird anhören",
+                    "wir": "werden anhören",
+                    "ihr": "werdet anhören",
+                    "sie_plural": "werden anhören",
+                    "Sie": "werden anhören"
+                },
+                "imperative": {
+                    "du": "hör an",
+                    "ihr": "hört an",
+                    "Sie": "hören Sie an"
+                }
+            },
+            "losgehen": {
+                "present": {
+                    "ich": "gehe los",
+                    "du": "gehst los",
+                    "er": "geht los",
+                    "es": "geht los",
+                    "sie_singular": "geht los",
+                    "xier": "geht los",
+                    "wir": "gehen los",
+                    "ihr": "geht los",
+                    "sie_plural": "gehen los",
+                    "Sie": "gehen los"
+                },
+                "Präteritum": {
+                    "ich": "ging los",
+                    "du": "gingst los",
+                    "er": "ging los",
+                    "es": "ging los",
+                    "sie_singular": "ging los",
+                    "xier": "ging los",
+                    "wir": "gingen los",
+                    "ihr": "gingt los",
+                    "sie_plural": "gingen los",
+                    "Sie": "gingen los"
+                },
+                "Perfekt": {
+                    "ich": "bin losgegangen",
+                    "du": "bist losgegangen",
+                    "er": "ist losgegangen",
+                    "es": "ist losgegangen",
+                    "sie_singular": "ist losgegangen",
+                    "xier": "ist losgegangen",
+                    "wir": "sind losgegangen",
+                    "ihr": "seid losgegangen",
+                    "sie_plural": "sind losgegangen",
+                    "Sie": "sind losgegangen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war losgegangen",
+                    "du": "warst losgegangen",
+                    "er": "war losgegangen",
+                    "es": "war losgegangen",
+                    "sie_singular": "war losgegangen",
+                    "xier": "war losgegangen",
+                    "wir": "waren losgegangen",
+                    "ihr": "wart losgegangen",
+                    "sie_plural": "waren losgegangen",
+                    "Sie": "waren losgegangen"
+                },
+                "Futur_I": {
+                    "ich": "werde losgehen",
+                    "du": "wirst losgehen",
+                    "er": "wird losgehen",
+                    "es": "wird losgehen",
+                    "sie_singular": "wird losgehen",
+                    "xier": "wird losgehen",
+                    "wir": "werden losgehen",
+                    "ihr": "werdet losgehen",
+                    "sie_plural": "werden losgehen",
+                    "Sie": "werden losgehen"
+                },
+                "imperative": {
+                    "du": "geh los",
+                    "ihr": "geht los",
+                    "Sie": "gehen Sie los"
+                }
+            },
+            "konsumieren": {
+                "present": {
+                    "ich": "konsumiere",
+                    "du": "konsumierst",
+                    "er": "konsumiert",
+                    "es": "konsumiert",
+                    "sie_singular": "konsumiert",
+                    "xier": "konsumiert",
+                    "wir": "konsumieren",
+                    "ihr": "konsumiert",
+                    "sie_plural": "konsumieren",
+                    "Sie": "konsumieren"
+                },
+                "Präteritum": {
+                    "ich": "konsumierte",
+                    "du": "konsumiertest",
+                    "er": "konsumierte",
+                    "es": "konsumierte",
+                    "sie_singular": "konsumierte",
+                    "xier": "konsumierte",
+                    "wir": "konsumierten",
+                    "ihr": "konsumiertet",
+                    "sie_plural": "konsumierten",
+                    "Sie": "konsumierten"
+                },
+                "Perfekt": {
+                    "ich": "habe konsumiert",
+                    "du": "hast konsumiert",
+                    "er": "hat konsumiert",
+                    "es": "hat konsumiert",
+                    "sie_singular": "hat konsumiert",
+                    "xier": "hat konsumiert",
+                    "wir": "haben konsumiert",
+                    "ihr": "habt konsumiert",
+                    "sie_plural": "haben konsumiert",
+                    "Sie": "haben konsumiert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte konsumiert",
+                    "du": "hattest konsumiert",
+                    "er": "hatte konsumiert",
+                    "es": "hatte konsumiert",
+                    "sie_singular": "hatte konsumiert",
+                    "xier": "hatte konsumiert",
+                    "wir": "hatten konsumiert",
+                    "ihr": "hattet konsumiert",
+                    "sie_plural": "hatten konsumiert",
+                    "Sie": "hatten konsumiert"
+                },
+                "Futur_I": {
+                    "ich": "werde konsumieren",
+                    "du": "wirst konsumieren",
+                    "er": "wird konsumieren",
+                    "es": "wird konsumieren",
+                    "sie_singular": "wird konsumieren",
+                    "xier": "wird konsumieren",
+                    "wir": "werden konsumieren",
+                    "ihr": "werdet konsumieren",
+                    "sie_plural": "werden konsumieren",
+                    "Sie": "werden konsumieren"
+                },
+                "imperative": {
+                    "du": "konsumiere",
+                    "ihr": "konsumiert",
+                    "Sie": "konsumieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie bekommen eine Statistik.",
+            "Beschreiben Sie Ihre Statistik und vergleichen Sie Ihre mit den anderen Statistiken.",
+            "Erzählen Sie den anderen Gruppen von Ihrer Statistik.",
+            "Und Sie?",
+            "Machen Sie eine Statistik und vergleichen Sie:",
+            "Was machen Sie mehr oder weniger als der Durchschnitt der Deutschen?",
+            "Was machen Sie so oft wie der Durchschnitt der Deutschen?",
+            "W elche Medien haben Menschen vor 20 Jahren, vor 50 Jahren, vor 100 Jahren (mehr oder weniger) konsumiert?",
+            "Lesen Sie erst die Fragen und dann den Text zur Geschichte des Radios.",
+            "Beantworten Sie die Fragen.",
+            "Welche Erfindungen machten das Radio möglich?",
+            "Seit wann gibt es Radio in Deutschland?",
+            "Wie und wo hörten die Menschen in den 1920er Jahren Radio?",
+            "Warum war das Radio während des Zweiten Weltkriegs wichtig?",
+            "Ist das Radio heute auch beliebt?",
+            "Das Radio veränderte die Welt.",
+            "Es war in den 1920er Jahren das erste elektronische Massenmedium.",
+            "Der Rundfunk informierte die Bevölkerung, sendete Musik, aber auch Propaganda.",
+            "Wie aber ging es los?",
+            "Um Radios bauen zu können, brauchte es viel Technik.",
+            "Seit dem Jahr 1840 konnte man Signale mit der Telegrafie senden.",
+            "Im Jahr 1861 erfand Johann Philipp Reis eine Art von Mikrofon.",
+            "Es konnte Geräusche in elektrischen Strom übersetzen.",
+            "Für Telegrafie und Telefon brauchte man aber noch einen Draht.",
+            "Um 1900 fand Guglielmo Marconi, dass man Geräusche auch über Funk senden konnte.",
+            "Im Ersten Weltkrieg hatten die Armeen Funk, sie konnten so kommunizieren.",
+            "Den Hörfunk, also das Radio, gab es aber erst seit 1920.",
+            "Nachdem alle diese Erfindungen den Hörfunk möglich gemacht hatten, gab es am 29.",
+            "Oktober 1923 die erste Radiosendung in Deutschland.",
+            "Zu dieser Zeit hatten wenige Menschen ein Radiogeräte.",
+            "Die ersten Geräte waren groß und teuer.",
+            "Es gab Radios in Cafés und die Menschen hörten dort Radio.",
+            "Bald wurden die Radios günstiger und unter den Nazis hatten viele Menschen ein Radio, der damals \"Volksempfänger\" hieß.",
+            "Die Nazis sendeten ihre Propaganda über das Radio.",
+            "Aber die Menschen hörten auch die BBC aus London, um wirklich zu erfahren, was in der Welt passierte.",
+            "Das war sehr gefährlich.",
+            "Ab 1950 wurden die Radios kleiner.",
+            "Es gab Autoradios und fast jede Familie hatte ein Radio.",
+            "Heute gibt es digitales Radio und man kann Radio über Apps hören.",
+            "Es gibt Spotify und Youtube, aber das Radio bleibt auch 100 Jahre nach seiner Erfindung beliebt:",
+            "91% der Deutschen haben ein Radiogerät.",
+            "Wahrscheinlich werden auch die nächsten Generationen noch Radio hören!",
+            "Welche Verbzeiten finden Sie im Text?",
+            "Welche Verbzeit finden Sie nicht im Text?",
+            "Benutzen Sie diese Zeit, um den Text zu erzählen.",
+            "Es gibt regionale Radiosender in Deutschland, die sehr viele Menschen in einer Region hören.",
+            "Diese regionalen Sender haben auch kleine Untersender.",
+            "Sie kommen eine Region.",
+            "Schauen Sie sich die ARD Mediathek an.",
+            "Wie viele Untersender hat ihr regionaler Sender?",
+            "Hören Sie ein paar Untersender an.",
+            "Welche Musik hören Sie?",
+            "Gibt es etwas Besonderes (z.B.",
+            "Erzählen Sie den anderen Gruppen von Ihrer Region."
+        ],
+        "templated": []
+    }
+}

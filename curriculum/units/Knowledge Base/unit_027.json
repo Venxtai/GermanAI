@@ -1,0 +1,597 @@
+{
+    "unit": "27",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 27,
+        "prerequisite": "1-26"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [
+            "Use gern to express that you like doing something, lieber to express a preference, and am liebsten to express what you like doing most."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Lieblingsessen sprechen",
+            "Vorlieben abstufen mit gern, lieber, am liebsten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "internationale Küche"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "es gibt …, es gab …, es hat … gegeben",
+                "pos": "PHRASE",
+                "translation": "There is/are …"
+            },
+            {
+                "word": "essen",
+                "pos": "VERB",
+                "translation": "to eat",
+                "frequency": 323,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Unterschied",
+                "pos": "NOUN",
+                "translation": "difference",
+                "frequency": 632,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Restaurant",
+                "pos": "NOUN",
+                "translation": "restaurant",
+                "frequency": 1802,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Essen",
+                "pos": "NOUN",
+                "translation": "food; meal",
+                "frequency": 323,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Küche",
+                "pos": "NOUN",
+                "translation": "cuisine; kitchen",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Speise, -n (Vorspeise, Hauptspeise, Nachspeise)",
+                "pos": "ADJ",
+                "translation": "dish, food (starter, main, dessert)"
+            },
+            {
+                "word": "die Schokolade",
+                "pos": "NOUN",
+                "translation": "chocolate",
+                "frequency": 4532,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Schnitzel",
+                "pos": "NOUN",
+                "translation": "schnitzel, cutlet",
+                "frequency": 18434,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Käse",
+                "pos": "NOUN",
+                "translation": "cheese"
+            },
+            {
+                "word": "die Wurst",
+                "pos": "NOUN",
+                "translation": "sausage",
+                "frequency": 3923,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Veganer*in",
+                "pos": "NOUN",
+                "translation": "vegan person"
+            },
+            {
+                "word": "der*die Vegetarier*in",
+                "pos": "NOUN",
+                "translation": "vegetarian person",
+                "frequency": 23213
+            },
+            {
+                "word": "vegan",
+                "pos": "ADJ",
+                "translation": "vegan [adjective]"
+            },
+            {
+                "word": "vegetarisch",
+                "pos": "ADJ",
+                "translation": "vegetarian [adjective]",
+                "frequency": 22164,
+                "cefr": "B1"
+            },
+            {
+                "word": "gern, lieber, am liebsten",
+                "pos": "ADV",
+                "translation": "gladly; like",
+                "frequency": 278,
+                "cefr": "A1"
+            },
+            {
+                "word": "man",
+                "pos": "ADJ",
+                "translation": "one, you (referring to people in general)",
+                "frequency": 32,
+                "cefr": "A1"
+            },
+            {
+                "word": "andere",
+                "pos": "ADJ",
+                "translation": "other",
+                "frequency": 59,
+                "cefr": "A1"
+            },
+            {
+                "word": "verschieden",
+                "pos": "ADJ",
+                "translation": "different",
+                "frequency": 254,
+                "cefr": "A2"
+            },
+            {
+                "word": "besonders",
+                "pos": "ADV",
+                "translation": "particular(ly), especially",
+                "frequency": 270,
+                "cefr": "A2"
+            },
+            {
+                "word": "mehrere",
+                "pos": "PRON",
+                "translation": "several, multiple",
+                "frequency": 349,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Top-Ten",
+                "pos": "NOUN"
+            },
+            {
+                "word": "karibisch",
+                "pos": "ADV",
+                "frequency": 23749
+            },
+            {
+                "word": "arabisch",
+                "pos": "ADV",
+                "frequency": 2159
+            },
+            {
+                "word": "asiatisch",
+                "pos": "ADV",
+                "frequency": 4408
+            },
+            {
+                "word": "mediterran",
+                "pos": "ADV",
+                "frequency": 20699
+            },
+            {
+                "word": "persisch",
+                "pos": "ADV",
+                "frequency": 10961
+            },
+            {
+                "word": "afghanisch",
+                "pos": "ADV",
+                "frequency": 4906
+            },
+            {
+                "word": "indisch",
+                "pos": "ADV",
+                "frequency": 3261
+            },
+            {
+                "word": "niederländisch",
+                "pos": "ADV",
+                "frequency": 2743
+            },
+            {
+                "word": "ägyptisch",
+                "pos": "ADV",
+                "frequency": 7307
+            },
+            {
+                "word": "indonesisch",
+                "pos": "ADV",
+                "frequency": 11700
+            },
+            {
+                "word": "österreichisch",
+                "pos": "ADV",
+                "frequency": 1511,
+                "cefr": "A2"
+            },
+            {
+                "word": "amerikanisch",
+                "pos": "ADV",
+                "frequency": 836
+            },
+            {
+                "word": "italienisch",
+                "pos": "ADV",
+                "frequency": 1593
+            },
+            {
+                "word": "pakistanisch",
+                "pos": "ADV",
+                "frequency": 5741
+            },
+            {
+                "word": "argentinisch",
+                "pos": "ADV",
+                "frequency": 8095
+            },
+            {
+                "word": "portugiesisch",
+                "pos": "ADV",
+                "frequency": 7324
+            },
+            {
+                "word": "australisch",
+                "pos": "ADV",
+                "frequency": 6738
+            },
+            {
+                "word": "koreanisch",
+                "pos": "ADV",
+                "frequency": 13009
+            },
+            {
+                "word": "russisch",
+                "pos": "ADV",
+                "frequency": 831
+            },
+            {
+                "word": "brasilianisch",
+                "pos": "ADV",
+                "frequency": 6896
+            },
+            {
+                "word": "kroatisch",
+                "pos": "ADV",
+                "frequency": 7121
+            },
+            {
+                "word": "schweizerisch",
+                "pos": "ADV",
+                "frequency": 5742,
+                "cefr": "A2"
+            },
+            {
+                "word": "kubanisch",
+                "pos": "ADV",
+                "frequency": 10726
+            },
+            {
+                "word": "spanisch",
+                "pos": "ADV",
+                "frequency": 1919
+            },
+            {
+                "word": "libanesisch",
+                "pos": "ADV",
+                "frequency": 10708
+            },
+            {
+                "word": "thailändisch",
+                "pos": "ADV",
+                "frequency": 15427,
+                "cefr": "B2"
+            },
+            {
+                "word": "marokkanisch",
+                "pos": "ADV",
+                "frequency": 19544,
+                "cefr": "B2"
+            },
+            {
+                "word": "türkisch",
+                "pos": "ADV",
+                "frequency": 1531,
+                "cefr": "B1"
+            },
+            {
+                "word": "griechisch",
+                "pos": "ADV",
+                "frequency": 1486,
+                "cefr": "B1"
+            },
+            {
+                "word": "mexikanisch",
+                "pos": "ADV",
+                "frequency": 8081
+            },
+            {
+                "word": "vietnamesisch",
+                "pos": "ADV",
+                "frequency": 19555,
+                "cefr": "B2"
+            },
+            {
+                "word": "halal",
+                "pos": "ADV"
+            },
+            {
+                "word": "kosch",
+                "pos": "ADV"
+            },
+            {
+                "word": "lieb",
+                "pos": "ADJ",
+                "frequency": 897,
+                "cefr": "A1"
+            },
+            {
+                "word": "lieber",
+                "pos": "ADV",
+                "frequency": 459,
+                "cefr": "A1"
+            },
+            {
+                "word": "afrikanisch",
+                "pos": "ADV",
+                "frequency": 4141
+            },
+            {
+                "word": "japanisch",
+                "pos": "ADV",
+                "frequency": 2840
+            },
+            {
+                "word": "die Speise",
+                "pos": "NOUN",
+                "frequency": 7976
+            },
+            {
+                "word": "die Brezel",
+                "pos": "NOUN",
+                "frequency": 24064
+            },
+            {
+                "word": "die Spaghetti",
+                "pos": "NOUN",
+                "frequency": 22866
+            },
+            {
+                "word": "die Pizza",
+                "pos": "NOUN",
+                "frequency": 13757,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Bonus",
+                "pos": "NOUN",
+                "frequency": 10046
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "essen": {
+                "present": {
+                    "ich": "esse",
+                    "du": "isst",
+                    "er": "isst",
+                    "es": "isst",
+                    "sie_singular": "isst",
+                    "xier": "isst",
+                    "wir": "essen",
+                    "ihr": "esst",
+                    "sie_plural": "essen",
+                    "Sie": "essen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was essen Sie (gern)?",
+            "Was ist Ihre Top-Ten Liste?",
+            "Was isst Ihr*e Partner*in gern?",
+            "Was isst Ihr*e Partner*in lieber?",
+            "Was isst Ihr*e Partner*in am liebsten?",
+            "Und was nicht so gern?",
+            "Fragen Sie mehrere Personen.",
+            "Was isst du gern?",
+            "Ich esse gern chinesisch, mediterran, thailändisch und griechisch.",
+            "Lasse: Was isst du lieber?",
+            "Chinesisch oder thailändisch?",
+            "Ich esse lieber thailändisch.",
+            "Lasse: Und was isst du am liebsten?",
+            "Ich esse am liebsten mediterran.",
+            "Lasse: Was isst du nicht gern?",
+            "Ich esse nicht gern mexikanisch.",
+            "Und du?",
+            "Was isst du lieber?",
+            "Was isst du am liebsten?",
+            "Was isst du nicht gern?",
+            "Ich esse nicht gern.",
+            "Ich esse am liebsten.",
+            "Welches Essen ist im Kurs besonders beliebt?",
+            "Welches Essen ist nicht so beliebt?",
+            "Machen Sie als Kurs eine Statistik.",
+            "Ordnen Sie die Speisen zu.",
+            "Vergleichen Sie mit einer anderen Person im Kurs.",
+            "Ist Gelato indisch?",
+            "Nein, Gelato ist nicht indisch.",
+            "Es ist italienisch.",
+            "Ist Schokoladenmousse spanisch oder französisch?",
+            "Schokoladenmousse ist französisch.",
+            "Nein, X ist nicht.",
+            "Welche Speisen von Teil 1 essen Sie (nicht) gern?",
+            "Welche kennen Sie nicht?",
+            "Ich esse gern Wiener Schnitzel und Pizza.",
+            "Ich esse nicht gern Sushi.",
+            "Käsespätzle kenne ich nicht.",
+            "Machen Sie Interviews.",
+            "Wie heißt du?",
+            "Ich heiße Niko.",
+            "Wie heißt dein Lieblingsrestaurant?",
+            "Mein Lieblingsrestaurant heißt Miran.",
+            "In welcher Stadt ist dein Lieblingsrestaurant?",
+            "Mein Lieblingsrestaurant ist in Essen.",
+            "Welches Essen gibt es in deinem Lieblingsrestaurant?",
+            "Das Essen ist türkisch.",
+            "Name, Restaurant, Stadt, Essen.",
+            "Was ist der Unterschied zwischen Essen und Essen?",
+            "Ich heiße.",
+            "Mein Lieblingsrestaurant heißt.",
+            "Mein Lieblingsrestaurant ist in."
+        ],
+        "templated": [
+            {
+                "template": "Ich esse am liebsten [cuisine_adj].",
+                "source_literals": [
+                    "Ich esse am liebsten mediterran."
+                ],
+                "description": "State cuisine superlative preference (open)"
+            },
+            {
+                "template": "Ich esse lieber [cuisine_adj].",
+                "source_literals": [
+                    "Ich esse lieber thailändisch."
+                ],
+                "description": "State cuisine comparative preference (open)"
+            },
+            {
+                "template": "Ich esse nicht gern [cuisine_adj].",
+                "source_literals": [
+                    "Ich esse nicht gern mexikanisch."
+                ],
+                "description": "State cuisine dislike (open: any cuisine adjective)"
+            },
+            {
+                "template": "Ich heiße [person_name].",
+                "source_literals": [
+                    "Ich heiße Niko."
+                ],
+                "description": "Self-introduction"
+            },
+            {
+                "template": "Was isst du am liebsten?",
+                "source_literals": [
+                    "Was isst du am liebsten?"
+                ],
+                "description": "Ask food superlative preference"
+            },
+            {
+                "template": "Was isst du gern?",
+                "source_literals": [
+                    "Was isst du gern?"
+                ],
+                "description": "Ask food preference"
+            },
+            {
+                "template": "Was isst du lieber?",
+                "source_literals": [
+                    "Was isst du lieber?"
+                ],
+                "description": "Ask food comparative preference"
+            },
+            {
+                "template": "Was isst du nicht gern?",
+                "source_literals": [
+                    "Was isst du nicht gern?"
+                ],
+                "description": "Ask food dislike"
+            },
+            {
+                "template": "Wie heißt du?",
+                "source_literals": [
+                    "Wie heißt du?"
+                ],
+                "description": "Ask name (informal)"
+            }
+        ]
+    },
+    "placeholder_registry": {}
+}

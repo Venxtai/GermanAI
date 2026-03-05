@@ -1,0 +1,927 @@
+{
+    "unit": "O36",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 36,
+        "prerequisite": "core 1-104, O1-O35"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the passive voice in Präteritum by using wurde + Partizip II."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Käsesorten beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Schweizer Käse"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "gerinnen", "pos": "VERB", "translation": "to curdle, coagulate" },
+            { "word": "schmelzen", "pos": "VERB", "translation": "to melt", "frequency": 12244 },
+            { "word": "reifen", "pos": "VERB", "translation": "to ripen; mature", "frequency": 7066, "cefr": "A2" },
+            { "word": "austreten", "pos": "VERB", "translation": "to leak (liquid); resign", "frequency": 4609, "cefr": "B2" },
+            { "word": "pressen", "pos": "VERB", "translation": "to press, push", "frequency": 3199 },
+            { "word": "zugeben", "pos": "VERB", "translation": "to add; admit", "frequency": 1795 },
+            { "word": "enthalten", "pos": "VERB", "translation": "to contain, comprise, include", "frequency": 562, "cefr": "B1" },
+            { "word": "einreiben", "pos": "VERB", "translation": "to rub in" },
+            { "word": "das Milchsäurebakterium, die Milchsäurebakterien", "pos": "NOUN", "translation": "lactobacillus" },
+            { "word": "die Käseharfe", "pos": "NOUN", "translation": "cheese harp, cheese wire (for cutting)" },
+            { "word": "der Käsebruch", "pos": "NOUN", "translation": "curd" },
+            { "word": "die Molke", "pos": "NOUN", "translation": "whey", "frequency": 1, "cefr": "A1" },
+            { "word": "die Gallerte", "pos": "NOUN", "translation": "curdled milk", "frequency": 1, "cefr": "A1" },
+            { "word": "der Käselaib", "pos": "NOUN", "translation": "cheese wheel" },
+            { "word": "die Rinde", "pos": "NOUN", "translation": "rind (of cheese), outer layer", "frequency": 1, "cefr": "A1" },
+            { "word": "das Loch", "pos": "NOUN", "translation": "hole", "frequency": 1861, "cefr": "B1" },
+            { "word": "fein", "pos": "ADJ", "translation": "fine", "frequency": 1676 },
+            { "word": "nussig", "pos": "ADJ", "translation": "nutty" },
+            { "word": "würzig", "pos": "ADJ", "translation": "aromatic, tangy [spicy]" },
+            { "word": "roh", "pos": "ADJ", "translation": "raw", "frequency": 11397, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Sorte", "pos": "NOUN", "frequency": 4084 },
+            { "word": "eifen", "pos": "VERB" },
+            { "word": "das Milchsäurebakterie", "pos": "NOUN" },
+            { "word": "dadurch", "pos": "ADV", "frequency": 466 },
+            { "word": "die Käselaibe", "pos": "NOUN" },
+            { "word": "reif", "pos": "ADJ", "frequency": 7066, "cefr": "A2" },
+            { "word": "eiß", "pos": "VERB" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "gerinnen": {
+                "present": {
+                    "ich": "gerinne",
+                    "du": "gerinnst",
+                    "er": "gerinnt",
+                    "es": "gerinnt",
+                    "sie_singular": "gerinnt",
+                    "xier": "gerinnt",
+                    "wir": "gerinnen",
+                    "ihr": "gerinnt",
+                    "sie_plural": "gerinnen",
+                    "Sie": "gerinnen"
+                },
+                "Perfekt": {
+                    "ich": "bin geronnen",
+                    "du": "bist geronnen",
+                    "er": "ist geronnen",
+                    "es": "ist geronnen",
+                    "sie_singular": "ist geronnen",
+                    "xier": "ist geronnen",
+                    "wir": "sind geronnen",
+                    "ihr": "seid geronnen",
+                    "sie_plural": "sind geronnen",
+                    "Sie": "sind geronnen"
+                },
+                "Futur_I": {
+                    "ich": "werde gerinnen",
+                    "du": "wirst gerinnen",
+                    "er": "wird gerinnen",
+                    "es": "wird gerinnen",
+                    "sie_singular": "wird gerinnen",
+                    "xier": "wird gerinnen",
+                    "wir": "werden gerinnen",
+                    "ihr": "werdet gerinnen",
+                    "sie_plural": "werden gerinnen",
+                    "Sie": "werden gerinnen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde gerinnen",
+                    "du": "würdest gerinnen",
+                    "er": "würde gerinnen",
+                    "es": "würde gerinnen",
+                    "sie_singular": "würde gerinnen",
+                    "xier": "würde gerinnen",
+                    "wir": "würden gerinnen",
+                    "ihr": "würdet gerinnen",
+                    "sie_plural": "würden gerinnen",
+                    "Sie": "würden gerinnen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre geronnen",
+                    "du": "wärst geronnen",
+                    "er": "wäre geronnen",
+                    "es": "wäre geronnen",
+                    "sie_singular": "wäre geronnen",
+                    "xier": "wäre geronnen",
+                    "wir": "wären geronnen",
+                    "ihr": "wärt geronnen",
+                    "sie_plural": "wären geronnen",
+                    "Sie": "wären geronnen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geronnen",
+                    "du": "wirst geronnen",
+                    "er": "wird geronnen",
+                    "es": "wird geronnen",
+                    "sie_singular": "wird geronnen",
+                    "xier": "wird geronnen",
+                    "wir": "werden geronnen",
+                    "ihr": "werdet geronnen",
+                    "sie_plural": "werden geronnen",
+                    "Sie": "werden geronnen"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde geronnen",
+                    "du": "wurdest geronnen",
+                    "er": "wurde geronnen",
+                    "es": "wurde geronnen",
+                    "sie_singular": "wurde geronnen",
+                    "xier": "wurde geronnen",
+                    "wir": "wurden geronnen",
+                    "ihr": "wurdet geronnen",
+                    "sie_plural": "wurden geronnen",
+                    "Sie": "wurden geronnen"
+                },
+                "imperative": {
+                    "du": "gerinne",
+                    "ihr": "gerinnt",
+                    "Sie": "gerinnen Sie"
+                }
+            },
+            "schmelzen": {
+                "present": {
+                    "ich": "schmelze",
+                    "du": "schmilzt",
+                    "er": "schmilzt",
+                    "es": "schmilzt",
+                    "sie_singular": "schmilzt",
+                    "xier": "schmilzt",
+                    "wir": "schmelzen",
+                    "ihr": "schmelzt",
+                    "sie_plural": "schmelzen",
+                    "Sie": "schmelzen"
+                },
+                "Perfekt": {
+                    "ich": "bin geschmolzen",
+                    "du": "bist geschmolzen",
+                    "er": "ist geschmolzen",
+                    "es": "ist geschmolzen",
+                    "sie_singular": "ist geschmolzen",
+                    "xier": "ist geschmolzen",
+                    "wir": "sind geschmolzen",
+                    "ihr": "seid geschmolzen",
+                    "sie_plural": "sind geschmolzen",
+                    "Sie": "sind geschmolzen"
+                },
+                "Futur_I": {
+                    "ich": "werde schmelzen",
+                    "du": "wirst schmelzen",
+                    "er": "wird schmelzen",
+                    "es": "wird schmelzen",
+                    "sie_singular": "wird schmelzen",
+                    "xier": "wird schmelzen",
+                    "wir": "werden schmelzen",
+                    "ihr": "werdet schmelzen",
+                    "sie_plural": "werden schmelzen",
+                    "Sie": "werden schmelzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde schmelzen",
+                    "du": "würdest schmelzen",
+                    "er": "würde schmelzen",
+                    "es": "würde schmelzen",
+                    "sie_singular": "würde schmelzen",
+                    "xier": "würde schmelzen",
+                    "wir": "würden schmelzen",
+                    "ihr": "würdet schmelzen",
+                    "sie_plural": "würden schmelzen",
+                    "Sie": "würden schmelzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre geschmolzen",
+                    "du": "wärst geschmolzen",
+                    "er": "wäre geschmolzen",
+                    "es": "wäre geschmolzen",
+                    "sie_singular": "wäre geschmolzen",
+                    "xier": "wäre geschmolzen",
+                    "wir": "wären geschmolzen",
+                    "ihr": "wärt geschmolzen",
+                    "sie_plural": "wären geschmolzen",
+                    "Sie": "wären geschmolzen"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geschmolzen",
+                    "du": "wirst geschmolzen",
+                    "er": "wird geschmolzen",
+                    "es": "wird geschmolzen",
+                    "sie_singular": "wird geschmolzen",
+                    "xier": "wird geschmolzen",
+                    "wir": "werden geschmolzen",
+                    "ihr": "werdet geschmolzen",
+                    "sie_plural": "werden geschmolzen",
+                    "Sie": "werden geschmolzen"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde geschmolzen",
+                    "du": "wurdest geschmolzen",
+                    "er": "wurde geschmolzen",
+                    "es": "wurde geschmolzen",
+                    "sie_singular": "wurde geschmolzen",
+                    "xier": "wurde geschmolzen",
+                    "wir": "wurden geschmolzen",
+                    "ihr": "wurdet geschmolzen",
+                    "sie_plural": "wurden geschmolzen",
+                    "Sie": "wurden geschmolzen"
+                },
+                "imperative": {
+                    "du": "schmilz",
+                    "ihr": "schmelzt",
+                    "Sie": "schmelzen Sie"
+                }
+            },
+            "reifen": {
+                "present": {
+                    "ich": "reife",
+                    "du": "reifst",
+                    "er": "reift",
+                    "es": "reift",
+                    "sie_singular": "reift",
+                    "xier": "reift",
+                    "wir": "reifen",
+                    "ihr": "reift",
+                    "sie_plural": "reifen",
+                    "Sie": "reifen"
+                },
+                "Perfekt": {
+                    "ich": "bin gereift",
+                    "du": "bist gereift",
+                    "er": "ist gereift",
+                    "es": "ist gereift",
+                    "sie_singular": "ist gereift",
+                    "xier": "ist gereift",
+                    "wir": "sind gereift",
+                    "ihr": "seid gereift",
+                    "sie_plural": "sind gereift",
+                    "Sie": "sind gereift"
+                },
+                "Futur_I": {
+                    "ich": "werde reifen",
+                    "du": "wirst reifen",
+                    "er": "wird reifen",
+                    "es": "wird reifen",
+                    "sie_singular": "wird reifen",
+                    "xier": "wird reifen",
+                    "wir": "werden reifen",
+                    "ihr": "werdet reifen",
+                    "sie_plural": "werden reifen",
+                    "Sie": "werden reifen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde reifen",
+                    "du": "würdest reifen",
+                    "er": "würde reifen",
+                    "es": "würde reifen",
+                    "sie_singular": "würde reifen",
+                    "xier": "würde reifen",
+                    "wir": "würden reifen",
+                    "ihr": "würdet reifen",
+                    "sie_plural": "würden reifen",
+                    "Sie": "würden reifen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre gereift",
+                    "du": "wärst gereift",
+                    "er": "wäre gereift",
+                    "es": "wäre gereift",
+                    "sie_singular": "wäre gereift",
+                    "xier": "wäre gereift",
+                    "wir": "wären gereift",
+                    "ihr": "wärt gereift",
+                    "sie_plural": "wären gereift",
+                    "Sie": "wären gereift"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gereift",
+                    "du": "wirst gereift",
+                    "er": "wird gereift",
+                    "es": "wird gereift",
+                    "sie_singular": "wird gereift",
+                    "xier": "wird gereift",
+                    "wir": "werden gereift",
+                    "ihr": "werdet gereift",
+                    "sie_plural": "werden gereift",
+                    "Sie": "werden gereift"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde gereift",
+                    "du": "wurdest gereift",
+                    "er": "wurde gereift",
+                    "es": "wurde gereift",
+                    "sie_singular": "wurde gereift",
+                    "xier": "wurde gereift",
+                    "wir": "wurden gereift",
+                    "ihr": "wurdet gereift",
+                    "sie_plural": "wurden gereift",
+                    "Sie": "wurden gereift"
+                },
+                "imperative": {
+                    "du": "reif",
+                    "ihr": "reift",
+                    "Sie": "reifen Sie"
+                }
+            },
+            "austreten": {
+                "present": {
+                    "ich": "trete aus",
+                    "du": "trittst aus",
+                    "er": "tritt aus",
+                    "es": "tritt aus",
+                    "sie_singular": "tritt aus",
+                    "xier": "tritt aus",
+                    "wir": "treten aus",
+                    "ihr": "tretet aus",
+                    "sie_plural": "treten aus",
+                    "Sie": "treten aus"
+                },
+                "Perfekt": {
+                    "ich": "bin ausgetreten",
+                    "du": "bist ausgetreten",
+                    "er": "ist ausgetreten",
+                    "es": "ist ausgetreten",
+                    "sie_singular": "ist ausgetreten",
+                    "xier": "ist ausgetreten",
+                    "wir": "sind ausgetreten",
+                    "ihr": "seid ausgetreten",
+                    "sie_plural": "sind ausgetreten",
+                    "Sie": "sind ausgetreten"
+                },
+                "Futur_I": {
+                    "ich": "werde austreten",
+                    "du": "wirst austreten",
+                    "er": "wird austreten",
+                    "es": "wird austreten",
+                    "sie_singular": "wird austreten",
+                    "xier": "wird austreten",
+                    "wir": "werden austreten",
+                    "ihr": "werdet austreten",
+                    "sie_plural": "werden austreten",
+                    "Sie": "werden austreten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde austreten",
+                    "du": "würdest austreten",
+                    "er": "würde austreten",
+                    "es": "würde austreten",
+                    "sie_singular": "würde austreten",
+                    "xier": "würde austreten",
+                    "wir": "würden austreten",
+                    "ihr": "würdet austreten",
+                    "sie_plural": "würden austreten",
+                    "Sie": "würden austreten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre ausgetreten",
+                    "du": "wärst ausgetreten",
+                    "er": "wäre ausgetreten",
+                    "es": "wäre ausgetreten",
+                    "sie_singular": "wäre ausgetreten",
+                    "xier": "wäre ausgetreten",
+                    "wir": "wären ausgetreten",
+                    "ihr": "wärt ausgetreten",
+                    "sie_plural": "wären ausgetreten",
+                    "Sie": "wären ausgetreten"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde ausgetreten",
+                    "du": "wirst ausgetreten",
+                    "er": "wird ausgetreten",
+                    "es": "wird ausgetreten",
+                    "sie_singular": "wird ausgetreten",
+                    "xier": "wird ausgetreten",
+                    "wir": "werden ausgetreten",
+                    "ihr": "werdet ausgetreten",
+                    "sie_plural": "werden ausgetreten",
+                    "Sie": "werden ausgetreten"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde ausgetreten",
+                    "du": "wurdest ausgetreten",
+                    "er": "wurde ausgetreten",
+                    "es": "wurde ausgetreten",
+                    "sie_singular": "wurde ausgetreten",
+                    "xier": "wurde ausgetreten",
+                    "wir": "wurden ausgetreten",
+                    "ihr": "wurdet ausgetreten",
+                    "sie_plural": "wurden ausgetreten",
+                    "Sie": "wurden ausgetreten"
+                },
+                "imperative": {
+                    "du": "tritt aus",
+                    "ihr": "tretet aus",
+                    "Sie": "treten Sie aus"
+                }
+            },
+            "pressen": {
+                "present": {
+                    "ich": "presse",
+                    "du": "presst",
+                    "er": "presst",
+                    "es": "presst",
+                    "sie_singular": "presst",
+                    "xier": "presst",
+                    "wir": "pressen",
+                    "ihr": "presst",
+                    "sie_plural": "pressen",
+                    "Sie": "pressen"
+                },
+                "Perfekt": {
+                    "ich": "habe gepresst",
+                    "du": "hast gepresst",
+                    "er": "hat gepresst",
+                    "es": "hat gepresst",
+                    "sie_singular": "hat gepresst",
+                    "xier": "hat gepresst",
+                    "wir": "haben gepresst",
+                    "ihr": "habt gepresst",
+                    "sie_plural": "haben gepresst",
+                    "Sie": "haben gepresst"
+                },
+                "Futur_I": {
+                    "ich": "werde pressen",
+                    "du": "wirst pressen",
+                    "er": "wird pressen",
+                    "es": "wird pressen",
+                    "sie_singular": "wird pressen",
+                    "xier": "wird pressen",
+                    "wir": "werden pressen",
+                    "ihr": "werdet pressen",
+                    "sie_plural": "werden pressen",
+                    "Sie": "werden pressen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde pressen",
+                    "du": "würdest pressen",
+                    "er": "würde pressen",
+                    "es": "würde pressen",
+                    "sie_singular": "würde pressen",
+                    "xier": "würde pressen",
+                    "wir": "würden pressen",
+                    "ihr": "würdet pressen",
+                    "sie_plural": "würden pressen",
+                    "Sie": "würden pressen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gepresst",
+                    "du": "hättest gepresst",
+                    "er": "hätte gepresst",
+                    "es": "hätte gepresst",
+                    "sie_singular": "hätte gepresst",
+                    "xier": "hätte gepresst",
+                    "wir": "hätten gepresst",
+                    "ihr": "hättet gepresst",
+                    "sie_plural": "hätten gepresst",
+                    "Sie": "hätten gepresst"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gepresst",
+                    "du": "wirst gepresst",
+                    "er": "wird gepresst",
+                    "es": "wird gepresst",
+                    "sie_singular": "wird gepresst",
+                    "xier": "wird gepresst",
+                    "wir": "werden gepresst",
+                    "ihr": "werdet gepresst",
+                    "sie_plural": "werden gepresst",
+                    "Sie": "werden gepresst"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde gepresst",
+                    "du": "wurdest gepresst",
+                    "er": "wurde gepresst",
+                    "es": "wurde gepresst",
+                    "sie_singular": "wurde gepresst",
+                    "xier": "wurde gepresst",
+                    "wir": "wurden gepresst",
+                    "ihr": "wurdet gepresst",
+                    "sie_plural": "wurden gepresst",
+                    "Sie": "wurden gepresst"
+                },
+                "imperative": {
+                    "du": "press",
+                    "ihr": "presst",
+                    "Sie": "pressen Sie"
+                }
+            },
+            "zugeben": {
+                "present": {
+                    "ich": "gebe zu",
+                    "du": "gibst zu",
+                    "er": "gibt zu",
+                    "es": "gibt zu",
+                    "sie_singular": "gibt zu",
+                    "xier": "gibt zu",
+                    "wir": "geben zu",
+                    "ihr": "gebt zu",
+                    "sie_plural": "geben zu",
+                    "Sie": "geben zu"
+                },
+                "Perfekt": {
+                    "ich": "habe zugegeben",
+                    "du": "hast zugegeben",
+                    "er": "hat zugegeben",
+                    "es": "hat zugegeben",
+                    "sie_singular": "hat zugegeben",
+                    "xier": "hat zugegeben",
+                    "wir": "haben zugegeben",
+                    "ihr": "habt zugegeben",
+                    "sie_plural": "haben zugegeben",
+                    "Sie": "haben zugegeben"
+                },
+                "Futur_I": {
+                    "ich": "werde zugeben",
+                    "du": "wirst zugeben",
+                    "er": "wird zugeben",
+                    "es": "wird zugeben",
+                    "sie_singular": "wird zugeben",
+                    "xier": "wird zugeben",
+                    "wir": "werden zugeben",
+                    "ihr": "werdet zugeben",
+                    "sie_plural": "werden zugeben",
+                    "Sie": "werden zugeben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde zugeben",
+                    "du": "würdest zugeben",
+                    "er": "würde zugeben",
+                    "es": "würde zugeben",
+                    "sie_singular": "würde zugeben",
+                    "xier": "würde zugeben",
+                    "wir": "würden zugeben",
+                    "ihr": "würdet zugeben",
+                    "sie_plural": "würden zugeben",
+                    "Sie": "würden zugeben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte zugegeben",
+                    "du": "hättest zugegeben",
+                    "er": "hätte zugegeben",
+                    "es": "hätte zugegeben",
+                    "sie_singular": "hätte zugegeben",
+                    "xier": "hätte zugegeben",
+                    "wir": "hätten zugegeben",
+                    "ihr": "hättet zugegeben",
+                    "sie_plural": "hätten zugegeben",
+                    "Sie": "hätten zugegeben"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde zugegeben",
+                    "du": "wirst zugegeben",
+                    "er": "wird zugegeben",
+                    "es": "wird zugegeben",
+                    "sie_singular": "wird zugegeben",
+                    "xier": "wird zugegeben",
+                    "wir": "werden zugegeben",
+                    "ihr": "werdet zugegeben",
+                    "sie_plural": "werden zugegeben",
+                    "Sie": "werden zugegeben"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde zugegeben",
+                    "du": "wurdest zugegeben",
+                    "er": "wurde zugegeben",
+                    "es": "wurde zugegeben",
+                    "sie_singular": "wurde zugegeben",
+                    "xier": "wurde zugegeben",
+                    "wir": "wurden zugegeben",
+                    "ihr": "wurdet zugegeben",
+                    "sie_plural": "wurden zugegeben",
+                    "Sie": "wurden zugegeben"
+                },
+                "imperative": {
+                    "du": "gib zu",
+                    "ihr": "gebt zu",
+                    "Sie": "geben Sie zu"
+                }
+            },
+            "enthalten": {
+                "present": {
+                    "ich": "enthalte",
+                    "du": "enthältst",
+                    "er": "enthält",
+                    "es": "enthält",
+                    "sie_singular": "enthält",
+                    "xier": "enthält",
+                    "wir": "enthalten",
+                    "ihr": "enthaltet",
+                    "sie_plural": "enthalten",
+                    "Sie": "enthalten"
+                },
+                "Perfekt": {
+                    "ich": "habe enthalten",
+                    "du": "hast enthalten",
+                    "er": "hat enthalten",
+                    "es": "hat enthalten",
+                    "sie_singular": "hat enthalten",
+                    "xier": "hat enthalten",
+                    "wir": "haben enthalten",
+                    "ihr": "habt enthalten",
+                    "sie_plural": "haben enthalten",
+                    "Sie": "haben enthalten"
+                },
+                "Futur_I": {
+                    "ich": "werde enthalten",
+                    "du": "wirst enthalten",
+                    "er": "wird enthalten",
+                    "es": "wird enthalten",
+                    "sie_singular": "wird enthalten",
+                    "xier": "wird enthalten",
+                    "wir": "werden enthalten",
+                    "ihr": "werdet enthalten",
+                    "sie_plural": "werden enthalten",
+                    "Sie": "werden enthalten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde enthalten",
+                    "du": "würdest enthalten",
+                    "er": "würde enthalten",
+                    "es": "würde enthalten",
+                    "sie_singular": "würde enthalten",
+                    "xier": "würde enthalten",
+                    "wir": "würden enthalten",
+                    "ihr": "würdet enthalten",
+                    "sie_plural": "würden enthalten",
+                    "Sie": "würden enthalten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte enthalten",
+                    "du": "hättest enthalten",
+                    "er": "hätte enthalten",
+                    "es": "hätte enthalten",
+                    "sie_singular": "hätte enthalten",
+                    "xier": "hätte enthalten",
+                    "wir": "hätten enthalten",
+                    "ihr": "hättet enthalten",
+                    "sie_plural": "hätten enthalten",
+                    "Sie": "hätten enthalten"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde enthalten",
+                    "du": "wirst enthalten",
+                    "er": "wird enthalten",
+                    "es": "wird enthalten",
+                    "sie_singular": "wird enthalten",
+                    "xier": "wird enthalten",
+                    "wir": "werden enthalten",
+                    "ihr": "werdet enthalten",
+                    "sie_plural": "werden enthalten",
+                    "Sie": "werden enthalten"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde enthalten",
+                    "du": "wurdest enthalten",
+                    "er": "wurde enthalten",
+                    "es": "wurde enthalten",
+                    "sie_singular": "wurde enthalten",
+                    "xier": "wurde enthalten",
+                    "wir": "wurden enthalten",
+                    "ihr": "wurdet enthalten",
+                    "sie_plural": "wurden enthalten",
+                    "Sie": "wurden enthalten"
+                },
+                "imperative": {
+                    "du": "enthalte",
+                    "ihr": "enthaltet",
+                    "Sie": "enthalten Sie"
+                }
+            },
+            "einreiben": {
+                "present": {
+                    "ich": "reibe ein",
+                    "du": "reibst ein",
+                    "er": "reibt ein",
+                    "es": "reibt ein",
+                    "sie_singular": "reibt ein",
+                    "xier": "reibt ein",
+                    "wir": "reiben ein",
+                    "ihr": "reibt ein",
+                    "sie_plural": "reiben ein",
+                    "Sie": "reiben ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingerieben",
+                    "du": "hast eingerieben",
+                    "er": "hat eingerieben",
+                    "es": "hat eingerieben",
+                    "sie_singular": "hat eingerieben",
+                    "xier": "hat eingerieben",
+                    "wir": "haben eingerieben",
+                    "ihr": "habt eingerieben",
+                    "sie_plural": "haben eingerieben",
+                    "Sie": "haben eingerieben"
+                },
+                "Futur_I": {
+                    "ich": "werde einreiben",
+                    "du": "wirst einreiben",
+                    "er": "wird einreiben",
+                    "es": "wird einreiben",
+                    "sie_singular": "wird einreiben",
+                    "xier": "wird einreiben",
+                    "wir": "werden einreiben",
+                    "ihr": "werdet einreiben",
+                    "sie_plural": "werden einreiben",
+                    "Sie": "werden einreiben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde einreiben",
+                    "du": "würdest einreiben",
+                    "er": "würde einreiben",
+                    "es": "würde einreiben",
+                    "sie_singular": "würde einreiben",
+                    "xier": "würde einreiben",
+                    "wir": "würden einreiben",
+                    "ihr": "würdet einreiben",
+                    "sie_plural": "würden einreiben",
+                    "Sie": "würden einreiben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte eingerieben",
+                    "du": "hättest eingerieben",
+                    "er": "hätte eingerieben",
+                    "es": "hätte eingerieben",
+                    "sie_singular": "hätte eingerieben",
+                    "xier": "hätte eingerieben",
+                    "wir": "hätten eingerieben",
+                    "ihr": "hättet eingerieben",
+                    "sie_plural": "hätten eingerieben",
+                    "Sie": "hätten eingerieben"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde eingerieben",
+                    "du": "wirst eingerieben",
+                    "er": "wird eingerieben",
+                    "es": "wird eingerieben",
+                    "sie_singular": "wird eingerieben",
+                    "xier": "wird eingerieben",
+                    "wir": "werden eingerieben",
+                    "ihr": "werdet eingerieben",
+                    "sie_plural": "werden eingerieben",
+                    "Sie": "werden eingerieben"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde eingerieben",
+                    "du": "wurdest eingerieben",
+                    "er": "wurde eingerieben",
+                    "es": "wurde eingerieben",
+                    "sie_singular": "wurde eingerieben",
+                    "xier": "wurde eingerieben",
+                    "wir": "wurden eingerieben",
+                    "ihr": "wurdet eingerieben",
+                    "sie_plural": "wurden eingerieben",
+                    "Sie": "wurden eingerieben"
+                },
+                "imperative": {
+                    "du": "reib ein",
+                    "ihr": "reibt ein",
+                    "Sie": "reiben Sie ein"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In der Schweiz gibt es über 700 Käsesorten.",
+            "Hier sehen Sie sechs unterschiedliche Käsesorten.",
+            "Jede Person bekommt eine Käsesorten.",
+            "Wo wird der Käse hergestellt?",
+            "Wie schmeckt der Käse?",
+            "Was ist besonders?",
+            "In Appenzell, St.",
+            "R eift 3 Monate.",
+            "Im Kanton Freiburg.",
+            "Feines Aroma.",
+            "400l frische Rohmilch für 35kg Käse.",
+            "Von 120 Hersteller*innen.",
+            "Nussig bis würzig.",
+            "Im Kanton Wallis.",
+            "Der Käse wird geschmolzen.",
+            "In Sennereien auf über 1000m Höhe.",
+            "Frisch und würzig.",
+            "Gut mit Salat und Gemüse.",
+            "In der Innerschweiz von 26 Hersteller*innen.",
+            "Sehr würzig.",
+            "Reift mindestens 18 Monate.",
+            "Hören Sie die anderen Sätze.",
+            "Welcher Käse könnte Ihnen am besten schmecken und warum?",
+            "Appenzeller oder Raclette könnten mir gut schmecken, weil ich würzigen Käse mag.",
+            "Wie wird Schweizer Qualitätsk äse [Qualität Käse] hergestellt?",
+            "Bei der Produktion von Schweizer Käse gibt es mehrere Schritte.",
+            "Hören Sie gut zu und ergänzen Sie.",
+            "Die Milch wird gerührt und langsam auf 30 bis 32 Grad Celsius erhitzt.",
+            "Milchsäurebakterien und Enzyme werden der Milch zugegeben.",
+            "Dadurch gerinnt die Milch nach 35 Minuten:",
+            "Es gibt eine dicke Masse, die Gallerte.",
+            "Die dicke Gallerte wird mit einer drehenden Käseharfe in kleine Teile geschnitten.",
+            "Dadurch kann die Molke austreten.",
+            "Die kleinen Teile heißen Käsebruch.",
+            "Rührt die Käseharfe den Käse länger, dann wird der Käse immer härter, weil er weniger Flüssigkeit enthält.",
+            "Die Masse mit Käsebruch und Molke wird weiter gerührt und erhitzt: für Weichkäse auf 35, für Hartkäse auf bis 58 Grad Celsius.",
+            "Die Masse wird in eine Form mit Löchern gepresst.",
+            "Aus dem Käsebruch werden Käselaibe und die Molke fließt durch die Löcher.",
+            "Die Käselaibe werden in einem Salzbad mit ca. 22 % Salz und einer Temperatur von 15 Grad Celsius gebadet.",
+            "Der Käse nimmt Salz auf und verliert noch mehr Flüssigkeit.",
+            "Rund um den schwimmenden Käse wird eine Rinde gebildet.",
+            "Der Geschmack wird im Salzbad intensiver.",
+            "Im Reifekeller wird der Käse gelagert.",
+            "Dabei wird die Rinde dicker.",
+            "In der Reifezeit (wenige Tage bis mehrere Jahre) wird der Käse gepflegt.",
+            "Der Käselaib wird eingerieben, z.B.",
+            "Dadurch entwickelt der Käse individuelle Aromen.",
+            "Jeder Teil in einem Text hat ein Thema und es gibt wichtige Wörter.",
+            "In der linken Tabelle sehen Sie wichtige Wörter für jeden Schritt in der Käseproduktion, in der rechten die Themen.",
+            "Aus Milch wird Gallerte.",
+            "Käsebruch und Molke werden erhitzt.",
+            "Die Masse wird gepresst.",
+            "Die Milchmasse wird erhitzt.",
+            "Käse wird in Salzbad gebadet.",
+            "Der Käse wird gelagert.",
+            "Aus Gallerte wird Molke und Käsebruch.",
+            "Der Käse wurde letztes Jahr gemacht.",
+            "Machen Sie für jeden Schritt aus dem Passivsatz im Präsens einen Passivsatz im Präteritum.",
+            "Aus Milch wurde Gallerte.",
+            "Käsebruch und Molke wurden erhitzt.",
+            "Die Masse wurde gepresst.",
+            "Die Milchmasse wurde erhitzt.",
+            "Käse wurde i m Salzbad gebadet.",
+            "Der Käse wurde gelagert.",
+            "Aus Gallerte wurde Molke und Käsebruch."
+        ],
+        "templated": []
+    }
+}

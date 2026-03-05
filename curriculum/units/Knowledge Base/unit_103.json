@@ -1,0 +1,480 @@
+{
+    "unit": "103",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 103,
+        "prerequisite": "1-102"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "eingeben",
+                "pos": "VERB",
+                "translation": "to put in; key in; type in",
+                "frequency": 4461,
+                "cefr": "B2"
+            },
+            {
+                "word": "lügen",
+                "pos": "VERB",
+                "translation": "to lie, tell a lie"
+            },
+            {
+                "word": "die Pflicht",
+                "pos": "NOUN",
+                "translation": "duty; obligation; responsibility",
+                "frequency": 2048,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hauptsache, -n",
+                "pos": "ADJ",
+                "translation": "main thing; essence; main point"
+            },
+            {
+                "word": "das Interesse",
+                "pos": "NOUN",
+                "translation": "interest",
+                "frequency": 606,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Ziel",
+                "pos": "NOUN",
+                "translation": "goal",
+                "frequency": 320,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Zoo",
+                "pos": "NOUN",
+                "translation": "zoo",
+                "frequency": 7276,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Schwimmbad",
+                "pos": "NOUN",
+                "translation": "(swimming) pool",
+                "frequency": 8792,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Schlittschuhlaufen",
+                "pos": "NOUN",
+                "translation": "(ice) skating",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Weihnachtsmarkt",
+                "pos": "NOUN",
+                "translation": "Christmas market",
+                "frequency": 7216,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Glühwein, -e",
+                "pos": "ADJ",
+                "translation": "mulled wine; hot spiced wine"
+            },
+            {
+                "word": "der Granatapfel",
+                "pos": "NOUN",
+                "translation": "pmegranate",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Landwirtschaft",
+                "pos": "NOUN",
+                "translation": "agriculture, farming",
+                "frequency": 2483,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Bäuer*in",
+                "pos": "NOUN",
+                "translation": "farmer"
+            },
+            {
+                "word": "die Baustelle",
+                "pos": "NOUN",
+                "translation": "(construction) site",
+                "frequency": 4016,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Bauarbeiter*in",
+                "pos": "NOUN",
+                "translation": "builder; constuction worker",
+                "frequency": 11266
+            },
+            {
+                "word": "satt",
+                "pos": "ADJ",
+                "translation": "full (with food); lush",
+                "frequency": 3911,
+                "cefr": "B1"
+            },
+            {
+                "word": "leider",
+                "pos": "ADV",
+                "translation": "unfortunately",
+                "frequency": 643,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Export",
+                "pos": "NOUN",
+                "frequency": 3132,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Granatäpfel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Lieblingsgeschichte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "darüber",
+                "pos": "ADV",
+                "frequency": 283,
+                "cefr": "A2"
+            },
+            {
+                "word": "hauptsache",
+                "pos": "ADV",
+                "frequency": 4776
+            },
+            {
+                "word": "grillen",
+                "pos": "VERB",
+                "frequency": 21914,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Billiard",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Feuerwerk",
+                "pos": "NOUN",
+                "frequency": 8294
+            },
+            {
+                "word": "paarmal",
+                "pos": "ADV",
+                "frequency": 34634
+            },
+            {
+                "word": "botanisch",
+                "pos": "ADJ",
+                "frequency": 13540
+            },
+            {
+                "word": "der Glühwein",
+                "pos": "NOUN",
+                "frequency": 11174
+            },
+            {
+                "word": "der Hafensee",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Dieselauto",
+                "pos": "NOUN"
+            },
+            {
+                "word": "selbstfahrend",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Technologie",
+                "pos": "NOUN",
+                "frequency": 2170,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "eingeben": {
+                "present": {
+                    "ich": "gebe ein",
+                    "du": "gibst ein",
+                    "er": "gibt ein",
+                    "es": "gibt ein",
+                    "sie_singular": "gibt ein",
+                    "xier": "gibt ein",
+                    "wir": "geben ein",
+                    "ihr": "gebt ein",
+                    "sie_plural": "geben ein",
+                    "Sie": "geben ein"
+                },
+                "Perfekt": {
+                    "ich": "habe eingegeben",
+                    "du": "hast eingegeben",
+                    "er": "hat eingegeben",
+                    "es": "hat eingegeben",
+                    "sie_singular": "hat eingegeben",
+                    "xier": "hat eingegeben",
+                    "wir": "haben eingegeben",
+                    "ihr": "habt eingegeben",
+                    "sie_plural": "haben eingegeben",
+                    "Sie": "haben eingegeben"
+                },
+                "Futur_I": {
+                    "ich": "werde eingeben",
+                    "du": "wirst eingeben",
+                    "er": "wird eingeben",
+                    "es": "wird eingeben",
+                    "sie_singular": "wird eingeben",
+                    "xier": "wird eingeben",
+                    "wir": "werden eingeben",
+                    "ihr": "werdet eingeben",
+                    "sie_plural": "werden eingeben",
+                    "Sie": "werden eingeben"
+                },
+                "imperative": {
+                    "du": "gib ein",
+                    "ihr": "gebt ein",
+                    "Sie": "geben Sie ein"
+                }
+            },
+            "lügen": {
+                "present": {
+                    "ich": "lüge",
+                    "du": "lügst",
+                    "er": "lügt",
+                    "es": "lügt",
+                    "sie_singular": "lügt",
+                    "xier": "lügt",
+                    "wir": "lügen",
+                    "ihr": "lügt",
+                    "sie_plural": "lügen",
+                    "Sie": "lügen"
+                },
+                "Perfekt": {
+                    "ich": "habe gelogen",
+                    "du": "hast gelogen",
+                    "er": "hat gelogen",
+                    "es": "hat gelogen",
+                    "sie_singular": "hat gelogen",
+                    "xier": "hat gelogen",
+                    "wir": "haben gelogen",
+                    "ihr": "habt gelogen",
+                    "sie_plural": "haben gelogen",
+                    "Sie": "haben gelogen"
+                },
+                "Futur_I": {
+                    "ich": "werde lügen",
+                    "du": "wirst lügen",
+                    "er": "wird lügen",
+                    "es": "wird lügen",
+                    "sie_singular": "wird lügen",
+                    "xier": "wird lügen",
+                    "wir": "werden lügen",
+                    "ihr": "werdet lügen",
+                    "sie_plural": "werden lügen",
+                    "Sie": "werden lügen"
+                },
+                "imperative": {
+                    "du": "lüg",
+                    "ihr": "lügt",
+                    "Sie": "lügen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In Kapitel 4 haben Sie Ehsan, Mahdi und Hassan kennengelernt.",
+            "In diesem Video spricht Mahdi über die Wirtschaft von Afghanistan.",
+            "Er erzählt auch, in welchen Berufen die meisten Menschen arbeiten.",
+            "Lesen Sie die Aussagen.",
+            "Dann schauen Sie das Video.",
+            "Sind die Aussagen richtig oder falsch?",
+            "Korrigieren Sie die falschen Aussagen.",
+            "Safran ist sehr wichtig für den Export.",
+            "Das wird produziert und exportiert.",
+            "Auch Granatäpfel werden auch in Afghanistan produziert und dann exportiert.",
+            "Die meisten Leute in Afghanistan arbeiten als Bauern in der Landwirtschaft oder als Bauarbeiter auf der Baustelle.",
+            "Die Wirtschaft besteht zu 90% aus der Landwirtschaft.",
+            "Viele jüngere Menschen arbeiten auch in der Landwirtschaft.",
+            "Natürlich wollen alle jungen Leute auch Dinge wie Smartphones haben.",
+            "Aber das geht leider nicht für alle, weil nicht jeder das Geld dafür hat – auch weil Afghanistan ein ärmeres Land ist als Deutschland.",
+            "Sehr wichtig für den Export in Afghanistan sind Tee und Baumwolle.",
+            "Sehr wichtig für den Export in Afghanistan ist Safran.",
+            "Die meisten Leute in Afghanistan arbeiten als Bauern oder Bauarbeiter.",
+            "Viele junge Menschen in Afghanistan arbeiten in Berufen am Computer.",
+            "Viele junge Menschen in Afghanistan arbeiten in der Landwirtschaft.",
+            "Jüngere Menschen in Afghanistan haben kein Interesse an Dingen wie Smartphones.",
+            "Jüngere Menschen in Afghanistan haben ein Interesse an Dingen wie Smartphones.",
+            ", aber nicht jeder hat das Geld dafür.",
+            "In diesem Video sprechen Mahdi, Ehsan und Hassan darüber, wie wichtig Märchen, Geschichten und Lesen in ihrer Kindheit waren und heute sind.",
+            "Hören Sie gut zu und beantworten Sie die Fragen.",
+            "Geschichten und Märchen sind in Afghanistan für Familien und Kinder nicht so wichtig.",
+            "In Deutschland ist es fast Pflicht, dass Eltern Kinder Geschichten erzählen.",
+            "Bei uns ist das aber nicht so.",
+            "Hauptsache man ist satt und man kann leben.",
+            "Geschichten und Märchen sind nicht wichtig.",
+            "Aber meine Oma hat mir Geschichten erzählt.",
+            "Manchmal musste ich auch ein paar Bücher für die Schule lesen.",
+            "Das war mir genug.",
+            "Aber ich habe ein paar Kinderbücher [Kinder Buch] gelesen.",
+            "Mein Lieblingsbuch als Kind war Pinocchio.",
+            "In Pinocchio lernt man, dass man nicht lügen darf.",
+            "Wenn man lügt, bekommt man eine lange Nase.",
+            "Leider sind Märchen und Geschichten lesen nicht sehr wichtig.",
+            "Ich erinnere mich nicht, dass meine Eltern mir Geschichten erzählt haben.",
+            "Heute lese ich auch nicht so viel.",
+            "Ich habe wenig Zeit, weil ich für die Schule lernen muss.",
+            "Mahdi sagt, Geschichten waren nicht so wichtig in seiner Kindheit.",
+            "Was war wichtiger?",
+            "Es ist wichtiger, dass man satt ist und leben kann.",
+            "Was war Ehsans Lieblingsgeschichte als Kind?",
+            "Was lernt man von dieser Geschichte?",
+            "Ethans Lieblingsgeschichte war Pinocchio.",
+            "Man lernt, dass man nicht lügen darf.",
+            "Liest Hassan heute viele Bücher?",
+            "Warum nicht?",
+            "Er liest nicht so viele Bücher.",
+            "Er hat nicht viel Zeit, weil er für die Schule lernen muss.",
+            "Sie haben in Kapitel 7 die Stadt Wien kennengelernt.",
+            "Heute erzählen Mahdi, Ehsan und Hassan über die Stadt Stuttgart in Deutschland.",
+            "Beantworten Sie die Fragen.",
+            "Es gibt den Max Eyth See hier in Stuttgart.",
+            "Dort kann man im Sommer gut grillen und chillen.",
+            "Leider kann man dort nicht schwimmen.",
+            "Ich gehe ich auch sehr oft mit meinen Freunden Billiard spielen, beim Billiard 7.",
+            "Es gibt jedes Jahr ein tolles Lichterfest beim Killesberg.",
+            "Da gibt es dann ein großes Feuerwerk.",
+            "Dann gibt es noch den Fernsehturm.",
+            "Aber ich war noch nie dort.",
+            "Ich war schon ein paarmal mit der Schule beim Fernsehturm.",
+            "Da kann man hoch gehen und ganz Stuttgart sehen.",
+            "Dann gibt es hier in Stuttgart auch die Wilhelma.",
+            "Das ist ein großer und alter Zoo und sie haben einen schönen botanischen Garten.",
+            "Im Winter finde ich den Weihnachtsmarkt sehr schön.",
+            "Den kann ich sehr empfehlen.",
+            "Auf dem Weihnachtsmarkt gibt es Glühwein und leckeres Essen.",
+            "Man kann dort auch Schlittschuhlaufen.",
+            "Ich kann aber leider nicht gut Schlittschuhlaufen.",
+            "Ich habe es nur einmal versucht.",
+            "Wo kann man im Sommer gut grillen?",
+            "Wo schwimmt man im Sommer?",
+            "Man schwimmt im Schwimmbad.",
+            "Mahdi erzählt von der Wilhelma.",
+            "Was ist das?",
+            "Die Wilhelma ist ein großer und alter Zoo mit einem botanischen Garten.",
+            "Wohin geht Hassan gern im Winter?",
+            "Was gibt es dort?",
+            "Im Winter geht Hassan auf einem Weihnachtsmarkt.",
+            "Dort gibt es Glühwein und leckeres Essen.",
+            "Man kann dort Schlittschuhlaufen.",
+            "In diesem Video erzählt Hassan von seiner Vision für das Auto der Zukunft.",
+            "Also, das Auto der Zukunft.",
+            "Also ich denke, dass alle Autos elektrisch sein werden.",
+            "Es wird keine Benzin- oder Dieselautos mehr geben.",
+            "Vielleicht kann man im Auto der Zukunft einfach ein Ziel eingeben und das Auto fährt dorthin.",
+            "Ich meine, man muss nicht mehr selber fahren.",
+            "Man kann dann zum Beispiel ein Buch lesen und das Auto fährt selbst.",
+            "Ich denke, selbstfahrende Autos können Vor- und Nachteile haben.",
+            "Vielleicht gibt es weniger Unfälle, wenn das Auto alleine fährt.",
+            "Aber nur, wenn die Technologie gut funktioniert.",
+            "Mit welchem Treibstoff wird das Auto der Zukunft fahren?",
+            "Alle Autos werden elektrisch sein.",
+            "Was wird die größte Innovation beim Auto der Zukunft sein?",
+            "Das Auto wird selbst fahren.",
+            "Was kann man machen, wenn das Auto selbst fährt?",
+            "Man kann ein Buch lesen.",
+            "Welchen Vorteil sieht Hassan bei autonomen Autos?",
+            "Es wird weniger Unfälle geben (und man kann ein Buch lesen)."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

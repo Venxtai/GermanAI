@@ -1,0 +1,131 @@
+{
+    "unit": "O52",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 52,
+        "prerequisite": "core 1-104, O1-O51"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Thema recherchieren und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "die Rivalität", "pos": "NOUN", "translation": "rivalry" },
+            { "word": "kulinarisch", "pos": "ADJ", "translation": "culinary", "frequency": 7609 },
+            { "word": "der Auszug", "pos": "NOUN", "translation": "excerpt", "frequency": 7603, "cefr": "B2" },
+            { "word": "die Kopie", "pos": "NOUN", "translation": "copy", "frequency": 4949, "cefr": "B1" },
+            { "word": "der Anhang", "pos": "NOUN", "translation": "attachment", "frequency": 4843, "cefr": "A1" },
+            { "word": "die Zusammenfassung", "pos": "NOUN", "translation": "summary", "frequency": 3001, "cefr": "A1" },
+            { "word": "schriftlich", "pos": "ADJ", "translation": "in writing, written", "frequency": 2309, "cefr": "A2" },
+            { "word": "spezifisch", "pos": "ADJ", "translation": "specific", "frequency": 1499 },
+            { "word": "die Aufnahme", "pos": "NOUN", "translation": "recording", "frequency": 1403, "cefr": "B1" },
+            { "word": "die Quelle", "pos": "NOUN", "translation": "source; spring", "frequency": 1108, "cefr": "A1" },
+            { "word": "die Einführung", "pos": "NOUN", "translation": "introduction", "frequency": 1, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "bilateral", "pos": "ADJ", "frequency": 10423 },
+            { "word": "die Lige", "pos": "NOUN" },
+            { "word": "der Import", "pos": "NOUN", "frequency": 4795, "cefr": "B1" },
+            { "word": "das Handout", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {}
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Bilden Sie eine kleine Gruppe mit drei oder vier Personen.",
+            "Suchen Sie sich ein Thema aus und recherchieren Sie darüber.",
+            "Sie können dabei konkret von bilateralen Beziehungen ausgehen oder allgemeiner von den deutschsprachigen Ländern sprechen.",
+            "Kooperation in der NATO, Konflikte wegen Krieg, …) Schauspieler*innen (z.B.",
+            "Rivalität in einem spezifischen Sport (z.B.",
+            "Deutsche in NFL und NBA, Amerikaner in BBL und Bundesliga;",
+            "Deutsche Restaurants in den USA, amerikanische Restaurants i n deutschsprachige n Ländern; kulinarische Einflüsse, …) Traditionen (z.B.",
+            "Die Gruppe arbeitet zusammen an einem (digitalen) Portfolio.",
+            "Einer schriftlichen Einführung zum Gruppenreferat, in der klar gemacht wird, worum es geht und wie Ihr Arbeitsplan und Ihr Konzept sind.",
+            "Einer schriftlichen Zusammenfassung.",
+            "Das Handout oder die einzelnen Folien, die jede Person für das Referat entwickelt hat.",
+            "Stellen Sie nun Ihr Forschungsprojekt im Kurs vor.",
+            "Präsentieren Sie können die Form der Präsentation frei wählen.",
+            "Die anderen Personen im Kurs dürfen dann Fragen stellen."
+        ],
+        "templated": []
+    }
+}

@@ -1,0 +1,811 @@
+{
+    "unit": "B7",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 7,
+        "prerequisite": "core 1-104, B1-B6"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use dative relative pronouns (dem for r-/s-words, der for e-words, denen for plural) when the pronoun is an indirect object or follows a dative preposition in the relative clause."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Umwelt(un)freundlichkeit besprechen und abwägen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Nachhaltigkeitsziele",
+            "umweltfreundlich deutsch"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "steigen",
+                "pos": "VERB",
+                "translation": "to rise, soar, increase, go up",
+                "frequency": 321,
+                "cefr": "B1"
+            },
+            {
+                "word": "bestimmen",
+                "pos": "VERB",
+                "translation": "to determine, dictate",
+                "frequency": 419
+            },
+            {
+                "word": "sich engagieren (für)",
+                "pos": "VERB",
+                "translation": "to commit oneself (to), become involved (in)",
+                "frequency": 1831
+            },
+            {
+                "word": "werfen",
+                "pos": "VERB",
+                "translation": "to throw",
+                "frequency": 718,
+                "cefr": "B1"
+            },
+            {
+                "word": "fangen",
+                "pos": "VERB",
+                "translation": "to catch",
+                "frequency": 2043,
+                "cefr": "B1"
+            },
+            {
+                "word": "anbauen",
+                "pos": "VERB",
+                "translation": "to cultivate, grow",
+                "frequency": 9307
+            },
+            {
+                "word": "das Recht, -e",
+                "pos": "ADJ",
+                "translation": "right"
+            },
+            {
+                "word": "die Gerechtigkeit",
+                "pos": "NOUN",
+                "translation": "justice, fairness",
+                "frequency": 3303,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Frieden",
+                "pos": "NOUN",
+                "translation": "peace",
+                "frequency": 1696,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Interesse",
+                "pos": "NOUN",
+                "translation": "interest",
+                "frequency": 606,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Gemeinde",
+                "pos": "NOUN",
+                "translation": "community; municipality",
+                "frequency": 1440,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Bürgermeister*in",
+                "pos": "NOUN",
+                "translation": "mayor"
+            },
+            {
+                "word": "der*die Arbeiter*in",
+                "pos": "NOUN",
+                "translation": "worker",
+                "frequency": 2404,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Behörde",
+                "pos": "NOUN",
+                "translation": "administration (governing authority)"
+            },
+            {
+                "word": "das Amt",
+                "pos": "NOUN",
+                "translation": "agency, bureau",
+                "frequency": 1393,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Feld",
+                "pos": "NOUN",
+                "translation": "space, field",
+                "frequency": 834,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wüste",
+                "pos": "NOUN",
+                "translation": "desert",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Klima",
+                "pos": "NOUN",
+                "translation": "climate",
+                "frequency": 3146,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Wandel",
+                "pos": "NOUN",
+                "translation": "change",
+                "frequency": 2513,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Aktion",
+                "pos": "NOUN",
+                "translation": "initiative (project), campaign; action",
+                "frequency": 1838,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Subvention",
+                "pos": "NOUN",
+                "translation": "subvention, grant",
+                "frequency": 5797,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kohlendioxid",
+                "pos": "NOUN",
+                "translation": "carbon dioxide",
+                "frequency": 12161,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Ziel",
+                "pos": "NOUN",
+                "translation": "goal",
+                "frequency": 320,
+                "cefr": "A2"
+            },
+            {
+                "word": "Haupt-",
+                "pos": "ADJ",
+                "translation": "main",
+                "frequency": 9201,
+                "cefr": "B1"
+            },
+            {
+                "word": "vereint",
+                "pos": "ADJ",
+                "translation": "united",
+                "frequency": 6501
+            },
+            {
+                "word": "barrierefrei",
+                "pos": "ADJ",
+                "translation": "accessible (for people with impairments/disabilities)",
+                "frequency": 15963,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Nation",
+                "pos": "NOUN",
+                "frequency": 1734
+            },
+            {
+                "word": "die Agenda",
+                "pos": "NOUN",
+                "frequency": 7644
+            },
+            {
+                "word": "die neue",
+                "pos": "NOUN",
+                "frequency": 6169
+            },
+            {
+                "word": "die Bahn",
+                "pos": "NOUN",
+                "frequency": 1415,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Firma",
+                "pos": "NOUN",
+                "frequency": 686,
+                "cefr": "A1"
+            },
+            {
+                "word": "anderen",
+                "pos": "ADJ",
+                "frequency": 59,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Katastrophe",
+                "pos": "NOUN",
+                "frequency": 2699,
+                "cefr": "B1"
+            },
+            {
+                "word": "nachhaltiges",
+                "pos": "ADJ"
+            },
+            {
+                "word": "Subventio",
+                "pos": "NOUN"
+            },
+            {
+                "word": "relevant",
+                "pos": "ADV",
+                "frequency": 2031
+            },
+            {
+                "word": "die Fantasie",
+                "pos": "NOUN",
+                "frequency": 8500,
+                "cefr": "B1"
+            },
+            {
+                "word": "partizipieren",
+                "pos": "VERB",
+                "frequency": 34879
+            },
+            {
+                "word": "die Partizipation",
+                "pos": "NOUN",
+                "frequency": 26312
+            },
+            {
+                "word": "wütend",
+                "pos": "ADV",
+                "frequency": 2586,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Dorfladen",
+                "pos": "NOUN",
+                "frequency": 31831
+            },
+            {
+                "word": "Fahrr",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Ticket",
+                "pos": "NOUN",
+                "frequency": 4769,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "steigen": {
+                "present": {
+                    "ich": "steige",
+                    "du": "steigst",
+                    "er": "steigt",
+                    "es": "steigt",
+                    "sie_singular": "steigt",
+                    "xier": "steigt",
+                    "wir": "steigen",
+                    "ihr": "steigt",
+                    "sie_plural": "steigen",
+                    "Sie": "steigen"
+                },
+                "Perfekt": {
+                    "ich": "bin gestiegen",
+                    "du": "bist gestiegen",
+                    "er": "ist gestiegen",
+                    "es": "ist gestiegen",
+                    "sie_singular": "ist gestiegen",
+                    "xier": "ist gestiegen",
+                    "wir": "sind gestiegen",
+                    "ihr": "seid gestiegen",
+                    "sie_plural": "sind gestiegen",
+                    "Sie": "sind gestiegen"
+                },
+                "Futur_I": {
+                    "ich": "werde steigen",
+                    "du": "wirst steigen",
+                    "er": "wird steigen",
+                    "es": "wird steigen",
+                    "sie_singular": "wird steigen",
+                    "xier": "wird steigen",
+                    "wir": "werden steigen",
+                    "ihr": "werdet steigen",
+                    "sie_plural": "werden steigen",
+                    "Sie": "werden steigen"
+                },
+                "imperative": {
+                    "du": "steig",
+                    "ihr": "steigt",
+                    "Sie": "steigen Sie"
+                }
+            },
+            "bestimmen": {
+                "present": {
+                    "ich": "bestimme",
+                    "du": "bestimmst",
+                    "er": "bestimmt",
+                    "es": "bestimmt",
+                    "sie_singular": "bestimmt",
+                    "xier": "bestimmt",
+                    "wir": "bestimmen",
+                    "ihr": "bestimmt",
+                    "sie_plural": "bestimmen",
+                    "Sie": "bestimmen"
+                },
+                "Perfekt": {
+                    "ich": "habe bestimmt",
+                    "du": "hast bestimmt",
+                    "er": "hat bestimmt",
+                    "es": "hat bestimmt",
+                    "sie_singular": "hat bestimmt",
+                    "xier": "hat bestimmt",
+                    "wir": "haben bestimmt",
+                    "ihr": "habt bestimmt",
+                    "sie_plural": "haben bestimmt",
+                    "Sie": "haben bestimmt"
+                },
+                "Futur_I": {
+                    "ich": "werde bestimmen",
+                    "du": "wirst bestimmen",
+                    "er": "wird bestimmen",
+                    "es": "wird bestimmen",
+                    "sie_singular": "wird bestimmen",
+                    "xier": "wird bestimmen",
+                    "wir": "werden bestimmen",
+                    "ihr": "werdet bestimmen",
+                    "sie_plural": "werden bestimmen",
+                    "Sie": "werden bestimmen"
+                },
+                "imperative": {
+                    "du": "bestimme",
+                    "ihr": "bestimmt",
+                    "Sie": "bestimmen Sie"
+                }
+            },
+            "engagieren": {
+                "present": {
+                    "ich": "engagiere mich",
+                    "du": "engagierst dich",
+                    "er": "engagiert sich",
+                    "es": "engagiert sich",
+                    "sie_singular": "engagiert sich",
+                    "xier": "engagiert sich",
+                    "wir": "engagieren uns",
+                    "ihr": "engagiert euch",
+                    "sie_plural": "engagieren sich",
+                    "Sie": "engagieren sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich engagiert",
+                    "du": "hast dich engagiert",
+                    "er": "hat sich engagiert",
+                    "es": "hat sich engagiert",
+                    "sie_singular": "hat sich engagiert",
+                    "xier": "hat sich engagiert",
+                    "wir": "haben uns engagiert",
+                    "ihr": "habt euch engagiert",
+                    "sie_plural": "haben sich engagiert",
+                    "Sie": "haben sich engagiert"
+                },
+                "Futur_I": {
+                    "ich": "werde mich engagieren",
+                    "du": "wirst dich engagieren",
+                    "er": "wird sich engagieren",
+                    "es": "wird sich engagieren",
+                    "sie_singular": "wird sich engagieren",
+                    "xier": "wird sich engagieren",
+                    "wir": "werden uns engagieren",
+                    "ihr": "werdet euch engagieren",
+                    "sie_plural": "werden sich engagieren",
+                    "Sie": "werden sich engagieren"
+                },
+                "imperative": {
+                    "du": "engagiere dich",
+                    "ihr": "engagiert euch",
+                    "Sie": "engagieren Sie sich"
+                }
+            },
+            "werfen": {
+                "present": {
+                    "ich": "werfe",
+                    "du": "wirfst",
+                    "er": "wirft",
+                    "es": "wirft",
+                    "sie_singular": "wirft",
+                    "xier": "wirft",
+                    "wir": "werfen",
+                    "ihr": "werft",
+                    "sie_plural": "werfen",
+                    "Sie": "werfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geworfen",
+                    "du": "hast geworfen",
+                    "er": "hat geworfen",
+                    "es": "hat geworfen",
+                    "sie_singular": "hat geworfen",
+                    "xier": "hat geworfen",
+                    "wir": "haben geworfen",
+                    "ihr": "habt geworfen",
+                    "sie_plural": "haben geworfen",
+                    "Sie": "haben geworfen"
+                },
+                "Futur_I": {
+                    "ich": "werde werfen",
+                    "du": "wirst werfen",
+                    "er": "wird werfen",
+                    "es": "wird werfen",
+                    "sie_singular": "wird werfen",
+                    "xier": "wird werfen",
+                    "wir": "werden werfen",
+                    "ihr": "werdet werfen",
+                    "sie_plural": "werden werfen",
+                    "Sie": "werden werfen"
+                },
+                "imperative": {
+                    "du": "wirf",
+                    "ihr": "werft",
+                    "Sie": "werfen Sie"
+                }
+            },
+            "fangen": {
+                "present": {
+                    "ich": "fange",
+                    "du": "fängst",
+                    "er": "fängt",
+                    "es": "fängt",
+                    "sie_singular": "fängt",
+                    "xier": "fängt",
+                    "wir": "fangen",
+                    "ihr": "fangt",
+                    "sie_plural": "fangen",
+                    "Sie": "fangen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefangen",
+                    "du": "hast gefangen",
+                    "er": "hat gefangen",
+                    "es": "hat gefangen",
+                    "sie_singular": "hat gefangen",
+                    "xier": "hat gefangen",
+                    "wir": "haben gefangen",
+                    "ihr": "habt gefangen",
+                    "sie_plural": "haben gefangen",
+                    "Sie": "haben gefangen"
+                },
+                "Futur_I": {
+                    "ich": "werde fangen",
+                    "du": "wirst fangen",
+                    "er": "wird fangen",
+                    "es": "wird fangen",
+                    "sie_singular": "wird fangen",
+                    "xier": "wird fangen",
+                    "wir": "werden fangen",
+                    "ihr": "werdet fangen",
+                    "sie_plural": "werden fangen",
+                    "Sie": "werden fangen"
+                },
+                "imperative": {
+                    "du": "fang",
+                    "ihr": "fangt",
+                    "Sie": "fangen Sie"
+                }
+            },
+            "anbauen": {
+                "present": {
+                    "ich": "baue an",
+                    "du": "baust an",
+                    "er": "baut an",
+                    "es": "baut an",
+                    "sie_singular": "baut an",
+                    "xier": "baut an",
+                    "wir": "bauen an",
+                    "ihr": "baut an",
+                    "sie_plural": "bauen an",
+                    "Sie": "bauen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angebaut",
+                    "du": "hast angebaut",
+                    "er": "hat angebaut",
+                    "es": "hat angebaut",
+                    "sie_singular": "hat angebaut",
+                    "xier": "hat angebaut",
+                    "wir": "haben angebaut",
+                    "ihr": "habt angebaut",
+                    "sie_plural": "haben angebaut",
+                    "Sie": "haben angebaut"
+                },
+                "Futur_I": {
+                    "ich": "werde anbauen",
+                    "du": "wirst anbauen",
+                    "er": "wird anbauen",
+                    "es": "wird anbauen",
+                    "sie_singular": "wird anbauen",
+                    "xier": "wird anbauen",
+                    "wir": "werden anbauen",
+                    "ihr": "werdet anbauen",
+                    "sie_plural": "werden anbauen",
+                    "Sie": "werden anbauen"
+                },
+                "imperative": {
+                    "du": "baue an",
+                    "ihr": "baut an",
+                    "Sie": "bauen Sie an"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Vereinten Nationen haben im Jahr haben die Agenda 2030 und 17 Ziele für eine nachhaltige Entwicklung ( auch SDGs, von Sustainable Development Goals ) geschrieben.",
+            "Sie bekommen 17 Texte.",
+            "Ordnen Sie die Texte den SDGs zu.",
+            "Kein Mensch soll arm sein.",
+            "Kein Mensch soll Hunger haben",
+            "Alle Menschen sollen gesund und glücklich sein",
+            "Alle Menschen sollen gut lernen können",
+            "Frauen und Männer sind gleich gut und wichtig",
+            "Es soll alles geben, was wir brauchen Es soll allen gleich gut gehen",
+            "Wir dürfen nur gute Waren kaufen",
+            "Städte sollen gut und sicher sein",
+            "Wir müssen Wälder und Böden schützen",
+            "Alle Menschen können gut zusammen leben",
+            "Wenn man kein Geld hat, dann ist man arm.",
+            "Es soll keine armen Menschen mehr geben.",
+            "Alle Menschen sollen genug Geld haben.",
+            "Viele Menschen haben zu wenig Essen.",
+            "Viele Menschen essen ungesund.",
+            "Alle Menschen sollen genug und gesundes Essen haben.",
+            "Dafür müssen wir mehr Essen machen.",
+            "Wir müssen zum Beispiel mehr Gemüse anbauen.",
+            "Das müssen wir so machen, dass es gut für die Umwelt ist.",
+            "Alle Menschen sollen gesund sein.",
+            "Dann können junge und alte Menschen gut leben.",
+            "Alle Menschen sollen glücklich sein.",
+            "Alle Menschen dürfen lernen.",
+            "Es ist wichtig, dass alle gleich gut lernen können.",
+            "Man kann immer etwas Neues lernen, egal wie alt man ist.",
+            "Frauen sind gleich gut und wichtig wie Männer.",
+            "Alle haben die gleichen Rechte.",
+            "Mädchen und Frauen können selbst bestimmen, • was sie wollen • was ihnen wichtig ist.",
+            "Alle Menschen sollen sauberes Wasser haben.",
+            "Und man muss das Wasser einfach bekommen.",
+            "Alle Menschen sollen sich auch gut sauber machen können.",
+            "Sie brauchen Duschen und Toiletten.",
+            "Dafür muss man viel bauen.",
+            "Wir brauchen Energie, damit das Licht brennt und der Ofen funktioniert.",
+            "Strom kostet Geld.",
+            "Energie soll weniger kosten.",
+            "Also müssen wir genug Energie für alle machen.",
+            "Aber wir dürfen die Energie nicht aus Kohle, Öl oder Gas machen.",
+            "Das ist schlecht für die Umwelt.",
+            "Wir müssen die Energie so machen, dass es gut für die Umwelt ist.",
+            "Zum Beispiel mit Sonne, Wind und Wasser.",
+            "Alle Menschen sollen eine gute Arbeit haben.",
+            "Die Menschen sollen genug Geld für die Arbeit bekommen.",
+            "Dann geht es den Menschen gut.",
+            "Und dann geht es auch den Ländern gut.",
+            "Es soll immer besser werden für die Menschen und Länder.",
+            "Wir brauchen viele verschiedene Dinge.",
+            "• Strom und Heizung • Bus und Bahn • Schulen und Museen • Polizei und Versicherungen",
+            "Das ist die Aufgabe der Länder.",
+            "Wir brauchen auch gute Firmen und Fabriken.",
+            "Die Firmen und Fabriken müssen gute Arbeit machen.",
+            "Dann geht es den Ländern gut.",
+            "Firmen und Fabriken müssen gut für die Menschen und die Umwelt sein.",
+            "E s soll alles geben, was wir brauchen.",
+            "Wir brauchen auch gute neue Ideen.",
+            "Mit guten Ideen kann man viele Dinge besser machen.",
+            "Diese Dinge sind gut für ein Land.",
+            "Diese Dinge muss es für uns geben, damit es uns gut geht.",
+            "Einigen Menschen und Ländern geht es sehr gut.",
+            "Anderen Menschen und Ländern geht es schlecht.",
+            "Das soll sich ändern.",
+            "Es soll allen gleich gut gehen.",
+            "Kein Mensch soll schlechter leben als andere Menschen.",
+            "Kein Land soll schlechter sein als andere Länder 11:",
+            "Städte und Gemeinden sollen gut für alle Menschen sein.",
+            "Alle Menschen sollen gut und sicher leben.",
+            "Die Menschen sollen keine Angst haben • im Straßen Verkehr. • bei Veranstaltungen mit vielen Menschen.",
+            "• in der Nacht alleine auf der Straße.",
+            "Es soll nicht so viel kaputt gehen, wenn das Wetter schlecht ist.",
+            "Zum Beispiel • bei ganz starkem Wind • wenn das Wasser in den Flüssen an steigt.",
+            "Städte und Gemeinden sollen auch gut für die Umwelt sein.",
+            "Sie sollen zum Beispiel • weniger Energie verbrauchen.",
+            "• keine Energie aus Kohle, Öl oder Gas machen.",
+            "Wir kaufen viele Waren, zum Beispiel Brot oder Milch.",
+            "Aber viele Dinge werfen wir dann in den Müll.",
+            "So müssen Fabriken immer mehr Waren machen.",
+            "Das ist oft schlecht für die Umwelt und für die Arbeiter in den Fabriken.",
+            "Gute Waren sind gut für die Umwelt und die Arbeiter.",
+            "Wir dürfen nur gute Waren kaufen.",
+            "Dann werfen wir auch weniger in den Müll.",
+            "Das Klima verändert sich.",
+            "D as Wetter oft schlecht und es gibt Naturkatastrophen",
+            "Auch viele Menschen und Tiere haben dann Probleme.",
+            "Sie können nicht gut leben.",
+            "Wir müssen da s Klima schützen.",
+            "Dafür müssen wir etwas tun.",
+            "Und wir müssen etwas gegen die Probleme tun.",
+            "In den Meeren leben viele Tiere.",
+            "Die Meere müssen sauber sein und wir dürfen nicht zu viele Tiere fangen.",
+            "Sonst gibt es in der Zukunft nicht mehr genug Tiere.",
+            "Wir nehmen viele Dinge aus der Natur.",
+            "• Holz aus dem Wald •",
+            "Wenn wir zu viel nehmen, dann ist das schlecht für die Natur.",
+            "Dann gibt es zu wenig von den Dingen in der Natur.",
+            "Wir haben viele Felder.",
+            "Auf den Feldern bauen wir viel an.",
+            "Damit machen wir den Boden schlechter.",
+            "Vielleicht kann man auf dem Boden in Zukunft nichts mehr anbauen.",
+            "Vielleicht wird der Boden dann zur Wüste.",
+            "Es ist schlecht, wenn es mehr Wüsten gibt.",
+            "Wir müsse n die Felder und Böden schützen.",
+            "Es soll Frieden und Gerechtigkeit in den Ländern sein.",
+            "Dann können alle Menschen gut zusammen leben.",
+            "Das ist die Aufgabe von Behörden und Ämter n.",
+            "Die Behörden und Ämter müssen gute Arbeit für alle Menschen machen.",
+            "Die Behörden und Ämter müssen immer sagen • wie sie ihre Arbeit gemacht haben. • warum sie ihre Arbeit so gemacht haben.",
+            "Die Länder brauchen Geld, um diese Ziele zu erreichen.",
+            "Und die Länder müssen mehr zusammen arbeiten.",
+            "Dann können wir etwas dafür tun, dass die Dinge auf der Welt besser werden.",
+            "Und in Deutschland?",
+            "Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Wie viel Plastikmüll produziert Deutschland?",
+            "Als Deutschland?",
+            "Emissionen kommen aus Deutschland?",
+            "Sind die Emissionen seit 1990 weniger?",
+            "Wie viel Fleisch haben Deutsche pro Kopf im Jahr 2023 gegessen?",
+            "Nachhaltiges Deutschland?",
+            "Ja und nein.",
+            "Der Plastikatlas 2019 zeigt zum Beispiel, dass Deutschland sehr viel Plastikmüll produziert.",
+            "Die EU Länder produzieren im Durchschnitt 24 kg, in Deutschland sind es aber 30 bis 39 kg pro Person..",
+            "Nur Irland und Estland produzieren mehr Plastikmüll als Deutschland.",
+            "Italien, Österreich, Belgien und Dänemark sind in der gleichen Kategorie wie Deutschland.",
+            "Alle anderen Länder in der EU produzieren weniger.",
+            "Im Jahr 2023 waren es 598 Millionen Tonnen Kohlendioxid in Deutschland.",
+            "Im Vergleich zum Jahr 1990 sind das 43,3 % weniger, aber immer noch sehr viel.",
+            "Das meiste Kohlendioxid kommt von der Energiepr oduktion [Energie Produktion ].",
+            "Deutschland gehört so zu den größten 10 CO2-Sündern.",
+            "Im Vergleich zu China (~30%) und den USA (~13%) produziert Deutschland\" nur \" 2% der CO2-Emissionen der Welt.",
+            ": Viele traditionelle deutsche Speisen sind mit Fleisch.",
+            "Deshalb haben die Deutschen lange pro Kopf mehr als 60 kg Fleisch im Jahr gegessen.",
+            "In Deutschland gibt es aber auch immer mehr Vegetarier*innen und Veganer*innen.",
+            "Wird weniger.",
+            "Im Jahr 2023 liegt der Fleischkonsum bei 51,6 kg pro Kopf.",
+            "Ergänzen Sie das Relativpronomen und wählen ein Satzende aus, dass zu dem Satz passt.",
+            "Programm will vielleicht eine grüne Bürgermeisterin.",
+            "Jede Gruppe bekommt einen Text.",
+            "Lesen Sie den Text und tragen Sie unten zusammen die Informationen ein.",
+            "Planen Sie dann eine kurze Präsentation, die alle Gruppenmitglieder geben können.",
+            "Die Stadt Stuttgart möchte bis 2050 nur noch klimaneutrale Energie produzieren und benutzen.",
+            "Dafür will Stuttgart die CO2 Emissionen, im Vergleich zum Jahr 1990, bis 2030 um 65 %, bis 2040 um 80 % und bis 2050 um 95 % reduzieren.",
+            "Bis 2030 will Stuttgart keinen Strom mehr aus Kohle bekommen.",
+            "Bis 2030 sollen es 30% nachhaltigen Energien auf 30% steigen.",
+            "Auch beim Bauen will die Stadt Stuttgart viel machen:",
+            "Sie will klimaneutrale Wohnungen bauen.",
+            "Neue Häuser sollen aus Holz sein.",
+            "Die Stadt will viele Recyclingmaterialien beim Bauen benutzen.",
+            "Leipziger Kinderbüro - Kinder planen ihre Stadt",
+            "Kinder haben Fantasie und brauchen viele Dinge.",
+            "Oft können sie aber nicht selbst kreativ sein, sie brauchen dafür Erwachsene.",
+            "Das Leipziger Kinderbüro arbeitet mit Kindern und Jugendlichen, damit sie auch partizipieren können.",
+            "Das Kinderbüro engagiert sich also für die Interessen von Kindern, für Kinderrechte und Partizipation von Kindern.",
+            "Das Kinderbüro macht Projekte, durch die Kinder selbst aktiv werden können.",
+            "Ein Beispiel ist der Leipziger Kinderkongress, bei dem Kinder erzählen können, was sie nicht gut finden und wütend macht.",
+            "Es gibt auch Kinderstadtpläne [Kinder Stadt Plan] und Aktionen in der Stadt.",
+            "Wohnen für ältere Menschen ohne Wohnung",
+            "Der Verein\" Förderverein für Wohnhilfen e.V. \" aus Münster sucht schon lange Wohnungen für Menschen ohne Wohnung.",
+            "Ein Projekt ist besonders für ältere Menschen.",
+            "Für dieses Projekt hat der Verein aus einer Kirche en Wohnhaus gemacht.",
+            "Im Erdgeschoss der Kirche gibt es acht barrierefreie Wohnungen und Gruppen räume",
+            "Jetzt konnten acht Menschen, die früher keine Wohnung hatten und über 60 Jahre alt sind, in diese Wohnungen ziehen.",
+            "Es gibt auch Hilfe bei Krankheit und bei der Hausarbeit.",
+            "Im Ort Langenfeld gibt es einen\" Dorfladen \".",
+            "Weil in kleinen Orten oft keine Supermärkte sind und Menschen manchmal kein Obst und Gemüse kaufen können, gibt es dieses Projekt.",
+            "Das Projekt hilft auch, dass neue Menschen in das Dorf ziehen oder junge Menschen nicht in Städte ziehen.",
+            "Die Arbeiter*innen bekommen kein Geld, damit die Menschen in Langenfeld gutes Essen einkaufen können.",
+            "Im Bundesland Brandenburg gibt es nicht viele Städte.",
+            "Viele junge Menschen ziehen deshalb weg, zum Beispiel nach Berlin.",
+            "Die kleinen Städte werden immer kleiner und älter.",
+            "Ein Projekt von Brandenburg will deshalb d ie öffentlichen Verkehrsmittel besser machen.",
+            "In der Uckermark (einer Region in Brandenburg ) gibt es jetzt einen Kombibus, der nicht nur Menschen, sondern auch Güter transportiert.",
+            "In den Bussen fahren also Menschen, Lebensmittel und Post mit.",
+            "So können Produkte in die Dörfer kommen und die Menschen besser von Dorf zu Dorf.",
+            "Die Stadt Ibbenbüren in Nordrhein-Westfalen hat das Mobilitätskonzept 2035+ geschrieben.",
+            "Es gibt viele Projekte zur Mobilität in der Stadt, z.B.",
+            "Ä d er, wenn eine Familie kein Auto fährt.",
+            "Alle Schüler können ohne Geld zu bezahlen mit Bussen fahren und für Erwachsene gibt es sehr günstige Tickets für öffentliche Verkehrsmittel, die nur 99 cent kosten.",
+            "Die Autos, die der Stadt gehören, sollen alle elektrisch fahren.",
+            "Kommen Sie in einer neuen Gruppe zusammen, in der jede Person einen anderen Text in Teil 1 hatte.",
+            "Präsentieren Sie das Projekt, über das Sie den Text gelesen haben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

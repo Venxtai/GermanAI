@@ -1,0 +1,476 @@
+{
+    "unit": "O4",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 4,
+        "prerequisite": "core 1-104, O1-O3"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "vorkommen", "pos": "VERB", "translation": "to appear, occur", "frequency": 628, "cefr": "B1" },
+            { "word": "definieren", "pos": "VERB", "translation": "to define", "frequency": 1034 },
+            { "word": "prüfen", "pos": "VERB", "translation": "to check, inspect" },
+            { "word": "murmeln", "pos": "VERB", "translation": "to mumble; murmur", "frequency": 2815, "cefr": "B2" },
+            { "word": "fressen", "pos": "VERB", "translation": "to feed on something", "frequency": 2927, "cefr": "B1" },
+            { "word": "falten", "pos": "VERB", "translation": "to fold; crease", "frequency": 34318 },
+            { "word": "überlegen", "pos": "VERB", "translation": "to consider, reflect, think" },
+            { "word": "der Titel", "pos": "NOUN", "translation": "title, headline", "frequency": 1011, "cefr": "A2" },
+            { "word": "der*die Fischer*in", "pos": "NOUN", "translation": "fisher", "frequency": 2185 },
+            { "word": "die Frucht", "pos": "NOUN", "translation": "fruit [bot.]", "frequency": 3323, "cefr": "B1" },
+            { "word": "die Ziege", "pos": "NOUN", "translation": "goat", "frequency": 10415, "cefr": "A1" },
+            { "word": "die Schwalbe", "pos": "NOUN", "translation": "swallow, martin", "frequency": 18418, "cefr": "B2" },
+            { "word": "der Frosch", "pos": "NOUN", "translation": "frog", "frequency": 4962, "cefr": "A1" },
+            { "word": "der Zungenbrecher", "pos": "NOUN", "translation": "tongue twister", "frequency": 1, "cefr": "A1" },
+            { "word": "der Zwetschgenzweig", "pos": "NOUN", "translation": "plum branch", "frequency": 1, "cefr": "A1" },
+            { "word": "zwitschernd", "pos": "ADJ", "translation": "chirping" },
+            { "word": "schwierig", "pos": "ADJ", "translation": "difficult", "frequency": 580, "cefr": "A2" },
+            { "word": "frech", "pos": "ADJ", "translation": "insolent; saucy, audacious", "frequency": 9548, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Zentner", "pos": "NOUN", "frequency": 24354 },
+            { "word": "die Zwetschgenzweige", "pos": "NOUN" },
+            { "word": "der Verwandtschaftsgrad", "pos": "NOUN" },
+            { "word": "knicken", "pos": "VERB", "frequency": 25264 },
+            { "word": "die Wechselpräposition", "pos": "NOUN" },
+            { "word": "das Transportmittel", "pos": "NOUN", "frequency": 27359 },
+            { "word": "das Kleidungsstück", "pos": "NOUN", "frequency": 13052 },
+            { "word": "das Blumen-Vokabelspiel", "pos": "NOUN" },
+            { "word": "erräten", "pos": "VERB", "frequency": 23367 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "vorkommen": {
+                "present": {
+                    "ich": "komme vor",
+                    "du": "kommst vor",
+                    "er": "kommt vor",
+                    "es": "kommt vor",
+                    "sie_singular": "kommt vor",
+                    "xier": "kommt vor",
+                    "wir": "kommen vor",
+                    "ihr": "kommt vor",
+                    "sie_plural": "kommen vor",
+                    "Sie": "kommen vor"
+                },
+                "Perfekt": {
+                    "ich": "bin vorgekommen",
+                    "du": "bist vorgekommen",
+                    "er": "ist vorgekommen",
+                    "es": "ist vorgekommen",
+                    "sie_singular": "ist vorgekommen",
+                    "xier": "ist vorgekommen",
+                    "wir": "sind vorgekommen",
+                    "ihr": "seid vorgekommen",
+                    "sie_plural": "sind vorgekommen",
+                    "Sie": "sind vorgekommen"
+                },
+                "Futur_I": {
+                    "ich": "werde vorkommen",
+                    "du": "wirst vorkommen",
+                    "er": "wird vorkommen",
+                    "es": "wird vorkommen",
+                    "sie_singular": "wird vorkommen",
+                    "xier": "wird vorkommen",
+                    "wir": "werden vorkommen",
+                    "ihr": "werdet vorkommen",
+                    "sie_plural": "werden vorkommen",
+                    "Sie": "werden vorkommen"
+                },
+                "imperative": {
+                    "du": "komm vor",
+                    "ihr": "kommt vor",
+                    "Sie": "kommen Sie vor"
+                }
+            },
+            "definieren": {
+                "present": {
+                    "ich": "definiere",
+                    "du": "definierst",
+                    "er": "definiert",
+                    "es": "definiert",
+                    "sie_singular": "definiert",
+                    "xier": "definiert",
+                    "wir": "definieren",
+                    "ihr": "definiert",
+                    "sie_plural": "definieren",
+                    "Sie": "definieren"
+                },
+                "Perfekt": {
+                    "ich": "habe definiert",
+                    "du": "hast definiert",
+                    "er": "hat definiert",
+                    "es": "hat definiert",
+                    "sie_singular": "hat definiert",
+                    "xier": "hat definiert",
+                    "wir": "haben definiert",
+                    "ihr": "habt definiert",
+                    "sie_plural": "haben definiert",
+                    "Sie": "haben definiert"
+                },
+                "Futur_I": {
+                    "ich": "werde definieren",
+                    "du": "wirst definieren",
+                    "er": "wird definieren",
+                    "es": "wird definieren",
+                    "sie_singular": "wird definieren",
+                    "xier": "wird definieren",
+                    "wir": "werden definieren",
+                    "ihr": "werdet definieren",
+                    "sie_plural": "werden definieren",
+                    "Sie": "werden definieren"
+                },
+                "imperative": {
+                    "du": "definiere",
+                    "ihr": "definiert",
+                    "Sie": "definieren Sie"
+                }
+            },
+            "prüfen": {
+                "present": {
+                    "ich": "prüfe",
+                    "du": "prüfst",
+                    "er": "prüft",
+                    "es": "prüft",
+                    "sie_singular": "prüft",
+                    "xier": "prüft",
+                    "wir": "prüfen",
+                    "ihr": "prüft",
+                    "sie_plural": "prüfen",
+                    "Sie": "prüfen"
+                },
+                "Perfekt": {
+                    "ich": "habe geprüft",
+                    "du": "hast geprüft",
+                    "er": "hat geprüft",
+                    "es": "hat geprüft",
+                    "sie_singular": "hat geprüft",
+                    "xier": "hat geprüft",
+                    "wir": "haben geprüft",
+                    "ihr": "habt geprüft",
+                    "sie_plural": "haben geprüft",
+                    "Sie": "haben geprüft"
+                },
+                "Futur_I": {
+                    "ich": "werde prüfen",
+                    "du": "wirst prüfen",
+                    "er": "wird prüfen",
+                    "es": "wird prüfen",
+                    "sie_singular": "wird prüfen",
+                    "xier": "wird prüfen",
+                    "wir": "werden prüfen",
+                    "ihr": "werdet prüfen",
+                    "sie_plural": "werden prüfen",
+                    "Sie": "werden prüfen"
+                },
+                "imperative": {
+                    "du": "prüf",
+                    "ihr": "prüft",
+                    "Sie": "prüfen Sie"
+                }
+            },
+            "murmeln": {
+                "present": {
+                    "ich": "murmle",
+                    "du": "murmelst",
+                    "er": "murmelt",
+                    "es": "murmelt",
+                    "sie_singular": "murmelt",
+                    "xier": "murmelt",
+                    "wir": "murmeln",
+                    "ihr": "murmelt",
+                    "sie_plural": "murmeln",
+                    "Sie": "murmeln"
+                },
+                "Perfekt": {
+                    "ich": "habe gemurmelt",
+                    "du": "hast gemurmelt",
+                    "er": "hat gemurmelt",
+                    "es": "hat gemurmelt",
+                    "sie_singular": "hat gemurmelt",
+                    "xier": "hat gemurmelt",
+                    "wir": "haben gemurmelt",
+                    "ihr": "habt gemurmelt",
+                    "sie_plural": "haben gemurmelt",
+                    "Sie": "haben gemurmelt"
+                },
+                "Futur_I": {
+                    "ich": "werde murmeln",
+                    "du": "wirst murmeln",
+                    "er": "wird murmeln",
+                    "es": "wird murmeln",
+                    "sie_singular": "wird murmeln",
+                    "xier": "wird murmeln",
+                    "wir": "werden murmeln",
+                    "ihr": "werdet murmeln",
+                    "sie_plural": "werden murmeln",
+                    "Sie": "werden murmeln"
+                },
+                "imperative": {
+                    "du": "murmle",
+                    "ihr": "murmelt",
+                    "Sie": "murmeln Sie"
+                }
+            },
+            "fressen": {
+                "present": {
+                    "ich": "fresse",
+                    "du": "frisst",
+                    "er": "frisst",
+                    "es": "frisst",
+                    "sie_singular": "frisst",
+                    "xier": "frisst",
+                    "wir": "fressen",
+                    "ihr": "fresst",
+                    "sie_plural": "fressen",
+                    "Sie": "fressen"
+                },
+                "Perfekt": {
+                    "ich": "habe gefressen",
+                    "du": "hast gefressen",
+                    "er": "hat gefressen",
+                    "es": "hat gefressen",
+                    "sie_singular": "hat gefressen",
+                    "xier": "hat gefressen",
+                    "wir": "haben gefressen",
+                    "ihr": "habt gefressen",
+                    "sie_plural": "haben gefressen",
+                    "Sie": "haben gefressen"
+                },
+                "Futur_I": {
+                    "ich": "werde fressen",
+                    "du": "wirst fressen",
+                    "er": "wird fressen",
+                    "es": "wird fressen",
+                    "sie_singular": "wird fressen",
+                    "xier": "wird fressen",
+                    "wir": "werden fressen",
+                    "ihr": "werdet fressen",
+                    "sie_plural": "werden fressen",
+                    "Sie": "werden fressen"
+                },
+                "imperative": {
+                    "du": "friss",
+                    "ihr": "fresst",
+                    "Sie": "fressen Sie"
+                }
+            },
+            "falten": {
+                "present": {
+                    "ich": "falte",
+                    "du": "faltest",
+                    "er": "faltet",
+                    "es": "faltet",
+                    "sie_singular": "faltet",
+                    "xier": "faltet",
+                    "wir": "falten",
+                    "ihr": "faltet",
+                    "sie_plural": "falten",
+                    "Sie": "falten"
+                },
+                "Perfekt": {
+                    "ich": "habe gefaltet",
+                    "du": "hast gefaltet",
+                    "er": "hat gefaltet",
+                    "es": "hat gefaltet",
+                    "sie_singular": "hat gefaltet",
+                    "xier": "hat gefaltet",
+                    "wir": "haben gefaltet",
+                    "ihr": "habt gefaltet",
+                    "sie_plural": "haben gefaltet",
+                    "Sie": "haben gefaltet"
+                },
+                "Futur_I": {
+                    "ich": "werde falten",
+                    "du": "wirst falten",
+                    "er": "wird falten",
+                    "es": "wird falten",
+                    "sie_singular": "wird falten",
+                    "xier": "wird falten",
+                    "wir": "werden falten",
+                    "ihr": "werdet falten",
+                    "sie_plural": "werden falten",
+                    "Sie": "werden falten"
+                },
+                "imperative": {
+                    "du": "falte",
+                    "ihr": "faltet",
+                    "Sie": "falten Sie"
+                }
+            },
+            "überlegen": {
+                "present": {
+                    "ich": "überlege",
+                    "du": "überlegst",
+                    "er": "überlegt",
+                    "es": "überlegt",
+                    "sie_singular": "überlegt",
+                    "xier": "überlegt",
+                    "wir": "überlegen",
+                    "ihr": "überlegt",
+                    "sie_plural": "überlegen",
+                    "Sie": "überlegen"
+                },
+                "Perfekt": {
+                    "ich": "habe überlegt",
+                    "du": "hast überlegt",
+                    "er": "hat überlegt",
+                    "es": "hat überlegt",
+                    "sie_singular": "hat überlegt",
+                    "xier": "hat überlegt",
+                    "wir": "haben überlegt",
+                    "ihr": "habt überlegt",
+                    "sie_plural": "haben überlegt",
+                    "Sie": "haben überlegt"
+                },
+                "Futur_I": {
+                    "ich": "werde überlegen",
+                    "du": "wirst überlegen",
+                    "er": "wird überlegen",
+                    "es": "wird überlegen",
+                    "sie_singular": "wird überlegen",
+                    "xier": "wird überlegen",
+                    "wir": "werden überlegen",
+                    "ihr": "werdet überlegen",
+                    "sie_plural": "werden überlegen",
+                    "Sie": "werden überlegen"
+                },
+                "imperative": {
+                    "du": "überlege",
+                    "ihr": "überlegt",
+                    "Sie": "überlegen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie die Zungenbrecher.",
+            "Zehn Ziegen ziehen zehn Zentner Zucker zum Zoo.",
+            "Fischers Fritz fischt frische Fische, frische Fische fischt Fischers Fritz.",
+            "Früh fressen freche Frösche Früchte.",
+            "Freche Frösche fressen früh Früchte.",
+            "Zwischen zwei Zwetschgenzweigen sitzen zwei zwitschernde Schwalben.",
+            "Hören Sie die Zungenbrecher und achten Sie auf die markierten Laute.",
+            "Üben Sie nur die schwierigen Laute.",
+            "Murmeln Sie die Zungenbrecher (also leise und langsam).",
+            "Dann sprechen Sie die Zungenbrecher laut und langsam.",
+            "Werden Sie schneller.",
+            "Wer kann die Zungenbrecher laut und schnell sprechen?",
+            "Welcher Laut ist schwierig für Sie?",
+            "Schreiben Sie einen eigenen Zungenbrecher mit Alliterationen, in dem dieser Laut so oft wie möglich vorkommt.",
+            "Tante Frieda liest unter dem Tisch.",
+            "In Gruppen schreiben Sie Sätze.",
+            "Sie wissen nicht, was die anderen schreiben.",
+            "Als erstes schreiben Sie einen Titel oder Verwandtschaftsgrad (z.B.",
+            "Dann knicken Sie das Blatt um.",
+            "Die nächste Person schreibt einen Namen.",
+            "Dann knickt sie das Blatt um.",
+            "Die nächste Person schreibt ein Verb (3. Person Singular Präsens ).",
+            "Dann falten sie das Blatt.",
+            "Die nächste Person schreibt ein Nomen mit Artikel im Akkusativ oder Dativ.",
+            "Jetzt machen Sie das Blatt auf und lesen Sie Ihren Satz.",
+            "Prüfen Sie die Grammatik Ihres Satzes:",
+            "Ist das Verb richtig korrigiert?",
+            "Ist der Artikel richtig im Dativ?",
+            "Schreiben Sie mehrere Sätze.",
+            "Schreiben Sie Erklärungen für die Wörter unten.",
+            "Benutzen Sie Relativsätze.",
+            "Ein Apfel ist Obst, das rund und süß, grün, gelb oder rot ist.",
+            "Ein Auge ist der Körperteil, der sieht/sehen kann.",
+            "Eine Freundin ist ein Mensch, den ich mag.",
+            "Ein Professor ist ein Mensch, der den Deutschkurs macht.",
+            "Eine Uhr ist ein Ding, das die Zeit sagt.",
+            "Ein Foto ist ein Ding, das die Kamera macht/das ich anschauen kann.",
+            "Ein Flugzeug ist ein Transportmittel, das fliegt.",
+            "Eine Jacke ist ein Kleidungsstück, das ich am Oberkörper trage/das warm ist.",
+            "Ein Elefant ist ein Tier, das grau und groß ist und in Afrika oder Asien lebt.",
+            "Spielen Sie in kleinen Gruppen oder mit dem ganzen Kurs:",
+            "Eine Person überlegt sich ein Wort.",
+            "Die anderen Personen raten Buchstaben.",
+            "Wenn der Buchstabe in dem Wort ist, schreibt die erste Person den Buchstaben an die korrekte Stelle.",
+            "Wenn der Buchstabe nicht in dem Wort ist, verliert die Blume einen Teil, bis es weg ist.",
+            "Wenn die Gruppe das Wort errät, bevor die Blume weg ist, gewinnt sie.",
+            "Wenn die Blume weg ist, bevor die Gruppe das Wort errät, gewinnt die Person, die sich das Wort überlegt hat."
+        ],
+        "templated": []
+    }
+}

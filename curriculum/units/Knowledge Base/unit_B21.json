@@ -1,0 +1,554 @@
+{
+    "unit": "B21",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 21,
+        "prerequisite": "core 1-104, B1-B20"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während"
+        ],
+        "new_rules_in_this_unit": [
+            "Use bevor (before) as a subordinating conjunction with verb at the end.",
+            "Use während (while) as a subordinating conjunction with verb at the end."
+        ],
+        "forbidden": [
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Statistiken und fiktionale Medien zu Migration reflektieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Gastarbeit in der DDR und BRD"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "holen", "pos": "VERB", "translation": "to get, fetch", "frequency": 547, "cefr": "A1" },
+            { "word": "anwerben", "pos": "VERB", "translation": "to recruit, hire", "frequency": 23284 },
+            { "word": "erschrecken", "pos": "VERB", "translation": "to frighten", "frequency": 1902, "cefr": "B1" },
+            { "word": "schreien", "pos": "VERB", "translation": "to scream; shout; yell", "frequency": 1104, "cefr": "B1" },
+            { "word": "nachdenken", "pos": "VERB", "translation": "to think (about), reflect (on)", "frequency": 1173, "cefr": "B1" },
+            { "word": "zustimmen", "pos": "VERB", "translation": "to agree; approve; accept", "frequency": 2507, "cefr": "B1" },
+            { "word": "die Heimat", "pos": "NOUN", "translation": "home (country/region)", "frequency": 1305, "cefr": "A1" },
+            { "word": "die Gewalt", "pos": "NOUN", "translation": "violence", "frequency": 1361, "cefr": "B1" },
+            { "word": "der Rassismus", "pos": "NOUN", "translation": "racism", "frequency": 8227, "cefr": "A1" },
+            { "word": "die Feindlichkeit", "pos": "NOUN", "translation": "hostility", "frequency": 1, "cefr": "A1" },
+            { "word": "die Arbeitskraft", "pos": "NOUN", "translation": "worker; labor (power)", "frequency": 4304, "cefr": "B2" },
+            { "word": "die Brücke", "pos": "NOUN", "translation": "bridge", "frequency": 1, "cefr": "A1" },
+            { "word": "das Schwein", "pos": "NOUN", "translation": "pig", "frequency": 2975, "cefr": "A2" },
+            { "word": "gemeinsam", "pos": "ADJ", "translation": "together; common", "frequency": 295, "cefr": "B1" },
+            { "word": "historisch", "pos": "ADJ", "translation": "historic(al)", "frequency": 901, "cefr": "B1" },
+            { "word": "ausländisch", "pos": "ADJ", "translation": "foreign, from another country" },
+            { "word": "sondern", "pos": "CONJ", "translation": "but rather", "frequency": 115, "cefr": "B1" },
+            { "word": "wenn", "pos": "CONJ", "translation": "when(ever) [repeated events in past/present/future]; when [one-time events in future]; if", "frequency": 42, "cefr": "A2" },
+            { "word": "als", "pos": "CONJ", "translation": "when [one-time event in past]", "frequency": 22, "cefr": "A2" },
+            { "word": "bevor", "pos": "ADV", "translation": "before", "frequency": 537, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "die Migration", "pos": "NOUN", "frequency": 4123, "cefr": "B1" },
+            { "word": "die Alliierte", "pos": "NOUN", "frequency": 10835 },
+            { "word": "der West", "pos": "NOUN", "frequency": 1010 },
+            { "word": "die Integration", "pos": "NOUN", "frequency": 1282, "cefr": "B1" },
+            { "word": "die Exklusion", "pos": "NOUN" },
+            { "word": "xenophobisch", "pos": "ADJ" },
+            { "word": "das Entertainment", "pos": "NOUN", "frequency": 11462 },
+            { "word": "die Message", "pos": "NOUN", "frequency": 26899 },
+            { "word": "die Konjunktion", "pos": "NOUN" },
+            { "word": "die Jesus-Figur", "pos": "NOUN" },
+            { "word": "die Fantasy", "pos": "NOUN" },
+            { "word": "interessiert", "pos": "ADV", "frequency": 6365, "cefr": "B1" },
+            { "word": "die Utopie", "pos": "NOUN", "frequency": 11004 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "holen": {
+                "present": {
+                    "ich": "hole",
+                    "du": "holst",
+                    "er": "holt",
+                    "es": "holt",
+                    "sie_singular": "holt",
+                    "xier": "holt",
+                    "wir": "holen",
+                    "ihr": "holt",
+                    "sie_plural": "holen",
+                    "Sie": "holen"
+                },
+                "Präteritum": {
+                    "ich": "holte",
+                    "du": "holtest",
+                    "er": "holte",
+                    "es": "holte",
+                    "sie_singular": "holte",
+                    "xier": "holte",
+                    "wir": "holten",
+                    "ihr": "holtet",
+                    "sie_plural": "holten",
+                    "Sie": "holten"
+                },
+                "Perfekt": {
+                    "ich": "habe geholt",
+                    "du": "hast geholt",
+                    "er": "hat geholt",
+                    "es": "hat geholt",
+                    "sie_singular": "hat geholt",
+                    "xier": "hat geholt",
+                    "wir": "haben geholt",
+                    "ihr": "habt geholt",
+                    "sie_plural": "haben geholt",
+                    "Sie": "haben geholt"
+                },
+                "Futur_I": {
+                    "ich": "werde holen",
+                    "du": "wirst holen",
+                    "er": "wird holen",
+                    "es": "wird holen",
+                    "sie_singular": "wird holen",
+                    "xier": "wird holen",
+                    "wir": "werden holen",
+                    "ihr": "werdet holen",
+                    "sie_plural": "werden holen",
+                    "Sie": "werden holen"
+                },
+                "imperative": {
+                    "du": "hole",
+                    "ihr": "holt",
+                    "Sie": "holen Sie"
+                }
+            },
+            "anwerben": {
+                "present": {
+                    "ich": "werbe an",
+                    "du": "wirbst an",
+                    "er": "wirbt an",
+                    "es": "wirbt an",
+                    "sie_singular": "wirbt an",
+                    "xier": "wirbt an",
+                    "wir": "werben an",
+                    "ihr": "werbt an",
+                    "sie_plural": "werben an",
+                    "Sie": "werben an"
+                },
+                "Präteritum": {
+                    "ich": "warb an",
+                    "du": "warbst an",
+                    "er": "warb an",
+                    "es": "warb an",
+                    "sie_singular": "warb an",
+                    "xier": "warb an",
+                    "wir": "warben an",
+                    "ihr": "warbt an",
+                    "sie_plural": "warben an",
+                    "Sie": "warben an"
+                },
+                "Perfekt": {
+                    "ich": "habe angeworben",
+                    "du": "hast angeworben",
+                    "er": "hat angeworben",
+                    "es": "hat angeworben",
+                    "sie_singular": "hat angeworben",
+                    "xier": "hat angeworben",
+                    "wir": "haben angeworben",
+                    "ihr": "habt angeworben",
+                    "sie_plural": "haben angeworben",
+                    "Sie": "haben angeworben"
+                },
+                "Futur_I": {
+                    "ich": "werde anwerben",
+                    "du": "wirst anwerben",
+                    "er": "wird anwerben",
+                    "es": "wird anwerben",
+                    "sie_singular": "wird anwerben",
+                    "xier": "wird anwerben",
+                    "wir": "werden anwerben",
+                    "ihr": "werdet anwerben",
+                    "sie_plural": "werden anwerben",
+                    "Sie": "werden anwerben"
+                },
+                "imperative": {
+                    "du": "wirb an",
+                    "ihr": "werbt an",
+                    "Sie": "werben Sie an"
+                }
+            },
+            "erschrecken": {
+                "present": {
+                    "ich": "erschrecke",
+                    "du": "erschreckst",
+                    "er": "erschreckt",
+                    "es": "erschreckt",
+                    "sie_singular": "erschreckt",
+                    "xier": "erschreckt",
+                    "wir": "erschrecken",
+                    "ihr": "erschreckt",
+                    "sie_plural": "erschrecken",
+                    "Sie": "erschrecken"
+                },
+                "Präteritum": {
+                    "ich": "erschreckte",
+                    "du": "erschrecktest",
+                    "er": "erschreckte",
+                    "es": "erschreckte",
+                    "sie_singular": "erschreckte",
+                    "xier": "erschreckte",
+                    "wir": "erschreckten",
+                    "ihr": "erschrecktet",
+                    "sie_plural": "erschreckten",
+                    "Sie": "erschreckten"
+                },
+                "Perfekt": {
+                    "ich": "habe erschreckt",
+                    "du": "hast erschreckt",
+                    "er": "hat erschreckt",
+                    "es": "hat erschreckt",
+                    "sie_singular": "hat erschreckt",
+                    "xier": "hat erschreckt",
+                    "wir": "haben erschreckt",
+                    "ihr": "habt erschreckt",
+                    "sie_plural": "haben erschreckt",
+                    "Sie": "haben erschreckt"
+                },
+                "Futur_I": {
+                    "ich": "werde erschrecken",
+                    "du": "wirst erschrecken",
+                    "er": "wird erschrecken",
+                    "es": "wird erschrecken",
+                    "sie_singular": "wird erschrecken",
+                    "xier": "wird erschrecken",
+                    "wir": "werden erschrecken",
+                    "ihr": "werdet erschrecken",
+                    "sie_plural": "werden erschrecken",
+                    "Sie": "werden erschrecken"
+                },
+                "imperative": {
+                    "du": "erschrecke",
+                    "ihr": "erschreckt",
+                    "Sie": "erschrecken Sie"
+                }
+            },
+            "schreien": {
+                "present": {
+                    "ich": "schreie",
+                    "du": "schreist",
+                    "er": "schreit",
+                    "es": "schreit",
+                    "sie_singular": "schreit",
+                    "xier": "schreit",
+                    "wir": "schreien",
+                    "ihr": "schreit",
+                    "sie_plural": "schreien",
+                    "Sie": "schreien"
+                },
+                "Präteritum": {
+                    "ich": "schrie",
+                    "du": "schriest",
+                    "er": "schrie",
+                    "es": "schrie",
+                    "sie_singular": "schrie",
+                    "xier": "schrie",
+                    "wir": "schrien",
+                    "ihr": "schriet",
+                    "sie_plural": "schrien",
+                    "Sie": "schrien"
+                },
+                "Perfekt": {
+                    "ich": "habe geschrien",
+                    "du": "hast geschrien",
+                    "er": "hat geschrien",
+                    "es": "hat geschrien",
+                    "sie_singular": "hat geschrien",
+                    "xier": "hat geschrien",
+                    "wir": "haben geschrien",
+                    "ihr": "habt geschrien",
+                    "sie_plural": "haben geschrien",
+                    "Sie": "haben geschrien"
+                },
+                "Futur_I": {
+                    "ich": "werde schreien",
+                    "du": "wirst schreien",
+                    "er": "wird schreien",
+                    "es": "wird schreien",
+                    "sie_singular": "wird schreien",
+                    "xier": "wird schreien",
+                    "wir": "werden schreien",
+                    "ihr": "werdet schreien",
+                    "sie_plural": "werden schreien",
+                    "Sie": "werden schreien"
+                },
+                "imperative": {
+                    "du": "schreie",
+                    "ihr": "schreit",
+                    "Sie": "schreien Sie"
+                }
+            },
+            "nachdenken": {
+                "present": {
+                    "ich": "denke nach",
+                    "du": "denkst nach",
+                    "er": "denkt nach",
+                    "es": "denkt nach",
+                    "sie_singular": "denkt nach",
+                    "xier": "denkt nach",
+                    "wir": "denken nach",
+                    "ihr": "denkt nach",
+                    "sie_plural": "denken nach",
+                    "Sie": "denken nach"
+                },
+                "Präteritum": {
+                    "ich": "dachte nach",
+                    "du": "dachtest nach",
+                    "er": "dachte nach",
+                    "es": "dachte nach",
+                    "sie_singular": "dachte nach",
+                    "xier": "dachte nach",
+                    "wir": "dachten nach",
+                    "ihr": "dachtet nach",
+                    "sie_plural": "dachten nach",
+                    "Sie": "dachten nach"
+                },
+                "Perfekt": {
+                    "ich": "habe nachgedacht",
+                    "du": "hast nachgedacht",
+                    "er": "hat nachgedacht",
+                    "es": "hat nachgedacht",
+                    "sie_singular": "hat nachgedacht",
+                    "xier": "hat nachgedacht",
+                    "wir": "haben nachgedacht",
+                    "ihr": "habt nachgedacht",
+                    "sie_plural": "haben nachgedacht",
+                    "Sie": "haben nachgedacht"
+                },
+                "Futur_I": {
+                    "ich": "werde nachdenken",
+                    "du": "wirst nachdenken",
+                    "er": "wird nachdenken",
+                    "es": "wird nachdenken",
+                    "sie_singular": "wird nachdenken",
+                    "xier": "wird nachdenken",
+                    "wir": "werden nachdenken",
+                    "ihr": "werdet nachdenken",
+                    "sie_plural": "werden nachdenken",
+                    "Sie": "werden nachdenken"
+                },
+                "imperative": {
+                    "du": "denke nach",
+                    "ihr": "denkt nach",
+                    "Sie": "denken Sie nach"
+                }
+            },
+            "zustimmen": {
+                "present": {
+                    "ich": "stimme zu",
+                    "du": "stimmst zu",
+                    "er": "stimmt zu",
+                    "es": "stimmt zu",
+                    "sie_singular": "stimmt zu",
+                    "xier": "stimmt zu",
+                    "wir": "stimmen zu",
+                    "ihr": "stimmt zu",
+                    "sie_plural": "stimmen zu",
+                    "Sie": "stimmen zu"
+                },
+                "Präteritum": {
+                    "ich": "stimmte zu",
+                    "du": "stimmtest zu",
+                    "er": "stimmte zu",
+                    "es": "stimmte zu",
+                    "sie_singular": "stimmte zu",
+                    "xier": "stimmte zu",
+                    "wir": "stimmten zu",
+                    "ihr": "stimmtet zu",
+                    "sie_plural": "stimmten zu",
+                    "Sie": "stimmten zu"
+                },
+                "Perfekt": {
+                    "ich": "habe zugestimmt",
+                    "du": "hast zugestimmt",
+                    "er": "hat zugestimmt",
+                    "es": "hat zugestimmt",
+                    "sie_singular": "hat zugestimmt",
+                    "xier": "hat zugestimmt",
+                    "wir": "haben zugestimmt",
+                    "ihr": "habt zugestimmt",
+                    "sie_plural": "haben zugestimmt",
+                    "Sie": "haben zugestimmt"
+                },
+                "Futur_I": {
+                    "ich": "werde zustimmen",
+                    "du": "wirst zustimmen",
+                    "er": "wird zustimmen",
+                    "es": "wird zustimmen",
+                    "sie_singular": "wird zustimmen",
+                    "xier": "wird zustimmen",
+                    "wir": "werden zustimmen",
+                    "ihr": "werdet zustimmen",
+                    "sie_plural": "werden zustimmen",
+                    "Sie": "werden zustimmen"
+                },
+                "imperative": {
+                    "du": "stimme zu",
+                    "ihr": "stimmt zu",
+                    "Sie": "stimmen Sie zu"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie zuerst die Fragen.",
+            "Dann lesen Sie den Text und markieren Sie Sätze, die die Fragen beantworten.",
+            "Warum brauchten die DDR und BRD nach dem Zweiten Weltkrieg Arbeitskräfte aus anderen Ländern?",
+            "Wann sind die ersten Gastarbeiter*innen nach West Deutschland [West Deutschland] gekommen und woher kamen sie?",
+            "Aus welchen Ländern kamen Vertragsarbeiter*innen in die DDR?",
+            "Warum ist das Leben für diese Menschen in Deutschland nicht immer einfach?",
+            "Nach dem Zweiten Weltkrieg versuchten die Alliierten in West und Ost Deutschland, die Wirtschaft in beiden Ländern schnell wieder aufzubauen.",
+            "In West Deutschland half der Marshall-Plan.",
+            "Schon Mitte der 1950er war die Wirtschaft so stark, dass man von einem Wirtschaftswunder sprach.",
+            "Es gab nicht genug Arbeitskräfte.",
+            "Also schloss die BRD Verträge mit anderen Ländern in Europa, um Gastarbeiter*innen nach Deutschland zu bringen.",
+            "Als erstes mit Italien und später auch mit Griechenland, Spanien, der Türkei und Portugal.",
+            "1973 hörte die BRD auf, Arbeitsmigrant*innen aus anderen Ländern anzuwerben.",
+            "Die Zahl der Menschen aus anderen Ländern stieg, weil einige Gastarbeiter*innen ihre Familien in die BRD holten.",
+            "In Ost Deutschland schloss die Regierung Verträge mit ihren sozialistischen Bruderländern.",
+            "Auch sie brauchten mehr Arbeiter*innen.",
+            "In Ost Deutschland nannte man diese Menschen Vertragsarbeiter*innen.",
+            "Die ersten dieser Vertragsarbeiter*innen kamen 1968 aus Ungarn.",
+            "Später kamen weitere aus Algerien, Kuba, Vietnam, Angola und Mosambik.",
+            "Die Idee war, dass die Arbeiter*innen nach ein paar Jahren wieder in ihre Heimat zurück gehen.",
+            "Deshalb hatten die DDR und BRD keinen Plan für die Integration der Menschen.",
+            "Blieben nach dem Ende der offiziellen Programme in Deutschland.",
+            "Oft kam und kommt es heute noch zu sozialer Exklusion dieser Menschen und zu xenophobischer und rassistischer Gewalt.",
+            "Wie viele ausländische Arbeiter*innen lebten am Ende der Verträge in der BRD und DDR?",
+            "Sie bekommen die Hälfte der Zahlen.",
+            "Fragen Sie nach den fehlenden Zahlen.",
+            "Wie viele Arbeiter*innen waren 1989 aus … in der DDR?",
+            "Wie viele Arbeiter*innen waren 1973 aus … in der BRD?",
+            "Vergleichen Sie sie Zahlen der ausländischen Arbeiter*innen in der BRD und der DDR aus Teil 1.",
+            "Aus welchen Ländern kamen die meisten Menschen?",
+            "Aus welchen Ländern kamen mehr Menschen als aus anderen Ländern?",
+            "Kamen mehr Menschen in die BRD oder in die DDR?",
+            "Lesen Sie die Statements über Bücher und Filme, die von Migration, Integration und Fremdenfeindlichkeit oder Rassismus handeln?",
+            "Welchen Statements stimmen Sie zu?",
+            "Ein Film oder ein Roman erzählt eine persönliche Geschichte.",
+            "Ich kann mich mit den Charakteren in gut identifizieren.",
+            "Ich denke, man lernt von Filmen oder Romanen nicht viel.",
+            "Ich sehe Filme oder lese Romane zum Entertainment.",
+            "Ich mag Filme nicht, bei denen ich etwas lernen soll.",
+            "Sie sind langweilig oder zu stark in ihrer Message.",
+            "Ich lerne lieber von einem Film oder Roman, weil ich hier die emotionale Seite von Migration sehen kann.",
+            "Ein Geschichtsbuch erzählt die Fakten.",
+            "Aber mit Filmen kann ich das Thema wirklich verstehen.",
+            "Lesen Sie die Sätze.",
+            "Willkommen in Deutschland.",
+            "Ergänzen Sie die korrekten Konjunktionen (wenn, als, bevor, während).",
+            "Der Film beginnt 1970 in der Türkei.",
+            "Als die Familie nach Deutschland zieht, bringen die Freundinnen der Mutter Geschenke.",
+            "Bevor sie fliegen, erzählt ein kleiner Junge dem Sohn der Familie, dass die Deutschen Schweine und Menschen essen.",
+            "Als sie in Deutschland landen, ist alles grau und die Familie findet Deutschland erst komisch.",
+            "Der jüngste Sohn erschreckt sich, als die er eine Jesus-Figur sieht.",
+            "Während er schreit, stellt er sich vor, wie Jesus ein Mensch wird.",
+            "Als die Mutter einkaufen geht, zeigt sie mit den Händen, dass sie Milch kaufen möchte.",
+            "Bevor die Familie nach Deutschland gezogen ist, hatte sie Weihnachten nicht gefeiert.",
+            "Als sie jetzt in Deutschland Weihnachten feiern, denken die Kinder, dass die Eltern Weihnachten nicht verstehen.",
+            "Als sie gemeinsam essen, erzählt die Mutter, dass sie Deutsche geworden sind und der Vater, dass er ein Haus in der Türkei gekauft hat.",
+            "Der Film ist lustig und spielt mit Stereotypen.",
+            "Er zeigt, was passiert, wenn Menschen über ihre Identität nachdenken.",
+            "Lesen Sie die Aussagen zum Roman Sungs Laden von Karin Kalisa.",
+            "Hören Sie dann die Beschreibung des Romans und kreuzen Sie an, welche Aussagen richtig (r) und welche falsch (f) sind.",
+            "Sungs Laden ist ein realistischer, historischer Roman.",
+            "Minh kommt mit seinem Vater in die Schule, um über die vietnamesische Kultur zu sprechen.",
+            "Minh und seine Oma bringen eine alte Holzpuppe mit und spielen ein Puppentheater.",
+            "Das Theater erzählt die Geschichte von einer vietnamesisch en Vertragsarbeiterin in der DDR.",
+            "Alle Schüler*innen und Lehrkräfte finden das Puppentheater langweilig.",
+            "Die Person sagt, dass man den Roman Sungs Laden nicht lesen sollte.",
+            "Sungs Laden von Karin Kalisa ist ein historischer Fantasy Roman.",
+            "Er erzählt von der vietnamesischen Kultur im Berliner Stadtteil Prenzlauer Berg.",
+            "In einer Schule organisiert der Direktor eine internationale Woche.",
+            "Schüler*innen sollen Dinge aus ihren Kulturen präsentieren.",
+            "Minh ist die Hauptperson.",
+            "Sein Vater hat einen vietnamesisch en Laden in Berlin.",
+            "Minh fragt seine Oma nach einem Objekt aus der Heimat der Familie.",
+            "Die Oma kommt mit ihm in die Schule und bringt eine 100 Jahre alte Holzpuppe mit.",
+            "Zusammen mit Minh spielt die Oma ein Puppentheater.",
+            "Sie erzählen die Geschichte einer jungen Vietnamesin, die als Vertragsarbeiterin in die DDR kam.",
+            "In der Geschichte wird der Prenzlauer Berg asiatisch.",
+            "Es gibt Brücken aus Bambus und in den Parks wächst exotisches Gemüse.",
+            "Die Kinder und ihre Lehrkräfte hören der Geschichte über die junge Vietnamesin interessiert zu und vergessen die Realität.",
+            "In der Geschichte treffen die Geschichten von vietnamesischen Vertragsarbeiterin und DDR Bürger*innen zusammen.",
+            "Es ist eine positive Utopie.",
+            "Kalisas Roman ist nicht nur die Geschichte einer vietnamesischen Vertragsarbeiterin, sondern auch ein Roman, der uns zeigt, dass wir an das Gute in der Welt glauben müssen.",
+            "Lesen Sie diesen schönen Roman!"
+        ],
+        "templated": []
+    }
+}

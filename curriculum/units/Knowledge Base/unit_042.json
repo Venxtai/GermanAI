@@ -1,0 +1,456 @@
+{
+    "unit": "42",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 42,
+        "prerequisite": "1-41"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Use wo to ask about location (dative) and wohin to ask about destination (accusative) with two-way prepositions."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "beschreiben, wo etwas ist und wohin man es bewegt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "zeichnen",
+                "pos": "VERB",
+                "translation": "to draw",
+                "frequency": 1259,
+                "cefr": "A2"
+            },
+            {
+                "word": "springen",
+                "pos": "VERB",
+                "translation": "to jump, bounce",
+                "frequency": 1431,
+                "cefr": "B1"
+            },
+            {
+                "word": "rennen",
+                "pos": "VERB",
+                "translation": "to run",
+                "frequency": 2068,
+                "cefr": "B1"
+            },
+            {
+                "word": "fliegen",
+                "pos": "VERB",
+                "translation": "to fly",
+                "frequency": 824,
+                "cefr": "A1"
+            },
+            {
+                "word": "laufen",
+                "pos": "VERB",
+                "translation": "to walk; run",
+                "frequency": 252,
+                "cefr": "A1"
+            },
+            {
+                "word": "schwimmen",
+                "pos": "VERB",
+                "translation": "to swim",
+                "frequency": 1863,
+                "cefr": "A1"
+            },
+            {
+                "word": "beginnen",
+                "pos": "VERB",
+                "translation": "to begin",
+                "frequency": 251,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Meer",
+                "pos": "NOUN",
+                "translation": "sea",
+                "frequency": 852,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Flugzeug",
+                "pos": "NOUN",
+                "translation": "airplane",
+                "frequency": 1776,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Gegenstand",
+                "pos": "NOUN",
+                "translation": "item, object",
+                "frequency": 1308,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kaffee",
+                "pos": "NOUN",
+                "translation": "coffee",
+                "frequency": 1299,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Garten",
+                "pos": "NOUN",
+                "translation": "garden",
+                "frequency": 1158,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Richtung",
+                "pos": "NOUN",
+                "translation": "direction",
+                "frequency": 418,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fehler",
+                "pos": "NOUN",
+                "translation": "mistake, error",
+                "frequency": 861,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mitte",
+                "pos": "NOUN",
+                "translation": "middle",
+                "frequency": 711,
+                "cefr": "A1"
+            },
+            {
+                "word": "sauber",
+                "pos": "ADJ",
+                "translation": "clean",
+                "frequency": 2026,
+                "cefr": "A2"
+            },
+            {
+                "word": "schmutzig",
+                "pos": "ADJ",
+                "translation": "dirty",
+                "frequency": 3869,
+                "cefr": "A2"
+            },
+            {
+                "word": "ordentlich",
+                "pos": "ADJ",
+                "translation": "tidy",
+                "frequency": 2248,
+                "cefr": "B1"
+            },
+            {
+                "word": "unordentlich",
+                "pos": "ADJ",
+                "translation": "untidy, messy"
+            },
+            {
+                "word": "anders",
+                "pos": "ADJ",
+                "translation": "different(ly)",
+                "frequency": 303,
+                "cefr": "A2"
+            },
+            {
+                "word": "zuerst",
+                "pos": "ADV",
+                "translation": "first",
+                "frequency": 880,
+                "cefr": "A2"
+            },
+            {
+                "word": "(be)nutzen",
+                "pos": "VERB",
+                "translation": "to use, utilize",
+                "frequency": 429,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "ihn",
+                "pos": "PRON",
+                "frequency": 92,
+                "cefr": "A1"
+            },
+            {
+                "word": "stoppen",
+                "pos": "VERB",
+                "frequency": 2249,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Dativ",
+                "pos": "NOUN",
+                "frequency": 43368
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "zeichnen": {
+                "present": {
+                    "ich": "zeichne",
+                    "du": "zeichnest",
+                    "er": "zeichnet",
+                    "es": "zeichnet",
+                    "sie_singular": "zeichnet",
+                    "xier": "zeichnet",
+                    "wir": "zeichnen",
+                    "ihr": "zeichnet",
+                    "sie_plural": "zeichnen",
+                    "Sie": "zeichnen"
+                }
+            },
+            "springen": {
+                "present": {
+                    "ich": "springe",
+                    "du": "springst",
+                    "er": "springt",
+                    "es": "springt",
+                    "sie_singular": "springt",
+                    "xier": "springt",
+                    "wir": "springen",
+                    "ihr": "springt",
+                    "sie_plural": "springen",
+                    "Sie": "springen"
+                }
+            },
+            "rennen": {
+                "present": {
+                    "ich": "renne",
+                    "du": "rennst",
+                    "er": "rennt",
+                    "es": "rennt",
+                    "sie_singular": "rennt",
+                    "xier": "rennt",
+                    "wir": "rennen",
+                    "ihr": "rennt",
+                    "sie_plural": "rennen",
+                    "Sie": "rennen"
+                }
+            },
+            "fliegen": {
+                "present": {
+                    "ich": "fliege",
+                    "du": "fliegst",
+                    "er": "fliegt",
+                    "es": "fliegt",
+                    "sie_singular": "fliegt",
+                    "xier": "fliegt",
+                    "wir": "fliegen",
+                    "ihr": "fliegt",
+                    "sie_plural": "fliegen",
+                    "Sie": "fliegen"
+                }
+            },
+            "laufen": {
+                "present": {
+                    "ich": "laufe",
+                    "du": "läufst",
+                    "er": "läuft",
+                    "es": "läuft",
+                    "sie_singular": "läuft",
+                    "xier": "läuft",
+                    "wir": "laufen",
+                    "ihr": "lauft",
+                    "sie_plural": "laufen",
+                    "Sie": "laufen"
+                }
+            },
+            "schwimmen": {
+                "present": {
+                    "ich": "schwimme",
+                    "du": "schwimmst",
+                    "er": "schwimmt",
+                    "es": "schwimmt",
+                    "sie_singular": "schwimmt",
+                    "xier": "schwimmt",
+                    "wir": "schwimmen",
+                    "ihr": "schwimmt",
+                    "sie_plural": "schwimmen",
+                    "Sie": "schwimmen"
+                }
+            },
+            "beginnen": {
+                "present": {
+                    "ich": "beginne",
+                    "du": "beginnst",
+                    "er": "beginnt",
+                    "es": "beginnt",
+                    "sie_singular": "beginnt",
+                    "xier": "beginnt",
+                    "wir": "beginnen",
+                    "ihr": "beginnt",
+                    "sie_plural": "beginnen",
+                    "Sie": "beginnen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie bekommen eine Küche, ein Wohnzimmer, einen Garten und neun Gegenstände.",
+            "Nehmen Sie den ersten Gegenstand und stellen Sie ihn zuerst in die Küche, dann ins Wohnzimmer und dann in den Garten.",
+            "Sprechen Sie laut und nutzen Sie das Beispiel.",
+            "Ich stelle das Auto in die Küche.",
+            "Das Auto steht in der Küche.",
+            "Ich stelle das Auto in das Wohnzimmer.",
+            "Das Auto steht im Wohnzimmer.",
+            "Ich stelle das Auto in das den Garten.",
+            "Das Auto steht im Garten.",
+            "Die andere Person hört zu und stoppt Sie, wenn Sie einen Fehler machen.",
+            "Dann beginnen Sie neu.",
+            "[Kaffee Tasse] steht, das Buch.",
+            "Das Handy liegt in der Küche.",
+            "Kaffee Tasse steht, das Buch.",
+            "Das Handy liegt im (in dem) Garten.",
+            ", legt das Buch/das Handy ins (in das) Wohnzimmer.",
+            "Hören und zeichnen Sie die Gegenstände.",
+            "Ergänzen Sie die Probleme.",
+            "In der Mitte steht ein Tisch.",
+            "Auf dem Tisch liegen drei Bücher und ein Teller.",
+            "Über dem Tisch hängt eine Lampe.",
+            "Links steht ein Sofa.",
+            "Auf dem Sofa steht ein Stuhl.",
+            "Rechts hängt ein Bild an der Wand.",
+            "Unter dem Bild steht ein Regal.",
+            "Das Zimmer ist unordentlich.",
+            "Hier sollte man aufräumen.",
+            "Die Wäsche ist sauber und liegt auf dem Sofa.",
+            "Sie sollte in den Schrank.",
+            "Und sauber machen sollte man auch.",
+            "Der Boden, das Regal und das Messer sind schmutzig.",
+            "Der Boden, das Regal und der Teller sind schmutzig.",
+            "Der Stuhl steht auf dem Sofa.",
+            "Die Bücher und der Teller liegen auf dem Tisch.",
+            "Die Wäsche ist sauber, aber sie liegt auf dem Sofa.",
+            "Was machen Sie mit den Problemen aus Teil 2?",
+            "Ich wische den Boden.",
+            "Ich putze das Regal.",
+            "Ich wasche den Teller ab.",
+            "Ich räume das Zimmer auf.",
+            "Ich stelle den Stuhl neben das Sofa.",
+            "Ich lege die Bücher ins Regal.",
+            "Ich stelle den Teller in den Schrank.",
+            "Ich hänge/lege die Wäsche in den Schrank.",
+            "Lesen Sie die beiden Sätze.",
+            "Eine Person macht die Bewegungen.",
+            "Was ist anders?",
+            "Ich tanze im Kursraum.",
+            "Ich tanze in den Kursraum.",
+            "Ordnen Sie die Bilder den Sätzen zu.",
+            "Ich fahre in die Stadt.",
+            "Das ist Bild 9.",
+            "Ich fahre in der Stadt.",
+            "Das ist Bild 13.",
+            "Ich laufe über dem Canyon.",
+            "Das ist Bild 7.",
+            "Ich laufe über den Canyon.",
+            "Das ist Bild 2.",
+            "Ich tanze in den Garten.",
+            "Das ist Bild 14.",
+            "Ich tanze im Garten.",
+            "Das ist Bild 10.",
+            "Ich springe auf das Sofa.",
+            "Das ist Bild 5.",
+            "Ich springe auf dem Sofa.",
+            "Das ist Bild 15.",
+            "Ich laufe vor der Wand.",
+            "Das ist Bild 1.",
+            "Ich laufe vor die Wand.",
+            "Das ist Bild 3.",
+            "Ich schwimme im Meer.",
+            "Das ist Bild 12.",
+            "Ich laufe in das Meer.",
+            "Das ist Bild 8.",
+            "Ich laufe im Meer.",
+            "Das ist Bild 6.",
+            "Ich gehe in das Flugzeug.",
+            "Das ist Bild 4.",
+            "Ich gehe in dem Flugzeug.",
+            "Das ist Bild 11.",
+            "Stellen Sie zu den Fotos Fragen mit \"wo\" und \"wohin\".",
+            "Ich fahre in die Stadt Wohin fährst du?",
+            "Ich fahre in der Stadt Wo fährst du?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

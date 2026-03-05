@@ -1,0 +1,707 @@
+{
+    "unit": "18",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 18,
+        "prerequisite": "1-17"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:dative",
+            "case:genitive",
+            "sentence_type:subordinate_weil",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Wann-Fragen stellen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "eine Zugreise"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "frühstücken",
+                "pos": "VERB",
+                "translation": "to have breakfast"
+            },
+            {
+                "word": "fahren",
+                "pos": "VERB",
+                "translation": "to drive; ride",
+                "frequency": 215,
+                "cefr": "A1"
+            },
+            {
+                "word": "beginnen",
+                "pos": "VERB",
+                "translation": "to begin, start",
+                "frequency": 251,
+                "cefr": "A1"
+            },
+            {
+                "word": "sehen",
+                "pos": "VERB",
+                "translation": "to see; watch",
+                "frequency": 79,
+                "cefr": "A1"
+            },
+            {
+                "word": "aufschreiben",
+                "pos": "VERB",
+                "translation": "to note; write down",
+                "frequency": 3748,
+                "cefr": "B1"
+            },
+            {
+                "word": "abfahren",
+                "pos": "VERB",
+                "translation": "to depart",
+                "frequency": 12645,
+                "cefr": "A1"
+            },
+            {
+                "word": "herunterladen",
+                "pos": "VERB",
+                "translation": "to download",
+                "frequency": 14312,
+                "cefr": "A2"
+            },
+            {
+                "word": "aufladen",
+                "pos": "VERB",
+                "translation": "to charge",
+                "frequency": 18628,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Gleis",
+                "pos": "NOUN",
+                "translation": "platform",
+                "frequency": 7155,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Zug",
+                "pos": "NOUN",
+                "translation": "train; procession, parade",
+                "frequency": 675,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Bahnhof",
+                "pos": "NOUN",
+                "translation": "train station",
+                "frequency": 2027,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Reise",
+                "pos": "NOUN",
+                "translation": "journey, trip",
+                "frequency": 734,
+                "cefr": "A1"
+            },
+            {
+                "word": "Reihe",
+                "pos": "NOUN",
+                "translation": "row",
+                "frequency": 738,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Abend",
+                "pos": "NOUN",
+                "translation": "evening",
+                "frequency": 342,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Zahn",
+                "pos": "NOUN",
+                "translation": "tooth",
+                "frequency": 1871,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Nachricht",
+                "pos": "NOUN",
+                "translation": "message; news",
+                "frequency": 1218,
+                "cefr": "A2"
+            },
+            {
+                "word": "Europa",
+                "pos": "NOUN",
+                "translation": "Europe",
+                "frequency": 294,
+                "cefr": "A1"
+            },
+            {
+                "word": "durch",
+                "pos": "PREP",
+                "translation": "through",
+                "frequency": 55,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Zugfahrplan",
+                "pos": "NOUN"
+            },
+            {
+                "word": "wohin",
+                "pos": "ADV",
+                "frequency": 1811,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Variation",
+                "pos": "NOUN",
+                "frequency": 4283
+            },
+            {
+                "word": "mehr",
+                "pos": "DET",
+                "frequency": 52,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Link",
+                "pos": "NOUN",
+                "frequency": 5611,
+                "cefr": "A2"
+            },
+            {
+                "word": "dieser",
+                "pos": "DET",
+                "frequency": 24,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Achtung",
+                "pos": "NOUN",
+                "frequency": 2954,
+                "cefr": "A1"
+            },
+            {
+                "word": "der ICE",
+                "pos": "NOUN",
+                "frequency": 9488,
+                "cefr": "A2"
+            },
+            {
+                "word": "Köln",
+                "pos": "PROPN",
+                "frequency": 5943
+            },
+            {
+                "word": "der Hauptbahnhof",
+                "pos": "NOUN",
+                "frequency": 6766,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Abfahrt",
+                "pos": "NOUN",
+                "frequency": 4417,
+                "cefr": "A1"
+            },
+            {
+                "word": "einfahren",
+                "pos": "VERB",
+                "frequency": 7640
+            },
+            {
+                "word": "die Weiterfahrt",
+                "pos": "NOUN",
+                "frequency": 22134
+            },
+            {
+                "word": "planen",
+                "pos": "VERB",
+                "frequency": 579,
+                "cefr": "A2"
+            },
+            {
+                "word": "rückwärts",
+                "pos": "ADV",
+                "frequency": 11528,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Teil",
+                "pos": "NOUN",
+                "frequency": 198,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Snack",
+                "pos": "NOUN",
+                "frequency": 20996,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Frühstück",
+                "pos": "NOUN",
+                "frequency": 36705,
+                "cefr": "A1"
+            },
+            {
+                "word": "putzen",
+                "pos": "VERB",
+                "frequency": 3586,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Bahn-App",
+                "pos": "NOUN"
+            },
+            {
+                "word": "senden",
+                "pos": "VERB",
+                "frequency": 3243,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Sprachnachricht",
+                "pos": "NOUN"
+            },
+            {
+                "word": "wenn",
+                "pos": "SCONJ",
+                "frequency": 42,
+                "cefr": "A2"
+            },
+            {
+                "word": "ziemlich",
+                "pos": "ADV",
+                "frequency": 605,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Hotel",
+                "pos": "NOUN",
+                "frequency": 772,
+                "cefr": "A1"
+            },
+            {
+                "word": "vermissen",
+                "pos": "VERB",
+                "frequency": 2442,
+                "cefr": "B1"
+            },
+            {
+                "word": "dich",
+                "pos": "PRON",
+                "frequency": 217,
+                "cefr": "A1"
+            },
+            {
+                "word": "mega",
+                "pos": "ADV"
+            },
+            {
+                "word": "genießen",
+                "pos": "VERB",
+                "frequency": 1557,
+                "cefr": "B1"
+            },
+            {
+                "word": "früh",
+                "pos": "ADV",
+                "frequency": 366,
+                "cefr": "A2"
+            },
+            {
+                "word": "nebelig",
+                "pos": "ADV"
+            },
+            {
+                "word": "hoffentlich",
+                "pos": "ADV",
+                "frequency": 2368,
+                "cefr": "A2"
+            },
+            {
+                "word": "wow",
+                "pos": "ADV"
+            },
+            {
+                "word": "einfach",
+                "pos": "ADV",
+                "frequency": 131,
+                "cefr": "A1"
+            },
+            {
+                "word": "Wien",
+                "pos": "PROPN",
+                "frequency": 5887
+            },
+            {
+                "word": "total",
+                "pos": "ADV",
+                "frequency": 1021,
+                "cefr": "A2"
+            },
+            {
+                "word": "erstmal",
+                "pos": "ADV",
+                "frequency": 6892
+            },
+            {
+                "word": "das Restaurant",
+                "pos": "NOUN",
+                "frequency": 1802,
+                "cefr": "A1"
+            },
+            {
+                "word": "paar",
+                "pos": "DET",
+                "frequency": 241,
+                "cefr": "B1"
+            },
+            {
+                "word": "kaufen",
+                "pos": "VERB",
+                "frequency": 506,
+                "cefr": "A1"
+            },
+            {
+                "word": "morgens",
+                "pos": "ADV",
+                "frequency": 621,
+                "cefr": "A2"
+            },
+            {
+                "word": "enden",
+                "pos": "VERB",
+                "frequency": 1313,
+                "cefr": "A1"
+            },
+            {
+                "word": "leider",
+                "pos": "ADV",
+                "frequency": 643,
+                "cefr": "A1"
+            },
+            {
+                "word": "wunderschön",
+                "pos": "ADV",
+                "frequency": 3097,
+                "cefr": "B1"
+            },
+            {
+                "word": "zurück",
+                "pos": "ADV",
+                "frequency": 1683,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Haus",
+                "pos": "NOUN",
+                "frequency": 147,
+                "cefr": "A1"
+            },
+            {
+                "word": "wählen",
+                "pos": "VERB",
+                "frequency": 636,
+                "cefr": "A2"
+            },
+            {
+                "word": "nur",
+                "pos": "ADV",
+                "frequency": 39,
+                "cefr": "A1"
+            },
+            {
+                "word": "zwischen",
+                "pos": "ADP",
+                "frequency": 105,
+                "cefr": "A1"
+            },
+            {
+                "word": "rufen",
+                "pos": "VERB",
+                "frequency": 530,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "frühstücken": {
+                "present": {
+                    "ich": "frühstücke",
+                    "du": "frühstückst",
+                    "er": "frühstückt",
+                    "es": "frühstückt",
+                    "sie_singular": "frühstückt",
+                    "xier": "frühstückt",
+                    "wir": "frühstücken",
+                    "ihr": "frühstückt",
+                    "sie_plural": "frühstücken",
+                    "Sie": "frühstücken"
+                }
+            },
+            "fahren": {
+                "present": {
+                    "ich": "fahre",
+                    "du": "fährst",
+                    "er": "fährt",
+                    "es": "fährt",
+                    "sie_singular": "fährt",
+                    "xier": "fährt",
+                    "wir": "fahren",
+                    "ihr": "fahrt",
+                    "sie_plural": "fahren",
+                    "Sie": "fahren"
+                }
+            },
+            "beginnen": {
+                "present": {
+                    "ich": "beginne",
+                    "du": "beginnst",
+                    "er": "beginnt",
+                    "es": "beginnt",
+                    "sie_singular": "beginnt",
+                    "xier": "beginnt",
+                    "wir": "beginnen",
+                    "ihr": "beginnt",
+                    "sie_plural": "beginnen",
+                    "Sie": "beginnen"
+                }
+            },
+            "sehen": {
+                "present": {
+                    "ich": "sehe",
+                    "du": "siehst",
+                    "er": "sieht",
+                    "es": "sieht",
+                    "sie_singular": "sieht",
+                    "xier": "sieht",
+                    "wir": "sehen",
+                    "ihr": "seht",
+                    "sie_plural": "sehen",
+                    "Sie": "sehen"
+                }
+            },
+            "aufschreiben": {
+                "present": {
+                    "ich": "schreibe auf",
+                    "du": "schreibst auf",
+                    "er": "schreibt auf",
+                    "es": "schreibt auf",
+                    "sie_singular": "schreibt auf",
+                    "xier": "schreibt auf",
+                    "wir": "schreiben auf",
+                    "ihr": "schreibt auf",
+                    "sie_plural": "schreiben auf",
+                    "Sie": "schreiben auf"
+                }
+            },
+            "abfahren": {
+                "present": {
+                    "ich": "fahre ab",
+                    "du": "fährst ab",
+                    "er": "fährt ab",
+                    "es": "fährt ab",
+                    "sie_singular": "fährt ab",
+                    "xier": "fährt ab",
+                    "wir": "fahren ab",
+                    "ihr": "fahrt ab",
+                    "sie_plural": "fahren ab",
+                    "Sie": "fahren ab"
+                }
+            },
+            "herunterladen": {
+                "present": {
+                    "ich": "lade herunter",
+                    "du": "lädst herunter",
+                    "er": "lädt herunter",
+                    "es": "lädt herunter",
+                    "sie_singular": "lädt herunter",
+                    "xier": "lädt herunter",
+                    "wir": "laden herunter",
+                    "ihr": "ladet herunter",
+                    "sie_plural": "laden herunter",
+                    "Sie": "laden herunter"
+                }
+            },
+            "aufladen": {
+                "present": {
+                    "ich": "lade auf",
+                    "du": "lädst auf",
+                    "er": "lädt auf",
+                    "es": "lädt auf",
+                    "sie_singular": "lädt auf",
+                    "xier": "lädt auf",
+                    "wir": "laden auf",
+                    "ihr": "ladet auf",
+                    "sie_plural": "laden auf",
+                    "Sie": "laden auf"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie sind in Braunschweig.",
+            "Wann fährt der Zug ab?",
+            "Wo fährt der Zug ab?",
+            "Wohin fährt der Zug?",
+            "Axel: Wann fährt der Zug nach Bielefeld ab?",
+            "Der Zug nach Bielefeld fährt um fünfzehn Uhr zwanzig ab.",
+            "Wo fährt er ab?",
+            "Er fährt von Gleis fünf ab.",
+            "Wohin fährt der Zug um fünfzehn Uhr vierundfünfzig?",
+            "Der Zug um fünfzehn Uhr vierundfünfzig fährt nach Hannover.",
+            "Er fährt von Gleis vier ab.",
+            "Mehr Städte und Zeiten finden Sie unter dem Link zu dieser Aktivität.",
+            "Wann fährt der Zug nach X ab?",
+            "Der Zug nach X fährt um X Uhr ab.",
+            "Der Zug fährt von Gleis X ab.",
+            "Wohin fährt der Zug um X?",
+            "Der Zug um X fährt nach X.",
+            "Hören Sie zu und ergänzen Sie die Informationen:",
+            "Eins Achtung, ICE nach Köln Hauptbahnhof",
+            "Um 7:38 Uhr fährt heute von Gleis 7b ab.",
+            "Zwei Regionalexpress nach Wiesbaden, Abfahrt 13:25 Uhr von Gleis 2.",
+            "27 Uhr von Gleis 1c ab.",
+            "Fünf Eurocity EC234 aus Budapest zur Weiterfahrt nach Berlin Ostbahnhof um 15:19 Uhr heute von Gleis 12.",
+            "Der Zug fährt ab.",
+            "Ihr Zug fährt um zehn Uhr ab.",
+            "Planen Sie den Morgen.",
+            "Schreiben Sie die Uhrzeiten für die zehn Aktivitäten auf.",
+            "Planen Sie rückwärts!",
+            "Wann lädst du dein Handy auf?",
+            "Wann ziehst du deine Kleidung an?",
+            "Wann kaufst du Snacks ein?",
+            "Wann rufst du die beste Freundin an?",
+            "Wann frühstückst du?",
+            "Wann putzt du die Zähne?",
+            "Wann lädst du die Bahn-App herunter?",
+            "Wann kommst du am Bahnhof an?",
+            "Stellen Sie die Fragen aus Teil 2.",
+            "Mit den Uhrzeiten aus Teil 1.",
+            "Wann stehst du auf?",
+            "Ich stehe um acht Uhr auf.",
+            "Ich lade um X Uhr mein Handy auf.",
+            "Ich ziehe um X Uhr meine Kleidung an.",
+            "Ich kaufe um X Uhr Snacks ein.",
+            "Ich rufe um X Uhr die beste Freundin an.",
+            "Ich frühstücke um X Uhr.",
+            "Ich putze um X Uhr die Zähne.",
+            "Ich lade um X Uhr die Bahn-App herunter.",
+            "Ich komme um X Uhr am Bahnhof an.",
+            "Die Reise beginnt.",
+            "Hören Sie zu.",
+            "Schreiben Sie die Tage, Uhrzeiten und das Wetter auf.",
+            "Hey Zeynep.",
+            "Es ist Montag um Viertel nach vier und ich beginne meine Reise durch Europa.",
+            "Ich bin in London und es regnet.",
+            "Ich sende wieder eine Sprachnachricht, wenn ich in Paris bin.",
+            "Hallo Zeynep.",
+            "Ich bin endlich in Paris.",
+            "Es ist Montag um halb elf und es ist ziemlich windig hier am Bahnhof.",
+            "Ich gehe jetzt in mein Hotel und melde mich morgen wieder.",
+            "Danke für deine Nachricht.",
+            "Ich vermisse dich auch.",
+            "Paris war super, aber es war schon Mittwoch um viertel nach zwei und ich bin in Amsterdam.",
+            "Es ist mega sonnig hier und ich genieße das Wetter.",
+            "Es ist Freitag und es ist bewölkt in Berlin.",
+            "Bis morgen.",
+            "Es war toll, dich in Berlin zu sehen.",
+            "Es ist schon wieder Montag früh um 6 Uhr und ich fahre mit dem Zug nach Prag.",
+            "Es ist momentan nebelig in Prag.",
+            "Hoffentlich ist das Wetter besser, wenn ich ankomme.",
+            "Wow, Prag war einfach mega.",
+            "Es ist Dienstag Abend um zwanzig nach sieben und ich bin endlich in Wien.",
+            "Es ist total sonnig hier.",
+            "Ich gehe jetzt erstmal in ein Restaurant und dann ein paar Snacks kaufen.",
+            "Hey Zepnep.",
+            "Es ist Donnerstag um 6 Uhr morgens.",
+            "Ich bin in Budapest und meine Reise durch Europa endet.",
+            "Leider blitzt und donnert es in Budapest.",
+            "Die Stadt ist wunderschön, aber leider ist das Wetter nicht so toll.",
+            "Ich freue mich jetzt auf den Zug zurück nach Hause.",
+            "Bis bald!",
+            "Schreiben Sie Uhrzeiten in die Uhren.",
+            "Wenn Sie Ihre Uhrzeit hören, markieren Sie die Uhr.",
+            "Rufen Sie \"Bingo\", wenn Sie eine Reihe haben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

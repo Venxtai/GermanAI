@@ -1,0 +1,348 @@
+{
+    "unit": "O8",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 8,
+        "prerequisite": "core 1-104, O1-O7"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative"
+        ],
+        "new_rules_in_this_unit": [
+            "Use 'An deiner/Ihrer Stelle würde ichÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦' to make suggestions meaning 'If I were you, I wouldÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦'."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "deutsche Freizeitparks recherchieren und präsentieren",
+            "Vorschläge mit dem Konjunktiv II machen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Freizeitparks"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "entwerfen", "pos": "VERB", "translation": "to design, draft", "frequency": 3272 },
+            { "word": "repräsentieren", "pos": "VERB", "translation": "to represent" },
+            { "word": "vermitteln", "pos": "VERB", "translation": "to convey (a message, idea, etc.)", "frequency": 1395 },
+            { "word": "die Anzahl", "pos": "NOUN", "translation": "quantity; count", "frequency": 853, "cefr": "B1" },
+            { "word": "der Park", "pos": "NOUN", "translation": "park", "frequency": 2141, "cefr": "A2" },
+            { "word": "der Freizeitpark", "pos": "NOUN", "translation": "amusement park", "frequency": 16495, "cefr": "B2" },
+            { "word": "der Bereich", "pos": "NOUN", "translation": "sector; area", "frequency": 339, "cefr": "B1" },
+            { "word": "die Darstellung", "pos": "NOUN", "translation": "depiction, representation", "frequency": 990, "cefr": "B1" },
+            { "word": "der Western", "pos": "NOUN", "translation": "western [film]", "frequency": 8797, "cefr": "A1" },
+            { "word": "der*die Berater*in", "pos": "NOUN", "translation": "adviser; consultant; mentor", "frequency": 3591 },
+            { "word": "der Vorschlag", "pos": "NOUN", "translation": "suggestion, recommendation; proposal", "frequency": 1619, "cefr": "A2" },
+            { "word": "der Ratschlag", "pos": "NOUN", "translation": "advice", "frequency": 9602, "cefr": "B1" },
+            { "word": "An deiner Stelle â€¦", "pos": "PHRASE", "translation": "If I were you â€¦" },
+            { "word": "im Uhrzeigersinn", "pos": "PHRASE", "translation": "clockwise" },
+            { "word": "miteinander", "pos": "ADJ", "translation": "with each other", "frequency": 716, "cefr": "B1" },
+            { "word": "kulturell", "pos": "ADJ", "translation": "cultural", "frequency": 1033, "cefr": "A1" },
+            { "word": "generell", "pos": "ADJ", "translation": "general, across-the-board", "frequency": 1933 },
+            { "word": "regional", "pos": "ADJ", "translation": "regional, local", "frequency": 2011, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Kugellager", "pos": "NOUN" },
+            { "word": "die Kugellager-Methode", "pos": "NOUN" },
+            { "word": "das Thema", "pos": "NOUN", "frequency": 298, "cefr": "A1" },
+            { "word": "die Recherche", "pos": "NOUN", "frequency": 4627, "cefr": "B1" },
+            { "word": "Leipzig", "pos": "PROPN", "frequency": 6017 },
+            { "word": "das Dinosaurierland", "pos": "NOUN" },
+            { "word": "der Erlebnispark", "pos": "NOUN", "frequency": 41720 },
+            { "word": "der Filmpark", "pos": "NOUN" },
+            { "word": "ravensburger", "pos": "ADJ", "frequency": 30329 },
+            { "word": "das Spieleland", "pos": "NOUN" },
+            { "word": "Saalfeld", "pos": "ADJ", "frequency": 28948 },
+            { "word": "die Feengrotte", "pos": "NOUN" },
+            { "word": "stereotypisch", "pos": "ADV" },
+            { "word": "fehlen", "pos": "VERB", "frequency": 420, "cefr": "A1" },
+            { "word": "der*die Designer*innen", "pos": "NOUN", "frequency": 8730 },
+            { "word": "die Image", "pos": "NOUN", "frequency": 3783 },
+            { "word": "das USA-Thema", "pos": "NOUN" },
+            { "word": "der Themenpark", "pos": "NOUN", "frequency": 46274 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "entwerfen": {
+                "present": {
+                    "ich": "entwerfe",
+                    "du": "entwirfst",
+                    "er": "entwirft",
+                    "es": "entwirft",
+                    "sie_singular": "entwirft",
+                    "xier": "entwirft",
+                    "wir": "entwerfen",
+                    "ihr": "entwerft",
+                    "sie_plural": "entwerfen",
+                    "Sie": "entwerfen"
+                },
+                "Perfekt": {
+                    "ich": "habe entworfen",
+                    "du": "hast entworfen",
+                    "er": "hat entworfen",
+                    "es": "hat entworfen",
+                    "sie_singular": "hat entworfen",
+                    "xier": "hat entworfen",
+                    "wir": "haben entworfen",
+                    "ihr": "habt entworfen",
+                    "sie_plural": "haben entworfen",
+                    "Sie": "haben entworfen"
+                },
+                "Futur_I": {
+                    "ich": "werde entwerfen",
+                    "du": "wirst entwerfen",
+                    "er": "wird entwerfen",
+                    "es": "wird entwerfen",
+                    "sie_singular": "wird entwerfen",
+                    "xier": "wird entwerfen",
+                    "wir": "werden entwerfen",
+                    "ihr": "werdet entwerfen",
+                    "sie_plural": "werden entwerfen",
+                    "Sie": "werden entwerfen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde entwerfen",
+                    "du": "würdest entwerfen",
+                    "er": "würde entwerfen",
+                    "es": "würde entwerfen",
+                    "sie_singular": "würde entwerfen",
+                    "xier": "würde entwerfen",
+                    "wir": "würden entwerfen",
+                    "ihr": "würdet entwerfen",
+                    "sie_plural": "würden entwerfen",
+                    "Sie": "würden entwerfen"
+                },
+                "imperative": {
+                    "du": "entwirf",
+                    "ihr": "entwerft",
+                    "Sie": "entwerfen Sie"
+                }
+            },
+            "repräsentieren": {
+                "present": {
+                    "ich": "repräsentiere",
+                    "du": "repräsentierst",
+                    "er": "repräsentiert",
+                    "es": "repräsentiert",
+                    "sie_singular": "repräsentiert",
+                    "xier": "repräsentiert",
+                    "wir": "repräsentieren",
+                    "ihr": "repräsentiert",
+                    "sie_plural": "repräsentieren",
+                    "Sie": "repräsentieren"
+                },
+                "Perfekt": {
+                    "ich": "habe repräsentiert",
+                    "du": "hast repräsentiert",
+                    "er": "hat repräsentiert",
+                    "es": "hat repräsentiert",
+                    "sie_singular": "hat repräsentiert",
+                    "xier": "hat repräsentiert",
+                    "wir": "haben repräsentiert",
+                    "ihr": "habt repräsentiert",
+                    "sie_plural": "haben repräsentiert",
+                    "Sie": "haben repräsentiert"
+                },
+                "Futur_I": {
+                    "ich": "werde repräsentieren",
+                    "du": "wirst repräsentieren",
+                    "er": "wird repräsentieren",
+                    "es": "wird repräsentieren",
+                    "sie_singular": "wird repräsentieren",
+                    "xier": "wird repräsentieren",
+                    "wir": "werden repräsentieren",
+                    "ihr": "werdet repräsentieren",
+                    "sie_plural": "werden repräsentieren",
+                    "Sie": "werden repräsentieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde repräsentieren",
+                    "du": "würdest repräsentieren",
+                    "er": "würde repräsentieren",
+                    "es": "würde repräsentieren",
+                    "sie_singular": "würde repräsentieren",
+                    "xier": "würde repräsentieren",
+                    "wir": "würden repräsentieren",
+                    "ihr": "würdet repräsentieren",
+                    "sie_plural": "würden repräsentieren",
+                    "Sie": "würden repräsentieren"
+                },
+                "imperative": {
+                    "du": "repräsentiere",
+                    "ihr": "repräsentiert",
+                    "Sie": "repräsentieren Sie"
+                }
+            },
+            "vermitteln": {
+                "present": {
+                    "ich": "vermittle",
+                    "du": "vermittelst",
+                    "er": "vermittelt",
+                    "es": "vermittelt",
+                    "sie_singular": "vermittelt",
+                    "xier": "vermittelt",
+                    "wir": "vermitteln",
+                    "ihr": "vermittelt",
+                    "sie_plural": "vermitteln",
+                    "Sie": "vermitteln"
+                },
+                "Perfekt": {
+                    "ich": "habe vermittelt",
+                    "du": "hast vermittelt",
+                    "er": "hat vermittelt",
+                    "es": "hat vermittelt",
+                    "sie_singular": "hat vermittelt",
+                    "xier": "hat vermittelt",
+                    "wir": "haben vermittelt",
+                    "ihr": "habt vermittelt",
+                    "sie_plural": "haben vermittelt",
+                    "Sie": "haben vermittelt"
+                },
+                "Futur_I": {
+                    "ich": "werde vermitteln",
+                    "du": "wirst vermitteln",
+                    "er": "wird vermitteln",
+                    "es": "wird vermitteln",
+                    "sie_singular": "wird vermitteln",
+                    "xier": "wird vermitteln",
+                    "wir": "werden vermitteln",
+                    "ihr": "werdet vermitteln",
+                    "sie_plural": "werden vermitteln",
+                    "Sie": "werden vermitteln"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde vermitteln",
+                    "du": "würdest vermitteln",
+                    "er": "würde vermitteln",
+                    "es": "würde vermitteln",
+                    "sie_singular": "würde vermitteln",
+                    "xier": "würde vermitteln",
+                    "wir": "würden vermitteln",
+                    "ihr": "würdet vermitteln",
+                    "sie_plural": "würden vermitteln",
+                    "Sie": "würden vermitteln"
+                },
+                "imperative": {
+                    "du": "vermittle",
+                    "ihr": "vermittelt",
+                    "Sie": "vermitteln Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            ": Bilden Sie einen Innen - und einen Außensitzkreis.",
+            "Sprechen Sie zwei Minuten mit einer Person.",
+            "Dann dreht sich der Außenkreis im Uhrzeigersinn.",
+            "Stellen Sie die Fragen und machen Sie Notizen.",
+            "Welche Freizeitparks hast du schon besucht?",
+            "Was hast du in dem Park gut oder schlecht gefunden?",
+            "Hat der Freizeitpark Themenbereiche?",
+            "Magst du Freizeitparks generell?",
+            "Sie bekommen eine Nummer.",
+            "Recherchieren Sie den Park Ihrer Nummer.",
+            "Suchen Sie Informationen über Ihren Park, zum Beispiel Anzahl der Besucher*innen, wo der Park ist, seit wann es ihn gibt und was es dort zu sehen gibt.",
+            "Notieren Sie das Thema oder die Themen im Park.",
+            "Jede Person hat einen anderen Park recherchiert.",
+            "Eine Person präsentiert die wichtigsten Infos zu ihrem Park in der Gruppe und zeigt Bilder.",
+            "Dann stellt die Person den anderen Personen Fragen.",
+            "Würdet ihr den Park gerne besuchen?",
+            "Wenn ja, was würdet ihr dort machen?",
+            "Wenn nein, was könnte man an dem Park verändern, damit er euch besser gefallen würde?",
+            "Deutschland und die USA in Freizeitparks",
+            "Gehen Sie auf die Webseite für Ihre Gruppe und beantworten Sie die Fragen.",
+            "Wie sehen die Häuser und Straßen aus?",
+            "Denken Sie, dass die Darstellung korrekt oder stereotypisch ist?",
+            "Was oder wen repräsentiert der Park?",
+            "Was oder wer fehlt?",
+            "Warum haben die Designer*innen diese Darstellung vielleicht gewählt?",
+            "Welches Image möchten sie vermitteln?",
+            "Sehen Sie sich die Themenbereiche „Germany und „Oktoberfest an.",
+            "Sehen Sie sich die Westernstadt {Western Stadt und Shows an.",
+            "Informieren Sie die anderen Gruppen kurz über Ihre Diskussion.",
+            "Machen Sie Vorschläge dazu, was die Designer*innen anders und/oder besser machen könnten.",
+            "An ihrer Stelle würde ich (nicht) … mehrere kulturelle Elemente, regionale Unterschiede etc.",
+            "Sie sind Kulturberater*in {Kultur",
+            "Berater für einen Park.",
+            "Wie würden Sie ein Land, das Sie sehr gut kennen, darstellen?",
+            "Machen Sie eine Skizze und beantworten Sie die Fragen.",
+            "Ist ihr Bereich historisch oder modern, realistisch oder abstrakt?",
+            "Was könnten Gäst *innen dort sehen, machen, essen und trinken?",
+            "Sprechen Sie dann über die Ideen und geben Sie sich Ratschläge.",
+            "Sagen Sie, was man noch anders machen könnte."
+        ],
+        "templated": []
+    }
+}

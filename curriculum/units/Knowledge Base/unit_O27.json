@@ -1,0 +1,426 @@
+{
+    "unit": "O27",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 27,
+        "prerequisite": "core 1-104, O1-O26"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl"
+        ],
+        "new_rules_in_this_unit": [
+            "Use connecting adverbs deshalb/also (therefore/so) and trotzdem (nevertheless) to link main clauses; they count as position 1 (or go in middle field), with the verb in position 2."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Tweets interpretieren und selbst schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "#MeTwo und soziale Medien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "fordern", "pos": "VERB", "translation": "to demand", "frequency": 599, "cefr": "B1" },
+            { "word": "verwenden", "pos": "VERB", "translation": "to utilize", "frequency": 538, "cefr": "B1" },
+            { "word": "führen", "pos": "VERB", "translation": "to lead (to)" },
+            { "word": "der Alltag", "pos": "NOUN", "translation": "everyday life", "frequency": 1709, "cefr": "B1" },
+            { "word": "die Krankenversicherung", "pos": "NOUN", "translation": "health insurance", "frequency": 8276, "cefr": "A1" },
+            { "word": "die Mannschaft", "pos": "NOUN", "translation": "team (sports)", "frequency": 1099, "cefr": "A2" },
+            { "word": "die Meisterschaft", "pos": "NOUN", "translation": "championship", "frequency": 4343, "cefr": "B2" },
+            { "word": "das Publikum", "pos": "NOUN", "translation": "audience", "frequency": 1368, "cefr": "B1" },
+            { "word": "die Debatte", "pos": "NOUN", "translation": "debate", "frequency": 1478, "cefr": "A1" },
+            { "word": "der Mindestlohn", "pos": "NOUN", "translation": "minimum wage", "frequency": 4992, "cefr": "A1" },
+            { "word": "die Integration", "pos": "NOUN", "translation": "integration", "frequency": 1282, "cefr": "B1" },
+            { "word": "die Feindlichkeit", "pos": "NOUN", "translation": "hostility", "frequency": 1, "cefr": "A1" },
+            { "word": "die Schuld", "pos": "NOUN", "translation": "fault, blame, guilt", "frequency": 1583, "cefr": "B1" },
+            { "word": "die Schulden", "pos": "NOUN", "translation": "debt", "frequency": 2853, "cefr": "B1" },
+            { "word": "schockiert", "pos": "ADJ", "translation": "shocked, outraged", "frequency": 22707 },
+            { "word": "schockierend", "pos": "ADJ", "translation": "shocking", "frequency": 22247 },
+            { "word": "gesellschaftlich", "pos": "ADJ", "translation": "societal", "frequency": 1151 },
+            { "word": "aktuell", "pos": "ADJ", "translation": "recent, current", "frequency": 568, "cefr": "A2" },
+            { "word": "vollständig", "pos": "ADJ", "translation": "complete, all, entire, full" },
+            { "word": "offen", "pos": "ADJ", "translation": "open; open-minded", "frequency": 355, "cefr": "A2" },
+            { "word": "doppelt", "pos": "ADJ", "translation": "double, twice; two-fold", "frequency": 1509, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "prechen", "pos": "VERB" },
+            { "word": "posten", "pos": "VERB", "frequency": 3238 },
+            { "word": "reposten", "pos": "VERB" },
+            { "word": "wütend", "pos": "ADV", "frequency": 2586, "cefr": "B1" },
+            { "word": "der Hashtag", "pos": "NOUN" },
+            { "word": "national", "pos": "ADV", "frequency": 891, "cefr": "B1" },
+            { "word": "der Journalist", "pos": "NOUN", "frequency": 1480, "cefr": "A2" },
+            { "word": "die Migration", "pos": "NOUN", "frequency": 4123, "cefr": "B1" },
+            { "word": "die Heterosexuelle", "pos": "NOUN" },
+            { "word": "der Islam", "pos": "NOUN", "frequency": 2875 },
+            { "word": "schockier", "pos": "ADV" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "fordern": {
+                "present": {
+                    "ich": "fordere",
+                    "du": "forderst",
+                    "er": "fordert",
+                    "es": "fordert",
+                    "sie_singular": "fordert",
+                    "xier": "fordert",
+                    "wir": "fordern",
+                    "ihr": "fordert",
+                    "sie_plural": "fordern",
+                    "Sie": "fordern"
+                },
+                "Perfekt": {
+                    "ich": "habe gefordert",
+                    "du": "hast gefordert",
+                    "er": "hat gefordert",
+                    "es": "hat gefordert",
+                    "sie_singular": "hat gefordert",
+                    "xier": "hat gefordert",
+                    "wir": "haben gefordert",
+                    "ihr": "habt gefordert",
+                    "sie_plural": "haben gefordert",
+                    "Sie": "haben gefordert"
+                },
+                "Futur_I": {
+                    "ich": "werde fordern",
+                    "du": "wirst fordern",
+                    "er": "wird fordern",
+                    "es": "wird fordern",
+                    "sie_singular": "wird fordern",
+                    "xier": "wird fordern",
+                    "wir": "werden fordern",
+                    "ihr": "werdet fordern",
+                    "sie_plural": "werden fordern",
+                    "Sie": "werden fordern"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde fordern",
+                    "du": "würdest fordern",
+                    "er": "würde fordern",
+                    "es": "würde fordern",
+                    "sie_singular": "würde fordern",
+                    "xier": "würde fordern",
+                    "wir": "würden fordern",
+                    "ihr": "würdet fordern",
+                    "sie_plural": "würden fordern",
+                    "Sie": "würden fordern"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gefordert",
+                    "du": "hättest gefordert",
+                    "er": "hätte gefordert",
+                    "es": "hätte gefordert",
+                    "sie_singular": "hätte gefordert",
+                    "xier": "hätte gefordert",
+                    "wir": "hätten gefordert",
+                    "ihr": "hättet gefordert",
+                    "sie_plural": "hätten gefordert",
+                    "Sie": "hätten gefordert"
+                },
+                "imperative": {
+                    "du": "fordere",
+                    "ihr": "fordert",
+                    "Sie": "fordern Sie"
+                }
+            },
+            "verwenden": {
+                "present": {
+                    "ich": "verwende",
+                    "du": "verwendest",
+                    "er": "verwendet",
+                    "es": "verwendet",
+                    "sie_singular": "verwendet",
+                    "xier": "verwendet",
+                    "wir": "verwenden",
+                    "ihr": "verwendet",
+                    "sie_plural": "verwenden",
+                    "Sie": "verwenden"
+                },
+                "Perfekt": {
+                    "ich": "habe verwendet",
+                    "du": "hast verwendet",
+                    "er": "hat verwendet",
+                    "es": "hat verwendet",
+                    "sie_singular": "hat verwendet",
+                    "xier": "hat verwendet",
+                    "wir": "haben verwendet",
+                    "ihr": "habt verwendet",
+                    "sie_plural": "haben verwendet",
+                    "Sie": "haben verwendet"
+                },
+                "Futur_I": {
+                    "ich": "werde verwenden",
+                    "du": "wirst verwenden",
+                    "er": "wird verwenden",
+                    "es": "wird verwenden",
+                    "sie_singular": "wird verwenden",
+                    "xier": "wird verwenden",
+                    "wir": "werden verwenden",
+                    "ihr": "werdet verwenden",
+                    "sie_plural": "werden verwenden",
+                    "Sie": "werden verwenden"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verwenden",
+                    "du": "würdest verwenden",
+                    "er": "würde verwenden",
+                    "es": "würde verwenden",
+                    "sie_singular": "würde verwenden",
+                    "xier": "würde verwenden",
+                    "wir": "würden verwenden",
+                    "ihr": "würdet verwenden",
+                    "sie_plural": "würden verwenden",
+                    "Sie": "würden verwenden"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verwendet",
+                    "du": "hättest verwendet",
+                    "er": "hätte verwendet",
+                    "es": "hätte verwendet",
+                    "sie_singular": "hätte verwendet",
+                    "xier": "hätte verwendet",
+                    "wir": "hätten verwendet",
+                    "ihr": "hättet verwendet",
+                    "sie_plural": "hätten verwendet",
+                    "Sie": "hätten verwendet"
+                },
+                "imperative": {
+                    "du": "verwende",
+                    "ihr": "verwendet",
+                    "Sie": "verwenden Sie"
+                }
+            },
+            "führen": {
+                "present": {
+                    "ich": "führe",
+                    "du": "führst",
+                    "er": "führt",
+                    "es": "führt",
+                    "sie_singular": "führt",
+                    "xier": "führt",
+                    "wir": "führen",
+                    "ihr": "führt",
+                    "sie_plural": "führen",
+                    "Sie": "führen"
+                },
+                "Perfekt": {
+                    "ich": "habe geführt",
+                    "du": "hast geführt",
+                    "er": "hat geführt",
+                    "es": "hat geführt",
+                    "sie_singular": "hat geführt",
+                    "xier": "hat geführt",
+                    "wir": "haben geführt",
+                    "ihr": "habt geführt",
+                    "sie_plural": "haben geführt",
+                    "Sie": "haben geführt"
+                },
+                "Futur_I": {
+                    "ich": "werde führen",
+                    "du": "wirst führen",
+                    "er": "wird führen",
+                    "es": "wird führen",
+                    "sie_singular": "wird führen",
+                    "xier": "wird führen",
+                    "wir": "werden führen",
+                    "ihr": "werdet führen",
+                    "sie_plural": "werden führen",
+                    "Sie": "werden führen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde führen",
+                    "du": "würdest führen",
+                    "er": "würde führen",
+                    "es": "würde führen",
+                    "sie_singular": "würde führen",
+                    "xier": "würde führen",
+                    "wir": "würden führen",
+                    "ihr": "würdet führen",
+                    "sie_plural": "würden führen",
+                    "Sie": "würden führen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geführt",
+                    "du": "hättest geführt",
+                    "er": "hätte geführt",
+                    "es": "hätte geführt",
+                    "sie_singular": "hätte geführt",
+                    "xier": "hätte geführt",
+                    "wir": "hätten geführt",
+                    "ihr": "hättet geführt",
+                    "sie_plural": "hätten geführt",
+                    "Sie": "hätten geführt"
+                },
+                "imperative": {
+                    "du": "führe",
+                    "ihr": "führt",
+                    "Sie": "führen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "In dieser Einheit geht es um das Thema „soziale Medien und soziale Gerechtigkeit.",
+            "Prechen Sie zuerst mit einer anderen Person, was soziale Gerechtigkeit für Sie bedeutet.",
+            "Wählen Sie eine der Optionen aus, die für Sie passt (oder formulieren Sie selbst), und ergänzen Sie einen von den beiden Sätzen.",
+            "Alle Menschen können ein gutes Leben haben.",
+            "Alle Menschen können Arbeit finden.",
+            "Alle Menschen haben genug Geld.",
+            "Die Politik kümmert sich um alle Menschen.",
+            "Suchen Sie gute Kombinationen aus sozialen Problemen und Reaktionen.",
+            "Dann verbinden Sie die Sätze mit „deshalb oder „also.",
+            "Nicht alle Menschen verdienen genug in ihrem Job.",
+            "Medizin kostet sehr viel Geld.",
+            "Studierende machen Schulden, weil die Uni teuer ist.",
+            "Es gibt Polizei gewalt [ Polizei Gewalt ].",
+            "Viele Menschen bezahlen hohe Steuern.",
+            "Aktivist*innen demonstrieren für einen Mindestlohn.",
+            "Menschen protestieren dagegen.",
+            "Arbeiter*innen fordern eine Krankenversicherung.",
+            "Menschen fordern, dass sich das Steuersystem ändert.",
+            "Studierende verlangen freie Bildung für alle.",
+            "Nicht alle Menschen verdienen genug in ihrem Job, deshalb demonstrieren Aktivist*innen für einen Mindestlohn.",
+            "Medizin kostet sehr viel Geld, also fordern Arbeiter*innen eine Krankenversicherung.",
+            "Studierende machen Schulden, weil die Uni teuer ist, deshalb verlangen Studierende freie Bildung für alle.",
+            "Es gibt Polizei gewalt [Polizei Gewalt], also protestieren Menschen dagegen.",
+            "Viele Menschen bezahlen hohe Steuern, deshalb fordern Menschen, dass sich das Steuersystem ändert.",
+            "Aktivist*innen organisieren sich in sozialen Medien und Menschen posten in sozialen Medien zu Themen, die ihnen wichtig sind.",
+            "Nicht immer hat das Erfolg.",
+            "Verbinden Sie die Sätze mit „deshalb oder „also.",
+            "Menschen ärgern sich schnell in den sozialen Medien.",
+            "Sie werden nicht aktiv.",
+            "Sie reposten vor allem Themen, die sie wütend machen.",
+            "Soziale Medien sind global.",
+            "Aktivist*innen können über soziale Medien kommunizieren.",
+            "Es gibt Aktivist*innen zu ähnlichen Themen auf der ganzen Welt.",
+            "Sie haben ihre eigenen lokalen Gruppen.",
+            "Lesen Sie die Fragen.",
+            "Dann hören Sie einen Text zum Hashtag #",
+            "MeTwo und beantworten Sie die Fragen.",
+            "Wann entsteht das Hashtag #MeTwo?",
+            "Für wen ist das Hashtag #",
+            "Um welche Person geht es in den Diskussionen?",
+            "Über welche Themen diskutieren die Menschen?",
+            "Welchen Beruf hat die Person, die das Hashtag startet?",
+            "Das Hashtag #MeTwo entsteht im Sommer 2018 als Reaktion auf die Debatte um den ehemaligen deutschen Fußballspieler Mesut Özil.",
+            "Özil kommt aus Gelsenkirchen, seine Eltern sind in der Türkei geboren.",
+            "Nach der Fußball Weltmeisterschaft 2018 verlässt er die deutsche Nationalmannschaft und erklärt in einem offenen Brief warum.",
+            "In diesem Brief kritisiert Özil wie die Deutschen ihn behandeln.",
+            "Özil erklärt, dass die Medien und Teile der Gesellschaft ihn nicht als echten Deutschen sehen, obwohl er sein Leben lang in Deutschland gelebt und für das Land gespielt habe.",
+            "Er spricht von einem doppelten Standard für Migrantenkinder",
+            "In Reaktion auf diesen Brief startet der Journalist und Aktivist Ali Can die #MeTwo-Kampagne online.",
+            "Das Hashtag gibt Menschen mit Migrationsgeschichte",
+            "Die Möglichkeit, ihre eigenen Erfahrungen mit Rassismus und Diskriminierung in Deutschland zu teilen.",
+            "Der Name „MeTwo soll zeigen, dass viele Menschen mit doppelter Identität – wie auch Özil – in zwei Welten leben und oft das Gefühl haben, nicht vollständig akzeptiert zu sein.",
+            "Viele finden d ie Kampagne gut und sie führt zu einer gesellschaftlichen Diskussion über Rassismus und Integration in Deutschland.",
+            "Ihre Lehrkraft teilt Ihnen gemeinsam mit einer anderen Person eine Zahl zu.",
+            "Lesen Sie gemeinsam den Social Media-Post mit Ihrer Nummer und beantworten Sie dann die Fragen.",
+            "Was ist das Thema des Posts?",
+            "Für welches Publikum schreibt diese Person den Post?",
+            "Was will die Person damit sagen?",
+            "Sprechen wir mal über das Bildungssystem",
+            "Migranten Kinder, bei denen die Lehrer sagen, dass sie auf das Gymnasium gehen sollen",
+            "Ich selbst sollte es auch nicht.",
+            "Aber trotzdem haben es fast alle geschafft, erfolgreich zu sein;",
+            "Obwohl das Bildungssystem gegen sie war. #",
+            "Von # MeToo habe ich gelernt, dass wir als Gesellschaft noch nicht so weit sind, wie ich als Mann gedacht habe.",
+            "Von #MeTwo habe ich gelernt, dass wir als Gesellschaft noch nicht so weit sind, wie ich als weißer Deutscher gedacht habe.",
+            "Von #MeQueer habe ich gelernt, dass wir als Gesellschaft noch nicht so weit sind, wie ich als Heterosexueller gedacht habe.",
+            "Danke für eure Worte!",
+            "Warum ich über Rassismus, Antisemitismus und Islamfeindlichkeit",
+            "Weil ich dieses Land liebe, nicht weil ich nicht gerne hier lebe.",
+            "„Wo her kommst du?",
+            "Aus Köln.",
+            "„Nein, wo her kommst du wirklich?!",
+            "Aus Köln Porz!",
+            "Ich meine, wo her du wirklich kommst!!",
+            "Aus meiner Mutter?",
+            "Ich finde es richtig schockierend, dass manche hier das Wort „Alltagsrassismus verwenden, als ob es eine kleine, bessere, problemlose {Problem -los] Version von echtem Rassismus wäre. #",
+            "Lesen Sie jetzt Ihren Post den anderen Studierenden, die Ihren Post nicht gelesen haben, vor.",
+            "W orum geht es in diesen Posts?",
+            "Warum schreiben diese Leute die Posts?",
+            "Bilden Sie Sätze mit den Redemitteln.",
+            "Denken Sie nun an ein gesellschaftliches Problem, das Sie für sehr wichtig halten.",
+            "Beschreiben Sie in ein paar Sätzen das Problem und die Folgen.",
+            "Benutzen Sie dabei „deshalb oder „also.",
+            "Machen Sie daraus einen Post mit einem neuen Hashtag.",
+            "Der Post soll aus maximal 280 Zeichen bestehen.",
+            "Benutzen Sie dabei auch Konnektoren."
+        ],
+        "templated": []
+    }
+}

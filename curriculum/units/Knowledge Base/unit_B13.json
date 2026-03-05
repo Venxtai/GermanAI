@@ -1,0 +1,615 @@
+{
+    "unit": "B13",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 13,
+        "prerequisite": "core 1-104, B1-B12"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive"
+        ],
+        "new_rules_in_this_unit": [
+            "Use genitive prepositions wegen, während, statt, trotz followed by genitive case.",
+            "Place prepositions before relative pronouns; the preposition determines the case of the relative pronoun."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Nachhaltigkeitskommunikation in verschiedenen Medien analysieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "nachhaltiges Handeln"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "überzeugen",
+                "pos": "VERB",
+                "translation": "to convince (of)"
+            },
+            {
+                "word": "verzichten",
+                "pos": "VERB",
+                "translation": "to to abstain (from)",
+                "frequency": 1297,
+                "cefr": "B1"
+            },
+            {
+                "word": "unterhalten (mit)",
+                "pos": "VERB",
+                "translation": "to entertain",
+                "frequency": 1898,
+                "cefr": "A2"
+            },
+            {
+                "word": "unterhalten (mit)",
+                "pos": "VERB",
+                "translation": "to to talk (to)",
+                "frequency": 1898,
+                "cefr": "A2"
+            },
+            {
+                "word": "motivieren",
+                "pos": "VERB",
+                "translation": "to motivate",
+                "frequency": 3210
+            },
+            {
+                "word": "bewegen",
+                "pos": "VERB",
+                "translation": "to move",
+                "frequency": 561,
+                "cefr": "B1"
+            },
+            {
+                "word": "schuld",
+                "pos": "VERB",
+                "translation": "to be guilty; in the wrong",
+                "frequency": 1583,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Verbindung",
+                "pos": "NOUN",
+                "translation": "connection; link; contact",
+                "frequency": 434,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Hitzewelle",
+                "pos": "NOUN",
+                "translation": "heat wave",
+                "frequency": 29785,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wörterbuch",
+                "pos": "NOUN",
+                "translation": "dictionary"
+            },
+            {
+                "word": "der Meeresspiegel",
+                "pos": "NOUN",
+                "translation": "sea level",
+                "frequency": 14064,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Bumerang",
+                "pos": "NOUN",
+                "translation": "boomerang",
+                "frequency": 32559,
+                "cefr": "A1"
+            },
+            {
+                "word": "schuldig",
+                "pos": "ADJ",
+                "translation": "guilty",
+                "frequency": 3674,
+                "cefr": "B1"
+            },
+            {
+                "word": "unschuldig",
+                "pos": "ADJ",
+                "translation": "innocent",
+                "frequency": 4902,
+                "cefr": "B2"
+            },
+            {
+                "word": "schockierend",
+                "pos": "ADJ",
+                "translation": "shocking",
+                "frequency": 22247
+            },
+            {
+                "word": "wirksam",
+                "pos": "ADJ",
+                "translation": "effective",
+                "frequency": 2418
+            },
+            {
+                "word": "unwirksam",
+                "pos": "ADJ",
+                "translation": "ineffective",
+                "frequency": 20580
+            },
+            {
+                "word": "amtlich",
+                "pos": "ADJ",
+                "translation": "official",
+                "frequency": 5778,
+                "cefr": "B2"
+            },
+            {
+                "word": "gar nicht",
+                "pos": "ADV",
+                "translation": "not at all",
+                "frequency": 5510,
+                "cefr": "B1"
+            },
+            {
+                "word": "wegen",
+                "pos": "PREP",
+                "translation": "because of",
+                "frequency": 243,
+                "cefr": "A2"
+            },
+            {
+                "word": "trotz",
+                "pos": "PREP",
+                "translation": "in spite of",
+                "frequency": 598,
+                "cefr": "B1"
+            },
+            {
+                "word": "statt",
+                "pos": "PREP",
+                "translation": "instead of",
+                "frequency": 680,
+                "cefr": "B1"
+            },
+            {
+                "word": "häufig",
+                "pos": "ADJ",
+                "translation": "frequent, often"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "Hey",
+                "pos": "INTJ",
+                "frequency": 1142
+            },
+            {
+                "word": "der at",
+                "pos": "NOUN",
+                "frequency": 6045
+            },
+            {
+                "word": "zurückkommen",
+                "pos": "VERB",
+                "frequency": 1469,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Titel",
+                "pos": "NOUN",
+                "frequency": 1011,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Welle",
+                "pos": "NOUN",
+                "frequency": 1263
+            },
+            {
+                "word": "die Sachinformation",
+                "pos": "NOUN"
+            },
+            {
+                "word": "motiviert",
+                "pos": "VERB",
+                "frequency": 3210
+            },
+            {
+                "word": "das Szenario",
+                "pos": "NOUN",
+                "frequency": 9796
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "überzeugen": {
+                "present": {
+                    "ich": "überzeuge",
+                    "du": "überzeugst",
+                    "er": "überzeugt",
+                    "es": "überzeugt",
+                    "sie_singular": "überzeugt",
+                    "xier": "überzeugt",
+                    "wir": "überzeugen",
+                    "ihr": "überzeugt",
+                    "sie_plural": "überzeugen",
+                    "Sie": "überzeugen"
+                },
+                "Perfekt": {
+                    "ich": "habe überzeugt",
+                    "du": "hast überzeugt",
+                    "er": "hat überzeugt",
+                    "es": "hat überzeugt",
+                    "sie_singular": "hat überzeugt",
+                    "xier": "hat überzeugt",
+                    "wir": "haben überzeugt",
+                    "ihr": "habt überzeugt",
+                    "sie_plural": "haben überzeugt",
+                    "Sie": "haben überzeugt"
+                },
+                "Futur_I": {
+                    "ich": "werde überzeugen",
+                    "du": "wirst überzeugen",
+                    "er": "wird überzeugen",
+                    "es": "wird überzeugen",
+                    "sie_singular": "wird überzeugen",
+                    "xier": "wird überzeugen",
+                    "wir": "werden überzeugen",
+                    "ihr": "werdet überzeugen",
+                    "sie_plural": "werden überzeugen",
+                    "Sie": "werden überzeugen"
+                },
+                "imperative": {
+                    "du": "überzeuge",
+                    "ihr": "überzeugt",
+                    "Sie": "überzeugen Sie"
+                }
+            },
+            "verzichten": {
+                "present": {
+                    "ich": "verzichte",
+                    "du": "verzichtest",
+                    "er": "verzichtet",
+                    "es": "verzichtet",
+                    "sie_singular": "verzichtet",
+                    "xier": "verzichtet",
+                    "wir": "verzichten",
+                    "ihr": "verzichtet",
+                    "sie_plural": "verzichten",
+                    "Sie": "verzichten"
+                },
+                "Perfekt": {
+                    "ich": "habe verzichtet",
+                    "du": "hast verzichtet",
+                    "er": "hat verzichtet",
+                    "es": "hat verzichtet",
+                    "sie_singular": "hat verzichtet",
+                    "xier": "hat verzichtet",
+                    "wir": "haben verzichtet",
+                    "ihr": "habt verzichtet",
+                    "sie_plural": "haben verzichtet",
+                    "Sie": "haben verzichtet"
+                },
+                "Futur_I": {
+                    "ich": "werde verzichten",
+                    "du": "wirst verzichten",
+                    "er": "wird verzichten",
+                    "es": "wird verzichten",
+                    "sie_singular": "wird verzichten",
+                    "xier": "wird verzichten",
+                    "wir": "werden verzichten",
+                    "ihr": "werdet verzichten",
+                    "sie_plural": "werden verzichten",
+                    "Sie": "werden verzichten"
+                },
+                "imperative": {
+                    "du": "verzichte",
+                    "ihr": "verzichtet",
+                    "Sie": "verzichten Sie"
+                }
+            },
+            "unterhalten": {
+                "present": {
+                    "ich": "unterhalte",
+                    "du": "unterhältst",
+                    "er": "unterhält",
+                    "es": "unterhält",
+                    "sie_singular": "unterhält",
+                    "xier": "unterhält",
+                    "wir": "unterhalten",
+                    "ihr": "unterhaltet",
+                    "sie_plural": "unterhalten",
+                    "Sie": "unterhalten"
+                },
+                "Perfekt": {
+                    "ich": "habe unterhalten",
+                    "du": "hast unterhalten",
+                    "er": "hat unterhalten",
+                    "es": "hat unterhalten",
+                    "sie_singular": "hat unterhalten",
+                    "xier": "hat unterhalten",
+                    "wir": "haben unterhalten",
+                    "ihr": "habt unterhalten",
+                    "sie_plural": "haben unterhalten",
+                    "Sie": "haben unterhalten"
+                },
+                "Futur_I": {
+                    "ich": "werde unterhalten",
+                    "du": "wirst unterhalten",
+                    "er": "wird unterhalten",
+                    "es": "wird unterhalten",
+                    "sie_singular": "wird unterhalten",
+                    "xier": "wird unterhalten",
+                    "wir": "werden unterhalten",
+                    "ihr": "werdet unterhalten",
+                    "sie_plural": "werden unterhalten",
+                    "Sie": "werden unterhalten"
+                },
+                "imperative": {
+                    "du": "unterhalte",
+                    "ihr": "unterhaltet",
+                    "Sie": "unterhalten Sie"
+                }
+            },
+            "motivieren": {
+                "present": {
+                    "ich": "motiviere",
+                    "du": "motivierst",
+                    "er": "motiviert",
+                    "es": "motiviert",
+                    "sie_singular": "motiviert",
+                    "xier": "motiviert",
+                    "wir": "motivieren",
+                    "ihr": "motiviert",
+                    "sie_plural": "motivieren",
+                    "Sie": "motivieren"
+                },
+                "Perfekt": {
+                    "ich": "habe motiviert",
+                    "du": "hast motiviert",
+                    "er": "hat motiviert",
+                    "es": "hat motiviert",
+                    "sie_singular": "hat motiviert",
+                    "xier": "hat motiviert",
+                    "wir": "haben motiviert",
+                    "ihr": "habt motiviert",
+                    "sie_plural": "haben motiviert",
+                    "Sie": "haben motiviert"
+                },
+                "Futur_I": {
+                    "ich": "werde motivieren",
+                    "du": "wirst motivieren",
+                    "er": "wird motivieren",
+                    "es": "wird motivieren",
+                    "sie_singular": "wird motivieren",
+                    "xier": "wird motivieren",
+                    "wir": "werden motivieren",
+                    "ihr": "werdet motivieren",
+                    "sie_plural": "werden motivieren",
+                    "Sie": "werden motivieren"
+                },
+                "imperative": {
+                    "du": "motiviere",
+                    "ihr": "motiviert",
+                    "Sie": "motivieren Sie"
+                }
+            },
+            "bewegen": {
+                "present": {
+                    "ich": "bewege",
+                    "du": "bewegst",
+                    "er": "bewegt",
+                    "es": "bewegt",
+                    "sie_singular": "bewegt",
+                    "xier": "bewegt",
+                    "wir": "bewegen",
+                    "ihr": "bewegt",
+                    "sie_plural": "bewegen",
+                    "Sie": "bewegen"
+                },
+                "Perfekt": {
+                    "ich": "habe bewegt",
+                    "du": "hast bewegt",
+                    "er": "hat bewegt",
+                    "es": "hat bewegt",
+                    "sie_singular": "hat bewegt",
+                    "xier": "hat bewegt",
+                    "wir": "haben bewegt",
+                    "ihr": "habt bewegt",
+                    "sie_plural": "haben bewegt",
+                    "Sie": "haben bewegt"
+                },
+                "Futur_I": {
+                    "ich": "werde bewegen",
+                    "du": "wirst bewegen",
+                    "er": "wird bewegen",
+                    "es": "wird bewegen",
+                    "sie_singular": "wird bewegen",
+                    "xier": "wird bewegen",
+                    "wir": "werden bewegen",
+                    "ihr": "werdet bewegen",
+                    "sie_plural": "werden bewegen",
+                    "Sie": "werden bewegen"
+                },
+                "imperative": {
+                    "du": "bewege",
+                    "ihr": "bewegt",
+                    "Sie": "bewegen Sie"
+                }
+            },
+            "schuld": {
+                "Perfekt": {
+                    "ich": "bin gewesen",
+                    "du": "bist gewesen",
+                    "er": "ist gewesen",
+                    "es": "ist gewesen",
+                    "sie_singular": "ist gewesen",
+                    "xier": "ist gewesen",
+                    "wir": "sind gewesen",
+                    "ihr": "seid gewesen",
+                    "sie_plural": "sind gewesen",
+                    "Sie": "sind gewesen"
+                },
+                "Futur_I": {
+                    "ich": "werde schuld",
+                    "du": "wirst schuld",
+                    "er": "wird schuld",
+                    "es": "wird schuld",
+                    "sie_singular": "wird schuld",
+                    "xier": "wird schuld",
+                    "wir": "werden schuld",
+                    "ihr": "werdet schuld",
+                    "sie_plural": "werden schuld",
+                    "Sie": "werden schuld"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Was bewegt zu nachhaltigem Handeln?",
+            "Wo und warum handeln wir nachhaltig?",
+            "Jannis und Mara unterhalten sich über Nachhaltigkeit und nachhaltiges Handeln.",
+            "Hören Sie zu und kreuzen Sie dann an.",
+            "Jeder Mensch muss etwas für Klimaschutz tun.",
+            "Die Industrie und Politik muss sich um Klimaschutz kümmern.",
+            "Ich will nicht verzichten.",
+            "Du solltest den Zug statt des Flugzeugs nehmen.",
+            "Hey Jannis, hast du die Umfrage in der Süddeutschen gesehen?",
+            "Wollen fast 30% der Deutschen auf nichts verzichten.",
+            "Das hilft ja auch nicht.",
+            "Was sollen wir schon machen?",
+            "Jeder Mensch kann und muss etwas für den Klimaschutz tun.",
+            "Und dann?",
+            "Wenn ich jetzt nicht mehr jeden Tag dusche, hilft das doch gar nicht.",
+            "Die Industrie und die Politik muss sich um Klimaschutz kümmern.",
+            "Sonst ändert sich gar nichts.",
+            "Ich will auf nichts verzichten.",
+            "Auf gar nichts?",
+            "Und was ist, zum Beispiel, mit reisen?",
+            "Kannst du den Zug statt des Flugzeugs nehmen?",
+            "Wie soll ich denn mit dem Zug nach Mallorca oder in die USA kommen?",
+            "Das geht doch gar nicht.",
+            "Sollen lieber die Celebrities, die so oft fliegen, weniger fliegen.",
+            "Ja, die natürlich auch.",
+            "Aber wir können doch auch etwas tun.",
+            "Ich weiß nicht.",
+            "Was kann ich für Sie tun?",
+            "Einen Latte Macchiato, bitte.",
+            "Einen Cappuccino, bitte.",
+            "Sag mal, Mara, warum nimmst du eigentlich keine Becher, die man recyceln kann, statt eines Wegwerfbechers?",
+            "Eine Umfrage der Süddeutschen Zeitung h at in Deutschland gefragt, auf was Menschen verzichten wollen.",
+            "Beschreiben Sie die Statistik.",
+            "Benutzen Sie bei der Beschreibung Konstruktionen mit\" trotz \" und\" wegen \".",
+            "Mehr Antworten möglich.",
+            "Welche Alternativen gibt es?",
+            "Machen Sie den Deutschen Vorschläge mit\" statt \".",
+            "Statt der Kreuzfahrt kannst du eine Zugreise machen.",
+            "Was ist die Verbindung zwischen einem Bumerang und Nachhaltigkeit?",
+            "Welcher Satz passt am besten?",
+            "Ein Bumerang kommt zurück.",
+            "Das heißt, was wir tun, wird auch wieder zu uns zurück kommen.",
+            "Man muss aufpassen, weil der Bumerang zurückkommt, und wir müssen auf die Welt aufpassen.",
+            "Ein Bumerang ist gefährlich für Menschen, und Menschen sind gefährlich für Nachhaltigkeit..",
+            "Schauen Sie sich das Bumerang Nachhaltigkeitsvideo an.",
+            "Was ist Ihre erste Reaktion?",
+            "Die Nachricht am Ende ist Alles, was wir heute tun, kommt auf die nächste Generation zurück.",
+            "Was ist der Sachinhalt der Nachricht?",
+            "Was ist der Appell?",
+            "Unser Planet stirbt!",
+            "Bild ist eine Boulevardzeitung.",
+            "2007 hat sie einen European Newspaper Award für diese Titelseite in der Kategorie Klimakatastrophen gewonnen.",
+            "Beschreiben Sie zuerst genau, was Sie auf dieser Seite sehen.",
+            "Welche visuellen Elemente gibt es?",
+            "Welche Textelemente und welche Emotionen und Effekte benutzt die Zeitung?",
+            "Schlimmste Kohlendioxid Konzentration seit 650000 Jahre.",
+            "Meeresspiegel steigt dramatisch.",
+            "In Gefahr.",
+            "Und an allem ist nur der Mensch schuld.",
+            "Denken Sie noch einmal an das Vier Seiten Modell:",
+            "Was sind hier d er Sachinhalt und der Appell?",
+            ": Was ist wirksam und motiviert?",
+            "Bilden Sie Sätze mit den Relativsätzen und den passenden Relativpronomen.",
+            "Ist unwirksam.",
+            "Fällt mir auf.",
+            "Fällt mir nicht auf.",
+            "Motiviert mich.",
+            "Motiviert mich nicht.",
+            "Die Titelseite der Bild Zeitung benutzt starke Wörter wie schockierend, stirbt, dramatisch und Gefahr.",
+            "Es wird also ein Katastrophenszenario präsentiert.",
+            "Ist das eine gute Art, um Menschen zu nachhaltigem Handeln zu bewegen?",
+            "Glauben Sie, die Titelseite kann Jannis und Mara überzeugen?",
+            "Was funktioniert für Sie (besser)?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

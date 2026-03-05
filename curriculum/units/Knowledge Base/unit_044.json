@@ -1,0 +1,707 @@
+{
+    "unit": "44",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 44,
+        "prerequisite": "1-43"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil"
+        ],
+        "new_rules_in_this_unit": [
+            "Use accusative reflexive pronouns (mich, dich, sich, uns, euch, sich) with reflexive verbs, placing the pronoun directly after the conjugated verb or after the subject if the subject follows the verb."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:subordinate_wenn",
+            "sentence_type:subordinate_dass",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Gefahren und Unfälle im Haus besprechen",
+            "sagen, was man sich selbst antut"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Gefahren und Unfälle im Haus"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bringen",
+                "pos": "VERB",
+                "translation": "to bring",
+                "frequency": 163,
+                "cefr": "A1"
+            },
+            {
+                "word": "schließen",
+                "pos": "VERB",
+                "translation": "to close; shut down"
+            },
+            {
+                "word": "übersetzen",
+                "pos": "VERB",
+                "translation": "to translate"
+            },
+            {
+                "word": "achten",
+                "pos": "VERB",
+                "translation": "to pay attention (to)",
+                "frequency": 1740,
+                "cefr": "B1"
+            },
+            {
+                "word": "bleiben",
+                "pos": "VERB",
+                "translation": "to stay, remain",
+                "frequency": 113,
+                "cefr": "A1"
+            },
+            {
+                "word": "folgen",
+                "pos": "VERB",
+                "translation": "to follow",
+                "frequency": 160,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausmachen",
+                "pos": "VERB",
+                "translation": "to turn off",
+                "frequency": 1239,
+                "cefr": "A1"
+            },
+            {
+                "word": "verstehen",
+                "pos": "VERB",
+                "translation": "to understand",
+                "frequency": 211,
+                "cefr": "A1"
+            },
+            {
+                "word": "passieren",
+                "pos": "VERB",
+                "translation": "to happen",
+                "frequency": 381,
+                "cefr": "A2"
+            },
+            {
+                "word": "löschen",
+                "pos": "VERB",
+                "translation": "to extinguish, delete"
+            },
+            {
+                "word": "fallen",
+                "pos": "VERB",
+                "translation": "to fall",
+                "frequency": 332,
+                "cefr": "A2"
+            },
+            {
+                "word": "verletzen",
+                "pos": "VERB",
+                "translation": "to hurt, injure, harm",
+                "frequency": 1096,
+                "cefr": "A2"
+            },
+            {
+                "word": "brennen",
+                "pos": "VERB",
+                "translation": "to be on fire",
+                "frequency": 1651,
+                "cefr": "B1"
+            },
+            {
+                "word": "verbrennen",
+                "pos": "VERB",
+                "translation": "to burn",
+                "frequency": 2668,
+                "cefr": "B1"
+            },
+            {
+                "word": "vergiften",
+                "pos": "VERB",
+                "translation": "to poison",
+                "frequency": 14448
+            },
+            {
+                "word": "der Kreis",
+                "pos": "NOUN",
+                "translation": "circle",
+                "frequency": 1289,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gefahr",
+                "pos": "NOUN",
+                "translation": "hazard, danger",
+                "frequency": 841,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Unfall",
+                "pos": "NOUN",
+                "translation": "accident, crash",
+                "frequency": 1955,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Treppe",
+                "pos": "NOUN",
+                "translation": "stairs, staircase, stairway",
+                "frequency": 1950,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Leiter",
+                "pos": "NOUN",
+                "translation": "ladder",
+                "frequency": 1622,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Steckdose",
+                "pos": "NOUN",
+                "translation": "(electrical) outlet",
+                "frequency": 5771,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Putzmittel",
+                "pos": "NOUN",
+                "translation": "cleaning agent",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Haartrockner",
+                "pos": "NOUN",
+                "translation": "hairdryer",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Feuer",
+                "pos": "NOUN",
+                "translation": "fire",
+                "frequency": 1576,
+                "cefr": "A1"
+            },
+            {
+                "word": "sicher",
+                "pos": "ADJ",
+                "translation": "safe, secure; sure",
+                "frequency": 265,
+                "cefr": "A2"
+            },
+            {
+                "word": "gefährlich",
+                "pos": "ADJ",
+                "translation": "dangerous"
+            },
+            {
+                "word": "sich",
+                "pos": "PRON",
+                "translation": "-self (oneself, herself, himself, themselves, itself, …)",
+                "frequency": 14,
+                "cefr": "A1"
+            },
+            {
+                "word": "offen",
+                "pos": "ADJ",
+                "translation": "open; open-minded",
+                "frequency": 355,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Badewanne",
+                "pos": "NOUN",
+                "translation": "bathtub",
+                "frequency": 17610,
+                "cefr": "B1"
+            },
+            {
+                "word": "auf jeden Fall",
+                "pos": "PHRASE",
+                "translation": "definitely, anyway, in any case, by all means"
+            },
+            {
+                "word": "in der Nähe (von)",
+                "pos": "PHRASE",
+                "translation": "in the vicinity (of)"
+            },
+            {
+                "word": "der Handschuh",
+                "pos": "NOUN",
+                "translation": "glove",
+                "frequency": 12311,
+                "cefr": "A1"
+            },
+            {
+                "word": "schlucken",
+                "pos": "VERB",
+                "translation": "to swallow",
+                "frequency": 3452
+            },
+            {
+                "word": "die Hand",
+                "pos": "NOUN",
+                "translation": "hand",
+                "frequency": 180,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "kaputt",
+                "pos": "ADV",
+                "frequency": 2950,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kabel",
+                "pos": "NOUN",
+                "frequency": 7985,
+                "cefr": "B1"
+            },
+            {
+                "word": "ausrutschen",
+                "pos": "VERB",
+                "frequency": 41938
+            },
+            {
+                "word": "der Stromschlag",
+                "pos": "NOUN",
+                "frequency": 42623
+            },
+            {
+                "word": "euch",
+                "pos": "PRON",
+                "frequency": 495
+            },
+            {
+                "word": "reparieren",
+                "pos": "VERB",
+                "frequency": 8765,
+                "cefr": "A1"
+            },
+            {
+                "word": "balancieren",
+                "pos": "VERB",
+                "frequency": 44581
+            },
+            {
+                "word": "direkt",
+                "pos": "ADV",
+                "frequency": 353,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Medikament",
+                "pos": "NOUN",
+                "frequency": 2257,
+                "cefr": "A2"
+            },
+            {
+                "word": "alleine",
+                "pos": "ADV",
+                "frequency": 267
+            },
+            {
+                "word": "brennend",
+                "pos": "ADJ",
+                "frequency": 8712
+            },
+            {
+                "word": "unterstreichen",
+                "pos": "VERB",
+                "frequency": 4347,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kontext",
+                "pos": "NOUN",
+                "frequency": 2351
+            },
+            {
+                "word": "sortieren",
+                "pos": "VERB",
+                "frequency": 9854
+            },
+            {
+                "word": "orangen",
+                "pos": "ADJ"
+            },
+            {
+                "word": "stabil",
+                "pos": "ADJ",
+                "frequency": 1500
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bringen": {
+                "present": {
+                    "ich": "bringe",
+                    "du": "bringst",
+                    "er": "bringt",
+                    "es": "bringt",
+                    "sie_singular": "bringt",
+                    "xier": "bringt",
+                    "wir": "bringen",
+                    "ihr": "bringt",
+                    "sie_plural": "bringen",
+                    "Sie": "bringen"
+                }
+            },
+            "schließen": {
+                "present": {
+                    "ich": "schließe",
+                    "du": "schließt",
+                    "er": "schließt",
+                    "es": "schließt",
+                    "sie_singular": "schließt",
+                    "xier": "schließt",
+                    "wir": "schließen",
+                    "ihr": "schließt",
+                    "sie_plural": "schließen",
+                    "Sie": "schließen"
+                }
+            },
+            "übersetzen": {
+                "present": {
+                    "ich": "übersetze",
+                    "du": "übersetzt",
+                    "er": "übersetzt",
+                    "es": "übersetzt",
+                    "sie_singular": "übersetzt",
+                    "xier": "übersetzt",
+                    "wir": "übersetzen",
+                    "ihr": "übersetzt",
+                    "sie_plural": "übersetzen",
+                    "Sie": "übersetzen"
+                }
+            },
+            "achten": {
+                "present": {
+                    "ich": "achte",
+                    "du": "achtest",
+                    "er": "achtet",
+                    "es": "achtet",
+                    "sie_singular": "achtet",
+                    "xier": "achtet",
+                    "wir": "achten",
+                    "ihr": "achtet",
+                    "sie_plural": "achten",
+                    "Sie": "achten"
+                }
+            },
+            "bleiben": {
+                "present": {
+                    "ich": "bleibe",
+                    "du": "bleibst",
+                    "er": "bleibt",
+                    "es": "bleibt",
+                    "sie_singular": "bleibt",
+                    "xier": "bleibt",
+                    "wir": "bleiben",
+                    "ihr": "bleibt",
+                    "sie_plural": "bleiben",
+                    "Sie": "bleiben"
+                }
+            },
+            "folgen": {
+                "present": {
+                    "ich": "folge",
+                    "du": "folgst",
+                    "er": "folgt",
+                    "es": "folgt",
+                    "sie_singular": "folgt",
+                    "xier": "folgt",
+                    "wir": "folgen",
+                    "ihr": "folgt",
+                    "sie_plural": "folgen",
+                    "Sie": "folgen"
+                }
+            },
+            "ausmachen": {
+                "present": {
+                    "ich": "mache aus",
+                    "du": "machst aus",
+                    "er": "macht aus",
+                    "es": "macht aus",
+                    "sie_singular": "macht aus",
+                    "xier": "macht aus",
+                    "wir": "machen aus",
+                    "ihr": "macht aus",
+                    "sie_plural": "machen aus",
+                    "Sie": "machen aus"
+                }
+            },
+            "verstehen": {
+                "present": {
+                    "ich": "verstehe",
+                    "du": "verstehst",
+                    "er": "versteht",
+                    "es": "versteht",
+                    "sie_singular": "versteht",
+                    "xier": "versteht",
+                    "wir": "verstehen",
+                    "ihr": "versteht",
+                    "sie_plural": "verstehen",
+                    "Sie": "verstehen"
+                }
+            },
+            "passieren": {
+                "present": {
+                    "ich": "passiere",
+                    "du": "passierst",
+                    "er": "passiert",
+                    "es": "passiert",
+                    "sie_singular": "passiert",
+                    "xier": "passiert",
+                    "wir": "passieren",
+                    "ihr": "passiert",
+                    "sie_plural": "passieren",
+                    "Sie": "passieren"
+                }
+            },
+            "löschen": {
+                "present": {
+                    "ich": "lösche",
+                    "du": "löschst",
+                    "er": "löscht",
+                    "es": "löscht",
+                    "sie_singular": "löscht",
+                    "xier": "löscht",
+                    "wir": "löschen",
+                    "ihr": "löscht",
+                    "sie_plural": "löschen",
+                    "Sie": "löschen"
+                }
+            },
+            "fallen": {
+                "present": {
+                    "ich": "falle",
+                    "du": "fällst",
+                    "er": "fällt",
+                    "es": "fällt",
+                    "sie_singular": "fällt",
+                    "xier": "fällt",
+                    "wir": "fallen",
+                    "ihr": "fallt",
+                    "sie_plural": "fallen",
+                    "Sie": "fallen"
+                }
+            },
+            "verletzen": {
+                "present": {
+                    "ich": "verletze",
+                    "du": "verletzt",
+                    "er": "verletzt",
+                    "es": "verletzt",
+                    "sie_singular": "verletzt",
+                    "xier": "verletzt",
+                    "wir": "verletzen",
+                    "ihr": "verletzt",
+                    "sie_plural": "verletzen",
+                    "Sie": "verletzen"
+                }
+            },
+            "brennen": {
+                "present": {
+                    "ich": "brenne",
+                    "du": "brennst",
+                    "er": "brennt",
+                    "es": "brennt",
+                    "sie_singular": "brennt",
+                    "xier": "brennt",
+                    "wir": "brennen",
+                    "ihr": "brennt",
+                    "sie_plural": "brennen",
+                    "Sie": "brennen"
+                }
+            },
+            "verbrennen": {
+                "present": {
+                    "ich": "verbrenne",
+                    "du": "verbrennst",
+                    "er": "verbrennt",
+                    "es": "verbrennt",
+                    "sie_singular": "verbrennt",
+                    "xier": "verbrennt",
+                    "wir": "verbrennen",
+                    "ihr": "verbrennt",
+                    "sie_plural": "verbrennen",
+                    "Sie": "verbrennen"
+                }
+            },
+            "vergiften": {
+                "present": {
+                    "ich": "vergifte",
+                    "du": "vergiftest",
+                    "er": "vergiftet",
+                    "es": "vergiftet",
+                    "sie_singular": "vergiftet",
+                    "xier": "vergiftet",
+                    "wir": "vergiften",
+                    "ihr": "vergiftet",
+                    "sie_plural": "vergiften",
+                    "Sie": "vergiften"
+                }
+            },
+            "schlucken": {
+                "present": {
+                    "ich": "schlucke",
+                    "du": "schluckst",
+                    "er": "schluckt",
+                    "es": "schluckt",
+                    "sie_singular": "schluckt",
+                    "xier": "schluckt",
+                    "wir": "schlucken",
+                    "ihr": "schluckt",
+                    "sie_plural": "schlucken",
+                    "Sie": "schlucken"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Im Haus gibt es manchmal Gefahren.",
+            "Ordnen Sie die Gefahren den Bildern zu.",
+            "Der Herd ist heiß.",
+            "Der Wasserkocher ist kaputt.",
+            "Die Decke hängt vor dem Feuer.",
+            "Der Ball liegt auf der Treppe.",
+            "Der Haartrockner ist neben dem Wasser.",
+            "Das Messer liegt in der Küche.",
+            "Der Schrank mit Putzmitteln ist offen.",
+            "Die Steckdosen haben zu viele Kabel.",
+            "Was kann in den Situationen 1-8 passieren?",
+            "Beispiel die Person kann ausrutschen und sich verletzen.",
+            "Das Kind kann sich vergiften.",
+            "Die Person kann sich verbrennen.",
+            "Die Person kann einen Stromschlag bekommen.",
+            "Die Decke kann brennen.",
+            "Die Person kann ausrutschen und fallen.",
+            "Die Person kann einen Stromschlag bekommen und sterben.",
+            "Die Person kann sich schneiden.",
+            "Die Person kann sich vergiften.",
+            "Die Person kann einen Stromschlag bekommen oder fallen.",
+            "Was sollten die Personen in der Situation 1-8 machen?",
+            "Beispiel Du solltest den Schrank mit Putzmitteln schließen.",
+            "Die Person sollte den Herd ausmachen.",
+            "Die Person sollte den Wasserkocher reparieren oder einen neuen Wasserkocher kaufen.",
+            "Die Person sollte die Decke aufräumen.",
+            "Die Person sollte den Ball aufräumen.",
+            "Die Person sollte den Haartrockner aufräumen und in den Schrank legen.",
+            "Die Person sollte das Messer in die Schublade legen.",
+            "Die Person sollte den Schrank zu machen.",
+            "Die Person sollte die Kabel aufräumen.",
+            "Hören Sie einen Text über Unfälle im Haushalt.",
+            "Die meisten Unfälle im Haushalt passieren, weil Menschen sich zu Hause sicher fühlen und nicht mehr auf alles achten.",
+            "Menschen balancieren auf einem Stuhl und putzen Fenster und schon ist es passiert:",
+            "Sie fallen!",
+            "Um diese Unfälle zu vermeiden, benutzen Sie immer eine stabile Leiter, die sicher auf dem Boden steht.",
+            "Beim Gemüseschneiden kann das Messer schnell abrutschen.",
+            "Benutzen Sie besser ein Messer mit Zacken.",
+            "Außerdem schneiden sich viele Menschen, wenn sie kaputtes Glas mit den Händen aufräumen.",
+            "Tragen Sie Handschuhe.",
+            "Achten Sie beim Kochen und Backen auf das Kochwasser und den heißen Ofen und tragen Sie Handschuhe für hohe Temperaturen.",
+            "Bei Kindern stehen Vergiftungen und Stromschläge an erster Stelle in der Unfallstatistik.",
+            "Steckdosen sind besonders für kleine Kinder eine große Gefahr.",
+            "Sie können sich vergiften, wenn sie Putzmittel oder Medikamente essen oder trinken.",
+            "Bringen sie gefährliche Dinge an einen sicheren Ort.",
+            "Unfälle durch Feuer passieren auch oft.",
+            "Haben Sie einen Topf auf dem Herd, kann besonders Öl schnell brennen.",
+            "Assen Sie Töpfe nicht alleine.",
+            "Löschen Sie brennendes Öl nicht mit Wasser und löschen Sie Feuer am besten mit einem Feuerlöscher",
+            "Lesen Sie den Text laut.",
+            "Unterstreichen Sie alle Wörter, die Sie im Kontext verstehen.",
+            "Sie können sechs neue Wörter aus dem Text online suchen und übersetzen.",
+            "Ordnen Sie sechs Fotos von Aktivität Teil dem Text zu.",
+            "Schreiben Sie die Zahlen in die weißen Kreise im Text.",
+            "Diese Unfälle sind auf Platz 1, 2 und 3 in der Unfallstatistik",
+            ": Verbrennungen, Schnittverletzungen, Stürze.",
+            "Schreiben Sie die orangenen Sätze mit sollte.",
+            "Sie sollten immer eine stabile Leiter benutzen.",
+            "Sie sollten ein Messer mit Zacken benutzen.",
+            "Sie sollten Handschuhe tragen.",
+            "Sie sollten beim Kochen und Backen auf das Kochw asser und den heißen Ofen achten.",
+            "Sie sollten Handschuhe für hohe Temperaturen tragen.",
+            "Sie sollten gefährliche Dinge an einen sicheren Ort bringen.",
+            "Sie sollten Töpfe nicht alleine lassen.",
+            "Sie sollten Feuer am besten mit einem Feuerlöscher löschen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

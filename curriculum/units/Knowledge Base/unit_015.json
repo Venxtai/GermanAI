@@ -1,0 +1,300 @@
+{
+  "unit": "15",
+  "is_optional": true,
+  "sequence_info": {
+    "track": "core",
+    "position": 15,
+    "prerequisite": "1-14"
+  },
+  "grammar_constraints": {
+    "description": "Hard limits on grammatical structures the AI may use",
+    "allowed_tenses": [
+      "present"
+    ],
+    "allowed_cases": [
+      "nominative",
+      "accusative"
+    ],
+    "allowed_persons": [
+      "ich",
+      "du",
+      "er",
+      "es",
+      "sie_singular",
+      "xier",
+      "wir",
+      "ihr",
+      "sie_plural",
+      "Sie"
+    ],
+    "sentence_types": [
+      "declarative",
+      "w_question",
+      "yes_no_question"
+    ],
+    "new_rules_in_this_unit": [],
+    "forbidden": [
+      "tense:Präteritum_haben_sein",
+      "tense:Präteritum_modal",
+      "tense:Perfekt",
+      "tense:Futur_I",
+      "tense:Präteritum_weak",
+      "tense:Präteritum_strong",
+      "tense:Präteritum_mixed",
+      "tense:Plusquamperfekt",
+      "tense:Konjunktiv_II_present",
+      "tense:Konjunktiv_II_past",
+      "tense:Passiv_Präsens",
+      "tense:Passiv_Präteritum",
+      "case:dative",
+      "case:genitive",
+      "sentence_type:subordinate_weil",
+      "sentence_type:subordinate_wenn",
+      "sentence_type:subordinate_dass",
+      "sentence_type:relative_clause_nominative",
+      "sentence_type:relative_clause_accusative",
+      "sentence_type:subordinate_damit",
+      "sentence_type:infinitive_um_zu",
+      "sentence_type:imperative",
+      "sentence_type:relative_clause_dative",
+      "sentence_type:relative_clause_genitive",
+      "sentence_type:subordinate_bevor",
+      "sentence_type:subordinate_während",
+      "sentence_type:subordinate_nachdem",
+      "sentence_type:irreal_wish",
+      "sentence_type:conditional_irreal",
+      "sentence_type:coordinating_denn",
+      "sentence_type:subordinate_da",
+      "sentence_type:subordinate_obwohl",
+      "sentence_type:impersonal_passive"
+    ]
+  },
+  "communicative_functions": {
+    "description": "What students can accomplish with this language",
+    "goals": [
+      "sich vorstellen und über die eigene Zukunft spekulieren"
+    ]
+  },
+  "conversation_topics": {
+    "description": "Subject matter students can discuss",
+    "topics": [
+      "die eigene Zukunft"
+    ]
+  },
+  "active_vocabulary": {
+    "description": "Words students must actively produce (Step 2)",
+    "items": [
+      {
+        "word": "benutzen",
+        "pos": "VERB",
+        "translation": "to use, utilize",
+        "frequency": 1119,
+        "cefr": "A1"
+      },
+      {
+        "word": "nutzen",
+        "pos": "VERB",
+        "translation": "to use, utilize",
+        "frequency": 429,
+        "cefr": "B1"
+      },
+      {
+        "word": "sammeln",
+        "pos": "VERB",
+        "translation": "to collect",
+        "frequency": 1219,
+        "cefr": "A2"
+      },
+      {
+        "word": "der Eintrag",
+        "pos": "NOUN",
+        "translation": "entry",
+        "frequency": 6420,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Satz",
+        "pos": "NOUN",
+        "translation": "sentence",
+        "frequency": 432,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Information",
+        "pos": "NOUN",
+        "translation": "information",
+        "frequency": 465,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Gegenwart",
+        "pos": "NOUN",
+        "translation": "present",
+        "frequency": 1932,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Zukunft",
+        "pos": "NOUN",
+        "translation": "future",
+        "frequency": 469,
+        "cefr": "B1"
+      },
+      {
+        "word": "das Haustier",
+        "pos": "NOUN",
+        "translation": "pet",
+        "frequency": 12143,
+        "cefr": "B1"
+      },
+      {
+        "word": "der Arbeitsplatz",
+        "pos": "NOUN",
+        "translation": "workplace; employment",
+        "frequency": 1671,
+        "cefr": "A1"
+      },
+      {
+        "word": "die Teilzeit",
+        "pos": "NOUN",
+        "translation": "part time",
+        "frequency": 19027,
+        "cefr": "B1"
+      },
+      {
+        "word": "heute",
+        "pos": "ADV",
+        "translation": "today",
+        "frequency": 116,
+        "cefr": "A1"
+      },
+      {
+        "word": "typisch",
+        "pos": "ADJ",
+        "translation": "typical(ly)",
+        "frequency": 1109,
+        "cefr": "A2"
+      }
+    ]
+  },
+  "passive_vocabulary": {
+    "description": "Words students recognize but don't produce yet (Step 2)",
+    "items": [
+      {
+        "word": "der Blogeintrag",
+        "pos": "NOUN"
+      },
+      {
+        "word": "der Job",
+        "pos": "NOUN",
+        "frequency": 1115,
+        "cefr": "A1"
+      },
+      {
+        "word": "der Teilzeitjob",
+        "pos": "NOUN"
+      },
+      {
+        "word": "an",
+        "pos": "ADP",
+        "frequency": 19,
+        "cefr": "A1"
+      },
+      {
+        "word": "das Umfeld",
+        "pos": "NOUN",
+        "frequency": 2099
+      },
+      {
+        "word": "das Detail",
+        "pos": "NOUN",
+        "frequency": 1787,
+        "cefr": "B1"
+      },
+      {
+        "word": "fantasieren",
+        "pos": "VERB"
+      },
+      {
+        "word": "deutsche",
+        "pos": "NOUN",
+        "cefr": "A1"
+      },
+      {
+        "word": "Präsen",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  "allowed_verb_forms": {
+    "description": "Specific conjugated forms students may use (Step 3)",
+    "verbs": {
+      "benutzen": {
+        "present": {
+          "ich": "benutze",
+          "du": "benutzt",
+          "er": "benutzt",
+          "es": "benutzt",
+          "sie_singular": "benutzt",
+          "xier": "benutzt",
+          "wir": "benutzen",
+          "ihr": "benutzt",
+          "sie_plural": "benutzen",
+          "Sie": "benutzen"
+        }
+      },
+      "nutzen": {
+        "present": {
+          "ich": "nutze",
+          "du": "nutzt",
+          "er": "nutzt",
+          "es": "nutzt",
+          "sie_singular": "nutzt",
+          "xier": "nutzt",
+          "wir": "nutzen",
+          "ihr": "nutzt",
+          "sie_plural": "nutzen",
+          "Sie": "nutzen"
+        }
+      },
+      "sammeln": {
+        "present": {
+          "ich": "sammle",
+          "du": "sammelst",
+          "er": "sammelt",
+          "es": "sammelt",
+          "sie_singular": "sammelt",
+          "xier": "sammelt",
+          "wir": "sammeln",
+          "ihr": "sammelt",
+          "sie_plural": "sammeln",
+          "Sie": "sammeln"
+        }
+      }
+    }
+  },
+  "model_sentences": {
+    "description": "Examples from textbook (Step 4)",
+    "literal": [
+      "Das bin ich heute und in 15 Jahren.",
+      "Wie heißen Sie?",
+      "Wie alt sind Sie?",
+      "Was studieren Sie?",
+      "Wo arbeiten Sie?",
+      "Was sind Sie von Beruf?",
+      "Was machen Sie gern?",
+      "Was machen Sie nicht gern?",
+      "Was hat die Person?",
+      "In 15 Jahren: Fantasieren Sie.",
+      "Schreiben Sie einen Blogeintrag mit den Informationen.",
+      "Ich heiße Liam.",
+      "Ich bin 18 Jahre alt und komme aus …",
+      "Schreiben Sie einen Blogeintrag mit den neuen Informationen.",
+      "Es ist 2040.",
+      "Ich wohne1 nicht in Chapel Hill.",
+      "Im Deutschen kann man Präsens für Gegenwart und Zukunft benutzen."
+    ],
+    "templated": []
+  },
+  "placeholder_registry": {}
+}

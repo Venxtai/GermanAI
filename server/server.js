@@ -22,7 +22,6 @@ const openai = new OpenAI({
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
 
 // Configure multer for audio file uploads
 const upload = multer({ 
@@ -30,19 +29,161 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
 });
 
-// Load curriculum data
-let curriculumData = {};
+// Impuls Deutsch 1 — chapters with titles and unit ranges
+const ID1_CHAPTERS = [
+  { chapter: 1, title: 'Wer bin ich?: Heute und in der Zukunft',                                     unitStart: 1,   unitEnd: 15  },
+  { chapter: 2, title: 'Was ziehe ich an?: Wetter und Klimawandel',                                   unitStart: 16,  unitEnd: 26  },
+  { chapter: 3, title: 'Was ist da drin? Lebensmittel unter der Lupe',                                unitStart: 27,  unitEnd: 37  },
+  { chapter: 4, title: 'Wie gestalte ich mein Leben?: Schlanke Produktion f\u00fcr Haus und Alltag', unitStart: 38,  unitEnd: 52  },
+  { chapter: 5, title: 'Woher kommen meine Sachen?: Konsum, Verpackungen, M\u00fclltrennung',         unitStart: 53,  unitEnd: 67  },
+  { chapter: 6, title: 'Wie war es damals?: Kindheit im Wandel der Zeit',                            unitStart: 68,  unitEnd: 79  },
+  { chapter: 7, title: "Was gibt's da zu sehen?: Sehensw\u00fcrdigkeiten in Wien",                    unitStart: 80,  unitEnd: 93  },
+  { chapter: 8, title: 'Wie sieht die Zukunft aus?: Erfindungen und Innovationen',                   unitStart: 94,  unitEnd: 104 },
+];
+
+// Impuls Deutsch 2 BLAU
+const ID2B_CHAPTERS = [
+  { chapter: 1, title: 'Wie leben wir nachhaltig?: Kommunikation für die Zukunft unseres Planeten', unitStart: 1,  unitEnd: 14 },
+  { chapter: 2, title: 'Was war da los?: Ost-West-Geschichte(n)',                                    unitStart: 15, unitEnd: 26 },
+  { chapter: 3, title: 'Wer sind wir?: Deutsch im Plural',                                           unitStart: 27, unitEnd: 37 },
+  { chapter: 4, title: 'Wie unterhalten wir uns?: Alte und neue Medien',                             unitStart: 38, unitEnd: 52 },
+];
+
+// Impuls Deutsch 2 ORANGE
+const ID2O_CHAPTERS = [
+  { chapter: 1, title: 'Wer würde sich trauen?: Achterbahnen und anderer Nervenkitzel',             unitStart: 1,  unitEnd: 17 },
+  { chapter: 2, title: 'Wofür/wogegen sind wir?: Protest, Widerstand, Mitbestimmung',               unitStart: 18, unitEnd: 29 },
+  { chapter: 3, title: 'Wie wird das gemacht?: Die Schweiz als Herstellerin von Qualitätsprodukten', unitStart: 30, unitEnd: 41 },
+  { chapter: 4, title: 'Was prägt uns?: Transatlantische Beziehungen und Einflüsse',                unitStart: 42, unitEnd: 52 },
+];
+
+const ALL_CHAPTERS = { ID1: ID1_CHAPTERS, ID2B: ID2B_CHAPTERS, ID2O: ID2O_CHAPTERS };
+
+function getChapter(unitNum) {
+  const n = parseInt(unitNum);
+  return ID1_CHAPTERS.find(c => n >= c.unitStart && n <= c.unitEnd) || null;
+}
+
+// Load all unit files from Knowledge Base folder
+const unitMap = {};
 try {
-  const curriculumPath = path.join(__dirname, '../curriculum/units.json');
-  if (fs.existsSync(curriculumPath)) {
-    curriculumData = JSON.parse(fs.readFileSync(curriculumPath, 'utf8'));
+  const kbDir = path.join(__dirname, '../curriculum/units/Knowledge Base');
+  if (fs.existsSync(kbDir)) {
+    const files = fs.readdirSync(kbDir).filter(f => f.endsWith('.json'));
+    for (const file of files) {
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(kbDir, file), 'utf8'));
+        if (data.unit !== undefined) {
+          unitMap[String(data.unit)] = data;
+        }
+      } catch (e) {
+        console.warn(`Skipping ${file}: ${e.message}`);
+      }
+    }
+    console.log(`Loaded ${Object.keys(unitMap).length} units from Knowledge Base`);
+  } else {
+    console.warn('Knowledge Base directory not found:', kbDir);
   }
 } catch (error) {
   console.error('Error loading curriculum data:', error);
 }
 
+// Load image map data
+let imageMap = {};
+try {
+  const imageMapPath = path.join(__dirname, './imageMap.json');
+  if (fs.existsSync(imageMapPath)) {
+    imageMap = JSON.parse(fs.readFileSync(imageMapPath, 'utf8')).imageMap || {};
+  }
+} catch (error) {
+  console.error('Error loading image map:', error);
+}
+
 // Store active conversations (in production, use a database)
 const conversations = new Map();
+
+// ─── SSE log broadcast ─────────────────────────────────────────────────────
+const logClients = new Set();
+const logHistory = []; // persists all events for replay on reconnect
+const MAX_HISTORY = 500;
+
+function broadcastLog(payload) {
+  logHistory.push(payload);
+  if (logHistory.length > MAX_HISTORY) logHistory.shift();
+  const data = `data: ${JSON.stringify(payload)}\n\n`;
+  for (const res of logClients) {
+    try { res.write(data); } catch (_) { logClients.delete(res); }
+  }
+}
+// ─── Conversation Logger ────────────────────────────────────────────────────
+const RESET  = '\x1b[0m';
+const BOLD   = '\x1b[1m';
+const DIM    = '\x1b[2m';
+const CYAN   = '\x1b[36m';
+const GREEN  = '\x1b[32m';
+const YELLOW = '\x1b[33m';
+const MAGENTA= '\x1b[35m';
+const RED    = '\x1b[31m';
+const BLUE   = '\x1b[34m';
+
+function timestamp() {
+  return new Date().toLocaleTimeString('en-US', { hour12: false });
+}
+
+function logConversationStart(sessionId, unitNumber) {
+  const unitData = unitMap[String(unitNumber)];
+  const unitLabel = unitData
+    ? `Unit ${unitNumber} — ${(unitData.communicative_functions?.goals || [])[0] || (unitData.conversation_topics?.topics || [])[0] || ''}`
+    : `Unit ${unitNumber}`;
+  console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
+  console.log(`${BOLD}${GREEN}[${timestamp()}] CONVERSATION STARTED${RESET}`);
+  console.log(`${DIM}Session : ${sessionId}${RESET}`);
+  console.log(`${DIM}Unit    : ${unitLabel}${RESET}`);
+  console.log(`${BOLD}${CYAN}${'─'.repeat(60)}${RESET}`);
+  broadcastLog({ type: 'start', sessionId, unitLabel, time: timestamp() });
+}
+
+function logTurn(role, text) {
+  const time = `${DIM}[${timestamp()}]${RESET}`;
+  if (role === 'student') {
+    console.log(`${time} ${BOLD}${YELLOW}STUDENT:${RESET} ${text}`);
+  } else {
+    console.log(`${time} ${BOLD}${BLUE}    AI :${RESET} ${text}`);
+  }
+  // NOTE: does NOT call broadcastLog — callers handle that themselves.
+}
+
+function logConversationEnd(sessionId, exchangeCount) {
+  console.log(`${BOLD}${CYAN}${'─'.repeat(60)}${RESET}`);
+  console.log(`${BOLD}${RED}[${timestamp()}] CONVERSATION ENDED${RESET}  ${DIM}session: ${sessionId} | ${exchangeCount} student turn(s)${RESET}`);
+  console.log(`${BOLD}${CYAN}${'═'.repeat(60)}${RESET}\n`);
+  broadcastLog({ type: 'end', sessionId, exchangeCount, time: timestamp() });
+}
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Helper function to find matching image from imageMap based on unit and response text
+ */
+function getImageForResponse(unitNumber, responseText) {
+  const unitImages = imageMap[String(unitNumber)];
+  if (!unitImages) return null;
+  
+  const responseTextLower = responseText.toLowerCase();
+  
+  for (const imageConfig of (unitImages.images || [])) {
+    for (const keyword of (imageConfig.keywords || [])) {
+      if (responseTextLower.includes(keyword.toLowerCase())) {
+        return {
+          path: imageConfig.path,
+          duration: imageConfig.duration,
+          description: imageConfig.description
+        };
+      }
+    }
+  }
+  
+  return null;
+}
 
 // Token endpoint for WebRTC Realtime API
 app.get('/token', async (req, res) => {
@@ -135,33 +276,63 @@ Beginne warm und freundlich mit: "Hallo! Wie heißt du?"`;
 }
 
 /**
- * Route: Get available units
+ * Route: Chapter list for Book ID1
  */
-app.get('/api/units', (req, res) => {
-  if (!curriculumData.units) {
-    return res.json({ units: [] });
-  }
-  
-  const unitsList = curriculumData.units.map(unit => ({
-    unit: unit.unit,
-    title: unit.title || `Einheit ${unit.unit}`,
-    description: unit.description || ''
-  }));
-  
-  res.json({ units: unitsList });
+app.get('/api/chapters', (req, res) => {
+  const book = req.query.book || 'ID1';
+  res.json(ALL_CHAPTERS[book] || ID1_CHAPTERS);
 });
 
 /**
- * Route: Get specific unit data
+ * Route: Lightweight unit index — filtered by ?book=X&chapter=N
  */
-app.get('/api/units/:unitNumber', (req, res) => {
-  const unitNumber = parseInt(req.params.unitNumber);
-  const unit = curriculumData.units?.find(u => u.unit === unitNumber);
-  
-  if (!unit) {
-    return res.status(404).json({ error: 'Unit not found' });
+app.get('/api/units', (req, res) => {
+  const book = req.query.book || 'ID1';
+  const chapter = req.query.chapter ? parseInt(req.query.chapter) : null;
+  const chapterList = ALL_CHAPTERS[book] || ID1_CHAPTERS;
+  const chMeta = chapter ? chapterList.find(c => c.chapter === chapter) : null;
+
+  // Filter units belonging to the requested book
+  let units = Object.values(unitMap).filter(u => {
+    const uid = String(u.unit);
+    if (book === 'ID1')  return !uid.startsWith('B') && !uid.startsWith('O');
+    if (book === 'ID2B') return uid.startsWith('B');
+    if (book === 'ID2O') return uid.startsWith('O');
+    return false;
+  });
+
+  // Further filter by chapter range using sequence_info.position
+  if (chMeta) {
+    units = units.filter(u => {
+      const pos = u.sequence_info?.position
+        || parseInt(String(u.unit).replace(/^[BO]/i, ''));
+      return pos >= chMeta.unitStart && pos <= chMeta.unitEnd;
+    });
   }
-  
+
+  const index = units
+    .map(u => ({
+      unit: u.unit,
+      position: u.sequence_info?.position
+        || parseInt(String(u.unit).replace(/^[BO]/i, '')),
+      is_optional: u.is_optional || false,
+      topic: (u.communicative_functions?.goals || [])[0]
+          || (u.conversation_topics?.topics || [])[0]
+          || `Unit ${u.unit}`,
+    }))
+    .sort((a, b) => a.position - b.position);
+
+  res.json(index);
+});
+
+/**
+ * Route: Full unit data for a single unit
+ */
+app.get('/api/units/:unitId', (req, res) => {
+  const unit = unitMap[req.params.unitId];
+  if (!unit) {
+    return res.status(404).json({ error: `Unit ${req.params.unitId} not found` });
+  }
   res.json(unit);
 });
 
@@ -199,8 +370,13 @@ app.post('/api/conversation/start', async (req, res) => {
     conversations.set(conversationId, {
       unitNumber,
       messages,
-      createdAt: Date.now()
+      createdAt: Date.now(),
+      exchangeCount: 0
     });
+
+    // Log conversation start
+    logConversationStart(conversationId, unitNumber);
+    logTurn('ai', aiResponse);
     
     res.json({
       conversationId,
@@ -230,8 +406,8 @@ app.post('/api/speech-to-text', upload.single('audio'), async (req, res) => {
     
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(renamedPath),
-      model: 'whisper-1',
-      language: 'de' // German
+      model: 'gpt-4o-transcribe', // better accuracy than whisper-1 for short clips
+      language: 'de', // German
     });
     
     // Clean up uploaded file
@@ -276,8 +452,10 @@ app.post('/api/conversation/message', async (req, res) => {
       return res.status(404).json({ error: 'Conversation not found' });
     }
     
-    // Add user message to conversation
+    // Log and add user message to conversation
+    logTurn('student', message);
     conversation.messages.push({ role: 'user', content: message });
+    conversation.exchangeCount = (conversation.exchangeCount || 0) + 1;
     
     // Get AI response
     const completion = await openai.chat.completions.create({
@@ -291,8 +469,17 @@ app.post('/api/conversation/message', async (req, res) => {
     
     const aiResponse = completion.choices[0].message.content;
     conversation.messages.push({ role: 'assistant', content: aiResponse });
+    logTurn('ai', aiResponse);
     
-    res.json({ response: aiResponse });
+    // Check if there's an image to display for this unit
+    const image = getImageForResponse(conversation.unitNumber, aiResponse);
+    
+    const responseData = { response: aiResponse };
+    if (image) {
+      responseData.image = image;
+    }
+    
+    res.json(responseData);
     
   } catch (error) {
     console.error('Error processing message:', error);
@@ -335,6 +522,175 @@ app.post('/api/text-to-speech', async (req, res) => {
   }
 });
 
+// SSE stream endpoint — log viewer connects here
+app.get('/log-stream', (req, res) => {
+  res.set({
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'Access-Control-Allow-Origin': '*',
+  });
+  res.flushHeaders();
+
+  // Replay full history so reconnecting clients see everything
+  for (const payload of logHistory) {
+    res.write(`data: ${JSON.stringify(payload)}\n\n`);
+  }
+
+  logClients.add(res);
+  req.on('close', () => logClients.delete(res));
+});
+
+// Log viewer page
+app.get('/log-viewer', (req, res) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Conversation Log — Live</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0d0d; color: #e2e8f0; font-family: 'Consolas', 'Menlo', monospace; font-size: 13.5px; padding: 20px; }
+  #header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid #2d2d2d; padding-bottom: 14px; }
+  #header h1 { font-size: 15px; font-weight: 600; color: #94a3b8; letter-spacing: .04em; }
+  #dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px #22c55e; animation: pulse 1.5s infinite; }
+  #dot.off { background: #6b7280; box-shadow: none; animation: none; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  #log { display: flex; flex-direction: column; gap: 4px; }
+  .sep { border-top: 1px solid #2a2a2a; margin: 10px 0; }
+  .sep-heavy { border-top: 2px solid #334155; margin: 12px 0; }
+  .row { display: flex; gap: 10px; line-height: 1.55; }
+  .time { color: #475569; min-width: 74px; flex-shrink: 0; }
+  .label { font-weight: 700; min-width: 68px; flex-shrink: 0; }
+  .label.student { color: #fbbf24; }
+  .label.ai      { color: #60a5fa; }
+  .label.system  { color: #34d399; }
+  .label.end     { color: #f87171; }
+  .text { color: #e2e8f0; white-space: pre-wrap; word-break: break-word; }
+  .text.pending { color: #475569; font-style: italic; }
+  .meta { color: #64748b; font-size: 12px; }
+  #empty { color: #475569; margin-top: 30px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="header">
+  <div id="dot"></div>
+  <h1>Conversation Log &mdash; Live</h1>
+</div>
+<div id="log"><p id="empty">Waiting for a conversation to start…</p></div>
+<script>
+  const log = document.getElementById('log');
+  const dot = document.getElementById('dot');
+  let hasContent = false;
+
+  function addRow(html) {
+    const empty = document.getElementById('empty');
+    if (empty) empty.remove();
+    if (!hasContent) hasContent = true;
+    log.insertAdjacentHTML('beforeend', html);
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  const es = new EventSource('/log-stream');
+  dot.className = '';
+
+  es.onmessage = (e) => {
+    const ev = JSON.parse(e.data);
+    if (ev.type === 'start') {
+      // Clear the log display for the new session
+      log.innerHTML = '';
+      hasContent = false;
+      addRow('<div class="sep-heavy"></div>');
+      addRow('<div class="row"><span class="time">' + ev.time + '</span><span class="label system">SESSION</span><span class="text">' + escHtml(ev.unitLabel) + '</span></div>');
+      addRow('<div class="sep"></div>');
+    } else if (ev.type === 'turn') {
+      const cls = ev.role === 'student' ? 'student' : 'ai';
+      const lbl = ev.role === 'student' ? 'STUDENT' : '    AI';
+      const idAttr = ev.id ? ' data-turn-id="' + escHtml(ev.id) + '"' : '';
+      const textCls = ev.pending ? 'text pending' : 'text';
+      addRow('<div class="row"' + idAttr + '><span class="time">' + ev.time + '</span><span class="label ' + cls + '">' + lbl + '</span><span class="' + textCls + '">' + escHtml(ev.text) + '</span></div>');
+    } else if (ev.type === 'update-turn') {
+      // Replace the placeholder text with the real transcription
+      const row = document.querySelector('[data-turn-id="' + ev.id + '"]');
+      if (row) {
+        const span = row.querySelector('.text');
+        if (span) { span.textContent = ev.text; span.classList.remove('pending'); }
+      }
+    } else if (ev.type === 'end') {
+      addRow('<div class="sep"></div>');
+      addRow('<div class="row"><span class="time">' + ev.time + '</span><span class="label end">ENDED &nbsp;</span><span class="meta">' + ev.exchangeCount + ' student turn(s)</span></div>');
+      addRow('<div class="sep-heavy"></div>');
+    }
+  };
+
+  es.onerror = () => { dot.className = 'off'; };
+  es.onopen  = () => { dot.className = ''; };
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+<\/script>
+</body>
+</html>`);
+});
+
+/**
+ * Route: Conversation logger — frontend posts transcripts here.
+ * body: { type: 'start'|'turn'|'end', sessionId, unit?, unitTitle?, role?: 'student'|'ai', text? }
+ */
+const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount }
+
+app.post('/api/log', (req, res) => {
+  const { type, sessionId, unit, unitTitle, role, text } = req.body;
+
+  if (!sessionId) return res.status(400).json({ error: 'Missing sessionId' });
+
+  if (type === 'start') {
+    // Clear history so reconnecting clients only see the current session
+    logHistory.length = 0;
+    logSessions.set(sessionId, { unit, unitTitle, exchangeCount: 0 });
+    const label = unitTitle ? `Unit ${unit} — ${unitTitle}` : `Unit ${unit}`;
+    console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
+    console.log(`${BOLD}${GREEN}[${timestamp()}] CONVERSATION STARTED${RESET}`);
+    console.log(`${DIM}Session : ${sessionId}${RESET}`);
+    console.log(`${DIM}Unit    : ${label}${RESET}`);
+    console.log(`${BOLD}${CYAN}${'─'.repeat(60)}${RESET}`);
+    broadcastLog({ type: 'start', sessionId, unitLabel: label, time: timestamp() });
+
+  } else if (type === 'turn') {
+    const session = logSessions.get(sessionId);
+    if (!session) return res.status(404).json({ error: 'Session not found' });
+    if (role === 'student') session.exchangeCount++;
+    const { id, pending } = req.body;
+    // For pending student placeholders, skip the console until the real text arrives
+    if (!pending) logTurn(role, text);
+    broadcastLog({ type: 'turn', role, text, id: id || null, pending: !!pending, time: timestamp() });
+
+  } else if (type === 'update-turn') {
+    // Whisper transcription arrived — update the placeholder row in the log.
+    const { id, text: updatedText } = req.body;
+    // Mutate the logHistory entry so replaying clients get the final text
+    for (let i = logHistory.length - 1; i >= 0; i--) {
+      if (logHistory[i].id === id) {
+        logHistory[i].text = updatedText;
+        logHistory[i].pending = false;
+        break;
+      }
+    }
+    logTurn('student', updatedText);
+    broadcastLog({ type: 'update-turn', id, text: updatedText, time: timestamp() });
+
+  } else if (type === 'end') {
+    const session = logSessions.get(sessionId);
+    const count = session ? session.exchangeCount : 0;
+    logConversationEnd(sessionId, count);
+    logSessions.delete(sessionId);
+  }
+
+  res.json({ ok: true });
+});
+
 /**
  * Route: End conversation (cleanup)
  */
@@ -342,6 +698,8 @@ app.post('/api/conversation/end', (req, res) => {
   const { conversationId } = req.body;
   
   if (conversationId && conversations.has(conversationId)) {
+    const conv = conversations.get(conversationId);
+    logConversationEnd(conversationId, conv.exchangeCount || 0);
     conversations.delete(conversationId);
   }
   
@@ -355,6 +713,7 @@ setInterval(() => {
   
   for (const [id, conversation] of conversations.entries()) {
     if (now - conversation.createdAt > maxAge) {
+      logConversationEnd(id, conversation.exchangeCount || 0);
       conversations.delete(id);
     }
   }
@@ -363,5 +722,5 @@ setInterval(() => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Curriculum data loaded: ${curriculumData.units?.length || 0} units`);
+  console.log(`Loaded ${Object.keys(unitMap).length} units | Impuls Deutsch 1 | ${ID1_CHAPTERS.length} chapters`);
 });

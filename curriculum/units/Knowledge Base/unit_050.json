@@ -1,0 +1,672 @@
+{
+    "unit": "50",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 50,
+        "prerequisite": "1-49"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Grundsätze von schlanker Produktion beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "bedeuten",
+                "pos": "VERB",
+                "translation": "to mean; matter",
+                "frequency": 398,
+                "cefr": "A1"
+            },
+            {
+                "word": "verändern",
+                "pos": "VERB",
+                "translation": "to change"
+            },
+            {
+                "word": "verbessern",
+                "pos": "VERB",
+                "translation": "to improve, enhance",
+                "frequency": 1194,
+                "cefr": "B1"
+            },
+            {
+                "word": "transportieren",
+                "pos": "VERB",
+                "translation": "to transport",
+                "frequency": 2438,
+                "cefr": "B1"
+            },
+            {
+                "word": "warten",
+                "pos": "VERB",
+                "translation": "to wait (for)",
+                "frequency": 364,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Geld",
+                "pos": "NOUN",
+                "translation": "money",
+                "frequency": 235,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Weg",
+                "pos": "NOUN",
+                "translation": "path",
+                "frequency": 220,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bereich",
+                "pos": "NOUN",
+                "translation": "sector; area",
+                "frequency": 339,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schritt",
+                "pos": "NOUN",
+                "translation": "step",
+                "frequency": 376,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Fehler",
+                "pos": "NOUN",
+                "translation": "error, mistake",
+                "frequency": 861,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Keller",
+                "pos": "NOUN",
+                "translation": "basement, cellar",
+                "frequency": 1599,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Wartezeit",
+                "pos": "NOUN",
+                "translation": "waiting time",
+                "frequency": 8802,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Verschwendung",
+                "pos": "NOUN",
+                "translation": "waste",
+                "frequency": 18026,
+                "cefr": "B2"
+            },
+            {
+                "word": "schlank",
+                "pos": "ADJ",
+                "translation": "lean; slim",
+                "frequency": 4308,
+                "cefr": "B1"
+            },
+            {
+                "word": "nötig",
+                "pos": "ADJ",
+                "translation": "necessary"
+            },
+            {
+                "word": "unnötig",
+                "pos": "ADJ",
+                "translation": "unnecessary"
+            },
+            {
+                "word": "so klein wie möglich",
+                "pos": "ADJ",
+                "translation": "as small as possible"
+            },
+            {
+                "word": "lang",
+                "pos": "ADJ",
+                "translation": "long",
+                "frequency": 97,
+                "cefr": "A1"
+            },
+            {
+                "word": "weit auseinander",
+                "pos": "ADJ",
+                "translation": "far apart from each other",
+                "frequency": 230,
+                "cefr": "A1"
+            },
+            {
+                "word": "wieder",
+                "pos": "ADV",
+                "translation": "again",
+                "frequency": 74,
+                "cefr": "A2"
+            },
+            {
+                "word": "hin und her",
+                "pos": "ADV",
+                "translation": "back and forth",
+                "frequency": 712
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Produktion",
+                "pos": "NOUN",
+                "frequency": 923,
+                "cefr": "B1"
+            },
+            {
+                "word": "schlanke",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Arbeitsprozeß",
+                "pos": "NOUN"
+            },
+            {
+                "word": "ineffizient",
+                "pos": "ADJ",
+                "frequency": 36666
+            },
+            {
+                "word": "der Objekt",
+                "pos": "NOUN",
+                "frequency": 1427
+            },
+            {
+                "word": "km",
+                "pos": "NOUN",
+                "frequency": 6058
+            },
+            {
+                "word": "die Ordnung",
+                "pos": "NOUN",
+                "frequency": 797,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Mal",
+                "pos": "NOUN",
+                "frequency": 82,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Übersetzung",
+                "pos": "NOUN",
+                "frequency": 2016,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Arbeitsprozess",
+                "pos": "NOUN",
+                "frequency": 41203
+            },
+            {
+                "word": "möglich",
+                "pos": "ADV",
+                "frequency": 171,
+                "cefr": "A1"
+            },
+            {
+                "word": "eliminieren",
+                "pos": "VERB",
+                "frequency": 18948,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Alltag",
+                "pos": "NOUN",
+                "frequency": 1709,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Spülmaschine",
+                "pos": "NOUN"
+            },
+            {
+                "word": "räumen",
+                "pos": "VERB",
+                "frequency": 2916
+            },
+            {
+                "word": "hin",
+                "pos": "ADV",
+                "frequency": 712,
+                "cefr": "A2"
+            },
+            {
+                "word": "her",
+                "pos": "ADV",
+                "frequency": 1083,
+                "cefr": "A2"
+            },
+            {
+                "word": "weit",
+                "pos": "ADV",
+                "frequency": 230,
+                "cefr": "A1"
+            },
+            {
+                "word": "überflüssig",
+                "pos": "ADJ",
+                "frequency": 4465
+            },
+            {
+                "word": "der Transport",
+                "pos": "NOUN",
+                "frequency": 2352,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Nudelwasser",
+                "pos": "NOUN"
+            },
+            {
+                "word": "wegwerfen",
+                "pos": "VERB",
+                "frequency": 20620,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Überproduktion",
+                "pos": "NOUN",
+                "frequency": 38666
+            },
+            {
+                "word": "der Pfannkuchen",
+                "pos": "NOUN",
+                "frequency": 34697
+            },
+            {
+                "word": "das Lager",
+                "pos": "NOUN",
+                "frequency": 1559,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Heizung",
+                "pos": "NOUN",
+                "frequency": 8853,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Prozessübererfüllung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Pfannkuchenteig",
+                "pos": "NOUN"
+            },
+            {
+                "word": "überqualifizieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Überqualifikation",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Chefkoch",
+                "pos": "NOUN",
+                "frequency": 35877
+            },
+            {
+                "word": "das Michelin-Sterne-Restaurant",
+                "pos": "NOUN"
+            },
+            {
+                "word": "besprechen",
+                "pos": "VERB",
+                "frequency": 2205,
+                "cefr": "B1"
+            },
+            {
+                "word": "markiert",
+                "pos": "ADJ",
+                "frequency": 27931
+            },
+            {
+                "word": "klären",
+                "pos": "VERB",
+                "frequency": 2025,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Müll",
+                "pos": "NOUN",
+                "frequency": 4506,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Drucker",
+                "pos": "NOUN",
+                "frequency": 15075,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kopie",
+                "pos": "NOUN",
+                "frequency": 4949,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Code",
+                "pos": "NOUN",
+                "frequency": 3810
+            },
+            {
+                "word": "das Programm",
+                "pos": "NOUN",
+                "frequency": 870,
+                "cefr": "A2"
+            },
+            {
+                "word": "funktionieren",
+                "pos": "VERB",
+                "frequency": 677,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Art",
+                "pos": "NOUN",
+                "frequency": 260,
+                "cefr": "B1"
+            },
+            {
+                "word": "schauen",
+                "pos": "VERB",
+                "frequency": 510,
+                "cefr": "B1"
+            },
+            {
+                "word": "einmal",
+                "pos": "ADV",
+                "frequency": 124,
+                "cefr": "A1"
+            },
+            {
+                "word": "auseinander",
+                "pos": "ADV",
+                "frequency": 5618,
+                "cefr": "B1"
+            },
+            {
+                "word": "verdreht",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Jaqueline",
+                "pos": "NOUN"
+            },
+            {
+                "word": "statt",
+                "pos": "ADP",
+                "frequency": 680,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Wiederholung",
+                "pos": "NOUN",
+                "frequency": 3437,
+                "cefr": "B1"
+            },
+            {
+                "word": "überlegen",
+                "pos": "VERB",
+                "frequency": 1047,
+                "cefr": "B1"
+            },
+            {
+                "word": "spannend",
+                "pos": "ADV",
+                "frequency": 1810,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Tomatensoße",
+                "pos": "NOUN"
+            },
+            {
+                "word": "vorstellen",
+                "pos": "VERB",
+                "frequency": 365,
+                "cefr": "A1"
+            },
+            {
+                "word": "einbauen",
+                "pos": "VERB",
+                "frequency": 3684
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "bedeuten": {
+                "present": {
+                    "ich": "bedeute",
+                    "du": "bedeutest",
+                    "er": "bedeutet",
+                    "es": "bedeutet",
+                    "sie_singular": "bedeutet",
+                    "xier": "bedeutet",
+                    "wir": "bedeuten",
+                    "ihr": "bedeutet",
+                    "sie_plural": "bedeuten",
+                    "Sie": "bedeuten"
+                }
+            },
+            "verändern": {
+                "present": {
+                    "ich": "verändere",
+                    "du": "veränderst",
+                    "er": "verändert",
+                    "es": "verändert",
+                    "sie_singular": "verändert",
+                    "xier": "verändert",
+                    "wir": "verändern",
+                    "ihr": "verändert",
+                    "sie_plural": "verändern",
+                    "Sie": "verändern"
+                }
+            },
+            "verbessern": {
+                "present": {
+                    "ich": "verbessere",
+                    "du": "verbesserst",
+                    "er": "verbessert",
+                    "es": "verbessert",
+                    "sie_singular": "verbessert",
+                    "xier": "verbessert",
+                    "wir": "verbessern",
+                    "ihr": "verbessert",
+                    "sie_plural": "verbessern",
+                    "Sie": "verbessern"
+                }
+            },
+            "transportieren": {
+                "present": {
+                    "ich": "transportiere",
+                    "du": "transportierst",
+                    "er": "transportiert",
+                    "es": "transportiert",
+                    "sie_singular": "transportiert",
+                    "xier": "transportiert",
+                    "wir": "transportieren",
+                    "ihr": "transportiert",
+                    "sie_plural": "transportieren",
+                    "Sie": "transportieren"
+                }
+            },
+            "warten": {
+                "present": {
+                    "ich": "warte",
+                    "du": "wartest",
+                    "er": "wartet",
+                    "es": "wartet",
+                    "sie_singular": "wartet",
+                    "xier": "wartet",
+                    "wir": "warten",
+                    "ihr": "wartet",
+                    "sie_plural": "warten",
+                    "Sie": "warten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Beantworten Sie die Fragen.",
+            "Was bedeutet \"Schlanke Produktion\"?",
+            "Was ist effizient (e) und was ineffizient (i)?",
+            "Man holt einen Löffel aus einer Schublade und ein Messer aus einer anderen.",
+            "Man transportiert ein Objekt 500km, produziert es und transportiert es dann wieder zurück, um es zu verkaufen.",
+            "Man hat alle Utensilien für ein Projekt an einem Ort.",
+            "Man wartet auf einen Prozess und macht dann erst einen anderen Prozess.",
+            "Man macht nur nötige Schritte für ein Projekt.",
+            "Man optimiert die Ordnung in der Küche.",
+            "Lesen Sie den Text zuerst ein bis zwei Mal alleine komplett durch.",
+            "Markieren Sie wichtige Wörter.",
+            "Schlanke Produktion als Übersetzung von \"Lean Production\" und \"Lean Manufacturing\" heißt eine Methode, die Arbeitsprozesse verbessert.",
+            "Jeder Arbeitsprozess braucht mehrere Schritte.",
+            "Jeder Schritt soll das Produkt besser machen.",
+            "Alles andere will man so klein wie möglich machen.",
+            "Was man machen muss, was aber das Produkt nicht verändert.",
+            "Alles, was das Produkt verändert.",
+            "Alles, was unnötig ist.",
+            "Schlanke Produktion will Verschwendung eliminieren und den Arbeitsprozess immer besser machen.",
+            "Die Teller sind in der Spülmaschine.",
+            "Die Spülmaschine ist links in der Küche.",
+            "Der Schrank für die Teller ist rechts in der Küche.",
+            "Sie räumen die Spülmaschine aus und laufen hin und her.",
+            "Sie kochen in der Küche.",
+            "Die Nudeln sind im Keller.",
+            "Sie gehen in den Keller und bringen die Nudeln in die Küche.",
+            "Sie geben Zucker in das Nudelwasser und kein Salz.",
+            "Sie brauchen einen Topf aus der Spülmaschine, aber sie läuft noch.",
+            "Sie müssen warten.",
+            "Man macht zu viel.",
+            "Es kann sein, dass man später den Rest wegwerfen muss.",
+            ": Sie machen 100 Pfannkuchen für drei Personen.",
+            "Man macht zu viel und braucht ein Lager.",
+            "Das kostet Geld für den Platz, Heizung usw.",
+            ": Die 100 Pfannkuchen stehen im Kühlschrank.",
+            "Sie rühren den Pfannkuchenteig für 30 Minuten.",
+            "Die Pfannkuchen schmecken gut, aber nicht besser.",
+            "Sie kochen mit einem Chefkoch aus einem Michelin-Sterne-Restaurant.",
+            "Der Chefkoch gibt Salz in das Nudelwasser.",
+            "Lesen Sie den Text.",
+            "Besprechen Sie Ihre markierten Wörter im Text.",
+            "Was finden Sie wichtig?",
+            "Verstehen Sie alle Beispiele in 1-8?",
+            "Klären Sie Fragen.",
+            "Beantworten Sie die Fragen und finden Sie jeweils ein weiteres Beispiel.",
+            "Was ist Überproduktion?",
+            "Ich habe 4 Brötchen gebacken.",
+            "Meine Freund*innen möchten 6 essen.",
+            "Meine Freund*innen möchten 2 essen.",
+            "Der Rest kommt in den Müll.",
+            "Was ist überflüssige Bewegung?",
+            "Mein Computer ist im Arbeitszimmer, mein Drucker im Wohnzimmer.",
+            "Für jede Kopie laufe ich ins Wohnzimmer.",
+            "Ich laufe zum Bus.",
+            "Der Bus bringt mich zur Universität.",
+            "Was ist ein Fehler?",
+            "Sie müssen einen Text mit 400 Wörtern schreiben.",
+            "Sie schreiben 1000 Wörter.",
+            "Sie schreiben Code für ein Programm.",
+            "Der Code funktioniert nicht.",
+            "Können Sie Beispiele für die ersten sieben Arten von Verschwendungen (siehe Aktivität ) finden?",
+            "Schauen Sie sich die Seiten 112-135 noch einmal an.",
+            "103 Jaqueline wartet, bis das Wasser kocht.",
+            "Heiko macht 10 statt 5 Slides",
+            "Die Bibliothek hat zu viele Bücher Prozessübererfüllung",
+            "Kennen Sie weitere Beispiele für die sieben Verschwendungen aus dem Leben?",
+            "Verschwendung ist vielleicht nicht optimal, kann aber Spaß machen.",
+            "Sie bekommen ein Thema (1-4).",
+            "Überlegen Sie sich erst einen optimalen Prozess.",
+            "Ergänzen Sie dann Verschwendung aus mindestens fünf Bereichen.",
+            "Einkaufen gehen 3) das Zimmer aufräumen",
+            "Welche Gruppe hat am meisten Spaß in den optimalen Prozess eingebaut?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

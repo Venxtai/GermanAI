@@ -1,0 +1,702 @@
+{
+    "unit": "77",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 77,
+        "prerequisite": "1-76"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use haben as the default helping verb for Perfekt; use sein only when the verb has no accusative object AND indicates a change of location, change of condition, an event/achievement, or is sein/bleiben/werden."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Märchenfiguren interviewen",
+            "über Märchen sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Märchen"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "werden",
+                "pos": "VERB",
+                "translation": "to become",
+                "frequency": 8,
+                "cefr": "A1"
+            },
+            {
+                "word": "tanzen",
+                "pos": "VERB",
+                "translation": "to dance",
+                "frequency": 1497,
+                "cefr": "A1"
+            },
+            {
+                "word": "schenken",
+                "pos": "VERB",
+                "translation": "to give a gift",
+                "frequency": 1618,
+                "cefr": "A2"
+            },
+            {
+                "word": "heiraten",
+                "pos": "VERB",
+                "translation": "to marry, get married",
+                "frequency": 1953,
+                "cefr": "A1"
+            },
+            {
+                "word": "stehlen",
+                "pos": "VERB",
+                "translation": "to steal",
+                "frequency": 3122,
+                "cefr": "B1"
+            },
+            {
+                "word": "baden",
+                "pos": "VERB",
+                "translation": "to bath, swim",
+                "frequency": 6343,
+                "cefr": "A1"
+            },
+            {
+                "word": "zaubern",
+                "pos": "VERB",
+                "translation": "to conjure; perform magic",
+                "frequency": 9386
+            },
+            {
+                "word": "sich verlieben (in)",
+                "pos": "VERB",
+                "translation": "to fall in love (with)",
+                "frequency": 2465,
+                "cefr": "A2"
+            },
+            {
+                "word": "abschneiden",
+                "pos": "VERB",
+                "translation": "to crop, clip, trim, cut off",
+                "frequency": 3233
+            },
+            {
+                "word": "der*die König*in",
+                "pos": "NOUN",
+                "translation": "monarch (e.g. king, queen, …)"
+            },
+            {
+                "word": "der*die Prinz*essin",
+                "pos": "NOUN",
+                "translation": "(grand-)child (in law) of a monarch (e.g. prince, princess, …)"
+            },
+            {
+                "word": "der*die Sklav*in",
+                "pos": "NOUN",
+                "translation": "slave"
+            },
+            {
+                "word": "der*die Besitzer*in",
+                "pos": "NOUN",
+                "translation": "owner",
+                "frequency": 2839,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Fee",
+                "pos": "NOUN",
+                "translation": "fairy",
+                "frequency": 16591,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Frosch",
+                "pos": "NOUN",
+                "translation": "frog",
+                "frequency": 4962,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vogel",
+                "pos": "NOUN",
+                "translation": "bird",
+                "frequency": 1701,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Turm",
+                "pos": "NOUN",
+                "translation": "tower",
+                "frequency": 3118,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Linse",
+                "pos": "NOUN",
+                "translation": "lentil",
+                "frequency": 3236,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Kutsche, n",
+                "pos": "NOUN",
+                "translation": "carriage, coach",
+                "frequency": 15065,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Kürbis",
+                "pos": "NOUN",
+                "translation": "pumpkin, squash",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Kuss",
+                "pos": "NOUN",
+                "translation": "kiss",
+                "frequency": 29065,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Grab",
+                "pos": "NOUN",
+                "translation": "grave",
+                "frequency": 3209,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Asche",
+                "pos": "NOUN",
+                "translation": "ash",
+                "frequency": 9644,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ferse",
+                "pos": "NOUN",
+                "translation": "heel",
+                "frequency": 998,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Zeh",
+                "pos": "NOUN",
+                "translation": "toe",
+                "frequency": 20982,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Blut",
+                "pos": "NOUN",
+                "translation": "blood",
+                "frequency": 851,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kultur",
+                "pos": "NOUN",
+                "translation": "culture",
+                "frequency": 594,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Jahrhundert",
+                "pos": "NOUN",
+                "translation": "century",
+                "frequency": 492,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Märchenwald",
+                "pos": "NOUN",
+                "frequency": 41502
+            },
+            {
+                "word": "interaktiv",
+                "pos": "ADJ",
+                "frequency": 12587
+            },
+            {
+                "word": "die Park-Karte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Märchenassoziation",
+                "pos": "NOUN"
+            },
+            {
+                "word": "assoziieren",
+                "pos": "VERB",
+                "frequency": 25513
+            },
+            {
+                "word": "die Assoziation",
+                "pos": "NOUN",
+                "frequency": 12683
+            },
+            {
+                "word": "die Stiefschwester",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Großmutter",
+                "pos": "NOUN",
+                "frequency": 3104,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Prinz",
+                "pos": "NOUN",
+                "frequency": 3671
+            },
+            {
+                "word": "gestiefelt",
+                "pos": "ADJ"
+            },
+            {
+                "word": "die Inhaltsangabe",
+                "pos": "NOUN",
+                "frequency": 25406
+            },
+            {
+                "word": "Griechenland",
+                "pos": "PROPN",
+                "frequency": 1198,
+                "cefr": "B1"
+            },
+            {
+                "word": "Ägypten",
+                "pos": "PROPN",
+                "frequency": 3642
+            },
+            {
+                "word": "der Pharao",
+                "pos": "NOUN",
+                "frequency": 17877,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Gräte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Neujahrsfest",
+                "pos": "NOUN",
+                "frequency": 43325
+            },
+            {
+                "word": "golden",
+                "pos": "ADJ",
+                "frequency": 2024
+            },
+            {
+                "word": "die Protagonistin",
+                "pos": "NOUN",
+                "frequency": 27126
+            },
+            {
+                "word": "das Motiv",
+                "pos": "NOUN",
+                "frequency": 2063
+            },
+            {
+                "word": "Reporter*in",
+                "pos": "ADP",
+                "frequency": 3745,
+                "cefr": "B1"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "werden": {
+                "present": {
+                    "ich": "werde",
+                    "du": "wirst",
+                    "er": "wird",
+                    "es": "wird",
+                    "sie_singular": "wird",
+                    "xier": "wird",
+                    "wir": "werden",
+                    "ihr": "werdet",
+                    "sie_plural": "werden",
+                    "Sie": "werden"
+                },
+                "Perfekt": {
+                    "ich": "bin geworden",
+                    "du": "bist geworden",
+                    "er": "ist geworden",
+                    "es": "ist geworden",
+                    "sie_singular": "ist geworden",
+                    "xier": "ist geworden",
+                    "wir": "sind geworden",
+                    "ihr": "seid geworden",
+                    "sie_plural": "sind geworden",
+                    "Sie": "sind geworden"
+                }
+            },
+            "tanzen": {
+                "present": {
+                    "ich": "tanze",
+                    "du": "tanzt",
+                    "er": "tanzt",
+                    "es": "tanzt",
+                    "sie_singular": "tanzt",
+                    "xier": "tanzt",
+                    "wir": "tanzen",
+                    "ihr": "tanzt",
+                    "sie_plural": "tanzen",
+                    "Sie": "tanzen"
+                },
+                "Perfekt": {
+                    "ich": "habe getanzt",
+                    "du": "hast getanzt",
+                    "er": "hat getanzt",
+                    "es": "hat getanzt",
+                    "sie_singular": "hat getanzt",
+                    "xier": "hat getanzt",
+                    "wir": "haben getanzt",
+                    "ihr": "habt getanzt",
+                    "sie_plural": "haben getanzt",
+                    "Sie": "haben getanzt"
+                }
+            },
+            "schenken": {
+                "present": {
+                    "ich": "schenke",
+                    "du": "schenkst",
+                    "er": "schenkt",
+                    "es": "schenkt",
+                    "sie_singular": "schenkt",
+                    "xier": "schenkt",
+                    "wir": "schenken",
+                    "ihr": "schenkt",
+                    "sie_plural": "schenken",
+                    "Sie": "schenken"
+                },
+                "Perfekt": {
+                    "ich": "habe geschenkt",
+                    "du": "hast geschenkt",
+                    "er": "hat geschenkt",
+                    "es": "hat geschenkt",
+                    "sie_singular": "hat geschenkt",
+                    "xier": "hat geschenkt",
+                    "wir": "haben geschenkt",
+                    "ihr": "habt geschenkt",
+                    "sie_plural": "haben geschenkt",
+                    "Sie": "haben geschenkt"
+                }
+            },
+            "heiraten": {
+                "present": {
+                    "ich": "heirate",
+                    "du": "heiratest",
+                    "er": "heiratet",
+                    "es": "heiratet",
+                    "sie_singular": "heiratet",
+                    "xier": "heiratet",
+                    "wir": "heiraten",
+                    "ihr": "heiratet",
+                    "sie_plural": "heiraten",
+                    "Sie": "heiraten"
+                },
+                "Perfekt": {
+                    "ich": "habe geheiratet",
+                    "du": "hast geheiratet",
+                    "er": "hat geheiratet",
+                    "es": "hat geheiratet",
+                    "sie_singular": "hat geheiratet",
+                    "xier": "hat geheiratet",
+                    "wir": "haben geheiratet",
+                    "ihr": "habt geheiratet",
+                    "sie_plural": "haben geheiratet",
+                    "Sie": "haben geheiratet"
+                }
+            },
+            "stehlen": {
+                "present": {
+                    "ich": "stehle",
+                    "du": "stiehlst",
+                    "er": "stiehlt",
+                    "es": "stiehlt",
+                    "sie_singular": "stiehlt",
+                    "xier": "stiehlt",
+                    "wir": "stehlen",
+                    "ihr": "stehlt",
+                    "sie_plural": "stehlen",
+                    "Sie": "stehlen"
+                },
+                "Perfekt": {
+                    "ich": "habe gestohlen",
+                    "du": "hast gestohlen",
+                    "er": "hat gestohlen",
+                    "es": "hat gestohlen",
+                    "sie_singular": "hat gestohlen",
+                    "xier": "hat gestohlen",
+                    "wir": "haben gestohlen",
+                    "ihr": "habt gestohlen",
+                    "sie_plural": "haben gestohlen",
+                    "Sie": "haben gestohlen"
+                }
+            },
+            "baden": {
+                "present": {
+                    "ich": "bade",
+                    "du": "badest",
+                    "er": "badet",
+                    "es": "badet",
+                    "sie_singular": "badet",
+                    "xier": "badet",
+                    "wir": "baden",
+                    "ihr": "badet",
+                    "sie_plural": "baden",
+                    "Sie": "baden"
+                },
+                "Perfekt": {
+                    "ich": "habe gebadet",
+                    "du": "hast gebadet",
+                    "er": "hat gebadet",
+                    "es": "hat gebadet",
+                    "sie_singular": "hat gebadet",
+                    "xier": "hat gebadet",
+                    "wir": "haben gebadet",
+                    "ihr": "habt gebadet",
+                    "sie_plural": "haben gebadet",
+                    "Sie": "haben gebadet"
+                }
+            },
+            "zaubern": {
+                "present": {
+                    "ich": "zaubere",
+                    "du": "zauberst",
+                    "er": "zaubert",
+                    "es": "zaubert",
+                    "sie_singular": "zaubert",
+                    "xier": "zaubert",
+                    "wir": "zaubern",
+                    "ihr": "zaubert",
+                    "sie_plural": "zaubern",
+                    "Sie": "zaubern"
+                },
+                "Perfekt": {
+                    "ich": "habe gezaubert",
+                    "du": "hast gezaubert",
+                    "er": "hat gezaubert",
+                    "es": "hat gezaubert",
+                    "sie_singular": "hat gezaubert",
+                    "xier": "hat gezaubert",
+                    "wir": "haben gezaubert",
+                    "ihr": "habt gezaubert",
+                    "sie_plural": "haben gezaubert",
+                    "Sie": "haben gezaubert"
+                }
+            },
+            "verlieben": {
+                "present": {
+                    "ich": "verliebe mich",
+                    "du": "verliebst dich",
+                    "er": "verliebt sich",
+                    "es": "verliebt sich",
+                    "sie_singular": "verliebt sich",
+                    "xier": "verliebt sich",
+                    "wir": "verlieben uns",
+                    "ihr": "verliebt euch",
+                    "sie_plural": "verlieben sich",
+                    "Sie": "verlieben sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich verliebt",
+                    "du": "hast dich verliebt",
+                    "er": "hat sich verliebt",
+                    "es": "hat sich verliebt",
+                    "sie_singular": "hat sich verliebt",
+                    "xier": "hat sich verliebt",
+                    "wir": "haben uns verliebt",
+                    "ihr": "habt euch verliebt",
+                    "sie_plural": "haben sich verliebt",
+                    "Sie": "haben sich verliebt"
+                }
+            },
+            "abschneiden": {
+                "present": {
+                    "ich": "schneide ab",
+                    "du": "schneidest ab",
+                    "er": "schneidet ab",
+                    "es": "schneidet ab",
+                    "sie_singular": "schneidet ab",
+                    "xier": "schneidet ab",
+                    "wir": "schneiden ab",
+                    "ihr": "schneidet ab",
+                    "sie_plural": "schneiden ab",
+                    "Sie": "schneiden ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgeschnitten",
+                    "du": "hast abgeschnitten",
+                    "er": "hat abgeschnitten",
+                    "es": "hat abgeschnitten",
+                    "sie_singular": "hat abgeschnitten",
+                    "xier": "hat abgeschnitten",
+                    "wir": "haben abgeschnitten",
+                    "ihr": "habt abgeschnitten",
+                    "sie_plural": "haben abgeschnitten",
+                    "Sie": "haben abgeschnitten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Im Märchenwald im Isartal gibt es ü ber",
+            "Sie erzählen bekannte Märchen.",
+            "Sehen Sie sich auf der Webseite die interaktive Park-Karte an und sammeln Sie, welche Märchen Sie kennen.",
+            "Was assoziieren Sie mit diesen Märchen?",
+            "Welches Bild passt am besten zu welchem Märchen?",
+            "Eine Katze ein Kuss ein Ofen",
+            "Spiegel lange Haare lange schlafen ein Schuh aus Glas",
+            "Eine Stiefmutter Stiefschwestern eine Großmutter ein Prinz",
+            "Der gestiefelte Kater Hänsel und Gretel Rotkäppchen",
+            "Wie Aschenputtel nach Deutschland gekommen ist Aschenputtels Schuh auf Schloss Moritzburg in Sachsen",
+            "Das Aschenputtel Motiv gibt es in vielen Kulturen.",
+            "Lesen Sie erst die neun Sätze unten.",
+            "Dann bekommt jede Person in der Gruppe eine kurze Inhaltsangabe einer Version von Aschenputtel.",
+            "Lesen Sie Ihre Version und kreuzen Sie an, was es in Ihrer Version gibt.",
+            "Chr.: Rhodopis, eine schöne Frau aus Griechenland, war eine Sklavin in Ägypten.",
+            "Sie hat am Fluss gebadet.",
+            "Ein Vogel hat ihren Schuh gestohlen.",
+            "Der Pharao hat den Schuh gefunden und hat nach der Besitzerin gesucht.",
+            "Der ägyptische König hat Rhodopis geheiratet.",
+            "Jahrhundert: Ye Xian war gut und schön und hatte keine Mutter.",
+            "Ye Xian hatte einen Fisch, aber ihre Stiefmutter hat den Fisch getötet und gegessen.",
+            "Ein Feenvater hat Ye Xian die Gräten (fish bones) gegeben.",
+            "Die Gräten sind zu einem Kleid geworden.",
+            "Auf dem Neujahrsfest hat sie einen goldenen Schuh verloren.",
+            "Ein König hat den Schuh gesehen.",
+            "Er wollte die Besitzerin finden.",
+            "Am Ende haben Ye Xian und der König geheiratet.",
+            "Basile (Italien), 1634: Zezolla hatte eine böse Stiefmutter.",
+            "Sie hat sie getötet.",
+            "Auch die zweite Stiefmutter war böse.",
+            "Zezolla hat einen B aum von einer Fee bekommen.",
+            "Dieser B aum hat ihr ein Kleid für einen Ball geschenkt.",
+            "Bei dem Ball hat der König Zezolla gesehen.",
+            "Beim dritten Mal hat sie einen Schuh verloren.",
+            "Der König hat sie mit dem Schuh gefunden und geheiratet.",
+            "Perrault (Frankreich), 1697: Cendrillon war eine schöne und gute Tochter.",
+            "Ihr Vater hatte eine böse Frau.",
+            "Sie durfte nicht zum Ball gehen, aber eine Fee hat ihr geholfen.",
+            "Sie hat aus einem Kürbis eine Kutsche, ein schönes Kleid und Schuhe aus Glas gezaubert.",
+            "Cendrillon hat mit dem Prinz getanzt.",
+            "Am letzten Abend hat sie ihren Schuh verloren.",
+            "Der Prinz hat mit dem Schuh Cendrillon gefunden und geheiratet.",
+            "Grimm (Deutschland), 1812: Aschenputtel war schön und gut.",
+            "Ihre Stiefmutter und Stiefschwestern waren böse und Aschenputtel musste arbeiten.",
+            "Die Stiefmutter wollte nicht, dass Aschenputtel zu einem Ball geht.",
+            "Sie hat ihr eine schwere Aufgabe gegeben:",
+            "Sie musste Linsen sortieren.",
+            "Aber Vögel haben ihr geholfen und sie war schnell fertig.",
+            "Aschenputtel ist zum Ball gegangen und hat mit dem Prinzen getanzt.",
+            "Aschenputtel hat ihren Schuh verloren.",
+            "Der Prinz hat ihn gefunden und sie gesucht.",
+            "Am Ende haben Aschenputtel und der Prinz geheiratet.",
+            "Die Protagonistin ist schön und gut.",
+            "Die Protagonistin hat eine böse Stiefmutter.",
+            "Die Protagonistin hat ein schweres Leben.",
+            "Eine Fee oder ein Feenvater hilft der Protagonistin.",
+            "Vögel helfen der Protagonistin.",
+            "Die Protagonistin geht zu einem Fest.",
+            "Die Protagonistin verliert einen Schuh.",
+            "Ein König oder Prinz findet mit dem Schuh die Protagonistin.",
+            "Die Protagonistin heiratet einen König oder Prinzen.",
+            "Lesen Sie Ihre Version von Aschenputtel laut und sagen Sie, was es in Ihrer Version gibt.",
+            "Die anderen kreuzen an.",
+            "Vergleichen Sie die Versionen.",
+            "Was ist bei allen Versionen gleich?",
+            "Was ist wichtig für das Motiv?",
+            "Sie sind Reporter*in",
+            "Einen Artikel ü ber die Hochzeit von Aschenputtel und ihrem Prinzen.",
+            "Was haben Sie auf dem Ball gemacht?",
+            "Wann haben Sie sich in Aschenputtel verliebt?",
+            "Wie geht es Ihnen jetzt?",
+            "Haben Sie gewusst, dass Aschenputtel auf dem Ball war?"
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

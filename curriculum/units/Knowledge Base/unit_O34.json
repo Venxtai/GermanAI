@@ -1,0 +1,764 @@
+{
+    "unit": "O34",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 34,
+        "prerequisite": "core 1-104, O1-O33"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [
+            "Form the impersonal passive for intransitive verbs using es as a dummy subject + wird + Partizip II; es disappears when another element fills position 1."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Schokoladenfabrik gestalten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Schweizer Schokolade"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "anbauen", "pos": "VERB", "translation": "to cultivate, grow", "frequency": 9307 },
+            { "word": "ernten", "pos": "VERB", "translation": "to harvest, crop, pick", "frequency": 4919 },
+            { "word": "fermentieren", "pos": "VERB", "translation": "to ferment" },
+            { "word": "trocknen", "pos": "VERB", "translation": "to dry; dehydrate", "frequency": 3716, "cefr": "B1" },
+            { "word": "conchieren", "pos": "VERB", "translation": "to conche" },
+            { "word": "konsumieren", "pos": "VERB", "translation": "to consume", "frequency": 4510, "cefr": "B1" },
+            { "word": "symbolisieren", "pos": "VERB", "translation": "to symbolize", "frequency": 11359 },
+            { "word": "der Kakao", "pos": "NOUN", "translation": "cocoa", "frequency": 18475, "cefr": "B1" },
+            { "word": "die Frucht", "pos": "NOUN", "translation": "fruit [bot.]", "frequency": 3323, "cefr": "B1" },
+            { "word": "das Aroma, Aromen", "pos": "NOUN", "translation": "aroma; flavor", "frequency": 15260, "cefr": "B2" },
+            { "word": "die Herstellung", "pos": "NOUN", "translation": "manufacturing; production", "frequency": 2568, "cefr": "A1" },
+            { "word": "der Umsatz", "pos": "NOUN", "translation": "sales, revenue", "frequency": 1710, "cefr": "A1" },
+            { "word": "das Ausland", "pos": "ADJ", "translation": "foreign countries", "frequency": 1382, "cefr": "A1" },
+            { "word": "die Kugel", "pos": "NOUN", "translation": "ball, sphere", "frequency": 2391, "cefr": "B2" },
+            { "word": "das Quadrat", "pos": "NOUN", "translation": "square", "frequency": 11571, "cefr": "A1" },
+            { "word": "der Quader", "pos": "NOUN", "translation": "cuboid", "frequency": 41425, "cefr": "A1" },
+            { "word": "quadratisch", "pos": "ADJ", "translation": "square", "frequency": 4314, "cefr": "B2" },
+            { "word": "die Ecke", "pos": "NOUN", "translation": "corner", "frequency": 1376, "cefr": "A1" },
+            { "word": "das Eck", "pos": "NOUN", "translation": "polygon with n edges (rectangle, triangle, quadrangle, pentagon, hexagon, â€¦)", "frequency": 8303, "cefr": "B1" },
+            { "word": "eckig", "pos": "ADJ", "translation": "angular (rectangular, triangular, quadrangular, pentagonal, hexagonal, â€¦)", "frequency": 29830, "cefr": "B1" },
+            { "word": "glatt", "pos": "ADJ", "translation": "smooth; slick", "frequency": 2199, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Franken", "pos": "NOUN", "frequency": 1563, "cefr": "B1" },
+            { "word": "die Vanille", "pos": "NOUN", "frequency": 34477 },
+            { "word": "das Klima", "pos": "NOUN", "frequency": 3146, "cefr": "B1" },
+            { "word": "die Machete", "pos": "NOUN", "frequency": 45016 },
+            { "word": "cremig", "pos": "ADV" },
+            { "word": "das Prisma", "pos": "NOUN", "frequency": 29640 },
+            { "word": "das Rechteck", "pos": "NOUN", "frequency": 36248 },
+            { "word": "dreieck", "pos": "ADJ", "frequency": 11231 },
+            { "word": "luxuriös", "pos": "ADV", "frequency": 17029, "cefr": "B2" },
+            { "word": "rechteckig", "pos": "ADJ", "frequency": 16162, "cefr": "B2" },
+            { "word": "der Vampir", "pos": "NOUN", "frequency": 12549 },
+            { "word": "die Geometrie", "pos": "NOUN", "frequency": 14828, "cefr": "B2" },
+            { "word": "dreieckig", "pos": "ADJ", "frequency": 41830 },
+            { "word": "das Viereck", "pos": "NOUN", "frequency": 21995 },
+            { "word": "viereckig", "pos": "ADV" },
+            { "word": "das Fünfeck", "pos": "NOUN" },
+            { "word": "fünfeckig", "pos": "ADV" },
+            { "word": "das Achteck", "pos": "NOUN" },
+            { "word": "achteckig", "pos": "ADV" },
+            { "word": "das Trapez", "pos": "NOUN", "frequency": 43899 },
+            { "word": "die Pyramide", "pos": "NOUN", "frequency": 11885 },
+            { "word": "gesnackt", "pos": "VERB" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "anbauen": {
+                "present": {
+                    "ich": "baue an",
+                    "du": "baust an",
+                    "er": "baut an",
+                    "es": "baut an",
+                    "sie_singular": "baut an",
+                    "xier": "baut an",
+                    "wir": "bauen an",
+                    "ihr": "baut an",
+                    "sie_plural": "bauen an",
+                    "Sie": "bauen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angebaut",
+                    "du": "hast angebaut",
+                    "er": "hat angebaut",
+                    "es": "hat angebaut",
+                    "sie_singular": "hat angebaut",
+                    "xier": "hat angebaut",
+                    "wir": "haben angebaut",
+                    "ihr": "habt angebaut",
+                    "sie_plural": "haben angebaut",
+                    "Sie": "haben angebaut"
+                },
+                "Futur_I": {
+                    "ich": "werde anbauen",
+                    "du": "wirst anbauen",
+                    "er": "wird anbauen",
+                    "es": "wird anbauen",
+                    "sie_singular": "wird anbauen",
+                    "xier": "wird anbauen",
+                    "wir": "werden anbauen",
+                    "ihr": "werdet anbauen",
+                    "sie_plural": "werden anbauen",
+                    "Sie": "werden anbauen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde anbauen",
+                    "du": "würdest anbauen",
+                    "er": "würde anbauen",
+                    "es": "würde anbauen",
+                    "sie_singular": "würde anbauen",
+                    "xier": "würde anbauen",
+                    "wir": "würden anbauen",
+                    "ihr": "würdet anbauen",
+                    "sie_plural": "würden anbauen",
+                    "Sie": "würden anbauen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte angebaut",
+                    "du": "hättest angebaut",
+                    "er": "hätte angebaut",
+                    "es": "hätte angebaut",
+                    "sie_singular": "hätte angebaut",
+                    "xier": "hätte angebaut",
+                    "wir": "hätten angebaut",
+                    "ihr": "hättet angebaut",
+                    "sie_plural": "hätten angebaut",
+                    "Sie": "hätten angebaut"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde angebaut",
+                    "du": "wirst angebaut",
+                    "er": "wird angebaut",
+                    "es": "wird angebaut",
+                    "sie_singular": "wird angebaut",
+                    "xier": "wird angebaut",
+                    "wir": "werden angebaut",
+                    "ihr": "werdet angebaut",
+                    "sie_plural": "werden angebaut",
+                    "Sie": "werden angebaut"
+                },
+                "imperative": {
+                    "du": "baue an",
+                    "ihr": "baut an",
+                    "Sie": "bauen Sie an"
+                }
+            },
+            "ernten": {
+                "present": {
+                    "ich": "ernte",
+                    "du": "erntest",
+                    "er": "erntet",
+                    "es": "erntet",
+                    "sie_singular": "erntet",
+                    "xier": "erntet",
+                    "wir": "ernten",
+                    "ihr": "erntet",
+                    "sie_plural": "ernten",
+                    "Sie": "ernten"
+                },
+                "Perfekt": {
+                    "ich": "habe geerntet",
+                    "du": "hast geerntet",
+                    "er": "hat geerntet",
+                    "es": "hat geerntet",
+                    "sie_singular": "hat geerntet",
+                    "xier": "hat geerntet",
+                    "wir": "haben geerntet",
+                    "ihr": "habt geerntet",
+                    "sie_plural": "haben geerntet",
+                    "Sie": "haben geerntet"
+                },
+                "Futur_I": {
+                    "ich": "werde ernten",
+                    "du": "wirst ernten",
+                    "er": "wird ernten",
+                    "es": "wird ernten",
+                    "sie_singular": "wird ernten",
+                    "xier": "wird ernten",
+                    "wir": "werden ernten",
+                    "ihr": "werdet ernten",
+                    "sie_plural": "werden ernten",
+                    "Sie": "werden ernten"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ernten",
+                    "du": "würdest ernten",
+                    "er": "würde ernten",
+                    "es": "würde ernten",
+                    "sie_singular": "würde ernten",
+                    "xier": "würde ernten",
+                    "wir": "würden ernten",
+                    "ihr": "würdet ernten",
+                    "sie_plural": "würden ernten",
+                    "Sie": "würden ernten"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte geerntet",
+                    "du": "hättest geerntet",
+                    "er": "hätte geerntet",
+                    "es": "hätte geerntet",
+                    "sie_singular": "hätte geerntet",
+                    "xier": "hätte geerntet",
+                    "wir": "hätten geerntet",
+                    "ihr": "hättet geerntet",
+                    "sie_plural": "hätten geerntet",
+                    "Sie": "hätten geerntet"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde geerntet",
+                    "du": "wirst geerntet",
+                    "er": "wird geerntet",
+                    "es": "wird geerntet",
+                    "sie_singular": "wird geerntet",
+                    "xier": "wird geerntet",
+                    "wir": "werden geerntet",
+                    "ihr": "werdet geerntet",
+                    "sie_plural": "werden geerntet",
+                    "Sie": "werden geerntet"
+                },
+                "imperative": {
+                    "du": "ernt",
+                    "ihr": "erntet",
+                    "Sie": "ernten Sie"
+                }
+            },
+            "fermentieren": {
+                "present": {
+                    "ich": "fermentiere",
+                    "du": "fermentierst",
+                    "er": "fermentiert",
+                    "es": "fermentiert",
+                    "sie_singular": "fermentiert",
+                    "xier": "fermentiert",
+                    "wir": "fermentieren",
+                    "ihr": "fermentiert",
+                    "sie_plural": "fermentieren",
+                    "Sie": "fermentieren"
+                },
+                "Perfekt": {
+                    "ich": "habe fermentiert",
+                    "du": "hast fermentiert",
+                    "er": "hat fermentiert",
+                    "es": "hat fermentiert",
+                    "sie_singular": "hat fermentiert",
+                    "xier": "hat fermentiert",
+                    "wir": "haben fermentiert",
+                    "ihr": "habt fermentiert",
+                    "sie_plural": "haben fermentiert",
+                    "Sie": "haben fermentiert"
+                },
+                "Futur_I": {
+                    "ich": "werde fermentieren",
+                    "du": "wirst fermentieren",
+                    "er": "wird fermentieren",
+                    "es": "wird fermentieren",
+                    "sie_singular": "wird fermentieren",
+                    "xier": "wird fermentieren",
+                    "wir": "werden fermentieren",
+                    "ihr": "werdet fermentieren",
+                    "sie_plural": "werden fermentieren",
+                    "Sie": "werden fermentieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde fermentieren",
+                    "du": "würdest fermentieren",
+                    "er": "würde fermentieren",
+                    "es": "würde fermentieren",
+                    "sie_singular": "würde fermentieren",
+                    "xier": "würde fermentieren",
+                    "wir": "würden fermentieren",
+                    "ihr": "würdet fermentieren",
+                    "sie_plural": "würden fermentieren",
+                    "Sie": "würden fermentieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte fermentiert",
+                    "du": "hättest fermentiert",
+                    "er": "hätte fermentiert",
+                    "es": "hätte fermentiert",
+                    "sie_singular": "hätte fermentiert",
+                    "xier": "hätte fermentiert",
+                    "wir": "hätten fermentiert",
+                    "ihr": "hättet fermentiert",
+                    "sie_plural": "hätten fermentiert",
+                    "Sie": "hätten fermentiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde fermentiert",
+                    "du": "wirst fermentiert",
+                    "er": "wird fermentiert",
+                    "es": "wird fermentiert",
+                    "sie_singular": "wird fermentiert",
+                    "xier": "wird fermentiert",
+                    "wir": "werden fermentiert",
+                    "ihr": "werdet fermentiert",
+                    "sie_plural": "werden fermentiert",
+                    "Sie": "werden fermentiert"
+                },
+                "imperative": {
+                    "du": "fermentier",
+                    "ihr": "fermentiert",
+                    "Sie": "fermentieren Sie"
+                }
+            },
+            "trocknen": {
+                "present": {
+                    "ich": "trockne",
+                    "du": "trocknest",
+                    "er": "trocknet",
+                    "es": "trocknet",
+                    "sie_singular": "trocknet",
+                    "xier": "trocknet",
+                    "wir": "trocknen",
+                    "ihr": "trocknet",
+                    "sie_plural": "trocknen",
+                    "Sie": "trocknen"
+                },
+                "Perfekt": {
+                    "ich": "habe getrocknet",
+                    "du": "hast getrocknet",
+                    "er": "hat getrocknet",
+                    "es": "hat getrocknet",
+                    "sie_singular": "hat getrocknet",
+                    "xier": "hat getrocknet",
+                    "wir": "haben getrocknet",
+                    "ihr": "habt getrocknet",
+                    "sie_plural": "haben getrocknet",
+                    "Sie": "haben getrocknet"
+                },
+                "Futur_I": {
+                    "ich": "werde trocknen",
+                    "du": "wirst trocknen",
+                    "er": "wird trocknen",
+                    "es": "wird trocknen",
+                    "sie_singular": "wird trocknen",
+                    "xier": "wird trocknen",
+                    "wir": "werden trocknen",
+                    "ihr": "werdet trocknen",
+                    "sie_plural": "werden trocknen",
+                    "Sie": "werden trocknen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde trocknen",
+                    "du": "würdest trocknen",
+                    "er": "würde trocknen",
+                    "es": "würde trocknen",
+                    "sie_singular": "würde trocknen",
+                    "xier": "würde trocknen",
+                    "wir": "würden trocknen",
+                    "ihr": "würdet trocknen",
+                    "sie_plural": "würden trocknen",
+                    "Sie": "würden trocknen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte getrocknet",
+                    "du": "hättest getrocknet",
+                    "er": "hätte getrocknet",
+                    "es": "hätte getrocknet",
+                    "sie_singular": "hätte getrocknet",
+                    "xier": "hätte getrocknet",
+                    "wir": "hätten getrocknet",
+                    "ihr": "hättet getrocknet",
+                    "sie_plural": "hätten getrocknet",
+                    "Sie": "hätten getrocknet"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde getrocknet",
+                    "du": "wirst getrocknet",
+                    "er": "wird getrocknet",
+                    "es": "wird getrocknet",
+                    "sie_singular": "wird getrocknet",
+                    "xier": "wird getrocknet",
+                    "wir": "werden getrocknet",
+                    "ihr": "werdet getrocknet",
+                    "sie_plural": "werden getrocknet",
+                    "Sie": "werden getrocknet"
+                },
+                "imperative": {
+                    "du": "trockne",
+                    "ihr": "trocknet",
+                    "Sie": "trocknen Sie"
+                }
+            },
+            "conchieren": {
+                "present": {
+                    "ich": "conchiere",
+                    "du": "conchierst",
+                    "er": "conchiert",
+                    "es": "conchiert",
+                    "sie_singular": "conchiert",
+                    "xier": "conchiert",
+                    "wir": "conchieren",
+                    "ihr": "conchiert",
+                    "sie_plural": "conchieren",
+                    "Sie": "conchieren"
+                },
+                "Perfekt": {
+                    "ich": "habe conchiert",
+                    "du": "hast conchiert",
+                    "er": "hat conchiert",
+                    "es": "hat conchiert",
+                    "sie_singular": "hat conchiert",
+                    "xier": "hat conchiert",
+                    "wir": "haben conchiert",
+                    "ihr": "habt conchiert",
+                    "sie_plural": "haben conchiert",
+                    "Sie": "haben conchiert"
+                },
+                "Futur_I": {
+                    "ich": "werde conchieren",
+                    "du": "wirst conchieren",
+                    "er": "wird conchieren",
+                    "es": "wird conchieren",
+                    "sie_singular": "wird conchieren",
+                    "xier": "wird conchieren",
+                    "wir": "werden conchieren",
+                    "ihr": "werdet conchieren",
+                    "sie_plural": "werden conchieren",
+                    "Sie": "werden conchieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde conchieren",
+                    "du": "würdest conchieren",
+                    "er": "würde conchieren",
+                    "es": "würde conchieren",
+                    "sie_singular": "würde conchieren",
+                    "xier": "würde conchieren",
+                    "wir": "würden conchieren",
+                    "ihr": "würdet conchieren",
+                    "sie_plural": "würden conchieren",
+                    "Sie": "würden conchieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte conchiert",
+                    "du": "hättest conchiert",
+                    "er": "hätte conchiert",
+                    "es": "hätte conchiert",
+                    "sie_singular": "hätte conchiert",
+                    "xier": "hätte conchiert",
+                    "wir": "hätten conchiert",
+                    "ihr": "hättet conchiert",
+                    "sie_plural": "hätten conchiert",
+                    "Sie": "hätten conchiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde conchiert",
+                    "du": "wirst conchiert",
+                    "er": "wird conchiert",
+                    "es": "wird conchiert",
+                    "sie_singular": "wird conchiert",
+                    "xier": "wird conchiert",
+                    "wir": "werden conchiert",
+                    "ihr": "werdet conchiert",
+                    "sie_plural": "werden conchiert",
+                    "Sie": "werden conchiert"
+                },
+                "imperative": {
+                    "du": "conchiere",
+                    "ihr": "conchiert",
+                    "Sie": "conchieren Sie"
+                }
+            },
+            "konsumieren": {
+                "present": {
+                    "ich": "konsumiere",
+                    "du": "konsumierst",
+                    "er": "konsumiert",
+                    "es": "konsumiert",
+                    "sie_singular": "konsumiert",
+                    "xier": "konsumiert",
+                    "wir": "konsumieren",
+                    "ihr": "konsumiert",
+                    "sie_plural": "konsumieren",
+                    "Sie": "konsumieren"
+                },
+                "Perfekt": {
+                    "ich": "habe konsumiert",
+                    "du": "hast konsumiert",
+                    "er": "hat konsumiert",
+                    "es": "hat konsumiert",
+                    "sie_singular": "hat konsumiert",
+                    "xier": "hat konsumiert",
+                    "wir": "haben konsumiert",
+                    "ihr": "habt konsumiert",
+                    "sie_plural": "haben konsumiert",
+                    "Sie": "haben konsumiert"
+                },
+                "Futur_I": {
+                    "ich": "werde konsumieren",
+                    "du": "wirst konsumieren",
+                    "er": "wird konsumieren",
+                    "es": "wird konsumieren",
+                    "sie_singular": "wird konsumieren",
+                    "xier": "wird konsumieren",
+                    "wir": "werden konsumieren",
+                    "ihr": "werdet konsumieren",
+                    "sie_plural": "werden konsumieren",
+                    "Sie": "werden konsumieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde konsumieren",
+                    "du": "würdest konsumieren",
+                    "er": "würde konsumieren",
+                    "es": "würde konsumieren",
+                    "sie_singular": "würde konsumieren",
+                    "xier": "würde konsumieren",
+                    "wir": "würden konsumieren",
+                    "ihr": "würdet konsumieren",
+                    "sie_plural": "würden konsumieren",
+                    "Sie": "würden konsumieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte konsumiert",
+                    "du": "hättest konsumiert",
+                    "er": "hätte konsumiert",
+                    "es": "hätte konsumiert",
+                    "sie_singular": "hätte konsumiert",
+                    "xier": "hätte konsumiert",
+                    "wir": "hätten konsumiert",
+                    "ihr": "hättet konsumiert",
+                    "sie_plural": "hätten konsumiert",
+                    "Sie": "hätten konsumiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde konsumiert",
+                    "du": "wirst konsumiert",
+                    "er": "wird konsumiert",
+                    "es": "wird konsumiert",
+                    "sie_singular": "wird konsumiert",
+                    "xier": "wird konsumiert",
+                    "wir": "werden konsumiert",
+                    "ihr": "werdet konsumiert",
+                    "sie_plural": "werden konsumiert",
+                    "Sie": "werden konsumiert"
+                },
+                "imperative": {
+                    "du": "konsumiere",
+                    "ihr": "konsumiert",
+                    "Sie": "konsumieren Sie"
+                }
+            },
+            "symbolisieren": {
+                "present": {
+                    "ich": "symbolisiere",
+                    "du": "symbolisierst",
+                    "er": "symbolisiert",
+                    "es": "symbolisiert",
+                    "sie_singular": "symbolisiert",
+                    "xier": "symbolisiert",
+                    "wir": "symbolisieren",
+                    "ihr": "symbolisiert",
+                    "sie_plural": "symbolisieren",
+                    "Sie": "symbolisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe symbolisiert",
+                    "du": "hast symbolisiert",
+                    "er": "hat symbolisiert",
+                    "es": "hat symbolisiert",
+                    "sie_singular": "hat symbolisiert",
+                    "xier": "hat symbolisiert",
+                    "wir": "haben symbolisiert",
+                    "ihr": "habt symbolisiert",
+                    "sie_plural": "haben symbolisiert",
+                    "Sie": "haben symbolisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde symbolisieren",
+                    "du": "wirst symbolisieren",
+                    "er": "wird symbolisieren",
+                    "es": "wird symbolisieren",
+                    "sie_singular": "wird symbolisieren",
+                    "xier": "wird symbolisieren",
+                    "wir": "werden symbolisieren",
+                    "ihr": "werdet symbolisieren",
+                    "sie_plural": "werden symbolisieren",
+                    "Sie": "werden symbolisieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde symbolisieren",
+                    "du": "würdest symbolisieren",
+                    "er": "würde symbolisieren",
+                    "es": "würde symbolisieren",
+                    "sie_singular": "würde symbolisieren",
+                    "xier": "würde symbolisieren",
+                    "wir": "würden symbolisieren",
+                    "ihr": "würdet symbolisieren",
+                    "sie_plural": "würden symbolisieren",
+                    "Sie": "würden symbolisieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte symbolisiert",
+                    "du": "hättest symbolisiert",
+                    "er": "hätte symbolisiert",
+                    "es": "hätte symbolisiert",
+                    "sie_singular": "hätte symbolisiert",
+                    "xier": "hätte symbolisiert",
+                    "wir": "hätten symbolisiert",
+                    "ihr": "hättet symbolisiert",
+                    "sie_plural": "hätten symbolisiert",
+                    "Sie": "hätten symbolisiert"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde symbolisiert",
+                    "du": "wirst symbolisiert",
+                    "er": "wird symbolisiert",
+                    "es": "wird symbolisiert",
+                    "sie_singular": "wird symbolisiert",
+                    "xier": "wird symbolisiert",
+                    "wir": "werden symbolisiert",
+                    "ihr": "werdet symbolisiert",
+                    "sie_plural": "werden symbolisiert",
+                    "Sie": "werden symbolisiert"
+                },
+                "imperative": {
+                    "du": "symbolisier",
+                    "ihr": "symbolisiert",
+                    "Sie": "symbolisieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Formulieren Sie kurze Sätze im unpersönlichen Passiv.",
+            "Konsumieren: Es wird konsumiert.",
+            "Essen: Es wird gegessen.",
+            "Anbauen: Es wird angebaut.",
+            "Erfinden: Es wird erfunden.",
+            "Exportieren: Es wird exportiert.",
+            "Ernten: Es wird geerntet.",
+            "Formulieren Sie mit den Verben Fragen im Passiv Präsens.",
+            "Konsumieren + von wem am meisten:",
+            "Von wem wird am meisten Schokolade konsumiert?",
+            "Essen + wie viel in der Schweiz:",
+            "Wie viel Schokolade wird in der Schweiz gegessen?",
+            "Anbauen + wo am meisten Kakao:",
+            "Wo wird Kakao angebaut?",
+            "Frucht]: Womit werden Kakaofrüchte [ Kakao Frucht ] geerntet?",
+            "Exportieren + wie viel ins Ausland:",
+            "Wie viel Schokolade wird ins Ausland exportiert?",
+            "Von wem wird die Conchiermaschine erfunden?",
+            "Wann wird die Conchiermaschine erfunden?",
+            "Lesen Sie jetzt den Text.",
+            "Wer findet am schnellsten die Antworten auf die Fragen?",
+            "Die Schweiz ist für ihre Schokolade berühmt und das Geschäft mit dem braunen Gold geht gut.",
+            "2023 werden 150.516 Tonnen Schokolade ins Ausland exportiert und der Umsatz liegt bei 991 Mio.",
+            "Schweizer Schokolade ist erfolgreich, weil der Kakao eine hohe Qualität ha t und weil bei der Herstellung innovative, technische Prozesse verwendet werden.",
+            "Die ersten, die Produkte mit Kakao konsumieren, sind die Maya.",
+            "Ihre Schokolade ist flüssig.",
+            "Sie wird ohne Zucker und oft mit Vanille, Chili und /oder Pfeffer getrunken.",
+            "Für den Kakaobaum ist das Klima in Mittelamerika optimal.",
+            "Heute wird der meiste Kakao in Westafrika ( Côte d’Ivoire, G hana, Nigeria ), aber auch in Südostasien ( Indonesien ) und Lateinamerika ( Brasilien, Ecuador ) angebaut.",
+            "Erst werden die Kakaofrüchte [Kakao Frucht] mit Macheten geerntet, dann müssen die Bohnen vor dem Transport fermentiert und getrocknet werden.",
+            "In der Schweiz werden die Bohnen dann verarbeitet.",
+            "Nur wenn die Schokolade vollständig in der Schweiz aus Kakaobohnen, Kakaobutter, Zucker, Milchpulver und natürlichen Aromen conchiert wird, darf sie als Schweizer Schokolade bezeichnet werden.",
+            "Die Conchiermaschine wird 1879 von Rodolphe Lindt erfunden.",
+            "Durch den Prozess des Conchierens wird die Schokoladenmasse so lange gerührt, bis sie cremig ist.",
+            "Dass die Schweizer*innen ihr Produkt mögen, zeigt, dass sie selbst weltweit am meisten davon essen.",
+            "2022 liegt die Schweiz auf Platz 1: 11,8 kg Kakao und Schokoladenprodukte",
+            "Schokolade Produkte pro Person und Jahr werden durchschnittlich in der Schweiz konsumiert.",
+            "Auf Platz 2 lieg en die USA mit 9 kg und Deutschland liegt mit 5,8 kg auf Platz 3.",
+            "Von den Schweizer*innen wird am meisten Schokolade konsumiert.",
+            "Es werden etwa 11 kg Kakao und Schokoladenprodukte pro Jahr und Person in der Schweiz gegessen.",
+            "Der Kakao wird in Westafrika, Südostasien und Lateinamerika angebaut.",
+            "Die Kakaofrüchte [Kakao Frucht] werden mit Macheten geerntet.",
+            "138.153 Tonnen Schokolade werden ins Ausland exportiert.",
+            "Die Conchiermaschine wird von Rudolphe Lindt erfunden.",
+            "Die Conchiermaschine wird 1879 erfunden.",
+            "Auf die Form kommt es an!",
+            "Schauen Sie sich die drei Produkte von Cailler, Toblerone und Lindt an.",
+            "Welche Formen wurden gewählt (Körper und Flächen)?",
+            "Was symbolisieren die Bilder und Formen?",
+            "Welche Gründe könnte es für die Designs geben?",
+            "Wählen Sie passende Elemente und bilden Sie Sätze.",
+            "Die typischste Form für Schokolade ist die rechteckige Tafel.",
+            "Designen Sie zusammen die Schokofabrik von Schokoladenvampir",
+            "Person 1 beschreibt ein Detail, das Person 2 zeichnet.",
+            "Dann beschreibt Person 2 ein Detail, das Person 1 zeichnet.",
+            "Benutzen Sie viele Begriffe aus der Geometrie.",
+            "Das Haus ist quadratisch.",
+            "Das Haus hat dreieckige Fenster.",
+            "An der Wand hängen Schokoladenkugeln.",
+            "Schreiben Sie drei weitere Sätze im unpersönlichen Passiv für Clemens’ Schild.",
+            "Hier wird nicht gesnackt!"
+        ],
+        "templated": []
+    }
+}

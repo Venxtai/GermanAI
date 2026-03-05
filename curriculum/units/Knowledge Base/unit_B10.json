@@ -1,0 +1,518 @@
+{
+    "unit": "B10",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 10,
+        "prerequisite": "core 1-104, B1-B9"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Wahlplakate beschreiben und konzipieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Umweltbewegungen",
+            "Streiken fürs Klima"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "in die Luft",
+                "pos": "VERB",
+                "translation": "to blow up; go off; explode"
+            },
+            {
+                "word": "gestalten",
+                "pos": "VERB",
+                "translation": "to design, create",
+                "frequency": 1613
+            },
+            {
+                "word": "sich borgen",
+                "pos": "VERB",
+                "translation": "to borrow sth.",
+                "cefr": "B2",
+                "frequency": 14
+            },
+            {
+                "word": "sich Sorgen machen",
+                "pos": "VERB",
+                "translation": "to be worried",
+                "frequency": 618,
+                "cefr": "B1"
+            },
+            {
+                "word": "protestieren",
+                "pos": "VERB",
+                "translation": "to protest",
+                "frequency": 4097,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Quelle",
+                "pos": "NOUN",
+                "translation": "source; spring",
+                "frequency": 1108,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Regierung",
+                "pos": "NOUN",
+                "translation": "government",
+                "frequency": 521,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Bevölkerung",
+                "pos": "NOUN",
+                "translation": "population"
+            },
+            {
+                "word": "die Wahl",
+                "pos": "NOUN",
+                "translation": "choice; voting, election",
+                "frequency": 799,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Plakat",
+                "pos": "NOUN",
+                "translation": "poster",
+                "frequency": 4219,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Partei, -en",
+                "pos": "ADJ",
+                "translation": "party (political)"
+            },
+            {
+                "word": "der Erfolg",
+                "pos": "NOUN",
+                "translation": "success",
+                "frequency": 541,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Bildung",
+                "pos": "NOUN",
+                "translation": "education; formation",
+                "frequency": 850,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wachstum",
+                "pos": "NOUN",
+                "translation": "growth, increase",
+                "frequency": 1370,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Bau",
+                "pos": "NOUN",
+                "translation": "construction, building",
+                "frequency": 1598,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Atomkraft",
+                "pos": "NOUN",
+                "translation": "nuclear power",
+                "frequency": 13227,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Strahlung",
+                "pos": "NOUN",
+                "translation": "radiation, rays",
+                "frequency": 2719,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Kraftwerk",
+                "pos": "NOUN",
+                "translation": "power station; power plant",
+                "frequency": 4175,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Gegner*in",
+                "pos": "NOUN",
+                "translation": "opponent, detractor",
+                "frequency": 1532,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Stilllegung",
+                "pos": "NOUN",
+                "translation": "abandonment; suspension; closing",
+                "frequency": 16671,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Zunge",
+                "pos": "NOUN",
+                "translation": "tongue",
+                "frequency": 2861,
+                "cefr": "A1"
+            },
+            {
+                "word": "in der Nähe (von + dat.)",
+                "pos": "PHRASE",
+                "translation": "in the vicinity (of)"
+            },
+            {
+                "word": "erneuerbar",
+                "pos": "ADJ",
+                "translation": "renewable; regenerative",
+                "frequency": 6891
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "scannen",
+                "pos": "VERB"
+            },
+            {
+                "word": "die grüne",
+                "pos": "NOUN",
+                "frequency": 1020
+            },
+            {
+                "word": "der Humor",
+                "pos": "NOUN",
+                "frequency": 3410,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Sarkasmus",
+                "pos": "NOUN",
+                "frequency": 26838
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "Luft": {
+                "Perfekt": {
+                    "ich": "bin gegangen",
+                    "du": "bist gegangen",
+                    "er": "ist gegangen",
+                    "es": "ist gegangen",
+                    "sie_singular": "ist gegangen",
+                    "xier": "ist gegangen",
+                    "wir": "sind gegangen",
+                    "ihr": "seid gegangen",
+                    "sie_plural": "sind gegangen",
+                    "Sie": "sind gegangen"
+                },
+                "Futur_I": {
+                    "ich": "werde Luft",
+                    "du": "wirst Luft",
+                    "er": "wird Luft",
+                    "es": "wird Luft",
+                    "sie_singular": "wird Luft",
+                    "xier": "wird Luft",
+                    "wir": "werden Luft",
+                    "ihr": "werdet Luft",
+                    "sie_plural": "werden Luft",
+                    "Sie": "werden Luft"
+                }
+            },
+            "gestalten": {
+                "present": {
+                    "ich": "gestalte",
+                    "du": "gestaltest",
+                    "er": "gestaltet",
+                    "es": "gestaltet",
+                    "sie_singular": "gestaltet",
+                    "xier": "gestaltet",
+                    "wir": "gestalten",
+                    "ihr": "gestaltet",
+                    "sie_plural": "gestalten",
+                    "Sie": "gestalten"
+                },
+                "Perfekt": {
+                    "ich": "habe gestaltet",
+                    "du": "hast gestaltet",
+                    "er": "hat gestaltet",
+                    "es": "hat gestaltet",
+                    "sie_singular": "hat gestaltet",
+                    "xier": "hat gestaltet",
+                    "wir": "haben gestaltet",
+                    "ihr": "habt gestaltet",
+                    "sie_plural": "haben gestaltet",
+                    "Sie": "haben gestaltet"
+                },
+                "Futur_I": {
+                    "ich": "werde gestalten",
+                    "du": "wirst gestalten",
+                    "er": "wird gestalten",
+                    "es": "wird gestalten",
+                    "sie_singular": "wird gestalten",
+                    "xier": "wird gestalten",
+                    "wir": "werden gestalten",
+                    "ihr": "werdet gestalten",
+                    "sie_plural": "werden gestalten",
+                    "Sie": "werden gestalten"
+                },
+                "imperative": {
+                    "du": "gestalt",
+                    "ihr": "gestaltet",
+                    "Sie": "gestalten Sie"
+                }
+            },
+            "borgen": {
+                "present": {
+                    "ich": "borge mir",
+                    "du": "borgst dir",
+                    "er": "borgt sich",
+                    "es": "borgt sich",
+                    "sie_singular": "borgt sich",
+                    "xier": "borgt sich",
+                    "wir": "borgen uns",
+                    "ihr": "borgt euch",
+                    "sie_plural": "borgen sich",
+                    "Sie": "borgen sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mir geborgt",
+                    "du": "hast dir geborgt",
+                    "er": "hat sich geborgt",
+                    "es": "hat sich geborgt",
+                    "sie_singular": "hat sich geborgt",
+                    "xier": "hat sich geborgt",
+                    "wir": "haben uns geborgt",
+                    "ihr": "habt euch geborgt",
+                    "sie_plural": "haben sich geborgt",
+                    "Sie": "haben sich geborgt"
+                },
+                "Futur_I": {
+                    "ich": "werde mir borgen",
+                    "du": "wirst dir borgen",
+                    "er": "wird sich borgen",
+                    "es": "wird sich borgen",
+                    "sie_singular": "wird sich borgen",
+                    "xier": "wird sich borgen",
+                    "wir": "werden uns borgen",
+                    "ihr": "werdet euch borgen",
+                    "sie_plural": "werden sich borgen",
+                    "Sie": "werden sich borgen"
+                },
+                "imperative": {
+                    "du": "borge dir",
+                    "ihr": "borgt euch",
+                    "Sie": "borgen Sie sich"
+                }
+            },
+            "protestieren": {
+                "present": {
+                    "ich": "protestiere",
+                    "du": "protestierst",
+                    "er": "protestiert",
+                    "es": "protestiert",
+                    "sie_singular": "protestiert",
+                    "xier": "protestiert",
+                    "wir": "protestieren",
+                    "ihr": "protestiert",
+                    "sie_plural": "protestieren",
+                    "Sie": "protestieren"
+                },
+                "Perfekt": {
+                    "ich": "habe protestiert",
+                    "du": "hast protestiert",
+                    "er": "hat protestiert",
+                    "es": "hat protestiert",
+                    "sie_singular": "hat protestiert",
+                    "xier": "hat protestiert",
+                    "wir": "haben protestiert",
+                    "ihr": "habt protestiert",
+                    "sie_plural": "haben protestiert",
+                    "Sie": "haben protestiert"
+                },
+                "Futur_I": {
+                    "ich": "werde protestieren",
+                    "du": "wirst protestieren",
+                    "er": "wird protestieren",
+                    "es": "wird protestieren",
+                    "sie_singular": "wird protestieren",
+                    "xier": "wird protestieren",
+                    "wir": "werden protestieren",
+                    "ihr": "werdet protestieren",
+                    "sie_plural": "werden protestieren",
+                    "Sie": "werden protestieren"
+                },
+                "imperative": {
+                    "du": "protestiere",
+                    "ihr": "protestiert",
+                    "Sie": "protestieren Sie"
+                }
+            },
+            "machen": {
+                "present": {
+                    "ich": "mache mir",
+                    "du": "machst dir",
+                    "er": "macht sich",
+                    "es": "macht sich",
+                    "sie_singular": "macht sich",
+                    "xier": "macht sich",
+                    "wir": "machen uns",
+                    "ihr": "macht euch",
+                    "sie_plural": "machen sich",
+                    "Sie": "machen sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mir gemacht",
+                    "du": "hast dir gemacht",
+                    "er": "hat sich gemacht",
+                    "es": "hat sich gemacht",
+                    "sie_singular": "hat sich gemacht",
+                    "xier": "hat sich gemacht",
+                    "wir": "haben uns gemacht",
+                    "ihr": "habt euch gemacht",
+                    "sie_plural": "haben sich gemacht",
+                    "Sie": "haben sich gemacht"
+                },
+                "Futur_I": {
+                    "ich": "werde mir machen",
+                    "du": "wirst dir machen",
+                    "er": "wird sich machen",
+                    "es": "wird sich machen",
+                    "sie_singular": "wird sich machen",
+                    "xier": "wird sich machen",
+                    "wir": "werden uns machen",
+                    "ihr": "werdet euch machen",
+                    "sie_plural": "werden sich machen",
+                    "Sie": "werden sich machen"
+                },
+                "imperative": {
+                    "du": "mache dir",
+                    "ihr": "macht euch",
+                    "Sie": "machen Sie sich"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Hören Sie den Text und ergänzen Sie die Präpositionen.",
+            "Ist eine Gruppe von Menschen, die gegen Atomenergie sind.",
+            "Sie glauben, dass Atomkraft gefährlich ist.",
+            "Kraftwerke können Unfälle haben, bei denen es gefährliche Strahlung geben kann.",
+            "Ein bekanntes Beispiel ist die Katastrophe von Tschernobyl im Jahr 1986.",
+            "Atom Müll ist kompliziert.",
+            "Die Menschen machen sich Sorgen um die Gesundheit der Bevölkerung, die in der Nähe von Atomkraftwerken wohnen.",
+            "Die Bewegung ist seit den 1970er Jahren stark.",
+            "Viele Menschen haben gegen den Bau neuer Atomkraftwerke protestiert.",
+            "Sie haben auch Menschenketten gebildet.",
+            "Auch heute gibt es noch viele Menschen in Deutschland, die gegen Atomkraft sind.",
+            "Sie wollen erneuerbare Energie aus Wind oder Sonne.",
+            "Im Jahr 2011, nach dem Unfall im japanischen Atomkraftwerk Fukushima, hat die deutsche Regierung entschieden, ab 2022 keine Atomkraftwerke 2022 mehr zu benutzen.",
+            "Das war ein großer Erfolg der Anti Atomkraft Bewegung.",
+            "Lesen Sie den Text und finden Sie alle Genitivphrasen mit den Nomen, die sie beschreiben.",
+            "Was bedeuten sie?",
+            "Suchen Sie einen Relativsatz im Text und unterstreichen Sie ihn.",
+            "Machen Sie aus dem Satz zwei Hauptsätze.",
+            "Beantworten Sie die folgenden Fragen zum Text.",
+            "Was glauben Atomkraftgegner*innen?",
+            "Warum machen sie sich Sorgen?",
+            "Was war ein Erfolg der Anti Atomkraft Bewegung?",
+            "Unten sehen Sie Wahlplakate der Grünen Partei.",
+            "Beschreiben Sie die Plakate.",
+            "Was können Sie sehen?",
+            "Welche Elemente, Symbole und Farben gibt es?",
+            "Scannen Sie den QR Code, um die Plakate größer zu sehen.",
+            "Was sind die Themen der Plakate?",
+            "Kreuzen Sie an.",
+            "Gibt es in Ihrem Land auch eine Grüne Partei?",
+            "Suchen Sie Wahlplakate der Partei.",
+            "Welche Themen aus Teil 1 sehen Sie auf diesen Plakaten?",
+            "Welche anderen Themen finden auf den Plakaten?",
+            "In Aktivität 32 haben Sie vier Wahlplakate der Grünen gesehen.",
+            "Seien Sie kreativ und gestalten selbst ein Plakat.",
+            "Was ist das Thema Ihres Plakats?",
+            "Welche Ideen und Werte hat Ihre Umweltbewegung?",
+            "Machen Sie Notizen zu den Fragen.",
+            "Was sind die Ziele Ihrer Bewegung?",
+            "Welche Art der Kommunikation benutzt Ihr Plakat (Humor, Sarkasmus, Emotion, Information etc.)?",
+            "Wer ist die Zielgruppe?",
+            "Präsentieren Sie Ihr Plakat und die Antworten auf die Fragen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

@@ -1,0 +1,1107 @@
+{
+    "unit": "100",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 100,
+        "prerequisite": "1-99"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu"
+        ],
+        "new_rules_in_this_unit": [
+            "Form adjectives from nouns by adding the suffix -los (meaning \"without\"): Wort → wortlos; add -n before -los for nouns ending in unstressed -e (Pause → pausenlos), and -s for certain nouns (Arbeit → arbeitslos)."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Marketing-Poster gestalten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "kreative Jugend"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "stoßen",
+                "pos": "VERB",
+                "translation": "to hit; bump"
+            },
+            {
+                "word": "beeinflussen",
+                "pos": "VERB",
+                "translation": "to influence",
+                "frequency": 1364,
+                "cefr": "B1"
+            },
+            {
+                "word": "begeistern",
+                "pos": "VERB",
+                "translation": "to enthrall; inspire, wow",
+                "frequency": 1970
+            },
+            {
+                "word": "mischen",
+                "pos": "VERB",
+                "translation": "to mix",
+                "frequency": 2160,
+                "cefr": "B1"
+            },
+            {
+                "word": "mitmachen",
+                "pos": "VERB",
+                "translation": "to participate",
+                "frequency": 2173,
+                "cefr": "A1"
+            },
+            {
+                "word": "summen",
+                "pos": "VERB",
+                "translation": "to hum, buzz",
+                "frequency": 47765
+            },
+            {
+                "word": "kreieren",
+                "pos": "VERB",
+                "translation": "to create",
+                "frequency": 10289
+            },
+            {
+                "word": "abbauen",
+                "pos": "VERB",
+                "translation": "to dismantle, take apart",
+                "frequency": 2353
+            },
+            {
+                "word": "die Jugend",
+                "pos": "NOUN",
+                "translation": "youth",
+                "frequency": 2117,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Wissenschaft",
+                "pos": "NOUN",
+                "translation": "science",
+                "frequency": 1462,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Forschung",
+                "pos": "NOUN",
+                "translation": "research",
+                "frequency": 1335,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Wettbewerb",
+                "pos": "NOUN",
+                "translation": "competition; contest",
+                "frequency": 1492,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Gesundheit",
+                "pos": "NOUN",
+                "translation": "health, well-being",
+                "frequency": 1851,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Schwäche",
+                "pos": "NOUN",
+                "translation": "weakness"
+            },
+            {
+                "word": "die Konsequenz",
+                "pos": "NOUN",
+                "translation": "consequence",
+                "frequency": 1582,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schall",
+                "pos": "NOUN",
+                "translation": "acoustic noise; bang",
+                "frequency": 15683,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Ultraschall",
+                "pos": "NOUN",
+                "translation": "ultrasound, ultrasonic sound",
+                "frequency": 28567,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Behinderung",
+                "pos": "NOUN",
+                "translation": "disability",
+                "frequency": 3228,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Blindenschrift",
+                "pos": "NOUN",
+                "translation": "braille",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Industrie",
+                "pos": "NOUN",
+                "translation": "industry",
+                "frequency": 1743,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schadstoff, -e",
+                "pos": "ADJ",
+                "translation": "pollutant, harmful/toxic substance"
+            },
+            {
+                "word": "der Wert",
+                "pos": "NOUN",
+                "translation": "value",
+                "frequency": 290,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kleber",
+                "pos": "NOUN",
+                "translation": "adhesive, glue",
+                "frequency": 21614,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ananas",
+                "pos": "NOUN",
+                "translation": "pineapple",
+                "frequency": 28732,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Fledermaus",
+                "pos": "NOUN",
+                "translation": "bat [animal]",
+                "frequency": 11710,
+                "cefr": "A1"
+            },
+            {
+                "word": "klar",
+                "pos": "ADJ",
+                "translation": "clear",
+                "frequency": 239,
+                "cefr": "A1"
+            },
+            {
+                "word": "empfindlich",
+                "pos": "ADJ",
+                "translation": "sensitive, tender",
+                "frequency": 4485
+            },
+            {
+                "word": "teuer",
+                "pos": "ADJ",
+                "translation": "expensive",
+                "frequency": 950,
+                "cefr": "A1"
+            },
+            {
+                "word": "überall",
+                "pos": "ADV",
+                "translation": "everywhere"
+            },
+            {
+                "word": "-los",
+                "pos": "PREFIX",
+                "translation": "-less"
+            },
+            {
+                "word": "die Qualität",
+                "pos": "NOUN",
+                "translation": "quality"
+            },
+            {
+                "word": "die Kategorie",
+                "pos": "NOUN",
+                "translation": "category",
+                "frequency": 1564,
+                "cefr": "B2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "der Talent",
+                "pos": "NOUN",
+                "frequency": 2924,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Nachwuchswettbewerb",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Naturwissenschaft",
+                "pos": "NOUN",
+                "frequency": 4425,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Jugendwettbewerb",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Highlight",
+                "pos": "NOUN",
+                "frequency": 7593
+            },
+            {
+                "word": "das Rechengerät",
+                "pos": "NOUN"
+            },
+            {
+                "word": "phantasielos",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Grundrechenarte",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Klartextschreibmaschine",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Braille-Tastatur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Institut",
+                "pos": "NOUN",
+                "frequency": 953,
+                "cefr": "B1"
+            },
+            {
+                "word": "die blinde",
+                "pos": "NOUN",
+                "frequency": 15198,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Klarschrift",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Arbeitswelt",
+                "pos": "NOUN",
+                "frequency": 12040
+            },
+            {
+                "word": "die Verbesserung",
+                "pos": "NOUN",
+                "frequency": 2479,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Luftqualität",
+                "pos": "NOUN",
+                "frequency": 38916
+            },
+            {
+                "word": "der*die Autofahrer*innen",
+                "pos": "NOUN",
+                "frequency": 4432
+            },
+            {
+                "word": "die Blei",
+                "pos": "NOUN",
+                "frequency": 15466,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Cadmium",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Asbest",
+                "pos": "NOUN",
+                "frequency": 28082
+            },
+            {
+                "word": "das Kohlenmonoxid",
+                "pos": "NOUN",
+                "frequency": 37064
+            },
+            {
+                "word": "das Filtersystem",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Schadstoff",
+                "pos": "NOUN",
+                "frequency": 13467
+            },
+            {
+                "word": "der Milchzucker",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Ananas-Enzym",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Enzym",
+                "pos": "NOUN",
+                "frequency": 1342,
+                "cefr": "B2"
+            },
+            {
+                "word": "wärmeempfindlich",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Erfassung",
+                "pos": "NOUN",
+                "frequency": 5835,
+                "cefr": "B2"
+            },
+            {
+                "word": "navigieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Navigation",
+                "pos": "NOUN",
+                "frequency": 20102
+            },
+            {
+                "word": "der Sender",
+                "pos": "NOUN",
+                "frequency": 2923,
+                "cefr": "B1"
+            },
+            {
+                "word": "registrieren",
+                "pos": "VERB",
+                "frequency": 2511
+            },
+            {
+                "word": "das Navigationsinstrument",
+                "pos": "NOUN"
+            },
+            {
+                "word": "akustisch",
+                "pos": "ADJ",
+                "frequency": 9356
+            },
+            {
+                "word": "der Klick",
+                "pos": "NOUN",
+                "frequency": 15439,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Computerprogramm",
+                "pos": "NOUN",
+                "frequency": 23024
+            },
+            {
+                "word": "die Frequenz",
+                "pos": "NOUN",
+                "frequency": 2539
+            },
+            {
+                "word": "Summens",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Langstock",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Sehschwäche",
+                "pos": "NOUN"
+            },
+            {
+                "word": "blind",
+                "pos": "ADJ",
+                "frequency": 2679,
+                "cefr": "B1"
+            },
+            {
+                "word": "sodass",
+                "pos": "SCONJ",
+                "frequency": 1512,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kopfschutz",
+                "pos": "NOUN"
+            },
+            {
+                "word": "hatben",
+                "pos": "VERB"
+            },
+            {
+                "word": "das Signal",
+                "pos": "NOUN",
+                "frequency": 1545
+            },
+            {
+                "word": "stehenbleiben",
+                "pos": "VERB",
+                "frequency": 23546
+            },
+            {
+                "word": "die Mützen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "interdisziplinär",
+                "pos": "ADJ",
+                "frequency": 15533,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Nahrungsmittel",
+                "pos": "NOUN",
+                "frequency": 4870,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Lieferant",
+                "pos": "NOUN",
+                "frequency": 9699
+            },
+            {
+                "word": "künstlich",
+                "pos": "ADJ",
+                "frequency": 1840,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Gelatine",
+                "pos": "NOUN",
+                "frequency": 38415
+            },
+            {
+                "word": "das Abfallprodukt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Schokoladenfabrik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Klebeband",
+                "pos": "NOUN",
+                "frequency": 33616
+            },
+            {
+                "word": "insulin-empfindlich",
+                "pos": "ADV"
+            },
+            {
+                "word": "der Blutwert",
+                "pos": "NOUN",
+                "frequency": 40389
+            },
+            {
+                "word": "das Hormon",
+                "pos": "NOUN",
+                "frequency": 2316,
+                "cefr": "B2"
+            },
+            {
+                "word": "feststellen",
+                "pos": "VERB",
+                "frequency": 757,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Zyklus",
+                "pos": "NOUN",
+                "frequency": 4689
+            },
+            {
+                "word": "die Insulin",
+                "pos": "NOUN",
+                "frequency": 4707
+            },
+            {
+                "word": "die Ovulation",
+                "pos": "NOUN"
+            },
+            {
+                "word": "mathematisch",
+                "pos": "ADJ",
+                "frequency": 2047
+            },
+            {
+                "word": "der Blutzuckerwert",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Bioplastik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Kompost",
+                "pos": "NOUN",
+                "frequency": 27348
+            },
+            {
+                "word": "kompostieren",
+                "pos": "VERB"
+            },
+            {
+                "word": "die Glycerin",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Essigsäure",
+                "pos": "NOUN"
+            },
+            {
+                "word": "erforschen",
+                "pos": "VERB",
+                "frequency": 3635
+            },
+            {
+                "word": "der Marketing-Poster",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Visualisierung",
+                "pos": "NOUN",
+                "frequency": 34369
+            },
+            {
+                "word": "visuell",
+                "pos": "ADJ",
+                "frequency": 4754
+            },
+            {
+                "word": "die Futur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Feedback",
+                "pos": "NOUN",
+                "frequency": 18746
+            },
+            {
+                "word": "wortlos",
+                "pos": "ADJ",
+                "frequency": 28845
+            },
+            {
+                "word": "pausenlos",
+                "pos": "ADJ",
+                "frequency": 22661
+            },
+            {
+                "word": "filterlos",
+                "pos": "ADJ"
+            },
+            {
+                "word": "fahrerlos",
+                "pos": "ADJ"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "stoßen": {
+                "present": {
+                    "ich": "stoße",
+                    "du": "stößt",
+                    "er": "stößt",
+                    "es": "stößt",
+                    "sie_singular": "stößt",
+                    "xier": "stößt",
+                    "wir": "stoßen",
+                    "ihr": "stoßt",
+                    "sie_plural": "stoßen",
+                    "Sie": "stoßen"
+                },
+                "Perfekt": {
+                    "ich": "habe gestoßen",
+                    "du": "hast gestoßen",
+                    "er": "hat gestoßen",
+                    "es": "hat gestoßen",
+                    "sie_singular": "hat gestoßen",
+                    "xier": "hat gestoßen",
+                    "wir": "haben gestoßen",
+                    "ihr": "habt gestoßen",
+                    "sie_plural": "haben gestoßen",
+                    "Sie": "haben gestoßen"
+                },
+                "Futur_I": {
+                    "ich": "werde stoßen",
+                    "du": "wirst stoßen",
+                    "er": "wird stoßen",
+                    "es": "wird stoßen",
+                    "sie_singular": "wird stoßen",
+                    "xier": "wird stoßen",
+                    "wir": "werden stoßen",
+                    "ihr": "werdet stoßen",
+                    "sie_plural": "werden stoßen",
+                    "Sie": "werden stoßen"
+                }
+            },
+            "beeinflussen": {
+                "present": {
+                    "ich": "beeinflusse",
+                    "du": "beeinflusst",
+                    "er": "beeinflusst",
+                    "es": "beeinflusst",
+                    "sie_singular": "beeinflusst",
+                    "xier": "beeinflusst",
+                    "wir": "beeinflussen",
+                    "ihr": "beeinflusst",
+                    "sie_plural": "beeinflussen",
+                    "Sie": "beeinflussen"
+                },
+                "Perfekt": {
+                    "ich": "habe beeinflusst",
+                    "du": "hast beeinflusst",
+                    "er": "hat beeinflusst",
+                    "es": "hat beeinflusst",
+                    "sie_singular": "hat beeinflusst",
+                    "xier": "hat beeinflusst",
+                    "wir": "haben beeinflusst",
+                    "ihr": "habt beeinflusst",
+                    "sie_plural": "haben beeinflusst",
+                    "Sie": "haben beeinflusst"
+                },
+                "Futur_I": {
+                    "ich": "werde beeinflussen",
+                    "du": "wirst beeinflussen",
+                    "er": "wird beeinflussen",
+                    "es": "wird beeinflussen",
+                    "sie_singular": "wird beeinflussen",
+                    "xier": "wird beeinflussen",
+                    "wir": "werden beeinflussen",
+                    "ihr": "werdet beeinflussen",
+                    "sie_plural": "werden beeinflussen",
+                    "Sie": "werden beeinflussen"
+                }
+            },
+            "begeistern": {
+                "present": {
+                    "ich": "begeistere",
+                    "du": "begeisterst",
+                    "er": "begeistert",
+                    "es": "begeistert",
+                    "sie_singular": "begeistert",
+                    "xier": "begeistert",
+                    "wir": "begeistern",
+                    "ihr": "begeistert",
+                    "sie_plural": "begeistern",
+                    "Sie": "begeistern"
+                },
+                "Perfekt": {
+                    "ich": "habe begeistert",
+                    "du": "hast begeistert",
+                    "er": "hat begeistert",
+                    "es": "hat begeistert",
+                    "sie_singular": "hat begeistert",
+                    "xier": "hat begeistert",
+                    "wir": "haben begeistert",
+                    "ihr": "habt begeistert",
+                    "sie_plural": "haben begeistert",
+                    "Sie": "haben begeistert"
+                },
+                "Futur_I": {
+                    "ich": "werde begeistern",
+                    "du": "wirst begeistern",
+                    "er": "wird begeistern",
+                    "es": "wird begeistern",
+                    "sie_singular": "wird begeistern",
+                    "xier": "wird begeistern",
+                    "wir": "werden begeistern",
+                    "ihr": "werdet begeistern",
+                    "sie_plural": "werden begeistern",
+                    "Sie": "werden begeistern"
+                }
+            },
+            "mischen": {
+                "present": {
+                    "ich": "mische",
+                    "du": "mischst",
+                    "er": "mischt",
+                    "es": "mischt",
+                    "sie_singular": "mischt",
+                    "xier": "mischt",
+                    "wir": "mischen",
+                    "ihr": "mischt",
+                    "sie_plural": "mischen",
+                    "Sie": "mischen"
+                },
+                "Perfekt": {
+                    "ich": "habe gemischt",
+                    "du": "hast gemischt",
+                    "er": "hat gemischt",
+                    "es": "hat gemischt",
+                    "sie_singular": "hat gemischt",
+                    "xier": "hat gemischt",
+                    "wir": "haben gemischt",
+                    "ihr": "habt gemischt",
+                    "sie_plural": "haben gemischt",
+                    "Sie": "haben gemischt"
+                },
+                "Futur_I": {
+                    "ich": "werde mischen",
+                    "du": "wirst mischen",
+                    "er": "wird mischen",
+                    "es": "wird mischen",
+                    "sie_singular": "wird mischen",
+                    "xier": "wird mischen",
+                    "wir": "werden mischen",
+                    "ihr": "werdet mischen",
+                    "sie_plural": "werden mischen",
+                    "Sie": "werden mischen"
+                }
+            },
+            "mitmachen": {
+                "present": {
+                    "ich": "mache mit",
+                    "du": "machst mit",
+                    "er": "macht mit",
+                    "es": "macht mit",
+                    "sie_singular": "macht mit",
+                    "xier": "macht mit",
+                    "wir": "machen mit",
+                    "ihr": "macht mit",
+                    "sie_plural": "machen mit",
+                    "Sie": "machen mit"
+                },
+                "Perfekt": {
+                    "ich": "habe mitgemacht",
+                    "du": "hast mitgemacht",
+                    "er": "hat mitgemacht",
+                    "es": "hat mitgemacht",
+                    "sie_singular": "hat mitgemacht",
+                    "xier": "hat mitgemacht",
+                    "wir": "haben mitgemacht",
+                    "ihr": "habt mitgemacht",
+                    "sie_plural": "haben mitgemacht",
+                    "Sie": "haben mitgemacht"
+                },
+                "Futur_I": {
+                    "ich": "werde mitmachen",
+                    "du": "wirst mitmachen",
+                    "er": "wird mitmachen",
+                    "es": "wird mitmachen",
+                    "sie_singular": "wird mitmachen",
+                    "xier": "wird mitmachen",
+                    "wir": "werden mitmachen",
+                    "ihr": "werdet mitmachen",
+                    "sie_plural": "werden mitmachen",
+                    "Sie": "werden mitmachen"
+                }
+            },
+            "summen": {
+                "present": {
+                    "ich": "summe",
+                    "du": "summst",
+                    "er": "summt",
+                    "es": "summt",
+                    "sie_singular": "summt",
+                    "xier": "summt",
+                    "wir": "summen",
+                    "ihr": "summt",
+                    "sie_plural": "summen",
+                    "Sie": "summen"
+                },
+                "Perfekt": {
+                    "ich": "habe gesummt",
+                    "du": "hast gesummt",
+                    "er": "hat gesummt",
+                    "es": "hat gesummt",
+                    "sie_singular": "hat gesummt",
+                    "xier": "hat gesummt",
+                    "wir": "haben gesummt",
+                    "ihr": "habt gesummt",
+                    "sie_plural": "haben gesummt",
+                    "Sie": "haben gesummt"
+                },
+                "Futur_I": {
+                    "ich": "werde summen",
+                    "du": "wirst summen",
+                    "er": "wird summen",
+                    "es": "wird summen",
+                    "sie_singular": "wird summen",
+                    "xier": "wird summen",
+                    "wir": "werden summen",
+                    "ihr": "werdet summen",
+                    "sie_plural": "werden summen",
+                    "Sie": "werden summen"
+                }
+            },
+            "kreieren": {
+                "present": {
+                    "ich": "kreiere",
+                    "du": "kreierst",
+                    "er": "kreiert",
+                    "es": "kreiert",
+                    "sie_singular": "kreiert",
+                    "xier": "kreiert",
+                    "wir": "kreieren",
+                    "ihr": "kreiert",
+                    "sie_plural": "kreieren",
+                    "Sie": "kreieren"
+                },
+                "Perfekt": {
+                    "ich": "habe kreiert",
+                    "du": "hast kreiert",
+                    "er": "hat kreiert",
+                    "es": "hat kreiert",
+                    "sie_singular": "hat kreiert",
+                    "xier": "hat kreiert",
+                    "wir": "haben kreiert",
+                    "ihr": "habt kreiert",
+                    "sie_plural": "haben kreiert",
+                    "Sie": "haben kreiert"
+                },
+                "Futur_I": {
+                    "ich": "werde kreieren",
+                    "du": "wirst kreieren",
+                    "er": "wird kreieren",
+                    "es": "wird kreieren",
+                    "sie_singular": "wird kreieren",
+                    "xier": "wird kreieren",
+                    "wir": "werden kreieren",
+                    "ihr": "werdet kreieren",
+                    "sie_plural": "werden kreieren",
+                    "Sie": "werden kreieren"
+                }
+            },
+            "abbauen": {
+                "present": {
+                    "ich": "baue ab",
+                    "du": "baust ab",
+                    "er": "baut ab",
+                    "es": "baut ab",
+                    "sie_singular": "baut ab",
+                    "xier": "baut ab",
+                    "wir": "bauen ab",
+                    "ihr": "baut ab",
+                    "sie_plural": "bauen ab",
+                    "Sie": "bauen ab"
+                },
+                "Perfekt": {
+                    "ich": "habe abgebaut",
+                    "du": "hast abgebaut",
+                    "er": "hat abgebaut",
+                    "es": "hat abgebaut",
+                    "sie_singular": "hat abgebaut",
+                    "xier": "hat abgebaut",
+                    "wir": "haben abgebaut",
+                    "ihr": "habt abgebaut",
+                    "sie_plural": "haben abgebaut",
+                    "Sie": "haben abgebaut"
+                },
+                "Futur_I": {
+                    "ich": "werde abbauen",
+                    "du": "wirst abbauen",
+                    "er": "wird abbauen",
+                    "es": "wird abbauen",
+                    "sie_singular": "wird abbauen",
+                    "xier": "wird abbauen",
+                    "wir": "werden abbauen",
+                    "ihr": "werdet abbauen",
+                    "sie_plural": "werden abbauen",
+                    "Sie": "werden abbauen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Die Talente von morgen Hören Sie die Informationen über \"Jugend forscht\".",
+            "In welcher Reihenfolge (1–6) hören Sie die Aussagen?",
+            "Zwei Aussagen sagt die Sprecherin falsch.",
+            "Notieren Sie unten die falschen Aussagen, die Sie hören.",
+            "Jugend forscht ist Deutschlands bekanntester Nachwuchswettbewerb.",
+            "Jugend forscht will Jugendliche für Mathematik, Informatik, Naturwissenschaften und Technik begeistern.",
+            "Pro Jahr gibt es mehr als 150 Wettbewerbe.",
+            "Jugendliche bis 25 Jahre können bei Jugend forscht mitmachen.",
+            "Man muss sich selbst eine interessante Frage für ein Forschungsprojekt suchen.",
+            "Die Gewinner bekommen Geld und manchmal auch andere Preise.",
+            "\"Jugend forscht\" will Jugendliche für Mathematik, Informatik, Naturwissenschaften und Technik begeistern.",
+            "Jugendliche bis 21 Jahre können bei \"Jugend forscht\" mitmachen.",
+            "Ist Deutschlands bekanntester Jugendwettbewerb.",
+            "Pro Jahr gibt es mehr als 110 Wettbewerbe.",
+            "Die Gewinner *innen bekommen Geld und andere P reise.",
+            "Sie bekommen einen Text.",
+            "Lesen Sie den Text laut.",
+            "An der Schule von Theodor Hildebrand (19 Jahre aus Berlin ) hat man mechanische Geräte zum Rechnen gebaut.",
+            "Das war für Theodor aber zu langweilig und phantasielos.",
+            "Deshalb wollte er ein schnelles, elektronisches Rechengerät bauen, basierend auf industriellen Computern.",
+            "Nach 1200 Stunden Arbeit konnte er sein Rechengerät zeigen.",
+            "Es war so groß wie eine Schublade und konnte die vier Grundrechenarten (plus, minus, mal, geteilt) rechnen.",
+            "1974, Gewinner in der Kategorie Technik \"Klartextschreibmaschine mit Braille-Tastatur\"",
+            "Michael Klein (19 Jahre aus Bad Bergzabern in Rheinland-Pfalz ) hat viel in Bibliotheken und Instituten für Blinde recherchiert.",
+            "Dann hat er ein neues Gerät entwickelt, mit dem Blinde in ihrer 6-Punkte-Blindenschrift in Klarschrift schreiben konnten.",
+            "Die Tastatur war also eine Braille-Tastatur, aber der Text war in Klarschrift.",
+            "1985, Gewinner in der Kategorie Arbeitswelt \"Verbesserung der Luftqualität im Auto\"",
+            "Autos sind schlecht für die Luft und auch für Autofahrer*innen.",
+            "Menschen, die viel Auto fahren, können durch die schlechte Luft im Auto krank werden.",
+            "In der Luft im Auto sind Blei ( Pb ) und Cadmium (Cd), Asbest, Gummi und Kohlenmonoxid ( CO ).",
+            "Die Geschwister Sabine (15 Jahre) und Christian (17 Jahre) auf Pfullingen in Baden-Württemberg haben ein Filtersystem gebaut.",
+            "Das System kann alle Schadstoffe im Auto eliminieren.",
+            "Sie möchten, dass die Industrie einen Filter produziert, den man wechseln kann.",
+            "1991, Dritter Preis in der Kategorie Chemie",
+            "Bitter, wenn man sie mit Ananas mischt\"",
+            "Schon nach kurzer Zeit schmeckt Ananasjoghurt",
+            "Ananas Joghurt nicht mehr süß, sondern bitter.",
+            "Nach einem Tag kann man ihn nicht mehr essen.",
+            "Elke Tröller (16 Jahre) aus Freiburg in Baden-Württemberg hat die Bestandteile von Joghurt (Wasser, Fett und Milchzucker) separat mit Ananassaft gemischt, gewartet und probiert.",
+            "Bitter ist nichts geworden.",
+            "Also liegt es am Protein.",
+            "Sie hat überlegt, dass Ananas-Enzyme dem Protein im Joghurt schaden.",
+            "Weil Enzyme wärmeempfindlich sind, hat sie den Ananassaft gekocht und die Nachspeise ist süß geblieben.",
+            "1992, Gewinner in der Kategorie Technik \"Erfassung von Bewegungen mit Ultraschall\"",
+            "Fledermäuse benutzen Ultraschall, um zu navigieren.",
+            "Einen ähnlichen Trick haben Michael Erhard (18 Jahre) und Stefan Raeck (17 Jahre) aus Ulm mit ihrer Ultraschallnavigation benutzt.",
+            "Dabei haben sie mehrere Geräte den Schall eines kleinen Senders registriert.",
+            "Den Schall konnte man nicht hören.",
+            "Der Computer konnte mit den Daten verstehen, wo der Sender war und wie er sich durch den Raum bewegt hat.",
+            "Die jungen Forscher haben sich vorgestellt, dass man dieses Navigationsinstrument zum Beispiel bei der Forschung von Tieren im Zoo benutzen kann.",
+            "1995, Gewinner in der Kategorie Arbeitswelt",
+            "Ein Computer hilft Menschen mit Behinderungen in vielen Berufen zu arbeiten.",
+            "Hans-Henning Gerhard (20 Jahre aus Schleswig in Schleswig -Holstein) hat überlegt, wie Menschen, die Armen und Beinen nicht bewegen können, den Computer benutzen können.",
+            "Seine Idee war eine Maus, die man akustisch steuern kann.",
+            "Wenn man gesummt hat, konnte seine LauschMaus Bewegungen und Klicks mit der Maus machen.",
+            "Mit dieser Erfindung war die Steuerung von vielen Computerprogrammen möglich.",
+            "Die Frequenz des Summens konnte jede Person selbst wählen.",
+            "2000, Gewinner in der Kategorie Arbeitswelt",
+            "Der Langstock schützt Menschen mit Sehschwäche vor Unfällen und Objekten, die sie nicht sehen können.",
+            "Aber wie kann man blinden Menschen besser helfen, sodass sie sich nicht an Bäumen, Schildern oder Fenstern den Kopf stoßen?",
+            "Thessa Rudolf (20 Jahre aus Bremen ) hat eine Hilfe entwickelt: einen akustischen Kopfschutz.",
+            "Er hatt e den Namen Vediamolo und hat auf Ultraschall basiert.",
+            "Hat die blinde Person ein Signal gehört, wusste sie: sofort stehenbleiben!",
+            "Vediamolo hat an vielen Mützen, Kappen und Kopftücher gepasst.",
+            "2003, Gewinner in der Kategorie interdisziplinäre Arbeit \"Nahrungsmittel als Lieferant für Kleber\"",
+            "Kleber ist schlecht für die Gesundheit und die Umwelt.",
+            "Isabel Wagner (20 Jahre aus Hamburg ) hat zu natürlichen Alternativen für künstliche Kleber geforscht, die nicht zu teuer sind.",
+            "Sie hat einen festen Kleber aus Reis und Gelatine entwickelt, einen flüssigen Kleber aus Abfallprodukten einer Schokoladenfabrik und ein Klebeband aus Endiviensalat ( Chicorée ) und Roter Beete.",
+            "Alle drei Produkte waren gut für Kindergarten, Schule und Haushalt und man konnte sie essen.",
+            "2016, Gewinner in der Kategorie Biologie \"",
+            "\" Der Menstruationszyklus beeinflusst wie Insulin-empfindlich Diabetiker*innen sind.",
+            "Wie aber hängen Zyklus, Blutwerte und Hormone zusammen?",
+            "Das wollten Sara -Luisa (16 Jahre) und Anja-Sophia (14 Jahre aus Stadtbergen in Bayern ) wissen.",
+            "Die Schwestern haben Blutzuckerwerte",
+            "Zu Beginn des Zykluses ist Insulin im Körper effektiver (man braucht also weniger Insulin), nach der Ovulation ( dem Eisprung ) ist Insulin weniger effektiv (man braucht also mehr Insulin).",
+            "Aus den Werten haben die jungen Forscherinnen eine mathematische Formel und dann eine App entwickelt.",
+            "Anja-Sophia hatte dank der App stabilere Blutzuckerwerte",
+            "2023, Gewinner in der Kategorie Arbeitswelt \"",
+            "\" Gibt es Bioplastik, die man kompostieren kann?",
+            "Seyma Celik (18 Jahre), Anja Armstrong (18 Jahre) und Jennifer Boronowska (19 Jahre) aus Rüsselsheim in Hessen haben eine Antwort gefunden: Plastik, den man biologisch abbauen kann.",
+            "Die drei haben eine Einwegtüte für den Kompost entwickelt.",
+            "Aus Hanffasern ( hemp fiber ), Glycerin, Essigsäure ( CH3COOH ), Stärke (starch ) und Wasser haben sie Folien kreiert, die nicht kaputt gehen.",
+            "Aus den Folien haben sie Tüten gemacht.",
+            "Schon nach drei Wochen waren diese Tüten kompostiert.",
+            "Notieren Sie die wichtigsten Punkte über das Projekt und schreiben Sie Sätze zu den folgenden Aspekten:",
+            "Was haben die Jugendlichen erfunden/ erforscht?",
+            "Gibt es dieses Produkt heute so oder so ähnlich?",
+            "Wie kann das Produkt in der Zukunft aussehen?",
+            "Was wird es können?",
+            "Nehmen Sie die Informationen aus dem Text und erstellen Sie ein Poster / eine Visualisierung.",
+            "Benutzen Sie eine Kombination aus Text und visuellen Elementen.",
+            "Benutzen Sie auch Verbformen im Futur (\"Mit X werden Sie …\").",
+            "Sie können auch ein Poster für Ihren dritten Satz (was wird es können) machen.",
+            "Präsentieren Sie Ihre Projekte und geben Sie Feedback (Top und Tipp).",
+            "Gut oder schlecht?",
+            "Wie heißen diese Ideen für die Zukunft?",
+            "Was sind die Konsequenzen für die Ideen aus Teil 1?",
+            "Kombinieren Sie die Ideen mit den passenden Konsequenzen und bilden Sie Sätze über die Zukunft.",
+            "Keine Freizeit mehr haben, überall ganz leise sein, umweltfreundlich sein, weniger Unfälle geben Mit pausenloser Arbeit werden wir keine Freizeit mehr haben.",
+            "Mit wortloser Kommunikation wird es überall ganz leise sein.",
+            "Mit filterlosen Kaffeemaschine wird Kaffee trinken umweltfreundlich sein.",
+            "Mit fahrerlosen Autos wird es weniger Unfälle geben.",
+            "Welche Ideen finden Sie gut, welche schlecht?",
+            "Benutzen Sie die Sätze aus Teil 2 und sagen Sie, warum.",
+            "Ich finde pausenlose Arbeit nicht gut, weil wir mit pausenloser Arbeit keine Freizeit mehr haben werden.",
+            "Ich finde pausenlos e Arbeit nicht gut, weil wir mit pausenloser Arbeit wir keine Freizeit mehr haben werden.",
+            "Ich finde wortlose Kommunikation nicht gut, weil es mit wortloser Kommunikation überall ganz leise sein wird.",
+            "Nicht gut, weil es mit filterlosen Kaffeemaschine",
+            "Kaffee trinken umweltfreundlich sein wird.",
+            "Ich finde fahrerlose Autos nicht gut, weil es mit fahrerlosen Autos weniger Unfälle geben wird."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

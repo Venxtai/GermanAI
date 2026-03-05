@@ -1,0 +1,500 @@
+{
+    "unit": "62",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 62,
+        "prerequisite": "1-61"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use dative personal pronouns: mir, dir, ihm (r-words and s-words), ihr (e-words), xiem, uns, euch, ihnen/Ihnen; replace dative noun objects with these pronouns."
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Verpackungen sprechen",
+            "sagen, wem etwas gehört, gefällt oder passt"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Verpackungen und Nachhaltigkeit"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "schützen",
+                "pos": "VERB",
+                "translation": "to protect; shelter; safeguard"
+            },
+            {
+                "word": "eröffnen",
+                "pos": "VERB",
+                "translation": "to open, establish"
+            },
+            {
+                "word": "mitbringen",
+                "pos": "VERB",
+                "translation": "to bring (along)",
+                "frequency": 1828,
+                "cefr": "A1"
+            },
+            {
+                "word": "reduzieren",
+                "pos": "VERB",
+                "translation": "to reduce",
+                "frequency": 1236,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Gründer*in",
+                "pos": "NOUN",
+                "translation": "founder"
+            },
+            {
+                "word": "die Verpackung",
+                "pos": "NOUN",
+                "translation": "packaging; boxing; wrapping",
+                "frequency": 10811,
+                "cefr": "A1"
+            },
+            {
+                "word": "Einweg",
+                "pos": "PREFIX",
+                "translation": "disposable, single-use"
+            },
+            {
+                "word": "Mehrweg",
+                "pos": "NOUN",
+                "translation": "returnable, reusable, multiple way"
+            },
+            {
+                "word": "die Packung",
+                "pos": "NOUN",
+                "translation": "packet, box",
+                "frequency": 15498,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Netz",
+                "pos": "NOUN",
+                "translation": "net, web, mesh",
+                "frequency": 1325,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Müll",
+                "pos": "NOUN",
+                "translation": "waste; garbage; trash",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Plastik",
+                "pos": "NOUN",
+                "translation": "plastic",
+                "frequency": 8781,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Tüte",
+                "pos": "NOUN",
+                "translation": "bag (made out of plastic)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Becher",
+                "pos": "NOUN",
+                "translation": "cup (container often used for yogurt)",
+                "frequency": 11343,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Vorteil",
+                "pos": "NOUN",
+                "translation": "advantage",
+                "frequency": 983,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Nachteil",
+                "pos": "NOUN",
+                "translation": "disadvantage",
+                "frequency": 2294,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Menge",
+                "pos": "NOUN",
+                "translation": "mass, amount, quantity",
+                "frequency": 520,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Flüssigkeit",
+                "pos": "NOUN",
+                "translation": "liquid, fluid (noun)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ware",
+                "pos": "NOUN",
+                "translation": "goods, merchandise",
+                "frequency": 1979,
+                "cefr": "B1"
+            },
+            {
+                "word": "Bio-",
+                "pos": "ADJ",
+                "translation": "organic",
+                "frequency": 32340,
+                "cefr": "B1"
+            },
+            {
+                "word": "praktisch",
+                "pos": "ADJ",
+                "translation": "convenient, handy, practical",
+                "frequency": 840,
+                "cefr": "A2"
+            },
+            {
+                "word": "verpackt",
+                "pos": "ADJ",
+                "translation": "wrapped; packed",
+                "frequency": 47624
+            },
+            {
+                "word": "unverpackt",
+                "pos": "ADJ",
+                "translation": "unwrapped; unpacked"
+            },
+            {
+                "word": "ähnlich",
+                "pos": "ADJ",
+                "translation": "similar"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "kreuzen",
+                "pos": "VERB",
+                "frequency": 3900
+            },
+            {
+                "word": "die Mayonnaise",
+                "pos": "NOUN"
+            },
+            {
+                "word": "hygienisch",
+                "pos": "ADV",
+                "frequency": 22421
+            },
+            {
+                "word": "der Metzger",
+                "pos": "NOUN",
+                "frequency": 9471,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Metall",
+                "pos": "NOUN",
+                "frequency": 2167,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pappe",
+                "pos": "NOUN",
+                "frequency": 20794
+            },
+            {
+                "word": "der Beutel",
+                "pos": "NOUN",
+                "frequency": 12319
+            },
+            {
+                "word": "die Tube",
+                "pos": "NOUN",
+                "frequency": 29064
+            },
+            {
+                "word": "die Jute",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Sack",
+                "pos": "NOUN",
+                "frequency": 4191,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kekse",
+                "pos": "NOUN"
+            },
+            {
+                "word": "jobben",
+                "pos": "VERB",
+                "cefr": "B1"
+            },
+            {
+                "word": "der Kredit",
+                "pos": "NOUN",
+                "frequency": 2554,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Crowdfunding",
+                "pos": "NOUN"
+            },
+            {
+                "word": "plastikfrei",
+                "pos": "ADJ"
+            },
+            {
+                "word": "palmölfrei",
+                "pos": "ADV"
+            },
+            {
+                "word": "bio",
+                "pos": "ADV",
+                "frequency": 13358,
+                "cefr": "B1"
+            },
+            {
+                "word": "unpraktisch",
+                "pos": "ADV",
+                "frequency": 48262
+            },
+            {
+                "word": "exakt",
+                "pos": "ADV",
+                "frequency": 2013
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "schützen": {
+                "present": {
+                    "ich": "schütze",
+                    "du": "schützt",
+                    "er": "schützt",
+                    "es": "schützt",
+                    "sie_singular": "schützt",
+                    "xier": "schützt",
+                    "wir": "schützen",
+                    "ihr": "schützt",
+                    "sie_plural": "schützen",
+                    "Sie": "schützen"
+                }
+            },
+            "eröffnen": {
+                "present": {
+                    "ich": "eröffne",
+                    "du": "eröffnest",
+                    "er": "eröffnet",
+                    "es": "eröffnet",
+                    "sie_singular": "eröffnet",
+                    "xier": "eröffnet",
+                    "wir": "eröffnen",
+                    "ihr": "eröffnet",
+                    "sie_plural": "eröffnen",
+                    "Sie": "eröffnen"
+                }
+            },
+            "mitbringen": {
+                "present": {
+                    "ich": "bringe mit",
+                    "du": "bringst mit",
+                    "er": "bringt mit",
+                    "es": "bringt mit",
+                    "sie_singular": "bringt mit",
+                    "xier": "bringt mit",
+                    "wir": "bringen mit",
+                    "ihr": "bringt mit",
+                    "sie_plural": "bringen mit",
+                    "Sie": "bringen mit"
+                }
+            },
+            "reduzieren": {
+                "present": {
+                    "ich": "reduziere",
+                    "du": "reduzierst",
+                    "er": "reduziert",
+                    "es": "reduziert",
+                    "sie_singular": "reduziert",
+                    "xier": "reduziert",
+                    "wir": "reduzieren",
+                    "ihr": "reduziert",
+                    "sie_plural": "reduzieren",
+                    "Sie": "reduzieren"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Brauchen wir Verpackungen?",
+            "Welche Produkte brauchen Verpackungen?",
+            "Warum brauchen die Produkte aus Teil 1 ( k)eine Verpackung?",
+            "Sortieren Sie und formulieren Sie Sätze.",
+            "Die Verpackung schützt das Produkt. |",
+            "Man kann das Produkt ohne Verpackung nicht transportieren.",
+            "| Das Produkt hat schon eine natürlich e Verpackung.",
+            "| Eine Verpackung ist hygienischer.",
+            "| Das Produkt ist in einer Verpackung länger frisch.",
+            "Man kann das Produkt waschen.",
+            "Mehrweg Verpackung kann man in welchem Geschäft benutzen?",
+            "Hören Sie und Ordnen Sie zu im Café Baumwolltasche",
+            "Beim Metzger Netz auf dem Markt Dose",
+            "Viele Verpackungen sind praktisch.",
+            "Aber nicht alle.",
+            "Und für diese Verpackungen können wir auch Mehrweg benutzen.",
+            "Wir können immer eine Baumwolltasche mitnehmen.",
+            "Dann brauchen wir keine Tüten.",
+            "Wenn wir einen Kaffee to-go bestellen, können wir unseren Mehrwegkaffeebecher",
+            "Wenn wir Wurst kaufen, können wir unsere Wurstdose benutzen.",
+            "Und auch beim Obst, können wir ein Netz mitbringen.",
+            "Oder aber wir gehen in einen Unverpacktladen und kaufen gleich alles in Mehrwegverpackungen",
+            "Mehrweg Verpackung ein.",
+            "Wann und wo machen Sie das (nicht)?",
+            "Sprechen Sie.",
+            "Wie viele verschiedene Verpackungen kennen Sie für jedes Produkt?",
+            "Ordnen Sie die Verpackungen (links) und Materialien (rechts) den Produkten zu.",
+            "Glas Beutel.",
+            "Kartoffeln gibt es in einem Sack oder Beutel aus Jute oder Plastik, in einer Dose aus Metall, in einer Tüte aus Metall oder in einem Glas.",
+            "Reis gibt es in einem Sack oder Beutel aus Jute oder Plastik, in einer Packung aus Pappe, in einer Dose aus Metall oder in einer Tüte aus Plastik.",
+            "Wein gibt es in einer Flasche aus Glas, in einem Becher aus Pappe oder Plastik oder in einer Packung aus Pappe.",
+            "Kekse gibt es in einer Packung aus Pappe, in einer Dose aus Metall oder in einer Tüte aus Plastik oder Metall.",
+            "Joghurt gibt es in einer Flasche aus Glas, in einem Becher aus Plastik oder einem Glas.",
+            "Chips gibt es in einer Packung aus Pappe, oder in einer Tüte aus Metall oder Plastik.",
+            "Milch gibt es in einer Flasche aus Glas, in einem Becher aus Plastik, in einer Packung aus Pappe, in einem Glas und in einer Tüte aus Plastik.",
+            "Mayonnaise gibt es in einer Tube aus Metall in einem Glas oder in einem Becher aus Plastik.",
+            "Kaffee gibt es in einer Packung aus Metall oder Plastik, in einem Becher aus Plastik, in einer Dose aus Metall oder in einer Tüte aus Plastik.",
+            "Unverpackt in Berlin Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text und beantworten Sie die Fragen.",
+            "Wie heißen die beiden Unverpacktläden in Berlin?",
+            "Wo sind sie?",
+            "Welche Informationen lesen Sie über die Gründerinnen?",
+            "Warum eröffnen die Gründerinnen diese Läden?",
+            "Als Studentinnen jobben Sima Kaviani und Christiane Sieg in Supermärkten.",
+            "Dort müssen sie alle Produkte vor dem Einsortieren in die Regale aus drei, vier Plastikverpackungen nehmen.",
+            "Andere Menschen verstehen nicht, warum Kaviani das nicht mag.",
+            "Auch in der Wohnung mit ihren Mitbewohner *innen kocht Kaviani immer frisches Essen und die Mitbewohner*innen backen Kuchen aus Packungen und kochen Suppen aus Dosen.",
+            "Im Jahr 2015 lernt sie in in Berlin Christiane Sieg kennen.",
+            "Sieg kommt aus Cottbus und hat einen Abschluss in Biologie.",
+            "Die beiden Frauen haben ähnliche Ideen.",
+            "Zusammen beginnen sie an einem Projekt.",
+            "Sie nehmen einen Kredit auf und sammeln ü ber Crowdfunding 10.000 Euro.",
+            "Im Dezember 2017 eröffnet ihr Geschäft \"Der Sache wegen\" in der Lychener Straße im Prenzlauer Berg in Berlin – eine Art Anti-Supermarkt.",
+            "In Berlin gibt es auch schon den plastikfreien Supermarkt \"Original Unverpackt\".",
+            "Milena Glimbovski eröffnet den Laden im Jahr 2014 in der Wiener Straße in Kreuzberg.",
+            "Sima Kaviani und Christiane Sieg finden es aber nicht nur wichtig, dass ihre Waren keine Einwegverpackungen haben.",
+            "Alle ihre Produkte sollen auch palmölfrei, möglichst zuckerfrei [kein Zucker] i, fair trade, bio, regional und vegan sein.",
+            "Was sind die Vorteile (V)?",
+            "Und die Nachteile (N) von Unverpacktläden?",
+            "Sie sind gut für die Umwelt..",
+            "Sie sind unpraktisch.",
+            "Man kann Müll reduzieren.",
+            "Essen ohne Plastik ist gesünder.",
+            "Produkte kosten mehr als in einem konventionellen Supermarkt.",
+            "Mehrweg ist oft aus Glas und schwerer zu tragen.",
+            "Man muss die Verpackungen für alle Produkte gut planen.",
+            "Man kann die Mengen einkaufen, die man braucht.",
+            "Wollen Sie in Unverpacktläden einkaufen?",
+            "Sprechen Sie über die Vor teile und Nachteile.",
+            "Sie können die Sätze von Teil 2 benutzen oder andere Vor teile und Nachteile finden.",
+            "Ich will in Unverpacktläden einkaufen, weil sie gut für die Umwelt sind.",
+            "Ich würde in einem Unverpacktladen einkaufen, weil es gut für die Umwelt ist.",
+            "Ich würde nicht in einem Unverpacktladen einkaufen, weil unpraktisch ist.",
+            "Ich würde in einem Unverpacktladen einkaufen, weil man Müll reduzieren kann.",
+            "Einkaufen, weil Essen ohne Plastik gesünder ist",
+            "Ich würde nicht in einem Unverpacktladen",
+            "Laden einkaufen, weil Produkte mehr kosten als in einem konventionellen Supermarkt.",
+            "Ich würde nicht in einem Unverpacktladen einkaufen, weil Mehrweg oft aus Glas und schwer zu tragen ist.",
+            "Ich würde nicht in einem Unverpacktladen einkaufen, weil man gut planen muss.",
+            "Ich würde in einem Unverpacktladen einkaufen, weil man exakt",
+            "Wem kaufe ich etwas im Unverpacktladen",
+            "Sie gehen im Unverpacktladen einkaufen.",
+            "Was kaufen Sie wem?",
+            "Schreiben Sie eine Einkaufsliste.",
+            "Wir laden Sie ein!",
+            "Sie dürfen für 50€ im Unverpacktladen einkaufen.",
+            "Wem kaufen Sie was?",
+            "Schreiben Sie eine Liste."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

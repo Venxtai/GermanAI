@@ -1,0 +1,622 @@
+{
+    "unit": "86",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 86,
+        "prerequisite": "1-85"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative"
+        ],
+        "new_rules_in_this_unit": [
+            "Add endings to adjectives before nouns using the flowchart: if no article, use the definite article ending; if the article differs from the nominative form, use -en; if the noun is plural, use -en; if the article doesn't show noun class, use -er (r-words) or -es (s-words); otherwise use -e."
+        ],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "berühmte Personen mit Adjektiven beschreiben und interviewen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "jüdisches Wien"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "akzeptieren",
+                "pos": "VERB",
+                "translation": "to accept",
+                "frequency": 1798,
+                "cefr": "B1"
+            },
+            {
+                "word": "entwickeln",
+                "pos": "VERB",
+                "translation": "to develop",
+                "frequency": 377,
+                "cefr": "B1"
+            },
+            {
+                "word": "vorlesen",
+                "pos": "VERB",
+                "translation": "to read to, read out loud",
+                "frequency": 3690,
+                "cefr": "B1"
+            },
+            {
+                "word": "wechseln",
+                "pos": "VERB",
+                "translation": "to switch; to change",
+                "frequency": 1084,
+                "cefr": "A2"
+            },
+            {
+                "word": "leiden",
+                "pos": "VERB",
+                "translation": "to suffer (from)",
+                "frequency": 942,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Klammer",
+                "pos": "NOUN",
+                "translation": "bracket [math], paranthesis; retainer clip; brace",
+                "frequency": 9424,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Schriftsteller*in",
+                "pos": "NOUN",
+                "translation": "writer",
+                "frequency": 1727,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Werk",
+                "pos": "NOUN",
+                "translation": "work, creation; factory",
+                "frequency": 681,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Entwicklung",
+                "pos": "NOUN",
+                "translation": "development; deployment",
+                "frequency": 347,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Verbrechen",
+                "pos": "NOUN",
+                "translation": "crime",
+                "frequency": 3135,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Vernichtung",
+                "pos": "NOUN",
+                "translation": "extermination; annihilation",
+                "frequency": 9703,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Leugner*in",
+                "pos": "NOUN",
+                "translation": "denier"
+            },
+            {
+                "word": "der Friedhof",
+                "pos": "NOUN",
+                "translation": "cemetery; graveyard",
+                "frequency": 3845,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Krankenhaus",
+                "pos": "NOUN",
+                "translation": "hospital",
+                "frequency": 1529,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Stern",
+                "pos": "NOUN",
+                "translation": "star",
+                "frequency": 1677,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Synagoge",
+                "pos": "NOUN",
+                "translation": "synagogue",
+                "frequency": 7837,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Jüd*in",
+                "pos": "NOUN",
+                "translation": "Jew"
+            },
+            {
+                "word": "die Israelitische Kultusgemeinde Wien",
+                "pos": "NOUN",
+                "translation": "Jewish Community of Vienna"
+            },
+            {
+                "word": "jüdisch",
+                "pos": "ADJ",
+                "translation": "Jewish"
+            },
+            {
+                "word": "lebhaft",
+                "pos": "ADJ",
+                "translation": "vivid",
+                "frequency": 8572
+            },
+            {
+                "word": "systematisch",
+                "pos": "ADJ",
+                "translation": "systematic",
+                "frequency": 2169
+            },
+            {
+                "word": "politisch",
+                "pos": "ADJ",
+                "translation": "political",
+                "frequency": 304,
+                "cefr": "B1"
+            },
+            {
+                "word": "wirtschaftlich",
+                "pos": "ADJ",
+                "translation": "economic",
+                "frequency": 745,
+                "cefr": "B2"
+            },
+            {
+                "word": "unsicher",
+                "pos": "ADJ",
+                "translation": "unsafe; precarious",
+                "frequency": 3201
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Adjektivendung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Dokument",
+                "pos": "NOUN",
+                "frequency": 3229,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Judenstadt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Spital",
+                "pos": "NOUN",
+                "frequency": 6564
+            },
+            {
+                "word": "das Badehaus",
+                "pos": "NOUN",
+                "frequency": 39206
+            },
+            {
+                "word": "dunkl",
+                "pos": "ADJ"
+            },
+            {
+                "word": "das Herzogtum",
+                "pos": "NOUN",
+                "frequency": 8815
+            },
+            {
+                "word": "die Attacke",
+                "pos": "NOUN",
+                "frequency": 4731
+            },
+            {
+                "word": "demokratisch",
+                "pos": "ADV",
+                "frequency": 1788,
+                "cefr": "B1"
+            },
+            {
+                "word": "israelitisch",
+                "pos": "ADJ",
+                "frequency": 32510
+            },
+            {
+                "word": "die Kultusgemeinde",
+                "pos": "NOUN",
+                "frequency": 26740
+            },
+            {
+                "word": "der Antisemitismus",
+                "pos": "NOUN",
+                "frequency": 8859
+            },
+            {
+                "word": "intensivieren",
+                "pos": "VERB",
+                "frequency": 13865
+            },
+            {
+                "word": "die Schoah",
+                "pos": "NOUN"
+            },
+            {
+                "word": "eben",
+                "pos": "ADV",
+                "frequency": 196,
+                "cefr": "B1"
+            },
+            {
+                "word": "dritter",
+                "pos": "ADJ"
+            },
+            {
+                "word": "der Stadttempel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Psychoanalyse",
+                "pos": "NOUN",
+                "frequency": 15440,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Textstelle",
+                "pos": "NOUN",
+                "frequency": 20652
+            },
+            {
+                "word": "menschlich",
+                "pos": "ADV",
+                "frequency": 811,
+                "cefr": "B1"
+            },
+            {
+                "word": "psychisch",
+                "pos": "ADV",
+                "frequency": 2607,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Rollenspiel",
+                "pos": "NOUN",
+                "frequency": 17171,
+                "cefr": "B2"
+            },
+            {
+                "word": "erhalten",
+                "pos": "VERB",
+                "frequency": 287,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Karriere",
+                "pos": "NOUN",
+                "frequency": 1813,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Profil",
+                "pos": "NOUN",
+                "frequency": 4360
+            },
+            {
+                "word": "frei",
+                "pos": "ADJ",
+                "frequency": 289,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Mitbegründerin",
+                "pos": "NOUN",
+                "frequency": 35307
+            },
+            {
+                "word": "die Reportage",
+                "pos": "NOUN",
+                "frequency": 9244,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Holocaust-Leugner",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Roman",
+                "pos": "NOUN",
+                "frequency": 1051,
+                "cefr": "B1"
+            },
+            {
+                "word": "katholisch",
+                "pos": "ADJ",
+                "frequency": 2932
+            },
+            {
+                "word": "aufnehmen",
+                "pos": "VERB",
+                "frequency": 563,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Kurzgeschichte",
+                "pos": "NOUN",
+                "frequency": 12753
+            },
+            {
+                "word": "kurios",
+                "pos": "ADJ",
+                "frequency": 10414
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "akzeptieren": {
+                "present": {
+                    "ich": "akzeptiere",
+                    "du": "akzeptierst",
+                    "er": "akzeptiert",
+                    "es": "akzeptiert",
+                    "sie_singular": "akzeptiert",
+                    "xier": "akzeptiert",
+                    "wir": "akzeptieren",
+                    "ihr": "akzeptiert",
+                    "sie_plural": "akzeptieren",
+                    "Sie": "akzeptieren"
+                },
+                "Perfekt": {
+                    "ich": "habe akzeptiert",
+                    "du": "hast akzeptiert",
+                    "er": "hat akzeptiert",
+                    "es": "hat akzeptiert",
+                    "sie_singular": "hat akzeptiert",
+                    "xier": "hat akzeptiert",
+                    "wir": "haben akzeptiert",
+                    "ihr": "habt akzeptiert",
+                    "sie_plural": "haben akzeptiert",
+                    "Sie": "haben akzeptiert"
+                }
+            },
+            "entwickeln": {
+                "present": {
+                    "ich": "entwickle",
+                    "du": "entwickelst",
+                    "er": "entwickelt",
+                    "es": "entwickelt",
+                    "sie_singular": "entwickelt",
+                    "xier": "entwickelt",
+                    "wir": "entwickeln",
+                    "ihr": "entwickelt",
+                    "sie_plural": "entwickeln",
+                    "Sie": "entwickeln"
+                },
+                "Perfekt": {
+                    "ich": "habe entwickelt",
+                    "du": "hast entwickelt",
+                    "er": "hat entwickelt",
+                    "es": "hat entwickelt",
+                    "sie_singular": "hat entwickelt",
+                    "xier": "hat entwickelt",
+                    "wir": "haben entwickelt",
+                    "ihr": "habt entwickelt",
+                    "sie_plural": "haben entwickelt",
+                    "Sie": "haben entwickelt"
+                }
+            },
+            "vorlesen": {
+                "present": {
+                    "ich": "lese vor",
+                    "du": "liest vor",
+                    "er": "liest vor",
+                    "es": "liest vor",
+                    "sie_singular": "liest vor",
+                    "xier": "liest vor",
+                    "wir": "lesen vor",
+                    "ihr": "lest vor",
+                    "sie_plural": "lesen vor",
+                    "Sie": "lesen vor"
+                },
+                "Perfekt": {
+                    "ich": "habe vorgelesen",
+                    "du": "hast vorgelesen",
+                    "er": "hat vorgelesen",
+                    "es": "hat vorgelesen",
+                    "sie_singular": "hat vorgelesen",
+                    "xier": "hat vorgelesen",
+                    "wir": "haben vorgelesen",
+                    "ihr": "habt vorgelesen",
+                    "sie_plural": "haben vorgelesen",
+                    "Sie": "haben vorgelesen"
+                }
+            },
+            "wechseln": {
+                "present": {
+                    "ich": "wechsle",
+                    "du": "wechselst",
+                    "er": "wechselt",
+                    "es": "wechselt",
+                    "sie_singular": "wechselt",
+                    "xier": "wechselt",
+                    "wir": "wechseln",
+                    "ihr": "wechselt",
+                    "sie_plural": "wechseln",
+                    "Sie": "wechseln"
+                },
+                "Perfekt": {
+                    "ich": "habe gewechselt",
+                    "du": "hast gewechselt",
+                    "er": "hat gewechselt",
+                    "es": "hat gewechselt",
+                    "sie_singular": "hat gewechselt",
+                    "xier": "hat gewechselt",
+                    "wir": "haben gewechselt",
+                    "ihr": "habt gewechselt",
+                    "sie_plural": "haben gewechselt",
+                    "Sie": "haben gewechselt"
+                }
+            },
+            "leiden": {
+                "present": {
+                    "ich": "leide",
+                    "du": "leidest",
+                    "er": "leidet",
+                    "es": "leidet",
+                    "sie_singular": "leidet",
+                    "xier": "leidet",
+                    "wir": "leiden",
+                    "ihr": "leidet",
+                    "sie_plural": "leiden",
+                    "Sie": "leiden"
+                },
+                "Perfekt": {
+                    "ich": "habe gelitten",
+                    "du": "hast gelitten",
+                    "er": "hat gelitten",
+                    "es": "hat gelitten",
+                    "sie_singular": "hat gelitten",
+                    "xier": "hat gelitten",
+                    "wir": "haben gelitten",
+                    "ihr": "habt gelitten",
+                    "sie_plural": "haben gelitten",
+                    "Sie": "haben gelitten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lesen Sie die Geschichte über jüdisches Leben in Wien und ergänzen Sie die Adjektivendungen.",
+            "Jüdisches Leben in Wien hat eine lang e",
+            "Ein alt es Dokument (das) zeigt: Schon im spät en 12.",
+            "Jahrhundert (das) haben Jüd*innen in Wien gelebt.",
+            "Ab ca. 1250 hat sich eine klein e \"Wiener Judenstadt\" (die) entwickelt.",
+            "Dort hat es eine Synagoge, ein Spital (Krankenhaus) und ein Badehaus gegeben.",
+            "Ein dunkl es Kapitel (das) der jüdischen Geschichte in Wien war die Wiener Gesarah 1420.",
+            "Es war eine systematisch e Vernichtung (die) von allen Jüd*innen im Herzogtum Österreich.",
+            "Nach 1420 haben Jüd*innen ein sehr unsicher es Leben (das) in Wien gehabt.",
+            "Es hat es einen neu en Friedhof (der) im Jahr 1582 gegeben, aber es gab auch immer Attacken gegen Jüd*innen.",
+            "1852 war ein wichtig es Jahr (das) für Jüd*innen in Wien.",
+            "Nach der demokratisch en Revolution (die) von 1848 hat die Stadt Wien die Israelitische Kultusgemeinde als offiziell e Religion (die) akzeptiert.",
+            "Jüdische Familien hatten einen groß en Anteil (der) an der positiven wirtschaftlichen Entwicklung von Wien im späten 19.",
+            "In der Schoah hat es ein e systematisch e s Vernichtung ( die ) an jüdischen Menschen gegeben.",
+            "Sie mussten einen gelb en Stern (der) tragen.",
+            "Seit den 1980er Jahren hat sich wieder ein lebhaft es jüdisches L eben (das) entwickelt.",
+            "Beantworten Sie die Fragen zum Text.",
+            "Wann haben die ersten jüdischen Menschen in Wien gelebt?",
+            "Die ersten Menschen haben ab 1250 in Wien gelebt.",
+            "Was hat es alles in der ersten \"Wiener Judenstadt\" gegeben?",
+            "Es hat eine Synagoge, ein Krankenhaus und ein Badehaus gegeben.",
+            "Warum war die Revolution von 1848 wichtig für die Wiener Juden?",
+            "Die Stadt hat die Israelitische Kultusgemeinde als offizielle Religion akzeptiert.",
+            "Was mussten Juden im Dritten Reich tragen?",
+            "Sie mussten einen gelben Stern tragen.",
+            "In dem Text über Freud gibt es nur ein Adjektiv.",
+            "Lesen Sie den Text noch einmal und markieren Sie 13 Stellen, wo ein Adjektiv passt.",
+            "Schreiben Sie an die Stellen die Zahlen 1 bis 13.",
+            "Entscheiden Sie, wo die Adjektive aus der Liste passen.",
+            "Schreiben Sie die Zahlen von den 13 Textstellen in die Klammern.",
+            "Lesen Sie Ihren neuen Text der anderen Person vor.",
+            "Sie erhalten von Ihrer Lehrkraft Informationen über die Wiener Schriftstellerin Eva Menasse.",
+            "Lesen Sie die Informationen und überlegen Sie sich 4-5 Fragen, die Sie als Reporter*in Eva Menasse stellen können.",
+            "Eva Menasse wurde am 11.",
+            "Mai 1970 in Wien geboren.",
+            "Sie hat Germanistik und Geschichte an der Universität Wien studiert.",
+            "Menasse hat ihre Karriere als Journalistin begonnen und für das Wiener Nachrichtenmagazin Profil und die Frankfurter Allgemeine Zeitung gearbeitet.",
+            "Seit 2003 lebt sie in Berlin und arbeitet als freie Schriftstellerin.",
+            "Sie ist die Tochter des Fußballspielers Hans Menasse und Halbschwester des Schriftstellers Robert Menasse.",
+            "Eva Menasse ist Mitbegründerin der Schriftstellervereinigung PEN Berlin.",
+            "Ab 2022 war sie Sprecherin.",
+            "Dieses Buch hat Reportagen über den Prozess gegen den Holocaust-Leugner David Irving.",
+            "Vienna (2005 ): Der Roman erzählt die Geschichte ihrer teils katholischen, teils jüdischen Verwandten in Wien.",
+            "Das Buch wurde von den deutschen Medien positiv aufgenommen.",
+            "Lässliche Todsünden (2009 ): Eine Sammlung von Kurzgeschichten.",
+            "Quasikristalle (2013 ): Ein Roman über die Biografie und die verschiedenen Aspekte einer Frau.",
+            "Tiere für Fortgeschrittene ( 2017): Eine Sammlung von Kurzgeschichten über Tiere und ihre kurioses Verhalten.",
+            "Dunkelblum (2021): Ein Roman über eine österreichische Kleinstadt und ein Verbrechen.",
+            "Jetzt spielen Sie das Interview.",
+            "Eine Person ist Reporter*in, die andere Person ist Eva Menasse.",
+            "Dann wechseln Sie die Rollen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

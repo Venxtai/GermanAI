@@ -1,0 +1,409 @@
+{
+    "unit": "63",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 63,
+        "prerequisite": "1-62"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Use dative objects with the verbs gehören, danken, gefallen, helfen, passen, and schmecken â€â€ the person is the dative object (wem?).",
+            "With schmecken and passen, the thing being assessed is the nominative subject and the person judging is the dative object: \"Die Pizza schmeckt mir nicht.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "sagen, was einem gefällt, schmeckt oder passt",
+            "Werbeslogans verstehen und gestalten"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Werbung und Verpackung"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "entscheiden",
+                "pos": "VERB",
+                "translation": "to decide, to determine",
+                "frequency": 414,
+                "cefr": "B1"
+            },
+            {
+                "word": "schmecken",
+                "pos": "VERB",
+                "translation": "to taste; be to somebody's liking",
+                "frequency": 2143,
+                "cefr": "A1"
+            },
+            {
+                "word": "gehören",
+                "pos": "VERB",
+                "translation": "to belong (to)"
+            },
+            {
+                "word": "gefallen",
+                "pos": "VERB",
+                "translation": "to be pleasing to",
+                "frequency": 601,
+                "cefr": "A1"
+            },
+            {
+                "word": "passen",
+                "pos": "VERB",
+                "translation": "to be a good fit for; match",
+                "frequency": 696,
+                "cefr": "A2"
+            },
+            {
+                "word": "danken",
+                "pos": "VERB",
+                "translation": "to give thanks to",
+                "frequency": 1276,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Tee",
+                "pos": "NOUN",
+                "translation": "tea",
+                "frequency": 2617,
+                "cefr": "A1"
+            },
+            {
+                "word": "langweilig",
+                "pos": "ADJ",
+                "translation": "boring",
+                "frequency": 3019,
+                "cefr": "A2"
+            },
+            {
+                "word": "lustig",
+                "pos": "ADJ",
+                "translation": "funny; fun",
+                "frequency": 1973,
+                "cefr": "A1"
+            },
+            {
+                "word": "originell",
+                "pos": "ADJ",
+                "translation": "original(ly), edgy, inventive",
+                "frequency": 8346
+            },
+            {
+                "word": "doof",
+                "pos": "ADJ",
+                "translation": "stupid, goofy",
+                "frequency": 20925
+            },
+            {
+                "word": "gewöhnlich",
+                "pos": "ADJ",
+                "translation": "common(ly), ordinary(ly)"
+            },
+            {
+                "word": "ungewöhnlich",
+                "pos": "ADJ",
+                "translation": "uncommon(ly), extraordinar(y)"
+            },
+            {
+                "word": "entweder ... oder",
+                "pos": "CONJ",
+                "translation": "either ... or"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "clever",
+                "pos": "ADJ",
+                "frequency": 10824
+            },
+            {
+                "word": "das Marketing",
+                "pos": "NOUN",
+                "frequency": 1935
+            },
+            {
+                "word": "der Bienenhonig",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Hantel",
+                "pos": "NOUN",
+                "frequency": 44329
+            },
+            {
+                "word": "der Energydrink",
+                "pos": "NOUN"
+            },
+            {
+                "word": "unkreativ",
+                "pos": "ADV"
+            },
+            {
+                "word": "die Infusion",
+                "pos": "NOUN",
+                "frequency": 46760
+            },
+            {
+                "word": "das Stadion",
+                "pos": "NOUN",
+                "frequency": 3140,
+                "cefr": "B1"
+            },
+            {
+                "word": "absolut",
+                "pos": "ADV",
+                "frequency": 823,
+                "cefr": "B1"
+            },
+            {
+                "word": "fällen",
+                "pos": "VERB",
+                "frequency": 7515,
+                "cefr": "B2"
+            },
+            {
+                "word": "fiktiv",
+                "pos": "ADJ",
+                "frequency": 8841
+            },
+            {
+                "word": "der Slogan",
+                "pos": "NOUN",
+                "frequency": 9155
+            },
+            {
+                "word": "die Creme",
+                "pos": "NOUN",
+                "frequency": 19761,
+                "cefr": "A2"
+            },
+            {
+                "word": "entweder",
+                "pos": "CCONJ",
+                "frequency": 1100,
+                "cefr": "B1"
+            },
+            {
+                "word": "existierend",
+                "pos": "ADJ",
+                "frequency": 9338
+            },
+            {
+                "word": "der Kater",
+                "pos": "NOUN",
+                "frequency": 10789
+            },
+            {
+                "word": "das Ranking",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "entscheiden": {
+                "present": {
+                    "ich": "entscheide",
+                    "du": "entscheidest",
+                    "er": "entscheidet",
+                    "es": "entscheidet",
+                    "sie_singular": "entscheidet",
+                    "xier": "entscheidet",
+                    "wir": "entscheiden",
+                    "ihr": "entscheidet",
+                    "sie_plural": "entscheiden",
+                    "Sie": "entscheiden"
+                }
+            },
+            "schmecken": {
+                "present": {
+                    "ich": "schmecke",
+                    "du": "schmeckst",
+                    "er": "schmeckt",
+                    "es": "schmeckt",
+                    "sie_singular": "schmeckt",
+                    "xier": "schmeckt",
+                    "wir": "schmecken",
+                    "ihr": "schmeckt",
+                    "sie_plural": "schmecken",
+                    "Sie": "schmecken"
+                }
+            },
+            "gehören": {
+                "present": {
+                    "ich": "gehöre",
+                    "du": "gehörst",
+                    "er": "gehört",
+                    "es": "gehört",
+                    "sie_singular": "gehört",
+                    "xier": "gehört",
+                    "wir": "gehören",
+                    "ihr": "gehört",
+                    "sie_plural": "gehören",
+                    "Sie": "gehören"
+                }
+            },
+            "gefallen": {
+                "present": {
+                    "ich": "gefalle",
+                    "du": "gefällst",
+                    "er": "gefällt",
+                    "es": "gefällt",
+                    "sie_singular": "gefällt",
+                    "xier": "gefällt",
+                    "wir": "gefallen",
+                    "ihr": "gefallt",
+                    "sie_plural": "gefallen",
+                    "Sie": "gefallen"
+                }
+            },
+            "passen": {
+                "present": {
+                    "ich": "passe",
+                    "du": "passt",
+                    "er": "passt",
+                    "es": "passt",
+                    "sie_singular": "passt",
+                    "xier": "passt",
+                    "wir": "passen",
+                    "ihr": "passt",
+                    "sie_plural": "passen",
+                    "Sie": "passen"
+                }
+            },
+            "danken": {
+                "present": {
+                    "ich": "danke",
+                    "du": "dankst",
+                    "er": "dankt",
+                    "es": "dankt",
+                    "sie_singular": "dankt",
+                    "xier": "dankt",
+                    "wir": "danken",
+                    "ihr": "dankt",
+                    "sie_plural": "danken",
+                    "Sie": "danken"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie entscheiden wir, was wir kaufen?",
+            "Clevere Verpackungen sind wichtig für Produktmarketing.",
+            "Hier sehen Sie Produkte mit kreativen Verpackungen.",
+            "Wie gefallen Ihnen die Produkte und warum?",
+            "Sprechen Sie.",
+            "Wie gefallen dir der Bienenhonig?",
+            "Der Bienenhonig gefällt mir sehr gut.",
+            "Es ist kreativ.",
+            "Und der Hanteln Energydrink.",
+            "Wie gefällt er dir?",
+            "Der Hanteln Energydrink gefällt mir nicht.",
+            "Die Verpackung ist zu langweilig.",
+            "X gefällt mir (nicht).",
+            "Jede Gruppe bekommt ein Produkt von links.",
+            "Wie vielen Studierenden gefällt das Produkt?",
+            "Wie vielen gefällt es sehr, ein bisschen oder absolut nicht?",
+            "Wie viel Prozent ist das jeweils vom Kurs?",
+            "Fragen Sie und machen Sie eine Statistik.",
+            "Es gefällt mir sehr.",
+            "Es gefällt mir.",
+            "Es gefällt mir ein bisschen.",
+            "Präsentieren Sie als Gruppe Ihre Statistik.",
+            "Am Ende sollen alle Studierenden sagen, welche Verpackung ihnen am besten gefällt.",
+            "Lesen Sie die (fiktiven) Werbeslogan s und ordnen Sie sie einem Produkt zu.",
+            "Sagen Sie, warum ein Slogan zu einem Produkt passt.",
+            "Euer Körper dankt euch!",
+            "Die gefällt auch der Katze!",
+            "Helfen dem Kind und den Eltern!",
+            "Dir schmeckt es?",
+            "Mir auch!",
+            "Ich glaube, Slogan 1 passt zu den Handschuhe n",
+            ", weil sie gut für den Körper sind.",
+            "Wenn es kalt ist, bleiben die Hände warm.",
+            "Wenn es schmutzig ist, bleiben die Hände sauber.",
+            "Jetzt schreiben Sie zwei Slogans, entweder für ein existierendes oder ein neues, fiktives Produkt.",
+            "In Ihrem Slogan müssen Sie ein Dativverb (aus dem Kasten) benutzen.",
+            "Schreiben Sie links den Produktnamen und rechts Ihren Slogan.",
+            "Schmeckt den Kindern, der Mutter und dem Vater.",
+            "Alle Paare lesen ihre Slogans.",
+            "Dann entscheidet der Kurs, welcher Slogan den meisten Studierenden am besten gefällt.",
+            "Schreiben Sie das Ranking an die Tafel."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

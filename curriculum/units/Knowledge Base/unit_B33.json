@@ -1,0 +1,388 @@
+{
+    "unit": "B33",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "blau",
+        "position": 33,
+        "prerequisite": "core 1-104, B1-B32"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine 5-Minuten-Geschichte zu einem Bild schreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Grenz-Identitäten"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "keine Ahnung", "pos": "VERB", "translation": "to have no idea", "frequency": 5856, "cefr": "B1" },
+            { "word": "spazieren", "pos": "VERB", "translation": "to go for a walk", "frequency": 3312 },
+            { "word": "tanken", "pos": "VERB", "translation": "to refuel", "frequency": 10385, "cefr": "B1" },
+            { "word": "das Schengen-Abkommen", "pos": "NOUN", "translation": "Schengen Treaty [pol.]", "frequency": 1, "cefr": "A1" },
+            { "word": "Rand", "pos": "NOUN", "translation": "edge; rim; border", "frequency": 1203, "cefr": "B1" },
+            { "word": "das Dreiländereck", "pos": "NOUN", "translation": "border triangle" },
+            { "word": "das Mittelalter", "pos": "NOUN", "translation": "Middle Ages; medieval times", "frequency": 3171, "cefr": "A1" },
+            { "word": "die Industrialisierung", "pos": "NOUN", "translation": "industrialization", "frequency": 14293, "cefr": "B2" },
+            { "word": "die Geburt", "pos": "NOUN", "translation": "birth", "frequency": 2096, "cefr": "B1" },
+            { "word": "der*die Friseur*in", "pos": "NOUN", "translation": "hairdresser", "frequency": 13695, "cefr": "A2" },
+            { "word": "jein", "pos": "PARTICLE", "translation": "yes and no" },
+            { "word": "doch", "pos": "PARTICLE", "translation": "however; if only; yes (on the contrary)", "frequency": 73, "cefr": "A2" },
+            { "word": "gerade", "pos": "PARTICLE", "translation": "just; currently; direct", "frequency": 159, "cefr": "A1" },
+            { "word": "zwar", "pos": "CONJ", "translation": "admittedly, indeed", "frequency": 206, "cefr": "B1" },
+            { "word": "weiter", "pos": "ADV", "translation": "in addition; further; next", "frequency": 221, "cefr": "A1" },
+            { "word": "obwohl", "pos": "CONJ", "translation": "although, though, despite", "frequency": 390, "cefr": "B1" },
+            { "word": "egal wo", "pos": "PHRASE", "translation": "anywhere" },
+            { "word": "regelmäßig", "pos": "ADJ", "translation": "regular(ly); consistent(ly); periodical(ly)" },
+            { "word": "hinten", "pos": "ADV", "translation": "back, behind", "frequency": 1159, "cefr": "A1" },
+            { "word": "dorthin", "pos": "ADV", "translation": "there", "frequency": 2599, "cefr": "A1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "das Abkommen", "pos": "NOUN", "frequency": 2993, "cefr": "B2" },
+            { "word": "die Ahnung", "pos": "NOUN", "frequency": 1340, "cefr": "A2" },
+            { "word": "beitreten", "pos": "VERB", "frequency": 9327 },
+            { "word": "flüchtend", "pos": "ADJ", "frequency": 45838 },
+            { "word": "die Stadtgeschichte", "pos": "NOUN", "frequency": 13530, "cefr": "B2" },
+            { "word": "die Europäerin", "pos": "NOUN", "cefr": "A2" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "Ahnung": {
+                "Perfekt": {
+                    "ich": "habe gehabt",
+                    "du": "hast gehabt",
+                    "er": "hat gehabt",
+                    "es": "hat gehabt",
+                    "sie_singular": "hat gehabt",
+                    "xier": "hat gehabt",
+                    "wir": "haben gehabt",
+                    "ihr": "habt gehabt",
+                    "sie_plural": "haben gehabt",
+                    "Sie": "haben gehabt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte gehabt",
+                    "du": "hattest gehabt",
+                    "er": "hatte gehabt",
+                    "es": "hatte gehabt",
+                    "sie_singular": "hatte gehabt",
+                    "xier": "hatte gehabt",
+                    "wir": "hatten gehabt",
+                    "ihr": "hattet gehabt",
+                    "sie_plural": "hatten gehabt",
+                    "Sie": "hatten gehabt"
+                },
+                "Futur_I": {
+                    "ich": "werde Ahnung",
+                    "du": "wirst Ahnung",
+                    "er": "wird Ahnung",
+                    "es": "wird Ahnung",
+                    "sie_singular": "wird Ahnung",
+                    "xier": "wird Ahnung",
+                    "wir": "werden Ahnung",
+                    "ihr": "werdet Ahnung",
+                    "sie_plural": "werden Ahnung",
+                    "Sie": "werden Ahnung"
+                }
+            },
+            "spazieren": {
+                "present": {
+                    "ich": "spaziere",
+                    "du": "spazierst",
+                    "er": "spaziert",
+                    "es": "spaziert",
+                    "sie_singular": "spaziert",
+                    "xier": "spaziert",
+                    "wir": "spazieren",
+                    "ihr": "spaziert",
+                    "sie_plural": "spazieren",
+                    "Sie": "spazieren"
+                },
+                "Präteritum": {
+                    "ich": "spazierte",
+                    "du": "spaziertest",
+                    "er": "spazierte",
+                    "es": "spazierte",
+                    "sie_singular": "spazierte",
+                    "xier": "spazierte",
+                    "wir": "spazierten",
+                    "ihr": "spaziertet",
+                    "sie_plural": "spazierten",
+                    "Sie": "spazierten"
+                },
+                "Perfekt": {
+                    "ich": "bin spaziert",
+                    "du": "bist spaziert",
+                    "er": "ist spaziert",
+                    "es": "ist spaziert",
+                    "sie_singular": "ist spaziert",
+                    "xier": "ist spaziert",
+                    "wir": "sind spaziert",
+                    "ihr": "seid spaziert",
+                    "sie_plural": "sind spaziert",
+                    "Sie": "sind spaziert"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war spaziert",
+                    "du": "warst spaziert",
+                    "er": "war spaziert",
+                    "es": "war spaziert",
+                    "sie_singular": "war spaziert",
+                    "xier": "war spaziert",
+                    "wir": "waren spaziert",
+                    "ihr": "wart spaziert",
+                    "sie_plural": "waren spaziert",
+                    "Sie": "waren spaziert"
+                },
+                "Futur_I": {
+                    "ich": "werde spazieren",
+                    "du": "wirst spazieren",
+                    "er": "wird spazieren",
+                    "es": "wird spazieren",
+                    "sie_singular": "wird spazieren",
+                    "xier": "wird spazieren",
+                    "wir": "werden spazieren",
+                    "ihr": "werdet spazieren",
+                    "sie_plural": "werden spazieren",
+                    "Sie": "werden spazieren"
+                },
+                "imperative": {
+                    "du": "spaziere",
+                    "ihr": "spaziert",
+                    "Sie": "spazieren Sie"
+                }
+            },
+            "tanken": {
+                "present": {
+                    "ich": "tanke",
+                    "du": "tankst",
+                    "er": "tankt",
+                    "es": "tankt",
+                    "sie_singular": "tankt",
+                    "xier": "tankt",
+                    "wir": "tanken",
+                    "ihr": "tankt",
+                    "sie_plural": "tanken",
+                    "Sie": "tanken"
+                },
+                "Präteritum": {
+                    "ich": "tankte",
+                    "du": "tanktest",
+                    "er": "tankte",
+                    "es": "tankte",
+                    "sie_singular": "tankte",
+                    "xier": "tankte",
+                    "wir": "tankten",
+                    "ihr": "tanktet",
+                    "sie_plural": "tankten",
+                    "Sie": "tankten"
+                },
+                "Perfekt": {
+                    "ich": "habe getankt",
+                    "du": "hast getankt",
+                    "er": "hat getankt",
+                    "es": "hat getankt",
+                    "sie_singular": "hat getankt",
+                    "xier": "hat getankt",
+                    "wir": "haben getankt",
+                    "ihr": "habt getankt",
+                    "sie_plural": "haben getankt",
+                    "Sie": "haben getankt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte getankt",
+                    "du": "hattest getankt",
+                    "er": "hatte getankt",
+                    "es": "hatte getankt",
+                    "sie_singular": "hatte getankt",
+                    "xier": "hatte getankt",
+                    "wir": "hatten getankt",
+                    "ihr": "hattet getankt",
+                    "sie_plural": "hatten getankt",
+                    "Sie": "hatten getankt"
+                },
+                "Futur_I": {
+                    "ich": "werde tanken",
+                    "du": "wirst tanken",
+                    "er": "wird tanken",
+                    "es": "wird tanken",
+                    "sie_singular": "wird tanken",
+                    "xier": "wird tanken",
+                    "wir": "werden tanken",
+                    "ihr": "werdet tanken",
+                    "sie_plural": "werden tanken",
+                    "Sie": "werden tanken"
+                },
+                "imperative": {
+                    "du": "tank",
+                    "ihr": "tankt",
+                    "Sie": "tanken Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wählen Sie eins der beiden Bilder und schreiben Sie fünf Minuten lang alles auf, was Ihnen zu dem Bild einfällt.",
+            "Sie können Wörter, ganze Sätze oder eine kleine Geschichte schreiben.",
+            "Und Sie können kreativ sein oder beschreiben.",
+            "Europa ohne Grenzen?",
+            "Hören Sie zu und beantworten Sie die Fragen.",
+            "Welche Orte werden im Hörtext besucht?",
+            "Seit wann sind die Grenzen zwischen Deutschland und den westlichen Nachbarländern geöffnet?",
+            "Seit wann sind die Grenzen zu den östlichen Nachbarländern ( Polen, Tschechien, der Slowakei ) offen?",
+            "Wir reisen an der Grenze der deutschsprachigen Länder und sprechen mit Menschen, die regelmäßig über die Grenze fahren.",
+            "Woher kommen Sie und was machen Sie auf der anderen Seite?",
+            "Wir gehören zur dänischen Minderheit hier in Norddeutschland, und ich bringe gerade meine Kinder in die dänische Schule.",
+            "Ach, hallo, ich fahre gerade zurück nach Maastricht in den Niederlanden.",
+            "Ich studiere dort.",
+            "Die Uni ist fantastisch.",
+            "Ich war gerade für ein Wochenende bei meiner Familie in Düsseldorf.",
+            "Wir kommen gerade mit unserem Baby aus Luxemburg.",
+            "Das Krankenhaus in unserer Stadt hat keine Geburtsstation",
+            ", unser Baby ist also in Luxemburg geboren.",
+            "Ich bin im Dreiländereck zu Hause:",
+            "Ich wohne in Deutschland, arbeite in der Schweiz und fahre jetzt nach Frankreich zum Einkaufen.",
+            "Alle Personen haben ganz verschiedene Gründe, um über die Grenze zu fahren, aber alle brauchen seit 1995 keine Pässe mehr zu zeigen.",
+            "Ihre Regionen sind gewachsen und hören nicht mehr an der Grenze auf.",
+            "Sie leben nun in der Mitte Europas.",
+            "Es gibt zwar noch Grenzhäuschen [ Grenze Haus], aber keine Kontrollen mehr seit dem Abkommen von Schengen.",
+            "Auch die Schweiz gehört dazu, obwohl sie kein Mitglied der Europäischen Union ist.",
+            "Weiter geht es auf unserer Reise Richtung Osten.",
+            "Ich fahre gerade zurück nach Bratislava, der Hauptstadt der Slowakei.",
+            "Ich habe mich mit einer Freundin in Österreich zum Kaffee getroffen, sie wohnt jetzt dort.",
+            "Wissen Sie in welchem Land Sie gerade spazieren gehen?",
+            "Nein, ich habe keine Ahnung.",
+            "Doch, war da hinten nicht ein Schild der Grenze?",
+            "Dann sind wir jetzt wahrscheinlich in Tschechien.",
+            "Ja, das kann sein, hier im Bayerischen Wald ist die Grenze gar nicht mehr zu sehen.",
+            "Hallo, ich habe gerade keine Zeit.",
+            "Ich habe einen Termin beim Friseur, dafür fahre ich immer auf die polnische Seite unserer Stadt, dort tanke ich auch immer noch.",
+            "Seit 2007 sind auch die Grenzen zu den östlichen Nachbarn offen.",
+            "2004 sind sie der EU beigetreten und drei Jahre später dann auch dem Schengen- Raum.",
+            "Wegen des Corona-Virus waren die Grenzen aber geschlossen.",
+            "Das passiert nicht zum ersten Mal.",
+            "Auch bei der Fußball Weltmeisterschaft der Männer im Jahr 2006 gab es Grenzkontrollen.",
+            "Und seit 2015 haben einige europäische Länder ihre Grenzen geschlossen, damit flüchtende Menschen nicht in ihre Länder kommen.",
+            "Während Covid konnten auch Europäer*in nen nicht mehr so einfach über die Grenze fahren – nur wenn sie es mussten.",
+            "Die Regionen an den Grenzen lagen wieder am Rande ihrer Länder und nicht mehr in der Mitte von Europa.",
+            "Warum fahren Menschen regelmäßig über die Grenzen?",
+            "Sie können die Gründe aus dem Hörtext nennen, aber vielleicht fallen Ihnen auch noch andere Gründe ein.",
+            "Ordnen Sie die Stadtgeschichte(n) von Görlitz/Zgorzelec.",
+            "Jahrhundert 1220 Mittelalter 1635–1815 19.",
+            "Ab 1815 gehört die Stadt zu Preußen und erlebt ihre zweite gute Phase durch die Industrialisierung.",
+            "N wohnen am Fluss Neiße.",
+            "Zu dieser Zeit baut man die Stadtmauer und die Altstadt.",
+            "Der Stadt geht es wirtschaftlich gut.",
+            "Den Ort“ villa gorelic ” gibt es schon vor 1071, aber erst in diesem Jahr wird der Ort zur Stadt.",
+            "Die Oder-Neiße- Grenze trennt am Ende des Zweiten Weltkrieges die Stadt.",
+            "Zerstören alle Brücken.",
+            "Der östliche Teil ist nun polnisch und nennt sich Zgorzelec.",
+            "Der Teil westlich vom Fluss bleibt deutsch.",
+            "Görlitz und Zgorzelec nennen sich“ Europastadt ”",
+            ", noch bevor Polen der EU 2004 beitritt.",
+            "Für zwei Jahrhunderte gehört die Stadt zu Sachsen.",
+            "Es gibt Feuer und Kriege in dieser Zeit.",
+            "Görlitzer*in, Deutsche*r oder Europäer*in?",
+            "Im Text sprechen Menschen über die Identität in Grenzregionen.",
+            "Wie wichtig ist die Nationalität in Regionen an einer Grenze?",
+            "Markieren Sie, welche Sätze Sie hören.",
+            "Kommen Sie aus Görlitz?",
+            "Ja, ich wohne in Görlitz.",
+            "Fühlen Sie sich als Görlitzerin, als Deutsche oder als Europäerin?",
+            "Oh, das ist eine schwierige Frage.",
+            "Ich fühle mich wahrscheinlich als alles, aber meine regionale Identität ist wichtiger als meine nationale, weil ich hier wohne.",
+            "Fahren Sie manchmal nach Polen?",
+            "Ja, ich fahre oft nach Polen.",
+            "Ich kaufe dort regelmäßig ein.",
+            "Dann sprechen Sie sicher auch Polnisch?",
+            "Ich spreche nur ein bisschen Polnisch, aber das ist kein Problem.",
+            "Beim Einkaufen braucht man selten Sprache und wir verstehen uns auch ohne Worte.",
+            "Gibt es auch Probleme?",
+            "Probleme gibt es natürlich überall.",
+            "Vor allem während Covid war es komisch, weil ich nicht immer dann nach Zgorzelec fahren konnte, wenn ich wollte.",
+            "Aber jetzt denke ich wieder wenig über die Grenze nach.",
+            "Ich fahre dorthin, wo es das gibt, was ich brauche.",
+            "Ich bin als erstes immer noch Deutscher, egal wo in Deutschland ich wohne.",
+            "Meine regionale Identität ist wichtiger ist als meine nationale, weil ich hier wohne.",
+            "Es gibt Probleme mit der Sprache im Alltag",
+            "Ich spiele Fußball für meine Stadt und bin ein Fan, aber wir Fans feiern auch zusammen.",
+            "Ich denke über die Grenze wenig nach, ich fahre dorthin, wo es das gibt, was ich brauche."
+        ],
+        "templated": []
+    }
+}

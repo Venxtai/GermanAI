@@ -1,0 +1,298 @@
+{
+    "unit": "69",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 69,
+        "prerequisite": "1-68"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "deutsche Musik beschreiben"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Lieblingsmusik"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "das Jahrzehnt",
+                "pos": "NOUN",
+                "translation": "decade",
+                "frequency": 1123,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Medium, Medien",
+                "pos": "NOUN",
+                "translation": "medium",
+                "frequency": 2764
+            },
+            {
+                "word": "der Schlager, -",
+                "pos": "ADJ",
+                "translation": "European popular music with lyrics about romance"
+            },
+            {
+                "word": "der Volksmusik",
+                "pos": "NOUN",
+                "translation": "folk music",
+                "frequency": 10800,
+                "cefr": "A1"
+            },
+            {
+                "word": "die NDW (Neue Deutsche Welle)",
+                "pos": "ADJ",
+                "translation": "German music derived from post-punk and new wave music with electronic influences"
+            },
+            {
+                "word": "der Vokuhila",
+                "pos": "NOUN",
+                "translation": "mullet (80's hairstyle)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Juror*in",
+                "pos": "NOUN",
+                "translation": "juror",
+                "frequency": 15659,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Dauerwelle",
+                "pos": "NOUN",
+                "translation": "perm(anent wave)",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Ergebnis",
+                "pos": "NOUN",
+                "translation": "outcome; result",
+                "frequency": 386,
+                "cefr": "A1"
+            },
+            {
+                "word": "weltweit",
+                "pos": "ADJ",
+                "translation": "worldwide",
+                "frequency": 843,
+                "cefr": "B1"
+            },
+            {
+                "word": "erfolgreich",
+                "pos": "ADJ",
+                "translation": "successful",
+                "frequency": 735,
+                "cefr": "B1"
+            },
+            {
+                "word": "gar nicht",
+                "pos": "ADV",
+                "translation": "not at all",
+                "frequency": 5510,
+                "cefr": "B1"
+            },
+            {
+                "word": "bestimmt",
+                "pos": "ADJ",
+                "translation": "certain(ly), particular(ly)",
+                "frequency": 280,
+                "cefr": "B1"
+            },
+            {
+                "word": "seitdem",
+                "pos": "ADV",
+                "translation": "since then",
+                "frequency": 1949,
+                "cefr": "B1"
+            },
+            {
+                "word": "während",
+                "pos": "CONJ",
+                "translation": "while, during"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Lieblingsmusik",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Genre",
+                "pos": "NOUN",
+                "frequency": 7756
+            },
+            {
+                "word": "-gruppen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "gar",
+                "pos": "ADV",
+                "frequency": 165,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Musiker*innen",
+                "pos": "NOUN",
+                "frequency": 2577,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Konjugation",
+                "pos": "NOUN"
+            },
+            {
+                "word": "nstlerinnen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Luftballon",
+                "pos": "NOUN",
+                "frequency": 15480,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Musikstil",
+                "pos": "NOUN",
+                "frequency": 21119
+            },
+            {
+                "word": "der Cover",
+                "pos": "NOUN",
+                "frequency": 13038
+            },
+            {
+                "word": "das Schlager",
+                "pos": "NOUN",
+                "frequency": 8650
+            },
+            {
+                "word": "der Pop",
+                "pos": "NOUN",
+                "frequency": 7060
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {}
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Interviewen Sie Personen im Kurs über Musik und machen Sie Notizen.",
+            "Was sind Lieblingslied",
+            "Wer sind Lieblingsk ü nstler *innen [Lieblings Künstler*innen] oder -gruppen?",
+            "Was hören die Personen nicht so gern / gar nicht?",
+            "Hören die Personen Musik in bestimmten Situationen?",
+            "Waren die Personen auf Konzerten?",
+            "Von wem?",
+            "Kennen die Personen deutsche Musik?",
+            "Welche Lieder oder Musiker*innen?",
+            "Die 80er, 90er, 2000er und 2010er",
+            "Sie bekommen ein Jahrzehnt (80er, 90er, 2000er und 2010er).",
+            "Welche Sänger*innen/Gruppen waren in Ihrem Jahrzehnt in Ihrem Land beliebt?",
+            "Was war in dieser Zeit typisch?",
+            "Machen Sie Notizen.",
+            "Präsentieren Sie die Ergebnisse.",
+            "Hören Sie gut zu.",
+            "Welches Jahrzehnt gefällt Ihnen am besten?",
+            "Lesen Sie den Text über die Künstlerin Nena.",
+            "Ergänzen Sie die Verben \"haben\" und \"sein\" in der richtigen Zeitform ( Präsens oder Präteritum ) und Konjugation.",
+            "Nena (geboren im März 1960 in Hagen, Deutschland als Gabriele Susanne Kerner ) ist eine der erfolgreichsten K ü nstlerinnen der deutschen Musikgeschichte.",
+            "Im Jahr 1983 hatte sie einen weltweiten Hit: \"99 Luftballons\".",
+            "Das Lied war auf Platz 1 in den deutschsprachigen Ländern und auch (in der deutschen Version!) Platz 2 in den amerikanischen Billboard Charts.",
+            "Seitdem hatte Nena in jedem Jahrzehnt ein Album und jedes Album hatte den Musikstil aus der Zeit.",
+            "Auch nach 40 Jahren ist sie auch heute bei jungen und alten Menschen beliebt.",
+            "Von 2011 bis 2014 war sie Jurorin und Coach in der Gesangscastingshow The Voice of Germany.",
+            "Nena singt seit fünf Jahrzehnten und bis heute Lieder.",
+            "Hören Sie die Nena Lieder (und Covers) und raten Sie das Jahrzehnt.",
+            "Sagen Sie, warum die Lieder zu den Jahrzehnten passen (was sieht man im Video, was tragen die Leute, wie ist der Stil?).",
+            "Schlager, oder was?",
+            "Wählen Sie eine Gruppe oder eine*n Sänger*in von der Liste unten aus.",
+            "Recherchieren Sie Woher kommt die Person/Gruppe?",
+            "Was ist das Genre?",
+            "Amadeus La Bouche – Be my Lover Capital Bra &",
+            "Schlager | NDW | Rock | Rap | Techno | Punk Eurodance | Hip-Hop | Pop | Volksmusik |",
+            "Sie hören die Lieder.",
+            "Melden Sie sich, wenn Sie Ihr*e Gruppe/Sänger* in hören und präsentieren Sie dann Ihre Informationen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

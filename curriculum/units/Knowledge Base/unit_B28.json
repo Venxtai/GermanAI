@@ -1,0 +1,690 @@
+{
+    "unit": "B28",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "blau",
+        "position": 28,
+        "prerequisite": "core 1-104, B1-B27"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Präteritum_weak",
+            "Präteritum_strong",
+            "Präteritum_mixed",
+            "Plusquamperfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative",
+            "genitive"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "relative_clause_dative",
+            "relative_clause_genitive",
+            "subordinate_bevor",
+            "subordinate_während",
+            "subordinate_nachdem"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "ein Diagramm beschreiben und analysieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Einwanderung"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "führen", "pos": "VERB", "translation": "to lead (to)" },
+            { "word": "erleben", "pos": "VERB", "translation": "to live to see; experience", "frequency": 570, "cefr": "B1" },
+            { "word": "untersuchen", "pos": "VERB", "translation": "to examine", "frequency": 886, "cefr": "A2" },
+            { "word": "zurückkehren", "pos": "VERB", "translation": "to return, come back" },
+            { "word": "sich bemühen (um)", "pos": "VERB", "translation": "to try (for); make an effort" },
+            { "word": "teilnehmen", "pos": "VERB", "translation": "to participate", "frequency": 1714, "cefr": "A2" },
+            { "word": "befragen", "pos": "VERB", "translation": "to interview, question, consult", "frequency": 1885 },
+            { "word": "der Bereich", "pos": "NOUN", "translation": "sector; area", "frequency": 339, "cefr": "B1" },
+            { "word": "die Studie", "pos": "NOUN", "translation": "study (research)", "frequency": 784, "cefr": "B1" },
+            { "word": "die Erfahrung", "pos": "NOUN", "translation": "experience", "frequency": 619, "cefr": "A2" },
+            { "word": "die Bildung", "pos": "NOUN", "translation": "education; formation", "frequency": 850, "cefr": "A1" },
+            { "word": "die Tatsache", "pos": "NOUN", "translation": "fact, matter of fact", "frequency": 1513, "cefr": "B1" },
+            { "word": "die Bevölkerung", "pos": "NOUN", "translation": "population" },
+            { "word": "der*die Vorfahr*in", "pos": "NOUN", "translation": "ancestor", "frequency": 8922 },
+            { "word": "der*die Ausländer*in", "pos": "NOUN", "translation": "foreigner" },
+            { "word": "der*die Befragte", "pos": "NOUN", "translation": "interviewee; respondent, informant", "frequency": 7559 },
+            { "word": "der Aufenthalt", "pos": "NOUN", "translation": "stay; layover", "frequency": 3662, "cefr": "B1" },
+            { "word": "die Dauer", "pos": "NOUN", "translation": "duration, length (time)", "frequency": 2021, "cefr": "B1" },
+            { "word": "die Grafik", "pos": "NOUN", "translation": "graph; diagram, chart", "frequency": 3148, "cefr": "B1" },
+            { "word": "der Beitritt", "pos": "NOUN", "translation": "joining, admission, accession", "frequency": 7741, "cefr": "A1" },
+            { "word": "gesamt", "pos": "ADJ", "translation": "altogether", "frequency": 557, "cefr": "B1" },
+            { "word": "weiterhin", "pos": "ADV", "translation": "furthermore; still", "frequency": 827 },
+            { "word": "deswegen", "pos": "ADV", "translation": "therefore, for that reason", "frequency": 749, "cefr": "B1" },
+            { "word": "ehemalig", "pos": "ADJ", "translation": "former", "frequency": 883 },
+            { "word": "sonstiges Europa", "pos": "PHRASE", "translation": "Europe, other" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "der Kontinent", "pos": "NOUN", "frequency": 2721 },
+            { "word": "sonstig", "pos": "ADJ", "frequency": 2989 },
+            { "word": "die Union", "pos": "NOUN", "frequency": 1397 },
+            { "word": "das Visum", "pos": "NOUN", "frequency": 12280, "cefr": "B1" },
+            { "word": "objektiv", "pos": "ADV", "frequency": 3275 },
+            { "word": "die Diskriminierung", "pos": "NOUN", "frequency": 4961 },
+            { "word": "kolonialisieren", "pos": "VERB" },
+            { "word": "der*die Diplomat*innen", "pos": "NOUN", "frequency": 6801 },
+            { "word": "der*die Afrikaner*innen", "pos": "NOUN", "frequency": 11744 },
+            { "word": "afro", "pos": "ADV" },
+            { "word": "nordafrikanisch", "pos": "ADJ", "frequency": 30801 },
+            { "word": "der Zensus", "pos": "NOUN", "frequency": 24066 },
+            { "word": "die schwarze", "pos": "NOUN", "frequency": 7943 },
+            { "word": "tabu", "pos": "ADV", "frequency": 8263, "cefr": "B2" },
+            { "word": "befragt", "pos": "ADJ", "frequency": 11269 },
+            { "word": "Cis", "pos": "NOUN" },
+            { "word": "queer", "pos": "ADV" },
+            { "word": "die Repräsentation", "pos": "NOUN", "frequency": 22019 },
+            { "word": "die Demografie", "pos": "NOUN", "frequency": 29089 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "führen": {
+                "present": {
+                    "ich": "führe",
+                    "du": "führst",
+                    "er": "führt",
+                    "es": "führt",
+                    "sie_singular": "führt",
+                    "xier": "führt",
+                    "wir": "führen",
+                    "ihr": "führt",
+                    "sie_plural": "führen",
+                    "Sie": "führen"
+                },
+                "Präteritum": {
+                    "ich": "führte",
+                    "du": "führtest",
+                    "er": "führte",
+                    "es": "führte",
+                    "sie_singular": "führte",
+                    "xier": "führte",
+                    "wir": "führten",
+                    "ihr": "führtet",
+                    "sie_plural": "führten",
+                    "Sie": "führten"
+                },
+                "Perfekt": {
+                    "ich": "habe geführt",
+                    "du": "hast geführt",
+                    "er": "hat geführt",
+                    "es": "hat geführt",
+                    "sie_singular": "hat geführt",
+                    "xier": "hat geführt",
+                    "wir": "haben geführt",
+                    "ihr": "habt geführt",
+                    "sie_plural": "haben geführt",
+                    "Sie": "haben geführt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte geführt",
+                    "du": "hattest geführt",
+                    "er": "hatte geführt",
+                    "es": "hatte geführt",
+                    "sie_singular": "hatte geführt",
+                    "xier": "hatte geführt",
+                    "wir": "hatten geführt",
+                    "ihr": "hattet geführt",
+                    "sie_plural": "hatten geführt",
+                    "Sie": "hatten geführt"
+                },
+                "Futur_I": {
+                    "ich": "werde führen",
+                    "du": "wirst führen",
+                    "er": "wird führen",
+                    "es": "wird führen",
+                    "sie_singular": "wird führen",
+                    "xier": "wird führen",
+                    "wir": "werden führen",
+                    "ihr": "werdet führen",
+                    "sie_plural": "werden führen",
+                    "Sie": "werden führen"
+                },
+                "imperative": {
+                    "du": "führe",
+                    "ihr": "führt",
+                    "Sie": "führen Sie"
+                }
+            },
+            "erleben": {
+                "present": {
+                    "ich": "erlebe",
+                    "du": "erlebst",
+                    "er": "erlebt",
+                    "es": "erlebt",
+                    "sie_singular": "erlebt",
+                    "xier": "erlebt",
+                    "wir": "erleben",
+                    "ihr": "erlebt",
+                    "sie_plural": "erleben",
+                    "Sie": "erleben"
+                },
+                "Präteritum": {
+                    "ich": "erlebte",
+                    "du": "erlebtest",
+                    "er": "erlebte",
+                    "es": "erlebte",
+                    "sie_singular": "erlebte",
+                    "xier": "erlebte",
+                    "wir": "erlebten",
+                    "ihr": "erlebtet",
+                    "sie_plural": "erlebten",
+                    "Sie": "erlebten"
+                },
+                "Perfekt": {
+                    "ich": "habe erlebt",
+                    "du": "hast erlebt",
+                    "er": "hat erlebt",
+                    "es": "hat erlebt",
+                    "sie_singular": "hat erlebt",
+                    "xier": "hat erlebt",
+                    "wir": "haben erlebt",
+                    "ihr": "habt erlebt",
+                    "sie_plural": "haben erlebt",
+                    "Sie": "haben erlebt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte erlebt",
+                    "du": "hattest erlebt",
+                    "er": "hatte erlebt",
+                    "es": "hatte erlebt",
+                    "sie_singular": "hatte erlebt",
+                    "xier": "hatte erlebt",
+                    "wir": "hatten erlebt",
+                    "ihr": "hattet erlebt",
+                    "sie_plural": "hatten erlebt",
+                    "Sie": "hatten erlebt"
+                },
+                "Futur_I": {
+                    "ich": "werde erleben",
+                    "du": "wirst erleben",
+                    "er": "wird erleben",
+                    "es": "wird erleben",
+                    "sie_singular": "wird erleben",
+                    "xier": "wird erleben",
+                    "wir": "werden erleben",
+                    "ihr": "werdet erleben",
+                    "sie_plural": "werden erleben",
+                    "Sie": "werden erleben"
+                },
+                "imperative": {
+                    "du": "erlebe",
+                    "ihr": "erlebt",
+                    "Sie": "erleben Sie"
+                }
+            },
+            "untersuchen": {
+                "present": {
+                    "ich": "untersuche",
+                    "du": "untersuchst",
+                    "er": "untersucht",
+                    "es": "untersucht",
+                    "sie_singular": "untersucht",
+                    "xier": "untersucht",
+                    "wir": "untersuchen",
+                    "ihr": "untersucht",
+                    "sie_plural": "untersuchen",
+                    "Sie": "untersuchen"
+                },
+                "Präteritum": {
+                    "ich": "untersuchte",
+                    "du": "untersuchtest",
+                    "er": "untersuchte",
+                    "es": "untersuchte",
+                    "sie_singular": "untersuchte",
+                    "xier": "untersuchte",
+                    "wir": "untersuchten",
+                    "ihr": "untersuchtet",
+                    "sie_plural": "untersuchten",
+                    "Sie": "untersuchten"
+                },
+                "Perfekt": {
+                    "ich": "habe untersucht",
+                    "du": "hast untersucht",
+                    "er": "hat untersucht",
+                    "es": "hat untersucht",
+                    "sie_singular": "hat untersucht",
+                    "xier": "hat untersucht",
+                    "wir": "haben untersucht",
+                    "ihr": "habt untersucht",
+                    "sie_plural": "haben untersucht",
+                    "Sie": "haben untersucht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte untersucht",
+                    "du": "hattest untersucht",
+                    "er": "hatte untersucht",
+                    "es": "hatte untersucht",
+                    "sie_singular": "hatte untersucht",
+                    "xier": "hatte untersucht",
+                    "wir": "hatten untersucht",
+                    "ihr": "hattet untersucht",
+                    "sie_plural": "hatten untersucht",
+                    "Sie": "hatten untersucht"
+                },
+                "Futur_I": {
+                    "ich": "werde untersuchen",
+                    "du": "wirst untersuchen",
+                    "er": "wird untersuchen",
+                    "es": "wird untersuchen",
+                    "sie_singular": "wird untersuchen",
+                    "xier": "wird untersuchen",
+                    "wir": "werden untersuchen",
+                    "ihr": "werdet untersuchen",
+                    "sie_plural": "werden untersuchen",
+                    "Sie": "werden untersuchen"
+                },
+                "imperative": {
+                    "du": "untersuche",
+                    "ihr": "untersucht",
+                    "Sie": "untersuchen Sie"
+                }
+            },
+            "zurückkehren": {
+                "present": {
+                    "ich": "kehre zurück",
+                    "du": "kehrst zurück",
+                    "er": "kehrt zurück",
+                    "es": "kehrt zurück",
+                    "sie_singular": "kehrt zurück",
+                    "xier": "kehrt zurück",
+                    "wir": "kehren zurück",
+                    "ihr": "kehrt zurück",
+                    "sie_plural": "kehren zurück",
+                    "Sie": "kehren zurück"
+                },
+                "Präteritum": {
+                    "ich": "kehrte zurück",
+                    "du": "kehrtest zurück",
+                    "er": "kehrte zurück",
+                    "es": "kehrte zurück",
+                    "sie_singular": "kehrte zurück",
+                    "xier": "kehrte zurück",
+                    "wir": "kehrten zurück",
+                    "ihr": "kehrtet zurück",
+                    "sie_plural": "kehrten zurück",
+                    "Sie": "kehrten zurück"
+                },
+                "Perfekt": {
+                    "ich": "bin zurückgekehrt",
+                    "du": "bist zurückgekehrt",
+                    "er": "ist zurückgekehrt",
+                    "es": "ist zurückgekehrt",
+                    "sie_singular": "ist zurückgekehrt",
+                    "xier": "ist zurückgekehrt",
+                    "wir": "sind zurückgekehrt",
+                    "ihr": "seid zurückgekehrt",
+                    "sie_plural": "sind zurückgekehrt",
+                    "Sie": "sind zurückgekehrt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "war zurückgekehrt",
+                    "du": "warst zurückgekehrt",
+                    "er": "war zurückgekehrt",
+                    "es": "war zurückgekehrt",
+                    "sie_singular": "war zurückgekehrt",
+                    "xier": "war zurückgekehrt",
+                    "wir": "waren zurückgekehrt",
+                    "ihr": "wart zurückgekehrt",
+                    "sie_plural": "waren zurückgekehrt",
+                    "Sie": "waren zurückgekehrt"
+                },
+                "Futur_I": {
+                    "ich": "werde zurückkehren",
+                    "du": "wirst zurückkehren",
+                    "er": "wird zurückkehren",
+                    "es": "wird zurückkehren",
+                    "sie_singular": "wird zurückkehren",
+                    "xier": "wird zurückkehren",
+                    "wir": "werden zurückkehren",
+                    "ihr": "werdet zurückkehren",
+                    "sie_plural": "werden zurückkehren",
+                    "Sie": "werden zurückkehren"
+                },
+                "imperative": {
+                    "du": "kehre zurück",
+                    "ihr": "kehrt zurück",
+                    "Sie": "kehren Sie zurück"
+                }
+            },
+            "bemühen": {
+                "present": {
+                    "ich": "bemühe mich",
+                    "du": "bemühst dich",
+                    "er": "bemüht sich",
+                    "es": "bemüht sich",
+                    "sie_singular": "bemüht sich",
+                    "xier": "bemüht sich",
+                    "wir": "bemühen uns",
+                    "ihr": "bemüht euch",
+                    "sie_plural": "bemühen sich",
+                    "Sie": "bemühen sich"
+                },
+                "Präteritum": {
+                    "ich": "bemühte mich",
+                    "du": "bemühtest dich",
+                    "er": "bemühte sich",
+                    "es": "bemühte sich",
+                    "sie_singular": "bemühte sich",
+                    "xier": "bemühte sich",
+                    "wir": "bemühten uns",
+                    "ihr": "bemühtet euch",
+                    "sie_plural": "bemühten sich",
+                    "Sie": "bemühten sich"
+                },
+                "Perfekt": {
+                    "ich": "habe mich bemüht",
+                    "du": "hast dich bemüht",
+                    "er": "hat sich bemüht",
+                    "es": "hat sich bemüht",
+                    "sie_singular": "hat sich bemüht",
+                    "xier": "hat sich bemüht",
+                    "wir": "haben uns bemüht",
+                    "ihr": "habt euch bemüht",
+                    "sie_plural": "haben sich bemüht",
+                    "Sie": "haben sich bemüht"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte mich bemüht",
+                    "du": "hattest dich bemüht",
+                    "er": "hatte sich bemüht",
+                    "es": "hatte sich bemüht",
+                    "sie_singular": "hatte sich bemüht",
+                    "xier": "hatte sich bemüht",
+                    "wir": "hatten uns bemüht",
+                    "ihr": "hattet euch bemüht",
+                    "sie_plural": "hatten sich bemüht",
+                    "Sie": "hatten sich bemüht"
+                },
+                "Futur_I": {
+                    "ich": "werde mich bemühen",
+                    "du": "wirst dich bemühen",
+                    "er": "wird sich bemühen",
+                    "es": "wird sich bemühen",
+                    "sie_singular": "wird sich bemühen",
+                    "xier": "wird sich bemühen",
+                    "wir": "werden uns bemühen",
+                    "ihr": "werdet euch bemühen",
+                    "sie_plural": "werden sich bemühen",
+                    "Sie": "werden sich bemühen"
+                },
+                "imperative": {
+                    "du": "bemüh dich",
+                    "ihr": "bemüht euch",
+                    "Sie": "bemühen Sie sich"
+                }
+            },
+            "teilnehmen": {
+                "present": {
+                    "ich": "nehme teil",
+                    "du": "nimmst teil",
+                    "er": "nimmt teil",
+                    "es": "nimmt teil",
+                    "sie_singular": "nimmt teil",
+                    "xier": "nimmt teil",
+                    "wir": "nehmen teil",
+                    "ihr": "nehmt teil",
+                    "sie_plural": "nehmen teil",
+                    "Sie": "nehmen teil"
+                },
+                "Präteritum": {
+                    "ich": "nahm teil",
+                    "du": "nahmst teil",
+                    "er": "nahm teil",
+                    "es": "nahm teil",
+                    "sie_singular": "nahm teil",
+                    "xier": "nahm teil",
+                    "wir": "nahmen teil",
+                    "ihr": "nahmt teil",
+                    "sie_plural": "nahmen teil",
+                    "Sie": "nahmen teil"
+                },
+                "Perfekt": {
+                    "ich": "habe teilgenommen",
+                    "du": "hast teilgenommen",
+                    "er": "hat teilgenommen",
+                    "es": "hat teilgenommen",
+                    "sie_singular": "hat teilgenommen",
+                    "xier": "hat teilgenommen",
+                    "wir": "haben teilgenommen",
+                    "ihr": "habt teilgenommen",
+                    "sie_plural": "haben teilgenommen",
+                    "Sie": "haben teilgenommen"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte teilgenommen",
+                    "du": "hattest teilgenommen",
+                    "er": "hatte teilgenommen",
+                    "es": "hatte teilgenommen",
+                    "sie_singular": "hatte teilgenommen",
+                    "xier": "hatte teilgenommen",
+                    "wir": "hatten teilgenommen",
+                    "ihr": "hattet teilgenommen",
+                    "sie_plural": "hatten teilgenommen",
+                    "Sie": "hatten teilgenommen"
+                },
+                "Futur_I": {
+                    "ich": "werde teilnehmen",
+                    "du": "wirst teilnehmen",
+                    "er": "wird teilnehmen",
+                    "es": "wird teilnehmen",
+                    "sie_singular": "wird teilnehmen",
+                    "xier": "wird teilnehmen",
+                    "wir": "werden teilnehmen",
+                    "ihr": "werdet teilnehmen",
+                    "sie_plural": "werden teilnehmen",
+                    "Sie": "werden teilnehmen"
+                },
+                "imperative": {
+                    "du": "nimm teil",
+                    "ihr": "nehmt teil",
+                    "Sie": "nehmen Sie teil"
+                }
+            },
+            "befragen": {
+                "present": {
+                    "ich": "befrage",
+                    "du": "befragst",
+                    "er": "befragt",
+                    "es": "befragt",
+                    "sie_singular": "befragt",
+                    "xier": "befragt",
+                    "wir": "befragen",
+                    "ihr": "befragt",
+                    "sie_plural": "befragen",
+                    "Sie": "befragen"
+                },
+                "Präteritum": {
+                    "ich": "befragte",
+                    "du": "befragtest",
+                    "er": "befragte",
+                    "es": "befragte",
+                    "sie_singular": "befragte",
+                    "xier": "befragte",
+                    "wir": "befragten",
+                    "ihr": "befragtet",
+                    "sie_plural": "befragten",
+                    "Sie": "befragten"
+                },
+                "Perfekt": {
+                    "ich": "habe befragt",
+                    "du": "hast befragt",
+                    "er": "hat befragt",
+                    "es": "hat befragt",
+                    "sie_singular": "hat befragt",
+                    "xier": "hat befragt",
+                    "wir": "haben befragt",
+                    "ihr": "habt befragt",
+                    "sie_plural": "haben befragt",
+                    "Sie": "haben befragt"
+                },
+                "Plusquamperfekt": {
+                    "ich": "hatte befragt",
+                    "du": "hattest befragt",
+                    "er": "hatte befragt",
+                    "es": "hatte befragt",
+                    "sie_singular": "hatte befragt",
+                    "xier": "hatte befragt",
+                    "wir": "hatten befragt",
+                    "ihr": "hattet befragt",
+                    "sie_plural": "hatten befragt",
+                    "Sie": "hatten befragt"
+                },
+                "Futur_I": {
+                    "ich": "werde befragen",
+                    "du": "wirst befragen",
+                    "er": "wird befragen",
+                    "es": "wird befragen",
+                    "sie_singular": "wird befragen",
+                    "xier": "wird befragen",
+                    "wir": "werden befragen",
+                    "ihr": "werdet befragen",
+                    "sie_plural": "werden befragen",
+                    "Sie": "werden befragen"
+                },
+                "imperative": {
+                    "du": "befrag",
+                    "ihr": "befragt",
+                    "Sie": "befragen Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Woher kommen wir?",
+            "Die deutsche Bevölkerung im 21.",
+            "Sie kommen eine Grafik.",
+            "Beschreiben Sie die Grafik.",
+            "Hintergrund in absoluten Zahlen, Anteile an der Gesamtbevölkerung",
+            "Stellen Sie einer Person aus der anderen Gruppe Ihre Grafik vor.",
+            "Benutzen Sie die Redemittel aus Teil 1.",
+            "Welche Informationen über Migration (unten) passen zu den Zahlen und der Dauer des Aufenthalts in der Grafik?",
+            "In allen EU Ländern ohne Visum arbeiten und leben",
+            "Seit 1992 Beginn des Krieges in Afghanistan, 2001 Beginn des Krieges im Irak, 2003 EU",
+            "Beitritt von osteuropäischen Ländern (z.B.",
+            "Beitritt der Länder Bulgarien und Rumänien, 2007 Beginn des Krieges in Syrien, 2011",
+            "Lesen Sie die Statements zum Label“ mit ” und“ ohne Migrationshintergrund ”.",
+            "Welche Statements sehen ein Problem in d em Label und warum?",
+            "Welchen Statements stimmen Sie (nicht) zu?",
+            "Das Label kategorisiert Menschen und manche Menschen gehören wegen des Labels nicht richtig zu Deutschland.",
+            "Das Label ist objektiv und spricht über die Herkunft einer Person.",
+            "Das ist eine Tatsache und kein Problem.",
+            "Das Label kann zur Diskriminierung der Menschen führen.",
+            "Woher kommen Schwarze Deutsche?",
+            "Statistiken zählen nur Ausländer*innen in Deutschland und Deutsche, deren Vorfahr*innen seit den 1960er Jahren nach Deutschland gekommen sind.",
+            "Nun sprechen wir über eine Gruppe, die wir in diesen Statistiken nicht sehen: Schwarze Deutsche.",
+            "Hören Sie den Text zweimal und ordnen Sie die Farben den Gruppen zu.",
+            "Die Informationen unten helfen.",
+            "Das Deutsche Reich gab es seit 1871.",
+            "Schon ab 1884, kolonialisierte es Länder und einige in Afrika.",
+            "Menschen aus den Kolonien kamen als Diplomat*innen, Geschäftsmenschen, Reisende oder als Studierende ins Deutsche Reich.",
+            "Es gab auch Afrikaner*innen, die für rassistische nach Deutschland kamen.",
+            "Im Ersten Weltkrieg kämpften Soldaten aus den Kolonien für Frankreich.",
+            "Deshalb gab es nach dem Ersten Weltkrieg auch afrikanische Soldaten in Deutschland.",
+            "Die Soldaten kamen vor allem aus Senegal, Marokko und Algerien.",
+            "Manche dieser Soldaten hatten Beziehungen mit deutschen Frauen, die Kinder bekamen.",
+            "Die Kinder erlebten starke Diskriminierung.",
+            "Nach dem Zweiten Weltkrieg waren Schwarze GIs aus den USA in Deutschland.",
+            "Deutsche Frauen und afro amerikanische GIs hatten Babys, die eine weitere Gruppe Schwarzer Deutscher bilden.",
+            "Als die Bundesrepublik Deutschland Migrant*innen anwarb, die in Deutschland arbeiten sollten, schloss sie diese Verträge vor allem mit südeuropäischen Ländern.",
+            "1963 schloss die BRD einen Vertrag mit Marokko und 1965 mit Tunesien.",
+            "Auch die DDR warb Vertragsarbeiter*innen an.",
+            "Diese kamen vor allem aus sozialistischen Ländern, auch aus afrikanischen Ländern wie Angola und Mosambik.",
+            "Es ist interessant, dass auch Kinder aus Namibia in die DDR kamen, um dort eine Ausbildung zu bekommen.",
+            "Viele kehrten später nach Afrika zurück.",
+            "Nach Ende des Kalten Krieges kamen weiterhin Menschen aus Afrika nach Deutschland.",
+            "Sie kamen – und sie kommen auch heute noch – vor allem, weil sie auf eine bessere Perspektive hoffen oder weil sie vor Krieg, Hunger und Naturkatastrophen.",
+            "Sprechen Sie über Ihre Ergebnisse.",
+            "Wofür steht die Farbe Grau?",
+            "Sie steht für Soldaten nach dem 2.",
+            "Hören Sie jetzt einen Bericht über Statistiken und den Afrozensus.",
+            "Tragen Sie die Zahlen und Prozentzahlen ein.",
+            "In Deutschland leben über eine Million Schwarze, afrikanische oder afrodiasporische Menschen.",
+            "In Deutschland fragt man nicht nach der Hautfarbe oder race, da dieses Thema seit der Nazi-Zeit tabu ist.",
+            "Deswegen gibt es dazu keine genauen Zahlen.",
+            "Seit vielen Jahren bemühen sich Wissenschaftler*innen die Lebenssituation",
+            "Die fehlenden Statistiken machen das schwierig.",
+            "Deshalb gibt es den Afrozensus.",
+            "Beim Afrozensus 2020 beantworteten 6.000 Schwarze Menschen in Deutschland ein e Online Umfrage.",
+            "34 Menschen beantworteten in Fokusgruppen Fragen.",
+            "Die meisten von ihnen sind in Deutschland geboren und 73,2% haben eine Migrationsgeschichte.",
+            "Ein Viertel hat keine Migrationsgeschichte",
+            "Migration Geschichte und ist in Statistiken unsichtbar",
+            "Die Befragten repräsentieren nicht immer die ganze Community, die befragten Menschen hatten zum Beispiel höhere Bildung als der Durchschnitt und wohnten vor allem in Städten.",
+            "70% der Befragten waren Cis Frauen und 26% Cis Männer.",
+            "Fast 80% identifizierten sich als heterosexuell, 20% als homosexuell, bisexuell oder queer.",
+            "64% sprachen zwei oder drei Sprachen und 33% vier Sprachen.",
+            "37% der Befragten sagten, dass sie mindestens eine afrikanische Sprache sprechen.",
+            "Der Afrozensus untersuchte Diskriminierung, z.B.",
+            "Bei der Arbeit, beim Wohnen, in der Freizeit.",
+            "96,6% der Befragten sagten, dass es in allen Bereichen Diskriminierung gibt.",
+            "Über 9 0% der Menschen dachten, dass es bei der Wohnungssuche sehr oft oder oft zu Diskriminierung kommt.",
+            "Bei der Polizei glaubten 85%, dass es Diskriminierung gibt.",
+            "Weil viele Menschen Angst vor Diskriminierung haben, nehmen sie an manchen Events nicht teil oder suchen auch keine Hilfe bei der Polizei.",
+            "Die Wissenschaftler*innen möchten, dass es mehr Studien gibt und dass die Politik mehr für Repräsentation und gegen Diskriminierung tut.",
+            "Schwarze, afrikanische oder afrodiasporische Menschen in Deutschland: __"
+        ],
+        "templated": []
+    }
+}

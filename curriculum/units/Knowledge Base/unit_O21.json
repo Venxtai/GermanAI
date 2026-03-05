@@ -1,0 +1,620 @@
+{
+    "unit": "O21",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 21,
+        "prerequisite": "core 1-104, O1-O20"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "Jugendproteste von früher und heute vergleichen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die 68er-Bewegung",
+            "Protestieren für den Frieden"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "tun", "pos": "VERB", "translation": "to do (alternative to \"machen\")", "frequency": 123, "cefr": "A1" },
+            { "word": "wegschmeißen", "pos": "VERB", "translation": "to ditch; chuck" },
+            { "word": "ansprechen", "pos": "VERB", "translation": "to address (person or topic)", "frequency": 1214, "cefr": "B1" },
+            { "word": "entstehen", "pos": "VERB", "translation": "to emerge, develop", "frequency": 264, "cefr": "B1" },
+            { "word": "bekämpfen", "pos": "VERB", "translation": "to combat, fight (against)" },
+            { "word": "einen Anschlag verüben", "pos": "VERB", "translation": "to assault" },
+            { "word": "die Schlacht", "pos": "NOUN", "translation": "battle", "frequency": 4200, "cefr": "A1" },
+            { "word": "die Front", "pos": "NOUN", "translation": "foresite, front", "frequency": 3388, "cefr": "A1" },
+            { "word": "die Gewalt", "pos": "NOUN", "translation": "violence", "frequency": 1361, "cefr": "B1" },
+            { "word": "der Kampf", "pos": "NOUN", "translation": "fight, struggle", "frequency": 867, "cefr": "B1" },
+            { "word": "der Sieg", "pos": "NOUN", "translation": "victory", "frequency": 1040, "cefr": "B1" },
+            { "word": "der Überfall", "pos": "NOUN", "translation": "holdup; assault; mugging, aggression", "frequency": 1, "cefr": "A1" },
+            { "word": "die Knarre", "pos": "NOUN", "translation": "gat, rifle (coll.)", "frequency": 1, "cefr": "A1" },
+            { "word": "die Waffe", "pos": "NOUN", "translation": "weapon", "frequency": 1625, "cefr": "B2" },
+            { "word": "die Regierung", "pos": "NOUN", "translation": "government", "frequency": 521, "cefr": "B1" },
+            { "word": "der Kapitalismus", "pos": "NOUN", "translation": "capitalism", "frequency": 8864, "cefr": "B2" },
+            { "word": "der*die Kapitalist*in", "pos": "NOUN", "translation": "capitalist", "frequency": 31888 },
+            { "word": "die Zensur", "pos": "NOUN", "translation": "censorship; grade [education]", "frequency": 10166, "cefr": "A1" },
+            { "word": "die Ungleichheit", "pos": "NOUN", "translation": "inequality", "frequency": 4385, "cefr": "B2" },
+            { "word": "die Gewerkschaft", "pos": "NOUN", "translation": "trade/labor union", "frequency": 2435, "cefr": "B1" },
+            { "word": "der Frieden", "pos": "NOUN", "translation": "peace", "frequency": 1696, "cefr": "B1" },
+            { "word": "friedlich", "pos": "ADJ", "translation": "peaceful", "frequency": 2373 }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "Hey", "pos": "INTJ", "frequency": 1142 },
+            { "word": "der Rockband", "pos": "NOUN", "frequency": 13060, "cefr": "B2" },
+            { "word": "die Szene", "pos": "NOUN", "frequency": 1347, "cefr": "B1" },
+            { "word": "macht", "pos": "VERB", "frequency": 1098 },
+            { "word": "angesp", "pos": "VERB" },
+            { "word": "transnational", "pos": "ADJ" },
+            { "word": "der Boykott", "pos": "NOUN", "frequency": 12415 },
+            { "word": "der Süd", "pos": "NOUN", "frequency": 1771 },
+            { "word": "jugendlich", "pos": "ADJ", "frequency": 5001 },
+            { "word": "die Bank", "pos": "NOUN", "frequency": 543, "cefr": "A1" },
+            { "word": "der Anschlag", "pos": "NOUN", "frequency": 1363, "cefr": "B2" },
+            { "word": "der Banküberfall", "pos": "NOUN", "frequency": 33640 },
+            { "word": "verüben", "pos": "VERB", "frequency": 8828 },
+            { "word": "unzufrieden", "pos": "ADV", "frequency": 8384 },
+            { "word": "der Terror", "pos": "NOUN", "frequency": 2677 },
+            { "word": "die Unterdrückung", "pos": "NOUN", "frequency": 10775 },
+            { "word": "das -Mitglied", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "tun": {
+                "present": {
+                    "ich": "tue",
+                    "du": "tust",
+                    "er": "tut",
+                    "es": "tut",
+                    "sie_singular": "tut",
+                    "xier": "tut",
+                    "wir": "tun",
+                    "ihr": "tut",
+                    "sie_plural": "tun",
+                    "Sie": "tun"
+                },
+                "Perfekt": {
+                    "ich": "habe getan",
+                    "du": "hast getan",
+                    "er": "hat getan",
+                    "es": "hat getan",
+                    "sie_singular": "hat getan",
+                    "xier": "hat getan",
+                    "wir": "haben getan",
+                    "ihr": "habt getan",
+                    "sie_plural": "haben getan",
+                    "Sie": "haben getan"
+                },
+                "Futur_I": {
+                    "ich": "werde tun",
+                    "du": "wirst tun",
+                    "er": "wird tun",
+                    "es": "wird tun",
+                    "sie_singular": "wird tun",
+                    "xier": "wird tun",
+                    "wir": "werden tun",
+                    "ihr": "werdet tun",
+                    "sie_plural": "werden tun",
+                    "Sie": "werden tun"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde tun",
+                    "du": "würdest tun",
+                    "er": "würde tun",
+                    "es": "würde tun",
+                    "sie_singular": "würde tun",
+                    "xier": "würde tun",
+                    "wir": "würden tun",
+                    "ihr": "würdet tun",
+                    "sie_plural": "würden tun",
+                    "Sie": "würden tun"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte getan",
+                    "du": "hättest getan",
+                    "er": "hätte getan",
+                    "es": "hätte getan",
+                    "sie_singular": "hätte getan",
+                    "xier": "hätte getan",
+                    "wir": "hätten getan",
+                    "ihr": "hättet getan",
+                    "sie_plural": "hätten getan",
+                    "Sie": "hätten getan"
+                },
+                "imperative": {
+                    "du": "tue",
+                    "ihr": "tut",
+                    "Sie": "tun Sie"
+                }
+            },
+            "wegschmeißen": {
+                "present": {
+                    "ich": "schmeiße weg",
+                    "du": "schmeißt weg",
+                    "er": "schmeißt weg",
+                    "es": "schmeißt weg",
+                    "sie_singular": "schmeißt weg",
+                    "xier": "schmeißt weg",
+                    "wir": "schmeißen weg",
+                    "ihr": "schmeißt weg",
+                    "sie_plural": "schmeißen weg",
+                    "Sie": "schmeißen weg"
+                },
+                "Perfekt": {
+                    "ich": "habe weggeschmissen",
+                    "du": "hast weggeschmissen",
+                    "er": "hat weggeschmissen",
+                    "es": "hat weggeschmissen",
+                    "sie_singular": "hat weggeschmissen",
+                    "xier": "hat weggeschmissen",
+                    "wir": "haben weggeschmissen",
+                    "ihr": "habt weggeschmissen",
+                    "sie_plural": "haben weggeschmissen",
+                    "Sie": "haben weggeschmissen"
+                },
+                "Futur_I": {
+                    "ich": "werde wegschmeißen",
+                    "du": "wirst wegschmeißen",
+                    "er": "wird wegschmeißen",
+                    "es": "wird wegschmeißen",
+                    "sie_singular": "wird wegschmeißen",
+                    "xier": "wird wegschmeißen",
+                    "wir": "werden wegschmeißen",
+                    "ihr": "werdet wegschmeißen",
+                    "sie_plural": "werden wegschmeißen",
+                    "Sie": "werden wegschmeißen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde wegschmeißen",
+                    "du": "würdest wegschmeißen",
+                    "er": "würde wegschmeißen",
+                    "es": "würde wegschmeißen",
+                    "sie_singular": "würde wegschmeißen",
+                    "xier": "würde wegschmeißen",
+                    "wir": "würden wegschmeißen",
+                    "ihr": "würdet wegschmeißen",
+                    "sie_plural": "würden wegschmeißen",
+                    "Sie": "würden wegschmeißen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte weggeschmissen",
+                    "du": "hättest weggeschmissen",
+                    "er": "hätte weggeschmissen",
+                    "es": "hätte weggeschmissen",
+                    "sie_singular": "hätte weggeschmissen",
+                    "xier": "hätte weggeschmissen",
+                    "wir": "hätten weggeschmissen",
+                    "ihr": "hättet weggeschmissen",
+                    "sie_plural": "hätten weggeschmissen",
+                    "Sie": "hätten weggeschmissen"
+                },
+                "imperative": {
+                    "du": "schmeiß weg",
+                    "ihr": "schmeißt weg",
+                    "Sie": "schmeißen Sie weg"
+                }
+            },
+            "ansprechen": {
+                "present": {
+                    "ich": "spreche an",
+                    "du": "sprichst an",
+                    "er": "spricht an",
+                    "es": "spricht an",
+                    "sie_singular": "spricht an",
+                    "xier": "spricht an",
+                    "wir": "sprechen an",
+                    "ihr": "sprecht an",
+                    "sie_plural": "sprechen an",
+                    "Sie": "sprechen an"
+                },
+                "Perfekt": {
+                    "ich": "habe angesprochen",
+                    "du": "hast angesprochen",
+                    "er": "hat angesprochen",
+                    "es": "hat angesprochen",
+                    "sie_singular": "hat angesprochen",
+                    "xier": "hat angesprochen",
+                    "wir": "haben angesprochen",
+                    "ihr": "habt angesprochen",
+                    "sie_plural": "haben angesprochen",
+                    "Sie": "haben angesprochen"
+                },
+                "Futur_I": {
+                    "ich": "werde ansprechen",
+                    "du": "wirst ansprechen",
+                    "er": "wird ansprechen",
+                    "es": "wird ansprechen",
+                    "sie_singular": "wird ansprechen",
+                    "xier": "wird ansprechen",
+                    "wir": "werden ansprechen",
+                    "ihr": "werdet ansprechen",
+                    "sie_plural": "werden ansprechen",
+                    "Sie": "werden ansprechen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde ansprechen",
+                    "du": "würdest ansprechen",
+                    "er": "würde ansprechen",
+                    "es": "würde ansprechen",
+                    "sie_singular": "würde ansprechen",
+                    "xier": "würde ansprechen",
+                    "wir": "würden ansprechen",
+                    "ihr": "würdet ansprechen",
+                    "sie_plural": "würden ansprechen",
+                    "Sie": "würden ansprechen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte angesprochen",
+                    "du": "hättest angesprochen",
+                    "er": "hätte angesprochen",
+                    "es": "hätte angesprochen",
+                    "sie_singular": "hätte angesprochen",
+                    "xier": "hätte angesprochen",
+                    "wir": "hätten angesprochen",
+                    "ihr": "hättet angesprochen",
+                    "sie_plural": "hätten angesprochen",
+                    "Sie": "hätten angesprochen"
+                },
+                "imperative": {
+                    "du": "sprich an",
+                    "ihr": "sprecht an",
+                    "Sie": "sprechen Sie an"
+                }
+            },
+            "entstehen": {
+                "present": {
+                    "ich": "entstehe",
+                    "du": "entstehst",
+                    "er": "entsteht",
+                    "es": "entsteht",
+                    "sie_singular": "entsteht",
+                    "xier": "entsteht",
+                    "wir": "entstehen",
+                    "ihr": "entsteht",
+                    "sie_plural": "entstehen",
+                    "Sie": "entstehen"
+                },
+                "Perfekt": {
+                    "ich": "bin entstanden",
+                    "du": "bist entstanden",
+                    "er": "ist entstanden",
+                    "es": "ist entstanden",
+                    "sie_singular": "ist entstanden",
+                    "xier": "ist entstanden",
+                    "wir": "sind entstanden",
+                    "ihr": "seid entstanden",
+                    "sie_plural": "sind entstanden",
+                    "Sie": "sind entstanden"
+                },
+                "Futur_I": {
+                    "ich": "werde entstehen",
+                    "du": "wirst entstehen",
+                    "er": "wird entstehen",
+                    "es": "wird entstehen",
+                    "sie_singular": "wird entstehen",
+                    "xier": "wird entstehen",
+                    "wir": "werden entstehen",
+                    "ihr": "werdet entstehen",
+                    "sie_plural": "werden entstehen",
+                    "Sie": "werden entstehen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde entstehen",
+                    "du": "würdest entstehen",
+                    "er": "würde entstehen",
+                    "es": "würde entstehen",
+                    "sie_singular": "würde entstehen",
+                    "xier": "würde entstehen",
+                    "wir": "würden entstehen",
+                    "ihr": "würdet entstehen",
+                    "sie_plural": "würden entstehen",
+                    "Sie": "würden entstehen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre entstanden",
+                    "du": "wärst entstanden",
+                    "er": "wäre entstanden",
+                    "es": "wäre entstanden",
+                    "sie_singular": "wäre entstanden",
+                    "xier": "wäre entstanden",
+                    "wir": "wären entstanden",
+                    "ihr": "wärt entstanden",
+                    "sie_plural": "wären entstanden",
+                    "Sie": "wären entstanden"
+                },
+                "imperative": {
+                    "du": "entstehe",
+                    "ihr": "entsteht",
+                    "Sie": "entstehen Sie"
+                }
+            },
+            "bekämpfen": {
+                "present": {
+                    "ich": "bekämpfe",
+                    "du": "bekämpfst",
+                    "er": "bekämpft",
+                    "es": "bekämpft",
+                    "sie_singular": "bekämpft",
+                    "xier": "bekämpft",
+                    "wir": "bekämpfen",
+                    "ihr": "bekämpft",
+                    "sie_plural": "bekämpfen",
+                    "Sie": "bekämpfen"
+                },
+                "Perfekt": {
+                    "ich": "habe bekämpft",
+                    "du": "hast bekämpft",
+                    "er": "hat bekämpft",
+                    "es": "hat bekämpft",
+                    "sie_singular": "hat bekämpft",
+                    "xier": "hat bekämpft",
+                    "wir": "haben bekämpft",
+                    "ihr": "habt bekämpft",
+                    "sie_plural": "haben bekämpft",
+                    "Sie": "haben bekämpft"
+                },
+                "Futur_I": {
+                    "ich": "werde bekämpfen",
+                    "du": "wirst bekämpfen",
+                    "er": "wird bekämpfen",
+                    "es": "wird bekämpfen",
+                    "sie_singular": "wird bekämpfen",
+                    "xier": "wird bekämpfen",
+                    "wir": "werden bekämpfen",
+                    "ihr": "werdet bekämpfen",
+                    "sie_plural": "werden bekämpfen",
+                    "Sie": "werden bekämpfen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde bekämpfen",
+                    "du": "würdest bekämpfen",
+                    "er": "würde bekämpfen",
+                    "es": "würde bekämpfen",
+                    "sie_singular": "würde bekämpfen",
+                    "xier": "würde bekämpfen",
+                    "wir": "würden bekämpfen",
+                    "ihr": "würdet bekämpfen",
+                    "sie_plural": "würden bekämpfen",
+                    "Sie": "würden bekämpfen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte bekämpft",
+                    "du": "hättest bekämpft",
+                    "er": "hätte bekämpft",
+                    "es": "hätte bekämpft",
+                    "sie_singular": "hätte bekämpft",
+                    "xier": "hätte bekämpft",
+                    "wir": "hätten bekämpft",
+                    "ihr": "hättet bekämpft",
+                    "sie_plural": "hätten bekämpft",
+                    "Sie": "hätten bekämpft"
+                },
+                "imperative": {
+                    "du": "bekämpf",
+                    "ihr": "bekämpft",
+                    "Sie": "bekämpfen Sie"
+                }
+            },
+            "verüben": {
+                "present": {
+                    "ich": "verübe",
+                    "du": "verübst",
+                    "er": "verübt",
+                    "es": "verübt",
+                    "sie_singular": "verübt",
+                    "xier": "verübt",
+                    "wir": "verüben",
+                    "ihr": "verübt",
+                    "sie_plural": "verüben",
+                    "Sie": "verüben"
+                },
+                "Perfekt": {
+                    "ich": "habe verübt",
+                    "du": "hast verübt",
+                    "er": "hat verübt",
+                    "es": "hat verübt",
+                    "sie_singular": "hat verübt",
+                    "xier": "hat verübt",
+                    "wir": "haben verübt",
+                    "ihr": "habt verübt",
+                    "sie_plural": "haben verübt",
+                    "Sie": "haben verübt"
+                },
+                "Futur_I": {
+                    "ich": "werde verüben",
+                    "du": "wirst verüben",
+                    "er": "wird verüben",
+                    "es": "wird verüben",
+                    "sie_singular": "wird verüben",
+                    "xier": "wird verüben",
+                    "wir": "werden verüben",
+                    "ihr": "werdet verüben",
+                    "sie_plural": "werden verüben",
+                    "Sie": "werden verüben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verüben",
+                    "du": "würdest verüben",
+                    "er": "würde verüben",
+                    "es": "würde verüben",
+                    "sie_singular": "würde verüben",
+                    "xier": "würde verüben",
+                    "wir": "würden verüben",
+                    "ihr": "würdet verüben",
+                    "sie_plural": "würden verüben",
+                    "Sie": "würden verüben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verübt",
+                    "du": "hättest verübt",
+                    "er": "hätte verübt",
+                    "es": "hätte verübt",
+                    "sie_singular": "hätte verübt",
+                    "xier": "hätte verübt",
+                    "wir": "hätten verübt",
+                    "ihr": "hättet verübt",
+                    "sie_plural": "hätten verübt",
+                    "Sie": "hätten verübt"
+                },
+                "imperative": {
+                    "du": "verübe",
+                    "ihr": "verübt",
+                    "Sie": "verüben Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Protest heute und damals in Gruppen:",
+            "In Einheit 18 haben Sie über Protest gesp Roche",
+            "Überlegen Sie sich diese Frage jetzt etwas globaler:",
+            "Schreiben Sie diese Themen auf.",
+            "Gewalt für die Umwelt für Datenschutz",
+            "Denken Sie jetzt an die Vergangenheit.",
+            "Wofür oder wogegen haben Jugendliche und Studierende in der Vergangenheit protestiert?",
+            "Schreiben Sie das Jahr oder das Jahrzehnt und das Thema auf.",
+            "Was erwarten Sie von dem Lied?",
+            "Welche „Schlacht könnten die Sänger, die politisch links stehen, meinen?",
+            "Wogegen könnten sie kämpfen (wollen)?",
+            "Lesen Sie die Fragen.",
+            "Dann hören sie das Lied und beantworten Sie die Fragen.",
+            "Die Fabriken gehören uns Aus dem Weg, Kapitalisten",
+            "Wir Schmeißt die Knarre weg, Polizisten",
+            "Die rote Front und die schwarze Front Sind hier",
+            "Denn wir sind selber stark genug",
+            "Wir wissen selber, was zu tun ist",
+            "Unser Kopf ist groß genug",
+            "Jede Schlacht, die wir verlieren Bedeutet unseren nächsten Sieg Aus dem Weg, Kapitalisten",
+            "Die rote Front und die schwarze Front Sind hier Hey, hey, hey, hey",
+            "Wer soll aus dem Weg gehen?",
+            "Wer soll die Knarre wegschmeißen?",
+            "Warum brauchen sie „keinen starken Mann?",
+            "Will sie selbst stark genug sind.",
+            "Wie ist ihr Kopf?",
+            "Groß genug Ton Steine Scherben war eine Berliner Rockband, die in den 1970er und 1980er Jahren aktiv war.",
+            "Sie hat sozialkritische, deutschsprachige Lieder gesungen.",
+            "Manche Lieder sind zu Slogans der linken Szene geworden, z.",
+            "„Keine Macht für Niemand ( No Power for Nobody ) und „Macht kaputt, was euch kaputt macht ( Destroy What Destroys You ).",
+            "Die Texte haben vor allem Jugendliche angesp",
+            "Wer ist „wir in dem Lied?",
+            "Unten sehen Sie eine Liste von Studierendenproteste.",
+            "Sie kommen die Orte für ein paar Proteste.",
+            "Fragen Sie die andere Person, wo die anderen Proteste waren.",
+            "Studierende Proteste gegen Ungleichheit im Land",
+            "Proteste gegen Vietnam 68er als Reaktion auf wirtschaftliche Ungleichheit zwischen Nord und Süd 1965",
+            "Wiener Aktionismus 68er waren eine Arbeiter * innenbewegung [Arbeiter*innen Bewegung], radikale Proteste",
+            "Kämpfe zwischen jugendlichen Demonstrant *innen und der Polizei 68er haben für Demokratie und gegen autoritäre Strukturen gekämpft",
+            "W wird heute für die gleichen Dinge demonstriert?",
+            "Die Rote-Armee-Fraktion (RAF) Lesen Sie die Fragen.",
+            "Dann lesen Sie den Text über die deutschen 68er und beantworten Sie die Fragen.",
+            "Wogegen und wofür hat die Studierendenbewegung protestiert?",
+            "Sie haben für mehr Freiheit, weniger Ungleichheit, Frieden, geben den Vietnamkrieg, gegen Nazis in der Regierung und für mehr Rechte in den Universitäten protestiert.",
+            "Welcher Teil der Studierendenbewegung hat die RAF gegründet?",
+            "Der radikale Teil der Bewegung.",
+            "Was hat die RAF gemacht?",
+            "Die RAF hat gegen den Staat, Banken und große Firmen gekämpft.",
+            "Sie haben Anschläge, Entführungen und Banküberfälle verübt und viele Menschen verletzt oder getötet.",
+            "Die Studierendenbewegung in Deutschland hat in den 1960er Jahren begonnen.",
+            "Viele junge Menschen, vor allem Studierende, waren unzufrieden mit der Gesellschaft.",
+            "Sie wollten Veränderungen.",
+            "Themen wie mehr Freiheit, weniger Ungleichheit und Frieden waren ihr Fokus.",
+            "Die Studierenden haben gegen den Vietnamkrieg, gegen die alten Nazis in der Regierung und für mehr Rechte in der Universität protestiert.",
+            "Manche Mitglieder waren radikal.",
+            "Diese Mitglieder haben geglaubt, dass friedliche Proteste nicht genug sind.",
+            "Sie wollten den Staat mit Gewalt bekämpfen.",
+            "Aus dieser Gruppe ist die Rote Armee Fraktion ( RAF ) entstanden.",
+            "Die RAF war eine linksextreme Terrorgruppe.",
+            "Andreas Baader, Gudrun Ensslin und Ulrike Meinhof haben zur ersten Generation der RAF gehört.",
+            "Die RAF hat gegen den Staat, Banken und große Firmen gekämpft, die sie als Symbole für Kapitalismus und Unterdrückung sahen.",
+            "Die RAF hat auch Anschläge verübt.",
+            "Die Mitglieder haben viele Menschen verletzt oder getötet.",
+            "Der Staat hat hart reagiert und viele RAF- Mitglieder verhaftet oder getötet.",
+            "Die RAF war bis in die 1990er Jahre aktiv.",
+            "1998 hat die RAF den Kampf mit Waffen beendet.",
+            "Im Jahr 2024 hat die Polizei Daniela Klette, ein RAF -Mitglied, in Berlin verhaftet.",
+            "Sie war 65 Jahre alt und seit 30 Jahren auf der Flucht.",
+            "Lesen Sie die folgenden Aussagen.",
+            "Kennen Sie (berühmte) Menschen, die für diese Aussagen wäre n?",
+            "Wer wäre (vielleicht) wofür?",
+            "Protest muss immer friedlich sein, damit er erfolgreich sein kann.",
+            "Manchmal braucht man Gewalt, damit sich etwas verändern kann."
+        ],
+        "templated": []
+    }
+}

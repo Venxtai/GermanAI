@@ -1,0 +1,349 @@
+{
+    "unit": "O17",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "orange",
+        "position": 17,
+        "prerequisite": "core 1-104, O1-O16"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "einen Themenbereich planen und präsentieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "erklären", "pos": "VERB", "translation": "to explain; declare" },
+            { "word": "senden", "pos": "VERB", "translation": "to send", "frequency": 3243, "cefr": "B1" },
+            { "word": "visualisieren", "pos": "VERB", "translation": "to visualize" },
+            { "word": "die Werbung", "pos": "NOUN", "translation": "advertisement", "frequency": 2462, "cefr": "B1" },
+            { "word": "die Broschüre", "pos": "NOUN", "translation": "brochure", "frequency": 1, "cefr": "A1" },
+            { "word": "der Anhang", "pos": "NOUN", "translation": "attachment", "frequency": 4843, "cefr": "A1" },
+            { "word": "der*die Senior*in", "pos": "NOUN", "translation": "senior", "frequency": 4605, "cefr": "B1" },
+            { "word": "möglichst", "pos": "ADV", "translation": "preferably; as â€¦ possible" },
+            { "word": "zugänglich", "pos": "ADJ", "translation": "accessible" },
+            { "word": "sensibel", "pos": "ADJ", "translation": "sensitive", "frequency": 3181 },
+            { "word": "barrierefrei", "pos": "ADJ", "translation": "accessible (for people with impairments/disabilities)", "frequency": 15963, "cefr": "B2" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "innenpanel", "pos": "NOUN" },
+            { "word": "der Teenager", "pos": "NOUN", "frequency": 9860 },
+            { "word": "das Simulator", "pos": "NOUN", "frequency": 37508 },
+            { "word": "der*die Expert*innen", "pos": "NOUN" },
+            { "word": "das Panel", "pos": "NOUN", "frequency": 34132 },
+            { "word": "das PDF", "pos": "NOUN", "frequency": 6231 }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "erklären": {
+                "present": {
+                    "ich": "erkläre",
+                    "du": "erklärst",
+                    "er": "erklärt",
+                    "es": "erklärt",
+                    "sie_singular": "erklärt",
+                    "xier": "erklärt",
+                    "wir": "erklären",
+                    "ihr": "erklärt",
+                    "sie_plural": "erklären",
+                    "Sie": "erklären"
+                },
+                "Perfekt": {
+                    "ich": "habe erklärt",
+                    "du": "hast erklärt",
+                    "er": "hat erklärt",
+                    "es": "hat erklärt",
+                    "sie_singular": "hat erklärt",
+                    "xier": "hat erklärt",
+                    "wir": "haben erklärt",
+                    "ihr": "habt erklärt",
+                    "sie_plural": "haben erklärt",
+                    "Sie": "haben erklärt"
+                },
+                "Futur_I": {
+                    "ich": "werde erklären",
+                    "du": "wirst erklären",
+                    "er": "wird erklären",
+                    "es": "wird erklären",
+                    "sie_singular": "wird erklären",
+                    "xier": "wird erklären",
+                    "wir": "werden erklären",
+                    "ihr": "werdet erklären",
+                    "sie_plural": "werden erklären",
+                    "Sie": "werden erklären"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde erklären",
+                    "du": "würdest erklären",
+                    "er": "würde erklären",
+                    "es": "würde erklären",
+                    "sie_singular": "würde erklären",
+                    "xier": "würde erklären",
+                    "wir": "würden erklären",
+                    "ihr": "würdet erklären",
+                    "sie_plural": "würden erklären",
+                    "Sie": "würden erklären"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte erklärt",
+                    "du": "hättest erklärt",
+                    "er": "hätte erklärt",
+                    "es": "hätte erklärt",
+                    "sie_singular": "hätte erklärt",
+                    "xier": "hätte erklärt",
+                    "wir": "hätten erklärt",
+                    "ihr": "hättet erklärt",
+                    "sie_plural": "hätten erklärt",
+                    "Sie": "hätten erklärt"
+                },
+                "imperative": {
+                    "du": "erkläre",
+                    "ihr": "erklärt",
+                    "Sie": "erklären Sie"
+                }
+            },
+            "senden": {
+                "present": {
+                    "ich": "sende",
+                    "du": "sendest",
+                    "er": "sendet",
+                    "es": "sendet",
+                    "sie_singular": "sendet",
+                    "xier": "sendet",
+                    "wir": "senden",
+                    "ihr": "sendet",
+                    "sie_plural": "senden",
+                    "Sie": "senden"
+                },
+                "Perfekt": {
+                    "ich": "habe gesendet",
+                    "du": "hast gesendet",
+                    "er": "hat gesendet",
+                    "es": "hat gesendet",
+                    "sie_singular": "hat gesendet",
+                    "xier": "hat gesendet",
+                    "wir": "haben gesendet",
+                    "ihr": "habt gesendet",
+                    "sie_plural": "haben gesendet",
+                    "Sie": "haben gesendet"
+                },
+                "Futur_I": {
+                    "ich": "werde senden",
+                    "du": "wirst senden",
+                    "er": "wird senden",
+                    "es": "wird senden",
+                    "sie_singular": "wird senden",
+                    "xier": "wird senden",
+                    "wir": "werden senden",
+                    "ihr": "werdet senden",
+                    "sie_plural": "werden senden",
+                    "Sie": "werden senden"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde senden",
+                    "du": "würdest senden",
+                    "er": "würde senden",
+                    "es": "würde senden",
+                    "sie_singular": "würde senden",
+                    "xier": "würde senden",
+                    "wir": "würden senden",
+                    "ihr": "würdet senden",
+                    "sie_plural": "würden senden",
+                    "Sie": "würden senden"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gesendet",
+                    "du": "hättest gesendet",
+                    "er": "hätte gesendet",
+                    "es": "hätte gesendet",
+                    "sie_singular": "hätte gesendet",
+                    "xier": "hätte gesendet",
+                    "wir": "hätten gesendet",
+                    "ihr": "hättet gesendet",
+                    "sie_plural": "hätten gesendet",
+                    "Sie": "hätten gesendet"
+                },
+                "imperative": {
+                    "du": "sende",
+                    "ihr": "sendet",
+                    "Sie": "senden Sie"
+                }
+            },
+            "visualisieren": {
+                "present": {
+                    "ich": "visualisiere",
+                    "du": "visualisierst",
+                    "er": "visualisiert",
+                    "es": "visualisiert",
+                    "sie_singular": "visualisiert",
+                    "xier": "visualisiert",
+                    "wir": "visualisieren",
+                    "ihr": "visualisiert",
+                    "sie_plural": "visualisieren",
+                    "Sie": "visualisieren"
+                },
+                "Perfekt": {
+                    "ich": "habe visualisiert",
+                    "du": "hast visualisiert",
+                    "er": "hat visualisiert",
+                    "es": "hat visualisiert",
+                    "sie_singular": "hat visualisiert",
+                    "xier": "hat visualisiert",
+                    "wir": "haben visualisiert",
+                    "ihr": "habt visualisiert",
+                    "sie_plural": "haben visualisiert",
+                    "Sie": "haben visualisiert"
+                },
+                "Futur_I": {
+                    "ich": "werde visualisieren",
+                    "du": "wirst visualisieren",
+                    "er": "wird visualisieren",
+                    "es": "wird visualisieren",
+                    "sie_singular": "wird visualisieren",
+                    "xier": "wird visualisieren",
+                    "wir": "werden visualisieren",
+                    "ihr": "werdet visualisieren",
+                    "sie_plural": "werden visualisieren",
+                    "Sie": "werden visualisieren"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde visualisieren",
+                    "du": "würdest visualisieren",
+                    "er": "würde visualisieren",
+                    "es": "würde visualisieren",
+                    "sie_singular": "würde visualisieren",
+                    "xier": "würde visualisieren",
+                    "wir": "würden visualisieren",
+                    "ihr": "würdet visualisieren",
+                    "sie_plural": "würden visualisieren",
+                    "Sie": "würden visualisieren"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte visualisiert",
+                    "du": "hättest visualisiert",
+                    "er": "hätte visualisiert",
+                    "es": "hätte visualisiert",
+                    "sie_singular": "hätte visualisiert",
+                    "xier": "hätte visualisiert",
+                    "wir": "hätten visualisiert",
+                    "ihr": "hättet visualisiert",
+                    "sie_plural": "hätten visualisiert",
+                    "Sie": "hätten visualisiert"
+                },
+                "imperative": {
+                    "du": "visualisier",
+                    "ihr": "visualisiert",
+                    "Sie": "visualisieren Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Planen Sie den Themenbereich und beantworten Sie die folgenden Fragen:",
+            "Welches Thema hätte Ihr Themenbereich?",
+            "Schreiben Sie einen kurzen Text dazu, in dem Sie das Thema beschreiben und erklären, warum es interessant wäre.",
+            "Denken Sie an Teenager, Familien und auch Senior*innen.",
+            "Wie würden die Attraktionen zu dem Thema passen?",
+            "Was wären die Namen der Attraktionen?",
+            "Hat eine Achterbahn.",
+            "Was wäre eine gute Achterbahn für Ihren Themenbereich?",
+            "Beschreiben Sie die Achterbahn im Detail:",
+            "Welcher Typ?",
+            "Welches Material?",
+            "Welche Antriebsart?",
+            "Welche Elemente und Effekte würde es geben?",
+            "Was würden Sie in Ihrem Themenbereich tun, damit er barrierefrei und für alle zugänglich wäre?",
+            "Was könnten Menschen in Ihrem Themenbereich essen und trinken?",
+            "Würde es auch Souvenirs geben?",
+            "Visualisieren Sie den Themenbereich.",
+            "Erstellen Sie eine Broschüre als Werbung für den Themenbereich.",
+            "Beschreiben Sie die Attraktionen und benutzen Sie möglichst viele Adjektive, die gut für das Marketing sind.",
+            "Präsentieren Sie Ihren Themenbereich einem Expert* innenpanel [Expert*innen Panel] (im Kurs).",
+            "Da es nur ein Vorschlag ist, benutzen Sie den Konjunktiv II.",
+            "Senden Sie Ihre Projektidee bis zum 15.",
+            "Ein Panel mit internationalen Expert*innen sieht sich alle Ideen an und entscheidet, welche drei Teams tolle Preise gewinnen.",
+            "- Wie heißt Ihr Team?",
+            "- Wie heißen die Personen im Team?",
+            "- Wo lernen Sie Deutsch?",
+            "- Wie heißt Ihr*e Professor*in?",
+            "Viel Erfolg!"
+        ],
+        "templated": []
+    }
+}

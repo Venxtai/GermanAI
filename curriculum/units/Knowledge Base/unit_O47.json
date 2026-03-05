@@ -1,0 +1,436 @@
+{
+    "unit": "O47",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "orange",
+        "position": 47,
+        "prerequisite": "core 1-104, O1-O46"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I",
+            "Konjunktiv_II_present",
+            "Konjunktiv_II_past",
+            "Passiv_Präsens",
+            "Passiv_Präteritum"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu",
+            "imperative",
+            "irreal_wish",
+            "conditional_irreal",
+            "coordinating_denn",
+            "subordinate_da",
+            "subordinate_obwohl",
+            "impersonal_passive"
+        ],
+        "new_rules_in_this_unit": [
+            "Form adjectives from nouns or verbs using suffixes: -ig (windig, salzig), -lich (freundlich, wissenschaftlich), -isch (kindisch, parteiisch), -bar from verbs (trinkbar, brauchbar); for -los with feminine nouns ending in -ung/-heit/-keit/-schaft/-ion/-tät, insert -s- (hoffnungslos)."
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "case:genitive",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "linguistische Spuren nachverfolgen und interpretieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Texas German und Pennsylvania Dutch",
+            "deutsches Englisch"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            { "word": "verkürzen", "pos": "VERB", "translation": "to shorten, abridge" },
+            { "word": "heben", "pos": "VERB", "translation": "to raise, lift", "frequency": 1059, "cefr": "B1" },
+            { "word": "verschwinden", "pos": "VERB", "translation": "to disappear, vanish", "frequency": 559, "cefr": "B1" },
+            { "word": "der Anzeiger", "pos": "NOUN", "translation": "gazette; advertiser (newspaper); detector; index", "frequency": 14748, "cefr": "A1" },
+            { "word": "die Tribüne", "pos": "NOUN", "translation": "tribune (newspaper); grandstand, bleachers (sport)", "frequency": 1, "cefr": "A1" },
+            { "word": "die Krise", "pos": "NOUN", "translation": "crisis", "frequency": 1476, "cefr": "B1" },
+            { "word": "der Schäferhund", "pos": "NOUN", "translation": "German shepherd; sheepdog" },
+            { "word": "kategorielos", "pos": "ADJ", "translation": "without category" },
+            { "word": "ersatzlos", "pos": "ADJ", "translation": "without substitution", "frequency": 18069, "cefr": "B2" },
+            { "word": "erfolglos", "pos": "ADJ", "translation": "without success", "frequency": 7085 },
+            { "word": "übersetzbar", "pos": "ADJ", "translation": "translatable" },
+            { "word": "ursprünglich", "pos": "ADJ", "translation": "initial; original" },
+            { "word": "regelmäßig", "pos": "ADJ", "translation": "regular(ly); consistent(ly); periodical(ly)" },
+            { "word": "täglich", "pos": "ADJ", "translation": "daily" },
+            { "word": "wöchentlich", "pos": "ADJ", "translation": "weekly" },
+            { "word": "mittlerweile", "pos": "ADV", "translation": "(by) now, meanwhile", "frequency": 862, "cefr": "B1" }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            { "word": "kreisen", "pos": "VERB", "frequency": 4634 },
+            { "word": "der Demokrat", "pos": "NOUN", "frequency": 4371 },
+            { "word": "der Neologismus", "pos": "NOUN" },
+            { "word": "der*die Linguist*innen", "pos": "NOUN", "frequency": 27097 },
+            { "word": "der Satzteil", "pos": "NOUN" }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "verkürzen": {
+                "present": {
+                    "ich": "verkürze",
+                    "du": "verkürzt",
+                    "er": "verkürzt",
+                    "es": "verkürzt",
+                    "sie_singular": "verkürzt",
+                    "xier": "verkürzt",
+                    "wir": "verkürzen",
+                    "ihr": "verkürzt",
+                    "sie_plural": "verkürzen",
+                    "Sie": "verkürzen"
+                },
+                "Perfekt": {
+                    "ich": "habe verkürzt",
+                    "du": "hast verkürzt",
+                    "er": "hat verkürzt",
+                    "es": "hat verkürzt",
+                    "sie_singular": "hat verkürzt",
+                    "xier": "hat verkürzt",
+                    "wir": "haben verkürzt",
+                    "ihr": "habt verkürzt",
+                    "sie_plural": "haben verkürzt",
+                    "Sie": "haben verkürzt"
+                },
+                "Futur_I": {
+                    "ich": "werde verkürzen",
+                    "du": "wirst verkürzen",
+                    "er": "wird verkürzen",
+                    "es": "wird verkürzen",
+                    "sie_singular": "wird verkürzen",
+                    "xier": "wird verkürzen",
+                    "wir": "werden verkürzen",
+                    "ihr": "werdet verkürzen",
+                    "sie_plural": "werden verkürzen",
+                    "Sie": "werden verkürzen"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verkürzen",
+                    "du": "würdest verkürzen",
+                    "er": "würde verkürzen",
+                    "es": "würde verkürzen",
+                    "sie_singular": "würde verkürzen",
+                    "xier": "würde verkürzen",
+                    "wir": "würden verkürzen",
+                    "ihr": "würdet verkürzen",
+                    "sie_plural": "würden verkürzen",
+                    "Sie": "würden verkürzen"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte verkürzt",
+                    "du": "hättest verkürzt",
+                    "er": "hätte verkürzt",
+                    "es": "hätte verkürzt",
+                    "sie_singular": "hätte verkürzt",
+                    "xier": "hätte verkürzt",
+                    "wir": "hätten verkürzt",
+                    "ihr": "hättet verkürzt",
+                    "sie_plural": "hätten verkürzt",
+                    "Sie": "hätten verkürzt"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verkürzt",
+                    "du": "wirst verkürzt",
+                    "er": "wird verkürzt",
+                    "es": "wird verkürzt",
+                    "sie_singular": "wird verkürzt",
+                    "xier": "wird verkürzt",
+                    "wir": "werden verkürzt",
+                    "ihr": "werdet verkürzt",
+                    "sie_plural": "werden verkürzt",
+                    "Sie": "werden verkürzt"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde verkürzt",
+                    "du": "wurdest verkürzt",
+                    "er": "wurde verkürzt",
+                    "es": "wurde verkürzt",
+                    "sie_singular": "wurde verkürzt",
+                    "xier": "wurde verkürzt",
+                    "wir": "wurden verkürzt",
+                    "ihr": "wurdet verkürzt",
+                    "sie_plural": "wurden verkürzt",
+                    "Sie": "wurden verkürzt"
+                },
+                "imperative": {
+                    "du": "verkürz",
+                    "ihr": "verkürzt",
+                    "Sie": "verkürzen Sie"
+                }
+            },
+            "heben": {
+                "present": {
+                    "ich": "hebe",
+                    "du": "hebst",
+                    "er": "hebt",
+                    "es": "hebt",
+                    "sie_singular": "hebt",
+                    "xier": "hebt",
+                    "wir": "heben",
+                    "ihr": "hebt",
+                    "sie_plural": "heben",
+                    "Sie": "heben"
+                },
+                "Perfekt": {
+                    "ich": "habe gehoben",
+                    "du": "hast gehoben",
+                    "er": "hat gehoben",
+                    "es": "hat gehoben",
+                    "sie_singular": "hat gehoben",
+                    "xier": "hat gehoben",
+                    "wir": "haben gehoben",
+                    "ihr": "habt gehoben",
+                    "sie_plural": "haben gehoben",
+                    "Sie": "haben gehoben"
+                },
+                "Futur_I": {
+                    "ich": "werde heben",
+                    "du": "wirst heben",
+                    "er": "wird heben",
+                    "es": "wird heben",
+                    "sie_singular": "wird heben",
+                    "xier": "wird heben",
+                    "wir": "werden heben",
+                    "ihr": "werdet heben",
+                    "sie_plural": "werden heben",
+                    "Sie": "werden heben"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde heben",
+                    "du": "würdest heben",
+                    "er": "würde heben",
+                    "es": "würde heben",
+                    "sie_singular": "würde heben",
+                    "xier": "würde heben",
+                    "wir": "würden heben",
+                    "ihr": "würdet heben",
+                    "sie_plural": "würden heben",
+                    "Sie": "würden heben"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "hätte gehoben",
+                    "du": "hättest gehoben",
+                    "er": "hätte gehoben",
+                    "es": "hätte gehoben",
+                    "sie_singular": "hätte gehoben",
+                    "xier": "hätte gehoben",
+                    "wir": "hätten gehoben",
+                    "ihr": "hättet gehoben",
+                    "sie_plural": "hätten gehoben",
+                    "Sie": "hätten gehoben"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde gehoben",
+                    "du": "wirst gehoben",
+                    "er": "wird gehoben",
+                    "es": "wird gehoben",
+                    "sie_singular": "wird gehoben",
+                    "xier": "wird gehoben",
+                    "wir": "werden gehoben",
+                    "ihr": "werdet gehoben",
+                    "sie_plural": "werden gehoben",
+                    "Sie": "werden gehoben"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde gehoben",
+                    "du": "wurdest gehoben",
+                    "er": "wurde gehoben",
+                    "es": "wurde gehoben",
+                    "sie_singular": "wurde gehoben",
+                    "xier": "wurde gehoben",
+                    "wir": "wurden gehoben",
+                    "ihr": "wurdet gehoben",
+                    "sie_plural": "wurden gehoben",
+                    "Sie": "wurden gehoben"
+                },
+                "imperative": {
+                    "du": "hebe",
+                    "ihr": "hebt",
+                    "Sie": "heben Sie"
+                }
+            },
+            "verschwinden": {
+                "present": {
+                    "ich": "verschwinde",
+                    "du": "verschwindest",
+                    "er": "verschwindet",
+                    "es": "verschwindet",
+                    "sie_singular": "verschwindet",
+                    "xier": "verschwindet",
+                    "wir": "verschwinden",
+                    "ihr": "verschwindet",
+                    "sie_plural": "verschwinden",
+                    "Sie": "verschwinden"
+                },
+                "Perfekt": {
+                    "ich": "bin verschwunden",
+                    "du": "bist verschwunden",
+                    "er": "ist verschwunden",
+                    "es": "ist verschwunden",
+                    "sie_singular": "ist verschwunden",
+                    "xier": "ist verschwunden",
+                    "wir": "sind verschwunden",
+                    "ihr": "seid verschwunden",
+                    "sie_plural": "sind verschwunden",
+                    "Sie": "sind verschwunden"
+                },
+                "Futur_I": {
+                    "ich": "werde verschwinden",
+                    "du": "wirst verschwinden",
+                    "er": "wird verschwinden",
+                    "es": "wird verschwinden",
+                    "sie_singular": "wird verschwinden",
+                    "xier": "wird verschwinden",
+                    "wir": "werden verschwinden",
+                    "ihr": "werdet verschwinden",
+                    "sie_plural": "werden verschwinden",
+                    "Sie": "werden verschwinden"
+                },
+                "Konjunktiv_II_present": {
+                    "ich": "würde verschwinden",
+                    "du": "würdest verschwinden",
+                    "er": "würde verschwinden",
+                    "es": "würde verschwinden",
+                    "sie_singular": "würde verschwinden",
+                    "xier": "würde verschwinden",
+                    "wir": "würden verschwinden",
+                    "ihr": "würdet verschwinden",
+                    "sie_plural": "würden verschwinden",
+                    "Sie": "würden verschwinden"
+                },
+                "Konjunktiv_II_past": {
+                    "ich": "wäre verschwunden",
+                    "du": "wärst verschwunden",
+                    "er": "wäre verschwunden",
+                    "es": "wäre verschwunden",
+                    "sie_singular": "wäre verschwunden",
+                    "xier": "wäre verschwunden",
+                    "wir": "wären verschwunden",
+                    "ihr": "wärt verschwunden",
+                    "sie_plural": "wären verschwunden",
+                    "Sie": "wären verschwunden"
+                },
+                "Passiv_Präsens": {
+                    "ich": "werde verschwunden",
+                    "du": "wirst verschwunden",
+                    "er": "wird verschwunden",
+                    "es": "wird verschwunden",
+                    "sie_singular": "wird verschwunden",
+                    "xier": "wird verschwunden",
+                    "wir": "werden verschwunden",
+                    "ihr": "werdet verschwunden",
+                    "sie_plural": "werden verschwunden",
+                    "Sie": "werden verschwunden"
+                },
+                "Passiv_Präteritum": {
+                    "ich": "wurde verschwunden",
+                    "du": "wurdest verschwunden",
+                    "er": "wurde verschwunden",
+                    "es": "wurde verschwunden",
+                    "sie_singular": "wurde verschwunden",
+                    "xier": "wurde verschwunden",
+                    "wir": "wurden verschwunden",
+                    "ihr": "wurdet verschwunden",
+                    "sie_plural": "wurden verschwunden",
+                    "Sie": "wurden verschwunden"
+                },
+                "imperative": {
+                    "du": "verschwinde",
+                    "ihr": "verschwindet",
+                    "Sie": "verschwinden Sie"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Sie sehen hier eine Liste deutscher Wörter, die mittlerweile zur Sprache in den USA gehören.",
+            "Lesen Sie die Wörter und kreisen Sie alle ein, die Sie kennen.",
+            "Fragen Sie, welche Wörter aus dem Kasten die andere Person kennt.",
+            "Gibt es für diese Wörter auch ein anderes englisches Wort?",
+            "Schauen Sie sich die Wörter im Kasten noch einmal an.",
+            "Finden Sie mindestens zwei weitere Kategorien, die zu einigen Wörtern passen und tragen Sie die Kategorien und Wörter in die Tabelle ein.",
+            "Welche Wörter sind kategorielos?",
+            "Der Erfolg und Fall deutscher Zeitungen und Wörter in den USA",
+            "Es gibt nur noch sechs deutschsprachige Zeitungen, die regelmäßig in den USA erscheinen.",
+            "Das war im 19.",
+            "Und frühen 20.",
+            "Jahrhundert ganz anders.",
+            "Auf der rechten Seite sehen Sie eine Liste mit einer kleinen Auswahl deutschsprachiger Zeitungen, die es heute nicht mehr gibt.",
+            "Wann wurden viele deutschsprachige Zeitungen gegründet?",
+            "Wann war eine erfolgreiche Zeit für deutschsprachige Zeitungen?",
+            "Wann war das Ende?",
+            "Wann waren sie erfolglos?",
+            "Welche Wörter kommen in den Zeitungstiteln häufig vor?",
+            "Was bedeuten die Adjektive in den Titeln?",
+            "Waren Gründe dafür, dass Zeitungen Anfang des 20.",
+            "Jahrhunderts verschwunden sind.",
+            "Zeitungen sind im frühen 20.",
+            "Jahrhundert in den USA weniger geworden.",
+            "Auch deutsche Wörter wurden ersetzt, als die USA in den Ersten Weltkrieg eingetreten sind.",
+            "In der Tabelle sehen Sie Neologismen aus dieser Zeit.",
+            "Welche deutschen Wörter wurden ursprünglich benutzt?",
+            "Sie werden als Linguist*innen aktiv.",
+            "Hören Sie sich die beiden Dialoge in Texas German bzw.",
+            "Pennsylvania Dutch an, in denen die folgenden Sätze vorkommen.",
+            "Heben Sie die Hand, wenn Sie die Sätze hören.",
+            "Wie heißen diese Sätze wohl auf Hochdeutsch?",
+            "Schauen Sie sich nun die Sätze noch einmal genauer an.",
+            "Was passiert hier genau?",
+            "Markieren Sie Satzteile, die die folgenden Unterschiede demonstrieren."
+        ],
+        "templated": []
+    }
+}

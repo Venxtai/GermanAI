@@ -1,0 +1,637 @@
+{
+    "unit": "70",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 70,
+        "prerequisite": "1-69"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [
+            "Conjugate modal verbs in Präteritum: musste, konnte, durfte, sollte, wollte, mochte (ich/er forms identical, no endings); use with infinitive at the end of the clause."
+        ],
+        "forbidden": [
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Rechte und Pflichten von Kindern sprechen",
+            "sagen, was man als Kind konnte, musste, durfte oder wollte"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "Regeln und Gesetze für Kinder"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "müssen",
+                "pos": "VERB",
+                "translation": "to have to; must"
+            },
+            {
+                "word": "können",
+                "pos": "VERB",
+                "translation": "to be able to; can; may"
+            },
+            {
+                "word": "dürfen",
+                "pos": "VERB",
+                "translation": "to be allowed to"
+            },
+            {
+                "word": "sollen",
+                "pos": "VERB",
+                "translation": "to be supposed to",
+                "frequency": 60,
+                "cefr": "A1"
+            },
+            {
+                "word": "wollen",
+                "pos": "VERB",
+                "translation": "to want to",
+                "frequency": 57,
+                "cefr": "A1"
+            },
+            {
+                "word": "mögen",
+                "pos": "VERB",
+                "translation": "to like, want, may"
+            },
+            {
+                "word": "organisieren",
+                "pos": "VERB",
+                "translation": "to organize",
+                "frequency": 1295,
+                "cefr": "A2"
+            },
+            {
+                "word": "verbieten",
+                "pos": "VERB",
+                "translation": "to ban; prohibit",
+                "frequency": 1320,
+                "cefr": "A2"
+            },
+            {
+                "word": "rauchen",
+                "pos": "VERB",
+                "translation": "to smoke",
+                "frequency": 1665,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Gesetz",
+                "pos": "NOUN",
+                "translation": "law, legislation; principle",
+                "frequency": 578,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Regel",
+                "pos": "NOUN",
+                "translation": "rule, norm, regulation",
+                "frequency": 438,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Ausnahme",
+                "pos": "NOUN",
+                "translation": "exception; exemption",
+                "frequency": 1404,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Grundschule",
+                "pos": "NOUN",
+                "translation": "elementary school",
+                "frequency": 5736,
+                "cefr": "B1"
+            },
+            {
+                "word": "der*die Schüler*in",
+                "pos": "NOUN",
+                "translation": "pupil"
+            },
+            {
+                "word": "der*die Jugendliche",
+                "pos": "NOUN",
+                "translation": "adolescent",
+                "frequency": 1324,
+                "cefr": "A1"
+            },
+            {
+                "word": "der*die Erwachsene",
+                "pos": "NOUN",
+                "translation": "adult",
+                "frequency": 2369,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Veranstaltung",
+                "pos": "NOUN",
+                "translation": "event",
+                "frequency": 1921,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Fach",
+                "pos": "NOUN",
+                "translation": "subject",
+                "frequency": 1731,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Pause",
+                "pos": "NOUN",
+                "translation": "break",
+                "frequency": 1441,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Ferien",
+                "pos": "NOUN",
+                "translation": "holidays, vacation",
+                "frequency": 3448,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Mittagsbetreuung",
+                "pos": "NOUN",
+                "translation": "lunch-time supervision",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Gaststätte",
+                "pos": "NOUN",
+                "translation": "restaurant; tavern; inn (category)"
+            },
+            {
+                "word": "der Alkohol",
+                "pos": "NOUN",
+                "translation": "alcohol",
+                "frequency": 1514,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Schlüssel",
+                "pos": "NOUN",
+                "translation": "key",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "bevor",
+                "pos": "ADV",
+                "translation": "before",
+                "frequency": 537,
+                "cefr": "B1"
+            },
+            {
+                "word": "ab",
+                "pos": "PREP",
+                "translation": "from",
+                "frequency": 544,
+                "cefr": "A1"
+            },
+            {
+                "word": "früh",
+                "pos": "ADJ",
+                "translation": "early"
+            },
+            {
+                "word": "abends",
+                "pos": "ADV",
+                "translation": "in the evening",
+                "frequency": 5532,
+                "cefr": "A2"
+            },
+            {
+                "word": "der*die Klassensprecher*in",
+                "pos": "NOUN",
+                "translation": "class representative"
+            },
+            {
+                "word": "das Recht, -e",
+                "pos": "ADJ",
+                "translation": "right"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Betreuung",
+                "pos": "NOUN",
+                "frequency": 4379,
+                "cefr": "B1"
+            },
+            {
+                "word": "elft",
+                "pos": "ADJ",
+                "frequency": 8490
+            },
+            {
+                "word": "der Nachtclub",
+                "pos": "NOUN",
+                "frequency": 27357
+            },
+            {
+                "word": "die Disco",
+                "pos": "NOUN",
+                "frequency": 9418,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Schnaps",
+                "pos": "NOUN",
+                "frequency": 15325
+            },
+            {
+                "word": "erwachsen",
+                "pos": "ADV",
+                "frequency": 3084,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Klassenfahrt",
+                "pos": "NOUN",
+                "frequency": 23617,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Forum",
+                "pos": "NOUN",
+                "frequency": 4746,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Elternbeirat",
+                "pos": "NOUN",
+                "frequency": 27307
+            },
+            {
+                "word": "die Ethik",
+                "pos": "NOUN",
+                "frequency": 9819
+            },
+            {
+                "word": "die Religion",
+                "pos": "NOUN",
+                "frequency": 1976,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "müssen": {
+                "present": {
+                    "ich": "muss",
+                    "du": "musst",
+                    "er": "muss",
+                    "es": "muss",
+                    "sie_singular": "muss",
+                    "xier": "muss",
+                    "wir": "müssen",
+                    "ihr": "müsst",
+                    "sie_plural": "müssen",
+                    "Sie": "müssen"
+                },
+                "Präteritum": {
+                    "ich": "musste",
+                    "du": "musstest",
+                    "er": "musste",
+                    "es": "musste",
+                    "sie_singular": "musste",
+                    "xier": "musste",
+                    "wir": "mussten",
+                    "ihr": "musstet",
+                    "sie_plural": "mussten",
+                    "Sie": "mussten"
+                }
+            },
+            "können": {
+                "present": {
+                    "ich": "kann",
+                    "du": "kannst",
+                    "er": "kann",
+                    "es": "kann",
+                    "sie_singular": "kann",
+                    "xier": "kann",
+                    "wir": "können",
+                    "ihr": "könnt",
+                    "sie_plural": "können",
+                    "Sie": "können"
+                },
+                "Präteritum": {
+                    "ich": "konnte",
+                    "du": "konntest",
+                    "er": "konnte",
+                    "es": "konnte",
+                    "sie_singular": "konnte",
+                    "xier": "konnte",
+                    "wir": "konnten",
+                    "ihr": "konntet",
+                    "sie_plural": "konnten",
+                    "Sie": "konnten"
+                }
+            },
+            "dürfen": {
+                "present": {
+                    "ich": "darf",
+                    "du": "darfst",
+                    "er": "darf",
+                    "es": "darf",
+                    "sie_singular": "darf",
+                    "xier": "darf",
+                    "wir": "dürfen",
+                    "ihr": "dürft",
+                    "sie_plural": "dürfen",
+                    "Sie": "dürfen"
+                },
+                "Präteritum": {
+                    "ich": "durfte",
+                    "du": "durftest",
+                    "er": "durfte",
+                    "es": "durfte",
+                    "sie_singular": "durfte",
+                    "xier": "durfte",
+                    "wir": "durften",
+                    "ihr": "durftet",
+                    "sie_plural": "durften",
+                    "Sie": "durften"
+                }
+            },
+            "sollen": {
+                "present": {
+                    "ich": "soll",
+                    "du": "sollst",
+                    "er": "soll",
+                    "es": "soll",
+                    "sie_singular": "soll",
+                    "xier": "soll",
+                    "wir": "sollen",
+                    "ihr": "sollt",
+                    "sie_plural": "sollen",
+                    "Sie": "sollen"
+                },
+                "Präteritum": {
+                    "ich": "sollte",
+                    "du": "solltest",
+                    "er": "sollte",
+                    "es": "sollte",
+                    "sie_singular": "sollte",
+                    "xier": "sollte",
+                    "wir": "sollten",
+                    "ihr": "solltet",
+                    "sie_plural": "sollten",
+                    "Sie": "sollten"
+                }
+            },
+            "wollen": {
+                "present": {
+                    "ich": "will",
+                    "du": "willst",
+                    "er": "will",
+                    "es": "will",
+                    "sie_singular": "will",
+                    "xier": "will",
+                    "wir": "wollen",
+                    "ihr": "wollt",
+                    "sie_plural": "wollen",
+                    "Sie": "wollen"
+                },
+                "Präteritum": {
+                    "ich": "wollte",
+                    "du": "wolltest",
+                    "er": "wollte",
+                    "es": "wollte",
+                    "sie_singular": "wollte",
+                    "xier": "wollte",
+                    "wir": "wollten",
+                    "ihr": "wolltet",
+                    "sie_plural": "wollten",
+                    "Sie": "wollten"
+                }
+            },
+            "mögen": {
+                "present": {
+                    "ich": "mag",
+                    "du": "magst",
+                    "er": "mag",
+                    "es": "mag",
+                    "sie_singular": "mag",
+                    "xier": "mag",
+                    "wir": "mögen",
+                    "ihr": "mögt",
+                    "sie_plural": "mögen",
+                    "Sie": "mögen"
+                },
+                "Präteritum": {
+                    "ich": "mochte",
+                    "du": "mochtest",
+                    "er": "mochte",
+                    "es": "mochte",
+                    "sie_singular": "mochte",
+                    "xier": "mochte",
+                    "wir": "mochten",
+                    "ihr": "mochtet",
+                    "sie_plural": "mochten",
+                    "Sie": "mochten"
+                }
+            },
+            "organisieren": {
+                "present": {
+                    "ich": "organisiere",
+                    "du": "organisierst",
+                    "er": "organisiert",
+                    "es": "organisiert",
+                    "sie_singular": "organisiert",
+                    "xier": "organisiert",
+                    "wir": "organisieren",
+                    "ihr": "organisiert",
+                    "sie_plural": "organisieren",
+                    "Sie": "organisieren"
+                }
+            },
+            "verbieten": {
+                "present": {
+                    "ich": "verbiete",
+                    "du": "verbietest",
+                    "er": "verbietet",
+                    "es": "verbietet",
+                    "sie_singular": "verbietet",
+                    "xier": "verbietet",
+                    "wir": "verbieten",
+                    "ihr": "verbietet",
+                    "sie_plural": "verbieten",
+                    "Sie": "verbieten"
+                }
+            },
+            "rauchen": {
+                "present": {
+                    "ich": "rauche",
+                    "du": "rauchst",
+                    "er": "raucht",
+                    "es": "raucht",
+                    "sie_singular": "raucht",
+                    "xier": "raucht",
+                    "wir": "rauchen",
+                    "ihr": "raucht",
+                    "sie_plural": "rauchen",
+                    "Sie": "rauchen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Lena (22), Julia (43) und Sabine (60) erzählen, was sie als Kinder mussten und (nicht) durften.",
+            "Wer sagt was?",
+            "Ich musste um 7 Uhr aufstehen.",
+            "Ich musste 15 Minuten Fahrrad fahren.",
+            "Ich musste mein Pausenbrot machen.",
+            "Ich musste Hausaufgaben machen, bevor ich spielen durfte.",
+            "Ich musste in die Mittagsbetreuung [Betreuung] gehen.",
+            "Um 18 Uhr musste ich ins Haus kommen.",
+            "Abends durfte ich etwas lesen.",
+            "Als ich in der Grundschule war, musste ich um halb acht ins Bett.",
+            "Als ich in der Schule war, musste ich immer um 7 Uhr aufstehen.",
+            "Um halb acht musste ich in die Schule gehen.",
+            "Ich musste 20 Minuten zu Fuß laufen.",
+            "Meine Eltern haben gearbeitet.",
+            "Als ich in der Grundschule war, musste ich in die Mittagsbetreuung [Betreuung] gehen.",
+            "Da musste ich Hausaufgaben machen.",
+            "Dann durften wir spielen.",
+            "Abends durfte ich immer noch etwas lesen.",
+            "Um acht Uhr musste ich das Licht ausmachen.",
+            "Als ich in der Schule war, musste ich um halb sieben aufstehen.",
+            "Ich bin mit dem Bus zur Schule gefahren und musste um Viertel nach sieben los.",
+            "Ich hatte einen Schlüssel und bin nach der Schule nach Hause gegangen.",
+            "Meine Eltern waren dann noch nicht da und ich musste mir etwas zu Mittag machen.",
+            "Später durfte ich abends manchmal fernsehen und musste erst um 21 Uhr ins Bett.",
+            "Ich musste auch um halb sieben aufstehen.",
+            "Ich musste mein Pausenbrot selbst machen [selbstgemacht].",
+            "Dann musste ich fünfzehn Minuten mit dem Fahrrad zur Schule fahren.",
+            "Nach dem Essen musste ich erst Hausaufgaben machen, bevor ich spielen durfte.",
+            "Dann durfte ich dann immer draußen auf der Straße mit Freundinnen spielen.",
+            "Um 18 Uhr musste ich nach dem Spielen ins Haus kommen.",
+            "Wir haben alle zusammen gegessen und dann mussten wir Kinder den Tisch abräumen.",
+            "Entscheiden Sie, welches Wort passt und ergänzen Sie es",
+            "Als ich in der Grundschule war, musste ich alle Hausaufgaben machen, bevor ich spielen durfte.",
+            "Wenn ich mit den Hausaufgaben noch nicht fertig war, durfte ich nicht draußen spielen.",
+            "Wenn meine Oma bei uns war, musste ich oft später ins Bett.",
+            "Als meine Oma einmal an meinem Geburtstag bei uns war, musste ich nicht zur Schule gehen.",
+            "Was durften, mussten und konnten Sie als Kind (nicht) machen?",
+            "Ergänzen Sie die Sätze.",
+            "Fußball/Basketball spielen | Deutsch sprechen | den Müll rausbringen | rechnen …",
+            "Als kleines Kind durfte ich nicht /kein",
+            "In der elften Klasse durfte ich",
+            "In der siebten Klasse sollte ich",
+            "Als Kind konnte ich nicht/kein Fragen Sie andere Personen:",
+            "Was durftest du als kleines Kind nicht?",
+            "Was durftest du in der elften Klasse?",
+            "Was musstest du als Kind immer machen?",
+            "Was solltest du in der siebten Klasse machen?",
+            "Was konntest du als Kind gut / nicht gut?",
+            "Was konntest du als Kind (nicht) gut?",
+            "In Deutschland steht im Jugendschutzgesetz, was Kinder (Personen unter 14 Jahre) und Jugendliche (Personen zwischen 14 und 18 Jahre*) dürfen.",
+            "Sagen Sie, was Kinder und Jugendliche dürfen und nicht dürfen.",
+            "Dürfen dürfen bis … Uhr dürfen mit Erwachsenen dürfen nicht in Nachtclubs sein in Discos gehen unter 14 Jahre:",
+            "Was ist interessant?",
+            "Was ist gleich/anders in Ihrem Land?",
+            "Es ist interessant, dass … X ist in meinem Land anders.",
+            "Lesen Sie die Fragen.",
+            "Und beantworten Sie die Fragen.",
+            "Mit wem können Schüler*innen über Probleme sprechen?",
+            "Sie können mit den Klassensprecher *innen sprechen.",
+            "Was können die Eltern entscheiden?",
+            "Sie können über Klassenfahrten und Schulveranstaltungen entscheiden.",
+            "Wer darf im Schulforum sein?",
+            "Lehrkräfte, Elternbeirat und Klassensprecher*innen.",
+            "Dürfen im Schulforum sein.",
+            "Was dürfen Personen normalerweise nicht in der Schule?",
+            "Man darf keinen Alkohol trinken.",
+            "Das Schulforum kann aber Ausnahmen machen.",
+            "Wann müssen Schüler*innen das Fach Ethik machen?",
+            "Schüler*innen müssen Ethik machen, wenn sie keinen Religionsunterricht haben.",
+            "Wann müssen Schüler*innen keine Hausaufgaben machen?",
+            "An Sonntagen, Feiertagen und in den Ferien.",
+            "Und wie war das bei Ihnen?",
+            "Organisieren Veranstaltungen und sagen den Lehrkräfte, wo es Probleme gibt.",
+            ", Elternbeirat und Lehrkräfte sind zusammen im Schulforum.",
+            "Alkohol ist in den Schulen verboten.",
+            "Wenn die Schüler*innen keinen Religionsunterricht haben, müssen sie Ethik machen.",
+            "An Sonntagen, Feiertagen und in den Ferien darf es keine Hausaufgaben geben."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

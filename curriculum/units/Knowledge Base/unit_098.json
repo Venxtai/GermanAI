@@ -1,0 +1,472 @@
+{
+    "unit": "98",
+    "is_optional": false,
+    "sequence_info": {
+        "track": "core",
+        "position": 98,
+        "prerequisite": "1-97"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt",
+            "Futur_I"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass",
+            "relative_clause_nominative",
+            "relative_clause_accusative",
+            "subordinate_damit",
+            "infinitive_um_zu"
+        ],
+        "new_rules_in_this_unit": [
+            "In subordinate clauses with Futur I, place the infinitive before the conjugated form of werden at the end: \"Ich glaube, dass es Zeitmaschinen geben wird.\""
+        ],
+        "forbidden": [
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "über Zukunfts-Mobilität sprechen"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "das Auto der Zukunft"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "meinen",
+                "pos": "VERB",
+                "translation": "to mean, deem, think",
+                "frequency": 213,
+                "cefr": "A2"
+            },
+            {
+                "word": "aussehen",
+                "pos": "VERB",
+                "translation": "to look (appearance)",
+                "frequency": 277,
+                "cefr": "A1"
+            },
+            {
+                "word": "besitzen",
+                "pos": "VERB",
+                "translation": "to possess, own",
+                "frequency": 586,
+                "cefr": "B1"
+            },
+            {
+                "word": "mieten",
+                "pos": "VERB",
+                "translation": "to rent",
+                "frequency": 9763,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Wasserstoff, e",
+                "pos": "NOUN",
+                "translation": "hydrogen",
+                "frequency": 3142,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Vortrag",
+                "pos": "NOUN",
+                "translation": "lecture, talk, presentation",
+                "frequency": 2879,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Mobilität",
+                "pos": "NOUN",
+                "translation": "mobility"
+            },
+            {
+                "word": "die Antriebsart",
+                "pos": "NOUN",
+                "translation": "mode of driving",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "dagegen",
+                "pos": "ADV",
+                "translation": "against it, in contrast",
+                "frequency": 467,
+                "cefr": "A2"
+            },
+            {
+                "word": "folgend",
+                "pos": "ADJ",
+                "translation": "following",
+                "frequency": 5883,
+                "cefr": "B1"
+            },
+            {
+                "word": "zukünftig",
+                "pos": "ADJ",
+                "translation": "prospective, future (used before noun)"
+            },
+            {
+                "word": "autonom",
+                "pos": "ADJ",
+                "translation": "autonomous(ly)",
+                "frequency": 3491
+            },
+            {
+                "word": "elektrisch",
+                "pos": "ADJ",
+                "translation": "electric; electrical",
+                "frequency": 1090,
+                "cefr": "B1"
+            },
+            {
+                "word": "realistisch",
+                "pos": "ADJ",
+                "translation": "realistic",
+                "frequency": 3351,
+                "cefr": "B1"
+            },
+            {
+                "word": "utopisch",
+                "pos": "ADJ",
+                "translation": "utopian",
+                "frequency": 19099,
+                "cefr": "B2"
+            },
+            {
+                "word": "dystopisch",
+                "pos": "ADJ",
+                "translation": "dystopian"
+            },
+            {
+                "word": "populär",
+                "pos": "ADJ",
+                "translation": "popular"
+            },
+            {
+                "word": "der Treibstoff",
+                "pos": "NOUN",
+                "translation": "fuel",
+                "frequency": 11724,
+                "cefr": "A1"
+            },
+            {
+                "word": "dafür",
+                "pos": "ADV",
+                "translation": "for it; in exchange"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "das Solarauto",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Biogas",
+                "pos": "NOUN",
+                "frequency": 22951
+            },
+            {
+                "word": "das Diesel",
+                "pos": "NOUN",
+                "frequency": 8185,
+                "cefr": "B2"
+            },
+            {
+                "word": "die Solarzelle",
+                "pos": "NOUN",
+                "frequency": 21816
+            },
+            {
+                "word": "mobil",
+                "pos": "ADV",
+                "frequency": 2901,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Elektroauto",
+                "pos": "NOUN",
+                "frequency": 4940,
+                "cefr": "B2"
+            },
+            {
+                "word": "der Carsharing",
+                "pos": "NOUN"
+            },
+            {
+                "word": "utzen",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Ridesharing",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Gruppenpuzzle",
+                "pos": "NOUN"
+            },
+            {
+                "word": "bereiten",
+                "pos": "VERB",
+                "frequency": 2603
+            },
+            {
+                "word": "dystropisch",
+                "pos": "ADV"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "meinen": {
+                "present": {
+                    "ich": "meine",
+                    "du": "meinst",
+                    "er": "meint",
+                    "es": "meint",
+                    "sie_singular": "meint",
+                    "xier": "meint",
+                    "wir": "meinen",
+                    "ihr": "meint",
+                    "sie_plural": "meinen",
+                    "Sie": "meinen"
+                },
+                "Perfekt": {
+                    "ich": "habe gemeint",
+                    "du": "hast gemeint",
+                    "er": "hat gemeint",
+                    "es": "hat gemeint",
+                    "sie_singular": "hat gemeint",
+                    "xier": "hat gemeint",
+                    "wir": "haben gemeint",
+                    "ihr": "habt gemeint",
+                    "sie_plural": "haben gemeint",
+                    "Sie": "haben gemeint"
+                },
+                "Futur_I": {
+                    "ich": "werde meinen",
+                    "du": "wirst meinen",
+                    "er": "wird meinen",
+                    "es": "wird meinen",
+                    "sie_singular": "wird meinen",
+                    "xier": "wird meinen",
+                    "wir": "werden meinen",
+                    "ihr": "werdet meinen",
+                    "sie_plural": "werden meinen",
+                    "Sie": "werden meinen"
+                }
+            },
+            "aussehen": {
+                "present": {
+                    "ich": "sehe aus",
+                    "du": "siehst aus",
+                    "er": "sieht aus",
+                    "es": "sieht aus",
+                    "sie_singular": "sieht aus",
+                    "xier": "sieht aus",
+                    "wir": "sehen aus",
+                    "ihr": "seht aus",
+                    "sie_plural": "sehen aus",
+                    "Sie": "sehen aus"
+                },
+                "Perfekt": {
+                    "ich": "habe ausgesehen",
+                    "du": "hast ausgesehen",
+                    "er": "hat ausgesehen",
+                    "es": "hat ausgesehen",
+                    "sie_singular": "hat ausgesehen",
+                    "xier": "hat ausgesehen",
+                    "wir": "haben ausgesehen",
+                    "ihr": "habt ausgesehen",
+                    "sie_plural": "haben ausgesehen",
+                    "Sie": "haben ausgesehen"
+                },
+                "Futur_I": {
+                    "ich": "werde aussehen",
+                    "du": "wirst aussehen",
+                    "er": "wird aussehen",
+                    "es": "wird aussehen",
+                    "sie_singular": "wird aussehen",
+                    "xier": "wird aussehen",
+                    "wir": "werden aussehen",
+                    "ihr": "werdet aussehen",
+                    "sie_plural": "werden aussehen",
+                    "Sie": "werden aussehen"
+                }
+            },
+            "besitzen": {
+                "present": {
+                    "ich": "besitze",
+                    "du": "besitzt",
+                    "er": "besitzt",
+                    "es": "besitzt",
+                    "sie_singular": "besitzt",
+                    "xier": "besitzt",
+                    "wir": "besitzen",
+                    "ihr": "besitzt",
+                    "sie_plural": "besitzen",
+                    "Sie": "besitzen"
+                },
+                "Perfekt": {
+                    "ich": "habe besessen",
+                    "du": "hast besessen",
+                    "er": "hat besessen",
+                    "es": "hat besessen",
+                    "sie_singular": "hat besessen",
+                    "xier": "hat besessen",
+                    "wir": "haben besessen",
+                    "ihr": "habt besessen",
+                    "sie_plural": "haben besessen",
+                    "Sie": "haben besessen"
+                },
+                "Futur_I": {
+                    "ich": "werde besitzen",
+                    "du": "wirst besitzen",
+                    "er": "wird besitzen",
+                    "es": "wird besitzen",
+                    "sie_singular": "wird besitzen",
+                    "xier": "wird besitzen",
+                    "wir": "werden besitzen",
+                    "ihr": "werdet besitzen",
+                    "sie_plural": "werden besitzen",
+                    "Sie": "werden besitzen"
+                }
+            },
+            "mieten": {
+                "present": {
+                    "ich": "miete",
+                    "du": "mietest",
+                    "er": "mietet",
+                    "es": "mietet",
+                    "sie_singular": "mietet",
+                    "xier": "mietet",
+                    "wir": "mieten",
+                    "ihr": "mietet",
+                    "sie_plural": "mieten",
+                    "Sie": "mieten"
+                },
+                "Perfekt": {
+                    "ich": "habe gemietet",
+                    "du": "hast gemietet",
+                    "er": "hat gemietet",
+                    "es": "hat gemietet",
+                    "sie_singular": "hat gemietet",
+                    "xier": "hat gemietet",
+                    "wir": "haben gemietet",
+                    "ihr": "habt gemietet",
+                    "sie_plural": "haben gemietet",
+                    "Sie": "haben gemietet"
+                },
+                "Futur_I": {
+                    "ich": "werde mieten",
+                    "du": "wirst mieten",
+                    "er": "wird mieten",
+                    "es": "wird mieten",
+                    "sie_singular": "wird mieten",
+                    "xier": "wird mieten",
+                    "wir": "werden mieten",
+                    "ihr": "werdet mieten",
+                    "sie_plural": "werden mieten",
+                    "Sie": "werden mieten"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Wie sieht die Zukunft der Mobilität aus?",
+            "Was meinen Sie?",
+            "Beantworten Sie die Fragen.",
+            "Wann wird man die folgenden Autos auf der Straße sehen?",
+            "Schon heute in 5 Jahren in 10 Jahren in 20 Jahren in 2 0 + Jahren nie 3D-Druck-Autos fliegende Autos",
+            "Was wird zu den 3 populärsten Antriebsarten gehören?",
+            "Schon heute in 5 Jahren in 10 Jahren in 20 Jahren in 2 0 + Jahren nie Benzin",
+            "Heute in 10 Jahren in 20 Jahren in der Großstadt",
+            "[große Stadt] auf dem Land von Stadt zu Stadt",
+            "Wie viel Prozent der Leute werden … heute in 5 Jahren in 10 Jahren in 20 Jahren in 2 0 + Jahren ein Auto besitzen?",
+            "Carsharing nutzen?",
+            "Ich denke, man wird 3D-Druck-Autos in 5 Jahren auf der Straße sehen.",
+            "Und du?",
+            "Ich denke, dass man 3D-Druck-Autos in 10 Jahren oft auf der Straße sehen wird.",
+            "Was denkst du, wann wird man fliegende Autos auf der Straße sehen?",
+            "Ich denke, man wird nie fliegende Autos auf der Straße sehen.",
+            "Mieten oder kaufen?",
+            "N utzen oder besitzen?",
+            "Viele haben ein eigenes Auto, aber Ridesharing und Carsharing werden immer beliebter.",
+            "Welche Argumente sprechen für ein eigenes Auto, Ridesharing und Carsharing?",
+            "Was spricht dagegen?",
+            "Sie bekommen eine Zahl von 1 bis 6 und überlegen Argumente.",
+            "Setzen Sie sich jetzt mit den anderen Personen zusammen, die die gleiche Zahl haben.",
+            "Wer hat welche Argumente gefunden?",
+            "Machen Sie eine Liste mit allen Argumenten und bereiten Sie sich auf einen Gruppenvortrag vor.",
+            "Jede Person in Ihrer Gruppe bekommt einen anderen Buchstaben.",
+            "Setzen Sie sich jetzt mit den anderen Personen zusammen, die den gleichen Buchstaben haben.",
+            "Präsentieren Sie jetzt Ihre Argumente.",
+            "Wenn Sie nicht präsentieren, Hören Sie zu und tragen Sie alle wichtigen Argumente in die Tabelle ein.",
+            "Schreiben Sie einen 5-Minuten-Aufsatz: Wie wird die Mobilität in der Zukunft aussehen?",
+            "Was werden wir lernen (müssen)?",
+            "Sie haben zum Beispiel Auto fahren gelernt - was lernen zukünftige Generationen?",
+            "Schreiben Sie Ihre eigene Vision, ganz utopisch, dystropisch oder realistisch."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

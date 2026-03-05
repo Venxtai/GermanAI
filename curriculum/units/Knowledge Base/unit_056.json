@@ -1,0 +1,1006 @@
+{
+    "unit": "56",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 56,
+        "prerequisite": "1-55"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Präteritum_haben_sein",
+            "tense:Präteritum_modal",
+            "tense:Perfekt",
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": []
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": []
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "heißen",
+                "pos": "VERB",
+                "translation": "to be called, named"
+            },
+            {
+                "word": "kommen",
+                "pos": "VERB",
+                "translation": "to come (from)",
+                "frequency": 62,
+                "cefr": "A1"
+            },
+            {
+                "word": "wohnen",
+                "pos": "VERB",
+                "translation": "to live (in)",
+                "frequency": 560,
+                "cefr": "A1"
+            },
+            {
+                "word": "lernen",
+                "pos": "VERB",
+                "translation": "to learn; study",
+                "frequency": 288,
+                "cefr": "A1"
+            },
+            {
+                "word": "lesen",
+                "pos": "VERB",
+                "translation": "to read",
+                "frequency": 305,
+                "cefr": "A1"
+            },
+            {
+                "word": "hören",
+                "pos": "VERB",
+                "translation": "to hear"
+            },
+            {
+                "word": "verstehen",
+                "pos": "VERB",
+                "translation": "to understand",
+                "frequency": 211,
+                "cefr": "A1"
+            },
+            {
+                "word": "fragen",
+                "pos": "VERB",
+                "translation": "to ask",
+                "frequency": 153,
+                "cefr": "A1"
+            },
+            {
+                "word": "sagen",
+                "pos": "VERB",
+                "translation": "to say",
+                "frequency": 40,
+                "cefr": "A1"
+            },
+            {
+                "word": "sprechen",
+                "pos": "VERB",
+                "translation": "to speak",
+                "frequency": 161,
+                "cefr": "A1"
+            },
+            {
+                "word": "formulieren",
+                "pos": "VERB",
+                "translation": "to phrase; write sth. up [esp. to put in a definite form, clarify]",
+                "frequency": 1135
+            },
+            {
+                "word": "anrufen",
+                "pos": "VERB",
+                "translation": "to call (on the phone)",
+                "frequency": 1146,
+                "cefr": "A1"
+            },
+            {
+                "word": "beantworten",
+                "pos": "VERB",
+                "translation": "to answer",
+                "frequency": 1865,
+                "cefr": "A2"
+            },
+            {
+                "word": "lachen",
+                "pos": "VERB",
+                "translation": "to laugh",
+                "frequency": 444,
+                "cefr": "A1"
+            },
+            {
+                "word": "fotografieren",
+                "pos": "VERB",
+                "translation": "to take pictures",
+                "frequency": 3861,
+                "cefr": "A2"
+            },
+            {
+                "word": "malen",
+                "pos": "VERB",
+                "translation": "to draw; paint",
+                "frequency": 1925,
+                "cefr": "A2"
+            },
+            {
+                "word": "zeichnen",
+                "pos": "VERB",
+                "translation": "to draw",
+                "frequency": 1259,
+                "cefr": "A2"
+            },
+            {
+                "word": "planen",
+                "pos": "VERB",
+                "translation": "to plan",
+                "frequency": 579,
+                "cefr": "A2"
+            },
+            {
+                "word": "schlafen",
+                "pos": "VERB",
+                "translation": "to to sleep",
+                "frequency": 679,
+                "cefr": "A1"
+            },
+            {
+                "word": "schwimmen",
+                "pos": "VERB",
+                "translation": "to swim",
+                "frequency": 1863,
+                "cefr": "A1"
+            },
+            {
+                "word": "fahren",
+                "pos": "VERB",
+                "translation": "to drive; ride",
+                "frequency": 215,
+                "cefr": "A1"
+            },
+            {
+                "word": "trinken",
+                "pos": "VERB",
+                "translation": "to drink",
+                "frequency": 634,
+                "cefr": "A1"
+            },
+            {
+                "word": "putzen",
+                "pos": "VERB",
+                "translation": "to clean",
+                "frequency": 3586,
+                "cefr": "A2"
+            },
+            {
+                "word": "waschen",
+                "pos": "VERB",
+                "translation": "to wash",
+                "frequency": 2315,
+                "cefr": "A1"
+            },
+            {
+                "word": "trennen",
+                "pos": "VERB",
+                "translation": "to separate",
+                "frequency": 936,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Stadt",
+                "pos": "NOUN",
+                "translation": "city",
+                "frequency": 204,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Land",
+                "pos": "NOUN",
+                "translation": "country",
+                "frequency": 134,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Fluss",
+                "pos": "NOUN",
+                "translation": "river",
+                "frequency": 1687,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Zimmer",
+                "pos": "NOUN",
+                "translation": "room",
+                "frequency": 665,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Küche",
+                "pos": "NOUN",
+                "translation": "cuisine, kitchen",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Tasse",
+                "pos": "NOUN",
+                "translation": "cup",
+                "frequency": 3518,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Teller",
+                "pos": "NOUN",
+                "translation": "plate; dish",
+                "frequency": 3187,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Topf",
+                "pos": "NOUN",
+                "translation": "pot, (sauce)pan",
+                "frequency": 4136,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Garten",
+                "pos": "NOUN",
+                "translation": "garden",
+                "frequency": 1158,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Apfel",
+                "pos": "NOUN",
+                "translation": "apple",
+                "frequency": 3490,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Banane",
+                "pos": "NOUN",
+                "translation": "banana",
+                "frequency": 13404,
+                "cefr": "A1"
+            },
+            {
+                "word": "der Computer",
+                "pos": "NOUN",
+                "translation": "computer",
+                "frequency": 1252,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Ziel",
+                "pos": "NOUN",
+                "translation": "goal",
+                "frequency": 320,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Beispiel",
+                "pos": "NOUN",
+                "translation": "example",
+                "frequency": 94,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Zeit",
+                "pos": "NOUN",
+                "translation": "time",
+                "frequency": 96,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Jahr",
+                "pos": "NOUN",
+                "translation": "year",
+                "frequency": 53,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Frage",
+                "pos": "NOUN",
+                "translation": "question",
+                "frequency": 157,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Wort",
+                "pos": "NOUN",
+                "translation": "word",
+                "frequency": 194,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Satz",
+                "pos": "NOUN",
+                "translation": "sentence",
+                "frequency": 432,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Idee",
+                "pos": "NOUN",
+                "translation": "idea",
+                "frequency": 451,
+                "cefr": "A2"
+            },
+            {
+                "word": "das Problem",
+                "pos": "NOUN",
+                "translation": "problem",
+                "frequency": 210,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Papier",
+                "pos": "NOUN",
+                "translation": "paper",
+                "frequency": 1163,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Eltern",
+                "pos": "NOUN",
+                "translation": "parents",
+                "frequency": 404,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Produkt",
+                "pos": "NOUN",
+                "translation": "product",
+                "frequency": 422,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Mensch",
+                "pos": "NOUN",
+                "translation": "human (being), person",
+                "frequency": 90,
+                "cefr": "A1"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "aufwärmen",
+                "pos": "NOUN",
+                "frequency": 16755
+            },
+            {
+                "word": "das Vokabelspiel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Kapitel",
+                "pos": "NOUN",
+                "frequency": 482,
+                "cefr": "B1"
+            },
+            {
+                "word": "mischen",
+                "pos": "VERB",
+                "frequency": 2160,
+                "cefr": "B1"
+            },
+            {
+                "word": "dabei",
+                "pos": "ADV",
+                "frequency": 129,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Stopp",
+                "pos": "NOUN",
+                "frequency": 11224
+            },
+            {
+                "word": "niemand",
+                "pos": "PRON",
+                "frequency": 362,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Schwägerin",
+                "pos": "NOUN",
+                "frequency": 21584
+            },
+            {
+                "word": "das Traumhaus",
+                "pos": "NOUN"
+            },
+            {
+                "word": "verdrehen",
+                "pos": "VERB",
+                "frequency": 18838,
+                "cefr": "B2"
+            },
+            {
+                "word": "meinen",
+                "pos": "VERB",
+                "frequency": 213,
+                "cefr": "A2"
+            },
+            {
+                "word": "vorbei",
+                "pos": "ADV",
+                "frequency": 1472,
+                "cefr": "A2"
+            },
+            {
+                "word": "die START",
+                "pos": "NOUN",
+                "frequency": 1946,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Pantomime",
+                "pos": "NOUN",
+                "frequency": 26339
+            },
+            {
+                "word": "ragen",
+                "pos": "VERB",
+                "frequency": 3931
+            },
+            {
+                "word": "das Möbelstück",
+                "pos": "NOUN",
+                "frequency": 42896
+            },
+            {
+                "word": "der Laden",
+                "pos": "NOUN",
+                "frequency": 1675,
+                "cefr": "A1"
+            },
+            {
+                "word": "telefonieren",
+                "pos": "VERB",
+                "frequency": 3156,
+                "cefr": "A1"
+            },
+            {
+                "word": "die Nase",
+                "pos": "NOUN",
+                "frequency": 1264,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Comedy",
+                "pos": "NOUN",
+                "frequency": 11599
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "heißen": {
+                "present": {
+                    "ich": "heiße",
+                    "du": "heißt",
+                    "er": "heißt",
+                    "es": "heißt",
+                    "sie_singular": "heißt",
+                    "xier": "heißt",
+                    "wir": "heißen",
+                    "ihr": "heißt",
+                    "sie_plural": "heißen",
+                    "Sie": "heißen"
+                }
+            },
+            "kommen": {
+                "present": {
+                    "ich": "komme",
+                    "du": "kommst",
+                    "er": "kommt",
+                    "es": "kommt",
+                    "sie_singular": "kommt",
+                    "xier": "kommt",
+                    "wir": "kommen",
+                    "ihr": "kommt",
+                    "sie_plural": "kommen",
+                    "Sie": "kommen"
+                }
+            },
+            "wohnen": {
+                "present": {
+                    "ich": "wohne",
+                    "du": "wohnst",
+                    "er": "wohnt",
+                    "es": "wohnt",
+                    "sie_singular": "wohnt",
+                    "xier": "wohnt",
+                    "wir": "wohnen",
+                    "ihr": "wohnt",
+                    "sie_plural": "wohnen",
+                    "Sie": "wohnen"
+                }
+            },
+            "lernen": {
+                "present": {
+                    "ich": "lerne",
+                    "du": "lernst",
+                    "er": "lernt",
+                    "es": "lernt",
+                    "sie_singular": "lernt",
+                    "xier": "lernt",
+                    "wir": "lernen",
+                    "ihr": "lernt",
+                    "sie_plural": "lernen",
+                    "Sie": "lernen"
+                }
+            },
+            "lesen": {
+                "present": {
+                    "ich": "lese",
+                    "du": "liest",
+                    "er": "liest",
+                    "es": "liest",
+                    "sie_singular": "liest",
+                    "xier": "liest",
+                    "wir": "lesen",
+                    "ihr": "lest",
+                    "sie_plural": "lesen",
+                    "Sie": "lesen"
+                }
+            },
+            "hören": {
+                "present": {
+                    "ich": "höre",
+                    "du": "hörst",
+                    "er": "hört",
+                    "es": "hört",
+                    "sie_singular": "hört",
+                    "xier": "hört",
+                    "wir": "hören",
+                    "ihr": "hört",
+                    "sie_plural": "hören",
+                    "Sie": "hören"
+                }
+            },
+            "verstehen": {
+                "present": {
+                    "ich": "verstehe",
+                    "du": "verstehst",
+                    "er": "versteht",
+                    "es": "versteht",
+                    "sie_singular": "versteht",
+                    "xier": "versteht",
+                    "wir": "verstehen",
+                    "ihr": "versteht",
+                    "sie_plural": "verstehen",
+                    "Sie": "verstehen"
+                }
+            },
+            "fragen": {
+                "present": {
+                    "ich": "frage",
+                    "du": "fragst",
+                    "er": "fragt",
+                    "es": "fragt",
+                    "sie_singular": "fragt",
+                    "xier": "fragt",
+                    "wir": "fragen",
+                    "ihr": "fragt",
+                    "sie_plural": "fragen",
+                    "Sie": "fragen"
+                }
+            },
+            "sagen": {
+                "present": {
+                    "ich": "sage",
+                    "du": "sagst",
+                    "er": "sagt",
+                    "es": "sagt",
+                    "sie_singular": "sagt",
+                    "xier": "sagt",
+                    "wir": "sagen",
+                    "ihr": "sagt",
+                    "sie_plural": "sagen",
+                    "Sie": "sagen"
+                }
+            },
+            "sprechen": {
+                "present": {
+                    "ich": "spreche",
+                    "du": "sprichst",
+                    "er": "spricht",
+                    "es": "spricht",
+                    "sie_singular": "spricht",
+                    "xier": "spricht",
+                    "wir": "sprechen",
+                    "ihr": "sprecht",
+                    "sie_plural": "sprechen",
+                    "Sie": "sprechen"
+                }
+            },
+            "formulieren": {
+                "present": {
+                    "ich": "formuliere",
+                    "du": "formulierst",
+                    "er": "formuliert",
+                    "es": "formuliert",
+                    "sie_singular": "formuliert",
+                    "xier": "formuliert",
+                    "wir": "formulieren",
+                    "ihr": "formuliert",
+                    "sie_plural": "formulieren",
+                    "Sie": "formulieren"
+                }
+            },
+            "anrufen": {
+                "present": {
+                    "ich": "rufe an",
+                    "du": "rufst an",
+                    "er": "ruft an",
+                    "es": "ruft an",
+                    "sie_singular": "ruft an",
+                    "xier": "ruft an",
+                    "wir": "rufen an",
+                    "ihr": "ruft an",
+                    "sie_plural": "rufen an",
+                    "Sie": "rufen an"
+                }
+            },
+            "beantworten": {
+                "present": {
+                    "ich": "beantworte",
+                    "du": "beantwortest",
+                    "er": "beantwortet",
+                    "es": "beantwortet",
+                    "sie_singular": "beantwortet",
+                    "xier": "beantwortet",
+                    "wir": "beantworten",
+                    "ihr": "beantwortet",
+                    "sie_plural": "beantworten",
+                    "Sie": "beantworten"
+                }
+            },
+            "lachen": {
+                "present": {
+                    "ich": "lache",
+                    "du": "lachst",
+                    "er": "lacht",
+                    "es": "lacht",
+                    "sie_singular": "lacht",
+                    "xier": "lacht",
+                    "wir": "lachen",
+                    "ihr": "lacht",
+                    "sie_plural": "lachen",
+                    "Sie": "lachen"
+                }
+            },
+            "fotografieren": {
+                "present": {
+                    "ich": "fotografiere",
+                    "du": "fotografierst",
+                    "er": "fotografiert",
+                    "es": "fotografiert",
+                    "sie_singular": "fotografiert",
+                    "xier": "fotografiert",
+                    "wir": "fotografieren",
+                    "ihr": "fotografiert",
+                    "sie_plural": "fotografieren",
+                    "Sie": "fotografieren"
+                }
+            },
+            "malen": {
+                "present": {
+                    "ich": "male",
+                    "du": "malst",
+                    "er": "malt",
+                    "es": "malt",
+                    "sie_singular": "malt",
+                    "xier": "malt",
+                    "wir": "malen",
+                    "ihr": "malt",
+                    "sie_plural": "malen",
+                    "Sie": "malen"
+                }
+            },
+            "zeichnen": {
+                "present": {
+                    "ich": "zeichne",
+                    "du": "zeichnest",
+                    "er": "zeichnet",
+                    "es": "zeichnet",
+                    "sie_singular": "zeichnet",
+                    "xier": "zeichnet",
+                    "wir": "zeichnen",
+                    "ihr": "zeichnet",
+                    "sie_plural": "zeichnen",
+                    "Sie": "zeichnen"
+                }
+            },
+            "planen": {
+                "present": {
+                    "ich": "plane",
+                    "du": "planst",
+                    "er": "plant",
+                    "es": "plant",
+                    "sie_singular": "plant",
+                    "xier": "plant",
+                    "wir": "planen",
+                    "ihr": "plant",
+                    "sie_plural": "planen",
+                    "Sie": "planen"
+                }
+            },
+            "schlafen": {
+                "present": {
+                    "ich": "schlafe",
+                    "du": "schläfst",
+                    "er": "schläft",
+                    "es": "schläft",
+                    "sie_singular": "schläft",
+                    "xier": "schläft",
+                    "wir": "schlafen",
+                    "ihr": "schlaft",
+                    "sie_plural": "schlafen",
+                    "Sie": "schlafen"
+                }
+            },
+            "schwimmen": {
+                "present": {
+                    "ich": "schwimme",
+                    "du": "schwimmst",
+                    "er": "schwimmt",
+                    "es": "schwimmt",
+                    "sie_singular": "schwimmt",
+                    "xier": "schwimmt",
+                    "wir": "schwimmen",
+                    "ihr": "schwimmt",
+                    "sie_plural": "schwimmen",
+                    "Sie": "schwimmen"
+                }
+            },
+            "fahren": {
+                "present": {
+                    "ich": "fahre",
+                    "du": "fährst",
+                    "er": "fährt",
+                    "es": "fährt",
+                    "sie_singular": "fährt",
+                    "xier": "fährt",
+                    "wir": "fahren",
+                    "ihr": "fahrt",
+                    "sie_plural": "fahren",
+                    "Sie": "fahren"
+                }
+            },
+            "trinken": {
+                "present": {
+                    "ich": "trinke",
+                    "du": "trinkst",
+                    "er": "trinkt",
+                    "es": "trinkt",
+                    "sie_singular": "trinkt",
+                    "xier": "trinkt",
+                    "wir": "trinken",
+                    "ihr": "trinkt",
+                    "sie_plural": "trinken",
+                    "Sie": "trinken"
+                }
+            },
+            "putzen": {
+                "present": {
+                    "ich": "putze",
+                    "du": "putzt",
+                    "er": "putzt",
+                    "es": "putzt",
+                    "sie_singular": "putzt",
+                    "xier": "putzt",
+                    "wir": "putzen",
+                    "ihr": "putzt",
+                    "sie_plural": "putzen",
+                    "Sie": "putzen"
+                }
+            },
+            "waschen": {
+                "present": {
+                    "ich": "wasche",
+                    "du": "wäschst",
+                    "er": "wäscht",
+                    "es": "wäscht",
+                    "sie_singular": "wäscht",
+                    "xier": "wäscht",
+                    "wir": "waschen",
+                    "ihr": "wascht",
+                    "sie_plural": "waschen",
+                    "Sie": "waschen"
+                }
+            },
+            "trennen": {
+                "present": {
+                    "ich": "trenne",
+                    "du": "trennst",
+                    "er": "trennt",
+                    "es": "trennt",
+                    "sie_singular": "trennt",
+                    "xier": "trennt",
+                    "wir": "trennen",
+                    "ihr": "trennt",
+                    "sie_plural": "trennen",
+                    "Sie": "trennen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Zum Aufwärmen Spielen Sie in Teams ein Vokabelspiel mit den wichtigsten Wörtern aus Kapitel 1-4.",
+            "Spielen Sie mehrere Runden, mischen Sie dabei die Teams.",
+            "Die Lehrkraft gibt Ihnen einen Buchstaben vor.",
+            "Finden Sie für jede Kategorie ein Wort, das mit diesem Buchstaben beginnt.",
+            "Rufen Sie Stopp, wenn Sie ein Wort für jede Kategorie gefunden haben.",
+            "5 Punkte für Wörter, die auch andere haben.",
+            "10 Punkte für Wörter, die andere nicht haben.",
+            "20 Punkte für Wörter, wenn niemand ein Wort in dieser Kategorie hat.",
+            "Dann kommt die nächste Runde mit dem nächsten Buchstaben.",
+            "Zahlen zählen zeichnen zeigen zuhören zuordnen",
+            "Adjektive abends aggressiv ähnlich allein alleine",
+            "Eiskalt gefährlich gesund groß gut heiß hell hoch interessant jung",
+            "Kreativ kurz lang langsam laut lecker leise lieb",
+            "Neblig neu ordentlich pünktlich ruhig rund sauber",
+            "Schön schwer selten sicher sonnig spät stabil stark süß ungesund",
+            "Unordentlich vegan vegetarisch verdreht verschieden warm weich",
+            "Was meine ich?",
+            "Sie spielen in Teams.",
+            "Eine Person in Ihrem Team ist dran.",
+            "Die Person würfelt, geht die gewürfelte Augenzahl vorwärts.",
+            "Und nimmt eine Karte.",
+            "Das Feld sagt, was die Person mit dem Wort machen muss:",
+            "Sie spielt, malt oder spricht und der Rest des Teams muss raten.",
+            "Das Team hat eine Minute.",
+            "Wenn die Minute vorbei ist, können die anderen Teams raten.",
+            "Dann ist das nächste Team dran..",
+            "Pantomime malen sprechen das Haus der Garten",
+            "Das T-Shirt der Schuh die Jacke",
+            "Der Tisch der Stuhl die Küche das Messer der Teller die Tasse der Topf essen trinken kochen der Apfel die Banane",
+            "Das Auto fahren spielen fotografieren die Kamera",
+            "Das Foto anrufen das Handy der Computer die Brille lachen sehen das Buch die Pflanze der Spiegel die Farbe Nicht Wohnung.",
+            "Ich wohne da.",
+            "Es gibt Pflanzen.",
+            "Er ist am Haus.",
+            "Es ist im Haus.",
+            "Da ist ein Bett.",
+            "Ein Verb.",
+            "Ich mache es im Bett/in der Nacht.",
+            "Ich schlafe da.",
+            "Es ist ein Möbelstück.",
+            "Da stehen Bücher.",
+            "Da ist meine Kleidung.",
+            "Es ist ein Verb.",
+            "Ich mache das morgens.",
+            "Ich nehme Kleidung und mache das.",
+            "Hose, T-Shirt, Sweatshirt sind das.",
+            "Es ist Kleidung.",
+            "Sie ist an den Beinen.",
+            "Es ist am Oberkörper.",
+            "Er ist am Fuß.",
+            "Ich brauche sie, wenn es kalt ist.",
+            "Ich trage sie.",
+            "Ich habe mein Hnady da.",
+            "Wie spät ist es?",
+            "Er ist im Esszimmer oder Arbeitszimmer.",
+            "Es liegen Bücher oder Teller auf ihm.",
+            "Ich sitze auf ihm.",
+            "Es ist ein Zimmer.",
+            "Ich koche da.",
+            "Es ist ein Besteck.",
+            "Ich schneide.",
+            "Ich trinke Kaffee.",
+            "Er steht auf dem Herd.",
+            "Ich koche.",
+            "Er ist ein Obst.",
+            "Er ist rund und rot oder gelb oder grün.",
+            "Sie ist Obst.",
+            "Sie ist weich und gelb.",
+            "Sie ist Gemüse.",
+            "Ich mag Pommes.",
+            "Ich trinke das jeden Tag.",
+            "Ich mache das im Wasser, am Meer.",
+            "Sie ist ein Ding.",
+            "Wasser ist in ihr.",
+            "Ich brauche neue Kleidung.",
+            "Es fährt.",
+            "Ich habe eins von Toyota.",
+            "Ich mache das in meinem Auto.",
+            "Ich mache das mit Fußball oder Basketball oder Karten.",
+            "Ich mache es mit meinem Handy oder einer Kamera.",
+            "Es gibt ein Bild.",
+            "Es ist ein Ding.",
+            "Sie fotografiert.",
+            "Es ist wie ein Bild.",
+            "Ich mache es mit der Kamera.",
+            "Ich möchte mit meiner Mutter sprechen.",
+            "Ich mache das mit meinem Handy.",
+            "Ich habe es immer in der Tasche.",
+            "Ich telefoniere oder schreiben Texts oder fotografiere.",
+            "Ich mache Hausaufgaben.",
+            "Ich brauche ihn.",
+            "Ich kann besser mit ihr sehen.",
+            "Sie ist auf der Nase.",
+            "Es ist Comedy, ich muss … Es ist ein Verb.",
+            "Ich mache es mit den Augen.",
+            "Ich lese es.",
+            "Sie ist grün.",
+            "Ich habe sie im Wohnzimmer.",
+            "Bambus ein Beispiel.",
+            "Ich kann mich sehen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}

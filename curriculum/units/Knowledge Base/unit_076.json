@@ -1,0 +1,754 @@
+{
+    "unit": "76",
+    "is_optional": true,
+    "sequence_info": {
+        "track": "core",
+        "position": 76,
+        "prerequisite": "1-75"
+    },
+    "grammar_constraints": {
+        "description": "Hard limits on grammatical structures the AI may use",
+        "allowed_tenses": [
+            "present",
+            "Präteritum_haben_sein",
+            "Präteritum_modal",
+            "Perfekt"
+        ],
+        "allowed_cases": [
+            "nominative",
+            "accusative",
+            "dative"
+        ],
+        "allowed_persons": [
+            "ich",
+            "du",
+            "er",
+            "es",
+            "sie_singular",
+            "xier",
+            "wir",
+            "ihr",
+            "sie_plural",
+            "Sie"
+        ],
+        "sentence_types": [
+            "declarative",
+            "w_question",
+            "yes_no_question",
+            "subordinate_weil",
+            "subordinate_wenn",
+            "subordinate_dass"
+        ],
+        "new_rules_in_this_unit": [],
+        "forbidden": [
+            "tense:Futur_I",
+            "tense:Präteritum_weak",
+            "tense:Präteritum_strong",
+            "tense:Präteritum_mixed",
+            "tense:Plusquamperfekt",
+            "tense:Konjunktiv_II_present",
+            "tense:Konjunktiv_II_past",
+            "tense:Passiv_Präsens",
+            "tense:Passiv_Präteritum",
+            "case:genitive",
+            "sentence_type:relative_clause_nominative",
+            "sentence_type:relative_clause_accusative",
+            "sentence_type:subordinate_damit",
+            "sentence_type:infinitive_um_zu",
+            "sentence_type:imperative",
+            "sentence_type:relative_clause_dative",
+            "sentence_type:relative_clause_genitive",
+            "sentence_type:subordinate_bevor",
+            "sentence_type:subordinate_während",
+            "sentence_type:subordinate_nachdem",
+            "sentence_type:irreal_wish",
+            "sentence_type:conditional_irreal",
+            "sentence_type:coordinating_denn",
+            "sentence_type:subordinate_da",
+            "sentence_type:subordinate_obwohl",
+            "sentence_type:impersonal_passive"
+        ]
+    },
+    "communicative_functions": {
+        "description": "What students can accomplish with this language",
+        "goals": [
+            "eine Biografie rekonstruieren"
+        ]
+    },
+    "conversation_topics": {
+        "description": "Subject matter students can discuss",
+        "topics": [
+            "die Brüder Grimm"
+        ]
+    },
+    "active_vocabulary": {
+        "description": "Words students must actively produce (Step 2)",
+        "items": [
+            {
+                "word": "passieren",
+                "pos": "VERB",
+                "translation": "to happen",
+                "frequency": 381,
+                "cefr": "A2"
+            },
+            {
+                "word": "studieren",
+                "pos": "VERB",
+                "translation": "to major in",
+                "frequency": 600,
+                "cefr": "A1"
+            },
+            {
+                "word": "ziehen",
+                "pos": "VERB",
+                "translation": "to pull",
+                "frequency": 193,
+                "cefr": "A2"
+            },
+            {
+                "word": "umziehen",
+                "pos": "VERB",
+                "translation": "to move",
+                "frequency": 8865,
+                "cefr": "A1"
+            },
+            {
+                "word": "herausfinden",
+                "pos": "VERB",
+                "translation": "to find out; decipher; identify",
+                "frequency": 2069,
+                "cefr": "B1"
+            },
+            {
+                "word": "besuchen",
+                "pos": "VERB",
+                "translation": "to visit",
+                "frequency": 820,
+                "cefr": "A1"
+            },
+            {
+                "word": "laufen",
+                "pos": "VERB",
+                "translation": "to walk; run",
+                "frequency": 252,
+                "cefr": "A1"
+            },
+            {
+                "word": "schlafen",
+                "pos": "VERB",
+                "translation": "to sleep",
+                "frequency": 679,
+                "cefr": "A1"
+            },
+            {
+                "word": "schwimmen",
+                "pos": "VERB",
+                "translation": "to swim",
+                "frequency": 1863,
+                "cefr": "A1"
+            },
+            {
+                "word": "Es war einmal …",
+                "pos": "PHRASE",
+                "translation": "Once upon a time …"
+            },
+            {
+                "word": "Schneewittchen",
+                "pos": "NOUN",
+                "translation": "Snow White",
+                "frequency": 23892
+            },
+            {
+                "word": "Hänsel und Gretel",
+                "pos": "NOUN",
+                "translation": "Hansel and Gretel"
+            },
+            {
+                "word": "Rotkäppchen",
+                "pos": "NOUN",
+                "translation": "Little Red Riding Hood"
+            },
+            {
+                "word": "Dornröschen",
+                "pos": "NOUN",
+                "translation": "Sleeping Beauty"
+            },
+            {
+                "word": "Aschenputtel",
+                "pos": "NOUN",
+                "translation": "Cinderella",
+                "frequency": 32810
+            },
+            {
+                "word": "der*die Erzähler*in",
+                "pos": "NOUN",
+                "translation": "narrator, teller, storyteller"
+            },
+            {
+                "word": "der*die Beiträger*in",
+                "pos": "NOUN",
+                "translation": "contributor"
+            },
+            {
+                "word": "das einfache Volk, einfache Völker",
+                "pos": "ADJ",
+                "translation": "common/ordinary people"
+            },
+            {
+                "word": "das Band",
+                "pos": "NOUN",
+                "translation": "volume (book in a series of books)",
+                "frequency": 1025,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Besuch",
+                "pos": "NOUN",
+                "translation": "visit",
+                "frequency": 1106,
+                "cefr": "A2"
+            },
+            {
+                "word": "die Führung",
+                "pos": "NOUN",
+                "translation": "guided tour",
+                "frequency": 1,
+                "cefr": "A1"
+            },
+            {
+                "word": "das Denkmal",
+                "pos": "NOUN",
+                "translation": "monument, memorial",
+                "frequency": 4789,
+                "cefr": "B1"
+            },
+            {
+                "word": "der Bauernhof",
+                "pos": "NOUN",
+                "translation": "farm",
+                "frequency": 8448,
+                "cefr": "B1"
+            },
+            {
+                "word": "das Huhn",
+                "pos": "NOUN",
+                "translation": "chicken",
+                "frequency": 3576,
+                "cefr": "A1"
+            },
+            {
+                "word": "wahrscheinlich",
+                "pos": "ADJ",
+                "translation": "probably, likely",
+                "frequency": 493,
+                "cefr": "A2"
+            },
+            {
+                "word": "reich",
+                "pos": "ADJ",
+                "translation": "rich, wealthy, affluent",
+                "frequency": 1568,
+                "cefr": "A2"
+            },
+            {
+                "word": "arm",
+                "pos": "ADJ",
+                "translation": "poor; needy",
+                "frequency": 527,
+                "cefr": "A2"
+            }
+        ]
+    },
+    "passive_vocabulary": {
+        "description": "Words students recognize but don't produce yet (Step 2)",
+        "items": [
+            {
+                "word": "die Biografie",
+                "pos": "NOUN",
+                "frequency": 4409
+            },
+            {
+                "word": "der Stichpunkt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "die Märchensammlung",
+                "pos": "NOUN"
+            },
+            {
+                "word": "der Tod",
+                "pos": "NOUN",
+                "frequency": 540,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Märchenwelt",
+                "pos": "NOUN",
+                "frequency": 39946
+            },
+            {
+                "word": "das Hausmärchen",
+                "pos": "NOUN"
+            },
+            {
+                "word": "puzzeln",
+                "pos": "VERB"
+            },
+            {
+                "word": "der Märchentitel",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Hänsel",
+                "pos": "NOUN",
+                "frequency": 24137
+            },
+            {
+                "word": "das Rumpelstilzchen",
+                "pos": "NOUN",
+                "frequency": 36348
+            },
+            {
+                "word": "der Froschkönig",
+                "pos": "NOUN",
+                "frequency": 42303
+            },
+            {
+                "word": "die Märchenbeiträgerin",
+                "pos": "NOUN"
+            },
+            {
+                "word": "nochmal",
+                "pos": "ADV",
+                "frequency": 1984
+            },
+            {
+                "word": "die bekannte",
+                "pos": "NOUN",
+                "frequency": 6520,
+                "cefr": "A1"
+            },
+            {
+                "word": "gebildet",
+                "pos": "ADJ",
+                "frequency": 9230
+            },
+            {
+                "word": "das Volk",
+                "pos": "NOUN",
+                "frequency": 1032
+            },
+            {
+                "word": "Welchem",
+                "pos": "DET"
+            },
+            {
+                "word": "die Wirklichkeit",
+                "pos": "NOUN",
+                "frequency": 1396,
+                "cefr": "B1"
+            },
+            {
+                "word": "kompliziert",
+                "pos": "ADV",
+                "frequency": 1868,
+                "cefr": "B1"
+            },
+            {
+                "word": "die Textnachricht",
+                "pos": "NOUN",
+                "cefr": "B1"
+            },
+            {
+                "word": "gesehen",
+                "pos": "VERB",
+                "frequency": 19333
+            },
+            {
+                "word": "die Märchenfigur",
+                "pos": "NOUN"
+            },
+            {
+                "word": "ansehen",
+                "pos": "VERB",
+                "frequency": 507,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Festival",
+                "pos": "NOUN",
+                "frequency": 4513,
+                "cefr": "A2"
+            },
+            {
+                "word": "der Mächenweihnachtsmarkt",
+                "pos": "NOUN"
+            },
+            {
+                "word": "das Wasserspiel",
+                "pos": "NOUN",
+                "frequency": 35175
+            },
+            {
+                "word": "der Wohnwagen",
+                "pos": "NOUN",
+                "frequency": 17055,
+                "cefr": "B2"
+            },
+            {
+                "word": "das Festspiel",
+                "pos": "NOUN",
+                "frequency": 7611
+            },
+            {
+                "word": "das Puppenmuseum",
+                "pos": "NOUN"
+            }
+        ]
+    },
+    "allowed_verb_forms": {
+        "description": "Specific conjugated forms students may use (Step 3)",
+        "verbs": {
+            "passieren": {
+                "present": {
+                    "ich": "passiere",
+                    "du": "passierst",
+                    "er": "passiert",
+                    "es": "passiert",
+                    "sie_singular": "passiert",
+                    "xier": "passiert",
+                    "wir": "passieren",
+                    "ihr": "passiert",
+                    "sie_plural": "passieren",
+                    "Sie": "passieren"
+                },
+                "Perfekt": {
+                    "ich": "habe passiert",
+                    "du": "hast passiert",
+                    "er": "hat passiert",
+                    "es": "hat passiert",
+                    "sie_singular": "hat passiert",
+                    "xier": "hat passiert",
+                    "wir": "haben passiert",
+                    "ihr": "habt passiert",
+                    "sie_plural": "haben passiert",
+                    "Sie": "haben passiert"
+                }
+            },
+            "studieren": {
+                "present": {
+                    "ich": "studiere",
+                    "du": "studierst",
+                    "er": "studiert",
+                    "es": "studiert",
+                    "sie_singular": "studiert",
+                    "xier": "studiert",
+                    "wir": "studieren",
+                    "ihr": "studiert",
+                    "sie_plural": "studieren",
+                    "Sie": "studieren"
+                },
+                "Perfekt": {
+                    "ich": "habe studiert",
+                    "du": "hast studiert",
+                    "er": "hat studiert",
+                    "es": "hat studiert",
+                    "sie_singular": "hat studiert",
+                    "xier": "hat studiert",
+                    "wir": "haben studiert",
+                    "ihr": "habt studiert",
+                    "sie_plural": "haben studiert",
+                    "Sie": "haben studiert"
+                }
+            },
+            "ziehen": {
+                "present": {
+                    "ich": "ziehe",
+                    "du": "ziehst",
+                    "er": "zieht",
+                    "es": "zieht",
+                    "sie_singular": "zieht",
+                    "xier": "zieht",
+                    "wir": "ziehen",
+                    "ihr": "zieht",
+                    "sie_plural": "ziehen",
+                    "Sie": "ziehen"
+                },
+                "Perfekt": {
+                    "ich": "habe gezogen",
+                    "du": "hast gezogen",
+                    "er": "hat gezogen",
+                    "es": "hat gezogen",
+                    "sie_singular": "hat gezogen",
+                    "xier": "hat gezogen",
+                    "wir": "haben gezogen",
+                    "ihr": "habt gezogen",
+                    "sie_plural": "haben gezogen",
+                    "Sie": "haben gezogen"
+                }
+            },
+            "umziehen": {
+                "present": {
+                    "ich": "ziehe um",
+                    "du": "ziehst um",
+                    "er": "zieht um",
+                    "es": "zieht um",
+                    "sie_singular": "zieht um",
+                    "xier": "zieht um",
+                    "wir": "ziehen um",
+                    "ihr": "zieht um",
+                    "sie_plural": "ziehen um",
+                    "Sie": "ziehen um"
+                },
+                "Perfekt": {
+                    "ich": "bin umgezogen",
+                    "du": "bist umgezogen",
+                    "er": "ist umgezogen",
+                    "es": "ist umgezogen",
+                    "sie_singular": "ist umgezogen",
+                    "xier": "ist umgezogen",
+                    "wir": "sind umgezogen",
+                    "ihr": "seid umgezogen",
+                    "sie_plural": "sind umgezogen",
+                    "Sie": "sind umgezogen"
+                }
+            },
+            "herausfinden": {
+                "present": {
+                    "ich": "finde heraus",
+                    "du": "findest heraus",
+                    "er": "findet heraus",
+                    "es": "findet heraus",
+                    "sie_singular": "findet heraus",
+                    "xier": "findet heraus",
+                    "wir": "finden heraus",
+                    "ihr": "findet heraus",
+                    "sie_plural": "finden heraus",
+                    "Sie": "finden heraus"
+                },
+                "Perfekt": {
+                    "ich": "habe herausgefunden",
+                    "du": "hast herausgefunden",
+                    "er": "hat herausgefunden",
+                    "es": "hat herausgefunden",
+                    "sie_singular": "hat herausgefunden",
+                    "xier": "hat herausgefunden",
+                    "wir": "haben herausgefunden",
+                    "ihr": "habt herausgefunden",
+                    "sie_plural": "haben herausgefunden",
+                    "Sie": "haben herausgefunden"
+                }
+            },
+            "besuchen": {
+                "present": {
+                    "ich": "besuche",
+                    "du": "besuchst",
+                    "er": "besucht",
+                    "es": "besucht",
+                    "sie_singular": "besucht",
+                    "xier": "besucht",
+                    "wir": "besuchen",
+                    "ihr": "besucht",
+                    "sie_plural": "besuchen",
+                    "Sie": "besuchen"
+                },
+                "Perfekt": {
+                    "ich": "habe besucht",
+                    "du": "hast besucht",
+                    "er": "hat besucht",
+                    "es": "hat besucht",
+                    "sie_singular": "hat besucht",
+                    "xier": "hat besucht",
+                    "wir": "haben besucht",
+                    "ihr": "habt besucht",
+                    "sie_plural": "haben besucht",
+                    "Sie": "haben besucht"
+                }
+            },
+            "laufen": {
+                "present": {
+                    "ich": "laufe",
+                    "du": "läufst",
+                    "er": "läuft",
+                    "es": "läuft",
+                    "sie_singular": "läuft",
+                    "xier": "läuft",
+                    "wir": "laufen",
+                    "ihr": "lauft",
+                    "sie_plural": "laufen",
+                    "Sie": "laufen"
+                },
+                "Perfekt": {
+                    "ich": "bin gelaufen",
+                    "du": "bist gelaufen",
+                    "er": "ist gelaufen",
+                    "es": "ist gelaufen",
+                    "sie_singular": "ist gelaufen",
+                    "xier": "ist gelaufen",
+                    "wir": "sind gelaufen",
+                    "ihr": "seid gelaufen",
+                    "sie_plural": "sind gelaufen",
+                    "Sie": "sind gelaufen"
+                }
+            },
+            "schlafen": {
+                "present": {
+                    "ich": "schlafe",
+                    "du": "schläfst",
+                    "er": "schläft",
+                    "es": "schläft",
+                    "sie_singular": "schläft",
+                    "xier": "schläft",
+                    "wir": "schlafen",
+                    "ihr": "schlaft",
+                    "sie_plural": "schlafen",
+                    "Sie": "schlafen"
+                },
+                "Perfekt": {
+                    "ich": "habe geschlafen",
+                    "du": "hast geschlafen",
+                    "er": "hat geschlafen",
+                    "es": "hat geschlafen",
+                    "sie_singular": "hat geschlafen",
+                    "xier": "hat geschlafen",
+                    "wir": "haben geschlafen",
+                    "ihr": "habt geschlafen",
+                    "sie_plural": "haben geschlafen",
+                    "Sie": "haben geschlafen"
+                }
+            },
+            "schwimmen": {
+                "present": {
+                    "ich": "schwimme",
+                    "du": "schwimmst",
+                    "er": "schwimmt",
+                    "es": "schwimmt",
+                    "sie_singular": "schwimmt",
+                    "xier": "schwimmt",
+                    "wir": "schwimmen",
+                    "ihr": "schwimmt",
+                    "sie_plural": "schwimmen",
+                    "Sie": "schwimmen"
+                },
+                "Perfekt": {
+                    "ich": "bin geschwommen",
+                    "du": "bist geschwommen",
+                    "er": "ist geschwommen",
+                    "es": "ist geschwommen",
+                    "sie_singular": "ist geschwommen",
+                    "xier": "ist geschwommen",
+                    "wir": "sind geschwommen",
+                    "ihr": "seid geschwommen",
+                    "sie_plural": "sind geschwommen",
+                    "Sie": "sind geschwommen"
+                }
+            }
+        }
+    },
+    "model_sentences": {
+        "description": "Examples from textbook (Step 4)",
+        "literal": [
+            "Bevor wir mit der Biografie der Brüder Grimm starten, beginnen wie mit Ihrer eigenen Biografie.",
+            "Beantworten Sie die folgenden Fragen in Stichpunkten (keine ganzen Sätze).",
+            "Wann und wo sind Sie geboren?",
+            "Ich bin im Jahr X in X geboren.",
+            "Wann sind Sie wo zur Schule gegangen?",
+            "Ich bin von X bis X in X in die Schule gegangen.",
+            "Sind Sie schon einmal umgezogen?",
+            "Wann und wohin?",
+            "Ich bin im Jahr X von X nach X umgezogen.",
+            "Seit wann studieren Sie an Ihrer Uni?",
+            "Ich studiere seit X an meiner Uni.",
+            "Hören Sie die Kurzbiografie von Wilhelm und Jacob Grimm und verbinden Sie Ort, Zeit und Ereignis.",
+            "1785 und 1786 1791-1796 1802-1806 1812 und 1815 1829 1859 und 1863",
+            "Es waren einmal zwei Brüder, die einst die Märchenwelt gerettet haben.",
+            "Die Brüder haben fast ihr ganzes Leben zusammen gelebt, gelernt, studiert, gewohnt und gearbeitet.",
+            "Jacob und Wilhelm Grimm sind in Hanau geboren.",
+            "Jacob im Jahr 1785 und Wilhelm im Jahr 1786.",
+            "Als Kinder haben Jacob und Wilhelm in Steinau gewohnt.",
+            "Die Familie hat dort von 1791 bis 1796 gelebt.",
+            "Von 1802 bis 1806 haben Jacob und Wilhelm in Marburg studiert.",
+            "Nach ihrem Studium haben Jacob und Wilhelm in Kassel gewohnt und gearbeitet.",
+            "Dort hat Jacob an der Deutschen Grammatik gearbeitet und die Brüder haben Märchen gesammelt.",
+            "1812 ist der erste Band der Kinder- und Hausmärchen und 1815 der zweite Band herausgekommen.",
+            "Im Jahr 1829 sind die Brüder nach Göttingen gezogen.",
+            "Sie haben dort erst in der Bibliothek und dann als Professoren gearbeitet.",
+            "Zwanzig Jahre haben die Brüder in Berlin gelebt.",
+            "Wilhelm ist dort 1859 und Jacob im Jahr 1863 gestorben.",
+            "Beantworten Sie die Fragen mit den Informationen aus Teil 2.",
+            "Wo sind Jacob und Wilhelm geboren?",
+            "Sie sind in Hanau geboren.",
+            "Wohin sind sie umgezogen, als sie Kinder waren?",
+            "Sie sind nach Steinau gezogen, als sie Kinder waren.",
+            "Wo haben sie studiert?",
+            "Sie haben in Marburg studiert.",
+            "Wohin sind Jacob und Wilhelm umgezogen?",
+            "Sie sind nach Kassel umgezogen.",
+            "Wo haben die Brüder Grimm gearbeitet?",
+            "Die Brüder Grimm haben in Göttingen gearbeitet, erst in der Bibliothek und dann als Professoren.",
+            "Was ist im Jahr 1812 und 1815 passiert?",
+            "Der erste und zweite Band der Kinder- und Hausmärchen sind herausgekommen.",
+            "Wann sind sie gestorben?",
+            "Wilhelm ist im Jahr 1859 und Jacob im Jahr 1863 gestorben.",
+            "Puzzeln Sie die Märchentitel korrekt zusammen.",
+            "Welche Märchen kennen Sie/mögen Sie/haben Sie als Kinder gelesen oder als Film gesehen?",
+            "Die Brüder Grimm haben ihre Märchen nicht selbst geschrieben.",
+            "Sie haben sie gesammelt.",
+            "Eine sehr wichtige Märchenbeiträgerin war Dorothea Viehmann.",
+            "Sehen Sie sich das Bild auf der rechten Seite an und beschreiben Sie es:",
+            "Was sehen Sie auf dem Bild?",
+            "Ich sehe eine Familie, Kinder, Hühner, Essen.",
+            "Die Menschen sitzen auf dem Stuhl oder stehen.",
+            "Ich sehe Äpfel, eine Tasse.",
+            "Sie erzählt und die Brüder hören zu.",
+            "Sie ist alt und arm.",
+            "Schauen Sie sich das Bild nochmal an.",
+            "Welcher Satz passt besser.",
+            "Die Brüder Grimm sind durch Deutschland gereist und haben bei alten Frauen Märchen gesammelt.",
+            "Die Brüder Grimm haben Märchen in ihrer Wohnung aufgeschrieben –",
+            "Bekannte, Freunde und gebildete Frauen haben sie ihnen erzählt.",
+            "Lesen Sie die Aussagen.",
+            "Dann hören Sie den Text und kreuzen Sie an, ob die Aussagen richtig (r) oder falsch (f) sind.",
+            "Die Brüder Grimm haben gesagt, dass sie die Märchen vom einfachen Volk gehört haben.",
+            "Die Brüder Grimm sind gereist und haben die Märchen gesammelt.",
+            "Die Schwestern Hassenpflug waren alt.",
+            "Dorothea Viehmann war Bäuerin.",
+            "Warum wollen wir gerne, dass es so war wie auf dem Bild?",
+            "Welchem Satz stimmen Sie zu?",
+            "Die Märchen kommen wirklich vom Volk, von einfachen Menschen.",
+            "Das sind unsere Geschichten.",
+            "Die Wirklichkeit ist oft kompliziert:",
+            "Wer erzählt?",
+            "Wer schreibt?",
+            "Das Bild ist einfach, es erzählt eine klare Geschichte.",
+            "Das mögen wir.",
+            "E in Besuch bei den Brüdern Grimm",
+            "Sie haben in Aktivität 236 gelernt, welche Städte für die Brüder Grimm wichtig waren.",
+            "Sie alle liegen an der Märchenstraße.",
+            "Ihre Gruppe bekommt eine Stadt ( Steinau, Marburg, Kassel oder Hanau ).",
+            "Recherchieren Sie auf der Webseite und beantworten Sie die Fragen:",
+            "Was kann man in der Stadt rund um die Grimms sehen und machen?",
+            "Machen Sie Notizen.",
+            "Erzählen Sie jetzt Personen aus den anderen Gruppen, was Sie herausgefunden haben.",
+            "Stellen Sie sich vor, Sie waren in der Stadt aus Teil 1.",
+            "Schreiben Sie eine kurze Textnachricht nach Hause und erzählen Sie, was Sie gesehene haben (natürlich in der Vergangenheit).",
+            "Ich habe das Museum besucht",
+            "Ich habe eine Führung gemacht.",
+            "Ich habe den Markplatz und das Schloss besucht und bin auf dem Grimm-Dich-Pfad gelaufen und mir Märchenfiguren angesehen.",
+            "Ich habe die Grimmwelt Kassel besucht und die Kinder- und Hausmärchen gelesen.",
+            "Ich habe das Grimm Festival und den Mächenweihnachtsmarkt besucht.",
+            "Ich habe die Wasserspiele gesehen.",
+            "Ich habe im Wohnwagen geschlafen.",
+            "Ich habe im Hotel Gude geschlafen.",
+            "Ich habe Fotos gemacht.",
+            "Ich habe das Brüder Grimm Denkmal gesehen.",
+            "Ich habe Museen und die Grimm Festspiele besucht.",
+            "Ich habe das Schloss gesehen.",
+            "Ich habe im Puppenmuseum Puppen gesehen.",
+            "Ich habe ein Kostüm getragen.",
+            "Ich habe im Wilhelmsbad geschwommen."
+        ],
+        "templated": []
+    },
+    "placeholder_registry": {}
+}
