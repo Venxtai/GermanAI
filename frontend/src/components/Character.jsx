@@ -14,8 +14,8 @@ export function Character(props) {
   const group = useRef();
 
   // Load Naoki model (with morph targets) + separate animations GLB
-  const { scene } = useGLTF("/models/Teacher_Naoki.glb");
-  const { animations } = useGLTF("/models/animations_Naoki.glb");
+  const { scene } = useGLTF("/models/Teacher.glb");
+  const { animations } = useGLTF("/models/animations_Teacher.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
   const [animation, setAnimation] = useState("Idle");
@@ -128,5 +128,5 @@ export function Character(props) {
   );
 }
 
-useGLTF.preload("/models/Teacher_Naoki.glb");
-useGLTF.preload("/models/animations_Naoki.glb");
+useGLTF.preload("/models/Teacher.glb");
+useGLTF.preload("/models/animations_Teacher.glb");

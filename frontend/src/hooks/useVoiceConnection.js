@@ -74,18 +74,37 @@ export function useVoiceConnection() {
   const isRecordingRef = useRef(false);   // true between startRecording() and stopRecording()
   const committedTimeoutRef = useRef(null); // safety-net if committed event never arrives
   const pendingStudentTurnIdRef = useRef(null); // id of the placeholder student row in the log
+  const pendingAILogRef = useRef(null);        // AI transcript held until after student update-turn
+  const logQueueRef = useRef(Promise.resolve()); // serializes POSTs so order is preserved
+  const systemInstructionsRef = useRef(null);     // saved so we can patch them with the student's real name
+  const studentNameRef = useRef(null);            // set once we detect the student's confirmed name
+  const pendingNameCorrectionRef = useRef(null);  // correct name to self-inject when AI used wrong name
+  const unitDataRef = useRef(null);               // unit data for current session
+  const conversationStartRef = useRef(null);      // Date.now() when session opens
+  const conversationTimerRef = useRef(null);      // setInterval that enforces min/max durations
+  const silentStudentTimerRef = useRef(null);     // setTimeout — fires if student doesn't respond
+  const exchangeCountRef = useRef(0);             // incremented on each Whisper transcript
+  const topicsDiscussedRef = useRef(new Set());   // indices of unit topics covered so far
+  const minDurationFiredRef = useRef(false);      // ensures min-duration event only fires once
+  const maxDurationFiredRef = useRef(false);      // ensures max-duration event only fires once
 
-  // postLog is stored in a ref so useCallback closures never go stale
+  // postLog is stored in a ref so useCallback closures never go stale.
+  // All calls are chained on logQueueRef so each fetch completes before the next one
+  // starts — this guarantees server-side broadcast order matches event order.
   const postLogRef = useRef(null);
   postLogRef.current = (payload) => {
-    if (!logSessionIdRef.current) return;
-    fetch('/api/log', {
+    if (!logSessionIdRef.current) return Promise.resolve();
+    return fetch('/api/log', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, sessionId: logSessionIdRef.current }),
     }).catch(() => {});
   };
-  function postLog(payload) { postLogRef.current?.(payload); }
+  function postLog(payload) {
+    logQueueRef.current = logQueueRef.current.then(
+      () => postLogRef.current?.(payload) ?? Promise.resolve()
+    );
+  }
 
   const {
     setStatus,
@@ -117,9 +136,15 @@ export function useVoiceConnection() {
           clearTimeout(committedTimeoutRef.current);
           committedTimeoutRef.current = null;
           console.log('[Realtime] input_audio_buffer.committed — waitingForResponse:', waitingForResponseRef.current);
+          // If Whisper for the PREVIOUS turn never arrived and we already have
+          // its AI response saved, flush it now before this new student placeholder
+          // so the log stays in order across rapid exchanges.
+          if (pendingAILogRef.current) {
+            postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
+            pendingAILogRef.current = null;
+          }
           // Post a placeholder student row IMMEDIATELY so it appears before
-          // the next AI response in the log. Whisper transcription arrives late
-          // (after the AI response events), so we update this row once it arrives.
+          // the next AI response in the log.
           const turnId = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
           pendingStudentTurnIdRef.current = turnId;
           postLog({ type: 'turn', role: 'student', text: '…', id: turnId, pending: true });
@@ -131,18 +156,73 @@ export function useVoiceConnection() {
           break;
         }
 
-        // Built-in Realtime transcription — update the placeholder posted above.
+        // Built-in Realtime transcription — update the placeholder, then post the
+        // AI turn that was held in pendingAILogRef. Posting them together in the
+        // serial queue guarantees student always precedes AI in the log viewer.
         case 'conversation.item.input_audio_transcription.completed': {
           const raw = event.transcript?.trim();
           const cleaned = cleanTranscript(raw);
           const turnId = pendingStudentTurnIdRef.current;
           pendingStudentTurnIdRef.current = null;
           const finalText = cleaned || '(inaudible)';
+
+          // Topic tracking — count exchanges and inject remaining-topic guidance every 4 turns
+          exchangeCountRef.current += 1;
+          if (exchangeCountRef.current % 4 === 0 && unitDataRef.current) {
+            const allTopics = unitDataRef.current.conversation_topics?.topics || [];
+            const remaining = allTopics.filter((_, i) => !topicsDiscussedRef.current.has(i));
+            if (remaining.length > 0) {
+              sendRealtimeEvent({
+                type: 'conversation.item.create',
+                item: { type: 'message', role: 'user', content: [{ type: 'input_text',
+                  text: `[SYSTEM: Topic tracking — unit topics not yet explored this session: ${remaining.join('; ')}. Weave one in naturally if the conversation allows.]` }] },
+              });
+            }
+          }
+
+          // Capture AI text now so we can compare it against the detected name below.
+          const aiText = pendingAILogRef.current;
+          pendingAILogRef.current = null;
+
+          // If the student just introduced themselves, inject their correct name
+          // into the session instructions so the AI uses it from now on.
+          // (The Realtime model's built-in ASR can mishear unusual names; Whisper
+          // is more accurate, so we trust Whisper's text here.)
+          if (!studentNameRef.current && cleaned) {
+            const nameMatch =
+              cleaned.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
+              cleaned.match(/mein name ist\s+([^\s.,!?]+)/i);
+            if (nameMatch) {
+              const name = nameMatch[1];
+              studentNameRef.current = name;
+              if (systemInstructionsRef.current) {
+                sendRealtimeEvent({
+                  type: 'session.update',
+                  session: {
+                    instructions:
+                      `CRITICAL — The student's confirmed name is "${name}". ` +
+                      `You MUST use ONLY this exact name for the rest of the session. ` +
+                      `Never use any other name.\n\n` +
+                      systemInstructionsRef.current,
+                  },
+                });
+              }
+              // If the AI's response didn't contain the correct name, queue a
+              // self-correction that fires once the current AI audio finishes.
+              if (aiText && !aiText.toLowerCase().includes(name.toLowerCase())) {
+                pendingNameCorrectionRef.current = name;
+              }
+            }
+          }
           if (turnId) {
+            // update-turn first (student finalized), then AI — both in the
+            // serial queue so order is guaranteed regardless of HTTP timing.
             postLog({ type: 'update-turn', id: turnId, text: finalText });
           } else {
-            // Fallback: no pending id (e.g. reconnected mid-session)
             postLog({ type: 'turn', role: 'student', text: finalText });
+          }
+          if (aiText) {
+            postLog({ type: 'turn', role: 'ai', text: aiText });
           }
           break;
         }
@@ -163,9 +243,20 @@ export function useVoiceConnection() {
 
         case "response.audio_transcript.done":
           finalizeAIMessage(event.transcript);
-          // Log AI turn
+          // Don't post to the log yet — hold until after the student’s Whisper
+          // transcription arrives so the chat log always shows:
+          //   STUDENT … (placeholder) → updated text
+          //   AI response
+          // Never the other way round.
           if (event.transcript?.trim()) {
-            postLog({ type: 'turn', role: 'ai', text: event.transcript.trim() });
+            pendingAILogRef.current = event.transcript.trim();
+            // Topic tracking — mark which unit topics this AI turn touched
+            const aiText = event.transcript.trim().toLowerCase();
+            const allTopics = unitDataRef.current?.conversation_topics?.topics || [];
+            allTopics.forEach((topic, i) => {
+              const keywords = topic.toLowerCase().split(/[\s,();:/]+/).filter(w => w.length > 3);
+              if (keywords.some(kw => aiText.includes(kw))) topicsDiscussedRef.current.add(i);
+            });
           }
           break;
 
@@ -176,8 +267,26 @@ export function useVoiceConnection() {
           // MAX_WAIT 30s covers long AI responses.
           (function waitForSilence() {
             clearTimeout(silenceTimerRef.current);
+            clearTimeout(silentStudentTimerRef.current); // AI is speaking — cancel any pending student-silence prompt
             const analyzer = analyzerRef.current;
-            if (!analyzer) { setStatus("idle"); return; }
+            if (!analyzer) {
+              setStatus("idle");
+              const corrName = pendingNameCorrectionRef.current;
+              if (corrName) {
+                pendingNameCorrectionRef.current = null;
+                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
+                sendRealtimeEvent({ type: 'response.create' });
+              } else {
+                // Start student-silence timer — prompt if no mic press within 15s
+                silentStudentTimerRef.current = setTimeout(() => {
+                  if (!isRecordingRef.current && !waitingForResponseRef.current) {
+                    sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
+                    sendRealtimeEvent({ type: 'response.create' });
+                  }
+                }, 15000);
+              }
+              return;
+            }
             const buf = new Uint8Array(analyzer.frequencyBinCount);
             let silentMs = 0;
             const POLL_MS = 80;
@@ -195,6 +304,21 @@ export function useVoiceConnection() {
               elapsed += POLL_MS;
               if (silentMs >= SILENT_NEEDED || elapsed >= MAX_WAIT) {
                 setStatus("idle");
+                // Name correction takes priority — fires its own response.create
+                const corrName = pendingNameCorrectionRef.current;
+                if (corrName) {
+                  pendingNameCorrectionRef.current = null;
+                  sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
+                  sendRealtimeEvent({ type: 'response.create' });
+                } else {
+                  // Start student-silence timer — prompt if no mic press within 15s
+                  silentStudentTimerRef.current = setTimeout(() => {
+                    if (!isRecordingRef.current && !waitingForResponseRef.current) {
+                      sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
+                      sendRealtimeEvent({ type: 'response.create' });
+                    }
+                  }, 15000);
+                }
               } else {
                 silenceTimerRef.current = setTimeout(poll, POLL_MS);
               }
@@ -319,6 +443,33 @@ export function useVoiceConnection() {
         // Wire up data channel events
         dc.addEventListener("open", () => {
           const systemInstructions = generateUnitInstructions(unitData);
+          systemInstructionsRef.current = systemInstructions;
+          studentNameRef.current = null;
+          unitDataRef.current = unitData;
+          exchangeCountRef.current = 0;
+          topicsDiscussedRef.current = new Set();
+          minDurationFiredRef.current = false;
+          maxDurationFiredRef.current = false;
+          conversationStartRef.current = Date.now();
+
+          // Conversation timer — enforces min/max durations defined in the system prompt
+          const MIN_MS = 3 * 60 * 1000;
+          const MAX_MS = 8 * 60 * 1000;
+          conversationTimerRef.current = setInterval(() => {
+            const elapsedMs = Date.now() - conversationStartRef.current;
+            if (!minDurationFiredRef.current && elapsedMs >= MIN_MS) {
+              minDurationFiredRef.current = true;
+              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: Minimum conversation time (3 minutes) has been reached. If the student says goodbye now, you may end the conversation warmly. Otherwise keep going naturally.]' }] } });
+            }
+            if (!maxDurationFiredRef.current && elapsedMs >= MAX_MS) {
+              maxDurationFiredRef.current = true;
+              clearInterval(conversationTimerRef.current);
+              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: Maximum conversation time (8 minutes) reached. You MUST begin the closing phase NOW. Say your closing line naturally in your very next turn.]' }] } });
+              if (!waitingForResponseRef.current && !isRecordingRef.current) {
+                sendRealtimeEvent({ type: 'response.create' });
+              }
+            }
+          }, 10000);
 
           // Start log session
           logSessionIdRef.current = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
@@ -389,12 +540,31 @@ export function useVoiceConnection() {
     postLog({ type: 'end' });
     logSessionIdRef.current = null;
 
+    clearInterval(conversationTimerRef.current);
+    conversationTimerRef.current = null;
+    clearTimeout(silentStudentTimerRef.current);
+    silentStudentTimerRef.current = null;
+    conversationStartRef.current = null;
+    unitDataRef.current = null;
+    exchangeCountRef.current = 0;
+    topicsDiscussedRef.current = new Set();
+    minDurationFiredRef.current = false;
+    maxDurationFiredRef.current = false;
     clearTimeout(inaudibleTimerRef.current);
     clearTimeout(committedTimeoutRef.current);
     committedTimeoutRef.current = null;
     isRecordingRef.current = false;
     waitingForResponseRef.current = false;
     pendingStudentTurnIdRef.current = null;
+    // Flush any AI log entry that was held waiting for Whisper
+    if (pendingAILogRef.current) {
+      postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
+      pendingAILogRef.current = null;
+    }
+    logQueueRef.current = Promise.resolve(); // reset queue for next session
+    studentNameRef.current = null;
+    systemInstructionsRef.current = null;
+    pendingNameCorrectionRef.current = null;
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop();
     }
@@ -424,6 +594,7 @@ export function useVoiceConnection() {
     const track = microphoneTrackRef.current;
     if (!track) { console.warn('[Recording] startRecording: no mic track'); return; }
     isRecordingRef.current = true;
+    clearTimeout(silentStudentTimerRef.current); // student pressed the mic — cancel silence prompt
     // Discard everything that accumulated in the buffer between turns.
     // The track is always enabled, so the buffer constantly fills with live audio.
     // clearing here means we only commit what the student says THIS press.
