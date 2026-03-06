@@ -88,6 +88,8 @@ export function useVoiceConnection() {
   const topicsDiscussedRef = useRef(new Set());   // indices of unit topics covered so far
   const minDurationFiredRef = useRef(false);      // ensures min-duration event only fires once
   const maxDurationFiredRef = useRef(false);      // ensures max-duration event only fires once
+  const pendingEndAfterTurnRef = useRef(false);   // auto-end after current AI turn finishes speaking
+  const endConversationRef = useRef(null);        // ref to endConversation — avoids stale closures in callbacks
 
   // postLog is stored in a ref so useCallback closures never go stale.
   // All calls are chained on logQueueRef so each fetch completes before the next one
@@ -168,6 +170,21 @@ export function useVoiceConnection() {
           pendingStudentTurnIdRef.current = null;
           const finalText = cleaned || '(inaudible)';
           if (cleaned) studentUtterancesRef.current.push(cleaned); // for post-session feedback
+
+          // Farewell detection (spec 2.7) — check if student is saying goodbye
+          if (cleaned) {
+            const isFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|goodbye|auf wiederschauen|macht's gut|bis dann|bis später)\b/i.test(cleaned);
+            if (isFarewell) {
+              if (minDurationFiredRef.current) {
+                // Min duration reached — allow the AI to say goodbye, then auto-end
+                pendingEndAfterTurnRef.current = true;
+                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student said goodbye and the minimum conversation time has been reached. Say your natural closing farewell NOW in one sentence, then the session will end automatically.]' }] } });
+              } else {
+                // Too early — AI must decline and continue
+                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student tried to say goodbye but the minimum conversation time has NOT been reached. You MUST respond with the early-goodbye response (e.g. "Schon? Wir können noch ein bisschen reden!") and then continue the conversation.]' }] } });
+              }
+            }
+          }
 
           // Topic tracking — count exchanges and inject remaining-topic guidance every 4 turns
           exchangeCountRef.current += 1;
@@ -274,6 +291,11 @@ export function useVoiceConnection() {
             const analyzer = analyzerRef.current;
             if (!analyzer) {
               setStatus("idle");
+              if (pendingEndAfterTurnRef.current) {
+                pendingEndAfterTurnRef.current = false;
+                endConversationRef.current?.();
+                return;
+              }
               const corrName = pendingNameCorrectionRef.current;
               if (corrName) {
                 pendingNameCorrectionRef.current = null;
@@ -307,6 +329,11 @@ export function useVoiceConnection() {
               elapsed += POLL_MS;
               if (silentMs >= SILENT_NEEDED || elapsed >= MAX_WAIT) {
                 setStatus("idle");
+                if (pendingEndAfterTurnRef.current) {
+                  pendingEndAfterTurnRef.current = false;
+                  endConversationRef.current?.();
+                  return;
+                }
                 // Name correction takes priority — fires its own response.create
                 const corrName = pendingNameCorrectionRef.current;
                 if (corrName) {
@@ -467,6 +494,7 @@ export function useVoiceConnection() {
             if (!maxDurationFiredRef.current && elapsedMs >= MAX_MS) {
               maxDurationFiredRef.current = true;
               clearInterval(conversationTimerRef.current);
+              pendingEndAfterTurnRef.current = true; // auto-end after AI delivers closing line
               sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: Maximum conversation time (8 minutes) reached. You MUST begin the closing phase NOW. Say your closing line naturally in your very next turn.]' }] } });
               if (!waitingForResponseRef.current && !isRecordingRef.current) {
                 sendRealtimeEvent({ type: 'response.create' });
@@ -539,6 +567,7 @@ export function useVoiceConnection() {
   );
 
   const endConversation = useCallback(() => {
+    pendingEndAfterTurnRef.current = false; // clear in case end was triggered manually
     // Snapshot session data for feedback BEFORE any refs are cleared
     const utterancesSnapshot = [...studentUtterancesRef.current];
     const sessionDurationMs = conversationStartRef.current ? Date.now() - conversationStartRef.current : 0;
@@ -612,6 +641,8 @@ export function useVoiceConnection() {
     }
     clearMessages();
   }, [setSessionActive, setStatus, clearMessages, setAnalyzerNode, setFeedback]);
+  // Keep ref in sync so handleRealtimeEvent closure can call it without going stale
+  endConversationRef.current = endConversation;
 
   const startRecording = useCallback(() => {
     const track = microphoneTrackRef.current;
