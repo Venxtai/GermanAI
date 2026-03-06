@@ -719,6 +719,62 @@ setInterval(() => {
   }
 }, 60 * 60 * 1000);
 
+/**
+ * Route: Feedback Generator (Component 8)
+ * Analyzes student utterances against communicative goals from all loaded units
+ * up to the current one and returns English-language feedback sentences.
+ */
+app.post('/api/feedback', async (req, res) => {
+  try {
+    const { utterances = [], unit = 1, sessionDurationMs = 0 } = req.body;
+    const MIN_THRESHOLD_MS = 0.6 * 3 * 60 * 1000; // 60% of 3-min minimum = 108 s
+    if (sessionDurationMs < MIN_THRESHOLD_MS) {
+      return res.json({ fallback: true });
+    }
+
+    // Collect goals from units 1..unit, most recent first (higher-unit goals prioritized)
+    const goalsByUnit = [];
+    for (let u = Number(unit); u >= 1; u--) {
+      const ud = unitMap[String(u)];
+      const goals = ud?.communicative_functions?.goals || [];
+      if (goals.length > 0) goalsByUnit.push({ unit: u, goals });
+    }
+
+    if (goalsByUnit.length === 0 || utterances.length === 0) {
+      return res.json({ fallback: true });
+    }
+
+    const goalsText = goalsByUnit
+      .map(({ unit: u, goals }) => `Unit ${u}: ${goals.join('; ')}`)
+      .join('\n');
+    const utterancesText = utterances.filter(Boolean).join('\n');
+
+    const prompt =
+`You are evaluating a German language student's spoken conversation.\nThe student is at Unit ${unit}. Communicative goals from Units 1\u2013${unit} (most recent first):\n${goalsText}\n\nStudent utterances from this session:\n${utterancesText}\n\nIdentify 2\u20138 communicative goals the student clearly demonstrated. Prioritize goals from higher-numbered (more recent) units. Translate each matched goal into an English phrase.\nRespond ONLY with a valid JSON object:\n{ "items": ["You were able to ...", "You were able to ..."] }`;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.2,
+      max_tokens: 400,
+    });
+
+    let items = [];
+    try {
+      const parsed = JSON.parse(completion.choices[0].message.content);
+      items = Array.isArray(parsed.items) ? parsed.items : [];
+    } catch {
+      const m = completion.choices[0].message.content.match(/\[[\s\S]*?\]/);
+      if (m) items = JSON.parse(m[0]);
+    }
+    items = items.filter(s => typeof s === 'string' && s.trim()).slice(0, 8);
+    res.json({ items });
+  } catch (err) {
+    console.error('[Feedback] Error:', err.message);
+    res.json({ fallback: true });
+  }
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

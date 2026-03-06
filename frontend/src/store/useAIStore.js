@@ -16,10 +16,12 @@ const useAIStore = create((set, get) => ({
 
   // Mic error feedback
   micError: null,
+  feedback: null,   // null | 'loading' | { items: string[] } | { fallback: true }
 
   // Actions
   setStatus: (status) => set({ status }),
   setMicError: (err) => set({ micError: err }),
+  setFeedback: (fb) => set({ feedback: fb }),
   setCurrentUnit: (unit) => set({ currentUnit: unit }),
   setSessionActive: (active) => set({ isSessionActive: active }),
 

@@ -79,6 +79,7 @@ export function useVoiceConnection() {
   const systemInstructionsRef = useRef(null);     // saved so we can patch them with the student's real name
   const studentNameRef = useRef(null);            // set once we detect the student's confirmed name
   const pendingNameCorrectionRef = useRef(null);  // correct name to self-inject when AI used wrong name
+  const studentUtterancesRef = useRef([]);         // all Whisper transcripts this session (for feedback)
   const unitDataRef = useRef(null);               // unit data for current session
   const conversationStartRef = useRef(null);      // Date.now() when session opens
   const conversationTimerRef = useRef(null);      // setInterval that enforces min/max durations
@@ -117,6 +118,7 @@ export function useVoiceConnection() {
     currentUnit,
     setAnalyzerNode,
     setMicError,
+    setFeedback,
   } = useAIStore();
 
   const sendRealtimeEvent = useCallback((event) => {
@@ -165,6 +167,7 @@ export function useVoiceConnection() {
           const turnId = pendingStudentTurnIdRef.current;
           pendingStudentTurnIdRef.current = null;
           const finalText = cleaned || '(inaudible)';
+          if (cleaned) studentUtterancesRef.current.push(cleaned); // for post-session feedback
 
           // Topic tracking — count exchanges and inject remaining-topic guidance every 4 turns
           exchangeCountRef.current += 1;
@@ -536,6 +539,13 @@ export function useVoiceConnection() {
   );
 
   const endConversation = useCallback(() => {
+    // Snapshot session data for feedback BEFORE any refs are cleared
+    const utterancesSnapshot = [...studentUtterancesRef.current];
+    const sessionDurationMs = conversationStartRef.current ? Date.now() - conversationStartRef.current : 0;
+    const unitNumber = unitDataRef.current?.unit ?? null;
+    studentUtterancesRef.current = [];
+    setFeedback('loading');
+
     // Log session end
     postLog({ type: 'end' });
     logSessionIdRef.current = null;
@@ -587,8 +597,21 @@ export function useVoiceConnection() {
     setAnalyzerNode(null);
     setSessionActive(false);
     setStatus("idle");
+    // Async: backend feedback generator; result updates the store when ready
+    if (unitNumber && utterancesSnapshot.length > 0) {
+      fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs }),
+      })
+        .then(r => r.json())
+        .then(data => setFeedback(data))
+        .catch(() => setFeedback({ fallback: true }));
+    } else {
+      setFeedback({ fallback: true });
+    }
     clearMessages();
-  }, [setSessionActive, setStatus, clearMessages, setAnalyzerNode]);
+  }, [setSessionActive, setStatus, clearMessages, setAnalyzerNode, setFeedback]);
 
   const startRecording = useCallback(() => {
     const track = microphoneTrackRef.current;

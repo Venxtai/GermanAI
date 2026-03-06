@@ -53,7 +53,7 @@ export function UI() {
   const holdTimerRef = useRef(null);
   const isHoldingRef = useRef(false);
 
-  const { status, isSessionActive, micError, setMicError } = useAIStore();
+  const { status, isSessionActive, micError, setMicError, feedback, setFeedback } = useAIStore();
 
   // Auto-dismiss mic error after 4 seconds
   useEffect(() => {
@@ -68,12 +68,8 @@ export function UI() {
   const wasSessionActiveRef = useRef(false);
   useEffect(() => {
     if (wasSessionActiveRef.current && !isSessionActive) {
-      // Session just ended — go back to book picker
-      setScreen("book");
-      setSelectedBook(null);
-      setSelectedChapter(null);
-      setUnits([]);
-      setPendingUnit(null);
+      // Session just ended — show feedback screen; Done button handles returning to book picker
+      setScreen("feedback");
     }
     wasSessionActiveRef.current = isSessionActive;
   }, [isSessionActive]);
@@ -117,6 +113,15 @@ export function UI() {
       setError("Failed to connect. Is the server running?");
       setScreen("unit");
     }
+  };
+
+  const handleFeedbackDone = () => {
+    setFeedback(null);
+    setScreen("book");
+    setSelectedBook(null);
+    setSelectedChapter(null);
+    setUnits([]);
+    setPendingUnit(null);
   };
 
   const handlePointerDown = () => {
@@ -298,6 +303,62 @@ export function UI() {
                 </svg>
                 Start Conversation
               </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Feedback screen ── */}
+      <AnimatePresence>
+        {screen === "feedback" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ paddingLeft: "50%" }}
+            className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+          >
+            <div className="bg-black/70 backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5">
+              <h2 className="text-white text-xl font-bold">Session Complete 🎉</h2>
+
+              {feedback === 'loading' && (
+                <div className="flex items-center gap-3 text-white/60 text-sm">
+                  <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                  </svg>
+                  Generating your feedback…
+                </div>
+              )}
+
+              {feedback?.fallback && (
+                <p className="text-white/70 text-sm">
+                  The conversation was a bit short this time. Try a longer session to get detailed feedback on what you practiced!
+                </p>
+              )}
+
+              {feedback?.items?.length > 0 && (
+                <>
+                  <p className="text-white/70 text-sm">Here's what you practiced today:</p>
+                  <ul className="flex flex-col gap-2">
+                    {feedback.items.map((item, i) => (
+                      <li key={i} className="flex gap-2 text-white/90 text-sm">
+                        <span className="text-green-400 shrink-0">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {feedback !== 'loading' && (
+                <button
+                  onClick={handleFeedbackDone}
+                  className="mt-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition-colors"
+                >
+                  Done
+                </button>
+              )}
             </div>
           </motion.div>
         )}
