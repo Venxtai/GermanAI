@@ -87,6 +87,11 @@ The application uses OpenAI's API (GPT-4o Realtime) to power the AI conversation
    ```
    cd VoiceModel
    ```
+5. Switch to your dedicated branch:
+   ```
+   git checkout ProfBranch
+   ```
+   You should see: `Switched to branch 'ProfBranch'`. All your changes will stay on this branch, separate from the main codebase.
 
 ---
 
@@ -226,6 +231,28 @@ Quick summary for next time:
 2. Open Terminal 1: `node server/server.js`
 3. Open Terminal 2: `cd frontend` then `npm run dev`
 4. Open browser to `http://localhost:5173`
+
+### Saving your changes back to GitHub
+
+After editing files (e.g. the system prompt), you can save your work to `ProfBranch` so it isn't lost:
+
+1. Open a terminal in VS Code (**Terminal → New Terminal**)
+2. Check what you changed:
+   ```
+   git status
+   ```
+3. Stage all changes:
+   ```
+   git add .
+   ```
+4. Commit with a short description of what you did:
+   ```
+   git commit -m "Adjusted system prompt rules"
+   ```
+5. Push to GitHub:
+   ```
+   git push origin ProfBranch
+   ```
 
 ---
 
