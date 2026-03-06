@@ -97,6 +97,9 @@ export function UI() {
     setError(null);
     try {
       const fullUnit = await fetch(`/api/units/${unitInfo.unit}`).then((r) => r.json());
+      // Attach book/chapter so startConversation can request the right persona
+      fullUnit._book = selectedBook?.id || 'ID1';
+      fullUnit._chapter = selectedChapter?.chapter || 1;
       setPendingUnit(fullUnit);
       setScreen("welcome");
     } catch {

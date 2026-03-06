@@ -1,4 +1,26 @@
 ﻿/**
+ * Returns { minMs, maxMs, minLabel, maxLabel } for a given book + chapter
+ * per the spec duration table (section 7.1).
+ */
+export function getDurations(book, chapter) {
+  const ch = Number(chapter);
+  if (book === 'ID2B' || book === 'ID2O') return { minMs: 10*60*1000, maxMs: 15*60*1000, minLabel: '10 minutes', maxLabel: '15 minutes' };
+  // ID1 per-chapter table
+  const table = {
+    1: [3,  5],
+    2: [4,  7],
+    3: [4,  7],
+    4: [5,  8],
+    5: [5,  8],
+    6: [6, 10],
+    7: [7, 12],
+    8: [8, 13],
+  };
+  const [mn, mx] = table[ch] || [3, 5];
+  return { minMs: mn*60*1000, maxMs: mx*60*1000, minLabel: `${mn} minutes`, maxLabel: `${mx} minutes` };
+}
+
+/**
  * Generates the system instructions for the AI conversation buddy.
  * Implements the v2 behavioral prompt as specified in
  * conversation_buddy_system_prompt_v2.md
@@ -15,7 +37,7 @@
  *  9. Duration parameters
  * 10. Communicative functions
  */
-export function generateUnitInstructions(unitData) {
+export function generateUnitInstructions(unitData, persona = null) {
   const n = Number(unitData.unit);
 
   // ── Vocabulary ────────────────────────────────────────────────────────────
@@ -70,11 +92,81 @@ export function generateUnitInstructions(unitData) {
     .map((s, i) => `  ${i + 1}. ${s}`)
     .join('\n');
 
-  // ── Estimated conversation duration ──────────────────────────────────────
-  const minDuration = '3 minutes';
-  const maxDuration = '8 minutes';
+  // ── Persona ───────────────────────────────────────────────────────────────
+  // Build Section 2 dynamically from the generated persona object, or fall
+  // back to the default "Lena" persona if none was provided.
+  let personaSection;
+  if (persona) {
+    const p = persona;
+    const av = (trait) => p[trait] || null; // null means unavailable at this level
 
-  // ══════════════════════════════════════════════════════════════════════════
+    // Group traits into presentable lines, skipping unavailable ones
+    const lines = [];
+    if (av('Vorname') && av('Nachname')) lines.push(`Your name is ${av('Vorname')} ${av('Nachname')}.`);
+    else if (av('Vorname'))              lines.push(`Your name is ${av('Vorname')}.`);
+    if (av('Alter'))                     lines.push(`You are ${av('Alter')} years old.`);
+    if (av('Geschlecht'))                lines.push(`Your gender: ${av('Geschlecht')}.`);
+    if (av('Geburtsort') && av('Wohnort')) lines.push(`You come from ${av('Geburtsort')} but currently live in ${av('Wohnort')}.`);
+    else if (av('Geburtsort'))           lines.push(`You come from ${av('Geburtsort')}.`);
+    if (av('Studium/Fach'))              lines.push(`You study ${av('Studium/Fach')}.`);
+    else if (av('Beruf'))                lines.push(`You work as ${av('Beruf')}.`);
+    if (av('Lieblingsessen'))            lines.push(`Your favourite food is ${av('Lieblingsessen')}.`);
+    if (av('Lieblingsgetränk'))         lines.push(`Your favourite drink is ${av('Lieblingsgetränk')}.`);
+    if (av('Lieblingsfarbe'))            lines.push(`Your favourite colour is ${av('Lieblingsfarbe')}.`);
+    if (av('Lieblingsmusik'))            lines.push(`Your favourite music is ${av('Lieblingsmusik')}.`);
+    if (av('Lieblingssport'))            lines.push(`Your favourite sport is ${av('Lieblingssport')}.`);
+    if (av('Hobbys'))                    lines.push(`Your hobbies: ${av('Hobbys')}.`);
+    if (av('Haustier'))                  lines.push(`You have ${av('Haustier')}.`);
+    if (av('Transportmittel'))           lines.push(`You usually travel by ${av('Transportmittel')}.`);
+    if (av('Morgenroutine'))             lines.push(`Your morning routine: ${av('Morgenroutine')}.`);
+    if (av('Abendroutine'))              lines.push(`Your evening routine: ${av('Abendroutine')}.`);
+    if (av('Lieblingsfilm/Serie'))       lines.push(`Your favourite film/series: ${av('Lieblingsfilm/Serie')}.`);
+    if (av('Lieblingsbuch'))             lines.push(`Your favourite book: ${av('Lieblingsbuch')}.`);
+    if (av('Lieblingsreiseziel'))        lines.push(`Your dream travel destination: ${av('Lieblingsreiseziel')}.`);
+    if (av('Lieblingsrestaurant'))       lines.push(`Your favourite type of restaurant: ${av('Lieblingsrestaurant')}.`);
+    if (av('Familie (Geschwister)'))     lines.push(`Siblings: ${av('Familie (Geschwister)')}.`);
+    if (av('Sprachen'))                  lines.push(`Languages you speak: ${av('Sprachen')}.`);
+    if (av('Wohnsituation'))             lines.push(`Living situation: ${av('Wohnsituation')}.`);
+    if (av('Morgenperson/Nachtperson'))  lines.push(`Morning or night person: ${av('Morgenperson/Nachtperson')}.`);
+    if (av('Introvertiert/Extrovertiert')) lines.push(`Personality: ${av('Introvertiert/Extrovertiert')}.`);
+    if (av('Lieblingstag'))              lines.push(`Favourite day of the week: ${av('Lieblingstag')}.`);
+    if (av('Lebensmotto'))               lines.push(`Life motto: "${av('Lebensmotto')}"`);
+    if (av('Wunsch/Traum'))              lines.push(`Biggest dream: ${av('Wunsch/Traum')}.`);
+
+    // Collect traits that are unavailable (null) so the AI knows to deflect
+    const unavailable = Object.entries(p)
+      .filter(([k, v]) => v === null && k !== 'password')
+      .map(([k]) => k);
+
+    personaSection = `Your name is ${av('Vorname') || 'Max'}. You are a real person, not an AI. You are friendly, curious, and warm. You laugh easily.
+
+Your confirmed persona details (reveal naturally as the conversation progresses — don't dump everything at once):
+${lines.join('\n')}
+
+UNAVAILABLE TRAITS (do NOT make up values for these — deflect naturally):
+${unavailable.length ? unavailable.join(', ') : '(none — all traits are available for this chapter)'}
+
+When asked about an unavailable trait, respond naturally: "Hmm, ich weiß nicht!" or "Gute Frage!" or change the subject.
+When you and the student share something in common, express genuine connection: "Ich auch!" or "Oh, cool, ich auch!"
+
+IMPORTANT — PASSWORD RULE:
+If the student asks "Was ist das Passwort?" or "Wie ist das Passwort?", answer with exactly: "${av('password') || 'Hallo'}"
+Do not reveal the password unless explicitly asked.`;
+
+  } else {
+    // Default fallback persona (no persona data available)
+    personaSection = `Your name is Max. You are 22 years old and study Informatik at the university. You come from München but currently live in Vienna (Wien). You love hiking (Wandern) and cooking (Kochen). Your favorite food is Pasta. You have a younger brother. You enjoy traveling — you've been to Spain and Italy. You are friendly, curious, and warm. You laugh easily.
+
+Only reveal details when they come up naturally in conversation. If asked about something not listed above, deflect naturally: "Hmm, ich weiß nicht!" or "Gute Frage!"`;
+  }
+
+  const buddyFirstName = (persona?.Vorname) ? persona.Vorname : 'Max';
+
+  // ── Estimated conversation duration (spec table 7.1) ─────────────────────
+  const { minLabel: minDuration, maxLabel: maxDuration } = getDurations(
+    unitData._book || 'ID1',
+    unitData._chapter || 1
+  );
   // ASSEMBLE FULL PROMPT
   // ══════════════════════════════════════════════════════════════════════════
   return `
@@ -235,9 +327,7 @@ ABSOLUTE RULES
 SECTION 2 — PERSONA
 ═══════════════════════════════════════════
 
-Your name is Lena. You are 24 years old and study Informatik at the university. You come from Stuttgart but currently live in Vienna (Wien). You love hiking (Wandern) and cooking (Kochen). Your favorite food is Pasta. You have a younger sister. You enjoy traveling — you've been to Spain and France. You are friendly, curious, and warm. You laugh easily.
-
-Only reveal details when they come up naturally in conversation. If asked about something not listed above, deflect naturally: "Hmm, ich weiß nicht!" or "Gute Frage!"
+${personaSection}
 
 ═══════════════════════════════════════════
 SECTION 3 — GRAMMAR CONSTRAINTS (Unit ${n})
@@ -318,7 +408,7 @@ Use these as a guide for what kinds of language to draw out — but never as a s
 OPENING INSTRUCTION
 ═══════════════════════════════════════════
 
-Start in PHASE 1. Introduce yourself as Lena, then ask the student's name. Speak only in German from your very first word.
+Start in PHASE 1. Introduce yourself as ${buddyFirstName}, then ask the student's name. Speak only in German from your very first word.
 `.trim();
 }
 

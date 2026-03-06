@@ -7,6 +7,22 @@ const OpenAI = require('openai');
 const fs = require('fs');
 const https = require('https');
 
+// Load persona database
+let personaDatabase = {};
+try {
+  const personaPath = path.join(__dirname, './personaDatabase.json');
+  if (fs.existsSync(personaPath)) {
+    const raw = JSON.parse(fs.readFileSync(personaPath, 'utf8'));
+    // Strip the _comment meta key
+    Object.entries(raw).forEach(([k, v]) => {
+      if (!k.startsWith('_')) personaDatabase[k] = v;
+    });
+    console.log(`Persona database loaded: ${Object.keys(personaDatabase).length} chapters`);
+  }
+} catch (e) {
+  console.warn('Persona database not found or invalid:', e.message);
+}
+
 // Load environment variables
 dotenv.config();
 
@@ -720,14 +736,58 @@ setInterval(() => {
 }, 60 * 60 * 1000);
 
 /**
+ * Route: Persona Generator
+ * Maps a unit number to its chapter key, then randomly selects one of the
+ * 5 options for each of the 31 traits.  Traits with value "-" are marked
+ * unavailable so the AI can deflect naturally.
+ *
+ * body: { book: "ID1"|"ID2B"|"ID2O", chapter: <number> }
+ * returns: { chapterKey, persona: { [trait]: string|null } }
+ */
+
+/** Map (book, chapter) → persona database key */
+function getPersonaChapterKey(book, chapter) {
+  if (book === 'ID1')  return `ID1_Ch${chapter}`;
+  if (book === 'ID2B') return `ID2B_Ch${chapter}`;
+  if (book === 'ID2O') return `ID2O_Ch${chapter}`;
+  return null;
+}
+
+app.post('/api/persona', (req, res) => {
+  const { book = 'ID1', chapter = 1 } = req.body;
+  const chapterKey = getPersonaChapterKey(book, chapter);
+
+  if (!chapterKey || !personaDatabase[chapterKey]) {
+    // Fallback to the richest available chapter (ID1_Ch8) when chapter not yet in DB.
+    // This silently degrades rather than erroring.
+    const fallbackKey = 'ID1_Ch8';
+    const fallbackTraits = personaDatabase[fallbackKey];
+    if (!fallbackTraits) return res.status(404).json({ error: 'Persona database empty' });
+    return res.json({ chapterKey: fallbackKey, persona: buildPersona(fallbackTraits) });
+  }
+
+  const traits = personaDatabase[chapterKey];
+  res.json({ chapterKey, persona: buildPersona(traits) });
+});
+
+function buildPersona(traits) {
+  const persona = {};
+  for (const [trait, options] of Object.entries(traits)) {
+    const pick = options[Math.floor(Math.random() * options.length)];
+    persona[trait] = pick === '-' ? null : pick;
+  }
+  return persona;
+}
+
+/**
  * Route: Feedback Generator (Component 8)
  * Analyzes student utterances against communicative goals from all loaded units
  * up to the current one and returns English-language feedback sentences.
  */
 app.post('/api/feedback', async (req, res) => {
   try {
-    const { utterances = [], unit = 1, sessionDurationMs = 0 } = req.body;
-    const MIN_THRESHOLD_MS = 0.6 * 3 * 60 * 1000; // 60% of 3-min minimum = 108 s
+    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000 } = req.body;
+    const MIN_THRESHOLD_MS = 0.6 * minDurationMs; // 60% of chapter minimum duration
     if (sessionDurationMs < MIN_THRESHOLD_MS) {
       return res.json({ fallback: true });
     }

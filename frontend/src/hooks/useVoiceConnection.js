@@ -1,6 +1,6 @@
 import { useRef, useCallback } from "react";
 import useAIStore from "../store/useAIStore";
-import { generateUnitInstructions } from "../utils/systemInstructions";
+import { generateUnitInstructions, getDurations } from "../utils/systemInstructions";
 
 // Known hallucination phrases — stripped from every student transcript
 const WHISPER_HALLUCINATIONS = [
@@ -308,7 +308,7 @@ export function useVoiceConnection() {
                     sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
                     sendRealtimeEvent({ type: 'response.create' });
                   }
-                }, 15000);
+                }, 60000);
               }
               return;
             }
@@ -347,7 +347,7 @@ export function useVoiceConnection() {
                       sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
                       sendRealtimeEvent({ type: 'response.create' });
                     }
-                  }, 15000);
+                  }, 60000);
                 }
               } else {
                 silenceTimerRef.current = setTimeout(poll, POLL_MS);
@@ -471,8 +471,26 @@ export function useVoiceConnection() {
         });
 
         // Wire up data channel events
-        dc.addEventListener("open", () => {
-          const systemInstructions = generateUnitInstructions(unitData);
+        dc.addEventListener("open", async () => {
+          // Fetch a freshly-generated persona for this chapter before building instructions
+          let persona = null;
+          try {
+            const book = unitData._book || 'ID1';
+            const chapter = unitData._chapter || 1;
+            const pr = await fetch('/api/persona', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ book, chapter }),
+            });
+            if (pr.ok) {
+              const pd = await pr.json();
+              persona = pd.persona || null;
+            }
+          } catch (e) {
+            console.warn('[Persona] Failed to fetch persona, using default:', e.message);
+          }
+
+          const systemInstructions = generateUnitInstructions(unitData, persona);
           systemInstructionsRef.current = systemInstructions;
           studentNameRef.current = null;
           unitDataRef.current = unitData;
@@ -483,8 +501,10 @@ export function useVoiceConnection() {
           conversationStartRef.current = Date.now();
 
           // Conversation timer — enforces min/max durations defined in the system prompt
-          const MIN_MS = 3 * 60 * 1000;
-          const MAX_MS = 8 * 60 * 1000;
+          const { minMs: MIN_MS, maxMs: MAX_MS } = getDurations(
+            unitData._book || 'ID1',
+            unitData._chapter || 1
+          );
           conversationTimerRef.current = setInterval(() => {
             const elapsedMs = Date.now() - conversationStartRef.current;
             if (!minDurationFiredRef.current && elapsedMs >= MIN_MS) {
@@ -572,6 +592,7 @@ export function useVoiceConnection() {
     const utterancesSnapshot = [...studentUtterancesRef.current];
     const sessionDurationMs = conversationStartRef.current ? Date.now() - conversationStartRef.current : 0;
     const unitNumber = unitDataRef.current?.unit ?? null;
+    const { minMs: minDurationMs } = getDurations(unitDataRef.current?._book || 'ID1', unitDataRef.current?._chapter || 1);
     studentUtterancesRef.current = [];
     setFeedback('loading');
 
@@ -631,7 +652,7 @@ export function useVoiceConnection() {
       fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs }),
+        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs }),
       })
         .then(r => r.json())
         .then(data => setFeedback(data))
