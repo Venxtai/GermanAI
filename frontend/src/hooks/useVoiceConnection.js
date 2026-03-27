@@ -388,13 +388,13 @@ export function useVoiceConnection() {
                 sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
                 sendRealtimeEvent({ type: 'response.create' });
               } else {
-                // Start student-silence timer — prompt if no mic press within 15s
+                // Start student-silence timer — prompt if no mic press within 30s
                 silentStudentTimerRef.current = setTimeout(() => {
                   if (!isRecordingRef.current && !waitingForResponseRef.current) {
                     sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
                     sendRealtimeEvent({ type: 'response.create' });
                   }
-                }, 60000);
+                }, 30000);
               }
               return;
             }
@@ -427,13 +427,13 @@ export function useVoiceConnection() {
                   sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
                   sendRealtimeEvent({ type: 'response.create' });
                 } else {
-                  // Start student-silence timer — prompt if no mic press within 15s
+                  // Start student-silence timer — prompt if no mic press within 30s
                   silentStudentTimerRef.current = setTimeout(() => {
                     if (!isRecordingRef.current && !waitingForResponseRef.current) {
                       sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
                       sendRealtimeEvent({ type: 'response.create' });
                     }
-                  }, 60000);
+                  }, 30000);
                 }
               } else {
                 silenceTimerRef.current = setTimeout(poll, POLL_MS);
