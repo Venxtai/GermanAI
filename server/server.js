@@ -841,6 +841,32 @@ function buildPersona(traits) {
 }
 
 /**
+ * Route: Student audio transcription via Whisper
+ * Receives a WebM audio blob from the frontend MediaRecorder and returns the transcript.
+ */
+app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No audio file' });
+  // Multer saves the temp file without an extension; Whisper/gpt-4o-transcribe
+  // uses the filename to detect format, so rename to add .webm before uploading.
+  const renamedPath = req.file.path + '.webm';
+  try {
+    fs.renameSync(req.file.path, renamedPath);
+    const transcription = await openai.audio.transcriptions.create({
+      file: fs.createReadStream(renamedPath),
+      model: 'gpt-4o-transcribe',
+      language: 'de',
+    });
+    res.json({ text: transcription.text || '' });
+  } catch (err) {
+    console.error('[Transcribe] Error:', err.message);
+    res.json({ text: '' });
+  } finally {
+    if (fs.existsSync(renamedPath)) fs.unlink(renamedPath, () => {});
+    else if (fs.existsSync(req.file.path)) fs.unlink(req.file.path, () => {});
+  }
+});
+
+/**
  * Route: Feedback Generator (Component 8)
  * Analyzes student utterances against communicative goals from all loaded units
  * up to the current one and returns English-language feedback sentences.

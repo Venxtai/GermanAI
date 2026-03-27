@@ -94,6 +94,7 @@ export function useVoiceConnection() {
   const managerRef = useRef(null);                // ConversationManager instance for this session
   const typedNameRef = useRef(null);              // name entered on the welcome screen
   const nameConfirmationPendingRef = useRef(null); // {typed, spoken} when typed≠spoken, awaiting student confirmation
+  const transcriptDoneForTurnRef = useRef(null); // turnId that's been transcribed — coordinates own Whisper vs built-in
 
   // postLog is stored in a ref so useCallback closures never go stale.
   // All calls are chained on logQueueRef so each fetch completes before the next one
@@ -161,12 +162,39 @@ export function useVoiceConnection() {
             console.log('[Realtime] Sending response.create');
             sendRealtimeEvent({ type: 'response.create' });
           }
+          // Own Whisper transcription — primary fallback since built-in event is unreliable in WebRTC mode
+          {
+            const localTurnId = turnId;
+            const chunks = audioChunksRef.current.splice(0); // capture and clear atomically
+            console.log('[Whisper] committed — chunks captured:', chunks.length, chunks.map(c => c.size + 'B').join(', '));
+            if (chunks.length > 0) {
+              const blob = new Blob(chunks, { type: chunks[0]?.type || 'audio/webm' });
+              console.log('[Whisper] sending blob to /api/transcribe, size:', blob.size, 'type:', blob.type);
+              const fd = new FormData();
+              fd.append('audio', blob, 'audio.webm');
+              fetch('/api/transcribe', { method: 'POST', body: fd })
+                .then(r => { console.log('[Whisper] HTTP status:', r.status); return r.json(); })
+                .then(({ text }) => {
+                  console.log('[Whisper] response text:', JSON.stringify(text));
+                  if (!text?.trim()) return;
+                  if (transcriptDoneForTurnRef.current === localTurnId) return; // built-in already handled this turn
+                  transcriptDoneForTurnRef.current = localTurnId;
+                  const cleaned = cleanTranscript(text.trim()) || '(inaudible)';
+                  if (cleaned !== '(inaudible)') studentUtterancesRef.current.push(cleaned);
+                  postLog({ type: 'update-turn', id: localTurnId, text: cleaned });
+                  if (pendingAILogRef.current) {
+                    postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
+                    pendingAILogRef.current = null;
+                  }
+                })
+                .catch(err => console.error('[Whisper] fetch error:', err));
+            } else {
+              console.warn('[Whisper] no chunks — MediaRecorder did not capture audio');
+            }
+          }
           break;
         }
 
-        // Built-in Realtime transcription — update the placeholder, then post the
-        // AI turn that was held in pendingAILogRef. Posting them together in the
-        // serial queue guarantees student always precedes AI in the log viewer.
         case 'conversation.item.input_audio_transcription.completed': {
           const raw = event.transcript?.trim();
           const cleaned = cleanTranscript(raw);
@@ -264,15 +292,27 @@ export function useVoiceConnection() {
             }
           }
           if (turnId) {
-            // update-turn first (student finalized), then AI — both in the
-            // serial queue so order is guaranteed regardless of HTTP timing.
-            postLog({ type: 'update-turn', id: turnId, text: finalText });
+            // Guard: skip if own Whisper already updated this turn
+            const alreadyDone = transcriptDoneForTurnRef.current === turnId;
+            if (!alreadyDone) {
+              transcriptDoneForTurnRef.current = turnId;
+              postLog({ type: 'update-turn', id: turnId, text: finalText });
+            }
           } else {
             postLog({ type: 'turn', role: 'student', text: finalText });
           }
           if (aiText) {
             postLog({ type: 'turn', role: 'ai', text: aiText });
           }
+          break;
+        }
+
+        // Transcription failed — resolve the hanging placeholder so it doesn't stay as '…'
+        case 'conversation.item.input_audio_transcription.failed': {
+          const turnId = pendingStudentTurnIdRef.current;
+          pendingStudentTurnIdRef.current = null;
+          if (turnId) postLog({ type: 'update-turn', id: turnId, text: '(inaudible)' });
+          else postLog({ type: 'turn', role: 'student', text: '(inaudible)' });
           break;
         }
 
@@ -518,6 +558,13 @@ export function useVoiceConnection() {
 
         // Wire up data channel events
         dc.addEventListener("open", async () => {
+          // Immediately disable server VAD so it doesn't auto-commit mic audio
+          // while we await the async persona fetch below.
+          sendRealtimeEvent({
+            type: "session.update",
+            session: { turn_detection: null },
+          });
+
           // Fetch a freshly-generated persona for this chapter before building instructions
           let persona = null;
           try {
@@ -694,6 +741,7 @@ export function useVoiceConnection() {
     pendingNameCorrectionRef.current = null;
     typedNameRef.current = null;
     nameConfirmationPendingRef.current = null;
+    transcriptDoneForTurnRef.current = null;
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop();
     }
@@ -812,7 +860,7 @@ export function useVoiceConnection() {
 
     // Stop the MediaRecorder — chunks used only for future reference/debug.
     if (mr && mr.state !== 'inactive') {
-      mr.onstop = () => { audioChunksRef.current = []; studentSpokeRef.current = false; };
+      mr.onstop = () => { studentSpokeRef.current = false; };
       mr.stop();
     } else {
       studentSpokeRef.current = false;
