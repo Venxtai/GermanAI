@@ -254,44 +254,6 @@ app.get('/token', async (req, res) => {
 });
 
 /**
- * Generate system prompt based on unit data
- */
-function generateSystemPrompt(unitNumber) {
-  const unit = curriculumData.units?.find(u => u.unit === unitNumber);
-  
-  if (!unit) {
-    return `Du bist ein geduldiger Deutschlehrer. Sprich einfach und klar.`;
-  }
-
-  const vocabularyList = unit.vocabulary.join(', ');
-  const phrasesList = unit.phrases.join('\n- ');
-  const grammarRules = unit.grammar.join('\n- ');
-  
-  return `Du bist ein freundlicher, natürlicher Gesprächspartner für Deutschlernende.
-
-Dein Vokabular für dieses Level:
-${vocabularyList}
-
-Nützliche Sätze:
-${phrasesList}
-
-Grammatik-Level:
-${grammarRules}
-
-Wie du sprechen sollst:
-- Sei natürlich und menschlich, nicht roboterhaft
-- Sprich kurz und klar (1-2 Sätze)
-- Verwende hauptsächlich das Vokabular von oben, aber sei nicht steif
-- Stelle einfache Fragen und reagiere authentisch
-- Zeige Interesse an den Antworten
-- Sprich wie ein echter Freund, der geduldig ist
-
-Gesprächsziel: ${unit.communicative_goals?.join(', ') || 'Natürliche Konversation'}
-
-Beginne warm und freundlich mit: "Hallo! Wie heißt du?"`;
-}
-
-/**
  * Route: Chapter list for Book ID1
  */
 app.get('/api/chapters', (req, res) => {
@@ -353,6 +315,105 @@ app.get('/api/units/:unitId', (req, res) => {
 });
 
 /**
+ * Route: Cumulative unit data for conversation buddy.
+ * Merges active/passive vocabulary, verb forms, conversation topics, and
+ * communicative functions from ALL non-optional prerequisite units.
+ * Grammar constraints come from the CURRENT unit only.
+ * Query: ?book=ID1|ID2B|ID2O (default: ID1)
+ */
+app.get('/api/cumulative/:unitId', (req, res) => {
+  const targetId = req.params.unitId;
+  const book = req.query.book || 'ID1';
+  const targetUnit = unitMap[targetId];
+  if (!targetUnit) return res.status(404).json({ error: `Unit ${targetId} not found` });
+
+  // Build ordered prerequisite list
+  const prerequisiteIds = [];
+  if (book === 'ID1') {
+    const targetNum = parseInt(targetId);
+    for (let i = 1; i <= targetNum; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+  } else if (book === 'ID2B') {
+    for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+    const targetNum = parseInt(targetId.replace(/^B/i, ''));
+    for (let i = 1; i <= targetNum; i++) { const bid = `B${String(i).padStart(2,'0')}`; if (unitMap[bid]) prerequisiteIds.push(bid); }
+  } else if (book === 'ID2O') {
+    for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+    const targetNum = parseInt(targetId.replace(/^O/i, ''));
+    for (let i = 1; i <= targetNum; i++) { const oid = `O${String(i).padStart(2,'0')}`; if (unitMap[oid]) prerequisiteIds.push(oid); }
+  }
+
+  const cumulativeActiveVocab = [], cumulativePassiveVocab = [];
+  const cumulativeVerbForms = {};
+  const reviewTopics = [], reviewFunctions = [];
+  const seenActive = new Set(), seenPassive = new Set();
+
+  for (const uid of prerequisiteIds) {
+    const u = unitMap[uid];
+    if (!u) continue;
+    const isOptional = u.is_optional || false;
+
+    if (!isOptional) {
+      for (const item of (u.active_vocabulary?.items || [])) {
+        const word = typeof item === 'object' ? item.word : item;
+        if (word && !seenActive.has(word)) { seenActive.add(word); cumulativeActiveVocab.push(typeof item === 'object' ? item : { word: item }); }
+      }
+      for (const item of (u.passive_vocabulary?.items || [])) {
+        const word = typeof item === 'object' ? item.word : item;
+        if (word && !seenPassive.has(word)) { seenPassive.add(word); cumulativePassiveVocab.push(typeof item === 'object' ? item : { word: item }); }
+      }
+      const verbs = u.allowed_verb_forms?.verbs || {};
+      for (const [verb, tenses] of Object.entries(verbs)) {
+        if (!cumulativeVerbForms[verb]) cumulativeVerbForms[verb] = {};
+        for (const [tense, persons] of Object.entries(tenses)) {
+          if (!cumulativeVerbForms[verb][tense]) cumulativeVerbForms[verb][tense] = {};
+          Object.assign(cumulativeVerbForms[verb][tense], persons);
+        }
+      }
+    }
+
+    if (uid !== targetId) {
+      for (const topic of (u.conversation_topics?.topics || [])) { if (topic) reviewTopics.push({ unit: uid, topic }); }
+      for (const goal of (u.communicative_functions?.goals || [])) { if (goal) reviewFunctions.push({ unit: uid, goal }); }
+    }
+  }
+
+  // Sample review topics: up to 3 per chapter
+  const chapterBuckets = {};
+  const chapterList = ALL_CHAPTERS[book] || ID1_CHAPTERS;
+  for (const { unit: uid, topic } of reviewTopics) {
+    const u = unitMap[uid];
+    const pos = u?.sequence_info?.position || parseInt(String(uid).replace(/^[BO]/i, ''));
+    let chNum = 0;
+    for (const ch of chapterList) { if (pos >= ch.unitStart && pos <= ch.unitEnd) { chNum = ch.chapter; break; } }
+    const key = `Ch${chNum}`;
+    if (!chapterBuckets[key]) chapterBuckets[key] = [];
+    if (!chapterBuckets[key].includes(topic)) chapterBuckets[key].push(topic);
+  }
+  const sampledReviewTopics = [];
+  for (const [ch, topics] of Object.entries(chapterBuckets).sort()) {
+    for (const t of topics.slice(0, 3)) sampledReviewTopics.push({ chapter: ch, topic: t });
+  }
+
+  res.json({
+    ...targetUnit,
+    _cumulative: {
+      activeVocabulary: cumulativeActiveVocab,
+      passiveVocabulary: cumulativePassiveVocab,
+      verbForms: cumulativeVerbForms,
+      reviewTopics: sampledReviewTopics,
+      reviewFunctions: reviewFunctions.slice(-30),
+      stats: {
+        totalActiveWords: cumulativeActiveVocab.length,
+        totalPassiveWords: cumulativePassiveVocab.length,
+        totalVerbs: Object.keys(cumulativeVerbForms).length,
+        totalReviewTopics: sampledReviewTopics.length,
+        prerequisiteUnits: prerequisiteIds.length,
+      },
+    },
+  });
+});
+
+/**
  * Route: Start a new conversation
  */
 app.post('/api/conversation/start', async (req, res) => {
@@ -364,7 +425,7 @@ app.post('/api/conversation/start', async (req, res) => {
     }
     
     const conversationId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
-    const systemPrompt = generateSystemPrompt(unitNumber);
+    const systemPrompt = `Du bist ein freundlicher Gesprächspartner für Deutschlernende. Sprich einfach und klar. Beginne mit: "Hallo! Wie heißt du?"`;
     
     // Initialize conversation with system message
     const messages = [
@@ -832,6 +893,77 @@ app.post('/api/feedback', async (req, res) => {
   } catch (err) {
     console.error('[Feedback] Error:', err.message);
     res.json({ fallback: true });
+  }
+});
+
+/**
+ * Route: Semantic Topic Classification (for Conversation Manager)
+ * Uses GPT-4o-mini to classify which conversation topic an AI utterance
+ * relates to. Called asynchronously after each AI turn — does not block
+ * the conversation flow.
+ *
+ * body: {
+ *   text: "Wie heißt du?",
+ *   currentTopics: ["Vergleiche zwischen Personen und Orten"],
+ *   reviewTopics: [{ chapter: "Ch1", topic: "der eigene Name" }, ...]
+ * }
+ * returns: { matchedTopics: ["der eigene Name"], pool: "review"|"current"|"none" }
+ */
+app.post('/api/classify-topic', async (req, res) => {
+  const { text, currentTopics = [], reviewTopics = [] } = req.body;
+
+  if (!text?.trim()) return res.json({ matchedTopics: [], pool: 'none' });
+
+  // Build a numbered list with pool labels for the prompt
+  const allTopics = [
+    ...currentTopics.map(t => ({ name: t, pool: 'current' })),
+    ...reviewTopics.map(t => ({ name: t.topic || t, pool: 'review' })),
+  ];
+
+  if (allTopics.length === 0) return res.json({ matchedTopics: [], pool: 'none' });
+
+  const topicList = allTopics.map((t, i) => `${i + 1}. [${t.pool}] ${t.name}`).join('\n');
+
+  const prompt = `You are classifying a German conversation utterance by topic.
+
+Utterance: "${text}"
+
+Which of these conversation topics does this utterance relate to? A topic matches if the utterance is about the same subject — not just if it contains the same words. For example, "Wie heißt du?" relates to "der eigene Name" even though the word "Name" doesn't appear.
+
+Topics:
+${topicList}
+
+Respond ONLY with a JSON object (no markdown, no explanation):
+{ "matchedIndices": [1], "primaryPool": "current" }
+
+If no topic matches, respond:
+{ "matchedIndices": [], "primaryPool": "none" }`;
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0,
+      max_tokens: 80,
+    });
+
+    let result = { matchedIndices: [], primaryPool: 'none' };
+    try {
+      const raw = completion.choices[0].message.content
+        .replace(/```json|```/g, '').trim();
+      result = JSON.parse(raw);
+    } catch { /* parse failed — return none */ }
+
+    const matchedTopics = (result.matchedIndices || [])
+      .filter(i => i >= 1 && i <= allTopics.length)
+      .map(i => allTopics[i - 1].name);
+
+    const pool = result.primaryPool || 'none';
+
+    res.json({ matchedTopics, pool });
+  } catch (err) {
+    console.error('[Topic Classification] Error:', err.message);
+    res.json({ matchedTopics: [], pool: 'none' });
   }
 });
 

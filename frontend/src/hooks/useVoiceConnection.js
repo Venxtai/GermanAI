@@ -1,6 +1,7 @@
 import { useRef, useCallback } from "react";
 import useAIStore from "../store/useAIStore";
-import { generateUnitInstructions, getDurations } from "../utils/systemInstructions";
+import { generateUnitInstructions, getDurations, getBuddyFirstName } from "../utils/systemInstructions";
+import { ConversationManager } from "../utils/conversationManager";
 
 // Known hallucination phrases — stripped from every student transcript
 const WHISPER_HALLUCINATIONS = [
@@ -90,6 +91,9 @@ export function useVoiceConnection() {
   const maxDurationFiredRef = useRef(false);      // ensures max-duration event only fires once
   const pendingEndAfterTurnRef = useRef(false);   // auto-end after current AI turn finishes speaking
   const endConversationRef = useRef(null);        // ref to endConversation — avoids stale closures in callbacks
+  const managerRef = useRef(null);                // ConversationManager instance for this session
+  const typedNameRef = useRef(null);              // name entered on the welcome screen
+  const nameConfirmationPendingRef = useRef(null); // {typed, spoken} when typed≠spoken, awaiting student confirmation
 
   // postLog is stored in a ref so useCallback closures never go stale.
   // All calls are chained on logQueueRef so each fetch completes before the next one
@@ -175,7 +179,7 @@ export function useVoiceConnection() {
           if (cleaned) {
             const isFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|goodbye|auf wiederschauen|macht's gut|bis dann|bis später)\b/i.test(cleaned);
             if (isFarewell) {
-              if (minDurationFiredRef.current) {
+              if (managerRef.current?.isMinDurationReached()) {
                 // Min duration reached — allow the AI to say goodbye, then auto-end
                 pendingEndAfterTurnRef.current = true;
                 sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student said goodbye and the minimum conversation time has been reached. Say your natural closing farewell NOW in one sentence, then the session will end automatically.]' }] } });
@@ -186,51 +190,76 @@ export function useVoiceConnection() {
             }
           }
 
-          // Topic tracking — count exchanges and inject remaining-topic guidance every 4 turns
+          // Increment exchange count for logging
           exchangeCountRef.current += 1;
-          if (exchangeCountRef.current % 4 === 0 && unitDataRef.current) {
-            const allTopics = unitDataRef.current.conversation_topics?.topics || [];
-            const remaining = allTopics.filter((_, i) => !topicsDiscussedRef.current.has(i));
-            if (remaining.length > 0) {
-              sendRealtimeEvent({
-                type: 'conversation.item.create',
-                item: { type: 'message', role: 'user', content: [{ type: 'input_text',
-                  text: `[SYSTEM: Topic tracking — unit topics not yet explored this session: ${remaining.join('; ')}. Weave one in naturally if the conversation allows.]` }] },
-              });
-            }
-          }
 
           // Capture AI text now so we can compare it against the detected name below.
           const aiText = pendingAILogRef.current;
           pendingAILogRef.current = null;
 
-          // If the student just introduced themselves, inject their correct name
-          // into the session instructions so the AI uses it from now on.
-          // (The Realtime model's built-in ASR can mishear unusual names; Whisper
-          // is more accurate, so we trust Whisper's text here.)
-          if (!studentNameRef.current && cleaned) {
+          // ── Name confirmation flow ──
+          // Step 1: If awaiting name confirmation (mismatch was detected), parse
+          // the student's response for either name and finalize.
+          if (nameConfirmationPendingRef.current && cleaned) {
+            const { typed, spoken } = nameConfirmationPendingRef.current;
+            nameConfirmationPendingRef.current = null;
+            const mentionsTyped  = cleaned.toLowerCase().includes(typed.toLowerCase());
+            const mentionsSpoken = cleaned.toLowerCase().includes(spoken.toLowerCase());
+            const confirmedName  = mentionsSpoken && !mentionsTyped ? spoken
+              : mentionsTyped ? typed
+              : typed; // fallback
+            studentNameRef.current = confirmedName;
+            if (systemInstructionsRef.current) {
+              sendRealtimeEvent({
+                type: 'session.update',
+                session: {
+                  instructions:
+                    `CRITICAL — The student's confirmed name is "${confirmedName}". ` +
+                    `You MUST use ONLY this exact spelling for the rest of the session. ` +
+                    `Never use any other name or spelling.\n\n` +
+                    systemInstructionsRef.current,
+                },
+              });
+            }
+          }
+
+          // Step 2: First time the student introduces themselves
+          if (!studentNameRef.current && !nameConfirmationPendingRef.current && cleaned) {
             const nameMatch =
               cleaned.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
               cleaned.match(/mein name ist\s+([^\s.,!?]+)/i);
             if (nameMatch) {
-              const name = nameMatch[1];
-              studentNameRef.current = name;
-              if (systemInstructionsRef.current) {
+              const spokenName = nameMatch[1];
+              const typedName  = typedNameRef.current;
+              if (typedName && spokenName.charAt(0).toLowerCase() !== typedName.charAt(0).toLowerCase()) {
+                // Names start with different letters → genuinely different name → ask for clarification
+                nameConfirmationPendingRef.current = { typed: typedName, spoken: spokenName };
                 sendRealtimeEvent({
-                  type: 'session.update',
-                  session: {
-                    instructions:
-                      `CRITICAL — The student's confirmed name is "${name}". ` +
-                      `You MUST use ONLY this exact name for the rest of the session. ` +
-                      `Never use any other name.\n\n` +
-                      systemInstructionsRef.current,
-                  },
+                  type: 'conversation.item.create',
+                  item: { type: 'message', role: 'user', content: [{ type: 'input_text',
+                    text: `[SYSTEM: The student typed "${typedName}" on the welcome screen but just said "${spokenName}". ` +
+                      `You MUST ask for clarification in German: "Interessant. Dein Name ist nicht ${typedName}? ` +
+                      `Heißt du ${typedName} oder heißt du ${spokenName}?" Then wait for the student to confirm.]` }] },
                 });
-              }
-              // If the AI's response didn't contain the correct name, queue a
-              // self-correction that fires once the current AI audio finishes.
-              if (aiText && !aiText.toLowerCase().includes(name.toLowerCase())) {
-                pendingNameCorrectionRef.current = name;
+              } else {
+                // Same first letter or no typed name → use the typed spelling (handles Niko/Nico etc.)
+                const finalName = typedName || spokenName;
+                studentNameRef.current = finalName;
+                if (systemInstructionsRef.current) {
+                  sendRealtimeEvent({
+                    type: 'session.update',
+                    session: {
+                      instructions:
+                        `CRITICAL — The student's confirmed name is "${finalName}". ` +
+                        `You MUST use ONLY this exact spelling for the rest of the session. ` +
+                        `Never use any other name or spelling.\n\n` +
+                        systemInstructionsRef.current,
+                    },
+                  });
+                }
+                if (aiText && !aiText.includes(finalName)) {
+                  pendingNameCorrectionRef.current = finalName;
+                }
               }
             }
           }
@@ -263,20 +292,37 @@ export function useVoiceConnection() {
 
         case "response.audio_transcript.done":
           finalizeAIMessage(event.transcript);
-          // Don't post to the log yet — hold until after the student’s Whisper
-          // transcription arrives so the chat log always shows:
-          //   STUDENT … (placeholder) → updated text
-          //   AI response
-          // Never the other way round.
           if (event.transcript?.trim()) {
             pendingAILogRef.current = event.transcript.trim();
-            // Topic tracking — mark which unit topics this AI turn touched
-            const aiText = event.transcript.trim().toLowerCase();
-            const allTopics = unitDataRef.current?.conversation_topics?.topics || [];
-            allTopics.forEach((topic, i) => {
-              const keywords = topic.toLowerCase().split(/[\s,();:/]+/).filter(w => w.length > 3);
-              if (keywords.some(kw => aiText.includes(kw))) topicsDiscussedRef.current.add(i);
-            });
+
+            // Conversation Manager: process AI turn (phase transitions, timing, starters)
+            const mgr = managerRef.current;
+            if (mgr) {
+              const directives = mgr.processAITurn(event.transcript.trim());
+              for (const d of directives) {
+                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
+              }
+            }
+
+            // Async semantic topic classification via GPT-4o-mini
+            if (mgr) {
+              const { currentTopics, reviewTopics } = mgr.getTopicsForClassification();
+              if (currentTopics.length > 0 || reviewTopics.length > 0) {
+                fetch('/api/classify-topic', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ text: event.transcript.trim(), currentTopics, reviewTopics }),
+                })
+                  .then(r => r.json())
+                  .then(result => {
+                    const balanceDirectives = mgr.updateTopicClassification(result);
+                    for (const d of balanceDirectives) {
+                      sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
+                    }
+                  })
+                  .catch(() => {});
+              }
+            }
           }
           break;
 
@@ -374,7 +420,7 @@ export function useVoiceConnection() {
   );
 
   const startConversation = useCallback(
-    async (unitData) => {
+    async (unitData, studentName = '') => {
       setStatus("loading");
       clearMessages();
 
@@ -490,9 +536,12 @@ export function useVoiceConnection() {
             console.warn('[Persona] Failed to fetch persona, using default:', e.message);
           }
 
-          const systemInstructions = generateUnitInstructions(unitData, persona);
+          const systemInstructions = generateUnitInstructions(unitData, persona, studentName);
           systemInstructionsRef.current = systemInstructions;
+          const buddyName = getBuddyFirstName(persona);
           studentNameRef.current = null;
+          typedNameRef.current = studentName || null;
+          nameConfirmationPendingRef.current = null;
           unitDataRef.current = unitData;
           exchangeCountRef.current = 0;
           topicsDiscussedRef.current = new Set();
@@ -500,22 +549,34 @@ export function useVoiceConnection() {
           maxDurationFiredRef.current = false;
           conversationStartRef.current = Date.now();
 
-          // Conversation timer — enforces min/max durations defined in the system prompt
+          // ── Initialize Conversation Manager ──
           const { minMs: MIN_MS, maxMs: MAX_MS } = getDurations(
             unitData._book || 'ID1',
             unitData._chapter || 1
           );
+          const currentTopics = unitData.conversation_topics?.topics || [];
+          const reviewTopicData = unitData._cumulative?.reviewTopics || [];
+          managerRef.current = new ConversationManager({
+            currentTopics,
+            reviewTopics: reviewTopicData,
+            minMs: MIN_MS,
+            maxMs: MAX_MS,
+            studentNameKnown: !!studentName,
+          });
+          managerRef.current.start();
+
+          // ── Timer: delegates to ConversationManager ──
           conversationTimerRef.current = setInterval(() => {
-            const elapsedMs = Date.now() - conversationStartRef.current;
-            if (!minDurationFiredRef.current && elapsedMs >= MIN_MS) {
-              minDurationFiredRef.current = true;
-              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: Minimum conversation time (3 minutes) has been reached. If the student says goodbye now, you may end the conversation warmly. Otherwise keep going naturally.]' }] } });
+            const mgr = managerRef.current;
+            if (!mgr) return;
+            const directives = mgr.checkTiming();
+            for (const d of directives) {
+              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
             }
-            if (!maxDurationFiredRef.current && elapsedMs >= MAX_MS) {
-              maxDurationFiredRef.current = true;
+            // Hard max: auto-end after AI delivers closing line
+            if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
+              pendingEndAfterTurnRef.current = true;
               clearInterval(conversationTimerRef.current);
-              pendingEndAfterTurnRef.current = true; // auto-end after AI delivers closing line
-              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: Maximum conversation time (8 minutes) reached. You MUST begin the closing phase NOW. Say your closing line naturally in your very next turn.]' }] } });
               if (!waitingForResponseRef.current && !isRecordingRef.current) {
                 sendRealtimeEvent({ type: 'response.create' });
               }
@@ -547,18 +608,20 @@ export function useVoiceConnection() {
                 language: 'de',
               },
               turn_detection: null,
-              temperature: 0.8,
+              temperature: 0.55,
               max_response_output_tokens: 300,
             },
           });
 
-          // Seed an opening turn so the AI always speaks first
+          // Seed an opening turn aligned with Phase 1 warm-up starters
           sendRealtimeEvent({
             type: "conversation.item.create",
             item: {
               type: "message",
               role: "user",
-              content: [{ type: "input_text", text: "[Session started. Greet the student warmly in German and ask a simple open-ended question about the unit topic to begin the conversation. Speak only in German.]" }],
+              content: [{ type: "input_text", text: studentName
+                ? `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. The student's name is "${studentName}". Do NOT ask "Wie heißt du?". Say: "Hallo, ${studentName}! Ich bin ${buddyName}." then ask: "Woher kommst du?" Do NOT ask about the unit topic yet. Speak only in German.]`
+                : `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. Say: "Hallo! Ich bin ${buddyName}." then ask the student: "Wie heißt du?" Do NOT ask about the unit topic yet. Speak only in German.]` }],
             },
           });
           sendRealtimeEvent({ type: "response.create" });
@@ -600,6 +663,10 @@ export function useVoiceConnection() {
     postLog({ type: 'end' });
     logSessionIdRef.current = null;
 
+    if (managerRef.current) {
+      managerRef.current.reset();
+      managerRef.current = null;
+    }
     clearInterval(conversationTimerRef.current);
     conversationTimerRef.current = null;
     clearTimeout(silentStudentTimerRef.current);
@@ -625,6 +692,8 @@ export function useVoiceConnection() {
     studentNameRef.current = null;
     systemInstructionsRef.current = null;
     pendingNameCorrectionRef.current = null;
+    typedNameRef.current = null;
+    nameConfirmationPendingRef.current = null;
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop();
     }

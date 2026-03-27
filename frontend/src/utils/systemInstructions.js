@@ -37,19 +37,38 @@ export function getDurations(book, chapter) {
  *  9. Duration parameters
  * 10. Communicative functions
  */
-export function generateUnitInstructions(unitData, persona = null) {
+export function getBuddyFirstName(persona) {
+  return (persona?.Vorname) ? persona.Vorname : 'Max';
+}
+
+export function generateUnitInstructions(unitData, persona = null, studentName = '') {
   const n = Number(unitData.unit);
+  const cumulative = unitData._cumulative || null;
 
-  // ── Vocabulary ────────────────────────────────────────────────────────────
-  const activeWords = (unitData.active_vocabulary?.items || [])
+  // ── Vocabulary (CUMULATIVE) ───────────────────────────────────────────────
+  // If _cumulative data is available, use it. Otherwise fall back to current
+  // unit only (backwards compatible).
+  const activeItems = cumulative
+    ? cumulative.activeVocabulary
+    : (unitData.active_vocabulary?.items || []);
+  const passiveItems = cumulative
+    ? cumulative.passiveVocabulary
+    : (unitData.passive_vocabulary?.items || []);
+
+  const activeWords = activeItems
     .map((i) => (typeof i === 'object' ? i.word : i))
     .filter(Boolean)
     .join(', ');
 
-  const passiveWords = (unitData.passive_vocabulary?.items || [])
+  const passiveWords = passiveItems
     .map((i) => (typeof i === 'object' ? i.word : i))
     .filter(Boolean)
     .join(', ');
+
+  // Note vocab breadth for the AI
+  const vocabStats = cumulative?.stats
+    ? `(${cumulative.stats.totalActiveWords} words from units 1\u2013${n}, ${cumulative.stats.totalVerbs} verbs)`
+    : '';
 
   // ── Grammar constraints ───────────────────────────────────────────────────
   const gc             = unitData.grammar_constraints || {};
@@ -60,17 +79,31 @@ export function generateUnitInstructions(unitData, persona = null) {
   const newRules       = (gc.new_rules_in_this_unit || []).map((r, i) => `  ${i + 1}. ${r}`).join('\n');
   const forbidden      = (gc.forbidden || []).join('\n  - ');
 
+  // Build a short positive-only grammar summary for the realtime model.
+  const positiveGrammar = buildPositiveGrammarSummary(gc);
+
   // ── Topics ────────────────────────────────────────────────────────────────
   const currentTopics = (unitData.conversation_topics?.topics || [])
     .map((t, i) => `  ${i + 1}. ${t}`).join('\n');
 
-  // Review topics = any topics from prior chapters still active
-  // (pulled from the same unit data when available; otherwise general)
-  const reviewTopics = [
-    'sich vorstellen (Name, Herkunft)',
-    'Begrüßung und Abschied',
-    'Wie geht es dir / Ihnen?',
-  ].map((t, i) => `  ${i + 1}. ${t}`).join('\n');
+  // Review topics — DYNAMIC from _cumulative, not hardcoded
+  let reviewTopics;
+  if (cumulative?.reviewTopics?.length > 0) {
+    // Group by chapter for readability
+    const byChapter = {};
+    for (const { chapter, topic } of cumulative.reviewTopics) {
+      if (!byChapter[chapter]) byChapter[chapter] = [];
+      byChapter[chapter].push(topic);
+    }
+    const lines = [];
+    for (const [ch, topics] of Object.entries(byChapter).sort()) {
+      lines.push(`  ${ch}: ${topics.join(', ')}`);
+    }
+    reviewTopics = lines.join('\n');
+  } else {
+    // Very early units (1-2) have no review history yet
+    reviewTopics = '  (No review topics yet \u2014 spend more time on current chapter topics and the warm-up conversation starters from Phase 1.)';
+  }
 
   // ── Communicative functions ───────────────────────────────────────────────
   const goals = (unitData.communicative_functions?.goals || [])
@@ -86,9 +119,11 @@ export function generateUnitInstructions(unitData, persona = null) {
     uf.meta_conversation?.length    ? `Meta: ${uf.meta_conversation.join(', ')}`                    : '',
   ].filter(Boolean).join('\n');
 
-  // ── Model sentences ───────────────────────────────────────────────────────
-  const modelSentences = (unitData.model_sentences?.literal || [])
-    .slice(0, 12)
+  // ── Model sentences (FILTERED) ───────────────────────────────────────────
+  // Only include conversational sentences, not exercise instructions.
+  const allSentences = unitData.model_sentences?.literal || [];
+  const modelSentences = filterConversationalSentences(allSentences)
+    .slice(0, 20)
     .map((s, i) => `  ${i + 1}. ${s}`)
     .join('\n');
 
@@ -162,6 +197,11 @@ Only reveal details when they come up naturally in conversation. If asked about 
 
   const buddyFirstName = (persona?.Vorname) ? persona.Vorname : 'Max';
 
+  // ── Student name (typed on welcome screen) ───────────────────────────────
+  const studentNameBlock = studentName
+    ? `\nSTUDENT NAME \u2014 CORRECT SPELLING\nThe student typed their name as "${studentName}" before the session started.\nWhen you use the student's name in conversation, you MUST spell it exactly as "${studentName}".\nYou will still ask "Wie hei\u00dft du?" as part of the warm-up \u2014 this is normal.\nWhen the student says their name, use the spelling "${studentName}" in your response.\n`
+    : '';
+
   // ── Estimated conversation duration (spec table 7.1) ─────────────────────
   const { minLabel: minDuration, maxLabel: maxDuration } = getDurations(
     unitData._book || 'ID1',
@@ -180,10 +220,15 @@ CONVERSATION PHASES
 Every conversation follows three phases. Let them flow naturally — don't announce transitions.
 
 PHASE 1 — WARM-UP (first ~20% of conversation time)
-- Introduce yourself by name and ask the student's name.
-- Cover easy, universal territory: names, where you're from, how you're doing.
-- Use simple, high-frequency vocabulary from the earliest units.
 - Purpose: build comfort, establish rapport, ease into German.
+- Use simple, high-frequency vocabulary from the earliest units.
+- Always cover these CONVERSATION STARTERS in this order:
+  1. Introduce yourself by name, then ask: "Wie heißt du?"
+  2. Ask where they are from: "Woher kommst du?"
+  3. Ask how they are doing: "Wie geht's?"
+- These starters happen EVERY session as the warm-up ritual.
+- They are NOT review topics — do not repeat them during Phase 2.
+- After these three exchanges, transition naturally into Phase 2.
 
 PHASE 2 — MAIN CONVERSATION (~70% of conversation time)
 - Move into topics from the CURRENT CHAPTER and REVIEW CHAPTERS.
@@ -198,7 +243,7 @@ PHASE 3 — CLOSING (final ~10% of conversation time)
 (Adapt closing phrases to the vocabulary available at this unit level.)
 
 HOW TO TALK
-- Say EXACTLY ONE sentence per turn. This is absolute.
+- Keep each turn to ONE conversational utterance — a natural, spoken unit. This can be a reaction plus a question ("Oh, cool! Spielst du gern Fußball?") or a short statement plus a question ("Ich auch! Und du?"). What matters is that it sounds like one breath of natural speech, not a monologue.
 - That sentence can be a statement, a reaction, a question, or a combination — whatever feels natural.
 - Respond directly to what the student just said. If they mention something specific (a food, a place, a person, an activity), zoom in on THAT detail next.
 - React before you ask. Say "Oh, cool!" or "Interessant!" or "Ich auch!" before your next question. (Reactions + a question still count as one turn if they flow as one spoken utterance.)
@@ -255,12 +300,12 @@ You have two pools of topics: CURRENT CHAPTER topics and REVIEW topics (from ear
 
 VOCABULARY CONSTRAINTS — HIGHEST PRIORITY
 This is the most important rule. YOUR output may ONLY contain words from:
-- The ACTIVE VOCABULARY list (below)
+- The ACTIVE VOCABULARY list (below) — this is CUMULATIVE: all words from units 1 through ${n} ${vocabStats}
 - The PASSIVE VOCABULARY list (below)
 - The UNIVERSAL FILLERS list (below)
 - Any word the STUDENT introduced during this conversation
 - Proper nouns (names, cities, countries)
-If you want to say something and a word isn't on these lists — find a different way to say it.
+If you want to say something and a word isn't on these lists — find a different way to say it using words that ARE on the list.
 
 THE ANSWERABILITY RULE
 You may ONLY ask a question if:
@@ -268,6 +313,8 @@ You may ONLY ask a question if:
 2. At least one reasonable answer can be constructed using ONLY active vocabulary + fillers + proper nouns.
 3. The question connects to a conversation topic from the loaded units.
 If a question would require vocabulary the student hasn't learned to answer — don't ask it.
+
+${positiveGrammar}
 
 GRAMMAR CONSTRAINTS
 Obey the grammar constraints in SECTION 3 below. The FORBIDDEN list is absolute.
@@ -313,7 +360,7 @@ PERSONA CONSISTENCY
 You have a persona (SECTION 2 below). Never contradict it. When you and the student share something in common, express it warmly.
 
 ABSOLUTE RULES
-1. ONE sentence per turn. No exceptions.
+1. ONE conversational turn per response — like one natural breath of speech. No monologues.
 2. ONLY German during the conversation (except the English reminder for persistent English speakers).
 3. NEVER correct the student's German.
 4. NEVER explain grammar.
@@ -347,22 +394,25 @@ FORBIDDEN (never use any of the following):
 SECTION 4 — CONVERSATION TOPICS
 ═══════════════════════════════════════════
 
-CURRENT CHAPTER TOPICS (aim for ~60% of conversation):
+CURRENT CHAPTER TOPICS (aim for ~60% of Phase 2):
 ${currentTopics || '  (everyday life, introductions)'}
 
-REVIEW TOPICS from earlier units (aim for ~40% of conversation):
+REVIEW TOPICS from earlier chapters (aim for ~40% of Phase 2):
+These are topics from PREVIOUS chapters — NOT the warm-up starters from Phase 1.
+Draw from these during the main conversation to recycle earlier material naturally.
 ${reviewTopics}
 
 ═══════════════════════════════════════════
-SECTION 5 — ACTIVE VOCABULARY
+SECTION 5 — ACTIVE VOCABULARY (CUMULATIVE)
 ═══════════════════════════════════════════
 
-Words the student knows well. Prefer these in your speech. ONLY use words from this list (plus passive, fillers, proper nouns, and student-introduced words).
+All words the student knows from units 1 through ${n}. ${vocabStats}
+Prefer these in your speech. ONLY use words from this list (plus passive, fillers, proper nouns, and student-introduced words).
 
 ${activeWords || '(basic everyday vocabulary)'}
 
 ═══════════════════════════════════════════
-SECTION 6 — PASSIVE VOCABULARY
+SECTION 6 — PASSIVE VOCABULARY (CUMULATIVE)
 ═══════════════════════════════════════════
 
 Words the student may recognise when heard but may not produce themselves.
@@ -407,8 +457,75 @@ Use these as a guide for what kinds of language to draw out — but never as a s
 ═══════════════════════════════════════════
 OPENING INSTRUCTION
 ═══════════════════════════════════════════
-
+${studentNameBlock}
 Start in PHASE 1. Introduce yourself as ${buddyFirstName}, then ask the student's name. Speak only in German from your very first word.
 `.trim();
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// HELPER: Build a short positive grammar summary
+// ═══════════════════════════════════════════════════════════════════════════
+// The realtime voice model follows positive instructions ("ONLY use X")
+// more reliably than long forbidden lists. This generates a 2-3 line summary.
+
+function buildPositiveGrammarSummary(gc) {
+  const tenses = gc.allowed_tenses || ['present'];
+  const cases  = gc.allowed_cases  || ['nominative'];
+  const parts  = [];
+
+  if (tenses.length === 1 && tenses[0] === 'present') {
+    parts.push('ONLY use present tense. No past tense, no future tense.');
+  } else {
+    const tenseNames = tenses.map(t => {
+      if (t === 'present')               return 'present tense';
+      if (t === 'Präteritum_haben_sein') return 'war/hatte';
+      if (t === 'Präteritum_modal')      return 'modal past (konnte, musste, durfte, wollte)';
+      if (t === 'Perfekt')               return 'Perfekt (habe gemacht, bin gegangen)';
+      if (t === 'Futur_I')               return 'Futur I (werde + infinitive)';
+      return t;
+    });
+    parts.push(`ONLY use these tenses: ${tenseNames.join(', ')}. No other tenses.`);
+  }
+
+  if (cases.length === 1 && cases[0] === 'nominative') {
+    parts.push('ONLY nominative case. No accusative, no dative.');
+  } else if (cases.length === 2 && cases.includes('nominative') && cases.includes('accusative')) {
+    parts.push('ONLY nominative and accusative case. No dative.');
+  } else if (!cases.includes('genitive')) {
+    parts.push(`Cases: ${cases.join(', ')} only. No genitive.`);
+  }
+
+  const sentTypes = gc.sentence_types || [];
+  if (!sentTypes.includes('subordinate_weil')) {
+    parts.push('No subordinate clauses (no weil, wenn, dass, etc.).');
+  }
+
+  return `QUICK GRAMMAR REMINDER (most important constraints):\n${parts.join('\n')}`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HELPER: Filter model sentences to only conversational ones
+// ═══════════════════════════════════════════════════════════════════════════
+// Removes exercise instructions, textbook character names, and fragments.
+// Keeps questions addressed to du/Sie and natural conversational statements.
+
+function filterConversationalSentences(sentences) {
+  if (!sentences || sentences.length === 0) return [];
+
+  const reject = [
+    /^(schauen|fragen|schreiben|lesen|hören|sagen|machen|ordnen|ergänzen|markieren|arbeiten|stellen|korrigieren|notieren|sammeln|recherchieren|sortieren|beantworten|kreuzen|wählen|vergleichen|rechnen)\s+sie\b/i,
+    /\b(team\s*[12]|partner|kurs|kursraum|aufgabe|übung|teil\s*\d|seite\s*\d|video|tabelle)\b/i,
+    /^(was ist richtig|was ist falsch|korrigieren sie)/i,
+    /^\s*\(/,
+    /^\d+\s*(jahre|grad|cm|m\b)/i,
+    /^\s*$/,
+  ];
+
+  return sentences.filter(s => {
+    if (!s || s.length < 8) return false;
+    for (const pat of reject) {
+      if (pat.test(s)) return false;
+    }
+    return true;
+  });
+}

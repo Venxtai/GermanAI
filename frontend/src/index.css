@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Fix for Tailwind v4 opacity modifier incompatibility — explicit placeholder color */
+.name-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

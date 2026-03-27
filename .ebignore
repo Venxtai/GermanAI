@@ -1,0 +1,31 @@
+# EB deployment ignore — overrides .gitignore
+# frontend/dist is intentionally NOT listed here so EB includes the built frontend
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Environment variables — never deploy secrets
+.env
+**/.env
+.env.*
+!.env.example
+
+# Uploads
+uploads/
+**/uploads/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Python venv (EB CLI tooling, not part of the app)
+.venv/

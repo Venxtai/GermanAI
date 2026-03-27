@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
+    "build": "cd frontend && npm install && npm run build",
+    "deploy": "npm run build && eb deploy voicemodel-prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
