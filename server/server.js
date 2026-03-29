@@ -4,8 +4,9 @@ const dotenv = require('dotenv');
 const path = require('path');
 const multer = require('multer');
 const OpenAI = require('openai');
+const Anthropic = require('@anthropic-ai/sdk');
+const { GoogleGenAI } = require('@google/genai');
 const fs = require('fs');
-const https = require('https');
 
 // Load persona database
 let personaDatabase = {};
@@ -26,14 +27,19 @@ try {
 // Load environment variables
 dotenv.config();
 
+// Use VERBOSE instead of DEBUG to avoid triggering OpenAI SDK's HTTP header logging
+const VERBOSE = process.env.VERBOSE === 'true';
+
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Initialize OpenAI client
+// Initialize API clients
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
+const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
+const googleAI = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 
 // Middleware
 app.use(cors());
@@ -80,6 +86,53 @@ function getChapter(unitNum) {
   return ID1_CHAPTERS.find(c => n >= c.unitStart && n <= c.unitEnd) || null;
 }
 
+/**
+ * Get the previous chapter, crossing book boundaries if needed.
+ * Returns { meta: chapterObj, book: 'ID1'|'ID2B'|'ID2O' } or null.
+ */
+function getPreviousChapter(book, currentChapterMeta) {
+  const bookChapters = ALL_CHAPTERS[book] || ID1_CHAPTERS;
+  const currentIdx = bookChapters.findIndex(ch => ch.chapter === currentChapterMeta.chapter);
+  if (currentIdx > 0) return { meta: bookChapters[currentIdx - 1], book };
+  // First chapter of ID2B or ID2O → go back to ID1 last chapter
+  if ((book === 'ID2B' || book === 'ID2O') && currentIdx === 0) {
+    return { meta: ID1_CHAPTERS[ID1_CHAPTERS.length - 1], book: 'ID1' };
+  }
+  return null; // ID1 Ch1 has no previous
+}
+
+/**
+ * Get all unit IDs belonging to a chapter in a given book.
+ */
+function getChapterUnitIds(chapterMeta, chBook, unitMapRef) {
+  const ids = [];
+  for (let pos = chapterMeta.unitStart; pos <= chapterMeta.unitEnd; pos++) {
+    let uid;
+    if (chBook === 'ID1') uid = String(pos);
+    else if (chBook === 'ID2B') uid = `B${String(pos).padStart(2, '0')}`;
+    else if (chBook === 'ID2O') uid = `O${String(pos).padStart(2, '0')}`;
+    else uid = String(pos);
+    if (unitMapRef[uid]) ids.push(uid);
+  }
+  return ids;
+}
+
+/**
+ * Collect unique conversation topics from a list of unit IDs.
+ */
+function collectTopicsFromUnits(unitIds, unitMapRef) {
+  const topics = [];
+  for (const uid of unitIds) {
+    const u = unitMapRef[uid];
+    if (u) {
+      for (const t of (u.conversation_topics?.topics || [])) {
+        if (t && !topics.includes(t)) topics.push(t);
+      }
+    }
+  }
+  return topics;
+}
+
 // Load all unit files from Knowledge Base folder
 const unitMap = {};
 try {
@@ -117,6 +170,9 @@ try {
 
 // Store active conversations (in production, use a database)
 const conversations = new Map();
+
+// Voice pipeline sessions — stores conversation history + system prompt per session
+const voiceSessions = new Map();
 
 // ─── SSE log broadcast ─────────────────────────────────────────────────────
 const logClients = new Set();
@@ -164,7 +220,7 @@ function logTurn(role, text) {
   if (role === 'student') {
     console.log(`${time} ${BOLD}${YELLOW}STUDENT:${RESET} ${text}`);
   } else {
-    console.log(`${time} ${BOLD}${BLUE}    AI :${RESET} ${text}`);
+    console.log(`${time} ${BOLD}${BLUE} BUDDY :${RESET} ${text}`);
   }
   // NOTE: does NOT call broadcastLog — callers handle that themselves.
 }
@@ -200,58 +256,6 @@ function getImageForResponse(unitNumber, responseText) {
   
   return null;
 }
-
-// Token endpoint for WebRTC Realtime API
-app.get('/token', async (req, res) => {
-  console.log('Token endpoint requested');
-  try {
-    const response = await new Promise((resolve, reject) => {
-      const data = JSON.stringify({
-        model: 'gpt-4o-realtime-preview-2024-12-17',
-        voice: 'verse'
-      });
-
-      const options = {
-        hostname: 'api.openai.com',
-        port: 443,
-        path: '/v1/realtime/sessions',
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-          'Content-Type': 'application/json',
-          'Content-Length': data.length
-        }
-      };
-
-      const req = https.request(options, (res) => {
-        let body = '';
-        console.log('OpenAI response status:', res.statusCode);
-        res.on('data', (chunk) => body += chunk);
-        res.on('end', () => {
-          console.log('OpenAI response body:', body);
-          try {
-            resolve(JSON.parse(body));
-          } catch (e) {
-            reject(e);
-          }
-        });
-      });
-
-      req.on('error', (err) => {
-        console.error('HTTPS request error:', err);
-        reject(err);
-      });
-      req.write(data);
-      req.end();
-    });
-
-    console.log('Session created successfully');
-    res.json({ value: response.client_secret.value });
-  } catch (error) {
-    console.error('Error creating session token:', error);
-    res.status(500).json({ error: 'Failed to create session token', details: error.message });
-  }
-});
 
 /**
  * Route: Chapter list for Book ID1
@@ -342,57 +346,148 @@ app.get('/api/cumulative/:unitId', (req, res) => {
     for (let i = 1; i <= targetNum; i++) { const oid = `O${String(i).padStart(2,'0')}`; if (unitMap[oid]) prerequisiteIds.push(oid); }
   }
 
+  // ── Cumulative vocabulary collection ──
   const cumulativeActiveVocab = [], cumulativePassiveVocab = [];
   const cumulativeVerbForms = {};
-  const reviewTopics = [], reviewFunctions = [];
   const seenActive = new Set(), seenPassive = new Set();
 
   for (const uid of prerequisiteIds) {
     const u = unitMap[uid];
     if (!u) continue;
-    const isOptional = u.is_optional || false;
+    if (u.is_optional) continue;
 
-    if (!isOptional) {
-      for (const item of (u.active_vocabulary?.items || [])) {
-        const word = typeof item === 'object' ? item.word : item;
-        if (word && !seenActive.has(word)) { seenActive.add(word); cumulativeActiveVocab.push(typeof item === 'object' ? item : { word: item }); }
-      }
-      for (const item of (u.passive_vocabulary?.items || [])) {
-        const word = typeof item === 'object' ? item.word : item;
-        if (word && !seenPassive.has(word)) { seenPassive.add(word); cumulativePassiveVocab.push(typeof item === 'object' ? item : { word: item }); }
-      }
-      const verbs = u.allowed_verb_forms?.verbs || {};
-      for (const [verb, tenses] of Object.entries(verbs)) {
-        if (!cumulativeVerbForms[verb]) cumulativeVerbForms[verb] = {};
-        for (const [tense, persons] of Object.entries(tenses)) {
-          if (!cumulativeVerbForms[verb][tense]) cumulativeVerbForms[verb][tense] = {};
-          Object.assign(cumulativeVerbForms[verb][tense], persons);
-        }
-      }
+    for (const item of (u.active_vocabulary?.items || [])) {
+      const word = typeof item === 'object' ? item.word : item;
+      if (word && !seenActive.has(word)) { seenActive.add(word); cumulativeActiveVocab.push(typeof item === 'object' ? item : { word: item }); }
     }
-
-    if (uid !== targetId) {
-      for (const topic of (u.conversation_topics?.topics || [])) { if (topic) reviewTopics.push({ unit: uid, topic }); }
-      for (const goal of (u.communicative_functions?.goals || [])) { if (goal) reviewFunctions.push({ unit: uid, goal }); }
+    for (const item of (u.passive_vocabulary?.items || [])) {
+      const word = typeof item === 'object' ? item.word : item;
+      if (word && !seenPassive.has(word)) { seenPassive.add(word); cumulativePassiveVocab.push(typeof item === 'object' ? item : { word: item }); }
+    }
+    const verbs = u.allowed_verb_forms?.verbs || {};
+    for (const [verb, tenses] of Object.entries(verbs)) {
+      if (!cumulativeVerbForms[verb]) cumulativeVerbForms[verb] = {};
+      for (const [tense, persons] of Object.entries(tenses)) {
+        if (!cumulativeVerbForms[verb][tense]) cumulativeVerbForms[verb][tense] = {};
+        Object.assign(cumulativeVerbForms[verb][tense], persons);
+      }
     }
   }
 
-  // Sample review topics: up to 3 per chapter
-  const chapterBuckets = {};
+  // ══════════════════════════════════════════════════════════════
+  // TOPIC ORGANIZATION — "Last 10 units" proximity model
+  // ══════════════════════════════════════════════════════════════
+
+  const targetPos = targetUnit.sequence_info?.position || parseInt(String(targetId).replace(/^[BO]/i, ''));
   const chapterList = ALL_CHAPTERS[book] || ID1_CHAPTERS;
-  for (const { unit: uid, topic } of reviewTopics) {
+  const currentChapterMeta = chapterList.find(ch => targetPos >= ch.unitStart && targetPos <= ch.unitEnd);
+  const currentChapterNum = currentChapterMeta?.chapter || 1;
+
+  // ── Build ordered list of all non-optional prerequisite unit IDs (including target) ──
+  const allCoveredIds = [...prerequisiteIds.filter(uid => {
     const u = unitMap[uid];
-    const pos = u?.sequence_info?.position || parseInt(String(uid).replace(/^[BO]/i, ''));
-    let chNum = 0;
-    for (const ch of chapterList) { if (pos >= ch.unitStart && pos <= ch.unitEnd) { chNum = ch.chapter; break; } }
-    const key = `Ch${chNum}`;
-    if (!chapterBuckets[key]) chapterBuckets[key] = [];
-    if (!chapterBuckets[key].includes(topic)) chapterBuckets[key].push(topic);
+    return u && !u.is_optional;
+  })];
+  // Add target if not already included
+  if (!allCoveredIds.includes(targetId) && unitMap[targetId]) {
+    allCoveredIds.push(targetId);
   }
-  const sampledReviewTopics = [];
-  for (const [ch, topics] of Object.entries(chapterBuckets).sort()) {
-    for (const t of topics.slice(0, 3)) sampledReviewTopics.push({ chapter: ch, topic: t });
+
+  // ── MAIN BLOCK: last 10 units (60%) ──
+  // Slice the last 10 covered units — this is the "recent" pool
+  const last10 = allCoveredIds.slice(-10);
+  const currentUnitTopics = filterWarmupTopics(targetUnit.conversation_topics?.topics || []);
+
+  // Subdivide: last 4 (close), units 5-8 (middle), units 9-10 (far)
+  const last4Ids  = last10.slice(-4);   // most recent 4 (includes current)
+  const mid4Ids   = last10.slice(-8, -4); // units 5-8 back
+  const far2Ids   = last10.slice(0, Math.max(0, last10.length - 8)); // remainder up to 10
+
+  // Warm-up topics to exclude from conversation topic pools (they belong in Phase 1 only)
+  const WARMUP_STARTER_TOPICS = [
+    'der eigene name', 'namen', 'herkunft, wohnort und studium',
+    'begrüßung', 'verabschiedung', 'sich vorstellen',
+  ];
+  function filterWarmupTopics(topics) {
+    return topics.filter(t => !WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt)));
   }
+
+  const last10Tiers = [
+    { label: `Last 4 units (${last4Ids[0] || '?'}–${last4Ids[last4Ids.length - 1] || '?'})`, topics: filterWarmupTopics(collectTopicsFromUnits(last4Ids, unitMap)), units: last4Ids },
+    { label: `Units 5–8 back (${mid4Ids[0] || '?'}–${mid4Ids[mid4Ids.length - 1] || '?'})`, topics: filterWarmupTopics(collectTopicsFromUnits(mid4Ids, unitMap)), units: mid4Ids },
+    { label: `Units 9–10 back (${far2Ids[0] || '?'}–${far2Ids[far2Ids.length - 1] || '?'})`, topics: filterWarmupTopics(collectTopicsFromUnits(far2Ids, unitMap)), units: far2Ids },
+  ].filter(t => t.units.length > 0);
+
+  // ── REVIEW BLOCK: all units in current chapter + previous chapter, minus the last 10 (40%) ──
+  const last10Set = new Set(last10);
+
+  // Current chapter units NOT in the last 10
+  const currentChapterReviewIds = [];
+  if (currentChapterMeta) {
+    for (let pos = currentChapterMeta.unitStart; pos <= targetPos; pos++) {
+      let uid;
+      if (book === 'ID1') uid = String(pos);
+      else if (book === 'ID2B') uid = `B${String(pos).padStart(2, '0')}`;
+      else if (book === 'ID2O') uid = `O${String(pos).padStart(2, '0')}`;
+      else uid = String(pos);
+      const u = unitMap[uid];
+      if (u && !u.is_optional && !last10Set.has(uid)) currentChapterReviewIds.push(uid);
+    }
+  }
+
+  // Previous chapter units NOT in the last 10
+  const prevChInfo = currentChapterMeta ? getPreviousChapter(book, currentChapterMeta) : null;
+  let previousChapterReviewIds = [];
+  let previousChapterLabel = '';
+  let previousChapterGrammar = null;
+  if (prevChInfo) {
+    const prevUnitIds = getChapterUnitIds(prevChInfo.meta, prevChInfo.book, unitMap);
+    previousChapterReviewIds = prevUnitIds.filter(uid => {
+      const u = unitMap[uid];
+      return u && !u.is_optional && !last10Set.has(uid);
+    });
+    previousChapterLabel = `Chapter ${prevChInfo.meta.chapter}: ${prevChInfo.meta.title}`;
+    const lastPrevUnit = unitMap[prevUnitIds[prevUnitIds.length - 1]];
+    previousChapterGrammar = lastPrevUnit?.grammar_constraints ? {
+      allowed_tenses: lastPrevUnit.grammar_constraints.allowed_tenses || ['present'],
+      allowed_cases: lastPrevUnit.grammar_constraints.allowed_cases || ['nominative'],
+    } : null;
+  }
+
+  const reviewUnitIds = [...currentChapterReviewIds, ...previousChapterReviewIds];
+  const reviewTopicsRaw = collectTopicsFromUnits(reviewUnitIds, unitMap);
+
+  // Filter out warm-up starter topics — they belong in Phase 1, not Phase 2 review
+  const reviewTopicsAll = filterWarmupTopics(reviewTopicsRaw);
+
+  // Fallback chapters (further back, only if review pool is exhausted)
+  const fallbackChapters = [];
+  let lookbackRef = prevChInfo;
+  for (let i = 0; i < 3 && lookbackRef; i++) {
+    lookbackRef = getPreviousChapter(lookbackRef.book, lookbackRef.meta);
+    if (lookbackRef) {
+      const fbUnitIds = getChapterUnitIds(lookbackRef.meta, lookbackRef.book, unitMap);
+      fallbackChapters.push({
+        label: `Chapter ${lookbackRef.meta.chapter}: ${lookbackRef.meta.title}`,
+        book: lookbackRef.book,
+        topics: collectTopicsFromUnits(fbUnitIds, unitMap).slice(0, 8),
+      });
+    }
+  }
+
+  // Grammar info: new rules from the last 4 units
+  const recentNewGrammar = [];
+  for (const uid of last4Ids) {
+    const u = unitMap[uid];
+    if (u?.grammar_constraints?.new_rules_in_this_unit) {
+      for (const rule of u.grammar_constraints.new_rules_in_this_unit) {
+        if (!recentNewGrammar.includes(rule)) recentNewGrammar.push(rule);
+      }
+    }
+  }
+
+  // Legacy reviewTopics for ConversationManager
+  const legacyReviewTopics = reviewTopicsAll.map(t => ({ chapter: previousChapterLabel || 'Review', topic: t }));
 
   res.json({
     ...targetUnit,
@@ -400,204 +495,39 @@ app.get('/api/cumulative/:unitId', (req, res) => {
       activeVocabulary: cumulativeActiveVocab,
       passiveVocabulary: cumulativePassiveVocab,
       verbForms: cumulativeVerbForms,
-      reviewTopics: sampledReviewTopics,
-      reviewFunctions: reviewFunctions.slice(-30),
+      // Main block: last 10 units by proximity tiers
+      last10Tiers,
+      currentUnitTopics,
+      // Review block: remaining units in current + previous chapter
+      reviewData: {
+        topics: reviewTopicsAll,
+        currentChapterExtras: collectTopicsFromUnits(currentChapterReviewIds, unitMap),
+        previousChapter: previousChapterReviewIds.length > 0 ? {
+          label: previousChapterLabel,
+          topics: collectTopicsFromUnits(previousChapterReviewIds, unitMap),
+          grammarSummary: previousChapterGrammar,
+        } : null,
+      },
+      fallbackChapters,
+      recentNewGrammar,
+      chapterNumber: currentChapterNum,
+      // Legacy format for ConversationManager
+      reviewTopics: legacyReviewTopics,
       stats: {
         totalActiveWords: cumulativeActiveVocab.length,
         totalPassiveWords: cumulativePassiveVocab.length,
         totalVerbs: Object.keys(cumulativeVerbForms).length,
-        totalReviewTopics: sampledReviewTopics.length,
+        totalReviewTopics: legacyReviewTopics.length,
         prerequisiteUnits: prerequisiteIds.length,
+        last10Units: last10.length,
       },
     },
   });
 });
 
-/**
- * Route: Start a new conversation
- */
-app.post('/api/conversation/start', async (req, res) => {
-  try {
-    const { unitNumber } = req.body;
-    
-    if (!unitNumber || unitNumber < 1 || unitNumber > 104) {
-      return res.status(400).json({ error: 'Invalid unit number' });
-    }
-    
-    const conversationId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
-    const systemPrompt = `Du bist ein freundlicher Gesprächspartner für Deutschlernende. Sprich einfach und klar. Beginne mit: "Hallo! Wie heißt du?"`;
-    
-    // Initialize conversation with system message
-    const messages = [
-      { role: 'system', content: systemPrompt }
-    ];
-    
-    // Get initial AI greeting
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo',
-      messages: messages,
-      temperature: 0.8,
-      max_tokens: 100
-    });
-    
-    const aiResponse = completion.choices[0].message.content;
-    messages.push({ role: 'assistant', content: aiResponse });
-    
-    // Store conversation
-    conversations.set(conversationId, {
-      unitNumber,
-      messages,
-      createdAt: Date.now(),
-      exchangeCount: 0
-    });
+// (Removed: /api/conversation/start — replaced by /api/session/start pipeline)
 
-    // Log conversation start
-    logConversationStart(conversationId, unitNumber);
-    logTurn('ai', aiResponse);
-    
-    res.json({
-      conversationId,
-      message: aiResponse
-    });
-    
-  } catch (error) {
-    console.error('Error starting conversation:', error);
-    res.status(500).json({ error: 'Failed to start conversation' });
-  }
-});
-
-/**
- * Route: Speech to text (transcription)
- */
-app.post('/api/speech-to-text', upload.single('audio'), async (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No audio file provided' });
-    }
-    
-    // Transcribe audio using OpenAI Whisper
-    // Rename file to have proper extension for OpenAI
-    const audioPath = req.file.path;
-    const renamedPath = audioPath + '.webm';
-    fs.renameSync(audioPath, renamedPath);
-    
-    const transcription = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(renamedPath),
-      model: 'gpt-4o-transcribe', // better accuracy than whisper-1 for short clips
-      language: 'de', // German
-    });
-    
-    // Clean up uploaded file
-    if (fs.existsSync(renamedPath)) {
-      fs.unlinkSync(renamedPath);
-    }
-    
-    res.json({ text: transcription.text });
-    
-  } catch (error) {
-    console.error('Error transcribing audio:', error);
-    
-    // Clean up file on error
-    if (req.file) {
-      if (fs.existsSync(req.file.path)) {
-        fs.unlinkSync(req.file.path);
-      }
-      const cleanupPath = req.file.path + '.webm';
-      if (fs.existsSync(cleanupPath)) {
-        fs.unlinkSync(cleanupPath);
-      }
-    }
-    
-    res.status(500).json({ error: 'Failed to transcribe audio' });
-  }
-});
-
-/**
- * Route: Process user message and get AI response
- */
-app.post('/api/conversation/message', async (req, res) => {
-  try {
-    const { conversationId, message } = req.body;
-    
-    if (!conversationId || !message) {
-      return res.status(400).json({ error: 'Missing conversationId or message' });
-    }
-    
-    const conversation = conversations.get(conversationId);
-    
-    if (!conversation) {
-      return res.status(404).json({ error: 'Conversation not found' });
-    }
-    
-    // Log and add user message to conversation
-    logTurn('student', message);
-    conversation.messages.push({ role: 'user', content: message });
-    conversation.exchangeCount = (conversation.exchangeCount || 0) + 1;
-    
-    // Get AI response
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo',
-      messages: conversation.messages,
-      temperature: 0.8, // More natural, less robotic
-      max_tokens: 100, // Shorter, more conversational responses
-      presence_penalty: 0.6, // Encourage variety in responses
-      frequency_penalty: 0.3 // Reduce repetition
-    });
-    
-    const aiResponse = completion.choices[0].message.content;
-    conversation.messages.push({ role: 'assistant', content: aiResponse });
-    logTurn('ai', aiResponse);
-    
-    // Check if there's an image to display for this unit
-    const image = getImageForResponse(conversation.unitNumber, aiResponse);
-    
-    const responseData = { response: aiResponse };
-    if (image) {
-      responseData.image = image;
-    }
-    
-    res.json(responseData);
-    
-  } catch (error) {
-    console.error('Error processing message:', error);
-    res.status(500).json({ error: 'Failed to process message' });
-  }
-});
-
-/**
- * Route: Text to speech
- */
-app.post('/api/text-to-speech', async (req, res) => {
-  try {
-    const { text } = req.body;
-    
-    if (!text) {
-      return res.status(400).json({ error: 'No text provided' });
-    }
-    
-    // Generate speech using OpenAI TTS
-    const mp3 = await openai.audio.speech.create({
-      model: 'tts-1-hd', // HD model for better quality
-      voice: 'onyx', // Deep, warm, very natural voice
-      input: text,
-      speed: 1.0, // Completely natural conversational pace
-      response_format: 'mp3'
-    });
-    
-    const buffer = Buffer.from(await mp3.arrayBuffer());
-    
-    res.set({
-      'Content-Type': 'audio/mpeg',
-      'Content-Length': buffer.length
-    });
-    
-    res.send(buffer);
-    
-  } catch (error) {
-    console.error('Error generating speech:', error);
-    res.status(500).json({ error: 'Failed to generate speech' });
-  }
-});
+// (Removed: /api/speech-to-text, /api/conversation/message, /api/text-to-speech — replaced by pipeline)
 
 // SSE stream endpoint — log viewer connects here
 app.get('/log-stream', (req, res) => {
@@ -683,7 +613,7 @@ app.get('/log-viewer', (req, res) => {
       addRow('<div class="sep"></div>');
     } else if (ev.type === 'turn') {
       const cls = ev.role === 'student' ? 'student' : 'ai';
-      const lbl = ev.role === 'student' ? 'STUDENT' : '    AI';
+      const lbl = ev.role === 'student' ? 'STUDENT' : ' BUDDY';
       const idAttr = ev.id ? ' data-turn-id="' + escHtml(ev.id) + '"' : '';
       const textCls = ev.pending ? 'text pending' : 'text';
       addRow('<div class="row"' + idAttr + '><span class="time">' + ev.time + '</span><span class="label ' + cls + '">' + lbl + '</span><span class="' + textCls + '">' + escHtml(ev.text) + '</span></div>');
@@ -768,33 +698,339 @@ app.post('/api/log', (req, res) => {
   res.json({ ok: true });
 });
 
-/**
- * Route: End conversation (cleanup)
- */
-app.post('/api/conversation/end', (req, res) => {
-  const { conversationId } = req.body;
-  
-  if (conversationId && conversations.has(conversationId)) {
-    const conv = conversations.get(conversationId);
-    logConversationEnd(conversationId, conv.exchangeCount || 0);
-    conversations.delete(conversationId);
-  }
-  
-  res.json({ success: true });
-});
+// (Removed: /api/conversation/end — replaced by voice pipeline session management)
 
-// Cleanup old conversations (every hour)
+// Cleanup old conversations and voice sessions (every hour)
 setInterval(() => {
   const now = Date.now();
   const maxAge = 60 * 60 * 1000; // 1 hour
-  
+
   for (const [id, conversation] of conversations.entries()) {
     if (now - conversation.createdAt > maxAge) {
       logConversationEnd(id, conversation.exchangeCount || 0);
       conversations.delete(id);
     }
   }
+  for (const [id, session] of voiceSessions.entries()) {
+    if (now - session.startTime > maxAge) {
+      voiceSessions.delete(id);
+    }
+  }
 }, 60 * 60 * 1000);
+
+// ─── Voice Pipeline Endpoints ────────────────────────────────────────────────
+
+/**
+ * Helper: Wrap raw PCM16 audio data in a WAV header.
+ * Gemini TTS returns raw linear PCM — browsers need a proper WAV file to decode.
+ */
+function wrapPcmInWav(pcmBuffer, sampleRate = 24000, numChannels = 1, bitsPerSample = 16) {
+  const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+  const blockAlign = numChannels * (bitsPerSample / 8);
+  const dataSize = pcmBuffer.length;
+  const header = Buffer.alloc(44);
+
+  header.write('RIFF', 0);                           // ChunkID
+  header.writeUInt32LE(36 + dataSize, 4);             // ChunkSize
+  header.write('WAVE', 8);                            // Format
+  header.write('fmt ', 12);                           // Subchunk1ID
+  header.writeUInt32LE(16, 16);                       // Subchunk1Size (PCM)
+  header.writeUInt16LE(1, 20);                        // AudioFormat (1 = PCM)
+  header.writeUInt16LE(numChannels, 22);              // NumChannels
+  header.writeUInt32LE(sampleRate, 24);               // SampleRate
+  header.writeUInt32LE(byteRate, 28);                 // ByteRate
+  header.writeUInt16LE(blockAlign, 32);               // BlockAlign
+  header.writeUInt16LE(bitsPerSample, 34);            // BitsPerSample
+  header.write('data', 36);                           // Subchunk2ID
+  header.writeUInt32LE(dataSize, 40);                 // Subchunk2Size
+
+  return Buffer.concat([header, pcmBuffer]);
+}
+
+/**
+ * Helper: Call Gemini Flash TTS and return base64 WAV audio.
+ * Gemini returns raw PCM which we wrap in a WAV header for browser playback.
+ * Includes retry logic for transient errors (rate limits, TTS confusion).
+ * Falls back to OpenAI TTS if Gemini fails after retries.
+ */
+async function textToSpeechGemini(text, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await googleAI.models.generateContent({
+        model: 'gemini-2.5-flash-preview-tts',
+        contents: [{ parts: [{ text: `Say exactly this in German: ${text}` }] }],
+        config: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+            voiceConfig: {
+              prebuiltVoiceConfig: { voiceName: 'Kore' },
+            },
+          },
+        },
+      });
+
+      const audioPart = response.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+      if (!audioPart?.data) {
+        throw new Error('No audio data in Gemini TTS response');
+      }
+
+      const rawMime = audioPart.mimeType || '';
+      console.log('[TTS] Gemini response mimeType:', rawMime);
+
+      // If Gemini returns raw PCM (audio/L16 or similar), wrap in WAV header
+      if (rawMime.includes('L16') || rawMime.includes('pcm') || rawMime.includes('raw') || (!rawMime.includes('wav') && !rawMime.includes('mp3') && !rawMime.includes('ogg'))) {
+        const rateMatch = rawMime.match(/rate=(\d+)/);
+        const sampleRate = rateMatch ? parseInt(rateMatch[1]) : 24000;
+        const pcmBuffer = Buffer.from(audioPart.data, 'base64');
+        const wavBuffer = wrapPcmInWav(pcmBuffer, sampleRate);
+        return { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav' };
+      }
+
+      return { audioBase64: audioPart.data, mimeType: rawMime };
+
+    } catch (err) {
+      const errMsg = err.message || JSON.stringify(err);
+      console.warn(`[TTS] Gemini attempt ${attempt + 1}/${retries + 1} failed:`, errMsg);
+
+      // Rate limit — check if it's a daily quota (hours-long wait) vs transient spike
+      if (errMsg.includes('429') || errMsg.includes('RESOURCE_EXHAUSTED')) {
+        // If retry delay is > 60 seconds, it's a daily quota — skip retries, fall back immediately
+        const delayMatch = errMsg.match(/retryDelay.*?(\d+)s/);
+        const retryDelaySec = delayMatch ? parseInt(delayMatch[1]) : 0;
+        if (retryDelaySec > 60) {
+          console.log(`[TTS] Gemini daily quota hit (reset in ${Math.round(retryDelaySec / 60)}min). Falling back to OpenAI TTS.`);
+          return textToSpeechOpenAI(text);
+        }
+        // Transient rate limit — short wait and retry
+        const waitMs = (attempt + 1) * 3000;
+        console.log(`[TTS] Rate limited, waiting ${waitMs}ms before retry...`);
+        await new Promise(r => setTimeout(r, waitMs));
+        continue;
+      }
+      // TTS model confusion — retry once with simpler prompt
+      if (errMsg.includes('tried to generate text') && attempt < retries) {
+        console.log('[TTS] Gemini TTS confused, retrying...');
+        continue;
+      }
+      // Final attempt failed — fall back to OpenAI TTS
+      if (attempt >= retries) {
+        console.log('[TTS] Gemini failed, falling back to OpenAI TTS');
+        return textToSpeechOpenAI(text);
+      }
+    }
+  }
+  // Should not reach here, but fallback just in case
+  return textToSpeechOpenAI(text);
+}
+
+/**
+ * Fallback TTS using OpenAI tts-1 when Gemini is unavailable.
+ */
+async function textToSpeechOpenAI(text) {
+  console.log('[TTS] Using OpenAI TTS fallback');
+  const mp3 = await openai.audio.speech.create({
+    model: 'tts-1',
+    voice: 'onyx',
+    input: text,
+    speed: 0.95,
+    response_format: 'mp3',
+  });
+  const buffer = Buffer.from(await mp3.arrayBuffer());
+  return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg' };
+}
+
+/**
+ * Helper: Call Claude Haiku 4.5 with conversation history.
+ */
+async function callClaude(systemPrompt, messages) {
+  const response = await anthropic.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 150,
+    temperature: 0.55,
+    system: systemPrompt,
+    messages,
+  });
+  return response.content[0].text;
+}
+
+/**
+ * Route: Start a voice pipeline session.
+ * Creates a session, gets the AI's opening greeting via Claude + TTS.
+ *
+ * body: { systemPrompt, openingInstruction }
+ * returns: { sessionId, response, audioBase64, mimeType }
+ */
+app.post('/api/session/start', async (req, res) => {
+  try {
+    const { systemPrompt, openingInstruction, typedStudentName } = req.body;
+    if (!systemPrompt) return res.status(400).json({ error: 'Missing systemPrompt' });
+
+    const sessionId = Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
+    const history = [{ role: 'user', content: openingInstruction || '[Session started. Introduce yourself in German.]' }];
+
+    const responseText = await callClaude(systemPrompt, history);
+    history.push({ role: 'assistant', content: responseText });
+
+    voiceSessions.set(sessionId, {
+      systemPrompt, history, startTime: Date.now(),
+      typedStudentName: typedStudentName || null,
+      confirmedName: null,
+      fullTranscript: [],
+    });
+
+    if (VERBOSE) {
+      console.log(`\n${DIM}[DEBUG] System prompt (${systemPrompt.length} chars):${RESET}`);
+      console.log(`${DIM}${systemPrompt.slice(0, 500)}...${RESET}\n`);
+    }
+
+    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+
+    res.json({ sessionId, response: responseText, audioBase64, mimeType });
+  } catch (error) {
+    console.error('[Session Start] Error:', error.message);
+    res.status(500).json({ error: 'Failed to start session', details: error.message });
+  }
+});
+
+/**
+ * Route: Process one conversation turn (audio → transcript → Claude → TTS).
+ * Accepts multipart form data with audio file.
+ *
+ * fields: audio (file), sessionId (string), directives (JSON string, optional)
+ * returns: { transcript, response, audioBase64, mimeType }
+ */
+app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
+  const renamedPath = req.file ? req.file.path + '.webm' : null;
+  try {
+    const { sessionId } = req.body;
+    const session = voiceSessions.get(sessionId);
+    if (!session) return res.status(404).json({ error: 'Session not found' });
+    if (!req.file) return res.status(400).json({ error: 'No audio file' });
+
+    // 1. Whisper STT
+    fs.renameSync(req.file.path, renamedPath);
+    const transcription = await openai.audio.transcriptions.create({
+      file: fs.createReadStream(renamedPath),
+      model: 'whisper-1',
+      language: 'de',
+    });
+    let transcript = transcription.text?.trim() || '';
+
+    // 1b. Name spelling correction: replace Whisper's phonetic guess with typed spelling
+    // e.g., Whisper produces "Nico" but student typed "Niko" → rewrite before Claude sees it
+    if (transcript && session.typedStudentName && !session.confirmedName) {
+      const typed = session.typedStudentName;
+      const namePatterns = [
+        /ich hei[sß]e\s+([^\s.,!?]+)/i,
+        /mein name ist\s+([^\s.,!?]+)/i,
+      ];
+      for (const pattern of namePatterns) {
+        const match = transcript.match(pattern);
+        if (match) {
+          const whisperName = match[1];
+          // Same first letter = approximate match → use typed spelling
+          if (whisperName.charAt(0).toLowerCase() === typed.charAt(0).toLowerCase()) {
+            transcript = transcript.replace(whisperName, typed);
+            session.confirmedName = typed;
+            console.log(`[Name] Whisper="${whisperName}" → typed="${typed}" (auto-corrected)`);
+          } else {
+            // Completely different → flag for clarification (handled by frontend directives)
+            console.log(`[Name] Whisper="${whisperName}" vs typed="${typed}" (mismatch, needs clarification)`);
+          }
+          break;
+        }
+      }
+    }
+
+    // 2. Handle inaudible input
+    if (!transcript) {
+      const fallbackText = 'Ich höre dich nicht gut. Kannst du das nochmal sagen?';
+      const { audioBase64, mimeType } = await textToSpeechGemini(fallbackText);
+      session.history.push({ role: 'user', content: '(inaudible)' });
+      session.history.push({ role: 'assistant', content: fallbackText });
+      session.fullTranscript?.push({ role: 'student', text: '(inaudible)' });
+      session.fullTranscript?.push({ role: 'buddy', text: fallbackText });
+      return res.json({ transcript: '', response: fallbackText, audioBase64, mimeType });
+    }
+
+    // 3. Build user message with optional directives
+    let userContent = transcript;
+    const directives = req.body.directives ? JSON.parse(req.body.directives) : [];
+    if (directives.length > 0) {
+      const directiveBlock = directives.join('\n');
+      userContent = directiveBlock + '\n\n' + transcript;
+    }
+
+    // 4. Call Claude
+    // Always log directives — essential for conversation debugging
+    if (directives.length > 0) {
+      for (const d of directives) console.log(`${DIM}[DIRECTIVE] ${d.slice(0, 150)}${RESET}`);
+    }
+    session.history.push({ role: 'user', content: userContent });
+    const responseText = await callClaude(session.systemPrompt, session.history);
+    session.history.push({ role: 'assistant', content: responseText });
+
+    // Track full transcript for accurate feedback
+    session.fullTranscript?.push({ role: 'student', text: transcript });
+    session.fullTranscript?.push({ role: 'buddy', text: responseText });
+
+    // 5. TTS
+    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+
+    res.json({ transcript, response: responseText, audioBase64, mimeType });
+  } catch (error) {
+    console.error('[Conversation Turn] Error:', error.message);
+    res.status(500).json({ error: 'Pipeline failed', details: error.message });
+  } finally {
+    // Clean up temp audio file
+    if (renamedPath && fs.existsSync(renamedPath)) fs.unlink(renamedPath, () => {});
+    else if (req.file?.path && fs.existsSync(req.file.path)) fs.unlink(req.file.path, () => {});
+  }
+});
+
+/**
+ * Route: Directive-only prompt (no student audio).
+ * Used for silent-student prompts, max-duration closing, name corrections.
+ *
+ * body: { sessionId, directives: string[] }
+ * returns: { response, audioBase64, mimeType }
+ */
+app.post('/api/session/prompt', async (req, res) => {
+  try {
+    const { sessionId, directives = [] } = req.body;
+    const session = voiceSessions.get(sessionId);
+    if (!session) return res.status(404).json({ error: 'Session not found' });
+
+    const directiveText = directives.join('\n');
+    session.history.push({ role: 'user', content: directiveText });
+
+    const responseText = await callClaude(session.systemPrompt, session.history);
+    session.history.push({ role: 'assistant', content: responseText });
+
+    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+
+    res.json({ response: responseText, audioBase64, mimeType });
+  } catch (error) {
+    console.error('[Session Prompt] Error:', error.message);
+    res.status(500).json({ error: 'Prompt failed', details: error.message });
+  }
+});
+
+/**
+ * Route: Update session system prompt (e.g., name confirmation).
+ *
+ * body: { sessionId, promptAddition }
+ */
+app.post('/api/session/update-prompt', (req, res) => {
+  const { sessionId, promptAddition } = req.body;
+  const session = voiceSessions.get(sessionId);
+  if (!session) return res.status(404).json({ error: 'Session not found' });
+
+  session.systemPrompt = promptAddition + '\n\n' + session.systemPrompt;
+  res.json({ ok: true });
+});
+
+// ─── End Voice Pipeline ──────────────────────────────────────────────────────
 
 /**
  * Route: Persona Generator
@@ -840,31 +1076,7 @@ function buildPersona(traits) {
   return persona;
 }
 
-/**
- * Route: Student audio transcription via Whisper
- * Receives a WebM audio blob from the frontend MediaRecorder and returns the transcript.
- */
-app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'No audio file' });
-  // Multer saves the temp file without an extension; Whisper/gpt-4o-transcribe
-  // uses the filename to detect format, so rename to add .webm before uploading.
-  const renamedPath = req.file.path + '.webm';
-  try {
-    fs.renameSync(req.file.path, renamedPath);
-    const transcription = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(renamedPath),
-      model: 'gpt-4o-transcribe',
-      language: 'de',
-    });
-    res.json({ text: transcription.text || '' });
-  } catch (err) {
-    console.error('[Transcribe] Error:', err.message);
-    res.json({ text: '' });
-  } finally {
-    if (fs.existsSync(renamedPath)) fs.unlink(renamedPath, () => {});
-    else if (fs.existsSync(req.file.path)) fs.unlink(req.file.path, () => {});
-  }
-});
+// (Removed: /api/transcribe — replaced by /api/conversation-turn pipeline)
 
 /**
  * Route: Feedback Generator (Component 8)
@@ -873,13 +1085,13 @@ app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
  */
 app.post('/api/feedback', async (req, res) => {
   try {
-    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000 } = req.body;
-    const MIN_THRESHOLD_MS = 0.6 * minDurationMs; // 60% of chapter minimum duration
+    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000, sessionId } = req.body;
+    const MIN_THRESHOLD_MS = 0.6 * minDurationMs;
     if (sessionDurationMs < MIN_THRESHOLD_MS) {
       return res.json({ fallback: true });
     }
 
-    // Collect goals from units 1..unit, most recent first (higher-unit goals prioritized)
+    // Collect goals from units 1..unit, most recent first
     const goalsByUnit = [];
     for (let u = Number(unit); u >= 1; u--) {
       const ud = unitMap[String(u)];
@@ -891,28 +1103,56 @@ app.post('/api/feedback', async (req, res) => {
       return res.json({ fallback: true });
     }
 
+    // Use full transcript (both student AND buddy turns) if available
+    const session = sessionId ? voiceSessions.get(sessionId) : null;
+    const fullTranscript = session?.fullTranscript || [];
+    let conversationText;
+    if (fullTranscript.length > 0) {
+      conversationText = fullTranscript
+        .map(t => `${t.role === 'student' ? 'STUDENT' : 'BUDDY'}: ${t.text}`)
+        .join('\n');
+    } else {
+      conversationText = utterances.filter(Boolean).map(u => `STUDENT: ${u}`).join('\n');
+    }
+
     const goalsText = goalsByUnit
       .map(({ unit: u, goals }) => `Unit ${u}: ${goals.join('; ')}`)
       .join('\n');
-    const utterancesText = utterances.filter(Boolean).join('\n');
 
-    const prompt =
-`You are evaluating a German language student's spoken conversation.\nThe student is at Unit ${unit}. Communicative goals from Units 1\u2013${unit} (most recent first):\n${goalsText}\n\nStudent utterances from this session:\n${utterancesText}\n\nIdentify 2\u20138 communicative goals the student clearly demonstrated. Prioritize goals from higher-numbered (more recent) units. Translate each matched goal into an English phrase.\nRespond ONLY with a valid JSON object:\n{ "items": ["You were able to ...", "You were able to ..."] }`;
+    const prompt = `You are evaluating a German language conversation between a student and a buddy.
+The student is at Unit ${unit}. Communicative goals from Units 1–${unit} (most recent first):
+${goalsText}
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.2,
+Full conversation transcript from this session:
+${conversationText}
+
+CRITICAL: Only report goals the student ACTUALLY demonstrated in the transcript above.
+Do NOT report goals just because they are listed for the student's unit level.
+A goal is "demonstrated" only if the student said something that directly relates to it.
+For example: if the goal is "talk about weather" but the conversation never mentioned weather, do NOT include it.
+
+Identify 2–8 communicative goals the student clearly demonstrated. Translate each into English.
+Respond ONLY with a valid JSON object:
+{ "items": ["You were able to ...", "You were able to ..."] }`;
+
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 400,
+      messages: [{ role: 'user', content: prompt }],
     });
 
     let items = [];
     try {
-      const parsed = JSON.parse(completion.choices[0].message.content);
+      const text = response.content?.[0]?.text || '';
+      const cleaned = text.replace(/```json|```/g, '').trim();
+      const parsed = JSON.parse(cleaned);
       items = Array.isArray(parsed.items) ? parsed.items : [];
     } catch {
-      const m = completion.choices[0].message.content.match(/\[[\s\S]*?\]/);
-      if (m) items = JSON.parse(m[0]);
+      try {
+        const text = response.content?.[0]?.text || '';
+        const m = text.match(/\[[\s\S]*?\]/);
+        if (m) items = JSON.parse(m[0]);
+      } catch { /* fallback */ }
     }
     items = items.filter(s => typeof s === 'string' && s.trim()).slice(0, 8);
     res.json({ items });
@@ -966,16 +1206,15 @@ If no topic matches, respond:
 { "matchedIndices": [], "primaryPool": "none" }`;
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0,
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 80,
+      messages: [{ role: 'user', content: prompt }],
     });
 
     let result = { matchedIndices: [], primaryPool: 'none' };
     try {
-      const raw = completion.choices[0].message.content
+      const raw = (response.content?.[0]?.text || '')
         .replace(/```json|```/g, '').trim();
       result = JSON.parse(raw);
     } catch { /* parse failed — return none */ }
@@ -985,6 +1224,11 @@ If no topic matches, respond:
       .map(i => allTopics[i - 1].name);
 
     const pool = result.primaryPool || 'none';
+
+    // Always log topic classification — essential for debugging
+    if (matchedTopics.length > 0) {
+      console.log(`${DIM}[TOPIC] [${pool}] ${matchedTopics.join(', ')}${RESET}`);
+    }
 
     res.json({ matchedTopics, pool });
   } catch (err) {

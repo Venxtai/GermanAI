@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(node -e \"const Anthropic = require\\(''@anthropic-ai/sdk''\\); console.log\\(typeof Anthropic, typeof Anthropic.default\\)\")",
+      "Bash(node -e \"const { GoogleGenAI } = require\\(''@google/genai''\\); console.log\\(typeof GoogleGenAI\\)\")",
+      "Bash(node -c server/server.js)",
+      "Bash(npm run:*)",
+      "Bash(find /c/Users/niko/OneDrive/Desktop/AI/GermanAI/.claude/worktrees/sleepy-banach/curriculum -name unit_*.json -type f)",
+      "WebSearch",
+      "WebFetch(domain:discuss.ai.google.dev)",
+      "Bash(for word:*)",
+      "Bash(do echo:*)",
+      "Bash(grep -l \"$word\" unit_*.json)",
+      "Bash(done)"
+    ]
+  }
+}

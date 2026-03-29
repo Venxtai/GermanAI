@@ -59,7 +59,7 @@ export function UI() {
   const holdTimerRef = useRef(null);
   const isHoldingRef = useRef(false);
 
-  const { status, isSessionActive, micError, setMicError, feedback, setFeedback } = useAIStore();
+  const { status, isSessionActive, micError, setMicError, feedback, setFeedback, transcriptForDownload } = useAIStore();
 
   useEffect(() => {
     if (!micError) return;
@@ -388,6 +388,29 @@ export function UI() {
                     ))}
                   </ul>
                 </>
+              )}
+              {feedback !== 'loading' && transcriptForDownload && (
+                <button
+                  onClick={() => {
+                    const t = transcriptForDownload;
+                    const lines = [`Conversation Transcript`, `${t.unitLabel}`, `Date: ${t.date}`, `${'─'.repeat(50)}`, ''];
+                    for (const msg of t.messages) {
+                      const label = msg.role === 'user' ? 'STUDENT' : ' BUDDY';
+                      lines.push(`${label}: ${msg.content}`);
+                    }
+                    const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `transcript-${Date.now()}.txt`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="text-sm transition-colors"
+                  style={{ color: "rgba(255,255,255,0.7)", textDecoration: "underline" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,1)"}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+                >Download Transcript</button>
               )}
               {feedback !== 'loading' && (
                 <button onClick={handleFeedbackDone} className="mt-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition-colors">Done</button>
