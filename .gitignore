@@ -13,6 +13,9 @@ service-account.json
 uploads/
 **/uploads/
 
+# Saved conversation transcripts
+transcripts/
+
 # Logs
 *.log
 logs/

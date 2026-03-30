@@ -6,6 +6,7 @@ const multer = require('multer');
 const OpenAI = require('openai');
 const Anthropic = require('@anthropic-ai/sdk');
 const { GoogleGenAI } = require('@google/genai');
+const { google } = require('googleapis');
 const fs = require('fs');
 
 // Load persona database
@@ -178,6 +179,25 @@ for (const category of Object.values(UNIVERSAL_FILLERS)) {
 }
 console.log(`Loaded ${UNIVERSAL_FILLER_WORDS.size} universal filler words`);
 
+// Initialize Google Drive client for transcript uploads
+let driveClient = null;
+const DRIVE_FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID || '1QBFSdzunA5GRIuflyf0gVqxA7gLKF_5M';
+try {
+  const credPath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS || './service-account.json');
+  if (fs.existsSync(credPath)) {
+    const auth = new google.auth.GoogleAuth({
+      keyFile: credPath,
+      scopes: ['https://www.googleapis.com/auth/drive.file'],
+    });
+    driveClient = google.drive({ version: 'v3', auth });
+    console.log('Google Drive client initialized for transcript uploads');
+  } else {
+    console.warn('Service account file not found — transcripts will save locally only');
+  }
+} catch (e) {
+  console.warn('Google Drive init failed:', e.message, '— transcripts will save locally only');
+}
+
 // Load image map data
 let imageMap = {};
 try {
@@ -252,6 +272,83 @@ function logConversationEnd(sessionId, exchangeCount) {
   console.log(`${BOLD}${CYAN}${'═'.repeat(60)}${RESET}\n`);
   broadcastLog({ type: 'end', sessionId, exchangeCount, time: timestamp() });
 }
+
+/**
+ * Save a transcript as a .txt file to Google Drive (with local fallback).
+ * Filename: Unit_XXX_YYYY-MM-DD_HHMMSS_sessionId.txt
+ * Sorted alphabetically: same unit together, then by date.
+ */
+async function saveTranscriptFile(sessionId, logSession) {
+  try {
+    const unit = logSession.unit || 'unknown';
+    const unitTitle = logSession.unitTitle || '';
+    const unitPadded = String(unit).padStart(3, '0');
+
+    const now = new Date();
+    const dateStr = now.toISOString().slice(0, 10);
+    const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '');
+
+    const filename = `Unit_${unitPadded}_${dateStr}_${timeStr}_${sessionId}.txt`;
+
+    // Build transcript text
+    const lines = [];
+    lines.push('═'.repeat(60));
+    lines.push(`CONVERSATION TRANSCRIPT`);
+    lines.push(`Unit    : Unit ${unit} — ${unitTitle}`);
+    lines.push(`Date    : ${now.toLocaleString()}`);
+    lines.push(`Session : ${sessionId}`);
+    lines.push(`Turns   : ${logSession.exchangeCount} student turn(s)`);
+    lines.push('─'.repeat(60));
+    lines.push('');
+
+    for (const turn of (logSession.turns || [])) {
+      const speaker = turn.role === 'student' ? 'STUDENT' : ' BUDDY';
+      lines.push(`[${turn.time}] ${speaker}: ${turn.text}`);
+    }
+
+    lines.push('');
+    lines.push('─'.repeat(60));
+    lines.push(`[${timestamp()}] CONVERSATION ENDED`);
+    lines.push('═'.repeat(60));
+
+    const content = lines.join('\n');
+
+    // Upload to Google Drive
+    if (driveClient) {
+      try {
+        const { Readable } = require('stream');
+        const stream = Readable.from([content]);
+        await driveClient.files.create({
+          requestBody: {
+            name: filename,
+            mimeType: 'text/plain',
+            parents: [DRIVE_FOLDER_ID],
+          },
+          media: {
+            mimeType: 'text/plain',
+            body: stream,
+          },
+        });
+        console.log(`${DIM}[TRANSCRIPT] Uploaded to Google Drive: ${filename}${RESET}`);
+      } catch (driveErr) {
+        console.error('[TRANSCRIPT] Drive upload failed:', driveErr.message, '— saving locally');
+        saveTranscriptLocally(filename, content);
+      }
+    } else {
+      saveTranscriptLocally(filename, content);
+    }
+  } catch (err) {
+    console.error('[TRANSCRIPT] Failed to save:', err.message);
+  }
+}
+
+function saveTranscriptLocally(filename, content) {
+  const transcriptsDir = path.join(__dirname, '../transcripts');
+  if (!fs.existsSync(transcriptsDir)) fs.mkdirSync(transcriptsDir, { recursive: true });
+  fs.writeFileSync(path.join(transcriptsDir, filename), content, 'utf8');
+  console.log(`${DIM}[TRANSCRIPT] Saved locally: transcripts/${filename}${RESET}`);
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -677,7 +774,7 @@ app.post('/api/log', (req, res) => {
   if (type === 'start') {
     // Clear history so reconnecting clients only see the current session
     logHistory.length = 0;
-    logSessions.set(sessionId, { unit, unitTitle, exchangeCount: 0 });
+    logSessions.set(sessionId, { unit, unitTitle, exchangeCount: 0, turns: [], startTime: timestamp() });
     const label = unitTitle ? `Unit ${unit} — ${unitTitle}` : `Unit ${unit}`;
     console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
     console.log(`${BOLD}${GREEN}[${timestamp()}] CONVERSATION STARTED${RESET}`);
@@ -692,7 +789,10 @@ app.post('/api/log', (req, res) => {
     if (role === 'student') session.exchangeCount++;
     const { id, pending } = req.body;
     // For pending student placeholders, skip the console until the real text arrives
-    if (!pending) logTurn(role, text);
+    if (!pending) {
+      logTurn(role, text);
+      session.turns.push({ role, text, time: timestamp() });
+    }
     broadcastLog({ type: 'turn', role, text, id: id || null, pending: !!pending, time: timestamp() });
 
   } else if (type === 'update-turn') {
@@ -707,12 +807,26 @@ app.post('/api/log', (req, res) => {
       }
     }
     logTurn('student', updatedText);
+    // Find the session and update/add the turn with real text
+    for (const [, sess] of logSessions) {
+      // Replace last student placeholder or add new
+      const lastStudent = [...sess.turns].reverse().find(t => t.role === 'student');
+      if (lastStudent && lastStudent.text === '...') {
+        lastStudent.text = updatedText;
+      }
+    }
     broadcastLog({ type: 'update-turn', id, text: updatedText, time: timestamp() });
 
   } else if (type === 'end') {
     const session = logSessions.get(sessionId);
     const count = session ? session.exchangeCount : 0;
     logConversationEnd(sessionId, count);
+
+    // Save transcript to file
+    if (session) {
+      saveTranscriptFile(sessionId, session);
+    }
+
     logSessions.delete(sessionId);
   }
 
