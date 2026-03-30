@@ -75,6 +75,7 @@ export function useVoiceConnection() {
   const typedNameRef = useRef(null);
   const nameConfirmationPendingRef = useRef(null);
   const pendingNameCorrectionRef = useRef(null);
+  const expectingNameRef = useRef(false); // true after buddy asks "Wie heißt du?"
 
   // ── Session state refs ──
   const studentUtterancesRef = useRef([]);
@@ -205,12 +206,21 @@ export function useVoiceConnection() {
   }
 
   // ── Name detection helper ──
-  // Strategy: When the student says their name, we immediately lock in the
-  // TYPED spelling (from the welcome screen) if the spoken name approximately
-  // matches. This avoids the AI echoing Whisper's phonetic guess (e.g. "Nico")
-  // and then correcting to the typed spelling (e.g. "Niko") in a second step.
-  // We inject the confirmed name into the server-side prompt BEFORE the AI
-  // generates its response by using the directives mechanism.
+  // ANTICIPATION-BASED: After the buddy asks "Wie heißt du?", we set
+  // expectingNameRef=true. The NEXT student turn is expected to contain their
+  // name. We extract the name using multiple strategies (grammar patterns,
+  // last capitalized word, etc.) rather than relying on Whisper getting
+  // "heiße" right (it often transcribes it as "hasse", "heise", etc.).
+
+  // Detect if the buddy just asked for the student's name
+  function checkBuddyAskedName(aiText) {
+    if (!aiText || studentNameRef.current) return;
+    const t = aiText.toLowerCase();
+    if (/wie hei[sß](t|en) (du|sie)/i.test(t) || /dein(en?)?\s*name/i.test(t)) {
+      expectingNameRef.current = true;
+    }
+  }
+
   function handleNameDetection(transcript, aiText) {
     // Step 1: If awaiting name confirmation (completely different names), parse response
     if (nameConfirmationPendingRef.current && transcript) {
@@ -219,6 +229,7 @@ export function useVoiceConnection() {
       const mentionsTyped = transcript.toLowerCase().includes(typed.toLowerCase());
       const confirmedName = mentionsTyped ? typed : spoken;
       studentNameRef.current = confirmedName;
+      expectingNameRef.current = false;
       fetch('/api/session/update-prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -230,37 +241,70 @@ export function useVoiceConnection() {
       return;
     }
 
-    // Step 2: First time student introduces themselves
-    if (!studentNameRef.current && !nameConfirmationPendingRef.current && transcript) {
-      const nameMatch =
-        transcript.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
-        transcript.match(/mein name ist\s+([^\s.,!?]+)/i);
-      if (nameMatch) {
-        const spokenName = nameMatch[1];
-        const typedName = typedNameRef.current;
+    // Step 2: Extract name from student's response
+    if (!studentNameRef.current && transcript) {
+      let spokenName = null;
 
-        if (typedName && spokenName.charAt(0).toLowerCase() !== typedName.charAt(0).toLowerCase()) {
-          // Completely different first letters → ask for clarification
-          nameConfirmationPendingRef.current = { typed: typedName, spoken: spokenName };
-          pendingDirectivesRef.current.push(
-            `[SYSTEM: The student typed "${typedName}" on the welcome screen but just said "${spokenName}". ` +
-            `You MUST ask for clarification in German: "Interessant — heißt du ${typedName} oder ${spokenName}?" Then wait for confirmation.]`
-          );
-        } else {
-          // Approximate match (same first letter) or no typed name → lock in typed spelling immediately
-          const finalName = typedName || spokenName;
-          studentNameRef.current = finalName;
-          // Inject name into server prompt immediately so the AI's CURRENT response uses it
-          fetch('/api/session/update-prompt', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              sessionId: sessionIdRef.current,
-              promptAddition: `CRITICAL — The student's confirmed name is "${finalName}". You MUST use ONLY this exact spelling for the rest of the session.`,
-            }),
-          }).catch(() => {});
-          // No correction step needed — the prompt already had the typed spelling reference
+      // Strategy A: Classic grammar patterns (works when Whisper gets it right)
+      const grammarMatch =
+        transcript.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
+        transcript.match(/mein name ist\s+([^\s.,!?]+)/i) ||
+        transcript.match(/ich bin\s+([^\s.,!?]+)/i);
+      if (grammarMatch) {
+        spokenName = grammarMatch[1];
+      }
+
+      // Strategy B: Anticipation — if we're expecting a name, extract it
+      // even from garbled transcriptions like "Ich hasse Nico" or just "Nico"
+      if (!spokenName && expectingNameRef.current) {
+        // Try: "ich [anything] [Name]" — last capitalized word after "ich"
+        const afterIch = transcript.match(/ich\s+\S+\s+([A-Z][a-zA-ZäöüÄÖÜß]+)/);
+        if (afterIch) {
+          spokenName = afterIch[1];
         }
+        // Try: just a standalone name (capitalized word, not "Ich")
+        if (!spokenName) {
+          const words = transcript.split(/\s+/).filter(w => /^[A-Z]/.test(w) && w.toLowerCase() !== 'ich');
+          if (words.length === 1) {
+            spokenName = words[0];
+          } else if (words.length > 1) {
+            // Take the last capitalized word (most likely the name)
+            spokenName = words[words.length - 1];
+          }
+        }
+        // Last resort: take the last word of the whole response
+        if (!spokenName) {
+          const lastWord = transcript.trim().split(/\s+/).pop();
+          if (lastWord && lastWord.length >= 2 && !/^(ja|nein|gut|und|oder|nicht|das|die|der)$/i.test(lastWord)) {
+            spokenName = lastWord.charAt(0).toUpperCase() + lastWord.slice(1);
+          }
+        }
+      }
+
+      if (!spokenName) return;
+      expectingNameRef.current = false;
+
+      const typedName = typedNameRef.current;
+
+      if (typedName && spokenName.charAt(0).toLowerCase() !== typedName.charAt(0).toLowerCase()) {
+        // Completely different first letters → ask for clarification
+        nameConfirmationPendingRef.current = { typed: typedName, spoken: spokenName };
+        pendingDirectivesRef.current.push(
+          `[SYSTEM: The student typed "${typedName}" on the welcome screen but just said "${spokenName}". ` +
+          `You MUST ask for clarification in German: "Interessant — heißt du ${typedName} oder ${spokenName}?" Then wait for confirmation.]`
+        );
+      } else {
+        // Approximate match or no typed name → lock in typed spelling
+        const finalName = typedName || spokenName;
+        studentNameRef.current = finalName;
+        fetch('/api/session/update-prompt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: sessionIdRef.current,
+            promptAddition: `CRITICAL — The student's confirmed name is "${finalName}". You MUST use ONLY this exact spelling for the rest of the session.`,
+          }),
+        }).catch(() => {});
       }
     }
   }
@@ -302,6 +346,7 @@ export function useVoiceConnection() {
         typedNameRef.current = studentName || null;
         nameConfirmationPendingRef.current = null;
         pendingNameCorrectionRef.current = null;
+        expectingNameRef.current = false;
         unitDataRef.current = unitData;
         exchangeCountRef.current = 0;
         topicsDiscussedRef.current = new Set();
@@ -365,10 +410,24 @@ export function useVoiceConnection() {
         // 7. Start session on server — ALWAYS ask name as part of warm-up ritual
         const openingText = `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. Say: "Hallo! Ich bin ${buddyName} — wie heißt du?" ALWAYS ask the student's name even if you have a spelling reference. Do NOT ask about the unit topic yet. Speak only in German.]`;
 
+        // Send cumulative data for server-side vocabulary validation
+        const cumulativeData = unitData._cumulative ? {
+          activeVocabulary: unitData._cumulative.activeVocabulary,
+          passiveVocabulary: unitData._cumulative.passiveVocabulary,
+          verbForms: unitData._cumulative.verbForms,
+        } : null;
+
         const sessionResp = await fetch('/api/session/start', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ systemPrompt: systemInstructions, openingInstruction: openingText, typedStudentName: studentName || null }),
+          body: JSON.stringify({
+            systemPrompt: systemInstructions,
+            openingInstruction: openingText,
+            typedStudentName: studentName || null,
+            cumulativeData,
+            grammarConstraints: unitData.grammar_constraints || null,
+            universalFillers: unitData.universal_fillers || null,
+          }),
         });
         if (!sessionResp.ok) throw new Error('Session start failed');
         const { sessionId, response: aiGreeting, audioBase64, mimeType } = await sessionResp.json();
@@ -387,6 +446,7 @@ export function useVoiceConnection() {
         // 9. Add AI greeting to messages and process through manager
         addMessage('assistant', aiGreeting);
         postLog({ type: 'turn', role: 'ai', text: aiGreeting });
+        checkBuddyAskedName(aiGreeting); // Track if buddy asked "Wie heißt du?"
 
         const mgr = managerRef.current;
         if (mgr) {
@@ -619,6 +679,7 @@ export function useVoiceConnection() {
       // ── Process AI response ──
       addMessage('assistant', aiText);
       postLog({ type: 'turn', role: 'ai', text: aiText });
+      checkBuddyAskedName(aiText); // Track if buddy asked "Wie heißt du?"
 
       // ConversationManager processing
       const mgr = managerRef.current;

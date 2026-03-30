@@ -39,11 +39,18 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
-const googleAI = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+
+// Google Vertex AI — uses service account credentials for production
+// Set GOOGLE_APPLICATION_CREDENTIALS in .env pointing to the service account JSON file
+const googleAI = new GoogleGenAI({
+  vertexai: true,
+  project: process.env.GOOGLE_CLOUD_PROJECT || 'sound-folder-471314-g5',
+  location: process.env.GOOGLE_CLOUD_LOCATION || 'us-central1',
+});
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '5mb' })); // Large limit needed for cumulative vocab data
 
 // Configure multer for audio file uploads
 const upload = multer({ 
@@ -156,6 +163,20 @@ try {
 } catch (error) {
   console.error('Error loading curriculum data:', error);
 }
+
+// Load universal fillers from unit 1 (same for all units — loaded once at startup)
+const UNIVERSAL_FILLERS = unitMap['1']?.universal_fillers || {};
+const UNIVERSAL_FILLER_WORDS = new Set();
+for (const category of Object.values(UNIVERSAL_FILLERS)) {
+  if (Array.isArray(category)) {
+    for (const filler of category) {
+      for (const word of filler.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/)) {
+        if (word.length > 0) UNIVERSAL_FILLER_WORDS.add(word);
+      }
+    }
+  }
+}
+console.log(`Loaded ${UNIVERSAL_FILLER_WORDS.size} universal filler words`);
 
 // Load image map data
 let imageMap = {};
@@ -393,6 +414,15 @@ app.get('/api/cumulative/:unitId', (req, res) => {
     allCoveredIds.push(targetId);
   }
 
+  // Warm-up topics to exclude from conversation topic pools (they belong in Phase 1 only)
+  const WARMUP_STARTER_TOPICS = [
+    'der eigene name', 'namen', 'herkunft, wohnort und studium',
+    'begrüßung', 'verabschiedung', 'sich vorstellen',
+  ];
+  function filterWarmupTopics(topics) {
+    return topics.filter(t => !WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt)));
+  }
+
   // ── MAIN BLOCK: last 10 units (60%) ──
   // Slice the last 10 covered units — this is the "recent" pool
   const last10 = allCoveredIds.slice(-10);
@@ -402,15 +432,6 @@ app.get('/api/cumulative/:unitId', (req, res) => {
   const last4Ids  = last10.slice(-4);   // most recent 4 (includes current)
   const mid4Ids   = last10.slice(-8, -4); // units 5-8 back
   const far2Ids   = last10.slice(0, Math.max(0, last10.length - 8)); // remainder up to 10
-
-  // Warm-up topics to exclude from conversation topic pools (they belong in Phase 1 only)
-  const WARMUP_STARTER_TOPICS = [
-    'der eigene name', 'namen', 'herkunft, wohnort und studium',
-    'begrüßung', 'verabschiedung', 'sich vorstellen',
-  ];
-  function filterWarmupTopics(topics) {
-    return topics.filter(t => !WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt)));
-  }
 
   const last10Tiers = [
     { label: `Last 4 units (${last4Ids[0] || '?'}–${last4Ids[last4Ids.length - 1] || '?'})`, topics: filterWarmupTopics(collectTopicsFromUnits(last4Ids, unitMap)), units: last4Ids },
@@ -757,14 +778,17 @@ async function textToSpeechGemini(text, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const response = await googleAI.models.generateContent({
-        model: 'gemini-2.5-flash-preview-tts',
-        contents: [{ parts: [{ text: `Say exactly this in German: ${text}` }] }],
+        model: 'gemini-2.5-pro-tts',
+        contents: [{ role: 'user', parts: [{ text: `Say exactly this in German: ${text}` }] }],
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
             voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'Kore' },
+              prebuiltVoiceConfig: {
+                voiceName: 'Achernar',
+              },
             },
+            languageCode: 'de-DE',
           },
         },
       });
@@ -839,6 +863,389 @@ async function textToSpeechOpenAI(text) {
   return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg' };
 }
 
+// ══════════════════════════════════════════════════════════════════════════════
+// VOCABULARY & GRAMMAR VALIDATION
+// Post-generation check: every word Claude produces is validated against the
+// cumulative allowed word set. Violations trigger a re-generation with
+// specific correction instructions.
+// ══════════════════════════════════════════════════════════════════════════════
+
+// German functional words that are ALWAYS allowed regardless of unit level.
+// These are the "glue" of the language — articles, pronouns, prepositions, etc.
+const FUNCTIONAL_WORDS = new Set([
+  // Articles
+  'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines',
+  'kein', 'keine', 'keinen', 'keinem', 'keiner',
+  // Pronouns
+  'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man', 'xier',
+  'mich', 'dich', 'sich', 'uns', 'euch',
+  'mir', 'dir', 'ihm', 'ihr',
+  'mein', 'meine', 'meinen', 'meinem', 'meiner', 'meines',
+  'dein', 'deine', 'deinen', 'deinem', 'deiner', 'deines',
+  'sein', 'seine', 'seinen', 'seinem', 'seiner', 'seines',
+  'ihr', 'ihre', 'ihren', 'ihrem', 'ihrer', 'ihres',
+  'unser', 'unsere', 'unseren', 'unserem', 'unserer',
+  'euer', 'eure', 'euren', 'eurem', 'eurer',
+  'das', 'dies', 'diese', 'dieser', 'dieses', 'diesen', 'diesem',
+  'wer', 'was', 'wen', 'wem', 'wessen',
+  'welch', 'welche', 'welcher', 'welches', 'welchen', 'welchem',
+  // Prepositions
+  'in', 'an', 'auf', 'aus', 'bei', 'mit', 'nach', 'von', 'zu', 'zum', 'zur',
+  'für', 'um', 'über', 'unter', 'vor', 'hinter', 'neben', 'zwischen',
+  'bis', 'durch', 'gegen', 'ohne', 'seit',
+  // Conjunctions
+  'und', 'oder', 'aber', 'denn', 'sondern', 'doch',
+  // Adverbs / particles (very common, always needed)
+  'nicht', 'auch', 'schon', 'noch', 'sehr', 'gern', 'gerne',
+  'dann', 'jetzt', 'hier', 'dort', 'da', 'so', 'wie', 'wo', 'woher', 'wohin',
+  'wann', 'warum', 'immer', 'oft', 'manchmal', 'nie',
+  'heute', 'morgen', 'morgens', 'nachmittags', 'abends',
+  'ja', 'nein', 'vielleicht',
+  // Question words
+  'was', 'wer', 'wie', 'wo', 'woher', 'wann', 'warum',
+  // Common verbs (sein, haben, werden — always needed)
+  'ist', 'sind', 'bin', 'bist', 'seid', 'war', 'waren',
+  'hat', 'hast', 'habe', 'haben', 'habt',
+  'wird', 'wirst', 'werden', 'werdet',
+  // Modal helpers
+  'kann', 'kannst', 'können', 'könnt',
+  'muss', 'musst', 'müssen', 'müsst',
+  'will', 'willst', 'wollen', 'wollt',
+  'soll', 'sollst', 'sollen', 'sollt',
+  'darf', 'darfst', 'dürfen', 'dürft',
+  // Common short words
+  'es', 'mal', 'doch', 'lass', 'uns', 'okay',
+]);
+
+// Numbers are always allowed
+const NUMBER_WORDS = new Set([
+  'null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht',
+  'neun', 'zehn', 'elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn',
+  'sechzehn', 'siebzehn', 'achtzehn', 'neunzehn', 'zwanzig', 'dreißig',
+  'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig', 'hundert',
+  'einundzwanzig', 'zweiundzwanzig',
+]);
+
+/**
+ * Extract all word forms from a vocabulary entry and add to a Set.
+ * Handles articles ("der Pullover" → "pullover"), compound words,
+ * reflexive verbs ("sich freuen" → "freuen"), etc.
+ */
+function addVocabToSet(set, word) {
+  if (!word) return;
+  const lower = word.toLowerCase().trim();
+  set.add(lower);
+
+  // Strip leading articles: "der Pullover" → "Pullover"
+  const noArticle = lower.replace(/^(der|die|das|ein|eine|einen|einem)\s+/i, '').trim();
+  if (noArticle) set.add(noArticle);
+
+  // Strip reflexive "sich": "sich freuen" → "freuen"
+  const noSich = noArticle.replace(/^sich\s+/i, '').trim();
+  if (noSich && noSich !== noArticle) set.add(noSich);
+
+  // Handle multi-word entries: "kein Problem" → "kein", "problem"
+  for (const part of lower.split(/\s+/)) {
+    if (part.length > 1) set.add(part);
+  }
+}
+
+/**
+ * Build the allowed word set for a session from cumulative vocabulary data.
+ * Returns { allowed: Set, passiveSet: Set } of lowercase word forms.
+ */
+function buildAllowedWordSet(cumulativeData, universalFillers) {
+  const allowed = new Set();
+
+  // 1. All active vocabulary words
+  for (const item of (cumulativeData.activeVocabulary || [])) {
+    const word = typeof item === 'object' ? item.word : item;
+    addVocabToSet(allowed, word);
+  }
+
+  // 2. Passive vocabulary — tracked separately
+  const passiveSet = new Set();
+  for (const item of (cumulativeData.passiveVocabulary || [])) {
+    const word = typeof item === 'object' ? item.word : item;
+    addVocabToSet(passiveSet, word);
+  }
+
+  // 3. All allowed verb conjugations
+  const verbForms = cumulativeData.verbForms || {};
+  for (const [verb, tenses] of Object.entries(verbForms)) {
+    allowed.add(verb.toLowerCase());
+    for (const [, persons] of Object.entries(tenses)) {
+      for (const [, form] of Object.entries(persons)) {
+        if (form) {
+          // "stehe auf" → "stehe", "auf"
+          for (const p of form.split(/\s+/)) allowed.add(p.toLowerCase());
+        }
+      }
+    }
+  }
+
+  // 4. Universal fillers — loaded at startup, always the same
+  for (const w of UNIVERSAL_FILLER_WORDS) allowed.add(w);
+
+  // Also add from the request body if provided (belt and suspenders)
+  if (universalFillers) {
+    for (const category of Object.values(universalFillers)) {
+      if (Array.isArray(category)) {
+        for (const filler of category) {
+          for (const word of filler.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/)) {
+            if (word.length > 0) allowed.add(word);
+          }
+        }
+      }
+    }
+  }
+
+  // 5. Functional words, numbers, common contractions
+  for (const w of FUNCTIONAL_WORDS) allowed.add(w);
+  for (const w of NUMBER_WORDS) allowed.add(w);
+
+  // 6. Common contractions and colloquial forms always allowed
+  const CONTRACTIONS = [
+    "geht's", "gehts", "wie's", "gibt's", "gibts", "ist's",
+    "hab's", "hab", "habs", "was's", "lass",
+    "drauf", "dran", "drin", "drüber", "drunter",
+    "rein", "raus", "runter", "rüber",
+  ];
+  for (const c of CONTRACTIONS) allowed.add(c);
+
+  return { allowed, passiveSet };
+}
+
+/**
+ * Validate a buddy response against the allowed word set.
+ * Returns { valid: true } or { valid: false, violations: [...], suggestions: string }
+ */
+function validateResponse(text, allowedSet, passiveSet, studentWords) {
+  // Tokenize: keep hyphenated words together, handle contractions
+  const rawTokens = text
+    .replace(/[.,!?;:""„"«»—–\(\)\[\]]/g, ' ')  // Remove punctuation (but keep hyphens)
+    .split(/\s+/)
+    .filter(w => w.length > 0);
+
+  // Normalize tokens: handle hyphens and contractions
+  const words = [];
+  for (const token of rawTokens) {
+    // Skip single characters
+    if (token.length <= 1) continue;
+
+    // Keep contractions as-is for checking: "geht's" stays "geht's"
+    // But also check without apostrophe
+    words.push(token);
+  }
+
+  const violations = [];
+  const studentWordSet = new Set((studentWords || []).map(w => w.toLowerCase()));
+  const seen = new Set(); // Avoid reporting same word twice
+
+  for (const word of words) {
+    const lower = word.toLowerCase().replace(/[''`]/g, "'"); // Normalize quotes
+
+    // Skip very short words (1-2 chars are usually particles/articles)
+    if (lower.length <= 2) continue;
+
+    // Skip if already checked
+    if (seen.has(lower)) continue;
+    seen.add(lower);
+
+    // Check the full word first
+    if (allowedSet.has(lower)) continue;
+
+    // Check without trailing apostrophe-s: "geht's" → "geht"
+    const noApostrophe = lower.replace(/'s$/, '');
+    if (noApostrophe !== lower && allowedSet.has(noApostrophe)) continue;
+
+    // Check hyphenated word parts: "T-Shirts" → check "T-Shirts", "T-Shirt", "Shirts", "Shirt"
+    if (lower.includes('-')) {
+      const parts = lower.split('-');
+      const allPartsOk = parts.every(p => p.length <= 1 || allowedSet.has(p) || FUNCTIONAL_WORDS.has(p));
+      if (allPartsOk) continue;
+      // Also check the whole hyphenated form and singular
+      const singular = lower.replace(/s$/, '');
+      if (allowedSet.has(singular)) continue;
+    }
+
+    // Check singular form (remove trailing -s, -e, -en, -er, -es, -n)
+    const singulars = [
+      lower.replace(/en$/, ''), lower.replace(/er$/, ''), lower.replace(/es$/, ''),
+      lower.replace(/e$/, ''), lower.replace(/s$/, ''), lower.replace(/n$/, ''),
+    ];
+    if (singulars.some(s => s.length > 2 && allowedSet.has(s))) continue;
+
+    // Skip functional words and numbers
+    if (FUNCTIONAL_WORDS.has(lower)) continue;
+    if (NUMBER_WORDS.has(lower)) continue;
+
+    // Capitalized words: In German, ALL nouns are capitalized, so we can't
+    // just skip them as proper nouns. Instead, check if they're known vocab.
+    // Only skip as proper noun if it's NOT a known passive/active word
+    // (i.e., it's truly unknown — likely a name or place).
+    if (/^[A-ZÄÖÜ][a-zäöüß]{2,}$/.test(word)) {
+      // Check if it's a known German word (active or passive)
+      if (!allowedSet.has(lower) && !passiveSet.has(lower) && !singulars.some(s => allowedSet.has(s) || passiveSet.has(s))) {
+        // Not in any vocab list → likely a proper noun (name, city) → allow
+        continue;
+      }
+      // It IS a known word → fall through to the passive/violation check below
+    }
+
+    // Skip if student introduced this word
+    if (studentWordSet.has(lower)) continue;
+
+    // Check if it's passive vocab (buddy shouldn't use unless student said first)
+    const isPassive = passiveSet.has(lower) || singulars.some(s => passiveSet.has(s));
+    if (isPassive && !studentWordSet.has(lower)) {
+      violations.push({ word, reason: 'passive_only' });
+      continue;
+    }
+
+    // Unknown word — violation
+    violations.push({ word, reason: 'not_in_vocab' });
+  }
+
+  if (violations.length === 0) return { valid: true };
+
+  // Build correction message
+  const passiveViolations = violations.filter(v => v.reason === 'passive_only');
+  const unknownViolations = violations.filter(v => v.reason === 'not_in_vocab');
+
+  let suggestion = 'Rephrase your response. ';
+  if (unknownViolations.length > 0) {
+    suggestion += `These words are NOT in the student's vocabulary and must be replaced: ${unknownViolations.map(v => `"${v.word}"`).join(', ')}. `;
+  }
+  if (passiveViolations.length > 0) {
+    suggestion += `These words are PASSIVE vocabulary only — do not use them unless the student said them first: ${passiveViolations.map(v => `"${v.word}"`).join(', ')}. `;
+  }
+  suggestion += 'Use ONLY words from the active vocabulary list in Section 5. Find simpler alternatives.';
+
+  return { valid: false, violations, suggestion };
+}
+
+/**
+ * Validate grammar constraints in a response.
+ * Checks for forbidden structures that are hard for the LLM to avoid.
+ */
+function validateGrammar(text, grammarConstraints) {
+  if (!grammarConstraints) return { valid: true };
+
+  const forbidden = grammarConstraints.forbidden || [];
+  const allowedCases = grammarConstraints.allowed_cases || [];
+  const allowedSentenceTypes = grammarConstraints.sentence_types || [];
+  const issues = [];
+
+  const lower = text.toLowerCase();
+
+  // Check subordinate clauses if forbidden
+  const subordinatesAllowed = allowedSentenceTypes.some(t =>
+    t.includes('subordinate') || t.includes('wenn') || t.includes('weil')
+  );
+  if (!subordinatesAllowed) {
+    // Check for common subordinate clause markers
+    if (/\b(wenn|weil|dass|obwohl|damit|bevor|nachdem|während)\b/i.test(text)) {
+      const match = text.match(/\b(wenn|weil|dass|obwohl|damit|bevor|nachdem|während)\b/i);
+      issues.push(`Subordinate clause with "${match[1]}" is forbidden. Use simple sentences instead.`);
+    }
+  }
+
+  // Check dative if forbidden
+  const dativeAllowed = allowedCases.includes('dative');
+  if (!dativeAllowed) {
+    // Check for common dative markers
+    if (/\b(dem|vom|zum|beim|am)\b/i.test(text) && !/\bam\s+(Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|Wochenende)\b/i.test(text)) {
+      // "am" + weekday is acceptable even without dative (it's a fixed expression taught early)
+      // But "am liebsten", "nach dem", "vom" etc. are dative
+      const match = text.match(/\b(dem|vom|zum|beim)\b/i);
+      if (match) issues.push(`Dative case "${match[0]}" is forbidden. Only nominative and accusative are allowed.`);
+    }
+  }
+
+  // Check for Konjunktiv II (möchtest, könnte, würde, etc.)
+  const konjunktivAllowed = (grammarConstraints.allowed_tenses || []).some(t =>
+    t.toLowerCase().includes('konjunktiv')
+  );
+  if (!konjunktivAllowed) {
+    if (/\b(möchtest?|könntest?|würdest?|hätte|wäre|könnte|müsste|sollte)\b/i.test(text)) {
+      const match = text.match(/\b(möchtest?|könntest?|würdest?|hätte|wäre|könnte|müsste|sollte)\b/i);
+      issues.push(`Konjunktiv II form "${match[1]}" is forbidden. Use present tense (e.g., "magst" instead of "möchtest").`);
+    }
+  }
+
+  if (issues.length === 0) return { valid: true };
+
+  return {
+    valid: false,
+    issues,
+    suggestion: `Grammar violations found: ${issues.join(' ')} Rephrase using only allowed grammar.`,
+  };
+}
+
+/**
+ * Validate and optionally re-generate a Claude response.
+ * Returns the final validated response text.
+ */
+async function validateAndCorrect(responseText, session, maxRetries = 1) {
+  if (!session.allowedWordSet) return responseText; // No validation data available
+
+  const { allowed, passiveSet } = session.allowedWordSet;
+
+  // Collect words the student has introduced in this session
+  const studentWords = [];
+  for (const entry of (session.fullTranscript || [])) {
+    if (entry.role === 'student') {
+      const words = entry.text.replace(/[.,!?;:]/g, ' ').split(/\s+/);
+      for (const w of words) if (w.length > 1) studentWords.push(w);
+    }
+  }
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    const vocabResult = validateResponse(responseText, allowed, passiveSet, studentWords);
+    const grammarResult = validateGrammar(responseText, session.grammarConstraints);
+
+    if (vocabResult.valid && grammarResult.valid) {
+      if (attempt > 0) console.log(`[VALIDATOR] ✅ Response passed after ${attempt + 1} attempts`);
+      return responseText;
+    }
+
+    // Log violations
+    if (!vocabResult.valid) {
+      console.log(`[VALIDATOR] ❌ Vocab violations: ${vocabResult.violations.map(v => `${v.word} (${v.reason})`).join(', ')}`);
+    }
+    if (!grammarResult.valid) {
+      console.log(`[VALIDATOR] ❌ Grammar violations: ${grammarResult.issues.join('; ')}`);
+    }
+
+    // Build correction prompt
+    let correctionMsg = `[SYSTEM: Your previous response "${responseText}" contains errors. `;
+    if (!vocabResult.valid) correctionMsg += vocabResult.suggestion + ' ';
+    if (!grammarResult.valid) correctionMsg += grammarResult.suggestion + ' ';
+    correctionMsg += 'Generate a new response that says the same thing but with ONLY allowed vocabulary and grammar. Keep it short and natural.]';
+
+    // Re-generate
+    session.history.pop(); // Remove the bad assistant response
+    session.history.push({ role: 'user', content: correctionMsg });
+    responseText = await callClaude(session.systemPrompt, session.history);
+    session.history.pop(); // Remove the correction prompt
+    session.history.push({ role: 'assistant', content: responseText });
+
+    console.log(`[VALIDATOR] Re-generated: "${responseText}"`);
+  }
+
+  // Final check — log but accept (don't loop forever)
+  const finalVocab = validateResponse(responseText, allowed, passiveSet, studentWords);
+  const finalGrammar = validateGrammar(responseText, session.grammarConstraints);
+  if (!finalVocab.valid || !finalGrammar.valid) {
+    console.log(`[VALIDATOR] ⚠️ Still has issues after correction — accepting anyway`);
+    if (!finalVocab.valid) console.log(`  Remaining vocab: ${finalVocab.violations.map(v => v.word).join(', ')}`);
+    if (!finalGrammar.valid) console.log(`  Remaining grammar: ${finalGrammar.issues.join('; ')}`);
+  }
+
+  return responseText;
+}
+
 /**
  * Helper: Call Claude Haiku 4.5 with conversation history.
  */
@@ -868,15 +1275,35 @@ app.post('/api/session/start', async (req, res) => {
     const sessionId = Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
     const history = [{ role: 'user', content: openingInstruction || '[Session started. Introduce yourself in German.]' }];
 
-    const responseText = await callClaude(systemPrompt, history);
+    let responseText = await callClaude(systemPrompt, history);
     history.push({ role: 'assistant', content: responseText });
+
+    // Build the allowed word set for vocabulary validation
+    // The frontend sends unitData as part of the system prompt flow,
+    // but we need the raw cumulative data. Store it via a separate call.
+    // For now, we build it from the request if cumulativeData is provided.
+    const cumulativeData = req.body.cumulativeData || null;
+    const grammarConstraints = req.body.grammarConstraints || null;
+    const universalFillers = req.body.universalFillers || null;
+    let allowedWordSet = null;
+    if (cumulativeData) {
+      allowedWordSet = buildAllowedWordSet(cumulativeData, universalFillers);
+      console.log(`[VALIDATOR] Built word set: ${allowedWordSet.allowed.size} allowed, ${allowedWordSet.passiveSet.size} passive`);
+    }
 
     voiceSessions.set(sessionId, {
       systemPrompt, history, startTime: Date.now(),
       typedStudentName: typedStudentName || null,
       confirmedName: null,
       fullTranscript: [],
+      allowedWordSet,
+      grammarConstraints,
     });
+
+    // Validate the greeting
+    if (allowedWordSet) {
+      responseText = await validateAndCorrect(responseText, voiceSessions.get(sessionId));
+    }
 
     if (VERBOSE) {
       console.log(`\n${DIM}[DEBUG] System prompt (${systemPrompt.length} chars):${RESET}`);
@@ -967,11 +1394,15 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       for (const d of directives) console.log(`${DIM}[DIRECTIVE] ${d.slice(0, 150)}${RESET}`);
     }
     session.history.push({ role: 'user', content: userContent });
-    const responseText = await callClaude(session.systemPrompt, session.history);
+    let responseText = await callClaude(session.systemPrompt, session.history);
     session.history.push({ role: 'assistant', content: responseText });
 
     // Track full transcript for accurate feedback
     session.fullTranscript?.push({ role: 'student', text: transcript });
+
+    // 4b. Validate vocabulary and grammar BEFORE TTS
+    responseText = await validateAndCorrect(responseText, session);
+
     session.fullTranscript?.push({ role: 'buddy', text: responseText });
 
     // 5. TTS
@@ -1004,8 +1435,11 @@ app.post('/api/session/prompt', async (req, res) => {
     const directiveText = directives.join('\n');
     session.history.push({ role: 'user', content: directiveText });
 
-    const responseText = await callClaude(session.systemPrompt, session.history);
+    let responseText = await callClaude(session.systemPrompt, session.history);
     session.history.push({ role: 'assistant', content: responseText });
+
+    // Validate vocabulary and grammar
+    responseText = await validateAndCorrect(responseText, session);
 
     const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
 

@@ -5,6 +5,10 @@ node_modules/
 .env
 **/.env
 
+# Google Cloud service account credentials — NEVER commit
+service-account.json
+**/service-account.json
+
 # Uploaded audio files (temp storage for speech-to-text)
 uploads/
 **/uploads/
