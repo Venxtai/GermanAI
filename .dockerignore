@@ -1,0 +1,12 @@
+node_modules
+frontend/node_modules
+frontend/dist
+.env
+service-account.json
+.claude
+.git
+*.glb.bak
+rpm_extract
+ready-player-me-*
+convert_animations.py
+avatoon_placeholder.glb
