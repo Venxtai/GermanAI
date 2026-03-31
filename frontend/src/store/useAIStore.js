@@ -13,6 +13,13 @@ const useAIStore = create((set, get) => ({
   // Audio / lipsync
   audioAmplitude: 0,
   analyzerNode: null,
+  visemeTimeline: null,    // Array of { time, viseme, weight, duration } from server
+  visemeStartTime: null,   // performance.now() when audio playback started
+
+  // Auth
+  accessCode: null,
+  accessType: null,
+  assignedTo: null,
 
   // Mic error feedback
   micError: null,
@@ -23,6 +30,9 @@ const useAIStore = create((set, get) => ({
   setStatus: (status) => set({ status }),
   setMicError: (err) => set({ micError: err }),
   setFeedback: (fb) => set({ feedback: fb }),
+  setAccessCode: (code) => set({ accessCode: code }),
+  setAccessType: (type) => set({ accessType: type }),
+  setAssignedTo: (name) => set({ assignedTo: name }),
   setTranscriptForDownload: (t) => set({ transcriptForDownload: t }),
   setCurrentUnit: (unit) => set({ currentUnit: unit }),
   setSessionActive: (active) => set({ isSessionActive: active }),
@@ -74,6 +84,8 @@ const useAIStore = create((set, get) => ({
     })),
 
   setAnalyzerNode: (node) => set({ analyzerNode: node }),
+  setVisemeTimeline: (timeline) => set({ visemeTimeline: timeline, visemeStartTime: performance.now() }),
+  clearVisemeTimeline: () => set({ visemeTimeline: null, visemeStartTime: null }),
   setAudioAmplitude: (amp) => set({ audioAmplitude: amp }),
 }));
 

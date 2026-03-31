@@ -90,7 +90,8 @@ app.post('/api/auth/validate', async (req, res) => {
     });
 
     const rows = result.data.values || [];
-    const rowIndex = rows.findIndex(r => r[0] === code.trim());
+    const codeLower = code.trim().toLowerCase();
+    const rowIndex = rows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
 
     if (rowIndex === -1) {
       return res.json({ valid: false, error: 'Invalid access code' });
@@ -117,7 +118,7 @@ app.post('/api/auth/validate', async (req, res) => {
 
     // Log usage to Usage Log tab
     // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
-    const timestamp = new Date().toISOString();
+    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
       range: 'Usage Log!A:H',
@@ -145,17 +146,17 @@ app.post('/api/auth/validate', async (req, res) => {
 
 // POST /api/auth/log-session — Log completed session details to Usage Log
 app.post('/api/auth/log-session', async (req, res) => {
-  const { code, unit, sessionId, durationMin, studentName, assignedTo } = req.body;
+  const { code, type, unit, sessionId, durationMin, studentName, assignedTo } = req.body;
   try {
     const sheets = await getSheetsClient();
-    const timestamp = new Date().toISOString();
+    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
     // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
       range: 'Usage Log!A:H',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code || '', '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '']],
+        values: [[timestamp, code || '', type || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '']],
       },
     });
     res.json({ ok: true });
@@ -293,7 +294,7 @@ try {
   if (fs.existsSync(credPath)) {
     const auth = new google.auth.GoogleAuth({
       keyFile: credPath,
-      scopes: ['https://www.googleapis.com/auth/drive.file'],
+      scopes: ['https://www.googleapis.com/auth/drive'],
     });
     driveClient = google.drive({ version: 'v3', auth });
     console.log('Google Drive client initialized for transcript uploads');
@@ -994,6 +995,85 @@ function wrapPcmInWav(pcmBuffer, sampleRate = 24000, numChannels = 1, bitsPerSam
  * Includes retry logic for transient errors (rate limits, TTS confusion).
  * Falls back to OpenAI TTS if Gemini fails after retries.
  */
+/**
+ * German text → viseme timeline generator.
+ * Maps German graphemes to Oculus visemes and estimates timing based on audio duration.
+ * Returns an array of { time, viseme, weight } objects.
+ */
+function generateVisemeTimeline(text, audioDurationSec) {
+  // German grapheme → Oculus viseme mapping
+  const GRAPHEME_TO_VISEME = {
+    // Vowels
+    'a': 'viseme_aa', 'ä': 'viseme_aa', 'ah': 'viseme_aa',
+    'e': 'viseme_E', 'eh': 'viseme_E', 'ee': 'viseme_E',
+    'i': 'viseme_I', 'ie': 'viseme_I', 'ih': 'viseme_I',
+    'o': 'viseme_O', 'oh': 'viseme_O', 'oo': 'viseme_O', 'ö': 'viseme_O',
+    'u': 'viseme_U', 'uh': 'viseme_U', 'ü': 'viseme_U',
+    'ei': 'viseme_aa', 'ai': 'viseme_aa', 'au': 'viseme_aa',
+    'eu': 'viseme_O', 'äu': 'viseme_O',
+    // Consonants
+    'b': 'viseme_PP', 'p': 'viseme_PP', 'm': 'viseme_PP',
+    'f': 'viseme_FF', 'v': 'viseme_FF', 'w': 'viseme_FF', 'pf': 'viseme_FF',
+    'th': 'viseme_TH',
+    't': 'viseme_DD', 'd': 'viseme_DD', 'n': 'viseme_nn',
+    'k': 'viseme_kk', 'g': 'viseme_kk', 'c': 'viseme_kk', 'ck': 'viseme_kk', 'q': 'viseme_kk',
+    'ch': 'viseme_CH', 'j': 'viseme_CH',
+    's': 'viseme_SS', 'z': 'viseme_SS', 'ß': 'viseme_SS', 'tz': 'viseme_SS',
+    'sch': 'viseme_CH', 'sp': 'viseme_CH', 'st': 'viseme_CH',
+    'r': 'viseme_RR', 'l': 'viseme_nn',
+    'h': 'viseme_kk',
+    'x': 'viseme_kk',
+  };
+
+  // Convert text to lowercase, remove non-letter chars, split into phoneme units
+  const cleanText = text.toLowerCase().replace(/[^a-zäöüß\s]/g, '');
+  const words = cleanText.split(/\s+/).filter(Boolean);
+
+  const phonemes = [];
+  for (const word of words) {
+    let i = 0;
+    while (i < word.length) {
+      // Try 3-char, 2-char, then 1-char graphemes
+      let matched = false;
+      for (const len of [3, 2, 1]) {
+        const chunk = word.slice(i, i + len);
+        if (GRAPHEME_TO_VISEME[chunk]) {
+          phonemes.push({ viseme: GRAPHEME_TO_VISEME[chunk], isVowel: 'aeiouäöü'.includes(chunk[0]) });
+          i += len;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) i++; // skip unknown character
+    }
+    // Add silence between words
+    phonemes.push({ viseme: 'viseme_sil', isVowel: false });
+  }
+
+  if (phonemes.length === 0) return [];
+
+  // Estimate timing: distribute phonemes across audio duration
+  // Vowels get slightly longer duration than consonants
+  const totalWeight = phonemes.reduce((sum, p) => sum + (p.isVowel ? 1.5 : 0.8), 0);
+  const timePerWeight = audioDurationSec / totalWeight;
+
+  const timeline = [];
+  let currentTime = 0;
+  for (const p of phonemes) {
+    const duration = (p.isVowel ? 1.5 : 0.8) * timePerWeight;
+    const weight = p.viseme === 'viseme_sil' ? 0 : (p.isVowel ? 0.7 : 0.5);
+    timeline.push({
+      time: Math.round(currentTime * 1000) / 1000, // round to ms
+      viseme: p.viseme,
+      weight,
+      duration: Math.round(duration * 1000) / 1000,
+    });
+    currentTime += duration;
+  }
+
+  return timeline;
+}
+
 async function textToSpeechGemini(text, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -1027,10 +1107,13 @@ async function textToSpeechGemini(text, retries = 2) {
         const sampleRate = rateMatch ? parseInt(rateMatch[1]) : 24000;
         const pcmBuffer = Buffer.from(audioPart.data, 'base64');
         const wavBuffer = wrapPcmInWav(pcmBuffer, sampleRate);
-        return { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav' };
+        // Calculate audio duration for viseme timeline
+        const durationSec = pcmBuffer.length / (sampleRate * 2); // 16-bit = 2 bytes per sample
+        const visemeTimeline = generateVisemeTimeline(text, durationSec);
+        return { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav', visemeTimeline };
       }
 
-      return { audioBase64: audioPart.data, mimeType: rawMime };
+      return { audioBase64: audioPart.data, mimeType: rawMime, visemeTimeline: [] };
 
     } catch (err) {
       const errMsg = err.message || JSON.stringify(err);
@@ -1080,7 +1163,10 @@ async function textToSpeechOpenAI(text) {
     response_format: 'mp3',
   });
   const buffer = Buffer.from(await mp3.arrayBuffer());
-  return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg' };
+  // Estimate duration: ~150 words/min at 0.95 speed, average word = 5 chars
+  const estimatedDuration = (text.length / 5) * (60 / 150) / 0.95;
+  const visemeTimeline = generateVisemeTimeline(text, estimatedDuration);
+  return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg', visemeTimeline };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1438,11 +1524,24 @@ async function validateAndCorrect(responseText, session, maxRetries = 1) {
       console.log(`[VALIDATOR] ❌ Grammar violations: ${grammarResult.issues.join('; ')}`);
     }
 
-    // Build correction prompt
-    let correctionMsg = `[SYSTEM: Your previous response "${responseText}" contains errors. `;
-    if (!vocabResult.valid) correctionMsg += vocabResult.suggestion + ' ';
-    if (!grammarResult.valid) correctionMsg += grammarResult.suggestion + ' ';
-    correctionMsg += 'Generate a new response that says the same thing but with ONLY allowed vocabulary and grammar. Keep it short and natural.]';
+    // Build correction prompt with SPECIFIC forbidden words and alternatives
+    let correctionMsg = `[SYSTEM: REWRITE REQUIRED. Your response "${responseText}" has these violations:\n`;
+    if (!vocabResult.valid) {
+      for (const v of vocabResult.violations) {
+        if (v.reason === 'passive_only') {
+          correctionMsg += `- "${v.word}" is PASSIVE vocabulary — do NOT use it. The student hasn't said it yet.\n`;
+        } else {
+          correctionMsg += `- "${v.word}" is NOT in the allowed vocabulary. Remove or replace it.\n`;
+        }
+      }
+    }
+    if (!grammarResult.valid) {
+      for (const issue of grammarResult.issues) {
+        correctionMsg += `- ${issue}\n`;
+      }
+      correctionMsg += `GRAMMAR RULES: Use ONLY simple main clauses. NO subordinate clauses (wenn, weil, dass, ob). NO dative prepositions (bei/beim, zu/zum/zur, mit, von/vom, nach, aus, seit). Use nominative and accusative ONLY.\n`;
+    }
+    correctionMsg += `Rewrite as a SHORT, simple German sentence. Same meaning, different words. One main clause only.]`;
 
     // Re-generate
     session.history.pop(); // Remove the bad assistant response
@@ -1557,9 +1656,9 @@ app.post('/api/session/start', async (req, res) => {
       console.log(`${DIM}${systemPrompt.slice(0, 500)}...${RESET}\n`);
     }
 
-    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+    const ttsResult = await textToSpeechGemini(responseText);
 
-    res.json({ sessionId, response: responseText, audioBase64, mimeType });
+    res.json({ sessionId, response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
   } catch (error) {
     console.error('[Session Start] Error:', error.message);
     res.status(500).json({ error: 'Failed to start session', details: error.message });
@@ -1583,6 +1682,7 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
 
     // 1. Whisper STT
     fs.renameSync(req.file.path, renamedPath);
+    console.log(`[STT] Audio file: ${renamedPath}, size: ${fs.statSync(renamedPath).size} bytes, mime: ${req.file.mimetype}`);
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(renamedPath),
       model: 'whisper-1',
@@ -1619,12 +1719,12 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     // 2. Handle inaudible input
     if (!transcript) {
       const fallbackText = 'Ich höre dich nicht gut. Kannst du das nochmal sagen?';
-      const { audioBase64, mimeType } = await textToSpeechGemini(fallbackText);
+      const fallbackTts = await textToSpeechGemini(fallbackText);
       session.history.push({ role: 'user', content: '(inaudible)' });
       session.history.push({ role: 'assistant', content: fallbackText });
       session.fullTranscript?.push({ role: 'student', text: '(inaudible)' });
       session.fullTranscript?.push({ role: 'buddy', text: fallbackText });
-      return res.json({ transcript: '', response: fallbackText, audioBase64, mimeType });
+      return res.json({ transcript: '', response: fallbackText, audioBase64: fallbackTts.audioBase64, mimeType: fallbackTts.mimeType, visemeTimeline: fallbackTts.visemeTimeline || [] });
     }
 
     // 3. Build user message with optional directives
@@ -1653,9 +1753,9 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     session.fullTranscript?.push({ role: 'buddy', text: responseText });
 
     // 5. TTS
-    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+    const ttsResult = await textToSpeechGemini(responseText);
 
-    res.json({ transcript, response: responseText, audioBase64, mimeType });
+    res.json({ transcript, response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
   } catch (error) {
     console.error('[Conversation Turn] Error:', error.message);
     res.status(500).json({ error: 'Pipeline failed', details: error.message });
@@ -1688,9 +1788,9 @@ app.post('/api/session/prompt', async (req, res) => {
     // Validate vocabulary and grammar
     responseText = await validateAndCorrect(responseText, session);
 
-    const { audioBase64, mimeType } = await textToSpeechGemini(responseText);
+    const ttsResult = await textToSpeechGemini(responseText);
 
-    res.json({ response: responseText, audioBase64, mimeType });
+    res.json({ response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
   } catch (error) {
     console.error('[Session Prompt] Error:', error.message);
     res.status(500).json({ error: 'Prompt failed', details: error.message });

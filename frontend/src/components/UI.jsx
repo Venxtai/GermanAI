@@ -85,19 +85,27 @@ export function UI() {
     if (!code) return;
     setError(null);
     try {
+      console.log('[UI] Validating code:', code);
       const resp = await fetch('/api/auth/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
       });
       const data = await resp.json();
+      console.log('[UI] Validate response:', data);
       if (!data.valid) {
         setError(data.error || 'Invalid access code');
         return;
       }
       setAccessInfo(data);
+      // Store access code and assignedTo in Zustand for session logging
+      const store = useAIStore.getState();
+      store.setAccessCode(accessCode.trim());
+      store.setAccessType(data.type || '');
+      store.setAssignedTo(data.assignedTo || '');
       setScreen("name");
-    } catch {
+    } catch (err) {
+      console.error('[UI] Validate error:', err);
       setError("Could not verify code. Is the server running?");
     }
   };

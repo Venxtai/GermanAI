@@ -120,10 +120,16 @@ export function useVoiceConnection() {
     setTranscriptForDownload,
     setMicError,
     setFeedback,
+    setVisemeTimeline,
+    clearVisemeTimeline,
   } = useAIStore();
 
   // ── Audio playback helper ──
-  async function playAudio(audioBase64, mimeType = 'audio/wav') {
+  async function playAudio(audioBase64, mimeType = 'audio/wav', visemeData = null) {
+    // Set viseme timeline in store BEFORE starting playback
+    if (visemeData && visemeData.length > 0) {
+      setVisemeTimeline(visemeData);
+    }
     if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
       playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -153,6 +159,7 @@ export function useVoiceConnection() {
       source.onended = () => {
         currentAudioSourceRef.current = null;
         setAnalyzerNode(null);
+        clearVisemeTimeline();
         resolve();
       };
       source.start();
@@ -176,7 +183,7 @@ export function useVoiceConnection() {
       if (data.response) {
         addMessage('assistant', data.response);
         postLog({ type: 'turn', role: 'ai', text: data.response });
-        await playAudio(data.audioBase64, data.mimeType);
+        await playAudio(data.audioBase64, data.mimeType, data.visemeTimeline);
         setStatus('idle');
 
         // Handle pending auto-end after AI speaks
@@ -430,7 +437,7 @@ export function useVoiceConnection() {
           }),
         });
         if (!sessionResp.ok) throw new Error('Session start failed');
-        const { sessionId, response: aiGreeting, audioBase64, mimeType } = await sessionResp.json();
+        const { sessionId, response: aiGreeting, audioBase64, mimeType, visemeTimeline: greetingVisemes } = await sessionResp.json();
         sessionIdRef.current = sessionId;
 
         // 8. Start log session
@@ -469,7 +476,7 @@ export function useVoiceConnection() {
         // 10. Play greeting audio and go live
         setSessionActive(true);
         try {
-          await playAudio(audioBase64, mimeType);
+          await playAudio(audioBase64, mimeType, greetingVisemes);
         } catch (audioErr) {
           console.error("Audio playback failed (non-fatal):", audioErr);
           // Session still works — student can speak even if greeting audio failed
@@ -498,8 +505,40 @@ export function useVoiceConnection() {
     studentUtterancesRef.current = [];
     setFeedback('loading');
 
+    // Save sessionId before clearing — postLog is async and needs it
+    const endLogSessionId = logSessionIdRef.current;
+    const endSessionId = sessionIdRef.current;
+    const storeState = useAIStore.getState();
+    const accessCode = storeState.accessCode || '';
+    const accessType = storeState.accessType || '';
+    const assignedTo = storeState.assignedTo || '';
+    const studentNameForLog = studentNameRef.current || typedNameRef.current || '';
+    const unitForLog = unitDataRef.current
+      ? `Unit ${unitDataRef.current.unit} — ${(unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
+      : '';
+    const durationMin = conversationStartRef.current
+      ? Math.round((Date.now() - conversationStartRef.current) / 60000 * 10) / 10
+      : 0;
+
     postLog({ type: 'end' });
-    logSessionIdRef.current = null;
+
+    // Log session details to Usage Log (fills in Student Name, Unit, Duration columns)
+    fetch('/api/auth/log-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        code: accessCode,
+        type: accessType,
+        unit: unitForLog,
+        sessionId: endLogSessionId || endSessionId || '',
+        durationMin,
+        studentName: studentNameForLog,
+        assignedTo,
+      }),
+    }).catch(() => {});
+
+    // Delay clearing logSessionId so the queued postLog can fire
+    setTimeout(() => { logSessionIdRef.current = null; }, 2000);
 
     // Reset manager and timers
     if (managerRef.current) { managerRef.current.reset(); managerRef.current = null; }
@@ -643,7 +682,7 @@ export function useVoiceConnection() {
 
       const resp = await fetch('/api/conversation-turn', { method: 'POST', body: fd });
       if (!resp.ok) throw new Error(`Pipeline failed: ${resp.status}`);
-      const { transcript, response: aiText, audioBase64, mimeType } = await resp.json();
+      const { transcript, response: aiText, audioBase64, mimeType, visemeTimeline: turnVisemes } = await resp.json();
 
       // ── Process transcript ──
       const cleaned = cleanTranscript(transcript) || '(inaudible)';
@@ -701,8 +740,8 @@ export function useVoiceConnection() {
         }
       }
 
-      // Play AI audio
-      await playAudio(audioBase64, mimeType);
+      // Play AI audio with viseme timeline
+      await playAudio(audioBase64, mimeType, turnVisemes);
       setStatus('idle');
 
       // Handle pending auto-end (student said goodbye earlier)
