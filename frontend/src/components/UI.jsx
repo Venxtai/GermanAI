@@ -218,6 +218,20 @@ function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
           Start Conversation
         </button>
       </div>
+      {/* Hidden skip button — tiny dot in lower left */}
+      <div
+        onClick={() => {
+          if (audioSourceRef.current) try { audioSourceRef.current.stop(); } catch (_) {}
+          if (audioContextRef.current) audioContextRef.current.close().catch(() => {});
+          onStart();
+        }}
+        style={{
+          position: 'fixed', bottom: '8px', left: '8px',
+          width: '6px', height: '6px', borderRadius: '50%',
+          background: 'rgba(255,255,255,0.3)', cursor: 'default',
+          zIndex: 9999, pointerEvents: 'auto',
+        }}
+      />
     </motion.div>
   );
 }
@@ -233,6 +247,7 @@ export function UI() {
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [pendingUnit, setPendingUnit] = useState(null);
   const [error, setError] = useState(null);
+  const [endConfirm, setEndConfirm] = useState(null); // { remainingMin } or null
   const holdTimerRef = useRef(null);
   const isHoldingRef = useRef(false);
 
@@ -671,7 +686,7 @@ export function UI() {
       {/* Connecting spinner */}
       <AnimatePresence>
         {screen === "session" && !isSessionActive && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 flex items-center justify-center">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 flex items-center justify-center" style={{ paddingLeft: "20%" }}>
             <div className="backdrop-blur-sm rounded-2xl px-8 py-5 flex flex-col items-center gap-3" style={{ background: "rgba(0,0,0,0.45)" }}>
               <div className="w-8 h-8 rounded-full animate-spin" style={{ borderWidth: "4px", borderStyle: "solid", borderColor: "rgba(255,255,255,0.3)", borderTopColor: "rgba(255,255,255,1)" }} />
               <p className="text-white text-sm font-medium">Connecting…</p>
@@ -706,15 +721,16 @@ export function UI() {
                   onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0.3)"}
                 >📋 Log</button>
                 <button
-                  onClick={() => { endConversation(); setScreen("name"); setStudentName(""); setPendingUnit(null); }}
-                  title="Change book / chapter"
-                  className="pointer-events-auto backdrop-blur-sm text-white w-9 h-9 rounded-full flex items-center justify-center transition-colors text-lg"
-                  style={{ background: "rgba(0,0,0,0.3)" }}
-                  onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.5)"}
-                  onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0.3)"}
-                >📚</button>
-                <button
-                  onClick={endConversation}
+                  onClick={() => {
+                    const { conversationStartTime, sessionMinMs } = useAIStore.getState();
+                    const elapsed = conversationStartTime ? Date.now() - conversationStartTime : 0;
+                    if (elapsed < sessionMinMs) {
+                      const remainingMin = Math.ceil((sessionMinMs - elapsed) / 60000);
+                      setEndConfirm({ remainingMin });
+                    } else {
+                      endConversation();
+                    }
+                  }}
                   className="pointer-events-auto backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full transition-colors"
                   style={{ background: "rgba(239,68,68,0.8)" }}
                   onMouseEnter={e => e.currentTarget.style.background = "rgba(239,68,68,1)"}
@@ -722,7 +738,7 @@ export function UI() {
                 >End Session</button>
               </div>
             </div>
-            <div className="flex justify-center" style={{ paddingLeft: "30%" }}>
+            <div className="flex justify-center" style={{ paddingLeft: "20%" }}>
               <div className="pointer-events-auto backdrop-blur-md rounded-2xl flex flex-col items-center gap-3" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)", padding: "1.2rem 2.5rem 1.5rem", width: "420px" }}>
                 <AnimatePresence>
                   {micError && (
@@ -749,6 +765,39 @@ export function UI() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                 </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* End session confirmation dialog */}
+      <AnimatePresence>
+        {endConfirm && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="pointer-events-auto absolute inset-0 flex items-center justify-center z-8"
+            style={{ background: "rgba(0,0,0,0.4)" }}
+          >
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <p className="text-white text-sm text-center leading-relaxed">
+                The conversation is too short to receive feedback. You need about <span className="text-white font-bold">{endConfirm.remainingMin} more minute{endConfirm.remainingMin !== 1 ? 's' : ''}</span> to complete the session.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setEndConfirm(null)}
+                  className="flex-1 text-white font-semibold py-3 rounded-xl transition-colors"
+                  style={{ background: bookColor || "#008899" }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "0.8"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >Continue</button>
+                <button
+                  onClick={() => { setEndConfirm(null); endConversation(); }}
+                  className="flex-1 text-white font-semibold py-3 rounded-xl transition-colors"
+                  style={{ background: "rgba(239,68,68,0.8)" }}
+                  onMouseEnter={e => e.currentTarget.style.background = "rgba(239,68,68,1)"}
+                  onMouseLeave={e => e.currentTarget.style.background = "rgba(239,68,68,0.8)"}
+                >End Anyway</button>
               </div>
             </div>
           </motion.div>

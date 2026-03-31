@@ -41,8 +41,38 @@ const openai = new OpenAI({
 });
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 
-// Google Vertex AI — uses service account credentials for production
-// Set GOOGLE_APPLICATION_CREDENTIALS in .env pointing to the service account JSON file
+// Google service account credentials — works from file (local) or env var (Cloud Run)
+// On Cloud Run, set GOOGLE_SERVICE_ACCOUNT_JSON env var with the full JSON content
+let googleCredentials = null;
+const credFilePath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS || './service-account.json');
+if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+  // Cloud Run: credentials from environment variable
+  googleCredentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+  // Write to temp file for SDKs that need GOOGLE_APPLICATION_CREDENTIALS
+  const tmpCredPath = path.join(require('os').tmpdir(), 'service-account.json');
+  fs.writeFileSync(tmpCredPath, process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = tmpCredPath;
+  console.log('Using service account credentials from GOOGLE_SERVICE_ACCOUNT_JSON env var');
+} else if (fs.existsSync(credFilePath)) {
+  googleCredentials = JSON.parse(fs.readFileSync(credFilePath, 'utf8'));
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = credFilePath;
+  console.log('Using service account credentials from file:', credFilePath);
+} else {
+  console.warn('WARNING: No service account credentials found. Google Sheets/Drive/TTS may not work.');
+}
+
+// Helper: create GoogleAuth with the right credentials for any scope
+function createGoogleAuth(scopes) {
+  if (googleCredentials) {
+    return new google.auth.GoogleAuth({
+      credentials: googleCredentials,
+      scopes,
+    });
+  }
+  return new google.auth.GoogleAuth({ scopes });
+}
+
+// Google Vertex AI
 const googleAI = new GoogleGenAI({
   vertexai: true,
   project: process.env.GOOGLE_CLOUD_PROJECT || 'sound-folder-471314-g5',
@@ -67,10 +97,7 @@ const ACCESS_SHEETS_ID = process.env.GOOGLE_SHEETS_ID || '1sN307djAoZ8k0qjzlYFJt
 let sheetsClient = null;
 async function getSheetsClient() {
   if (sheetsClient) return sheetsClient;
-  const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS || './service-account.json',
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-  });
+  const auth = createGoogleAuth(['https://www.googleapis.com/auth/spreadsheets']);
   sheetsClient = google.sheets({ version: 'v4', auth: await auth.getClient() });
   return sheetsClient;
 }
@@ -290,16 +317,12 @@ console.log(`Loaded ${UNIVERSAL_FILLER_WORDS.size} universal filler words`);
 let driveClient = null;
 const DRIVE_FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID || '1QBFSdzunA5GRIuflyf0gVqxA7gLKF_5M';
 try {
-  const credPath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS || './service-account.json');
-  if (fs.existsSync(credPath)) {
-    const auth = new google.auth.GoogleAuth({
-      keyFile: credPath,
-      scopes: ['https://www.googleapis.com/auth/drive'],
-    });
+  if (googleCredentials) {
+    const auth = createGoogleAuth(['https://www.googleapis.com/auth/drive']);
     driveClient = google.drive({ version: 'v3', auth });
     console.log('Google Drive client initialized for transcript uploads');
   } else {
-    console.warn('Service account file not found — transcripts will save locally only');
+    console.warn('No credentials — transcripts will save locally only');
   }
 } catch (e) {
   console.warn('Google Drive init failed:', e.message, '— transcripts will save locally only');
