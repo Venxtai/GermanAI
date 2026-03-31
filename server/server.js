@@ -54,9 +54,113 @@ app.use(cors());
 app.use(express.json({ limit: '5mb' })); // Large limit needed for cumulative vocab data
 
 // Configure multer for audio file uploads
-const upload = multer({ 
+const upload = multer({
   dest: 'uploads/',
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// ACCESS CODE SYSTEM — Google Sheets backend
+// ══════════════════════════════════════════════════════════════════════════
+const ACCESS_SHEETS_ID = process.env.GOOGLE_SHEETS_ID || '1sN307djAoZ8k0qjzlYFJtiOfxC9c_HAJCXHYgpGul4w';
+
+let sheetsClient = null;
+async function getSheetsClient() {
+  if (sheetsClient) return sheetsClient;
+  const auth = new google.auth.GoogleAuth({
+    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS || './service-account.json',
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+  sheetsClient = google.sheets({ version: 'v4', auth: await auth.getClient() });
+  return sheetsClient;
+}
+
+// POST /api/auth/validate — Check access code, return validity + remaining uses
+app.post('/api/auth/validate', async (req, res) => {
+  const { code } = req.body;
+  if (!code || typeof code !== 'string') {
+    return res.status(400).json({ valid: false, error: 'No code provided' });
+  }
+
+  try {
+    const sheets = await getSheetsClient();
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:G',
+    });
+
+    const rows = result.data.values || [];
+    const rowIndex = rows.findIndex(r => r[0] === code.trim());
+
+    if (rowIndex === -1) {
+      return res.json({ valid: false, error: 'Invalid access code' });
+    }
+
+    const row = rows[rowIndex];
+    const type = row[1] || 'student';
+    const maxUses = parseInt(row[2]) || 0;
+    const used = parseInt(row[3]) || 0;
+    const assignedTo = row[5] || '';
+
+    if (used >= maxUses) {
+      return res.json({ valid: false, error: 'Access code has expired (all uses consumed)', used, maxUses });
+    }
+
+    // Increment usage count (row is 0-indexed in data, +2 for header + 1-indexing)
+    const sheetRow = rowIndex + 2;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: `Access Codes!D${sheetRow}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[used + 1]] },
+    });
+
+    // Log usage to Usage Log tab
+    const timestamp = new Date().toISOString();
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Usage Log!A:G',
+      valueInputOption: 'RAW',
+      requestBody: {
+        values: [[timestamp, code, type, assignedTo, '', '', '']],
+      },
+    });
+
+    console.log(`[AUTH] Code "${code}" validated — ${used + 1}/${maxUses} uses (${type})`);
+
+    return res.json({
+      valid: true,
+      type,
+      remainingUses: maxUses - used - 1,
+      assignedTo,
+    });
+
+  } catch (err) {
+    console.error('[AUTH] Google Sheets error:', err.message);
+    // If Sheets is down, allow access (fail-open for usability)
+    return res.json({ valid: true, type: 'student', remainingUses: -1, error: 'Could not verify — access granted temporarily' });
+  }
+});
+
+// POST /api/auth/log-session — Log completed session details to Usage Log
+app.post('/api/auth/log-session', async (req, res) => {
+  const { code, unit, sessionId, durationMin, studentName } = req.body;
+  try {
+    const sheets = await getSheetsClient();
+    const timestamp = new Date().toISOString();
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Usage Log!A:G',
+      valueInputOption: 'RAW',
+      requestBody: {
+        values: [[timestamp, code || '', '', studentName || '', unit || '', sessionId || '', durationMin || '']],
+      },
+    });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('[AUTH] Session log error:', err.message);
+    res.json({ ok: false });
+  }
 });
 
 // Impuls Deutsch 1 — chapters with titles and unit ranges

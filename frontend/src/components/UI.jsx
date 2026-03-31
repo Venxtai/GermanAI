@@ -48,7 +48,9 @@ const CHAPTERS_BY_BOOK = {
 };
 
 export function UI() {
-  const [screen, setScreen] = useState("name");
+  const [screen, setScreen] = useState("code");
+  const [accessCode, setAccessCode] = useState("");
+  const [accessInfo, setAccessInfo] = useState(null); // { type, remainingUses, assignedTo }
   const [studentName, setStudentName] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
   const [chapters, setChapters] = useState([]);
@@ -77,6 +79,28 @@ export function UI() {
     }
     wasSessionActiveRef.current = isSessionActive;
   }, [isSessionActive]);
+
+  const handleCodeSubmit = async () => {
+    const code = accessCode.trim();
+    if (!code) return;
+    setError(null);
+    try {
+      const resp = await fetch('/api/auth/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      const data = await resp.json();
+      if (!data.valid) {
+        setError(data.error || 'Invalid access code');
+        return;
+      }
+      setAccessInfo(data);
+      setScreen("name");
+    } catch {
+      setError("Could not verify code. Is the server running?");
+    }
+  };
 
   const handleNameSubmit = () => {
     if (!studentName.trim()) return;
@@ -132,7 +156,9 @@ export function UI() {
 
   const handleFeedbackDone = () => {
     setFeedback(null);
-    setScreen("name");
+    setScreen("code");
+    setAccessCode("");
+    setAccessInfo(null);
     setStudentName("");
     setSelectedBook(null);
     setSelectedChapter(null);
@@ -159,6 +185,49 @@ export function UI() {
   return (
     <div className="fixed inset-0 pointer-events-none select-none">
 
+      {/* Access code entry */}
+      <AnimatePresence>
+        {screen === "code" && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            style={{ paddingLeft: "50%" }}
+            className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+          >
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)" }}>
+              <div className="text-center">
+                <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
+                <p className="text-white text-xl">Conversation Buddy</p>
+              </div>
+              <p className="text-sm text-center leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
+                Welcome! Please enter your access code to begin.
+              </p>
+              {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+              <input
+                type="text"
+                value={accessCode}
+                onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleCodeSubmit(); }}
+                placeholder="Access code (e.g. STU-A7X9)"
+                className="name-input w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors text-center tracking-wider"
+                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "0.1em" }}
+                onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
+                onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
+              />
+              <button
+                onClick={handleCodeSubmit}
+                disabled={!accessCode.trim()}
+                className="disabled:opacity-30 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors"
+                style={{ background: "rgba(255,255,255,0.1)" }}
+                onMouseEnter={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.2)"; }}
+                onMouseLeave={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
+              >
+                ENTER
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Name entry */}
       <AnimatePresence>
         {screen === "name" && (
@@ -172,9 +241,11 @@ export function UI() {
                 <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
                 <p className="text-white text-xl">Conversation Buddy</p>
               </div>
-              <p className="text-sm text-center leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                Welcome to the Impuls Deutsch Conversation Buddy and thank you for prototype testing this new tool.
-              </p>
+              {accessInfo?.remainingUses >= 0 && (
+                <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.45)" }}>
+                  {accessInfo.remainingUses} session{accessInfo.remainingUses !== 1 ? 's' : ''} remaining
+                </p>
+              )}
               <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.55)" }}>Please enter your name to start:</p>
               <input
                 type="text"
@@ -195,7 +266,7 @@ export function UI() {
                 onMouseEnter={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.2)"; }}
                 onMouseLeave={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
               >
-                START
+                CONTINUE
               </button>
             </div>
           </motion.div>
