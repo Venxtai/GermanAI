@@ -15,4 +15,3 @@ export function Classroom() {
 }
 
 useGLTF.preload("/models/classroom_default.glb");
-useGLTF.preload("/models/classroom_alternative.glb");
