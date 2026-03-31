@@ -9,6 +9,15 @@ const { GoogleGenAI } = require('@google/genai');
 const { google } = require('googleapis');
 const fs = require('fs');
 
+// Load unit display names from PDF-sourced mapping
+let unitNames = {};
+try {
+  unitNames = JSON.parse(fs.readFileSync(path.join(__dirname, './unitNames.json'), 'utf8'));
+  console.log(`Unit names loaded: ${Object.keys(unitNames).length} entries`);
+} catch (e) {
+  console.warn('unitNames.json not found — using fallback names');
+}
+
 // Load persona database
 let personaDatabase = {};
 try {
@@ -575,7 +584,8 @@ app.get('/api/units', (req, res) => {
       position: u.sequence_info?.position
         || parseInt(String(u.unit).replace(/^[BO]/i, '')),
       is_optional: u.is_optional || false,
-      topic: (u.communicative_functions?.goals || [])[0]
+      topic: unitNames[String(u.unit)]
+          || (u.communicative_functions?.goals || [])[0]
           || (u.conversation_topics?.topics || [])[0]
           || `Unit ${u.unit}`,
     }))
