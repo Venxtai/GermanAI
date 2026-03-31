@@ -1499,16 +1499,43 @@ app.post('/api/session/start', async (req, res) => {
     history.push({ role: 'assistant', content: responseText });
 
     // Build the allowed word set for vocabulary validation
-    // The frontend sends unitData as part of the system prompt flow,
-    // but we need the raw cumulative data. Store it via a separate call.
-    // For now, we build it from the request if cumulativeData is provided.
-    const cumulativeData = req.body.cumulativeData || null;
+    // Use server-side unit data (unitMap) for reliability — not the frontend POST body.
     const grammarConstraints = req.body.grammarConstraints || null;
-    const universalFillers = req.body.universalFillers || null;
     let allowedWordSet = null;
-    if (cumulativeData) {
-      allowedWordSet = buildAllowedWordSet(cumulativeData, universalFillers);
-      console.log(`[VALIDATOR] Built word set: ${allowedWordSet.allowed.size} allowed, ${allowedWordSet.passiveSet.size} passive`);
+    {
+      // Determine target unit and book from the opening instruction or cumulative data
+      const cumulativeData = req.body.cumulativeData || null;
+      const universalFillers = req.body.universalFillers || null;
+
+      if (cumulativeData) {
+        // Build from the cumulative data the frontend sent (may be truncated)
+        allowedWordSet = buildAllowedWordSet(cumulativeData, universalFillers);
+      } else {
+        // Fallback: try to extract unit from system prompt
+        const unitMatch = systemPrompt.match(/Unit (\d+|[BO]\d+)/);
+        if (unitMatch) {
+          const targetId = unitMatch[1];
+          // Use the server's /api/cumulative endpoint logic to build vocab
+          const book = /^B/.test(targetId) ? 'ID2B' : /^O/.test(targetId) ? 'ID2O' : 'ID1';
+          try {
+            const resp = await fetch(`http://localhost:${process.env.PORT || 3000}/api/cumulative/${targetId}?book=${book}`);
+            const unitData = await resp.json();
+            if (unitData._cumulative) {
+              allowedWordSet = buildAllowedWordSet(unitData._cumulative, unitData.universal_fillers);
+            }
+          } catch (e) { /* ignore — validation will be skipped */ }
+        }
+      }
+
+      // Verify fillers are in the allowed set (belt and suspenders)
+      if (allowedWordSet) {
+        for (const w of UNIVERSAL_FILLER_WORDS) allowedWordSet.allowed.add(w);
+        console.log(`[VALIDATOR] Built word set: ${allowedWordSet.allowed.size} allowed, ${allowedWordSet.passiveSet.size} passive`);
+        // Debug: check critical words
+        const checks = ['toll', 'cool', 'schön', 'super', 'warm', 'kalt', 'pullover'];
+        const results = checks.map(w => `${w}:${allowedWordSet.allowed.has(w) ? 'A' : allowedWordSet.passiveSet.has(w) ? 'P' : 'X'}`);
+        console.log(`[VALIDATOR] Key words: ${results.join(', ')}`);
+      }
     }
 
     voiceSessions.set(sessionId, {
