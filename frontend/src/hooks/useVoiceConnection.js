@@ -459,18 +459,7 @@ export function useVoiceConnection() {
         if (mgr) {
           const directives = mgr.processAITurn(aiGreeting);
           if (directives.length > 0) pendingDirectivesRef.current.push(...directives);
-          // Async topic classification
-          const { currentTopics: ct, reviewTopics: rt } = mgr.getTopicsForClassification();
-          if (ct.length > 0 || rt.length > 0) {
-            fetch('/api/classify-topic', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ text: aiGreeting, currentTopics: ct, reviewTopics: rt }),
-            }).then(r => r.json()).then(result => {
-              const bd = mgr.updateTopicClassification(result);
-              if (bd.length > 0) pendingDirectivesRef.current.push(...bd);
-            }).catch(() => {});
-          }
+          // Skip topic classification during Phase 1 — warm-up doesn't count
         }
 
         // 10. Play greeting audio and go live
@@ -726,17 +715,19 @@ export function useVoiceConnection() {
         const mgrDirectives = mgr.processAITurn(aiText);
         if (mgrDirectives.length > 0) pendingDirectivesRef.current.push(...mgrDirectives);
 
-        // Async topic classification
-        const { currentTopics: ct, reviewTopics: rt } = mgr.getTopicsForClassification();
-        if (ct.length > 0 || rt.length > 0) {
-          fetch('/api/classify-topic', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: aiText, currentTopics: ct, reviewTopics: rt }),
-          }).then(r => r.json()).then(result => {
-            const bd = mgr.updateTopicClassification(result);
-            if (bd.length > 0) pendingDirectivesRef.current.push(...bd);
-          }).catch(() => {});
+        // Only classify topics during Phase 2+ (Phase 1 warm-up doesn't count)
+        if (mgr.getPhase() >= 2) {
+          const { currentTopics: ct, reviewTopics: rt } = mgr.getTopicsForClassification();
+          if (ct.length > 0 || rt.length > 0) {
+            fetch('/api/classify-topic', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text: aiText, currentTopics: ct, reviewTopics: rt }),
+            }).then(r => r.json()).then(result => {
+              const bd = mgr.updateTopicClassification(result);
+              if (bd.length > 0) pendingDirectivesRef.current.push(...bd);
+            }).catch(() => {});
+          }
         }
       }
 

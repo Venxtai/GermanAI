@@ -426,6 +426,7 @@ async function saveTranscriptFile(sessionId, logSession) {
         const { Readable } = require('stream');
         const stream = Readable.from([content]);
         await driveClient.files.create({
+          supportsAllDrives: true,
           requestBody: {
             name: filename,
             mimeType: 'text/plain',
