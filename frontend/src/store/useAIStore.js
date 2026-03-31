@@ -26,6 +26,11 @@ const useAIStore = create((set, get) => ({
   feedback: null,   // null | 'loading' | { items: string[] } | { fallback: true }
   transcriptForDownload: null, // saved messages for download after session ends
 
+  // Progress bar timing
+  conversationStartTime: null, // Date.now() when session started
+  sessionMinMs: 0,             // minimum duration in ms
+  sessionMaxMs: 0,             // maximum duration in ms
+
   // Actions
   setStatus: (status) => set({ status }),
   setMicError: (err) => set({ micError: err }),
@@ -36,6 +41,7 @@ const useAIStore = create((set, get) => ({
   setTranscriptForDownload: (t) => set({ transcriptForDownload: t }),
   setCurrentUnit: (unit) => set({ currentUnit: unit }),
   setSessionActive: (active) => set({ isSessionActive: active }),
+  setSessionTiming: (startTime, minMs, maxMs) => set({ conversationStartTime: startTime, sessionMinMs: minMs, sessionMaxMs: maxMs }),
 
   addMessage: (role, content) =>
     set((state) => ({

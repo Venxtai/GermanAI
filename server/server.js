@@ -785,12 +785,23 @@ app.get('/api/cumulative/:unitId', (req, res) => {
 
 // Cache for one-off TTS results (keyed by text hash) — avoids re-generating the same audio
 const ttsCache = new Map();
+const WELCOME_INSTRUCTIONS_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. A progress bar will show how much conversation time remains before you receive feedback. When you're ready, click the button below to begin.`;
 
 // POST /api/tts — One-off TTS for non-conversation audio (e.g., welcome instructions)
 // Uses Gemini 2.5 Pro TTS with configurable voice. Falls back to OpenAI. Caches results.
 app.post('/api/tts', async (req, res) => {
-  const { text, voice = 'Schedar', language = 'en-US' } = req.body;
+  let { text, voice = 'Schedar', language = 'en-US' } = req.body;
   if (!text) return res.status(400).json({ error: 'text required' });
+
+  // __WELCOME__ is a shortcut for the pre-cached welcome audio
+  if (text === '__WELCOME__') {
+    const welcomeKey = `Schedar:en-US:${WELCOME_INSTRUCTIONS_TEXT}`;
+    if (ttsCache.has(welcomeKey)) {
+      return res.json(ttsCache.get(welcomeKey));
+    }
+    // Not cached yet — use the actual text
+    text = WELCOME_INSTRUCTIONS_TEXT;
+  }
 
   // Check cache first
   const cacheKey = `${voice}:${language}:${text}`;
@@ -1585,7 +1596,7 @@ function validateGrammar(text, grammarConstraints) {
  * Validate and optionally re-generate a Claude response.
  * Returns the final validated response text.
  */
-async function validateAndCorrect(responseText, session, maxRetries = 1) {
+async function validateAndCorrect(responseText, session, maxRetries = 3) {
   if (!session.allowedWordSet) return responseText; // No validation data available
 
   const { allowed, passiveSet } = session.allowedWordSet;
@@ -1598,6 +1609,30 @@ async function validateAndCorrect(responseText, session, maxRetries = 1) {
       for (const w of words) if (w.length > 1) studentWords.push(w);
     }
   }
+
+  // Specific alternatives for common forbidden patterns
+  const ALTERNATIVES = {
+    // Grammar alternatives
+    'wenn': 'Do NOT use "wenn". Use two simple sentences instead. Example: "Es ist kalt. Trägst du eine Jacke?"',
+    'weil': 'Do NOT use "weil". Use two sentences instead. Example: "Das ist toll. Du magst Musik!"',
+    'dass': 'Do NOT use "dass". Rephrase as a direct statement or question.',
+    'ob': 'Do NOT use "ob". Ask directly instead.',
+    'beim': 'Do NOT use "beim" (dative). Say "Spielst du Fußball?" not "beim Spielen".',
+    'zum': 'Do NOT use "zum" (dative). Say "Spielst du gern?" not "zum Spielen".',
+    'zur': 'Do NOT use "zur" (dative). Say "Gehst du in die Schule?" not "zur Schule".',
+    'vom': 'Do NOT use "vom" (dative). Rephrase the sentence.',
+    'mit': 'Do NOT use "mit" (dative). Say "und" instead. Example: "Ich und mein Bruder" not "mit meinem Bruder".',
+    // Vocab alternatives
+    'pullover': 'Do NOT use "Pullover" (passive). Use "Jacke" instead.',
+    'sneaker': 'Do NOT use "Sneaker" (passive). Use "Schuhe" instead.',
+    'warm': 'Do NOT use "warm" (passive). Ask "Ist es sonnig?" or "Ist es heiß?" instead.',
+    'kennenzulernen': 'Do NOT use "kennenzulernen". Say "Schön!" or "Toll!" instead.',
+    'bisschen': 'Do NOT use "bisschen". Say "noch" or "mehr" instead.',
+    'gemütlich': 'Do NOT use "gemütlich". Say "schön" or "toll" instead.',
+    'frühstück': 'Do NOT use "Frühstück". Ask "Was machst du dann?" to stay on Tagesablauf.',
+    'brot': 'Do NOT use "Brot" (not in vocabulary). Stay on the assigned topic.',
+    'essen': 'Do NOT use "essen" (not in vocabulary). Stay on the assigned topic.',
+  };
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     const vocabResult = validateResponse(responseText, allowed, passiveSet, studentWords);
@@ -1616,24 +1651,50 @@ async function validateAndCorrect(responseText, session, maxRetries = 1) {
       console.log(`[VALIDATOR] ❌ Grammar violations: ${grammarResult.issues.join('; ')}`);
     }
 
-    // Build correction prompt with SPECIFIC forbidden words and alternatives
-    let correctionMsg = `[SYSTEM: REWRITE REQUIRED. Your response "${responseText}" has these violations:\n`;
+    // Build correction prompt with SPECIFIC alternatives
+    let correctionMsg = `[SYSTEM: REWRITE REQUIRED (attempt ${attempt + 1}/${maxRetries}). Your response "${responseText}" has violations:\n`;
+    const allViolatingWords = [];
+
     if (!vocabResult.valid) {
       for (const v of vocabResult.violations) {
-        if (v.reason === 'passive_only') {
-          correctionMsg += `- "${v.word}" is PASSIVE vocabulary — do NOT use it. The student hasn't said it yet.\n`;
+        const lower = v.word.toLowerCase();
+        allViolatingWords.push(lower);
+        const alt = ALTERNATIVES[lower];
+        if (alt) {
+          correctionMsg += `- ${alt}\n`;
+        } else if (v.reason === 'passive_only') {
+          correctionMsg += `- "${v.word}" is PASSIVE — the student hasn't said it. Find a different word from the active list.\n`;
         } else {
-          correctionMsg += `- "${v.word}" is NOT in the allowed vocabulary. Remove or replace it.\n`;
+          correctionMsg += `- "${v.word}" is NOT allowed. Remove it or use a simpler word.\n`;
         }
       }
     }
     if (!grammarResult.valid) {
       for (const issue of grammarResult.issues) {
-        correctionMsg += `- ${issue}\n`;
+        // Extract the trigger word from the grammar issue
+        const wordMatch = issue.match(/"(\w+)"/);
+        if (wordMatch) {
+          const lower = wordMatch[1].toLowerCase();
+          allViolatingWords.push(lower);
+          const alt = ALTERNATIVES[lower];
+          if (alt) {
+            correctionMsg += `- ${alt}\n`;
+          } else {
+            correctionMsg += `- ${issue}\n`;
+          }
+        } else {
+          correctionMsg += `- ${issue}\n`;
+        }
       }
-      correctionMsg += `GRAMMAR RULES: Use ONLY simple main clauses. NO subordinate clauses (wenn, weil, dass, ob). NO dative prepositions (bei/beim, zu/zum/zur, mit, von/vom, nach, aus, seit). Use nominative and accusative ONLY.\n`;
     }
-    correctionMsg += `Rewrite as a SHORT, simple German sentence. Same meaning, different words. One main clause only.]`;
+
+    correctionMsg += `\nRULES:\n`;
+    correctionMsg += `- Use ONLY simple main clauses (Subject + Verb + Object).\n`;
+    correctionMsg += `- NO subordinate clauses (no wenn, weil, dass, ob, bevor, während).\n`;
+    correctionMsg += `- NO dative prepositions (no bei/beim, zu/zum/zur, mit, von/vom, nach, seit).\n`;
+    correctionMsg += `- Split complex sentences into two short ones.\n`;
+    correctionMsg += `- FORBIDDEN words in this rewrite: ${allViolatingWords.join(', ')}\n`;
+    correctionMsg += `- Keep the same conversational intent. Be SHORT — one or two simple sentences max.]`;
 
     // Re-generate
     session.history.pop(); // Remove the bad assistant response
@@ -1642,16 +1703,34 @@ async function validateAndCorrect(responseText, session, maxRetries = 1) {
     session.history.pop(); // Remove the correction prompt
     session.history.push({ role: 'assistant', content: responseText });
 
-    console.log(`[VALIDATOR] Re-generated: "${responseText}"`);
+    console.log(`[VALIDATOR] Re-generated (attempt ${attempt + 1}): "${responseText}"`);
   }
 
-  // Final check — log but accept (don't loop forever)
+  // Final check — if STILL failing, strip the violating words as last resort
   const finalVocab = validateResponse(responseText, allowed, passiveSet, studentWords);
   const finalGrammar = validateGrammar(responseText, session.grammarConstraints);
   if (!finalVocab.valid || !finalGrammar.valid) {
-    console.log(`[VALIDATOR] ⚠️ Still has issues after correction — accepting anyway`);
-    if (!finalVocab.valid) console.log(`  Remaining vocab: ${finalVocab.violations.map(v => v.word).join(', ')}`);
-    if (!finalGrammar.valid) console.log(`  Remaining grammar: ${finalGrammar.issues.join('; ')}`);
+    console.log(`[VALIDATOR] ⚠️ Still has issues after ${maxRetries} corrections — attempting word-level fix`);
+
+    // Last resort: remove sentences containing forbidden words
+    const allBadWords = [
+      ...(finalVocab.valid ? [] : finalVocab.violations.map(v => v.word.toLowerCase())),
+    ];
+    if (allBadWords.length > 0) {
+      const sentences = responseText.split(/(?<=[.!?])\s+/).filter(s => s.trim());
+      const cleanSentences = sentences.filter(s => {
+        const sLower = s.toLowerCase();
+        return !allBadWords.some(w => sLower.includes(w));
+      });
+      if (cleanSentences.length > 0) {
+        responseText = cleanSentences.join(' ');
+        session.history.pop();
+        session.history.push({ role: 'assistant', content: responseText });
+        console.log(`[VALIDATOR] ✂️ Stripped bad sentences: "${responseText}"`);
+      } else {
+        console.log(`[VALIDATOR] ⚠️ Could not fix — accepting as-is`);
+      }
+    }
   }
 
   return responseText;
@@ -2136,14 +2215,13 @@ app.listen(PORT, () => {
   console.log(`Loaded ${Object.keys(unitMap).length} units | Impuls Deutsch 1 | ${ID1_CHAPTERS.length} chapters`);
 
   // Pre-generate welcome instructions audio so first visitor gets it instantly
-  const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. When you're ready, click the button below to begin.`;
-  const cacheKey = `Schedar:en-US:${WELCOME_TEXT}`;
+  const cacheKey = `Schedar:en-US:${WELCOME_INSTRUCTIONS_TEXT}`;
   if (!ttsCache.has(cacheKey)) {
     (async () => {
       try {
         const response = await googleAI.models.generateContent({
           model: 'gemini-2.5-pro-tts',
-          contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${WELCOME_TEXT}` }] }],
+          contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${WELCOME_INSTRUCTIONS_TEXT}` }] }],
           config: {
             responseModalities: ['AUDIO'],
             speechConfig: {

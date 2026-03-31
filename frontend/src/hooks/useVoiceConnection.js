@@ -122,6 +122,7 @@ export function useVoiceConnection() {
     setFeedback,
     setVisemeTimeline,
     clearVisemeTimeline,
+    setSessionTiming,
   } = useAIStore();
 
   // ── Audio playback helper ──
@@ -463,6 +464,7 @@ export function useVoiceConnection() {
         }
 
         // 10. Play greeting audio and go live
+        setSessionTiming(Date.now(), minMs, maxMs);
         setSessionActive(true);
         try {
           await playAudio(audioBase64, mimeType, greetingVisemes);

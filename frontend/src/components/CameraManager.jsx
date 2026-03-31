@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { CameraControls } from "@react-three/drei";
 import useAIStore from "../store/useAIStore";
 
-// Camera at front row, centered, facing straight at board
+// Camera at front row, centered, facing straight at board (original position)
 const CAMERA_POSITIONS = {
   idle:      { position: [0.1, 0, -1.5], target: [0, 0, -10] },
   listening: { position: [0.1, 0, -1.5], target: [0, 0, -10] },

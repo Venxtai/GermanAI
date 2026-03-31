@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useAIStore from "../store/useAIStore";
 import { useVoiceConnection } from "../hooks/useVoiceConnection";
+import { getDurations } from "../utils/systemInstructions";
 
 const STATUS_LABELS = {
   idle: "Ready",
@@ -15,6 +16,57 @@ const BOOK_COLORS = {
   ID2B: "#00528a",
   ID2O: "#ed6c28",
 };
+
+// Convert hex color to rgba for cross-browser compatibility
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// Progress bar — fills based on midpoint of min/max, dotted line at min (feedback threshold)
+function ProgressBar({ bookColor }) {
+  const { conversationStartTime, sessionMinMs, sessionMaxMs, status } = useAIStore();
+  const [progress, setProgress] = useState(0);
+
+  const targetMs = (sessionMinMs + sessionMaxMs) / 2;
+  const feedbackThreshold = targetMs > 0 ? sessionMinMs / targetMs : 0;
+
+  // Only update progress when buddy finishes speaking (status changes FROM 'speaking' to something else)
+  const prevStatusRef = useRef(status);
+  useEffect(() => {
+    if (!conversationStartTime || targetMs <= 0) return;
+    const wasSpeaking = prevStatusRef.current === 'speaking';
+    prevStatusRef.current = status;
+    if (wasSpeaking && status !== 'speaking') {
+      const elapsed = Date.now() - conversationStartTime;
+      setProgress(Math.min(1, elapsed / targetMs));
+    }
+  }, [status, conversationStartTime, targetMs]);
+
+  if (!conversationStartTime) return null;
+
+  return (
+    <div className="w-full relative" style={{ height: "14px" }}>
+      <div className="absolute inset-0 rounded-full" style={{ background: "rgba(255,255,255,0.1)" }} />
+      <div
+        className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
+        style={{ width: `${progress * 100}%`, background: bookColor || "#008899", opacity: 0.85 }}
+      />
+      {feedbackThreshold > 0 && feedbackThreshold < 1 && (
+        <div
+          className="absolute top-0 bottom-0"
+          style={{
+            left: `${feedbackThreshold * 100}%`,
+            width: "2px",
+            borderLeft: "2px dotted rgba(255,255,255,0.5)",
+          }}
+        />
+      )}
+    </div>
+  );
+}
 
 const BOOKS = [
   { id: "ID1",  label: "Impuls Deutsch 1" },
@@ -49,7 +101,7 @@ const CHAPTERS_BY_BOOK = {
 
 const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. When you're ready, click the button below to begin.`;
 
-function WelcomeScreen({ onBack, onStart, bookColor }) {
+function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
   const [audioReady, setAudioReady] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const audioContextRef = useRef(null);
@@ -57,16 +109,29 @@ function WelcomeScreen({ onBack, onStart, bookColor }) {
 
   useEffect(() => {
     let cancelled = false;
-    // Fetch TTS audio for instructions
-    fetch('/api/tts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: WELCOME_TEXT, voice: 'Schedar', language: 'en-US' }),
-    })
-      .then(r => r.json())
-      .then(async (data) => {
-        if (cancelled || !data.audioBase64) return;
-        // Decode and play
+
+    async function playBuffer(buffer) {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      audioContextRef.current = ctx;
+      await ctx.resume();
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      audioSourceRef.current = source;
+      source.onended = () => { setAudioPlaying(false); setAudioReady(true); };
+      source.start();
+      setAudioPlaying(true);
+    }
+
+    async function fetchAndPlay() {
+      try {
+        const resp = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: '__WELCOME__', voice: 'Schedar', language: 'en-US' }),
+        });
+        const data = await resp.json();
+        if (cancelled || !data.audioBase64) { setAudioReady(true); return; }
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         audioContextRef.current = ctx;
         await ctx.resume();
@@ -79,24 +144,27 @@ function WelcomeScreen({ onBack, onStart, bookColor }) {
         source.buffer = audioBuffer;
         source.connect(ctx.destination);
         audioSourceRef.current = source;
-        source.onended = () => {
-          setAudioPlaying(false);
-          setAudioReady(true);
-        };
+        source.onended = () => { setAudioPlaying(false); setAudioReady(true); };
         source.start();
         setAudioPlaying(true);
-      })
-      .catch(() => {
-        // If TTS fails, just enable the button
+      } catch {
         if (!cancelled) setAudioReady(true);
-      });
+      }
+    }
+
+    // If pre-decoded buffer is ready, play instantly. Otherwise fetch.
+    if (prefetchedBuffer) {
+      playBuffer(prefetchedBuffer);
+    } else {
+      fetchAndPlay();
+    }
 
     return () => {
       cancelled = true;
       if (audioSourceRef.current) try { audioSourceRef.current.stop(); } catch (_) {}
       if (audioContextRef.current) audioContextRef.current.close().catch(() => {});
     };
-  }, []);
+  }, [prefetchedBuffer]);
 
   const buttonDisabled = !audioReady;
   // Safety timeout: if TTS+playback takes too long, enable button anyway (60s)
@@ -111,7 +179,7 @@ function WelcomeScreen({ onBack, onStart, bookColor }) {
       style={{ paddingLeft: "50%" }}
       className="pointer-events-auto absolute inset-0 flex items-center justify-start"
     >
-      <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)" }}>
+      <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.08)" }}>
         <button
           onClick={onBack}
           className="text-xs self-start transition-colors"
@@ -125,11 +193,12 @@ function WelcomeScreen({ onBack, onStart, bookColor }) {
           <h1 className="text-xl font-bold" style={{ color: bookColor || '#fff' }}>Impuls Deutsch</h1>
           <p className="text-white text-xl">Conversation Buddy</p>
         </div>
-        <ul className="flex flex-col gap-3 text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
+        <ul className="flex flex-col gap-3 text-sm" style={{ color: "rgba(255,255,255,0.8)", padding: "0 0.5rem" }}>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Speak only in German during the conversation.</li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span><span>If you don&apos;t understand something, say<br/><span className="text-white font-bold">&quot;Wie bitte?&quot;</span> &nbsp;or&nbsp; <span className="text-white font-bold">&quot;Noch einmal, bitte.&quot;</span></span></li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Answer the buddy&apos;s questions, but also ask your own questions!</li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Pay attention to the buddy&apos;s answers — you may need them later.</li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>A progress bar will show how much conversation time remains before you receive feedback.</li>
         </ul>
         <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
           {audioPlaying ? 'Listening to instructions...' : 'When you\'re ready, click the button below to begin.'}
@@ -166,6 +235,23 @@ export function UI() {
   const [error, setError] = useState(null);
   const holdTimerRef = useRef(null);
   const isHoldingRef = useRef(false);
+
+  // Prefetch AND pre-decode static welcome audio on page load
+  const welcomeBufferRef = useRef(null);
+  useEffect(() => {
+    (async () => {
+      try {
+        const resp = await fetch('/audio/welcome_instructions.wav');
+        const arrayBuffer = await resp.arrayBuffer();
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
+        await ctx.close();
+        welcomeBufferRef.current = audioBuffer;
+      } catch (e) {
+        console.warn('[UI] Welcome audio prefetch failed:', e.message);
+      }
+    })();
+  }, []);
 
   const { status, isSessionActive, micError, setMicError, feedback, setFeedback, transcriptForDownload } = useAIStore();
 
@@ -307,7 +393,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div className="text-center">
                 <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
                 <p className="text-white text-xl">Conversation Buddy</p>
@@ -316,17 +402,19 @@ export function UI() {
                 Welcome! Please enter your access code to begin.
               </p>
               {error && <p className="text-red-400 text-sm text-center">{error}</p>}
-              <input
-                type="text"
-                value={accessCode}
-                onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
-                onKeyDown={(e) => { if (e.key === 'Enter') handleCodeSubmit(); }}
-                placeholder="Access code (e.g. STU-A7X9)"
-                className="name-input w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors text-center tracking-wider"
-                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "0.1em" }}
-                onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
-              />
+              <div className="flex justify-center">
+                <input
+                  type="text"
+                  value={accessCode}
+                  onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleCodeSubmit(); }}
+                  placeholder="Access code (e.g. STU-A7X9)"
+                  className="name-input px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors text-center tracking-wider"
+                  style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "0.1em", width: "90%" }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
+                  onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
+                />
+              </div>
               <button
                 onClick={handleCodeSubmit}
                 disabled={!accessCode.trim()}
@@ -350,7 +438,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div className="text-center">
                 <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
                 <p className="text-white text-xl">Conversation Buddy</p>
@@ -361,17 +449,19 @@ export function UI() {
                 </p>
               )}
               <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.55)" }}>Please enter your name to start:</p>
-              <input
-                type="text"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                onKeyDown={(e) => { if (e.key === 'Enter') handleNameSubmit(); }}
-                placeholder="Your name"
-                className="name-input w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors"
-                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}
-                onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
-                onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
-              />
+              <div className="flex justify-center">
+                <input
+                  type="text"
+                  value={studentName}
+                  onChange={(e) => setStudentName(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleNameSubmit(); }}
+                  placeholder="Your name"
+                  className="name-input px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors"
+                  style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", width: "90%" }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
+                  onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
+                />
+              </div>
               <button
                 onClick={handleNameSubmit}
                 disabled={!studentName.trim()}
@@ -395,7 +485,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div className="text-center">
                 <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
                 <p className="text-white text-xl">Conversation Buddy</p>
@@ -424,7 +514,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[480px] max-h-[80vh] overflow-y-auto flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[480px] max-h-[80vh] overflow-y-auto flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <button
                 onClick={() => { setScreen("book"); setError(null); }}
                 className="text-xs self-start transition-colors"
@@ -444,7 +534,7 @@ export function UI() {
                 <button
                   key={ch.chapter}
                   onClick={() => handleChapterSelect(ch)}
-                  style={{ background: bookColor + "45", border: "1px solid " + bookColor + "70" }}
+                  style={{ background: hexToRgba(bookColor, 0.3), border: "1px solid " + hexToRgba(bookColor, 0.5) }}
                   className="text-left rounded-xl px-5 py-3 transition-colors hover:brightness-125"
                 >
                   <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.5)" }}>Ch. {ch.chapter}</span>
@@ -467,7 +557,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[480px] max-h-[80vh] overflow-y-auto flex flex-col gap-3" style={{ background: "rgba(0,0,0,0.65)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[480px] max-h-[80vh] overflow-y-auto flex flex-col gap-3" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <button
                 onClick={() => { setScreen("chapter"); }}
                 className="text-xs self-start transition-colors"
@@ -510,6 +600,7 @@ export function UI() {
             onBack={() => setScreen("unit")}
             onStart={handleStartSession}
             bookColor={bookColor}
+            prefetchedBuffer={welcomeBufferRef.current}
           />
         )}
       </AnimatePresence>
@@ -522,7 +613,7 @@ export function UI() {
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)" }}>
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.08)" }}>
               <h2 className="text-white text-xl font-bold">Session Complete 🎉</h2>
               {feedback === 'loading' && (
                 <div className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
@@ -631,23 +722,34 @@ export function UI() {
                 >End Session</button>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-3">
-              <AnimatePresence>
-                {micError && (
-                  <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} className="text-red-400 text-xs font-medium rounded-lg px-3 py-1.5 text-center max-w-[200px]" style={{ background: "rgba(0,0,0,0.6)", border: "1px solid rgba(239,68,68,0.4)" }}>🎤 {micError}</motion.div>
-                )}
-              </AnimatePresence>
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{status === "listening" ? "Release to send" : "Hold to speak"}</p>
-              <motion.button
-                onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerLeave={handlePointerUp}
-                disabled={status === "speaking" || status === "loading"}
-                whileTap={{ scale: 0.92 }}
-                className={`pointer-events-auto w-20 h-20 rounded-full flex items-center justify-center shadow-2xl transition-colors border-4 ${status === "listening" ? "bg-green-500 border-green-300 animate-pulse" : status === "speaking" || status === "loading" ? "bg-gray-500 border-gray-400 opacity-50 cursor-not-allowed" : "bg-blue-600 border-blue-400 hover:bg-blue-500"}`}
-              >
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                </svg>
-              </motion.button>
+            <div className="flex justify-center" style={{ paddingLeft: "30%" }}>
+              <div className="pointer-events-auto backdrop-blur-md rounded-2xl flex flex-col items-center gap-3" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)", padding: "1.2rem 2.5rem 1.5rem", width: "420px" }}>
+                <AnimatePresence>
+                  {micError && (
+                    <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} className="text-red-400 text-xs font-medium text-center max-w-[200px]">🎤 {micError}</motion.div>
+                  )}
+                </AnimatePresence>
+                {/* Progress */}
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Progress</p>
+                <ProgressBar bookColor={bookColor} />
+                {/* Mic */}
+                <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.5)" }}>{status === "listening" ? "Release to send" : "Hold to speak"}</p>
+                <motion.button
+                  onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerLeave={handlePointerUp}
+                  disabled={status === "speaking" || status === "loading"}
+                  whileTap={{ scale: 0.92 }}
+                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors border-4 ${status === "listening" ? "border-green-300 animate-pulse" : status === "speaking" || status === "loading" ? "border-gray-400 opacity-50 cursor-not-allowed" : "border-transparent hover:brightness-110"}`}
+                  style={{
+                    background: status === "listening" ? "#22c55e"
+                      : status === "speaking" || status === "loading" ? "#6b7280"
+                      : bookColor || "#008899",
+                  }}
+                >
+                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}
