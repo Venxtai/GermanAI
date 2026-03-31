@@ -116,13 +116,14 @@ app.post('/api/auth/validate', async (req, res) => {
     });
 
     // Log usage to Usage Log tab
+    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
     const timestamp = new Date().toISOString();
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:G',
+      range: 'Usage Log!A:H',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code, type, assignedTo, '', '', '']],
+        values: [[timestamp, code, type, assignedTo, '', '', '', '']],
       },
     });
 
@@ -144,16 +145,17 @@ app.post('/api/auth/validate', async (req, res) => {
 
 // POST /api/auth/log-session — Log completed session details to Usage Log
 app.post('/api/auth/log-session', async (req, res) => {
-  const { code, unit, sessionId, durationMin, studentName } = req.body;
+  const { code, unit, sessionId, durationMin, studentName, assignedTo } = req.body;
   try {
     const sheets = await getSheetsClient();
     const timestamp = new Date().toISOString();
+    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:G',
+      range: 'Usage Log!A:H',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code || '', '', studentName || '', unit || '', sessionId || '', durationMin || '']],
+        values: [[timestamp, code || '', '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '']],
       },
     });
     res.json({ ok: true });
