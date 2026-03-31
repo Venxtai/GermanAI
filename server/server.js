@@ -117,14 +117,14 @@ app.post('/api/auth/validate', async (req, res) => {
     });
 
     // Log usage to Usage Log tab
-    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
+    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:H',
+      range: 'Usage Log!A:I',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code, type, assignedTo, '', '', '', '']],
+        values: [[timestamp, code, type, assignedTo, '', '', '', '', '']],
       },
     });
 
@@ -150,13 +150,13 @@ app.post('/api/auth/log-session', async (req, res) => {
   try {
     const sheets = await getSheetsClient();
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
-    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min)
+    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:H',
+      range: 'Usage Log!A:I',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code || '', type || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '']],
+        values: [[timestamp, code || '', type || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '', '']],
       },
     });
     res.json({ ok: true });
@@ -425,7 +425,7 @@ async function saveTranscriptFile(sessionId, logSession) {
       try {
         const { Readable } = require('stream');
         const stream = Readable.from([content]);
-        await driveClient.files.create({
+        const driveRes = await driveClient.files.create({
           supportsAllDrives: true,
           requestBody: {
             name: filename,
@@ -436,8 +436,36 @@ async function saveTranscriptFile(sessionId, logSession) {
             mimeType: 'text/plain',
             body: stream,
           },
+          fields: 'id',
         });
+        const fileId = driveRes.data.id;
+        const driveLink = `https://drive.google.com/file/d/${fileId}/view`;
         console.log(`${DIM}[TRANSCRIPT] Uploaded to Google Drive: ${filename}${RESET}`);
+
+        // Append transcript link to the last row of Usage Log (column I)
+        try {
+          const sheets = await getSheetsClient();
+          // Find the last row with this session ID
+          const logData = await sheets.spreadsheets.values.get({
+            spreadsheetId: ACCESS_SHEETS_ID,
+            range: 'Usage Log!G:G',
+          });
+          const rows = logData.data.values || [];
+          let targetRow = -1;
+          for (let i = rows.length - 1; i >= 0; i--) {
+            if (rows[i][0] === sessionId) { targetRow = i + 1; break; }
+          }
+          if (targetRow > 0) {
+            await sheets.spreadsheets.values.update({
+              spreadsheetId: ACCESS_SHEETS_ID,
+              range: `Usage Log!I${targetRow}`,
+              valueInputOption: 'USER_ENTERED',
+              requestBody: { values: [[`=HYPERLINK("${driveLink}","open")`]] },
+            });
+          }
+        } catch (sheetErr) {
+          console.warn('[TRANSCRIPT] Could not add Drive link to Usage Log:', sheetErr.message);
+        }
       } catch (driveErr) {
         console.error('[TRANSCRIPT] Drive upload failed:', driveErr.message, '— saving locally');
         saveTranscriptLocally(filename, content);
@@ -754,6 +782,69 @@ app.get('/api/cumulative/:unitId', (req, res) => {
 // (Removed: /api/conversation/start — replaced by /api/session/start pipeline)
 
 // (Removed: /api/speech-to-text, /api/conversation/message, /api/text-to-speech — replaced by pipeline)
+
+// Cache for one-off TTS results (keyed by text hash) — avoids re-generating the same audio
+const ttsCache = new Map();
+
+// POST /api/tts — One-off TTS for non-conversation audio (e.g., welcome instructions)
+// Uses Gemini 2.5 Pro TTS with configurable voice. Falls back to OpenAI. Caches results.
+app.post('/api/tts', async (req, res) => {
+  const { text, voice = 'Schedar', language = 'en-US' } = req.body;
+  if (!text) return res.status(400).json({ error: 'text required' });
+
+  // Check cache first
+  const cacheKey = `${voice}:${language}:${text}`;
+  if (ttsCache.has(cacheKey)) {
+    return res.json(ttsCache.get(cacheKey));
+  }
+
+  try {
+    // Use Gemini Vertex AI TTS
+    const response = await googleAI.models.generateContent({
+      model: 'gemini-2.5-pro-tts',
+      contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${text}` }] }],
+      config: {
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName: voice },
+          },
+          languageCode: language,
+        },
+      },
+    });
+    const audioPart = response.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+    if (!audioPart?.data) throw new Error('No audio in Gemini response');
+
+    const rawMime = audioPart.mimeType || '';
+    let result;
+    if (rawMime.includes('L16') || rawMime.includes('pcm')) {
+      const rateMatch = rawMime.match(/rate=(\d+)/);
+      const sampleRate = rateMatch ? parseInt(rateMatch[1]) : 24000;
+      const pcmBuffer = Buffer.from(audioPart.data, 'base64');
+      const wavBuffer = wrapPcmInWav(pcmBuffer, sampleRate);
+      result = { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav' };
+    } else {
+      result = { audioBase64: audioPart.data, mimeType: rawMime };
+    }
+    ttsCache.set(cacheKey, result);
+    res.json(result);
+  } catch (err) {
+    console.error('[TTS] Gemini one-off TTS error:', err.message, '— falling back to OpenAI');
+    try {
+      const mp3 = await openai.audio.speech.create({
+        model: 'tts-1', voice: 'echo', input: text, speed: 1.0, response_format: 'mp3',
+      });
+      const buffer = Buffer.from(await mp3.arrayBuffer());
+      const fallbackResult = { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg' };
+      ttsCache.set(cacheKey, fallbackResult);
+      res.json(fallbackResult);
+    } catch (fallbackErr) {
+      console.error('[TTS] OpenAI fallback also failed:', fallbackErr.message);
+      res.status(500).json({ error: 'TTS failed' });
+    }
+  }
+});
 
 // SSE stream endpoint — log viewer connects here
 app.get('/log-stream', (req, res) => {
@@ -1743,6 +1834,19 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     }
     session.history.push({ role: 'user', content: userContent });
     let responseText = await callClaude(session.systemPrompt, session.history);
+
+    // Guard: if Claude echoed a [SYSTEM:] directive, strip it and re-generate
+    if (responseText.includes('[SYSTEM:') || responseText.includes('[SYSTEM ')) {
+      console.warn('[GUARD] Claude echoed a system directive — stripping and re-generating');
+      responseText = responseText.replace(/\[SYSTEM[:\s][^\]]*\]/g, '').trim();
+      if (!responseText || responseText.length < 5) {
+        // Nothing left after stripping — re-generate
+        session.history.push({ role: 'user', content: '[SYSTEM: Your previous response was invalid. Respond naturally in German with one short sentence.]' });
+        responseText = await callClaude(session.systemPrompt, session.history);
+        session.history.pop();
+      }
+    }
+
     session.history.push({ role: 'assistant', content: responseText });
 
     // Track full transcript for accurate feedback
@@ -2030,4 +2134,41 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`Loaded ${Object.keys(unitMap).length} units | Impuls Deutsch 1 | ${ID1_CHAPTERS.length} chapters`);
+
+  // Pre-generate welcome instructions audio so first visitor gets it instantly
+  const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. When you're ready, click the button below to begin.`;
+  const cacheKey = `Schedar:en-US:${WELCOME_TEXT}`;
+  if (!ttsCache.has(cacheKey)) {
+    (async () => {
+      try {
+        const response = await googleAI.models.generateContent({
+          model: 'gemini-2.5-pro-tts',
+          contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${WELCOME_TEXT}` }] }],
+          config: {
+            responseModalities: ['AUDIO'],
+            speechConfig: {
+              voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Schedar' } },
+              languageCode: 'en-US',
+            },
+          },
+        });
+        const audioPart = response.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+        if (audioPart?.data) {
+          const rawMime = audioPart.mimeType || '';
+          if (rawMime.includes('L16') || rawMime.includes('pcm')) {
+            const rateMatch = rawMime.match(/rate=(\d+)/);
+            const sampleRate = rateMatch ? parseInt(rateMatch[1]) : 24000;
+            const pcmBuffer = Buffer.from(audioPart.data, 'base64');
+            const wavBuffer = wrapPcmInWav(pcmBuffer, sampleRate);
+            ttsCache.set(cacheKey, { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav' });
+          } else {
+            ttsCache.set(cacheKey, { audioBase64: audioPart.data, mimeType: rawMime });
+          }
+          console.log('Welcome audio pre-generated and cached');
+        }
+      } catch (e) {
+        console.warn('Welcome audio pre-generation failed:', e.message, '— will generate on first request');
+      }
+    })();
+  }
 });

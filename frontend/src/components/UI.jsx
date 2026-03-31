@@ -47,6 +47,112 @@ const CHAPTERS_BY_BOOK = {
   ],
 };
 
+const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. When you're ready, click the button below to begin.`;
+
+function WelcomeScreen({ onBack, onStart, bookColor }) {
+  const [audioReady, setAudioReady] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioContextRef = useRef(null);
+  const audioSourceRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    // Fetch TTS audio for instructions
+    fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: WELCOME_TEXT, voice: 'Schedar', language: 'en-US' }),
+    })
+      .then(r => r.json())
+      .then(async (data) => {
+        if (cancelled || !data.audioBase64) return;
+        // Decode and play
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        audioContextRef.current = ctx;
+        await ctx.resume();
+        const binaryStr = atob(data.audioBase64);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+        const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+        if (cancelled) return;
+        const source = ctx.createBufferSource();
+        source.buffer = audioBuffer;
+        source.connect(ctx.destination);
+        audioSourceRef.current = source;
+        source.onended = () => {
+          setAudioPlaying(false);
+          setAudioReady(true);
+        };
+        source.start();
+        setAudioPlaying(true);
+      })
+      .catch(() => {
+        // If TTS fails, just enable the button
+        if (!cancelled) setAudioReady(true);
+      });
+
+    return () => {
+      cancelled = true;
+      if (audioSourceRef.current) try { audioSourceRef.current.stop(); } catch (_) {}
+      if (audioContextRef.current) audioContextRef.current.close().catch(() => {});
+    };
+  }, []);
+
+  const buttonDisabled = !audioReady;
+  // Safety timeout: if TTS+playback takes too long, enable button anyway (60s)
+  useEffect(() => {
+    const t = setTimeout(() => setAudioReady(true), 60000);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      style={{ paddingLeft: "50%" }}
+      className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+    >
+      <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)" }}>
+        <button
+          onClick={onBack}
+          className="text-xs self-start transition-colors"
+          style={{ color: "rgba(255,255,255,0.5)" }}
+          onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,1)"}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.5)"}
+        >
+          &larr; Back
+        </button>
+        <div className="text-center">
+          <h1 className="text-xl font-bold" style={{ color: bookColor || '#fff' }}>Impuls Deutsch</h1>
+          <p className="text-white text-xl">Conversation Buddy</p>
+        </div>
+        <ul className="flex flex-col gap-3 text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Speak only in German during the conversation.</li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span><span>If you don&apos;t understand something, say<br/><span className="text-white font-bold">&quot;Wie bitte?&quot;</span> &nbsp;or&nbsp; <span className="text-white font-bold">&quot;Noch einmal, bitte.&quot;</span></span></li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Answer the buddy&apos;s questions, but also ask your own questions!</li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Pay attention to the buddy&apos;s answers — you may need them later.</li>
+        </ul>
+        <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
+          {audioPlaying ? 'Listening to instructions...' : 'When you\'re ready, click the button below to begin.'}
+        </p>
+        <button
+          onClick={onStart}
+          disabled={buttonDisabled}
+          className={`font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 ${
+            buttonDisabled
+              ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-500 text-white'
+          }`}
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+          Start Conversation
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
 export function UI() {
   const [screen, setScreen] = useState("code");
   const [accessCode, setAccessCode] = useState("");
@@ -294,7 +400,7 @@ export function UI() {
                 <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
                 <p className="text-white text-xl">Conversation Buddy</p>
               </div>
-              <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.6)" }}>Select your textbook</p>
+              <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.6)" }}>Please select your <span className="text-white font-bold">textbook</span></p>
               {BOOKS.map((book) => (
                 <button
                   key={book.id}
@@ -328,17 +434,17 @@ export function UI() {
               >
                 ← Back
               </button>
-              <h1 className="text-xl font-bold text-center" style={{ color: bookColor }}>
-                {selectedBook?.label}
-              </h1>
-              <p className="text-base font-medium text-center -mt-2" style={{ color: "rgba(255,255,255,0.8)" }}>Chapters</p>
-              <p className="text-sm text-center -mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>Please select your current chapter.</p>
+              <div className="text-center">
+                <h1 className="text-xl font-bold" style={{ color: bookColor }}>Impuls Deutsch</h1>
+                <p className="text-white text-xl">Conversation Buddy</p>
+              </div>
+              <p className="text-sm text-center -mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>Please select your <span className="text-white font-bold">current chapter</span> from {selectedBook?.label}.</p>
               {error && <p className="text-red-400 text-xs text-center">{error}</p>}
               {chapters.map((ch) => (
                 <button
                   key={ch.chapter}
                   onClick={() => handleChapterSelect(ch)}
-                  style={{ background: bookColor + "20", border: "1px solid " + bookColor + "40" }}
+                  style={{ background: bookColor + "45", border: "1px solid " + bookColor + "70" }}
                   className="text-left rounded-xl px-5 py-3 transition-colors hover:brightness-125"
                 >
                   <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.5)" }}>Ch. {ch.chapter}</span>
@@ -371,10 +477,11 @@ export function UI() {
               >
                 ← Back
               </button>
-              <h2 className="text-white text-lg font-bold">
-                {selectedBook?.label} · Chapter {selectedChapter?.chapter}
-              </h2>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>What is the last unit you covered in class?</p>
+              <div className="text-center">
+                <h1 className="text-xl font-bold" style={{ color: bookColor }}>Impuls Deutsch</h1>
+                <p className="text-white text-xl">Conversation Buddy</p>
+              </div>
+              <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.6)" }}>What is the <span className="text-white font-bold">last unit</span> from {selectedBook?.label} you covered in class?</p>
               {error && <p className="text-red-400 text-xs">{error}</p>}
               {units.map((u) => (
                 <button
@@ -396,43 +503,14 @@ export function UI() {
         )}
       </AnimatePresence>
 
-      {/* Welcome screen */}
+      {/* Welcome screen with auto-read instructions */}
       <AnimatePresence>
         {screen === "welcome" && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ paddingLeft: "50%" }}
-            className="pointer-events-auto absolute inset-0 flex items-center justify-start"
-          >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[500px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.7)" }}>
-              <button
-                onClick={() => setScreen("unit")}
-                className="text-xs self-start transition-colors"
-                style={{ color: "rgba(255,255,255,0.5)" }}
-                onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,1)"}
-                onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.5)"}
-              >
-                ← Back
-              </button>
-              <h2 className="text-white text-xl font-bold">Welcome to the German Conversation Buddy!</h2>
-              <ul className="flex flex-col gap-3 text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
-                <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>•</span>Speak only in German during the conversation.</li>
-                <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>•</span>If you don't understand something, say <span className="text-white font-medium">"Wie bitte?"</span> or <span className="text-white font-medium">"Noch einmal, bitte."</span></li>
-                <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>•</span>Answer the buddy's questions, but also ask your own questions!</li>
-                <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>•</span>Pay attention to the buddy's answers — you may need them later.</li>
-              </ul>
-              <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>When you're ready, click the button below to begin.</p>
-              <button
-                onClick={handleStartSession}
-                className="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                </svg>
-                Start Conversation
-              </button>
-            </div>
-          </motion.div>
+          <WelcomeScreen
+            onBack={() => setScreen("unit")}
+            onStart={handleStartSession}
+            bookColor={bookColor}
+          />
         )}
       </AnimatePresence>
 

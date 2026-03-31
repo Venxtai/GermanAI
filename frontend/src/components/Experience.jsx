@@ -25,8 +25,8 @@ export function Experience() {
       {/* Naoki GLB — positioned in front of the board */}
       {/* Character moved forward + down for medium shot (waist up) */}
       <Character
-        position={[-0.55, -2.2, -2.8]}
-        rotation={[0, THREE.MathUtils.degToRad(15), 0]}
+        position={[-0.55, -2.2, -3.0]}
+        rotation={[THREE.MathUtils.degToRad(5), THREE.MathUtils.degToRad(25), 0]}
         scale={1.5}
       />
     </>

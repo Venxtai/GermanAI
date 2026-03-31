@@ -7,19 +7,12 @@ import useAIStore from "../store/useAIStore";
 
 const ANIMATION_FADE_TIME = 0.5;
 
-// Lip visemes — subtle mouth shaping driven by audio energy
-const LIP_VISEMES = [
-  "viseme_aa",
-  "viseme_O",
-  "viseme_E",
-  "viseme_DD",
-];
-
-// Very subtle secondary — barely visible, for natural variation
-const SECONDARY_VISEMES = [
-  "viseme_FF",
-  "viseme_SS",
-  "viseme_nn",
+// All Oculus visemes used by the timeline system
+const ALL_VISEMES = [
+  "viseme_sil", "viseme_PP", "viseme_FF", "viseme_TH",
+  "viseme_DD", "viseme_kk", "viseme_CH", "viseme_SS",
+  "viseme_nn", "viseme_RR", "viseme_aa", "viseme_E",
+  "viseme_I", "viseme_O", "viseme_U",
 ];
 
 export function Character(props) {
@@ -27,18 +20,27 @@ export function Character(props) {
 
   // Load female avatar model + Mixamo animations (made for her skeleton)
   const { scene } = useGLTF("/models/FemaleAvatar.glb");
-  const { animations } = useGLTF("/models/animations_Female.glb");
+  const { animations: rawAnimations } = useGLTF("/models/animations_Female.glb");
+
+  const animations = rawAnimations;
+
   const { actions, mixer } = useAnimations(animations, group);
 
   const [animation, setAnimation] = useState("Idle");
   const [blink, setBlink] = useState(false);
+  const headBoneRef = useRef(null);
+  const leftEyeBoneRef = useRef(null);
+  const rightEyeBoneRef = useRef(null);
 
-  const status       = useAIStore((s) => s.status);
-  const analyzerNode = useAIStore((s) => s.analyzerNode);
+  const status         = useAIStore((s) => s.status);
+  const analyzerNode   = useAIStore((s) => s.analyzerNode);
+  const visemeTimeline = useAIStore((s) => s.visemeTimeline);
+  const visemeStartTime = useAIStore((s) => s.visemeStartTime);
   const amplitudeDataRef = useRef(new Uint8Array(128));
   const isTalkingRef = useRef(false);
   const idleTimerRef = useRef(null);
-  const isFirstSpeakRef = useRef(true); // Track first speaking turn for greeting
+  const isFirstSpeakRef = useRef(true);
+  const currentVisemeRef = useRef({}); // { visemeName: targetWeight } for smooth lerping
 
   // Blink loop
   useEffect(() => {
@@ -55,6 +57,17 @@ export function Character(props) {
     nextBlink();
     return () => clearTimeout(blinkTimeout);
   }, []);
+
+  // Find Head and Eye bones for look-at rotation
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isBone) {
+        if (child.name === 'Head') headBoneRef.current = child;
+        if (child.name === 'LeftEye') leftEyeBoneRef.current = child;
+        if (child.name === 'RightEye') rightEyeBoneRef.current = child;
+      }
+    });
+  }, [scene]);
 
   // Animation state based on AI status
   useEffect(() => {
@@ -124,7 +137,8 @@ export function Character(props) {
     });
   };
 
-  // Per-frame: lipsync + blink + smile
+  // Per-frame: viseme-based lipsync + blink + smile
+  // Priority 1 ensures this runs AFTER the animation mixer (priority 0)
   useFrame(() => {
     // Blink
     lerpMorphTarget("eyeBlinkLeft", blink ? 1 : 0, 0.5);
@@ -134,33 +148,69 @@ export function Character(props) {
     lerpMorphTarget("mouthSmileLeft", 0.15, 0.3);
     lerpMorphTarget("mouthSmileRight", 0.15, 0.3);
 
-    // Audio-driven lipsync
-    let audioEnergy = 0;
-    if (analyzerNode) {
-      analyzerNode.getByteFrequencyData(amplitudeDataRef.current);
-      audioEnergy = amplitudeDataRef.current.slice(1, 15).reduce((a, b) => a + b, 0) / 14;
-    }
 
-    const mouthValue = status === "speaking"
-      ? MathUtils.clamp(audioEnergy / 120, 0, 0.2)
-      : 0;
+    // Eyelid openness (0.4 = natural relaxed look)
+    lerpMorphTarget("eyesLookUp", 0.4, 0.1);
 
-    for (const v of LIP_VISEMES) {
-      lerpMorphTarget(v, mouthValue > 0.03 ? mouthValue : 0, 0.3);
-    }
-    for (const v of SECONDARY_VISEMES) {
-      lerpMorphTarget(v, mouthValue > 0.03 ? mouthValue * 0.3 : 0, 0.2);
-    }
-    lerpMorphTarget("jawOpen", mouthValue > 0.03 ? mouthValue * 0.3 : 0, 0.2);
-    lerpMorphTarget("mouthOpen", mouthValue > 0.03 ? mouthValue * 0.4 : 0, 0.2);
+    if (status === "speaking" && visemeTimeline && visemeStartTime) {
+      // ── VISEME TIMELINE MODE — phoneme-accurate mouth shapes ──
+      const elapsed = (performance.now() - visemeStartTime) / 1000; // seconds
 
-    if (status !== "speaking") {
+      // Find the current viseme in the timeline
+      let activeViseme = "viseme_sil";
+      let activeWeight = 0;
+      for (let i = visemeTimeline.length - 1; i >= 0; i--) {
+        const v = visemeTimeline[i];
+        if (elapsed >= v.time && elapsed < v.time + v.duration) {
+          activeViseme = v.viseme;
+          activeWeight = v.weight || 0.6;
+          break;
+        }
+        if (elapsed >= v.time + v.duration && i === visemeTimeline.length - 1) {
+          // Past the last viseme — close mouth
+          activeViseme = "viseme_sil";
+          activeWeight = 0;
+          break;
+        }
+      }
+
+      // Build target weights: active viseme gets its weight, all others go to 0
+      const targets = {};
+      for (const v of ALL_VISEMES) {
+        targets[v] = v === activeViseme ? activeWeight : 0;
+      }
+
+      // Also drive jawOpen proportional to open-mouth visemes
+      const isOpenMouth = ["viseme_aa", "viseme_O", "viseme_E", "viseme_I", "viseme_U"].includes(activeViseme);
+      targets["jawOpen"] = isOpenMouth ? activeWeight * 0.4 : 0;
+      targets["mouthOpen"] = isOpenMouth ? activeWeight * 0.3 : 0;
+
+      // Smooth lerp all targets
+      for (const [name, target] of Object.entries(targets)) {
+        lerpMorphTarget(name, target, 0.4);
+      }
+
+    } else if (status === "speaking") {
+      // ── FALLBACK: amplitude-only mode (no viseme data) ──
+      let audioEnergy = 0;
+      if (analyzerNode) {
+        analyzerNode.getByteFrequencyData(amplitudeDataRef.current);
+        audioEnergy = amplitudeDataRef.current.slice(1, 15).reduce((a, b) => a + b, 0) / 14;
+      }
+      const mouthValue = MathUtils.clamp(audioEnergy / 150, 0, 0.5);
+      lerpMorphTarget("viseme_aa", mouthValue > 0.03 ? mouthValue * 0.6 : 0, 0.3);
+      lerpMorphTarget("viseme_O", mouthValue > 0.03 ? mouthValue * 0.3 : 0, 0.3);
+      lerpMorphTarget("jawOpen", mouthValue > 0.03 ? mouthValue * 0.25 : 0, 0.2);
+      lerpMorphTarget("mouthOpen", mouthValue > 0.03 ? mouthValue * 0.3 : 0, 0.2);
+
+    } else {
+      // ── NOT SPEAKING — close mouth ──
+      for (const v of ALL_VISEMES) lerpMorphTarget(v, 0, 0.15);
       lerpMorphTarget("mouthOpen", 0, 0.15);
       lerpMorphTarget("jawOpen", 0, 0.15);
-      for (const v of LIP_VISEMES) lerpMorphTarget(v, 0, 0.15);
-      for (const v of SECONDARY_VISEMES) lerpMorphTarget(v, 0, 0.15);
     }
   });
+
 
   return (
     <group ref={group} {...props} dispose={null}>
