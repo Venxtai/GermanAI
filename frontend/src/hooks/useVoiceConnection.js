@@ -446,7 +446,7 @@ export function useVoiceConnection() {
         postLog({
           type: 'start',
           unit: unitData?.unit,
-          unitTitle: (unitData?.communicative_functions?.goals || [])[0]
+          unitTitle: unitData?._unitName
                   || (unitData?.conversation_topics?.topics || [])[0]
                   || '',
         });
@@ -505,7 +505,7 @@ export function useVoiceConnection() {
     const assignedTo = storeState.assignedTo || '';
     const studentNameForLog = studentNameRef.current || typedNameRef.current || '';
     const unitForLog = unitDataRef.current
-      ? `Unit ${unitDataRef.current.unit} — ${(unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
+      ? `Unit ${unitDataRef.current.unit} — ${unitDataRef.current._unitName || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
       : '';
     const durationMin = conversationStartRef.current
       ? Math.round((Date.now() - conversationStartRef.current) / 60000 * 10) / 10
@@ -599,7 +599,7 @@ export function useVoiceConnection() {
     // Save transcript for download before clearing
     const msgs = useAIStore.getState().messages;
     const unitLabel = unitDataRef.current
-      ? `Unit ${unitDataRef.current.unit} — ${(unitDataRef.current.communicative_functions?.goals || [])[0] || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
+      ? `Unit ${unitDataRef.current.unit} — ${unitDataRef.current._unitName || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
       : '';
     setTranscriptForDownload({ messages: [...msgs], unitLabel, date: new Date().toLocaleString() });
     clearMessages();

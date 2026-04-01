@@ -359,6 +359,7 @@ export function UI() {
       ).then((r) => r.json());
       fullUnit._book = book;
       fullUnit._chapter = chapter;
+      fullUnit._unitName = unitInfo.topic || '';
       setPendingUnit(fullUnit);
       setScreen("welcome");
     } catch {

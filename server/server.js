@@ -385,7 +385,7 @@ function timestamp() {
 function logConversationStart(sessionId, unitNumber) {
   const unitData = unitMap[String(unitNumber)];
   const unitLabel = unitData
-    ? `Unit ${unitNumber} — ${(unitData.communicative_functions?.goals || [])[0] || (unitData.conversation_topics?.topics || [])[0] || ''}`
+    ? `Unit ${unitNumber} — ${unitNames[String(unitNumber)] || (unitData.conversation_topics?.topics || [])[0] || ''}`
     : `Unit ${unitNumber}`;
   console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
   console.log(`${BOLD}${GREEN}[${timestamp()}] CONVERSATION STARTED${RESET}`);
@@ -1885,6 +1885,7 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No audio file' });
 
     // 1. Whisper STT
+    const t0 = Date.now();
     fs.renameSync(req.file.path, renamedPath);
     console.log(`[STT] Audio file: ${renamedPath}, size: ${fs.statSync(renamedPath).size} bytes, mime: ${req.file.mimetype}`);
     const transcription = await openai.audio.transcriptions.create({
@@ -1893,6 +1894,8 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       language: 'de',
     });
     let transcript = transcription.text?.trim() || '';
+    const t1 = Date.now();
+    console.log(`[TIMING] STT: ${t1 - t0}ms`);
 
     // 1b. Name spelling correction: replace Whisper's phonetic guess with typed spelling
     // e.g., Whisper produces "Nico" but student typed "Niko" → rewrite before Claude sees it
@@ -1945,7 +1948,10 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       for (const d of directives) console.log(`${DIM}[DIRECTIVE] ${d.slice(0, 150)}${RESET}`);
     }
     session.history.push({ role: 'user', content: userContent });
+    const t2 = Date.now();
     let responseText = await callClaude(session.systemPrompt, session.history);
+    const t3 = Date.now();
+    console.log(`[TIMING] Claude: ${t3 - t2}ms`);
 
     // Guard: if Claude echoed a [SYSTEM:] directive, strip it and re-generate
     if (responseText.includes('[SYSTEM:') || responseText.includes('[SYSTEM ')) {
@@ -1965,12 +1971,18 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     session.fullTranscript?.push({ role: 'student', text: transcript });
 
     // 4b. Validate vocabulary and grammar BEFORE TTS
+    const tv0 = Date.now();
     responseText = await validateAndCorrect(responseText, session);
+    const tv1 = Date.now();
+    if (tv1 - tv0 > 500) console.log(`[TIMING] Validator: ${tv1 - tv0}ms`);
 
     session.fullTranscript?.push({ role: 'buddy', text: responseText });
 
     // 5. TTS
+    const t4 = Date.now();
     const ttsResult = await textToSpeechGemini(responseText);
+    const t5 = Date.now();
+    console.log(`[TIMING] TTS: ${t5 - t4}ms | Total: ${t5 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms, TTS: ${t5 - t4}ms)`);
 
     res.json({ transcript, response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
   } catch (error) {
