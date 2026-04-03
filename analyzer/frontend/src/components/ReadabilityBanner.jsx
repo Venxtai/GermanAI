@@ -89,9 +89,9 @@ export default function ReadabilityBanner() {
   const diff = whatIfMode && whatIfResults ? percent - originalPercent : 0;
 
   // Brand-aligned: teal for good, amber for medium, orange for poor
-  const barColor = percent >= 90 ? 'bg-[var(--brand)]' : percent >= 70 ? 'bg-amber-500' : 'bg-[var(--color-unknown)]';
-  const textColor = percent >= 90 ? 'text-[var(--brand)]' : percent >= 70 ? 'text-amber-700' : 'text-[var(--color-unknown)]';
-  const bgColor = percent >= 90 ? 'bg-[var(--brand-light)]' : percent >= 70 ? 'bg-amber-50' : 'bg-[var(--color-unknown-bg)]';
+  const barColor = percent >= 90 ? 'bg-[var(--brand)]' : percent >= 70 ? 'bg-[var(--brand-orange)]' : 'bg-[var(--color-unknown)]';
+  const textColor = percent >= 90 ? 'text-[var(--brand)]' : percent >= 70 ? 'text-[var(--brand-orange)]' : 'text-[var(--color-unknown)]';
+  const bgColor = percent >= 90 ? 'bg-[var(--brand-light)]' : percent >= 70 ? 'bg-[#fef3ee]' : 'bg-[var(--color-unknown-bg)]';
 
   return (
     <div className={`px-6 py-2 flex items-center gap-4 border-b border-slate-200 ${bgColor} flex-shrink-0 transition-colors duration-300`}>
