@@ -748,52 +748,134 @@ Respond with ONLY the English translation (1-3 words), nothing else.`;
  * E.g., for "mag" (mögen) → ["gern haben", "toll finden", "lieben"]
  * E.g., for "Fortbewegungsmittel" → ["das Auto", "der Zug", "der Bus"]
  */
-async function suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownWords, tryHarder) {
+async function suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownItems, tryHarder, unknownPos, unknownTranslation) {
   if (!AI_AVAILABLE || !anthropic) {
     return [];
   }
+
+  // Extract context clues from the sentence for semantic filtering
+  // e.g., "Ich esse gern Kohlrabi" → "essen" = food context
+  const sentLower = sentence.toLowerCase();
+  const contextClues = [];
+  const contextPatterns = {
+    food: ['esse', 'isst', 'essen', 'koche', 'kochen', 'kocht', 'schmeckt', 'probiere', 'backe', 'backen', 'bestelle', 'hunger', 'lecker', 'küche', 'rezept', 'mahlzeit', 'frühstück', 'mittagessen', 'abendessen', 'restaurant', 'supermarkt', 'markt', 'einkaufen'],
+    drink: ['trinke', 'trinkst', 'trinken', 'trinkt', 'durst', 'getränk', 'kaffee', 'tee', 'wasser', 'saft', 'bier', 'wein'],
+    clothing: ['trage', 'trägst', 'trägt', 'anziehen', 'kleidung', 'mode'],
+    transport: ['fahre', 'fährst', 'fährt', 'fahren', 'reise', 'reisen'],
+    place: ['wohne', 'wohnst', 'wohnt', 'lebe', 'gehe', 'besuche'],
+  };
+  for (const [cat, patterns] of Object.entries(contextPatterns)) {
+    if (patterns.some(p => sentLower.includes(p))) contextClues.push(cat);
+  }
+
+  // Food-related known vocabulary keywords (for the food category specifically)
+  const categoryVocab = {
+    food: ['food', 'vegetable', 'fruit', 'meat', 'bread', 'cheese', 'rice', 'pasta', 'potato', 'salad', 'soup', 'cake', 'fish', 'chicken', 'egg', 'butter', 'sugar', 'salt', 'pepper', 'tomato', 'onion', 'carrot', 'lettuce', 'cucumber', 'mushroom', 'corn', 'bean', 'pea', 'nut', 'apple', 'banana', 'orange', 'lemon', 'grape', 'berry', 'plum', 'melon', 'peach', 'pear', 'cherry', 'essen', 'gemüse', 'obst', 'fleisch', 'brot', 'käse', 'reis', 'nudel', 'kartoffel', 'salat', 'suppe', 'kuchen', 'fisch', 'huhn', 'hähnchen', 'ei', 'butter', 'zucker', 'salz', 'tomate', 'zwiebel', 'gurke', 'pilz', 'apfel', 'banane', 'zitrone', 'kirsche', 'pflaume', 'bio', 'kalorien', 'ernährung', 'lebensmittel', 'speise', 'gericht', 'hunger', 'satt', 'kochen', 'backen', 'bestellen'],
+    drink: ['drink', 'beverage', 'coffee', 'tea', 'water', 'juice', 'beer', 'wine', 'milk', 'trinken', 'kaffee', 'tee', 'wasser', 'saft', 'bier', 'wein', 'milch', 'getränk', 'schokolade'],
+    clothing: ['clothing', 'wear', 'shirt', 'pants', 'dress', 'shoe', 'jacket', 'coat', 'hat', 'kleidung', 'hemd', 'hose', 'kleid', 'schuh', 'jacke', 'mantel', 'hut', 'mütze'],
+    transport: ['vehicle', 'car', 'bus', 'train', 'bicycle', 'airplane', 'ship', 'fahrzeug', 'auto', 'bus', 'zug', 'fahrrad', 'flugzeug', 'schiff', 'bahn', 'straßenbahn'],
+    place: ['place', 'city', 'country', 'house', 'home', 'school', 'university', 'ort', 'stadt', 'land', 'haus', 'schule', 'universität', 'wohnung'],
+  };
+
+  // Score known words by context relevance
+  const scored = knownItems.map(item => {
+    let score = 0;
+    const transLower = (item.translation || '').toLowerCase();
+    const wordLower = item.word.toLowerCase();
+
+    // Same POS as unknown word
+    if (unknownPos && item.pos === unknownPos) score += 1;
+
+    // Context-based category matching (most important signal)
+    // Use word-boundary matching for short keywords to avoid false positives
+    for (const cat of contextClues) {
+      const vocabKw = categoryVocab[cat] || [];
+      if (vocabKw.some(k => {
+        if (k.length <= 3) {
+          // Short keywords: require exact word match or word boundary
+          const re = new RegExp(`\\b${k}\\b`, 'i');
+          return re.test(transLower) || re.test(wordLower);
+        }
+        return transLower.includes(k) || wordLower.includes(k);
+      })) {
+        score += 5;
+      }
+    }
+
+    // Translation overlap with unknown word's translation
+    if (unknownTranslation) {
+      const unknownTransWords = unknownTranslation.toLowerCase().split(/[;,\s]+/).filter(w => w.length > 2);
+      const knownTransWords = transLower.split(/[;,\s]+/).filter(w => w.length > 2);
+      for (const uw of unknownTransWords) {
+        if (knownTransWords.some(kw => kw.includes(uw) || uw.includes(kw))) score += 5;
+      }
+    }
+
+    return { ...item, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  const topRelevant = scored.filter(s => s.score > 0).slice(0, 40);
+  const restItems = scored.filter(s => s.score === 0);
+
+  // Format: show relevant words prominently, rest grouped by POS
+  let knownVocabFormatted = '';
+  if (topRelevant.length > 0) {
+    knownVocabFormatted += 'MOST RELEVANT KNOWN WORDS (check these first — these are the best candidates!):\n';
+    knownVocabFormatted += topRelevant.map(i => `  ${i.word} = ${i.translation || i.pos}`).join('\n');
+    knownVocabFormatted += '\n\n';
+  }
+  const byPos = {};
+  for (const item of restItems) {
+    const pos = item.pos || 'OTHER';
+    if (!byPos[pos]) byPos[pos] = [];
+    byPos[pos].push(item.word);
+  }
+  knownVocabFormatted += 'ALL OTHER KNOWN WORDS:\n';
+  knownVocabFormatted += Object.entries(byPos)
+    .map(([pos, words]) => `${pos}: ${words.slice(0, 100).join(', ')}`)
+    .join('\n');
+
+  const unknownInfo = unknownTranslation
+    ? `"${unknownWord}" (dictionary form: ${unknownLemma || unknownWord}, means: ${unknownTranslation}, POS: ${unknownPos || 'unknown'})`
+    : `"${unknownWord}" (dictionary form: ${unknownLemma || unknownWord})`;
 
   const harderInstructions = tryHarder ? `
 
 IMPORTANT — EXPANDED SEARCH:
 The first attempt found no alternatives. Now try HARDER:
-- Suggest descriptive phrases or circumlocutions using known words (e.g., "ein Gemüse" or "grünes Gemüse" instead of a specific vegetable name)
-- Consider broader category words (hypernyms) from the known list
-- Consider phrases that describe the concept rather than naming it exactly
-- It is OK if the meaning is approximate — a close paraphrase is better than nothing
-- You may also suggest leaving the word and adding a gloss (footnote translation) as a last resort
-- Be creative with multi-word combinations from the known vocabulary` : '';
+- Use broader category words (hypernyms): e.g., "das Gemüse" for any specific vegetable, "das Obst" for any fruit, "das Tier" for any animal
+- Use descriptive phrases: e.g., "ein grünes Gemüse" instead of "Kohlrabi"
+- Consider words that fit the same grammatical slot even if meaning is approximate
+- A close paraphrase is better than nothing — don't return empty!` : '';
 
   const prompt = `You are a German language expert helping teachers adapt texts for students with limited vocabulary.
 
 SENTENCE: "${sentence}"
-UNKNOWN WORD: "${unknownWord}" (dictionary form: ${unknownLemma || unknownWord})
+UNKNOWN WORD: ${unknownInfo}
 
-KNOWN VOCABULARY (the ONLY words the students know):
-${knownWords.slice(0, 500).join(', ')}
+KNOWN VOCABULARY (grouped by part of speech — students ONLY know these words):
+${knownVocabFormatted}
 
-Task: Suggest 2-5 alternative words or short phrases that could REPLACE "${unknownLemma || unknownWord}" in this specific sentence while keeping the meaning as close as possible.
-
-Think step by step:
-1. What does "${unknownLemma || unknownWord}" mean in THIS specific sentence context? Consider what the subject is doing and with what object.
-2. What are different ways to express that same idea in German?
-3. Which of those ways ONLY use words from the known vocabulary list above?
-
-CRITICAL RULES:
-- EVERY single word in your suggestions MUST appear in the known vocabulary list, or be a basic grammar word (der/die/das, ein/eine, ich/du/er, in/auf/mit, und/oder/aber, nicht, gern, gut, sehr).
-- Multi-word phrases are PREFERRED over single words when they better capture the meaning. E.g., "gut finden" is better than just "finden". "gern fahren" is better than just "fahren" when talking about enjoying an activity.
-- Think about what verb or phrase naturally goes with the OTHER words in the sentence. E.g., with "Achterbahnen" you RIDE them (fahren), not play with them.
-- Do NOT suggest words that only make sense in a completely different context.
-- Give the dictionary/base form (infinitive for verbs, nominative singular with article for nouns).
-- Each suggestion should actually work when inserted into the sentence (possibly with grammar adjustments).
+Task: Suggest 2-5 alternative words or short phrases from the known vocabulary that could REPLACE "${unknownLemma || unknownWord}" in this sentence.
 ${harderInstructions}
 
-Respond ONLY with a JSON array:
-[
-  {"alternative": "the word or short phrase", "explanation": "2-5 word English explanation of meaning"}
-]
+APPROACH:
+1. What does "${unknownLemma || unknownWord}" mean in THIS sentence? What semantic category does it belong to?
+2. Scan the known vocabulary for: (a) exact synonyms, (b) hypernyms/category words (e.g., "das Gemüse" for any vegetable), (c) related words that fit the context
+3. For nouns: look at the NOUN list for category words. For verbs: look for verbs with similar meaning.
+4. Phrases combining 2-3 known words are welcome.
 
-If nothing works, return [].`;
+RULES:
+- EVERY word in suggestions MUST be from the known vocabulary or a basic grammar word (der/die/das, ein/eine, pronouns, basic prepositions).
+- The suggestion must make sense when inserted into "${sentence}" (with grammar adjustments).
+- Give dictionary form (infinitive for verbs, nominative with article for nouns).
+- Think about what makes sense with the OTHER words in the sentence — "essen" goes with food, "trinken" with drinks, etc.
+
+Respond ONLY with a JSON array:
+[{"alternative": "word or phrase", "explanation": "2-5 word English explanation"}]
+
+If truly nothing works, return []. But try hard — there is almost always a broader category word or paraphrase.`;
 
   try {
     const response = await anthropic.messages.create({
@@ -804,9 +886,15 @@ If nothing works, return [].`;
     });
 
     const text = response.content[0]?.text || '[]';
-    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    // Extract first JSON array — use non-greedy match
+    const jsonMatch = text.match(/\[[\s\S]*?\]/);
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch (parseErr) {
+        console.error('[ALTERNATIVES] JSON parse error, raw:', text.substring(0, 300));
+        return [];
+      }
     }
     return [];
   } catch (err) {

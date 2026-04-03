@@ -191,21 +191,30 @@ router.post('/analyzer/alternatives', async (req, res) => {
 
   const selectedUnitIds = new Set(selectedUnits.map(String));
 
-  // Build list of known active vocabulary
-  const knownWords = [];
+  // Build list of known active vocabulary with translations and POS
+  const knownItems = [];
+  const knownWordsSet = new Set();
   for (const uid of selectedUnitIds) {
     const unit = unitMap[uid];
     if (!unit?.active_vocabulary?.items) continue;
     for (const item of unit.active_vocabulary.items) {
-      knownWords.push(item.word);
+      if (!knownWordsSet.has(item.word)) {
+        knownWordsSet.add(item.word);
+        knownItems.push({ word: item.word, pos: item.pos || '', translation: item.translation || '' });
+      }
     }
   }
-  const uniqueKnown = [...new Set(knownWords)];
+
+  // Look up the unknown word's translation and POS to help pre-filter
+  const { lookupWord, normalizeWord } = require('../services/vocabIndex');
+  const unknownLookup = lookupWord(unknownLemma || unknownWord, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+  const unknownPos = unknownLookup.entries[0]?.pos || '';
+  const unknownTranslation = unknownLookup.entries[0]?.translation || '';
 
   try {
     const { suggestWordAlternatives } = require('../services/textAnalysis');
     const alternatives = await suggestWordAlternatives(
-      sentence, unknownWord, unknownLemma, uniqueKnown, tryHarder,
+      sentence, unknownWord, unknownLemma, knownItems, tryHarder, unknownPos, unknownTranslation,
     );
     res.json({ alternatives });
   } catch (err) {
