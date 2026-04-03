@@ -279,6 +279,42 @@ function addToVocabIndex(index, item, unitId, isActive, unit) {
     }
   }
 
+  // If word contains commas, index each form separately
+  // Handles comparative/superlative: "klein, kleiner, am kleinsten" → index "klein", "kleiner", "kleinsten"
+  // Also handles: "gern, lieber, am liebsten", "jeder, jedes, jede", "der Hörsaal, Hörsäle"
+  if (item.word.includes(',')) {
+    let forms = item.word.split(',').map(f => f.trim()).filter(Boolean);
+    // Handle missing commas before "am": "mehr am meisten" → "mehr", "am meisten"
+    const expanded = [];
+    for (const form of forms) {
+      const amIdx = form.indexOf(' am ');
+      if (amIdx > 0) {
+        expanded.push(form.substring(0, amIdx).trim());
+        expanded.push(form.substring(amIdx + 1).trim());
+      } else {
+        expanded.push(form);
+      }
+    }
+    forms = expanded;
+    for (const form of forms) {
+      // Strip "am " prefix for superlatives: "am kleinsten" → "kleinsten"
+      const cleaned = form.replace(/^am\s+/i, '');
+      const formNorm = normalizeWord(cleaned);
+      if (formNorm && formNorm !== norm && !index.get(formNorm)?.some(e => e.unitId === unitId && e.word === item.word)) {
+        if (!index.has(formNorm)) index.set(formNorm, []);
+        index.get(formNorm).push({ ...entry, _formOf: forms[0]?.trim() });
+      }
+      // Also index with "am" for "am liebsten" / "am besten" lookups
+      if (form.toLowerCase().startsWith('am ')) {
+        const withAm = normalizeWord(form);
+        if (withAm && !index.get(withAm)?.some(e => e.unitId === unitId && e.word === item.word)) {
+          if (!index.has(withAm)) index.set(withAm, []);
+          index.get(withAm).push({ ...entry, _formOf: forms[0]?.trim() });
+        }
+      }
+    }
+  }
+
   // If it has an article, also index the noun alone
   const parts = item.word.split(/\s+/);
   if (parts.length === 2 && ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer'].includes(parts[0].toLowerCase())) {
