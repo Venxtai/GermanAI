@@ -420,6 +420,7 @@ Then check if any structures violate the allowed grammar constraints below.
 ALLOWED GRAMMAR:
 - Tenses: ${cumulativeGrammar.allowedTenses.join(', ') || 'none specified'}
 - Cases: ${cumulativeGrammar.allowedCases.join(', ') || 'none specified'}
+- Persons: ${cumulativeGrammar.allowedPersons.join(', ') || 'none specified'}
 - Sentence types: ${cumulativeGrammar.allowedSentenceTypes.join(', ') || 'none specified'}
 
 FORBIDDEN structures: ${cumulativeGrammar.forbidden.join(', ') || 'none'}
@@ -429,6 +430,12 @@ IMPORTANT DISAMBIGUATION RULES:
 - "da" is only a subordinating conjunction when it connects TWO clauses: "Ich bleibe, da es regnet."
 - Similarly, "wenn" at the start of a standalone sentence might be part of a conditional, but "wenn" within a multi-clause sentence is subordinate_wenn.
 - Only flag a structure as forbidden if you are CERTAIN it applies. When in doubt, mark as "ok".
+
+PRONOUN CASE DECLENSION RULE:
+- If a person (e.g., "er") is in the allowed persons list, then ALL case-declined forms of that person are also allowed.
+- For example, if "er" is allowed and Akkusativ is an allowed case, then "ihn" is allowed. If Dativ is allowed, "ihm" is allowed.
+- Full declension: ich→mich/mir, du→dich/dir, er→ihn/ihm, sie→sie/ihr, es→es/ihm, wir→uns, ihr→euch, sie(pl)→sie/ihnen, Sie→Sie/Ihnen.
+- NEVER flag a pronoun as a grammar violation just because it appears in a non-nominative form. Check if its nominative base form is in the allowed persons AND the case it appears in is allowed.
 
 For each sentence, respond with a JSON object:
 {
