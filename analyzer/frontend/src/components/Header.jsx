@@ -188,8 +188,8 @@ export default function Header() {
                         onClick={() => { setShowExportMenu(false); handleShare(); }}
                         className="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors"
                       >
-                        <span className="text-sm font-medium text-slate-700 block">Share with Colleagues</span>
-                        <span className="text-xs text-slate-400">Generate a link to share this analysis with others</span>
+                        <span className="text-sm font-medium text-slate-700 block">Share with Colleagues (Link)</span>
+                        <span className="text-xs text-slate-400">Interactive link — recipients can explore, adjust, and export</span>
                       </button>
                     </>
                   )}
