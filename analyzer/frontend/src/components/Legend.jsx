@@ -221,7 +221,7 @@ export default function Legend() {
         <LegendItem color="bg-[var(--brand)]" label="Known" />
         <LegendItem color="bg-[var(--color-unknown)]" label="Unknown" />
         <LegendItem color="bg-[var(--color-replaced)]" label="Replaced" />
-        <LegendItem color="bg-[var(--color-glossed)]" label="Glossed" />
+        <LegendItem color="bg-[var(--color-glossed)]" label="Translated" />
       </div>
 
       {sessionId && (

@@ -9,9 +9,10 @@ export default function ReadabilityBanner() {
 
   // ALL hooks must be before any returns
   const liveReadability = useMemo(() => {
-    if (!analysisResult) return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0 };
+    if (!analysisResult) return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0 };
     let total = 0;
     let known = 0;
+    let translated = 0;
     let grammarIssues = 0;
 
     for (let si = 0; si < analysisResult.sentences.length; si++) {
@@ -62,6 +63,9 @@ export default function ReadabilityBanner() {
           const mod = wordModifications[modKey];
           if (mod?.type === 'replaced') {
             known++; // Replaced with known word
+          } else if (mod?.type === 'glossed') {
+            known++; // Translated word counts as accessible
+            translated++;
           } else if (w.status === 'known') {
             known++;
           }
@@ -70,7 +74,7 @@ export default function ReadabilityBanner() {
     }
 
     const percent = total > 0 ? Math.round((known / total) * 100) : 100;
-    return { percent, knownWords: known, totalWords: total, grammarIssues };
+    return { percent, knownWords: known - translated, totalWords: total, grammarIssues, translatedWords: translated };
   }, [analysisResult, sentenceRewrites, wordModifications]);
 
   if (!analysisResult) return null;
@@ -80,7 +84,7 @@ export default function ReadabilityBanner() {
     ? whatIfResults.readability
     : liveReadability;
 
-  const { percent, knownWords, totalWords } = readability;
+  const { percent, knownWords, totalWords, translatedWords } = readability;
   const grammarIssues = (whatIfMode && whatIfResults)
     ? analysisResult.readability.grammarIssues
     : liveReadability.grammarIssues;
@@ -107,7 +111,7 @@ export default function ReadabilityBanner() {
           <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${percent}%` }} />
         </div>
         <span className="text-xs text-slate-500">
-          {knownWords}/{totalWords} words known
+          {knownWords}/{totalWords} words known{translatedWords > 0 ? `, ${translatedWords}/${totalWords} translated` : ''}
         </span>
         {diff !== 0 && (
           <span className={`text-xs font-semibold ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>

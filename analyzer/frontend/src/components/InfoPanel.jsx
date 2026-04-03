@@ -671,7 +671,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           onClick={handleGloss}
           className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
         >
-          Mark for Glossing
+          Provide Translation
         </button>
         <button
           onClick={() => setWordModification(sentenceIndex, wordIndex, {
@@ -690,7 +690,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
 
 /**
  * A word that was originally unknown but manually marked as known by the teacher.
- * Shows teal color, full unknown word info, but with Mark as Unknown / Mark for Glossing buttons.
+ * Shows teal color, full unknown word info, but with Mark as Unknown / Provide Translation buttons.
  */
 function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, linkedGroup }) {
   const { setWordModification, selectedUnits, wordAlternatives, setWordAlternatives, sentenceRewrites, setSentenceRewrite } = useAnalyzerStore();
@@ -821,7 +821,7 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
           }}
           className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
         >
-          Mark for Glossing
+          Provide Translation
         </button>
         <button
           onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
@@ -905,7 +905,7 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
         <p className="text-xs text-slate-400">as used in text: <span className="italic">{mod.originalWord}</span></p>
       )}
 
-      <p className="text-sm text-gray-500 font-medium">This word is unknown to the students and was glossed.</p>
+      <p className="text-sm text-gray-500 font-medium">This word is unknown to the students and was translated.</p>
 
       {/* Gloss translation + override */}
       {editing ? (
@@ -929,7 +929,7 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
         <>
           {mod.translation && (
             <div className="bg-gray-50 p-2 rounded border border-gray-200">
-              <InfoRow label="Gloss" value={mod.translation} />
+              <InfoRow label="Translation" value={mod.translation} />
             </div>
           )}
           <button
@@ -982,7 +982,7 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
         onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
         className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
       >
-        Remove Glossing
+        Remove Translation
       </button>
     </div>
   );
