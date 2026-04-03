@@ -976,6 +976,7 @@ function CircleInfo() {
           targetStructure: option.targetStructure || option.label,
           issueDescription: option.label,
           selectedUnits: Array.from(selectedUnits),
+          priorReplacements: previousChanges.filter(c => c.original && c.replacement),
         }),
       });
       const data = await res.json();

@@ -149,7 +149,7 @@ router.post('/analyzer/recheck', (req, res) => {
 
 // POST /api/analyzer/rewrite — Rewrite a sentence
 router.post('/analyzer/rewrite', async (req, res) => {
-  const { sentence, targetStructure, issueDescription, selectedUnits } = req.body;
+  const { sentence, targetStructure, issueDescription, selectedUnits, priorReplacements } = req.body;
 
   if (!sentence || !targetStructure) {
     return res.status(400).json({ error: 'Missing sentence or targetStructure' });
@@ -159,7 +159,7 @@ router.post('/analyzer/rewrite', async (req, res) => {
 
   try {
     const { rewriteSentence } = require('../services/textAnalysis');
-    const result = await rewriteSentence(sentence, targetStructure, issueDescription, selectedUnitIds, vocabData);
+    const result = await rewriteSentence(sentence, targetStructure, issueDescription, selectedUnitIds, vocabData, priorReplacements);
     res.json(result);
   } catch (err) {
     console.error('[REWRITE] Error:', err);

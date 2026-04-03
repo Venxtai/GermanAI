@@ -536,21 +536,26 @@ Respond with a JSON array of group objects. If no linked groups found, return []
  * @param {object} vocabData - Vocabulary data
  * @returns {object} { rewrittenSentence, wordMapping }
  */
-async function rewriteSentence(sentence, targetStructure, issueDescription, selectedUnitIds, vocabData) {
+async function rewriteSentence(sentence, targetStructure, issueDescription, selectedUnitIds, vocabData, priorReplacements) {
   if (!AI_AVAILABLE || !anthropic) {
     return { rewritten: sentence, changes: [], error: 'Rewrite requires ANTHROPIC_API_KEY' };
   }
 
+  const replacementNote = priorReplacements?.length
+    ? `\n\nPRIOR WORD REPLACEMENTS (MUST be preserved — do NOT revert these):\n${priorReplacements.map(r => `- "${r.original}" was replaced with "${r.replacement}"`).join('\n')}\nThese words have already been intentionally changed by the user. Your rewrite MUST keep these replacements intact.`
+    : '';
+
   const prompt = `You are a German language expert. Rewrite this sentence to fix a grammar issue.
 
-ORIGINAL SENTENCE: "${sentence}"
+SENTENCE: "${sentence}"
 ISSUE: ${issueDescription}
 TARGET: Rewrite using ${targetStructure}
+${replacementNote}
 
 IMPORTANT RULES:
 1. Keep the meaning as close as possible to the original
 2. Only change what is necessary to fix the grammar issue
-3. Keep all other words the same
+3. Keep all other words the same — especially any words that were previously replaced by the user
 
 Respond with JSON:
 {
