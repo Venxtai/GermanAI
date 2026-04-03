@@ -29,8 +29,15 @@ temp/
 
 # Vite build output
 frontend/dist/
+**/dist/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Google service account credentials
+service-account.json
+
+# Claude Code internal
+.claude/
