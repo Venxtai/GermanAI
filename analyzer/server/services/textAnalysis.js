@@ -130,8 +130,22 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
           const lemmaLower = lemma.toLowerCase();
           const lemmaHasArticle = /^(der|die|das|ein|eine)\s/.test(lemmaLower);
 
-          if (allEntries.length === 0 && allVerbs.length === 0 && !lemmaHasArticle) {
-            // Not in vocab AND AI didn't add an article → proper name
+          // Also check if any form of this word appears in the curriculum (even in unselected units)
+          // If it does, it's a real German word, not a proper name
+          const lemmaEntries = lemmaLower !== norm ? (vocabData.vocabIndex.get(normalizeWord(lemma)) || []) : [];
+          const allEntriesIncludingLemma = [...allEntries, ...lemmaEntries];
+          // Check with adjective stem stripping too (e.g., "Letzte" → "letzt")
+          const adjEndings = ['es', 'er', 'em', 'en', 'e'];
+          let hasStemEntry = false;
+          for (const ending of adjEndings) {
+            if (norm.length > ending.length + 2 && norm.endsWith(ending)) {
+              const stem = norm.slice(0, -ending.length);
+              if ((vocabData.vocabIndex.get(stem) || []).length > 0) { hasStemEntry = true; break; }
+            }
+          }
+
+          if (allEntriesIncludingLemma.length === 0 && allVerbs.length === 0 && !lemmaHasArticle && !hasStemEntry) {
+            // Not in vocab anywhere AND AI didn't add an article → proper name
             result = { known: true, reason: 'proper_name' };
             isProperName = true;
           }
