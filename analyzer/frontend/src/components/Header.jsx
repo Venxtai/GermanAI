@@ -123,7 +123,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        {!isReadOnly && analysisResult && (
+        {analysisResult && (
           <button
             onClick={toggleWhatIfMode}
             className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${
