@@ -467,6 +467,38 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
     }
   }
 
+  // Fallback comparative/superlative detection (pattern-based):
+  // Used when AI lemmatizer is unavailable. The primary comp/sup detection
+  // is AI-based in analyzeText() which checks _comparatives/_superlatives tags.
+  if (selectedUnitIds.has('23')) {
+    // Comparative: "schöner" → "schön", "schneller" → "schnell"
+    // Also handle Umlaut variants: "größer" won't match "groß" directly,
+    // but those irregular forms should already be in the vocab index from comma-split entries
+    if (norm.endsWith('er') && norm.length > 4) {
+      const compBase = norm.slice(0, -2);
+      const compEntries = vocabIndex.get(compBase) || [];
+      for (const entry of compEntries) {
+        if ((entry.pos === 'ADJ' || entry.pos === 'ADV') && entry.isActive && selectedUnitIds.has(entry.unitId)) {
+          return { known: true, reason: 'active_vocab', entry: { ...entry, _comparative: true } };
+        }
+      }
+    }
+    // Superlative: "am schnellsten" is handled by comma-split indexing,
+    // but direct forms: "schnellsten" → "schnell", "schönsten" → "schön"
+    const supEndings = ['sten', 'esten'];
+    for (const ending of supEndings) {
+      if (norm.endsWith(ending) && norm.length > ending.length + 2) {
+        const supBase = norm.slice(0, -ending.length);
+        const supEntries = vocabIndex.get(supBase) || [];
+        for (const entry of supEntries) {
+          if ((entry.pos === 'ADJ' || entry.pos === 'ADV') && entry.isActive && selectedUnitIds.has(entry.unitId)) {
+            return { known: true, reason: 'active_vocab', entry: { ...entry, _superlative: true } };
+          }
+        }
+      }
+    }
+  }
+
   // Check verb forms in selected units
   for (const vf of verbForms) {
     if (selectedUnitIds.has(vf.unitId)) {

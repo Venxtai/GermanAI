@@ -62,6 +62,8 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
       // Get the AI-determined lemma for this word (fall back to the word itself)
       const lemma = sentenceLemmas[wordToken.text.toLowerCase()] || wordToken.text;
       let isProperName = (sentenceLemmas._proper_names || []).includes(wordToken.text.toLowerCase());
+      const isComparative = (sentenceLemmas._comparatives || []).includes(wordToken.text.toLowerCase());
+      const isSuperlative = (sentenceLemmas._superlatives || []).includes(wordToken.text.toLowerCase());
 
       // Try matching with BOTH the surface form and the lemma
       let result = isWordKnown(
@@ -116,6 +118,31 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
             break;
           }
         }
+      }
+
+      // Comparative/superlative handling:
+      // If AI tagged this as comp/sup, check base adj/adv + grammar knowledge
+      if (isComparative || isSuperlative) {
+        const compSupGrammarKnown = selectedUnitIds.has('23'); // unit 23 introduces comp/sup
+        const baseLemma = lemma; // AI already resolved comp/sup to base form
+        // Check if base adjective/adverb is known
+        const baseResult = isWordKnown(
+          baseLemma, selectedUnitIds, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers,
+        );
+
+        if (baseResult.known && compSupGrammarKnown) {
+          // Both base word and grammar are known → word is known
+          if (!result.known) {
+            result = { known: true, reason: 'active_vocab', entry: baseResult.entry || { word: baseLemma, unitId: baseResult.entry?.unitId || '23', isActive: true, modelSentences: [] } };
+          }
+        } else if (baseResult.known && !compSupGrammarKnown) {
+          // Base word known but comp/sup grammar not yet taught → grammar issue
+          // Mark as known (they know the word) but flag for grammar
+          if (!result.known) {
+            result = { known: true, reason: 'active_vocab', entry: baseResult.entry, _grammarNote: isComparative ? 'comparative not yet introduced' : 'superlative not yet introduced' };
+          }
+        }
+        // If base word is unknown → stays unknown (vocab issue), regardless of grammar
       }
 
       // Proper names: AI-detected OR code-based heuristic
@@ -316,7 +343,9 @@ RULES:
 - Nouns: give the nominative singular WITH article (e.g., "Achterbahnen" → "die Achterbahn", "Kindern" → "das Kind", "Häuser" → "das Haus")
 - ALSO provide the noun without article as a second entry (e.g., "Achterbahnen" → "Achterbahn")
 - Verbs: give the infinitive (e.g., "mag" → "mögen", "ging" → "gehen", "isst" → "essen", "heißt" → "heißen")
-- Adjectives: give the base form (e.g., "großen" → "groß", "schönes" → "schön")
+- Adjectives: give the base/positive form (e.g., "großen" → "groß", "schönes" → "schön")
+- Comparatives: give the base/positive form (e.g., "schöner" → "schön", "größer" → "groß", "besser" → "gut", "lieber" → "gern")
+- Superlatives: give the base/positive form (e.g., "schönsten" → "schön", "am besten" → "gut", "am liebsten" → "gern")
 - Pronouns: give the nominative form (e.g., "mich" → "ich", "ihm" → "er")
 - Possessives: give the base form (e.g., "meinen" → "mein", "unsere" → "unser")
 - Contractions: expand them (e.g., "ins" → "in das", "beim" → "bei dem")
@@ -324,13 +353,16 @@ RULES:
 - Numbers: keep as-is
 - If the word is already in dictionary form, still include it
 
-IMPORTANT: Also include a "_proper_names" key listing all proper nouns (lowercase) in the sentence.
+IMPORTANT: Also include these special keys:
+- "_proper_names": array of proper nouns (lowercase) in the sentence
+- "_comparatives": array of comparative forms (lowercase) in the sentence (e.g., ["schöner", "größer", "lieber"])
+- "_superlatives": array of superlative forms (lowercase) in the sentence (e.g., ["schönsten", "liebsten", "besten"])
 
 SENTENCES:
 ${sentences.map((s, i) => `[${i}] ${s}`).join('\n')}
 
-Respond with a JSON array (one object per sentence). Each object maps the lowercase surface form to its lemma string, plus a "_proper_names" array.
-Example: [{"achterbahnen": "Achterbahn", "mag": "mögen", "niko": "Niko", "_proper_names": ["niko"]}]
+Respond with a JSON array (one object per sentence). Each object maps the lowercase surface form to its lemma string, plus the special arrays.
+Example: [{"schöner": "schön", "mag": "mögen", "_proper_names": [], "_comparatives": ["schöner"], "_superlatives": []}]
 
 ONLY output the JSON array, nothing else.`;
 
