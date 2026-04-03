@@ -232,6 +232,10 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   const grammarIssues = analyzedSentences.filter(s => s.grammar.status === 'issue').length;
   const readabilityPercent = totalContentWords > 0 ? Math.round((knownWords / totalContentWords) * 100) : 100;
 
+  // Detect skipped chapters
+  const { ALL_CHAPTERS, ID1_CHAPTERS, ID2B_CHAPTERS, ID2O_CHAPTERS } = require('./vocabIndex');
+  const warnings = detectSkippedChapterWarnings(selectedUnitIds, unitMap, ALL_CHAPTERS);
+
   return {
     sentences: analyzedSentences,
     linkedGroups,
@@ -242,6 +246,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
       grammarIssues,
     },
     cumulativeGrammar,
+    warnings,
   };
 }
 
@@ -409,6 +414,108 @@ function buildCumulativeGrammar(selectedUnitIds, unitMap) {
     forbidden: Array.from(allForbidden),
     newRules: allowed.newRules,
   };
+}
+
+/**
+ * Detect chapters where >50% of units are skipped but later chapters are selected.
+ * Returns an array of warning objects.
+ */
+function detectSkippedChapterWarnings(selectedUnitIds, unitMap, allChapters) {
+  const warnings = [];
+
+  for (const [bookId, chapters] of Object.entries(allChapters)) {
+    const prefix = bookId === 'ID1' ? '' : bookId === 'ID2B' ? 'B' : 'O';
+
+    // Build unit ID list for each chapter
+    const chapterUnits = chapters.map(ch => {
+      const ids = [];
+      for (let pos = ch.unitStart; pos <= ch.unitEnd; pos++) {
+        const uid = prefix ? `${prefix}${String(pos).padStart(2, '0')}` : String(pos);
+        ids.push(uid);
+      }
+      return { ...ch, unitIds: ids };
+    });
+
+    for (let ci = 0; ci < chapterUnits.length; ci++) {
+      const ch = chapterUnits[ci];
+      const totalUnits = ch.unitIds.length;
+      const selectedCount = ch.unitIds.filter(id => selectedUnitIds.has(id)).length;
+      const skippedPercent = totalUnits > 0 ? Math.round(((totalUnits - selectedCount) / totalUnits) * 100) : 0;
+
+      // Only trigger if >50% skipped
+      if (skippedPercent < 50) continue;
+
+      // Only trigger if any later chapter in this book has selected units
+      const hasLaterSelected = chapterUnits.slice(ci + 1).some(laterCh =>
+        laterCh.unitIds.some(id => selectedUnitIds.has(id))
+      );
+      if (!hasLaterSelected) continue;
+
+      // Find which later chapter has selected units (for the message)
+      const laterChapter = chapterUnits.slice(ci + 1).find(laterCh =>
+        laterCh.unitIds.some(id => selectedUnitIds.has(id))
+      );
+
+      // Determine what grammar was newly introduced in this chapter
+      // by comparing its allowed_tenses/cases/etc against the previous chapter's last unit
+      const newGrammar = [];
+      const prevAllowed = { tenses: new Set(), cases: new Set(), persons: new Set(), sentenceTypes: new Set() };
+      // Build cumulative from all chapters before this one
+      for (let pi = 0; pi < ci; pi++) {
+        for (const uid of chapterUnits[pi].unitIds) {
+          const gc = unitMap[uid]?.grammar_constraints;
+          if (!gc) continue;
+          (gc.allowed_tenses || []).forEach(t => prevAllowed.tenses.add(t));
+          (gc.allowed_cases || []).forEach(c => prevAllowed.cases.add(c));
+          (gc.allowed_persons || []).forEach(p => prevAllowed.persons.add(p));
+          (gc.sentence_types || []).forEach(s => prevAllowed.sentenceTypes.add(s));
+        }
+      }
+      // Find what this chapter introduces that wasn't in previous chapters
+      for (const uid of ch.unitIds) {
+        const gc = unitMap[uid]?.grammar_constraints;
+        if (!gc) continue;
+        for (const t of (gc.allowed_tenses || [])) {
+          if (!prevAllowed.tenses.has(t)) newGrammar.push(t.replace(/_/g, ' '));
+        }
+        for (const c of (gc.allowed_cases || [])) {
+          if (!prevAllowed.cases.has(c)) newGrammar.push(c);
+        }
+        for (const s of (gc.sentence_types || [])) {
+          if (!prevAllowed.sentenceTypes.has(s)) newGrammar.push(s.replace(/_/g, ' '));
+        }
+      }
+      const uniqueGrammar = [...new Set(newGrammar)];
+
+      const bookTitle = bookId === 'ID1' ? 'Impuls Deutsch 1' :
+                        bookId === 'ID2B' ? 'Impuls Deutsch 2 BLAU' :
+                        'Impuls Deutsch 2 ORANGE';
+
+      const grammarList = uniqueGrammar.length > 0
+        ? ` Grammar introduced in Chapter ${ch.chapter} (${uniqueGrammar.slice(0, 3).join(', ')}${uniqueGrammar.length > 3 ? ', etc.' : ''}) is marked as known based on the expectations of the units selected in Chapter ${laterChapter.chapter}.`
+        : '';
+
+      let msg;
+      if (skippedPercent === 100) {
+        msg = `Chapter ${ch.chapter} was skipped.${grammarList}`;
+      } else if (skippedPercent >= 75) {
+        msg = `More than 75% of Chapter ${ch.chapter} was skipped.${grammarList}`;
+      } else {
+        msg = `More than 50% of Chapter ${ch.chapter} was skipped.${grammarList}`;
+      }
+
+      warnings.push({
+        type: 'skipped_chapter',
+        severity: skippedPercent === 100 ? 'high' : skippedPercent >= 75 ? 'medium' : 'low',
+        book: bookTitle,
+        chapter: ch.chapter,
+        skippedPercent,
+        message: msg,
+      });
+    }
+  }
+
+  return warnings;
 }
 
 /**

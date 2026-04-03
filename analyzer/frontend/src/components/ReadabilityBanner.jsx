@@ -127,6 +127,16 @@ export default function ReadabilityBanner() {
           No grammar issues
         </span>
       )}
+
+      {analysisResult.warnings?.length > 0 && (
+        <button
+          onClick={() => document.getElementById('chapter-warnings')?.scrollIntoView({ behavior: 'smooth' })}
+          className="text-xs text-amber-600 font-medium hover:text-amber-700"
+          title="Chapter gap warnings"
+        >
+          {analysisResult.warnings.length} {analysisResult.warnings.length === 1 ? 'warning' : 'warnings'}
+        </button>
+      )}
     </div>
   );
 }

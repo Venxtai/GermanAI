@@ -11,6 +11,23 @@ import ReadabilityBanner from './components/ReadabilityBanner';
 import useAutoSave from './hooks/useAutoSave';
 import NewSessionDialog from './components/NewSessionDialog';
 
+function ChapterWarnings() {
+  const { analysisResult } = useAnalyzerStore();
+  const warnings = analysisResult?.warnings;
+  if (!warnings?.length) return null;
+
+  return (
+    <div id="chapter-warnings" className="px-6 py-2 bg-amber-50 border-b border-amber-200 space-y-1">
+      {warnings.map((w, i) => (
+        <div key={i} className="flex items-start gap-2 text-xs text-amber-800">
+          <span className="mt-0.5 flex-shrink-0">&#9888;</span>
+          <span><strong>Note:</strong> {w.message}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function App() {
   const { isAuthenticated, chapters, setChapters, showVocabLookup } = useAnalyzerStore();
 
@@ -35,6 +52,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Header />
       <ReadabilityBanner />
+      <ChapterWarnings />
       <div className="flex-1 flex overflow-hidden">
         {/* Left: Unit selector */}
         <aside className="w-72 border-r border-slate-200 bg-white overflow-y-auto flex-shrink-0">
