@@ -124,7 +124,7 @@ export default function Legend() {
       if (mod.type === 'replaced') {
         vocabChanges.push({ original: mod.originalWord, replacement: mod.replacement });
       } else if (mod.type === 'glossed') {
-        vocabChanges.push({ original: mod.originalWord, replacement: mod.originalWord, explanation: 'glossed in text', isGloss: true });
+        vocabChanges.push({ original: mod.originalWord, replacement: mod.originalWord, explanation: 'translated for students', isGloss: true });
       }
     }
 
@@ -239,7 +239,7 @@ export default function Legend() {
         >
           {exporting ? `Exporting ${exporting}...` : (
             <>
-              Export PDF {glossedCount > 0 && `(${glossedCount} glossed)`}
+              Export PDF {glossedCount > 0 && `(${glossedCount} translated)`}
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -256,7 +256,7 @@ export default function Legend() {
                 className="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors"
               >
                 <span className="text-sm font-medium text-slate-700 block">Student Version</span>
-                <span className="text-xs text-slate-400">Clean text with glossary only</span>
+                <span className="text-xs text-slate-400">Clean text with translations only</span>
               </button>
               <div className="border-t border-slate-100" />
               <button
