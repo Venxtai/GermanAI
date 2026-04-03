@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
+import { buildExportData } from '../utils/exportData';
 
 export default function Header() {
   const {
@@ -12,6 +13,8 @@ export default function Header() {
 
   const [sharing, setSharing] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
+  const [showExportMenu, setShowExportMenu] = useState(false);
+  const [exporting, setExporting] = useState(null);
   const [showCloneDialog, setShowCloneDialog] = useState(false);
   const [cloneCode, setCloneCode] = useState('');
   const [cloneError, setCloneError] = useState('');
@@ -47,6 +50,32 @@ export default function Header() {
       alert('Share failed: ' + err.message);
     } finally {
       setSharing(false);
+    }
+  };
+
+  // Export PDF
+  const handleExport = async (mode) => {
+    setExporting(mode);
+    setShowExportMenu(false);
+    try {
+      const data = buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits });
+      const res = await fetch('/api/analyzer/export', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Export failed');
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = mode === 'teacher' ? 'text-analysis-teacher-key.pdf' : 'text-analysis-student.pdf';
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert('Export failed: ' + err.message);
+    } finally {
+      setExporting(null);
     }
   };
 
@@ -114,16 +143,60 @@ export default function Header() {
           Vocabulary Lookup
         </button>
 
-        {/* Share button: only when authenticated and not in read-only mode */}
-        {!isReadOnly && analysisResult && (
-          <button
-            onClick={handleShare}
-            disabled={sharing}
-            className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium disabled:opacity-50"
-            style={{ backgroundColor: shareSuccess ? '#22c55e' : 'var(--brand-blau, #00528a)' }}
-          >
-            {sharing ? 'Sharing...' : shareSuccess ? 'Link Copied!' : 'Share Results'}
-          </button>
+        {/* Export & Share dropdown */}
+        {analysisResult && (
+          <div className="relative">
+            <button
+              onClick={() => setShowExportMenu(!showExportMenu)}
+              disabled={!!exporting || sharing}
+              className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium disabled:opacity-50 flex items-center gap-1.5"
+              style={{ backgroundColor: shareSuccess ? '#22c55e' : 'var(--brand-blau, #00528a)' }}
+            >
+              {exporting ? `Exporting...` : shareSuccess ? 'Link Copied!' : (
+                <>
+                  Export & Share
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </>
+              )}
+            </button>
+
+            {showExportMenu && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setShowExportMenu(false)} />
+                <div className="absolute right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-xl border border-slate-200 py-1 w-72">
+                  <button
+                    onClick={() => { setShowExportMenu(false); handleExport('student'); }}
+                    className="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors"
+                  >
+                    <span className="text-sm font-medium text-slate-700 block">Export Student Version (PDF)</span>
+                    <span className="text-xs text-slate-400">Clean text with translations only</span>
+                  </button>
+                  <div className="border-t border-slate-100" />
+                  <button
+                    onClick={() => { setShowExportMenu(false); handleExport('teacher'); }}
+                    className="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors"
+                  >
+                    <span className="text-sm font-medium text-slate-700 block">Export Teacher Version (PDF)</span>
+                    <span className="text-xs text-slate-400">Color-coded comparison with vocabulary and grammar notes</span>
+                  </button>
+                  {!isReadOnly && (
+                    <>
+                      <div className="border-t border-slate-100" />
+                      <button
+                        onClick={() => { setShowExportMenu(false); handleShare(); }}
+                        className="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors"
+                      >
+                        <span className="text-sm font-medium text-slate-700 block">Share with Colleagues</span>
+                        <span className="text-xs text-slate-400">Generate a link to share this analysis with others</span>
+                      </button>
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         )}
 
         {/* Read-only mode: "Edit This Session" button replaces "New Session" */}
