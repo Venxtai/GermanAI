@@ -671,7 +671,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           onClick={handleGloss}
           className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
         >
-          Provide Translation
+          Add Translation for Students
         </button>
         <button
           onClick={() => setWordModification(sentenceIndex, wordIndex, {
@@ -690,7 +690,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
 
 /**
  * A word that was originally unknown but manually marked as known by the teacher.
- * Shows teal color, full unknown word info, but with Mark as Unknown / Provide Translation buttons.
+ * Shows teal color, full unknown word info, but with Mark as Unknown / Add Translation for Students buttons.
  */
 function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, linkedGroup }) {
   const { setWordModification, selectedUnits, wordAlternatives, setWordAlternatives, sentenceRewrites, setSentenceRewrite } = useAnalyzerStore();
@@ -821,7 +821,7 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
           }}
           className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
         >
-          Provide Translation
+          Add Translation for Students
         </button>
         <button
           onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
