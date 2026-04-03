@@ -107,6 +107,20 @@ export default function TextPanel() {
       <textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
+        onPaste={(e) => {
+          // Decode HTML entities (&#39; → ', &amp; → &, etc.) that come from web copy-paste
+          const pasted = e.clipboardData.getData('text/plain');
+          if (pasted && /&#?\w+;/.test(pasted)) {
+            e.preventDefault();
+            const textarea = e.target;
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const doc = new DOMParser().parseFromString(pasted, 'text/html');
+            const decoded = doc.body.textContent || pasted;
+            const newText = inputText.slice(0, start) + decoded + inputText.slice(end);
+            setInputText(newText);
+          }
+        }}
         placeholder="Paste your German text here..."
         className="w-full h-64 p-4 border border-slate-300 rounded-xl resize-y focus:outline-none focus:ring-2 focus:border-transparent text-base leading-relaxed"
         style={{ '--tw-ring-color': 'var(--brand)' }}

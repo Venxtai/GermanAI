@@ -21,6 +21,13 @@ const AI_AVAILABLE = !!process.env.ANTHROPIC_API_KEY;
 async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   const { isWordKnown, findReplacements, getWordUnitInfo, formatFrequencyBand, normalizeWord } = require('./vocabIndex');
 
+  // Sanitize input: decode HTML entities and normalize Unicode
+  text = text.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(n))
+             .replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCharCode(parseInt(n, 16)))
+             .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+             .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&apos;/g, "'")
+             .normalize('NFC');
+
   // Split text into sentences
   const sentences = splitIntoSentences(text);
 
@@ -376,8 +383,11 @@ function splitIntoSentences(text) {
  */
 function tokenizeWords(sentence) {
   const tokens = [];
+  // Normalize Unicode: convert decomposed chars (o + combining ¨) to precomposed (ö)
+  sentence = sentence.normalize('NFC');
   // Match words (including hyphenated and numbers), punctuation, or whitespace
-  const regex = /([a-zA-ZäöüÄÖÜßéèêàâîïôûç0-9]+(?:-[a-zA-ZäöüÄÖÜßéèêàâîïôûç0-9]+)*)|([.,!?;:"""„''()\[\]{}–—…\/])|(\s+)/g;
+  // Use Unicode property escapes (\p{L}) to match ANY letter in any language
+  const regex = /([\p{L}\p{M}0-9]+(?:-[\p{L}\p{M}0-9]+)*)|([.,!?;:"""„''()\[\]{}–—…\/])|(\s+)/gu;
   let match;
   let idx = 0;
   while ((match = regex.exec(sentence)) !== null) {
