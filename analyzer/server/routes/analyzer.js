@@ -692,17 +692,26 @@ router.post('/analyzer/export', async (req, res) => {
 
       if (annotations?.readability) {
         const r = annotations.readability;
-        doc.font('Helvetica-Bold').text('Original Readability', L, readY, { width: CW });
-        doc.font('Helvetica').text(`${r.percent}% known (${r.knownWords}/${r.totalWords})`, L, doc.y, { width: CW });
-        doc.text(`${r.grammarIssues} grammar issue${r.grammarIssues !== 1 ? 's' : ''}`, L, doc.y, { width: CW });
+        const unknown = r.totalWords - r.knownWords;
+        doc.font('Helvetica-Bold').text(`Original Readability: ${r.percent}%`, L, readY, { width: CW });
+        const parts = [];
+        if (r.knownWords > 0) parts.push(`${r.knownWords} known`);
+        if (unknown > 0) parts.push(`${unknown} unknown`);
+        doc.font('Helvetica').text(`${r.totalWords} words: ${parts.join(', ')}`, L, doc.y, { width: CW });
       }
       const leftReadEnd = doc.y;
 
       if (annotations?.newReadability) {
         const nr = annotations.newReadability;
-        doc.font('Helvetica-Bold').text('Adapted Readability', R, readY, { width: CW });
-        doc.font('Helvetica').text(`${nr.percent}% known (${nr.knownWords}/${nr.totalWords})`, R, doc.y, { width: CW });
-        doc.text('0 grammar issues', R, doc.y, { width: CW });
+        const translated = nr.translatedWords || 0;
+        const knownOnly = nr.knownWords;
+        const unknown = nr.totalWords - knownOnly - translated;
+        doc.font('Helvetica-Bold').text(`Adapted Readability: ${nr.percent}%`, R, readY, { width: CW });
+        const parts = [];
+        if (knownOnly > 0) parts.push(`${knownOnly} known`);
+        if (translated > 0) parts.push(`${translated} translated`);
+        if (unknown > 0) parts.push(`${unknown} unknown`);
+        doc.font('Helvetica').text(`${nr.totalWords} words: ${parts.join(', ')}`, R, doc.y, { width: CW });
       }
       doc.y = Math.max(leftReadEnd, doc.y) + 16;
 
@@ -778,8 +787,6 @@ router.post('/analyzer/export', async (req, res) => {
         doc.moveDown(1.5);
         doc.moveTo(50, doc.y).lineTo(545, doc.y).stroke('#ddd');
         doc.moveDown(0.5);
-        doc.fontSize(12).font('Helvetica-Bold').text('Glossary');
-        doc.moveDown(0.3);
         doc.fontSize(10).font('Helvetica');
         for (const fn of footnotes) {
           doc.text(`${fn.num}. ${fn.word} — ${fn.translation}`);

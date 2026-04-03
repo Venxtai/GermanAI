@@ -106,13 +106,18 @@ export default function Legend() {
     const totalWords = analysisResult.sentences.flatMap(s => s.words).filter(w => w.type === 'word').length;
     const knownWords = analysisResult.sentences.flatMap(s => s.words).filter(w => w.type === 'word' && w.status === 'known').length;
 
-    // New readability (after all changes — replacements count as known)
+    // New readability (after all changes — replacements + translations count as accessible)
     const unknownSet = new Set(unknownWords.map(w => w.toLowerCase()));
     const finalWords = finalText.trim().replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').split(/\s+/).filter(Boolean);
     const newTotal = finalWords.length;
     let newKnown = 0;
+    let newTranslated = 0;
     for (const fw of finalWords) {
       if (!unknownSet.has(fw.toLowerCase())) newKnown++;
+    }
+    // Count translated words
+    for (const [, mod] of Object.entries(wordModifications)) {
+      if (mod.type === 'glossed') newTranslated++;
     }
 
     // Separate vocab changes from grammar changes
@@ -177,9 +182,10 @@ export default function Legend() {
           grammarIssues: grammarNotes.length,
         },
         newReadability: {
-          percent: newTotal > 0 ? Math.round((newKnown / newTotal) * 100) : 100,
+          percent: newTotal > 0 ? Math.round(((newKnown + newTranslated) / newTotal) * 100) : 100,
           knownWords: newKnown,
           totalWords: newTotal,
+          translatedWords: newTranslated,
         },
         selectedUnits: unitsList,
       } : undefined,
@@ -239,7 +245,7 @@ export default function Legend() {
         >
           {exporting ? `Exporting ${exporting}...` : (
             <>
-              Export PDF {glossedCount > 0 && `(${glossedCount} translated)`}
+              Export PDF {glossedCount > 0 && `(${glossedCount} ${glossedCount === 1 ? 'Translation' : 'Translations'})`}
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
