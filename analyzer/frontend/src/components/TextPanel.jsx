@@ -6,7 +6,7 @@ export default function TextPanel() {
   const {
     inputText, setInputText, setUploadedFilename,
     selectedUnits, isAnalyzing, setAnalyzing, analysisResult, setAnalysisResult,
-    whatIfMode, sessionId,
+    whatIfMode, sessionId, isReadOnly,
   } = useAnalyzerStore();
 
   const fileInputRef = useRef(null);
@@ -80,7 +80,7 @@ export default function TextPanel() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  // Show analysis results if we have them
+  // Show analysis results if we have them (or in read-only mode)
   if (analysisResult && !whatIfMode) {
     return <AnalyzedText />;
   }
@@ -88,6 +88,15 @@ export default function TextPanel() {
   // What If mode: show analyzed text with re-colored words
   if (analysisResult && whatIfMode) {
     return <AnalyzedText />;
+  }
+
+  // Read-only mode without analysis: show a message
+  if (isReadOnly) {
+    return (
+      <div className="max-w-3xl mx-auto text-center py-12">
+        <p className="text-slate-400 text-sm">This shared session has no analyzed text.</p>
+      </div>
+    );
   }
 
   // Input mode

@@ -70,7 +70,7 @@ function getOptionalUnits() {
 }
 
 export default function InfoPanel() {
-  const { infoPanel, selectedWord, selectedCircle, selectedRewriteWord, analysisResult } = useAnalyzerStore();
+  const { infoPanel, selectedWord, selectedCircle, selectedRewriteWord, analysisResult, isReadOnly } = useAnalyzerStore();
 
   if (infoPanel === 'rewriteWord' && selectedRewriteWord) {
     // For unchanged words in a rewritten sentence, delegate to the normal word panels
@@ -123,7 +123,7 @@ function Instructions() {
  * Unchanged words: find matching original word and show its full info (including unknown word panel).
  */
 function RewriteWordInfo() {
-  const { selectedRewriteWord, setSentenceRewrite, analysisResult } = useAnalyzerStore();
+  const { selectedRewriteWord, setSentenceRewrite, analysisResult, isReadOnly } = useAnalyzerStore();
   const [vocabInfo, setVocabInfo] = useState(null);
   const [vocabLoading, setVocabLoading] = useState(false);
 
@@ -263,12 +263,14 @@ function RewriteWordInfo() {
             )}
           </div>
 
-          <button
-            onClick={() => setSentenceRewrite(sentenceIndex, null)}
-            className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
-          >
-            Revert to Original
-          </button>
+          {!isReadOnly && (
+            <button
+              onClick={() => setSentenceRewrite(sentenceIndex, null)}
+              className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+            >
+              Revert to Original
+            </button>
+          )}
         </div>
       )}
 
@@ -430,7 +432,7 @@ function KnownWordInfo({ word, linkedGroup }) {
 function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup }) {
   const {
     setWordModification, setSentenceRewrite, selectedUnits,
-    wordAlternatives, setWordAlternatives, sentenceRewrites,
+    wordAlternatives, setWordAlternatives, sentenceRewrites, isReadOnly,
   } = useAnalyzerStore();
   const [applyingIdx, setApplyingIdx] = useState(null); // which alternative is being applied
 
@@ -613,7 +615,8 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
         </div>
       )}
 
-      {/* Word alternatives from known vocabulary (auto-loaded) */}
+      {/* Word alternatives from known vocabulary (auto-loaded) — buttons hidden in read-only */}
+      {!isReadOnly && (
       <div>
         <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">Alternatives (Known Vocabulary)</p>
         {altLoading ? (
@@ -664,26 +667,29 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           </p>
         )}
       </div>
+      )}
 
-      {/* Action buttons */}
-      <div className="space-y-2">
-        <button
-          onClick={handleGloss}
-          className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
-        >
-          Add Translation for Students
-        </button>
-        <button
-          onClick={() => setWordModification(sentenceIndex, wordIndex, {
-            type: 'marked_known',
-            originalWord: word.text,
-          })}
-          className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
-          style={{ backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' }}
-        >
-          Mark as Known
-        </button>
-      </div>
+      {/* Action buttons — hidden in read-only mode */}
+      {!isReadOnly && (
+        <div className="space-y-2">
+          <button
+            onClick={handleGloss}
+            className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
+          >
+            Add Translation for Students
+          </button>
+          <button
+            onClick={() => setWordModification(sentenceIndex, wordIndex, {
+              type: 'marked_known',
+              originalWord: word.text,
+            })}
+            className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
+            style={{ backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' }}
+          >
+            Mark as Known
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -693,7 +699,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
  * Shows teal color, full unknown word info, but with Mark as Unknown / Add Translation for Students buttons.
  */
 function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, linkedGroup }) {
-  const { setWordModification, selectedUnits, wordAlternatives, setWordAlternatives, sentenceRewrites, setSentenceRewrite } = useAnalyzerStore();
+  const { setWordModification, selectedUnits, wordAlternatives, setWordAlternatives, sentenceRewrites, setSentenceRewrite, isReadOnly } = useAnalyzerStore();
   const [applyingIdx, setApplyingIdx] = useState(null);
 
   const displayWord = linkedGroup?.lemma || word.lemma || word.text;
@@ -789,8 +795,8 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
         </div>
       )}
 
-      {/* Alternatives */}
-      {alternatives.length > 0 && (
+      {/* Alternatives — hidden in read-only mode */}
+      {!isReadOnly && alternatives.length > 0 && (
         <div>
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">Alternatives (Known Vocabulary)</p>
           <div className="space-y-1.5">
@@ -805,38 +811,40 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
         </div>
       )}
 
-      {/* Action buttons */}
-      <div className="space-y-2">
-        <button
-          onClick={() => {
-            // Gloss it
-            fetch('/api/analyzer/gloss', {
-              method: 'POST', headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ word: word.lemma || word.text, sentenceContext: sentence.text }),
-            }).then(r => r.json()).then(data => {
-              setWordModification(sentenceIndex, wordIndex, { type: 'glossed', originalWord: word.text, translation: data.translation });
-            }).catch(() => {
-              setWordModification(sentenceIndex, wordIndex, { type: 'glossed', originalWord: word.text, translation: '' });
-            });
-          }}
-          className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
-        >
-          Add Translation for Students
-        </button>
-        <button
-          onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
-          className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
-          style={{ backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' }}
-        >
-          Mark as Unknown
-        </button>
-      </div>
+      {/* Action buttons — hidden in read-only mode */}
+      {!isReadOnly && (
+        <div className="space-y-2">
+          <button
+            onClick={() => {
+              // Gloss it
+              fetch('/api/analyzer/gloss', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ word: word.lemma || word.text, sentenceContext: sentence.text }),
+              }).then(r => r.json()).then(data => {
+                setWordModification(sentenceIndex, wordIndex, { type: 'glossed', originalWord: word.text, translation: data.translation });
+              }).catch(() => {
+                setWordModification(sentenceIndex, wordIndex, { type: 'glossed', originalWord: word.text, translation: '' });
+              });
+            }}
+            className="w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-300"
+          >
+            Add Translation for Students
+          </button>
+          <button
+            onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
+            className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
+            style={{ backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' }}
+          >
+            Mark as Unknown
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 function ReplacedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
-  const { setWordModification } = useAnalyzerStore();
+  const { setWordModification, isReadOnly } = useAnalyzerStore();
 
   return (
     <div className="p-6 space-y-4">
@@ -856,18 +864,20 @@ function ReplacedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
         </div>
       )}
 
-      <button
-        onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
-        className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
-      >
-        Revert to Original
-      </button>
+      {!isReadOnly && (
+        <button
+          onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
+          className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+        >
+          Revert to Original
+        </button>
+      )}
     </div>
   );
 }
 
 function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
-  const { setWordModification } = useAnalyzerStore();
+  const { setWordModification, isReadOnly } = useAnalyzerStore();
   const [editing, setEditing] = useState(false);
   const [editValue, setEditValue] = useState(mod.translation || '');
   const [vocabInfo, setVocabInfo] = useState(null);
@@ -978,19 +988,21 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
         </div>
       )}
 
-      <button
-        onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
-        className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
-      >
-        Remove Translation
-      </button>
+      {!isReadOnly && (
+        <button
+          onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
+          className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+        >
+          Remove Translation
+        </button>
+      )}
     </div>
   );
 }
 
 function CircleInfo() {
   const {
-    selectedCircle, analysisResult, sentenceRewrites, setSentenceRewrite, selectedUnits,
+    selectedCircle, analysisResult, sentenceRewrites, setSentenceRewrite, selectedUnits, isReadOnly,
   } = useAnalyzerStore();
   const [isRewriting, setIsRewriting] = useState(false);
 
@@ -1092,8 +1104,8 @@ function CircleInfo() {
           </div>
         )}
 
-        {/* Try different rewrite options — filter out the one already applied */}
-        {(() => {
+        {/* Try different rewrite options — hidden in read-only mode */}
+        {!isReadOnly && (() => {
           const appliedLabel = rewrite.targetStructure?.toLowerCase();
           const remainingOptions = (grammar.issues || []).flatMap(issue =>
             (issue.rewriteOptions || []).filter(opt =>
@@ -1118,12 +1130,14 @@ function CircleInfo() {
           );
         })()}
 
-        <button
-          onClick={() => setSentenceRewrite(si, null)}
-          className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
-        >
-          Revert to Original
-        </button>
+        {!isReadOnly && (
+          <button
+            onClick={() => setSentenceRewrite(si, null)}
+            className="w-full py-2 px-4 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+          >
+            Revert to Original
+          </button>
+        )}
       </div>
     );
   }
@@ -1156,7 +1170,7 @@ function CircleInfo() {
             {issue.suggestion && (
               <p className="text-sm text-slate-500">Suggestion: {issue.suggestion}</p>
             )}
-            {issue.rewriteOptions?.length > 0 && (
+            {!isReadOnly && issue.rewriteOptions?.length > 0 && (
               <div className="space-y-1.5">
                 <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">Rewrite Options</p>
                 {issue.rewriteOptions.map((opt, j) => (

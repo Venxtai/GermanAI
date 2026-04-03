@@ -57,6 +57,10 @@ const useAnalyzerStore = create((set, get) => ({
   whatIfResults: null, // { wordStatuses, readability } from recheck API
   whatIfLoading: false,
 
+  // Read-only shared session
+  isReadOnly: false,
+  shareId: null,
+
   // Vocabulary lookup
   showVocabLookup: false,
 
@@ -225,6 +229,25 @@ const useAnalyzerStore = create((set, get) => ({
   },
 
   toggleVocabLookup: () => set({ showVocabLookup: !get().showVocabLookup }),
+
+  // Read-only shared session actions
+  setReadOnly: (val) => set({ isReadOnly: val }),
+  setShareId: (id) => set({ shareId: id }),
+  loadSharedSession: (state) => {
+    // Hydrate store from a shared session snapshot
+    set({
+      inputText: state.inputText || '',
+      analysisResult: state.analysisResult || null,
+      wordModifications: state.wordModifications || {},
+      sentenceRewrites: state.sentenceRewrites || {},
+      wordAlternatives: state.wordAlternatives || {},
+    });
+    // Restore selected units
+    if (state.selectedUnits && Array.isArray(state.selectedUnits)) {
+      set({ selectedUnits: new Set(state.selectedUnits) });
+      localStorage.setItem('analyzer_selectedUnits', JSON.stringify(state.selectedUnits));
+    }
+  },
 
   // New Session — show confirmation dialog
   requestNewSession: () => set({ showNewSessionDialog: true }),

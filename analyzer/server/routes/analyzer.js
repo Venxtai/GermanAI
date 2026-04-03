@@ -935,4 +935,117 @@ router.post('/session/heartbeat', (req, res) => {
   res.json({ ok: true });
 });
 
+// ═══════════════════════════════════════════════════════════════════
+// SHAREABLE READ-ONLY SESSIONS
+// ═══════════════════════════════════════════════════════════════════
+
+// POST /api/session/share — Upload session state to Drive for sharing
+router.post('/session/share', async (req, res) => {
+  const { sessionId, sessionState } = req.body;
+  if (!sessionId || !sessionState) {
+    return res.status(400).json({ error: 'Missing sessionId or sessionState' });
+  }
+
+  try {
+    const filename = `session_${sessionId}.json`;
+    const result = await auth.uploadJsonToDrive(sessionState, filename);
+
+    if (result) {
+      // Store the Drive file ID in the sessions map for quick lookup
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).shareFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
+
+      // Build share URL from request origin
+      const protocol = req.get('x-forwarded-proto') || req.protocol;
+      const host = req.get('host');
+      const shareUrl = `${protocol}://${host}?share=${sessionId}`;
+
+      console.log(`[SHARE] Session ${sessionId} shared: ${shareUrl}`);
+      res.json({ shareId: sessionId, shareUrl });
+    } else {
+      res.status(500).json({ error: 'Failed to upload session to Drive' });
+    }
+  } catch (err) {
+    console.error('[SHARE] Error:', err.message);
+    res.status(500).json({ error: 'Share failed', message: err.message });
+  }
+});
+
+// GET /api/session/shared/:shareId — Retrieve shared session state (no auth required)
+router.get('/session/shared/:shareId', async (req, res) => {
+  const { shareId } = req.params;
+
+  try {
+    // First check in-memory session store for the Drive file ID
+    const session = sessions.get(shareId);
+    let fileId = session?.shareFileId;
+
+    // If not in memory, search Drive by filename
+    if (!fileId) {
+      const filename = `session_${shareId}.json`;
+      fileId = await auth.findDriveFileByName(filename);
+    }
+
+    if (!fileId) {
+      return res.status(404).json({ error: 'Shared session not found' });
+    }
+
+    // Download and return the JSON
+    const sessionState = await auth.downloadJsonFromDrive(fileId);
+    if (!sessionState) {
+      return res.status(500).json({ error: 'Failed to download session data' });
+    }
+
+    res.json(sessionState);
+  } catch (err) {
+    console.error('[SHARE] Retrieve error:', err.message);
+    res.status(500).json({ error: 'Failed to retrieve shared session', message: err.message });
+  }
+});
+
+// POST /api/session/clone — Clone a shared session into a new editable session
+router.post('/session/clone', async (req, res) => {
+  const { shareId, code } = req.body;
+  if (!shareId || !code) {
+    return res.status(400).json({ error: 'Missing shareId or code' });
+  }
+
+  // Validate the access code (uses a credit)
+  const authResult = await auth.validateCode(code);
+  if (!authResult.valid) {
+    return res.json(authResult);
+  }
+
+  try {
+    // Load the shared session state
+    const session = sessions.get(shareId);
+    let fileId = session?.shareFileId;
+
+    if (!fileId) {
+      const filename = `session_${shareId}.json`;
+      fileId = await auth.findDriveFileByName(filename);
+    }
+
+    if (!fileId) {
+      return res.status(404).json({ valid: false, error: 'Shared session not found' });
+    }
+
+    const sessionState = await auth.downloadJsonFromDrive(fileId);
+    if (!sessionState) {
+      return res.status(500).json({ valid: false, error: 'Failed to load session data' });
+    }
+
+    res.json({
+      valid: true,
+      sessionId: authResult.sessionId,
+      remainingUses: authResult.remainingUses,
+      sessionState,
+    });
+  } catch (err) {
+    console.error('[CLONE] Error:', err.message);
+    res.status(500).json({ valid: false, error: 'Clone failed', message: err.message });
+  }
+});
+
 module.exports = { router, init };

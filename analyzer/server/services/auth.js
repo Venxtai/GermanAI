@@ -232,11 +232,98 @@ async function updateTextUsageLog(sessionId, column, driveLink) {
   }
 }
 
+/**
+ * Upload a JSON object to Google Drive and return the file ID + link.
+ */
+async function uploadJsonToDrive(jsonData, filename) {
+  try {
+    const drive = await getDriveClient();
+    if (!drive) {
+      console.warn('[DRIVE] No Drive client — skipping JSON upload');
+      return null;
+    }
+
+    const jsonStr = JSON.stringify(jsonData);
+    const stream = new Readable();
+    stream.push(jsonStr);
+    stream.push(null);
+
+    const driveRes = await drive.files.create({
+      supportsAllDrives: true,
+      requestBody: {
+        name: filename,
+        mimeType: 'application/json',
+        parents: [TEXT_DRIVE_FOLDER_ID],
+      },
+      media: {
+        mimeType: 'application/json',
+        body: stream,
+      },
+      fields: 'id',
+    });
+
+    const fileId = driveRes.data.id;
+    const link = `https://drive.google.com/file/d/${fileId}/view`;
+    console.log(`[DRIVE] Uploaded JSON ${filename}: ${link}`);
+    return { fileId, link };
+  } catch (err) {
+    console.error('[DRIVE] JSON upload error:', err.message, err.errors || '');
+    return null;
+  }
+}
+
+/**
+ * Download a JSON file from Google Drive by file ID.
+ */
+async function downloadJsonFromDrive(fileId) {
+  try {
+    const drive = await getDriveClient();
+    if (!drive) return null;
+
+    const res = await drive.files.get(
+      { fileId, alt: 'media', supportsAllDrives: true },
+      { responseType: 'text' }
+    );
+
+    return typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
+  } catch (err) {
+    console.error('[DRIVE] JSON download error:', err.message);
+    return null;
+  }
+}
+
+/**
+ * Search for a file by name in the Drive folder.
+ * Returns the file ID if found, null otherwise.
+ */
+async function findDriveFileByName(filename) {
+  try {
+    const drive = await getDriveClient();
+    if (!drive) return null;
+
+    const res = await drive.files.list({
+      q: `name = '${filename}' and '${TEXT_DRIVE_FOLDER_ID}' in parents and trashed = false`,
+      fields: 'files(id, name)',
+      supportsAllDrives: true,
+      includeItemsFromAllDrives: true,
+    });
+
+    const files = res.data.files || [];
+    return files.length > 0 ? files[0].id : null;
+  } catch (err) {
+    console.error('[DRIVE] File search error:', err.message);
+    return null;
+  }
+}
+
 module.exports = {
   validateCode,
   uploadPdfToDrive,
   updatePdfOnDrive,
   updateTextUsageLog,
   getDriveClient,
+  uploadJsonToDrive,
+  downloadJsonFromDrive,
+  findDriveFileByName,
   googleCredentials,
 };

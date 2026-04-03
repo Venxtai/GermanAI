@@ -29,10 +29,41 @@ function ChapterWarnings() {
 }
 
 export default function App() {
-  const { isAuthenticated, chapters, setChapters, showVocabLookup } = useAnalyzerStore();
+  const {
+    isAuthenticated, chapters, setChapters, showVocabLookup,
+    isReadOnly, setReadOnly, setShareId, loadSharedSession, setAuthenticated,
+  } = useAnalyzerStore();
 
   // Auto-save adapted text PDF to Google Drive
   useAutoSave();
+
+  // Check for ?share= parameter on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const shareId = params.get('share');
+    if (shareId) {
+      setShareId(shareId);
+      setReadOnly(true);
+      // Fetch shared session data
+      fetch(`/api/session/shared/${encodeURIComponent(shareId)}`)
+        .then(r => {
+          if (!r.ok) throw new Error('Shared session not found');
+          return r.json();
+        })
+        .then(state => {
+          loadSharedSession(state);
+          // Mark as authenticated so the main UI renders (skip AuthGate)
+          setAuthenticated(true);
+        })
+        .catch(err => {
+          console.error('Failed to load shared session:', err);
+          alert('Could not load shared session. The link may be invalid or expired.');
+          // Clear share state so user sees normal login
+          setShareId(null);
+          setReadOnly(false);
+        });
+    }
+  }, []);
 
   // Load chapter data on mount
   useEffect(() => {
