@@ -122,7 +122,7 @@ export default function Header() {
             className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium disabled:opacity-50"
             style={{ backgroundColor: shareSuccess ? '#22c55e' : 'var(--brand-blau, #00528a)' }}
           >
-            {sharing ? 'Sharing...' : shareSuccess ? 'Link Copied!' : 'Share'}
+            {sharing ? 'Sharing...' : shareSuccess ? 'Link Copied!' : 'Share Results'}
           </button>
         )}
 
