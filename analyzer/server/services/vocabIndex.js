@@ -321,6 +321,37 @@ function lookupWord(word, vocabIndex, verbFormIndex, universalFillers) {
   };
 }
 
+/**
+ * Check if a word is a German number word (null bis eintausend).
+ * Covers: null, eins-zwölf, dreizehn-neunzehn, zwanzig-neunzig,
+ * hundert, tausend, and all compound forms (einundzwanzig, zweihundertfünfunddreißig, etc.)
+ */
+function isGermanNumberWord(word) {
+  const w = word.toLowerCase();
+  const baseNumbers = new Set([
+    'null', 'eins', 'ein', 'eine', 'zwei', 'drei', 'vier', 'fünf', 'sechs',
+    'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf',
+    'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn', 'siebzehn', 'achtzehn', 'neunzehn',
+    'zwanzig', 'dreißig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig',
+    'hundert', 'einhundert', 'zweihundert', 'dreihundert', 'vierhundert', 'fünfhundert',
+    'sechshundert', 'siebenhundert', 'achthundert', 'neunhundert',
+    'tausend', 'eintausend',
+  ]);
+  if (baseNumbers.has(w)) return true;
+  // Compound numbers: "einundzwanzig", "zweiunddreißig", etc.
+  // Pattern: [digit]und[tens] or [hundreds][digit]und[tens]
+  if (w.includes('und') && (
+    w.endsWith('zwanzig') || w.endsWith('dreißig') || w.endsWith('vierzig') ||
+    w.endsWith('fünfzig') || w.endsWith('sechzig') || w.endsWith('siebzig') ||
+    w.endsWith('achtzig') || w.endsWith('neunzig')
+  )) return true;
+  // Hundreds + compound: "zweihundertvierundfünfzig"
+  if (w.includes('hundert') && w.length > 7) return true;
+  // Thousands + compound: "eintausendzweihundert"
+  if (w.includes('tausend') && w.length > 7) return true;
+  return false;
+}
+
 // Basic German function words that are implicitly known (articles, basic pronouns, etc.)
 // These are fundamental grammar elements taught from the very first units.
 const GRAMMAR_WORDS = new Set([
@@ -359,12 +390,17 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
 
   if (isUniversalFiller) return { known: true, reason: 'filler' };
 
-  // Numbers are always known
+  // Numeric digits are always known
   if (/^\d+$/.test(word)) return { known: true, reason: 'grammar_word' };
 
   // Check basic grammar words (articles, pronouns, prepositions)
   const norm = normalizeWord(word);
   if (GRAMMAR_WORDS.has(norm)) return { known: true, reason: 'grammar_word' };
+
+  // German number words: known if unit 6 (where numbers 0-1000 are taught) is selected
+  if (selectedUnitIds.has('6') && isGermanNumberWord(norm)) {
+    return { known: true, reason: 'active_vocab', entry: { word: norm, unitId: '6', translation: '', pos: 'NUM', isActive: true, modelSentences: [] } };
+  }
 
   // Check German contractions (e.g., "ins" = "in" + "das")
   if (CONTRACTIONS[norm]) {
