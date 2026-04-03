@@ -183,7 +183,7 @@ router.post('/analyzer/suggest', (req, res) => {
 
 // POST /api/analyzer/alternatives — Suggest replacement words/phrases from known vocab
 router.post('/analyzer/alternatives', async (req, res) => {
-  const { sentence, unknownWord, unknownLemma, selectedUnits } = req.body;
+  const { sentence, unknownWord, unknownLemma, selectedUnits, tryHarder } = req.body;
 
   if (!sentence || !unknownWord || !selectedUnits) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -205,7 +205,7 @@ router.post('/analyzer/alternatives', async (req, res) => {
   try {
     const { suggestWordAlternatives } = require('../services/textAnalysis');
     const alternatives = await suggestWordAlternatives(
-      sentence, unknownWord, unknownLemma, uniqueKnown,
+      sentence, unknownWord, unknownLemma, uniqueKnown, tryHarder,
     );
     res.json({ alternatives });
   } catch (err) {

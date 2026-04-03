@@ -637,7 +637,31 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
             ))}
           </div>
         ) : (
-          <p className="text-sm text-slate-400 italic">No alternatives found in known vocabulary.</p>
+          <p className="text-sm text-slate-400 italic">
+            No alternatives found in known vocabulary.{' '}
+            <button
+              className="underline hover:text-slate-600"
+              onClick={() => {
+                setWordAlternatives(sentenceIndex, wordIndex, { alternatives: [], loading: true });
+                fetch('/api/analyzer/alternatives', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    sentence: sentence.text,
+                    unknownWord: word.text,
+                    unknownLemma: word.lemma || word.text,
+                    selectedUnits: Array.from(selectedUnits),
+                    tryHarder: true,
+                  }),
+                })
+                  .then(r => r.json())
+                  .then(data => setWordAlternatives(sentenceIndex, wordIndex, { alternatives: data.alternatives || [], loading: false }))
+                  .catch(() => setWordAlternatives(sentenceIndex, wordIndex, { alternatives: [], loading: false }));
+              }}
+            >
+              Try again
+            </button>
+          </p>
         )}
       </div>
 

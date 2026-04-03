@@ -748,10 +748,21 @@ Respond with ONLY the English translation (1-3 words), nothing else.`;
  * E.g., for "mag" (mögen) → ["gern haben", "toll finden", "lieben"]
  * E.g., for "Fortbewegungsmittel" → ["das Auto", "der Zug", "der Bus"]
  */
-async function suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownWords) {
+async function suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownWords, tryHarder) {
   if (!AI_AVAILABLE || !anthropic) {
     return [];
   }
+
+  const harderInstructions = tryHarder ? `
+
+IMPORTANT — EXPANDED SEARCH:
+The first attempt found no alternatives. Now try HARDER:
+- Suggest descriptive phrases or circumlocutions using known words (e.g., "ein Gemüse" or "grünes Gemüse" instead of a specific vegetable name)
+- Consider broader category words (hypernyms) from the known list
+- Consider phrases that describe the concept rather than naming it exactly
+- It is OK if the meaning is approximate — a close paraphrase is better than nothing
+- You may also suggest leaving the word and adding a gloss (footnote translation) as a last resort
+- Be creative with multi-word combinations from the known vocabulary` : '';
 
   const prompt = `You are a German language expert helping teachers adapt texts for students with limited vocabulary.
 
@@ -775,6 +786,7 @@ CRITICAL RULES:
 - Do NOT suggest words that only make sense in a completely different context.
 - Give the dictionary/base form (infinitive for verbs, nominative singular with article for nouns).
 - Each suggestion should actually work when inserted into the sentence (possibly with grammar adjustments).
+${harderInstructions}
 
 Respond ONLY with a JSON array:
 [
@@ -785,8 +797,9 @@ If nothing works, return [].`;
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: tryHarder ? 'claude-sonnet-4-20250514' : 'claude-haiku-4-5-20251001',
       max_tokens: 512,
+      temperature: tryHarder ? 0.8 : 0,
       messages: [{ role: 'user', content: prompt }],
     });
 
