@@ -122,7 +122,7 @@ app.post('/api/auth/validate', async (req, res) => {
     const sheets = await getSheetsClient();
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:G',
+      range: 'Access Codes!A2:H',
     });
 
     const rows = result.data.values || [];
@@ -135,9 +135,14 @@ app.post('/api/auth/validate', async (req, res) => {
 
     const row = rows[rowIndex];
     const type = row[1] || 'student';
-    const maxUses = parseInt(row[2]) || 0;
-    const used = parseInt(row[3]) || 0;
-    const assignedTo = row[5] || '';
+    // Column C = Tool (Text, Buddy, or Both) — code is valid for Buddy if "Buddy" or "Both"
+    const tool = (row[2] || '').trim().toLowerCase();
+    if (tool !== 'buddy' && tool !== 'both') {
+      return res.json({ valid: false, error: 'This access code is not valid for the Conversation Buddy' });
+    }
+    const maxUses = parseInt(row[3]) || 0;
+    const used = parseInt(row[4]) || 0;
+    const assignedTo = row[6] || '';
 
     if (used >= maxUses) {
       return res.json({ valid: false, error: 'Access code has expired (all uses consumed)', used, maxUses });
@@ -147,17 +152,17 @@ app.post('/api/auth/validate', async (req, res) => {
     const sheetRow = rowIndex + 2;
     await sheets.spreadsheets.values.update({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: `Access Codes!D${sheetRow}`,
+      range: `Access Codes!E${sheetRow}`,
       valueInputOption: 'RAW',
       requestBody: { values: [[used + 1]] },
     });
 
-    // Log usage to Usage Log tab
+    // Log usage to Buddy Usage Log tab
     // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:I',
+      range: 'Buddy Usage Log!A:I',
       valueInputOption: 'RAW',
       requestBody: {
         values: [[timestamp, code, type, assignedTo, '', '', '', '', '']],
@@ -180,7 +185,7 @@ app.post('/api/auth/validate', async (req, res) => {
   }
 });
 
-// POST /api/auth/log-session — Log completed session details to Usage Log
+// POST /api/auth/log-session — Log completed session details to Buddy Usage Log
 app.post('/api/auth/log-session', async (req, res) => {
   const { code, type, unit, sessionId, durationMin, studentName, assignedTo } = req.body;
   try {
@@ -189,7 +194,7 @@ app.post('/api/auth/log-session', async (req, res) => {
     // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Usage Log!A:I',
+      range: 'Buddy Usage Log!A:I',
       valueInputOption: 'RAW',
       requestBody: {
         values: [[timestamp, code || '', type || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '', '']],
@@ -474,13 +479,13 @@ async function saveTranscriptFile(sessionId, logSession) {
         const driveLink = `https://drive.google.com/file/d/${fileId}/view`;
         console.log(`${DIM}[TRANSCRIPT] Uploaded to Google Drive: ${filename}${RESET}`);
 
-        // Append transcript link to the last row of Usage Log (column I)
+        // Append transcript link to the last row of Buddy Usage Log (column I)
         try {
           const sheets = await getSheetsClient();
           // Find the last row with this session ID
           const logData = await sheets.spreadsheets.values.get({
             spreadsheetId: ACCESS_SHEETS_ID,
-            range: 'Usage Log!G:G',
+            range: 'Buddy Usage Log!G:G',
           });
           const rows = logData.data.values || [];
           let targetRow = -1;
@@ -490,13 +495,13 @@ async function saveTranscriptFile(sessionId, logSession) {
           if (targetRow > 0) {
             await sheets.spreadsheets.values.update({
               spreadsheetId: ACCESS_SHEETS_ID,
-              range: `Usage Log!I${targetRow}`,
+              range: `Buddy Usage Log!I${targetRow}`,
               valueInputOption: 'USER_ENTERED',
               requestBody: { values: [[`=HYPERLINK("${driveLink}","open")`]] },
             });
           }
         } catch (sheetErr) {
-          console.warn('[TRANSCRIPT] Could not add Drive link to Usage Log:', sheetErr.message);
+          console.warn('[TRANSCRIPT] Could not add Drive link to Buddy Usage Log:', sheetErr.message);
         }
       } catch (driveErr) {
         console.error('[TRANSCRIPT] Drive upload failed:', driveErr.message, '— saving locally');
