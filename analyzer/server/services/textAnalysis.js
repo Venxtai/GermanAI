@@ -388,7 +388,18 @@ function buildCumulativeGrammar(selectedUnitIds, unitMap) {
   // Remove anything that's explicitly allowed
   for (const t of allowed.tenses) allForbidden.delete(`tense:${t}`);
   for (const c of allowed.cases) allForbidden.delete(`case:${c}`);
+  for (const p of allowed.persons) allForbidden.delete(`person:${p}`);
   for (const st of allowed.sentenceTypes) allForbidden.delete(`sentence_type:${st}`);
+  // Also remove compound person entries (e.g., "person:er/es/sie/xier") if ANY sub-person is allowed
+  for (const f of [...allForbidden]) {
+    if (f.startsWith('person:')) {
+      const personPart = f.slice('person:'.length);
+      const subPersons = personPart.split('/');
+      if (subPersons.some(sp => allowed.persons.has(sp) || allowed.persons.has(sp.trim()))) {
+        allForbidden.delete(f);
+      }
+    }
+  }
 
   return {
     allowedTenses: Array.from(allowed.tenses),
