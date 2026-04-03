@@ -111,7 +111,17 @@ export default function ReadabilityBanner() {
           <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${percent}%` }} />
         </div>
         <span className="text-xs text-slate-500">
-          {knownWords}/{totalWords} words known{translatedWords > 0 ? `, ${translatedWords}/${totalWords} translated` : ''}
+          {totalWords} {totalWords === 1 ? 'word' : 'words'}:{' '}
+          {(() => {
+            const unknown = totalWords - knownWords - translatedWords;
+            const parts = [];
+            if (knownWords > 0) parts.push(`${knownWords} known`);
+            if (translatedWords > 0) parts.push(`${translatedWords} translated`);
+            if (unknown > 0) parts.push(`${unknown} unknown`);
+            return parts.length > 2
+              ? parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1]
+              : parts.join(' and ');
+          })()}
         </span>
         {diff !== 0 && (
           <span className={`text-xs font-semibold ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>
