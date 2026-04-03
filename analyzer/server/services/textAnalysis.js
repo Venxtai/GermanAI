@@ -215,10 +215,35 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
     const sentence = analyzedSentences[group.sentenceIndex];
     if (!sentence) continue;
 
+    const lemmaLower = (group.lemma || '').toLowerCase();
+    const { verbFormIndex } = vocabData;
+
+    // Helper: check if a word plausibly belongs to this verb group
+    function isPlausibleGroupMember(wordText) {
+      const wLower = wordText.toLowerCase();
+      if (/^\d+$/.test(wLower)) return false; // numbers can't be verb parts
+      // Direct substring match (prefix "fern", stem "seh-")
+      if (lemmaLower.includes(wLower)) return true;
+      if (wLower.length >= 3 && lemmaLower.startsWith(wLower.slice(0, 3))) return true;
+      // Check verb form index: does this conjugated form map to the lemma's stem?
+      // e.g., "sah" → sehen, and lemma is "fernsehen" which ends with "sehen"
+      const forms = verbFormIndex?.get(wLower) || [];
+      if (forms.some(f => lemmaLower.endsWith(f.lemma.toLowerCase()))) return true;
+      // Also check if the word's lemma (from AI) relates
+      const wordObj = sentence.words.find(w => w.text.toLowerCase() === wLower && w.type === 'word');
+      if (wordObj?.lemma && lemmaLower.includes(wordObj.lemma.toLowerCase())) return true;
+      return false;
+    }
+
+    // Validate: at least one word must plausibly relate to the lemma
+    const groupWords = group.wordIndices
+      .map(idx => sentence.words.find(w => w.type === 'word' && w.index === idx))
+      .filter(Boolean);
+    if (!groupWords.some(w => isPlausibleGroupMember(w.text))) continue;
+
     for (const wordOnlyIdx of group.wordIndices) {
-      // Find the word token whose .index matches the word-only index
       const word = sentence.words.find(w => w.type === 'word' && w.index === wordOnlyIdx);
-      if (word) {
+      if (word && isPlausibleGroupMember(word.text)) {
         word.linkedGroup = group.id;
         word.linkedLemma = group.lemma;
         word.linkedUnitId = group.unitId;

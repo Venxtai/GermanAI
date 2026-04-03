@@ -314,7 +314,7 @@ function RewriteWordInfo() {
       ) : isChanged ? (
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-[var(--brand)]" />
-          <span className="text-sm text-slate-600">{wordText} — basic grammar word</span>
+          <span className="text-sm text-slate-600">{wordText} — {/^\d+$/.test(wordText) ? 'number' : 'basic grammar word'}</span>
         </div>
       ) : null}
     </div>
@@ -415,7 +415,7 @@ function KnownWordInfo({ word, linkedGroup }) {
         <p className="text-sm text-slate-500">This is a universal filler word available in all units.</p>
       )}
       {word.reason === 'grammar_word' && (
-        <p className="text-sm text-slate-500">This is a basic grammar word (article, pronoun, preposition).</p>
+        <p className="text-sm text-slate-500">{/^\d+$/.test(word.text) ? 'This is a number.' : 'This is a basic grammar word (article, pronoun, preposition).'}</p>
       )}
       {word.reason === 'contraction' && (
         <p className="text-sm text-slate-500">This is a contraction ({word.lemma || word.text}).</p>
