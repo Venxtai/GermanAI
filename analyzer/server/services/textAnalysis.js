@@ -904,6 +904,78 @@ If truly nothing works, return []. But try hard — there is almost always a bro
 }
 
 /**
+ * Look up synonyms and hypernyms via OpenThesaurus, then check which ones
+ * are in the known vocabulary. Returns alternatives in the same format as
+ * suggestWordAlternatives.
+ */
+async function lookupThesaurusAlternatives(word, knownWordsSet) {
+  try {
+    const url = `https://www.openthesaurus.de/synonyme/search?q=${encodeURIComponent(word)}&format=application/json&supersynsets=true`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return [];
+    const data = await res.json();
+
+    const candidates = new Map(); // word → { source, meaning }
+
+    for (const synset of (data.synsets || [])) {
+      const meanings = (synset.terms || []).map(t => t.term);
+      const meaningLabel = meanings.slice(0, 3).join(', ');
+
+      // Add synonyms
+      for (const t of (synset.terms || [])) {
+        const term = t.term.replace(/\s*\(.*?\)\s*/g, '').trim(); // strip annotations like "(ugs.)"
+        if (term.toLowerCase() !== word.toLowerCase()) {
+          candidates.set(term.toLowerCase(), {
+            word: term,
+            source: 'synonym',
+            explanation: `Synonym (${meaningLabel})`,
+          });
+        }
+      }
+
+      // Add hypernyms (category words)
+      for (const supGroup of (synset.supersynsets || [])) {
+        for (const t of supGroup) {
+          const term = t.term.replace(/\s*\(.*?\)\s*/g, '').trim();
+          candidates.set(term.toLowerCase(), {
+            word: term,
+            source: 'hypernym',
+            explanation: `Category word (${meaningLabel})`,
+          });
+        }
+      }
+    }
+
+    // Check which candidates are in known vocabulary
+    // Build a reverse map for proper casing
+    const knownCaseMap = new Map();
+    for (const k of knownWordsSet) knownCaseMap.set(k.toLowerCase ? k.toLowerCase() : k, k);
+
+    const results = [];
+    for (const [, cand] of candidates) {
+      const candLower = cand.word.toLowerCase();
+      // Check with and without article
+      const withArticles = [candLower, `der ${candLower}`, `die ${candLower}`, `das ${candLower}`];
+      const matchedForm = withArticles.find(f => knownWordsSet.has(f));
+      if (matchedForm) {
+        // Use the original casing from the known vocabulary
+        const properCase = knownCaseMap.get(matchedForm) || matchedForm;
+        results.push({
+          alternative: properCase,
+          explanation: cand.explanation,
+          source: 'thesaurus',
+        });
+      }
+    }
+
+    return results;
+  } catch (err) {
+    console.error('[THESAURUS] Error:', err.message);
+    return [];
+  }
+}
+
+/**
  * Apply a word replacement to a sentence and fix grammar.
  * E.g., "Ich benutze ein Fortbewegungsmittel" + replace "Fortbewegungsmittel" with "Zug"
  * → "Ich benutze einen Zug" (article adjusted for masculine noun)
@@ -961,6 +1033,7 @@ module.exports = {
   rewriteSentence,
   generateGloss,
   suggestWordAlternatives,
+  lookupThesaurusAlternatives,
   applyReplacementWithGrammar,
   splitIntoSentences,
   tokenizeWords,

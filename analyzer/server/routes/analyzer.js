@@ -212,11 +212,30 @@ router.post('/analyzer/alternatives', async (req, res) => {
   const unknownTranslation = unknownLookup.entries[0]?.translation || '';
 
   try {
-    const { suggestWordAlternatives } = require('../services/textAnalysis');
-    const alternatives = await suggestWordAlternatives(
-      sentence, unknownWord, unknownLemma, knownItems, tryHarder, unknownPos, unknownTranslation,
-    );
-    res.json({ alternatives });
+    const { suggestWordAlternatives, lookupThesaurusAlternatives } = require('../services/textAnalysis');
+
+    // Build a lowercase set for thesaurus matching, preserving original casing
+    const knownWordsLowerSet = new Set(knownItems.map(i => i.word.toLowerCase()));
+    // Also add original forms so the thesaurus can return proper casing
+    for (const item of knownItems) knownWordsLowerSet.add(item.word);
+
+    // Run AI suggestions and thesaurus lookup in parallel
+    const [aiAlternatives, thesaurusAlternatives] = await Promise.all([
+      suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownItems, tryHarder, unknownPos, unknownTranslation),
+      lookupThesaurusAlternatives(unknownLemma || unknownWord, knownWordsLowerSet),
+    ]);
+
+    // Merge and deduplicate: AI results first, then thesaurus results not already present
+    const seen = new Set(aiAlternatives.map(a => a.alternative.toLowerCase()));
+    const merged = [...aiAlternatives];
+    for (const ta of thesaurusAlternatives) {
+      if (!seen.has(ta.alternative.toLowerCase())) {
+        seen.add(ta.alternative.toLowerCase());
+        merged.push(ta);
+      }
+    }
+
+    res.json({ alternatives: merged });
   } catch (err) {
     console.error('[ALTERNATIVES] Error:', err);
     res.status(500).json({ error: 'Failed', message: err.message });
