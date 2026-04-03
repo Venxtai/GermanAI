@@ -126,18 +126,19 @@ function ChapterSection({
       {expanded && (
         <div className="ml-5 space-y-0.5">
           {chapter.units?.map(unit => (
-            <label key={unit.id} className="flex items-center gap-1.5 py-0.5 cursor-pointer hover:bg-slate-50 rounded px-1 -mx-1">
+            <label key={unit.id} className={`flex items-center gap-1.5 py-0.5 cursor-pointer hover:bg-slate-50 rounded px-1 -mx-1 ${unit.isOptional ? 'opacity-75' : ''}`}>
               <input
                 type="checkbox"
                 checked={effectiveUnits?.has(unit.id) || false}
                 onChange={() => toggleUnit(unit.id)}
                 className="rounded w-3 h-3 accent-[var(--brand)]"
               />
-              <span className="text-xs text-slate-600">
+              <span className={`text-xs ${unit.isOptional ? 'text-slate-400 italic' : 'text-slate-600'}`}>
                 Unit {unit.id}
                 {(unit.name || unit.topics?.[0]) && (
-                  <span className="text-slate-400 ml-1">— {unit.name || unit.topics[0]}</span>
+                  <span className={unit.isOptional ? 'text-slate-400 ml-1' : 'text-slate-500 ml-1'}>— {unit.name || unit.topics[0]}</span>
                 )}
+                {unit.isOptional && <span className="text-slate-400 ml-1">(optional)</span>}
               </span>
               {unit.vocabCount > 0 && (
                 <span className="text-xs text-slate-300 ml-auto">{unit.vocabCount}w</span>

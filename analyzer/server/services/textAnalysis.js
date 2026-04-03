@@ -337,8 +337,8 @@ function splitIntoSentences(text) {
  */
 function tokenizeWords(sentence) {
   const tokens = [];
-  // Match words (including hyphenated), punctuation, or whitespace
-  const regex = /([a-zA-ZäöüÄÖÜßéèêàâîïôûç]+(?:-[a-zA-ZäöüÄÖÜßéèêàâîïôûç]+)*)|([.,!?;:"""„''()\[\]{}–—…\/])|(\s+)/g;
+  // Match words (including hyphenated and numbers), punctuation, or whitespace
+  const regex = /([a-zA-ZäöüÄÖÜßéèêàâîïôûç0-9]+(?:-[a-zA-ZäöüÄÖÜßéèêàâîïôûç0-9]+)*)|([.,!?;:"""„''()\[\]{}–—…\/])|(\s+)/g;
   let match;
   let idx = 0;
   while ((match = regex.exec(sentence)) !== null) {

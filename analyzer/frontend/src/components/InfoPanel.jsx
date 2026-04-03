@@ -29,24 +29,44 @@ const ID2O_CH = [
  * "3" → "ID1 - Chapter 1 - Unit 3"
  * "B5" → "ID2 BLAU - Chapter 1 - Unit 5"
  * "O12" → "ID2 ORANGE - Chapter 1 - Unit 12"
+ * Optional units get "(optional)" appended.
  */
-function formatUnitLabel(unitId) {
+function formatUnitLabel(unitId, optionalUnits) {
   if (!unitId) return 'Unknown';
+  const isOptional = optionalUnits?.has(unitId);
+  const suffix = isOptional ? ' (optional)' : '';
 
   if (unitId.startsWith('B')) {
     const num = parseInt(unitId.slice(1));
     const ch = ID2B_CH.find(c => num >= c.s && num <= c.e);
-    return `ID2 BLAU - Chapter ${ch?.ch || '?'} - Unit ${num}`;
+    return `ID2 BLAU - Chapter ${ch?.ch || '?'} - Unit ${num}${suffix}`;
   }
   if (unitId.startsWith('O')) {
     const num = parseInt(unitId.slice(1));
     const ch = ID2O_CH.find(c => num >= c.s && num <= c.e);
-    return `ID2 ORANGE - Chapter ${ch?.ch || '?'} - Unit ${num}`;
+    return `ID2 ORANGE - Chapter ${ch?.ch || '?'} - Unit ${num}${suffix}`;
   }
 
   const num = parseInt(unitId);
   const ch = ID1_CH.find(c => num >= c.s && num <= c.e);
-  return `ID1 - Chapter ${ch?.ch || '?'} - Unit ${num}`;
+  return `ID1 - Chapter ${ch?.ch || '?'} - Unit ${num}${suffix}`;
+}
+
+/**
+ * Get the set of optional unit IDs from the store (built lazily, cached).
+ */
+function getOptionalUnits() {
+  const chapters = useAnalyzerStore.getState().chapters;
+  if (!chapters) return new Set();
+  const set = new Set();
+  for (const book of Object.values(chapters)) {
+    for (const ch of (book.chapters || [])) {
+      for (const u of (ch.units || [])) {
+        if (u.isOptional) set.add(u.id);
+      }
+    }
+  }
+  return set;
 }
 
 export default function InfoPanel() {
@@ -276,7 +296,7 @@ function RewriteWordInfo() {
                   {(entry.unitIds || [entry.unitId]).map((uid, j) => (
                     <span key={j}>
                       {j > 0 && <br />}
-                      {formatUnitLabel(uid)}
+                      {formatUnitLabel(uid, getOptionalUnits())}
                     </span>
                   ))}
                 </span>
@@ -379,7 +399,7 @@ function KnownWordInfo({ word, linkedGroup }) {
 
       {entry && (
         <div className="space-y-3">
-          <InfoRow label="Studied in" value={formatUnitLabel(entry.unitId)} />
+          <InfoRow label="Studied in" value={formatUnitLabel(entry.unitId, getOptionalUnits())} />
           <InfoRow label="Translation" value={entry.translation || 'N/A'} />
           <InfoRow label="Part of speech" value={entry.pos || 'N/A'} />
           {entry.cefr && <InfoRow label="CEFR Level" value={entry.cefr} />}
@@ -554,7 +574,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
               occ.status === 'skipped' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
               'bg-slate-50 text-slate-600 border border-slate-200'
             }`}>
-              <span className="font-medium">{formatUnitLabel(occ.unitId)}</span>
+              <span className="font-medium">{formatUnitLabel(occ.unitId, getOptionalUnits())}</span>
               {occ.status === 'skipped' && <span className="text-xs ml-1">(skipped)</span>}
               {occ.status === 'not_reached' && <span className="text-xs ml-1">(not reached yet)</span>}
             </div>
@@ -565,7 +585,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           word.unitInfo.status === 'skipped' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
           'bg-slate-50 text-slate-600 border border-slate-200'
         }`}>
-          This word is taught in <span className="font-medium">{formatUnitLabel(word.unitInfo.unitId)}</span>
+          This word is taught in <span className="font-medium">{formatUnitLabel(word.unitInfo.unitId, getOptionalUnits())}</span>
           {word.unitInfo.status === 'skipped' && ', which you skipped.'}
           {word.unitInfo.status === 'not_reached' && ', which you have not reached yet.'}
         </div>
@@ -580,7 +600,7 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           <div className="space-y-1">
             {word.allEntries.map((e, i) => (
               <div key={i} className="text-sm text-slate-600 bg-slate-50 p-2 rounded">
-                <span className="font-medium">{formatUnitLabel(e.unitId)}</span>
+                <span className="font-medium">{formatUnitLabel(e.unitId, getOptionalUnits())}</span>
                 {e.translation && <span className="text-slate-500"> — {e.translation}</span>}
                 <span className={`ml-2 text-xs px-1.5 py-0.5 rounded ${
                   e.isActive ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
@@ -737,7 +757,7 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">On the Vocabulary List in</p>
           {word.unitInfo.allOccurrences.map((occ, i) => (
             <div key={i} className="text-sm p-2 rounded-lg bg-slate-50 text-slate-600 border border-slate-200">
-              <span className="font-medium">{formatUnitLabel(occ.unitId)}</span>
+              <span className="font-medium">{formatUnitLabel(occ.unitId, getOptionalUnits())}</span>
               {occ.status === 'skipped' && <span className="text-xs ml-1">(skipped)</span>}
               {occ.status === 'not_reached' && <span className="text-xs ml-1">(not reached yet)</span>}
             </div>
@@ -807,7 +827,7 @@ function ReplacedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
 
       {mod.source && (
         <div className="text-sm text-slate-600 space-y-1">
-          <InfoRow label="From" value={formatUnitLabel(mod.source.unitId)} />
+          <InfoRow label="From" value={formatUnitLabel(mod.source.unitId, getOptionalUnits())} />
           <InfoRow label="Translation" value={mod.source.translation} />
         </div>
       )}
@@ -903,7 +923,7 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">On the Vocabulary List in</p>
           {word.unitInfo.allOccurrences.map((occ, i) => (
             <div key={i} className="text-sm p-2 rounded-lg bg-slate-50 text-slate-600 border border-slate-200">
-              <span className="font-medium">{formatUnitLabel(occ.unitId)}</span>
+              <span className="font-medium">{formatUnitLabel(occ.unitId, getOptionalUnits())}</span>
               {occ.status === 'skipped' && <span className="text-xs ml-1">(skipped)</span>}
               {occ.status === 'not_reached' && <span className="text-xs ml-1">(not reached yet)</span>}
             </div>
@@ -920,7 +940,7 @@ function GlossedWordInfo({ word, mod, sentenceIndex, wordIndex }) {
                 <span className="text-slate-400 font-medium min-w-24 flex-shrink-0">Studied in</span>
                 <span className="text-slate-700">
                   {(entry.unitIds || [entry.unitId]).map((uid, j) => (
-                    <span key={j}>{j > 0 && <br />}{formatUnitLabel(uid)}</span>
+                    <span key={j}>{j > 0 && <br />}{formatUnitLabel(uid, getOptionalUnits())}</span>
                   ))}
                 </span>
               </div>
@@ -1197,7 +1217,7 @@ function ExampleSentences({ sentences }) {
                 className="w-full flex items-center gap-1.5 text-left py-1 px-2 rounded hover:bg-slate-50 transition-colors"
               >
                 <span className="text-xs text-slate-400">{isOpen ? '\u25BC' : '\u25B6'}</span>
-                <span className="text-xs font-medium text-slate-500">{formatUnitLabel(uid)}</span>
+                <span className="text-xs font-medium text-slate-500">{formatUnitLabel(uid, getOptionalUnits())}</span>
                 <span className="text-xs text-slate-300 ml-auto">{sents.length}</span>
               </button>
               {isOpen && (

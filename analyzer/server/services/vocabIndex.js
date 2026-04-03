@@ -266,6 +266,19 @@ function addToVocabIndex(index, item, unitId, isActive, unit) {
   if (!index.has(norm)) index.set(norm, []);
   index.get(norm).push(entry);
 
+  // If word uses stem notation (e.g., "letzt-", "letzt- (letzter"), index the bare stem
+  // so that adjective forms like "letzte", "letzter", "letztes" can match
+  const stemMatch = item.word.match(/^([a-zA-ZäöüÄÖÜß]+)-/);
+  if (stemMatch) {
+    const stemNorm = stemMatch[1].toLowerCase();
+    if (stemNorm !== norm) {
+      if (!index.has(stemNorm)) index.set(stemNorm, []);
+      if (!index.get(stemNorm).some(e => e.unitId === unitId && e.word === item.word)) {
+        index.get(stemNorm).push({ ...entry, _adjStem: true });
+      }
+    }
+  }
+
   // If it has an article, also index the noun alone
   const parts = item.word.split(/\s+/);
   if (parts.length === 2 && ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer'].includes(parts[0].toLowerCase())) {
@@ -346,6 +359,9 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
 
   if (isUniversalFiller) return { known: true, reason: 'filler' };
 
+  // Numbers are always known
+  if (/^\d+$/.test(word)) return { known: true, reason: 'grammar_word' };
+
   // Check basic grammar words (articles, pronouns, prepositions)
   const norm = normalizeWord(word);
   if (GRAMMAR_WORDS.has(norm)) return { known: true, reason: 'grammar_word' };
@@ -359,6 +375,23 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
   for (const entry of entries) {
     if (entry.isActive && selectedUnitIds.has(entry.unitId)) {
       return { known: true, reason: 'active_vocab', entry };
+    }
+  }
+
+  // Try stripping adjective endings: -e, -er, -es, -en, -em → stem lookup
+  // Handles "Letzte" → "letzt", "großer" → "groß", "schönes" → "schön"
+  if (!entries.some(e => e.isActive && selectedUnitIds.has(e.unitId))) {
+    const adjEndings = ['es', 'er', 'em', 'en', 'e'];
+    for (const ending of adjEndings) {
+      if (norm.length > ending.length + 2 && norm.endsWith(ending)) {
+        const stem = norm.slice(0, -ending.length);
+        const stemEntries = vocabIndex.get(stem) || [];
+        for (const entry of stemEntries) {
+          if (entry.isActive && selectedUnitIds.has(entry.unitId)) {
+            return { known: true, reason: 'active_vocab', entry };
+          }
+        }
+      }
     }
   }
 
