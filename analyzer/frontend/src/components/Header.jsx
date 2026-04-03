@@ -199,14 +199,14 @@ export default function Header() {
           </div>
         )}
 
-        {/* Read-only mode: "Edit This Session" button replaces "New Session" */}
+        {/* Read-only mode: "Edit" button replaces "New Session" */}
         {isReadOnly ? (
           <button
             onClick={() => setShowCloneDialog(true)}
             className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium"
             style={{ backgroundColor: 'var(--brand-blau, #00528a)' }}
           >
-            Edit This Session
+            Edit
           </button>
         ) : (
           <button
