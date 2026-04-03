@@ -466,11 +466,18 @@ function detectSkippedChapterWarnings(selectedUnitIds, unitMap, allChapters) {
     const prefix = bookId === 'ID1' ? '' : bookId === 'ID2B' ? 'B' : 'O';
 
     // Build unit ID list for each chapter
+    // Try both padded (B01) and unpadded (B1) formats to match what the frontend sends
     const chapterUnits = chapters.map(ch => {
       const ids = [];
       for (let pos = ch.unitStart; pos <= ch.unitEnd; pos++) {
-        const uid = prefix ? `${prefix}${String(pos).padStart(2, '0')}` : String(pos);
-        ids.push(uid);
+        if (prefix) {
+          // Try unpadded first (B1), then padded (B01) — use whichever is in selectedUnitIds
+          const unpadded = `${prefix}${pos}`;
+          const padded = `${prefix}${String(pos).padStart(2, '0')}`;
+          ids.push(selectedUnitIds.has(unpadded) ? unpadded : selectedUnitIds.has(padded) ? padded : unpadded);
+        } else {
+          ids.push(String(pos));
+        }
       }
       return { ...ch, unitIds: ids };
     });
