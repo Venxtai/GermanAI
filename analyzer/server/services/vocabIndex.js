@@ -169,11 +169,81 @@ function normalizeWord(word) {
 function addToVocabIndex(index, item, unitId, isActive, unit) {
   if (!item.word) return;
 
-  // Get model sentences containing this word
+  // Get model sentences containing this word (with POS-aware filtering)
   const modelSentences = [];
   const wordLower = item.word.toLowerCase();
+  const wordNorm = normalizeWord(item.word);
+  const articleSet = new Set(['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'kein', 'keine', 'keinen', 'keinem', 'im', 'am', 'ans', 'ins', 'vom', 'zum', 'zur', 'beim', 'fürs', 'ums', 'aufs', 'durchs', 'übers', 'unters', 'vors', 'hinters']);
+
+  // Separable verb prefix detection
+  const separablePrefixes = ['ab', 'an', 'auf', 'aus', 'bei', 'ein', 'mit', 'nach', 'vor', 'zu', 'zurück', 'zusammen', 'her', 'hin', 'um', 'weg', 'fest', 'los', 'teil', 'statt', 'kennen', 'fern'];
+  let sepPrefix = null;
+  let sepStem = null;
+  if (item.pos === 'VERB') {
+    for (const pf of separablePrefixes) {
+      if (wordNorm.startsWith(pf) && wordNorm.length > pf.length + 2) {
+        sepPrefix = pf;
+        sepStem = wordNorm.slice(pf.length); // e.g., "fernsehen" → "sehen"
+        break;
+      }
+    }
+  }
+
   for (const sent of (unit.model_sentences?.literal || [])) {
-    if (sent.toLowerCase().includes(wordLower) || sent.toLowerCase().includes(normalizeWord(item.word))) {
+    const sentLower = sent.toLowerCase();
+    let matched = false;
+
+    // Direct match: sentence contains the word
+    if (sentLower.includes(wordLower) || sentLower.includes(wordNorm)) {
+      // POS filter for verbs: reject if preceded by article (noun usage like "das Fernsehen")
+      if (item.pos === 'VERB') {
+        const words = sent.split(/\s+/);
+        let isVerbUsage = false;
+        for (let i = 0; i < words.length; i++) {
+          const clean = words[i].replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '');
+          const cleanLower = clean.toLowerCase();
+          if (cleanLower === wordLower || cleanLower === wordNorm || cleanLower.startsWith(wordNorm)) {
+            const prev = i > 0 ? words[i - 1].replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').toLowerCase() : '';
+            if (articleSet.has(prev)) continue; // article + word = noun usage
+            // Capitalized mid-sentence = noun in German (verbs only capitalize at sentence start)
+            if (clean[0] === clean[0].toUpperCase() && i > 0) continue;
+            isVerbUsage = true;
+            break;
+          }
+        }
+        matched = isVerbUsage;
+      } else {
+        matched = true;
+      }
+    }
+
+    // Separable verb match: look for prefix at end + conjugated stem earlier
+    // e.g., "Ich sehe gern fern" for "fernsehen", "Ich kaufe im Supermarkt ein" for "einkaufen"
+    if (!matched && sepPrefix && sepStem) {
+      const words = sent.split(/\s+/).map(w => w.replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, ''));
+      const wordsLower = words.map(w => w.toLowerCase());
+      // Check if prefix appears near end of clause
+      const prefixIdx = wordsLower.lastIndexOf(sepPrefix);
+      if (prefixIdx >= 0) {
+        // Check if any earlier word is a conjugated form of the stem
+        for (let i = 0; i < prefixIdx; i++) {
+          const w = wordsLower[i];
+          // Simple conjugation check: stem starts match (seh→sehe/siehst/sieht, kauf→kaufe/kaufst)
+          if (w.startsWith(sepStem.slice(0, Math.min(sepStem.length - 2, 4))) && w.length <= sepStem.length + 3) {
+            matched = true;
+            break;
+          }
+        }
+      }
+      // Also match Perfekt forms: "habe ferngesehen", "hat eingekauft"
+      const perfektForm = sepPrefix + 'ge' + sepStem.replace(/en$/, 't'); // weak: eingekauft
+      const perfektFormStrong = sepPrefix + 'ge' + sepStem; // strong: ferngesehen
+      if (sentLower.includes(perfektForm) || sentLower.includes(perfektFormStrong)) {
+        matched = true;
+      }
+    }
+
+    if (matched) {
       modelSentences.push({ sentence: sent, unitId });
     }
   }

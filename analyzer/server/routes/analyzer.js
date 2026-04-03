@@ -259,8 +259,9 @@ router.get('/analyzer/example-sentences', (req, res) => {
   // Capture the match and what's before it for POS filtering
   const wordRegex = new RegExp(`(?:^|[\\s.,!?;:""„''()\\[\\]{}–—…/])(?:${escaped})(?:s|es|n|en|er|e|em|ern)?(?=[\\s.,!?;:""„''()\\[\\]{}–—…/]|$)`, 'i');
 
-  // Articles that indicate the next word is a noun
-  const articleSet = new Set(['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'kein', 'keine', 'keinen', 'keinem', 'mein', 'meine', 'meinen', 'dein', 'deine', 'sein', 'seine', 'ihr', 'ihre', 'unser', 'unsere', 'euer', 'eure']);
+  // Articles and determiners that indicate the next word is a noun
+  // Includes contracted prepositions (im=in dem, beim=bei dem, zum=zu dem, vom=von dem, ans=an das, ins=in das)
+  const articleSet = new Set(['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'kein', 'keine', 'keinen', 'keinem', 'mein', 'meine', 'meinen', 'dein', 'deine', 'sein', 'seine', 'ihr', 'ihre', 'unser', 'unsere', 'euer', 'eure', 'im', 'am', 'ans', 'ins', 'vom', 'zum', 'zur', 'beim', 'fürs', 'ums', 'aufs', 'durchs', 'übers', 'unters', 'vors', 'hinters']);
 
   /**
    * POS-based filter: check if the matched word in the sentence is used
@@ -285,8 +286,9 @@ router.get('/analyzer/example-sentences', (req, res) => {
         if (posUpper === 'VERB') {
           // Verb: reject if preceded by article (= noun usage like "das Essen")
           if (prevIsArticle) return false;
-          // Verb: reject if capitalized and at start of sentence only if preceded by article
-          // (German capitalizes first word of sentence, so capitalized alone is OK)
+          // Capitalized mid-sentence = almost certainly a noun in German
+          // (verbs are only capitalized at sentence start)
+          if (isCapitalized && i > 0) return false;
         }
 
         if (posUpper === 'NOUN') {
@@ -300,18 +302,68 @@ router.get('/analyzer/example-sentences', (req, res) => {
     return true; // word not found in split (regex matched across boundaries) — accept
   }
 
+  // Detect separable verb prefix for separated form matching
+  const separablePrefixes = ['ab', 'an', 'auf', 'aus', 'bei', 'ein', 'mit', 'nach', 'vor', 'zu', 'zurück', 'zusammen', 'her', 'hin', 'um', 'weg', 'fest', 'los', 'teil', 'statt', 'kennen', 'fern'];
+  let sepPrefix = null;
+  let sepStem = null;
+  if (posUpper === 'VERB') {
+    for (const pf of separablePrefixes) {
+      if (wordLower.startsWith(pf) && wordLower.length > pf.length + 2) {
+        sepPrefix = pf;
+        sepStem = wordLower.slice(pf.length); // e.g., "fernsehen" → "sehen"
+        break;
+      }
+    }
+  }
+
   const sentences = [];
   const seen = new Set();
 
   for (const [uid, unit] of Object.entries(unitMap)) {
     for (const sent of (unit.model_sentences?.literal || [])) {
+      let matched = false;
+
+      // Direct regex match
       if (wordRegex.test(sent)) {
-        // Extract the matched word for POS checking
         const match = sent.match(new RegExp(`(${escaped})`, 'i'));
         const matchedWord = match ? match[1] : wordLower;
+        if (matchesPOS(sent, matchedWord)) {
+          matched = true;
+        }
+      }
 
-        if (!matchesPOS(sent, matchedWord)) continue;
+      // Separable verb: check for separated forms (e.g., "Ich sehe fern", "Ich sah fern")
+      if (!matched && sepPrefix && sepStem) {
+        const sentLower = sent.toLowerCase();
+        const words = sent.split(/\s+/).map(w => w.replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, ''));
+        const wordsLower = words.map(w => w.toLowerCase());
+        const prefixIdx = wordsLower.lastIndexOf(sepPrefix);
+        if (prefixIdx >= 0) {
+          for (let i = 0; i < prefixIdx; i++) {
+            const w = wordsLower[i];
+            // Simple stem match (handles regular conjugations)
+            if (w.startsWith(sepStem.slice(0, Math.min(sepStem.length - 2, 4))) && w.length <= sepStem.length + 3) {
+              matched = true;
+              break;
+            }
+            // Use verb form index for irregular forms (e.g., sah → sehen)
+            const { verbFormIndex } = vocabData;
+            const forms = verbFormIndex?.get(w);
+            if (forms?.some(f => f.lemma.toLowerCase() === sepStem || f.lemma.toLowerCase() === wordLower)) {
+              matched = true;
+              break;
+            }
+          }
+        }
+        // Perfekt: "habe ferngesehen", "hat eingekauft"
+        const perfektWeak = sepPrefix + 'ge' + sepStem.replace(/en$/, 't');
+        const perfektStrong = sepPrefix + 'ge' + sepStem;
+        if (sentLower.includes(perfektWeak) || sentLower.includes(perfektStrong)) {
+          matched = true;
+        }
+      }
 
+      if (matched) {
         const key = sent + uid;
         if (!seen.has(key)) {
           seen.add(key);
