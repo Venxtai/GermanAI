@@ -4,9 +4,10 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 // Load environment variables — check multiple locations
-dotenv.config({ path: path.join(__dirname, '../.env') });           // analyzer/.env
-dotenv.config({ path: path.join(__dirname, '../../.env') });        // GermanAI/.env (or worktree root)
-dotenv.config({ path: path.join(__dirname, '../../../.env') });     // parent of worktree
+// Use override:true because system env may have empty-string placeholders
+dotenv.config({ path: path.join(__dirname, '../.env'), override: true });           // analyzer/.env
+dotenv.config({ path: path.join(__dirname, '../../.env'), override: true });        // GermanAI/.env (or worktree root)
+dotenv.config({ path: path.join(__dirname, '../../../.env'), override: true });     // parent of worktree
 // Walk up to find .env in any parent (handles worktrees)
 const fs = require('fs');
 let envDir = path.resolve(__dirname, '..');
@@ -14,7 +15,7 @@ let envFound = false;
 for (let i = 0; i < 6 && !envFound; i++) {
   const envPath = path.join(envDir, '.env');
   if (fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
+    dotenv.config({ path: envPath, override: true });
     console.log(`Loaded .env from ${envPath}`);
     envFound = true;
   }
@@ -37,7 +38,7 @@ if (!process.env.ANTHROPIC_API_KEY) {
       );
       for (const wt of worktrees) {
         const wtEnv = path.join(wtDir, wt, '.env');
-        dotenv.config({ path: wtEnv });
+        dotenv.config({ path: wtEnv, override: true });
         if (process.env.ANTHROPIC_API_KEY) {
           console.log(`Loaded API keys from worktree: ${wt}`);
           break;
