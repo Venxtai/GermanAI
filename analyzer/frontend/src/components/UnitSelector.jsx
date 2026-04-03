@@ -6,9 +6,12 @@ export default function UnitSelector() {
     chapters, selectedUnits, whatIfMode, whatIfUnits,
     toggleUnit, selectAllInBook, deselectAllInBook,
     selectAllInChapter, deselectAllInChapter,
+    isReadOnly, analysisResult,
   } = useAnalyzerStore();
 
   const effectiveUnits = whatIfMode ? whatIfUnits : selectedUnits;
+  // Lock checkboxes after analysis (unless in What If mode) or in read-only shared view
+  const locked = (isReadOnly || (!!analysisResult && !whatIfMode));
 
   if (!chapters) {
     return <div className="p-4 text-slate-400 text-sm">Loading units...</div>;
@@ -38,6 +41,7 @@ export default function UnitSelector() {
           deselectAllInBook={deselectAllInBook}
           selectAllInChapter={selectAllInChapter}
           deselectAllInChapter={deselectAllInChapter}
+          locked={locked}
         />
       ))}
     </div>
@@ -48,6 +52,7 @@ function BookSection({
   bookId, book, effectiveUnits, toggleUnit,
   selectAllInBook, deselectAllInBook,
   selectAllInChapter, deselectAllInChapter,
+  locked,
 }) {
   const [expanded, setExpanded] = useState(bookId === 'ID1');
 
@@ -64,6 +69,7 @@ function BookSection({
         <input
           type="checkbox"
           checked={allSelected}
+          disabled={locked}
           ref={el => { if (el) el.indeterminate = someSelected && !allSelected; }}
           onChange={() => allSelected ? deselectAllInBook(bookId) : selectAllInBook(bookId)}
           className="rounded w-3.5 h-3.5 accent-[var(--brand)]"
@@ -85,6 +91,7 @@ function BookSection({
           toggleUnit={toggleUnit}
           selectAllInChapter={selectAllInChapter}
           deselectAllInChapter={deselectAllInChapter}
+          locked={locked}
         />
       ))}
     </div>
@@ -94,6 +101,7 @@ function BookSection({
 function ChapterSection({
   bookId, chapter, effectiveUnits, toggleUnit,
   selectAllInChapter, deselectAllInChapter,
+  locked,
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -110,6 +118,7 @@ function ChapterSection({
         <input
           type="checkbox"
           checked={allSelected}
+          disabled={locked}
           ref={el => { if (el) el.indeterminate = someSelected && !allSelected; }}
           onChange={() => allSelected ? deselectAllInChapter(bookId, chapter) : selectAllInChapter(bookId, chapter)}
           className="rounded w-3.5 h-3.5 accent-[var(--brand)]"
@@ -130,6 +139,7 @@ function ChapterSection({
               <input
                 type="checkbox"
                 checked={effectiveUnits?.has(unit.id) || false}
+                disabled={locked}
                 onChange={() => toggleUnit(unit.id)}
                 className="rounded w-3 h-3 accent-[var(--brand)]"
               />
