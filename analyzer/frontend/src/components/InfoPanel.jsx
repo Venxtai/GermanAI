@@ -99,6 +99,33 @@ export default function InfoPanel() {
 }
 
 function Instructions() {
+  const isReadOnly = useAnalyzerStore(s => s.isReadOnly);
+
+  if (isReadOnly) {
+    return (
+      <div className="p-6 flex flex-col items-center justify-center h-full text-center">
+        <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--brand-light)' }}>
+          <svg className="w-8 h-8" style={{ color: 'var(--brand)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-slate-700 mb-2">Shared Analysis</h3>
+        <p className="text-sm text-slate-500 mb-4 max-w-xs">A colleague has shared this text analysis with you. Here's what you can do:</p>
+        <ul className="text-sm text-slate-500 text-left space-y-2 max-w-xs">
+          <li><span className="font-medium text-slate-600">Click</span> any colored word to see vocabulary details, translations, and example sentences.</li>
+          <li><span className="font-medium text-slate-600">Click</span> grammar circles to see detected structures and issues.</li>
+          <li><span className="font-medium text-slate-600">Export</span> student or teacher PDFs via the <span className="font-medium" style={{ color: 'var(--brand-blau)' }}>Export & Share</span> button.</li>
+          <li><span className="font-medium text-slate-600">What If</span> mode lets you experiment with different unit selections.</li>
+        </ul>
+        <div className="mt-4 p-3 bg-slate-50 rounded-lg max-w-xs">
+          <p className="text-xs text-slate-400">
+            Want to make changes? Click <span className="font-medium" style={{ color: 'var(--brand-blau)' }}>Edit</span> and enter an access code to create your own editable copy of this session.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6 flex flex-col items-center justify-center h-full text-center">
       <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--brand-light)' }}>
