@@ -32,6 +32,8 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
       } else if (word.status === 'unknown') {
         originalWordColors[wLower] = 'unknown';
         unknownWords.push(word.text);
+      } else if (word.status === 'cognate') {
+        originalWordColors[wLower] = 'cognate';
       } else {
         originalWordColors[wLower] = 'known';
       }

@@ -9,10 +9,11 @@ export default function ReadabilityBanner() {
 
   // ALL hooks must be before any returns
   const liveReadability = useMemo(() => {
-    if (!analysisResult) return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0 };
+    if (!analysisResult) return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0, cognateWords: 0 };
     let total = 0;
     let known = 0;
     let translated = 0;
+    let cognates = 0;
     let grammarIssues = 0;
 
     for (let si = 0; si < analysisResult.sentences.length; si++) {
@@ -66,6 +67,9 @@ export default function ReadabilityBanner() {
           } else if (mod?.type === 'glossed') {
             known++; // Translated word counts as accessible
             translated++;
+          } else if (w.status === 'cognate') {
+            known++; // Cognate counts as accessible
+            cognates++;
           } else if (w.status === 'known') {
             known++;
           }
@@ -74,7 +78,7 @@ export default function ReadabilityBanner() {
     }
 
     const percent = total > 0 ? Math.round((known / total) * 100) : 100;
-    return { percent, knownWords: known - translated, totalWords: total, grammarIssues, translatedWords: translated };
+    return { percent, knownWords: known - translated - cognates, totalWords: total, grammarIssues, translatedWords: translated, cognateWords: cognates };
   }, [analysisResult, sentenceRewrites, wordModifications]);
 
   if (!analysisResult) return null;
@@ -84,7 +88,7 @@ export default function ReadabilityBanner() {
     ? whatIfResults.readability
     : liveReadability;
 
-  const { percent, knownWords, totalWords, translatedWords } = readability;
+  const { percent, knownWords, totalWords, translatedWords, cognateWords } = readability;
   const grammarIssues = (whatIfMode && whatIfResults)
     ? analysisResult.readability.grammarIssues
     : liveReadability.grammarIssues;
@@ -113,9 +117,11 @@ export default function ReadabilityBanner() {
         <span className="text-xs text-slate-500">
           {totalWords} {totalWords === 1 ? 'word' : 'words'}:{' '}
           {(() => {
-            const unknown = totalWords - knownWords - translatedWords;
+            const cog = cognateWords || 0;
+            const unknown = totalWords - knownWords - translatedWords - cog;
             const parts = [];
             if (knownWords > 0) parts.push(`${knownWords} known`);
+            if (cog > 0) parts.push(`${cog} cognate${cog !== 1 ? 's' : ''}`);
             if (translatedWords > 0) parts.push(`${translatedWords} translated`);
             if (unknown > 0) parts.push(`${unknown} unknown`);
             return parts.length > 2

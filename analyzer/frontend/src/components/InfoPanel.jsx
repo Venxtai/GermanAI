@@ -379,10 +379,45 @@ function WordInfo() {
   if (effectiveStatus === 'marked_known') {
     return <MarkedKnownWordInfo word={word} mod={mod} sentenceIndex={sentenceIndex} wordIndex={wordIndex} sentence={sentence} linkedGroup={linkedGroup} />;
   }
+  if (word.status === 'cognate') {
+    return <CognateWordInfo word={word} />;
+  }
   if (word.status === 'known') {
     return <KnownWordInfo word={word} linkedGroup={linkedGroup} />;
   }
   return <UnknownWordInfo word={word} sentenceIndex={sentenceIndex} wordIndex={wordIndex} sentence={sentence} linkedGroup={linkedGroup} />;
+}
+
+function CognateWordInfo({ word }) {
+  const cognateInfo = word.cognateInfo;
+  const displayWord = word.lemma || word.text;
+
+  return (
+    <div className="p-6 space-y-4">
+      <div className="flex items-center gap-2">
+        <span className="w-3 h-3 rounded-full bg-[var(--color-cognate)]" />
+        <h3 className="text-lg font-bold text-[var(--color-cognate)]">{displayWord}</h3>
+      </div>
+
+      {word.lemma && word.lemma.toLowerCase() !== word.text.toLowerCase() && (
+        <p className="text-xs text-slate-400">as used in text: <span className="italic">{word.text}</span></p>
+      )}
+
+      <p className="text-sm text-slate-600">
+        This word is a <span className="font-medium text-[var(--color-cognate)]">cognate</span> — it is identical or very similar to its English equivalent and can be understood without formal study.
+      </p>
+
+      {cognateInfo?.english && cognateInfo.english !== displayWord.toLowerCase() && (
+        <div className="text-sm text-slate-500">
+          <span className="font-medium">English equivalent:</span> {cognateInfo.english}
+        </div>
+      )}
+
+      <div className="text-xs text-slate-400 bg-slate-50 p-2 rounded">
+        Cognates count as accessible words in the readability score. Students will understand this word through English.
+      </div>
+    </div>
+  );
 }
 
 function KnownWordInfo({ word, linkedGroup }) {

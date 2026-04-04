@@ -13,10 +13,12 @@
   --color-unknown: #ef4444;
   --color-replaced: #3b82f6;
   --color-glossed: #9ca3af;
+  --color-cognate: #7c3aed;
   --color-known-bg: #e6f4f6;
   --color-unknown-bg: #fee2e2;
   --color-replaced-bg: #dbeafe;
   --color-glossed-bg: #f3f4f6;
+  --color-cognate-bg: #ede9fe;
 }
 
 body {

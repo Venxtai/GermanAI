@@ -189,12 +189,13 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
       if (result.known) {
         analyzedWords.push({
           ...wordToken,
-          status: 'known',
+          status: result.reason === 'cognate' ? 'cognate' : 'known',
           reason: result.reason,
           entry: result.entry || null,
           verbForm: result.verbForm || null,
           lemma: result.lemma || lemma,
           isProperName,
+          cognateInfo: result.cognateInfo || null,
         });
       } else {
         // Get info about where this word appears in the curriculum
@@ -299,9 +300,10 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
     }
   }
 
-  // Compute readability score
+  // Compute readability score (cognates count as accessible)
   const totalContentWords = analyzedSentences.flatMap(s => s.words).filter(w => w.type === 'word').length;
-  const knownWords = analyzedSentences.flatMap(s => s.words).filter(w => w.type === 'word' && w.status === 'known').length;
+  const knownWords = analyzedSentences.flatMap(s => s.words).filter(w => w.type === 'word' && (w.status === 'known' || w.status === 'cognate')).length;
+  const cognateWords = analyzedSentences.flatMap(s => s.words).filter(w => w.type === 'word' && w.status === 'cognate').length;
   const grammarIssues = analyzedSentences.filter(s => s.grammar.status === 'issue').length;
   const readabilityPercent = totalContentWords > 0 ? Math.round((knownWords / totalContentWords) * 100) : 100;
 

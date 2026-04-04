@@ -701,13 +701,15 @@ router.post('/analyzer/export', async (req, res) => {
       function origBaseColor(clean) {
         const status = baseColors[clean];
         if (status === 'unknown' || status === 'glossed') return '#ef4444';
+        if (status === 'cognate') return '#7c3aed'; // purple for cognates
         return '#008899'; // known = teal
       }
-      // Adapted text color: glossed → grey, unknown → red, known → teal
+      // Adapted text color: glossed → grey, unknown → red, cognate → purple, known → teal
       function adaptedBaseColor(clean) {
         const status = baseColors[clean];
         if (status === 'glossed') return '#9ca3af';
         if (status === 'unknown') return '#ef4444';
+        if (status === 'cognate') return '#7c3aed';
         return '#008899';
       }
 
@@ -962,7 +964,8 @@ router.post('/analyzer/export', async (req, res) => {
         doc.fillColor('#008899').text('Known', xPos, footerY, { lineBreak: false }); xPos += 34;
         doc.fillColor('#ef4444').text('Unknown', xPos, footerY, { lineBreak: false }); xPos += 44;
         doc.fillColor('#3b82f6').text('Replaced', xPos, footerY, { lineBreak: false }); xPos += 48;
-        doc.fillColor('#9ca3af').text('Glossed', xPos, footerY, { lineBreak: false });
+        doc.fillColor('#9ca3af').text('Translated', xPos, footerY, { lineBreak: false }); xPos += 54;
+        doc.fillColor('#7c3aed').text('Cognate', xPos, footerY, { lineBreak: false });
       }
       doc.fillColor('#000');
     }

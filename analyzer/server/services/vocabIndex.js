@@ -511,7 +511,113 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
     }
   }
 
+  // Cognate detection: German words identical or near-identical to English
+  // Only runs after all known-word checks fail — known words stay green
+  const cognateResult = detectCognate(norm);
+  if (cognateResult) {
+    return { known: true, reason: 'cognate', cognateInfo: cognateResult };
+  }
+
   return { known: false, entries, verbForms };
+}
+
+/**
+ * Detect if a German word is a cognate — identical or near-identical to English.
+ * Students can understand these without formal study.
+ */
+function detectCognate(word) {
+  const w = word.toLowerCase();
+
+  // Exact German-English cognates (same spelling, same/similar meaning)
+  const exactCognates = new Set([
+    'bus', 'taxi', 'hotel', 'computer', 'internet', 'sport', 'film', 'radio',
+    'musik', 'pizza', 'pasta', 'kaffee', 'schokolade', 'banane', 'tomate',
+    'name', 'lamp', 'lampe', 'sofa', 'park', 'baby', 'campus', 'test',
+    'plan', 'club', 'band', 'ball', 'start', 'stopp', 'stop', 'trend',
+    'blog', 'app', 'smartphone', 'laptop', 'tablet', 'email', 'online',
+    'offline', 'video', 'album', 'arena', 'alphabet', 'campus', 'chaos',
+    'container', 'design', 'digital', 'display', 'doping', 'download',
+    'event', 'fair', 'fan', 'festival', 'fitness', 'global', 'golf',
+    'homepage', 'image', 'job', 'journal', 'jogging', 'jeans', 'kiosk',
+    'marketing', 'manager', 'modern', 'monitor', 'museum', 'navigation',
+    'notebook', 'partner', 'podcast', 'poster', 'profil', 'programm',
+    'projekt', 'quiz', 'recycling', 'reform', 'report', 'restaurant',
+    'seminar', 'server', 'service', 'signal', 'slogan', 'software',
+    'stress', 'studio', 'system', 'team', 'terror', 'ticket', 'timer',
+    'tipp', 'tour', 'trainer', 'tunnel', 'update', 'weekend',
+    'camping', 'cocktail', 'couch', 'cousin', 'cowboy', 'crash',
+    'freestyle', 'garage', 'grill', 'hamburger', 'handy', 'happy',
+    'hobby', 'humor', 'idee', 'illustration', 'information', 'innovation',
+    'inspiration', 'instrument', 'interview', 'investition',
+    'kapitel', 'kategorie', 'klasse', 'kommunikation', 'konflikt',
+    'konzert', 'kultur', 'limit', 'liste', 'logo', 'material',
+    'methode', 'million', 'minute', 'moment', 'motivation', 'natur',
+    'nation', 'normal', 'nummer', 'operation', 'option', 'organisation',
+    'original', 'paket', 'panorama', 'parade', 'parallel', 'parlament',
+    'person', 'phase', 'philosophie', 'physik', 'pilot', 'planet',
+    'plakat', 'plastik', 'politik', 'position', 'potential', 'präsident',
+    'prinzip', 'problem', 'produkt', 'produktion', 'professor',
+    'protest', 'provokation', 'publikum', 'qualität', 'radio',
+    'reaktion', 'realität', 'region', 'religion', 'reportage',
+    'republik', 'resultat', 'revolution', 'risiko', 'rolle', 'routine',
+    'sabotage', 'saison', 'sandwich', 'satellit', 'sensation',
+    'situation', 'ski', 'standard', 'station', 'statistik', 'strategie',
+    'struktur', 'subjekt', 'symbol', 'sympathie', 'symptom',
+    'technik', 'technologie', 'telefon', 'temperatur', 'tempo',
+    'tennis', 'text', 'thema', 'theorie', 'therapie', 'tiger',
+    'toleranz', 'tourist', 'tradition', 'transport', 'triumph',
+  ]);
+
+  if (exactCognates.has(w)) {
+    return { type: 'exact', english: w };
+  }
+
+  // Pattern-based cognate detection: common German→English spelling patterns
+  const patterns = [
+    // German -tion = English -tion (Information, Situation, Nation)
+    { de: /tion$/, transform: w => w, minLen: 6 },
+    // German -tät = English -ty (Universität→University, Qualität→Quality)
+    { de: /tät$/, transform: w => w.replace(/tät$/, 'ty'), minLen: 6 },
+    // German -ie = English -y (Philosophie→Philosophy, Energie→Energy)
+    { de: /ie$/, transform: w => w.replace(/ie$/, 'y'), minLen: 5 },
+    // German -ik = English -ic (Musik→Music, Physik→Physics)
+    { de: /ik$/, transform: w => w.replace(/ik$/, 'ic'), minLen: 4 },
+    // German -isch = English -ical/-ish (politisch→political, fantastisch→fantastic)
+    { de: /isch$/, transform: w => w.replace(/isch$/, 'ical'), minLen: 6 },
+    // German -ismus = English -ism (Kapitalismus→Capitalism)
+    { de: /ismus$/, transform: w => w.replace(/ismus$/, 'ism'), minLen: 6 },
+    // German -ist = English -ist (Tourist→Tourist, Terrorist→Terrorist)
+    { de: /ist$/, transform: w => w.replace(/ist$/, 'ist'), minLen: 5 },
+    // German Z = English C at start (Zentrum→Center, Zentimeter→Centimeter)
+    { de: /^z/, transform: w => w.replace(/^z/, 'c'), minLen: 5 },
+    // German K = English C at start (Kultur→Culture, Kategorie→Category)
+    { de: /^k/, transform: w => w.replace(/^k/, 'c'), minLen: 5 },
+    // German -ment = English -ment (Moment, Instrument, Dokument)
+    { de: /ment$/, transform: w => w, minLen: 6 },
+    // German -ur = English -ure (Kultur→Culture, Natur→Nature, Struktur→Structure)
+    { de: /ur$/, transform: w => w.replace(/ur$/, 'ure'), minLen: 5 },
+    // German -enz/-anz = English -ence/-ance (Toleranz→Tolerance, Differenz→Difference)
+    { de: /enz$/, transform: w => w.replace(/enz$/, 'ence'), minLen: 6 },
+    { de: /anz$/, transform: w => w.replace(/anz$/, 'ance'), minLen: 6 },
+    // German -eur = English -or/-er (Ingenieur→Engineer)
+    { de: /eur$/, transform: w => w.replace(/eur$/, 'or'), minLen: 5 },
+    // German -meter = English -meter (Zentimeter, Kilometer, Thermometer)
+    { de: /meter$/, transform: w => w, minLen: 7 },
+  ];
+
+  for (const { de, transform, minLen } of patterns) {
+    if (w.length >= minLen && de.test(w)) {
+      const english = transform(w);
+      // Similarity check: the transformed word should be recognizable
+      // (at least 60% character overlap with original)
+      const overlap = [...w].filter((c, i) => english[i] === c).length;
+      if (overlap / Math.max(w.length, english.length) > 0.5) {
+        return { type: 'pattern', english };
+      }
+    }
+  }
+
+  return null;
 }
 
 /**

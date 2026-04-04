@@ -298,6 +298,7 @@ function getWordColorClass(status) {
     case 'unknown': return 'bg-[var(--color-unknown-bg)] text-[var(--color-unknown)] hover:brightness-95';
     case 'replaced': return 'bg-[var(--color-replaced-bg)] text-[var(--color-replaced)] hover:brightness-95';
     case 'glossed': return 'bg-[var(--color-glossed-bg)] text-[var(--color-glossed)] hover:brightness-95';
+    case 'cognate': return 'bg-[var(--color-cognate-bg)] text-[var(--color-cognate)] hover:brightness-95';
     default: return '';
   }
 }
