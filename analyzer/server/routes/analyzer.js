@@ -810,6 +810,7 @@ router.post('/analyzer/export', async (req, res) => {
       }
 
       // In ADAPTED text: replacement words from changes are forced blue
+      // Include both dictionary forms AND find words in adapted text not in original (inflected forms)
       const forceBlueAdapted = new Set();
       for (const gc of (annotations?.grammarChanges || [])) {
         if (gc.replacement) for (const w of gc.replacement.toLowerCase().split(/\s+/)) forceBlueAdapted.add(w);
@@ -817,6 +818,17 @@ router.post('/analyzer/export', async (req, res) => {
       for (const vc of (annotations?.vocabChanges || [])) {
         if (vc.replacement && !vc.isGloss) for (const w of vc.replacement.toLowerCase().split(/\s+/)) forceBlueAdapted.add(w);
       }
+      // Also detect new words in adapted text that weren't in original (catches inflected replacements)
+      const origWordSet = new Set(
+        (originalText || '').toLowerCase().replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').split(/\s+/).filter(Boolean)
+      );
+      const adaptedWordList = text.toLowerCase().replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').split(/\s+/).filter(Boolean);
+      for (const w of adaptedWordList) {
+        if (!origWordSet.has(w) && w.length > 1) {
+          forceBlueAdapted.add(w);
+        }
+      }
+
       // Glossed words are grey in adapted text
       const forceGreyAdapted = new Set();
       for (const vc of (annotations?.vocabChanges || [])) {
