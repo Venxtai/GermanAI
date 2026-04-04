@@ -962,10 +962,10 @@ router.post('/analyzer/export', async (req, res) => {
         doc.fontSize(7).font('Helvetica');
         let xPos = 50;
         doc.fillColor('#008899').text('Known', xPos, footerY, { lineBreak: false }); xPos += 34;
+        doc.fillColor('#7c3aed').text('Cognate', xPos, footerY, { lineBreak: false }); xPos += 46;
         doc.fillColor('#ef4444').text('Unknown', xPos, footerY, { lineBreak: false }); xPos += 44;
         doc.fillColor('#3b82f6').text('Replaced', xPos, footerY, { lineBreak: false }); xPos += 48;
-        doc.fillColor('#9ca3af').text('Translated', xPos, footerY, { lineBreak: false }); xPos += 54;
-        doc.fillColor('#7c3aed').text('Cognate', xPos, footerY, { lineBreak: false });
+        doc.fillColor('#9ca3af').text('Translated', xPos, footerY, { lineBreak: false });
       }
       doc.fillColor('#000');
     }

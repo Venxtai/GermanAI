@@ -566,6 +566,14 @@ function detectCognate(word) {
     'technik', 'technologie', 'telefon', 'temperatur', 'tempo',
     'tennis', 'text', 'thema', 'theorie', 'therapie', 'tiger',
     'toleranz', 'tourist', 'tradition', 'transport', 'triumph',
+    // Z→C and K→C cognates (explicit to avoid false positives from broad patterns)
+    'zentimeter', 'zentrum', 'zirkus', 'zivilisation', 'zone', 'zylinder',
+    'kategorie', 'katalog', 'kamera', 'kanal', 'kandidat', 'kapital',
+    'karriere', 'karton', 'kino', 'klassiker', 'komfort', 'komitee',
+    'kommission', 'komplex', 'konferenz', 'kontakt', 'kontext',
+    'kontinent', 'kontrast', 'kontrolle', 'konzept', 'kopie',
+    'korrespondenz', 'korrekt', 'kostüm', 'krise', 'kritik',
+    'kilometer', 'kooperation', 'koordination',
   ]);
 
   if (exactCognates.has(w)) {
@@ -588,10 +596,12 @@ function detectCognate(word) {
     { de: /ismus$/, transform: w => w.replace(/ismus$/, 'ism'), minLen: 6 },
     // German -ist = English -ist (Tourist→Tourist, Terrorist→Terrorist)
     { de: /ist$/, transform: w => w.replace(/ist$/, 'ist'), minLen: 5 },
-    // German Z = English C at start (Zentrum→Center, Zentimeter→Centimeter)
-    { de: /^z/, transform: w => w.replace(/^z/, 'c'), minLen: 5 },
-    // German K = English C at start (Kultur→Culture, Kategorie→Category)
-    { de: /^k/, transform: w => w.replace(/^k/, 'c'), minLen: 5 },
+    // German Z→C / K→C only with specific ending patterns (avoid false positives)
+    // e.g., Zentimeter→Centimeter, Zentrum→Center, but NOT Kleidchen→cleidchen
+    { de: /^z.+meter$/, transform: w => w.replace(/^z/, 'c'), minLen: 7 },
+    { de: /^z.+trum$/, transform: w => w.replace(/^z/, 'c').replace(/trum$/, 'ter'), minLen: 6 },
+    { de: /^k.+tur$/, transform: w => w.replace(/^k/, 'c').replace(/tur$/, 'ture'), minLen: 6 },
+    { de: /^k.+tion$/, transform: w => w.replace(/^k/, 'c'), minLen: 8 },
     // German -ment = English -ment (Moment, Instrument, Dokument)
     { de: /ment$/, transform: w => w, minLen: 6 },
     // German -ur = English -ure (Kultur→Culture, Natur→Nature, Struktur→Structure)

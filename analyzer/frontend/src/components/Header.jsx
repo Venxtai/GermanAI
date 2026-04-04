@@ -173,6 +173,13 @@ export default function Header() {
           </button>
         )}
 
+        <button
+          onClick={toggleVocabLookup}
+          className="px-3 py-1.5 text-sm bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium"
+        >
+          Vocabulary Lookup
+        </button>
+
         {/* Auto-Adapt: only when analysis exists, has unknown words, no replacements yet, and not read-only */}
         {!isReadOnly && analysisResult && unknownCount > 0 && !hasReplacements && (
           <button
@@ -184,13 +191,6 @@ export default function Header() {
             {isAutoAdapting ? 'Adapting...' : `Auto-Adapt (${unknownCount} words)`}
           </button>
         )}
-
-        <button
-          onClick={toggleVocabLookup}
-          className="px-3 py-1.5 text-sm bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium"
-        >
-          Vocabulary Lookup
-        </button>
 
         {/* Export & Share dropdown */}
         {analysisResult && (
