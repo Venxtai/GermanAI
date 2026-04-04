@@ -915,28 +915,60 @@ router.post('/analyzer/export', async (req, res) => {
       let footnoteNum = 0;
       const studentMargin = 50;
       const studentWidth = doc.page.width - 100; // 50px margins each side
-      const words = text.split(/(\s+)/);
-      for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-        const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
-        const isFirst = i === 0;
-        if (glossMap.has(clean)) {
-          footnoteNum++;
-          footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
-          if (isFirst) {
-            doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
-          } else {
-            doc.text(word, { continued: true });
+
+      // Split by newlines to preserve paragraph/dialog structure
+      const paragraphs = text.split(/\n+/);
+      let isVeryFirst = true;
+
+      for (const para of paragraphs) {
+        if (!para.trim()) continue;
+        if (!isVeryFirst) {
+          doc.text('', studentMargin); // end previous continued line
+          doc.moveDown(0.3);
+        }
+
+        // Detect speaker label pattern (e.g., "Wendla:" or "Frau Bergmann:")
+        const speakerMatch = para.match(/^([A-ZÄÖÜ][a-zA-ZäöüÄÖÜß\s]+):\s*/);
+
+        const words = para.split(/(\s+)/);
+        let speakerDone = false;
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
+          const isFirst = isVeryFirst && i === 0;
+
+          // Bold for speaker label
+          if (speakerMatch && !speakerDone) {
+            const speakerEnd = speakerMatch[0].length;
+            const soFar = words.slice(0, i + 1).join('').length;
+            if (soFar <= speakerEnd) {
+              doc.font('Helvetica-Bold');
+            } else {
+              doc.font('Helvetica');
+              speakerDone = true;
+            }
           }
-          doc.fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
-          doc.fontSize(12);
-        } else {
-          if (isFirst) {
-            doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+
+          if (glossMap.has(clean)) {
+            footnoteNum++;
+            footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+            if (isFirst) {
+              doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+            } else {
+              doc.text(word, { continued: true });
+            }
+            doc.fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
+            doc.fontSize(12);
           } else {
-            doc.text(word, { continued: true });
+            if (isFirst) {
+              doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+            } else {
+              doc.text(word, { continued: true });
+            }
           }
         }
+        doc.font('Helvetica'); // reset after speaker bold
+        isVeryFirst = false;
       }
       doc.text('', studentMargin);
 

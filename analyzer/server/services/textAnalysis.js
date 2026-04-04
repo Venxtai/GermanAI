@@ -394,20 +394,41 @@ ONLY output the JSON array, nothing else.`;
  */
 function splitIntoSentences(text) {
   const sentences = [];
-  // Match sentences ending with . ! ? or end of text
-  const regex = /[^.!?]*[.!?]+|[^.!?]+$/g;
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    const trimmed = match[0].trim();
-    if (trimmed) {
+
+  // First split by newlines to preserve paragraph/dialog structure
+  const paragraphs = text.split(/\n+/);
+
+  for (const para of paragraphs) {
+    const trimmedPara = para.trim();
+    if (!trimmedPara) continue;
+
+    // Within each paragraph, split by sentence-ending punctuation
+    const regex = /[^.!?]*[.!?]+|[^.!?]+$/g;
+    let match;
+    let isFirstInParagraph = true;
+    while ((match = regex.exec(trimmedPara)) !== null) {
+      const trimmed = match[0].trim();
+      if (trimmed) {
+        sentences.push({
+          text: trimmed,
+          startOffset: match.index,
+          paragraphBreak: isFirstInParagraph && sentences.length > 0, // mark line break before this sentence
+        });
+        isFirstInParagraph = false;
+      }
+    }
+    if (isFirstInParagraph && trimmedPara) {
+      // Paragraph with no sentence-ending punctuation
       sentences.push({
-        text: trimmed,
-        startOffset: match.index,
+        text: trimmedPara,
+        startOffset: 0,
+        paragraphBreak: sentences.length > 0,
       });
     }
   }
+
   if (sentences.length === 0 && text.trim()) {
-    sentences.push({ text: text.trim(), startOffset: 0 });
+    sentences.push({ text: text.trim(), startOffset: 0, paragraphBreak: false });
   }
   return sentences;
 }

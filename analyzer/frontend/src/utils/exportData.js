@@ -44,6 +44,8 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
   for (let si = 0; si < analysisResult.sentences.length; si++) {
     const sentence = analysisResult.sentences[si];
     const rewrite = sentenceRewrites[si];
+    // Preserve paragraph breaks
+    if (sentence.paragraphBreak) finalText += '\n';
     if (rewrite?.rewritten) {
       finalText += rewrite.rewritten + ' ';
     } else {
@@ -66,6 +68,7 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
 
   let originalText = '';
   for (const sentence of analysisResult.sentences) {
+    if (sentence.paragraphBreak) originalText += '\n';
     for (const word of sentence.words) originalText += word.text;
     originalText += ' ';
   }

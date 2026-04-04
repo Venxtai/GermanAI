@@ -83,18 +83,20 @@ export default function AnalyzedText() {
       )}
       <div className="bg-white rounded-xl border border-slate-200 p-6 leading-relaxed text-base">
         {analysisResult.sentences.map((sentence, si) => (
-          <SentenceDisplay
-            key={si}
-            sentence={sentence}
-            sentenceIndex={si}
-            selectWord={selectWord}
-            selectCircle={selectCircle}
-            selectedWord={selectedWord}
-            selectedCircle={selectedCircle}
-            wordModifications={wordModifications}
-            sentenceRewrite={sentenceRewrites[si]}
-            whatIfStatusMap={whatIfStatusMap}
-          />
+          <span key={si}>
+            {sentence.paragraphBreak && <><br /><br /></>}
+            <SentenceDisplay
+              sentence={sentence}
+              sentenceIndex={si}
+              selectWord={selectWord}
+              selectCircle={selectCircle}
+              selectedWord={selectedWord}
+              selectedCircle={selectedCircle}
+              wordModifications={wordModifications}
+              sentenceRewrite={sentenceRewrites[si]}
+              whatIfStatusMap={whatIfStatusMap}
+            />
+          </span>
         ))}
       </div>
     </div>
@@ -136,9 +138,16 @@ function SentenceDisplay({
         />
       ) : (
         // Show original words with colors
-        sentence.words.map((word, wi) => {
-          if (word.type === 'whitespace') return <span key={wi}>{word.text}</span>;
-          if (word.type === 'punctuation') return <span key={wi}>{word.text}</span>;
+        // Detect speaker label: words before first ":" at start of sentence (dialog pattern)
+        (() => {
+          const colonIdx = sentence.words.findIndex(w => w.type === 'punctuation' && w.text === ':');
+          // Speaker label = colon is within first 6 tokens AND all words before it are known/proper names
+          const hasSpeakerLabel = colonIdx > 0 && colonIdx <= 6 &&
+            sentence.words.slice(0, colonIdx).every(w => w.type === 'whitespace' || w.status === 'known' || w.reason === 'proper_name' || w.isProperName);
+          return sentence.words.map((word, wi) => {
+          const isSpeakerPart = hasSpeakerLabel && wi <= colonIdx;
+          if (word.type === 'whitespace') return <span key={wi} className={isSpeakerPart ? 'font-bold' : ''}>{word.text}</span>;
+          if (word.type === 'punctuation') return <span key={wi} className={isSpeakerPart ? 'font-bold' : ''}>{word.text}</span>;
 
           const modKey = `${sentenceIndex}_${wi}`;
           const mod = wordModifications[modKey];
@@ -169,12 +178,13 @@ function SentenceDisplay({
               onClick={() => selectWord(sentenceIndex, wi)}
               className={`cursor-pointer rounded px-0.5 transition-all duration-300 ${colorClass} ${
                 isSelected ? 'ring-2 ring-[var(--brand)] ring-offset-1' : ''
-              } ${word.linkedGroup ? 'underline decoration-dotted decoration-slate-400 underline-offset-4' : ''}`}
+              } ${word.linkedGroup ? 'underline decoration-dotted decoration-slate-400 underline-offset-4' : ''} ${isSpeakerPart ? 'font-bold' : ''}`}
             >
               {displayWord}
             </span>
           );
-        })
+        });
+        })()
       )}
 
       {/* Grammar circle */}
