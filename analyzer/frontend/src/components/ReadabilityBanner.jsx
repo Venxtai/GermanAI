@@ -49,8 +49,12 @@ export default function ReadabilityBanner() {
             const origWord = sentence.words.find(w =>
               w.type === 'word' && w.text.toLowerCase() === rwLower
             );
-            if (origWord?.status === 'known') known++;
-            // Check if it was modified (glossed words are still unknown)
+            if (origWord?.status === 'known') {
+              known++;
+            } else if (origWord?.status === 'cognate') {
+              known++;
+              cognates++;
+            }
           }
         }
       } else {
