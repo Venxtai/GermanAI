@@ -699,6 +699,7 @@ router.post('/analyzer/export', async (req, res) => {
   if (!text) {
     return res.status(400).json({ error: 'Missing text' });
   }
+  console.log('[EXPORT] formattedRanges:', formattedRanges?.length || 0, 'ranges', formattedRanges?.slice(0, 3));
 
   const exportMode = mode || 'student';
 

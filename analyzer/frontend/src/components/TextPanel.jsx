@@ -10,70 +10,69 @@ function sanitizeHtml(html) {
   // Remove images, scripts, etc.
   doc.querySelectorAll('img, script, link, style, meta, svg, canvas, video, audio, iframe, object, embed').forEach(el => el.remove());
 
-  // First pass: collect formatting info before stripping attributes
-  const boldElements = new Set();
-  const italicElements = new Set();
+  // Use computed styles to determine actual formatting per text node
+  // This handles inheritance correctly (parent bold + child normal = child is NOT bold)
+  // We need to temporarily insert into DOM to compute styles
+  const container = document.createElement('div');
+  container.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+  container.innerHTML = doc.body.innerHTML;
+  document.body.appendChild(container);
+
+  // Collect actual computed formatting per text node
+  const textNodes = [];
+  let boldCount = 0, totalCount = 0;
+  let italicCount = 0;
+  function collectText(node) {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+      const computed = window.getComputedStyle(node.parentElement);
+      const isBold = parseInt(computed.fontWeight) >= 700;
+      const isItalic = computed.fontStyle === 'italic';
+      textNodes.push({ node, isBold, isItalic });
+      totalCount++;
+      if (isBold) boldCount++;
+      if (isItalic) italicCount++;
+    } else if (node.childNodes) {
+      node.childNodes.forEach(collectText);
+    }
+  }
+  collectText(container);
+  document.body.removeChild(container);
+
+  // Determine if ALL text is bold/italic (base style, not selective)
+  const allBold = totalCount > 0 && boldCount === totalCount;
+  const allItalic = totalCount > 0 && italicCount === totalCount;
+
+  // Strip all attributes, then re-apply only selective formatting
   doc.querySelectorAll('*').forEach(el => {
     const tag = el.tagName.toLowerCase();
-    const isBold = tag === 'b' || tag === 'strong' ||
-      el.style?.fontWeight === 'bold' || parseInt(el.style?.fontWeight) >= 700;
-    const isItalic = tag === 'i' || tag === 'em' ||
-      el.style?.fontStyle === 'italic';
-    if (isBold) boldElements.add(el);
-    if (isItalic) italicElements.add(el);
-  });
+    const wasBoldTag = tag === 'b' || tag === 'strong';
+    const wasItalicTag = tag === 'i' || tag === 'em';
+    const wasBoldStyle = el.style?.fontWeight === 'bold' || parseInt(el.style?.fontWeight) >= 700;
+    const wasItalicStyle = el.style?.fontStyle === 'italic';
+    // Check if this element explicitly sets normal weight (overrides parent)
+    const wasNormalWeight = el.style?.fontWeight === 'normal' || el.style?.fontWeight === '400';
+    const wasNormalStyle = el.style?.fontStyle === 'normal';
 
-  // Check if bold/italic is applied to ALL text (base style, not selective)
-  // If so, strip it entirely — it's not meaningful formatting
-  const allText = doc.body.innerText || '';
-  const textNodes = [];
-  function collectText(node) {
-    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) textNodes.push(node);
-    else node.childNodes?.forEach(collectText);
-  }
-  collectText(doc.body);
-
-  let allBold = textNodes.length > 0;
-  let allItalic = textNodes.length > 0;
-  for (const tn of textNodes) {
-    let el = tn.parentElement;
-    let isBold = false, isItalic = false;
-    while (el && el !== doc.body) {
-      if (boldElements.has(el)) isBold = true;
-      if (italicElements.has(el)) isItalic = true;
-      el = el.parentElement;
-    }
-    if (boldElements.has(doc.body)) isBold = true;
-    if (italicElements.has(doc.body)) isItalic = true;
-    if (!isBold) allBold = false;
-    if (!isItalic) allItalic = false;
-  }
-
-  // Second pass: strip all attributes, re-apply selective formatting
-  doc.querySelectorAll('*').forEach(el => {
-    const wasBold = boldElements.has(el);
-    const wasItalic = italicElements.has(el);
     el.removeAttribute('style');
     el.removeAttribute('class');
     el.removeAttribute('color');
     el.removeAttribute('bgcolor');
     el.removeAttribute('face');
     el.removeAttribute('size');
-    // Only re-apply if it's selective (not ALL text has this formatting)
-    if (wasBold && !allBold) el.style.fontWeight = 'bold';
-    if (wasItalic && !allItalic) el.style.fontStyle = 'italic';
+
+    // Re-apply formatting: keep bold/italic tags, re-apply styles if selective
+    if ((wasBoldStyle || wasBoldTag) && !allBold) el.style.fontWeight = 'bold';
+    if (wasNormalWeight && !allBold) el.style.fontWeight = 'normal'; // preserve explicit overrides
+    if ((wasItalicStyle || wasItalicTag) && !allItalic) el.style.fontStyle = 'italic';
+    if (wasNormalStyle && !allItalic) el.style.fontStyle = 'normal';
   });
 
-  // Unwrap <b>/<strong> tags if all text is bold (they're not meaningful)
+  // Unwrap <b>/<strong> or <i>/<em> tags if ALL text has that formatting
   if (allBold) {
-    doc.querySelectorAll('b, strong').forEach(el => {
-      el.replaceWith(...el.childNodes);
-    });
+    doc.querySelectorAll('b, strong').forEach(el => el.replaceWith(...el.childNodes));
   }
   if (allItalic) {
-    doc.querySelectorAll('i, em').forEach(el => {
-      el.replaceWith(...el.childNodes);
-    });
+    doc.querySelectorAll('i, em').forEach(el => el.replaceWith(...el.childNodes));
   }
 
   return doc.body.innerHTML;

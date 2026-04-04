@@ -18,11 +18,16 @@ export function buildFormattingMap(html, sentences) {
       }
     } else if (node.nodeType === Node.ELEMENT_NODE) {
       const tag = node.tagName.toLowerCase();
-      const isBold = bold || tag === 'b' || tag === 'strong' ||
+      // Check explicit overrides: font-weight:normal cancels inherited bold
+      const explicitNormalWeight = node.style?.fontWeight === 'normal' || node.style?.fontWeight === '400';
+      const explicitNormalStyle = node.style?.fontStyle === 'normal';
+      const isBold = explicitNormalWeight ? false :
+        (bold || tag === 'b' || tag === 'strong' ||
         (node.style?.fontWeight && parseInt(node.style.fontWeight) >= 700) ||
-        node.style?.fontWeight === 'bold';
-      const isItalic = italic || tag === 'i' || tag === 'em' ||
-        node.style?.fontStyle === 'italic';
+        node.style?.fontWeight === 'bold');
+      const isItalic = explicitNormalStyle ? false :
+        (italic || tag === 'i' || tag === 'em' ||
+        node.style?.fontStyle === 'italic');
 
       // Line breaks
       if (tag === 'br') segments.push({ char: '\n', bold: false, italic: false });
