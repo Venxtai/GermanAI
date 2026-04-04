@@ -4,7 +4,7 @@ import useAnalyzerStore from '../store/useAnalyzerStore';
 export default function AnalyzedText() {
   const {
     analysisResult, selectWord, selectCircle, selectedWord, selectedCircle,
-    wordModifications, sentenceRewrites,
+    wordModifications, sentenceRewrites, wordFormatting,
     whatIfMode, whatIfUnits, whatIfResults, whatIfLoading,
     setWhatIfResults, setWhatIfLoading,
   } = useAnalyzerStore();
@@ -93,6 +93,7 @@ export default function AnalyzedText() {
               selectedWord={selectedWord}
               selectedCircle={selectedCircle}
               wordModifications={wordModifications}
+              wordFormatting={wordFormatting}
               sentenceRewrite={sentenceRewrites[si]}
               whatIfStatusMap={whatIfStatusMap}
             />
@@ -105,8 +106,8 @@ export default function AnalyzedText() {
 
 function SentenceDisplay({
   sentence, sentenceIndex, selectWord, selectCircle,
-  selectedWord, selectedCircle, wordModifications, sentenceRewrite,
-  whatIfStatusMap,
+  selectedWord, selectedCircle, wordModifications, wordFormatting,
+  sentenceRewrite, whatIfStatusMap,
 }) {
   const { selectRewriteWord, selectedRewriteWord } = useAnalyzerStore();
 
@@ -139,10 +140,20 @@ function SentenceDisplay({
       ) : (
         // Show original words with colors
         sentence.words.map((word, wi) => {
-          if (word.type === 'whitespace') return <span key={wi}>{word.text}</span>;
-          if (word.type === 'punctuation') return <span key={wi}>{word.text}</span>;
+          const fmtKey = `${sentenceIndex}_${wi}`;
+          const fmt = wordFormatting?.[fmtKey];
+          const fmtStyle = (fmt?.bold || fmt?.italic) ? {
+            fontWeight: fmt?.bold ? 700 : undefined,
+            fontStyle: fmt?.italic ? 'italic' : undefined,
+          } : undefined;
 
-          const modKey = `${sentenceIndex}_${wi}`;
+          if (word.type === 'whitespace') return <span key={wi}>{word.text}</span>;
+          if (word.type === 'punctuation') {
+            // Apply formatting to punctuation adjacent to formatted words
+            return <span key={wi} style={fmtStyle}>{word.text}</span>;
+          }
+
+          const modKey = fmtKey;
           const mod = wordModifications[modKey];
           const displayWord = mod?.type === 'replaced' ? mod.replacement : word.text;
 
@@ -172,6 +183,7 @@ function SentenceDisplay({
               className={`cursor-pointer rounded px-0.5 transition-all duration-300 ${colorClass} ${
                 isSelected ? 'ring-2 ring-[var(--brand)] ring-offset-1' : ''
               } ${word.linkedGroup ? 'underline decoration-dotted decoration-slate-400 underline-offset-4' : ''}`}
+              style={fmtStyle}
             >
               {displayWord}
             </span>

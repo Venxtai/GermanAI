@@ -16,6 +16,22 @@ function init(deps) {
   unitNames = deps.unitNames || {};
 }
 
+/**
+ * Server-side HTML sanitization: keep only bold, italic, br, p, div structure.
+ * Strip colors, font-size, font-family, images, scripts, etc.
+ */
+function sanitizeHtmlServer(html) {
+  if (!html) return '';
+  // Strip tags we don't want (img, script, style, etc.)
+  let clean = html.replace(/<(img|script|link|style|meta|svg|canvas|video|audio|iframe|object|embed)[^>]*>/gi, '');
+  // Strip style attributes but preserve bold/italic via tags
+  // mammoth produces <strong>, <em>, <p> which is exactly what we want
+  // Remove style attributes, class, color etc.
+  clean = clean.replace(/\s+(style|class|color|bgcolor|face|size|align|valign|width|height)="[^"]*"/gi, '');
+  clean = clean.replace(/\s+(style|class|color|bgcolor|face|size|align|valign|width|height)='[^']*'/gi, '');
+  return clean;
+}
+
 // POST /api/auth/validate
 router.post('/auth/validate', async (req, res) => {
   const result = await auth.validateCode(req.body.code);
@@ -616,8 +632,11 @@ router.post('/analyzer/upload', upload.single('file'), async (req, res) => {
       text = data.text;
     } else if (ext === '.docx') {
       const mammoth = require('mammoth');
-      const result = await mammoth.extractRawText({ path: req.file.path });
-      text = result.value;
+      const rawResult = await mammoth.extractRawText({ path: req.file.path });
+      text = rawResult.value;
+      // Also extract HTML for formatting preservation (bold, italic)
+      const htmlResult = await mammoth.convertToHtml({ path: req.file.path });
+      var docxHtml = sanitizeHtmlServer(htmlResult.value);
     } else {
       return res.status(400).json({ error: `Unsupported file type: ${ext}. Use .txt, .pdf, or .docx` });
     }
@@ -625,7 +644,9 @@ router.post('/analyzer/upload', upload.single('file'), async (req, res) => {
     // Clean up temp file
     fs.unlinkSync(req.file.path);
 
-    res.json({ text: text.trim(), filename: req.file.originalname });
+    const response = { text: text.trim(), filename: req.file.originalname };
+    if (docxHtml) response.html = docxHtml;
+    res.json(response);
   } catch (err) {
     // Clean up temp file on error
     try { fs.unlinkSync(req.file.path); } catch (_) {}
@@ -634,9 +655,46 @@ router.post('/analyzer/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+/**
+ * Build a lookup that, given a character offset in the text, returns {bold, italic} if formatted.
+ * Uses binary search on sorted ranges for efficiency.
+ */
+function buildFormatLookup(formattedRanges) {
+  if (!formattedRanges || formattedRanges.length === 0) return null;
+  // Sort by start position
+  const sorted = [...formattedRanges].sort((a, b) => a.start - b.start);
+  return {
+    /**
+     * Get formatting for a word at character offset `start` with length `len`.
+     * Returns {bold, italic} or null.
+     */
+    getFormat(start, len) {
+      const end = start + len;
+      for (const r of sorted) {
+        if (r.start >= end) break; // past our word
+        if (r.end <= start) continue; // before our word
+        // Overlapping range found
+        return { bold: r.bold || false, italic: r.italic || false };
+      }
+      return null;
+    }
+  };
+}
+
+/**
+ * Set PDFKit font based on formatting flags.
+ */
+function setPdfFont(doc, fmt, baseSize) {
+  if (fmt?.bold && fmt?.italic) doc.font('Helvetica-BoldOblique');
+  else if (fmt?.bold) doc.font('Helvetica-Bold');
+  else if (fmt?.italic) doc.font('Helvetica-Oblique');
+  else doc.font('Helvetica');
+  if (baseSize) doc.fontSize(baseSize);
+}
+
 // POST /api/analyzer/export — Generate PDF export (student or teacher version)
 router.post('/analyzer/export', async (req, res) => {
-  const { text, originalText, glossedWords, title, mode, annotations } = req.body;
+  const { text, originalText, glossedWords, title, mode, annotations, formattedRanges } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: 'Missing text' });
@@ -772,12 +830,14 @@ router.post('/analyzer/export', async (req, res) => {
       doc.y = lineY + 6;
 
       // ─── ROW 2: Texts side by side ───
+      const fmtLookup = buildFormatLookup(formattedRanges);
       doc.fontSize(9).font('Helvetica');
       const textStartY = doc.y;
 
       // LEFT: Original text — base colors from analysis, overridden by changes tables
       const origWords = (originalText || text).split(/(\s+)/);
       doc.y = textStartY;
+      let origCharOffset = 0;
       for (const word of origWords) {
         const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
         if (forceRedOriginal.has(clean)) {
@@ -785,9 +845,13 @@ router.post('/analyzer/export', async (req, res) => {
         } else {
           doc.fillColor(origBaseColor(clean));
         }
+        // Apply bold/italic formatting from original text
+        const fmt = fmtLookup ? fmtLookup.getFormat(origCharOffset, word.length) : null;
+        setPdfFont(doc, fmt, 9);
         doc.text(word, L, doc.y, { continued: true, width: CW });
+        origCharOffset += word.length;
       }
-      doc.fillColor('#000').text('', L, doc.y, { width: CW });
+      doc.font('Helvetica').fillColor('#000').text('', L, doc.y, { width: CW });
       const leftEndY = doc.y;
 
       // RIGHT: Adapted text — blue for replacements, grey for glossed (with footnotes), black for rest
@@ -795,21 +859,28 @@ router.post('/analyzer/export', async (req, res) => {
       let footnoteNum = 0;
       doc.y = textStartY;
       const adaptedWords = text.split(/(\s+)/);
+      let adaptedCharOffset = 0;
       for (const word of adaptedWords) {
         const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+        // Apply bold/italic formatting (adapted text may have shifted positions, but try)
+        const fmt = fmtLookup ? fmtLookup.getFormat(adaptedCharOffset, word.length) : null;
         if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
           footnoteNum++;
           footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+          setPdfFont(doc, fmt, 9);
           doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
-          doc.fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+          doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
           doc.fontSize(9);
         } else if (forceBlueAdapted.has(clean)) {
+          setPdfFont(doc, fmt, 9);
           doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
         } else {
+          setPdfFont(doc, fmt, 9);
           doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
         }
+        adaptedCharOffset += word.length;
       }
-      doc.fillColor('#000').text('', R, doc.y, { width: CW });
+      doc.font('Helvetica').fillColor('#000').text('', R, doc.y, { width: CW });
       const rightEndY = doc.y;
 
       // Glossary under adapted text (empty line, superscript numbers, no title)
@@ -911,6 +982,7 @@ router.post('/analyzer/export', async (req, res) => {
       doc.moveDown(1);
       doc.fontSize(12).font('Helvetica');
 
+      const fmtLookup = buildFormatLookup(formattedRanges);
       const footnotes = [];
       let footnoteNum = 0;
       const studentMargin = 50;
@@ -919,11 +991,16 @@ router.post('/analyzer/export', async (req, res) => {
       // Split by newlines to preserve paragraph structure
       const paragraphs = text.split(/\n+/);
       let isVeryFirst = true;
+      let charOffset = 0; // track position in full text for formatting lookup
 
-      for (const para of paragraphs) {
-        if (!para.trim()) continue;
+      for (let pi = 0; pi < paragraphs.length; pi++) {
+        const para = paragraphs[pi];
+        if (!para.trim()) {
+          charOffset += para.length + 1; // +1 for newline
+          continue;
+        }
         if (!isVeryFirst) {
-          doc.text('', studentMargin); // end previous continued line
+          doc.font('Helvetica').text('', studentMargin); // end previous continued line
           doc.moveDown(0.3);
         }
 
@@ -933,27 +1010,35 @@ router.post('/analyzer/export', async (req, res) => {
           const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
           const isFirst = isVeryFirst && i === 0;
 
+          // Look up formatting for this word position
+          const fmt = fmtLookup ? fmtLookup.getFormat(charOffset, word.length) : null;
+
           if (glossMap.has(clean)) {
             footnoteNum++;
             footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+            setPdfFont(doc, fmt, 12);
             if (isFirst) {
               doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
             } else {
               doc.text(word, { continued: true });
             }
-            doc.fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
+            doc.font('Helvetica').fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
             doc.fontSize(12);
           } else {
+            setPdfFont(doc, fmt, 12);
             if (isFirst) {
               doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
             } else {
               doc.text(word, { continued: true });
             }
           }
+
+          charOffset += word.length;
         }
+        charOffset++; // newline between paragraphs
         isVeryFirst = false;
       }
-      doc.text('', studentMargin);
+      doc.font('Helvetica').text('', studentMargin);
 
       if (footnotes.length > 0) {
         doc.moveDown(1.5);

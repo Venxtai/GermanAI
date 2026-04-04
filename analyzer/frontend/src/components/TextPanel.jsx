@@ -1,15 +1,101 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
 import AnalyzedText from './AnalyzedText';
 
+// Sanitize HTML: keep only structural formatting, strip colors/fonts
+function sanitizeHtml(html) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  // Remove images, scripts, etc.
+  doc.querySelectorAll('img, script, link, style, meta, svg, canvas, video, audio, iframe, object, embed').forEach(el => el.remove());
+
+  // Remove all style attributes except font-weight and font-style
+  doc.querySelectorAll('*').forEach(el => {
+    const bold = el.style?.fontWeight === 'bold' || parseInt(el.style?.fontWeight) >= 700;
+    const italic = el.style?.fontStyle === 'italic';
+    el.removeAttribute('style');
+    el.removeAttribute('class');
+    el.removeAttribute('color');
+    el.removeAttribute('bgcolor');
+    el.removeAttribute('face');
+    el.removeAttribute('size');
+    // Re-apply only formatting styles
+    if (bold) el.style.fontWeight = 'bold';
+    if (italic) el.style.fontStyle = 'italic';
+  });
+
+  return doc.body.innerHTML;
+}
+
 export default function TextPanel() {
   const {
-    inputText, setInputText, setUploadedFilename,
+    inputText, setInputText, inputHtml, setInputHtml,
+    setUploadedFilename, setWordFormatting,
     selectedUnits, isAnalyzing, setAnalyzing, analysisResult, setAnalysisResult,
     whatIfMode, sessionId, isReadOnly,
   } = useAnalyzerStore();
 
   const fileInputRef = useRef(null);
+  const editorRef = useRef(null);
+
+  // Sync editor content when inputText changes externally (e.g., file upload, session restore)
+  const lastSyncedText = useRef(inputText);
+  useEffect(() => {
+    if (editorRef.current && inputText !== lastSyncedText.current) {
+      // If we have inputHtml and the text matches, use HTML; otherwise use plain text
+      if (inputHtml && extractPlainText(inputHtml) === inputText) {
+        editorRef.current.innerHTML = inputHtml;
+      } else {
+        editorRef.current.innerText = inputText;
+      }
+      lastSyncedText.current = inputText;
+    }
+  }, [inputText, inputHtml]);
+
+  // On mount, populate editor with saved content
+  useEffect(() => {
+    if (editorRef.current && !analysisResult) {
+      if (inputHtml) {
+        editorRef.current.innerHTML = inputHtml;
+      } else if (inputText) {
+        editorRef.current.innerText = inputText;
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleInput = useCallback((e) => {
+    const text = e.target.innerText;
+    const html = e.target.innerHTML;
+    lastSyncedText.current = text;
+    setInputText(text);
+    setInputHtml(html);
+  }, [setInputText, setInputHtml]);
+
+  const handlePaste = useCallback((e) => {
+    e.preventDefault();
+    const html = e.clipboardData.getData('text/html');
+    const text = e.clipboardData.getData('text/plain');
+    if (html) {
+      const sanitized = sanitizeHtml(html);
+      document.execCommand('insertHTML', false, sanitized);
+    } else {
+      // Decode HTML entities from plain text paste
+      let decoded = text;
+      if (/&#?\w+;/.test(text)) {
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        decoded = doc.body.textContent || text;
+      }
+      document.execCommand('insertText', false, decoded);
+    }
+    if (editorRef.current) {
+      const newText = editorRef.current.innerText;
+      const newHtml = editorRef.current.innerHTML;
+      lastSyncedText.current = newText;
+      setInputText(newText);
+      setInputHtml(newHtml);
+    }
+  }, [setInputText, setInputHtml]);
 
   const handleAnalyze = async () => {
     if (!inputText.trim() || selectedUnits.size === 0) return;
@@ -27,6 +113,13 @@ export default function TextPanel() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setAnalysisResult(data);
+
+      // Build formatting map from HTML
+      if (inputHtml) {
+        const { buildFormattingMap } = await import('../utils/formatMap');
+        const fmtMap = buildFormattingMap(inputHtml, data.sentences);
+        setWordFormatting(fmtMap);
+      }
 
       // Auto-upload original text as PDF to Google Drive (fire-and-forget)
       if (sessionId) {
@@ -71,6 +164,21 @@ export default function TextPanel() {
 
       setInputText(data.text);
       setUploadedFilename(data.filename);
+
+      // If the server returned HTML (from DOCX), store it
+      if (data.html) {
+        setInputHtml(data.html);
+        if (editorRef.current) {
+          editorRef.current.innerHTML = data.html;
+          lastSyncedText.current = data.text;
+        }
+      } else {
+        setInputHtml('');
+        if (editorRef.current) {
+          editorRef.current.innerText = data.text;
+          lastSyncedText.current = data.text;
+        }
+      }
     } catch (err) {
       console.error('Upload failed:', err);
       alert('File upload failed: ' + err.message);
@@ -104,26 +212,15 @@ export default function TextPanel() {
     <div className="max-w-3xl mx-auto">
       <h2 className="text-lg font-semibold text-slate-700 mb-4">Enter or Upload Text</h2>
 
-      <textarea
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        onPaste={(e) => {
-          // Decode HTML entities (&#39; → ', &amp; → &, etc.) that come from web copy-paste
-          const pasted = e.clipboardData.getData('text/plain');
-          if (pasted && /&#?\w+;/.test(pasted)) {
-            e.preventDefault();
-            const textarea = e.target;
-            const start = textarea.selectionStart;
-            const end = textarea.selectionEnd;
-            const doc = new DOMParser().parseFromString(pasted, 'text/html');
-            const decoded = doc.body.textContent || pasted;
-            const newText = inputText.slice(0, start) + decoded + inputText.slice(end);
-            setInputText(newText);
-          }
-        }}
-        placeholder="Paste your German text here..."
-        className="w-full h-64 p-4 border border-slate-300 rounded-xl resize-y focus:outline-none focus:ring-2 focus:border-transparent text-base leading-relaxed"
-        style={{ '--tw-ring-color': 'var(--brand)' }}
+      <div
+        ref={editorRef}
+        contentEditable={!isReadOnly}
+        onInput={handleInput}
+        onPaste={handlePaste}
+        data-placeholder="Paste your German text here..."
+        className="analyzer-editor w-full h-64 p-4 border border-slate-300 rounded-xl resize-y focus:outline-none focus:ring-2 focus:border-transparent text-base leading-relaxed overflow-y-auto"
+        style={{ '--tw-ring-color': 'var(--brand)', minHeight: '16rem' }}
+        suppressContentEditableWarning
       />
 
       <div className="flex items-center gap-4 mt-4">
@@ -169,4 +266,12 @@ export default function TextPanel() {
       )}
     </div>
   );
+}
+
+/**
+ * Extract plain text from HTML string (used for comparison).
+ */
+function extractPlainText(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.innerText || doc.body.textContent || '';
 }

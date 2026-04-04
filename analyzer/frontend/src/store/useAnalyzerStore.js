@@ -25,6 +25,7 @@ const useAnalyzerStore = create((set, get) => ({
 
   // Input — restored from sessionStorage
   inputText: savedSession?.inputText || '',
+  inputHtml: savedSession?.inputHtml || '',
   inputMode: 'paste',
   uploadedFilename: null,
 
@@ -47,6 +48,9 @@ const useAnalyzerStore = create((set, get) => ({
   // Word modifications — restored from sessionStorage
   wordModifications: savedSession?.wordModifications || {},
   sentenceRewrites: savedSession?.sentenceRewrites || {},
+
+  // Formatting preservation (bold/italic from paste/upload)
+  wordFormatting: savedSession?.wordFormatting || {},
 
   // Cached word alternatives
   wordAlternatives: savedSession?.wordAlternatives || {},
@@ -155,6 +159,8 @@ const useAnalyzerStore = create((set, get) => ({
   },
 
   setInputText: (text) => { set({ inputText: text }); _saveSession(get()); },
+  setInputHtml: (html) => { set({ inputHtml: html }); _saveSession(get()); },
+  setWordFormatting: (map) => { set({ wordFormatting: map }); _saveSession(get()); },
   setUploadedFilename: (name) => set({ uploadedFilename: name }),
 
   setAnalyzing: (val) => set({ isAnalyzing: val }),
@@ -251,10 +257,12 @@ const useAnalyzerStore = create((set, get) => ({
     // Hydrate store from a shared session snapshot
     set({
       inputText: state.inputText || '',
+      inputHtml: state.inputHtml || '',
       analysisResult: state.analysisResult || null,
       wordModifications: state.wordModifications || {},
       sentenceRewrites: state.sentenceRewrites || {},
       wordAlternatives: state.wordAlternatives || {},
+      wordFormatting: state.wordFormatting || {},
     });
     // Restore selected units
     if (state.selectedUnits && Array.isArray(state.selectedUnits)) {
@@ -284,10 +292,10 @@ const useAnalyzerStore = create((set, get) => ({
         set({
           sessionId: data.sessionId,
           remainingUses: data.remainingUses ?? get().remainingUses,
-          inputText: '', uploadedFilename: null, isAnalyzing: false, analysisResult: null,
+          inputText: '', inputHtml: '', uploadedFilename: null, isAnalyzing: false, analysisResult: null,
           selectedWord: null, selectedCircle: null, selectedRewriteWord: null,
           infoPanel: 'instructions', wordModifications: {}, sentenceRewrites: {},
-          wordAlternatives: {}, whatIfMode: false, whatIfUnits: null,
+          wordAlternatives: {}, wordFormatting: {}, whatIfMode: false, whatIfUnits: null,
           whatIfResults: null, whatIfLoading: false,
         });
         _saveSession(get());
@@ -304,10 +312,10 @@ const useAnalyzerStore = create((set, get) => ({
     set({
       showNewSessionDialog: false,
       accessCode: null, isAuthenticated: false, sessionId: null, authError: null,
-      inputText: '', uploadedFilename: null, isAnalyzing: false, analysisResult: null,
+      inputText: '', inputHtml: '', uploadedFilename: null, isAnalyzing: false, analysisResult: null,
       selectedWord: null, selectedCircle: null, selectedRewriteWord: null,
       infoPanel: 'instructions', wordModifications: {}, sentenceRewrites: {},
-      wordAlternatives: {}, whatIfMode: false, whatIfUnits: null,
+      wordAlternatives: {}, wordFormatting: {}, whatIfMode: false, whatIfUnits: null,
       whatIfResults: null, whatIfLoading: false,
     });
     sessionStorage.removeItem('analyzer_session');
@@ -328,10 +336,12 @@ function _saveSession(state) {
       sessionId: state.sessionId,
       remainingUses: state.remainingUses,
       inputText: state.inputText,
+      inputHtml: state.inputHtml,
       analysisResult: state.analysisResult,
       wordModifications: state.wordModifications,
       sentenceRewrites: state.sentenceRewrites,
       wordAlternatives: state.wordAlternatives,
+      wordFormatting: state.wordFormatting,
     }));
   } catch (e) {
     // sessionStorage might be full for very large texts — try without alternatives cache
@@ -341,9 +351,11 @@ function _saveSession(state) {
         sessionId: state.sessionId,
         remainingUses: state.remainingUses,
         inputText: state.inputText,
+        inputHtml: state.inputHtml,
         analysisResult: state.analysisResult,
         wordModifications: state.wordModifications,
         sentenceRewrites: state.sentenceRewrites,
+        wordFormatting: state.wordFormatting,
       }));
     } catch (_) {}
   }

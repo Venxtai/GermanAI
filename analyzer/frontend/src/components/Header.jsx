@@ -7,7 +7,7 @@ export default function Header() {
     requestNewSession, toggleVocabLookup, whatIfMode, toggleWhatIfMode,
     analysisResult, isReadOnly, setReadOnly, setShareId, loadSharedSession,
     shareId, sessionId, inputText, selectedUnits, wordModifications,
-    sentenceRewrites, wordAlternatives, setAuthenticated, setSessionId,
+    sentenceRewrites, wordAlternatives, wordFormatting, setAuthenticated, setSessionId,
     setRemainingUses, setAccessCode,
     isAutoAdapting, setAutoAdapting, applyAutoAdaptResults,
   } = useAnalyzerStore();
@@ -33,6 +33,7 @@ export default function Header() {
         wordModifications,
         sentenceRewrites,
         wordAlternatives,
+        wordFormatting,
       };
       const res = await fetch('/api/session/share', {
         method: 'POST',
@@ -59,7 +60,7 @@ export default function Header() {
     setExporting(mode);
     setShowExportMenu(false);
     try {
-      const data = buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits });
+      const data = buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits, wordFormatting });
       const res = await fetch('/api/analyzer/export', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

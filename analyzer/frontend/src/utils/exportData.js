@@ -2,7 +2,9 @@
  * Build export data from analysis state for PDF generation.
  * Extracted to a shared utility so both Header and Legend can use it.
  */
-export function buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits }) {
+import { buildFormattedRanges } from './formatMap';
+
+export function buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits, wordFormatting }) {
   const glossedWords = [];
   const unknownWords = [];
   const replacedWords = [];
@@ -121,10 +123,15 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
   if (id2oUnits.length > 0) unitsLines.push(`Impuls Deutsch 2 ORANGE: ${id2oUnits.join(', ')}`);
   const unitsList = unitsLines.join('\n');
 
+  // Build formatted ranges for PDF export (character offset-based)
+  const formattedRanges = buildFormattedRanges(wordFormatting, analysisResult.sentences);
+
   return {
     text: finalText.trim(),
     originalText: originalText.trim(),
     glossedWords,
+    wordFormatting: wordFormatting || {},
+    formattedRanges,
     title: 'Text Analysis',
     mode,
     annotations: mode === 'teacher' ? {
