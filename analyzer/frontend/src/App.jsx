@@ -10,6 +10,7 @@ import Legend from './components/Legend';
 import ReadabilityBanner from './components/ReadabilityBanner';
 import useAutoSave from './hooks/useAutoSave';
 import NewSessionDialog from './components/NewSessionDialog';
+import AddTextsDialog from './components/AddTextsDialog';
 
 function ChapterWarnings() {
   const { analysisResult } = useAnalyzerStore();
@@ -103,6 +104,7 @@ export default function App() {
       <Legend />
       {showVocabLookup && <VocabLookup />}
       <NewSessionDialog />
+      <AddTextsDialog />
     </div>
   );
 }

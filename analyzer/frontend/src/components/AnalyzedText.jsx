@@ -306,7 +306,7 @@ function RewrittenSentence({
   );
 }
 
-function getWordColorClass(status) {
+export function getWordColorClass(status) {
   switch (status) {
     case 'known': return 'bg-[var(--color-known-bg)] text-[var(--color-known)] hover:brightness-95';
     case 'unknown': return 'bg-[var(--color-unknown-bg)] text-[var(--color-unknown)] hover:brightness-95';

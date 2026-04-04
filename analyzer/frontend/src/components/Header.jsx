@@ -10,6 +10,8 @@ export default function Header() {
     sentenceRewrites, wordAlternatives, wordFormatting, setAuthenticated, setSessionId,
     setRemainingUses, setAccessCode,
     isAutoAdapting, setAutoAdapting, applyAutoAdaptResults,
+    compareMode, editingCompareId, returnFromEdit, setShowAddTextsDialog,
+    setCompareMode, setCompareTexts, setActiveCompareId,
   } = useAnalyzerStore();
 
   const [sharing, setSharing] = useState(false);
@@ -161,7 +163,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        {analysisResult && (
+        {analysisResult && !compareMode && !editingCompareId && (
           <button
             onClick={toggleWhatIfMode}
             className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${
@@ -174,6 +176,26 @@ export default function Header() {
           </button>
         )}
 
+        {/* Compare Texts button — visible when analysis exists, not read-only, not already in compare/edit mode */}
+        {analysisResult && !isReadOnly && !compareMode && !editingCompareId && (
+          <button
+            onClick={() => setShowAddTextsDialog(true)}
+            className="px-3 py-1.5 text-sm bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium"
+          >
+            Compare Texts
+          </button>
+        )}
+
+        {/* Exit comparison mode */}
+        {compareMode && (
+          <button
+            onClick={() => { setCompareMode(false); setCompareTexts([]); setActiveCompareId(null); }}
+            className="px-3 py-1.5 text-sm bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium"
+          >
+            Exit Comparison
+          </button>
+        )}
+
         <button
           onClick={toggleVocabLookup}
           className="px-3 py-1.5 text-sm bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium"
@@ -182,7 +204,7 @@ export default function Header() {
         </button>
 
         {/* Auto-Adapt: only when analysis exists, has unknown words, no replacements yet, and not read-only */}
-        {!isReadOnly && analysisResult && unknownCount > 0 && !hasReplacements && (
+        {!isReadOnly && analysisResult && unknownCount > 0 && !hasReplacements && !compareMode && !editingCompareId && (
           <button
             onClick={handleAutoAdapt}
             disabled={isAutoAdapting}
@@ -193,8 +215,8 @@ export default function Header() {
           </button>
         )}
 
-        {/* Export & Share dropdown */}
-        {analysisResult && (
+        {/* Export & Share dropdown — hidden in compare mode */}
+        {analysisResult && !compareMode && !editingCompareId && (
           <div className="relative">
             <button
               onClick={() => setShowExportMenu(!showExportMenu)}
@@ -249,8 +271,16 @@ export default function Header() {
           </div>
         )}
 
-        {/* Read-only mode: "Edit" button replaces "New Session" */}
-        {isReadOnly ? (
+        {/* Back to Comparison button when editing a compare text */}
+        {editingCompareId ? (
+          <button
+            onClick={returnFromEdit}
+            className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium"
+            style={{ backgroundColor: 'var(--brand-blau, #00528a)' }}
+          >
+            Back to Comparison
+          </button>
+        ) : isReadOnly ? (
           <button
             onClick={() => setShowCloneDialog(true)}
             className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium"
@@ -258,7 +288,7 @@ export default function Header() {
           >
             Edit
           </button>
-        ) : (
+        ) : !compareMode ? (
           <button
             onClick={requestNewSession}
             className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium"
@@ -268,7 +298,7 @@ export default function Header() {
           >
             New Session
           </button>
-        )}
+        ) : null}
       </div>
 
       {/* Clone dialog */}

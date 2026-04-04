@@ -1,91 +1,20 @@
 import { useMemo } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
+import { calculateReadability } from '../utils/readabilityCalc';
 
 export default function ReadabilityBanner() {
   const {
     analysisResult, whatIfMode, whatIfResults, whatIfLoading,
-    sentenceRewrites, wordModifications,
+    sentenceRewrites, wordModifications, compareMode,
   } = useAnalyzerStore();
 
   // ALL hooks must be before any returns
   const liveReadability = useMemo(() => {
-    if (!analysisResult) return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0, cognateWords: 0 };
-    let total = 0;
-    let known = 0;
-    let translated = 0;
-    let cognates = 0;
-    let grammarIssues = 0;
-
-    for (let si = 0; si < analysisResult.sentences.length; si++) {
-      const sentence = analysisResult.sentences[si];
-      const rewrite = sentenceRewrites[si];
-
-      // Grammar: fixed if rewrite exists with grammarFixed or is a grammar rewrite
-      const grammarFixed = rewrite?.grammarFixed ||
-        (rewrite && rewrite.targetStructure !== 'word-replacement');
-      if (sentence.grammar.status === 'issue' && !grammarFixed) {
-        grammarIssues++;
-      }
-
-      if (rewrite?.rewritten) {
-        // Count words in rewritten sentence — all replacement words are "known" by design
-        // (teacher chose them from known vocabulary)
-        const origWordSet = new Set(
-          sentence.words.filter(w => w.type === 'word').map(w => w.text.toLowerCase())
-        );
-        const rewrittenWords = rewrite.rewritten
-          .replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '')
-          .split(/\s+/)
-          .filter(Boolean);
-
-        for (const rw of rewrittenWords) {
-          total++;
-          const rwLower = rw.toLowerCase();
-          // New words from rewrite are considered known (teacher chose them)
-          if (!origWordSet.has(rwLower)) {
-            known++;
-          } else {
-            // Original word — check its status
-            const origWord = sentence.words.find(w =>
-              w.type === 'word' && w.text.toLowerCase() === rwLower
-            );
-            if (origWord?.status === 'known') {
-              known++;
-            } else if (origWord?.status === 'cognate') {
-              known++;
-              cognates++;
-            }
-          }
-        }
-      } else {
-        // No rewrite — use original word statuses
-        for (let wi = 0; wi < sentence.words.length; wi++) {
-          const w = sentence.words[wi];
-          if (w.type !== 'word') continue;
-          total++;
-
-          const modKey = `${si}_${wi}`;
-          const mod = wordModifications[modKey];
-          if (mod?.type === 'replaced') {
-            known++; // Replaced with known word
-          } else if (mod?.type === 'glossed') {
-            known++; // Translated word counts as accessible
-            translated++;
-          } else if (w.status === 'cognate') {
-            known++; // Cognate counts as accessible
-            cognates++;
-          } else if (w.status === 'known') {
-            known++;
-          }
-        }
-      }
-    }
-
-    const percent = total > 0 ? Math.round((known / total) * 100) : 100;
-    return { percent, knownWords: known - translated - cognates, totalWords: total, grammarIssues, translatedWords: translated, cognateWords: cognates };
+    return calculateReadability(analysisResult, sentenceRewrites, wordModifications);
   }, [analysisResult, sentenceRewrites, wordModifications]);
 
   if (!analysisResult) return null;
+  if (compareMode) return null;
 
   // In What If mode, use the What If readability instead
   const readability = (whatIfMode && whatIfResults?.readability)

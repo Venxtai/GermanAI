@@ -71,6 +71,14 @@ const useAnalyzerStore = create((set, get) => ({
   // Vocabulary lookup
   showVocabLookup: false,
 
+  // Batch comparison mode
+  compareMode: false,
+  compareTexts: [], // [{id, text, html, analysisResult, wordModifications, sentenceRewrites, wordFormatting}]
+  activeCompareId: null,
+  editingCompareId: null,
+  _savedMainState: null,
+  showAddTextsDialog: false,
+
   // Actions
   setAccessCode: (code) => { set({ accessCode: code }); _saveSession(get()); },
   setAuthenticated: (val) => set({ isAuthenticated: val }),
@@ -319,6 +327,83 @@ const useAnalyzerStore = create((set, get) => ({
       whatIfResults: null, whatIfLoading: false,
     });
     sessionStorage.removeItem('analyzer_session');
+  },
+
+  // Batch comparison actions
+  setShowAddTextsDialog: (val) => set({ showAddTextsDialog: val }),
+  setCompareMode: (val) => set({ compareMode: val }),
+  setCompareTexts: (texts) => set({ compareTexts: texts }),
+  setActiveCompareId: (id) => set({ activeCompareId: id }),
+
+  promoteCompareText: (id) => {
+    const ct = get().compareTexts.find(t => t.id === id);
+    if (!ct) return;
+    set({
+      inputText: ct.text,
+      inputHtml: ct.html || '',
+      analysisResult: ct.analysisResult,
+      wordModifications: ct.wordModifications || {},
+      sentenceRewrites: ct.sentenceRewrites || {},
+      wordFormatting: ct.wordFormatting || {},
+      compareMode: false,
+      compareTexts: [],
+      activeCompareId: null,
+      editingCompareId: null,
+      _savedMainState: null,
+    });
+    _saveSession(get());
+  },
+
+  editCompareText: (id) => {
+    const ct = get().compareTexts.find(t => t.id === id);
+    if (!ct) return;
+    set({
+      _savedMainState: {
+        inputText: get().inputText,
+        inputHtml: get().inputHtml,
+        analysisResult: get().analysisResult,
+        wordModifications: get().wordModifications,
+        sentenceRewrites: get().sentenceRewrites,
+        wordFormatting: get().wordFormatting,
+      },
+      inputText: ct.text,
+      inputHtml: ct.html || '',
+      analysisResult: ct.analysisResult,
+      wordModifications: ct.wordModifications || {},
+      sentenceRewrites: ct.sentenceRewrites || {},
+      wordFormatting: ct.wordFormatting || {},
+      compareMode: false,
+      editingCompareId: id,
+    });
+  },
+
+  returnFromEdit: () => {
+    const editId = get().editingCompareId;
+    const saved = get()._savedMainState;
+    if (!editId || !saved) return;
+    const updated = get().compareTexts.map(ct =>
+      ct.id === editId ? {
+        ...ct,
+        text: get().inputText,
+        html: get().inputHtml,
+        analysisResult: get().analysisResult,
+        wordModifications: { ...get().wordModifications },
+        sentenceRewrites: { ...get().sentenceRewrites },
+        wordFormatting: { ...get().wordFormatting },
+      } : ct
+    );
+    set({
+      inputText: saved.inputText,
+      inputHtml: saved.inputHtml,
+      analysisResult: saved.analysisResult,
+      wordModifications: saved.wordModifications,
+      sentenceRewrites: saved.sentenceRewrites,
+      wordFormatting: saved.wordFormatting,
+      compareTexts: updated,
+      compareMode: true,
+      editingCompareId: null,
+      _savedMainState: null,
+    });
   },
 
   // Get effective selected units (respects What If mode)

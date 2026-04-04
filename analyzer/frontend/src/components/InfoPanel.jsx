@@ -90,7 +90,16 @@ function getOptionalUnits() {
 }
 
 export default function InfoPanel() {
-  const { infoPanel, selectedWord, selectedCircle, selectedRewriteWord, analysisResult, isReadOnly } = useAnalyzerStore();
+  const {
+    infoPanel, selectedWord, selectedCircle, selectedRewriteWord,
+    analysisResult: mainAnalysisResult, isReadOnly,
+    compareMode, activeCompareId, compareTexts,
+  } = useAnalyzerStore();
+
+  // In compare mode, use the active compare text's analysis result
+  const analysisResult = (compareMode && activeCompareId)
+    ? (compareTexts.find(ct => ct.id === activeCompareId)?.analysisResult || mainAnalysisResult)
+    : mainAnalysisResult;
 
   if (infoPanel === 'rewriteWord' && selectedRewriteWord) {
     // For unchanged words in a rewritten sentence, delegate to the normal word panels
@@ -373,9 +382,15 @@ function RewriteWordInfo() {
 
 function WordInfo() {
   const {
-    selectedWord, analysisResult, wordModifications,
+    selectedWord, analysisResult: mainAnalysisResult, wordModifications,
     setWordModification, selectedUnits,
+    compareMode, activeCompareId, compareTexts,
   } = useAnalyzerStore();
+
+  // In compare mode, use the active compare text's analysis
+  const analysisResult = (compareMode && activeCompareId)
+    ? (compareTexts.find(ct => ct.id === activeCompareId)?.analysisResult || mainAnalysisResult)
+    : mainAnalysisResult;
 
   const { sentenceIndex, wordIndex } = selectedWord;
   const sentence = analysisResult?.sentences?.[sentenceIndex];

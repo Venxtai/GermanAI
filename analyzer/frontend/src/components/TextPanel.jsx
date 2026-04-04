@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
 import AnalyzedText from './AnalyzedText';
+import BatchComparisonPanel from './BatchComparisonPanel';
 
 // Sanitize HTML: keep only structural formatting, strip colors/fonts
 function sanitizeHtml(html) {
@@ -84,6 +85,7 @@ export default function TextPanel() {
     setUploadedFilename, setWordFormatting,
     selectedUnits, isAnalyzing, setAnalyzing, analysisResult, setAnalysisResult,
     whatIfMode, sessionId, isReadOnly,
+    compareMode, editingCompareId, compareTexts,
   } = useAnalyzerStore();
 
   const fileInputRef = useRef(null);
@@ -256,6 +258,25 @@ export default function TextPanel() {
     // Reset input so same file can be re-uploaded
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
+
+  // Compare mode: show side-by-side columns
+  if (compareMode) {
+    return <BatchComparisonPanel />;
+  }
+
+  // Editing a compare text: show normal editor with banner
+  if (editingCompareId) {
+    const editIndex = compareTexts.findIndex(ct => ct.id === editingCompareId);
+    const editLabel = editingCompareId === 'original' ? 'Current Text' : `Text ${editingCompareId.replace('compare-', '')}`;
+    return (
+      <div>
+        <div className="mb-3 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
+          Editing <strong>{editLabel}</strong> — changes will be saved when you return to comparison
+        </div>
+        <AnalyzedText />
+      </div>
+    );
+  }
 
   // Show analysis results if we have them (or in read-only mode)
   if (analysisResult && !whatIfMode) {
