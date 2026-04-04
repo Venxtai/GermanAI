@@ -138,7 +138,8 @@ function Instructions() {
         <li><span className="font-medium text-slate-600">1.</span> Select all units you have covered in class from the left panel.</li>
         <li><span className="font-medium text-slate-600">2.</span> Enter or upload your German text in the center panel.</li>
         <li><span className="font-medium text-slate-600">3.</span> Press <span className="font-medium" style={{ color: 'var(--brand)' }}>Analyze</span> to see results.</li>
-        <li><span className="font-medium text-slate-600">4.</span> Click any colored word or grammar circle to see details here.</li>
+        <li><span className="font-medium text-slate-600">4.</span> Click any colored word or grammar circle to replace words, add translations, or fix grammar — making the text more readable for your students.</li>
+        <li><span className="font-medium text-slate-600">5.</span> Or use <span className="font-medium" style={{ color: 'var(--brand-orange)' }}>Auto-Adapt</span> to let AI replace all unknown words at once, then review the changes.</li>
       </ol>
     </div>
   );
