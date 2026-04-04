@@ -916,7 +916,7 @@ router.post('/analyzer/export', async (req, res) => {
       const studentMargin = 50;
       const studentWidth = doc.page.width - 100; // 50px margins each side
 
-      // Split by newlines to preserve paragraph/dialog structure
+      // Split by newlines to preserve paragraph structure
       const paragraphs = text.split(/\n+/);
       let isVeryFirst = true;
 
@@ -927,27 +927,11 @@ router.post('/analyzer/export', async (req, res) => {
           doc.moveDown(0.3);
         }
 
-        // Detect speaker label pattern (e.g., "Wendla:" or "Frau Bergmann:")
-        const speakerMatch = para.match(/^([A-ZÄÖÜ][a-zA-ZäöüÄÖÜß\s]+):\s*/);
-
         const words = para.split(/(\s+)/);
-        let speakerDone = false;
         for (let i = 0; i < words.length; i++) {
           const word = words[i];
           const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
           const isFirst = isVeryFirst && i === 0;
-
-          // Bold for speaker label
-          if (speakerMatch && !speakerDone) {
-            const speakerEnd = speakerMatch[0].length;
-            const soFar = words.slice(0, i + 1).join('').length;
-            if (soFar <= speakerEnd) {
-              doc.font('Helvetica-Bold');
-            } else {
-              doc.font('Helvetica');
-              speakerDone = true;
-            }
-          }
 
           if (glossMap.has(clean)) {
             footnoteNum++;
@@ -967,7 +951,6 @@ router.post('/analyzer/export', async (req, res) => {
             }
           }
         }
-        doc.font('Helvetica'); // reset after speaker bold
         isVeryFirst = false;
       }
       doc.text('', studentMargin);
