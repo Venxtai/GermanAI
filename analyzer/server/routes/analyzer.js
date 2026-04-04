@@ -659,6 +659,33 @@ router.post('/analyzer/upload', upload.single('file'), async (req, res) => {
  * Build a lookup that, given a character offset in the text, returns {bold, italic} if formatted.
  * Uses binary search on sorted ranges for efficiency.
  */
+/**
+ * Build a sequential word formatter from wordFormattingList.
+ * Each call to getNext(wordText) returns the formatting for that word
+ * by matching sequentially through the list.
+ */
+function buildSequentialFormatter(wordFormattingList) {
+  if (!wordFormattingList || wordFormattingList.length === 0) return null;
+  let idx = 0;
+  return {
+    getFormat(wordText) {
+      const clean = wordText.replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').toLowerCase();
+      if (!clean) return null;
+      // Find the next matching word in the list (allow small gaps for whitespace/punct differences)
+      for (let i = idx; i < Math.min(idx + 5, wordFormattingList.length); i++) {
+        if (wordFormattingList[i].text === clean) {
+          const fmt = wordFormattingList[i];
+          idx = i + 1; // advance past this word
+          if (fmt.bold || fmt.italic) return { bold: fmt.bold, italic: fmt.italic };
+          return null;
+        }
+      }
+      return null;
+    },
+    reset() { idx = 0; }
+  };
+}
+
 function buildFormatLookup(formattedRanges) {
   if (!formattedRanges || formattedRanges.length === 0) return null;
   // Sort by start position
@@ -694,7 +721,7 @@ function setPdfFont(doc, fmt, baseSize) {
 
 // POST /api/analyzer/export — Generate PDF export (student or teacher version)
 router.post('/analyzer/export', async (req, res) => {
-  const { text, originalText, glossedWords, title, mode, annotations, formattedRanges } = req.body;
+  const { text, originalText, glossedWords, title, mode, annotations, formattedRanges, wordFormattingList } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: 'Missing text' });
@@ -831,55 +858,70 @@ router.post('/analyzer/export', async (req, res) => {
       doc.y = lineY + 6;
 
       // ─── ROW 2: Texts side by side ───
-      const fmtLookup = buildFormatLookup(formattedRanges);
+      const seqFmtOrig = buildSequentialFormatter(wordFormattingList);
+      const seqFmtAdapted = buildSequentialFormatter(wordFormattingList);
       doc.fontSize(9).font('Helvetica');
       const textStartY = doc.y;
 
-      // LEFT: Original text — base colors from analysis, overridden by changes tables
-      const origWords = (originalText || text).split(/(\s+)/);
+      // LEFT: Original text — base colors from analysis, with paragraph breaks
+      const origParagraphs = (originalText || text).split(/\n+/);
       doc.y = textStartY;
-      let origCharOffset = 0;
-      for (const word of origWords) {
-        const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-        if (forceRedOriginal.has(clean)) {
-          doc.fillColor('#ef4444');
-        } else {
-          doc.fillColor(origBaseColor(clean));
+      let origFirstPara = true;
+      for (const para of origParagraphs) {
+        if (!para.trim()) continue;
+        if (!origFirstPara) {
+          doc.font('Helvetica').fillColor('#000').text('', L, doc.y, { width: CW });
+          doc.moveDown(0.15);
         }
-        // Apply bold/italic formatting from original text
-        const fmt = fmtLookup ? fmtLookup.getFormat(origCharOffset, word.length) : null;
-        setPdfFont(doc, fmt, 9);
-        doc.text(word, L, doc.y, { continued: true, width: CW });
-        origCharOffset += word.length;
+        const origWords = para.split(/(\s+)/);
+        for (const word of origWords) {
+          const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+          if (forceRedOriginal.has(clean)) {
+            doc.fillColor('#ef4444');
+          } else {
+            doc.fillColor(origBaseColor(clean));
+          }
+          const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
+          setPdfFont(doc, fmt, 9);
+          doc.text(word, L, doc.y, { continued: true, width: CW });
+        }
+        origFirstPara = false;
       }
       doc.font('Helvetica').fillColor('#000').text('', L, doc.y, { width: CW });
       const leftEndY = doc.y;
 
-      // RIGHT: Adapted text — blue for replacements, grey for glossed (with footnotes), black for rest
+      // RIGHT: Adapted text — with paragraph breaks
       const footnotes = [];
       let footnoteNum = 0;
       doc.y = textStartY;
-      const adaptedWords = text.split(/(\s+)/);
-      let adaptedCharOffset = 0;
-      for (const word of adaptedWords) {
-        const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-        // Apply bold/italic formatting (adapted text may have shifted positions, but try)
-        const fmt = fmtLookup ? fmtLookup.getFormat(adaptedCharOffset, word.length) : null;
-        if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
-          footnoteNum++;
-          footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
-          setPdfFont(doc, fmt, 9);
-          doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
-          doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
-          doc.fontSize(9);
-        } else if (forceBlueAdapted.has(clean)) {
-          setPdfFont(doc, fmt, 9);
-          doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+      const adaptedParagraphs = text.split(/\n+/);
+      let adaptedFirstPara = true;
+      for (const para of adaptedParagraphs) {
+        if (!para.trim()) continue;
+        if (!adaptedFirstPara) {
+          doc.font('Helvetica').fillColor('#000').text('', R, doc.y, { width: CW });
+          doc.moveDown(0.15);
+        }
+        const adaptedWords = para.split(/(\s+)/);
+        for (const word of adaptedWords) {
+          const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+          const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+          if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+            footnoteNum++;
+            footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+            setPdfFont(doc, fmt, 9);
+            doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+            doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+            doc.fontSize(9);
+          } else if (forceBlueAdapted.has(clean)) {
+            setPdfFont(doc, fmt, 9);
+            doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
         } else {
           setPdfFont(doc, fmt, 9);
           doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
         }
-        adaptedCharOffset += word.length;
+        }
+        adaptedFirstPara = false;
       }
       doc.font('Helvetica').fillColor('#000').text('', R, doc.y, { width: CW });
       const rightEndY = doc.y;
@@ -983,7 +1025,7 @@ router.post('/analyzer/export', async (req, res) => {
       doc.moveDown(1);
       doc.fontSize(12).font('Helvetica');
 
-      const fmtLookup = buildFormatLookup(formattedRanges);
+      const seqFmt = buildSequentialFormatter(wordFormattingList);
       const footnotes = [];
       let footnoteNum = 0;
       const studentMargin = 50;
@@ -992,14 +1034,10 @@ router.post('/analyzer/export', async (req, res) => {
       // Split by newlines to preserve paragraph structure
       const paragraphs = text.split(/\n+/);
       let isVeryFirst = true;
-      let charOffset = 0; // track position in full text for formatting lookup
 
       for (let pi = 0; pi < paragraphs.length; pi++) {
         const para = paragraphs[pi];
-        if (!para.trim()) {
-          charOffset += para.length + 1; // +1 for newline
-          continue;
-        }
+        if (!para.trim()) continue;
         if (!isVeryFirst) {
           doc.font('Helvetica').text('', studentMargin); // end previous continued line
           doc.moveDown(0.3);
@@ -1011,8 +1049,8 @@ router.post('/analyzer/export', async (req, res) => {
           const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
           const isFirst = isVeryFirst && i === 0;
 
-          // Look up formatting for this word position
-          const fmt = fmtLookup ? fmtLookup.getFormat(charOffset, word.length) : null;
+          // Look up formatting for this word (sequential matching)
+          const fmt = seqFmt ? seqFmt.getFormat(word) : null;
 
           if (glossMap.has(clean)) {
             footnoteNum++;
@@ -1033,10 +1071,7 @@ router.post('/analyzer/export', async (req, res) => {
               doc.text(word, { continued: true });
             }
           }
-
-          charOffset += word.length;
         }
-        charOffset++; // newline between paragraphs
         isVeryFirst = false;
       }
       doc.font('Helvetica').text('', studentMargin);

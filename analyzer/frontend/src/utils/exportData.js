@@ -126,12 +126,31 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
   // Build formatted ranges for PDF export (character offset-based)
   const formattedRanges = buildFormattedRanges(wordFormatting, analysisResult.sentences);
 
+  // Build a sequential word formatting list for the PDF renderer
+  // This is more reliable than character offsets since the PDF splits text differently
+  const wordFormattingList = [];
+  for (let si = 0; si < analysisResult.sentences.length; si++) {
+    const sentence = analysisResult.sentences[si];
+    for (let wi = 0; wi < sentence.words.length; wi++) {
+      const word = sentence.words[wi];
+      if (word.type !== 'word') continue;
+      const key = `${si}_${wi}`;
+      const fmt = wordFormatting?.[key];
+      wordFormattingList.push({
+        text: word.text.toLowerCase(),
+        bold: fmt?.bold || false,
+        italic: fmt?.italic || false,
+      });
+    }
+  }
+
   return {
     text: finalText.trim(),
     originalText: originalText.trim(),
     glossedWords,
     wordFormatting: wordFormatting || {},
     formattedRanges,
+    wordFormattingList,
     title: 'Text Analysis',
     mode,
     annotations: mode === 'teacher' ? {
