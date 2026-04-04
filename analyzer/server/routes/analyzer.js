@@ -885,9 +885,10 @@ router.post('/analyzer/export', async (req, res) => {
           setPdfFont(doc, fmt, 9);
           doc.text(word, L, doc.y, { continued: true, width: CW });
         }
+        // End this paragraph
+        doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
         origFirstPara = false;
       }
-      doc.font('Helvetica').fillColor('#000').text('', L, doc.y, { width: CW });
       const leftEndY = doc.y;
 
       // RIGHT: Adapted text — with paragraph breaks
@@ -921,9 +922,10 @@ router.post('/analyzer/export', async (req, res) => {
           doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
         }
         }
+        // End this paragraph
+        doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
         adaptedFirstPara = false;
       }
-      doc.font('Helvetica').fillColor('#000').text('', R, doc.y, { width: CW });
       const rightEndY = doc.y;
 
       // Glossary under adapted text (empty line, superscript numbers, no title)
@@ -1031,23 +1033,18 @@ router.post('/analyzer/export', async (req, res) => {
       const studentMargin = 50;
       const studentWidth = doc.page.width - 100; // 50px margins each side
 
-      // Split by newlines to preserve paragraph structure
-      const paragraphs = text.split(/\n+/);
-      let isVeryFirst = true;
+      // Render text paragraph by paragraph, each as a self-contained text block
+      const paragraphs = text.split(/\n+/).filter(p => p.trim());
 
       for (let pi = 0; pi < paragraphs.length; pi++) {
         const para = paragraphs[pi];
-        if (!para.trim()) continue;
-        if (!isVeryFirst) {
-          doc.font('Helvetica').text('', studentMargin); // end previous continued line
-          doc.moveDown(0.3);
-        }
 
+        // Each paragraph rendered as its own text block (no cross-paragraph continued:true)
         const words = para.split(/(\s+)/);
         for (let i = 0; i < words.length; i++) {
           const word = words[i];
           const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
-          const isFirst = isVeryFirst && i === 0;
+          const isFirst = i === 0;
 
           // Look up formatting for this word (sequential matching)
           const fmt = seqFmt ? seqFmt.getFormat(word) : null;
@@ -1072,9 +1069,10 @@ router.post('/analyzer/export', async (req, res) => {
             }
           }
         }
-        isVeryFirst = false;
+        // End this paragraph's continued text — use a zero-width space to force line termination
+        doc.font('Helvetica').fontSize(12).text('\u200B', studentMargin, doc.y, { width: studentWidth, lineBreak: true });
+        if (pi < paragraphs.length - 1) doc.moveDown(0.3);
       }
-      doc.font('Helvetica').text('', studentMargin);
 
       if (footnotes.length > 0) {
         doc.moveDown(1.5);
