@@ -61,6 +61,9 @@ const useAnalyzerStore = create((set, get) => ({
   isReadOnly: false,
   shareId: null,
 
+  // Auto-adapt
+  isAutoAdapting: false,
+
   // Vocabulary lookup
   showVocabLookup: false,
 
@@ -229,6 +232,17 @@ const useAnalyzerStore = create((set, get) => ({
   },
 
   toggleVocabLookup: () => set({ showVocabLookup: !get().showVocabLookup }),
+
+  // Auto-adapt actions
+  setAutoAdapting: (val) => set({ isAutoAdapting: val }),
+  applyAutoAdaptResults: (wordMods, sentRewrites) => {
+    const current = get();
+    set({
+      wordModifications: { ...current.wordModifications, ...wordMods },
+      sentenceRewrites: { ...current.sentenceRewrites, ...sentRewrites },
+    });
+    _saveSession(get());
+  },
 
   // Read-only shared session actions
   setReadOnly: (val) => set({ isReadOnly: val }),

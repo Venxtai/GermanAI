@@ -260,6 +260,149 @@ router.post('/analyzer/apply-replacement', async (req, res) => {
   }
 });
 
+// POST /api/analyzer/auto-adapt — Automatically replace all unknown words with best alternatives
+router.post('/analyzer/auto-adapt', async (req, res) => {
+  const { sentences, selectedUnits } = req.body;
+  if (!sentences || !selectedUnits) {
+    return res.status(400).json({ error: 'Missing sentences or selectedUnits' });
+  }
+
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+  const { suggestWordAlternatives, lookupThesaurusAlternatives, applyReplacementWithGrammar } = require('../services/textAnalysis');
+  const { lookupWord, normalizeWord } = require('../services/vocabIndex');
+
+  // Build known items list (same as /alternatives endpoint)
+  const knownItems = [];
+  const knownWordsSet = new Set();
+  for (const uid of selectedUnitIds) {
+    const unit = unitMap[uid];
+    if (!unit?.active_vocabulary?.items) continue;
+    for (const item of unit.active_vocabulary.items) {
+      if (!knownWordsSet.has(item.word)) {
+        knownWordsSet.add(item.word);
+        knownItems.push({ word: item.word, pos: item.pos || '', translation: item.translation || '' });
+      }
+    }
+  }
+  const knownWordsLowerSet = new Set(knownItems.map(i => i.word.toLowerCase()));
+  for (const item of knownItems) knownWordsLowerSet.add(item.word);
+
+  // Collect all unknown words across all sentences
+  // Use array index (wi) not word-only index, to match frontend's modKey format
+  const unknownWords = [];
+  for (let si = 0; si < sentences.length; si++) {
+    const sent = sentences[si];
+    const wordsArr = sent.words || [];
+    for (let wi = 0; wi < wordsArr.length; wi++) {
+      const word = wordsArr[wi];
+      if (word.status === 'unknown' && word.type === 'word') {
+        unknownWords.push({ si, wi, word: word.text, lemma: word.lemma || word.text, sentenceText: sent.text });
+      }
+    }
+  }
+
+  if (unknownWords.length === 0) {
+    return res.json({ wordModifications: {}, sentenceRewrites: {}, summary: { adapted: 0, noAlternative: 0, total: 0 } });
+  }
+
+  console.log(`[AUTO-ADAPT] Processing ${unknownWords.length} unknown words across ${sentences.length} sentences`);
+
+  try {
+    // Step 1: Fetch alternatives for all unknown words in parallel
+    const altPromises = unknownWords.map(async ({ si, wi, word, lemma, sentenceText }) => {
+      const unknownLookup = lookupWord(lemma, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+      const unknownPos = unknownLookup.entries[0]?.pos || '';
+      const unknownTranslation = unknownLookup.entries[0]?.translation || '';
+
+      const [aiAlts, thesaurusAlts] = await Promise.all([
+        suggestWordAlternatives(sentenceText, word, lemma, knownItems, false, unknownPos, unknownTranslation),
+        lookupThesaurusAlternatives(lemma, knownWordsLowerSet),
+      ]);
+
+      // Merge and deduplicate
+      const seen = new Set(aiAlts.map(a => a.alternative.toLowerCase()));
+      const merged = [...aiAlts];
+      for (const ta of thesaurusAlts) {
+        if (!seen.has(ta.alternative.toLowerCase())) {
+          seen.add(ta.alternative.toLowerCase());
+          merged.push(ta);
+        }
+      }
+
+      return { si, wi, word, alternatives: merged };
+    });
+
+    const allAlts = await Promise.all(altPromises);
+
+    // Step 2: Group by sentence and apply replacements sequentially per sentence
+    const bySentence = {};
+    for (const alt of allAlts) {
+      if (!bySentence[alt.si]) bySentence[alt.si] = [];
+      bySentence[alt.si].push(alt);
+    }
+
+    const wordModifications = {};
+    const sentenceRewrites = {};
+    let adapted = 0;
+    let noAlternative = 0;
+
+    for (const [siStr, wordAlts] of Object.entries(bySentence)) {
+      const si = parseInt(siStr);
+      let currentText = sentences[si].text;
+      const originalText = sentences[si].text;
+      const changes = [];
+
+      for (const { wi, word, alternatives } of wordAlts) {
+        if (!alternatives || alternatives.length === 0) {
+          noAlternative++;
+          continue;
+        }
+
+        const bestAlt = alternatives[0];
+        // Strip article for insertion (grammar fixer will add correct one)
+        const replacement = bestAlt.alternative.replace(/^(der|die|das|den|dem|des|ein|eine|einen|einem|einer)\s+/i, '');
+
+        try {
+          const result = await applyReplacementWithGrammar(currentText, word, replacement);
+          if (result?.result) {
+            currentText = result.result;
+          } else {
+            // Fallback: simple string replacement
+            currentText = currentText.replace(word, replacement);
+          }
+
+          wordModifications[`${si}_${wi}`] = {
+            type: 'replaced',
+            originalWord: word,
+            replacement: bestAlt.alternative,
+          };
+          changes.push({ original: word, replacement: bestAlt.alternative, explanation: bestAlt.explanation || '' });
+          adapted++;
+        } catch (err) {
+          console.error(`[AUTO-ADAPT] Failed to replace "${word}":`, err.message);
+          noAlternative++;
+        }
+      }
+
+      if (changes.length > 0) {
+        sentenceRewrites[si] = {
+          rewritten: currentText,
+          changes,
+          originalText,
+          targetStructure: 'word-replacement',
+          grammarFixed: false,
+        };
+      }
+    }
+
+    console.log(`[AUTO-ADAPT] Done: ${adapted} adapted, ${noAlternative} no alternative, ${unknownWords.length} total`);
+    res.json({ wordModifications, sentenceRewrites, summary: { adapted, noAlternative, total: unknownWords.length } });
+  } catch (err) {
+    console.error('[AUTO-ADAPT] Error:', err);
+    res.status(500).json({ error: 'Auto-adapt failed', message: err.message });
+  }
+});
+
 // GET /api/analyzer/example-sentences — Find all model sentences containing a word across ALL units
 router.get('/analyzer/example-sentences', (req, res) => {
   const { word, pos } = req.query;

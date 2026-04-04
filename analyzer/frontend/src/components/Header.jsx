@@ -9,6 +9,7 @@ export default function Header() {
     shareId, sessionId, inputText, selectedUnits, wordModifications,
     sentenceRewrites, wordAlternatives, setAuthenticated, setSessionId,
     setRemainingUses, setAccessCode,
+    isAutoAdapting, setAutoAdapting, applyAutoAdaptResults,
   } = useAnalyzerStore();
 
   const [sharing, setSharing] = useState(false);
@@ -79,6 +80,42 @@ export default function Header() {
     }
   };
 
+  // Count unknown words for button label
+  const unknownCount = analysisResult?.sentences?.reduce((sum, s) =>
+    sum + s.words.filter(w => w.type === 'word' && w.status === 'unknown').length, 0) || 0;
+  // Check if any replacements already made
+  const hasReplacements = Object.keys(wordModifications).length > 0 || Object.keys(sentenceRewrites).length > 0;
+
+  // Auto-Adapt: replace all unknown words with AI-selected alternatives
+  const handleAutoAdapt = async () => {
+    if (!analysisResult || unknownCount === 0) return;
+    setAutoAdapting(true);
+    try {
+      const res = await fetch('/api/analyzer/auto-adapt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sentences: analysisResult.sentences.map(s => ({
+            text: s.text,
+            words: s.words,
+          })),
+          selectedUnits: Array.from(selectedUnits),
+        }),
+      });
+      const data = await res.json();
+      if (data.wordModifications && data.sentenceRewrites) {
+        applyAutoAdaptResults(data.wordModifications, data.sentenceRewrites);
+      }
+      if (data.summary) {
+        console.log(`[AUTO-ADAPT] ${data.summary.adapted} adapted, ${data.summary.noAlternative} no alternative`);
+      }
+    } catch (err) {
+      alert('Auto-adapt failed: ' + err.message);
+    } finally {
+      setAutoAdapting(false);
+    }
+  };
+
   // Clone shared session into editable session
   const handleClone = async () => {
     if (!cloneCode.trim()) return;
@@ -133,6 +170,18 @@ export default function Header() {
             }`}
           >
             {whatIfMode ? 'Exit What If' : 'What If Mode'}
+          </button>
+        )}
+
+        {/* Auto-Adapt: only when analysis exists, has unknown words, no replacements yet, and not read-only */}
+        {!isReadOnly && analysisResult && unknownCount > 0 && !hasReplacements && (
+          <button
+            onClick={handleAutoAdapt}
+            disabled={isAutoAdapting}
+            className="px-3 py-1.5 text-sm text-white rounded-lg transition-colors font-medium disabled:opacity-50"
+            style={{ backgroundColor: 'var(--brand-orange, #ed6c28)' }}
+          >
+            {isAutoAdapting ? 'Adapting...' : `Auto-Adapt (${unknownCount} words)`}
           </button>
         )}
 
