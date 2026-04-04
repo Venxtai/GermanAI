@@ -985,6 +985,10 @@ router.post('/analyzer/export', async (req, res) => {
         doc.moveDown(0.3);
         doc.fontSize(8).font('Helvetica');
         for (const gc of annotations.grammarChanges) {
+          if (doc.y > doc.page.height - 60) {
+            doc.addPage();
+            doc.y = 50;
+          }
           const rowY = doc.y;
           doc.fillColor('#ef4444').text(gc.original || '', c1, rowY, { width: c1w });
           const afterOrigY = doc.y;
@@ -1006,13 +1010,26 @@ router.post('/analyzer/export', async (req, res) => {
         doc.moveDown(0.3);
         doc.fontSize(8).font('Helvetica');
         for (const vc of annotations.vocabChanges) {
+          // Check if we need a page break (leave 30px margin at bottom)
+          if (doc.y > doc.page.height - 60) {
+            doc.addPage();
+            doc.y = 50;
+          }
           const rowY = doc.y;
-          doc.fillColor(vc.isGloss ? '#ef4444' : '#ef4444').text(vc.original || '', c1, rowY, { width: c1w });
+          // Render all three columns at the same Y position
+          // Use height: false to prevent automatic page breaks within a column
+          doc.fillColor(vc.isGloss ? '#ef4444' : '#ef4444');
+          doc.text(vc.original || '', c1, rowY, { width: c1w, lineBreak: true });
           const afterOrigY = doc.y;
-          doc.fillColor(vc.isGloss ? '#9ca3af' : '#3b82f6').text(vc.replacement || '', c2, rowY, { width: c2w });
+
+          doc.fillColor(vc.isGloss ? '#9ca3af' : '#3b82f6');
+          doc.text(vc.replacement || '', c2, rowY, { width: c2w, lineBreak: true });
           const afterReplY = doc.y;
-          doc.fillColor('#888').text(vc.explanation || '', c3, rowY, { width: c3w });
+
+          doc.fillColor('#888');
+          doc.text(vc.explanation || '', c3, rowY, { width: c3w, lineBreak: true });
           const afterExplY = doc.y;
+
           doc.y = Math.max(afterOrigY, afterReplY, afterExplY) + 4;
           doc.fillColor('#000');
         }
