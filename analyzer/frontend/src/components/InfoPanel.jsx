@@ -729,6 +729,16 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
             </button>
           </p>
         )}
+        {/* Choose your own alternative */}
+        {!altLoading && <ManualAlternativePicker
+          sentenceIndex={sentenceIndex}
+          wordIndex={wordIndex}
+          word={word}
+          sentence={sentence}
+          selectedUnits={selectedUnits}
+          sentenceRewrites={sentenceRewrites}
+          setSentenceRewrite={setSentenceRewrite}
+        />}
       </div>
       )}
 
@@ -1273,6 +1283,120 @@ function CircleInfo() {
             </p>
           ))}
         </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Manual alternative picker: lets teacher search the vocab and pick a replacement.
+ */
+function ManualAlternativePicker({ sentenceIndex, wordIndex, word, sentence, selectedUnits, sentenceRewrites, setSentenceRewrite }) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [searching, setSearching] = useState(false);
+  const [applying, setApplying] = useState(false);
+
+  const handleSearch = async (q) => {
+    setQuery(q);
+    if (q.trim().length < 2) { setResults([]); return; }
+    setSearching(true);
+    try {
+      const res = await fetch(`/api/analyzer/lookup?word=${encodeURIComponent(q.trim())}`);
+      const data = await res.json();
+      // Filter to only show entries from selected units (active vocab)
+      const filtered = (data.entries || []).filter(e =>
+        e.isActive && selectedUnits.has(e.unitId)
+      );
+      setResults(filtered);
+    } catch { setResults([]); }
+    finally { setSearching(false); }
+  };
+
+  const handleSelect = async (entry) => {
+    setApplying(true);
+    const replacement = entry.word.replace(/^(der|die|das|den|dem|des|ein|eine|einen|einem|einer)\s+/i, '');
+    const existingRewrite = sentenceRewrites[sentenceIndex];
+    const currentText = existingRewrite?.rewritten || sentence.text;
+    const trueOriginal = existingRewrite?.originalText || sentence.text;
+    const previousChanges = existingRewrite?.changes || [];
+    const wasGrammarFixed = existingRewrite?.grammarFixed || (existingRewrite && existingRewrite.targetStructure !== 'word-replacement');
+
+    try {
+      const res = await fetch('/api/analyzer/apply-replacement', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sentence: currentText, originalWord: word.text, replacement }),
+      });
+      const data = await res.json();
+      setSentenceRewrite(sentenceIndex, {
+        rewritten: data.result || currentText.replace(word.text, replacement),
+        changes: [...previousChanges, { original: word.text, replacement: entry.word, explanation: entry.translation || '' }],
+        originalText: trueOriginal,
+        targetStructure: 'word-replacement',
+        grammarFixed: wasGrammarFixed,
+      });
+    } catch {
+      setSentenceRewrite(sentenceIndex, {
+        rewritten: currentText.replace(word.text, replacement),
+        changes: [...previousChanges, { original: word.text, replacement: entry.word, explanation: entry.translation || '' }],
+        originalText: trueOriginal,
+        targetStructure: 'word-replacement',
+        grammarFixed: wasGrammarFixed,
+      });
+    } finally {
+      setApplying(false);
+      setOpen(false);
+    }
+  };
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        className="text-xs text-slate-400 underline hover:text-slate-600 mt-1"
+      >
+        Choose a different word...
+      </button>
+    );
+  }
+
+  return (
+    <div className="mt-2 border border-slate-200 rounded-lg p-3 bg-white space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">Choose Replacement</span>
+        <button onClick={() => { setOpen(false); setQuery(''); setResults([]); }} className="text-xs text-slate-400 hover:text-slate-600">&times;</button>
+      </div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => handleSearch(e.target.value)}
+        placeholder="Type a word to search..."
+        className="w-full px-2 py-1.5 border border-slate-300 rounded text-sm focus:outline-none focus:ring-1"
+        style={{ '--tw-ring-color': 'var(--brand)' }}
+        autoFocus
+      />
+      {searching && <p className="text-xs text-slate-400">Searching...</p>}
+      {results.length > 0 && (
+        <div className="max-h-48 overflow-y-auto space-y-1">
+          {results.map((entry, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelect(entry)}
+              disabled={applying}
+              className="w-full text-left p-2 rounded bg-[var(--color-replaced-bg)] hover:brightness-95 transition-colors border border-blue-200 disabled:opacity-50"
+            >
+              <span className="text-sm font-semibold text-[var(--color-replaced)]">{entry.word}</span>
+              {entry.translation && <span className="text-xs text-blue-400 ml-1">— {entry.translation}</span>}
+              <span className="text-xs text-slate-400 block">{formatUnitLabel(entry.unitId, getOptionalUnits())}</span>
+              {applying && <span className="text-xs text-blue-400 italic">Applying...</span>}
+            </button>
+          ))}
+        </div>
+      )}
+      {query.length >= 2 && !searching && results.length === 0 && (
+        <p className="text-xs text-slate-400 italic">No known vocabulary matches found.</p>
       )}
     </div>
   );
