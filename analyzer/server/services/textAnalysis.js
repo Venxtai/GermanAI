@@ -248,6 +248,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
     analyzedSentences.push({
       text: sentence.text,
       startOffset: sentence.startOffset,
+      paragraphBreak: sentence.paragraphBreak || false,
       words: analyzedWords,
       grammar,
     });

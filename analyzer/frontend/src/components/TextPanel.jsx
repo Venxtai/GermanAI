@@ -10,20 +10,71 @@ function sanitizeHtml(html) {
   // Remove images, scripts, etc.
   doc.querySelectorAll('img, script, link, style, meta, svg, canvas, video, audio, iframe, object, embed').forEach(el => el.remove());
 
-  // Remove all style attributes except font-weight and font-style
+  // First pass: collect formatting info before stripping attributes
+  const boldElements = new Set();
+  const italicElements = new Set();
   doc.querySelectorAll('*').forEach(el => {
-    const bold = el.style?.fontWeight === 'bold' || parseInt(el.style?.fontWeight) >= 700;
-    const italic = el.style?.fontStyle === 'italic';
+    const tag = el.tagName.toLowerCase();
+    const isBold = tag === 'b' || tag === 'strong' ||
+      el.style?.fontWeight === 'bold' || parseInt(el.style?.fontWeight) >= 700;
+    const isItalic = tag === 'i' || tag === 'em' ||
+      el.style?.fontStyle === 'italic';
+    if (isBold) boldElements.add(el);
+    if (isItalic) italicElements.add(el);
+  });
+
+  // Check if bold/italic is applied to ALL text (base style, not selective)
+  // If so, strip it entirely — it's not meaningful formatting
+  const allText = doc.body.innerText || '';
+  const textNodes = [];
+  function collectText(node) {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) textNodes.push(node);
+    else node.childNodes?.forEach(collectText);
+  }
+  collectText(doc.body);
+
+  let allBold = textNodes.length > 0;
+  let allItalic = textNodes.length > 0;
+  for (const tn of textNodes) {
+    let el = tn.parentElement;
+    let isBold = false, isItalic = false;
+    while (el && el !== doc.body) {
+      if (boldElements.has(el)) isBold = true;
+      if (italicElements.has(el)) isItalic = true;
+      el = el.parentElement;
+    }
+    if (boldElements.has(doc.body)) isBold = true;
+    if (italicElements.has(doc.body)) isItalic = true;
+    if (!isBold) allBold = false;
+    if (!isItalic) allItalic = false;
+  }
+
+  // Second pass: strip all attributes, re-apply selective formatting
+  doc.querySelectorAll('*').forEach(el => {
+    const wasBold = boldElements.has(el);
+    const wasItalic = italicElements.has(el);
     el.removeAttribute('style');
     el.removeAttribute('class');
     el.removeAttribute('color');
     el.removeAttribute('bgcolor');
     el.removeAttribute('face');
     el.removeAttribute('size');
-    // Re-apply only formatting styles
-    if (bold) el.style.fontWeight = 'bold';
-    if (italic) el.style.fontStyle = 'italic';
+    // Only re-apply if it's selective (not ALL text has this formatting)
+    if (wasBold && !allBold) el.style.fontWeight = 'bold';
+    if (wasItalic && !allItalic) el.style.fontStyle = 'italic';
   });
+
+  // Unwrap <b>/<strong> tags if all text is bold (they're not meaningful)
+  if (allBold) {
+    doc.querySelectorAll('b, strong').forEach(el => {
+      el.replaceWith(...el.childNodes);
+    });
+  }
+  if (allItalic) {
+    doc.querySelectorAll('i, em').forEach(el => {
+      el.replaceWith(...el.childNodes);
+    });
+  }
 
   return doc.body.innerHTML;
 }
@@ -76,8 +127,11 @@ export default function TextPanel() {
     e.preventDefault();
     const html = e.clipboardData.getData('text/html');
     const text = e.clipboardData.getData('text/plain');
+    console.log('[PASTE] HTML:', html?.substring(0, 500));
+    console.log('[PASTE] Text:', text?.substring(0, 200));
     if (html) {
       const sanitized = sanitizeHtml(html);
+      console.log('[PASTE] Sanitized:', sanitized?.substring(0, 500));
       document.execCommand('insertHTML', false, sanitized);
     } else {
       // Decode HTML entities from plain text paste
@@ -89,8 +143,10 @@ export default function TextPanel() {
       document.execCommand('insertText', false, decoded);
     }
     if (editorRef.current) {
+      // innerText preserves line breaks from <br>, <p>, <div> as \n
       const newText = editorRef.current.innerText;
       const newHtml = editorRef.current.innerHTML;
+      console.log('[PASTE] innerText has newlines:', newText.includes('\n'), 'length:', newText.length);
       lastSyncedText.current = newText;
       setInputText(newText);
       setInputHtml(newHtml);
