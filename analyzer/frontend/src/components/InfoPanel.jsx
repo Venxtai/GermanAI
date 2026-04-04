@@ -53,6 +53,26 @@ function formatUnitLabel(unitId, optionalUnits) {
 }
 
 /**
+ * Find all occurrences of a word (by text, case-insensitive) across the analysis.
+ * Returns array of {sentenceIndex, wordIndex} for each match.
+ */
+function findAllOccurrences(wordText, analysisResult) {
+  if (!analysisResult?.sentences) return [];
+  const target = wordText.toLowerCase();
+  const matches = [];
+  for (let si = 0; si < analysisResult.sentences.length; si++) {
+    const sentence = analysisResult.sentences[si];
+    for (let wi = 0; wi < sentence.words.length; wi++) {
+      const w = sentence.words[wi];
+      if (w.type === 'word' && w.text.toLowerCase() === target) {
+        matches.push({ si, wi });
+      }
+    }
+  }
+  return matches;
+}
+
+/**
  * Get the set of optional unit IDs from the store (built lazily, cached).
  */
 function getOptionalUnits() {
@@ -751,16 +771,12 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
           >
             Add Translation for Students
           </button>
-          <button
-            onClick={() => setWordModification(sentenceIndex, wordIndex, {
-              type: 'marked_known',
-              originalWord: word.text,
-            })}
-            className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
-            style={{ backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' }}
-          >
-            Mark as Known
-          </button>
+          <MarkAllButton
+            word={word}
+            sentenceIndex={sentenceIndex}
+            wordIndex={wordIndex}
+            action="known"
+          />
         </div>
       )}
     </div>
@@ -903,13 +919,12 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
           >
             Add Translation for Students
           </button>
-          <button
-            onClick={() => setWordModification(sentenceIndex, wordIndex, null)}
-            className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
-            style={{ backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' }}
-          >
-            Mark as Unknown
-          </button>
+          <MarkAllButton
+            word={word}
+            sentenceIndex={sentenceIndex}
+            wordIndex={wordIndex}
+            action="unknown"
+          />
         </div>
       )}
     </div>
@@ -1285,6 +1300,111 @@ function CircleInfo() {
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * Button that checks for multiple occurrences of a word and offers to mark all.
+ */
+function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
+  const { setWordModification, analysisResult, wordModifications } = useAnalyzerStore();
+  const [showDialog, setShowDialog] = useState(false);
+
+  const occurrences = findAllOccurrences(word.text, analysisResult);
+  // Filter to only relevant occurrences (unknown for "mark known", marked_known for "mark unknown")
+  const relevantOccurrences = occurrences.filter(({ si, wi }) => {
+    const key = `${si}_${wi}`;
+    const mod = wordModifications[key];
+    if (action === 'known') {
+      // Only count occurrences that are currently unknown (not already marked/replaced/glossed)
+      return !mod && analysisResult.sentences[si]?.words[wi]?.status === 'unknown';
+    } else {
+      // Only count occurrences that are currently marked_known
+      return mod?.type === 'marked_known';
+    }
+  });
+  const hasMultiple = relevantOccurrences.length > 1;
+
+  const handleClick = () => {
+    if (hasMultiple) {
+      setShowDialog(true);
+    } else {
+      applySingle();
+    }
+  };
+
+  const applySingle = () => {
+    if (action === 'known') {
+      setWordModification(sentenceIndex, wordIndex, { type: 'marked_known', originalWord: word.text });
+    } else {
+      setWordModification(sentenceIndex, wordIndex, null);
+    }
+    setShowDialog(false);
+  };
+
+  const applyAll = () => {
+    for (const { si, wi } of relevantOccurrences) {
+      if (action === 'known') {
+        setWordModification(si, wi, { type: 'marked_known', originalWord: word.text });
+      } else {
+        setWordModification(si, wi, null);
+      }
+    }
+    setShowDialog(false);
+  };
+
+  const isKnown = action === 'known';
+  const btnStyle = isKnown
+    ? { backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' }
+    : { backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' };
+
+  return (
+    <>
+      <button
+        onClick={handleClick}
+        className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
+        style={btnStyle}
+      >
+        {isKnown ? 'Mark as Known' : 'Mark as Unknown'}
+      </button>
+
+      {showDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white rounded-xl shadow-2xl p-6 w-80 space-y-4">
+            <h3 className="text-base font-bold text-slate-800">
+              "{word.text}" appears {relevantOccurrences.length} times
+            </h3>
+            <p className="text-sm text-slate-500">
+              {isKnown
+                ? 'Mark just this one or all occurrences as known?'
+                : 'Mark just this one or all occurrences as unknown?'}
+            </p>
+            <div className="space-y-2">
+              <button
+                onClick={applyAll}
+                className="w-full py-2 rounded-lg text-sm font-medium text-white"
+                style={{ backgroundColor: isKnown ? 'var(--brand)' : 'var(--color-unknown)' }}
+              >
+                {isKnown ? 'Mark All as Known' : 'Mark All as Unknown'} ({relevantOccurrences.length})
+              </button>
+              <button
+                onClick={applySingle}
+                className="w-full py-2 rounded-lg text-sm font-medium border"
+                style={btnStyle}
+              >
+                {isKnown ? 'Mark Only This One' : 'Only This One'}
+              </button>
+              <button
+                onClick={() => setShowDialog(false)}
+                className="w-full py-2 bg-slate-100 text-slate-500 rounded-lg text-sm hover:bg-slate-200"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

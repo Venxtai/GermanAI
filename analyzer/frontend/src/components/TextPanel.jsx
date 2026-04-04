@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
 import AnalyzedText from './AnalyzedText';
 
@@ -88,6 +88,8 @@ export default function TextPanel() {
 
   const fileInputRef = useRef(null);
   const editorRef = useRef(null);
+  const [showPdfWarning, setShowPdfWarning] = useState(false);
+  const [pendingPdfFile, setPendingPdfFile] = useState(null);
 
   // Sync editor content when inputText changes externally (e.g., file upload, session restore)
   const lastSyncedText = useRef(inputText);
@@ -206,6 +208,18 @@ export default function TextPanel() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Check if PDF — show formatting warning
+    if (file.name.toLowerCase().endsWith('.pdf')) {
+      setPendingPdfFile(file);
+      setShowPdfWarning(true);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    await processFileUpload(file);
+  };
+
+  const processFileUpload = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
 
@@ -318,6 +332,47 @@ export default function TextPanel() {
         <p className="mt-3 text-sm text-amber-600">
           Please select at least one unit from the left panel before analyzing.
         </p>
+      )}
+
+      {/* PDF formatting warning dialog */}
+      {showPdfWarning && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white rounded-xl shadow-2xl p-6 w-[28rem] space-y-4">
+            <h3 className="text-lg font-bold text-slate-800">PDF Upload</h3>
+            <p className="text-sm text-slate-600">
+              PDF files do not preserve formatting (bold, italic). The text will be extracted as plain text only.
+            </p>
+            <p className="text-sm text-slate-500">
+              If formatting is important, you can:
+            </p>
+            <ul className="text-sm text-slate-500 list-disc pl-5 space-y-1">
+              <li>Upload a <strong>.docx</strong> file instead (preserves bold and italic)</li>
+              <li><strong>Copy and paste</strong> directly from the PDF — your browser preserves formatting on paste</li>
+            </ul>
+            <div className="flex gap-2 pt-2">
+              <button
+                onClick={() => {
+                  setShowPdfWarning(false);
+                  if (pendingPdfFile) processFileUpload(pendingPdfFile);
+                  setPendingPdfFile(null);
+                }}
+                className="flex-1 py-2 text-white rounded-lg text-sm font-medium"
+                style={{ backgroundColor: 'var(--brand)' }}
+              >
+                Upload Anyway
+              </button>
+              <button
+                onClick={() => {
+                  setShowPdfWarning(false);
+                  setPendingPdfFile(null);
+                }}
+                className="flex-1 py-2 bg-slate-100 text-slate-600 rounded-lg text-sm font-medium hover:bg-slate-200"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
