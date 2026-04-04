@@ -33,6 +33,7 @@ export default function App() {
   const {
     isAuthenticated, chapters, setChapters, showVocabLookup,
     isReadOnly, setReadOnly, setShareId, loadSharedSession, setAuthenticated,
+    compareMode,
   } = useAnalyzerStore();
 
   // Auto-save adapted text PDF to Google Drive
@@ -96,10 +97,12 @@ export default function App() {
           <TextPanel />
         </main>
 
-        {/* Right: Info/interaction panel */}
-        <aside className="w-96 border-l border-slate-200 bg-white overflow-y-auto flex-shrink-0">
-          <InfoPanel />
-        </aside>
+        {/* Right: Info/interaction panel — hidden in compare mode to give columns more space */}
+        {!compareMode && (
+          <aside className="w-96 border-l border-slate-200 bg-white overflow-y-auto flex-shrink-0">
+            <InfoPanel />
+          </aside>
+        )}
       </div>
       <Legend />
       {showVocabLookup && <VocabLookup />}
