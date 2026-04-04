@@ -768,20 +768,32 @@ router.post('/analyzer/export', async (req, res) => {
 
       const footnotes = [];
       let footnoteNum = 0;
+      const studentMargin = 50;
+      const studentWidth = doc.page.width - 100; // 50px margins each side
       const words = text.split(/(\s+)/);
-      for (const word of words) {
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
         const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
+        const isFirst = i === 0;
         if (glossMap.has(clean)) {
           footnoteNum++;
           footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
-          doc.text(word, { continued: true });
+          if (isFirst) {
+            doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+          } else {
+            doc.text(word, { continued: true });
+          }
           doc.fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
           doc.fontSize(12);
         } else {
-          doc.text(word, { continued: true });
+          if (isFirst) {
+            doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+          } else {
+            doc.text(word, { continued: true });
+          }
         }
       }
-      doc.text('');
+      doc.text('', studentMargin);
 
       if (footnotes.length > 0) {
         doc.moveDown(1.5);
