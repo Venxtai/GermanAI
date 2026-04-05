@@ -18,21 +18,25 @@
 
     /* ─── Hero Banner ─── */
     .hero {
-      background: linear-gradient(135deg, #006d7a 0%, #008899 40%, #00a0b0 100%);
-      color: white;
-      padding: 3rem 2rem;
+      background: #d4eef1;
+      color: #1e293b;
+      padding: 3rem 2rem 4rem;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
-    .hero::before {
-      content: '';
+    /* Pulse/heartbeat divider between hero and tools section */
+    .hero-divider {
+      position: relative;
+      height: 60px;
+      background: #d4eef1;
+      margin-top: -1px;
+    }
+    .hero-divider svg {
       position: absolute;
-      bottom: -20px;
-      left: -40px;
-      right: -40px;
-      height: 120px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 120'%3E%3Cpath d='M0 80 Q100 20 200 80 Q300 140 400 60 Q500 -20 600 80 Q700 140 800 60 L800 120 L0 120Z' fill='white' opacity='0.12'/%3E%3C/svg%3E") repeat-x;
-      background-size: 800px 120px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
     }
     .hero-inner {
       max-width: 1100px;
@@ -62,20 +66,20 @@
     }
     .hero-text .subtitle {
       font-size: 1.05rem;
-      opacity: 0.85;
+      color: #008899;
       font-style: italic;
       margin-bottom: 1rem;
     }
     .hero-text p {
       font-size: 0.95rem;
-      opacity: 0.9;
+      color: #475569;
       max-width: 560px;
       margin-bottom: 1.25rem;
     }
     .hero-btn {
       display: inline-block;
-      background: white;
-      color: #008899;
+      background: #008899;
+      color: white;
       padding: 0.65rem 1.5rem;
       border-radius: 8px;
       font-weight: 700;
@@ -85,7 +89,8 @@
     }
     .hero-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      background: #006d7a;
     }
     .hero-badge {
       display: inline-block;
@@ -251,6 +256,16 @@
         </a>
       </div>
     </div>
+  </div>
+
+  <!-- Pulse divider — EKG heartbeat line on the left, straight line on the right -->
+  <div class="hero-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- White fill below the line -->
+      <path d="M0 30 L60 30 L80 30 L100 55 L120 5 L140 45 L155 15 L170 35 L190 30 L240 30 L1200 30 L1200 60 L0 60 Z" fill="#f8fafc"/>
+      <!-- The pulse line itself in teal -->
+      <path d="M0 30 L60 30 L80 30 L100 55 L120 5 L140 45 L155 15 L170 35 L190 30 L240 30 L1200 30" fill="none" stroke="#008899" stroke-width="2.5"/>
+    </svg>
   </div>
 
   <!-- AI Tools Section -->
