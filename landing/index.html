@@ -27,7 +27,7 @@
     /* Pulse/heartbeat divider between hero and tools section */
     .hero-divider {
       position: relative;
-      height: 60px;
+      height: 80px;
       background: #d4eef1;
       margin-top: -1px;
     }
@@ -36,7 +36,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 60px;
+      height: 80px;
     }
     .hero-inner {
       max-width: 1100px;
@@ -258,13 +258,13 @@
     </div>
   </div>
 
-  <!-- Pulse divider — EKG heartbeat line on the left, straight line on the right -->
+  <!-- Pulse divider — smooth rounded heartbeat on the left, straight line on the right -->
   <div class="hero-divider">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- White fill below the line -->
-      <path d="M0 30 L60 30 L80 30 L100 55 L120 5 L140 45 L155 15 L170 35 L190 30 L240 30 L1200 30 L1200 60 L0 60 Z" fill="#f8fafc"/>
-      <!-- The pulse line itself in teal -->
-      <path d="M0 30 L60 30 L80 30 L100 55 L120 5 L140 45 L155 15 L170 35 L190 30 L240 30 L1200 30" fill="none" stroke="#008899" stroke-width="2.5"/>
+      <path d="M0 40 C30 40 50 40 60 40 C65 40 70 42 75 50 C80 58 85 65 90 65 C95 65 98 55 102 40 C106 25 110 5 115 5 C120 5 123 25 127 40 C131 55 135 72 140 72 C145 72 148 55 152 40 C156 28 160 20 165 20 C170 20 173 30 178 40 C183 48 188 40 200 40 L1200 40 L1200 80 L0 80 Z" fill="#f8fafc"/>
+      <!-- The pulse line itself -->
+      <path d="M0 40 C30 40 50 40 60 40 C65 40 70 42 75 50 C80 58 85 65 90 65 C95 65 98 55 102 40 C106 25 110 5 115 5 C120 5 123 25 127 40 C131 55 135 72 140 72 C145 72 148 55 152 40 C156 28 160 20 165 20 C170 20 173 30 178 40 C183 48 188 40 200 40 L1200 40" fill="none" stroke="#008899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 
