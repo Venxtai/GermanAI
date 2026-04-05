@@ -53,7 +53,7 @@ export default function AddTextsDialog() {
 
     // Build the compare texts array starting with the current analysis
     const compareItems = [{
-      id: 'original',
+      id: 'text-1',
       text: inputText,
       html: inputHtml,
       analysisResult,
@@ -77,7 +77,7 @@ export default function AddTextsDialog() {
         if (data.error) throw new Error(data.error);
 
         compareItems.push({
-          id: `compare-${i + 1}`,
+          id: `text-${i + 2}`,
           text: newTexts[i].trim(),
           html: '',
           analysisResult: data,
@@ -88,7 +88,7 @@ export default function AddTextsDialog() {
       }
 
       setCompareTexts(compareItems);
-      setActiveCompareId('original');
+      setActiveCompareId('text-1');
       setCompareMode(true);
       setShowAddTextsDialog(false);
       setTexts(['', '']);

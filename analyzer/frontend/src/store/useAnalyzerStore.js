@@ -335,6 +335,34 @@ const useAnalyzerStore = create((set, get) => ({
   setCompareTexts: (texts) => set({ compareTexts: texts }),
   setActiveCompareId: (id) => set({ activeCompareId: id }),
 
+  removeCompareText: (id) => {
+    const remaining = get().compareTexts.filter(t => t.id !== id);
+    if (remaining.length <= 1) {
+      // Only one text left — promote it to main editor
+      const ct = remaining[0];
+      if (ct) {
+        set({
+          inputText: ct.text,
+          inputHtml: ct.html || '',
+          analysisResult: ct.analysisResult,
+          wordModifications: ct.wordModifications || {},
+          sentenceRewrites: ct.sentenceRewrites || {},
+          wordFormatting: ct.wordFormatting || {},
+          compareMode: false,
+          compareTexts: [],
+          activeCompareId: null,
+        });
+        _saveSession(get());
+      }
+    } else {
+      // Multiple remain — just remove the one
+      set({
+        compareTexts: remaining,
+        activeCompareId: get().activeCompareId === id ? remaining[0]?.id : get().activeCompareId,
+      });
+    }
+  },
+
   promoteCompareText: (id) => {
     const ct = get().compareTexts.find(t => t.id === id);
     if (!ct) return;
