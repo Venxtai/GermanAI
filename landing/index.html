@@ -41,12 +41,13 @@
       align-items: center;
       gap: 3rem;
     }
-    .hero-cover {
+    .hero-covers {
       flex-shrink: 0;
-      width: 220px;
+      display: flex;
+      gap: 1rem;
     }
-    .hero-cover img {
-      width: 100%;
+    .hero-covers img {
+      width: 160px;
       border-radius: 8px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
@@ -222,7 +223,7 @@
     /* ─── Responsive ─── */
     @media (max-width: 768px) {
       .hero-inner { flex-direction: column; text-align: center; }
-      .hero-cover { width: 160px; }
+      .hero-covers img { width: 120px; }
       .hero-text p { margin-left: auto; margin-right: auto; }
       .cards { flex-direction: column; }
       .hero-text h1 { font-size: 1.8rem; }
@@ -234,8 +235,9 @@
   <!-- Hero: Book promotion -->
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-cover">
-        <img src="images/cover-id1.jpg" alt="Impuls Deutsch 1 Second Edition textbook cover">
+      <div class="hero-covers">
+        <img src="images/cover-id1.jpg" alt="Impuls Deutsch 1 Second Edition">
+        <img src="images/cover-id2.png" alt="Impuls Deutsch 2 Second Edition">
       </div>
       <div class="hero-text">
         <span class="hero-badge">Second Edition</span>
