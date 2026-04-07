@@ -34,3 +34,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/analyzer:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
