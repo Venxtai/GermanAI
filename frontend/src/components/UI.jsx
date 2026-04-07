@@ -414,6 +414,7 @@ export function UI() {
         {screen === "code" && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ delay: 4.5, duration: 0.8 }}
             style={{ paddingLeft: "50%" }}
             className="pointer-events-auto absolute inset-0 flex items-center justify-start"
           >
