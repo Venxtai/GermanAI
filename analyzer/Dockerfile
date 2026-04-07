@@ -1,9 +1,13 @@
+# This Dockerfile expects build context = analyzer/ directory
+# Curriculum data is copied separately via cloudbuild.yaml or
+# symlinked before build.
+
 # Stage 1: Build frontend
 FROM node:20-alpine AS frontend-build
 WORKDIR /app/frontend
-COPY analyzer/frontend/package*.json ./
+COPY frontend/package*.json ./
 RUN npm ci
-COPY analyzer/frontend/ ./
+COPY frontend/ ./
 RUN npm run build
 
 # Stage 2: Production server
@@ -11,14 +15,14 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy server dependencies
-COPY analyzer/package*.json ./
+COPY package*.json ./
 RUN npm ci --production
 
 # Copy server code
-COPY analyzer/server/ ./server/
+COPY server/ ./server/
 
-# Copy curriculum data (shared with buddy)
-COPY curriculum/ ../curriculum/
+# Copy curriculum data (must be present in analyzer/curriculum/ at build time)
+COPY curriculum/ ./curriculum/
 
 # Copy built frontend
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist

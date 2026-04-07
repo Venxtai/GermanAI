@@ -35,10 +35,16 @@ const ALL_CHAPTERS = { ID1: ID1_CHAPTERS, ID2B: ID2B_CHAPTERS, ID2O: ID2O_CHAPTE
  */
 function loadUnits() {
   const unitMap = {};
-  const kbDir = path.join(__dirname, '../../../curriculum/units/Knowledge Base');
+  // Try multiple paths for curriculum (works in dev, worktrees, and Docker)
+  const candidates = [
+    path.join(__dirname, '../../../curriculum/units/Knowledge Base'),  // dev: analyzer/server/services → repo root
+    path.join(__dirname, '../../curriculum/units/Knowledge Base'),     // Docker: /app/server/services → /app/curriculum
+    path.join(__dirname, '../../../../curriculum/units/Knowledge Base'), // worktree path
+  ];
+  const kbDir = candidates.find(d => fs.existsSync(d));
 
-  if (!fs.existsSync(kbDir)) {
-    console.warn('Knowledge Base directory not found:', kbDir);
+  if (!kbDir) {
+    console.warn('Knowledge Base directory not found. Tried:', candidates);
     return unitMap;
   }
 

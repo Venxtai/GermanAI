@@ -1,0 +1,36 @@
+steps:
+  # Copy shared curriculum data into analyzer/ so Docker context has it
+  - name: 'ubuntu'
+    args: ['cp', '-r', 'curriculum', 'analyzer/curriculum']
+
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/analyzer:$COMMIT_SHA'
+      - '-f'
+      - 'analyzer/Dockerfile'
+      - 'analyzer'
+
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/analyzer:$COMMIT_SHA']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'analyzer'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/analyzer:$COMMIT_SHA'
+      - '--region'
+      - 'us-east1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+images:
+  - 'gcr.io/$PROJECT_ID/analyzer:$COMMIT_SHA'
