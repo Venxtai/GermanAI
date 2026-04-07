@@ -23,9 +23,10 @@ export function Experience() {
       <ChalkboardText />
 
       {/* Naoki GLB — positioned in front of the board */}
+      {/* Character moved forward + down for medium shot (waist up) */}
       <Character
-        position={[-1.4, -1.5, -4.6]}
-        rotation={[0, THREE.MathUtils.degToRad(20), 0]}
+        position={[-0.55, -2.2, -3.0]}
+        rotation={[THREE.MathUtils.degToRad(5), THREE.MathUtils.degToRad(25), 0]}
         scale={1.5}
       />
     </>

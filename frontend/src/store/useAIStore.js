@@ -13,17 +13,35 @@ const useAIStore = create((set, get) => ({
   // Audio / lipsync
   audioAmplitude: 0,
   analyzerNode: null,
+  visemeTimeline: null,    // Array of { time, viseme, weight, duration } from server
+  visemeStartTime: null,   // performance.now() when audio playback started
+
+  // Auth
+  accessCode: null,
+  accessType: null,
+  assignedTo: null,
 
   // Mic error feedback
   micError: null,
   feedback: null,   // null | 'loading' | { items: string[] } | { fallback: true }
+  transcriptForDownload: null, // saved messages for download after session ends
+
+  // Progress bar timing
+  conversationStartTime: null, // Date.now() when session started
+  sessionMinMs: 0,             // minimum duration in ms
+  sessionMaxMs: 0,             // maximum duration in ms
 
   // Actions
   setStatus: (status) => set({ status }),
   setMicError: (err) => set({ micError: err }),
   setFeedback: (fb) => set({ feedback: fb }),
+  setAccessCode: (code) => set({ accessCode: code }),
+  setAccessType: (type) => set({ accessType: type }),
+  setAssignedTo: (name) => set({ assignedTo: name }),
+  setTranscriptForDownload: (t) => set({ transcriptForDownload: t }),
   setCurrentUnit: (unit) => set({ currentUnit: unit }),
   setSessionActive: (active) => set({ isSessionActive: active }),
+  setSessionTiming: (startTime, minMs, maxMs) => set({ conversationStartTime: startTime, sessionMinMs: minMs, sessionMaxMs: maxMs }),
 
   addMessage: (role, content) =>
     set((state) => ({
@@ -72,6 +90,8 @@ const useAIStore = create((set, get) => ({
     })),
 
   setAnalyzerNode: (node) => set({ analyzerNode: node }),
+  setVisemeTimeline: (timeline) => set({ visemeTimeline: timeline, visemeStartTime: performance.now() }),
+  clearVisemeTimeline: () => set({ visemeTimeline: null, visemeStartTime: null }),
   setAudioAmplitude: (amp) => set({ audioAmplitude: amp }),
 }));
 
