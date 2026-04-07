@@ -2254,6 +2254,22 @@ If no topic matches, respond:
 
 // Serve the built React frontend (must come AFTER all API routes)
 const distPath = path.join(__dirname, '../frontend/dist');
+const landingPath = path.join(__dirname, '../landing');
+
+// Host-based routing: impulsdeutsch.com (no subdomain) serves the landing page
+// buddy.impulsdeutsch.com and localhost serve the buddy app
+app.use((req, res, next) => {
+  const host = req.hostname?.toLowerCase() || '';
+  // Root domain without subdomain → landing page
+  if (host === 'impulsdeutsch.com' || host === 'www.impulsdeutsch.com') {
+    return express.static(landingPath)(req, res, () => {
+      // If no static file matched, serve landing index.html
+      res.sendFile(path.join(landingPath, 'index.html'));
+    });
+  }
+  next();
+});
+
 app.use(express.static(distPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));

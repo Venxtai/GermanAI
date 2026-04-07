@@ -21,6 +21,9 @@ COPY curriculum/ ./curriculum/
 # Copy built frontend from build stage
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 
+# Copy landing page (served at impulsdeutsch.com root domain)
+COPY landing/ ./landing/
+
 # Copy service account (will be overridden by env var in Cloud Run)
 # COPY service-account.json ./service-account.json
 
