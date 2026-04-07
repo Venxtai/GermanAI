@@ -24,6 +24,9 @@ COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 # Copy landing page (served at impulsdeutsch.com root domain)
 COPY landing/ ./landing/
 
+# Copy invite page (served at buddy.impulsdeutsch.com/invite)
+COPY invite/ ./invite/
+
 # Copy service account (will be overridden by env var in Cloud Run)
 # COPY service-account.json ./service-account.json
 

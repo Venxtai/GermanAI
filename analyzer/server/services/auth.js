@@ -48,7 +48,7 @@ async function getDriveClient() {
  * Checks: code exists, uses remaining, Tool column is "Text" or "Both".
  *
  * Access Codes columns (updated):
- * A=Code, B=Type, C=Tool (Buddy/Text/Both), D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Notes
+ * A=Code, B=Type, C=Tool (Buddy/Text/Both), D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
  */
 async function validateCode(code) {
   if (!code || typeof code !== 'string') {
@@ -65,7 +65,7 @@ async function validateCode(code) {
     const sheets = await getSheetsClient();
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:H',
+      range: 'Access Codes!A2:I',
     });
 
     const rows = result.data.values || [];
@@ -77,7 +77,7 @@ async function validateCode(code) {
     }
 
     const row = rows[rowIndex];
-    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Notes
+    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
     const type = row[1] || 'student';
     const tool = (row[2] || '').toLowerCase().trim();
     const maxUses = parseInt(row[3]) || 0;

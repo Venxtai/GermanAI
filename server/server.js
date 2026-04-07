@@ -122,7 +122,7 @@ app.post('/api/auth/validate', async (req, res) => {
     const sheets = await getSheetsClient();
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:H',
+      range: 'Access Codes!A2:I',
     });
 
     const rows = result.data.values || [];
@@ -135,6 +135,7 @@ app.post('/api/auth/validate', async (req, res) => {
 
     const row = rows[rowIndex];
     const type = row[1] || 'student';
+    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
     // Column C = Tool (Text, Buddy, or Both) — code is valid for Buddy if "Buddy" or "Both"
     const tool = (row[2] || '').trim().toLowerCase();
     if (tool !== 'buddy' && tool !== 'both') {
@@ -2252,6 +2253,361 @@ If no topic matches, respond:
   }
 });
 
+// ══════════════════════════════════════════════════════════════════════════
+// TEACHER INVITE SYSTEM — Generate student codes in bulk
+// ══════════════════════════════════════════════════════════════════════════
+const PDFDocument = require('pdfkit');
+const nodemailer = require('nodemailer');
+const QRCode = require('qrcode');
+
+// Code generation charset (no ambiguous chars: 0/O/1/I/L removed)
+const CODE_CHARSET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function generateRandomCode(initials) {
+  let suffix = '';
+  for (let i = 0; i < 4; i++) {
+    suffix += CODE_CHARSET[Math.floor(Math.random() * CODE_CHARSET.length)];
+  }
+  return `BD-${initials}-${suffix}`;
+}
+
+function getInitials(name) {
+  const parts = name.trim().split(/\s+/);
+  const first = (parts[0] || 'X')[0].toUpperCase();
+  const last = parts.length > 1 ? (parts[parts.length - 1] || 'X')[0].toUpperCase() : 'X';
+  return first + last;
+}
+
+// POST /api/invite/validate-teacher — Verify teacher code + email
+app.post('/api/invite/validate-teacher', async (req, res) => {
+  const { code, email } = req.body;
+  if (!code || !email) {
+    return res.status(400).json({ valid: false, error: 'Code and email are required' });
+  }
+
+  try {
+    const sheets = await getSheetsClient();
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:I',
+    });
+
+    const rows = result.data.values || [];
+    const codeLower = code.trim().toLowerCase();
+    const rowIndex = rows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+
+    if (rowIndex === -1) {
+      return res.json({ valid: false, error: 'Invalid access code' });
+    }
+
+    const row = rows[rowIndex];
+    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
+    const type = (row[1] || '').toLowerCase().trim();
+    if (!type.includes('teacher')) {
+      return res.json({ valid: false, error: 'This is not a teacher code' });
+    }
+
+    const storedEmail = (row[7] || '').trim().toLowerCase();
+    if (!storedEmail || storedEmail !== email.trim().toLowerCase()) {
+      return res.json({ valid: false, error: 'Email does not match the code on file' });
+    }
+
+    const maxUses = parseInt(row[3]) || 0;
+    const used = parseInt(row[4]) || 0;
+    const assignedTo = row[6] || '';
+
+    return res.json({
+      valid: true,
+      assignedTo,
+      availableCredits: maxUses - used,
+      maxCredits: maxUses,
+      usedCredits: used,
+    });
+  } catch (err) {
+    console.error('[INVITE] Teacher validation error:', err.message);
+    return res.status(500).json({ valid: false, error: 'Server error — please try again' });
+  }
+});
+
+// POST /api/invite/create-codes — Generate student codes and write to Google Sheet
+app.post('/api/invite/create-codes', async (req, res) => {
+  const { teacherCode, teacherEmail, students } = req.body;
+  if (!teacherCode || !teacherEmail || !Array.isArray(students) || students.length === 0) {
+    return res.status(400).json({ success: false, error: 'Missing required fields' });
+  }
+
+  try {
+    const sheets = await getSheetsClient();
+
+    // Re-validate teacher code + email
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:I',
+    });
+
+    const rows = result.data.values || [];
+    const codeLower = teacherCode.trim().toLowerCase();
+    const teacherRowIndex = rows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+
+    if (teacherRowIndex === -1) {
+      return res.json({ success: false, error: 'Invalid teacher code' });
+    }
+
+    const teacherRow = rows[teacherRowIndex];
+    const type = (teacherRow[1] || '').toLowerCase().trim();
+    if (!type.includes('teacher')) {
+      return res.json({ success: false, error: 'Not a teacher code' });
+    }
+
+    const storedEmail = (teacherRow[7] || '').trim().toLowerCase();
+    if (!storedEmail || storedEmail !== teacherEmail.trim().toLowerCase()) {
+      return res.json({ success: false, error: 'Email mismatch' });
+    }
+
+    const maxUses = parseInt(teacherRow[3]) || 0;
+    const used = parseInt(teacherRow[4]) || 0;
+    const availableCredits = maxUses - used;
+    const teacherName = teacherRow[6] || 'Unknown Teacher';
+
+    // Calculate total credits needed
+    const totalCredits = students.reduce((sum, s) => sum + (parseInt(s.conversations) || 0), 0);
+    if (totalCredits > availableCredits) {
+      return res.json({
+        success: false,
+        error: `Not enough credits. Need ${totalCredits}, have ${availableCredits}.`,
+      });
+    }
+
+    // Collect all existing codes for uniqueness check
+    const existingCodes = new Set(rows.map(r => (r[0] || '').toLowerCase()));
+
+    // Generate unique codes for each student
+    const generatedCodes = [];
+    for (const student of students) {
+      const initials = getInitials(student.name || 'XX');
+      let code;
+      let attempts = 0;
+      do {
+        code = generateRandomCode(initials);
+        attempts++;
+        if (attempts > 100) throw new Error('Could not generate unique code after 100 attempts');
+      } while (existingCodes.has(code.toLowerCase()));
+
+      existingCodes.add(code.toLowerCase());
+      generatedCodes.push({
+        name: student.name,
+        university: student.university || '',
+        email: student.email || '',
+        conversations: parseInt(student.conversations) || 1,
+        code,
+      });
+    }
+
+    // Deduct credits from teacher (update Used column)
+    const teacherSheetRow = teacherRowIndex + 2;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: `Access Codes!E${teacherSheetRow}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[used + totalCredits]] },
+    });
+
+    // Append student rows to Access Codes sheet
+    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
+    const newRows = generatedCodes.map(s => [
+      s.code,
+      'student',
+      'Buddy',
+      s.conversations,
+      0,
+      teacherName,
+      `${s.name}${s.university ? ' (' + s.university + ')' : ''}`,
+      s.email,
+      `Created with teacher code "${teacherCode}"`,
+    ]);
+
+    // Use USER_ENTERED so the Tool column respects the dropdown data validation
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A:I',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: { values: newRows },
+    });
+
+    console.log(`[INVITE] Teacher "${teacherName}" (${teacherCode}) created ${generatedCodes.length} student codes, ${totalCredits} credits used`);
+
+    return res.json({
+      success: true,
+      codes: generatedCodes,
+      totalUsed: totalCredits,
+      remaining: availableCredits - totalCredits,
+    });
+  } catch (err) {
+    console.error('[INVITE] Create codes error:', err.message);
+    return res.status(500).json({ success: false, error: 'Server error — please try again' });
+  }
+});
+
+// POST /api/invite/download-pdf — Generate printable cards PDF with QR codes
+app.post('/api/invite/download-pdf', async (req, res) => {
+  const { codes, teacherName } = req.body;
+  if (!Array.isArray(codes) || codes.length === 0) {
+    return res.status(400).json({ error: 'No codes provided' });
+  }
+
+  try {
+    // Pre-generate all QR codes as PNG buffers
+    const qrBuffers = await Promise.all(
+      codes.map(s => QRCode.toBuffer('https://buddy.impulsdeutsch.com', {
+        width: 120, margin: 1, color: { dark: '#008899', light: '#ffffff' },
+      }))
+    );
+
+    const doc = new PDFDocument({ size: 'A4', margin: 36, autoFirstPage: true });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="student-codes.pdf"');
+    doc.pipe(res);
+
+    // Card dimensions: 2 columns × 4 rows on A4 (595 × 842 pt)
+    const pageW = 595 - 72; // minus margins
+    const cols = 2;
+    const rowsPerPage = 4;
+    const gapX = 12;
+    const gapY = 8;
+    const cardW = (pageW - gapX) / cols;
+    const cardH = 175;
+    const cardsPerPage = cols * rowsPerPage;
+    const qrSize = 70;
+
+    for (let i = 0; i < codes.length; i++) {
+      if (i > 0 && i % cardsPerPage === 0) doc.addPage();
+
+      const pageIndex = i % cardsPerPage;
+      const col = pageIndex % cols;
+      const row = Math.floor(pageIndex / cols);
+      const x = 36 + col * (cardW + gapX);
+      const y = 36 + row * (cardH + gapY);
+
+      const s = codes[i];
+
+      // Card border (dashed cut line)
+      doc.save();
+      doc.roundedRect(x, y, cardW, cardH, 6)
+         .dash(4, { space: 3 })
+         .stroke('#bbb');
+      doc.undash();
+
+      // Left content area (text), right area (QR)
+      const textW = cardW - qrSize - 36;
+
+      // Header
+      doc.fontSize(8.5).fillColor('#008899').font('Helvetica-Bold')
+         .text('Impuls Deutsch', x + 14, y + 12, { width: textW });
+      doc.fontSize(7.5).fillColor('#64748b').font('Helvetica')
+         .text('Conversation Buddy', x + 14, y + 23, { width: textW });
+
+      // Student name
+      doc.fontSize(12).fillColor('#1e293b').font('Helvetica-Bold')
+         .text(s.name || 'Student', x + 14, y + 42, { width: textW });
+
+      // Access code (large)
+      doc.fontSize(20).fillColor('#008899').font('Helvetica-Bold')
+         .text(s.code, x + 14, y + 62, { width: textW });
+
+      // Conversations count
+      doc.fontSize(9).fillColor('#475569').font('Helvetica')
+         .text(`${s.conversations} conversation${s.conversations !== 1 ? 's' : ''}`, x + 14, y + 90, { width: textW });
+
+      // Instructions
+      doc.fontSize(7.5).fillColor('#94a3b8').font('Helvetica')
+         .text('Go to the URL or scan the QR code,', x + 14, y + 112, { width: textW })
+         .text('then enter your access code.', x + 14, y + 122, { width: textW });
+
+      // URL
+      doc.fontSize(8).fillColor('#008899').font('Helvetica-Bold')
+         .text('buddy.impulsdeutsch.com', x + 14, y + 142, { width: textW });
+
+      // QR code (right side)
+      doc.image(qrBuffers[i], x + cardW - qrSize - 14, y + 14, { width: qrSize, height: qrSize });
+
+      doc.restore();
+    }
+
+    doc.end();
+  } catch (err) {
+    console.error('[INVITE] PDF generation error:', err.message);
+    res.status(500).json({ error: 'PDF generation failed' });
+  }
+});
+
+// POST /api/invite/send-emails — Send invitation emails to students
+app.post('/api/invite/send-emails', async (req, res) => {
+  const { codes, teacherName } = req.body;
+  if (!Array.isArray(codes) || codes.length === 0) {
+    return res.status(400).json({ error: 'No codes provided' });
+  }
+
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+  if (!gmailUser || !gmailPass) {
+    return res.status(500).json({ error: 'Email service is not configured' });
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user: gmailUser, pass: gmailPass },
+  });
+
+  const studentsWithEmail = codes.filter(s => s.email && s.email.includes('@'));
+  if (studentsWithEmail.length === 0) {
+    return res.json({ sent: 0, failed: 0, error: 'No students with valid email addresses' });
+  }
+
+  const results = [];
+  let sent = 0;
+  let failed = 0;
+
+  for (const s of studentsWithEmail) {
+    try {
+      await transporter.sendMail({
+        from: `"Impuls Deutsch" <${gmailUser}>`,
+        to: s.email,
+        subject: 'Your Impuls Deutsch Conversation Buddy Access Code',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px;">
+            <h2 style="color: #008899; margin-bottom: 4px;">Impuls Deutsch</h2>
+            <p style="color: #64748b; font-size: 14px; margin-top: 0;">Conversation Buddy</p>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+            <p>Hi <strong>${s.name}</strong>,</p>
+            <p>${teacherName || 'Your teacher'} has invited you to practice German conversation using the Impuls Deutsch Conversation Buddy.</p>
+            <div style="background: #f0fdfa; border: 2px solid #008899; border-radius: 8px; padding: 16px; margin: 20px 0; text-align: center;">
+              <p style="color: #475569; margin: 0 0 4px 0; font-size: 13px;">Your Access Code</p>
+              <p style="color: #008899; font-size: 28px; font-weight: bold; margin: 0; letter-spacing: 2px;">${s.code}</p>
+            </div>
+            <p>You have <strong>${s.conversations} conversation${s.conversations !== 1 ? 's' : ''}</strong> available.</p>
+            <p>To get started:</p>
+            <ol>
+              <li>Go to <a href="https://buddy.impulsdeutsch.com" style="color: #008899;">buddy.impulsdeutsch.com</a></li>
+              <li>Enter your access code</li>
+              <li>Choose a unit and start practicing!</li>
+            </ol>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+            <p style="color: #94a3b8; font-size: 12px;">This is an automated message from the Impuls Deutsch AI Tools.</p>
+          </div>
+        `,
+      });
+      sent++;
+      results.push({ name: s.name, email: s.email, status: 'sent' });
+    } catch (err) {
+      failed++;
+      results.push({ name: s.name, email: s.email, status: 'failed', error: err.message });
+      console.error(`[INVITE] Email failed for ${s.email}:`, err.message);
+    }
+  }
+
+  console.log(`[INVITE] Emails sent: ${sent}, failed: ${failed}`);
+  return res.json({ sent, failed, results });
+});
+
 // Serve the built React frontend (must come AFTER all API routes)
 const distPath = path.join(__dirname, '../frontend/dist');
 const landingPath = path.join(__dirname, '../landing');
@@ -2269,6 +2625,13 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// Serve invite page at /invite (before React catch-all)
+const invitePath = path.join(__dirname, '../invite');
+app.get('/invite', (req, res) => {
+  res.sendFile(path.join(invitePath, 'index.html'));
+});
+app.use('/invite', express.static(invitePath));
 
 app.use(express.static(distPath));
 app.get('*', (req, res) => {

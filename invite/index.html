@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impuls Deutsch Conversation Buddy | Create Student Codes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: #008899;
+      color: white;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .header .subtitle {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #008899;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: #475569;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Form elements */
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.3rem;
+    }
+    input[type="text"], input[type="email"], input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input:focus {
+      border-color: #008899;
+      box-shadow: 0 0 0 3px rgba(0,136,153,0.1);
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-row > div { flex: 1; }
+
+    /* Buttons */
+    .btn {
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #008899;
+      color: white;
+    }
+    .btn-primary:hover { background: #007585; }
+    .btn-primary:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-outline {
+      background: transparent;
+      color: #008899;
+      border: 1.5px solid #008899;
+    }
+    .btn-outline:hover { background: #f0fdfa; }
+    .btn-danger {
+      background: transparent;
+      color: #ef4444;
+      border: 1.5px solid #ef4444;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    .btn-danger:hover { background: #fef2f2; }
+
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Error / success messages */
+    .error {
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .error.visible { display: block; }
+
+    .success-banner {
+      background: #f0fdfa;
+      color: #008899;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      border: 1px solid #99d5db;
+    }
+
+    /* Credit display */
+    .credit-bar {
+      background: #f0fdfa;
+      border: 1px solid #99d5db;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .credit-bar .name { font-weight: 600; color: #1e293b; }
+    .credit-bar .credits { font-weight: 700; color: #008899; }
+
+    /* Student table */
+    .student-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-bottom: 1rem;
+    }
+    .student-table th {
+      background: #f1f5f9;
+      padding: 0.5rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+      text-align: left;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .student-table th:first-child { border-radius: 8px 0 0 0; }
+    .student-table th:last-child { border-radius: 0 8px 0 0; }
+    .student-table td {
+      padding: 0.35rem 0.4rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .student-table input {
+      border: 1px solid #e2e8f0;
+      padding: 0.45rem 0.5rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+    }
+    .student-table input[type="number"] {
+      width: 70px;
+      text-align: center;
+    }
+    .student-table .remove-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.25rem;
+    }
+    .student-table .remove-btn:hover { color: #ef4444; }
+
+    .email-note {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+    }
+    .total-row .total-label { color: #475569; }
+    .total-row .total-value { font-weight: 700; color: #008899; font-size: 1rem; }
+    .total-row .over-budget { color: #ef4444; }
+
+    /* Results table */
+    .results-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 1rem 0;
+    }
+    .results-table th {
+      background: #f1f5f9;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+      text-align: left;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .results-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.9rem;
+    }
+    .results-table .code-cell {
+      font-weight: 700;
+      color: #008899;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.visible {
+      display: flex;
+    }
+    .modal {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h3 {
+      font-size: 1.1rem;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+    .modal p {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 0.5rem;
+    }
+    .modal .warning {
+      color: #b45309;
+      background: #fefce8;
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      margin: 1rem 0;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Sections */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .form-row { flex-direction: column; gap: 0.75rem; }
+      .container { padding: 0 1rem; }
+      .card { padding: 1.25rem; }
+      .student-table input { font-size: 0.8rem; padding: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>Impuls Deutsch Conversation Buddy <span class="subtitle">| Create Student Codes</span></h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- ═══ STATE 1: Authentication ═══ -->
+    <div id="auth-section" class="section active">
+      <div class="card">
+        <h2>Teacher Authentication</h2>
+        <p>Enter your teacher code and the email address associated with your account to create student access codes for the Conversation Buddy.</p>
+
+        <div id="auth-error" class="error"></div>
+
+        <div class="form-row">
+          <div>
+            <label for="teacher-code">Teacher Code</label>
+            <input type="text" id="teacher-code" placeholder="e.g., StThomas5942" autocomplete="off">
+          </div>
+          <div>
+            <label for="teacher-email">Email Address</label>
+            <input type="email" id="teacher-email" placeholder="you@university.edu">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="verify-btn" onclick="verifyTeacher()">Verify</button>
+      </div>
+    </div>
+
+    <!-- ═══ STATE 2: Student Entry ═══ -->
+    <div id="entry-section" class="section">
+      <div class="credit-bar">
+        <span class="name" id="teacher-name-display">Teacher</span>
+        <span class="credits"><span id="credits-display">0</span> credits available</span>
+      </div>
+
+      <div class="card">
+        <h2>Add Students</h2>
+        <p>Enter student information below. Each student will receive a unique access code for the Conversation Buddy.</p>
+
+        <div style="margin-bottom:1.25rem;">
+          <label for="university-input">University / Institution</label>
+          <input type="text" id="university-input" placeholder="e.g., University of Rhode Island" style="max-width:400px;">
+        </div>
+
+        <table class="student-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Student Email *</th>
+              <th style="width:90px">Conv.</th>
+              <th style="width:36px"></th>
+            </tr>
+          </thead>
+          <tbody id="student-rows"></tbody>
+        </table>
+
+        <p class="email-note">* Optional — needed for email invitations. Not required for PDF download.</p>
+
+        <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
+
+        <div class="total-row">
+          <span class="total-label">Total credits needed:</span>
+          <span class="total-value" id="total-credits">0</span>
+        </div>
+
+        <div id="entry-error" class="error"></div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="create-btn" onclick="showConfirmation()">Create Codes</button>
+          <button class="btn btn-secondary" onclick="logout()">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ STATE 3: Success ═══ -->
+    <div id="success-section" class="section">
+      <div class="card">
+        <div class="success-banner" id="success-message"></div>
+
+        <h2>Generated Codes</h2>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Access Code</th>
+              <th>Conversations</th>
+            </tr>
+          </thead>
+          <tbody id="results-rows"></tbody>
+        </table>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPdf()">Download PDF Cards</button>
+          <button class="btn btn-outline" id="send-emails-btn" onclick="sendEmails()" style="display:none">Send Email Invitations</button>
+          <button class="btn btn-secondary" onclick="createMore()">Create More Codes</button>
+        </div>
+
+        <div id="email-status" style="margin-top:1rem; font-size:0.85rem; display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal">
+      <h3>Confirm Code Creation</h3>
+      <p id="confirm-count"></p>
+      <p id="confirm-credits"></p>
+      <p id="confirm-remaining"></p>
+      <div class="warning">Note: Credits assigned to students cannot be returned to your teacher account, even if students choose not to use them.</div>
+      <div class="btn-group" style="justify-content: flex-end;">
+        <button class="btn btn-secondary" onclick="hideConfirmation()">Cancel</button>
+        <button class="btn btn-primary" id="confirm-btn" onclick="createCodes()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ═══ State ═══
+    let teacherCode = '';
+    let teacherEmail = '';
+    let teacherName = '';
+    let availableCredits = 0;
+    let generatedCodes = [];
+
+    // ═══ Section Navigation ═══
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showError(containerId, msg) {
+      const el = document.getElementById(containerId);
+      el.textContent = msg;
+      el.classList.add('visible');
+    }
+    function hideError(containerId) {
+      document.getElementById(containerId).classList.remove('visible');
+    }
+
+    // ═══ STATE 1: Verify Teacher ═══
+    async function verifyTeacher() {
+      hideError('auth-error');
+      const code = document.getElementById('teacher-code').value.trim();
+      const email = document.getElementById('teacher-email').value.trim();
+
+      if (!code || !email) {
+        showError('auth-error', 'Please enter both your teacher code and email address.');
+        return;
+      }
+
+      const btn = document.getElementById('verify-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Verifying...';
+
+      try {
+        const resp = await fetch('/api/invite/validate-teacher', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code, email }),
+        });
+        const data = await resp.json();
+
+        if (!data.valid) {
+          showError('auth-error', data.error || 'Verification failed.');
+          return;
+        }
+
+        teacherCode = code;
+        teacherEmail = email;
+        teacherName = data.assignedTo || 'Teacher';
+        availableCredits = data.availableCredits;
+
+        document.getElementById('teacher-name-display').textContent = teacherName;
+        document.getElementById('credits-display').textContent = availableCredits;
+
+        // Initialize with 3 empty rows
+        document.getElementById('student-rows').innerHTML = '';
+        addRow(); addRow(); addRow();
+        updateTotal();
+
+        showSection('entry-section');
+      } catch (err) {
+        showError('auth-error', 'Network error. Please try again.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Verify';
+      }
+    }
+
+    // ═══ STATE 2: Student Entry ═══
+    let rowCount = 0;
+    function addRow() {
+      rowCount++;
+      const tbody = document.getElementById('student-rows');
+      const tr = document.createElement('tr');
+      tr.id = `row-${rowCount}`;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="Full name" class="name-input" required></td>
+        <td><input type="email" placeholder="email@..." class="email-input"></td>
+        <td><input type="number" min="1" max="99" value="3" class="conv-input" onchange="updateTotal()" oninput="updateTotal()"></td>
+        <td><button class="remove-btn" onclick="removeRow(this)" title="Remove">&times;</button></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    function removeRow(btn) {
+      const tbody = document.getElementById('student-rows');
+      if (tbody.children.length <= 1) return; // keep at least 1 row
+      btn.closest('tr').remove();
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll('.conv-input').forEach(input => {
+        total += parseInt(input.value) || 0;
+      });
+      const el = document.getElementById('total-credits');
+      el.textContent = total;
+      el.classList.toggle('over-budget', total > availableCredits);
+    }
+
+    function getStudents() {
+      const university = document.getElementById('university-input').value.trim();
+      const students = [];
+      document.querySelectorAll('#student-rows tr').forEach(tr => {
+        const name = tr.querySelector('.name-input')?.value.trim();
+        if (!name) return;
+        students.push({
+          university,
+          name,
+          email: tr.querySelector('.email-input')?.value.trim() || '',
+          conversations: parseInt(tr.querySelector('.conv-input')?.value) || 1,
+        });
+      });
+      return students;
+    }
+
+    function showConfirmation() {
+      hideError('entry-error');
+      const students = getStudents();
+      if (students.length === 0) {
+        showError('entry-error', 'Please enter at least one student name.');
+        return;
+      }
+
+      const totalCredits = students.reduce((sum, s) => sum + s.conversations, 0);
+      if (totalCredits > availableCredits) {
+        showError('entry-error', `Not enough credits. You need ${totalCredits} but only have ${availableCredits}.`);
+        return;
+      }
+
+      document.getElementById('confirm-count').textContent =
+        `You are about to create ${students.length} student code${students.length !== 1 ? 's' : ''} using ${totalCredits} credit${totalCredits !== 1 ? 's' : ''}.`;
+      document.getElementById('confirm-credits').textContent =
+        `Current balance: ${availableCredits} credits.`;
+      document.getElementById('confirm-remaining').textContent =
+        `Remaining after: ${availableCredits - totalCredits} credits.`;
+
+      document.getElementById('confirm-modal').classList.add('visible');
+    }
+
+    function hideConfirmation() {
+      document.getElementById('confirm-modal').classList.remove('visible');
+    }
+
+    async function createCodes() {
+      const btn = document.getElementById('confirm-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Creating...';
+
+      const students = getStudents();
+
+      try {
+        const resp = await fetch('/api/invite/create-codes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ teacherCode, teacherEmail, students }),
+        });
+        const data = await resp.json();
+
+        hideConfirmation();
+
+        if (!data.success) {
+          showError('entry-error', data.error || 'Failed to create codes.');
+          return;
+        }
+
+        generatedCodes = data.codes;
+        availableCredits = data.remaining;
+
+        // Build success message
+        document.getElementById('success-message').textContent =
+          `Successfully created ${data.codes.length} student code${data.codes.length !== 1 ? 's' : ''}. ${data.remaining} credits remaining.`;
+
+        // Populate results table
+        const tbody = document.getElementById('results-rows');
+        tbody.innerHTML = '';
+        data.codes.forEach(c => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${escapeHtml(c.name)}</td>
+            <td class="code-cell">${escapeHtml(c.code)}</td>
+            <td>${c.conversations}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // Show email button only if any emails were provided
+        const hasEmails = data.codes.some(c => c.email && c.email.includes('@'));
+        document.getElementById('send-emails-btn').style.display = hasEmails ? '' : 'none';
+        document.getElementById('email-status').style.display = 'none';
+
+        showSection('success-section');
+      } catch (err) {
+        hideConfirmation();
+        showError('entry-error', 'Network error. Please try again.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Confirm';
+      }
+    }
+
+    // ═══ STATE 3: Post-Creation Actions ═══
+    async function downloadPdf() {
+      try {
+        const resp = await fetch('/api/invite/download-pdf', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ codes: generatedCodes, teacherName }),
+        });
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'student-codes.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('Failed to generate PDF. Please try again.');
+      }
+    }
+
+    async function sendEmails() {
+      const btn = document.getElementById('send-emails-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Sending...';
+
+      const statusEl = document.getElementById('email-status');
+
+      try {
+        const resp = await fetch('/api/invite/send-emails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ codes: generatedCodes, teacherName }),
+        });
+        const data = await resp.json();
+
+        statusEl.style.display = 'block';
+        if (data.error) {
+          statusEl.innerHTML = `<span style="color:#ef4444">${escapeHtml(data.error)}</span>`;
+        } else {
+          let html = `<span style="color:#008899">${data.sent} email${data.sent !== 1 ? 's' : ''} sent successfully.</span>`;
+          if (data.failed > 0) {
+            html += ` <span style="color:#ef4444">${data.failed} failed.</span>`;
+          }
+          statusEl.innerHTML = html;
+        }
+      } catch (err) {
+        statusEl.style.display = 'block';
+        statusEl.innerHTML = '<span style="color:#ef4444">Network error sending emails.</span>';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Email Invitations';
+      }
+    }
+
+    function createMore() {
+      document.getElementById('credits-display').textContent = availableCredits;
+      document.getElementById('student-rows').innerHTML = '';
+      rowCount = 0;
+      addRow(); addRow(); addRow();
+      updateTotal();
+      showSection('entry-section');
+    }
+
+    function logout() {
+      teacherCode = '';
+      teacherEmail = '';
+      teacherName = '';
+      availableCredits = 0;
+      document.getElementById('teacher-code').value = '';
+      document.getElementById('teacher-email').value = '';
+      hideError('auth-error');
+      showSection('auth-section');
+    }
+
+    // ═══ Utility ═══
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+
+    // Allow Enter key to submit on auth form
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const authSection = document.getElementById('auth-section');
+        if (authSection.classList.contains('active')) {
+          verifyTeacher();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
