@@ -34,8 +34,8 @@ try {
   console.warn('Persona database not found or invalid:', e.message);
 }
 
-// Load environment variables
-dotenv.config();
+// Load environment variables (override: true needed because some env vars may be set to empty)
+dotenv.config({ override: true });
 
 // Use VERBOSE instead of DEBUG to avoid triggering OpenAI SDK's HTTP header logging
 const VERBOSE = process.env.VERBOSE === 'true';
