@@ -1138,14 +1138,83 @@ function wrapPcmInWav(pcmBuffer, sampleRate = 24000, numChannels = 1, bitsPerSam
  * Falls back to OpenAI TTS if Gemini fails after retries.
  */
 /**
- * German text → viseme timeline generator.
- * Maps German graphemes to Oculus visemes and estimates timing based on audio duration.
- * Returns an array of { time, viseme, weight } objects.
+ * Rhubarb Lip Sync — analyzes actual audio waveform for frame-accurate visemes.
+ * Maps Rhubarb's A-H shapes to Oculus viseme names.
  */
-function generateVisemeTimeline(text, audioDurationSec) {
-  // German grapheme → Oculus viseme mapping
+let Rhubarb = null;
+try {
+  Rhubarb = require('rhubarb-lip-sync-wasm').Rhubarb;
+  console.log('Rhubarb Lip Sync loaded');
+} catch (e) {
+  console.warn('Rhubarb Lip Sync not available, using text-based fallback:', e.message);
+}
+
+// Rhubarb shape → Oculus viseme mapping
+const RHUBARB_TO_VISEME = {
+  'A': 'viseme_PP',   // Closed (M, B, P)
+  'B': 'viseme_DD',   // Slightly open (most consonants)
+  'C': 'viseme_E',    // Open (E, AE)
+  'D': 'viseme_aa',   // Wide open (A, I)
+  'E': 'viseme_O',    // Rounded (O)
+  'F': 'viseme_U',    // Puckered (U, OO, W)
+  'G': 'viseme_FF',   // F/V (teeth on lip)
+  'H': 'viseme_nn',   // L (tongue)
+  'X': 'viseme_sil',  // Silence
+};
+
+/**
+ * Downsample 24kHz 16-bit PCM to 16kHz for Rhubarb.
+ */
+function downsamplePcm(pcmBuffer, fromRate, toRate) {
+  const ratio = fromRate / toRate;
+  const srcSamples = pcmBuffer.length / 2; // 16-bit = 2 bytes
+  const dstSamples = Math.floor(srcSamples / ratio);
+  const dst = Buffer.alloc(dstSamples * 2);
+  for (let i = 0; i < dstSamples; i++) {
+    const srcIdx = Math.floor(i * ratio);
+    dst.writeInt16LE(pcmBuffer.readInt16LE(srcIdx * 2), i * 2);
+  }
+  return dst;
+}
+
+/**
+ * Generate viseme timeline from audio using Rhubarb Lip Sync.
+ * Falls back to text-based estimation if Rhubarb fails.
+ */
+async function generateVisemeTimeline(pcmBuffer, sampleRate, text, durationSec) {
+  // Try Rhubarb first — frame-accurate from actual audio
+  if (Rhubarb) {
+    try {
+      const startTime = Date.now();
+      // Rhubarb needs 16kHz PCM
+      const pcm16k = sampleRate === 16000 ? pcmBuffer : downsamplePcm(pcmBuffer, sampleRate, 16000);
+      const result = await Rhubarb.lipSync(pcm16k, { dialogText: text });
+      const elapsed = Date.now() - startTime;
+
+      if (result && result.mouthCues && result.mouthCues.length > 0) {
+        const timeline = result.mouthCues.map(cue => ({
+          time: Math.round(cue.start * 1000) / 1000,
+          duration: Math.round((cue.end - cue.start) * 1000) / 1000,
+          viseme: RHUBARB_TO_VISEME[cue.value] || 'viseme_sil',
+        }));
+        console.log(`[RHUBARB] ${timeline.length} cues in ${elapsed}ms for ${Math.round(durationSec * 10) / 10}s audio`);
+        return timeline;
+      }
+    } catch (e) {
+      console.warn('[RHUBARB] Failed, using text fallback:', e.message);
+    }
+  }
+
+  // Fallback: text-based estimation (original approach)
+  return generateVisemeTimelineFromText(text, durationSec);
+}
+
+/**
+ * Text-based viseme timeline fallback.
+ * Maps German graphemes to Oculus visemes and estimates timing.
+ */
+function generateVisemeTimelineFromText(text, audioDurationSec) {
   const GRAPHEME_TO_VISEME = {
-    // Vowels
     'a': 'viseme_aa', 'ä': 'viseme_aa', 'ah': 'viseme_aa',
     'e': 'viseme_E', 'eh': 'viseme_E', 'ee': 'viseme_E',
     'i': 'viseme_I', 'ie': 'viseme_I', 'ih': 'viseme_I',
@@ -1153,7 +1222,6 @@ function generateVisemeTimeline(text, audioDurationSec) {
     'u': 'viseme_U', 'uh': 'viseme_U', 'ü': 'viseme_U',
     'ei': 'viseme_aa', 'ai': 'viseme_aa', 'au': 'viseme_aa',
     'eu': 'viseme_O', 'äu': 'viseme_O',
-    // Consonants
     'b': 'viseme_PP', 'p': 'viseme_PP', 'm': 'viseme_PP',
     'f': 'viseme_FF', 'v': 'viseme_FF', 'w': 'viseme_FF', 'pf': 'viseme_FF',
     'th': 'viseme_TH',
@@ -1163,57 +1231,154 @@ function generateVisemeTimeline(text, audioDurationSec) {
     's': 'viseme_SS', 'z': 'viseme_SS', 'ß': 'viseme_SS', 'tz': 'viseme_SS',
     'sch': 'viseme_CH', 'sp': 'viseme_CH', 'st': 'viseme_CH',
     'r': 'viseme_RR', 'l': 'viseme_nn',
-    'h': 'viseme_kk',
-    'x': 'viseme_kk',
+    'h': 'viseme_kk', 'x': 'viseme_kk',
   };
 
-  // Convert text to lowercase, remove non-letter chars, split into phoneme units
   const cleanText = text.toLowerCase().replace(/[^a-zäöüß\s]/g, '');
   const words = cleanText.split(/\s+/).filter(Boolean);
-
   const phonemes = [];
   for (const word of words) {
     let i = 0;
     while (i < word.length) {
-      // Try 3-char, 2-char, then 1-char graphemes
       let matched = false;
       for (const len of [3, 2, 1]) {
         const chunk = word.slice(i, i + len);
         if (GRAPHEME_TO_VISEME[chunk]) {
           phonemes.push({ viseme: GRAPHEME_TO_VISEME[chunk], isVowel: 'aeiouäöü'.includes(chunk[0]) });
-          i += len;
-          matched = true;
-          break;
+          i += len; matched = true; break;
         }
       }
-      if (!matched) i++; // skip unknown character
+      if (!matched) i++;
     }
-    // Add silence between words
     phonemes.push({ viseme: 'viseme_sil', isVowel: false });
   }
-
   if (phonemes.length === 0) return [];
-
-  // Estimate timing: distribute phonemes across audio duration
-  // Vowels get slightly longer duration than consonants
   const totalWeight = phonemes.reduce((sum, p) => sum + (p.isVowel ? 1.5 : 0.8), 0);
   const timePerWeight = audioDurationSec / totalWeight;
-
   const timeline = [];
   let currentTime = 0;
   for (const p of phonemes) {
     const duration = (p.isVowel ? 1.5 : 0.8) * timePerWeight;
-    const weight = p.viseme === 'viseme_sil' ? 0 : (p.isVowel ? 0.7 : 0.5);
     timeline.push({
-      time: Math.round(currentTime * 1000) / 1000, // round to ms
+      time: Math.round(currentTime * 1000) / 1000,
       viseme: p.viseme,
-      weight,
       duration: Math.round(duration * 1000) / 1000,
     });
     currentTime += duration;
   }
-
   return timeline;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// AZURE SPEECH TTS — 55 ARKit blend shapes at 60fps for movie-quality lip sync
+// ══════════════════════════════════════════════════════════════════════════════
+
+const sdk = require('microsoft-cognitiveservices-speech-sdk');
+
+// Azure blend shape order → ARKit shape name (55 positions)
+const AZURE_BLEND_SHAPE_NAMES = [
+  'eyeBlinkLeft', 'eyeLookDownLeft', 'eyeLookInLeft', 'eyeLookOutLeft', 'eyeLookUpLeft',
+  'eyeSquintLeft', 'eyeWideLeft',
+  'eyeBlinkRight', 'eyeLookDownRight', 'eyeLookInRight', 'eyeLookOutRight', 'eyeLookUpRight',
+  'eyeSquintRight', 'eyeWideRight',
+  'jawForward', 'jawLeft', 'jawRight', 'jawOpen',
+  'mouthClose', 'mouthFunnel', 'mouthPucker', 'mouthLeft', 'mouthRight',
+  'mouthSmileLeft', 'mouthSmileRight', 'mouthFrownLeft', 'mouthFrownRight',
+  'mouthDimpleLeft', 'mouthDimpleRight', 'mouthStretchLeft', 'mouthStretchRight',
+  'mouthRollLower', 'mouthRollUpper', 'mouthShrugLower', 'mouthShrugUpper',
+  'mouthPressLeft', 'mouthPressRight', 'mouthLowerDownLeft', 'mouthLowerDownRight',
+  'mouthUpperUpLeft', 'mouthUpperUpRight',
+  'browDownLeft', 'browDownRight', 'browInnerUp', 'browOuterUpLeft', 'browOuterUpRight',
+  'cheekPuff', 'cheekSquintLeft', 'cheekSquintRight',
+  'noseSneerLeft', 'noseSneerRight',
+  'tongueOut',
+  'headRoll', 'leftEyeRoll', 'rightEyeRoll',
+];
+
+/**
+ * Azure Speech TTS with blend shapes.
+ * Returns audio + per-frame blend shape data (55 ARKit shapes at 60fps).
+ */
+async function textToSpeechAzure(text) {
+  const speechKey = process.env.AZURE_SPEECH_KEY;
+  const speechRegion = process.env.AZURE_SPEECH_REGION;
+  if (!speechKey || !speechRegion) {
+    throw new Error('Azure Speech credentials not configured');
+  }
+
+  const speechConfig = sdk.SpeechConfig.fromSubscription(speechKey, speechRegion);
+  speechConfig.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
+
+  return new Promise((resolve, reject) => {
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
+    const blendShapeFrames = []; // Array of { time, shapes: {name: value} }
+    let frameCount = 0;
+    let visemeEventCount = 0;
+
+    // Subscribe to blend shape events
+    synthesizer.visemeReceived = (s, e) => {
+      visemeEventCount++;
+      if (visemeEventCount <= 3) {
+        console.log(`[TTS] visemeReceived #${visemeEventCount}: visemeId=${e.visemeId}, audioOffset=${e.audioOffset}, animation=${e.animation ? e.animation.substring(0, 120) + '...' : 'null'}`);
+      }
+      if (e.animation) {
+        try {
+          const data = JSON.parse(e.animation);
+          const startFrame = data.FrameIndex || frameCount;
+
+          // Each row in BlendShapes is one frame (60fps)
+          if (data.BlendShapes) {
+            for (let i = 0; i < data.BlendShapes.length; i++) {
+              const frameValues = data.BlendShapes[i];
+              const frameTimeMs = (startFrame + i) * (1000 / 60); // 60fps
+              const shapes = {};
+              for (let j = 0; j < frameValues.length && j < AZURE_BLEND_SHAPE_NAMES.length; j++) {
+                if (frameValues[j] > 0.01) { // Only include non-zero shapes
+                  shapes[AZURE_BLEND_SHAPE_NAMES[j]] = Math.round(frameValues[j] * 1000) / 1000;
+                }
+              }
+              blendShapeFrames.push({ time: Math.round(frameTimeMs) / 1000, shapes });
+              frameCount = startFrame + i + 1;
+            }
+          }
+        } catch (parseErr) {
+          console.warn('[TTS] Failed to parse animation data:', parseErr.message);
+        }
+      }
+    };
+
+    // SSML requesting blend shapes — female voice (SeraphinaNeural: expressive, multilingual)
+    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="de-DE">
+  <voice name="de-DE-SeraphinaMultilingualNeural">
+    <mstts:viseme type="FacialExpression"/>
+    ${text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+  </voice>
+</speak>`;
+
+    synthesizer.speakSsmlAsync(ssml,
+      (result) => {
+        synthesizer.close();
+        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+          const audioBuffer = Buffer.from(result.audioData);
+          console.log(`[TTS] Azure: ${audioBuffer.length} bytes audio, ${blendShapeFrames.length} blend shape frames, ${visemeEventCount} viseme events`);
+          resolve({
+            audioBase64: audioBuffer.toString('base64'),
+            mimeType: 'audio/wav',
+            blendShapes: blendShapeFrames,
+            visemeTimeline: [],
+          });
+        } else {
+          const err = result.errorDetails || 'Azure TTS synthesis failed';
+          console.warn('[TTS] Azure failed:', err);
+          reject(new Error(err));
+        }
+      },
+      (err) => {
+        synthesizer.close();
+        reject(err);
+      }
+    );
+  });
 }
 
 async function textToSpeechGemini(text, retries = 2) {
@@ -1221,6 +1386,7 @@ async function textToSpeechGemini(text, retries = 2) {
     try {
       const response = await googleAI.models.generateContent({
         model: 'gemini-2.5-pro-tts',
+        systemInstruction: 'Imagine you are at a cafe having a conversation with a friend. You are calm, comforting, but also excited to see them. Your friend is a non-native speaker of your language, so you stress important words in your sentences to help them understand better, but really focus on a good flow of your sentences, including deliberate pauses when the content shifts. You are expressive. For example, when the other person does not respond, you may raise your voice to remind them you are still there, but you are never intimidating and always nice.',
         contents: [{ role: 'user', parts: [{ text: `Say exactly this in German: ${text}` }] }],
         config: {
           responseModalities: ['AUDIO'],
@@ -1249,13 +1415,11 @@ async function textToSpeechGemini(text, retries = 2) {
         const sampleRate = rateMatch ? parseInt(rateMatch[1]) : 24000;
         const pcmBuffer = Buffer.from(audioPart.data, 'base64');
         const wavBuffer = wrapPcmInWav(pcmBuffer, sampleRate);
-        // Calculate audio duration for viseme timeline
-        const durationSec = pcmBuffer.length / (sampleRate * 2); // 16-bit = 2 bytes per sample
-        const visemeTimeline = generateVisemeTimeline(text, durationSec);
-        return { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav', visemeTimeline };
+        // Calculate audio duration and generate viseme timeline from actual audio
+        return { audioBase64: wavBuffer.toString('base64'), mimeType: 'audio/wav' };
       }
 
-      return { audioBase64: audioPart.data, mimeType: rawMime, visemeTimeline: [] };
+      return { audioBase64: audioPart.data, mimeType: rawMime };
 
     } catch (err) {
       const errMsg = err.message || JSON.stringify(err);
@@ -1305,10 +1469,14 @@ async function textToSpeechOpenAI(text) {
     response_format: 'mp3',
   });
   const buffer = Buffer.from(await mp3.arrayBuffer());
-  // Estimate duration: ~150 words/min at 0.95 speed, average word = 5 chars
-  const estimatedDuration = (text.length / 5) * (60 / 150) / 0.95;
-  const visemeTimeline = generateVisemeTimeline(text, estimatedDuration);
-  return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg', visemeTimeline };
+  return { audioBase64: buffer.toString('base64'), mimeType: 'audio/mpeg' };
+}
+
+/**
+ * Main TTS function — tries Azure (for blend shapes) first, falls back to Gemini.
+ */
+async function textToSpeech(text) {
+  return textToSpeechGemini(text);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1469,8 +1637,12 @@ function buildAllowedWordSet(cumulativeData, universalFillers) {
  * Returns { valid: true } or { valid: false, violations: [...], suggestions: string }
  */
 function validateResponse(text, allowedSet, passiveSet, studentWords) {
+  // Strip any [BRACKETED] content before tokenizing (e.g. emotion tags like [HAPPY])
+  // This does NOT modify the original text — only the copy used for validation
+  const textForValidation = text.replace(/\[[^\]]*\]\s*/g, ' ');
+
   // Tokenize: keep hyphenated words together, handle contractions
-  const rawTokens = text
+  const rawTokens = textForValidation
     .replace(/[.,!?;:""„"«»—–\(\)\[\]]/g, ' ')  // Remove punctuation (but keep hyphens)
     .split(/\s+/)
     .filter(w => w.length > 0);
@@ -1733,7 +1905,8 @@ async function validateAndCorrect(responseText, session, maxRetries = 3) {
     correctionMsg += `- NO dative prepositions (no bei/beim, zu/zum/zur, mit, von/vom, nach, seit).\n`;
     correctionMsg += `- Split complex sentences into two short ones.\n`;
     correctionMsg += `- FORBIDDEN words in this rewrite: ${allViolatingWords.join(', ')}\n`;
-    correctionMsg += `- Keep the same conversational intent. Be SHORT — one or two simple sentences max.]`;
+    correctionMsg += `- Keep the same conversational intent. Be SHORT — one or two simple sentences max.\n`;
+    correctionMsg += `- IMPORTANT: Prefix EACH sentence with an emotion tag like [HAPPY], [CURIOUS], etc.]`;
 
     // Re-generate
     session.history.pop(); // Remove the bad assistant response
@@ -1778,15 +1951,84 @@ async function validateAndCorrect(responseText, session, maxRetries = 3) {
 /**
  * Helper: Call Claude Haiku 4.5 with conversation history.
  */
+// Valid emotion tags that Claude can prefix responses with
+const VALID_EMOTIONS = ['HAPPY', 'EXCITED', 'CURIOUS', 'EMPATHETIC', 'THINKING', 'NEUTRAL', 'CONCERNED', 'SURPRISED'];
+const EMOTION_TAG_RE = /^\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL|CONCERNED|SURPRISED)\]\s*/i;
+const EMOTION_TAG_ALL_RE = /\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL|CONCERNED|SURPRISED)\]\s*/gi;
+
 async function callClaude(systemPrompt, messages) {
+  // Append emotion tagging instruction to the system prompt
+  const emotionInstruction = `\n\nEMOTION TAGGING (mandatory): Tag EACH sentence with an emotion in brackets. Available: [HAPPY], [EXCITED], [CURIOUS], [EMPATHETIC], [THINKING], [NEUTRAL], [CONCERNED], [SURPRISED]. Tags are stripped before speaking — the student never sees them.
+
+Guidelines:
+- [CURIOUS] when asking a follow-up or the student says something interesting.
+- [EMPATHETIC] when the student shares feelings, frustration, or success.
+- [HAPPY] for warm greetings, compliments, or good conversation flow.
+- [EXCITED] for enthusiastic reactions.
+- [THINKING] when pausing to consider or suggest.
+- [CONCERNED] when the student seems confused or struggling.
+- [SURPRISED] for genuine surprise.
+- [NEUTRAL] for standard factual delivery.
+
+Example: "[EXCITED] Oh, cool! [HAPPY] Du magst also Musik! [CURIOUS] Spielst du ein Instrument?"`;
+
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 150,
     temperature: 0.55,
-    system: systemPrompt,
+    system: systemPrompt + emotionInstruction,
     messages,
   });
   return response.content[0].text;
+}
+
+/**
+ * Parse per-sentence emotion tags from Claude's response.
+ * Input:  "[EXCITED] Oh, cool! [HAPPY] Du magst Musik! [CURIOUS] Spielst du?"
+ * Returns { text, emotion, emotionTimeline }
+ *   - text: clean text with all tags stripped
+ *   - emotion: first emotion (for backwards compat)
+ *   - emotionTimeline: [{ start: 0.0-1.0, emotion }] proportional segments
+ */
+function parseEmotion(responseText) {
+  // Match all emotion tags with their positions
+  const tagPattern = /\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL|CONCERNED|SURPRISED)\]\s*/gi;
+  const segments = [];
+  let lastIdx = 0;
+  let lastEmotion = 'neutral';
+  let match;
+
+  while ((match = tagPattern.exec(responseText)) !== null) {
+    // Text before this tag belongs to the previous emotion
+    const textBefore = responseText.slice(lastIdx, match.index);
+    if (textBefore.trim()) {
+      segments.push({ text: textBefore.trim(), emotion: lastEmotion });
+    }
+    lastEmotion = match[1].toLowerCase();
+    lastIdx = match.index + match[0].length;
+  }
+  // Remaining text after last tag
+  const remaining = responseText.slice(lastIdx);
+  if (remaining.trim()) {
+    segments.push({ text: remaining.trim(), emotion: lastEmotion });
+  }
+
+  // If no tags found at all, return as neutral
+  if (segments.length === 0) {
+    return { text: responseText, emotion: 'neutral', emotionTimeline: [{ start: 0, emotion: 'neutral' }] };
+  }
+
+  // Build clean text and proportional timeline
+  const cleanText = segments.map(s => s.text).join(' ');
+  const totalLen = segments.reduce((sum, s) => sum + s.text.length, 0);
+  const emotionTimeline = [];
+  let charPos = 0;
+  for (const seg of segments) {
+    emotionTimeline.push({ start: totalLen > 0 ? charPos / totalLen : 0, emotion: seg.emotion });
+    charPos += seg.text.length;
+  }
+
+  return { text: cleanText, emotion: segments[0].emotion, emotionTimeline };
 }
 
 /**
@@ -1856,7 +2098,7 @@ app.post('/api/session/start', async (req, res) => {
       grammarConstraints,
     });
 
-    // Validate the greeting
+    // Validate with tags intact (validator ignores [BRACKETED] content)
     if (allowedWordSet) {
       responseText = await validateAndCorrect(responseText, voiceSessions.get(sessionId));
     }
@@ -1866,9 +2108,15 @@ app.post('/api/session/start', async (req, res) => {
       console.log(`${DIM}${systemPrompt.slice(0, 500)}...${RESET}\n`);
     }
 
-    const ttsResult = await textToSpeechGemini(responseText);
+    // Log raw response with emotion tags visible for debugging
+    console.log(`[EMOTIONS] Raw: "${responseText}"`);
 
-    res.json({ sessionId, response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
+    // Parse emotion AFTER validation, right before TTS
+    const { text: cleanText, emotion, emotionTimeline } = parseEmotion(responseText);
+
+    const ttsResult = await textToSpeech(cleanText);
+
+    res.json({ sessionId, response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
   } catch (error) {
     console.error('[Session Start] Error:', error.message);
     res.status(500).json({ error: 'Failed to start session', details: error.message });
@@ -1932,12 +2180,12 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     // 2. Handle inaudible input
     if (!transcript) {
       const fallbackText = 'Ich höre dich nicht gut. Kannst du das nochmal sagen?';
-      const fallbackTts = await textToSpeechGemini(fallbackText);
+      const fallbackTts = await textToSpeech(fallbackText);
       session.history.push({ role: 'user', content: '(inaudible)' });
       session.history.push({ role: 'assistant', content: fallbackText });
       session.fullTranscript?.push({ role: 'student', text: '(inaudible)' });
       session.fullTranscript?.push({ role: 'buddy', text: fallbackText });
-      return res.json({ transcript: '', response: fallbackText, audioBase64: fallbackTts.audioBase64, mimeType: fallbackTts.mimeType, visemeTimeline: fallbackTts.visemeTimeline || [] });
+      return res.json({ transcript: '', response: fallbackText, emotion: 'empathetic', emotionTimeline: [{ start: 0, emotion: 'empathetic' }], audioBase64: fallbackTts.audioBase64, mimeType: fallbackTts.mimeType });
     }
 
     // 3. Build user message with optional directives
@@ -1976,21 +2224,27 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     // Track full transcript for accurate feedback
     session.fullTranscript?.push({ role: 'student', text: transcript });
 
-    // 4b. Validate vocabulary and grammar BEFORE TTS
+    // 4b. Validate with tags intact (validator ignores [BRACKETED] content)
     const tv0 = Date.now();
     responseText = await validateAndCorrect(responseText, session);
     const tv1 = Date.now();
     if (tv1 - tv0 > 500) console.log(`[TIMING] Validator: ${tv1 - tv0}ms`);
 
-    session.fullTranscript?.push({ role: 'buddy', text: responseText });
+    // Log raw response with emotion tags visible for debugging
+    console.log(`[EMOTIONS] Raw: "${responseText}"`);
+
+    // Parse emotion AFTER validation, right before TTS
+    const { text: cleanText, emotion, emotionTimeline } = parseEmotion(responseText);
+
+    session.fullTranscript?.push({ role: 'buddy', text: cleanText });
 
     // 5. TTS
     const t4 = Date.now();
-    const ttsResult = await textToSpeechGemini(responseText);
+    const ttsResult = await textToSpeech(cleanText);
     const t5 = Date.now();
-    console.log(`[TIMING] TTS: ${t5 - t4}ms | Total: ${t5 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms, TTS: ${t5 - t4}ms)`);
+    console.log(`[TIMING] TTS: ${t5 - t4}ms | Total: ${t5 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms, TTS: ${t5 - t4}ms) [emotions: ${emotionTimeline.map(e => e.emotion).join('→')}]`);
 
-    res.json({ transcript, response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
+    res.json({ transcript, response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
   } catch (error) {
     console.error('[Conversation Turn] Error:', error.message);
     res.status(500).json({ error: 'Pipeline failed', details: error.message });
@@ -2020,12 +2274,18 @@ app.post('/api/session/prompt', async (req, res) => {
     let responseText = await callClaude(session.systemPrompt, session.history);
     session.history.push({ role: 'assistant', content: responseText });
 
-    // Validate vocabulary and grammar
+    // Validate with tags intact (validator ignores [BRACKETED] content)
     responseText = await validateAndCorrect(responseText, session);
 
-    const ttsResult = await textToSpeechGemini(responseText);
+    // Log raw response with emotion tags visible for debugging
+    console.log(`[EMOTIONS] Raw: "${responseText}"`);
 
-    res.json({ response: responseText, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType, visemeTimeline: ttsResult.visemeTimeline || [] });
+    // Parse emotion AFTER validation, right before TTS
+    const { text: cleanText, emotion, emotionTimeline } = parseEmotion(responseText);
+
+    const ttsResult = await textToSpeech(cleanText);
+
+    res.json({ response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
   } catch (error) {
     console.error('[Session Prompt] Error:', error.message);
     res.status(500).json({ error: 'Prompt failed', details: error.message });

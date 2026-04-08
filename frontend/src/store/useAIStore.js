@@ -13,13 +13,20 @@ const useAIStore = create((set, get) => ({
   // Audio / lipsync
   audioAmplitude: 0,
   analyzerNode: null,
-  visemeTimeline: null,    // Array of { time, viseme, weight, duration } from server
-  visemeStartTime: null,   // performance.now() when audio playback started
+  lipsyncNode: null,       // wLipSync AudioWorkletNode — poll .weights and .volume each frame
+  currentEmotion: 'neutral', // Active emotion (updated during playback from timeline)
+  emotionTimeline: null,     // [{start: 0.0-1.0, emotion}] from server
+  emotionPlaybackStart: null, // performance.now() when audio started
+  emotionAudioDuration: 0,   // audio duration in seconds
 
   // Auth
   accessCode: null,
   accessType: null,
   assignedTo: null,
+
+  // Mic selection & volume monitoring
+  micAnalyser: null, // AnalyserNode from mic stream for real-time volume meter
+  selectedMicId: null, // deviceId of chosen mic (null = browser default)
 
   // Mic error feedback
   micError: null,
@@ -89,9 +96,19 @@ const useAIStore = create((set, get) => ({
       // speakingText intentionally NOT cleared — text stays until next AI turn begins
     })),
 
+  setMicAnalyser: (node) => set({ micAnalyser: node }),
+  setSelectedMicId: (id) => set({ selectedMicId: id }),
   setAnalyzerNode: (node) => set({ analyzerNode: node }),
-  setVisemeTimeline: (timeline) => set({ visemeTimeline: timeline, visemeStartTime: performance.now() }),
-  clearVisemeTimeline: () => set({ visemeTimeline: null, visemeStartTime: null }),
+  setLipsyncNode: (node) => set({ lipsyncNode: node }),
+  clearLipsyncNode: () => set({ lipsyncNode: null }),
+  setCurrentEmotion: (emotion) => set({ currentEmotion: emotion || 'neutral' }),
+  setEmotionTimeline: (timeline, duration) => set({
+    emotionTimeline: timeline,
+    emotionAudioDuration: duration,
+    emotionPlaybackStart: performance.now() - 150, // 150ms lead — emotion shows before audio (humans show intent before speaking)
+    currentEmotion: timeline?.[0]?.emotion || 'neutral',
+  }),
+  clearEmotionTimeline: () => set({ emotionTimeline: null, emotionPlaybackStart: null, emotionAudioDuration: 0 }),
   setAudioAmplitude: (amp) => set({ audioAmplitude: amp }),
 }));
 

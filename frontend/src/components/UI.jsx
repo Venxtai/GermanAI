@@ -25,6 +25,130 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+/**
+ * Mic device selector — lets students pick their microphone.
+ */
+function MicSelector({ bookColor, onSwitch }) {
+  const { selectedMicId, setSelectedMicId } = useAIStore();
+  const [devices, setDevices] = useState([]);
+
+  // Enumerate audio input devices on mount and when permissions change
+  useEffect(() => {
+    async function loadDevices() {
+      try {
+        // Need a temporary stream to get labeled devices (browsers hide labels until permission granted)
+        const tempStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const allDevices = await navigator.mediaDevices.enumerateDevices();
+        const audioInputs = allDevices.filter(d => d.kind === 'audioinput');
+        setDevices(audioInputs);
+        // Stop temp stream tracks
+        tempStream.getTracks().forEach(t => t.stop());
+      } catch (err) {
+        console.warn('[MicSelector] Could not enumerate devices:', err);
+      }
+    }
+    loadDevices();
+    // Re-enumerate when devices change (plug/unplug)
+    navigator.mediaDevices.addEventListener('devicechange', loadDevices);
+    return () => navigator.mediaDevices.removeEventListener('devicechange', loadDevices);
+  }, []);
+
+  if (devices.length <= 1) return null; // No need to show selector if only one mic
+
+  return (
+    <select
+      value={selectedMicId || ''}
+      onChange={(e) => {
+        const newId = e.target.value || null;
+        setSelectedMicId(newId);
+        if (onSwitch) onSwitch(newId);
+      }}
+      style={{
+        width: '100%',
+        background: 'rgba(255,255,255,0.08)',
+        border: '1px solid rgba(255,255,255,0.15)',
+        color: 'rgba(255,255,255,0.8)',
+        fontSize: '11px',
+        borderRadius: '8px',
+        padding: '5px 8px',
+        outline: 'none',
+        cursor: 'pointer',
+      }}
+    >
+      <option value="" style={{ background: '#1a1a2e' }}>Default microphone</option>
+      {devices.map(d => (
+        <option key={d.deviceId} value={d.deviceId} style={{ background: '#1a1a2e' }}>
+          {d.label || `Microphone ${d.deviceId.slice(0, 8)}`}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+/**
+ * Real-time mic volume meter — shows students if they're speaking loudly enough.
+ * Grey = too quiet, bookColor = good level.
+ */
+function MicVolumeMeter({ bookColor, analyser }) {
+  const barRef = useRef(null);
+  const rafRef = useRef(null);
+  const dataRef = useRef(null);
+
+  useEffect(() => {
+    if (!analyser) return;
+
+    const update = () => {
+      if (!dataRef.current || dataRef.current.length !== analyser.frequencyBinCount) {
+        dataRef.current = new Uint8Array(analyser.frequencyBinCount);
+      }
+      analyser.getByteFrequencyData(dataRef.current);
+      const data = dataRef.current;
+      // Focus on speech frequencies (200-4000 Hz)
+      const sampleRate = analyser.context?.sampleRate || 48000;
+      const hzPerBin = sampleRate / (analyser.fftSize || 256);
+      const lo = Math.max(1, Math.floor(200 / hzPerBin));
+      const hi = Math.min(data.length - 1, Math.ceil(4000 / hzPerBin));
+      let sum = 0;
+      for (let i = lo; i <= hi; i++) sum += data[i];
+      const level = sum / ((hi - lo + 1) * 255); // 0-1
+
+      if (barRef.current) {
+        const pct = Math.min(level * 3, 1); // amplify so normal speech fills bar
+        const loud = level > 0.08; // threshold for "loud enough"
+        barRef.current.style.width = `${Math.max(pct * 100, 2)}%`;
+        barRef.current.style.background = loud ? bookColor : 'rgba(255,255,255,0.25)';
+      }
+
+      rafRef.current = requestAnimationFrame(update);
+    };
+    rafRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [analyser, bookColor]);
+
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: 4,
+        borderRadius: 2,
+        background: 'rgba(255,255,255,0.08)',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        ref={barRef}
+        style={{
+          height: '100%',
+          borderRadius: 2,
+          width: '2%',
+          background: 'rgba(255,255,255,0.25)',
+          transition: 'background 0.15s',
+        }}
+      />
+    </div>
+  );
+}
+
 // Progress bar — fills based on midpoint of min/max, dotted line at min (feedback threshold)
 function ProgressBar({ bookColor }) {
   const { conversationStartTime, sessionMinMs, sessionMaxMs, status } = useAIStore();
@@ -276,7 +400,7 @@ export function UI() {
     })();
   }, []);
 
-  const { status, isSessionActive, micError, setMicError, feedback, setFeedback, transcriptForDownload } = useAIStore();
+  const { status, isSessionActive, micError, setMicError, feedback, setFeedback, transcriptForDownload, micAnalyser } = useAIStore();
 
   useEffect(() => {
     if (!micError) return;
@@ -284,7 +408,7 @@ export function UI() {
     return () => clearTimeout(t);
   }, [micError, setMicError]);
 
-  const { startConversation, endConversation, startRecording, stopRecording, isRecordingRef } =
+  const { startConversation, endConversation, startRecording, stopRecording, isRecordingRef, switchMic } =
     useVoiceConnection();
 
   const wasSessionActiveRef = useRef(false);
@@ -751,33 +875,41 @@ export function UI() {
                 >End Session</button>
               </div>
             </div>
-            <div className="flex justify-center" style={{ paddingLeft: "20%" }}>
-              <div className="pointer-events-auto backdrop-blur-md rounded-2xl flex flex-col items-center gap-3" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)", padding: "1.2rem 2.5rem 1.5rem", width: "420px" }}>
-                <AnimatePresence>
-                  {micError && (
-                    <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} className="text-red-400 text-xs font-medium text-center max-w-[200px]">🎤 {micError}</motion.div>
-                  )}
-                </AnimatePresence>
-                {/* Progress */}
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Progress</p>
-                <ProgressBar bookColor={bookColor} />
-                {/* Mic */}
-                <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.5)" }}>{status === "listening" ? "Release to send" : "Hold to speak"}</p>
-                <motion.button
-                  onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerLeave={handlePointerUp}
-                  disabled={status === "speaking" || status === "loading"}
-                  whileTap={{ scale: 0.92 }}
-                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors border-4 ${status === "listening" ? "border-green-300 animate-pulse" : status === "speaking" || status === "loading" ? "border-gray-400 opacity-50 cursor-not-allowed" : "border-transparent hover:brightness-110"}`}
-                  style={{
-                    background: status === "listening" ? "#22c55e"
-                      : status === "speaking" || status === "loading" ? "#6b7280"
-                      : bookColor || "#008899",
-                  }}
-                >
-                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                  </svg>
-                </motion.button>
+            <div className="flex justify-center" style={{ paddingLeft: "20%", paddingBottom: "6px" }}>
+              <div style={{ width: "420px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                {/* Top box: Mic controls */}
+                <div className="pointer-events-auto backdrop-blur-md rounded-2xl flex flex-col items-center gap-3" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)", padding: "1.2rem 2.5rem 1.5rem" }}>
+                  <AnimatePresence>
+                    {micError && (
+                      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} className="text-red-400 text-xs font-medium text-center max-w-[200px]">🎤 {micError}</motion.div>
+                    )}
+                  </AnimatePresence>
+                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{status === "listening" ? "Release to send" : "Hold to speak"}</p>
+                  <motion.button
+                    onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerLeave={handlePointerUp}
+                    disabled={status === "speaking" || status === "loading"}
+                    whileTap={{ scale: 0.92 }}
+                    className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors border-4 ${status === "listening" ? "border-green-300 animate-pulse" : status === "speaking" || status === "loading" ? "border-gray-400 opacity-50 cursor-not-allowed" : "border-transparent hover:brightness-110"}`}
+                    style={{
+                      background: status === "listening" ? "#22c55e"
+                        : status === "speaking" || status === "loading" ? "#6b7280"
+                        : bookColor || "#008899",
+                    }}
+                  >
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                  </motion.button>
+                  {/* Volume meter — same width as progress bar */}
+                  {micAnalyser && <div style={{ width: '100%' }}><MicVolumeMeter bookColor={bookColor} analyser={micAnalyser} /></div>}
+                  {/* Mic device selector */}
+                  <MicSelector bookColor={bookColor} onSwitch={switchMic} />
+                </div>
+                {/* Bottom box: Progress */}
+                <div className="pointer-events-auto backdrop-blur-md rounded-2xl flex flex-col items-center gap-2" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)", padding: "0.8rem 2.5rem 1rem" }}>
+                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Progress</p>
+                  <ProgressBar bookColor={bookColor} />
+                </div>
               </div>
             </div>
           </motion.div>

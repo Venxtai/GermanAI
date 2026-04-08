@@ -31,11 +31,13 @@
     "express": "^4.18.2",
     "form-data": "^4.0.0",
     "googleapis": "^171.4.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.49.0",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^8.0.4",
     "openai": "^4.20.1",
     "pdfkit": "^0.18.0",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "rhubarb-lip-sync-wasm": "^0.1.8"
   },
   "devDependencies": {
     "@nicolo-ribaudo/chokidar-2": "^2.1.8-no-fsevents.3",

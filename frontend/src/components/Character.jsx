@@ -37,10 +37,14 @@ const ARKIT_MOUTH_SHAPES = [
 const EMOTION_SHAPES = [
   "browDownLeft", "browDownRight", "browInnerUp", "browOuterUpLeft", "browOuterUpRight",
   "eyeWideLeft", "eyeWideRight", "eyeSquintLeft", "eyeSquintRight",
+  "eyeLookUpLeft", "eyeLookUpRight", "eyeLookDownLeft", "eyeLookDownRight",
+  "eyeLookInLeft", "eyeLookInRight", "eyeLookOutLeft", "eyeLookOutRight",
   "cheekSquintLeft", "cheekSquintRight", "cheekPuff",
   "noseSneerLeft", "noseSneerRight",
   "mouthSmileLeft", "mouthSmileRight", "mouthSmile",
   "mouthFrownLeft", "mouthFrownRight",
+  "mouthPucker", "mouthRollLower", "mouthOpen",
+  "jawForward",
 ];
 
 /**
@@ -93,10 +97,11 @@ const VISEME_TO_ARKIT = {
     mouthClose: 0.25, mouthShrugUpper: 0.15,
   },
 
-  // N, L — tongue on ridge
+  // N, L — tongue on ridge, slight lateral tension
   viseme_nn: {
     jawOpen: 0.1, mouthOpen: 0.05,
-    mouthStretchLeft: 0.12, mouthStretchRight: 0.12,
+    mouthStretchLeft: 0.18, mouthStretchRight: 0.18,
+    mouthShrugUpper: 0.08,
   },
 
   // R — slight rounding
@@ -125,16 +130,18 @@ const VISEME_TO_ARKIT = {
     mouthDimpleLeft: 0.15, mouthDimpleRight: 0.15,
   },
 
-  // OH — rounded, medium open (o, ö)
+  // OH — rounded, medium open (o, ö) — strong puckering for German Umlaute
   viseme_O: {
-    jawOpen: 0.3, mouthOpen: 0.25,
-    mouthFunnel: 0.45, mouthPucker: 0.3,
+    jawOpen: 0.35, mouthOpen: 0.3,
+    mouthFunnel: 0.65, mouthPucker: 0.6,
+    mouthRollLower: 0.15,
   },
 
-  // OO — very rounded, small opening (u, ü)
+  // OO — very rounded, small opening (u, ü) — maximum lip rounding for German Umlaute
   viseme_U: {
-    jawOpen: 0.15, mouthOpen: 0.1,
-    mouthFunnel: 0.55, mouthPucker: 0.5,
+    jawOpen: 0.18, mouthOpen: 0.12,
+    mouthFunnel: 0.75, mouthPucker: 0.75,
+    mouthRollLower: 0.2,
   },
 };
 
@@ -144,41 +151,44 @@ const VISEME_TO_ARKIT = {
  */
 const EMOTIONS = {
   neutral: {
-    browInnerUp: 0, browOuterUpLeft: 0, browOuterUpRight: 0,
-    browDownLeft: 0, browDownRight: 0,
-    eyeWideLeft: 0, eyeWideRight: 0,
-    eyeSquintLeft: 0, eyeSquintRight: 0,
-    cheekSquintLeft: 0, cheekSquintRight: 0,
-    mouthSmileLeft: 0.2, mouthSmileRight: 0.2, mouthSmile: 0.15,
+    eyeSquintLeft: 0.05, eyeSquintRight: 0.05,
+    browInnerUp: 0.0,
   },
   happy: {
-    browInnerUp: 0.15, browOuterUpLeft: 0.2, browOuterUpRight: 0.2,
-    eyeSquintLeft: 0.2, eyeSquintRight: 0.2,
+    mouthSmileLeft: 0.6, mouthSmileRight: 0.6,
+    eyeSquintLeft: 0.5, eyeSquintRight: 0.5,
     cheekSquintLeft: 0.25, cheekSquintRight: 0.25,
-    mouthSmileLeft: 0.35, mouthSmileRight: 0.35, mouthSmile: 0.3,
   },
   excited: {
-    browInnerUp: 0.3, browOuterUpLeft: 0.35, browOuterUpRight: 0.35,
-    eyeWideLeft: 0.2, eyeWideRight: 0.2,
-    cheekSquintLeft: 0.15, cheekSquintRight: 0.15,
-    mouthSmileLeft: 0.4, mouthSmileRight: 0.4, mouthSmile: 0.3,
+    browInnerUp: 0.5,
+    eyeWideLeft: 0.5, eyeWideRight: 0.5,
+    mouthSmileLeft: 0.85, mouthSmileRight: 0.85,
+    cheekSquintLeft: 0.4, cheekSquintRight: 0.4,
   },
   curious: {
-    browInnerUp: 0.35, browOuterUpLeft: 0.15, browOuterUpRight: 0.3,
-    eyeWideLeft: 0.1, eyeWideRight: 0.15,
-    mouthSmileLeft: 0.1, mouthSmileRight: 0.1, mouthSmile: 0.05,
+    browOuterUpLeft: 1.0, browDownRight: 0.4,
+    eyeWideLeft: 0.3,
+    mouthPucker: 0.1,
   },
   empathetic: {
-    browInnerUp: 0.3, browDownLeft: 0.1, browDownRight: 0.1,
-    eyeSquintLeft: 0.1, eyeSquintRight: 0.1,
-    mouthSmileLeft: 0.15, mouthSmileRight: 0.15, mouthSmile: 0.1,
-    mouthFrownLeft: 0.05, mouthFrownRight: 0.05,
+    browInnerUp: 0.7,
+    eyeSquintLeft: 0.35, eyeSquintRight: 0.35,
+    mouthSmileLeft: 0.2, mouthSmileRight: 0.2,
+    jawForward: 0.1,
   },
   thinking: {
-    browInnerUp: 0.2, browOuterUpLeft: 0.1, browOuterUpRight: 0.25,
-    eyeSquintLeft: 0.15, eyeSquintRight: 0.05,
-    mouthSmileLeft: 0.08, mouthSmileRight: 0.08,
-    mouthPucker: 0.05,
+    browOuterUpLeft: 0.6, browInnerUp: 0.2,
+    eyeLookUpLeft: 0.5, eyeLookInRight: 0.5,  // Lateral gaze — upper-left to simulate cognitive recall
+    mouthPucker: 0.2,
+  },
+  surprised: {
+    browInnerUp: 0.9,
+    eyeWideLeft: 0.7, eyeWideRight: 0.7,
+  },
+  concerned: {
+    browInnerUp: 0.6,
+    browDownLeft: 0.3, browDownRight: 0.3,
+    mouthFrownLeft: 0.5, mouthFrownRight: 0.5,
   },
 };
 
@@ -205,12 +215,27 @@ const EMOTION_KEYWORDS = {
     "schade", "leider", "tut mir leid", "verstehe", "schwer", "schwierig",
     "traurig", "müde", "krank", "problem", "sorge", "angst",
     "keine sorge", "kein problem", "macht nichts",
+    "höre dich nicht", "nicht gut", "noch einmal", "nochmal",
+    "entschuldigung", "sorry", "oh nein", "nicht verstanden",
   ],
   thinking: [
     "hmm", "also", "vielleicht", "möglicherweise", "eigentlich",
     "ich denke", "ich glaube", "ich meine", "mal sehen", "lass mich",
     "überlegen", "moment",
   ],
+};
+
+/**
+ * wLipSync phoneme → VISEME_TO_ARKIT mapping.
+ * wLipSync outputs weights for: A, I, U, E, O, S
+ */
+const PHONEME_TO_VISEME = {
+  A: "viseme_aa",
+  E: "viseme_E",
+  I: "viseme_I",
+  O: "viseme_O",
+  U: "viseme_U",
+  S: "viseme_SS",
 };
 
 /**
@@ -260,23 +285,20 @@ export function Character(props) {
   const { actions } = useAnimations(animations, scene);
 
   const [blink, setBlink] = useState(false);
+  const [ready, setReady] = useState(false); // Hide until animation starts (avoid T-pose flash)
 
-  const status          = useAIStore((s) => s.status);
-  const analyzerNode    = useAIStore((s) => s.analyzerNode);
-  const visemeTimeline  = useAIStore((s) => s.visemeTimeline);
-  const visemeStartTime = useAIStore((s) => s.visemeStartTime);
-  const speakingText    = useAIStore((s) => s.speakingText);
+  const status             = useAIStore((s) => s.status);
+  const analyzerNode       = useAIStore((s) => s.analyzerNode);
+  const lipsyncNode        = useAIStore((s) => s.lipsyncNode);
+  const currentEmotion     = useAIStore((s) => s.currentEmotion);
+  const emotionTimeline    = useAIStore((s) => s.emotionTimeline);
+  const emotionPlaybackStart = useAIStore((s) => s.emotionPlaybackStart);
+  const emotionAudioDuration = useAIStore((s) => s.emotionAudioDuration);
+  const setCurrentEmotion  = useAIStore((s) => s.setCurrentEmotion);
 
   const freqDataRef = useRef(null);
-  const currentEmotionRef = useRef("neutral");
-  const emotionBlendsRef = useRef({});
-
-  // Detect emotion whenever speaking text changes
-  useEffect(() => {
-    if (speakingText) {
-      currentEmotionRef.current = detectEmotion(speakingText);
-    }
-  }, [speakingText]);
+  const neckBoneRef = useRef(null);
+  const saccadeRef = useRef({ x: 0, y: 0, nextTime: 0 }); // micro-saccade state
 
   // Fix PBR materials and assign avatar to lighting layer.
   // Avaturn exports metallicRoughness textures that make skin/clothes behave
@@ -284,6 +306,13 @@ export function Character(props) {
   // Also enable avatarLayer so avatar-only lights in Experience.jsx affect her.
   const { avatarLayer, ...restProps } = props;
   useEffect(() => {
+    // Find neck bone for head tilt during curious emotion
+    scene.traverse((child) => {
+      if (child.isBone && (child.name === 'Neck' || child.name === 'neck')) {
+        neckBoneRef.current = child;
+      }
+    });
+
     scene.traverse((child) => {
       // Put all avatar meshes on the avatar lighting layer
       if (avatarLayer !== undefined && child.isMesh) {
@@ -318,8 +347,9 @@ export function Character(props) {
     if (animations && animations.length > 0) {
       const clip = animations[0];
       // Remove morph target tracks (we drive face/mouth ourselves)
+      // Remove Neck bone tracks (we drive neck tilt for emotions)
       clip.tracks = clip.tracks.filter(
-        (track) => !track.name.includes("morphTargetInfluences")
+        (track) => !track.name.includes("morphTargetInfluences") && !track.name.includes("Neck")
       );
       // Trim to 3.3s — one full breathing cycle
       clip.duration = 3.3;
@@ -328,6 +358,7 @@ export function Character(props) {
       const firstAction = Object.values(actions)[0];
       if (firstAction) {
         firstAction.reset().setLoop(2202, Infinity).play(); // THREE.LoopPingPong = 2202 (forward then backward = seamless)
+        setReady(true);
       }
     }
   }, [actions, animations]);
@@ -341,8 +372,8 @@ export function Character(props) {
         setTimeout(() => {
           setBlink(false);
           nextBlink();
-        }, 120);
-      }, randInt(1500, 5000));
+        }, randInt(80, 150)); // Vary blink duration too
+      }, Math.random() * 3000 + 3000); // 3-6s, truly random (not integer-stepped)
     };
     nextBlink();
     return () => clearTimeout(blinkTimeout);
@@ -395,79 +426,148 @@ export function Character(props) {
     return MathUtils.clamp(sum / ((hiBin - loBin + 1) * 255), 0, 1);
   };
 
-  // Current viseme from timeline using elapsed time
-  const getCurrentViseme = () => {
-    if (!visemeTimeline || visemeTimeline.length === 0 || !visemeStartTime) {
-      return "viseme_sil";
-    }
-    const elapsed = (performance.now() - visemeStartTime) / 1000;
-    for (let i = visemeTimeline.length - 1; i >= 0; i--) {
-      const v = visemeTimeline[i];
-      if (elapsed >= v.time && elapsed < v.time + v.duration) {
-        return v.viseme;
-      }
-    }
-    return "viseme_sil";
-  };
-
   // Per-frame update
   useFrame(() => {
     // ── Blink ──
     lerpMorphTarget("eyeBlinkLeft", blink ? 1 : 0, 0.5);
     lerpMorphTarget("eyeBlinkRight", blink ? 1 : 0, 0.5);
 
-    // ── Emotional expression (always active, changes slowly) ──
-    const emotion = currentEmotionRef.current;
-    const emotionPreset = status === "speaking"
-      ? (EMOTIONS[emotion] || EMOTIONS.neutral)
-      : EMOTIONS.neutral;
+    // ── Update emotion from timeline based on playback progress ──
+    if (status === "speaking" && emotionTimeline && emotionTimeline.length > 1 && emotionPlaybackStart && emotionAudioDuration > 0) {
+      const elapsed = (performance.now() - emotionPlaybackStart) / 1000;
+      const progress = MathUtils.clamp(elapsed / emotionAudioDuration, 0, 1);
+      // Find the active segment (last one whose start <= progress)
+      let activeEmotion = emotionTimeline[0].emotion;
+      for (let i = emotionTimeline.length - 1; i >= 0; i--) {
+        if (progress >= emotionTimeline[i].start) {
+          activeEmotion = emotionTimeline[i].emotion;
+          break;
+        }
+      }
+      if (activeEmotion !== currentEmotion) {
+        setCurrentEmotion(activeEmotion);
+      }
+    }
 
-    // Lerp emotion shapes slowly for smooth transitions
+    // ── Emotional expression (smooth ~250ms transitions to avoid "snap") ──
+    const emotionPreset = status === "speaking"
+      ? (EMOTIONS[currentEmotion] || EMOTIONS.neutral)
+      : EMOTIONS.neutral;
+    const emotionLerp = 0.08; // ~250ms transition at 60fps — organic, not snappy
+
+    // During speaking, lip sync gets 100% exclusive control over ALL mouth/jaw geometry.
+    // Emotions only drive the upper face (brows, eyes, cheeks, head tilt).
+    const isMouthShape = (s) => s.startsWith("mouth") || s.startsWith("jaw") || s === "tongueOut" || s === "cheekPuff";
+
     for (const [shape, target] of Object.entries(emotionPreset)) {
-      // Don't drive smile shapes here during speaking — lip sync handles mouth
-      if (status === "speaking" && shape.startsWith("mouthSmile")) continue;
-      lerpMorphTarget(shape, target, 0.06);
+      if (status === "speaking" && isMouthShape(shape)) continue;
+      lerpMorphTarget(shape, target, emotionLerp);
     }
     // Reset emotion shapes not in current preset
     for (const shape of EMOTION_SHAPES) {
       if (!(shape in emotionPreset)) {
-        if (status === "speaking" && shape.startsWith("mouthSmile")) continue;
-        lerpMorphTarget(shape, 0, 0.06);
+        if (status === "speaking" && isMouthShape(shape)) continue;
+        lerpMorphTarget(shape, 0, emotionLerp);
       }
     }
 
+    // ── Micro-saccades — subtle eye movements (faster during THINKING) ──
+    const now = performance.now();
+    const saccade = saccadeRef.current;
+    if (now > saccade.nextTime) {
+      const isThinking = currentEmotion === 'thinking';
+      saccade.x = (Math.random() - 0.5) * 0.06;
+      saccade.y = (Math.random() - 0.5) * 0.04;
+      saccade.nextTime = now + (isThinking ? 300 + Math.random() * 400 : 800 + Math.random() * 1500);
+    }
+    // Don't override eye look directions that THINKING emotion controls (eyeLookUpLeft, eyeLookInRight)
+    if (currentEmotion !== 'thinking') {
+      lerpMorphTarget("eyeLookInLeft", Math.max(0, saccade.x), 0.06);
+      lerpMorphTarget("eyeLookOutLeft", Math.max(0, -saccade.x), 0.06);
+      lerpMorphTarget("eyeLookInRight", Math.max(0, -saccade.x), 0.06);
+      lerpMorphTarget("eyeLookOutRight", Math.max(0, saccade.x), 0.06);
+      lerpMorphTarget("eyeLookUpLeft", Math.max(0, saccade.y), 0.06);
+      lerpMorphTarget("eyeLookUpRight", Math.max(0, saccade.y), 0.06);
+      lerpMorphTarget("eyeLookDownLeft", Math.max(0, -saccade.y), 0.06);
+      lerpMorphTarget("eyeLookDownRight", Math.max(0, -saccade.y), 0.06);
+    }
+
+    // Neck tilt — "social tilt" for curious, reset for others
+    if (neckBoneRef.current) {
+      const targetTilt = (status === 'speaking' && currentEmotion === 'curious') ? 0.15 : 0;
+      neckBoneRef.current.rotation.z = MathUtils.lerp(neckBoneRef.current.rotation.z, targetTilt, 0.12);
+    }
+
     if (status === "speaking") {
+      // ── wLipSync mode: real-time phoneme weights from audio analysis ──
       const amplitude = getAudioAmplitude();
-      const viseme = getCurrentViseme();
 
-      // Audio gate: only fully close during clear silence, otherwise let shapes through
-      let gate;
-      if (amplitude < 0.015) {
-        gate = 0;  // true silence
-      } else if (amplitude < 0.06) {
-        gate = (amplitude - 0.015) / 0.045;  // quick ramp up
+      // Debug: log once per second
+      if (!window._lipsyncDebugTimer || Date.now() - window._lipsyncDebugTimer > 1000) {
+        window._lipsyncDebugTimer = Date.now();
+        console.log('[LipSync Debug]', {
+          hasLipsyncNode: !!lipsyncNode,
+          amplitude: amplitude.toFixed(3),
+          weights: lipsyncNode?.weights,
+          volume: lipsyncNode?.volume,
+          emotion: currentEmotion,
+        });
+      }
+
+      if (lipsyncNode && amplitude > 0.06) {
+        const weights = lipsyncNode.weights; // { A: 0.0-1.0, I: ..., U: ..., E: ..., O: ..., S: ... }
+
+        // Apply each phoneme's ARKit blend shape pose, weighted by phoneme strength
+        // First, accumulate all ARKit shape targets from all active phonemes
+        const arkitTargets = {};
+        for (const [phoneme, visemeName] of Object.entries(PHONEME_TO_VISEME)) {
+          let w = weights[phoneme] || 0;
+          if (w < 0.01) continue;
+          // Amplify O/U weights — wLipSync often under-detects rounded vowels,
+          // but German needs strong puckering for ö/ü/o/u
+          if (phoneme === 'O' || phoneme === 'U') w = Math.min(1, w * 1.8);
+          const pose = VISEME_TO_ARKIT[visemeName];
+          if (!pose) continue;
+          for (const [shape, value] of Object.entries(pose)) {
+            arkitTargets[shape] = (arkitTargets[shape] || 0) + value * w;
+          }
+        }
+
+        // Apply accumulated ARKit targets — explosive shapes snap fast, vowels slightly slower
+        const EXPLOSIVE_SHAPES = new Set([
+          "mouthClose", "mouthPressLeft", "mouthPressRight",  // P, B, M
+          "mouthShrugUpper", "tongueOut",                      // T, D, TH
+        ]);
+        for (const [shape, target] of Object.entries(arkitTargets)) {
+          const speed = EXPLOSIVE_SHAPES.has(shape) ? 0.8 : 0.55;
+          lerpMorphTarget(shape, MathUtils.clamp(target, 0, 1), speed);
+        }
+
+        // Reset ARKit mouth shapes not driven this frame — snap shut fast
+        for (const shape of ARKIT_MOUTH_SHAPES) {
+          if (!(shape in arkitTargets)) {
+            lerpMorphTarget(shape, 0, 0.5);
+          }
+        }
+
+        // Also reset Oculus viseme targets (not used in ARKit mode)
+        for (const v of ALL_VISEMES) {
+          lerpMorphTarget(v, 0, 0.3);
+        }
+
+        // Subtle smile while speaking
+        const smileTarget = 0.03;
+        lerpMorphTarget("mouthSmileLeft", smileTarget, 0.15);
+        lerpMorphTarget("mouthSmileRight", smileTarget, 0.15);
       } else {
-        gate = 1.0;  // full intensity — let the viseme shapes show clearly
+        // No lipsync node or silence — snap mouth shut instantly (no mumbling during pauses)
+        for (const v of ALL_VISEMES) lerpMorphTarget(v, 0, 1.0);
+        for (const shape of ARKIT_MOUTH_SHAPES) lerpMorphTarget(shape, 0, 1.0);
+
+        const smileTarget = 0.15;
+        lerpMorphTarget("mouthSmileLeft", smileTarget, 0.15);
+        lerpMorphTarget("mouthSmileRight", smileTarget, 0.15);
       }
-
-      // Use the model's built-in Oculus viseme shapes directly.
-      // These are pre-sculpted by the artist for each phoneme and include
-      // jaw, lips, tongue, and teeth movement all in one shape.
-      // Much more accurate than manually combining ARKit shapes.
-
-      // Reset all visemes toward 0, then activate the current one
-      for (const v of ALL_VISEMES) {
-        const target = (v === viseme && gate > 0) ? gate * 0.85 : 0;
-        lerpMorphTarget(v, target, 0.3);
-      }
-
-      // Also drive jawOpen proportional to gate for natural movement
-      lerpMorphTarget("jawOpen", gate > 0 ? gate * 0.15 : 0, 0.25);
-
-      // Gentle smile during pauses
-      const smileTarget = gate < 0.1 ? 0.15 : 0.03;
-      lerpMorphTarget("mouthSmileLeft", smileTarget, 0.15);
-      lerpMorphTarget("mouthSmileRight", smileTarget, 0.15);
 
     } else {
       // ── NOT SPEAKING — reset mouth, show friendly smile ──
@@ -480,14 +580,11 @@ export function Character(props) {
       lerpMorphTarget("mouthSmile", 0.2, 0.1);
       lerpMorphTarget("cheekSquintLeft", 0.1, 0.08);
       lerpMorphTarget("cheekSquintRight", 0.1, 0.08);
-
-      // Reset emotion to neutral when not speaking
-      currentEmotionRef.current = "neutral";
     }
   });
 
   return (
-    <group ref={group} {...restProps} dispose={null}>
+    <group ref={group} {...restProps} dispose={null} visible={ready}>
       <primitive object={scene} />
     </group>
   );

@@ -1,4 +1,5 @@
 import { useRef, useCallback } from "react";
+import { createWLipSyncNode } from "wlipsync";
 import useAIStore from "../store/useAIStore";
 import { generateUnitInstructions, getDurations, getBuddyFirstName } from "../utils/systemInstructions";
 import { ConversationManager } from "../utils/conversationManager";
@@ -65,6 +66,9 @@ export function useVoiceConnection() {
   const sessionIdRef = useRef(null);
   const playbackContextRef = useRef(null);
   const currentAudioSourceRef = useRef(null);
+  const lipsyncProfileRef = useRef(null);
+  const lipsyncNodeRef = useRef(null);
+  const micAudioCtxRef = useRef(null);
 
   // ── Logging refs ──
   const logSessionIdRef = useRef(null);
@@ -120,19 +124,19 @@ export function useVoiceConnection() {
     setTranscriptForDownload,
     setMicError,
     setFeedback,
-    setVisemeTimeline,
-    clearVisemeTimeline,
+    setLipsyncNode,
+    clearLipsyncNode,
+    setCurrentEmotion,
+    setEmotionTimeline,
+    clearEmotionTimeline,
     setSessionTiming,
+    setMicAnalyser,
   } = useAIStore();
 
   // ── Audio playback helper ──
-  async function playAudio(audioBase64, mimeType = 'audio/wav', visemeData = null) {
-    // Set viseme timeline in store BEFORE starting playback
-    if (visemeData && visemeData.length > 0) {
-      setVisemeTimeline(visemeData);
-    }
+  async function playAudio(audioBase64, mimeType = 'audio/wav', emotionTimeline = null) {
     if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
-      playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
     }
     const ctx = playbackContextRef.current;
     await ctx.resume();
@@ -146,21 +150,59 @@ export function useVoiceConnection() {
     const source = ctx.createBufferSource();
     source.buffer = audioBuffer;
 
-    // Analyser for lipsync
+    // Analyser for amplitude (used by Character.jsx as a speaking gate)
     const analyser = ctx.createAnalyser();
     analyser.fftSize = 256;
     analyser.smoothingTimeConstant = 0.5;
-    source.connect(analyser);
-    analyser.connect(ctx.destination);
-    setAnalyzerNode(analyser);
 
+    // Create wLipSync node for real-time phoneme detection
+    try {
+      // Load profile once and cache
+      if (!lipsyncProfileRef.current) {
+        lipsyncProfileRef.current = await fetch('/profile.json').then(r => r.json());
+      }
+      // Disconnect previous node if any
+      if (lipsyncNodeRef.current) {
+        try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      }
+      const lipsyncNode = await createWLipSyncNode(ctx, lipsyncProfileRef.current);
+      lipsyncNodeRef.current = lipsyncNode;
+      setLipsyncNode(lipsyncNode);
+
+      // Audio graph with 50ms look-ahead:
+      //   source → analyser → delayNode (50ms) → destination (speakers)
+      //          ↘ lipsyncNode (sink — processes audio 50ms before speakers play it)
+      // This lets the renderer "see" phonemes before the user hears them.
+      const delayNode = ctx.createDelay(0.1);
+      delayNode.delayTime.value = 0.05; // 50ms look-ahead
+      source.connect(analyser);
+      analyser.connect(delayNode);
+      delayNode.connect(ctx.destination);
+      source.connect(lipsyncNode);
+    } catch (err) {
+      console.warn('[wLipSync] Failed to create node, falling back to amplitude-only:', err);
+      // Fallback: analyser + delay
+      const delayNode = ctx.createDelay(0.1);
+      delayNode.delayTime.value = 0.05;
+      source.connect(analyser);
+      analyser.connect(delayNode);
+      delayNode.connect(ctx.destination);
+    }
+
+    setAnalyzerNode(analyser);
     currentAudioSourceRef.current = source;
+
+    // Set emotion timeline with audio duration for mid-speech switching
+    if (emotionTimeline && emotionTimeline.length > 0) {
+      setEmotionTimeline(emotionTimeline, audioBuffer.duration);
+    }
 
     return new Promise((resolve) => {
       source.onended = () => {
         currentAudioSourceRef.current = null;
         setAnalyzerNode(null);
-        clearVisemeTimeline();
+        clearLipsyncNode();
+        clearEmotionTimeline();
         resolve();
       };
       source.start();
@@ -183,8 +225,9 @@ export function useVoiceConnection() {
       const data = await resp.json();
       if (data.response) {
         addMessage('assistant', data.response);
+        setCurrentEmotion(data.emotion);
         postLog({ type: 'turn', role: 'ai', text: data.response });
-        await playAudio(data.audioBase64, data.mimeType, data.visemeTimeline);
+        await playAudio(data.audioBase64, data.mimeType, data.emotionTimeline);
         setStatus('idle');
 
         // Handle pending auto-end after AI speaks
@@ -325,9 +368,29 @@ export function useVoiceConnection() {
 
       try {
         // 1. Microphone access
-        const ms = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Read mic selection fresh from store (not stale closure)
+        const micId = useAIStore.getState().selectedMicId;
+        const audioConstraints = micId
+          ? { deviceId: { exact: micId } }
+          : true;
+        const ms = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
         rawMicStreamRef.current = ms;
         microphoneTrackRef.current = ms.getTracks()[0];
+
+        // Set up mic volume analyser for real-time volume meter in UI
+        try {
+          const micCtx = new (window.AudioContext || window.webkitAudioContext)();
+          micAudioCtxRef.current = micCtx;
+          const micSource = micCtx.createMediaStreamSource(ms);
+          const micAnalyser = micCtx.createAnalyser();
+          micAnalyser.fftSize = 256;
+          micAnalyser.smoothingTimeConstant = 0.3;
+          micSource.connect(micAnalyser);
+          // Don't connect to destination — we only need to read levels, not play back
+          setMicAnalyser(micAnalyser);
+        } catch (err) {
+          console.warn('[MicMeter] Failed to create analyser:', err);
+        }
 
         // 2. Fetch persona
         let persona = null;
@@ -438,7 +501,7 @@ export function useVoiceConnection() {
           }),
         });
         if (!sessionResp.ok) throw new Error('Session start failed');
-        const { sessionId, response: aiGreeting, audioBase64, mimeType, visemeTimeline: greetingVisemes } = await sessionResp.json();
+        const { sessionId, response: aiGreeting, audioBase64, mimeType, emotion: greetingEmotion, emotionTimeline: greetingTimeline } = await sessionResp.json();
         sessionIdRef.current = sessionId;
 
         // 8. Start log session
@@ -453,6 +516,7 @@ export function useVoiceConnection() {
 
         // 9. Add AI greeting to messages and process through manager
         addMessage('assistant', aiGreeting);
+        setCurrentEmotion(greetingEmotion);
         postLog({ type: 'turn', role: 'ai', text: aiGreeting });
         checkBuddyAskedName(aiGreeting); // Track if buddy asked "Wie heißt du?"
 
@@ -467,7 +531,7 @@ export function useVoiceConnection() {
         setSessionTiming(Date.now(), minMs, maxMs);
         setSessionActive(true);
         try {
-          await playAudio(audioBase64, mimeType, greetingVisemes);
+          await playAudio(audioBase64, mimeType, greetingTimeline);
         } catch (audioErr) {
           console.error("Audio playback failed (non-fatal):", audioErr);
           // Session still works — student can speak even if greeting audio failed
@@ -579,7 +643,19 @@ export function useVoiceConnection() {
     nameConfirmationPendingRef.current = null;
     logQueueRef.current = Promise.resolve();
 
+    // Clean up mic volume analyser
+    setMicAnalyser(null);
+    if (micAudioCtxRef.current) {
+      micAudioCtxRef.current.close().catch(() => {});
+      micAudioCtxRef.current = null;
+    }
+
     setAnalyzerNode(null);
+    if (lipsyncNodeRef.current) {
+      try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      lipsyncNodeRef.current = null;
+    }
+    clearLipsyncNode();
     setSessionActive(false);
     setStatus("idle");
 
@@ -673,7 +749,7 @@ export function useVoiceConnection() {
 
       const resp = await fetch('/api/conversation-turn', { method: 'POST', body: fd });
       if (!resp.ok) throw new Error(`Pipeline failed: ${resp.status}`);
-      const { transcript, response: aiText, audioBase64, mimeType, visemeTimeline: turnVisemes } = await resp.json();
+      const { transcript, response: aiText, audioBase64, mimeType, emotion: turnEmotion, emotionTimeline: turnTimeline } = await resp.json();
 
       // ── Process transcript ──
       const cleaned = cleanTranscript(transcript) || '(inaudible)';
@@ -708,6 +784,7 @@ export function useVoiceConnection() {
 
       // ── Process AI response ──
       addMessage('assistant', aiText);
+      setCurrentEmotion(turnEmotion);
       postLog({ type: 'turn', role: 'ai', text: aiText });
       checkBuddyAskedName(aiText); // Track if buddy asked "Wie heißt du?"
 
@@ -734,7 +811,7 @@ export function useVoiceConnection() {
       }
 
       // Play AI audio with viseme timeline
-      await playAudio(audioBase64, mimeType, turnVisemes);
+      await playAudio(audioBase64, mimeType, turnTimeline);
       setStatus('idle');
 
       // Handle pending auto-end (student said goodbye earlier)
@@ -764,11 +841,49 @@ export function useVoiceConnection() {
     }
   }, [setStatus, setMicError, addMessage]);
 
+  // ── Switch mic mid-session ──
+  const switchMic = useCallback(async (deviceId) => {
+    // Only relevant if we have an active mic stream
+    if (!rawMicStreamRef.current) return;
+
+    try {
+      // Stop old mic tracks
+      rawMicStreamRef.current.getTracks().forEach(t => t.stop());
+
+      // Acquire new stream with selected device
+      const audioConstraints = deviceId
+        ? { deviceId: { exact: deviceId } }
+        : true;
+      const ms = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
+      rawMicStreamRef.current = ms;
+      microphoneTrackRef.current = ms.getTracks()[0];
+
+      // Rebuild mic volume analyser
+      if (micAudioCtxRef.current) {
+        micAudioCtxRef.current.close().catch(() => {});
+      }
+      const micCtx = new (window.AudioContext || window.webkitAudioContext)();
+      micAudioCtxRef.current = micCtx;
+      const micSource = micCtx.createMediaStreamSource(ms);
+      const micAnalyser = micCtx.createAnalyser();
+      micAnalyser.fftSize = 256;
+      micAnalyser.smoothingTimeConstant = 0.3;
+      micSource.connect(micAnalyser);
+      setMicAnalyser(micAnalyser);
+
+      console.log('[Mic] Switched to:', microphoneTrackRef.current.label || deviceId || 'default');
+    } catch (err) {
+      console.error('[Mic] Failed to switch:', err);
+      setMicError('Could not switch microphone');
+    }
+  }, [setMicAnalyser, setMicError]);
+
   return {
     startConversation,
     endConversation,
     startRecording,
     stopRecording,
     isRecordingRef,
+    switchMic,
   };
 }
