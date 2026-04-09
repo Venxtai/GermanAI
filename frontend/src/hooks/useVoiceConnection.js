@@ -429,32 +429,19 @@ export function useVoiceConnection() {
         endReasonRef.current = null;
         pendingDirectivesRef.current = [];
 
-        // 5. Initialize ConversationManager
+        // 5. Initialize ConversationManager (5-phase system)
         const { minMs, maxMs } = getDurations(unitData._book || 'ID1', unitData._chapter || 1);
         const chapterNumber = unitData._cumulative?.chapterNumber || unitData._chapter || 1;
 
-        // Build full topic lists from last-10 tiers + review data
-        const currentUnitTopics = unitData.conversation_topics?.topics || [];
-        const last10AllTopics = [];
-        for (const tier of (unitData._cumulative?.last10Tiers || [])) {
-          for (const t of (tier.topics || [])) {
-            if (t && !last10AllTopics.includes(t)) last10AllTopics.push(t);
-          }
-        }
-        // Ensure current unit topics are at the front
-        const mainTopics = [...currentUnitTopics];
-        for (const t of last10AllTopics) {
-          if (!mainTopics.includes(t)) mainTopics.push(t);
-        }
-
-        const reviewTopicData = (unitData._cumulative?.reviewTopics || [])
-          .map(rt => typeof rt === 'string' ? rt : rt.topic)
-          .filter(t => t && !mainTopics.includes(t)); // exclude overlap with main
+        // Phase data from server-side compilation
+        const phase2Data = unitData._cumulative?.phase2 || { topics: [], communicativeFunctions: [], newRules: [], modelSentences: [] };
+        const phase3Data = unitData._cumulative?.phase3 || { topics: [], communicativeFunctions: [], newRules: [], modelSentences: [] };
+        const phase4Enabled = unitData._cumulative?.phase4?.enabled || false;
 
         managerRef.current = new ConversationManager({
-          mainTopics,         // ALL topics from last 10 units (current unit first)
-          reviewTopics: reviewTopicData,  // Topics from review pool (earlier units)
-          currentUnitTopics,  // Just the current unit's topics (for priority tracking)
+          phase2: phase2Data,
+          phase3: phase3Data,
+          phase4Enabled,
           minMs,
           maxMs,
           chapterNumber,
@@ -469,14 +456,14 @@ export function useVoiceConnection() {
           if (directives.length > 0) {
             pendingDirectivesRef.current.push(...directives);
           }
-          // Hard max: auto-end after AI delivers closing line
+          // Hard max: trigger AI farewell — session ends after AI says goodbye
           if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
             pendingEndAfterTurnRef.current = true;
             endReasonRef.current = 'Maximum conversation time reached';
             clearInterval(conversationTimerRef.current);
-            // Trigger a closing turn via directive
+            // Trigger a closing turn via directive — must include an actual goodbye word
             sendPromptTurn([
-              '[SYSTEM: Maximum conversation time reached. You MUST say your natural closing farewell NOW in one sentence. The session will end after this response.]',
+              '[SYSTEM: Maximum conversation time reached. You MUST say goodbye NOW. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss, Niko!" Do NOT ask any questions. Do NOT continue the conversation. Just say goodbye.]',
             ]);
           }
         }, 10000);
@@ -570,7 +557,8 @@ export function useVoiceConnection() {
     const utterancesSnapshot = [...studentUtterancesRef.current];
     const sessionDurationMs = conversationStartRef.current ? Date.now() - conversationStartRef.current : 0;
     const unitNumber = unitDataRef.current?.unit ?? null;
-    const { minMs: minDurationMs } = getDurations(unitDataRef.current?._book || 'ID1', unitDataRef.current?._chapter || 1);
+    const unitBook = unitDataRef.current?._book || 'ID1';
+    const { minMs: minDurationMs } = getDurations(unitBook, unitDataRef.current?._chapter || 1);
     studentUtterancesRef.current = [];
     setFeedback('loading');
 
@@ -680,7 +668,7 @@ export function useVoiceConnection() {
       fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs, sessionId: endSessionId }),
+        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, book: unitBook, sessionDurationMs, minDurationMs, sessionId: endSessionId }),
       })
         .then(r => r.json())
         .then(data => {
@@ -722,12 +710,25 @@ export function useVoiceConnection() {
 
     const stream = rawMicStreamRef.current;
     if (stream) {
-      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-        ? 'audio/webm;codecs=opus' : 'audio/webm';
-      const mr = new MediaRecorder(stream, { mimeType });
+      // Detect best supported audio format — Safari doesn't support WebM
+      let mimeType;
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        mimeType = 'audio/webm;codecs=opus';
+      } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+        mimeType = 'audio/webm';
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        mimeType = 'audio/mp4';
+      } else if (MediaRecorder.isTypeSupported('audio/ogg;codecs=opus')) {
+        mimeType = 'audio/ogg;codecs=opus';
+      } else {
+        mimeType = ''; // let browser choose default
+      }
+      const mrOptions = mimeType ? { mimeType } : {};
+      const mr = new MediaRecorder(stream, mrOptions);
       mr.ondataavailable = (e) => { if (e.data.size > 0) audioChunksRef.current.push(e.data); };
       mr.start(100);
       mediaRecorderRef.current = mr;
+      console.log(`[Recording] MediaRecorder using: ${mr.mimeType}`);
     }
     setStatus('listening');
   }, [setStatus, setMicError]);
@@ -751,22 +752,27 @@ export function useVoiceConnection() {
 
     setStatus('loading');
 
-    // Stop MediaRecorder and assemble blob
+    // Stop MediaRecorder and assemble blob with correct MIME type
+    const actualMime = mr?.mimeType || 'audio/webm';
     const audioBlob = await new Promise((resolve) => {
       if (!mr || mr.state === 'inactive') {
-        resolve(new Blob(audioChunksRef.current, { type: 'audio/webm' }));
+        resolve(new Blob(audioChunksRef.current, { type: actualMime }));
         return;
       }
       mr.onstop = () => {
-        resolve(new Blob(audioChunksRef.current, { type: mr.mimeType || 'audio/webm' }));
+        resolve(new Blob(audioChunksRef.current, { type: actualMime }));
       };
       mr.stop();
     });
 
+    // Map MIME type to correct file extension for Whisper
+    const extMap = { 'audio/webm': '.webm', 'audio/mp4': '.m4a', 'audio/ogg': '.ogg', 'audio/wav': '.wav', 'audio/mpeg': '.mp3' };
+    const ext = extMap[actualMime.split(';')[0]] || '.webm';
+
     try {
       // Build form data
       const fd = new FormData();
-      fd.append('audio', audioBlob, 'audio.webm');
+      fd.append('audio', audioBlob, `audio${ext}`);
       fd.append('sessionId', sessionIdRef.current);
 
       // Flush pending directives
@@ -827,14 +833,18 @@ export function useVoiceConnection() {
         if (mgr.getPhase() >= 2) {
           const { currentTopics: ct, reviewTopics: rt } = mgr.getTopicsForClassification();
           if (ct.length > 0 || rt.length > 0) {
+            console.log(`%c  🔍 Classifying AI text against ${ct.length} topics (Phase ${mgr.getPhase()})…`, 'color: #A78BFA;');
             fetch('/api/classify-topic', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ text: aiText, currentTopics: ct, reviewTopics: rt }),
             }).then(r => r.json()).then(result => {
+              console.log(`%c  🔍 Classification result: ${JSON.stringify(result.matchedTopics || [])}`, 'color: #A78BFA;');
               const bd = mgr.updateTopicClassification(result);
               if (bd.length > 0) pendingDirectivesRef.current.push(...bd);
-            }).catch(() => {});
+            }).catch((err) => {
+              console.warn('[Classification] Failed:', err);
+            });
           }
         }
       }

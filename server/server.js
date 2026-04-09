@@ -876,16 +876,179 @@ app.get('/api/cumulative/:unitId', (req, res) => {
   // Legacy reviewTopics for ConversationManager
   const legacyReviewTopics = reviewTopicsAll.map(t => ({ chapter: previousChapterLabel || 'Review', topic: t }));
 
+  // ══════════════════════════════════════════════════════════════
+  // 5-PHASE CONVERSATION SYSTEM — compile phase-specific data
+  // ══════════════════════════════════════════════════════════════
+
+  // Units to always skip (no conversation content) — match both padded and unpadded forms
+  const SKIP_UNIT_IDS = new Set(['O01', 'O02', 'O03', 'B01', 'B02', 'B03', 'O1', 'O2', 'O3', 'B1', 'B2', 'B3']);
+
+  // Helper: collect topics, communicative functions, and new rules from a set of unit IDs
+  // Filter: keep only conversational model sentences (not exercise instructions)
+  const MODEL_SENTENCE_REJECT = [
+    /^(schauen|fragen|schreiben|lesen|hören|sagen|machen|ordnen|ergänzen|markieren|arbeiten|stellen|korrigieren|notieren|sammeln|recherchieren|sortieren|beantworten|kreuzen|wählen|vergleichen|rechnen)\s+sie\b/i,
+    /\b(team\s*[12]|partner|kurs|kursraum|aufgabe|übung|teil\s*\d|seite\s*\d|video|tabelle)\b/i,
+    /^(was ist richtig|was ist falsch|korrigieren sie)/i,
+    /^\s*\(/, /^\d+\s*(jahre|grad|cm|m\b)/i, /^\s*$/,
+    // Additional: filter classroom instructions
+    /^(bilden|drehen|sprechen|notieren|jede)\s+sie\b/i,
+    /\b(nummer|gruppe|innen.*kreis|außen.*kreis|uhrzeigersinn|notizen)\b/i,
+    /^eine person\b/i, /^dann\s+(dreht|stellt|hat)/i,
+  ];
+  function isConversationalSentence(s) {
+    if (!s || s.length < 10) return false;
+    for (const pat of MODEL_SENTENCE_REJECT) { if (pat.test(s)) return false; }
+    // Prefer questions (?) and statements with du/ihr/man
+    return true;
+  }
+  // Score model sentences: questions > du-statements > general
+  function scoreModelSentence(s) {
+    let score = 0;
+    if (s.includes('?')) score += 3; // Questions are most useful
+    if (/\b(du|ihr|man|dein)\b/i.test(s)) score += 2; // Addressed to student
+    if (/\b(würd|könnt|hätt|möcht|wär)\b/i.test(s)) score += 1; // Konjunktiv = interesting
+    return score;
+  }
+
+  function collectPhaseData(unitIds) {
+    const topics = [], functions = [], rules = [], sourceUnits = [];
+    const modelSentences = []; // { sentence, unit, topic, score }
+    const seenTopics = new Set(), seenFunctions = new Set(), seenRules = new Set(), seenSentences = new Set();
+    for (const uid of unitIds) {
+      if (SKIP_UNIT_IDS.has(uid)) continue;
+      const u = unitMapRef = unitMap[uid];
+      if (!u || u.is_optional) continue;
+      let hasContent = false;
+      const unitTopics = [];
+      for (const t of (u.conversation_topics?.topics || [])) {
+        if (t && !seenTopics.has(t) && !WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt))) {
+          seenTopics.add(t); topics.push(t); unitTopics.push(t); hasContent = true;
+        }
+      }
+      for (const f of (u.communicative_functions?.goals || [])) {
+        if (f && !seenFunctions.has(f)) { seenFunctions.add(f); functions.push(f); hasContent = true; }
+      }
+      for (const r of (u.grammar_constraints?.new_rules_in_this_unit || [])) {
+        if (r && !seenRules.has(r)) { seenRules.add(r); rules.push(r); hasContent = true; }
+      }
+      // Collect model sentences (conversational questions/statements only)
+      for (const s of (u.model_sentences?.literal || [])) {
+        if (isConversationalSentence(s) && !seenSentences.has(s)) {
+          seenSentences.add(s);
+          modelSentences.push({
+            sentence: s,
+            unit: uid,
+            topic: unitTopics[0] || null,
+            score: scoreModelSentence(s),
+          });
+        }
+      }
+      if (hasContent) sourceUnits.push(uid);
+    }
+    // Sort model sentences: best questions first
+    modelSentences.sort((a, b) => b.score - a.score);
+    return { topics, communicativeFunctions: functions, newRules: rules, sourceUnits, modelSentences };
+  }
+
+  // Helper: resolve a unit ID trying both padded and unpadded forms
+  function resolveUnitId(bookPrefix, pos) {
+    if (bookPrefix === 'ID1') return unitMap[String(pos)] ? String(pos) : null;
+    const prefix = bookPrefix === 'ID2B' ? 'B' : 'O';
+    const padded = `${prefix}${String(pos).padStart(2, '0')}`;
+    if (unitMap[padded]) return padded;
+    const unpadded = `${prefix}${pos}`;
+    if (unitMap[unpadded]) return unpadded;
+    return null;
+  }
+
+  // Phase 2: Non-optional units covered in current chapter (up to and including target)
+  const currentChapterCoveredIds = [];
+  if (currentChapterMeta) {
+    for (let pos = currentChapterMeta.unitStart; pos <= targetPos; pos++) {
+      const uid = resolveUnitId(book, pos);
+      if (!uid) continue;
+      const u = unitMap[uid];
+      if (u && !u.is_optional && !SKIP_UNIT_IDS.has(uid)) currentChapterCoveredIds.push(uid);
+    }
+  }
+
+  // Backfill from previous chapter if fewer than 3 non-optional units in current chapter
+  const backfilledIds = [];
+  if (currentChapterCoveredIds.length < 3 && prevChInfo) {
+    const prevUnitIds = getChapterUnitIds(prevChInfo.meta, prevChInfo.book, unitMap);
+    // Take from most recent first (reverse order)
+    const candidates = prevUnitIds.filter(uid => {
+      const u = unitMap[uid];
+      return u && !u.is_optional && !SKIP_UNIT_IDS.has(uid);
+    }).reverse();
+    const needed = 3 - currentChapterCoveredIds.length;
+    for (let i = 0; i < Math.min(needed, candidates.length); i++) {
+      backfilledIds.push(candidates[i]);
+    }
+  }
+
+  const phase2UnitIds = [...currentChapterCoveredIds, ...backfilledIds];
+  const phase2Data = collectPhaseData(phase2UnitIds);
+  if (backfilledIds.length > 0) {
+    phase2Data.backfilledFrom = { chapter: prevChInfo?.meta?.chapter, units: backfilledIds };
+  }
+
+  // Phase 3: Previous chapter units MINUS any borrowed into Phase 2
+  const backfilledSet = new Set(backfilledIds);
+  let phase3UnitIds = [];
+  if (prevChInfo) {
+    const prevUnitIds = getChapterUnitIds(prevChInfo.meta, prevChInfo.book, unitMap);
+    phase3UnitIds = prevUnitIds.filter(uid => {
+      const u = unitMap[uid];
+      return u && !u.is_optional && !SKIP_UNIT_IDS.has(uid) && !backfilledSet.has(uid);
+    });
+  }
+  const phase3Data = collectPhaseData(phase3UnitIds);
+  // Phase 3 grammar/functions = combined Phase 2 + Phase 3
+  const phase3CombinedFunctions = [...phase2Data.communicativeFunctions];
+  for (const f of phase3Data.communicativeFunctions) {
+    if (!phase3CombinedFunctions.includes(f)) phase3CombinedFunctions.push(f);
+  }
+  const phase3CombinedRules = [...phase2Data.newRules];
+  for (const r of phase3Data.newRules) {
+    if (!phase3CombinedRules.includes(r)) phase3CombinedRules.push(r);
+  }
+
+  // Phase 4: enabled if student has completed all of Chapter 1
+  // For ID1: past unit 15. For ID2B/ID2O: always true (they completed all of ID1).
+  const ch1Complete = book !== 'ID1' || targetPos > 15;
+
   res.json({
     ...targetUnit,
     _cumulative: {
       activeVocabulary: cumulativeActiveVocab,
       passiveVocabulary: cumulativePassiveVocab,
       verbForms: cumulativeVerbForms,
-      // Main block: last 10 units by proximity tiers
+      chapterNumber: currentChapterNum,
+
+      // 5-phase conversation data
+      phase2: {
+        ...phase2Data,
+        // Phase 2 only uses its own functions/rules
+      },
+      phase3: {
+        topics: phase3Data.topics,
+        sourceUnits: phase3Data.sourceUnits,
+        modelSentences: phase3Data.modelSentences,
+        // Combined functions/rules from Phase 2 + Phase 3
+        communicativeFunctions: phase3CombinedFunctions,
+        newRules: phase3CombinedRules,
+        // Phase 3's own functions/rules (for reference)
+        ownFunctions: phase3Data.communicativeFunctions,
+        ownRules: phase3Data.newRules,
+      },
+      phase4: {
+        enabled: ch1Complete,
+      },
+
+      // Legacy fields (kept for backward compatibility)
       last10Tiers,
       currentUnitTopics,
-      // Review block: remaining units in current + previous chapter
       reviewData: {
         topics: reviewTopicsAll,
         currentChapterExtras: collectTopicsFromUnits(currentChapterReviewIds, unitMap),
@@ -897,8 +1060,6 @@ app.get('/api/cumulative/:unitId', (req, res) => {
       },
       fallbackChapters,
       recentNewGrammar,
-      chapterNumber: currentChapterNum,
-      // Legacy format for ConversationManager
       reviewTopics: legacyReviewTopics,
       stats: {
         totalActiveWords: cumulativeActiveVocab.length,
@@ -1830,6 +1991,14 @@ const FUNCTIONAL_WORDS = new Set([
   'will', 'willst', 'wollen', 'wollt',
   'soll', 'sollst', 'sollen', 'sollt',
   'darf', 'darfst', 'dürfen', 'dürft',
+  // Konjunktiv II (würde + subjunctive modals)
+  'würde', 'würdest', 'würden', 'würdet',
+  'könnte', 'könntest', 'könnten', 'könntet',
+  'müsste', 'müsstest', 'müssten', 'müsstet',
+  'sollte', 'solltest', 'sollten', 'solltet',
+  'dürfte', 'dürftest', 'dürften', 'dürftet',
+  'hätte', 'hättest', 'hätten', 'hättet',
+  'wäre', 'wärst', 'wären', 'wärt',
   // Common short words
   'es', 'mal', 'doch', 'lass', 'uns', 'okay',
 ]);
@@ -2432,7 +2601,11 @@ app.post('/api/session/start', async (req, res) => {
  * returns: { transcript, response, audioBase64, mimeType }
  */
 app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
-  const renamedPath = req.file ? req.file.path + '.webm' : null;
+  // Detect file extension from original filename or MIME type (Safari sends .m4a, Chrome sends .webm)
+  const origExt = req.file?.originalname ? path.extname(req.file.originalname) : '';
+  const mimeExtMap = { 'audio/webm': '.webm', 'audio/mp4': '.m4a', 'audio/ogg': '.ogg', 'audio/wav': '.wav', 'audio/mpeg': '.mp3', 'audio/x-m4a': '.m4a', 'audio/mp4a-latm': '.m4a' };
+  const ext = origExt || mimeExtMap[req.file?.mimetype?.split(';')[0]] || '.webm';
+  const renamedPath = req.file ? req.file.path + ext : null;
   try {
     const { sessionId } = req.body;
     const session = voiceSessions.get(sessionId);
@@ -2442,7 +2615,7 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     // 1. Whisper STT
     const t0 = Date.now();
     fs.renameSync(req.file.path, renamedPath);
-    console.log(`[STT] Audio file: ${renamedPath}, size: ${fs.statSync(renamedPath).size} bytes, mime: ${req.file.mimetype}`);
+    console.log(`[STT] Audio file: ${renamedPath}, size: ${fs.statSync(renamedPath).size} bytes, mime: ${req.file.mimetype}, ext: ${ext}`);
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(renamedPath),
       model: 'whisper-1',
@@ -2669,18 +2842,48 @@ function buildPersona(traits) {
  */
 app.post('/api/feedback', async (req, res) => {
   try {
-    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000, sessionId } = req.body;
+    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000, sessionId, book } = req.body;
     const MIN_THRESHOLD_MS = 0.6 * minDurationMs;
     if (sessionDurationMs < MIN_THRESHOLD_MS) {
       return res.json({ fallback: true });
     }
 
-    // Collect goals from units 1..unit, most recent first
+    // Collect goals from all prerequisite units up to the target, most recent first
+    // Handles both numeric (ID1) and prefixed (O5, B3) unit IDs
     const goalsByUnit = [];
-    for (let u = Number(unit); u >= 1; u--) {
-      const ud = unitMap[String(u)];
+    const unitIdStr = String(unit);
+    const detectedBook = book || (unitIdStr.match(/^O/i) ? 'ID2O' : unitIdStr.match(/^B/i) ? 'ID2B' : 'ID1');
+    const prerequisiteIds = [];
+    if (detectedBook === 'ID1') {
+      const targetNum = parseInt(unitIdStr);
+      if (!isNaN(targetNum)) {
+        for (let i = 1; i <= targetNum; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+      }
+    } else if (detectedBook === 'ID2B') {
+      // All of ID1 first, then ID2B units
+      for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+      const targetNum = parseInt(unitIdStr.replace(/^B/i, ''));
+      if (!isNaN(targetNum)) {
+        for (let i = 1; i <= targetNum; i++) {
+          const bid = unitMap[`B${String(i).padStart(2,'0')}`] ? `B${String(i).padStart(2,'0')}` : `B${i}`;
+          if (unitMap[bid]) prerequisiteIds.push(bid);
+        }
+      }
+    } else if (detectedBook === 'ID2O') {
+      for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+      const targetNum = parseInt(unitIdStr.replace(/^O/i, ''));
+      if (!isNaN(targetNum)) {
+        for (let i = 1; i <= targetNum; i++) {
+          const oid = unitMap[`O${String(i).padStart(2,'0')}`] ? `O${String(i).padStart(2,'0')}` : `O${i}`;
+          if (unitMap[oid]) prerequisiteIds.push(oid);
+        }
+      }
+    }
+    // Collect goals from most recent first
+    for (let i = prerequisiteIds.length - 1; i >= 0; i--) {
+      const ud = unitMap[prerequisiteIds[i]];
       const goals = ud?.communicative_functions?.goals || [];
-      if (goals.length > 0) goalsByUnit.push({ unit: u, goals });
+      if (goals.length > 0) goalsByUnit.push({ unit: prerequisiteIds[i], goals });
     }
 
     if (goalsByUnit.length === 0 || utterances.length === 0) {

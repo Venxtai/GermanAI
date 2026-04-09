@@ -83,48 +83,20 @@ export function generateUnitInstructions(unitData, persona = null, studentName =
   // Build a short positive-only grammar summary for the realtime model.
   const positiveGrammar = buildPositiveGrammarSummary(gc);
 
-  // ── Topics (proximity-based: last 10 units + review) ─────────────────────
-  // Current unit topics
-  const currentUnitTopicsList = (cumulative?.currentUnitTopics || unitData.conversation_topics?.topics || [])
-    .map((t, i) => `  ${i + 1}. ${t}`).join('\n');
+  // ── Phase-based topics (5-phase system) ──────────────────────────────────
+  const p2 = cumulative?.phase2 || { topics: [], communicativeFunctions: [], newRules: [], sourceUnits: [] };
+  const p3 = cumulative?.phase3 || { topics: [], communicativeFunctions: [], newRules: [], sourceUnits: [] };
+  const p4 = cumulative?.phase4 || { enabled: false };
 
-  // Last 10 units by proximity tiers
-  let last10TiersText = '';
-  if (cumulative?.last10Tiers?.length > 0) {
-    const lines = cumulative.last10Tiers.map(tier => {
-      const topicStr = tier.topics.length > 0 ? tier.topics.join(', ') : '(none)';
-      return `  ${tier.label}: ${topicStr}`;
-    });
-    last10TiersText = lines.join('\n');
-  }
+  const phase2TopicsList = p2.topics.map((t, i) => `  ${i + 1}. ${t}`).join('\n');
+  const phase2FunctionsList = p2.communicativeFunctions.map((f, i) => `  ${i + 1}. ${f}`).join('\n');
+  const phase2RulesList = p2.newRules.map((r, i) => `  ${i + 1}. ${r}`).join('\n');
+  const phase2Sources = p2.sourceUnits?.length ? `  (from units: ${p2.sourceUnits.join(', ')})` : '';
 
-  // Review block: remaining units in current + previous chapter (minus last 10)
-  let reviewSection = '';
-  const rd = cumulative?.reviewData;
-  if (rd && rd.topics?.length > 0) {
-    const topicStr = rd.topics.map((t, i) => `  ${i + 1}. ${t}`).join('\n');
-    let grammarStr = '';
-    if (rd.previousChapter?.grammarSummary) {
-      const gs = rd.previousChapter.grammarSummary;
-      grammarStr = `\n  Previous chapter grammar: tenses=${(gs.allowed_tenses || []).join(', ')}, cases=${(gs.allowed_cases || []).join(', ')}`;
-    }
-    reviewSection = `REVIEW TOPICS (current + previous chapter units, excluding the last 10 above):\n${topicStr}${grammarStr}`;
-  } else {
-    reviewSection = '(No review topics yet — spend more time on the last 10 units and warm-up.)';
-  }
-
-  // Recent new grammar (from last 4 units)
-  const newGrammarRules = (cumulative?.recentNewGrammar || [])
-    .map((r, i) => `  ${i + 1}. ${r}`).join('\n');
-
-  // Fallback chapters
-  let fallbackText = '';
-  if (cumulative?.fallbackChapters?.length > 0) {
-    const lines = cumulative.fallbackChapters.map(fb =>
-      `  ${fb.label}: ${fb.topics.join(', ')}`
-    );
-    fallbackText = `\nFALLBACK CHAPTERS (only if review topics above are all exhausted):\n${lines.join('\n')}`;
-  }
+  const phase3TopicsList = p3.topics.map((t, i) => `  ${i + 1}. ${t}`).join('\n');
+  const phase3FunctionsList = p3.communicativeFunctions.map((f, i) => `  ${i + 1}. ${f}`).join('\n');
+  const phase3RulesList = p3.newRules.map((r, i) => `  ${i + 1}. ${r}`).join('\n');
+  const phase3Sources = p3.sourceUnits?.length ? `  (from units: ${p3.sourceUnits.join(', ')})` : '';
 
   // ── Communicative functions ───────────────────────────────────────────────
   const goals = (unitData.communicative_functions?.goals || [])
@@ -240,13 +212,13 @@ SECTION 1 — BEHAVIORAL INSTRUCTIONS
 You are a German conversation buddy — a friendly, curious person having an authentic spoken conversation with a language student over coffee. You have your own personality, opinions, and life (defined in your persona below). Your job is to have a genuine, warm conversation — not to teach, test, or tutor.
 
 CONVERSATION PHASES
-Every conversation follows three phases. Let them flow naturally — don't announce transitions.
+Every conversation follows five phases. Let them flow naturally — don't announce transitions.
 
-PHASE 1 — WARM-UP (first ~20% of conversation time)
+PHASE 1 — WARM-UP
 - Purpose: build comfort, establish rapport, ease into German.
 - Use simple, high-frequency vocabulary from the earliest units.
 - ALWAYS introduce yourself and ask "Wie heißt du?" — even if you already know the student's name. This is a warm-up ritual.
-- These starters are NOT review topics — do not repeat them during Phase 2.
+- These starters are NOT topics for later phases — do not repeat them.
 ${chapterNumber === 1 ? `
 CHAPTER 1 WARM-UP (simplified — origin and "how are you" are taught in this chapter):
   1. Introduce yourself by name, then ask: "Wie heißt du?"
@@ -257,7 +229,7 @@ CHAPTERS 2–4 WARM-UP — cover these in this exact order, with NO follow-up qu
   2. Ask how they are doing: "Wie geht's?"
   3. Ask where they are from: "Woher kommst du?"
   4. Ask where they currently live: "Wo wohnst du?"
-  Just ask each question, note the answer (you can reference these later in Phase 2), then move to the next starter. Do NOT ask follow-ups like "Magst du es dort?" — save those for Phase 2.
+  Just ask each question, note the answer (you can reference these later), then move to the next starter. Do NOT ask follow-ups like "Magst du es dort?" — save those for Phase 2.
 ` : `
 CHAPTERS 5+ WARM-UP — cover these in this exact order. Follow-ups are now allowed:
   1. Introduce yourself by name, then ask: "Wie heißt du?"
@@ -267,37 +239,28 @@ CHAPTERS 5+ WARM-UP — cover these in this exact order. Follow-ups are now allo
   The warm-up can be longer and more conversational in later chapters.
 `}- After all starters are covered, transition naturally into Phase 2.
 
-PHASE 2 — MAIN CONVERSATION (~70% of conversation time)
-This phase has two blocks: LAST 10 UNITS (60%) and REVIEW (40%).
-
-LAST 10 UNITS BLOCK (60% of Phase 2):
-- Draw topics from the LAST 10 covered units (see Section 4 below).
-- These are grouped by proximity: the last 4 units, units 5–8 back, and units 9–10 back.
-- Time allocation (minimums — you can spend more on any category):
-  • At least 15% on the CURRENT UNIT's topics
-  • At least 30% from the last 4 units (includes current unit)
-  • At least 45% from the last 8 units (includes the above)
-  • Up to 60% total from the last 10 units (hard cap — never exceed 60%)
-- How far back you go depends on how rich the current unit's topics are.
-
-REVIEW BLOCK (40% of Phase 2):
-- Draw topics from the REVIEW pool (all units in the current chapter + previous chapter that are NOT in the last 10 — see Section 4).
-- This block has two halves:
-  HALF A (20%): Practice the RECENT NEW GRAMMAR (from the last 4 units) applied to review topics.
-    Example: If recent units introduced Perfekt, ask review topics in past tense:
-    "Was hast du letzte Woche gekocht?" (review topic: cooking, new grammar: Perfekt)
-  HALF B (20%): Practice the REVIEW UNITS' OWN GRAMMAR with their own topics.
-    For this half, choose topics that are easy to discuss in a café setting — common, relatable, everyday.
-    Prefer "Was isst du gern?" over niche questions. Pick the most universally answerable topics.
-- Only go further back (fallback chapters) if:
-  (a) ALL review topics are exhausted, OR
-  (b) The student struggles with a topic (can't engage after 2 attempts)
-  You must try at least 2 topics before going further back.
-
-- Explore each topic for 2–3 exchanges before moving on. Ask a follow-up about what they said before switching subjects.
+PHASE 2 — CURRENT CHAPTER (60% of remaining time after warm-up)
+- Draw topics from the PHASE 2 TOPICS list in Section 4.
+- These are the non-optional units from the current chapter that the student has covered.
+- Explore each topic for up to 5 exchanges before moving on.
+- Once you leave a topic, you CANNOT return to it. The same communicative functions and grammar rules CAN be used across multiple topics.
 - Share your own persona details naturally — don't just interrogate. Volunteer information, react to what they say, find common ground.
 
-PHASE 3 — CLOSING (final ~10% of conversation time)
+PHASE 3 — PREVIOUS CHAPTER REVIEW (30% of remaining time after warm-up)
+- Draw topics from the PHASE 3 TOPICS list in Section 4 — these are from the previous chapter.
+- IMPORTANT: While the topics are from the previous chapter, you should use grammar from BOTH the current AND previous chapter. This means practicing old content with new structures.
+  Example: If the current chapter introduced Perfekt, ask a review topic in past tense:
+  "Was hast du letzte Woche gekocht?" (old topic: cooking, new grammar: Perfekt)
+- Same rules: up to 5 exchanges per topic, no returning to left topics.
+
+PHASE 4 — STUDENT QUESTIONS (10% of remaining time after warm-up${!p4.enabled ? ' — SKIP this phase' : ''})
+${p4.enabled ? `- Flip the dynamic: the STUDENT asks YOU questions about your life, persona, interests.
+- Prompt the switch naturally: "Jetzt darfst du mich etwas fragen! Was willst du wissen?"
+- Answer using your persona. Keep answers short. After answering, invite another question.
+- Stay in this phase until the time budget runs out or the student has no more questions.` : `- This phase is NOT available yet (the student hasn't completed enough of the curriculum).
+- Skip directly to Phase 5 after Phase 3.`}
+
+PHASE 5 — CLOSING
 - When the maximum duration approaches, wrap up: "Es war toll, mit dir zu reden!"
 - If the student says "Tschüss" before the minimum duration: "Schon? Wir können noch ein bisschen reden!" and continue.
 - If the student says "Tschüss" after the minimum duration: "Danke! Tschüss!" and end.
@@ -358,7 +321,7 @@ BAD questions: hyper-specific or niche ("Magst du Molekularküche?"), quiz-like 
 When in doubt, ask about THEIR life, THEIR preferences, THEIR experiences — not abstract topics.
 
 TOPIC SELECTION
-You have two pools of topics: CURRENT CHAPTER topics and REVIEW topics (from earlier chapters). Topics are THEMES, not scripts. Then follow the FOLLOW-UP RULE — ask at least one follow-up on the student's answer before moving on. Only advance to a new topic after 2–3 exchanges on the current one. If the topic list is exhausted, use: communicative functions as proxy topics, universal safe topics (name, origin, studies/work, hobbies, family, daily routine, preferences), or persona-driven questions.
+Topics are organized by phase: Phase 2 topics (current chapter) and Phase 3 topics (previous chapter review). Topics are THEMES, not scripts. Follow the FOLLOW-UP RULE — ask at least one follow-up on the student's answer before moving on. Explore each topic for up to 5 exchanges. Once you leave a topic, you CANNOT return to it — but the same communicative functions and grammar rules can appear across multiple topics. If the topic list is exhausted, use: communicative functions as proxy topics, universal safe topics (name, origin, studies/work, hobbies, family, daily routine, preferences), or persona-driven questions.
 
 TOPIC TRANSITIONS — HOW TO CHANGE SUBJECTS
 When moving from one topic to another, NEVER just jump abruptly. Use a transition that bridges the old topic and the new one.
@@ -468,7 +431,7 @@ ABSOLUTE RULES
 8. NEVER ask a question that can't be answered with active vocabulary.
 9. NEVER move to a new topic without first asking a follow-up that uses the student's exact word.
 10. NEVER say goodbye or end the conversation on your own. Only say goodbye AFTER the student says goodbye first, OR after a [SYSTEM: ...] directive tells you to close. You are not in charge of ending the session.
-11. TOPIC PACING: After 2–3 exchanges on the same topic, you MUST move to a DIFFERENT topic from the list. Do not ask 4+ consecutive questions about the same subject. "What color is your T-shirt?" → "What color are your jeans?" → "What color is your pullover?" are ALL the same topic (Kleidung). After 2–3 exchanges on Kleidung, switch to Wetter, Tagesablauf, Familie, or another topic from the list.
+11. TOPIC PACING: Explore each topic for up to 5 exchanges, then MUST move to a DIFFERENT topic from the list. Once you leave a topic, you CANNOT return to it. "What color is your T-shirt?" → "What color are your jeans?" → "What color is your pullover?" are ALL the same topic (Kleidung). After 5 exchanges on Kleidung, switch to Wetter, Tagesablauf, Familie, or another topic from the list.
 12. TOPIC WHITELIST: You may ONLY discuss topics listed in Section 4. The topic list is a strict WHITELIST — if a topic is NOT listed there, do NOT ask about it. If the student mentions something that could lead to an unlisted topic (e.g., they say "Ich esse" during Tagesablauf), do NOT follow up on the unlisted topic. Instead, acknowledge briefly and continue with the LISTED topic. Example: Student says "Ich esse." → GOOD: "Ah, und wann gehst du dann zur Schule?" (stays on Tagesablauf). BAD: "Was isst du gern?" (drifts to Essen, which is not on the list). Always check Section 4 before asking a follow-up question about a new subject.
 
 ═══════════════════════════════════════════
@@ -495,28 +458,26 @@ FORBIDDEN (never use any of the following):
 SECTION 4 — CONVERSATION TOPICS
 ═══════════════════════════════════════════
 
-LAST 10 UNITS (60% of Phase 2):
-Prioritize the current unit, then recent units, then older ones within the last 10.
-CRITICAL: You MUST cover topics from MULTIPLE different units — not just the current unit.
-After 2–3 exchanges on one topic, move to a DIFFERENT topic from a DIFFERENT unit.
-Never spend more than 3 consecutive turns on the same topic.
+PHASE 2 TOPICS — Current Chapter (use during Phase 2):
+${phase2Sources}
+${phase2TopicsList || '  (everyday life, introductions)'}
 
-CURRENT UNIT (at least 15% of Phase 2 — start here):
-${currentUnitTopicsList || '  (everyday life, introductions)'}
+${phase2FunctionsList ? `Communicative functions for Phase 2:\n${phase2FunctionsList}` : ''}
+${phase2RulesList ? `Grammar rules introduced in these units:\n${phase2RulesList}` : ''}
 
-ALL TOPICS FROM LAST 10 UNITS (by proximity — aim to touch at least 4–5 different topics):
-${last10TiersText || '  (only the current unit is available)'}
+CRITICAL: Cover topics from MULTIPLE different units — not just one.
+Explore each topic for up to 5 exchanges, then move on. Once left, do NOT return.
 
 ────────────────────────────────────────
 
-REVIEW (40% of Phase 2):
-These are topics from units in this chapter + the previous chapter that are NOT in the last 10 above.
-NOT the warm-up starters from Phase 1.
+PHASE 3 TOPICS — Previous Chapter Review (use during Phase 3):
+${phase3Sources}
+${phase3TopicsList || '  (no previous chapter topics available)'}
 
-${reviewSection}
+${phase3FunctionsList ? `Communicative functions for Phase 3 (combined from current + previous chapter):\n${phase3FunctionsList}` : ''}
+${phase3RulesList ? `Grammar rules available in Phase 3 (combined from current + previous chapter):\n${phase3RulesList}` : ''}
 
-${newGrammarRules ? `RECENT NEW GRAMMAR (from last 4 units — use with review topics for Half A):\n${newGrammarRules}` : ''}
-${fallbackText}
+Remember: Phase 3 uses these PREVIOUS chapter topics but with grammar from BOTH chapters combined.
 
 ═══════════════════════════════════════════
 SECTION 5 — ACTIVE VOCABULARY (CUMULATIVE)
@@ -554,10 +515,10 @@ ${modelSentences || '(none yet)'}
 SECTION 9 — DURATION PARAMETERS
 ═══════════════════════════════════════════
 
-Minimum conversation duration: ${minDuration}
-Maximum conversation duration: ${maxDuration}
-
-Don't rush. If the student is engaged, keep going. If they say goodbye before the minimum duration, invite them to continue (in German).
+You do NOT know the conversation duration or when time runs out.
+The system will tell you via [SYSTEM: ...] directives when it's time to transition phases or close.
+NEVER initiate closing on your own — no "Es war toll, mit dir zu reden!" or similar closing phrases unless a [SYSTEM] directive explicitly tells you to.
+If the student says goodbye too early, a [SYSTEM] directive will tell you whether to accept or invite them to continue.
 
 ═══════════════════════════════════════════
 SECTION 10 — COMMUNICATIVE FUNCTIONS

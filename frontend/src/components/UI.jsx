@@ -149,14 +149,13 @@ function MicVolumeMeter({ bookColor, analyser }) {
   );
 }
 
-// Progress bar — fills based on midpoint of min/max, dotted line at feedback minimum (60% of min)
+// Progress bar — fills based on maxMs, dotted line at minMs
 function ProgressBar({ bookColor }) {
   const { conversationStartTime, sessionMinMs, sessionMaxMs, status } = useAIStore();
   const [progress, setProgress] = useState(0);
 
-  const targetMs = (sessionMinMs + sessionMaxMs) / 2;
-  const feedbackMinMs = 0.6 * sessionMinMs; // server rejects feedback below this
-  const feedbackThreshold = targetMs > 0 ? feedbackMinMs / targetMs : 0;
+  const targetMs = sessionMaxMs; // bar fills to 100% at max duration
+  const minThreshold = targetMs > 0 ? sessionMinMs / targetMs : 0; // dotted line at min duration
 
   // Only update progress when buddy finishes speaking (status changes FROM 'speaking' to something else)
   const prevStatusRef = useRef(status);
@@ -179,11 +178,11 @@ function ProgressBar({ bookColor }) {
         className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
         style={{ width: `${progress * 100}%`, background: bookColor || "#008899", opacity: 0.85 }}
       />
-      {feedbackThreshold > 0 && feedbackThreshold < 1 && (
+      {minThreshold > 0 && minThreshold < 1 && (
         <div
           className="absolute top-0 bottom-0"
           style={{
-            left: `${feedbackThreshold * 100}%`,
+            left: `${minThreshold * 100}%`,
             width: "2px",
             borderLeft: "2px dotted rgba(255,255,255,0.5)",
           }}
