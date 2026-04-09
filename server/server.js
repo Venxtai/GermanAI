@@ -910,10 +910,35 @@ app.get('/api/cumulative/:unitId', (req, res) => {
     return score;
   }
 
+  // Semantic overlap groups — topics that are essentially the same conversation subject.
+  // When one is already in the list, the other gets merged (noted as alias) instead of added separately.
+  const TOPIC_OVERLAP_GROUPS = [
+    ['volksfest', 'kirmes', 'oktoberfest', 'jahrmarkt', 'rummel'],
+    ['freizeitpark', 'vergnügungspark', 'achterbahn'],
+    ['auto', 'fahren', 'führerschein', 'verkehr'],
+  ];
+
+  function _isTopicOverlap(newTopic, existingTopics) {
+    const newLower = newTopic.toLowerCase();
+    for (const group of TOPIC_OVERLAP_GROUPS) {
+      const newMatches = group.some(kw => newLower.includes(kw));
+      if (newMatches) {
+        for (const existing of existingTopics) {
+          const existLower = existing.toLowerCase();
+          if (group.some(kw => existLower.includes(kw))) {
+            return existing; // return the existing overlapping topic
+          }
+        }
+      }
+    }
+    return null;
+  }
+
   function collectPhaseData(unitIds) {
     const topics = [], functions = [], rules = [], sourceUnits = [];
     const modelSentences = []; // { sentence, unit, topic, score }
     const seenTopics = new Set(), seenFunctions = new Set(), seenRules = new Set(), seenSentences = new Set();
+    const topicAliases = {}; // maps merged topic → parent topic (for model sentence routing)
     for (const uid of unitIds) {
       if (SKIP_UNIT_IDS.has(uid)) continue;
       const u = unitMapRef = unitMap[uid];
@@ -921,9 +946,20 @@ app.get('/api/cumulative/:unitId', (req, res) => {
       let hasContent = false;
       const unitTopics = [];
       for (const t of (u.conversation_topics?.topics || [])) {
-        if (t && !seenTopics.has(t) && !WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt))) {
-          seenTopics.add(t); topics.push(t); unitTopics.push(t); hasContent = true;
+        if (!t || WARMUP_STARTER_TOPICS.some(wt => t.toLowerCase().includes(wt))) continue;
+        if (seenTopics.has(t)) continue;
+        // Check for semantic overlap with already-added topics
+        const overlap = _isTopicOverlap(t, topics);
+        if (overlap) {
+          // Merge: note the alias but don't add a separate topic
+          topicAliases[t] = overlap;
+          seenTopics.add(t);
+          console.log(`[TOPICS] Merged "${t}" into "${overlap}" (semantic overlap)`);
+          hasContent = true;
+          unitTopics.push(overlap); // route model sentences to parent topic
+          continue;
         }
+        seenTopics.add(t); topics.push(t); unitTopics.push(t); hasContent = true;
       }
       for (const f of (u.communicative_functions?.goals || [])) {
         if (f && !seenFunctions.has(f)) { seenFunctions.add(f); functions.push(f); hasContent = true; }
@@ -1184,7 +1220,7 @@ app.post('/api/tts', async (req, res) => {
   try {
     // Use Gemini Vertex AI TTS
     const response = await googleAI.models.generateContent({
-      model: 'gemini-2.5-pro-tts',
+      model: 'gemini-2.5-flash-preview-tts',
       contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${text}` }] }],
       config: {
         responseModalities: ['AUDIO'],
@@ -1847,7 +1883,7 @@ async function textToSpeechGemini(text, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const response = await googleAI.models.generateContent({
-        model: 'gemini-2.5-pro-tts',
+        model: 'gemini-2.5-flash-preview-tts',
         systemInstruction: 'Imagine you are at a cafe having a conversation with a friend. You are calm, comforting, but also excited to see them. Your friend is a non-native speaker of your language, so you stress important words in your sentences to help them understand better, but really focus on a good flow of your sentences, including deliberate pauses when the content shifts. You are expressive. For example, when the other person does not respond, you may raise your voice to remind them you are still there, but you are never intimidating and always nice.',
         contents: [{ role: 'user', parts: [{ text: `Say exactly this in German: ${text}` }] }],
         config: {
@@ -1974,7 +2010,7 @@ const FUNCTIONAL_WORDS = new Set([
   // Conjunctions
   'und', 'oder', 'aber', 'denn', 'sondern', 'doch',
   // Adverbs / particles (very common, always needed)
-  'nicht', 'auch', 'schon', 'noch', 'sehr', 'gern', 'gerne',
+  'nicht', 'auch', 'schon', 'noch', 'sehr', 'gern', 'gerne', 'lieber', 'am liebsten',
   'dann', 'jetzt', 'hier', 'dort', 'da', 'so', 'wie', 'wo', 'woher', 'wohin',
   'wann', 'warum', 'immer', 'oft', 'manchmal', 'nie',
   'heute', 'morgen', 'morgens', 'nachmittags', 'abends',
@@ -2581,12 +2617,10 @@ app.post('/api/session/start', async (req, res) => {
     // Log raw response with emotion tags visible for debugging
     console.log(`[EMOTIONS] Raw: "${responseText}"`);
 
-    // Parse emotion AFTER validation, right before TTS
+    // Parse emotion AFTER validation — frontend will call /api/tts-stream for audio
     const { text: cleanText, emotion, emotionTimeline } = parseEmotion(responseText);
 
-    const ttsResult = await textToSpeech(cleanText);
-
-    res.json({ sessionId, response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
+    res.json({ sessionId, response: cleanText, emotion, emotionTimeline });
   } catch (error) {
     console.error('[Session Start] Error:', error.message);
     res.status(500).json({ error: 'Failed to start session', details: error.message });
@@ -2651,15 +2685,14 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       }
     }
 
-    // 2. Handle inaudible input
+    // 2. Handle inaudible input — return text only, frontend will stream TTS
     if (!transcript) {
       const fallbackText = 'Ich höre dich nicht gut. Kannst du das nochmal sagen?';
-      const fallbackTts = await textToSpeech(fallbackText);
       session.history.push({ role: 'user', content: '(inaudible)' });
       session.history.push({ role: 'assistant', content: fallbackText });
       session.fullTranscript?.push({ role: 'student', text: '(inaudible)' });
       session.fullTranscript?.push({ role: 'buddy', text: fallbackText });
-      return res.json({ transcript: '', response: fallbackText, emotion: 'empathetic', emotionTimeline: [{ start: 0, emotion: 'empathetic' }], audioBase64: fallbackTts.audioBase64, mimeType: fallbackTts.mimeType });
+      return res.json({ transcript: '', response: fallbackText, emotion: 'empathetic', emotionTimeline: [{ start: 0, emotion: 'empathetic' }] });
     }
 
     // 3. Build user message with optional directives
@@ -2712,13 +2745,11 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
 
     session.fullTranscript?.push({ role: 'buddy', text: cleanText });
 
-    // 5. TTS
+    // 5. Return text immediately — frontend will call /api/tts-stream for audio
     const t4 = Date.now();
-    const ttsResult = await textToSpeech(cleanText);
-    const t5 = Date.now();
-    console.log(`[TIMING] TTS: ${t5 - t4}ms | Total: ${t5 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms, TTS: ${t5 - t4}ms) [emotions: ${emotionTimeline.map(e => e.emotion).join('→')}]`);
+    console.log(`[TIMING] Text ready: ${t4 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms) [emotions: ${emotionTimeline.map(e => e.emotion).join('→')}]`);
 
-    res.json({ transcript, response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
+    res.json({ transcript, response: cleanText, emotion, emotionTimeline });
   } catch (error) {
     console.error('[Conversation Turn] Error:', error.message);
     // Log error to any active logSession for this voice session
@@ -2761,12 +2792,10 @@ app.post('/api/session/prompt', async (req, res) => {
     // Log raw response with emotion tags visible for debugging
     console.log(`[EMOTIONS] Raw: "${responseText}"`);
 
-    // Parse emotion AFTER validation, right before TTS
+    // Parse emotion AFTER validation — frontend will call /api/tts-stream for audio
     const { text: cleanText, emotion, emotionTimeline } = parseEmotion(responseText);
 
-    const ttsResult = await textToSpeech(cleanText);
-
-    res.json({ response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
+    res.json({ response: cleanText, emotion, emotionTimeline });
   } catch (error) {
     console.error('[Session Prompt] Error:', error.message);
     res.status(500).json({ error: 'Prompt failed', details: error.message });
@@ -2785,6 +2814,76 @@ app.post('/api/session/update-prompt', (req, res) => {
 
   session.systemPrompt = promptAddition + '\n\n' + session.systemPrompt;
   res.json({ ok: true });
+});
+
+/**
+ * Route: Streaming TTS — generates speech audio using Gemini TTS with chunked streaming.
+ * Instead of waiting for the full audio, streams raw PCM16 chunks (24kHz mono) as they arrive.
+ * Frontend starts playback on the first chunk, eliminating perceived TTS latency.
+ *
+ * body: { text: string }
+ * response: binary stream of raw PCM16 audio (Content-Type: application/octet-stream)
+ * Header X-Sample-Rate: sample rate (typically 24000)
+ */
+app.post('/api/tts-stream', async (req, res) => {
+  const { text } = req.body;
+  if (!text) return res.status(400).json({ error: 'No text provided' });
+
+  const t0 = Date.now();
+  let firstChunkSent = false;
+  let totalBytes = 0;
+
+  try {
+    const chunks = await googleAI.models.generateContentStream({
+      model: 'gemini-2.5-flash-preview-tts',
+      systemInstruction: 'Imagine you are at a cafe having a conversation with a friend. You are calm, comforting, but also excited to see them. Your friend is a non-native speaker of your language, so you stress important words in your sentences to help them understand better, but really focus on a good flow of your sentences, including deliberate pauses when the content shifts. You are expressive. For example, when the other person does not respond, you may raise your voice to remind them you are still there, but you are never intimidating and always nice.',
+      contents: [{ role: 'user', parts: [{ text: `Say exactly this in German: ${text}` }] }],
+      config: {
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName: 'Achernar' },
+          },
+          languageCode: 'de-DE',
+        },
+      },
+    });
+
+    // Stream PCM chunks as binary
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('X-Sample-Rate', '24000');
+    res.setHeader('Transfer-Encoding', 'chunked');
+
+    for await (const chunk of chunks) {
+      const audioPart = chunk.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+      if (!audioPart?.data) continue;
+
+      // Extract sample rate from mimeType if present (e.g., "audio/L16;rate=24000")
+      if (!firstChunkSent) {
+        const rateMatch = (audioPart.mimeType || '').match(/rate=(\d+)/);
+        if (rateMatch) res.setHeader('X-Sample-Rate', rateMatch[1]);
+        firstChunkSent = true;
+        console.log(`[TTS-STREAM] First chunk in ${Date.now() - t0}ms, mime: ${audioPart.mimeType}`);
+      }
+
+      const pcmBuffer = Buffer.from(audioPart.data, 'base64');
+      totalBytes += pcmBuffer.length;
+      res.write(pcmBuffer);
+    }
+
+    console.log(`[TTS-STREAM] Complete: ${totalBytes} bytes in ${Date.now() - t0}ms`);
+    res.end();
+
+  } catch (err) {
+    console.error('[TTS-STREAM] Error:', err.message);
+    if (!firstChunkSent) {
+      // Haven't started streaming yet — can still send error JSON
+      res.status(500).json({ error: 'TTS streaming failed', details: err.message });
+    } else {
+      // Already streaming — just end
+      res.end();
+    }
+  }
 });
 
 // ─── End Voice Pipeline ──────────────────────────────────────────────────────
@@ -3420,7 +3519,7 @@ app.listen(PORT, () => {
     (async () => {
       try {
         const response = await googleAI.models.generateContent({
-          model: 'gemini-2.5-pro-tts',
+          model: 'gemini-2.5-flash-preview-tts',
           contents: [{ role: 'user', parts: [{ text: `Say this in American English, but pronounce "Impuls Deutsch" and the two German sentences "Wie bitte?" and "Noch einmal, bitte." naturally in German with a native German accent — not an American accent. Here is the text: ${WELCOME_INSTRUCTIONS_TEXT}` }] }],
           config: {
             responseModalities: ['AUDIO'],

@@ -134,7 +134,7 @@ export function useVoiceConnection() {
     setMicAnalyser,
   } = useAIStore();
 
-  // ── Audio playback helper ──
+  // ── Audio playback helper (legacy — for non-streaming fallback) ──
   async function playAudio(audioBase64, mimeType = 'audio/wav', emotionTimeline = null) {
     if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
       playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
@@ -158,11 +158,9 @@ export function useVoiceConnection() {
 
     // Create wLipSync node for real-time phoneme detection
     try {
-      // Load profile once and cache
       if (!lipsyncProfileRef.current) {
         lipsyncProfileRef.current = await fetch('/profile.json').then(r => r.json());
       }
-      // Disconnect previous node if any
       if (lipsyncNodeRef.current) {
         try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
       }
@@ -170,19 +168,14 @@ export function useVoiceConnection() {
       lipsyncNodeRef.current = lipsyncNode;
       setLipsyncNode(lipsyncNode);
 
-      // Audio graph with 50ms look-ahead:
-      //   source → analyser → delayNode (50ms) → destination (speakers)
-      //          ↘ lipsyncNode (sink — processes audio 50ms before speakers play it)
-      // This lets the renderer "see" phonemes before the user hears them.
       const delayNode = ctx.createDelay(0.1);
-      delayNode.delayTime.value = 0.05; // 50ms look-ahead
+      delayNode.delayTime.value = 0.05;
       source.connect(analyser);
       analyser.connect(delayNode);
       delayNode.connect(ctx.destination);
       source.connect(lipsyncNode);
     } catch (err) {
       console.warn('[wLipSync] Failed to create node, falling back to amplitude-only:', err);
-      // Fallback: analyser + delay
       const delayNode = ctx.createDelay(0.1);
       delayNode.delayTime.value = 0.05;
       source.connect(analyser);
@@ -193,7 +186,6 @@ export function useVoiceConnection() {
     setAnalyzerNode(analyser);
     currentAudioSourceRef.current = source;
 
-    // Set emotion timeline with audio duration for mid-speech switching
     if (emotionTimeline && emotionTimeline.length > 0) {
       setEmotionTimeline(emotionTimeline, audioBuffer.duration);
     }
@@ -208,6 +200,162 @@ export function useVoiceConnection() {
       };
       source.start();
       setStatus('speaking');
+    });
+  }
+
+  // ── Streaming TTS playback ──
+  // Fetches /api/tts-stream, receives raw PCM16 chunks, and schedules them
+  // as AudioBufferSourceNodes through the analyser + lipsync chain.
+  // Playback starts on the first chunk (~200-500ms TTFB) while the rest streams in.
+  async function playStreamingAudio(text, emotionTimeline = null) {
+    if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
+      playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
+    }
+    const ctx = playbackContextRef.current;
+    await ctx.resume();
+
+    const t0 = performance.now();
+
+    // Set up the audio graph: analyser → delay → destination, + lipsync branch
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.5;
+
+    const delayNode = ctx.createDelay(0.1);
+    delayNode.delayTime.value = 0.05; // 50ms look-ahead for lip sync
+
+    analyser.connect(delayNode);
+    delayNode.connect(ctx.destination);
+
+    let lipsyncNode = null;
+    try {
+      if (!lipsyncProfileRef.current) {
+        lipsyncProfileRef.current = await fetch('/profile.json').then(r => r.json());
+      }
+      if (lipsyncNodeRef.current) {
+        try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      }
+      lipsyncNode = await createWLipSyncNode(ctx, lipsyncProfileRef.current);
+      lipsyncNodeRef.current = lipsyncNode;
+      setLipsyncNode(lipsyncNode);
+    } catch (err) {
+      console.warn('[wLipSync] Streaming: failed to create node:', err);
+    }
+
+    setAnalyzerNode(analyser);
+    setStatus('speaking');
+
+    // Fetch the streaming TTS endpoint
+    const resp = await fetch('/api/tts-stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!resp.ok) {
+      console.error('[TTS-STREAM] HTTP error:', resp.status);
+      setStatus('idle');
+      throw new Error(`TTS stream failed: ${resp.status}`);
+    }
+
+    const sampleRate = parseInt(resp.headers.get('X-Sample-Rate') || '24000', 10);
+    const reader = resp.body.getReader();
+
+    // Scheduling state
+    const CHUNK_SAMPLES = Math.floor(sampleRate * 0.25); // 250ms scheduling chunks
+    const CHUNK_BYTES = CHUNK_SAMPLES * 2; // 16-bit = 2 bytes per sample
+    let pendingBytes = new Uint8Array(0);
+    let nextTime = ctx.currentTime + 0.08; // small initial buffer (80ms)
+    let firstChunkLogged = false;
+    let lastSource = null;
+    let totalSamples = 0;
+
+    // Helper: schedule a PCM chunk as an AudioBufferSourceNode
+    function scheduleChunk(int16Data) {
+      const audioBuffer = ctx.createBuffer(1, int16Data.length, sampleRate);
+      const channelData = audioBuffer.getChannelData(0);
+      for (let i = 0; i < int16Data.length; i++) {
+        channelData[i] = int16Data[i] / 32768.0;
+      }
+
+      const source = ctx.createBufferSource();
+      source.buffer = audioBuffer;
+      // Connect to shared analyser (which feeds delay → destination)
+      source.connect(analyser);
+      // Also connect to lipsync node if available
+      if (lipsyncNode) source.connect(lipsyncNode);
+
+      source.start(nextTime);
+      nextTime += audioBuffer.duration;
+      totalSamples += int16Data.length;
+      lastSource = source;
+
+      if (!firstChunkLogged) {
+        firstChunkLogged = true;
+        console.log(`[TTS-STREAM] First audio chunk playing at ${Math.round(performance.now() - t0)}ms TTFB`);
+      }
+    }
+
+    // Read stream and schedule chunks
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (value) {
+        // Append new bytes to pending buffer
+        const merged = new Uint8Array(pendingBytes.length + value.length);
+        merged.set(pendingBytes);
+        merged.set(value, pendingBytes.length);
+        pendingBytes = merged;
+
+        // Schedule complete 250ms chunks
+        while (pendingBytes.length >= CHUNK_BYTES) {
+          const chunkBytes = pendingBytes.slice(0, CHUNK_BYTES);
+          pendingBytes = pendingBytes.slice(CHUNK_BYTES);
+          const int16 = new Int16Array(chunkBytes.buffer, chunkBytes.byteOffset, chunkBytes.length / 2);
+          scheduleChunk(int16);
+        }
+      }
+
+      if (done) break;
+    }
+
+    // Schedule remaining samples
+    if (pendingBytes.length >= 2) {
+      const remaining = new Int16Array(
+        pendingBytes.buffer, pendingBytes.byteOffset,
+        Math.floor(pendingBytes.length / 2)
+      );
+      if (remaining.length > 0) scheduleChunk(remaining);
+    }
+
+    const totalDuration = totalSamples / sampleRate;
+    console.log(`[TTS-STREAM] All chunks scheduled: ${totalSamples} samples (${totalDuration.toFixed(1)}s) in ${Math.round(performance.now() - t0)}ms`);
+
+    // Set emotion timeline now that we know total duration
+    if (emotionTimeline && emotionTimeline.length > 0) {
+      setEmotionTimeline(emotionTimeline, totalDuration);
+    }
+
+    // Store a reference so stop works
+    currentAudioSourceRef.current = lastSource;
+
+    // Wait for the last scheduled chunk to finish playing
+    return new Promise((resolve) => {
+      if (!lastSource) {
+        setAnalyzerNode(null);
+        clearLipsyncNode();
+        clearEmotionTimeline();
+        setStatus('idle');
+        resolve();
+        return;
+      }
+      lastSource.onended = () => {
+        currentAudioSourceRef.current = null;
+        setAnalyzerNode(null);
+        clearLipsyncNode();
+        clearEmotionTimeline();
+        resolve();
+      };
     });
   }
 
@@ -228,7 +376,7 @@ export function useVoiceConnection() {
         addMessage('assistant', data.response);
         setCurrentEmotion(data.emotion);
         postLog({ type: 'turn', role: 'ai', text: data.response });
-        await playAudio(data.audioBase64, data.mimeType, data.emotionTimeline);
+        await playStreamingAudio(data.response, data.emotionTimeline);
         setStatus('idle');
 
         // Handle pending auto-end after AI speaks
@@ -457,14 +605,19 @@ export function useVoiceConnection() {
             pendingDirectivesRef.current.push(...directives);
           }
           // Hard max: trigger AI farewell — session ends after AI says goodbye
+          // Only fire sendPromptTurn if Phase 5 farewell isn't already queued in pendingDirectives
           if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
             pendingEndAfterTurnRef.current = true;
             endReasonRef.current = 'Maximum conversation time reached';
             clearInterval(conversationTimerRef.current);
-            // Trigger a closing turn via directive — must include an actual goodbye word
-            sendPromptTurn([
-              '[SYSTEM: Maximum conversation time reached. You MUST say goodbye NOW. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss, Niko!" Do NOT ask any questions. Do NOT continue the conversation. Just say goodbye.]',
-            ]);
+            // Check if a Phase 5 farewell directive is already pending (from processAITurn)
+            const farewellAlreadyQueued = pendingDirectivesRef.current.some(d => d.includes('Phase 5') || d.includes('farewell') || d.includes('say goodbye'));
+            if (!farewellAlreadyQueued) {
+              // Trigger a closing turn via directive — must include an actual goodbye word
+              sendPromptTurn([
+                '[SYSTEM: Maximum conversation time reached. You MUST say goodbye NOW. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss, Niko!" Do NOT ask any questions. Do NOT continue the conversation. Just say goodbye.]',
+              ]);
+            }
           }
         }, 10000);
 
@@ -491,7 +644,7 @@ export function useVoiceConnection() {
           }),
         });
         if (!sessionResp.ok) throw new Error('Session start failed');
-        const { sessionId, response: aiGreeting, audioBase64, mimeType, emotion: greetingEmotion, emotionTimeline: greetingTimeline } = await sessionResp.json();
+        const { sessionId, response: aiGreeting, emotion: greetingEmotion, emotionTimeline: greetingTimeline } = await sessionResp.json();
         sessionIdRef.current = sessionId;
 
         // 8. Start log session (pass metadata for server-side transcript rescue)
@@ -532,7 +685,7 @@ export function useVoiceConnection() {
         setSessionTiming(sessionStartTime, minMs, maxMs);
         setSessionActive(true);
         try {
-          await playAudio(audioBase64, mimeType, greetingTimeline);
+          await playStreamingAudio(aiGreeting, greetingTimeline);
         } catch (audioErr) {
           console.error("Audio playback failed (non-fatal):", audioErr);
           // Session still works — student can speak even if greeting audio failed
@@ -783,7 +936,7 @@ export function useVoiceConnection() {
 
       const resp = await fetch('/api/conversation-turn', { method: 'POST', body: fd });
       if (!resp.ok) throw new Error(`Pipeline failed: ${resp.status}`);
-      const { transcript, response: aiText, audioBase64, mimeType, emotion: turnEmotion, emotionTimeline: turnTimeline } = await resp.json();
+      const { transcript, response: aiText, emotion: turnEmotion, emotionTimeline: turnTimeline } = await resp.json();
 
       // ── Process transcript ──
       const cleaned = cleanTranscript(transcript) || '(inaudible)';
@@ -826,6 +979,21 @@ export function useVoiceConnection() {
       // ConversationManager processing
       const mgr = managerRef.current;
       if (mgr && aiText) {
+        // Phase 4: detect if student asked a question (question mark or German question words)
+        // Phase 4: count how many questions the student asked (supports multiple in one turn)
+        if (mgr.getPhase() === 4 && cleaned !== '(inaudible)') {
+          // Count question marks
+          const qMarkCount = (cleaned.match(/\?/g) || []).length;
+          if (qMarkCount > 0) {
+            for (let i = 0; i < qMarkCount; i++) mgr.markPhase4Question();
+          } else {
+            // No question marks but might be a spoken question (German question words)
+            const isQuestion = /\b(was|wer|wie|wo|woher|wohin|wann|warum|welch|hast du|bist du|magst du|kannst du|willst du)\b/i.test(cleaned);
+            if (isQuestion) mgr.markPhase4Question();
+          }
+        }
+
+        mgr.addAIUtterance(aiText); // Track questions the buddy has asked
         const mgrDirectives = mgr.processAITurn(aiText);
         if (mgrDirectives.length > 0) pendingDirectivesRef.current.push(...mgrDirectives);
 
@@ -849,8 +1017,8 @@ export function useVoiceConnection() {
         }
       }
 
-      // Play AI audio with viseme timeline
-      await playAudio(audioBase64, mimeType, turnTimeline);
+      // Play AI audio with streaming TTS
+      await playStreamingAudio(aiText, turnTimeline);
       setStatus('idle');
 
       // Handle pending auto-end (student said goodbye earlier)

@@ -121,6 +121,14 @@ export class ConversationManager {
     // Student utterance buffer (last 3 for bridge context)
     this.recentStudentUtterances = [];
 
+    // ── Conversation memory ──
+    // Tracks what the student has said so the buddy can:
+    // 1. Avoid re-asking questions the student already answered
+    // 2. Reference earlier answers as natural callbacks ("Du hast vorhin gesagt, du magst Autos...")
+    this.studentFacts = [];           // [{ fact: "mag Achterbahn fahren", topic: "Freizeitparks", turn: 3 }]
+    this.askedQuestions = [];         // ["Was würdest du auf einem Volksfest machen?", ...]
+    this.lastMemoryInjectionTurn = 0; // Avoid spamming memory directives
+
     // Duration flags
     this.minReached = false;
     this.maxReached = false;
@@ -153,7 +161,7 @@ export class ConversationManager {
     this.phase3Signaled = false;
     this.phase4Signaled = false;
     this.phase5Signaled = false;
-    this.phase4StudentAsked = false;     // Has student asked at least 1 question in Phase 4
+    this.phase4QuestionCount = 0;         // How many questions student asked in Phase 4
 
     // Track last transition directive to avoid repeating
     this.lastSuggestedTopic = null;
@@ -176,7 +184,48 @@ export class ConversationManager {
       if (this.recentStudentUtterances.length > 3) {
         this.recentStudentUtterances.shift();
       }
+      // Extract factual content (skip very short/empty answers)
+      if (text.length > 5 && !/^(ja|nein|okay|gut|hm+|hmm+)\.?$/i.test(text.trim())) {
+        this.studentFacts.push({
+          fact: text,
+          topic: this.activeTopic || '(warm-up)',
+          turn: this.aiTurnCount,
+        });
+        // Keep max 20 facts to avoid bloating directives
+        if (this.studentFacts.length > 20) this.studentFacts.shift();
+      }
     }
+  }
+
+  // Called from useVoiceConnection after each AI response to track questions asked
+  addAIUtterance(text) {
+    if (!text) return;
+    // Extract questions from AI text (sentences ending with ?)
+    const questions = text.match(/[^.!?]*\?/g);
+    if (questions) {
+      for (const q of questions) {
+        const cleaned = q.replace(/\[[^\]]*\]\s*/g, '').trim();
+        if (cleaned.length > 5) {
+          this.askedQuestions.push(cleaned);
+          // Keep max 30 questions
+          if (this.askedQuestions.length > 30) this.askedQuestions.shift();
+        }
+      }
+    }
+  }
+
+  // Build a memory summary for injection into directives
+  _buildMemorySummary() {
+    if (this.studentFacts.length === 0) return '';
+
+    const facts = this.studentFacts
+      .slice(-10) // last 10 facts
+      .map(f => `- "${f.fact}" (topic: ${f.topic})`)
+      .join('\n');
+
+    return `\nSTUDENT MEMORY — things the student has already told you:\n${facts}\n` +
+      `Use this memory to: (1) NEVER ask something the student already answered, ` +
+      `(2) Reference earlier answers as natural callbacks (e.g., "Du hast vorhin gesagt, du magst X — was denkst du über Y?").`;
   }
 
   // ─── Compute time budgets after Phase 1 ends ─────────────────────
@@ -261,6 +310,19 @@ export class ConversationManager {
     return picks.map(ms => `"${ms.sentence}"`).join(' or ');
   }
 
+  // ─── Check if a communicative function is relevant to the current topic ──
+  _isFunctionRelevantToTopic(fn, topic) {
+    if (!fn || !topic) return true; // if unknown, allow it
+    const fnLower = fn.toLowerCase();
+    const topicLower = topic.toLowerCase();
+    // Food/restaurant functions only make sense with food-related topics
+    const foodFunctions = ['speisekarten', 'restaurant', 'bestellen', 'essen bestellen'];
+    const foodTopics = ['essen', 'trinken', 'restaurant', 'café', 'kochen', 'küche', 'speise', 'oktoberfest', 'volksfest', 'kirmes'];
+    const isFoodFunction = foodFunctions.some(f => fnLower.includes(f));
+    if (isFoodFunction && !foodTopics.some(ft => topicLower.includes(ft))) return false;
+    return true;
+  }
+
   // ─── Generate a function/rule prompt if the timing is right ─────────
   _checkFunctionPrompt() {
     if (this.phase !== 2 && this.phase !== 3) return [];
@@ -272,24 +334,28 @@ export class ConversationManager {
     const directives = [];
     const topic = this.activeTopic || 'the current topic';
 
-    // Try unprompted functions first (higher priority)
+    // Try unprompted functions first (higher priority), filtering for topic relevance
     const unpromptedFns = this._getUnpromptedFunctions();
-    if (unpromptedFns.length > 0) {
-      const fn = unpromptedFns[0];
-      this.promptedFunctions.add(fn);
+    const relevantFn = unpromptedFns.find(fn => this._isFunctionRelevantToTopic(fn, topic));
+    if (relevantFn) {
+      this.promptedFunctions.add(relevantFn);
       this.lastFunctionPromptTurn = this.aiTurnCount;
       const examples = this._getModelSentenceSuggestions(topic);
       const exampleHint = examples ? ` Example questions from the textbook: ${examples}.` : '';
-      const d = `[SYSTEM: COMMUNICATIVE FUNCTION — The student should practice: "${fn}". ` +
+      const mem = this.studentFacts.length > 0 ? ` ${this._buildMemorySummary()}` : '';
+      const d = `[SYSTEM: COMMUNICATIVE FUNCTION — The student should practice: "${relevantFn}". ` +
         `Create an opportunity for the student to use this skill with the current topic "${topic}". ` +
         `Ask a question that naturally invites the student to demonstrate this function.${exampleHint} ` +
         `Adapt the question to what the student has been saying. Do NOT repeat a question you already asked. ` +
-        `Do NOT explain what you're doing — just ask a natural question that requires this skill to answer.]`;
+        `Do NOT explain what you're doing — just ask a natural question that requires this skill to answer.${mem}]`;
       directives.push(d);
-      console.log(`%c  🎯 Function prompt: "${fn}" (with topic: "${topic}")`, 'color: #EC4899; font-weight: bold;');
+      console.log(`%c  🎯 Function prompt: "${relevantFn}" (with topic: "${topic}")`, 'color: #EC4899; font-weight: bold;');
       if (examples) console.log(`%c    📖 Model sentence examples: ${examples}`, 'color: #F9A8D4;');
       logDirective(d);
       return directives;
+    } else if (unpromptedFns.length > 0) {
+      // Functions exist but none are relevant to current topic — skip, will try later on a better topic
+      console.log(`%c  ⏭ Skipped ${unpromptedFns.length} function(s) — not relevant to "${topic}"`, 'color: #6B7280;');
     }
 
     // Then try unprompted rules
@@ -375,8 +441,19 @@ export class ConversationManager {
           `[SYSTEM: Moving to Phase 2 (warm-up time limit). Missing: ${missing.join(', ')}. ` +
           `Start with topic: "${firstTopic || 'the current unit topic'}".]`
         );
-      } else if (this.aiTurnCount === 2 && !this.starters.name) {
-        directives.push('[SYSTEM: Ask "Wie heißt du?" now.]');
+      } else {
+        // Still in warm-up — BLOCK the AI from moving to topics
+        const nextStarter = this._getNextStarter();
+        if (nextStarter) {
+          directives.push(
+            `[SYSTEM: MANDATORY — You are still in Phase 1 (warm-up). You MUST ask EXACTLY this question next: ${nextStarter}. ` +
+            `Do NOT skip it. Do NOT move to unit topics yet. Do NOT ask about Volksfest, Freizeitparks, or any other topic. ` +
+            `Just react briefly to what the student said, then ask ${nextStarter}. This is NOT optional.]`
+          );
+          console.log(`%c  🟡 Warm-up: MUST ask → ${nextStarter}`, 'color: #9CA3AF;');
+        } else if (this.aiTurnCount === 2 && !this.starters.name) {
+          directives.push('[SYSTEM: Ask "Wie heißt du?" now.]');
+        }
       }
     }
 
@@ -443,12 +520,15 @@ export class ConversationManager {
     // ── Phase 4 → 5 transition ──
     if (this.phase === 4 && !this.phase5Signaled) {
       const timeUp = this.phase4Deadline > 0 && now >= this.phase4Deadline;
-      // Must guarantee at least 1 student question
-      if (timeUp && this.phase4StudentAsked) {
+      // Must guarantee at least 2 student questions before allowing transition
+      if (timeUp && this.phase4QuestionCount >= 2) {
         this.phase = 5;
         this.phase5Signaled = true;
-        logPhaseHeader(5, 'CLOSING', 'Phase 4 complete — student asked at least 1 question');
+        logPhaseHeader(5, 'CLOSING', `Phase 4 complete — student asked ${this.phase4QuestionCount} question(s)`);
         directives.push('[SYSTEM: Phase 4 complete. Move to Phase 5 — say your farewell now.]');
+      } else if (timeUp && this.phase4QuestionCount < 2) {
+        // Time's up but student hasn't asked enough questions — prompt them
+        directives.push('[SYSTEM: The student should ask at least one more question. Prompt them: "Hast du noch eine Frage an mich?"]');
       }
     }
 
@@ -549,16 +629,25 @@ export class ConversationManager {
     // ── TOPIC TRANSITION LOGIC ──
     // After 4 turns: gentle suggestion (one more then switch)
     // After 5 turns: firm directive (must switch now)
+    const memory = this._buildMemorySummary();
     if (this.activeTopicTurns >= MAX_TURNS_PER_TOPIC && this.activeTopic) {
       const nextTopic = this._getNextTopicFromPool(phaseTopics, this.activeTopic);
       if (nextTopic && nextTopic !== this.lastSuggestedTopic) {
         this.lastSuggestedTopic = nextTopic;
         const bridge = this._getBridgeHint(this.activeTopic, nextTopic);
+        // Find a student fact to use as callback bridge
+        const callback = this._getCallbackFact(nextTopic);
+        const callbackHint = callback
+          ? ` The student mentioned earlier: "${callback.fact}" — use this to bridge naturally into "${nextTopic}".`
+          : '';
         const d = `[SYSTEM: TOPIC SWITCH REQUIRED — You have covered "${this.activeTopic}" enough (${this.activeTopicTurns} turns). ` +
           `Switch to "${nextTopic}" NOW. Once you leave a topic, you cannot return to it. ` +
+          `IMPORTANT: Ask a DIFFERENT type of question than what you asked for "${this.activeTopic}". ` +
+          `If you asked about food/eating on the previous topic, do NOT ask about food/eating again. Vary your angle.${callbackHint} ` +
           `Transition hint: ${bridge}. ` +
-          `Do NOT ask more questions about "${this.activeTopic}".]`;
+          `Do NOT ask more questions about "${this.activeTopic}". Do NOT say "Lass uns über X reden" — bridge naturally.${memory}]`;
         directives.push(d);
+        this.lastMemoryInjectionTurn = this.aiTurnCount;
         logDirective(d);
       }
     } else if (this.activeTopicTurns === MAX_TURNS_PER_TOPIC - 1 && this.activeTopic) {
@@ -573,6 +662,16 @@ export class ConversationManager {
         directives.push(d);
         logDirective(d);
       }
+    }
+
+    // ── Inject memory reminder every 5 turns (prevents re-asking) ──
+    if (directives.length === 0 && this.studentFacts.length > 0 &&
+        this.aiTurnCount - this.lastMemoryInjectionTurn >= 5) {
+      this.lastMemoryInjectionTurn = this.aiTurnCount;
+      const d = `[SYSTEM: CONVERSATION MEMORY REMINDER — Do NOT ask the student something they already told you.${memory}]`;
+      directives.push(d);
+      console.log(`%c  🧠 Memory reminder injected (${this.studentFacts.length} facts)`, 'color: #06B6D4;');
+      logDirective(d);
     }
 
     // ── Check if we should prompt a communicative function or rule ──
@@ -603,7 +702,8 @@ export class ConversationManager {
 
   // ─── Mark that the student asked a question in Phase 4 ─────────────
   markPhase4Question() {
-    this.phase4StudentAsked = true;
+    this.phase4QuestionCount++;
+    console.log(`%c  ❓ Phase 4: student question #${this.phase4QuestionCount}`, 'color: #8B5CF6;');
   }
 
   // ─── Data for /api/classify-topic ───────────────────────────────────
@@ -649,13 +749,16 @@ export class ConversationManager {
     this.phase3Signaled = false;
     this.phase4Signaled = false;
     this.phase5Signaled = false;
-    this.phase4StudentAsked = false;
+    this.phase4QuestionCount = 0;
     this.lastSuggestedTopic = null;
     this.promptedFunctions = new Set();
     this.promptedRules = new Set();
     this.usedModelSentences = new Set();
     this.functionPromptCooldown = 0;
     this.lastFunctionPromptTurn = 0;
+    this.studentFacts = [];
+    this.askedQuestions = [];
+    this.lastMemoryInjectionTurn = 0;
   }
 
   // ─── Internal: detect warm-up starters ──────────────────────────────
@@ -675,7 +778,33 @@ export class ConversationManager {
     }
   }
 
+  // Find a student fact from an earlier topic that could bridge to a new topic
+  _getCallbackFact(targetTopic) {
+    if (this.studentFacts.length === 0) return null;
+    const targetLower = targetTopic.toLowerCase();
+    // Look for facts from different topics that could relate
+    for (const fact of [...this.studentFacts].reverse()) {
+      if (fact.topic === targetTopic) continue; // Don't use facts from the same topic
+      // Check for keyword overlap between the fact and target topic
+      const factWords = fact.fact.toLowerCase().split(/\s+/);
+      const topicWords = targetLower.split(/\s+/);
+      const overlap = factWords.some(w => w.length > 3 && topicWords.some(tw => tw.includes(w) || w.includes(tw)));
+      if (overlap) return fact;
+    }
+    // No keyword match — return the most recent substantive fact for general bridging
+    return this.studentFacts.length > 2 ? this.studentFacts[this.studentFacts.length - 1] : null;
+  }
+
   _allStartersDone() { return Object.values(this.starters).every(v => v === true); }
+
+  _getNextStarter() {
+    const labels = { name: '"Wie heißt du?"', howAreYou: '"Wie geht\'s?"', origin: '"Woher kommst du?"', currentPlace: '"Wo wohnst du?"' };
+    // Return the first undone starter in order
+    for (const key of ['name', 'howAreYou', 'origin', 'currentPlace']) {
+      if (key in this.starters && !this.starters[key]) return labels[key];
+    }
+    return null;
+  }
 
   _missingStarters() {
     const labels = { name: '"Wie heißt du?"', howAreYou: '"Wie geht\'s?"', origin: '"Woher kommst du?"', currentPlace: '"Wo wohnst du?"' };
