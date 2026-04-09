@@ -4,19 +4,19 @@
  */
 export function getDurations(book, chapter) {
   const ch = Number(chapter);
-  if (book === 'ID2B' || book === 'ID2O') return { minMs: 10*60*1000, maxMs: 15*60*1000, minLabel: '10 minutes', maxLabel: '15 minutes' };
+  if (book === 'ID2B' || book === 'ID2O') return { minMs: 6*60*1000, maxMs: 10*60*1000, minLabel: '6 minutes', maxLabel: '10 minutes' };
   // ID1 per-chapter table
   const table = {
-    1: [3,  5],
-    2: [4,  7],
-    3: [4,  7],
-    4: [5,  8],
-    5: [5,  8],
-    6: [6, 10],
-    7: [7, 12],
-    8: [8, 13],
+    1: [2, 3],
+    2: [3, 5],
+    3: [3, 5],
+    4: [4, 6],
+    5: [4, 6],
+    6: [4, 8],
+    7: [4, 8],
+    8: [4, 8],
   };
-  const [mn, mx] = table[ch] || [3, 5];
+  const [mn, mx] = table[ch] || [2, 3];
   return { minMs: mn*60*1000, maxMs: mx*60*1000, minLabel: `${mn} minutes`, maxLabel: `${mx} minutes` };
 }
 

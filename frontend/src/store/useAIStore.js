@@ -38,6 +38,17 @@ const useAIStore = create((set, get) => ({
   sessionMinMs: 0,             // minimum duration in ms
   sessionMaxMs: 0,             // maximum duration in ms
 
+  // Calibration mode
+  calibrationMode: false,        // whether calibration is active
+  calibrationPhase: null,        // 'sentences' | 'emotions' | 'done'
+  calibrationSentenceIndex: -1,  // which test sentence is playing
+  calibrationEmotionIndex: -1,   // which emotion is being shown
+  calibrationDebugData: null,    // latest frame debug snapshot from Character.jsx
+  calibrationFrameLog: [],       // collected frame snapshots for analysis
+  calibrationFeedback: '',       // user text feedback for tuning
+  calibrationTuning: null,       // current tuning overrides from Claude
+  calibrationAnalysis: null,     // latest analysis result from Claude
+
   // Actions
   setStatus: (status) => set({ status }),
   setMicError: (err) => set({ micError: err }),
@@ -105,11 +116,24 @@ const useAIStore = create((set, get) => ({
   setEmotionTimeline: (timeline, duration) => set({
     emotionTimeline: timeline,
     emotionAudioDuration: duration,
-    emotionPlaybackStart: performance.now() - 150, // 150ms lead — emotion shows before audio (humans show intent before speaking)
+    emotionPlaybackStart: performance.now() - 220, // 220ms lead — emotion shows before audio (humans show intent before speaking)
     currentEmotion: timeline?.[0]?.emotion || 'neutral',
   }),
   clearEmotionTimeline: () => set({ emotionTimeline: null, emotionPlaybackStart: null, emotionAudioDuration: 0 }),
   setAudioAmplitude: (amp) => set({ audioAmplitude: amp }),
+
+  // Calibration actions
+  enterCalibration: () => set({ calibrationMode: true, calibrationPhase: null, calibrationSentenceIndex: -1, calibrationEmotionIndex: -1, calibrationFrameLog: [], calibrationAnalysis: null }),
+  exitCalibration: () => set({ calibrationMode: false, calibrationPhase: null, calibrationSentenceIndex: -1, calibrationEmotionIndex: -1, calibrationDebugData: null, calibrationFrameLog: [], calibrationFeedback: '', calibrationTuning: null, calibrationAnalysis: null }),
+  setCalibrationPhase: (phase) => set({ calibrationPhase: phase }),
+  setCalibrationSentenceIndex: (i) => set({ calibrationSentenceIndex: i }),
+  setCalibrationEmotionIndex: (i) => set({ calibrationEmotionIndex: i }),
+  setCalibrationDebugData: (data) => set({ calibrationDebugData: data }),
+  pushCalibrationFrame: (frame) => set((s) => ({ calibrationFrameLog: [...s.calibrationFrameLog, frame] })),
+  clearCalibrationFrameLog: () => set({ calibrationFrameLog: [] }),
+  setCalibrationFeedback: (text) => set({ calibrationFeedback: text }),
+  setCalibrationTuning: (tuning) => set({ calibrationTuning: tuning }),
+  setCalibrationAnalysis: (analysis) => set({ calibrationAnalysis: analysis }),
 }));
 
 export default useAIStore;

@@ -149,13 +149,14 @@ function MicVolumeMeter({ bookColor, analyser }) {
   );
 }
 
-// Progress bar — fills based on midpoint of min/max, dotted line at min (feedback threshold)
+// Progress bar — fills based on midpoint of min/max, dotted line at feedback minimum (60% of min)
 function ProgressBar({ bookColor }) {
   const { conversationStartTime, sessionMinMs, sessionMaxMs, status } = useAIStore();
   const [progress, setProgress] = useState(0);
 
   const targetMs = (sessionMinMs + sessionMaxMs) / 2;
-  const feedbackThreshold = targetMs > 0 ? sessionMinMs / targetMs : 0;
+  const feedbackMinMs = 0.6 * sessionMinMs; // server rejects feedback below this
+  const feedbackThreshold = targetMs > 0 ? feedbackMinMs / targetMs : 0;
 
   // Only update progress when buddy finishes speaking (status changes FROM 'speaking' to something else)
   const prevStatusRef = useRef(status);
@@ -223,7 +224,7 @@ const CHAPTERS_BY_BOOK = {
   ],
 };
 
-const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. When you're ready, click the button below to begin.`;
+const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! A progress bar will show how much conversation time remains before you receive feedback. The buddy is in a prototype testing mode that requires extensive note-taking after every turn. Don't be surprised if the buddy takes a moment between turns. When you're ready, click the button below to begin.`;
 
 function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
   const [audioReady, setAudioReady] = useState(false);
@@ -321,8 +322,8 @@ function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Speak only in German during the conversation.</li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span><span>If you don&apos;t understand something, say<br/><span className="text-white font-bold">&quot;Wie bitte?&quot;</span> &nbsp;or&nbsp; <span className="text-white font-bold">&quot;Noch einmal, bitte.&quot;</span></span></li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Answer the buddy&apos;s questions, but also ask your own questions!</li>
-          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Pay attention to the buddy&apos;s answers — you may need them later.</li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>A progress bar will show how much conversation time remains before you receive feedback.</li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>The buddy is in a prototype testing mode that requires extensive note-taking after every turn. Don&apos;t be surprised if the buddy takes a moment between turns.</li>
         </ul>
         <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
           {audioPlaying ? 'Listening to instructions...' : 'When you\'re ready, click the button below to begin.'}
@@ -514,6 +515,260 @@ export function UI() {
     setPendingUnit(null);
   };
 
+  // ══════════════════════════════════════════════════════════════
+  //  CALIBRATION MODE
+  // ══════════════════════════════════════════════════════════════
+  const CALIB_SENTENCES = [
+    { text: "Max, bist du da?", emotion: "curious" },
+    { text: "Peter mag den Park.", emotion: "happy" },
+    { text: "Oh, das ist traurig.", emotion: "empathetic" },
+    { text: "schön, Schule, ich, Bach", emotion: "excited" },
+    { text: "über, Öl, gut, so", emotion: "thinking" },
+    { text: "eins, Haus, Europa", emotion: "neutral" },
+  ];
+  const CALIB_EMOTIONS = ["happy", "excited", "curious", "empathetic", "thinking", "concerned"];
+
+  const { calibrationMode, calibrationPhase, calibrationAnalysis, calibrationFeedback } = useAIStore();
+  const calibRunningRef = useRef(false);
+
+  const startCalibration = async () => {
+    const store = useAIStore.getState();
+    store.enterCalibration();
+    setScreen("calibration");
+    calibRunningRef.current = true;
+
+    // Brief pause to let UI transition
+    await new Promise(r => setTimeout(r, 500));
+
+    // ── Phase 1: Play test sentences ──
+    store.setCalibrationPhase('sentences');
+    store.clearCalibrationFrameLog();
+
+    for (let i = 0; i < CALIB_SENTENCES.length; i++) {
+      if (!calibRunningRef.current) break;
+      store.setCalibrationSentenceIndex(i);
+
+      // Set emotion for this sentence BEFORE playback starts
+      store.setCurrentEmotion(CALIB_SENTENCES[i].emotion);
+
+      try {
+        // Get TTS audio from server (German voice)
+        const resp = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: CALIB_SENTENCES[i].text, voice: 'Achernar', language: 'de-DE' }),
+        });
+        const { audioBase64, mimeType } = await resp.json();
+
+        // Play through the real audio pipeline (triggers wLipSync + analyser)
+        if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
+          playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
+        }
+        const ctx = playbackContextRef.current;
+        await ctx.resume();
+
+        const binaryStr = atob(audioBase64);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let j = 0; j < binaryStr.length; j++) bytes[j] = binaryStr.charCodeAt(j);
+        const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+
+        const source = ctx.createBufferSource();
+        source.buffer = audioBuffer;
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.5;
+
+        // wLipSync node
+        try {
+          const { createWLipSyncNode } = await import('wlipsync');
+          if (!window._calibLipsyncProfile) {
+            window._calibLipsyncProfile = await fetch('/profile.json').then(r => r.json());
+          }
+          const lipsyncNode = await createWLipSyncNode(ctx, window._calibLipsyncProfile);
+          const delayNode = ctx.createDelay(0.1);
+          delayNode.delayTime.value = 0.05;
+          source.connect(analyser);
+          analyser.connect(delayNode);
+          delayNode.connect(ctx.destination);
+          source.connect(lipsyncNode);
+          useAIStore.getState().setAnalyzerNode(analyser);
+          useAIStore.getState().setLipsyncNode(lipsyncNode);
+        } catch {
+          source.connect(analyser);
+          analyser.connect(ctx.destination);
+          useAIStore.getState().setAnalyzerNode(analyser);
+        }
+
+        useAIStore.getState().setStatus('speaking');
+        await new Promise(resolve => {
+          source.onended = () => {
+            useAIStore.getState().setStatus('idle');
+            useAIStore.getState().setAnalyzerNode(null);
+            useAIStore.getState().clearLipsyncNode();
+            resolve();
+          };
+          source.start();
+        });
+
+        // 1s pause between sentences
+        await new Promise(r => setTimeout(r, 1000));
+      } catch (err) {
+        console.error('[Calibration] TTS error for sentence', i, err);
+      }
+    }
+
+    if (!calibRunningRef.current) return;
+
+    // ── Phase 2: Cycle emotions ──
+    store.setCalibrationPhase('emotions');
+    for (let i = 0; i < CALIB_EMOTIONS.length; i++) {
+      if (!calibRunningRef.current) break;
+      store.setCalibrationEmotionIndex(i);
+      store.setCurrentEmotion(CALIB_EMOTIONS[i]);
+      await new Promise(r => setTimeout(r, 4000));
+    }
+    store.setCurrentEmotion('neutral');
+
+    // ── Phase 3: Done — wait for user action ──
+    store.setCalibrationPhase('done');
+  };
+
+  const runCalibrationAnalysis = async () => {
+    const store = useAIStore.getState();
+    store.setCalibrationPhase('analyzing');
+
+    const frameLog = store.calibrationFrameLog;
+    const userFeedback = store.calibrationFeedback;
+    const currentTuning = store.calibrationTuning;
+
+    try {
+      const resp = await fetch('/api/calibrate/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ frameLog, userFeedback, currentTuning }),
+      });
+      const result = await resp.json();
+      if (result.tuning) {
+        store.setCalibrationTuning(result.tuning);
+      }
+      store.setCalibrationAnalysis(result.analysis || 'No analysis returned.');
+      store.setCalibrationPhase('done');
+    } catch (err) {
+      store.setCalibrationAnalysis('Analysis failed: ' + err.message);
+      store.setCalibrationPhase('done');
+    }
+  };
+
+  const runAgainWithImprovements = async () => {
+    const store = useAIStore.getState();
+    store.clearCalibrationFrameLog();
+    store.setCalibrationAnalysis(null);
+    store.setCalibrationPhase(null);
+    store.setCalibrationSentenceIndex(-1);
+    store.setCalibrationEmotionIndex(-1);
+
+    // Re-run the full sequence with current tuning overrides already in store
+    calibRunningRef.current = true;
+
+    await new Promise(r => setTimeout(r, 300));
+    const storeNow = useAIStore.getState();
+    storeNow.setCalibrationPhase('sentences');
+    storeNow.clearCalibrationFrameLog();
+
+    // Log current tuning so user can verify changes are applied
+    console.log('[Calibration] Running with tuning:', JSON.stringify(useAIStore.getState().calibrationTuning));
+
+    for (let i = 0; i < CALIB_SENTENCES.length; i++) {
+      if (!calibRunningRef.current) break;
+      storeNow.setCalibrationSentenceIndex(i);
+      storeNow.setCurrentEmotion(CALIB_SENTENCES[i].emotion);
+
+      try {
+        const resp = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: CALIB_SENTENCES[i].text, voice: 'Achernar', language: 'de-DE' }),
+        });
+        const { audioBase64, mimeType } = await resp.json();
+
+        if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
+          playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
+        }
+        const ctx = playbackContextRef.current;
+        await ctx.resume();
+
+        const binaryStr = atob(audioBase64);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let j = 0; j < binaryStr.length; j++) bytes[j] = binaryStr.charCodeAt(j);
+        const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+
+        const source = ctx.createBufferSource();
+        source.buffer = audioBuffer;
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.5;
+
+        try {
+          const { createWLipSyncNode } = await import('wlipsync');
+          if (!window._calibLipsyncProfile) {
+            window._calibLipsyncProfile = await fetch('/profile.json').then(r => r.json());
+          }
+          const lipsyncNode = await createWLipSyncNode(ctx, window._calibLipsyncProfile);
+          const delayNode = ctx.createDelay(0.1);
+          delayNode.delayTime.value = 0.05;
+          source.connect(analyser);
+          analyser.connect(delayNode);
+          delayNode.connect(ctx.destination);
+          source.connect(lipsyncNode);
+          useAIStore.getState().setAnalyzerNode(analyser);
+          useAIStore.getState().setLipsyncNode(lipsyncNode);
+        } catch {
+          source.connect(analyser);
+          analyser.connect(ctx.destination);
+          useAIStore.getState().setAnalyzerNode(analyser);
+        }
+
+        useAIStore.getState().setStatus('speaking');
+        await new Promise(resolve => {
+          source.onended = () => {
+            useAIStore.getState().setStatus('idle');
+            useAIStore.getState().setAnalyzerNode(null);
+            useAIStore.getState().clearLipsyncNode();
+            resolve();
+          };
+          source.start();
+        });
+
+        await new Promise(r => setTimeout(r, 1000));
+      } catch (err) {
+        console.error('[Calibration] TTS error for sentence', i, err);
+      }
+    }
+
+    if (!calibRunningRef.current) return;
+
+    storeNow.setCalibrationPhase('emotions');
+    for (let i = 0; i < CALIB_EMOTIONS.length; i++) {
+      if (!calibRunningRef.current) break;
+      storeNow.setCalibrationEmotionIndex(i);
+      storeNow.setCurrentEmotion(CALIB_EMOTIONS[i]);
+      await new Promise(r => setTimeout(r, 4000));
+    }
+    storeNow.setCurrentEmotion('neutral');
+    storeNow.setCalibrationPhase('done');
+  };
+
+  const exitCalibration = () => {
+    calibRunningRef.current = false;
+    useAIStore.getState().exitCalibration();
+    useAIStore.getState().setStatus('idle');
+    useAIStore.getState().setCurrentEmotion('neutral');
+    setScreen("code");
+  };
+
+  // Need a playback context ref for calibration audio
+  const playbackContextRef = useRef(null);
+
   const handlePointerDown = () => {
     if (status !== "idle") return;
     isHoldingRef.current = true;
@@ -536,44 +791,263 @@ export function UI() {
       {/* Access code entry */}
       <AnimatePresence>
         {screen === "code" && (
+          <>
+            <motion.div
+              initial="hidden" animate="visible" exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { delay: 4.5, duration: 0.8 } },
+              }}
+              transition={{ duration: 0.1 }}
+              style={{ paddingLeft: "50%" }}
+              className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+            >
+              <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div className="text-center">
+                  <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
+                  <p className="text-white text-xl">Conversation Buddy</p>
+                </div>
+                <p className="text-sm text-center leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  Welcome! Please enter your access code to begin.
+                </p>
+                {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    value={accessCode}
+                    onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                    onKeyDown={(e) => { if (e.key === 'Enter') handleCodeSubmit(); }}
+                    placeholder="Access code (e.g. STU-A7X9)"
+                    className="name-input px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors text-center tracking-wider"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "0.1em", width: "90%" }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
+                    onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
+                  />
+                </div>
+                <button
+                  onClick={handleCodeSubmit}
+                  disabled={!accessCode.trim()}
+                  className="disabled:opacity-30 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors"
+                  style={{ background: "rgba(255,255,255,0.1)" }}
+                  onMouseEnter={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.2)"; }}
+                  onMouseLeave={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
+                >
+                  ENTER
+                </button>
+              </div>
+            </motion.div>
+            {/* Invite Students button — top-right, identical layout to End Session button (p-6 container + flex end) */}
+            <motion.div
+              initial="hidden" animate="visible" exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { delay: 4.5, duration: 0.8 } },
+              }}
+              transition={{ duration: 0.1 }}
+              className="pointer-events-auto absolute inset-0 flex justify-end items-start p-6"
+              style={{ pointerEvents: "none" }}
+            >
+              <button
+                onClick={() => window.open('https://buddy.impulsdeutsch.com/invite', '_blank')}
+                className="pointer-events-auto backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full transition-colors"
+                style={{ background: "rgba(237,108,40,0.8)" }}
+                onMouseEnter={e => e.currentTarget.style.background = "rgba(237,108,40,1)"}
+                onMouseLeave={e => e.currentTarget.style.background = "rgba(237,108,40,0.8)"}
+              >Invite Students</button>
+            </motion.div>
+            {/* Hidden calibration dot — lower right (matching rules-skip dot style) */}
+            <div
+              onClick={() => {
+                const pw = prompt('Password:');
+                if (pw === 'Niko') startCalibration();
+              }}
+              style={{
+                position: 'fixed', bottom: '8px', right: '8px',
+                width: '6px', height: '6px', borderRadius: '50%',
+                background: 'rgba(255,255,255,0.3)', cursor: 'default',
+                zIndex: 9999, pointerEvents: 'auto',
+              }}
+            />
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ══════ Calibration Mode UI ══════ */}
+      <AnimatePresence>
+        {screen === "calibration" && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ delay: 4.5, duration: 0.8 }}
-            style={{ paddingLeft: "50%" }}
-            className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+            className="pointer-events-auto absolute inset-0 flex flex-col justify-end items-end p-4"
+            style={{ zIndex: 100 }}
           >
-            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-4" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div className="text-center">
-                <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
-                <p className="text-white text-xl">Conversation Buddy</p>
+            <div className="backdrop-blur-md rounded-2xl p-5 w-[380px] flex flex-col gap-3" style={{ background: "rgba(0,0,0,0.80)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="flex justify-between items-center">
+                <h2 className="text-white text-sm font-bold">Calibration Mode</h2>
+                <button
+                  onClick={exitCalibration}
+                  className="text-xs px-3 py-1 rounded-full transition-colors"
+                  style={{ background: "rgba(239,68,68,0.8)", color: "white" }}
+                  onMouseEnter={e => e.currentTarget.style.background = "rgba(239,68,68,1)"}
+                  onMouseLeave={e => e.currentTarget.style.background = "rgba(239,68,68,0.8)"}
+                >Exit</button>
               </div>
-              <p className="text-sm text-center leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                Welcome! Please enter your access code to begin.
-              </p>
-              {error && <p className="text-red-400 text-sm text-center">{error}</p>}
-              <div className="flex justify-center">
-                <input
-                  type="text"
-                  value={accessCode}
-                  onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
-                  onKeyDown={(e) => { if (e.key === 'Enter') handleCodeSubmit(); }}
-                  placeholder="Access code (e.g. STU-A7X9)"
-                  className="name-input px-4 py-3 rounded-xl text-white text-sm outline-none transition-colors text-center tracking-wider"
-                  style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "0.1em", width: "90%" }}
-                  onFocus={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"}
-                  onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"}
-                />
+
+              {/* Phase indicator */}
+              <div className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>
+                {calibrationPhase === 'sentences' && 'Playing test sentences...'}
+                {calibrationPhase === 'emotions' && 'Cycling emotions...'}
+                {calibrationPhase === 'analyzing' && 'Claude is analyzing frame data...'}
+                {calibrationPhase === 'done' && 'Sequence complete.'}
+                {!calibrationPhase && 'Starting...'}
               </div>
-              <button
-                onClick={handleCodeSubmit}
-                disabled={!accessCode.trim()}
-                className="disabled:opacity-30 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors"
-                style={{ background: "rgba(255,255,255,0.1)" }}
-                onMouseEnter={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.2)"; }}
-                onMouseLeave={e => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
-              >
-                ENTER
-              </button>
+
+              {/* Analysis result */}
+              {calibrationAnalysis && (
+                <div className="text-xs p-3 rounded-lg overflow-y-auto" style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.85)", maxHeight: "200px", whiteSpace: "pre-wrap", fontFamily: "monospace", fontSize: "10px", lineHeight: 1.5 }}>
+                  {calibrationAnalysis}
+                </div>
+              )}
+
+              {/* Tuning values display — show actual values so user can verify */}
+              {useAIStore.getState().calibrationTuning && (
+                <div className="text-xs p-2 rounded-lg" style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)" }}>
+                  <div style={{ color: "rgba(100,255,100,0.9)", fontWeight: 700, marginBottom: "2px" }}>Active Tuning Overrides:</div>
+                  <div style={{ color: "rgba(255,255,255,0.7)", fontFamily: "monospace", fontSize: "9px", lineHeight: 1.4 }}>
+                    mult: {useAIStore.getState().calibrationTuning.globalMultiplier?.toFixed(2) || '—'}
+                    {' | '}xfade: {useAIStore.getState().calibrationTuning.crossfadeSpeed?.toFixed(2) || '—'}
+                    <br/>
+                    {Object.entries(useAIStore.getState().calibrationTuning.visemeMaxWeight || {}).map(([k, v]) =>
+                      `${k.replace('viseme_','')}: ${v.toFixed(2)}`
+                    ).join(' | ')}
+                  </div>
+                </div>
+              )}
+
+              {/* User feedback input */}
+              {calibrationPhase === 'done' && (
+                <>
+                  <textarea
+                    placeholder="Your observations (e.g. 'mouth too wide on O', 'bilabials not closing enough')"
+                    value={calibrationFeedback}
+                    onChange={(e) => useAIStore.getState().setCalibrationFeedback(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-xs text-white outline-none resize-none"
+                    style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", minHeight: "60px", fontFamily: "system-ui" }}
+                  />
+                  <div className="flex gap-2">
+                    <button
+                      onClick={runCalibrationAnalysis}
+                      className="flex-1 text-xs font-medium py-2 rounded-lg transition-colors text-white"
+                      style={{ background: "rgba(59,130,246,0.8)" }}
+                      onMouseEnter={e => e.currentTarget.style.background = "rgba(59,130,246,1)"}
+                      onMouseLeave={e => e.currentTarget.style.background = "rgba(59,130,246,0.8)"}
+                    >Analyze & Suggest</button>
+                    <button
+                      onClick={runAgainWithImprovements}
+                      className="flex-1 text-xs font-medium py-2 rounded-lg transition-colors text-white"
+                      style={{ background: "rgba(34,197,94,0.8)" }}
+                      onMouseEnter={e => e.currentTarget.style.background = "rgba(34,197,94,1)"}
+                      onMouseLeave={e => e.currentTarget.style.background = "rgba(34,197,94,0.8)"}
+                    >Run Again</button>
+                  </div>
+                  <button
+                    onClick={() => {
+                      const store = useAIStore.getState();
+                      const tuning = store.calibrationTuning;
+                      const frames = store.calibrationFrameLog;
+                      const feedback = store.calibrationFeedback;
+                      const analysis = store.calibrationAnalysis;
+
+                      const lines = [];
+                      lines.push('═'.repeat(70));
+                      lines.push('CALIBRATION REPORT');
+                      lines.push(`Generated: ${new Date().toISOString()}`);
+                      lines.push('═'.repeat(70));
+                      lines.push('');
+
+                      lines.push('── USER OBSERVATIONS ──');
+                      lines.push(feedback || '(none)');
+                      lines.push('');
+
+                      lines.push('── CLAUDE ANALYSIS ──');
+                      lines.push(analysis || '(none)');
+                      lines.push('');
+
+                      lines.push('── RECOMMENDED TUNING VALUES ──');
+                      lines.push('Apply these to Character.jsx VISEME_MAX_WEIGHT and constants:');
+                      lines.push('');
+                      if (tuning) {
+                        lines.push(`globalMultiplier: ${tuning.globalMultiplier}`);
+                        lines.push(`crossfadeSpeed: ${tuning.crossfadeSpeed}`);
+                        lines.push('');
+                        lines.push('VISEME_MAX_WEIGHT = {');
+                        for (const [k, v] of Object.entries(tuning.visemeMaxWeight || {})) {
+                          lines.push(`  ${k}: ${v.toFixed(2)},`);
+                        }
+                        lines.push('};');
+                      } else {
+                        lines.push('(no tuning changes — using defaults)');
+                      }
+                      lines.push('');
+
+                      lines.push('── FRAME DATA SUMMARY ──');
+                      lines.push(`Total speech frames captured: ${frames.length}`);
+                      if (frames.length > 0) {
+                        // Compute averages per viseme
+                        const visemeKeys = ['v_PP','v_FF','v_DD','v_kk','v_CH','v_SS','v_nn','v_RR','v_aa','v_E','v_I','v_O','v_U'];
+                        const bannedKeys = ['mouthPucker','mouthFunnel','mouthRollLower','tongueOut','mouthClose'];
+                        lines.push('');
+                        lines.push('Average viseme weights during speech:');
+                        for (const k of visemeKeys) {
+                          const avg = frames.reduce((sum, f) => sum + parseFloat(f[k] || 0), 0) / frames.length;
+                          const max = Math.max(...frames.map(f => parseFloat(f[k] || 0)));
+                          lines.push(`  ${k.replace('v_','viseme_').padEnd(12)}: avg=${avg.toFixed(3)}  max=${max.toFixed(3)}`);
+                        }
+                        lines.push('');
+                        lines.push('Banned channel values (should all be 0):');
+                        for (const k of bannedKeys) {
+                          const max = Math.max(...frames.map(f => parseFloat(f[k] || 0)));
+                          const violations = frames.filter(f => parseFloat(f[k] || 0) > 0.001).length;
+                          lines.push(`  ${k.padEnd(18)}: max=${max.toFixed(3)}  violations=${violations}/${frames.length}`);
+                        }
+                        lines.push('');
+                        lines.push('Emotions seen:');
+                        const emotionCounts = {};
+                        for (const f of frames) {
+                          const e = f.emotion || f.activeEmotionTag || 'neutral';
+                          emotionCounts[e] = (emotionCounts[e] || 0) + 1;
+                        }
+                        for (const [e, c] of Object.entries(emotionCounts)) {
+                          lines.push(`  ${e}: ${c} frames`);
+                        }
+                      }
+                      lines.push('');
+
+                      lines.push('── RAW FRAME LOG (last 50) ──');
+                      const tail = frames.slice(-50);
+                      for (const f of tail) {
+                        lines.push(JSON.stringify(f));
+                      }
+                      lines.push('');
+                      lines.push('═'.repeat(70));
+                      lines.push('END OF REPORT');
+                      lines.push('Upload this file to Claude to apply the tuning changes to Character.jsx');
+                      lines.push('═'.repeat(70));
+
+                      const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `calibration-report-${Date.now()}.txt`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="w-full text-xs font-medium py-2 rounded-lg transition-colors text-white"
+                    style={{ background: "rgba(168,85,247,0.8)" }}
+                    onMouseEnter={e => e.currentTarget.style.background = "rgba(168,85,247,1)"}
+                    onMouseLeave={e => e.currentTarget.style.background = "rgba(168,85,247,0.8)"}
+                  >Create Report</button>
+                </>
+              )}
             </div>
           </motion.div>
         )}
@@ -722,14 +1196,24 @@ export function UI() {
               </div>
               <p className="text-sm text-center" style={{ color: "rgba(255,255,255,0.6)" }}>What is the <span className="text-white font-bold">last unit</span> from {selectedBook?.label} you covered in class?</p>
               {error && <p className="text-red-400 text-xs">{error}</p>}
-              {units.map((u) => (
+              {units.map((u, idx) => {
+                // Units 1-6 of Impuls Deutsch 1 are unavailable (no conversation content yet)
+                const unitNum = parseInt(String(u.unit).replace(/^[BO]/i, ''), 10);
+                const isUnavailable = selectedBook?.id === 'ID1' && !isNaN(unitNum) && unitNum >= 1 && unitNum <= 6;
+                return (
                 <button
                   key={u.unit}
-                  onClick={() => handleUnitSelect(u)}
+                  onClick={() => { if (!isUnavailable) handleUnitSelect(u); }}
+                  title={isUnavailable ? "No conversation available" : undefined}
                   className="text-left rounded-xl px-5 py-3 transition-colors flex items-center justify-between gap-4"
-                  style={{ background: hexToRgba(bookColor, 0.3), border: "1px solid " + hexToRgba(bookColor, 0.5) }}
-                  onMouseEnter={e => e.currentTarget.style.background = hexToRgba(bookColor, 0.45)}
-                  onMouseLeave={e => e.currentTarget.style.background = hexToRgba(bookColor, 0.3)}
+                  style={{
+                    background: hexToRgba(bookColor, isUnavailable ? 0.15 : 0.3),
+                    border: "1px solid " + hexToRgba(bookColor, isUnavailable ? 0.25 : 0.5),
+                    opacity: isUnavailable ? 0.5 : 1,
+                    cursor: isUnavailable ? "not-allowed" : "pointer",
+                  }}
+                  onMouseEnter={e => { if (!isUnavailable) e.currentTarget.style.background = hexToRgba(bookColor, 0.45); }}
+                  onMouseLeave={e => { if (!isUnavailable) e.currentTarget.style.background = hexToRgba(bookColor, 0.3); }}
                 >
                   <div>
                     <span className="text-white text-sm font-medium">Unit {String(u.unit).replace(/^[BO]/i, '')}</span>
@@ -739,7 +1223,8 @@ export function UI() {
                     <span className="text-xs shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>(Optional)</span>
                   )}
                 </button>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -850,19 +1335,12 @@ export function UI() {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => window.open('/log-viewer', 'ConversationLog', 'width=720,height=560,resizable=yes')}
-                  title="Open live conversation log"
-                  className="pointer-events-auto backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-full transition-colors flex items-center gap-1"
-                  style={{ background: "rgba(0,0,0,0.3)" }}
-                  onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.5)"}
-                  onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0.3)"}
-                >📋 Log</button>
-                <button
                   onClick={() => {
                     const { conversationStartTime, sessionMinMs } = useAIStore.getState();
                     const elapsed = conversationStartTime ? Date.now() - conversationStartTime : 0;
-                    if (elapsed < sessionMinMs) {
-                      const remainingMin = Math.ceil((sessionMinMs - elapsed) / 60000);
+                    const feedbackMinMs = 0.6 * sessionMinMs; // must match server threshold
+                    if (elapsed < feedbackMinMs) {
+                      const remainingMin = Math.ceil((feedbackMinMs - elapsed) / 60000);
                       setEndConfirm({ remainingMin });
                     } else {
                       endConversation();

@@ -823,8 +823,86 @@ app.get('/api/cumulative/:unitId', (req, res) => {
 // (Removed: /api/speech-to-text, /api/conversation/message, /api/text-to-speech — replaced by pipeline)
 
 // Cache for one-off TTS results (keyed by text hash) — avoids re-generating the same audio
+// ════════════════════════════════════════════════════════════════════
+//  CALIBRATION ANALYSIS ENDPOINT
+// ════════════════════════════════════════════════════════════════════
+
+app.post('/api/calibrate/analyze', async (req, res) => {
+  const { frameLog, userFeedback, currentTuning } = req.body;
+
+  const defaultTuning = {
+    visemeMaxWeight: {
+      viseme_PP: 1.00, viseme_FF: 0.90, viseme_DD: 0.90, viseme_nn: 0.90,
+      viseme_kk: 0.90, viseme_SS: 0.74, viseme_CH: 0.78, viseme_RR: 0.58,
+      viseme_aa: 0.85, viseme_E: 0.82, viseme_I: 0.82, viseme_O: 0.56, viseme_U: 0.42,
+    },
+    globalMultiplier: 1.15,
+    crossfadeSpeed: 0.55,
+  };
+
+  const activeTuning = currentTuning || defaultTuning;
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2000,
+      system: `You are a 3D avatar lip-sync calibration expert. You analyze per-frame morph target data from a German-speaking Avaturn avatar that uses native Oculus viseme targets (viseme_PP, viseme_FF, viseme_DD, viseme_kk, viseme_CH, viseme_SS, viseme_nn, viseme_RR, viseme_aa, viseme_E, viseme_I, viseme_O, viseme_U).
+
+The avatar's speech pipeline works as follows:
+- wLipSync detects phonemes A, E, I, O, U, S from audio
+- These map to native viseme morph targets
+- Each viseme has a max weight cap
+- A global multiplier scales all weights
+- A crossfade speed controls smoothness between frames
+- ARKit mouth shapes (mouthPucker, mouthFunnel, mouthRollLower, tongueOut, etc.) are BANNED during speech
+
+Known model limitations:
+- viseme_U pushes lower lip forward too much at high weights
+- viseme_O opens too vertically at full weight
+- viseme_RR adds some forward lip effect
+- No dedicated ö or ü visemes (uses viseme_O and viseme_U as approximations)
+
+Your job: analyze the frame data and user feedback, then return ADJUSTED tuning values.
+
+RESPOND WITH EXACTLY THIS JSON FORMAT (no markdown, no explanation outside the JSON):
+{
+  "analysis": "Your analysis text here (2-4 sentences explaining what you observed and changed)",
+  "tuning": {
+    "visemeMaxWeight": { "viseme_PP": 1.00, "viseme_FF": 0.90, ... all 13 visemes ... },
+    "globalMultiplier": 1.15,
+    "crossfadeSpeed": 0.55
+  }
+}
+
+Make conservative adjustments (±0.05 to ±0.15 per iteration). Do not make extreme changes.`,
+      messages: [{
+        role: 'user',
+        content: `Current tuning:\n${JSON.stringify(activeTuning, null, 2)}\n\nUser feedback: ${userFeedback || 'None provided'}\n\nFrame data (${(frameLog || []).length} frames, sampled every 1s during speech):\n${JSON.stringify((frameLog || []).slice(-30), null, 1)}\n\nAnalyze and return adjusted tuning JSON.`,
+      }],
+    });
+
+    const text = response.content[0]?.text || '';
+    console.log('[CALIBRATION] Claude response:', text.substring(0, 200));
+
+    try {
+      // Try to parse JSON from response (might be wrapped in markdown)
+      let jsonStr = text;
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) jsonStr = jsonMatch[0];
+      const parsed = JSON.parse(jsonStr);
+      res.json({ analysis: parsed.analysis || 'Analysis complete.', tuning: parsed.tuning || null });
+    } catch (parseErr) {
+      // If JSON parse fails, return the raw text as analysis
+      res.json({ analysis: text, tuning: null });
+    }
+  } catch (err) {
+    console.error('[CALIBRATION] Analysis failed:', err.message);
+    res.status(500).json({ error: err.message, analysis: 'Analysis failed: ' + err.message });
+  }
+});
+
 const ttsCache = new Map();
-const WELCOME_INSTRUCTIONS_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! Pay attention to the buddy's answers — you may need them later. A progress bar will show how much conversation time remains before you receive feedback. When you're ready, click the button below to begin.`;
+const WELCOME_INSTRUCTIONS_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! A progress bar will show how much conversation time remains before you receive feedback. The buddy is in a prototype testing mode that requires extensive note-taking after every turn. Don't be surprised if the buddy takes a moment between turns. When you're ready, click the button below to begin.`;
 
 // POST /api/tts — One-off TTS for non-conversation audio (e.g., welcome instructions)
 // Uses Gemini 2.5 Pro TTS with configurable voice. Falls back to OpenAI. Caches results.
@@ -1011,9 +1089,9 @@ app.get('/log-viewer', (req, res) => {
 
 /**
  * Route: Conversation logger — frontend posts transcripts here.
- * body: { type: 'start'|'turn'|'end', sessionId, unit?, unitTitle?, role?: 'student'|'ai', text? }
+ * body: { type: 'start'|'turn'|'end'|'abandon', sessionId, unit?, unitTitle?, role?: 'student'|'ai', text? }
  */
-const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount }
+const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount, turns[], meta, lastActivity }
 
 app.post('/api/log', (req, res) => {
   const { type, sessionId, unit, unitTitle, role, text } = req.body;
@@ -1023,7 +1101,14 @@ app.post('/api/log', (req, res) => {
   if (type === 'start') {
     // Clear history so reconnecting clients only see the current session
     logHistory.length = 0;
-    logSessions.set(sessionId, { unit, unitTitle, exchangeCount: 0, turns: [], startTime: timestamp() });
+    const { accessCode, accessType, assignedTo, studentName, book, chapter } = req.body;
+    logSessions.set(sessionId, {
+      unit, unitTitle, exchangeCount: 0, turns: [], startTime: timestamp(),
+      createdAt: Date.now(), lastActivity: Date.now(),
+      // Session metadata for abandoned-session rescue
+      meta: { accessCode, accessType, assignedTo, studentName, book, chapter },
+      activity: ['screen:session'],  // Track student activity
+    });
     const label = unitTitle ? `Unit ${unit} — ${unitTitle}` : `Unit ${unit}`;
     console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
     console.log(`${BOLD}${GREEN}[${timestamp()}] CONVERSATION STARTED${RESET}`);
@@ -1035,6 +1120,7 @@ app.post('/api/log', (req, res) => {
   } else if (type === 'turn') {
     const session = logSessions.get(sessionId);
     if (!session) return res.status(404).json({ error: 'Session not found' });
+    session.lastActivity = Date.now(); // Track for abandoned-session detection
     if (role === 'student') session.exchangeCount++;
     const { id, pending } = req.body;
     // For pending student placeholders, skip the console until the real text arrives
@@ -1058,6 +1144,7 @@ app.post('/api/log', (req, res) => {
     logTurn('student', updatedText);
     // Find the session and update/add the turn with real text
     for (const [, sess] of logSessions) {
+      sess.lastActivity = Date.now(); // Track for abandoned-session detection
       // Replace last student placeholder or add new
       const lastStudent = [...sess.turns].reverse().find(t => t.role === 'student');
       if (lastStudent && lastStudent.text === '...') {
@@ -1065,6 +1152,16 @@ app.post('/api/log', (req, res) => {
       }
     }
     broadcastLog({ type: 'update-turn', id, text: updatedText, time: timestamp() });
+
+  } else if (type === 'abandon') {
+    // Browser closed / navigated away — rescue partial transcript
+    // Guard: if session already ended normally (e.g., user clicked End then closed browser), skip
+    const session = logSessions.get(sessionId);
+    if (session) {
+      const { reason } = req.body;
+      console.log(`${BOLD}${YELLOW}[${timestamp()}] SESSION ABANDONED${RESET} — ${reason || 'unknown'} (${session.turns.length} turns)`);
+      rescueAbandonedSession(sessionId, session, reason || 'browser_closed');
+    }
 
   } else if (type === 'end') {
     const session = logSessions.get(sessionId);
@@ -1083,6 +1180,77 @@ app.post('/api/log', (req, res) => {
 });
 
 // (Removed: /api/conversation/end — replaced by voice pipeline session management)
+
+/**
+ * Rescue an abandoned session: save partial transcript + log to Usage sheet.
+ * Called when browser sends 'abandon' beacon, or when cleanup timer finds stale sessions.
+ */
+async function rescueAbandonedSession(sessionId, session, reason) {
+  try {
+    const meta = session.meta || {};
+    const durationSec = Math.round((Date.now() - session.createdAt) / 1000);
+    const durationMin = Math.round(durationSec / 6) / 10; // 1 decimal place
+    const unitLabel = session.unitTitle
+      ? `Unit ${session.unit} — ${session.unitTitle}`
+      : session.unit ? `Unit ${session.unit}` : '';
+
+    const reasonText = {
+      browser_closed: 'Browser closed before session ended',
+      inactivity: `Abandoned — inactive for 3+ minutes (${session.turns.length} turns)`,
+    }[reason] || `Abandoned — ${reason}`;
+
+    // 1. Create the Usage Log row FIRST (so saveTranscriptFile can find it to add the Drive link)
+    try {
+      const sheets = await getSheetsClient();
+      const ts = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: ACCESS_SHEETS_ID,
+        range: 'Buddy Usage Log!A:I',
+        valueInputOption: 'RAW',
+        requestBody: {
+          values: [[
+            ts,
+            meta.accessCode || '',
+            meta.accessType || '',
+            meta.assignedTo || '',
+            meta.studentName || '',
+            unitLabel,
+            sessionId,
+            durationMin,
+            session.turns.length > 0 ? '' : reasonText, // Transcript link will overwrite if turns exist
+          ]],
+        },
+      });
+    } catch (sheetErr) {
+      console.warn(`[RESCUE] Could not log abandoned session to sheet:`, sheetErr.message);
+    }
+
+    // 2. Save partial transcript to Drive (even if only 1-2 turns)
+    //    saveTranscriptFile will find the row above and add the Drive link to column I
+    if (session.turns.length > 0) {
+      await saveTranscriptFile(sessionId, session);
+    }
+
+    console.log(`${DIM}[RESCUE] Saved abandoned session ${sessionId} (${session.turns.length} turns, reason: ${reason})${RESET}`);
+  } catch (err) {
+    console.error(`[RESCUE] Failed to rescue session ${sessionId}:`, err.message);
+  } finally {
+    logSessions.delete(sessionId);
+  }
+}
+
+// Cleanup abandoned log sessions (every 60 seconds — 3 min inactivity threshold)
+setInterval(() => {
+  const now = Date.now();
+  const abandonThreshold = 3 * 60 * 1000; // 3 minutes
+
+  for (const [id, session] of logSessions.entries()) {
+    if (now - session.lastActivity > abandonThreshold) {
+      console.log(`${YELLOW}[CLEANUP] Rescuing abandoned session ${id} (inactive ${Math.round((now - session.lastActivity) / 1000)}s)${RESET}`);
+      rescueAbandonedSession(id, session, 'inactivity');
+    }
+  }
+}, 60 * 1000);
 
 // Cleanup old conversations and voice sessions (every hour)
 setInterval(() => {
@@ -2910,7 +3078,7 @@ app.listen(PORT, () => {
       try {
         const response = await googleAI.models.generateContent({
           model: 'gemini-2.5-pro-tts',
-          contents: [{ role: 'user', parts: [{ text: `Say this in American English. Pronounce any German words or phrases naturally in German with a native German accent. Here is the text: ${WELCOME_INSTRUCTIONS_TEXT}` }] }],
+          contents: [{ role: 'user', parts: [{ text: `Say this in American English, but pronounce "Impuls Deutsch" and the two German sentences "Wie bitte?" and "Noch einmal, bitte." naturally in German with a native German accent — not an American accent. Here is the text: ${WELCOME_INSTRUCTIONS_TEXT}` }] }],
           config: {
             responseModalities: ['AUDIO'],
             speechConfig: {

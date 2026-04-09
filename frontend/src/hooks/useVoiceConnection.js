@@ -1,4 +1,4 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import { createWLipSyncNode } from "wlipsync";
 import useAIStore from "../store/useAIStore";
 import { generateUnitInstructions, getDurations, getBuddyFirstName } from "../utils/systemInstructions";
@@ -423,7 +423,7 @@ export function useVoiceConnection() {
         topicsDiscussedRef.current = new Set();
         minDurationFiredRef.current = false;
         maxDurationFiredRef.current = false;
-        conversationStartRef.current = Date.now();
+        conversationStartRef.current = null; // Set later at step 10 when conversation actually begins
         pendingEndAfterTurnRef.current = false;
         pendingDirectivesRef.current = [];
 
@@ -504,15 +504,24 @@ export function useVoiceConnection() {
         const { sessionId, response: aiGreeting, audioBase64, mimeType, emotion: greetingEmotion, emotionTimeline: greetingTimeline } = await sessionResp.json();
         sessionIdRef.current = sessionId;
 
-        // 8. Start log session
+        // 8. Start log session (pass metadata for server-side transcript rescue)
         logSessionIdRef.current = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-        postLog({
-          type: 'start',
-          unit: unitData?.unit,
-          unitTitle: unitData?._unitName
-                  || (unitData?.conversation_topics?.topics || [])[0]
-                  || '',
-        });
+        {
+          const storeSnap = useAIStore.getState();
+          postLog({
+            type: 'start',
+            unit: unitData?.unit,
+            unitTitle: unitData?._unitName
+                    || (unitData?.conversation_topics?.topics || [])[0]
+                    || '',
+            accessCode: storeSnap.accessCode || '',
+            accessType: storeSnap.accessType || '',
+            assignedTo: storeSnap.assignedTo || '',
+            studentName: studentName || '',
+            book: unitData?._book || 'ID1',
+            chapter: unitData?._chapter || 1,
+          });
+        }
 
         // 9. Add AI greeting to messages and process through manager
         addMessage('assistant', aiGreeting);
@@ -528,7 +537,9 @@ export function useVoiceConnection() {
         }
 
         // 10. Play greeting audio and go live
-        setSessionTiming(Date.now(), minMs, maxMs);
+        const sessionStartTime = Date.now();
+        conversationStartRef.current = sessionStartTime; // Same timestamp for both ref and store
+        setSessionTiming(sessionStartTime, minMs, maxMs);
         setSessionActive(true);
         try {
           await playAudio(audioBase64, mimeType, greetingTimeline);
@@ -664,7 +675,7 @@ export function useVoiceConnection() {
       fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs, sessionId: sessionIdRef.current }),
+        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs, sessionId: endSessionId }),
       })
         .then(r => r.json())
         .then(data => setFeedback(data))
@@ -877,6 +888,21 @@ export function useVoiceConnection() {
       setMicError('Could not switch microphone');
     }
   }, [setMicAnalyser, setMicError]);
+
+  // ── Abandoned-session rescue via sendBeacon on page unload ──
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const logId = logSessionIdRef.current;
+      if (!logId) return; // No active session
+      const blob = new Blob(
+        [JSON.stringify({ type: 'abandon', sessionId: logId, reason: 'browser_closed' })],
+        { type: 'application/json' }
+      );
+      navigator.sendBeacon('/api/log', blob);
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
 
   return {
     startConversation,

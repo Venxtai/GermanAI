@@ -343,18 +343,18 @@
     <!-- ═══ STATE 1: Authentication ═══ -->
     <div id="auth-section" class="section active">
       <div class="card">
-        <h2>Teacher Authentication</h2>
-        <p>Enter your teacher code and the email address associated with your account to create student access codes for the Conversation Buddy.</p>
+        <h2>Create Student Codes</h2>
+        <p>To create student access codes for the Conversation Buddy, enter your teacher access code and email address below and click on "Verify".</p>
 
         <div id="auth-error" class="error"></div>
 
         <div class="form-row">
           <div>
-            <label for="teacher-code">Teacher Code</label>
+            <label for="teacher-code">Teacher Access Code</label>
             <input type="text" id="teacher-code" placeholder="e.g., StThomas5942" autocomplete="off">
           </div>
           <div>
-            <label for="teacher-email">Email Address</label>
+            <label for="teacher-email">Teacher Email Address</label>
             <input type="email" id="teacher-email" placeholder="you@university.edu">
           </div>
         </div>
@@ -372,7 +372,7 @@
 
       <div class="card">
         <h2>Add Students</h2>
-        <p>Enter student information below. Each student will receive a unique access code for the Conversation Buddy.</p>
+        <p>Enter student information below. Each student will receive a unique access code for the Conversation Buddy. After you clicked "Create Codes", you can choose to either download them as a pdf document (printable cards with QR code) or have the buddy send the access codes via email directly to your student(s). Student emails are only needed if you choose the email option.</p>
 
         <div style="margin-bottom:1.25rem;">
           <label for="university-input">University / Institution</label>
@@ -391,7 +391,7 @@
           <tbody id="student-rows"></tbody>
         </table>
 
-        <p class="email-note">* Optional — needed for email invitations. Not required for PDF download.</p>
+        <p class="email-note">*optional</p>
 
         <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
 
@@ -482,7 +482,7 @@
       const email = document.getElementById('teacher-email').value.trim();
 
       if (!code || !email) {
-        showError('auth-error', 'Please enter both your teacher code and email address.');
+        showError('auth-error', 'Please enter both your teacher access code and email address.');
         return;
       }
 
