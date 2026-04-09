@@ -92,6 +92,7 @@ export function useVoiceConnection() {
   const minDurationFiredRef = useRef(false);
   const maxDurationFiredRef = useRef(false);
   const pendingEndAfterTurnRef = useRef(false);
+  const endReasonRef = useRef(null); // Tracks why conversation ended
   const endConversationRef = useRef(null);
   const managerRef = useRef(null);
   const systemInstructionsRef = useRef(null);
@@ -425,6 +426,7 @@ export function useVoiceConnection() {
         maxDurationFiredRef.current = false;
         conversationStartRef.current = null; // Set later at step 10 when conversation actually begins
         pendingEndAfterTurnRef.current = false;
+        endReasonRef.current = null;
         pendingDirectivesRef.current = [];
 
         // 5. Initialize ConversationManager
@@ -470,6 +472,7 @@ export function useVoiceConnection() {
           // Hard max: auto-end after AI delivers closing line
           if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
             pendingEndAfterTurnRef.current = true;
+            endReasonRef.current = 'Maximum conversation time reached';
             clearInterval(conversationTimerRef.current);
             // Trigger a closing turn via directive
             sendPromptTurn([
@@ -586,7 +589,9 @@ export function useVoiceConnection() {
       ? Math.round((Date.now() - conversationStartRef.current) / 60000 * 10) / 10
       : 0;
 
-    postLog({ type: 'end' });
+    const endReason = endReasonRef.current || 'User ended conversation';
+    endReasonRef.current = null;
+    postLog({ type: 'end', endReason });
 
     // Log session details to Usage Log (fills in Student Name, Unit, Duration columns)
     fetch('/api/auth/log-session', {
@@ -670,7 +675,7 @@ export function useVoiceConnection() {
     setSessionActive(false);
     setStatus("idle");
 
-    // Async feedback
+    // Async feedback — send results back to server for transcript enrichment
     if (unitNumber && utterancesSnapshot.length > 0) {
       fetch('/api/feedback', {
         method: 'POST',
@@ -678,10 +683,22 @@ export function useVoiceConnection() {
         body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs, sessionId: endSessionId }),
       })
         .then(r => r.json())
-        .then(data => setFeedback(data))
-        .catch(() => setFeedback({ fallback: true }));
+        .then(data => {
+          setFeedback(data);
+          // Send feedback results to server so transcript can be updated
+          if (data.fallback) {
+            postLog({ type: 'feedback', fallback: true, reason: 'Session too short for feedback' });
+          } else if (data.items) {
+            postLog({ type: 'feedback', items: data.items });
+          }
+        })
+        .catch(() => {
+          setFeedback({ fallback: true });
+          postLog({ type: 'feedback', fallback: true, reason: 'Feedback generation failed' });
+        });
     } else {
       setFeedback({ fallback: true });
+      postLog({ type: 'feedback', fallback: true, reason: utterancesSnapshot.length === 0 ? 'No student utterances' : 'No unit data' });
     }
     // Save transcript for download before clearing
     const msgs = useAIStore.getState().messages;
@@ -781,6 +798,7 @@ export function useVoiceConnection() {
         if (isFarewell) {
           if (managerRef.current?.isMinDurationReached()) {
             pendingEndAfterTurnRef.current = true;
+            if (!endReasonRef.current) endReasonRef.current = 'Student said goodbye';
             // The AI's response (aiText) should already be the farewell
           } else {
             // Too early — directive already in response since server handles full history
@@ -847,6 +865,7 @@ export function useVoiceConnection() {
 
     } catch (err) {
       console.error('[Pipeline] Error:', err);
+      postLog({ type: 'error', error: err.message || String(err), context: 'conversation-turn-frontend' });
       setStatus('idle');
       setMicError('Something went wrong. Try again.');
     }

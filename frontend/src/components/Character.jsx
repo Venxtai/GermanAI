@@ -22,11 +22,11 @@ import useAIStore from "../store/useAIStore";
 
 // Viseme application delay (ms) — delays lip shapes relative to audio
 // to fix mouth-leads-audio by ~130ms. Does NOT affect emotion preload.
-const VISUAL_SPEECH_OFFSET_MS = 55;
+const VISUAL_SPEECH_OFFSET_MS = 50;
 
 // §2 — PP bilabial onset parameters
-const PP_HOLD_MS = 45;           // minimum hold for explicit PP
-const PP_ONSET_BOOST = 0.10;     // extra weight on first PP frame
+const PP_HOLD_MS = 55;           // minimum hold for explicit PP
+const PP_ONSET_BOOST = 0.14;     // extra weight on first PP frame
 const PP_MOUTHCLOSE_MAX = 0.05;  // mouthClose assist cap during PP
 
 // ── Model's native viseme targets (the ONLY speech drivers) ──
@@ -45,14 +45,14 @@ const VISEME_MAX_WEIGHT = {
   viseme_TH:  0.00,  // banned for German
   viseme_DD:  0.90,
   viseme_kk:  0.90,
-  viseme_SS:  0.74,  // reduced — was over-dominant
-  viseme_CH:  0.78,  // reduced — CH/SCH needs more distinction
+  viseme_SS:  0.68,  // reduced — was over-dominant
+  viseme_CH:  0.72,  // reduced — CH/SCH needs more distinction
   viseme_RR:  0.58,  // reduced — forward lip effect
   viseme_aa:  0.85,
   viseme_E:   0.82,
   viseme_I:   0.82,
-  viseme_O:   0.56,  // reduced — too vertically open
-  viseme_U:   0.42,  // reduced — pushes lower lip forward
+  viseme_O:   0.52,  // reduced — too vertically open
+  viseme_U:   0.38,  // reduced — pushes lower lip forward
 };
 
 // §2 — wLipSync phoneme → native viseme mapping for German
@@ -63,6 +63,17 @@ const PHONEME_TO_NATIVE_VISEME = {
   O: "viseme_O",   // o, oː, ɔ — also used for ö approximation
   U: "viseme_U",   // u, uː, ʊ — also used for ü approximation
   S: "viseme_SS",  // s, z, ß
+};
+
+// §2b — Diphthong transitions: smooth blend between two visemes over ~110ms
+// First component biased stronger (0.6 → 0.4 blend)
+const DIPHTHONGS = {
+  // ei: aa → I (as in "mein", "Eis")
+  ei: { from: 'viseme_aa', to: 'viseme_I', durationMs: 110, bias: 0.6 },
+  // au: aa → U (as in "Haus", "auch")
+  au: { from: 'viseme_aa', to: 'viseme_U', durationMs: 110, bias: 0.6 },
+  // eu/äu: O → I (as in "heute", "Häuser")
+  eu: { from: 'viseme_O', to: 'viseme_I', durationMs: 100, bias: 0.55 },
 };
 
 // §3 — ARKit channels BANNED during speech (forced to 0 every frame)
@@ -125,52 +136,52 @@ const EMOTIONS = {
     eyeSquintLeft: 0.05, eyeSquintRight: 0.05,
     browInnerUp: 0.0,
   },
-  // HAPPY: warm, lifted — browOuterUp strengthened
+  // HAPPY: warm, lifted — browOuterUp +0.02
   happy: {
     mouthSmileLeft: 0.55, mouthSmileRight: 0.55,
     cheekSquintLeft: 0.58, cheekSquintRight: 0.58,
     eyeSquintLeft: 0.32, eyeSquintRight: 0.32,
-    browOuterUpLeft: 0.14, browOuterUpRight: 0.14,
+    browOuterUpLeft: 0.16, browOuterUpRight: 0.16,
   },
-  // EXCITED: energized — browInnerUp + eyeWide boosted, cheekSquint reduced
+  // EXCITED: browInnerUp +0.06, eyeWide +0.08, smile -0.04, cheekSquint -0.03
   excited: {
-    browInnerUp: 0.55,
-    eyeWideLeft: 0.42, eyeWideRight: 0.42,
-    cheekSquintLeft: 0.26, cheekSquintRight: 0.26,
-    mouthSmileLeft: 0.60, mouthSmileRight: 0.60,
+    browInnerUp: 0.61,
+    eyeWideLeft: 0.50, eyeWideRight: 0.50,
+    cheekSquintLeft: 0.23, cheekSquintRight: 0.23,
+    mouthSmileLeft: 0.56, mouthSmileRight: 0.56,
   },
-  // CURIOUS: strong asymmetric brows + head tilt
+  // CURIOUS: browOuterUpLeft +0.05, stronger eye asymmetry
   curious: {
-    browOuterUpLeft: 1.0, browOuterUpRight: 0.15,
-    browDownRight: 0.48,
-    eyeWideLeft: 0.35, eyeWideRight: 0.15,
+    browOuterUpLeft: 1.0, browOuterUpRight: 0.12,
+    browDownRight: 0.52,
+    eyeWideLeft: 0.40, eyeWideRight: 0.12,
   },
-  // EMPATHETIC: sad/concerned — browDown reduced for less anger, browInnerUp stays high
+  // EMPATHETIC: browDown -0.02 (slightly less)
   empathetic: {
     browInnerUp: 0.86,
-    browDownLeft: 0.52, browDownRight: 0.52,
+    browDownLeft: 0.50, browDownRight: 0.50,
     eyeSquintLeft: 0.10, eyeSquintRight: 0.10,
     eyeLookDownLeft: 0.14, eyeLookDownRight: 0.14,
     mouthFrownLeft: 0.72, mouthFrownRight: 0.72,
     mouthPressLeft: 0.06, mouthPressRight: 0.06,
   },
-  // THINKING: stronger one-sided brow + upward gaze
+  // THINKING: stronger one-sided brow +0.05, eyeLookUp +0.04
   thinking: {
-    browOuterUpLeft: 0.55, browOuterUpRight: 0.10,
+    browOuterUpLeft: 0.60, browOuterUpRight: 0.10,
     browInnerUp: 0.15,
-    eyeLookUpLeft: 0.25, eyeLookUpRight: 0.25,
+    eyeLookUpLeft: 0.29, eyeLookUpRight: 0.29,
     eyeLookOutLeft: 0.18, eyeLookInRight: 0.18,
   },
   surprised: {
     browInnerUp: 0.9,
     eyeWideLeft: 0.7, eyeWideRight: 0.7,
   },
-  // CONCERNED: worry/tension — distinct from empathetic (less sadness, more brow tension)
+  // CONCERNED: browDown +0.04, browInnerUp -0.03, eyeSquint +0.03, eyeLookDown reduced
   concerned: {
-    browInnerUp: 0.68,
-    browDownLeft: 0.22, browDownRight: 0.22,
-    eyeSquintLeft: 0.14, eyeSquintRight: 0.14,
-    eyeLookDownLeft: 0.06, eyeLookDownRight: 0.06,
+    browInnerUp: 0.65,
+    browDownLeft: 0.26, browDownRight: 0.26,
+    eyeSquintLeft: 0.17, eyeSquintRight: 0.17,
+    eyeLookDownLeft: 0.03, eyeLookDownRight: 0.03,
     noseSneerLeft: 0.08, noseSneerRight: 0.08,
     mouthFrownLeft: 0.38, mouthFrownRight: 0.38,
   },
@@ -262,6 +273,10 @@ export function Character(props) {
   const neckBoneRef = useRef(null);
   const saccadeRef = useRef({ x: 0, y: 0, nextTime: 0 });
 
+  // Micro-motion humanization refs
+  const headDriftRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0, nextTime: 0 });
+  const browNoiseRef = useRef({ left: 0, right: 0, targetL: 0, targetR: 0, nextTime: 0 });
+
   // Speech-state gate refs
   const speechActiveRef = useRef(false);
   const speechReleaseTimerRef = useRef(0);
@@ -272,6 +287,9 @@ export function Character(props) {
   // PP bilabial hold timer
   const ppHoldUntilRef = useRef(0);       // performance.now() deadline
   const ppOnsetFrameRef = useRef(false);  // true on first frame PP is detected
+
+  // Diphthong transition state
+  const diphthongRef = useRef({ active: null, startTime: 0 });
 
   // §1 — Viseme offset: ring buffer to delay viseme weights
   const visemeBufferRef = useRef([]);
@@ -325,14 +343,21 @@ export function Character(props) {
     }
   }, [actions, animations]);
 
-  // ── Blink loop ──
+  // ── Blink loop (humanized: clusters of 1-2 blinks with natural variance) ──
   useEffect(() => {
     let blinkTimeout;
     const nextBlink = () => {
+      // Natural blink interval: 2-6s, occasional fast double-blinks
+      const isDoubleBlink = Math.random() < 0.2;
+      const interval = isDoubleBlink
+        ? randInt(150, 300)  // quick follow-up blink
+        : randInt(2000, 6000); // normal interval
+
       blinkTimeout = setTimeout(() => {
         setBlink(true);
-        setTimeout(() => { setBlink(false); nextBlink(); }, randInt(80, 150));
-      }, Math.random() * 3000 + 3000);
+        // Blink duration: 80-160ms (varies naturally)
+        setTimeout(() => { setBlink(false); nextBlink(); }, randInt(80, 160));
+      }, interval);
     };
     nextBlink();
     return () => clearTimeout(blinkTimeout);
@@ -529,13 +554,17 @@ export function Character(props) {
       }
     }
 
-    // ── Micro-saccades ──
+    // ── Micro-saccades (enhanced with wider range during idle) ──
     const saccade = saccadeRef.current;
     if (now > saccade.nextTime) {
       const isThinking = currentEmotion === 'thinking';
-      saccade.x = (Math.random() - 0.5) * 0.06;
-      saccade.y = (Math.random() - 0.5) * 0.04;
-      saccade.nextTime = now + (isThinking ? 300 + Math.random() * 400 : 800 + Math.random() * 1500);
+      const isIdle = status !== 'speaking';
+      // Wider saccades when idle (more natural "looking around")
+      const rangeX = isIdle ? 0.09 : 0.06;
+      const rangeY = isIdle ? 0.06 : 0.04;
+      saccade.x = (Math.random() - 0.5) * rangeX;
+      saccade.y = (Math.random() - 0.5) * rangeY;
+      saccade.nextTime = now + (isThinking ? 300 + Math.random() * 400 : 600 + Math.random() * 1200);
     }
     if (currentEmotion !== 'thinking') {
       lerpMorphTarget("eyeLookInLeft", Math.max(0, saccade.x), 0.06);
@@ -548,13 +577,51 @@ export function Character(props) {
       lerpMorphTarget("eyeLookDownRight", Math.max(0, -saccade.y), 0.06);
     }
 
-    // ── Neck tilt (curious + thinking) ──
+    // ── Neck: emotion tilt + subtle drift (conversation only) ──
     if (neckBoneRef.current) {
       const isSpeakingOrCalib = status === 'speaking' || calibrationMode;
+
+      // Emotion-driven neck tilt
       let targetTilt = 0;
-      if (isSpeakingOrCalib && currentEmotion === 'curious') targetTilt = 0.15;
-      else if (isSpeakingOrCalib && currentEmotion === 'thinking') targetTilt = -0.08;
-      neckBoneRef.current.rotation.z = MathUtils.lerp(neckBoneRef.current.rotation.z, targetTilt, 0.12);
+      if (isSpeakingOrCalib && currentEmotion === 'curious') targetTilt = 0.18;
+      else if (isSpeakingOrCalib && currentEmotion === 'thinking') targetTilt = -0.10;
+
+      // Micro head drift only during active conversation (not on startup screen)
+      let driftX = 0, driftY = 0;
+      if (isSpeakingOrCalib) {
+        const drift = headDriftRef.current;
+        if (now > drift.nextTime) {
+          drift.targetX = (Math.random() - 0.5) * 0.02;
+          drift.targetY = (Math.random() - 0.5) * 0.015;
+          drift.nextTime = now + 2000 + Math.random() * 3000;
+        }
+        drift.x = MathUtils.lerp(drift.x, drift.targetX, 0.02);
+        drift.y = MathUtils.lerp(drift.y, drift.targetY, 0.02);
+        driftX = drift.x;
+        driftY = drift.y;
+      }
+
+      // Only touch neck rotation during active conversation
+      if (isSpeakingOrCalib) {
+        neckBoneRef.current.rotation.z = MathUtils.lerp(neckBoneRef.current.rotation.z, targetTilt + driftX, 0.06);
+        neckBoneRef.current.rotation.y = MathUtils.lerp(neckBoneRef.current.rotation.y, driftY, 0.04);
+      }
+    }
+
+    // ── Tiny asymmetrical brow noise (idle humanization) ──
+    const browNoise = browNoiseRef.current;
+    if (now > browNoise.nextTime) {
+      // Small random asymmetric brow movement
+      browNoise.targetL = Math.random() * 0.06;
+      browNoise.targetR = Math.random() * 0.06;
+      browNoise.nextTime = now + 3000 + Math.random() * 5000;
+    }
+    browNoise.left = MathUtils.lerp(browNoise.left, browNoise.targetL, 0.03);
+    browNoise.right = MathUtils.lerp(browNoise.right, browNoise.targetR, 0.03);
+    // Only apply brow noise when no strong emotion is overriding
+    if (!speechActive && currentEmotion === 'neutral') {
+      lerpMorphTarget("browOuterUpLeft", browNoise.left, 0.04);
+      lerpMorphTarget("browOuterUpRight", browNoise.right, 0.04);
     }
 
     // ══════════════════════════════════════════════════════════════
@@ -581,6 +648,37 @@ export function Character(props) {
             w = Math.min(w, cap);
 
             targetVisemes[visemeName] = (targetVisemes[visemeName] || 0) + w;
+          }
+
+          // ── Diphthong detection + transition ──
+          // Check for dual-vowel patterns that indicate German diphthongs
+          const wA = weights.A || 0, wE = weights.E || 0, wI = weights.I || 0;
+          const wO = weights.O || 0, wU = weights.U || 0;
+          const diph = diphthongRef.current;
+
+          let diphMatch = null;
+          if (wA > 0.2 && wI > 0.12) diphMatch = DIPHTHONGS.ei;       // ei/ai
+          else if (wA > 0.2 && wU > 0.12) diphMatch = DIPHTHONGS.au;  // au
+          else if (wO > 0.15 && wI > 0.12) diphMatch = DIPHTHONGS.eu; // eu/äu
+
+          if (diphMatch) {
+            if (!diph.active || diph.active !== diphMatch) {
+              diph.active = diphMatch;
+              diph.startTime = now;
+            }
+            const elapsed = now - diph.startTime;
+            const progress = MathUtils.clamp(elapsed / diphMatch.durationMs, 0, 1);
+            // Bias first component: at progress=0 → full 'from', at progress=1 → full 'to'
+            const fromWeight = (1 - progress) * diphMatch.bias;
+            const toWeight = progress * (1 - diphMatch.bias + 0.4); // slightly boost second
+            const totalVowelEnergy = Math.max(wA, wE, wI, wO, wU) * globalMult;
+            // Override the individual vowel visemes with diphthong blend
+            const fromCap = tunedCaps?.[diphMatch.from] ?? VISEME_MAX_WEIGHT[diphMatch.from] ?? 1.0;
+            const toCap = tunedCaps?.[diphMatch.to] ?? VISEME_MAX_WEIGHT[diphMatch.to] ?? 1.0;
+            targetVisemes[diphMatch.from] = Math.min(totalVowelEnergy * fromWeight, fromCap);
+            targetVisemes[diphMatch.to] = Math.min(totalVowelEnergy * toWeight, toCap);
+          } else {
+            diph.active = null;
           }
 
           // Detect bilabial candidate: consonant energy with no vowel
@@ -622,10 +720,16 @@ export function Character(props) {
           const crossfadeSpeed = calibrationTuning?.crossfadeSpeed ?? 0.55;
           const prevWeights = prevVisemeWeightsRef.current;
 
+          // Fricative fast-release: SS and CH decay faster when dropping
+          const FRICATIVE_RELEASE_SPEED = 0.75; // faster than normal crossfade
+
           for (const viseme of NATIVE_VISEMES) {
             const target = MathUtils.clamp(targetVisemes[viseme] || 0, 0, 1);
             const prev = prevWeights[viseme] || 0;
-            const blended = MathUtils.lerp(prev, target, crossfadeSpeed);
+            // Use faster release for fricatives to prevent visual sticking
+            const isFricativeRelease = (viseme === 'viseme_SS' || viseme === 'viseme_CH') && target < prev;
+            const speed = isFricativeRelease ? FRICATIVE_RELEASE_SPEED : crossfadeSpeed;
+            const blended = MathUtils.lerp(prev, target, speed);
             lerpMorphTarget(viseme, blended, 0.7);
             prevWeights[viseme] = blended;
           }

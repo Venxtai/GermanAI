@@ -436,13 +436,25 @@ async function saveTranscriptFile(sessionId, logSession) {
     const filename = `Unit_${unitPadded}_${dateStr}_${timeStr}_${sessionId}.txt`;
 
     // Build transcript text
+    const meta = logSession.meta || {};
+    const durationSec = Math.round((Date.now() - logSession.createdAt) / 1000);
+    const durationFormatted = durationSec >= 60
+      ? `${Math.floor(durationSec / 60)}m ${durationSec % 60}s`
+      : `${durationSec}s`;
+
     const lines = [];
     lines.push('═'.repeat(60));
     lines.push(`CONVERSATION TRANSCRIPT`);
-    lines.push(`Unit    : Unit ${unit} — ${unitTitle}`);
-    lines.push(`Date    : ${now.toLocaleString()}`);
-    lines.push(`Session : ${sessionId}`);
-    lines.push(`Turns   : ${logSession.exchangeCount} student turn(s)`);
+    lines.push('═'.repeat(60));
+    lines.push(`Unit       : Unit ${unit} — ${unitTitle}`);
+    lines.push(`Date       : ${now.toLocaleString()}`);
+    lines.push(`Session    : ${sessionId}`);
+    lines.push(`Student    : ${meta.studentName || '(unknown)'}`);
+    lines.push(`Access Code: ${meta.accessCode || '(none)'}`);
+    lines.push(`Assigned To: ${meta.assignedTo || '(none)'}`);
+    lines.push(`Duration   : ${durationFormatted}`);
+    lines.push(`Turns      : ${logSession.exchangeCount} student turn(s)`);
+    lines.push(`Ended      : ${logSession.endReason || 'Unknown'}`);
     lines.push('─'.repeat(60));
     lines.push('');
 
@@ -453,7 +465,39 @@ async function saveTranscriptFile(sessionId, logSession) {
 
     lines.push('');
     lines.push('─'.repeat(60));
-    lines.push(`[${timestamp()}] CONVERSATION ENDED`);
+    lines.push(`[${timestamp()}] CONVERSATION ENDED — ${logSession.endReason || 'Unknown reason'}`);
+
+    // ── Feedback section ──
+    lines.push('');
+    lines.push('─'.repeat(60));
+    lines.push('FEEDBACK');
+    lines.push('─'.repeat(60));
+    if (logSession.feedbackItems) {
+      if (logSession.feedbackItems.fallback) {
+        lines.push(`No feedback generated: ${logSession.feedbackItems.reason || 'unknown reason'}`);
+      } else if (logSession.feedbackItems.items?.length > 0) {
+        for (const item of logSession.feedbackItems.items) {
+          lines.push(`  • ${item}`);
+        }
+      } else {
+        lines.push('No feedback items returned.');
+      }
+    } else {
+      lines.push('Feedback: Pending (may update after generation)');
+    }
+
+    // ── Errors section (debug only — not in student download) ──
+    if (logSession.errors && logSession.errors.length > 0) {
+      lines.push('');
+      lines.push('─'.repeat(60));
+      lines.push('ERRORS (debug)');
+      lines.push('─'.repeat(60));
+      for (const err of logSession.errors) {
+        lines.push(`[${err.time}] ${err.context || 'unknown'}: ${err.error}`);
+      }
+    }
+
+    lines.push('');
     lines.push('═'.repeat(60));
 
     const content = lines.join('\n');
@@ -477,6 +521,8 @@ async function saveTranscriptFile(sessionId, logSession) {
           fields: 'id',
         });
         const fileId = driveRes.data.id;
+        // Store file ID so feedback can update the transcript later
+        if (logSession) logSession.driveFileId = fileId;
         const driveLink = `https://drive.google.com/file/d/${fileId}/view`;
         console.log(`${DIM}[TRANSCRIPT] Uploaded to Google Drive: ${filename}${RESET}`);
 
@@ -521,6 +567,54 @@ function saveTranscriptLocally(filename, content) {
   if (!fs.existsSync(transcriptsDir)) fs.mkdirSync(transcriptsDir, { recursive: true });
   fs.writeFileSync(path.join(transcriptsDir, filename), content, 'utf8');
   console.log(`${DIM}[TRANSCRIPT] Saved locally: transcripts/${filename}${RESET}`);
+}
+
+/**
+ * Update an already-uploaded Drive transcript with feedback results.
+ * Called when feedback arrives after the transcript was initially saved.
+ */
+async function updateTranscriptWithFeedback(driveFileId, sessionId, logSession) {
+  if (!driveClient) return;
+  try {
+    // Download current content
+    const getRes = await driveClient.files.get({ fileId: driveFileId, alt: 'media' });
+    let content = typeof getRes.data === 'string' ? getRes.data : getRes.data.toString();
+
+    // Replace the feedback section
+    const feedbackHeader = '─'.repeat(60) + '\nFEEDBACK\n' + '─'.repeat(60);
+    const feedbackIdx = content.indexOf('FEEDBACK');
+    if (feedbackIdx === -1) return; // No feedback section found
+
+    // Find the section boundaries
+    const sectionStart = content.lastIndexOf('─'.repeat(60), feedbackIdx);
+    // Find next section (ERRORS or final ═══)
+    const afterFeedback = content.indexOf('\n─', feedbackIdx + 10);
+    const afterFeedbackAlt = content.indexOf('\n═', feedbackIdx + 10);
+    const sectionEnd = afterFeedback > 0 ? afterFeedback : (afterFeedbackAlt > 0 ? afterFeedbackAlt : content.length);
+
+    // Build new feedback section
+    const fb = logSession.feedbackItems;
+    const fbLines = [feedbackHeader];
+    if (fb?.fallback) {
+      fbLines.push(`No feedback generated: ${fb.reason || 'unknown reason'}`);
+    } else if (fb?.items?.length > 0) {
+      for (const item of fb.items) fbLines.push(`  • ${item}`);
+    } else {
+      fbLines.push('No feedback items returned.');
+    }
+
+    content = content.substring(0, sectionStart) + fbLines.join('\n') + content.substring(sectionEnd);
+
+    // Re-upload
+    const { Readable } = require('stream');
+    await driveClient.files.update({
+      fileId: driveFileId,
+      media: { mimeType: 'text/plain', body: Readable.from([content]) },
+    });
+    console.log(`${DIM}[TRANSCRIPT] Updated Drive file with feedback: ${driveFileId}${RESET}`);
+  } catch (err) {
+    console.warn(`[TRANSCRIPT] Failed to update feedback on Drive:`, err.message);
+  }
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -1091,7 +1185,7 @@ app.get('/log-viewer', (req, res) => {
  * Route: Conversation logger — frontend posts transcripts here.
  * body: { type: 'start'|'turn'|'end'|'abandon', sessionId, unit?, unitTitle?, role?: 'student'|'ai', text? }
  */
-const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount, turns[], meta, lastActivity }
+const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount, turns[], meta, lastActivity, endReason, errors[], feedbackItems, driveFileId }
 
 app.post('/api/log', (req, res) => {
   const { type, sessionId, unit, unitTitle, role, text } = req.body;
@@ -1108,6 +1202,10 @@ app.post('/api/log', (req, res) => {
       // Session metadata for abandoned-session rescue
       meta: { accessCode, accessType, assignedTo, studentName, book, chapter },
       activity: ['screen:session'],  // Track student activity
+      endReason: null,               // Why the conversation ended
+      errors: [],                    // Pipeline errors collected during session
+      feedbackItems: null,           // Feedback results (set after generation)
+      driveFileId: null,             // Drive file ID for transcript updates
     });
     const label = unitTitle ? `Unit ${unit} — ${unitTitle}` : `Unit ${unit}`;
     console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
@@ -1153,12 +1251,39 @@ app.post('/api/log', (req, res) => {
     }
     broadcastLog({ type: 'update-turn', id, text: updatedText, time: timestamp() });
 
+  } else if (type === 'error') {
+    // Collect pipeline errors for transcript debugging
+    const session = logSessions.get(sessionId);
+    if (session) {
+      const { error: errorMsg, context: errorContext } = req.body;
+      session.errors.push({ error: errorMsg, context: errorContext, time: timestamp() });
+      console.log(`${YELLOW}[SESSION ERROR] ${sessionId}: ${errorMsg}${RESET}`);
+    }
+
+  } else if (type === 'feedback') {
+    // Feedback results arrived — update transcript on Drive if already saved
+    const session = logSessions.get(sessionId);
+    if (session) {
+      const { items, fallback, reason: feedbackReason } = req.body;
+      session.feedbackItems = fallback
+        ? { fallback: true, reason: feedbackReason || 'unknown' }
+        : { items: items || [] };
+      console.log(`${DIM}[FEEDBACK] ${sessionId}: ${fallback ? `fallback (${feedbackReason || 'unknown'})` : `${(items || []).length} items`}${RESET}`);
+      // If transcript was already uploaded to Drive, update it with feedback
+      if (session.driveFileId) {
+        updateTranscriptWithFeedback(session.driveFileId, sessionId, session).catch(err => {
+          console.warn(`[FEEDBACK] Could not update Drive transcript:`, err.message);
+        });
+      }
+    }
+
   } else if (type === 'abandon') {
     // Browser closed / navigated away — rescue partial transcript
     // Guard: if session already ended normally (e.g., user clicked End then closed browser), skip
     const session = logSessions.get(sessionId);
     if (session) {
       const { reason } = req.body;
+      session.endReason = reason === 'browser_closed' ? 'Browser closed / page refreshed' : `Abandoned — ${reason}`;
       console.log(`${BOLD}${YELLOW}[${timestamp()}] SESSION ABANDONED${RESET} — ${reason || 'unknown'} (${session.turns.length} turns)`);
       rescueAbandonedSession(sessionId, session, reason || 'browser_closed');
     }
@@ -1168,12 +1293,15 @@ app.post('/api/log', (req, res) => {
     const count = session ? session.exchangeCount : 0;
     logConversationEnd(sessionId, count);
 
-    // Save transcript to file
+    // Set end reason from frontend
     if (session) {
+      const { endReason: reason } = req.body;
+      session.endReason = reason || 'User ended conversation';
       saveTranscriptFile(sessionId, session);
+      // Don't delete immediately — keep alive for feedback to arrive
+      // Cleanup after 2 minutes (feedback should arrive well before then)
+      setTimeout(() => logSessions.delete(sessionId), 2 * 60 * 1000);
     }
-
-    logSessions.delete(sessionId);
   }
 
   res.json({ ok: true });
@@ -1223,6 +1351,11 @@ async function rescueAbandonedSession(sessionId, session, reason) {
       });
     } catch (sheetErr) {
       console.warn(`[RESCUE] Could not log abandoned session to sheet:`, sheetErr.message);
+    }
+
+    // Set feedback status for abandoned sessions
+    if (!session.feedbackItems) {
+      session.feedbackItems = { fallback: true, reason: 'Session abandoned before feedback could be generated' };
     }
 
     // 2. Save partial transcript to Drive (even if only 1-2 turns)
@@ -2415,6 +2548,13 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     res.json({ transcript, response: cleanText, emotion, emotionTimeline, audioBase64: ttsResult.audioBase64, mimeType: ttsResult.mimeType });
   } catch (error) {
     console.error('[Conversation Turn] Error:', error.message);
+    // Log error to any active logSession for this voice session
+    for (const [, sess] of logSessions) {
+      if (sess.lastActivity && Date.now() - sess.lastActivity < 60000) {
+        sess.errors.push({ error: error.message, context: 'conversation-turn', time: timestamp() });
+        break;
+      }
+    }
     res.status(500).json({ error: 'Pipeline failed', details: error.message });
   } finally {
     // Clean up temp audio file
