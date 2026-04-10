@@ -379,9 +379,10 @@ export function useVoiceConnection() {
         await playStreamingAudio(data.response, data.emotionTimeline);
         setStatus('idle');
 
-        // Handle pending auto-end after AI speaks
+        // Handle pending auto-end after AI speaks — delay so student can read farewell
         if (pendingEndAfterTurnRef.current) {
           pendingEndAfterTurnRef.current = false;
+          await new Promise(r => setTimeout(r, 2000));
           endConversationRef.current?.();
           return;
         }
@@ -604,18 +605,19 @@ export function useVoiceConnection() {
           if (directives.length > 0) {
             pendingDirectivesRef.current.push(...directives);
           }
-          // Hard max: trigger AI farewell — session ends after AI says goodbye
-          // Only fire sendPromptTurn if Phase 5 farewell isn't already queued in pendingDirectives
-          if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
+          // End conversation only when max time reached AND all phases have naturally completed.
+          // Max time is a guideline — all phases (including Phase 4 student questions and
+          // Phase 5 farewell) must complete before the session ends.
+          if (mgr.maxReached && mgr.allPhasesComplete() && !pendingEndAfterTurnRef.current) {
             pendingEndAfterTurnRef.current = true;
             endReasonRef.current = 'Maximum conversation time reached';
             clearInterval(conversationTimerRef.current);
-            // Check if a Phase 5 farewell directive is already pending (from processAITurn)
+            // Phase 5 farewell directive should already be pending from processAITurn.
+            // If not, add one as safety net.
             const farewellAlreadyQueued = pendingDirectivesRef.current.some(d => d.includes('Phase 5') || d.includes('farewell') || d.includes('say goodbye'));
             if (!farewellAlreadyQueued) {
-              // Trigger a closing turn via directive — must include an actual goodbye word
               sendPromptTurn([
-                '[SYSTEM: Maximum conversation time reached. You MUST say goodbye NOW. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss, Niko!" Do NOT ask any questions. Do NOT continue the conversation. Just say goodbye.]',
+                '[SYSTEM: The conversation is ending. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss!" Do NOT ask any questions. Just say goodbye.]',
               ]);
             }
           }
@@ -817,6 +819,17 @@ export function useVoiceConnection() {
     setStatus("idle");
 
     // Async feedback — send results back to server for transcript enrichment
+    // Use captured sessionId directly (refs are cleared above, so postLog would fail)
+    const feedbackSessionId = endLogSessionId || endSessionId || '';
+    function postFeedbackLog(payload) {
+      if (!feedbackSessionId) return;
+      fetch('/api/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, sessionId: feedbackSessionId }),
+      }).catch(() => {});
+    }
+
     if (unitNumber && utterancesSnapshot.length > 0) {
       fetch('/api/feedback', {
         method: 'POST',
@@ -828,18 +841,18 @@ export function useVoiceConnection() {
           setFeedback(data);
           // Send feedback results to server so transcript can be updated
           if (data.fallback) {
-            postLog({ type: 'feedback', fallback: true, reason: 'Session too short for feedback' });
+            postFeedbackLog({ type: 'feedback', fallback: true, reason: 'Session too short for feedback' });
           } else if (data.items) {
-            postLog({ type: 'feedback', items: data.items });
+            postFeedbackLog({ type: 'feedback', items: data.items });
           }
         })
         .catch(() => {
           setFeedback({ fallback: true });
-          postLog({ type: 'feedback', fallback: true, reason: 'Feedback generation failed' });
+          postFeedbackLog({ type: 'feedback', fallback: true, reason: 'Feedback generation failed' });
         });
     } else {
       setFeedback({ fallback: true });
-      postLog({ type: 'feedback', fallback: true, reason: utterancesSnapshot.length === 0 ? 'No student utterances' : 'No unit data' });
+      postFeedbackLog({ type: 'feedback', fallback: true, reason: utterancesSnapshot.length === 0 ? 'No student utterances' : 'No unit data' });
     }
     // Save transcript for download before clearing
     const msgs = useAIStore.getState().messages;
@@ -1035,9 +1048,10 @@ export function useVoiceConnection() {
       await playStreamingAudio(aiText, turnTimeline);
       setStatus('idle');
 
-      // Handle pending auto-end (student said goodbye earlier)
+      // Handle pending auto-end (student said goodbye earlier) — delay so student can read farewell
       if (pendingEndAfterTurnRef.current) {
         pendingEndAfterTurnRef.current = false;
+        await new Promise(r => setTimeout(r, 2000));
         endConversationRef.current?.();
         return;
       }
@@ -1046,7 +1060,8 @@ export function useVoiceConnection() {
       if (aiText && managerRef.current?.isMinDurationReached()) {
         const buddyFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|macht['']s gut|bis dann|bis bald|bis zum n[aä]chsten mal)\b/i.test(aiText);
         if (buddyFarewell) {
-          // Auto-end after buddy farewell
+          // Auto-end after buddy farewell — delay so student can read it
+          await new Promise(r => setTimeout(r, 2000));
           endConversationRef.current?.();
           return;
         }

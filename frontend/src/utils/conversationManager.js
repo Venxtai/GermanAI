@@ -571,13 +571,20 @@ export class ConversationManager {
       directives.push('[SYSTEM: Minimum conversation time reached. If the student says goodbye, you may end warmly.]');
     }
 
-    // ── Hard max (safety net — Phase 4 guarantees 1 question first) ──
-    if (!this.maxReached && elapsed >= this.maxMs && this.phase < 4) {
+    // ── Max time advisory (soft signal — does NOT force farewell) ──
+    // Max time is a guideline. The conversation should be close to it but
+    // all phases must complete naturally before farewell is triggered.
+    if (!this.maxReached && elapsed >= this.maxMs) {
       this.maxReached = true;
-      this.phase = 5;
-      this.phase5Signaled = true;
-      logPhaseHeader(5, 'CLOSING — HARD MAX', `Maximum time reached (${Math.round(elapsed/1000)}s)`);
-      directives.push('[SYSTEM: Maximum time reached. Say farewell NOW.]');
+      console.log(`%c  ⏱ Max time reached (${Math.round(elapsed/1000)}s) — waiting for all phases to complete`, 'color: #EF4444; font-weight: bold;');
+      // Accelerate remaining phases — shorten deadlines so phases wrap up faster
+      if (this.phase <= 3) {
+        // Give Phase 2/3 at most 30 more seconds
+        const soon = Date.now() + 30000;
+        if (this.phase2Deadline > soon) this.phase2Deadline = soon;
+        if (this.phase3Deadline > soon) this.phase3Deadline = soon;
+        directives.push('[SYSTEM: We are running low on time. Wrap up the current topic within 1-2 more exchanges, then move to the next phase.]');
+      }
     }
 
     // Log all directives from this turn
@@ -724,12 +731,21 @@ export class ConversationManager {
       this.minReached = true;
       directives.push('[SYSTEM: Minimum conversation time reached. If the student says goodbye, you may end warmly.]');
     }
+    // Max time is advisory — only accelerate phases, never force farewell here.
+    // The timer in useVoiceConnection checks allPhasesComplete() before ending.
     if (!this.maxReached && elapsed >= this.maxMs) {
       this.maxReached = true;
-      this.phase = 5;
-      directives.push('[SYSTEM: Maximum time reached. Say farewell NOW.]');
+      console.log(`%c  ⏱ [checkTiming] Max time reached — phases must complete first`, 'color: #EF4444;');
     }
     return directives;
+  }
+
+  /**
+   * Returns true when all conversation phases have naturally completed
+   * (i.e., we are in Phase 5 and the farewell has been signaled).
+   */
+  allPhasesComplete() {
+    return this.phase >= 5 && this.phase5Signaled;
   }
 
   // ─── Mark that the student asked a question in Phase 4 ─────────────
