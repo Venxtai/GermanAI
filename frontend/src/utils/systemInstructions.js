@@ -121,65 +121,58 @@ export function generateUnitInstructions(unitData, persona = null, studentName =
     .join('\n');
 
   // ── Persona ───────────────────────────────────────────────────────────────
-  // Build Section 2 dynamically from the generated persona object, or fall
-  // back to the default "Lena" persona if none was provided.
+  // Build Section 2 dynamically from the generated persona object.
+  // Trait names come directly from the spreadsheet and are rendered dynamically.
+  // A few "core identity" traits get special English formatting; everything
+  // else is listed as "Trait: value" (the German trait names are self-explanatory).
   let personaSection;
   if (persona) {
     const p = persona;
     const av = (trait) => p[trait] || null; // null means unavailable at this level
 
-    // Group traits into presentable lines, skipping unavailable ones
-    const lines = [];
-    if (av('Vorname') && av('Nachname')) lines.push(`Your name is ${av('Vorname')} ${av('Nachname')}.`);
-    else if (av('Vorname'))              lines.push(`Your name is ${av('Vorname')}.`);
-    if (av('Alter'))                     lines.push(`You are ${av('Alter')} years old.`);
-    if (av('Geschlecht'))                lines.push(`Your gender: ${av('Geschlecht')}.`);
-    if (av('Geburtsort') && av('Wohnort')) lines.push(`You come from ${av('Geburtsort')} but currently live in ${av('Wohnort')}.`);
-    else if (av('Geburtsort'))           lines.push(`You come from ${av('Geburtsort')}.`);
-    if (av('Studium/Fach'))              lines.push(`You study ${av('Studium/Fach')}.`);
-    else if (av('Beruf'))                lines.push(`You work as ${av('Beruf')}.`);
-    if (av('Lieblingsessen'))            lines.push(`Your favourite food is ${av('Lieblingsessen')}.`);
-    if (av('Lieblingsgetränk'))         lines.push(`Your favourite drink is ${av('Lieblingsgetränk')}.`);
-    if (av('Lieblingsfarbe'))            lines.push(`Your favourite colour is ${av('Lieblingsfarbe')}.`);
-    if (av('Lieblingsmusik'))            lines.push(`Your favourite music is ${av('Lieblingsmusik')}.`);
-    if (av('Lieblingssport'))            lines.push(`Your favourite sport is ${av('Lieblingssport')}.`);
-    if (av('Hobbys'))                    lines.push(`Your hobbies: ${av('Hobbys')}.`);
-    if (av('Haustier'))                  lines.push(`You have ${av('Haustier')}.`);
-    if (av('Transportmittel'))           lines.push(`You usually travel by ${av('Transportmittel')}.`);
-    if (av('Morgenroutine'))             lines.push(`Your morning routine: ${av('Morgenroutine')}.`);
-    if (av('Abendroutine'))              lines.push(`Your evening routine: ${av('Abendroutine')}.`);
-    if (av('Lieblingsfilm/Serie'))       lines.push(`Your favourite film/series: ${av('Lieblingsfilm/Serie')}.`);
-    if (av('Lieblingsbuch'))             lines.push(`Your favourite book: ${av('Lieblingsbuch')}.`);
-    if (av('Lieblingsreiseziel'))        lines.push(`Your dream travel destination: ${av('Lieblingsreiseziel')}.`);
-    if (av('Lieblingsrestaurant'))       lines.push(`Your favourite type of restaurant: ${av('Lieblingsrestaurant')}.`);
-    if (av('Familie (Geschwister)'))     lines.push(`Siblings: ${av('Familie (Geschwister)')}.`);
-    if (av('Sprachen'))                  lines.push(`Languages you speak: ${av('Sprachen')}.`);
-    if (av('Wohnsituation'))             lines.push(`Living situation: ${av('Wohnsituation')}.`);
-    if (av('Morgenperson/Nachtperson'))  lines.push(`Morning or night person: ${av('Morgenperson/Nachtperson')}.`);
-    if (av('Introvertiert/Extrovertiert')) lines.push(`Personality: ${av('Introvertiert/Extrovertiert')}.`);
-    if (av('Lieblingstag'))              lines.push(`Favourite day of the week: ${av('Lieblingstag')}.`);
-    if (av('Lebensmotto'))               lines.push(`Life motto: "${av('Lebensmotto')}"`);
-    if (av('Wunsch/Traum'))              lines.push(`Biggest dream: ${av('Wunsch/Traum')}.`);
+    // Core identity traits get special formatting (rendered first, in order)
+    const CORE_TRAITS = new Set([
+      'Vorname', 'Pronomen', 'Alter', 'Geburtsort', 'Wohnort',
+      'Studium/Fach', 'Beruf',
+    ]);
 
-    // Collect traits that are unavailable (null) so the AI knows to deflect
+    const coreLines = [];
+    if (av('Vorname'))                     coreLines.push(`Your name is ${av('Vorname')}.`);
+    if (av('Pronomen'))                    coreLines.push(`Your pronouns: ${av('Pronomen')}.`);
+    if (av('Alter'))                       coreLines.push(`You are ${av('Alter')} years old.`);
+    if (av('Geburtsort') && av('Wohnort')) coreLines.push(`You come from ${av('Geburtsort')} but currently live in ${av('Wohnort')}.`);
+    else if (av('Geburtsort'))             coreLines.push(`You come from ${av('Geburtsort')}.`);
+    else if (av('Wohnort'))                coreLines.push(`You live in ${av('Wohnort')}.`);
+    if (av('Studium/Fach'))                coreLines.push(`You study ${av('Studium/Fach')}.`);
+    if (av('Beruf'))                       coreLines.push(`You work as ${av('Beruf')}.`);
+
+    // All remaining traits — rendered as "Trait: value" (German labels are descriptive)
+    const detailLines = [];
+    for (const [trait, value] of Object.entries(p)) {
+      if (CORE_TRAITS.has(trait)) continue; // already rendered above
+      if (value === null) continue;         // unavailable
+      detailLines.push(`• ${trait}: ${value}`);
+    }
+
+    // Collect unavailable traits so the AI knows to deflect
     const unavailable = Object.entries(p)
-      .filter(([k, v]) => v === null && k !== 'password')
+      .filter(([, v]) => v === null)
       .map(([k]) => k);
 
     personaSection = `Your name is ${av('Vorname') || 'Max'}. You are a real person, not an AI. You are friendly, curious, and warm. You laugh easily.
 
 Your confirmed persona details (reveal naturally as the conversation progresses — don't dump everything at once):
-${lines.join('\n')}
+${coreLines.join('\n')}
+${detailLines.length ? '\n' + detailLines.join('\n') : ''}
+
+PERSONA CONSISTENCY RULE — ABSOLUTE:
+You MUST stick to these details 100%. You may ADD compatible details (e.g. additional family members, extra hobbies) but you may NEVER contradict any fact listed above. If a student asks you something and the answer is in your persona, use EXACTLY that answer.
 
 UNAVAILABLE TRAITS (do NOT make up values for these — deflect naturally):
 ${unavailable.length ? unavailable.join(', ') : '(none — all traits are available for this chapter)'}
 
 When asked about an unavailable trait, respond naturally: "Hmm, ich weiß nicht!" or "Gute Frage!" or change the subject.
-When you and the student share something in common, express genuine connection: "Ich auch!" or "Oh, cool, ich auch!"
-
-IMPORTANT — PASSWORD RULE:
-If the student asks "Was ist das Passwort?" or "Wie ist das Passwort?", answer with exactly: "${av('password') || 'Hallo'}"
-Do not reveal the password unless explicitly asked.`;
+When you and the student share something in common, express genuine connection: "Ich auch!" or "Oh, cool, ich auch!"`;
 
   } else {
     // Default fallback persona (no persona data available)

@@ -2895,39 +2895,44 @@ app.post('/api/tts-stream', async (req, res) => {
  * unavailable so the AI can deflect naturally.
  *
  * body: { book: "ID1"|"ID2B"|"ID2O", chapter: <number> }
- * returns: { chapterKey, persona: { [trait]: string|null } }
+ * returns: { sheetKey, persona: { [trait]: string|null } }
  */
 
-/** Map (book, chapter) → persona database key */
-function getPersonaChapterKey(book, chapter) {
-  if (book === 'ID1')  return `ID1_Ch${chapter}`;
-  if (book === 'ID2B') return `ID2B_Ch${chapter}`;
-  if (book === 'ID2O') return `ID2O_Ch${chapter}`;
+/** Map (book, chapter) → persona database sheet key */
+function getPersonaSheetKey(book, chapter) {
+  if (book === 'ID1')  return `Chapter ${chapter}`;
+  if (book === 'ID2B') return `BLAU Ch${chapter}`;
+  if (book === 'ID2O') return `ORANGE Ch${chapter}`;
   return null;
 }
 
 app.post('/api/persona', (req, res) => {
   const { book = 'ID1', chapter = 1 } = req.body;
-  const chapterKey = getPersonaChapterKey(book, chapter);
+  const sheetKey = getPersonaSheetKey(book, chapter);
 
-  if (!chapterKey || !personaDatabase[chapterKey]) {
-    // Fallback to the richest available chapter (ID1_Ch8) when chapter not yet in DB.
-    // This silently degrades rather than erroring.
-    const fallbackKey = 'ID1_Ch8';
+  if (!sheetKey || !personaDatabase[sheetKey]) {
+    // Fallback to the richest available chapter when sheet not yet in DB.
+    const fallbackKey = 'Chapter 8';
     const fallbackTraits = personaDatabase[fallbackKey];
     if (!fallbackTraits) return res.status(404).json({ error: 'Persona database empty' });
-    return res.json({ chapterKey: fallbackKey, persona: buildPersona(fallbackTraits) });
+    return res.json({ sheetKey: fallbackKey, persona: buildPersona(fallbackTraits) });
   }
 
-  const traits = personaDatabase[chapterKey];
-  res.json({ chapterKey, persona: buildPersona(traits) });
+  const traits = personaDatabase[sheetKey];
+  res.json({ sheetKey, persona: buildPersona(traits) });
 });
 
+/**
+ * Build a coherent persona by picking ONE column index (0-4) for ALL traits.
+ * This ensures Option 1's name goes with Option 1's hobbies, city, etc.
+ */
 function buildPersona(traits) {
+  const personaIndex = Math.floor(Math.random() * 5);
   const persona = {};
   for (const [trait, options] of Object.entries(traits)) {
-    const pick = options[Math.floor(Math.random() * options.length)];
-    persona[trait] = pick === '-' ? null : pick;
+    if (!Array.isArray(options)) continue;
+    const pick = options[personaIndex];
+    persona[trait] = (!pick || pick === '-') ? null : pick;
   }
   return persona;
 }
