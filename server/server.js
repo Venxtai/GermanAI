@@ -111,6 +111,67 @@ async function getSheetsClient() {
   return sheetsClient;
 }
 
+/**
+ * Resolve a unit ID (e.g. "19", "O23", "B5") to book + chapter info.
+ * Returns { book, bookLabel, chapter, chapterTitle } or null.
+ */
+function resolveUnitToChapterInfo(unitId) {
+  const id = String(unitId).trim();
+  let book, unitNum;
+
+  if (/^O/i.test(id)) {
+    book = 'ID2O';
+    unitNum = parseInt(id.replace(/^O/i, ''));
+  } else if (/^B/i.test(id)) {
+    book = 'ID2B';
+    unitNum = parseInt(id.replace(/^B/i, ''));
+  } else {
+    book = 'ID1';
+    unitNum = parseInt(id);
+  }
+
+  if (isNaN(unitNum)) return null;
+
+  const chapters = ALL_CHAPTERS[book];
+  if (!chapters) return null;
+  const ch = chapters.find(c => unitNum >= c.unitStart && unitNum <= c.unitEnd);
+  if (!ch) return null;
+
+  const bookLabels = { ID1: 'Impuls Deutsch 1', ID2B: 'Impuls Deutsch 2 BLAU', ID2O: 'Impuls Deutsch 2 ORANGE' };
+  return {
+    book,
+    bookLabel: bookLabels[book] || book,
+    chapter: ch.chapter,
+    chapterTitle: ch.title,
+  };
+}
+
+/**
+ * Resolve (book, chapter) to the last non-optional unit ID in that chapter.
+ * Used by the preselection system — teachers select a chapter, we auto-pick the unit.
+ * Returns a unit ID string (e.g. "37", "O17", "B26") or null.
+ */
+function resolveChapterToLastUnit(book, chapter) {
+  const chapters = ALL_CHAPTERS[book];
+  if (!chapters) return null;
+  const ch = chapters.find(c => c.chapter === chapter);
+  if (!ch) return null;
+
+  const prefix = book === 'ID2O' ? 'O' : book === 'ID2B' ? 'B' : '';
+
+  // Walk backwards from unitEnd to unitStart, find last non-optional
+  for (let u = ch.unitEnd; u >= ch.unitStart; u--) {
+    const uid = prefix ? `${prefix}${u}` : String(u);
+    const unitData = unitMap[uid];
+    if (unitData && !unitData.is_optional) return uid;
+  }
+  // Fallback: just use unitEnd
+  const uid = prefix ? `${prefix}${ch.unitEnd}` : String(ch.unitEnd);
+  return uid;
+}
+
+const BOOK_SHORT_LABELS = { ID1: 'ID1', ID2B: 'ID2 BLAU', ID2O: 'ID2 ORANGE' };
+
 // POST /api/auth/validate — Check access code, return validity + remaining uses
 app.post('/api/auth/validate', async (req, res) => {
   const { code } = req.body;
@@ -122,7 +183,7 @@ app.post('/api/auth/validate', async (req, res) => {
     const sheets = await getSheetsClient();
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:I',
+      range: 'Access Codes!A2:K',
     });
 
     const rows = result.data.values || [];
@@ -135,7 +196,7 @@ app.post('/api/auth/validate', async (req, res) => {
 
     const row = rows[rowIndex];
     const type = row[1] || 'student';
-    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
+    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Unit, J=Deadline, K=Notes
     // Column C = Tool (Text, Buddy, or Both) — code is valid for Buddy if "Buddy" or "Both"
     const tool = (row[2] || '').trim().toLowerCase();
     if (tool !== 'buddy' && tool !== 'both') {
@@ -144,12 +205,98 @@ app.post('/api/auth/validate', async (req, res) => {
     const maxUses = parseInt(row[3]) || 0;
     const used = parseInt(row[4]) || 0;
     const assignedTo = row[6] || '';
+    const preselectedUnit = (row[8] || '').trim();  // Column I = Unit (e.g. "19" or "O23")
+    const deadline = (row[9] || '').trim();          // Column J = Deadline
 
     if (used >= maxUses) {
       return res.json({ valid: false, error: 'Access code has expired (all uses consumed)', used, maxUses });
     }
 
-    // Increment usage count (row is 0-indexed in data, +2 for header + 1-indexing)
+    // If unit is preselected, DON'T increment usage yet — wait for /api/auth/confirm
+    // If free choice, increment immediately (existing behavior)
+    const sheetRow = rowIndex + 2;
+    if (!preselectedUnit) {
+      await sheets.spreadsheets.values.update({
+        spreadsheetId: ACCESS_SHEETS_ID,
+        range: `Access Codes!E${sheetRow}`,
+        valueInputOption: 'RAW',
+        requestBody: { values: [[used + 1]] },
+      });
+
+      // Log usage to Buddy Usage Log tab
+      // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
+      const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: ACCESS_SHEETS_ID,
+        range: 'Buddy Usage Log!A:I',
+        valueInputOption: 'RAW',
+        requestBody: {
+          values: [[timestamp, code, type, assignedTo, '', '', '', '', '']],
+        },
+      });
+    }
+
+    console.log(`[AUTH] Code "${code}" validated — ${preselectedUnit ? 'preselected unit ' + preselectedUnit : (used + 1) + '/' + maxUses + ' uses'} (${type})`);
+
+    // If preselected, resolve the unit to book/chapter info for the student confirmation screen
+    let preselectedInfo = null;
+    if (preselectedUnit) {
+      preselectedInfo = resolveUnitToChapterInfo(preselectedUnit);
+      if (preselectedInfo) {
+        preselectedInfo.deadline = deadline || null;
+        preselectedInfo.unitId = preselectedUnit;
+      }
+    }
+
+    return res.json({
+      valid: true,
+      type,
+      remainingUses: preselectedUnit ? 0 : maxUses - used - 1,
+      assignedTo,
+      preselectedUnit: preselectedInfo,
+    });
+
+  } catch (err) {
+    console.error('[AUTH] Google Sheets error:', err.message);
+    // If Sheets is down, allow access (fail-open for usability)
+    return res.json({ valid: true, type: 'student', remainingUses: -1, error: 'Could not verify — access granted temporarily' });
+  }
+});
+
+// POST /api/auth/confirm — Confirm preselected-unit code usage (increments Used + logs)
+// Called when student clicks OK on the preselection confirmation screen.
+app.post('/api/auth/confirm', async (req, res) => {
+  const { code } = req.body;
+  if (!code || typeof code !== 'string') {
+    return res.status(400).json({ ok: false, error: 'No code provided' });
+  }
+
+  try {
+    const sheets = await getSheetsClient();
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:K',
+    });
+
+    const rows = result.data.values || [];
+    const codeLower = code.trim().toLowerCase();
+    const rowIndex = rows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+
+    if (rowIndex === -1) {
+      return res.json({ ok: false, error: 'Invalid access code' });
+    }
+
+    const row = rows[rowIndex];
+    const maxUses = parseInt(row[3]) || 0;
+    const used = parseInt(row[4]) || 0;
+    const assignedTo = row[6] || '';
+    const type = row[1] || 'student';
+
+    if (used >= maxUses) {
+      return res.json({ ok: false, error: 'Access code has expired' });
+    }
+
+    // Increment usage count
     const sheetRow = rowIndex + 2;
     await sheets.spreadsheets.values.update({
       spreadsheetId: ACCESS_SHEETS_ID,
@@ -158,8 +305,7 @@ app.post('/api/auth/validate', async (req, res) => {
       requestBody: { values: [[used + 1]] },
     });
 
-    // Log usage to Buddy Usage Log tab
-    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
+    // Log to Buddy Usage Log
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
@@ -170,19 +316,11 @@ app.post('/api/auth/validate', async (req, res) => {
       },
     });
 
-    console.log(`[AUTH] Code "${code}" validated — ${used + 1}/${maxUses} uses (${type})`);
-
-    return res.json({
-      valid: true,
-      type,
-      remainingUses: maxUses - used - 1,
-      assignedTo,
-    });
-
+    console.log(`[AUTH] Preselected code "${code}" confirmed — ${used + 1}/${maxUses} uses`);
+    return res.json({ ok: true });
   } catch (err) {
-    console.error('[AUTH] Google Sheets error:', err.message);
-    // If Sheets is down, allow access (fail-open for usability)
-    return res.json({ valid: true, type: 'student', remainingUses: -1, error: 'Could not verify — access granted temporarily' });
+    console.error('[AUTH] Confirm error:', err.message);
+    return res.json({ ok: false, error: 'Server error' });
   }
 });
 
@@ -3163,7 +3301,7 @@ app.post('/api/invite/validate-teacher', async (req, res) => {
     const sheets = await getSheetsClient();
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:I',
+      range: 'Access Codes!A2:K',
     });
 
     const rows = result.data.values || [];
@@ -3204,11 +3342,17 @@ app.post('/api/invite/validate-teacher', async (req, res) => {
 });
 
 // POST /api/invite/create-codes — Generate student codes and write to Google Sheet
+// Supports two modes:
+//   1. Free choice (default): one code per student with maxUses = conversations
+//   2. Preselected topics: N codes per student (one per conversation), each with unit + deadline
 app.post('/api/invite/create-codes', async (req, res) => {
-  const { teacherCode, teacherEmail, students } = req.body;
+  const { teacherCode, teacherEmail, students, assignments } = req.body;
+  // assignments is optional: [{ unit: "19", deadline: "2026-05-15" }, ...] — one per conversation slot
   if (!teacherCode || !teacherEmail || !Array.isArray(students) || students.length === 0) {
     return res.status(400).json({ success: false, error: 'Missing required fields' });
   }
+
+  const isPreselected = Array.isArray(assignments) && assignments.length > 0;
 
   try {
     const sheets = await getSheetsClient();
@@ -3216,7 +3360,7 @@ app.post('/api/invite/create-codes', async (req, res) => {
     // Re-validate teacher code + email
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A2:I',
+      range: 'Access Codes!A2:K',
     });
 
     const rows = result.data.values || [];
@@ -3255,26 +3399,104 @@ app.post('/api/invite/create-codes', async (req, res) => {
     // Collect all existing codes for uniqueness check
     const existingCodes = new Set(rows.map(r => (r[0] || '').toLowerCase()));
 
-    // Generate unique codes for each student
     const generatedCodes = [];
+    const newRows = [];
+    const SUFFIX_LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+
     for (const student of students) {
       const initials = getInitials(student.name || 'XX');
-      let code;
-      let attempts = 0;
-      do {
-        code = generateRandomCode(initials);
-        attempts++;
-        if (attempts > 100) throw new Error('Could not generate unique code after 100 attempts');
-      } while (existingCodes.has(code.toLowerCase()));
+      const assignedTo = `${student.name}${student.university ? ' (' + student.university + ')' : ''}`;
+      const notesBase = `Created with teacher code "${teacherCode}"`;
 
-      existingCodes.add(code.toLowerCase());
-      generatedCodes.push({
-        name: student.name,
-        university: student.university || '',
-        email: student.email || '',
-        conversations: parseInt(student.conversations) || 1,
-        code,
-      });
+      if (isPreselected) {
+        // Generate a base code, then append -A, -B, -C for each conversation
+        let baseCode;
+        let attempts = 0;
+        do {
+          baseCode = generateRandomCode(initials);
+          attempts++;
+          if (attempts > 100) throw new Error('Could not generate unique code after 100 attempts');
+        } while (existingCodes.has(baseCode.toLowerCase()));
+
+        const studentCodes = [];
+        for (let j = 0; j < assignments.length; j++) {
+          const suffix = SUFFIX_LETTERS[j % SUFFIX_LETTERS.length];
+          const code = `${baseCode}-${suffix}`;
+          existingCodes.add(code.toLowerCase());
+
+          const a = assignments[j];
+          // Resolve chapter to last non-optional unit (teachers only select book+chapter)
+          const resolvedUnit = a.unit || resolveChapterToLastUnit(a.book || 'ID1', parseInt(a.chapter) || 1) || '';
+          const chInfo = resolvedUnit ? resolveUnitToChapterInfo(resolvedUnit) : null;
+          const shortBook = BOOK_SHORT_LABELS[chInfo?.book || a.book] || a.book || '';
+
+          studentCodes.push({
+            code,
+            unit: resolvedUnit,
+            deadline: a.deadline || '',
+            book: chInfo?.book || a.book || '',
+            chapter: chInfo?.chapter || parseInt(a.chapter) || '',
+            chapterLabel: chInfo ? `${chInfo.bookLabel} · Chapter ${chInfo.chapter}: ${chInfo.chapterTitle}` : '',
+            chapterShort: chInfo ? `${shortBook} · Chapter ${chInfo.chapter}` : '',
+          });
+
+          // A=Code, B=Type, C=Tool, D=MaxUses, E=Used, F=CreatedBy, G=AssignedTo, H=Email, I=Unit, J=Deadline, K=Notes
+          newRows.push([
+            code,
+            'student',
+            'Buddy',
+            1, // each preselected code = 1 use
+            0,
+            teacherName,
+            assignedTo,
+            student.email || '',
+            resolvedUnit,       // Column I: Unit (auto-resolved from chapter)
+            a.deadline || '',   // Column J: Deadline
+            notesBase,          // Column K: Notes
+          ]);
+        }
+
+        generatedCodes.push({
+          name: student.name,
+          university: student.university || '',
+          email: student.email || '',
+          conversations: assignments.length,
+          codes: studentCodes, // array of { code, unit, deadline, chapterLabel }
+        });
+      } else {
+        // Free choice mode — one code per student, maxUses = conversations
+        let code;
+        let attempts = 0;
+        do {
+          code = generateRandomCode(initials);
+          attempts++;
+          if (attempts > 100) throw new Error('Could not generate unique code after 100 attempts');
+        } while (existingCodes.has(code.toLowerCase()));
+
+        existingCodes.add(code.toLowerCase());
+        generatedCodes.push({
+          name: student.name,
+          university: student.university || '',
+          email: student.email || '',
+          conversations: parseInt(student.conversations) || 1,
+          code,
+        });
+
+        // A=Code, B=Type, C=Tool, D=MaxUses, E=Used, F=CreatedBy, G=AssignedTo, H=Email, I=Unit, J=Deadline, K=Notes
+        newRows.push([
+          code,
+          'student',
+          'Buddy',
+          parseInt(student.conversations) || 1,
+          0,
+          teacherName,
+          `${student.name}${student.university ? ' (' + student.university + ')' : ''}`,
+          student.email || '',
+          '',  // Column I: Unit (empty for free choice)
+          '',  // Column J: Deadline (empty)
+          notesBase, // Column K: Notes
+        ]);
+      }
     }
 
     // Deduct credits from teacher (update Used column)
@@ -3286,35 +3508,22 @@ app.post('/api/invite/create-codes', async (req, res) => {
       requestBody: { values: [[used + totalCredits]] },
     });
 
-    // Append student rows to Access Codes sheet
-    // A=Code, B=Type, C=Tool, D=Max Uses, E=Used, F=Created By, G=Assigned To, H=Email, I=Notes
-    const newRows = generatedCodes.map(s => [
-      s.code,
-      'student',
-      'Buddy',
-      s.conversations,
-      0,
-      teacherName,
-      `${s.name}${s.university ? ' (' + s.university + ')' : ''}`,
-      s.email,
-      `Created with teacher code "${teacherCode}"`,
-    ]);
-
-    // Use USER_ENTERED so the Tool column respects the dropdown data validation
+    // Append rows to Access Codes sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Access Codes!A:I',
+      range: 'Access Codes!A:K',
       valueInputOption: 'USER_ENTERED',
       requestBody: { values: newRows },
     });
 
-    console.log(`[INVITE] Teacher "${teacherName}" (${teacherCode}) created ${generatedCodes.length} student codes, ${totalCredits} credits used`);
+    console.log(`[INVITE] Teacher "${teacherName}" (${teacherCode}) created codes for ${generatedCodes.length} students (${isPreselected ? 'preselected' : 'free choice'}), ${totalCredits} credits used`);
 
     return res.json({
       success: true,
       codes: generatedCodes,
       totalUsed: totalCredits,
       remaining: availableCredits - totalCredits,
+      isPreselected,
     });
   } catch (err) {
     console.error('[INVITE] Create codes error:', err.message);
@@ -3323,6 +3532,7 @@ app.post('/api/invite/create-codes', async (req, res) => {
 });
 
 // POST /api/invite/download-pdf — Generate printable cards PDF with QR codes
+// Supports both free-choice (one code per card) and preselected (multi-code per card) modes
 app.post('/api/invite/download-pdf', async (req, res) => {
   const { codes, teacherName } = req.body;
   if (!Array.isArray(codes) || codes.length === 0) {
@@ -3330,81 +3540,193 @@ app.post('/api/invite/download-pdf', async (req, res) => {
   }
 
   try {
-    // Pre-generate all QR codes as PNG buffers
-    const qrBuffers = await Promise.all(
-      codes.map(s => QRCode.toBuffer('https://buddy.impulsdeutsch.com', {
-        width: 120, margin: 1, color: { dark: '#008899', light: '#ffffff' },
-      }))
-    );
+    // Determine if preselected mode (students have .codes array)
+    const isPreselected = codes.some(s => Array.isArray(s.codes));
+
+    // Pre-generate one QR code buffer (all point to same URL)
+    const qrBuffer = await QRCode.toBuffer('https://buddy.impulsdeutsch.com', {
+      width: 120, margin: 1, color: { dark: '#000000', light: '#ffffff' },
+    });
 
     const doc = new PDFDocument({ size: 'A4', margin: 36, autoFirstPage: true });
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename="student-codes.pdf"');
     doc.pipe(res);
 
-    // Card dimensions: 2 columns × 4 rows on A4 (595 × 842 pt)
-    const pageW = 595 - 72; // minus margins
-    const cols = 2;
-    const rowsPerPage = 4;
-    const gapX = 12;
-    const gapY = 8;
-    const cardW = (pageW - gapX) / cols;
-    const cardH = 175;
-    const cardsPerPage = cols * rowsPerPage;
+    const pageW = 595 - 72; // A4 minus margins
     const qrSize = 70;
 
-    for (let i = 0; i < codes.length; i++) {
-      if (i > 0 && i % cardsPerPage === 0) doc.addPage();
-
-      const pageIndex = i % cardsPerPage;
-      const col = pageIndex % cols;
-      const row = Math.floor(pageIndex / cols);
-      const x = 36 + col * (cardW + gapX);
-      const y = 36 + row * (cardH + gapY);
-
-      const s = codes[i];
-
-      // Card border (dashed cut line)
+    // Helper: draw dashed grid lines for a page of cards
+    function drawGrid(doc, margin, cols, cardW, rowYPositions, gridBottom) {
       doc.save();
-      doc.roundedRect(x, y, cardW, cardH, 6)
-         .dash(4, { space: 3 })
-         .stroke('#bbb');
+      doc.dash(4, { space: 3 }).strokeColor('#bbb').lineWidth(0.5);
+      const gridLeft = margin;
+      const gridRight = margin + cols * cardW;
+      const gridTop = rowYPositions[0];
+      // Horizontal lines (top of each row + bottom of last row)
+      for (const ry of rowYPositions) {
+        doc.moveTo(gridLeft, ry).lineTo(gridRight, ry).stroke();
+      }
+      doc.moveTo(gridLeft, gridBottom).lineTo(gridRight, gridBottom).stroke();
+      // Vertical lines (left edge, between columns, right edge)
+      for (let c = 0; c <= cols; c++) {
+        const vx = margin + c * cardW;
+        doc.moveTo(vx, gridTop).lineTo(vx, gridBottom).stroke();
+      }
       doc.undash();
-
-      // Left content area (text), right area (QR)
-      const textW = cardW - qrSize - 36;
-
-      // Header
-      doc.fontSize(8.5).fillColor('#008899').font('Helvetica-Bold')
-         .text('Impuls Deutsch', x + 14, y + 12, { width: textW });
-      doc.fontSize(7.5).fillColor('#64748b').font('Helvetica')
-         .text('Conversation Buddy', x + 14, y + 23, { width: textW });
-
-      // Student name
-      doc.fontSize(12).fillColor('#1e293b').font('Helvetica-Bold')
-         .text(s.name || 'Student', x + 14, y + 42, { width: textW });
-
-      // Access code (large)
-      doc.fontSize(20).fillColor('#008899').font('Helvetica-Bold')
-         .text(s.code, x + 14, y + 62, { width: textW });
-
-      // Conversations count
-      doc.fontSize(9).fillColor('#475569').font('Helvetica')
-         .text(`${s.conversations} conversation${s.conversations !== 1 ? 's' : ''}`, x + 14, y + 90, { width: textW });
-
-      // Instructions
-      doc.fontSize(7.5).fillColor('#94a3b8').font('Helvetica')
-         .text('Go to the URL or scan the QR code,', x + 14, y + 112, { width: textW })
-         .text('then enter your access code.', x + 14, y + 122, { width: textW });
-
-      // URL
-      doc.fontSize(8).fillColor('#008899').font('Helvetica-Bold')
-         .text('buddy.impulsdeutsch.com', x + 14, y + 142, { width: textW });
-
-      // QR code (right side)
-      doc.image(qrBuffers[i], x + cardW - qrSize - 14, y + 14, { width: qrSize, height: qrSize });
-
       doc.restore();
+    }
+
+    if (isPreselected) {
+      // ── PRESELECTED MODE: one card per student, listing all codes ──
+      const cols = 2;
+      const cardW = pageW / cols;
+      const baseH = 60;
+      const perCodeH = 28;
+      const margin = 36;
+      let curCol = 0;
+      let curY = margin;
+      // Track row positions and heights for grid drawing
+      let rowYPositions = [curY];
+      let rowHeights = [];     // height of each completed row
+      let rowH = 0;            // tallest card in current (in-progress) row
+
+      function flushPageGrid() {
+        if (rowYPositions.length === 0) return;
+        // If there's an in-progress row, include its height
+        const allHeights = rowH > 0 ? [...rowHeights, rowH] : rowHeights;
+        if (allHeights.length === 0) return;
+        const lastRowIdx = allHeights.length - 1;
+        const gridBottom = rowYPositions[lastRowIdx] + allHeights[lastRowIdx];
+        drawGrid(doc, margin, cols, cardW, rowYPositions, gridBottom);
+      }
+
+      for (let i = 0; i < codes.length; i++) {
+        const s = codes[i];
+        const numCodes = (s.codes || []).length || 1;
+        const cardH = baseH + numCodes * perCodeH;
+
+        // Check if card fits on current page
+        if (curY + cardH > 842 - margin) {
+          flushPageGrid();
+          doc.addPage();
+          curY = margin;
+          curCol = 0;
+          rowYPositions = [curY];
+          rowHeights = [];
+          rowH = 0;
+        }
+
+        const x = margin + curCol * cardW;
+        const y = curY;
+
+        // Track tallest card in this row
+        rowH = Math.max(rowH, cardH);
+
+        const textW = cardW - qrSize - 36;
+
+        // Header + URL on same lines
+        doc.fontSize(8).fillColor('#008899').font('Helvetica-Bold')
+           .text('Impuls Deutsch Conversation Buddy', x + 14, y + 10, { width: textW });
+        doc.fontSize(7).fillColor('#94a3b8').font('Helvetica')
+           .text('buddy.impulsdeutsch.com', x + 14, y + 21, { width: textW });
+
+        // Student name
+        doc.fontSize(11).fillColor('#1e293b').font('Helvetica-Bold')
+           .text(s.name || 'Student', x + 14, y + 36, { width: textW });
+
+        // Code list
+        let lineY = y + 54;
+        const codeList = s.codes || [];
+        for (let ci = 0; ci < codeList.length; ci++) {
+          const c = codeList[ci];
+          const chLabel = c.chapter ? `Chapter ${c.chapter}` : (c.chapterLabel || '');
+          const detail = chLabel + (c.deadline ? `  ·  Due: ${c.deadline}` : '');
+
+          doc.fontSize(9).fillColor('#008899').font('Helvetica-Bold')
+             .text(c.code, x + 14, lineY, { width: textW, continued: false });
+          doc.fontSize(6.5).fillColor('#475569').font('Helvetica')
+             .text(detail, x + 14, lineY + 12, { width: cardW - 28 });
+          lineY += perCodeH;
+          // Separator line between codes (not after last) — match detail text width
+          if (ci < codeList.length - 1) {
+            doc.save();
+            const detailWidth = doc.fontSize(6.5).widthOfString(detail);
+            doc.strokeColor('#ddd').lineWidth(0.5)
+               .moveTo(x + 14, lineY - 4).lineTo(x + 14 + detailWidth, lineY - 4).stroke();
+            doc.restore();
+          }
+        }
+
+        // QR code
+        doc.image(qrBuffer, x + cardW - qrSize - 14, y + 10, { width: qrSize, height: qrSize });
+
+        // Advance to next position
+        curCol++;
+        if (curCol >= cols) {
+          curCol = 0;
+          rowHeights.push(rowH);  // save completed row height
+          curY += rowH;
+          rowH = 0;
+          // Record start of next row (if more cards coming)
+          if (i < codes.length - 1) rowYPositions.push(curY);
+        }
+      }
+      // Draw grid for last page (rowH > 0 means partial last row)
+      flushPageGrid();
+
+    } else {
+      // ── FREE CHOICE MODE: 2×4 grid per page ──
+      const cols = 2;
+      const cardW = pageW / cols;
+      const cardH = 175;
+      const margin = 36;
+      const maxRows = Math.floor((842 - 2 * margin) / cardH);
+      const cardsPerPage = cols * maxRows;
+
+      for (let i = 0; i < codes.length; i++) {
+        const pageStart = i - (i % cardsPerPage);
+        if (i > 0 && i % cardsPerPage === 0) doc.addPage();
+
+        const pageIndex = i % cardsPerPage;
+        const col = pageIndex % cols;
+        const row = Math.floor(pageIndex / cols);
+        const x = margin + col * cardW;
+        const y = margin + row * cardH;
+
+        const s = codes[i];
+        const textW = cardW - qrSize - 36;
+
+        doc.fontSize(8).fillColor('#008899').font('Helvetica-Bold')
+           .text('Impuls Deutsch Conversation Buddy', x + 14, y + 12, { width: textW });
+
+        doc.fontSize(12).fillColor('#1e293b').font('Helvetica-Bold')
+           .text(s.name || 'Student', x + 14, y + 28, { width: textW });
+
+        doc.fontSize(20).fillColor('#008899').font('Helvetica-Bold')
+           .text(s.code, x + 14, y + 48, { width: textW });
+
+        doc.fontSize(9).fillColor('#475569').font('Helvetica')
+           .text(`${s.conversations} conversation${s.conversations !== 1 ? 's' : ''}`, x + 14, y + 76, { width: textW });
+
+        doc.fontSize(7.5).fillColor('#94a3b8').font('Helvetica')
+           .text('Go to the URL or scan the QR code,', x + 14, y + 98, { width: textW })
+           .text('then enter your access code.', x + 14, y + 108, { width: textW });
+
+        doc.fontSize(8).fillColor('#008899').font('Helvetica-Bold')
+           .text('buddy.impulsdeutsch.com', x + 14, y + 128, { width: textW });
+
+        doc.image(qrBuffer, x + cardW - qrSize - 14, y + 14, { width: qrSize, height: qrSize });
+
+        // Draw grid at end of each page or end of all cards
+        const isLastOnPage = (pageIndex === cardsPerPage - 1) || (i === codes.length - 1);
+        if (isLastOnPage) {
+          const numRows = row + 1;
+          const rowYs = [];
+          for (let r = 0; r < numRows; r++) rowYs.push(margin + r * cardH);
+          drawGrid(doc, margin, cols, cardW, rowYs, margin + numRows * cardH);
+        }
+      }
     }
 
     doc.end();
@@ -3414,7 +3736,42 @@ app.post('/api/invite/download-pdf', async (req, res) => {
   }
 });
 
+// GET /api/invite/chapters — Return all chapters grouped by book (for invite page unit selectors)
+app.get('/api/invite/chapters', (req, res) => {
+  const books = [
+    { id: 'ID1', label: 'Impuls Deutsch 1', chapters: ID1_CHAPTERS },
+    { id: 'ID2B', label: 'Impuls Deutsch 2 BLAU', chapters: ID2B_CHAPTERS },
+    { id: 'ID2O', label: 'Impuls Deutsch 2 ORANGE', chapters: ID2O_CHAPTERS },
+  ];
+  res.json(books);
+});
+
+// GET /api/invite/units?book=ID1&chapter=3 — Return units for a specific chapter (for invite page)
+app.get('/api/invite/units', (req, res) => {
+  const { book, chapter } = req.query;
+  const ch = parseInt(chapter);
+  const chapters = ALL_CHAPTERS[book];
+  if (!chapters) return res.json([]);
+  const chObj = chapters.find(c => c.chapter === ch);
+  if (!chObj) return res.json([]);
+
+  const units = [];
+  const prefix = book === 'ID2O' ? 'O' : book === 'ID2B' ? 'B' : '';
+  for (let u = chObj.unitStart; u <= chObj.unitEnd; u++) {
+    const unitId = prefix ? `${prefix}${u}` : String(u);
+    const unitData = unitMap[unitId];
+    if (unitData) {
+      units.push({ unit: unitId, topic: unitData.topic || '' });
+    }
+  }
+  res.json(units);
+});
+
+// Shared email disclaimer for both free and preselected modes
+const EMAIL_DISCLAIMER = `This is an automated message from the Impuls Deutsch Conversation Buddy AI Tool, developed by Editor and Co-Author Niko Tracksdorf. The Impuls Deutsch Conversation Buddy is not an official part of the Impuls Deutsch Textbook Series and has no association with Klett World Languages. If you have questions about the Conversation Buddy or experience technical issues, please contact us at <a href="mailto:impulsdeutsch@gmail.com" style="color: #008899;">impulsdeutsch@gmail.com</a> &mdash; do not contact Klett World Languages.`;
+
 // POST /api/invite/send-emails — Send invitation emails to students
+// Supports both free-choice and preselected modes
 app.post('/api/invite/send-emails', async (req, res) => {
   const { codes, teacherName } = req.body;
   if (!Array.isArray(codes) || codes.length === 0) {
@@ -3443,11 +3800,50 @@ app.post('/api/invite/send-emails', async (req, res) => {
 
   for (const s of studentsWithEmail) {
     try {
-      await transporter.sendMail({
-        from: `"Impuls Deutsch" <${gmailUser}>`,
-        to: s.email,
-        subject: 'Your Impuls Deutsch Conversation Buddy Access Code',
-        html: `
+      const isPreselected = Array.isArray(s.codes) && s.codes.length > 0;
+
+      let bodyHtml;
+      if (isPreselected) {
+        // Build code list for preselected mode
+        const codeRows = s.codes.map(c =>
+          `<tr>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #008899; font-size: 14px;">${c.code}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #334155;">${c.chapterLabel}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #475569;">${c.deadline || ''}</td>
+          </tr>`
+        ).join('');
+
+        bodyHtml = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
+            <h2 style="color: #008899; margin-bottom: 4px;">Impuls Deutsch</h2>
+            <p style="color: #64748b; font-size: 14px; margin-top: 0;">Conversation Buddy</p>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+            <p>Hi <strong>${s.name}</strong>,</p>
+            <p>${teacherName || 'Your teacher'} has created <strong>${s.codes.length} conversation${s.codes.length !== 1 ? 's' : ''}</strong> for you using the Impuls Deutsch Conversation Buddy.</p>
+            <p>Each conversation has its own access code and assigned chapter. Please pay attention to each code to make sure you enter the correct one.</p>
+            <table style="width: 100%; border-collapse: collapse; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 8px;">
+              <thead>
+                <tr style="background: #f0fdfa;">
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Code</th>
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Chapter</th>
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Due</th>
+                </tr>
+              </thead>
+              <tbody>${codeRows}</tbody>
+            </table>
+            <p>To get started:</p>
+            <ol>
+              <li>Go to <a href="https://buddy.impulsdeutsch.com" style="color: #008899;">buddy.impulsdeutsch.com</a></li>
+              <li>Enter the access code for your next conversation</li>
+              <li>Confirm the chapter and start practicing!</li>
+            </ol>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+            <p style="color: #94a3b8; font-size: 11px;">${EMAIL_DISCLAIMER}</p>
+          </div>
+        `;
+      } else {
+        // Free choice mode — original email with single code
+        bodyHtml = `
           <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px;">
             <h2 style="color: #008899; margin-bottom: 4px;">Impuls Deutsch</h2>
             <p style="color: #64748b; font-size: 14px; margin-top: 0;">Conversation Buddy</p>
@@ -3466,9 +3862,16 @@ app.post('/api/invite/send-emails', async (req, res) => {
               <li>Choose a unit and start practicing!</li>
             </ol>
             <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
-            <p style="color: #94a3b8; font-size: 12px;">This is an automated message from the Impuls Deutsch AI Tools.</p>
+            <p style="color: #94a3b8; font-size: 11px;">${EMAIL_DISCLAIMER}</p>
           </div>
-        `,
+        `;
+      }
+
+      await transporter.sendMail({
+        from: `"Impuls Deutsch" <${gmailUser}>`,
+        to: s.email,
+        subject: 'Your Impuls Deutsch Conversation Buddy Access Code',
+        html: bodyHtml,
       });
       sent++;
       results.push({ name: s.name, email: s.email, status: 'sent' });

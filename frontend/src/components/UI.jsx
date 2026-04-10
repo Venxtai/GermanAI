@@ -4,6 +4,15 @@ import useAIStore from "../store/useAIStore";
 import { useVoiceConnection } from "../hooks/useVoiceConnection";
 import { getDurations } from "../utils/systemInstructions";
 
+const BUILD_VERSION = (() => {
+  try {
+    const d = new Date(__BUILD_TIME__);
+    const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+    const pad = n => String(n).padStart(2, '0');
+    return `v2.6.0 · ${mon} ${d.getDate()}, ${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  } catch { return 'v2.6.0'; }
+})();
+
 const STATUS_LABELS = {
   idle: "Ready",
   listening: "Listening\u2026",
@@ -442,6 +451,7 @@ export function UI() {
       store.setAccessCode(accessCode.trim());
       store.setAccessType(data.type || '');
       store.setAssignedTo(data.assignedTo || '');
+      // Route: preselected codes go to name → preselect confirm; free codes go to name → book/chapter/unit
       setScreen("name");
     } catch (err) {
       console.error('[UI] Validate error:', err);
@@ -451,7 +461,53 @@ export function UI() {
 
   const handleNameSubmit = () => {
     if (!studentName.trim()) return;
-    setScreen("book");
+    // If this code has a preselected unit, skip book/chapter/unit selection
+    if (accessInfo?.preselectedUnit) {
+      setScreen("preselect");
+    } else {
+      setScreen("book");
+    }
+  };
+
+  // Handler for the preselected unit confirmation screen
+  const handlePreselectedConfirm = async () => {
+    const pre = accessInfo?.preselectedUnit;
+    if (!pre) return;
+    setError(null);
+    try {
+      // Confirm usage (increments the Used counter + logs)
+      const confirmResp = await fetch('/api/auth/confirm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: accessCode.trim() }),
+      });
+      const confirmData = await confirmResp.json();
+      if (!confirmData.ok) {
+        setError(confirmData.error || 'Could not confirm code');
+        return;
+      }
+
+      // Load the unit data and go to welcome screen
+      const fullUnit = await fetch(
+        `/api/cumulative/${pre.unitId}?book=${pre.book}`
+      ).then((r) => r.json());
+      fullUnit._book = pre.book;
+      fullUnit._chapter = pre.chapter;
+      fullUnit._unitName = '';
+      // Set selected book/chapter for session logging
+      setSelectedBook(BOOKS.find(b => b.id === pre.book) || BOOKS[0]);
+      setSelectedChapter({ chapter: pre.chapter, title: pre.chapterTitle });
+      setPendingUnit(fullUnit);
+      setScreen("welcome");
+    } catch {
+      setError("Failed to load unit data. Is the server running?");
+    }
+  };
+
+  const handlePreselectedBack = () => {
+    setScreen("code");
+    setAccessCode("");
+    setAccessInfo(null);
   };
 
   const handleBookSelect = (book) => {
@@ -1099,6 +1155,53 @@ export function UI() {
         )}
       </AnimatePresence>
 
+      {/* Preselected unit confirmation */}
+      <AnimatePresence>
+        {screen === "preselect" && accessInfo?.preselectedUnit && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            style={{ paddingLeft: "50%" }}
+            className="pointer-events-auto absolute inset-0 flex items-center justify-start"
+          >
+            <div className="backdrop-blur-md rounded-2xl p-8 w-[420px] flex flex-col gap-5" style={{ background: "rgba(0,0,0,0.65)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="text-center">
+                <h1 className="text-white text-xl font-bold">Impuls Deutsch</h1>
+                <p className="text-white text-xl">Conversation Buddy</p>
+              </div>
+              <div className="text-center">
+                <p className="text-white/60 text-sm mb-3">Your teacher has assigned this conversation:</p>
+                <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '0 0 12px 0' }} />
+                <div className="rounded-xl p-4" style={{ background: "rgba(0,136,153,0.15)", border: "1px solid rgba(0,136,153,0.3)" }}>
+                  <p className="text-white/70 text-xs mb-1">{accessInfo.preselectedUnit.bookLabel}</p>
+                  <p className="text-white font-bold text-lg">Chapter {accessInfo.preselectedUnit.chapter}</p>
+                  <p className="text-white/80 text-sm mt-1">{accessInfo.preselectedUnit.chapterTitle}</p>
+                  {accessInfo.preselectedUnit.deadline && (
+                    <p className="text-white/50 text-xs mt-2">Due: {accessInfo.preselectedUnit.deadline}</p>
+                  )}
+                </div>
+              </div>
+              {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+              <div className="flex gap-3 justify-center">
+                <button
+                  onClick={handlePreselectedBack}
+                  className="px-5 py-2 rounded-lg text-white/70 hover:text-white transition"
+                  style={{ background: "rgba(255,255,255,0.1)" }}
+                >
+                  ← Back
+                </button>
+                <button
+                  onClick={handlePreselectedConfirm}
+                  className="px-6 py-2 rounded-lg text-white font-semibold transition hover:brightness-110"
+                  style={{ background: "#008899" }}
+                >
+                  OK — Start Conversation
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Book selection */}
       <AnimatePresence>
         {screen === "book" && (
@@ -1425,6 +1528,11 @@ export function UI() {
           </motion.div>
         )}
       </AnimatePresence>
+      {!["session", "feedback", "calibration"].includes(screen) && (
+        <div style={{ position: 'fixed', bottom: 8, left: 0, right: 0, textAlign: 'center', fontSize: '11px', color: 'rgba(255,255,255,0.35)', pointerEvents: 'none', zIndex: 1 }}>
+          {BUILD_VERSION}
+        </div>
+      )}
     </div>
   );
 }

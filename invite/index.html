@@ -395,6 +395,23 @@
 
         <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
 
+        <div style="margin: 1.25rem 0; padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <label style="display: block; margin-bottom: 0.75rem; font-weight: 700; color: #1e293b;">Topic Selection</label>
+          <div style="display: flex; gap: 1.5rem; margin-bottom: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.4rem; font-weight: 400; cursor: pointer;">
+              <input type="radio" name="topic-mode" value="free" checked onchange="onTopicModeChange()"> Students choose their own topics
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.4rem; font-weight: 400; cursor: pointer;">
+              <input type="radio" name="topic-mode" value="preselected" onchange="onTopicModeChange()"> Assign specific chapter topics
+            </label>
+          </div>
+          <div id="preselect-warning" class="error" style="margin-bottom: 0.5rem;"></div>
+          <div id="preselect-section" style="display: none;">
+            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 0.75rem;">Select a chapter and unit for each conversation. Deadlines are shared with students but not enforced.</p>
+            <div id="assignment-slots"></div>
+          </div>
+        </div>
+
         <div class="total-row">
           <span class="total-label">Total credits needed:</span>
           <span class="total-value" id="total-credits">0</span>
@@ -416,7 +433,7 @@
 
         <h2>Generated Codes</h2>
         <table class="results-table">
-          <thead>
+          <thead id="results-header">
             <tr>
               <th>Student Name</th>
               <th>Access Code</th>
@@ -459,6 +476,9 @@
     let teacherName = '';
     let availableCredits = 0;
     let generatedCodes = [];
+    let topicMode = 'free';
+    let chaptersData = []; // loaded from /api/invite/chapters
+    let assignmentSlots = []; // [{book, chapter, deadline}, ...]
 
     // ═══ Section Navigation ═══
     function showSection(id) {
@@ -609,11 +629,28 @@
 
       const students = getStudents();
 
+      // Validate preselected assignments
+      if (topicMode === 'preselected') {
+        const missing = assignmentSlots.some(s => !s.book || !s.chapter);
+        if (missing) {
+          hideConfirmation();
+          showError('entry-error', 'Please select a book and chapter for every conversation slot before creating codes.');
+          btn.disabled = false;
+          btn.textContent = 'Confirm';
+          return;
+        }
+      }
+
+      const bodyPayload = { teacherCode, teacherEmail, students };
+      if (topicMode === 'preselected') {
+        bodyPayload.assignments = assignmentSlots.map(s => ({ book: s.book, chapter: s.chapter, deadline: s.deadline }));
+      }
+
       try {
         const resp = await fetch('/api/invite/create-codes', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ teacherCode, teacherEmail, students }),
+          body: JSON.stringify(bodyPayload),
         });
         const data = await resp.json();
 
@@ -631,18 +668,46 @@
         document.getElementById('success-message').textContent =
           `Successfully created ${data.codes.length} student code${data.codes.length !== 1 ? 's' : ''}. ${data.remaining} credits remaining.`;
 
-        // Populate results table
+        // Update results header and populate table based on mode
+        const thead = document.getElementById('results-header');
         const tbody = document.getElementById('results-rows');
         tbody.innerHTML = '';
-        data.codes.forEach(c => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${escapeHtml(c.name)}</td>
-            <td class="code-cell">${escapeHtml(c.code)}</td>
-            <td>${c.conversations}</td>
-          `;
-          tbody.appendChild(tr);
-        });
+
+        if (data.isPreselected) {
+          const bookShortMap = { 'ID1': 'ID1', 'ID2B': 'ID2 BLAU', 'ID2O': 'ID2 ORANGE' };
+          thead.innerHTML = `<tr><th>Student Name</th><th>Conv.</th><th>Access Code</th><th>Chapter</th><th>Deadline</th></tr>`;
+          data.codes.forEach(c => {
+            if (c.codes && c.codes.length > 0) {
+              c.codes.forEach((entry, i) => {
+                // Short label: "Chapter 3" (book is implicit from context)
+                let shortLabel = entry.chapterShort || '';
+                if (entry.chapter) {
+                  shortLabel = `Chapter ${entry.chapter}`;
+                }
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                  <td>${i === 0 ? escapeHtml(c.name) : ''}</td>
+                  <td>${i + 1}</td>
+                  <td class="code-cell">${escapeHtml(entry.code)}</td>
+                  <td>${escapeHtml(shortLabel)}</td>
+                  <td>${entry.deadline || ''}</td>
+                `;
+                tbody.appendChild(tr);
+              });
+            }
+          });
+        } else {
+          thead.innerHTML = `<tr><th>Student Name</th><th>Access Code</th><th>Conversations</th></tr>`;
+          data.codes.forEach(c => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${escapeHtml(c.name)}</td>
+              <td class="code-cell">${escapeHtml(c.code)}</td>
+              <td>${c.conversations}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
 
         // Show email button only if any emails were provided
         const hasEmails = data.codes.some(c => c.email && c.email.includes('@'));
@@ -719,6 +784,12 @@
       rowCount = 0;
       addRow(); addRow(); addRow();
       updateTotal();
+      // Reset topic mode
+      topicMode = 'free';
+      document.querySelector('input[name="topic-mode"][value="free"]').checked = true;
+      document.getElementById('preselect-section').style.display = 'none';
+      document.getElementById('preselect-warning').classList.remove('visible');
+      assignmentSlots = [];
       showSection('entry-section');
     }
 
@@ -732,6 +803,121 @@
       hideError('auth-error');
       showSection('auth-section');
     }
+
+    // ═══ Topic Preselection ═══
+    async function loadChapters() {
+      try {
+        const resp = await fetch('/api/invite/chapters');
+        chaptersData = await resp.json();
+      } catch (err) {
+        console.error('Failed to load chapters:', err);
+        chaptersData = [];
+      }
+    }
+
+    function onTopicModeChange() {
+      const selected = document.querySelector('input[name="topic-mode"]:checked').value;
+      const warningEl = document.getElementById('preselect-warning');
+      warningEl.classList.remove('visible');
+
+      if (selected === 'preselected') {
+        // Check all students have the same conversation count
+        const counts = [];
+        document.querySelectorAll('.conv-input').forEach(input => {
+          const v = parseInt(input.value) || 0;
+          if (v > 0) counts.push(v);
+        });
+        const unique = [...new Set(counts)];
+        if (unique.length > 1) {
+          warningEl.textContent = 'All students must have the same number of conversations to use topic preselection. Please adjust conversation counts first.';
+          warningEl.classList.add('visible');
+          // Revert radio to free
+          document.querySelector('input[name="topic-mode"][value="free"]').checked = true;
+          topicMode = 'free';
+          return;
+        }
+        topicMode = 'preselected';
+        const count = unique.length === 1 ? unique[0] : 0;
+        document.getElementById('preselect-section').style.display = '';
+        if (count > 0) buildAssignmentSlots(count);
+      } else {
+        topicMode = 'free';
+        document.getElementById('preselect-section').style.display = 'none';
+      }
+    }
+
+    function buildAssignmentSlots(count) {
+      const container = document.getElementById('assignment-slots');
+      container.innerHTML = '';
+      assignmentSlots = [];
+
+      for (let i = 0; i < count; i++) {
+        assignmentSlots.push({ book: '', chapter: '', deadline: '' });
+
+        const bookShortNames = { 'ID1': 'ID1', 'ID2B': 'ID2 BLAU', 'ID2O': 'ID2 ORANGE' };
+        const row = document.createElement('div');
+        row.style.cssText = 'display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;';
+        row.innerHTML = `
+          <span style="font-weight: 600; font-size: 0.85rem; min-width: 55px;">Conv. ${i + 1}</span>
+          <select class="slot-book" data-idx="${i}" onchange="onBookChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;">
+            <option value="">Book...</option>
+            ${chaptersData.map(b => `<option value="${escapeHtml(b.id)}">${escapeHtml(bookShortNames[b.id] || b.label)}</option>`).join('')}
+          </select>
+          <select class="slot-chapter" data-idx="${i}" onchange="onChapterChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;" disabled>
+            <option value="">Chapter...</option>
+          </select>
+          <input type="date" class="slot-deadline" data-idx="${i}" onchange="onDeadlineChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;">
+        `;
+        container.appendChild(row);
+      }
+    }
+
+    function onBookChange(sel) {
+      const idx = parseInt(sel.dataset.idx);
+      const bookId = sel.value;
+      assignmentSlots[idx].book = bookId;
+      assignmentSlots[idx].chapter = '';
+
+      const chapterSel = sel.parentElement.querySelector('.slot-chapter');
+
+      // Reset chapter
+      chapterSel.innerHTML = '<option value="">Chapter...</option>';
+
+      if (!bookId) {
+        chapterSel.disabled = true;
+        return;
+      }
+
+      const book = chaptersData.find(b => b.id === bookId);
+      if (book) {
+        book.chapters.forEach(ch => {
+          const opt = document.createElement('option');
+          opt.value = ch.chapter;
+          // Extract subtitle (after "?: " or "? "), drop the question prefix
+          const full = ch.title || '';
+          const colonIdx = full.indexOf('?: ');
+          const qIdx = colonIdx >= 0 ? colonIdx + 3 : (full.indexOf('? ') >= 0 ? full.indexOf('? ') + 2 : 0);
+          const subtitle = qIdx > 0 ? full.slice(qIdx) : full;
+          const truncated = subtitle.length > 35 ? subtitle.slice(0, 35) + '...' : subtitle;
+          opt.textContent = `${ch.chapter}: ${truncated}`;
+          chapterSel.appendChild(opt);
+        });
+        chapterSel.disabled = false;
+      }
+    }
+
+    function onChapterChange(sel) {
+      const idx = parseInt(sel.dataset.idx);
+      assignmentSlots[idx].chapter = sel.value;
+    }
+
+    function onDeadlineChange(input) {
+      const idx = parseInt(input.dataset.idx);
+      assignmentSlots[idx].deadline = input.value;
+    }
+
+    // Load chapters on page load
+    loadChapters();
 
     // ═══ Utility ═══
     function escapeHtml(str) {
