@@ -3808,7 +3808,7 @@ app.post('/api/invite/send-emails', async (req, res) => {
         const codeRows = s.codes.map(c =>
           `<tr>
             <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #008899; font-size: 14px;">${c.code}</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #334155;">${c.chapterLabel}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #334155;">Chapter ${c.chapter || ''}</td>
             <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #475569;">${c.deadline || ''}</td>
           </tr>`
         ).join('');
