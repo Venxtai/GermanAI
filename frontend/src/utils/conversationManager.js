@@ -177,6 +177,38 @@ export class ConversationManager {
   isMinDurationReached() { return this.getElapsedMs() >= this.minMs; }
   getPhase() { return this.phase; }
 
+  /**
+   * Returns a snapshot of all conversation manager state for debug transcript logging.
+   * Called after each turn to capture the full picture.
+   */
+  getDebugSnapshot() {
+    const elapsedMs = this.getElapsedMs();
+    const elapsedSec = Math.round(elapsedMs / 1000);
+    const mm = Math.floor(elapsedSec / 60);
+    const ss = elapsedSec % 60;
+    return {
+      phase: this.phase,
+      elapsed: `${mm}m ${String(ss).padStart(2, '0')}s`,
+      elapsedMs,
+      aiTurnCount: this.aiTurnCount,
+      activeTopic: this.activeTopic,
+      activeTopicTurns: this.activeTopicTurns,
+      completedTopics: [...this.completedTopics],
+      topicTurnCounts: { ...this.topicTurnCounts },
+      promptedFunctions: [...this.promptedFunctions],
+      promptedRules: [...this.promptedRules],
+      usedModelSentences: [...this.usedModelSentences],
+      studentFacts: this.studentFacts.map(f => `[T${f.turn}/${f.topic}] ${f.fact}`),
+      phase4QuestionCount: this.phase4QuestionCount,
+      minReached: this.minReached,
+      maxReached: this.maxReached,
+      // Phase deadlines as relative times
+      phase2Deadline: this.phase2Deadline ? Math.round((this.phase2Deadline - Date.now()) / 1000) : null,
+      phase3Deadline: this.phase3Deadline ? Math.round((this.phase3Deadline - Date.now()) / 1000) : null,
+      phase4Deadline: this.phase4Deadline ? Math.round((this.phase4Deadline - Date.now()) / 1000) : null,
+    };
+  }
+
   // Called from useVoiceConnection after each student transcript
   addStudentUtterance(text) {
     if (text && text !== '(inaudible)') {

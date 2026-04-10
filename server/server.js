@@ -624,18 +624,103 @@ async function saveTranscriptFile(sessionId, logSession) {
       lines.push('Feedback: Pending (may update after generation)');
     }
 
-    // ── Errors section (debug only — not in student download) ──
-    if (logSession.errors && logSession.errors.length > 0) {
-      lines.push('');
+    // ══════════════════════════════════════════════════════════
+    // EXPANDED TRANSCRIPT (debug details)
+    // ══════════════════════════════════════════════════════════
+    lines.push('');
+    lines.push('');
+    lines.push('═'.repeat(60));
+    lines.push('EXPANDED TRANSCRIPT — Debug Details');
+    lines.push('═'.repeat(60));
+    lines.push('(This section includes backend logs, timing, directives,');
+    lines.push(' topic tracking, and conversation manager state.)');
+    lines.push('');
+
+    // ── Server-side pipeline timing per turn ──
+    if (logSession.serverTimings && logSession.serverTimings.length > 0) {
       lines.push('─'.repeat(60));
-      lines.push('ERRORS (debug)');
+      lines.push('PIPELINE TIMING (per turn)');
       lines.push('─'.repeat(60));
-      for (const err of logSession.errors) {
-        lines.push(`[${err.time}] ${err.context || 'unknown'}: ${err.error}`);
+      for (let ti = 0; ti < logSession.serverTimings.length; ti++) {
+        const t = logSession.serverTimings[ti];
+        lines.push(`  Turn ${ti + 1} [${t.time}]`);
+        lines.push(`    STT: ${t.sttMs}ms | Claude: ${t.claudeMs}ms | Validator: ${t.validatorMs}ms | Total: ${t.totalMs}ms`);
+        lines.push(`    Emotions: ${t.emotions || 'neutral'}`);
+        lines.push(`    Student: "${t.studentText}"`);
+        lines.push(`    Buddy: "${t.buddyText}"`);
+        if (t.rawResponse) {
+          lines.push(`    Raw (with emotion tags): "${t.rawResponse}"`);
+        }
+        lines.push('');
       }
     }
 
-    lines.push('');
+    // ── ConversationManager debug snapshots per turn ──
+    if (logSession.debugTurns && logSession.debugTurns.length > 0) {
+      lines.push('─'.repeat(60));
+      lines.push('CONVERSATION MANAGER STATE (per turn)');
+      lines.push('─'.repeat(60));
+      for (const dt of logSession.debugTurns) {
+        const ms = dt.managerState || {};
+        lines.push(`  Turn ${dt.turnIndex} [${dt.time}]`);
+        lines.push(`    Phase: ${ms.phase || '?'} | Elapsed: ${ms.elapsed || '?'} | AI Turn: ${ms.aiTurnCount || 0}`);
+        lines.push(`    Active Topic: "${ms.activeTopic || 'none'}" (${ms.activeTopicTurns || 0} turns)`);
+        if (ms.completedTopics && ms.completedTopics.length > 0) {
+          lines.push(`    Completed Topics: ${ms.completedTopics.join(', ')}`);
+        }
+        if (ms.topicTurnCounts && Object.keys(ms.topicTurnCounts).length > 0) {
+          lines.push(`    Topic Turn Counts: ${Object.entries(ms.topicTurnCounts).map(([k,v]) => `${k}(${v})`).join(', ')}`);
+        }
+        if (ms.promptedFunctions && ms.promptedFunctions.length > 0) {
+          lines.push(`    Prompted Functions: ${ms.promptedFunctions.join(', ')}`);
+        }
+        if (ms.promptedRules && ms.promptedRules.length > 0) {
+          lines.push(`    Prompted Rules: ${ms.promptedRules.join(', ')}`);
+        }
+        if (ms.phase2Deadline != null) lines.push(`    Phase 2 remaining: ${ms.phase2Deadline}s`);
+        if (ms.phase3Deadline != null) lines.push(`    Phase 3 remaining: ${ms.phase3Deadline}s`);
+        if (ms.phase4Deadline != null) lines.push(`    Phase 4 remaining: ${ms.phase4Deadline}s`);
+        if (ms.minReached) lines.push(`    ✓ Min duration reached`);
+        if (ms.maxReached) lines.push(`    ✓ Max duration reached`);
+
+        // Directives sent with this turn
+        if (dt.directives && dt.directives.length > 0) {
+          lines.push(`    Directives SENT:`);
+          for (const d of dt.directives) {
+            lines.push(`      → ${d}`);
+          }
+        }
+        // Directives queued for next turn
+        if (dt.pendingDirectives && dt.pendingDirectives.length > 0) {
+          lines.push(`    Directives PENDING (next turn):`);
+          for (const d of dt.pendingDirectives) {
+            lines.push(`      ⏳ ${d}`);
+          }
+        }
+
+        // Student facts accumulated
+        if (ms.studentFacts && ms.studentFacts.length > 0) {
+          lines.push(`    Student Facts (${ms.studentFacts.length}):`);
+          for (const f of ms.studentFacts) {
+            lines.push(`      • ${f}`);
+          }
+        }
+
+        lines.push('');
+      }
+    }
+
+    // ── Errors section ──
+    if (logSession.errors && logSession.errors.length > 0) {
+      lines.push('─'.repeat(60));
+      lines.push('ERRORS');
+      lines.push('─'.repeat(60));
+      for (const err of logSession.errors) {
+        lines.push(`  [${err.time}] ${err.context || 'unknown'}: ${err.error}`);
+      }
+      lines.push('');
+    }
+
     lines.push('═'.repeat(60));
 
     const content = lines.join('\n');
@@ -1520,7 +1605,7 @@ app.get('/log-viewer', (req, res) => {
  * Route: Conversation logger — frontend posts transcripts here.
  * body: { type: 'start'|'turn'|'end'|'abandon', sessionId, unit?, unitTitle?, role?: 'student'|'ai', text? }
  */
-const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount, turns[], meta, lastActivity, endReason, errors[], feedbackItems, driveFileId }
+const logSessions = new Map(); // sessionId → { unit, unitTitle, exchangeCount, turns[], meta, lastActivity, endReason, errors[], feedbackItems, driveFileId, debugTurns[], serverTimings[] }
 
 app.post('/api/log', (req, res) => {
   const { type, sessionId, unit, unitTitle, role, text } = req.body;
@@ -1541,6 +1626,8 @@ app.post('/api/log', (req, res) => {
       errors: [],                    // Pipeline errors collected during session
       feedbackItems: null,           // Feedback results (set after generation)
       driveFileId: null,             // Drive file ID for transcript updates
+      debugTurns: [],                // Per-turn debug snapshots from ConversationManager
+      serverTimings: [],             // Server-side timing for each pipeline call
     });
     const label = unitTitle ? `Unit ${unit} — ${unitTitle}` : `Unit ${unit}`;
     console.log(`\n${BOLD}${CYAN}${'═'.repeat(60)}${RESET}`);
@@ -1585,6 +1672,20 @@ app.post('/api/log', (req, res) => {
       }
     }
     broadcastLog({ type: 'update-turn', id, text: updatedText, time: timestamp() });
+
+  } else if (type === 'debug') {
+    // Per-turn debug snapshot from ConversationManager + directives
+    const session = logSessions.get(sessionId);
+    if (session) {
+      const { turnIndex, directives: turnDirectives, pendingDirectives, managerState } = req.body;
+      session.debugTurns.push({
+        turnIndex,
+        time: timestamp(),
+        directives: turnDirectives || [],
+        pendingDirectives: pendingDirectives || [],
+        managerState: managerState || {},
+      });
+    }
 
   } else if (type === 'error') {
     // Collect pipeline errors for transcript debugging
@@ -2886,6 +2987,24 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     // 5. Return text immediately — frontend will call /api/tts-stream for audio
     const t4 = Date.now();
     console.log(`[TIMING] Text ready: ${t4 - t0}ms (STT: ${t1 - t0}ms, Claude+Validator: ${t4 - t2}ms) [emotions: ${emotionTimeline.map(e => e.emotion).join('→')}]`);
+
+    // Save server-side timing to logSession for expanded transcript
+    for (const [, logSess] of logSessions) {
+      if (logSess.lastActivity && Date.now() - logSess.lastActivity < 60000) {
+        logSess.serverTimings.push({
+          time: timestamp(),
+          sttMs: t1 - t0,
+          claudeMs: t3 - t2,
+          validatorMs: tv1 - tv0,
+          totalMs: t4 - t0,
+          emotions: emotionTimeline.map(e => e.emotion).join('→'),
+          studentText: transcript,
+          buddyText: cleanText,
+          rawResponse: responseText !== cleanText ? responseText : undefined,
+        });
+        break;
+      }
+    }
 
     res.json({ transcript, response: cleanText, emotion, emotionTimeline });
   } catch (error) {

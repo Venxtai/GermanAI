@@ -1017,6 +1017,20 @@ export function useVoiceConnection() {
         }
       }
 
+      // Post debug snapshot for expanded transcript
+      {
+        const mgr2 = managerRef.current;
+        const snapshot = mgr2 ? mgr2.getDebugSnapshot() : {};
+        const pendingDirs = pendingDirectivesRef.current.slice(); // copy current pending
+        postLog({
+          type: 'debug',
+          turnIndex: exchangeCountRef.current,
+          directives: directives, // directives sent WITH this turn
+          pendingDirectives: pendingDirs, // directives queued for NEXT turn
+          managerState: snapshot,
+        });
+      }
+
       // Play AI audio with streaming TTS
       await playStreamingAudio(aiText, turnTimeline);
       setStatus('idle');
