@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -393,7 +394,17 @@
 
         <p class="email-note">*optional</p>
 
-        <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
+          <button class="btn btn-outline" onclick="document.getElementById('excel-upload').click()" style="font-size:0.82rem; padding:0.45rem 1rem;">
+            <span style="display:inline-flex;align-items:center;gap:0.35rem;">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="vertical-align:middle;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5m0 0l5 5m-5-5v12"/></svg>
+              Upload Excel
+            </span>
+          </button>
+          <input type="file" id="excel-upload" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleExcelUpload(this)">
+        </div>
+        <div id="upload-status" style="margin-top:0.5rem; font-size:0.82rem; display:none;"></div>
 
         <div style="margin: 1.25rem 0; padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
           <label style="display: block; margin-bottom: 0.75rem; font-weight: 700; color: #1e293b;">Options</label>
@@ -1055,6 +1066,112 @@
 
     function clearFormState() {
       try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+    }
+
+    // ═══ Excel Upload ═══
+    function handleExcelUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const statusEl = document.getElementById('upload-status');
+      statusEl.style.display = 'block';
+      statusEl.innerHTML = '<span style="color:#475569;">Reading file...</span>';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+          if (rows.length === 0) {
+            statusEl.innerHTML = '<span style="color:#ef4444;">The file appears to be empty.</span>';
+            input.value = '';
+            return;
+          }
+
+          // Detect header row — find columns for name and email
+          const header = rows[0].map(h => (h || '').toString().toLowerCase().trim());
+          let nameCol = header.findIndex(h => h.includes('name') || h.includes('student'));
+          let emailCol = header.findIndex(h => h.includes('email') || h.includes('e-mail') || h.includes('mail'));
+
+          let startRow = 1; // skip header
+          // If no header detected, treat row 0 as data and assume col 0 = name, col 1 = email
+          if (nameCol < 0) {
+            nameCol = 0;
+            emailCol = header.length > 1 ? 1 : -1;
+            startRow = 0;
+          }
+
+          // Extract students from Excel
+          const newStudents = [];
+          for (let i = startRow; i < rows.length; i++) {
+            const row = rows[i];
+            const name = (row[nameCol] || '').toString().trim();
+            if (!name) continue;
+            const email = emailCol >= 0 ? (row[emailCol] || '').toString().trim() : '';
+            newStudents.push({ name, email });
+          }
+
+          if (newStudents.length === 0) {
+            statusEl.innerHTML = '<span style="color:#ef4444;">No student names found in the file.</span>';
+            input.value = '';
+            return;
+          }
+
+          // Get existing students from the table
+          const existingStudents = getExistingStudentNames();
+
+          // Check for duplicates
+          const dupes = newStudents.filter(s => existingStudents.has(s.name.toLowerCase()));
+          const fresh = newStudents.filter(s => !existingStudents.has(s.name.toLowerCase()));
+
+          if (dupes.length > 0 && fresh.length === 0) {
+            statusEl.innerHTML = `<span style="color:#b45309;">All ${dupes.length} student(s) from this file are already in the table. No new students added (possible duplicate upload).</span>`;
+            input.value = '';
+            return;
+          }
+
+          // Clear empty placeholder rows before adding
+          clearEmptyRows();
+
+          // Add fresh students
+          fresh.forEach(s => addRow(s.name, s.email));
+          updateTotal();
+
+          let msg = `<span style="color:#008899;">Added ${fresh.length} student${fresh.length !== 1 ? 's' : ''} from <strong>${escapeHtml(file.name)}</strong>.</span>`;
+          if (dupes.length > 0) {
+            msg += ` <span style="color:#b45309;">${dupes.length} duplicate${dupes.length !== 1 ? 's' : ''} skipped: ${dupes.map(d => escapeHtml(d.name)).join(', ')}.</span>`;
+          }
+          statusEl.innerHTML = msg;
+
+        } catch (err) {
+          console.error('Excel parse error:', err);
+          statusEl.innerHTML = '<span style="color:#ef4444;">Failed to read file. Please use .xlsx, .xls, or .csv format.</span>';
+        }
+        input.value = ''; // reset so same file can be re-uploaded
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function getExistingStudentNames() {
+      const names = new Set();
+      document.querySelectorAll('#student-rows tr').forEach(tr => {
+        const name = (tr.querySelector('.name-input')?.value || '').trim().toLowerCase();
+        if (name) names.add(name);
+      });
+      return names;
+    }
+
+    function clearEmptyRows() {
+      const tbody = document.getElementById('student-rows');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      rows.forEach(tr => {
+        const name = (tr.querySelector('.name-input')?.value || '').trim();
+        const email = (tr.querySelector('.email-input')?.value || '').trim();
+        if (!name && !email) tr.remove();
+      });
+      // Keep at least 0 rows (new ones will be added from Excel)
     }
 
     // Save on every input change in the student table and university field
