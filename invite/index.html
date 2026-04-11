@@ -384,7 +384,6 @@
             <tr>
               <th>Student Name</th>
               <th>Student Email *</th>
-              <th style="width:90px">Conv.</th>
               <th style="width:36px"></th>
             </tr>
           </thead>
@@ -396,7 +395,14 @@
         <button class="btn btn-secondary" onclick="addRow()" style="font-size:0.82rem; padding:0.45rem 1rem;">+ Add Student</button>
 
         <div style="margin: 1.25rem 0; padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
-          <label style="display: block; margin-bottom: 0.75rem; font-weight: 700; color: #1e293b;">Topic Selection</label>
+          <label style="display: block; margin-bottom: 0.75rem; font-weight: 700; color: #1e293b;">Options</label>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <label style="font-weight: 500; font-size: 0.85rem; white-space: nowrap; margin-bottom: 0;">Number of conversations per student</label>
+            <input type="number" id="conv-per-student" min="1" max="99" value="3" onchange="onConvCountChange()" oninput="onConvCountChange()" style="width: 70px; text-align: center; padding: 0.45rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem; font-family: inherit;">
+          </div>
+
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.85rem;">Topic Selection</label>
           <div style="display: flex; gap: 1.5rem; margin-bottom: 0.5rem;">
             <label style="display: flex; align-items: center; gap: 0.4rem; font-weight: 400; cursor: pointer;">
               <input type="radio" name="topic-mode" value="free" checked onchange="onTopicModeChange()"> Students choose their own topics
@@ -531,10 +537,12 @@
         document.getElementById('teacher-name-display').textContent = teacherName;
         document.getElementById('credits-display').textContent = availableCredits;
 
-        // Initialize with 3 empty rows
-        document.getElementById('student-rows').innerHTML = '';
-        addRow(); addRow(); addRow();
-        updateTotal();
+        // Restore saved form state or initialize with 3 empty rows
+        if (!restoreFormState()) {
+          document.getElementById('student-rows').innerHTML = '';
+          addRow(); addRow(); addRow();
+          updateTotal();
+        }
 
         showSection('entry-section');
       } catch (err) {
@@ -547,18 +555,18 @@
 
     // ═══ STATE 2: Student Entry ═══
     let rowCount = 0;
-    function addRow() {
+    function addRow(name, email) {
       rowCount++;
       const tbody = document.getElementById('student-rows');
       const tr = document.createElement('tr');
       tr.id = `row-${rowCount}`;
       tr.innerHTML = `
-        <td><input type="text" placeholder="Full name" class="name-input" required></td>
-        <td><input type="email" placeholder="email@..." class="email-input"></td>
-        <td><input type="number" min="1" max="99" value="3" class="conv-input" onchange="updateTotal()" oninput="updateTotal()"></td>
+        <td><input type="text" placeholder="Full name" class="name-input" required value="${escapeHtml(name || '')}"></td>
+        <td><input type="email" placeholder="email@..." class="email-input" value="${escapeHtml(email || '')}"></td>
         <td><button class="remove-btn" onclick="removeRow(this)" title="Remove">&times;</button></td>
       `;
       tbody.appendChild(tr);
+      updateTotal();
     }
 
     function removeRow(btn) {
@@ -566,20 +574,26 @@
       if (tbody.children.length <= 1) return; // keep at least 1 row
       btn.closest('tr').remove();
       updateTotal();
+      saveFormState();
+    }
+
+    function getConvPerStudent() {
+      return parseInt(document.getElementById('conv-per-student').value) || 1;
     }
 
     function updateTotal() {
-      let total = 0;
-      document.querySelectorAll('.conv-input').forEach(input => {
-        total += parseInt(input.value) || 0;
-      });
+      const numStudents = document.querySelectorAll('#student-rows tr').length;
+      const convPerStudent = getConvPerStudent();
+      const total = numStudents * convPerStudent;
       const el = document.getElementById('total-credits');
       el.textContent = total;
       el.classList.toggle('over-budget', total > availableCredits);
+      saveFormState();
     }
 
     function getStudents() {
       const university = document.getElementById('university-input').value.trim();
+      const convPerStudent = getConvPerStudent();
       const students = [];
       document.querySelectorAll('#student-rows tr').forEach(tr => {
         const name = tr.querySelector('.name-input')?.value.trim();
@@ -588,10 +602,18 @@
           university,
           name,
           email: tr.querySelector('.email-input')?.value.trim() || '',
-          conversations: parseInt(tr.querySelector('.conv-input')?.value) || 1,
+          conversations: convPerStudent,
         });
       });
       return students;
+    }
+
+    function onConvCountChange() {
+      updateTotal();
+      if (topicMode === 'preselected') {
+        const count = getConvPerStudent();
+        if (count > 0) buildAssignmentSlots(count);
+      }
     }
 
     function showConfirmation() {
@@ -663,6 +685,7 @@
 
         generatedCodes = data.codes;
         availableCredits = data.remaining;
+        clearFormState();
 
         // Build success message
         document.getElementById('success-message').textContent =
@@ -783,6 +806,7 @@
       document.getElementById('student-rows').innerHTML = '';
       rowCount = 0;
       addRow(); addRow(); addRow();
+      document.getElementById('conv-per-student').value = 3;
       updateTotal();
       // Reset topic mode
       topicMode = 'free';
@@ -790,6 +814,7 @@
       document.getElementById('preselect-section').style.display = 'none';
       document.getElementById('preselect-warning').classList.remove('visible');
       assignmentSlots = [];
+      clearFormState();
       showSection('entry-section');
     }
 
@@ -801,6 +826,7 @@
       document.getElementById('teacher-code').value = '';
       document.getElementById('teacher-email').value = '';
       hideError('auth-error');
+      clearFormState();
       showSection('auth-section');
     }
 
@@ -817,42 +843,27 @@
 
     function onTopicModeChange() {
       const selected = document.querySelector('input[name="topic-mode"]:checked').value;
-      const warningEl = document.getElementById('preselect-warning');
-      warningEl.classList.remove('visible');
-
       if (selected === 'preselected') {
-        // Check all students have the same conversation count
-        const counts = [];
-        document.querySelectorAll('.conv-input').forEach(input => {
-          const v = parseInt(input.value) || 0;
-          if (v > 0) counts.push(v);
-        });
-        const unique = [...new Set(counts)];
-        if (unique.length > 1) {
-          warningEl.textContent = 'All students must have the same number of conversations to use topic preselection. Please adjust conversation counts first.';
-          warningEl.classList.add('visible');
-          // Revert radio to free
-          document.querySelector('input[name="topic-mode"][value="free"]').checked = true;
-          topicMode = 'free';
-          return;
-        }
         topicMode = 'preselected';
-        const count = unique.length === 1 ? unique[0] : 0;
         document.getElementById('preselect-section').style.display = '';
+        const count = getConvPerStudent();
         if (count > 0) buildAssignmentSlots(count);
       } else {
         topicMode = 'free';
         document.getElementById('preselect-section').style.display = 'none';
       }
+      saveFormState();
     }
 
     function buildAssignmentSlots(count) {
       const container = document.getElementById('assignment-slots');
+      const oldSlots = assignmentSlots.slice(); // preserve existing selections
       container.innerHTML = '';
       assignmentSlots = [];
 
       for (let i = 0; i < count; i++) {
-        assignmentSlots.push({ book: '', chapter: '', deadline: '' });
+        const prev = oldSlots[i] || { book: '', chapter: '', deadline: '' };
+        assignmentSlots.push({ book: prev.book, chapter: prev.chapter, deadline: prev.deadline });
 
         const bookShortNames = { 'ID1': 'ID1', 'ID2B': 'ID2 BLAU', 'ID2O': 'ID2 ORANGE' };
         const row = document.createElement('div');
@@ -861,15 +872,37 @@
           <span style="font-weight: 600; font-size: 0.85rem; min-width: 55px;">Conv. ${i + 1}</span>
           <select class="slot-book" data-idx="${i}" onchange="onBookChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;">
             <option value="">Book...</option>
-            ${chaptersData.map(b => `<option value="${escapeHtml(b.id)}">${escapeHtml(bookShortNames[b.id] || b.label)}</option>`).join('')}
+            ${chaptersData.map(b => `<option value="${escapeHtml(b.id)}"${b.id === prev.book ? ' selected' : ''}>${escapeHtml(bookShortNames[b.id] || b.label)}</option>`).join('')}
           </select>
-          <select class="slot-chapter" data-idx="${i}" onchange="onChapterChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;" disabled>
+          <select class="slot-chapter" data-idx="${i}" onchange="onChapterChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;"${prev.book ? '' : ' disabled'}>
             <option value="">Chapter...</option>
           </select>
-          <input type="date" class="slot-deadline" data-idx="${i}" onchange="onDeadlineChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;">
+          <input type="date" class="slot-deadline" data-idx="${i}" onchange="onDeadlineChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;" value="${prev.deadline || ''}">
         `;
         container.appendChild(row);
+
+        // Restore chapter dropdown if book was selected
+        if (prev.book) {
+          const bookSel = row.querySelector('.slot-book');
+          const chapterSel = row.querySelector('.slot-chapter');
+          const book = chaptersData.find(b => b.id === prev.book);
+          if (book) {
+            book.chapters.forEach(ch => {
+              const opt = document.createElement('option');
+              opt.value = ch.chapter;
+              const full = ch.title || '';
+              const colonIdx = full.indexOf('?: ');
+              const qIdx = colonIdx >= 0 ? colonIdx + 3 : (full.indexOf('? ') >= 0 ? full.indexOf('? ') + 2 : 0);
+              const subtitle = qIdx > 0 ? full.slice(qIdx) : full;
+              const truncated = subtitle.length > 35 ? subtitle.slice(0, 35) + '...' : subtitle;
+              opt.textContent = `${ch.chapter}: ${truncated}`;
+              if (ch.chapter === prev.chapter) opt.selected = true;
+              chapterSel.appendChild(opt);
+            });
+          }
+        }
       }
+      saveFormState();
     }
 
     function onBookChange(sel) {
@@ -877,6 +910,7 @@
       const bookId = sel.value;
       assignmentSlots[idx].book = bookId;
       assignmentSlots[idx].chapter = '';
+      saveFormState();
 
       const chapterSel = sel.parentElement.querySelector('.slot-chapter');
 
@@ -909,15 +943,125 @@
     function onChapterChange(sel) {
       const idx = parseInt(sel.dataset.idx);
       assignmentSlots[idx].chapter = sel.value;
+      saveFormState();
     }
 
     function onDeadlineChange(input) {
       const idx = parseInt(input.dataset.idx);
       assignmentSlots[idx].deadline = input.value;
+      saveFormState();
     }
 
     // Load chapters on page load
     loadChapters();
+
+    // Auto-restore session on page load (skip re-authentication)
+    (function autoRestore() {
+      try {
+        const raw = sessionStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (state.auth && state.auth.teacherCode) {
+          // Restore auth + form and jump straight to entry section
+          restoreFormState();
+          showSection('entry-section');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+
+    // ═══ sessionStorage Persistence ═══
+    const STORAGE_KEY = 'invite-form-state';
+
+    function saveFormState() {
+      try {
+        const students = [];
+        document.querySelectorAll('#student-rows tr').forEach(tr => {
+          students.push({
+            name: tr.querySelector('.name-input')?.value || '',
+            email: tr.querySelector('.email-input')?.value || '',
+          });
+        });
+        const state = {
+          auth: { teacherCode, teacherEmail, teacherName, availableCredits },
+          university: document.getElementById('university-input').value,
+          convPerStudent: document.getElementById('conv-per-student').value,
+          topicMode,
+          students,
+          assignmentSlots,
+        };
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) { /* ignore */ }
+    }
+
+    function restoreFormState(skipAuth) {
+      try {
+        const raw = sessionStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const state = JSON.parse(raw);
+
+        // Restore auth state if present and not skipping
+        if (!skipAuth && state.auth && state.auth.teacherCode) {
+          teacherCode = state.auth.teacherCode;
+          teacherEmail = state.auth.teacherEmail;
+          teacherName = state.auth.teacherName;
+          availableCredits = state.auth.availableCredits;
+          document.getElementById('teacher-name-display').textContent = teacherName;
+          document.getElementById('credits-display').textContent = availableCredits;
+        }
+
+        document.getElementById('university-input').value = state.university || '';
+        document.getElementById('conv-per-student').value = state.convPerStudent || 3;
+
+        // Restore student rows
+        document.getElementById('student-rows').innerHTML = '';
+        rowCount = 0;
+        if (state.students && state.students.length > 0) {
+          state.students.forEach(s => addRow(s.name, s.email));
+        } else {
+          addRow(); addRow(); addRow();
+        }
+
+        // Restore topic mode
+        if (state.topicMode === 'preselected') {
+          topicMode = 'preselected';
+          document.querySelector('input[name="topic-mode"][value="preselected"]').checked = true;
+          document.getElementById('preselect-section').style.display = '';
+          // Restore assignment slots after chapters load
+          if (state.assignmentSlots && state.assignmentSlots.length > 0) {
+            assignmentSlots = state.assignmentSlots;
+            waitForChaptersThenRestore(state.assignmentSlots);
+          }
+        }
+
+        updateTotal();
+        return true;
+      } catch (e) { return false; }
+    }
+
+    function waitForChaptersThenRestore(slots) {
+      if (chaptersData.length > 0) {
+        assignmentSlots = slots;
+        const count = getConvPerStudent();
+        // Temporarily set old slots so buildAssignmentSlots preserves them
+        const saved = assignmentSlots.slice();
+        assignmentSlots = saved;
+        buildAssignmentSlots(count);
+        return;
+      }
+      // Retry until chapters load
+      setTimeout(() => waitForChaptersThenRestore(slots), 100);
+    }
+
+    function clearFormState() {
+      try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+    }
+
+    // Save on every input change in the student table and university field
+    document.addEventListener('input', (e) => {
+      if (e.target.closest('#student-rows') || e.target.id === 'university-input') {
+        saveFormState();
+      }
+    });
 
     // ═══ Utility ═══
     function escapeHtml(str) {
