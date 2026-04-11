@@ -232,7 +232,7 @@ const CHAPTERS_BY_BOOK = {
   ],
 };
 
-const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! A progress bar will show how much conversation time remains before you receive feedback. The buddy is in a prototype testing mode that requires extensive note-taking after every turn. Don't be surprised if the buddy takes a moment between turns. When you're ready, click the button below to begin.`;
+const WELCOME_TEXT = `Welcome to the Impuls Deutsch Conversation Buddy! Here are a few tips before we start. Speak only in German during the conversation. If you don't understand something, say "Wie bitte?" or "Noch einmal, bitte." Answer the buddy's questions, but also ask your own questions! A progress bar will show how much conversation time remains before you receive feedback. Thank you for participating in prototype testing! The buddy is still learning, so may need a moment between turns. When you're ready, click the button below to begin.`;
 
 function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
   const [audioReady, setAudioReady] = useState(false);
@@ -331,7 +331,7 @@ function WelcomeScreen({ onBack, onStart, bookColor, prefetchedBuffer }) {
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span><span>If you don&apos;t understand something, say<br/><span className="text-white font-bold">&quot;Wie bitte?&quot;</span> &nbsp;or&nbsp; <span className="text-white font-bold">&quot;Noch einmal, bitte.&quot;</span></span></li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Answer the buddy&apos;s questions, but also ask your own questions!</li>
           <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>A progress bar will show how much conversation time remains before you receive feedback.</li>
-          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>The buddy is in a prototype testing mode that requires extensive note-taking after every turn. Don&apos;t be surprised if the buddy takes a moment between turns.</li>
+          <li className="flex gap-2"><span className="shrink-0" style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span>Thank you for participating in prototype testing! The buddy is still learning, so may need a moment between turns.</li>
         </ul>
         <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
           {audioPlaying ? 'Listening to instructions...' : 'When you\'re ready, click the button below to begin.'}
