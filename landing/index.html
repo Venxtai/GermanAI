@@ -21,14 +21,14 @@
     .hero {
       background: #d4eef1;
       color: #1e293b;
-      padding: 3rem 2rem 4rem;
+      padding: 3rem 2rem 3.2rem;
       position: relative;
       overflow: visible;
     }
     /* Pulse/heartbeat divider between hero and tools section */
     .hero-divider {
       position: relative;
-      height: 120px;
+      height: 96px;
       background: #d4eef1;
       margin-top: -1px;
     }
@@ -42,6 +42,7 @@
     .hero-inner {
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
       align-items: center;
       gap: 3rem;
@@ -112,7 +113,7 @@
     .tools-section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 2.4rem 2rem 1rem;
     }
     .tools-intro {
       text-align: center;
@@ -122,21 +123,15 @@
       font-size: 1.6rem;
       font-weight: 800;
       color: #1e293b;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
     .tools-intro p {
       font-size: 0.95rem;
       color: #64748b;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .tools-intro .disclaimer {
-      font-size: 0.82rem;
-      color: #94a3b8;
-      margin-top: 0.75rem;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 100%;
+      margin: 0;
+      line-height: 1.7;
+      text-align: left;
     }
 
     /* ─── Tool Cards ─── */
@@ -203,13 +198,11 @@
     /* ─── Contact Section ─── */
     .contact {
       text-align: center;
-      padding: 2rem;
-      margin-top: 1rem;
+      padding: 2.4rem 2rem;
     }
     .contact p {
       font-size: 0.85rem;
       color: #94a3b8;
-      max-width: 540px;
       margin: 0 auto;
     }
     .contact a {
@@ -275,10 +268,7 @@
     <div class="tools-intro">
       <h2>AI Tools for Impuls Deutsch</h2>
       <p>
-        Created by <strong>Niko Tracksdorf</strong>, Herausgeber and co-author of the Impuls Deutsch textbook series, these AI-powered tools help teachers and students get more out of the curriculum.
-      </p>
-      <p class="disclaimer">
-        These tools are independent projects, not officially part of the Impuls Deutsch textbook scope, and have no association with Klett World Languages. They are currently available to prototype testers and research collaborators only.
+        Created by Niko Tracksdorf, Herausgeber and co-author of the Impuls Deutsch textbook series, these AI-powered tools help teachers and students get more out of the curriculum. The tools are independent projects, not officially part of the Impuls Deutsch textbook series, and have no association with Klett World Languages. They are currently available to prototype testers and research collaborators only.
       </p>
     </div>
 
@@ -290,7 +280,7 @@
           </svg>
         </div>
         <h3>Conversation Buddy</h3>
-        <p>Practice speaking German with an AI conversation partner that adapts to your curriculum level. Vocabulary and grammar are aligned with the specific Impuls Deutsch units you've covered in class.</p>
+        <p>Students can practice their interpersonal speaking skills in German with the Impuls Deutsch Conversation Buddy, which adapts to the curriculum. Vocabulary and grammar are aligned with exactly what has been covered in class, and conversations focus on topics students are familiar with or interested in. Instructors can easily create student access codes with flexible topic selection or assign specific chapter topics with deadlines. At the end, students receive detailed feedback on what they were able to do with the language, based on curriculum-aligned Can-Do statements.</p>
         <span class="cta">Start Practicing &rarr;</span>
       </a>
 
@@ -301,7 +291,7 @@
           </svg>
         </div>
         <h3>Text Analyzer</h3>
-        <p>Analyze German texts against your students' vocabulary and grammar level. Get word-by-word color coding, replacement suggestions, auto-adaptation, and export to PDF for student or teacher use.</p>
+        <p>Instructors who want to include supplementary materials or design additional assessments can now ensure that texts, worksheets, or exam questions stay within the vocabulary and grammar their students have learned. The Text Analyzer checks each text against the Impuls Deutsch curriculum and provides a readability score with word-by-word color coding, replacement suggestions, sentence rewriting, auto-adaptation, word lookup, batch comparison of multiple texts, and export to PDF for both student and teacher use.</p>
         <span class="cta">Analyze Text &rarr;</span>
       </a>
     </div>
@@ -309,15 +299,7 @@
 
   <!-- Contact -->
   <div class="contact">
-    <p>
-      Interested in being part of the testing or research group?<br>
-      <a href="mailto:impulsdeutsch@gmail.com">impulsdeutsch@gmail.com</a>
-    </p>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>impulsdeutsch.com</p>
+    <p>Interested in being part of the testing or research group? Contact us at <a href="mailto:impulsdeutsch@gmail.com">impulsdeutsch@gmail.com</a></p>
   </div>
 
 </body>
