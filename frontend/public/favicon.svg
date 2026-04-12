@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#E8760A"/>
-  <path d="M10.5 16h.01M16 16h.01M21.5 16h.01M27 16c0 5.523-4.925 10-11 10a12.3 12.3 0 01-5.319-1.186L5 26l1.744-4.65C5.64 19.803 5 18.002 5 16c0-5.523 4.925-10 11-10s11 4.477 11 10z" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Speech bubble with light teal fill, teal stroke -->
+  <path d="M27 15c0 5.523-4.925 10-11 10a12.3 12.3 0 01-5.319-1.186L5 25l1.744-4.65C5.64 18.803 5 17.002 5 15c0-5.523 4.925-10 11-10s11 4.477 11 10z" fill="#e6f4f6" stroke="#008899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Dots inside -->
+  <circle cx="11" cy="15" r="1.2" fill="#008899"/>
+  <circle cx="16" cy="15" r="1.2" fill="#008899"/>
+  <circle cx="21" cy="15" r="1.2" fill="#008899"/>
 </svg>
