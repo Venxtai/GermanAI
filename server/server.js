@@ -523,7 +523,7 @@ const RED    = '\x1b[31m';
 const BLUE   = '\x1b[34m';
 
 function timestamp() {
-  return new Date().toLocaleTimeString('en-US', { hour12: false });
+  return new Date().toLocaleTimeString('en-US', { hour12: false, timeZone: 'America/New_York' });
 }
 
 function logConversationStart(sessionId, unitNumber) {
@@ -568,8 +568,11 @@ async function saveTranscriptFile(sessionId, logSession) {
     const unitPadded = String(unit).padStart(3, '0');
 
     const now = new Date();
-    const dateStr = now.toISOString().slice(0, 10);
-    const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '');
+    // Use Eastern time for filename and display
+    const etOptions = { timeZone: 'America/New_York' };
+    const etDate = new Date(now.toLocaleString('en-US', etOptions));
+    const dateStr = `${etDate.getFullYear()}-${String(etDate.getMonth() + 1).padStart(2, '0')}-${String(etDate.getDate()).padStart(2, '0')}`;
+    const timeStr = `${String(etDate.getHours()).padStart(2, '0')}${String(etDate.getMinutes()).padStart(2, '0')}${String(etDate.getSeconds()).padStart(2, '0')}`;
 
     const filename = `Unit_${unitPadded}_${dateStr}_${timeStr}_${sessionId}.txt`;
 
@@ -585,7 +588,7 @@ async function saveTranscriptFile(sessionId, logSession) {
     lines.push(`CONVERSATION TRANSCRIPT`);
     lines.push('═'.repeat(60));
     lines.push(`Unit       : Unit ${unit} — ${unitTitle}`);
-    lines.push(`Date       : ${now.toLocaleString()}`);
+    lines.push(`Date       : ${now.toLocaleString('en-US', { timeZone: 'America/New_York' })} ET`);
     lines.push(`Session    : ${sessionId}`);
     lines.push(`Student    : ${meta.studentName || '(unknown)'}`);
     lines.push(`Access Code: ${meta.accessCode || '(none)'}`);
@@ -1735,8 +1738,8 @@ app.post('/api/log', (req, res) => {
       session.endReason = reason || 'User ended conversation';
       saveTranscriptFile(sessionId, session);
       // Don't delete immediately — keep alive for feedback to arrive
-      // Cleanup after 2 minutes (feedback should arrive well before then)
-      setTimeout(() => logSessions.delete(sessionId), 2 * 60 * 1000);
+      // Cleanup after 5 minutes (feedback generation + network latency)
+      setTimeout(() => logSessions.delete(sessionId), 5 * 60 * 1000);
     }
   }
 
