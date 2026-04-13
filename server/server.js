@@ -2896,6 +2896,7 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       file: fs.createReadStream(renamedPath),
       model: 'whisper-1',
       language: 'de',
+      prompt: 'Dies ist ein Gespräch auf Deutsch mit einem Studenten, der manchmal englische Wörter benutzt wie University, Football, Basketball, Volleyball, okay, cool, sorry. Eigennamen und Städte wie Chicago, New York, St. Paul, St. Thomas kommen auch vor.',
     });
     let transcript = transcription.text?.trim() || '';
     const t1 = Date.now();
