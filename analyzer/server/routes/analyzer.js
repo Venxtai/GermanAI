@@ -855,11 +855,11 @@ router.post('/analyzer/export', async (req, res) => {
           }
         }
         doc.fillColor('#000');
-        doc.moveDown(3);
+        doc.moveDown(0.5);
       }
 
       // ─── ROW 1: Column headings ───
-      doc.moveDown(0.8);
+      doc.moveDown(0.5);
       doc.fontSize(11).font('Helvetica-Bold');
       doc.text('Original Text', L, doc.y, { width: CW });
       const headY = doc.y - doc.currentLineHeight();

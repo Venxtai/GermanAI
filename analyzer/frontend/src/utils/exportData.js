@@ -3,6 +3,7 @@
  * Extracted to a shared utility so both Header and Legend can use it.
  */
 import { buildFormattedRanges } from './formatMap';
+import { calculateReadability } from './readabilityCalc';
 
 export function buildExportData(mode, { analysisResult, wordModifications, sentenceRewrites, selectedUnits, wordFormatting }) {
   const glossedWords = [];
@@ -75,20 +76,16 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
     originalText += ' ';
   }
 
-  const totalWords = analysisResult.sentences.flatMap(s => s.words).filter(w => w.type === 'word').length;
-  const knownWords = analysisResult.sentences.flatMap(s => s.words).filter(w => w.type === 'word' && w.status === 'known').length;
+  // Original readability: no modifications applied
+  const origReadability = calculateReadability(analysisResult, {}, {});
+  const totalWords = origReadability.totalWords;
+  const knownWords = origReadability.knownWords + origReadability.cognateWords;
 
-  const unknownSet = new Set(unknownWords.map(w => w.toLowerCase()));
-  const finalWords = finalText.trim().replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').split(/\s+/).filter(Boolean);
-  const newTotal = finalWords.length;
-  let newKnown = 0;
-  let newTranslated = 0;
-  for (const fw of finalWords) {
-    if (!unknownSet.has(fw.toLowerCase())) newKnown++;
-  }
-  for (const [, mod] of Object.entries(wordModifications)) {
-    if (mod.type === 'glossed') newTranslated++;
-  }
+  // Adapted readability: with all modifications applied
+  const adaptedReadability = calculateReadability(analysisResult, sentenceRewrites, wordModifications);
+  const newTotal = adaptedReadability.totalWords;
+  const newKnown = adaptedReadability.knownWords + adaptedReadability.cognateWords;
+  const newTranslated = adaptedReadability.translatedWords;
 
   const vocabChanges = [];
   const grammarChanges = [];
@@ -155,8 +152,8 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
     mode,
     annotations: mode === 'teacher' ? {
       unknownWords, replacedWords, grammarNotes, grammarChanges, vocabChanges, originalWordColors,
-      readability: { percent: totalWords > 0 ? Math.round((knownWords / totalWords) * 100) : 100, knownWords, totalWords, grammarIssues: grammarNotes.length },
-      newReadability: { percent: newTotal > 0 ? Math.round(((newKnown + newTranslated) / newTotal) * 100) : 100, knownWords: newKnown, totalWords: newTotal, translatedWords: newTranslated },
+      readability: { percent: origReadability.percent, knownWords, totalWords, grammarIssues: grammarNotes.length },
+      newReadability: { percent: adaptedReadability.percent, knownWords: newKnown, totalWords: newTotal, translatedWords: newTranslated },
       selectedUnits: unitsList,
     } : undefined,
   };

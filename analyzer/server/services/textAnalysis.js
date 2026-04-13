@@ -9,6 +9,33 @@ try {
 
 const AI_AVAILABLE = !!process.env.ANTHROPIC_API_KEY;
 
+// ── Batching utilities ──────────────────────────────────────────────
+const LEMMA_BATCH_SIZE = 30;
+const GRAMMAR_BATCH_SIZE = 30;
+const LINKED_BATCH_SIZE = 50;
+const REFINE_BATCH_SIZE = 150;
+const AI_CONCURRENCY = 3;
+
+function chunkArray(arr, size) {
+  const chunks = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push({ items: arr.slice(i, i + size), offset: i });
+  }
+  return chunks;
+}
+
+async function runWithConcurrency(tasks, limit) {
+  const results = new Array(tasks.length);
+  const executing = new Set();
+  for (let i = 0; i < tasks.length; i++) {
+    const p = tasks[i]().then(r => { executing.delete(p); return r; });
+    executing.add(p);
+    results[i] = p;
+    if (executing.size >= limit) await Promise.race(executing);
+  }
+  return Promise.all(results);
+}
+
 /**
  * Analyze a full text: tokenize, match vocabulary, detect grammar issues.
  *
@@ -150,11 +177,8 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
         result = { known: true, reason: 'proper_name' };
       }
       // Code-based proper name fallback:
-      // A word is likely a proper name if:
-      // 1. Capitalized and not the first word of the sentence
-      // 2. Not found anywhere in the vocabulary index (any unit)
-      // 3. The AI lemma does NOT start with an article (der/die/das = it's a noun, not a name)
-      if (!result.known && wordToken.index > 0) {
+      // Works for ANY position (including first word — needed for play scripts like "Moritz: ...")
+      if (!result.known) {
         const firstChar = wordToken.text[0];
         if (firstChar && firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase()) {
           const norm = normalizeWord(wordToken.text);
@@ -165,7 +189,6 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
           const lemmaHasArticle = /^(der|die|das|ein|eine)\s/.test(lemmaLower);
 
           // Also check if any form of this word appears in the curriculum (even in unselected units)
-          // If it does, it's a real German word, not a proper name
           const lemmaEntries = lemmaLower !== norm ? (vocabData.vocabIndex.get(normalizeWord(lemma)) || []) : [];
           const allEntriesIncludingLemma = [...allEntries, ...lemmaEntries];
           // Check with adjective stem stripping too (e.g., "Letzte" → "letzt")
@@ -178,8 +201,20 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
             }
           }
 
+          // For first word of sentence: also check for dialogue pattern (word followed by colon)
+          let isDialogueSpeaker = false;
+          if (wordToken.index === 0) {
+            const nextNonWS = words.find(t => t.offset > wordToken.offset && t.type !== 'whitespace');
+            if (nextNonWS && nextNonWS.text === ':') isDialogueSpeaker = true;
+          }
+
           if (allEntriesIncludingLemma.length === 0 && allVerbs.length === 0 && !lemmaHasArticle && !hasStemEntry) {
             // Not in vocab anywhere AND AI didn't add an article → proper name
+            result = { known: true, reason: 'proper_name' };
+            isProperName = true;
+          } else if (isDialogueSpeaker && allEntriesIncludingLemma.length === 0 && allVerbs.length === 0) {
+            // Dialogue speaker label (e.g., "Moritz:") — high confidence proper name
+            // even if AI added an article (sometimes happens with names that look like nouns)
             result = { known: true, reason: 'proper_name' };
             isProperName = true;
           }
@@ -252,6 +287,12 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
       words: analyzedWords,
       grammar,
     });
+  }
+
+  // ── STEP 4: AI refinement pass on remaining unknowns ───────────────
+  const refinedCount = await refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData);
+  if (refinedCount > 0) {
+    console.log(`[REFINE] Reclassified ${refinedCount} unknown words via AI refinement`);
   }
 
   // Detect linked word groups (separable verbs, compound tenses) via AI
@@ -329,8 +370,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
 /**
  * Use Claude Haiku to lemmatize all words in the text.
  * Returns an array (one per sentence) of objects mapping lowercase surface form → lemma.
- *
- * Example: "Ich mag Achterbahnen" → [{ "ich": "ich", "mag": "mögen", "achterbahnen": "Achterbahn" }]
+ * Batches large texts into chunks to avoid truncation.
  */
 async function lemmatizeText(sentences) {
   if (sentences.length === 0) return [];
@@ -340,6 +380,29 @@ async function lemmatizeText(sentences) {
     return sentences.map(() => ({}));
   }
 
+  const chunks = chunkArray(sentences, LEMMA_BATCH_SIZE);
+  console.log(`[LEMMA] Processing ${sentences.length} sentences in ${chunks.length} batch(es)`);
+
+  const tasks = chunks.map(({ items, offset }) => () => lemmatizeBatch(items, offset));
+  const batchResults = await runWithConcurrency(tasks, AI_CONCURRENCY);
+
+  // Flatten batch results into a single array
+  const result = [];
+  for (let i = 0; i < batchResults.length; i++) {
+    const batch = batchResults[i];
+    const expected = chunks[i].items.length;
+    // Pad if batch returned fewer results than expected
+    for (let j = 0; j < expected; j++) {
+      result.push(batch[j] || {});
+    }
+  }
+
+  const totalLemmas = result.reduce((sum, obj) => sum + Object.keys(obj).filter(k => !k.startsWith('_')).length, 0);
+  console.log(`[LEMMA] Lemmatized ${sentences.length} sentences, ${totalLemmas} lemmas total`);
+  return result;
+}
+
+async function lemmatizeBatch(sentences, startIndex) {
   const prompt = `You are a German linguistic lemmatizer. For each sentence, extract the dictionary form (lemma) of every word AND identify proper names.
 
 RULES:
@@ -362,9 +425,9 @@ IMPORTANT: Also include these special keys:
 - "_superlatives": array of superlative forms (lowercase) in the sentence (e.g., ["schönsten", "liebsten", "besten"])
 
 SENTENCES:
-${sentences.map((s, i) => `[${i}] ${s}`).join('\n')}
+${sentences.map((s, i) => `[${startIndex + i}] ${s}`).join('\n')}
 
-Respond with a JSON array (one object per sentence). Each object maps the lowercase surface form to its lemma string, plus the special arrays.
+Respond with a JSON array of ${sentences.length} objects (one per sentence). Each object maps the lowercase surface form to its lemma string, plus the special arrays.
 Example: [{"schöner": "schön", "mag": "mögen", "_proper_names": [], "_comparatives": ["schöner"], "_superlatives": []}]
 
 ONLY output the JSON array, nothing else.`;
@@ -372,20 +435,18 @@ ONLY output the JSON array, nothing else.`;
   try {
     const response = await anthropic.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 4096,
+      max_tokens: Math.max(4096, sentences.length * 150),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
-      const parsed = JSON.parse(jsonMatch[0]);
-      console.log(`[LEMMA] Lemmatized ${sentences.length} sentences, ${Object.keys(parsed.flat?.() || parsed[0] || {}).length}+ lemmas`);
-      return parsed;
+      return JSON.parse(jsonMatch[0]);
     }
     return sentences.map(() => ({}));
   } catch (err) {
-    console.error('[LEMMA] Lemmatization error:', err.message);
+    console.error(`[LEMMA] Batch error (offset ${startIndex}):`, err.message);
     return sentences.map(() => ({}));
   }
 }
@@ -636,12 +697,29 @@ function detectSkippedChapterWarnings(selectedUnitIds, unitMap, allChapters) {
 async function analyzeGrammarBatch(sentences, cumulativeGrammar) {
   if (sentences.length === 0) return [];
 
-  // Skip AI analysis if no API key
   if (!AI_AVAILABLE || !anthropic) {
     console.log('[GRAMMAR] No API key — skipping AI grammar analysis');
     return sentences.map(() => ({ status: 'ok', structures: [], issues: [], note: 'Grammar analysis requires ANTHROPIC_API_KEY' }));
   }
 
+  const chunks = chunkArray(sentences, GRAMMAR_BATCH_SIZE);
+  console.log(`[GRAMMAR] Processing ${sentences.length} sentences in ${chunks.length} batch(es)`);
+
+  const tasks = chunks.map(({ items, offset }) => () => analyzeGrammarSingleBatch(items, cumulativeGrammar, offset));
+  const batchResults = await runWithConcurrency(tasks, AI_CONCURRENCY);
+
+  const result = [];
+  for (let i = 0; i < batchResults.length; i++) {
+    const batch = batchResults[i];
+    const expected = chunks[i].items.length;
+    for (let j = 0; j < expected; j++) {
+      result.push(batch[j] || { status: 'ok', structures: [], issues: [] });
+    }
+  }
+  return result;
+}
+
+async function analyzeGrammarSingleBatch(sentences, cumulativeGrammar, startIndex) {
   const prompt = `You are a German language grammar analyzer for a curriculum-aware text analysis tool.
 
 Analyze each sentence and identify grammar structures used (tenses, cases, clause types).
@@ -675,32 +753,32 @@ For each sentence, respond with a JSON object:
 }
 
 SENTENCES TO ANALYZE:
-${sentences.map((s, i) => `[${i}] ${s}`).join('\n')}
+${sentences.map((s, i) => `[${startIndex + i}] ${s}`).join('\n')}
 
-Respond with a JSON array of objects, one per sentence. Only JSON, no other text.`;
+Respond with a JSON array of ${sentences.length} objects, one per sentence. Only JSON, no other text.`;
 
   try {
     const response = await anthropic.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 4096,
+      max_tokens: Math.max(4096, sentences.length * 180),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
-    // Extract JSON from response (handle markdown code blocks)
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
       return JSON.parse(jsonMatch[0]);
     }
     return sentences.map(() => ({ status: 'ok', structures: [], issues: [] }));
   } catch (err) {
-    console.error('[GRAMMAR] Analysis error:', err.message);
+    console.error(`[GRAMMAR] Batch error (offset ${startIndex}):`, err.message);
     return sentences.map(() => ({ status: 'ok', structures: [], issues: [], error: 'Analysis unavailable' }));
   }
 }
 
 /**
  * Use Claude Haiku to detect linked word groups (separable verbs, compound tenses).
+ * Batches large texts to avoid truncation.
  */
 async function detectLinkedGroups(sentences, selectedUnitIds, vocabData, unitMap) {
   if (sentences.length === 0) return [];
@@ -710,6 +788,37 @@ async function detectLinkedGroups(sentences, selectedUnitIds, vocabData, unitMap
     return [];
   }
 
+  const chunks = chunkArray(sentences, LINKED_BATCH_SIZE);
+  console.log(`[LINKED] Processing ${sentences.length} sentences in ${chunks.length} batch(es)`);
+
+  const tasks = chunks.map(({ items, offset }) => () => detectLinkedGroupsBatch(items, offset));
+  const batchResults = await runWithConcurrency(tasks, AI_CONCURRENCY);
+
+  // Flatten and assign IDs, adjusting sentenceIndex by batch offset
+  const allGroups = [];
+  let groupId = 0;
+  for (let i = 0; i < batchResults.length; i++) {
+    const groups = batchResults[i];
+    const offset = chunks[i].offset;
+    for (const g of groups) {
+      const lemmaLower = (g.lemma || '').toLowerCase();
+      const entries = vocabData.vocabIndex.get(lemmaLower) || [];
+      const activeEntry = entries.find(e => e.isActive && selectedUnitIds.has(e.unitId));
+      allGroups.push({
+        id: `group_${groupId++}`,
+        sentenceIndex: (g.sentenceIndex || 0) + offset,
+        wordIndices: g.wordIndices || [],
+        lemma: g.lemma,
+        type: g.type,
+        unitId: activeEntry?.unitId || null,
+        known: !!activeEntry,
+      });
+    }
+  }
+  return allGroups;
+}
+
+async function detectLinkedGroupsBatch(sentences, startIndex) {
   const prompt = `You are a German linguistics parser. For each sentence, identify linked word groups:
 
 1. **Separable verbs**: e.g., "Ich kaufe im Supermarkt ein" → "kaufe" and "ein" are linked (einkaufen)
@@ -718,7 +827,7 @@ async function detectLinkedGroups(sentences, selectedUnitIds, vocabData, unitMap
 4. **Future tense**: e.g., "Ich werde gehen" → "werde" and "gehen" are linked
 
 For each group, provide:
-- sentenceIndex: which sentence (0-based)
+- sentenceIndex: which sentence (0-based, relative to the list below)
 - wordIndices: array of word indices (0-based, counting only actual words not punctuation/whitespace)
 - lemma: the dictionary form of the verb
 - type: "separable_verb", "compound_tense", "modal_infinitive", "future"
@@ -731,34 +840,211 @@ Respond with a JSON array of group objects. If no linked groups found, return []
   try {
     const response = await anthropic.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 2048,
+      max_tokens: Math.max(2048, sentences.length * 60),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
-      const groups = JSON.parse(jsonMatch[0]);
-      // Assign IDs and look up in vocab index
-      return groups.map((g, i) => {
-        const lemmaLower = (g.lemma || '').toLowerCase();
-        const entries = vocabData.vocabIndex.get(lemmaLower) || [];
-        const activeEntry = entries.find(e => e.isActive && selectedUnitIds.has(e.unitId));
-
-        return {
-          id: `group_${i}`,
-          sentenceIndex: g.sentenceIndex,
-          wordIndices: g.wordIndices || [],
-          lemma: g.lemma,
-          type: g.type,
-          unitId: activeEntry?.unitId || null,
-          known: !!activeEntry,
-        };
-      });
+      return JSON.parse(jsonMatch[0]);
     }
     return [];
   } catch (err) {
-    console.error('[LINKED] Detection error:', err.message);
+    console.error(`[LINKED] Batch error (offset ${startIndex}):`, err.message);
+    return [];
+  }
+}
+
+/**
+ * Build a compact vocabulary summary for the AI refinement pass.
+ * Returns a comma-separated list of known words from selected units.
+ */
+function buildVocabSummary(selectedUnitIds, vocabIndex) {
+  const words = new Set();
+  for (const [norm, entries] of vocabIndex) {
+    for (const entry of entries) {
+      if (entry.isActive && selectedUnitIds.has(entry.unitId)) {
+        words.add(norm);
+        // Also add the full word form (with article for nouns)
+        const wordLower = entry.word.toLowerCase();
+        if (wordLower !== norm) words.add(wordLower);
+        break;
+      }
+    }
+  }
+  const sorted = [...words].sort();
+  if (sorted.length > 2000) {
+    return sorted.slice(0, 2000).join(', ') + ` [... and ${sorted.length - 2000} more]`;
+  }
+  return sorted.join(', ');
+}
+
+/**
+ * AI refinement pass: reclassify remaining "unknown" words using Claude.
+ * Sends unique unknowns with sentence context and known vocab to get better classification.
+ * Returns the number of words reclassified.
+ */
+async function refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData) {
+  if (!AI_AVAILABLE || !anthropic) return 0;
+
+  const { normalizeWord } = require('./vocabIndex');
+
+  // Collect unique unknown words with sentence context
+  const unknownCollector = new Map(); // normalized word → { word, lemma, contexts, locations }
+  for (let si = 0; si < analyzedSentences.length; si++) {
+    const sent = analyzedSentences[si];
+    for (let wi = 0; wi < sent.words.length; wi++) {
+      const w = sent.words[wi];
+      if (w.status === 'unknown' && w.type === 'word') {
+        const key = normalizeWord(w.text);
+        if (!unknownCollector.has(key)) {
+          unknownCollector.set(key, {
+            word: w.text,
+            lemma: w.lemma || w.text,
+            contexts: [],
+            locations: [],
+          });
+        }
+        const entry = unknownCollector.get(key);
+        if (entry.contexts.length < 2) {
+          entry.contexts.push(sent.text);
+        }
+        entry.locations.push({ si, wi });
+      }
+    }
+  }
+
+  if (unknownCollector.size === 0) return 0;
+
+  console.log(`[REFINE] ${unknownCollector.size} unique unknown words to classify`);
+
+  // Build vocabulary summary
+  const vocabSummary = buildVocabSummary(selectedUnitIds, vocabData.vocabIndex);
+
+  // Batch the unknowns
+  const unknownEntries = [...unknownCollector.entries()];
+  const chunks = chunkArray(unknownEntries, REFINE_BATCH_SIZE);
+
+  const tasks = chunks.map(({ items, offset }) => () => refineUnknownBatch(items, vocabSummary, offset));
+  const batchResults = await runWithConcurrency(tasks, 2); // lower concurrency — these are larger prompts
+
+  // Apply results
+  let reclassified = 0;
+  for (const results of batchResults) {
+    for (const r of results) {
+      if (!r || r.classification === 'truly_unknown') continue;
+
+      const unknownEntry = unknownEntries[r.index]?.[1];
+      if (!unknownEntry) continue;
+
+      for (const { si, wi } of unknownEntry.locations) {
+        const word = analyzedSentences[si].words[wi];
+        if (!word || word.status !== 'unknown') continue;
+
+        switch (r.classification) {
+          case 'inflected_form':
+            word.status = 'known';
+            word.reason = 'ai_refinement';
+            word.refinement = { type: 'inflected_form', knownBase: r.known_base || '', note: r.note || '' };
+            reclassified++;
+            break;
+          case 'proper_name':
+            word.status = 'known';
+            word.reason = 'proper_name';
+            word.isProperName = true;
+            reclassified++;
+            break;
+          case 'cognate':
+            word.status = 'cognate';
+            word.reason = 'cognate';
+            word.cognateInfo = { english: r.note || '' };
+            reclassified++;
+            break;
+          case 'compound':
+            word.status = 'known';
+            word.reason = 'ai_refinement';
+            word.refinement = { type: 'compound', parts: r.note || '' };
+            reclassified++;
+            break;
+          case 'colloquial':
+            word.status = 'known';
+            word.reason = 'ai_refinement';
+            word.refinement = { type: 'colloquial', knownBase: r.known_base || '', note: r.note || '' };
+            reclassified++;
+            break;
+          case 'title_abbreviation':
+            word.status = 'known';
+            word.reason = 'ai_refinement';
+            word.refinement = { type: 'title_abbreviation', note: r.note || '' };
+            reclassified++;
+            break;
+        }
+      }
+    }
+  }
+  return reclassified;
+}
+
+async function refineUnknownBatch(entries, vocabSummary, batchOffset) {
+  const wordList = entries.map(([key, info], i) => {
+    const contexts = info.contexts.map(c => `  Context: "${c}"`).join('\n');
+    return `[${batchOffset + i}] "${info.word}" (lemma: "${info.lemma}")\n${contexts}`;
+  }).join('\n\n');
+
+  const prompt = `You are a German vocabulary classifier for a curriculum-aware language learning tool.
+Students have learned these vocabulary words:
+
+KNOWN VOCABULARY:
+${vocabSummary}
+
+Below are words from a text that were NOT matched to the known vocabulary by the automated system.
+Your job is to identify which ones are actually accessible to the students.
+
+WORDS TO CLASSIFY:
+${wordList}
+
+For each word, classify as ONE of:
+- "inflected_form": a conjugation, declension, or derived form of a word in the KNOWN VOCABULARY list above.
+  Include: verb tenses (Präteritum, Konjunktiv, imperative), possessive forms (unsere→unser), declined adjectives, ordinal numbers (zweiter→zwei), etc.
+  Set "known_base" to the known vocabulary word it derives from.
+- "proper_name": a name of a person, place, character, brand, etc. — NOT a regular German word.
+- "cognate": easily recognizable to an English speaker (e.g., Szene=scene, Millionär=millionaire).
+  Set "note" to the English equivalent.
+- "compound": composed of parts that are in the known vocabulary (e.g., Schlafzimmer = Schlaf + Zimmer).
+  Set "note" to the component parts.
+- "colloquial": informal, dialectal, or poetic variant of a known word (e.g., "heut" = "heute", "glaub" = informal imperative of "glauben").
+  Set "known_base" to the known word.
+- "title_abbreviation": a title, abbreviation, or conventional form recognizable across languages (e.g., Dr., Prof., Nr.).
+  Set "note" to what it stands for.
+- "truly_unknown": genuinely not accessible from the known vocabulary or English.
+
+IMPORTANT:
+- Be generous: if a student who knows the base word could reasonably figure out the form, classify it as accessible.
+- German da-compounds (darum, darüber, dabei) and wo-compounds (worauf, wodurch): if the base preposition (um, über, bei, auf, durch) is known, classify as "inflected_form" with known_base being the preposition.
+- Separable verb prefixes with past participles (mitgebracht→mitbringen, angefangen→anfangen): check if the base verb (bringen, fangen) is known.
+- For proper names that are also German words, consider the CONTEXT to decide.
+
+Respond with a JSON array:
+[{"index": 0, "classification": "inflected_form", "known_base": "glauben", "note": "imperative"}, ...]
+
+ONLY output the JSON array, nothing else.`;
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: Math.max(4096, entries.length * 50),
+      messages: [{ role: 'user', content: prompt }],
+    });
+
+    const text = response.content[0]?.text || '[]';
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+    return [];
+  } catch (err) {
+    console.error(`[REFINE] Batch error (offset ${batchOffset}):`, err.message);
     return [];
   }
 }

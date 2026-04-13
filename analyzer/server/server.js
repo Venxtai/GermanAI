@@ -54,7 +54,18 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: '50mb' }));
+
+// Catch body-parser errors (e.g. payload too large) and return JSON instead of HTML
+app.use((err, req, res, next) => {
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({ error: 'Payload too large', message: 'The analysis data exceeds the maximum size.' });
+  }
+  if (err.status === 400 && err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: 'Invalid JSON', message: err.message });
+  }
+  next(err);
+});
 
 // Load unit display names
 let unitNames = {};
