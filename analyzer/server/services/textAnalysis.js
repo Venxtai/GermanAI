@@ -10,11 +10,11 @@ try {
 const AI_AVAILABLE = !!process.env.ANTHROPIC_API_KEY;
 
 // ── Batching utilities ──────────────────────────────────────────────
-const LEMMA_BATCH_SIZE = 15;
-const GRAMMAR_BATCH_SIZE = 15;
-const LINKED_BATCH_SIZE = 30;
+const LEMMA_BATCH_SIZE = 20;
+const GRAMMAR_BATCH_SIZE = 20;
+const LINKED_BATCH_SIZE = 40;
 const REFINE_BATCH_SIZE = 80;
-const AI_CONCURRENCY = 2;
+const AI_CONCURRENCY = 4;
 
 function chunkArray(arr, size) {
   const chunks = [];

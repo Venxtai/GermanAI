@@ -31,6 +31,8 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--timeout'
+      - '900'
 
 images:
   - 'us-east1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/analyzer:$COMMIT_SHA'
