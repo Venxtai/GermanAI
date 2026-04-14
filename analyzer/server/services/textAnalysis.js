@@ -59,7 +59,7 @@ async function callAnthropicWithRetry(params, maxRetries = 2) {
  * @param {object} unitMap - Full unit data map
  * @returns {object} Analysis result with sentences, words, grammar
  */
-async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
+async function analyzeText(text, selectedUnitIds, vocabData, unitMap, onProgress) {
   const { isWordKnown, findReplacements, getWordUnitInfo, formatFrequencyBand, normalizeWord } = require('./vocabIndex');
 
   // Sanitize input: decode HTML entities and normalize Unicode
@@ -77,12 +77,14 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
 
   // ── STEPS 1 & 2: AI Lemmatization + Grammar (run in parallel) ─────────
   const allSentenceTexts = sentences.map(s => s.text);
+  if (onProgress) onProgress('Analyzing', `Processing ${sentences.length} sentences...`, 5);
   const [lemmaMap, grammarResults] = await Promise.all([
-    lemmatizeText(allSentenceTexts),
+    lemmatizeText(allSentenceTexts, onProgress),
     analyzeGrammarBatch(allSentenceTexts, cumulativeGrammar),
   ]);
 
   // ── STEP 3: Process each sentence with lemma-aware matching ───────────
+  if (onProgress) onProgress('Matching vocabulary', 'Checking words against curriculum...', 55);
   const analyzedSentences = [];
 
   for (let si = 0; si < sentences.length; si++) {
@@ -301,6 +303,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   }
 
   // ── STEP 4: AI refinement pass on remaining unknowns ───────────────
+  if (onProgress) onProgress('Refining', 'AI reviewing unknown words...', 70);
   try {
     const refinedCount = await refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData);
     if (refinedCount > 0) {
@@ -312,6 +315,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   }
 
   // Detect linked word groups (separable verbs, compound tenses) via AI
+  if (onProgress) onProgress('Linking', 'Detecting verb groups...', 85);
   const linkedGroups = await detectLinkedGroups(sentences.map(s => s.text), selectedUnitIds, vocabData, unitMap);
 
   // Apply linked group info to words
@@ -388,7 +392,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
  * Returns an array (one per sentence) of objects mapping lowercase surface form → lemma.
  * Batches large texts into chunks to avoid truncation.
  */
-async function lemmatizeText(sentences) {
+async function lemmatizeText(sentences, onProgress) {
   if (sentences.length === 0) return [];
 
   if (!AI_AVAILABLE || !anthropic) {
@@ -399,7 +403,16 @@ async function lemmatizeText(sentences) {
   const chunks = chunkArray(sentences, LEMMA_BATCH_SIZE);
   console.log(`[LEMMA] Processing ${sentences.length} sentences in ${chunks.length} batch(es)`);
 
-  const tasks = chunks.map(({ items, offset }) => () => lemmatizeBatch(items, offset));
+  let completedBatches = 0;
+  const tasks = chunks.map(({ items, offset }) => async () => {
+    const result = await lemmatizeBatch(items, offset);
+    completedBatches++;
+    if (onProgress) {
+      const pct = Math.round(10 + (completedBatches / chunks.length) * 40);
+      onProgress('Lemmatizing', `${completedBatches}/${chunks.length} batches`, pct);
+    }
+    return result;
+  });
   const batchResults = await runWithConcurrency(tasks, AI_CONCURRENCY);
 
   // Flatten batch results into a single array

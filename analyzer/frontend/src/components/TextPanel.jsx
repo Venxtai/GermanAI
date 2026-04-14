@@ -84,6 +84,7 @@ export default function TextPanel() {
     inputText, setInputText, inputHtml, setInputHtml,
     setUploadedFilename, setWordFormatting,
     selectedUnits, isAnalyzing, setAnalyzing, analysisResult, setAnalysisResult,
+    analysisProgress, setAnalysisProgress,
     whatIfMode, sessionId, isReadOnly,
     compareMode, editingCompareId, compareTexts,
   } = useAnalyzerStore();
@@ -160,6 +161,7 @@ export default function TextPanel() {
     if (!inputText.trim() || selectedUnits.size === 0) return;
 
     setAnalyzing(true);
+    setAnalysisProgress({ step: 'Starting', detail: 'Connecting...', percent: 0 });
     try {
       const res = await fetch('/api/analyzer/analyze', {
         method: 'POST',
@@ -169,14 +171,60 @@ export default function TextPanel() {
           selectedUnits: Array.from(selectedUnits),
         }),
       });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      setAnalysisResult(data);
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(errText || `Server error ${res.status}`);
+      }
+
+      // Read SSE stream
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let resultData = null;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        // Process complete SSE lines
+        const lines = buffer.split('\n');
+        buffer = lines.pop(); // keep incomplete line in buffer
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const jsonStr = line.slice(6).trim();
+          if (!jsonStr) continue;
+
+          try {
+            const event = JSON.parse(jsonStr);
+            if (event.type === 'progress') {
+              setAnalysisProgress({
+                step: event.step,
+                detail: event.detail,
+                percent: event.percent,
+              });
+            } else if (event.type === 'result') {
+              resultData = event.data;
+            } else if (event.type === 'error') {
+              throw new Error(event.error || 'Analysis failed on server');
+            }
+          } catch (parseErr) {
+            if (parseErr.message.includes('Analysis failed')) throw parseErr;
+            console.warn('SSE parse error:', parseErr, jsonStr.substring(0, 200));
+          }
+        }
+      }
+
+      if (!resultData) throw new Error('No analysis result received');
+
+      setAnalysisResult(resultData);
 
       // Build formatting map from HTML
       if (inputHtml) {
         const { buildFormattingMap } = await import('../utils/formatMap');
-        const fmtMap = buildFormattingMap(inputHtml, data.sentences);
+        const fmtMap = buildFormattingMap(inputHtml, resultData.sentences);
         setWordFormatting(fmtMap);
       }
 
@@ -330,18 +378,22 @@ export default function TextPanel() {
         <button
           onClick={handleAnalyze}
           disabled={isAnalyzing || !inputText.trim() || selectedUnits.size === 0}
-          className="px-6 py-2.5 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className={`${isAnalyzing ? 'px-4 min-w-[220px]' : 'px-6'} py-2.5 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
           style={{ backgroundColor: 'var(--brand)' }}
           onMouseEnter={e => { if (!e.target.disabled) e.target.style.backgroundColor = 'var(--brand-dark)'; }}
           onMouseLeave={e => e.target.style.backgroundColor = 'var(--brand)'}
         >
           {isAnalyzing ? (
             <span className="flex items-center gap-2">
-              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+              <svg className="animate-spin h-4 w-4 flex-shrink-0" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              Analyzing...
+              <span className="truncate max-w-[200px]">
+                {analysisProgress
+                  ? `${analysisProgress.detail || analysisProgress.step}${analysisProgress.percent ? ` (${analysisProgress.percent}%)` : ''}`
+                  : 'Analyzing...'}
+              </span>
             </span>
           ) : (
             'Analyze'

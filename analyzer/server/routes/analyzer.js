@@ -78,7 +78,7 @@ router.get('/units', (req, res) => {
   res.json(units);
 });
 
-// POST /api/analyzer/analyze — Full text analysis
+// POST /api/analyzer/analyze — Full text analysis with streaming progress
 router.post('/analyzer/analyze', async (req, res) => {
   const { text, selectedUnits } = req.body;
 
@@ -88,13 +88,25 @@ router.post('/analyzer/analyze', async (req, res) => {
 
   const selectedUnitIds = new Set(selectedUnits.map(String));
 
+  // Set up SSE-style streaming for progress updates
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  const sendProgress = (step, detail, percent) => {
+    try { res.write(`data: ${JSON.stringify({ type: 'progress', step, detail, percent })}\n\n`); } catch (e) {}
+  };
+
   try {
     const { analyzeText } = require('../services/textAnalysis');
-    const result = await analyzeText(text, selectedUnitIds, vocabData, unitMap);
-    res.json(result);
+    const result = await analyzeText(text, selectedUnitIds, vocabData, unitMap, sendProgress);
+    res.write(`data: ${JSON.stringify({ type: 'result', data: result })}\n\n`);
+    res.end();
   } catch (err) {
     console.error('[ANALYZE] Error:', err);
-    res.status(500).json({ error: 'Analysis failed', message: err.message });
+    res.write(`data: ${JSON.stringify({ type: 'error', error: 'Analysis failed', message: err.message })}\n\n`);
+    res.end();
   }
 });
 

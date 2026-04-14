@@ -37,6 +37,7 @@ const useAnalyzerStore = create((set, get) => ({
 
   // Analysis state — restored from sessionStorage
   isAnalyzing: false,
+  analysisProgress: null, // { step, detail, percent }
   analysisResult: savedSession?.analysisResult || null,
 
   // Interaction
@@ -171,7 +172,8 @@ const useAnalyzerStore = create((set, get) => ({
   setWordFormatting: (map) => { set({ wordFormatting: map }); _saveSession(get()); },
   setUploadedFilename: (name) => set({ uploadedFilename: name }),
 
-  setAnalyzing: (val) => set({ isAnalyzing: val }),
+  setAnalyzing: (val) => set({ isAnalyzing: val, ...(!val ? { analysisProgress: null } : {}) }),
+  setAnalysisProgress: (progress) => set({ analysisProgress: progress }),
   setAnalysisResult: (result) => { set({ analysisResult: result }); _saveSession(get()); },
 
   selectWord: (sentenceIndex, wordIndex) => {
