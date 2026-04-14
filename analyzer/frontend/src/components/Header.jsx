@@ -44,7 +44,18 @@ export default function Header() {
       });
       const data = await res.json();
       if (data.shareUrl) {
-        await navigator.clipboard.writeText(data.shareUrl);
+        try {
+          await navigator.clipboard.writeText(data.shareUrl);
+        } catch (clipErr) {
+          // Fallback for when document is not focused (e.g., dropdown just closed)
+          const textarea = document.createElement('textarea');
+          textarea.value = data.shareUrl;
+          textarea.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+        }
         setShareSuccess(true);
         setTimeout(() => setShareSuccess(false), 3000);
       } else {
