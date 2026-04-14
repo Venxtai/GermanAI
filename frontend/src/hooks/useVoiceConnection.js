@@ -661,6 +661,7 @@ export function useVoiceConnection() {
                     || '',
             accessCode: storeSnap.accessCode || '',
             accessType: storeSnap.accessType || '',
+            createdBy: storeSnap.createdBy || '',
             assignedTo: storeSnap.assignedTo || '',
             studentName: studentName || '',
             book: unitData?._book || 'ID1',
@@ -724,6 +725,7 @@ export function useVoiceConnection() {
     const accessCode = storeState.accessCode || '';
     const accessType = storeState.accessType || '';
     const assignedTo = storeState.assignedTo || '';
+    const createdBy = storeState.createdBy || '';
     const studentNameForLog = studentNameRef.current || typedNameRef.current || '';
     const unitForLog = unitDataRef.current
       ? `Unit ${unitDataRef.current.unit} — ${unitDataRef.current._unitName || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
@@ -747,6 +749,7 @@ export function useVoiceConnection() {
         sessionId: endLogSessionId || endSessionId || '',
         durationMin,
         studentName: studentNameForLog,
+        createdBy,
         assignedTo,
       }),
     }).catch(() => {});

@@ -23,6 +23,7 @@ const useAIStore = create((set, get) => ({
   accessCode: null,
   accessType: null,
   assignedTo: null,
+  createdBy: null,
 
   // Mic selection & volume monitoring
   micAnalyser: null, // AnalyserNode from mic stream for real-time volume meter
@@ -56,6 +57,7 @@ const useAIStore = create((set, get) => ({
   setAccessCode: (code) => set({ accessCode: code }),
   setAccessType: (type) => set({ accessType: type }),
   setAssignedTo: (name) => set({ assignedTo: name }),
+  setCreatedBy: (name) => set({ createdBy: name }),
   setTranscriptForDownload: (t) => set({ transcriptForDownload: t }),
   setCurrentUnit: (unit) => set({ currentUnit: unit }),
   setSessionActive: (active) => set({ isSessionActive: active }),

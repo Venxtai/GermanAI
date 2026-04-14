@@ -204,6 +204,7 @@ app.post('/api/auth/validate', async (req, res) => {
     }
     const maxUses = parseInt(row[3]) || 0;
     const used = parseInt(row[4]) || 0;
+    const createdBy = row[5] || '';   // Column F = Created By (teacher name)
     const assignedTo = row[6] || '';
     const preselectedUnit = (row[8] || '').trim();  // Column I = Unit (e.g. "19" or "O23")
     const deadline = (row[9] || '').trim();          // Column J = Deadline
@@ -243,6 +244,7 @@ app.post('/api/auth/validate', async (req, res) => {
       valid: true,
       type,
       remainingUses: preselectedUnit ? 0 : maxUses - used - 1,
+      createdBy,
       assignedTo,
       preselectedUnit: preselectedInfo,
     });
@@ -309,17 +311,17 @@ app.post('/api/auth/confirm', async (req, res) => {
 
 // POST /api/auth/log-session — Log completed session details to Buddy Usage Log
 app.post('/api/auth/log-session', async (req, res) => {
-  const { code, type, unit, sessionId, durationMin, studentName, assignedTo } = req.body;
+  const { code, type, unit, sessionId, durationMin, studentName, createdBy, assignedTo } = req.body;
   try {
     const sheets = await getSheetsClient();
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
-    // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
+    // Columns: Timestamp | Code | Type | Created By | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
     await sheets.spreadsheets.values.append({
       spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Buddy Usage Log!A:I',
+      range: 'Buddy Usage Log!A:J',
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[timestamp, code || '', type || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '', '']],
+        values: [[timestamp, code || '', type || '', createdBy || '', assignedTo || '', studentName || '', unit || '', sessionId || '', durationMin || '', '']],
       },
     });
     res.json({ ok: true });
@@ -735,13 +737,14 @@ async function saveTranscriptFile(sessionId, logSession) {
         const driveLink = `https://drive.google.com/file/d/${fileId}/view`;
         console.log(`${DIM}[TRANSCRIPT] Uploaded to Google Drive: ${filename}${RESET}`);
 
-        // Append transcript link to the last row of Buddy Usage Log (column I)
+        // Append transcript link to the last row of Buddy Usage Log (column J)
+        // Columns: A=Timestamp | B=Code | C=Type | D=Created By | E=Assigned To | F=Student Name | G=Unit | H=Session ID | I=Duration | J=Transcript
         try {
           const sheets = await getSheetsClient();
-          // Find the last row with this session ID
+          // Find the last row with this session ID (column H)
           const logData = await sheets.spreadsheets.values.get({
             spreadsheetId: ACCESS_SHEETS_ID,
-            range: 'Buddy Usage Log!G:G',
+            range: 'Buddy Usage Log!H:H',
           });
           const rows = logData.data.values || [];
           let targetRow = -1;
@@ -751,7 +754,7 @@ async function saveTranscriptFile(sessionId, logSession) {
           if (targetRow > 0) {
             await sheets.spreadsheets.values.update({
               spreadsheetId: ACCESS_SHEETS_ID,
-              range: `Buddy Usage Log!I${targetRow}`,
+              range: `Buddy Usage Log!J${targetRow}`,
               valueInputOption: 'USER_ENTERED',
               requestBody: { values: [[`=HYPERLINK("${driveLink}","open")`]] },
             });
@@ -1601,12 +1604,12 @@ app.post('/api/log', (req, res) => {
   if (type === 'start') {
     // Clear history so reconnecting clients only see the current session
     logHistory.length = 0;
-    const { accessCode, accessType, assignedTo, studentName, book, chapter } = req.body;
+    const { accessCode, accessType, createdBy, assignedTo, studentName, book, chapter } = req.body;
     logSessions.set(sessionId, {
       unit, unitTitle, exchangeCount: 0, turns: [], startTime: timestamp(),
       createdAt: Date.now(), lastActivity: Date.now(),
       // Session metadata for abandoned-session rescue
-      meta: { accessCode, accessType, assignedTo, studentName, book, chapter },
+      meta: { accessCode, accessType, createdBy, assignedTo, studentName, book, chapter },
       activity: ['screen:session'],  // Track student activity
       endReason: null,               // Why the conversation ended
       errors: [],                    // Pipeline errors collected during session
@@ -1756,13 +1759,14 @@ async function rescueAbandonedSession(sessionId, session, reason) {
       const ts = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
       await sheets.spreadsheets.values.append({
         spreadsheetId: ACCESS_SHEETS_ID,
-        range: 'Buddy Usage Log!A:I',
+        range: 'Buddy Usage Log!A:J',
         valueInputOption: 'RAW',
         requestBody: {
           values: [[
             ts,
             meta.accessCode || '',
             meta.accessType || '',
+            meta.createdBy || '',
             meta.assignedTo || '',
             meta.studentName || '',
             unitLabel,
@@ -1782,7 +1786,7 @@ async function rescueAbandonedSession(sessionId, session, reason) {
     }
 
     // 2. Save partial transcript to Drive (even if only 1-2 turns)
-    //    saveTranscriptFile will find the row above and add the Drive link to column I
+    //    saveTranscriptFile will find the row above and add the Drive link to column J
     if (session.turns.length > 0) {
       await saveTranscriptFile(sessionId, session);
     }

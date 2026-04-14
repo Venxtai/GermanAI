@@ -451,6 +451,7 @@ export function UI() {
       store.setAccessCode(accessCode.trim());
       store.setAccessType(data.type || '');
       store.setAssignedTo(data.assignedTo || '');
+      store.setCreatedBy(data.createdBy || '');
       // Route: preselected codes go to name → preselect confirm; free codes go to name → book/chapter/unit
       setScreen("name");
     } catch (err) {
