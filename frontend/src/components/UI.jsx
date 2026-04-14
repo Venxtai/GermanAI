@@ -494,7 +494,7 @@ export function UI() {
       ).then((r) => r.json());
       fullUnit._book = pre.book;
       fullUnit._chapter = pre.chapter;
-      fullUnit._unitName = '';
+      fullUnit._unitName = pre.unitName || '';
       // Set selected book/chapter for session logging
       setSelectedBook(BOOKS.find(b => b.id === pre.book) || BOOKS[0]);
       setSelectedChapter({ chapter: pre.chapter, title: pre.chapterTitle });

@@ -143,6 +143,7 @@ function resolveUnitToChapterInfo(unitId) {
     bookLabel: bookLabels[book] || book,
     chapter: ch.chapter,
     chapterTitle: ch.title,
+    unitName: unitNames[id] || unitNames[id.toUpperCase()] || '',
   };
 }
 
