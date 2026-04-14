@@ -114,10 +114,28 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
   id1Units.sort((a, b) => a - b);
   id2bUnits.sort((a, b) => a - b);
   id2oUnits.sort((a, b) => a - b);
+
+  // Compress unit lists into ranges (e.g., [1,2,3,5,7,8,9] → "1-3, 5, 7-9")
+  function compressToRanges(nums) {
+    if (nums.length === 0) return '';
+    const ranges = [];
+    let start = nums[0], end = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+      if (nums[i] === end + 1) {
+        end = nums[i];
+      } else {
+        ranges.push(start === end ? `${start}` : `${start}-${end}`);
+        start = end = nums[i];
+      }
+    }
+    ranges.push(start === end ? `${start}` : `${start}-${end}`);
+    return ranges.join(', ');
+  }
+
   const unitsLines = [];
-  if (id1Units.length > 0) unitsLines.push(`Impuls Deutsch 1: ${id1Units.join(', ')}`);
-  if (id2bUnits.length > 0) unitsLines.push(`Impuls Deutsch 2 BLAU: ${id2bUnits.join(', ')}`);
-  if (id2oUnits.length > 0) unitsLines.push(`Impuls Deutsch 2 ORANGE: ${id2oUnits.join(', ')}`);
+  if (id1Units.length > 0) unitsLines.push(`Impuls Deutsch 1: ${compressToRanges(id1Units)}`);
+  if (id2bUnits.length > 0) unitsLines.push(`Impuls Deutsch 2 BLAU: ${compressToRanges(id2bUnits)}`);
+  if (id2oUnits.length > 0) unitsLines.push(`Impuls Deutsch 2 ORANGE: ${compressToRanges(id2oUnits)}`);
   const unitsList = unitsLines.join('\n');
 
   // Build formatted ranges for PDF export (character offset-based)
