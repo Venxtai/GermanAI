@@ -77,14 +77,14 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap, onProgress
 
   // ── STEPS 1 & 2: AI Lemmatization + Grammar (run in parallel) ─────────
   const allSentenceTexts = sentences.map(s => s.text);
-  if (onProgress) onProgress('Analyzing', `Processing ${sentences.length} sentences...`, 5);
+  if (onProgress) onProgress('Analyzing', `${sentences.length} sentences`, 5);
   const [lemmaMap, grammarResults] = await Promise.all([
     lemmatizeText(allSentenceTexts, onProgress),
     analyzeGrammarBatch(allSentenceTexts, cumulativeGrammar),
   ]);
 
   // ── STEP 3: Process each sentence with lemma-aware matching ───────────
-  if (onProgress) onProgress('Matching vocabulary', 'Checking words against curriculum...', 55);
+  if (onProgress) onProgress('Matching', 'Checking vocabulary', 55);
   const analyzedSentences = [];
 
   for (let si = 0; si < sentences.length; si++) {
@@ -306,7 +306,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap, onProgress
   }
 
   // ── STEP 4: AI refinement pass on remaining unknowns ───────────────
-  if (onProgress) onProgress('Refining', 'AI reviewing unknown words...', 70);
+  if (onProgress) onProgress('Refining', 'AI reviewing unknowns', 70);
   try {
     const refinedCount = await refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData);
     if (refinedCount > 0) {
@@ -318,7 +318,7 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap, onProgress
   }
 
   // Detect linked word groups (separable verbs, compound tenses) via AI
-  if (onProgress) onProgress('Linking', 'Detecting verb groups...', 85);
+  if (onProgress) onProgress('Linking', 'Detecting verb groups', 85);
   const linkedGroups = await detectLinkedGroups(sentences.map(s => s.text), selectedUnitIds, vocabData, unitMap);
 
   // Apply linked group info to words

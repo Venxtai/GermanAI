@@ -378,7 +378,7 @@ export default function TextPanel() {
         <button
           onClick={handleAnalyze}
           disabled={isAnalyzing || !inputText.trim() || selectedUnits.size === 0}
-          className={`${isAnalyzing ? 'px-4 min-w-[220px]' : 'px-6'} py-2.5 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
+          className={`${isAnalyzing ? 'px-5 min-w-[280px]' : 'px-6'} py-2.5 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm`}
           style={{ backgroundColor: 'var(--brand)' }}
           onMouseEnter={e => { if (!e.target.disabled) e.target.style.backgroundColor = 'var(--brand-dark)'; }}
           onMouseLeave={e => e.target.style.backgroundColor = 'var(--brand)'}
@@ -389,9 +389,9 @@ export default function TextPanel() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              <span className="truncate max-w-[200px]">
+              <span>
                 {analysisProgress
-                  ? `${analysisProgress.detail || analysisProgress.step}${analysisProgress.percent ? ` (${analysisProgress.percent}%)` : ''}`
+                  ? `${analysisProgress.detail || analysisProgress.step} ${analysisProgress.percent ? `(${analysisProgress.percent}%)` : ''}`
                   : 'Analyzing...'}
               </span>
             </span>
