@@ -223,17 +223,8 @@ app.post('/api/auth/validate', async (req, res) => {
         requestBody: { values: [[used + 1]] },
       });
 
-      // Log usage to Buddy Usage Log tab
-      // Columns: Timestamp | Code | Type | Assigned To | Student Name | Unit | Session ID | Duration (min) | Transcript
-      const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: ACCESS_SHEETS_ID,
-        range: 'Buddy Usage Log!A:I',
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [[timestamp, code, type, assignedTo, '', '', '', '', '']],
-        },
-      });
+      // Usage is logged later when the session completes (POST /api/auth/log-session)
+      // or when the session is abandoned — NOT here, to avoid duplicate empty rows.
     }
 
     console.log(`[AUTH] Code "${code}" validated — ${preselectedUnit ? 'preselected unit ' + preselectedUnit : (used + 1) + '/' + maxUses + ' uses'} (${type})`);
@@ -305,16 +296,8 @@ app.post('/api/auth/confirm', async (req, res) => {
       requestBody: { values: [[used + 1]] },
     });
 
-    // Log to Buddy Usage Log
-    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: ACCESS_SHEETS_ID,
-      range: 'Buddy Usage Log!A:I',
-      valueInputOption: 'RAW',
-      requestBody: {
-        values: [[timestamp, code, type, assignedTo, '', '', '', '', '']],
-      },
-    });
+    // Usage is logged later when the session completes (POST /api/auth/log-session)
+    // or when the session is abandoned — NOT here, to avoid duplicate empty rows.
 
     console.log(`[AUTH] Preselected code "${code}" confirmed — ${used + 1}/${maxUses} uses`);
     return res.json({ ok: true });
@@ -1720,7 +1703,7 @@ app.post('/api/log', (req, res) => {
     // Browser closed / navigated away — rescue partial transcript
     // Guard: if session already ended normally (e.g., user clicked End then closed browser), skip
     const session = logSessions.get(sessionId);
-    if (session) {
+    if (session && !session.ended) {
       const { reason } = req.body;
       session.endReason = reason === 'browser_closed' ? 'Browser closed / page refreshed' : `Abandoned — ${reason}`;
       console.log(`${BOLD}${YELLOW}[${timestamp()}] SESSION ABANDONED${RESET} — ${reason || 'unknown'} (${session.turns.length} turns)`);
@@ -1736,6 +1719,7 @@ app.post('/api/log', (req, res) => {
     if (session) {
       const { endReason: reason } = req.body;
       session.endReason = reason || 'User ended conversation';
+      session.ended = true; // Mark as ended so inactivity cleanup skips it
       saveTranscriptFile(sessionId, session);
       // Don't delete immediately — keep alive for feedback to arrive
       // Cleanup after 5 minutes (feedback generation + network latency)
@@ -1817,6 +1801,8 @@ setInterval(() => {
   const abandonThreshold = 3 * 60 * 1000; // 3 minutes
 
   for (const [id, session] of logSessions.entries()) {
+    // Skip sessions that already ended normally — they're kept alive for feedback
+    if (session.ended) continue;
     if (now - session.lastActivity > abandonThreshold) {
       console.log(`${YELLOW}[CLEANUP] Rescuing abandoned session ${id} (inactive ${Math.round((now - session.lastActivity) / 1000)}s)${RESET}`);
       rescueAbandonedSession(id, session, 'inactivity');
