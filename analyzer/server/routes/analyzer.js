@@ -881,75 +881,78 @@ router.post('/analyzer/export', async (req, res) => {
       doc.moveTo(R, lineY).lineTo(R + CW, lineY).stroke('#008899');
       doc.y = lineY + 6;
 
-      // ─── ROW 2: Texts side by side ───
+      // ─── ROW 2: Texts side by side (interleaved paragraph-by-paragraph) ───
       const seqFmtOrig = buildSequentialFormatter(wordFormattingList);
       const seqFmtAdapted = buildSequentialFormatter(wordFormattingList);
       doc.fontSize(9).font('Helvetica');
-      const textStartY = doc.y;
 
-      // LEFT: Original text — base colors from analysis, with paragraph breaks
-      const origParagraphs = (originalText || text).split(/\n+/);
-      doc.y = textStartY;
-      let origFirstPara = true;
-      for (const para of origParagraphs) {
-        if (!para.trim()) continue;
-        if (!origFirstPara) {
-          doc.font('Helvetica').fillColor('#000').text('', L, doc.y, { width: CW });
-          doc.moveDown(0.15);
-        }
-        const origWords = para.split(/(\s+)/);
-        for (const word of origWords) {
-          const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-          if (forceRedOriginal.has(clean)) {
-            doc.fillColor('#ef4444');
-          } else {
-            doc.fillColor(origBaseColor(clean));
-          }
-          const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
-          setPdfFont(doc, fmt, 9);
-          doc.text(word, L, doc.y, { continued: true, width: CW });
-        }
-        // End this paragraph
-        doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
-        origFirstPara = false;
-      }
-      const leftEndY = doc.y;
-
-      // RIGHT: Adapted text — with paragraph breaks
+      const origParagraphs = (originalText || text).split(/\n+/).filter(p => p.trim());
+      const adaptedParagraphs = text.split(/\n+/).filter(p => p.trim());
+      const maxParas = Math.max(origParagraphs.length, adaptedParagraphs.length);
       const footnotes = [];
       let footnoteNum = 0;
-      doc.y = textStartY;
-      const adaptedParagraphs = text.split(/\n+/);
-      let adaptedFirstPara = true;
-      for (const para of adaptedParagraphs) {
-        if (!para.trim()) continue;
-        if (!adaptedFirstPara) {
-          doc.font('Helvetica').fillColor('#000').text('', R, doc.y, { width: CW });
-          doc.moveDown(0.15);
+      const pageBottom = doc.page.height - 60; // leave margin for footer
+
+      for (let pi = 0; pi < maxParas; pi++) {
+        const paraStartY = doc.y;
+
+        // Check if we need a page break before this paragraph
+        if (paraStartY > pageBottom) {
+          doc.addPage();
+          doc.y = 50;
         }
-        const adaptedWords = para.split(/(\s+)/);
-        for (const word of adaptedWords) {
-          const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-          const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
-          if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
-            footnoteNum++;
-            footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+        const rowY = doc.y;
+
+        // LEFT: Original paragraph
+        if (pi < origParagraphs.length) {
+          doc.y = rowY;
+          const origWords = origParagraphs[pi].split(/(\s+)/);
+          for (const word of origWords) {
+            const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+            if (forceRedOriginal.has(clean)) {
+              doc.fillColor('#ef4444');
+            } else {
+              doc.fillColor(origBaseColor(clean));
+            }
+            const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
             setPdfFont(doc, fmt, 9);
-            doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
-            doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
-            doc.fontSize(9);
-          } else if (forceBlueAdapted.has(clean)) {
-            setPdfFont(doc, fmt, 9);
-            doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
-        } else {
-          setPdfFont(doc, fmt, 9);
-          doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+            doc.text(word, L, doc.y, { continued: true, width: CW });
+          }
+          doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
         }
+        const leftY = doc.y;
+
+        // RIGHT: Adapted paragraph
+        if (pi < adaptedParagraphs.length) {
+          doc.y = rowY;
+          const adaptedWords = adaptedParagraphs[pi].split(/(\s+)/);
+          for (const word of adaptedWords) {
+            const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+            const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+            if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+              footnoteNum++;
+              footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+              setPdfFont(doc, fmt, 9);
+              doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+              doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+              doc.fontSize(9);
+            } else if (forceBlueAdapted.has(clean)) {
+              setPdfFont(doc, fmt, 9);
+              doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+            } else {
+              setPdfFont(doc, fmt, 9);
+              doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+            }
+          }
+          doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
         }
-        // End this paragraph
-        doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
-        adaptedFirstPara = false;
+        const rightY = doc.y;
+
+        // Advance to the max Y of both columns + paragraph spacing
+        doc.y = Math.max(leftY, rightY) + 2;
       }
+
+      const leftEndY = doc.y;
       const rightEndY = doc.y;
 
       // Glossary under adapted text (empty line, superscript numbers, no title)

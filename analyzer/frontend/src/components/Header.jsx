@@ -16,6 +16,7 @@ export default function Header() {
 
   const [sharing, setSharing] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
+  const [shareUrl, setShareUrl] = useState(null);
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [exporting, setExporting] = useState(null);
   const [showCloneDialog, setShowCloneDialog] = useState(false);
@@ -23,7 +24,7 @@ export default function Header() {
   const [cloneError, setCloneError] = useState('');
   const [cloning, setCloning] = useState(false);
 
-  // Share current session
+  // Share current session — generates URL, then shows dialog for copying
   const handleShare = async () => {
     if (!sessionId || !analysisResult) return;
     setSharing(true);
@@ -44,20 +45,8 @@ export default function Header() {
       });
       const data = await res.json();
       if (data.shareUrl) {
-        try {
-          await navigator.clipboard.writeText(data.shareUrl);
-        } catch (clipErr) {
-          // Fallback for when document is not focused (e.g., dropdown just closed)
-          const textarea = document.createElement('textarea');
-          textarea.value = data.shareUrl;
-          textarea.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand('copy');
-          document.body.removeChild(textarea);
-        }
-        setShareSuccess(true);
-        setTimeout(() => setShareSuccess(false), 3000);
+        // Show dialog with the URL — clipboard write needs a fresh user gesture
+        setShareUrl(data.shareUrl);
       } else {
         alert('Share failed: ' + (data.error || 'Unknown error'));
       }
@@ -66,6 +55,27 @@ export default function Header() {
     } finally {
       setSharing(false);
     }
+  };
+
+  // Copy share URL to clipboard — called from dialog button (fresh user gesture)
+  const handleCopyShareUrl = async () => {
+    if (!shareUrl) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+    } catch {
+      // Last-resort fallback
+      const textarea = document.createElement('textarea');
+      textarea.value = shareUrl;
+      textarea.style.cssText = 'position:fixed;left:0;top:0;opacity:0;';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+    setShareSuccess(true);
+    setShareUrl(null);
+    setTimeout(() => setShareSuccess(false), 3000);
   };
 
   // Export PDF
@@ -311,6 +321,37 @@ export default function Header() {
           </button>
         ) : null}
       </div>
+
+      {/* Share URL dialog — user clicks Copy for a fresh gesture */}
+      {shareUrl && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white rounded-xl shadow-2xl p-6 w-[28rem] space-y-4">
+            <h3 className="text-lg font-bold text-slate-800">Share Link Ready</h3>
+            <input
+              type="text"
+              value={shareUrl}
+              readOnly
+              onClick={(e) => e.target.select()}
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 font-mono"
+            />
+            <div className="flex gap-2">
+              <button
+                onClick={handleCopyShareUrl}
+                className="flex-1 py-2 text-white rounded-lg text-sm font-medium"
+                style={{ backgroundColor: 'var(--brand-blau, #00528a)' }}
+              >
+                Copy Link
+              </button>
+              <button
+                onClick={() => setShareUrl(null)}
+                className="flex-1 py-2 bg-slate-100 text-slate-600 rounded-lg text-sm font-medium hover:bg-slate-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Clone dialog */}
       {showCloneDialog && (
