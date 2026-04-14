@@ -145,7 +145,7 @@ function buildExportData(state) {
       const wLower = word.text.toLowerCase();
 
       if (mod?.type === 'glossed') originalWordColors[wLower] = 'glossed';
-      else if (mod?.type === 'replaced' || mod?.type === 'marked_known') originalWordColors[wLower] = 'known';
+      else if (mod?.type === 'replaced' || mod?.type === 'marked_known' || mod?.type === 'marked_cognate') originalWordColors[wLower] = 'known';
       else if (word.status === 'unknown') { originalWordColors[wLower] = 'unknown'; unknownWords.push(word.text); }
       else originalWordColors[wLower] = 'known';
     }

@@ -415,6 +415,9 @@ function WordInfo() {
   if (effectiveStatus === 'marked_known') {
     return <MarkedKnownWordInfo word={word} mod={mod} sentenceIndex={sentenceIndex} wordIndex={wordIndex} sentence={sentence} linkedGroup={linkedGroup} />;
   }
+  if (effectiveStatus === 'marked_cognate') {
+    return <MarkedCognateWordInfo word={word} mod={mod} sentenceIndex={sentenceIndex} wordIndex={wordIndex} sentence={sentence} linkedGroup={linkedGroup} />;
+  }
   if (word.status === 'cognate') {
     return <CognateWordInfo word={word} />;
   }
@@ -832,6 +835,12 @@ function UnknownWordInfo({ word, sentenceIndex, wordIndex, sentence, linkedGroup
             wordIndex={wordIndex}
             action="known"
           />
+          <MarkAllButton
+            word={word}
+            sentenceIndex={sentenceIndex}
+            wordIndex={wordIndex}
+            action="cognate"
+          />
         </div>
       )}
     </div>
@@ -974,6 +983,44 @@ function MarkedKnownWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, li
           >
             Add Translation for Students
           </button>
+          <MarkAllButton
+            word={word}
+            sentenceIndex={sentenceIndex}
+            wordIndex={wordIndex}
+            action="unknown"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MarkedCognateWordInfo({ word, mod, sentenceIndex, wordIndex, sentence, linkedGroup }) {
+  const { isReadOnly } = useAnalyzerStore();
+  const displayWord = linkedGroup?.lemma || word.lemma || word.text;
+
+  return (
+    <div className="p-6 space-y-4">
+      <div className="flex items-center gap-2">
+        <span className="w-3 h-3 rounded-full bg-[var(--color-cognate)]" />
+        <h3 className="text-lg font-bold text-[var(--color-cognate)]">{displayWord}</h3>
+      </div>
+
+      {word.lemma && word.lemma.toLowerCase() !== word.text.toLowerCase() && (
+        <p className="text-xs text-slate-400">as used in text: <span className="italic">{word.text}</span></p>
+      )}
+
+      <p className="text-sm text-[var(--color-cognate)] font-medium">
+        This word was manually marked as a cognate.
+      </p>
+
+      <div className="text-xs text-slate-400 bg-slate-50 p-2 rounded">
+        Cognates count as accessible words in the readability score. Students will understand this word through English.
+      </div>
+
+      {/* Action buttons — hidden in read-only mode */}
+      {!isReadOnly && (
+        <div className="space-y-2">
           <MarkAllButton
             word={word}
             sentenceIndex={sentenceIndex}
@@ -1366,19 +1413,21 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
   const [showDialog, setShowDialog] = useState(false);
 
   const occurrences = findAllOccurrences(word.text, analysisResult);
-  // Filter to only relevant occurrences (unknown for "mark known", marked_known for "mark unknown")
+  // Filter to only relevant occurrences
   const relevantOccurrences = occurrences.filter(({ si, wi }) => {
     const key = `${si}_${wi}`;
     const mod = wordModifications[key];
-    if (action === 'known') {
+    if (action === 'known' || action === 'cognate') {
       // Only count occurrences that are currently unknown (not already marked/replaced/glossed)
       return !mod && analysisResult.sentences[si]?.words[wi]?.status === 'unknown';
     } else {
-      // Only count occurrences that are currently marked_known
-      return mod?.type === 'marked_known';
+      // "unknown" action: count occurrences that are currently marked_known or marked_cognate
+      return mod?.type === 'marked_known' || mod?.type === 'marked_cognate';
     }
   });
   const hasMultiple = relevantOccurrences.length > 1;
+
+  const modType = action === 'known' ? 'marked_known' : action === 'cognate' ? 'marked_cognate' : null;
 
   const handleClick = () => {
     if (hasMultiple) {
@@ -1389,8 +1438,8 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
   };
 
   const applySingle = () => {
-    if (action === 'known') {
-      setWordModification(sentenceIndex, wordIndex, { type: 'marked_known', originalWord: word.text });
+    if (modType) {
+      setWordModification(sentenceIndex, wordIndex, { type: modType, originalWord: word.text });
     } else {
       setWordModification(sentenceIndex, wordIndex, null);
     }
@@ -1399,8 +1448,8 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
 
   const applyAll = () => {
     for (const { si, wi } of relevantOccurrences) {
-      if (action === 'known') {
-        setWordModification(si, wi, { type: 'marked_known', originalWord: word.text });
+      if (modType) {
+        setWordModification(si, wi, { type: modType, originalWord: word.text });
       } else {
         setWordModification(si, wi, null);
       }
@@ -1408,10 +1457,20 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
     setShowDialog(false);
   };
 
-  const isKnown = action === 'known';
-  const btnStyle = isKnown
-    ? { backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' }
-    : { backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' };
+  const labels = {
+    known: { btn: 'Mark as Known', allBtn: 'Mark All as Known', prompt: 'Mark just this one or all occurrences as known?', single: 'Mark Only This One' },
+    cognate: { btn: 'Mark as Cognate', allBtn: 'Mark All as Cognate', prompt: 'Mark just this one or all occurrences as cognate?', single: 'Mark Only This One' },
+    unknown: { btn: 'Mark as Unknown', allBtn: 'Mark All as Unknown', prompt: 'Mark just this one or all occurrences as unknown?', single: 'Only This One' },
+  };
+  const label = labels[action] || labels.known;
+
+  const btnStyles = {
+    known: { backgroundColor: 'var(--brand-light)', color: 'var(--brand)', borderColor: 'var(--brand)' },
+    cognate: { backgroundColor: 'var(--color-cognate-bg)', color: 'var(--color-cognate)', borderColor: 'var(--color-cognate)' },
+    unknown: { backgroundColor: 'var(--color-unknown-bg)', color: 'var(--color-unknown)', borderColor: 'var(--color-unknown)' },
+  };
+  const btnStyle = btnStyles[action] || btnStyles.known;
+  const allBtnBg = action === 'known' ? 'var(--brand)' : action === 'cognate' ? 'var(--color-cognate)' : 'var(--color-unknown)';
 
   return (
     <>
@@ -1420,7 +1479,7 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
         className="w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors border"
         style={btnStyle}
       >
-        {isKnown ? 'Mark as Known' : 'Mark as Unknown'}
+        {label.btn}
       </button>
 
       {showDialog && (
@@ -1429,25 +1488,21 @@ function MarkAllButton({ word, sentenceIndex, wordIndex, action }) {
             <h3 className="text-base font-bold text-slate-800">
               "{word.text}" appears {relevantOccurrences.length} times
             </h3>
-            <p className="text-sm text-slate-500">
-              {isKnown
-                ? 'Mark just this one or all occurrences as known?'
-                : 'Mark just this one or all occurrences as unknown?'}
-            </p>
+            <p className="text-sm text-slate-500">{label.prompt}</p>
             <div className="space-y-2">
               <button
                 onClick={applyAll}
                 className="w-full py-2 rounded-lg text-sm font-medium text-white"
-                style={{ backgroundColor: isKnown ? 'var(--brand)' : 'var(--color-unknown)' }}
+                style={{ backgroundColor: allBtnBg }}
               >
-                {isKnown ? 'Mark All as Known' : 'Mark All as Unknown'} ({relevantOccurrences.length})
+                {label.allBtn} ({relevantOccurrences.length})
               </button>
               <button
                 onClick={applySingle}
                 className="w-full py-2 rounded-lg text-sm font-medium border"
                 style={btnStyle}
               >
-                {isKnown ? 'Mark Only This One' : 'Only This One'}
+                {label.single}
               </button>
               <button
                 onClick={() => setShowDialog(false)}

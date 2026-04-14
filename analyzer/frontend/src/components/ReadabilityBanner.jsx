@@ -1,12 +1,15 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import useAnalyzerStore from '../store/useAnalyzerStore';
 import { calculateReadability } from '../utils/readabilityCalc';
+import UniqueWordsPopup from './UniqueWordsPopup';
 
 export default function ReadabilityBanner() {
   const {
     analysisResult, whatIfMode, whatIfResults, whatIfLoading,
     sentenceRewrites, wordModifications, compareMode,
   } = useAnalyzerStore();
+
+  const [uniquePopup, setUniquePopup] = useState(null); // 'cognate' | 'unknown' | null
 
   // ALL hooks must be before any returns
   const liveReadability = useMemo(() => {
@@ -21,7 +24,7 @@ export default function ReadabilityBanner() {
     ? whatIfResults.readability
     : liveReadability;
 
-  const { percent, knownWords, totalWords, translatedWords, cognateWords } = readability;
+  const { percent, knownWords, totalWords, translatedWords, cognateWords, uniqueCognates, uniqueUnknown } = readability;
   const grammarIssues = (whatIfMode && whatIfResults)
     ? analysisResult.readability.grammarIssues
     : liveReadability.grammarIssues;
@@ -33,6 +36,9 @@ export default function ReadabilityBanner() {
   const barColor = percent >= 90 ? 'bg-[var(--brand)]' : percent >= 70 ? 'bg-[var(--brand-orange)]' : 'bg-[var(--color-unknown)]';
   const textColor = percent >= 90 ? 'text-[var(--brand)]' : percent >= 70 ? 'text-[var(--brand-orange)]' : 'text-[var(--color-unknown)]';
   const bgColor = percent >= 90 ? 'bg-[var(--brand-light)]' : percent >= 70 ? 'bg-[#fef3ee]' : 'bg-[var(--color-unknown-bg)]';
+
+  const cog = cognateWords || 0;
+  const unknown = totalWords - knownWords - translatedWords - cog;
 
   return (
     <div className={`px-6 py-2 flex items-center gap-4 border-b border-slate-200 ${bgColor} flex-shrink-0 transition-colors duration-300`}>
@@ -50,16 +56,26 @@ export default function ReadabilityBanner() {
         <span className="text-xs text-slate-500">
           {totalWords} {totalWords === 1 ? 'word' : 'words'}:{' '}
           {(() => {
-            const cog = cognateWords || 0;
-            const unknown = totalWords - knownWords - translatedWords - cog;
             const parts = [];
-            if (knownWords > 0) parts.push(`${knownWords} known`);
-            if (cog > 0) parts.push(`${cog} cognate${cog !== 1 ? 's' : ''}`);
-            if (translatedWords > 0) parts.push(`${translatedWords} translated`);
-            if (unknown > 0) parts.push(`${unknown} unknown`);
-            return parts.length > 2
-              ? parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1]
-              : parts.join(' and ');
+            if (knownWords > 0) parts.push(<span key="known">{knownWords} known</span>);
+            if (cog > 0) parts.push(
+              <span key="cog">
+                {cog} cognate{cog !== 1 ? 's' : ''}{' '}
+                (<button className="underline hover:text-[var(--brand)]" onClick={() => setUniquePopup('cognate')}>{uniqueCognates} unique</button>)
+              </span>
+            );
+            if (translatedWords > 0) parts.push(<span key="trans">{translatedWords} translated</span>);
+            if (unknown > 0) parts.push(
+              <span key="unk">
+                {unknown} unknown{' '}
+                (<button className="underline hover:text-[var(--color-unknown)]" onClick={() => setUniquePopup('unknown')}>{uniqueUnknown} unique</button>)
+              </span>
+            );
+            return parts.reduce((acc, part, i) => {
+              if (i === 0) return [part];
+              if (i === parts.length - 1) return [...acc, <span key={`and${i}`}> and </span>, part];
+              return [...acc, <span key={`sep${i}`}>, </span>, part];
+            }, []);
           })()}
         </span>
         {diff !== 0 && (
@@ -81,6 +97,12 @@ export default function ReadabilityBanner() {
         </span>
       )}
 
+      {uniquePopup && (
+        <UniqueWordsPopup
+          type={uniquePopup}
+          onClose={() => setUniquePopup(null)}
+        />
+      )}
     </div>
   );
 }

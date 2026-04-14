@@ -2,11 +2,12 @@
  * Calculate readability stats from an analysis result, accounting for
  * sentence rewrites and word modifications.
  *
- * Returns { percent, knownWords, totalWords, grammarIssues, translatedWords, cognateWords }
+ * Returns { percent, knownWords, totalWords, grammarIssues, translatedWords, cognateWords,
+ *           uniqueCognates, uniqueUnknown }
  */
 export function calculateReadability(analysisResult, sentenceRewrites = {}, wordModifications = {}) {
   if (!analysisResult) {
-    return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0, cognateWords: 0 };
+    return { percent: 100, knownWords: 0, totalWords: 0, grammarIssues: 0, translatedWords: 0, cognateWords: 0, uniqueCognates: 0, uniqueUnknown: 0 };
   }
 
   let total = 0;
@@ -14,6 +15,8 @@ export function calculateReadability(analysisResult, sentenceRewrites = {}, word
   let translated = 0;
   let cognates = 0;
   let grammarIssues = 0;
+  const cognateSet = new Set();
+  const unknownSet = new Set();
 
   for (let si = 0; si < analysisResult.sentences.length; si++) {
     const sentence = analysisResult.sentences[si];
@@ -50,6 +53,7 @@ export function calculateReadability(analysisResult, sentenceRewrites = {}, word
           } else if (origWord?.status === 'cognate') {
             known++;
             cognates++;
+            cognateSet.add((origWord.lemma || origWord.text).toLowerCase());
           }
         }
       }
@@ -67,11 +71,21 @@ export function calculateReadability(analysisResult, sentenceRewrites = {}, word
         } else if (mod?.type === 'glossed') {
           known++;
           translated++;
+        } else if (mod?.type === 'marked_cognate') {
+          known++;
+          cognates++;
+          cognateSet.add((w.lemma || w.text).toLowerCase());
         } else if (w.status === 'cognate') {
           known++;
           cognates++;
+          cognateSet.add((w.lemma || w.text).toLowerCase());
+        } else if (mod?.type === 'marked_known') {
+          known++;
         } else if (w.status === 'known') {
           known++;
+        } else {
+          // unknown
+          unknownSet.add((w.lemma || w.text).toLowerCase());
         }
       }
     }
@@ -85,5 +99,7 @@ export function calculateReadability(analysisResult, sentenceRewrites = {}, word
     grammarIssues,
     translatedWords: translated,
     cognateWords: cognates,
+    uniqueCognates: cognateSet.size,
+    uniqueUnknown: unknownSet.size,
   };
 }

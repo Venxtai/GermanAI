@@ -30,7 +30,7 @@ export function buildExportData(mode, { analysisResult, wordModifications, sente
 
       if (mod?.type === 'glossed') {
         originalWordColors[wLower] = 'glossed';
-      } else if (mod?.type === 'replaced' || mod?.type === 'marked_known') {
+      } else if (mod?.type === 'replaced' || mod?.type === 'marked_known' || mod?.type === 'marked_cognate') {
         originalWordColors[wLower] = 'known';
       } else if (word.status === 'unknown') {
         originalWordColors[wLower] = 'unknown';

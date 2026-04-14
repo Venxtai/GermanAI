@@ -165,6 +165,8 @@ function SentenceDisplay({
             status = 'glossed';
           } else if (mod?.type === 'marked_known') {
             status = 'known';
+          } else if (mod?.type === 'marked_cognate') {
+            status = 'cognate';
           } else if (whatIfStatusMap) {
             // What If mode: use rechecked status
             const wiStatus = whatIfStatusMap[modKey];
