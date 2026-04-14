@@ -221,11 +221,14 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap, onProgress
             if (nextNonWS && nextNonWS.text === ':') isDialogueSpeaker = true;
           }
 
-          if (allEntriesIncludingLemma.length === 0 && allVerbs.length === 0 && !lemmaHasArticle && !hasStemEntry) {
-            // Not in vocab anywhere AND AI didn't add an article → proper name
-            result = { known: true, reason: 'proper_name' };
-            isProperName = true;
-          } else if (isDialogueSpeaker && allEntriesIncludingLemma.length === 0 && allVerbs.length === 0) {
+          // Common German noun suffixes — words with these are regular nouns, NOT proper names
+          const nounSuffixes = ['ung', 'keit', 'heit', 'tion', 'sion', 'mus', 'tät', 'schaft', 'nis',
+            'chen', 'lein', 'ieren', 'ismus', 'ität', 'enz', 'anz', 'ling', 'sal', 'tum',
+            'werden', 'sein', 'haben', 'machen', 'gehen', 'kommen', 'nehmen', 'geben', 'lassen'];
+          const normLower = norm.toLowerCase();
+          const hasNounSuffix = nounSuffixes.some(s => normLower.endsWith(s) && normLower.length > s.length + 1);
+
+          if (isDialogueSpeaker && allEntriesIncludingLemma.length === 0 && allVerbs.length === 0) {
             // Dialogue speaker label (e.g., "Moritz:") — high confidence proper name
             // even if AI added an article (sometimes happens with names that look like nouns)
             result = { known: true, reason: 'proper_name' };
@@ -973,14 +976,72 @@ async function refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData)
   const tasks = chunks.map(({ items, offset }) => () => refineUnknownBatch(items, vocabSummary, offset));
   const batchResults = await runWithConcurrency(tasks, 2); // lower concurrency — these are larger prompts
 
+  // Build a set of known active vocab words for verification
+  const activeVocabSet = new Set();
+  for (const [norm, entries] of vocabData.vocabIndex) {
+    for (const entry of entries) {
+      if (entry.isActive && selectedUnitIds.has(entry.unitId)) {
+        activeVocabSet.add(norm);
+        break;
+      }
+    }
+  }
+
+  // Helper: verify a claimed known_base actually exists in active vocab
+  const verifyKnownBase = (knownBase) => {
+    if (!knownBase) return false;
+    const norm = normalizeWord(knownBase);
+    return activeVocabSet.has(norm);
+  };
+
+  // Helper: verify all parts of a compound exist in active vocab, and return part details
+  const verifyCompoundParts = (partsNote) => {
+    if (!partsNote) return null;
+    // Extract individual words from compound parts note (e.g., "Schlaf + Zimmer")
+    const partWords = partsNote.split(/[+,]+/).map(p => p.trim()).filter(Boolean);
+    if (partWords.length === 0) return null;
+    const partDetails = [];
+    for (const partWord of partWords) {
+      const norm = normalizeWord(partWord);
+      if (!activeVocabSet.has(norm)) return null; // part not in active vocab
+      // Find the active entry for this part
+      const entries = vocabData.vocabIndex.get(norm) || [];
+      const activeEntry = entries.find(e => e.isActive && selectedUnitIds.has(e.unitId));
+      partDetails.push({
+        word: activeEntry?.word || partWord,
+        unitId: activeEntry?.unitId || null,
+        translation: activeEntry?.translation || '',
+        pos: activeEntry?.pos || '',
+      });
+    }
+    return partDetails;
+  };
+
   // Apply results
   let reclassified = 0;
+  let rejected = 0;
   for (const results of batchResults) {
     for (const r of results) {
       if (!r || r.classification === 'truly_unknown') continue;
 
       const unknownEntry = unknownEntries[r.index]?.[1];
       if (!unknownEntry) continue;
+
+      // Verify classifications that claim a relationship to known vocabulary
+      if (r.classification === 'inflected_form' || r.classification === 'colloquial') {
+        if (!verifyKnownBase(r.known_base)) {
+          rejected++;
+          continue; // AI hallucinated — the base word isn't actually in active vocab
+        }
+      }
+      let compoundPartDetails = null;
+      if (r.classification === 'compound') {
+        compoundPartDetails = verifyCompoundParts(r.note);
+        if (!compoundPartDetails) {
+          rejected++;
+          continue; // Compound parts aren't all in active vocab
+        }
+      }
 
       for (const { si, wi } of unknownEntry.locations) {
         const word = analyzedSentences[si].words[wi];
@@ -1008,7 +1069,7 @@ async function refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData)
           case 'compound':
             word.status = 'known';
             word.reason = 'ai_refinement';
-            word.refinement = { type: 'compound', parts: r.note || '' };
+            word.refinement = { type: 'compound', parts: r.note || '', partDetails: compoundPartDetails || [] };
             reclassified++;
             break;
           case 'colloquial':
@@ -1027,6 +1088,7 @@ async function refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData)
       }
     }
   }
+  if (rejected > 0) console.log(`[REFINE] Rejected ${rejected} AI classifications — base words not in active vocab`);
   return reclassified;
 }
 
@@ -1064,10 +1126,13 @@ For each word, classify as ONE of:
 - "truly_unknown": genuinely not accessible from the known vocabulary or English.
 
 IMPORTANT:
-- Be generous: if a student who knows the base word could reasonably figure out the form, classify it as accessible.
+- ONLY classify as "inflected_form" if the known_base word EXACTLY appears in the KNOWN VOCABULARY list above. Do NOT guess or assume — check the list.
 - German da-compounds (darum, darüber, dabei) and wo-compounds (worauf, wodurch): if the base preposition (um, über, bei, auf, durch) is known, classify as "inflected_form" with known_base being the preposition.
-- Separable verb prefixes with past participles (mitgebracht→mitbringen, angefangen→anfangen): check if the base verb (bringen, fangen) is known.
-- For proper names that are also German words, consider the CONTEXT to decide.
+- Separable verb prefixes with past participles (mitgebracht→mitbringen, angefangen→anfangen): check if the base verb (bringen, fangen) is in the KNOWN VOCABULARY list.
+- "proper_name" means ONLY actual names of people, characters, places, brands. In German ALL nouns are capitalized — do NOT classify a regular German noun as proper_name just because it starts with a capital letter. Words like "Heu" (hay), "Egoismus" (egoism), "Verrücktwerden" (going crazy), "Mütterchen" (little mother) are regular nouns, NOT proper names.
+- "compound": ONLY if ALL component parts appear in the KNOWN VOCABULARY list. Set "note" to the parts separated by " + ".
+- "colloquial": ONLY if the known_base appears in the KNOWN VOCABULARY list.
+- When in doubt, classify as "truly_unknown". It is much better to leave a word as unknown than to incorrectly mark it as known.
 
 Respond with a JSON array:
 [{"index": 0, "classification": "inflected_form", "known_base": "glauben", "note": "imperative"}, ...]

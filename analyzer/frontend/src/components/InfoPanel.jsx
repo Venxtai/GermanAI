@@ -523,6 +523,46 @@ function KnownWordInfo({ word, linkedGroup }) {
       {word.reason === 'proper_name' && (
         <p className="text-sm text-slate-500">This is a proper name.</p>
       )}
+      {word.reason === 'ai_refinement' && word.refinement && (
+        <div className="space-y-2">
+          {word.refinement.type === 'inflected_form' && (
+            <p className="text-sm text-slate-500">
+              This is a form of <strong>{word.refinement.knownBase}</strong>
+              {word.refinement.note ? ` (${word.refinement.note})` : ''}.
+            </p>
+          )}
+          {word.refinement.type === 'compound' && (
+            <div className="space-y-2">
+              <p className="text-sm text-slate-500">
+                This is a compound word: <strong>{word.refinement.parts}</strong>
+              </p>
+              {word.refinement.partDetails?.length > 0 && (
+                <div className="space-y-2 mt-2">
+                  {word.refinement.partDetails.map((part, i) => (
+                    <div key={i} className="bg-slate-50 rounded-lg p-3 space-y-1">
+                      <div className="font-medium text-slate-700">{part.word}</div>
+                      {part.translation && <InfoRow label="Translation" value={part.translation} />}
+                      {part.pos && <InfoRow label="Part of speech" value={part.pos} />}
+                      {part.unitId && <InfoRow label="Studied in" value={formatUnitLabel(part.unitId, getOptionalUnits())} />}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {word.refinement.type === 'colloquial' && (
+            <p className="text-sm text-slate-500">
+              This is an informal/colloquial form of <strong>{word.refinement.knownBase}</strong>
+              {word.refinement.note ? ` (${word.refinement.note})` : ''}.
+            </p>
+          )}
+          {word.refinement.type === 'title_abbreviation' && (
+            <p className="text-sm text-slate-500">
+              This is a title/abbreviation: {word.refinement.note}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

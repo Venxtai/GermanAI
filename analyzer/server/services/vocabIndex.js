@@ -506,13 +506,27 @@ function isWordKnown(word, selectedUnitIds, vocabIndex, verbFormIndex, universal
   }
 
   // Check verb forms in selected units
+  // Two passes: first prefer standalone verb entries, then allow multi-word phrases
+  let bestVerbMatch = null;
   for (const vf of verbForms) {
     if (selectedUnitIds.has(vf.unitId)) {
       // Find the vocab entry for this verb lemma
       const lemmaEntries = vocabIndex.get(normalizeWord(vf.lemma)) || [];
       const activeEntry = lemmaEntries.find(e => e.isActive && selectedUnitIds.has(e.unitId));
       if (activeEntry) {
-        return { known: true, reason: 'verb_form', entry: activeEntry, verbForm: vf };
+        // Check if this is a standalone verb (single word, no article) vs multi-word phrase
+        const wordParts = activeEntry.word.trim().split(/\s+/);
+        const isStandaloneVerb = wordParts.length === 1 ||
+          (wordParts.length === 2 && ['sich', 'einander'].includes(wordParts[0].toLowerCase()));
+        if (isStandaloneVerb) {
+          // Standalone verb — best match, return immediately
+          return { known: true, reason: 'verb_form', entry: activeEntry, verbForm: vf };
+        }
+        // Multi-word phrase — save as fallback but don't return yet
+        // Multi-word verb phrases (e.g., "einen Kompromiss schließen") should NOT
+        // make all conjugations of the embedded verb count as known, since the
+        // student learned the phrase, not the standalone verb meaning.
+        // So we skip these entirely.
       }
     }
   }
@@ -571,7 +585,7 @@ function detectCognate(word) {
     'struktur', 'subjekt', 'symbol', 'sympathie', 'symptom',
     'technik', 'technologie', 'telefon', 'temperatur', 'tempo',
     'tennis', 'text', 'thema', 'theorie', 'therapie', 'tiger',
-    'toleranz', 'tourist', 'tradition', 'transport', 'triumph',
+    'toilette', 'toleranz', 'tourist', 'tradition', 'transport', 'triumph',
     // Z→C and K→C cognates (explicit to avoid false positives from broad patterns)
     'zentimeter', 'zentrum', 'zirkus', 'zivilisation', 'zone', 'zylinder',
     'kategorie', 'katalog', 'kamera', 'kanal', 'kandidat', 'kapital',
