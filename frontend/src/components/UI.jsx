@@ -904,7 +904,7 @@ export function UI() {
               style={{ pointerEvents: "none" }}
             >
               <button
-                onClick={() => window.open('https://buddy.impulsdeutsch.com/invite', '_blank')}
+                onClick={() => window.open('https://buddy.impulsdeutsch.com/dashboard', '_blank')}
                 className="pointer-events-auto backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full transition-colors"
                 style={{ background: "rgba(237,108,40,0.8)" }}
                 onMouseEnter={e => e.currentTarget.style.background = "rgba(237,108,40,1)"}

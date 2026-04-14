@@ -21,13 +21,13 @@
     .header {
       background: #008899;
       color: white;
-      padding: 1rem 2rem;
+      padding: 1.25rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .header h1 { font-size: 1.15rem; font-weight: 700; }
-    .header .subtitle { font-size: 0.8rem; opacity: 0.85; }
+    .header h1 { font-size: 1.25rem; font-weight: 700; }
+    .header .subtitle { font-size: 0.85rem; opacity: 0.85; font-weight: 400; }
 
     .container { max-width: 720px; margin: 0 auto; padding: 1.5rem; }
 
@@ -41,7 +41,7 @@
     }
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
     }
     .meta-item label {
@@ -76,64 +76,26 @@
       border-bottom: 1px solid #e2e8f0;
     }
 
-    .turn {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-    .turn.student { flex-direction: row-reverse; }
-
-    .turn-avatar {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem; font-weight: 700; color: white;
-      flex-shrink: 0;
-    }
-    .turn.buddy .turn-avatar { background: #008899; }
-    .turn.student .turn-avatar { background: #6366f1; }
-
-    .turn-bubble {
-      max-width: 80%;
-      padding: 0.7rem 1rem;
-      border-radius: 12px;
+    /* Conversation table */
+    .conv-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 0.88rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
-    .turn.buddy .turn-bubble {
-      background: #f0fdfa;
-      border: 1px solid #ccfbf1;
-      border-bottom-left-radius: 4px;
+    .conv-table td {
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
     }
-    .turn.student .turn-bubble {
-      background: #eef2ff;
-      border: 1px solid #e0e7ff;
-      border-bottom-right-radius: 4px;
+    .conv-table .speaker-cell {
+      white-space: nowrap;
+      width: 1%;
+      padding-right: 1rem;
     }
-
-    .turn-time {
-      font-size: 0.65rem;
-      color: #94a3b8;
-      margin-top: 0.2rem;
-    }
-    .turn.student .turn-time { text-align: right; }
+    .conv-table .speaker-cell.buddy { color: #1e293b; font-weight: 400; }
+    .conv-table .speaker-cell.student { color: #1e293b; font-weight: 700; }
 
     /* Feedback section */
-    .feedback-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-      padding: 1.5rem 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .feedback-card h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #008899;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
     .feedback-item {
       padding: 0.5rem 0;
       border-bottom: 1px solid #f1f5f9;
@@ -197,14 +159,20 @@
     /* Print styles */
     @media print {
       .header, .actions, .btn { display: none !important; }
-      body { background: white; }
-      .container { max-width: 100%; padding: 0; }
-      .meta-card, .chat-container, .feedback-card {
+      body { background: white; font-size: 11pt; }
+      .container { max-width: 100%; padding: 0; margin: 0; }
+      .meta-card, .chat-container {
         box-shadow: none;
-        border: 1px solid #e2e8f0;
-        break-inside: avoid;
+        border: 1px solid #d1d5db;
+        page-break-inside: auto;
+        margin-bottom: 1rem;
       }
-      .turn-bubble { border: 1px solid #d1d5db !important; }
+      .conv-table { font-size: 10pt; }
+      .conv-table .speaker-cell.buddy { color: #1e293b !important; font-weight: 400 !important; }
+      .conv-table .speaker-cell.student { color: #1e293b !important; font-weight: 700 !important; }
+      .conv-table td[style*="font-weight"] { font-weight: 600 !important; }
+      .conv-table tr { page-break-inside: avoid; }
+      .feedback-item { page-break-inside: avoid; }
     }
   </style>
 </head>
@@ -212,7 +180,7 @@
 
 <div class="header">
   <div>
-    <h1>Impuls Deutsch <span class="subtitle">Conversation Transcript</span></h1>
+    <h1>Impuls Deutsch Conversation Buddy <span class="subtitle">| Transcript</span></h1>
   </div>
 </div>
 
@@ -243,7 +211,7 @@
     </div>
 
     <!-- Feedback -->
-    <div class="feedback-card" id="feedback-section" style="display:none;">
+    <div class="chat-container" id="feedback-section" style="display:none;">
       <h2>Feedback</h2>
       <div id="feedback-items"></div>
     </div>
@@ -281,40 +249,43 @@ function renderTranscript(data) {
   const meta = data.meta || {};
   const metaGrid = document.getElementById('meta-grid');
   const metaFields = [
-    { label: 'Unit', value: meta.unit },
     { label: 'Student', value: meta.student },
-    { label: 'Date', value: meta.date },
+    { label: 'University', value: meta.university },
+    { label: 'Access Code', value: meta.access_code },
+    { label: 'Completed', value: meta.date },
     { label: 'Duration', value: meta.duration },
     { label: 'Turns', value: meta.turns },
-    { label: 'Access Code', value: meta.access_code },
+    { label: 'Book', value: meta.book },
+    { label: 'Unit', value: meta.unit_formatted || meta.unit, span: 2 },
   ];
   metaGrid.innerHTML = metaFields
     .filter(f => f.value)
-    .map(f => `<div class="meta-item"><label>${esc(f.label)}</label><span>${esc(f.value)}</span></div>`)
+    .map(f => {
+      const span = f.span ? ` style="grid-column: span ${f.span};"` : '';
+      return `<div class="meta-item"${span}><label>${esc(f.label)}</label><span>${esc(f.value)}</span></div>`;
+    })
     .join('');
 
   // Update page title
-  if (meta.student && meta.unit) {
-    document.title = `${meta.student} - ${meta.unit} | Transcript`;
+  const unitDisplay = meta.unit_formatted || meta.unit || '';
+  if (meta.student) {
+    document.title = `${meta.student} - ${unitDisplay} | Transcript`;
   }
 
-  // Chat turns
+  // Conversation table
+  const studentName = (meta.student || 'Student').toUpperCase();
   const turnsEl = document.getElementById('chat-turns');
   if (!data.turns || data.turns.length === 0) {
     turnsEl.innerHTML = '<p style="color:#94a3b8; text-align:center; padding: 2rem;">No conversation turns recorded.</p>';
   } else {
-    turnsEl.innerHTML = data.turns.map(t => {
-      const role = t.role === 'student' ? 'student' : 'buddy';
-      const avatar = role === 'student' ? 'S' : 'B';
-      const label = role === 'student' ? 'Student' : 'Buddy';
-      return `<div class="turn ${role}">
-        <div class="turn-avatar" title="${label}">${avatar}</div>
-        <div>
-          <div class="turn-bubble">${esc(t.text)}</div>
-          <div class="turn-time">${esc(t.time || '')}</div>
-        </div>
-      </div>`;
-    }).join('');
+    turnsEl.innerHTML = `<table class="conv-table"><tbody>${data.turns.map(t => {
+      const isBuddy = t.role !== 'student';
+      const speaker = isBuddy ? 'BUDDY' : studentName;
+      const cls = isBuddy ? 'buddy' : 'student';
+      const time = t.time ? ` (${to12h(t.time)})` : '';
+      const bold = !isBuddy ? ' style="font-weight:600;"' : '';
+      return `<tr><td class="speaker-cell ${cls}">${esc(speaker)}${time}</td><td${bold}>${esc(t.text)}</td></tr>`;
+    }).join('')}</tbody></table>`;
   }
 
   // Feedback
@@ -337,6 +308,18 @@ function esc(str) {
   const d = document.createElement('div');
   d.textContent = str || '';
   return d.innerHTML;
+}
+
+function to12h(time) {
+  if (!time) return '';
+  const m = time.match(/^(\d{1,2}):(\d{2}):?(\d{2})?$/);
+  if (!m) return time;
+  let h = parseInt(m[1]);
+  const min = m[2];
+  const sec = m[3] || '';
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return `${h}:${min}${sec ? ':' + sec : ''} ${ampm}`;
 }
 </script>
 </body>

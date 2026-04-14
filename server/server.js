@@ -4154,6 +4154,7 @@ app.get('/api/dashboard/transcript/:fileId', async (req, res) => {
     let inMeta = false;
     let inConversation = false;
     let inFeedback = false;
+    let feedbackHeaderSeen = false;
     const turns = [];
     const feedback = [];
 
@@ -4178,6 +4179,7 @@ app.get('/api/dashboard/transcript/:fileId', async (req, res) => {
         if (line.trim() === 'FEEDBACK') {
           inConversation = false;
           inFeedback = true;
+          feedbackHeaderSeen = false; // skip the ─ separator right after FEEDBACK
           continue;
         }
         // Look for expanded transcript (stop here)
@@ -4203,6 +4205,7 @@ app.get('/api/dashboard/transcript/:fileId', async (req, res) => {
       }
 
       if (inFeedback) {
+        if (line.startsWith('─') && !feedbackHeaderSeen) { feedbackHeaderSeen = true; continue; }
         if (line.startsWith('─') || line.startsWith('═') || line.includes('EXPANDED TRANSCRIPT')) break;
         const trimmed = line.trim();
         if (trimmed.startsWith('•') || trimmed.startsWith('-')) {
@@ -4211,6 +4214,27 @@ app.get('/api/dashboard/transcript/:fileId', async (req, res) => {
           feedback.push(trimmed);
         }
       }
+    }
+
+    // Enrich meta with book/unit info from unit string
+    // unit field is like "Unit O40 — bedrohte Sprachen..." or "Unit 14 — ..."
+    const unitMatch = (meta.unit || '').match(/^Unit\s+([A-Za-z]?\d+)/);
+    if (unitMatch) {
+      const unitId = unitMatch[1];
+      const info = resolveUnitToChapterInfo(unitId);
+      if (info) {
+        const bookShort = { ID1: 'ID1', ID2B: 'ID2 BLAU', ID2O: 'ID2 ORANGE' };
+        meta.book = bookShort[info.book] || info.bookLabel;
+        const numOnly = unitId.replace(/^[A-Za-z]/, '');
+        meta.unit_formatted = `${numOnly}: ${info.unitName || info.chapterTitle || ''}`;
+        meta.chapter = `${info.chapter}: ${info.chapterTitle || ''}`;
+      }
+    }
+
+    // Extract university from assigned_to field
+    if (meta.assigned_to) {
+      const uniMatch = meta.assigned_to.match(/\(([^)]+)\)\s*$/);
+      if (uniMatch) meta.university = uniMatch[1];
     }
 
     return res.json({ meta, turns, feedback });

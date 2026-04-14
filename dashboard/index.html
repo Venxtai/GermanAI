@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -22,14 +23,14 @@
     .header {
       background: #008899;
       color: white;
-      padding: 1rem 2rem;
+      padding: 1.25rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .header-left { display: flex; align-items: center; gap: 1rem; }
-    .header h1 { font-size: 1.2rem; font-weight: 700; }
-    .header .subtitle { font-size: 0.8rem; opacity: 0.85; }
+    .header h1 { font-size: 1.25rem; font-weight: 700; }
+    .header .subtitle { font-size: 0.85rem; opacity: 0.85; font-weight: 400; }
     .header-right { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
     .header-right .teacher-name { font-weight: 600; }
     .header-right .credits { opacity: 0.85; }
@@ -53,18 +54,20 @@
       background: white;
       border-radius: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-      padding: 1.5rem 2rem;
+      padding: 2rem;
       margin-bottom: 1.5rem;
     }
-    .card h2 { font-size: 1.1rem; font-weight: 700; color: #008899; margin-bottom: 0.5rem; }
+    .card h2 { font-size: 1.15rem; font-weight: 700; color: #008899; margin-bottom: 0.5rem; }
+    .card p { color: #475569; font-size: 0.9rem; margin-bottom: 1rem; }
 
     /* Auth Section */
-    #auth-section { max-width: 440px; margin: 4rem auto; }
+    #auth-section .container { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; }
     label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; }
     input[type="text"], input[type="email"], input[type="date"], select {
       width: 100%; padding: 0.6rem 0.75rem;
       border: 1.5px solid #d1d5db; border-radius: 8px;
       font-size: 0.9rem; font-family: inherit; outline: none;
+      transition: border-color 0.2s;
     }
     input:focus, select:focus { border-color: #008899; box-shadow: 0 0 0 3px rgba(0,136,153,0.1); }
     .form-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
@@ -72,14 +75,14 @@
 
     /* Buttons */
     .btn {
-      padding: 0.55rem 1.2rem; border-radius: 8px; font-size: 0.85rem;
+      padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem;
       font-weight: 600; border: none; cursor: pointer; font-family: inherit;
       display: inline-flex; align-items: center; gap: 0.4rem;
-      transition: background 0.15s, opacity 0.15s;
+      transition: all 0.2s;
     }
     .btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-primary { background: #008899; color: white; }
-    .btn-primary:hover:not(:disabled) { background: #006d7a; }
+    .btn-primary:hover:not(:disabled) { background: #007585; }
     .btn-outline { background: white; color: #008899; border: 1.5px solid #008899; }
     .btn-outline:hover:not(:disabled) { background: #f0fdfa; }
     .btn-sm { padding: 0.35rem 0.8rem; font-size: 0.78rem; }
@@ -195,50 +198,50 @@
       font-size: 1.1rem; padding: 0.2rem 0.4rem;
     }
     .invite-form .remove-btn:hover { color: #ef4444; }
+
+    /* Assignment slot rows — override global width:100% */
+    #assignment-slots select,
+    #assignment-slots input[type="date"] { width: auto; }
   </style>
 </head>
 <body>
 
+<!-- ═══════ PERSISTENT HEADER ═══════ -->
+<div class="header">
+  <div class="header-left">
+    <h1>Impuls Deutsch Conversation Buddy <span class="subtitle">| Teacher Dashboard</span></h1>
+  </div>
+  <div class="header-right hidden" id="header-right">
+    <span class="teacher-name" id="teacher-name-display"></span>
+    <span class="credits" id="credits-display"></span>
+    <button class="btn-logout" onclick="handleLogout()">Log Out</button>
+  </div>
+</div>
+
 <!-- ═══════ AUTH SECTION ═══════ -->
 <div id="auth-section">
-  <div class="header">
-    <div class="header-left">
-      <h1>Impuls Deutsch <span class="subtitle">Teacher Dashboard</span></h1>
-    </div>
-  </div>
   <div class="container">
-    <div class="card" style="margin-top: 2rem;">
-      <h2>Teacher Login</h2>
-      <p style="color: #475569; font-size: 0.88rem;">Enter your teacher access code and email to view your student dashboard.</p>
+    <div class="card">
+      <h2>Teacher Dashboard</h2>
+      <p>Enter your teacher access code and email address below to view your student overview, transcripts, and to invite new students.</p>
+      <div id="auth-error" class="error hidden"></div>
       <div class="form-row">
         <div>
-          <label for="teacher-code">Teacher Code</label>
-          <input type="text" id="teacher-code" placeholder="e.g. NIKO-TEACH">
+          <label for="teacher-code">Teacher Access Code</label>
+          <input type="text" id="teacher-code" placeholder="e.g., StThomas5942" autocomplete="off">
         </div>
         <div>
-          <label for="teacher-email">Email</label>
-          <input type="email" id="teacher-email" placeholder="your@email.com">
+          <label for="teacher-email">Teacher Email Address</label>
+          <input type="email" id="teacher-email" placeholder="you@university.edu">
         </div>
       </div>
       <button class="btn btn-primary" onclick="handleLogin()" id="login-btn">Log In</button>
-      <div id="auth-error" class="error hidden"></div>
     </div>
   </div>
 </div>
 
 <!-- ═══════ DASHBOARD SECTION ═══════ -->
 <div id="dashboard-section" class="hidden">
-  <div class="header">
-    <div class="header-left">
-      <h1>Impuls Deutsch <span class="subtitle">Teacher Dashboard</span></h1>
-    </div>
-    <div class="header-right">
-      <span class="teacher-name" id="teacher-name-display"></span>
-      <span class="credits" id="credits-display"></span>
-      <button class="btn-logout" onclick="handleLogout()">Log Out</button>
-    </div>
-  </div>
-
   <div class="container">
     <!-- Tabs -->
     <div class="tabs">
@@ -320,48 +323,95 @@
 
     <!-- ═══════ INVITE TAB ═══════ -->
     <div id="panel-invite" class="hidden">
-      <div class="card">
+      <!-- Step 1: Entry form -->
+      <div class="card" id="invite-entry">
         <h2>Invite Students</h2>
-        <p style="color: #475569; font-size: 0.88rem;">
-          Create access codes for your students. They'll receive an email with their code and instructions.
+        <p>
+          Enter student information below. Each student will receive a unique access code for the Conversation Buddy.
+          After you click "Create Codes", you can choose to either download them as a PDF document (printable cards with QR code)
+          or have the buddy send the access codes via email directly to your student(s).
+          Student emails are only needed if you choose the email option.
           You have <strong id="invite-credits">0</strong> credits remaining.
         </p>
 
         <div class="invite-form" id="invite-form">
           <div style="margin-bottom: 1rem;">
-            <label>Students</label>
+            <label for="university-input">University / Institution</label>
+            <input type="text" id="university-input" placeholder="e.g., University of Rhode Island">
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <div class="student-row" style="margin-bottom: 0; background: #f1f5f9; padding: 0.5rem 0.5rem; border-radius: 8px 8px 0 0; border-bottom: 2px solid #e2e8f0; margin-bottom: 0.4rem;">
+              <label style="flex: 1; margin-bottom: 0; font-size: 0.85rem; color: #475569;">Student Name</label>
+              <label style="flex: 1; margin-bottom: 0; font-size: 0.85rem; color: #475569;">Student Email *</label>
+              <span style="width: 28px;"></span>
+            </div>
             <div id="student-rows"></div>
-            <button class="btn btn-outline btn-sm" onclick="addStudentRow()" style="margin-top: 0.5rem;">+ Add Student</button>
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-top: 0.5rem;">
+              <button class="btn btn-outline btn-sm" onclick="addStudentRow()">+ Add Student</button>
+              <button class="btn btn-outline btn-sm" onclick="document.getElementById('excel-upload').click()">
+                <span style="display:inline-flex;align-items:center;gap:0.35rem;">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="vertical-align:middle;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5m0 0l5 5m-5-5v12"/></svg>
+                  Upload Excel
+                </span>
+              </button>
+              <input type="file" id="excel-upload" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleExcelUpload(this)">
+            </div>
+            <div id="upload-status" style="margin-top:0.5rem; font-size:0.82rem; display:none;"></div>
           </div>
 
-          <div class="form-row">
-            <div>
-              <label for="conversations-count">Conversations per Student</label>
-              <input type="text" id="conversations-count" value="1" style="width: 80px;"
-                     oninput="updateCreditCalc()">
+          <div style="margin: 1.25rem 0; padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <label style="display: block; margin-bottom: 0.75rem; font-weight: 700; color: #1e293b;">Options</label>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <label style="font-weight: 500; font-size: 0.85rem; white-space: nowrap; margin-bottom: 0;">Number of conversations per student</label>
+              <input type="number" id="conversations-count" min="1" max="99" value="1"
+                     onchange="onConvCountChange()" oninput="onConvCountChange()"
+                     style="width: 70px; text-align: center; padding: 0.45rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem; font-family: inherit;">
             </div>
-            <div>
-              <label>Topic Mode</label>
-              <div style="display: flex; gap: 1rem; padding-top: 0.4rem;">
-                <label style="display: flex; align-items: center; gap: 0.3rem; font-weight: 400; cursor: pointer;">
-                  <input type="radio" name="topic-mode" value="free" checked onchange="updateTopicMode()"> Free choice
-                </label>
-                <label style="display: flex; align-items: center; gap: 0.3rem; font-weight: 400; cursor: pointer;">
-                  <input type="radio" name="topic-mode" value="preselected" onchange="updateTopicMode()"> Preselected
-                </label>
-              </div>
+
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.85rem;">Topic Selection</label>
+            <div style="display: flex; gap: 1.5rem; margin-bottom: 0.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.4rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="topic-mode" value="free" checked onchange="onTopicModeChange()"> Students choose their own topics
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="topic-mode" value="preselected" onchange="onTopicModeChange()"> Assign specific chapter topics
+              </label>
+            </div>
+            <div id="preselect-warning" class="error hidden"></div>
+            <div id="preselect-section" style="display: none;">
+              <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 0.75rem;">Select a chapter and unit for each conversation. Deadlines are shared with students but not enforced.</p>
+              <div id="assignment-slots"></div>
             </div>
           </div>
-
-          <!-- Preselected assignment slots -->
-          <div id="assignment-slots" class="hidden"></div>
 
           <div id="credit-calc" style="font-size: 0.82rem; color: #64748b; margin: 0.5rem 0 1rem;"></div>
 
-          <button class="btn btn-primary" onclick="handleCreateCodes()" id="create-codes-btn">Create Codes & Send Emails</button>
+          <button class="btn btn-primary" onclick="handleCreateCodes()" id="create-codes-btn">Create Codes</button>
           <div id="invite-error" class="error hidden"></div>
-          <div id="invite-success" class="success hidden"></div>
         </div>
+      </div>
+
+      <!-- Step 2: Success — generated codes with PDF/email options -->
+      <div class="card hidden" id="invite-success">
+        <div id="invite-success-message" class="success" style="margin-bottom: 1rem; font-size: 0.95rem;"></div>
+
+        <h2>Generated Codes</h2>
+        <div style="overflow-x: auto;">
+          <table class="data-table" id="generated-codes-table">
+            <thead id="generated-codes-header"></thead>
+            <tbody id="generated-codes-body"></tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <button class="btn btn-primary" onclick="handleDownloadPdf()">Download PDF Cards</button>
+          <button class="btn btn-outline" id="send-emails-btn" onclick="handleSendEmails()" style="display:none;">Send Email Invitations</button>
+          <button class="btn btn-outline" onclick="handleInviteMore()">Create More Codes</button>
+          <button class="btn btn-outline" onclick="handleBackToOverview()">Back to Overview</button>
+        </div>
+        <div id="email-status" style="margin-top: 0.75rem; font-size: 0.85rem;" class="hidden"></div>
       </div>
     </div>
   </div>
@@ -385,6 +435,7 @@ let selectedCodes = new Set();
 let sortField = 'name';
 let sortDir = 'asc';
 let chaptersData = []; // for invite form
+let generatedCodes = []; // codes from last create-codes call
 
 // Restore session
 const saved = sessionStorage.getItem('dashboard-session');
@@ -438,10 +489,15 @@ async function doLogin(isRestore) {
 
     sessionStorage.setItem('dashboard-session', JSON.stringify({ code: teacherCode, email: teacherEmail }));
 
+    // Extract university from teacherName, e.g. "Claire Ross (University of Rhode Island)"
+    const uniMatch = teacherName.match(/\(([^)]+)\)\s*$/);
+    const teacherUniversity = uniMatch ? uniMatch[1] : '';
+
     // Update UI
     document.getElementById('teacher-name-display').textContent = teacherName;
     document.getElementById('credits-display').textContent = `${availableCredits} credits remaining`;
     document.getElementById('invite-credits').textContent = availableCredits;
+    document.getElementById('university-input').value = teacherUniversity;
 
     populateChapterFilter();
     applyFilters();
@@ -471,6 +527,7 @@ async function refreshData() {
 function showSection(name) {
   document.getElementById('auth-section').classList.toggle('hidden', name !== 'auth');
   document.getElementById('dashboard-section').classList.toggle('hidden', name !== 'dashboard');
+  document.getElementById('header-right').classList.toggle('hidden', name !== 'dashboard');
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -696,72 +753,221 @@ async function loadChapters() {
   }
 }
 
-function addStudentRow() {
+function addStudentRow(name, email) {
   const container = document.getElementById('student-rows');
   const row = document.createElement('div');
   row.className = 'student-row';
   row.innerHTML = `
-    <input type="text" placeholder="Student name" class="student-name">
-    <input type="email" placeholder="Email (optional)" class="student-email">
+    <input type="text" placeholder="Full name" class="student-name" value="${esc(name || '')}">
+    <input type="email" placeholder="email@..." class="student-email" value="${esc(email || '')}">
     <button class="remove-btn" onclick="this.parentElement.remove(); updateCreditCalc();">&times;</button>
   `;
   container.appendChild(row);
   updateCreditCalc();
 }
 
-function updateTopicMode() {
-  topicMode = document.querySelector('input[name="topic-mode"]:checked').value;
-  const slots = document.getElementById('assignment-slots');
+// ═══ Excel Upload ═══
+function handleExcelUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const statusEl = document.getElementById('upload-status');
+  statusEl.style.display = 'block';
+  statusEl.innerHTML = '<span style="color:#475569;">Reading file...</span>';
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+      if (rows.length === 0) {
+        statusEl.innerHTML = '<span style="color:#ef4444;">The file appears to be empty.</span>';
+        input.value = '';
+        return;
+      }
+
+      // Detect header row
+      const header = rows[0].map(h => (h || '').toString().toLowerCase().trim());
+      let nameCol = header.findIndex(h => h.includes('name') || h.includes('student'));
+      let emailCol = header.findIndex(h => h.includes('email') || h.includes('e-mail') || h.includes('mail'));
+
+      let startRow = 1;
+      if (nameCol < 0) {
+        nameCol = 0;
+        emailCol = header.length > 1 ? 1 : -1;
+        startRow = 0;
+      }
+
+      const newStudents = [];
+      for (let i = startRow; i < rows.length; i++) {
+        const row = rows[i];
+        const name = (row[nameCol] || '').toString().trim();
+        if (!name) continue;
+        const email = emailCol >= 0 ? (row[emailCol] || '').toString().trim() : '';
+        newStudents.push({ name, email });
+      }
+
+      if (newStudents.length === 0) {
+        statusEl.innerHTML = '<span style="color:#ef4444;">No student names found in the file.</span>';
+        input.value = '';
+        return;
+      }
+
+      // Check for duplicates against existing rows
+      const existingNames = new Set();
+      document.querySelectorAll('.student-name').forEach(inp => {
+        const n = inp.value.trim().toLowerCase();
+        if (n) existingNames.add(n);
+      });
+
+      const dupes = newStudents.filter(s => existingNames.has(s.name.toLowerCase()));
+      const fresh = newStudents.filter(s => !existingNames.has(s.name.toLowerCase()));
+
+      if (dupes.length > 0 && fresh.length === 0) {
+        statusEl.innerHTML = `<span style="color:#b45309;">All ${dupes.length} student(s) from this file are already in the table. No new students added.</span>`;
+        input.value = '';
+        return;
+      }
+
+      // Clear empty placeholder rows
+      document.querySelectorAll('.student-row').forEach(row => {
+        const name = (row.querySelector('.student-name')?.value || '').trim();
+        const email = (row.querySelector('.student-email')?.value || '').trim();
+        if (!name && !email) row.remove();
+      });
+
+      // Add fresh students
+      fresh.forEach(s => addStudentRow(s.name, s.email));
+
+      let msg = `<span style="color:#008899;">Added ${fresh.length} student${fresh.length !== 1 ? 's' : ''} from <strong>${esc(file.name)}</strong>.</span>`;
+      if (dupes.length > 0) {
+        msg += ` <span style="color:#b45309;">${dupes.length} duplicate${dupes.length !== 1 ? 's' : ''} skipped: ${dupes.map(d => esc(d.name)).join(', ')}.</span>`;
+      }
+      statusEl.innerHTML = msg;
+
+    } catch (err) {
+      console.error('Excel parse error:', err);
+      statusEl.innerHTML = '<span style="color:#ef4444;">Failed to read file. Please use .xlsx, .xls, or .csv format.</span>';
+    }
+    input.value = '';
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+let assignmentSlots = [];
+
+function onConvCountChange() {
+  updateCreditCalc();
   if (topicMode === 'preselected') {
-    slots.classList.remove('hidden');
-    buildAssignmentSlots();
+    const count = parseInt(document.getElementById('conversations-count').value) || 1;
+    if (count > 0) buildAssignmentSlots(count);
+  }
+}
+
+function onTopicModeChange() {
+  const selected = document.querySelector('input[name="topic-mode"]:checked').value;
+  if (selected === 'preselected') {
+    topicMode = 'preselected';
+    document.getElementById('preselect-section').style.display = '';
+    const count = parseInt(document.getElementById('conversations-count').value) || 1;
+    if (count > 0) buildAssignmentSlots(count);
   } else {
-    slots.classList.add('hidden');
+    topicMode = 'free';
+    document.getElementById('preselect-section').style.display = 'none';
   }
   updateCreditCalc();
 }
 
-function buildAssignmentSlots() {
-  const count = parseInt(document.getElementById('conversations-count').value) || 1;
+function buildAssignmentSlots(count) {
   const container = document.getElementById('assignment-slots');
+  const oldSlots = assignmentSlots.slice();
   container.innerHTML = '';
+  assignmentSlots = [];
+
+  const bookShortNames = { 'ID1': 'ID1', 'ID2B': 'ID2 BLAU', 'ID2O': 'ID2 ORANGE' };
 
   for (let i = 0; i < count; i++) {
-    const slot = document.createElement('div');
-    slot.className = 'form-row';
-    slot.style.marginBottom = '0.5rem';
-    slot.innerHTML = `
-      <div style="flex: 0 0 auto; padding-top: 1.6rem; font-weight: 600; color: #64748b; font-size: 0.82rem; width: 30px;">${i + 1}.</div>
-      <div>
-        <label>Book</label>
-        <select class="slot-book" onchange="updateSlotChapters(this)">
-          ${chaptersData.map(b => `<option value="${b.id}">${b.label}</option>`).join('')}
-        </select>
-      </div>
-      <div>
-        <label>Chapter</label>
-        <select class="slot-chapter"></select>
-      </div>
-      <div>
-        <label>Deadline</label>
-        <input type="date" class="slot-deadline">
-      </div>
+    const prev = oldSlots[i] || { book: '', chapter: '', deadline: '' };
+    assignmentSlots.push({ book: prev.book, chapter: prev.chapter, deadline: prev.deadline });
+
+    const row = document.createElement('div');
+    row.style.cssText = 'display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;';
+    row.innerHTML = `
+      <span style="font-weight: 600; font-size: 0.85rem; min-width: 110px;">Conversation ${i + 1}</span>
+      <select class="slot-book" data-idx="${i}" onchange="onBookChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;">
+        <option value="">Book...</option>
+        ${chaptersData.map(b => `<option value="${esc(b.id)}"${b.id === prev.book ? ' selected' : ''}>${esc(bookShortNames[b.id] || b.label)}</option>`).join('')}
+      </select>
+      <select class="slot-chapter" data-idx="${i}" onchange="onChapterChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;"${prev.book ? '' : ' disabled'}>
+        <option value="">Chapter...</option>
+      </select>
+      <input type="date" class="slot-deadline" data-idx="${i}" onchange="onDeadlineChange(this)" style="padding: 0.4rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.83rem; font-family: inherit;" value="${prev.deadline || ''}">
     `;
-    container.appendChild(slot);
-    // Populate chapters for default book
-    updateSlotChapters(slot.querySelector('.slot-book'));
+    container.appendChild(row);
+
+    // Restore chapter dropdown if book was previously selected
+    if (prev.book) {
+      const chapterSel = row.querySelector('.slot-chapter');
+      const book = chaptersData.find(b => b.id === prev.book);
+      if (book) {
+        book.chapters.forEach(ch => {
+          const opt = document.createElement('option');
+          opt.value = ch.chapter;
+          const full = ch.title || '';
+          const colonIdx = full.indexOf('?: ');
+          const qIdx = colonIdx >= 0 ? colonIdx + 3 : (full.indexOf('? ') >= 0 ? full.indexOf('? ') + 2 : 0);
+          const subtitle = qIdx > 0 ? full.slice(qIdx) : full;
+          const truncated = subtitle.length > 35 ? subtitle.slice(0, 35) + '...' : subtitle;
+          opt.textContent = `${ch.chapter}: ${truncated}`;
+          if (ch.chapter === prev.chapter) opt.selected = true;
+          chapterSel.appendChild(opt);
+        });
+      }
+    }
   }
 }
 
-function updateSlotChapters(bookSelect) {
-  const row = bookSelect.closest('.form-row');
-  const chapterSelect = row.querySelector('.slot-chapter');
-  const bookId = bookSelect.value;
+function onBookChange(sel) {
+  const idx = parseInt(sel.dataset.idx);
+  const bookId = sel.value;
+  assignmentSlots[idx].book = bookId;
+  assignmentSlots[idx].chapter = '';
+
+  const chapterSel = sel.parentElement.querySelector('.slot-chapter');
+  chapterSel.innerHTML = '<option value="">Chapter...</option>';
+
+  if (!bookId) {
+    chapterSel.disabled = true;
+    return;
+  }
+
   const book = chaptersData.find(b => b.id === bookId);
-  if (!book) return;
-  chapterSelect.innerHTML = book.chapters.map(c =>
-    `<option value="${c.chapter}">Ch. ${c.chapter}: ${c.title}</option>`
-  ).join('');
+  if (book) {
+    book.chapters.forEach(ch => {
+      const opt = document.createElement('option');
+      opt.value = ch.chapter;
+      const full = ch.title || '';
+      const colonIdx = full.indexOf('?: ');
+      const qIdx = colonIdx >= 0 ? colonIdx + 3 : (full.indexOf('? ') >= 0 ? full.indexOf('? ') + 2 : 0);
+      const subtitle = qIdx > 0 ? full.slice(qIdx) : full;
+      const truncated = subtitle.length > 35 ? subtitle.slice(0, 35) + '...' : subtitle;
+      opt.textContent = `${ch.chapter}: ${truncated}`;
+      chapterSel.appendChild(opt);
+    });
+    chapterSel.disabled = false;
+  }
+}
+
+function onChapterChange(sel) {
+  const idx = parseInt(sel.dataset.idx);
+  assignmentSlots[idx].chapter = sel.value;
+}
+
+function onDeadlineChange(input) {
+  const idx = parseInt(input.dataset.idx);
+  assignmentSlots[idx].deadline = input.value;
 }
 
 function updateCreditCalc() {
@@ -777,6 +983,7 @@ async function handleCreateCodes() {
   const nameInputs = document.querySelectorAll('.student-name');
   const emailInputs = document.querySelectorAll('.student-email');
   const convCount = parseInt(document.getElementById('conversations-count').value) || 1;
+  const university = document.getElementById('university-input').value.trim();
 
   const students = [];
   nameInputs.forEach((inp, i) => {
@@ -785,6 +992,7 @@ async function handleCreateCodes() {
     students.push({
       name,
       email: emailInputs[i]?.value.trim() || '',
+      university,
       conversations: convCount,
     });
   });
@@ -803,24 +1011,19 @@ async function handleCreateCodes() {
   // Build assignments for preselected mode
   let assignments = null;
   if (topicMode === 'preselected') {
-    assignments = [];
-    const slots = document.getElementById('assignment-slots').querySelectorAll('.form-row');
-    slots.forEach(slot => {
-      const book = slot.querySelector('.slot-book')?.value || 'ID1';
-      const chapter = slot.querySelector('.slot-chapter')?.value || '1';
-      const deadline = slot.querySelector('.slot-deadline')?.value || '';
-      assignments.push({ book, chapter, deadline });
-    });
+    assignments = assignmentSlots.map(s => ({
+      book: s.book || 'ID1',
+      chapter: s.chapter || '1',
+      deadline: s.deadline || '',
+    }));
   }
 
   const btn = document.getElementById('create-codes-btn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Creating...';
   hideEl('invite-error');
-  hideEl('invite-success');
 
   try {
-    // 1. Create codes
     const createResp = await fetch('/api/invite/create-codes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -833,37 +1036,131 @@ async function handleCreateCodes() {
       return;
     }
 
-    // 2. Send emails
-    const studentsWithEmail = createData.codes.filter(s => s.email && s.email.includes('@'));
-    if (studentsWithEmail.length > 0) {
-      await fetch('/api/invite/send-emails', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ codes: createData.codes, teacherName }),
-      });
-    }
+    // Store generated codes for PDF/email actions
+    generatedCodes = createData.codes || [];
 
-    const msg = `Created ${createData.codes.length} code(s). ${studentsWithEmail.length > 0 ? `Emails sent to ${studentsWithEmail.length} student(s).` : ''}`;
-    showSuccess('invite-success', msg);
-
-    // Clear form
-    document.getElementById('student-rows').innerHTML = '';
-    addStudentRow();
-
-    // Refresh overview data
+    // Update credits
     availableCredits = createData.remaining ?? (availableCredits - totalCredits);
     document.getElementById('credits-display').textContent = `${availableCredits} credits remaining`;
     document.getElementById('invite-credits').textContent = availableCredits;
-    await refreshData();
-    showToast('Codes created! Switched to overview.');
-    switchTab('overview');
+
+    // Populate success message
+    document.getElementById('invite-success-message').textContent =
+      `Successfully created ${generatedCodes.length} access code(s) using ${totalCredits} credits. ${availableCredits} credits remaining.`;
+
+    // Build generated codes table
+    const hasAssignments = generatedCodes.some(c => c.chapter || c.unit);
+    const header = document.getElementById('generated-codes-header');
+    const body = document.getElementById('generated-codes-body');
+
+    if (hasAssignments) {
+      header.innerHTML = '<tr><th>Student</th><th>Access Code</th><th>Chapter / Unit</th><th>Deadline</th><th>Conversations</th></tr>';
+      body.innerHTML = generatedCodes.map(c =>
+        `<tr><td>${esc(c.name)}</td><td class="code-cell">${esc(c.code)}</td><td>${esc(c.chapter || '')} ${esc(c.unit || '')}</td><td>${formatDate(c.deadline)}</td><td>${c.conversations}</td></tr>`
+      ).join('');
+    } else {
+      header.innerHTML = '<tr><th>Student</th><th>Access Code</th><th>Conversations</th></tr>';
+      body.innerHTML = generatedCodes.map(c =>
+        `<tr><td>${esc(c.name)}</td><td class="code-cell">${esc(c.code)}</td><td>${c.conversations}</td></tr>`
+      ).join('');
+    }
+
+    // Show/hide email button based on whether any students have emails
+    const hasEmails = generatedCodes.some(c => c.email && c.email.includes('@'));
+    document.getElementById('send-emails-btn').style.display = hasEmails ? '' : 'none';
+
+    // Show success, hide entry
+    document.getElementById('invite-entry').classList.add('hidden');
+    document.getElementById('invite-success').classList.remove('hidden');
 
   } catch (err) {
     showError('invite-error', 'Server error: ' + err.message);
   } finally {
     btn.disabled = false;
-    btn.textContent = 'Create Codes & Send Emails';
+    btn.textContent = 'Create Codes';
   }
+}
+
+async function handleDownloadPdf() {
+  if (!generatedCodes.length) return;
+  try {
+    const resp = await fetch('/api/invite/download-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ codes: generatedCodes, teacherName }),
+    });
+    if (!resp.ok) throw new Error('PDF generation failed');
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `student-codes-${new Date().toISOString().slice(0,10)}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('PDF downloaded!');
+  } catch (err) {
+    showToast('Error downloading PDF: ' + err.message);
+  }
+}
+
+async function handleSendEmails() {
+  const btn = document.getElementById('send-emails-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Sending...';
+  const statusEl = document.getElementById('email-status');
+  try {
+    const resp = await fetch('/api/invite/send-emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ codes: generatedCodes, teacherName }),
+    });
+    const data = await resp.json();
+    if (data.sent > 0) {
+      statusEl.textContent = `Emails sent to ${data.sent} student(s).` + (data.failed > 0 ? ` ${data.failed} failed.` : '');
+      statusEl.className = 'success';
+      statusEl.classList.remove('hidden');
+      showToast(`Emails sent to ${data.sent} student(s)!`);
+    } else {
+      statusEl.textContent = 'No emails were sent. ' + (data.error || '');
+      statusEl.className = 'error';
+      statusEl.classList.remove('hidden');
+    }
+  } catch (err) {
+    statusEl.textContent = 'Error sending emails: ' + err.message;
+    statusEl.className = 'error';
+    statusEl.classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Email Invitations';
+  }
+}
+
+function handleInviteMore() {
+  // Hide success, show entry form, clear form
+  document.getElementById('invite-success').classList.add('hidden');
+  document.getElementById('invite-entry').classList.remove('hidden');
+  document.getElementById('student-rows').innerHTML = '';
+  addStudentRow();
+  updateCreditCalc();
+  generatedCodes = [];
+  document.getElementById('email-status').classList.add('hidden');
+  document.getElementById('upload-status').style.display = 'none';
+}
+
+async function handleBackToOverview() {
+  // Hide success, show entry form (for next time invite tab is opened)
+  document.getElementById('invite-success').classList.add('hidden');
+  document.getElementById('invite-entry').classList.remove('hidden');
+  document.getElementById('student-rows').innerHTML = '';
+  addStudentRow();
+  generatedCodes = [];
+  document.getElementById('email-status').classList.add('hidden');
+  // Refresh data and switch
+  await refreshData();
+  switchTab('overview');
+  showToast('Codes created! Switched to overview.');
 }
 
 // ══════════════════════════════════════════════════════════════
