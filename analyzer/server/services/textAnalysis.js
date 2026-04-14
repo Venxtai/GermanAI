@@ -13,8 +13,8 @@ const AI_AVAILABLE = !!process.env.ANTHROPIC_API_KEY;
 const LEMMA_BATCH_SIZE = 30;
 const GRAMMAR_BATCH_SIZE = 30;
 const LINKED_BATCH_SIZE = 50;
-const REFINE_BATCH_SIZE = 150;
-const AI_CONCURRENCY = 3;
+const REFINE_BATCH_SIZE = 100;
+const AI_CONCURRENCY = 2;
 
 function chunkArray(arr, size) {
   const chunks = [];
@@ -34,6 +34,20 @@ async function runWithConcurrency(tasks, limit) {
     if (executing.size >= limit) await Promise.race(executing);
   }
   return Promise.all(results);
+}
+
+async function callAnthropicWithRetry(params, maxRetries = 2) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await anthropic.messages.create(params);
+    } catch (err) {
+      const isRetryable = err.status === 429 || err.status === 529 || err.status >= 500;
+      if (!isRetryable || attempt === maxRetries) throw err;
+      const delay = Math.pow(2, attempt) * 1000 + Math.random() * 500;
+      console.warn(`[API] Retry ${attempt + 1}/${maxRetries} after ${Math.round(delay)}ms: ${err.message}`);
+      await new Promise(r => setTimeout(r, delay));
+    }
+  }
 }
 
 /**
@@ -61,15 +75,12 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   // Build cumulative grammar constraints from selected units
   const cumulativeGrammar = buildCumulativeGrammar(selectedUnitIds, unitMap);
 
-  // ── STEP 1: AI Lemmatization ──────────────────────────────────────────
-  // Have AI extract the dictionary form (lemma) of every word in context.
-  // This handles plurals (Achterbahnen→Achterbahn), conjugations (mag→mögen),
-  // case declensions (Kindern→Kind), etc.
+  // ── STEPS 1 & 2: AI Lemmatization + Grammar (run in parallel) ─────────
   const allSentenceTexts = sentences.map(s => s.text);
-  const lemmaMap = await lemmatizeText(allSentenceTexts);
-
-  // ── STEP 2: Batch grammar analysis via AI ─────────────────────────────
-  const grammarResults = await analyzeGrammarBatch(allSentenceTexts, cumulativeGrammar);
+  const [lemmaMap, grammarResults] = await Promise.all([
+    lemmatizeText(allSentenceTexts),
+    analyzeGrammarBatch(allSentenceTexts, cumulativeGrammar),
+  ]);
 
   // ── STEP 3: Process each sentence with lemma-aware matching ───────────
   const analyzedSentences = [];
@@ -290,9 +301,14 @@ async function analyzeText(text, selectedUnitIds, vocabData, unitMap) {
   }
 
   // ── STEP 4: AI refinement pass on remaining unknowns ───────────────
-  const refinedCount = await refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData);
-  if (refinedCount > 0) {
-    console.log(`[REFINE] Reclassified ${refinedCount} unknown words via AI refinement`);
+  try {
+    const refinedCount = await refineUnknownWords(analyzedSentences, selectedUnitIds, vocabData);
+    if (refinedCount > 0) {
+      console.log(`[REFINE] Reclassified ${refinedCount} unknown words via AI refinement`);
+    }
+  } catch (err) {
+    console.error('[REFINE] Refinement pass failed (non-fatal):', err.message);
+    // Continue without refinement — the initial analysis is still valid
   }
 
   // Detect linked word groups (separable verbs, compound tenses) via AI
@@ -433,7 +449,7 @@ Example: [{"schöner": "schön", "mag": "mögen", "_proper_names": [], "_compara
 ONLY output the JSON array, nothing else.`;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: Math.max(4096, sentences.length * 150),
       messages: [{ role: 'user', content: prompt }],
@@ -758,7 +774,7 @@ ${sentences.map((s, i) => `[${startIndex + i}] ${s}`).join('\n')}
 Respond with a JSON array of ${sentences.length} objects, one per sentence. Only JSON, no other text.`;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: Math.max(4096, sentences.length * 180),
       messages: [{ role: 'user', content: prompt }],
@@ -838,7 +854,7 @@ ${sentences.map((s, i) => `[${i}] ${s}`).join('\n')}
 Respond with a JSON array of group objects. If no linked groups found, return []. Only JSON, no other text.`;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: Math.max(2048, sentences.length * 60),
       messages: [{ role: 'user', content: prompt }],
@@ -1031,7 +1047,7 @@ Respond with a JSON array:
 ONLY output the JSON array, nothing else.`;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: Math.max(4096, entries.length * 50),
       messages: [{ role: 'user', content: prompt }],
