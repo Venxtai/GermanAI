@@ -27,6 +27,9 @@ COPY landing/ ./landing/
 # Copy invite page (served at buddy.impulsdeutsch.com/invite)
 COPY invite/ ./invite/
 
+# Copy teacher dashboard (served at buddy.impulsdeutsch.com/dashboard)
+COPY dashboard/ ./dashboard/
+
 # Copy service account (will be overridden by env var in Cloud Run)
 # COPY service-account.json ./service-account.json
 

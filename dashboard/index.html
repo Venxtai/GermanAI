@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impuls Deutsch | Teacher Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="/dashboard/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: #008899;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .header h1 { font-size: 1.2rem; font-weight: 700; }
+    .header .subtitle { font-size: 0.8rem; opacity: 0.85; }
+    .header-right { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; }
+    .header-right .teacher-name { font-weight: 600; }
+    .header-right .credits { opacity: 0.85; }
+    .btn-logout {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: inherit;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,0.25); }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 { font-size: 1.1rem; font-weight: 700; color: #008899; margin-bottom: 0.5rem; }
+
+    /* Auth Section */
+    #auth-section { max-width: 440px; margin: 4rem auto; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; }
+    input[type="text"], input[type="email"], input[type="date"], select {
+      width: 100%; padding: 0.6rem 0.75rem;
+      border: 1.5px solid #d1d5db; border-radius: 8px;
+      font-size: 0.9rem; font-family: inherit; outline: none;
+    }
+    input:focus, select:focus { border-color: #008899; box-shadow: 0 0 0 3px rgba(0,136,153,0.1); }
+    .form-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .form-row > div { flex: 1; }
+
+    /* Buttons */
+    .btn {
+      padding: 0.55rem 1.2rem; border-radius: 8px; font-size: 0.85rem;
+      font-weight: 600; border: none; cursor: pointer; font-family: inherit;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: #008899; color: white; }
+    .btn-primary:hover:not(:disabled) { background: #006d7a; }
+    .btn-outline { background: white; color: #008899; border: 1.5px solid #008899; }
+    .btn-outline:hover:not(:disabled) { background: #f0fdfa; }
+    .btn-sm { padding: 0.35rem 0.8rem; font-size: 0.78rem; }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-danger:hover:not(:disabled) { background: #dc2626; }
+
+    .error { color: #ef4444; font-size: 0.85rem; margin-top: 0.5rem; }
+    .success { color: #008899; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 500; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0; border-bottom: 2px solid #e2e8f0; margin-bottom: 1.5rem; }
+    .tab {
+      padding: 0.7rem 1.5rem; font-size: 0.9rem; font-weight: 600;
+      color: #64748b; background: none; border: none; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; cursor: pointer; font-family: inherit;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tab:hover { color: #008899; }
+    .tab.active { color: #008899; border-bottom-color: #008899; }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
+      margin-bottom: 1rem; padding: 0.75rem 1rem;
+      background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;
+    }
+    .filter-bar input, .filter-bar select {
+      width: auto; min-width: 140px; padding: 0.4rem 0.6rem;
+      font-size: 0.8rem; border-radius: 6px;
+    }
+    .filter-bar label { margin-bottom: 0; font-size: 0.75rem; color: #64748b; }
+    .filter-group { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    /* Data table */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .data-table th {
+      text-align: left; padding: 0.6rem 0.75rem; font-size: 0.72rem;
+      color: #64748b; text-transform: uppercase; letter-spacing: 0.04em;
+      border-bottom: 2px solid #e2e8f0; background: #f8fafc;
+      cursor: pointer; user-select: none; white-space: nowrap;
+    }
+    .data-table th:hover { color: #008899; }
+    .data-table th .sort-arrow { font-size: 0.65rem; margin-left: 0.2rem; opacity: 0.5; }
+    .data-table th.sorted .sort-arrow { opacity: 1; color: #008899; }
+    .data-table td {
+      padding: 0.55rem 0.75rem; border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+    .data-table tr:hover td { background: #f8fafc; }
+    .data-table .code-cell { font-family: monospace; font-size: 0.8rem; color: #008899; font-weight: 600; }
+
+    /* Status badges */
+    .badge {
+      display: inline-block; padding: 0.15rem 0.5rem; border-radius: 99px;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .badge-completed { background: #dcfce7; color: #166534; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-overdue { background: #fee2e2; color: #991b1b; }
+
+    /* Transcript link */
+    .transcript-link {
+      color: #008899; text-decoration: none; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+    }
+    .transcript-link:hover { text-decoration: underline; }
+
+    /* Checkbox */
+    .checkbox-cell { width: 36px; text-align: center; }
+    .checkbox-cell input { cursor: pointer; width: 15px; height: 15px; accent-color: #008899; }
+
+    /* Action bar */
+    .action-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1rem; gap: 1rem;
+    }
+    .action-bar .selected-count { font-size: 0.82rem; color: #64748b; }
+
+    /* Loading spinner */
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #ccc; border-top-color: #008899; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center; padding: 3rem 1rem; color: #94a3b8;
+    }
+    .empty-state p { font-size: 0.95rem; margin-bottom: 0.5rem; }
+
+    /* Toast notifications */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; padding: 0.8rem 1.2rem;
+      background: #1e293b; color: white; border-radius: 8px;
+      font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 100;
+    }
+    .toast.show { opacity: 1; }
+
+    .hidden { display: none !important; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 1rem; }
+      .filter-bar { flex-direction: column; }
+      .data-table { font-size: 0.75rem; }
+      .header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+
+    /* Invite tab — reuse invite page patterns */
+    .invite-form .student-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+    .invite-form .student-row input { flex: 1; }
+    .invite-form .remove-btn {
+      background: none; border: none; color: #94a3b8; cursor: pointer;
+      font-size: 1.1rem; padding: 0.2rem 0.4rem;
+    }
+    .invite-form .remove-btn:hover { color: #ef4444; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ AUTH SECTION ═══════ -->
+<div id="auth-section">
+  <div class="header">
+    <div class="header-left">
+      <h1>Impuls Deutsch <span class="subtitle">Teacher Dashboard</span></h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card" style="margin-top: 2rem;">
+      <h2>Teacher Login</h2>
+      <p style="color: #475569; font-size: 0.88rem;">Enter your teacher access code and email to view your student dashboard.</p>
+      <div class="form-row">
+        <div>
+          <label for="teacher-code">Teacher Code</label>
+          <input type="text" id="teacher-code" placeholder="e.g. NIKO-TEACH">
+        </div>
+        <div>
+          <label for="teacher-email">Email</label>
+          <input type="email" id="teacher-email" placeholder="your@email.com">
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="handleLogin()" id="login-btn">Log In</button>
+      <div id="auth-error" class="error hidden"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ DASHBOARD SECTION ═══════ -->
+<div id="dashboard-section" class="hidden">
+  <div class="header">
+    <div class="header-left">
+      <h1>Impuls Deutsch <span class="subtitle">Teacher Dashboard</span></h1>
+    </div>
+    <div class="header-right">
+      <span class="teacher-name" id="teacher-name-display"></span>
+      <span class="credits" id="credits-display"></span>
+      <button class="btn-logout" onclick="handleLogout()">Log Out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('overview')" id="tab-overview">Student Overview</button>
+      <button class="tab" onclick="switchTab('invite')" id="tab-invite">Invite Students</button>
+    </div>
+
+    <!-- ═══════ OVERVIEW TAB ═══════ -->
+    <div id="panel-overview">
+      <!-- Filters -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Search</label>
+          <input type="text" id="filter-search" placeholder="Student name or code..." oninput="applyFilters()">
+        </div>
+        <div class="filter-group">
+          <label>Status</label>
+          <select id="filter-status" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Chapter</label>
+          <select id="filter-chapter" onchange="applyFilters()">
+            <option value="">All Chapters</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>From</label>
+          <input type="date" id="filter-date-from" onchange="applyFilters()">
+        </div>
+        <div class="filter-group">
+          <label>To</label>
+          <input type="date" id="filter-date-to" onchange="applyFilters()">
+        </div>
+      </div>
+
+      <!-- Action bar -->
+      <div class="action-bar">
+        <span class="selected-count" id="selected-count"></span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-outline btn-sm" id="resend-btn" onclick="handleResend()" disabled>
+            Resend Selected
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="refreshData()">
+            Refresh
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div style="overflow-x: auto;">
+        <table class="data-table" id="students-table">
+          <thead>
+            <tr>
+              <th class="checkbox-cell"><input type="checkbox" id="select-all" onchange="toggleSelectAll()"></th>
+              <th onclick="sortBy('name')">Student <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('code')">Code <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('chapter')">Chapter <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('deadline')">Deadline <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('status')">Status <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('date')">Completed <span class="sort-arrow"></span></th>
+              <th onclick="sortBy('duration')">Duration <span class="sort-arrow"></span></th>
+              <th>Transcript</th>
+            </tr>
+          </thead>
+          <tbody id="students-body"></tbody>
+        </table>
+      </div>
+
+      <div id="empty-state" class="empty-state hidden">
+        <p>No student codes found.</p>
+        <p style="font-size: 0.85rem;">Go to the <a href="#" onclick="switchTab('invite'); return false;" style="color: #008899;">Invite Students</a> tab to create codes.</p>
+      </div>
+    </div>
+
+    <!-- ═══════ INVITE TAB ═══════ -->
+    <div id="panel-invite" class="hidden">
+      <div class="card">
+        <h2>Invite Students</h2>
+        <p style="color: #475569; font-size: 0.88rem;">
+          Create access codes for your students. They'll receive an email with their code and instructions.
+          You have <strong id="invite-credits">0</strong> credits remaining.
+        </p>
+
+        <div class="invite-form" id="invite-form">
+          <div style="margin-bottom: 1rem;">
+            <label>Students</label>
+            <div id="student-rows"></div>
+            <button class="btn btn-outline btn-sm" onclick="addStudentRow()" style="margin-top: 0.5rem;">+ Add Student</button>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="conversations-count">Conversations per Student</label>
+              <input type="text" id="conversations-count" value="1" style="width: 80px;"
+                     oninput="updateCreditCalc()">
+            </div>
+            <div>
+              <label>Topic Mode</label>
+              <div style="display: flex; gap: 1rem; padding-top: 0.4rem;">
+                <label style="display: flex; align-items: center; gap: 0.3rem; font-weight: 400; cursor: pointer;">
+                  <input type="radio" name="topic-mode" value="free" checked onchange="updateTopicMode()"> Free choice
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.3rem; font-weight: 400; cursor: pointer;">
+                  <input type="radio" name="topic-mode" value="preselected" onchange="updateTopicMode()"> Preselected
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preselected assignment slots -->
+          <div id="assignment-slots" class="hidden"></div>
+
+          <div id="credit-calc" style="font-size: 0.82rem; color: #64748b; margin: 0.5rem 0 1rem;"></div>
+
+          <button class="btn btn-primary" onclick="handleCreateCodes()" id="create-codes-btn">Create Codes & Send Emails</button>
+          <div id="invite-error" class="error hidden"></div>
+          <div id="invite-success" class="success hidden"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════
+let teacherCode = '';
+let teacherEmail = '';
+let teacherName = '';
+let availableCredits = 0;
+let maxCredits = 0;
+let allStudents = []; // raw from API
+let filteredStudents = []; // after filters
+let selectedCodes = new Set();
+let sortField = 'name';
+let sortDir = 'asc';
+let chaptersData = []; // for invite form
+
+// Restore session
+const saved = sessionStorage.getItem('dashboard-session');
+if (saved) {
+  try {
+    const s = JSON.parse(saved);
+    teacherCode = s.code || '';
+    teacherEmail = s.email || '';
+    if (teacherCode && teacherEmail) {
+      // Auto-login
+      doLogin(true);
+    }
+  } catch (e) {}
+}
+
+// ══════════════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════════════
+async function handleLogin() {
+  teacherCode = document.getElementById('teacher-code').value.trim();
+  teacherEmail = document.getElementById('teacher-email').value.trim();
+  if (!teacherCode || !teacherEmail) {
+    showError('auth-error', 'Please enter your code and email.');
+    return;
+  }
+  doLogin(false);
+}
+
+async function doLogin(isRestore) {
+  const btn = document.getElementById('login-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Loading...'; }
+
+  try {
+    const resp = await fetch('/api/dashboard/teacher-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: teacherCode, email: teacherEmail }),
+    });
+    const data = await resp.json();
+
+    if (!data.valid) {
+      if (isRestore) { sessionStorage.removeItem('dashboard-session'); showSection('auth'); return; }
+      showError('auth-error', data.error || 'Login failed');
+      return;
+    }
+
+    teacherName = data.teacherName || '';
+    availableCredits = data.availableCredits || 0;
+    maxCredits = data.maxCredits || 0;
+    allStudents = data.students || [];
+
+    sessionStorage.setItem('dashboard-session', JSON.stringify({ code: teacherCode, email: teacherEmail }));
+
+    // Update UI
+    document.getElementById('teacher-name-display').textContent = teacherName;
+    document.getElementById('credits-display').textContent = `${availableCredits} credits remaining`;
+    document.getElementById('invite-credits').textContent = availableCredits;
+
+    populateChapterFilter();
+    applyFilters();
+    showSection('dashboard');
+    loadChapters(); // for invite tab
+  } catch (err) {
+    if (isRestore) { sessionStorage.removeItem('dashboard-session'); showSection('auth'); return; }
+    showError('auth-error', 'Could not connect to server.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Log In'; }
+  }
+}
+
+function handleLogout() {
+  sessionStorage.removeItem('dashboard-session');
+  teacherCode = '';
+  teacherEmail = '';
+  allStudents = [];
+  showSection('auth');
+}
+
+async function refreshData() {
+  await doLogin(false);
+  showToast('Data refreshed');
+}
+
+function showSection(name) {
+  document.getElementById('auth-section').classList.toggle('hidden', name !== 'auth');
+  document.getElementById('dashboard-section').classList.toggle('hidden', name !== 'dashboard');
+}
+
+// ══════════════════════════════════════════════════════════════
+// OVERVIEW TABLE
+// ══════════════════════════════════════════════════════════════
+function populateChapterFilter() {
+  const chapters = new Set();
+  for (const s of allStudents) {
+    if (s.chapterLabel) chapters.add(s.chapterLabel);
+  }
+  const sel = document.getElementById('filter-chapter');
+  sel.innerHTML = '<option value="">All Chapters</option>';
+  [...chapters].sort().forEach(ch => {
+    sel.innerHTML += `<option value="${esc(ch)}">${esc(ch)}</option>`;
+  });
+}
+
+function applyFilters() {
+  const search = document.getElementById('filter-search').value.toLowerCase();
+  const status = document.getElementById('filter-status').value;
+  const chapter = document.getElementById('filter-chapter').value;
+  const dateFrom = document.getElementById('filter-date-from').value;
+  const dateTo = document.getElementById('filter-date-to').value;
+
+  filteredStudents = allStudents.filter(s => {
+    if (search && !s.assignedTo.toLowerCase().includes(search) && !s.code.toLowerCase().includes(search)) return false;
+    if (status && s.status !== status) return false;
+    if (chapter && s.chapterLabel !== chapter) return false;
+    // Date filter: use the first session timestamp or deadline
+    if (dateFrom || dateTo) {
+      const sessionDate = s.sessions[0]?.timestamp;
+      const d = sessionDate ? new Date(sessionDate) : null;
+      if (dateFrom && (!d || d < new Date(dateFrom))) return false;
+      if (dateTo && (!d || d > new Date(dateTo + 'T23:59:59'))) return false;
+    }
+    return true;
+  });
+
+  // Sort
+  filteredStudents.sort((a, b) => {
+    let va, vb;
+    switch (sortField) {
+      case 'name': va = a.assignedTo; vb = b.assignedTo; break;
+      case 'code': va = a.code; vb = b.code; break;
+      case 'chapter': va = a.chapterLabel || ''; vb = b.chapterLabel || ''; break;
+      case 'deadline': va = a.deadline || ''; vb = b.deadline || ''; break;
+      case 'status': va = a.status; vb = b.status; break;
+      case 'date':
+        va = a.sessions[0]?.timestamp || '';
+        vb = b.sessions[0]?.timestamp || '';
+        break;
+      case 'duration':
+        va = parseFloat(a.sessions[0]?.duration) || 0;
+        vb = parseFloat(b.sessions[0]?.duration) || 0;
+        return sortDir === 'asc' ? va - vb : vb - va;
+      default: va = a.assignedTo; vb = b.assignedTo;
+    }
+    const cmp = String(va).localeCompare(String(vb), undefined, { numeric: true });
+    return sortDir === 'asc' ? cmp : -cmp;
+  });
+
+  renderTable();
+}
+
+function sortBy(field) {
+  if (sortField === field) {
+    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortField = field;
+    sortDir = 'asc';
+  }
+  // Update sort arrows
+  document.querySelectorAll('.data-table th').forEach(th => th.classList.remove('sorted'));
+  applyFilters();
+}
+
+function renderTable() {
+  const tbody = document.getElementById('students-body');
+  const emptyState = document.getElementById('empty-state');
+
+  if (filteredStudents.length === 0) {
+    tbody.innerHTML = '';
+    emptyState.classList.remove('hidden');
+    return;
+  }
+  emptyState.classList.add('hidden');
+
+  tbody.innerHTML = filteredStudents.map(s => {
+    const session = s.sessions[0]; // latest session
+    const checked = selectedCodes.has(s.code) ? 'checked' : '';
+    const badgeClass = s.status === 'completed' ? 'badge-completed'
+      : s.status === 'overdue' ? 'badge-overdue' : 'badge-pending';
+
+    // Extract student name (strip university in parens)
+    const nameOnly = s.assignedTo.replace(/\s*\(.*?\)\s*$/, '');
+
+    // Transcript links for all sessions
+    let transcriptHtml = '';
+    for (let i = 0; i < s.sessions.length; i++) {
+      const sess = s.sessions[i];
+      if (sess.transcriptFileId) {
+        const label = s.sessions.length > 1 ? `#${i + 1}` : 'View';
+        transcriptHtml += `<a class="transcript-link" href="/dashboard/transcript?id=${sess.transcriptFileId}" target="_blank">${label}</a> `;
+      }
+    }
+    if (!transcriptHtml && s.status === 'completed') transcriptHtml = '<span style="color:#94a3b8;">No file</span>';
+    if (!transcriptHtml) transcriptHtml = '<span style="color:#d1d5db;">&mdash;</span>';
+
+    // Session date
+    const sessionDate = session?.timestamp || '';
+
+    // Duration
+    const duration = session?.duration ? `${session.duration} min` : '';
+
+    return `<tr>
+      <td class="checkbox-cell"><input type="checkbox" ${checked} onchange="toggleSelect('${esc(s.code)}')"></td>
+      <td><strong>${esc(nameOnly)}</strong></td>
+      <td class="code-cell">${esc(s.code)}</td>
+      <td>${esc(s.chapterLabel || '')}${s.unitName ? '<br><span style="color:#94a3b8;font-size:0.72rem;">' + esc(s.unitName) + '</span>' : ''}</td>
+      <td>${s.deadline ? formatDate(s.deadline) : '<span style="color:#d1d5db;">&mdash;</span>'}</td>
+      <td><span class="badge ${badgeClass}">${s.status}</span></td>
+      <td>${sessionDate ? formatTimestamp(sessionDate) : ''}</td>
+      <td>${esc(duration)}</td>
+      <td>${transcriptHtml}</td>
+    </tr>`;
+  }).join('');
+
+  updateSelectedCount();
+}
+
+// ══════════════════════════════════════════════════════════════
+// SELECTION & RESEND
+// ══════════════════════════════════════════════════════════════
+function toggleSelect(code) {
+  if (selectedCodes.has(code)) selectedCodes.delete(code);
+  else selectedCodes.add(code);
+  updateSelectedCount();
+}
+
+function toggleSelectAll() {
+  const all = document.getElementById('select-all').checked;
+  if (all) {
+    filteredStudents.forEach(s => selectedCodes.add(s.code));
+  } else {
+    selectedCodes.clear();
+  }
+  renderTable();
+  document.getElementById('select-all').checked = all;
+}
+
+function updateSelectedCount() {
+  const count = selectedCodes.size;
+  document.getElementById('selected-count').textContent = count > 0 ? `${count} selected` : '';
+  document.getElementById('resend-btn').disabled = count === 0;
+}
+
+async function handleResend() {
+  const toResend = allStudents.filter(s => selectedCodes.has(s.code) && s.email);
+  if (toResend.length === 0) { showToast('No students with email addresses selected'); return; }
+
+  const btn = document.getElementById('resend-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Sending...';
+
+  try {
+    // Group by student name to bundle preselected codes
+    const grouped = {};
+    for (const s of toResend) {
+      const key = s.email.toLowerCase();
+      if (!grouped[key]) grouped[key] = { name: s.assignedTo.replace(/\s*\(.*?\)$/, ''), email: s.email, codes: [], code: s.code, conversations: s.maxUses };
+      // If it's a preselected code (has unit), add to codes array
+      if (s.unit) {
+        const info = s.chapterLabel || '';
+        grouped[key].codes.push({ code: s.code, chapter: info, deadline: s.deadline || '' });
+      }
+    }
+
+    const payload = Object.values(grouped).map(g => {
+      if (g.codes.length > 0) return { name: g.name, email: g.email, codes: g.codes };
+      return { name: g.name, email: g.email, code: g.code, conversations: g.conversations };
+    });
+
+    const resp = await fetch('/api/dashboard/resend-codes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ teacherCode, teacherEmail, codes: payload }),
+    });
+    const data = await resp.json();
+    showToast(`Sent ${data.sent || 0} email(s)${data.failed ? `, ${data.failed} failed` : ''}`);
+    selectedCodes.clear();
+    renderTable();
+  } catch (err) {
+    showToast('Failed to send emails');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Resend Selected';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════════════════════════
+function switchTab(tab) {
+  document.getElementById('tab-overview').classList.toggle('active', tab === 'overview');
+  document.getElementById('tab-invite').classList.toggle('active', tab === 'invite');
+  document.getElementById('panel-overview').classList.toggle('hidden', tab !== 'overview');
+  document.getElementById('panel-invite').classList.toggle('hidden', tab !== 'invite');
+}
+
+// ══════════════════════════════════════════════════════════════
+// INVITE TAB
+// ══════════════════════════════════════════════════════════════
+let topicMode = 'free';
+
+async function loadChapters() {
+  try {
+    const resp = await fetch('/api/invite/chapters');
+    chaptersData = await resp.json();
+  } catch (e) {}
+  // Initialize with one student row
+  if (document.getElementById('student-rows').children.length === 0) {
+    addStudentRow();
+  }
+}
+
+function addStudentRow() {
+  const container = document.getElementById('student-rows');
+  const row = document.createElement('div');
+  row.className = 'student-row';
+  row.innerHTML = `
+    <input type="text" placeholder="Student name" class="student-name">
+    <input type="email" placeholder="Email (optional)" class="student-email">
+    <button class="remove-btn" onclick="this.parentElement.remove(); updateCreditCalc();">&times;</button>
+  `;
+  container.appendChild(row);
+  updateCreditCalc();
+}
+
+function updateTopicMode() {
+  topicMode = document.querySelector('input[name="topic-mode"]:checked').value;
+  const slots = document.getElementById('assignment-slots');
+  if (topicMode === 'preselected') {
+    slots.classList.remove('hidden');
+    buildAssignmentSlots();
+  } else {
+    slots.classList.add('hidden');
+  }
+  updateCreditCalc();
+}
+
+function buildAssignmentSlots() {
+  const count = parseInt(document.getElementById('conversations-count').value) || 1;
+  const container = document.getElementById('assignment-slots');
+  container.innerHTML = '';
+
+  for (let i = 0; i < count; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'form-row';
+    slot.style.marginBottom = '0.5rem';
+    slot.innerHTML = `
+      <div style="flex: 0 0 auto; padding-top: 1.6rem; font-weight: 600; color: #64748b; font-size: 0.82rem; width: 30px;">${i + 1}.</div>
+      <div>
+        <label>Book</label>
+        <select class="slot-book" onchange="updateSlotChapters(this)">
+          ${chaptersData.map(b => `<option value="${b.id}">${b.label}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label>Chapter</label>
+        <select class="slot-chapter"></select>
+      </div>
+      <div>
+        <label>Deadline</label>
+        <input type="date" class="slot-deadline">
+      </div>
+    `;
+    container.appendChild(slot);
+    // Populate chapters for default book
+    updateSlotChapters(slot.querySelector('.slot-book'));
+  }
+}
+
+function updateSlotChapters(bookSelect) {
+  const row = bookSelect.closest('.form-row');
+  const chapterSelect = row.querySelector('.slot-chapter');
+  const bookId = bookSelect.value;
+  const book = chaptersData.find(b => b.id === bookId);
+  if (!book) return;
+  chapterSelect.innerHTML = book.chapters.map(c =>
+    `<option value="${c.chapter}">Ch. ${c.chapter}: ${c.title}</option>`
+  ).join('');
+}
+
+function updateCreditCalc() {
+  const studentCount = document.querySelectorAll('.student-name').length;
+  const convCount = parseInt(document.getElementById('conversations-count').value) || 1;
+  const total = studentCount * convCount;
+  const el = document.getElementById('credit-calc');
+  el.textContent = `${studentCount} student(s) x ${convCount} conversation(s) = ${total} credits needed (${availableCredits} available)`;
+  el.style.color = total > availableCredits ? '#ef4444' : '#64748b';
+}
+
+async function handleCreateCodes() {
+  const nameInputs = document.querySelectorAll('.student-name');
+  const emailInputs = document.querySelectorAll('.student-email');
+  const convCount = parseInt(document.getElementById('conversations-count').value) || 1;
+
+  const students = [];
+  nameInputs.forEach((inp, i) => {
+    const name = inp.value.trim();
+    if (!name) return;
+    students.push({
+      name,
+      email: emailInputs[i]?.value.trim() || '',
+      conversations: convCount,
+    });
+  });
+
+  if (students.length === 0) {
+    showError('invite-error', 'Please add at least one student.');
+    return;
+  }
+
+  const totalCredits = students.length * convCount;
+  if (totalCredits > availableCredits) {
+    showError('invite-error', `Not enough credits. Need ${totalCredits}, have ${availableCredits}.`);
+    return;
+  }
+
+  // Build assignments for preselected mode
+  let assignments = null;
+  if (topicMode === 'preselected') {
+    assignments = [];
+    const slots = document.getElementById('assignment-slots').querySelectorAll('.form-row');
+    slots.forEach(slot => {
+      const book = slot.querySelector('.slot-book')?.value || 'ID1';
+      const chapter = slot.querySelector('.slot-chapter')?.value || '1';
+      const deadline = slot.querySelector('.slot-deadline')?.value || '';
+      assignments.push({ book, chapter, deadline });
+    });
+  }
+
+  const btn = document.getElementById('create-codes-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Creating...';
+  hideEl('invite-error');
+  hideEl('invite-success');
+
+  try {
+    // 1. Create codes
+    const createResp = await fetch('/api/invite/create-codes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ teacherCode, teacherEmail, students, assignments }),
+    });
+    const createData = await createResp.json();
+
+    if (!createData.success) {
+      showError('invite-error', createData.error || 'Failed to create codes');
+      return;
+    }
+
+    // 2. Send emails
+    const studentsWithEmail = createData.codes.filter(s => s.email && s.email.includes('@'));
+    if (studentsWithEmail.length > 0) {
+      await fetch('/api/invite/send-emails', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codes: createData.codes, teacherName }),
+      });
+    }
+
+    const msg = `Created ${createData.codes.length} code(s). ${studentsWithEmail.length > 0 ? `Emails sent to ${studentsWithEmail.length} student(s).` : ''}`;
+    showSuccess('invite-success', msg);
+
+    // Clear form
+    document.getElementById('student-rows').innerHTML = '';
+    addStudentRow();
+
+    // Refresh overview data
+    availableCredits = createData.remaining ?? (availableCredits - totalCredits);
+    document.getElementById('credits-display').textContent = `${availableCredits} credits remaining`;
+    document.getElementById('invite-credits').textContent = availableCredits;
+    await refreshData();
+    showToast('Codes created! Switched to overview.');
+    switchTab('overview');
+
+  } catch (err) {
+    showError('invite-error', 'Server error: ' + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Create Codes & Send Emails';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════
+function esc(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+
+function showSuccess(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+
+function hideEl(id) {
+  document.getElementById(id).classList.add('hidden');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  } catch (e) { return dateStr; }
+}
+
+function formatTimestamp(ts) {
+  if (!ts) return '';
+  try {
+    const d = new Date(ts);
+    if (isNaN(d)) return ts;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+           d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  } catch (e) { return ts; }
+}
+
+// Show auth by default
+showSection('auth');
+</script>
+</body>
+</html>

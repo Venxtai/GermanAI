@@ -4000,6 +4000,346 @@ app.post('/api/invite/send-emails', async (req, res) => {
   return res.json({ sent, failed, results });
 });
 
+// ══════════════════════════════════════════════════════════════════════════
+// TEACHER DASHBOARD — API endpoints
+// ══════════════════════════════════════════════════════════════════════════
+
+// POST /api/dashboard/teacher-data — Fetch all student codes + usage for this teacher
+app.post('/api/dashboard/teacher-data', async (req, res) => {
+  const { code, email } = req.body;
+  if (!code || !email) {
+    return res.status(400).json({ valid: false, error: 'Code and email are required' });
+  }
+
+  try {
+    const sheets = await getSheetsClient();
+
+    // 1. Validate teacher
+    const codesResult = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:K',
+    });
+    const allRows = codesResult.data.values || [];
+    const codeLower = code.trim().toLowerCase();
+    const teacherRowIndex = allRows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+
+    if (teacherRowIndex === -1) return res.json({ valid: false, error: 'Invalid access code' });
+
+    const teacherRow = allRows[teacherRowIndex];
+    const type = (teacherRow[1] || '').toLowerCase().trim();
+    if (!type.includes('teacher')) return res.json({ valid: false, error: 'This is not a teacher code' });
+
+    const storedEmail = (teacherRow[7] || '').trim().toLowerCase();
+    if (!storedEmail || storedEmail !== email.trim().toLowerCase()) {
+      return res.json({ valid: false, error: 'Email does not match the code on file' });
+    }
+
+    const teacherName = teacherRow[6] || '';
+    const maxCredits = parseInt(teacherRow[3]) || 0;
+    const usedCredits = parseInt(teacherRow[4]) || 0;
+
+    // 2. Find all student codes created by this teacher
+    // Match by "Created By" (col F) = teacher's Assigned To name
+    const studentCodes = [];
+    for (let i = 0; i < allRows.length; i++) {
+      const row = allRows[i];
+      const rowType = (row[1] || '').toLowerCase().trim();
+      if (rowType.includes('teacher')) continue; // Skip teacher codes themselves
+      const createdBy = (row[5] || '').trim();
+      if (createdBy !== teacherName) continue;
+
+      studentCodes.push({
+        code: row[0] || '',
+        type: row[1] || '',
+        tool: row[2] || '',
+        maxUses: parseInt(row[3]) || 0,
+        used: parseInt(row[4]) || 0,
+        assignedTo: row[6] || '',
+        email: row[7] || '',
+        unit: row[8] || '',
+        deadline: row[9] || '',
+        notes: row[10] || '',
+        sheetRow: i + 2, // for reference
+      });
+    }
+
+    // 3. Fetch usage log
+    const logResult = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Buddy Usage Log!A:J',
+      valueRenderOption: 'FORMULA', // Need FORMULA to extract HYPERLINK file IDs
+    });
+    const logRows = logResult.data.values || [];
+
+    // Build a map: code → [sessions]
+    const usageMap = {};
+    for (let i = 1; i < logRows.length; i++) { // skip header
+      const lr = logRows[i];
+      const logCode = (lr[1] || '').trim();
+      if (!logCode) continue;
+
+      // Parse transcript link: =HYPERLINK("https://drive.google.com/file/d/FILE_ID/view","open")
+      let transcriptFileId = null;
+      const transcriptCell = lr[9] || '';
+      const linkMatch = transcriptCell.match(/drive\.google\.com\/file\/d\/([^/"]+)/);
+      if (linkMatch) transcriptFileId = linkMatch[1];
+
+      if (!usageMap[logCode.toLowerCase()]) usageMap[logCode.toLowerCase()] = [];
+      usageMap[logCode.toLowerCase()].push({
+        timestamp: lr[0] || '',
+        studentName: lr[5] || '',
+        unit: lr[6] || '',
+        sessionId: lr[7] || '',
+        duration: lr[8] || '',
+        transcriptFileId,
+      });
+    }
+
+    // 4. Merge codes with usage data
+    const students = studentCodes.map(sc => {
+      const sessions = usageMap[sc.code.toLowerCase()] || [];
+      // Resolve unit to chapter label
+      let chapterLabel = '';
+      if (sc.unit) {
+        const info = resolveUnitToChapterInfo(sc.unit);
+        if (info) {
+          const shortBook = BOOK_SHORT_LABELS[info.book] || info.book;
+          chapterLabel = `${shortBook} Ch.${info.chapter}`;
+        }
+      }
+
+      const status = sc.used >= sc.maxUses ? 'completed'
+        : sc.deadline && new Date(sc.deadline) < new Date() ? 'overdue'
+        : 'pending';
+
+      return {
+        ...sc,
+        chapterLabel,
+        unitName: unitNames[sc.unit] || '',
+        sessions,
+        status,
+      };
+    });
+
+    return res.json({
+      valid: true,
+      teacherName,
+      availableCredits: maxCredits - usedCredits,
+      maxCredits,
+      usedCredits,
+      students,
+    });
+  } catch (err) {
+    console.error('[DASHBOARD] Teacher data error:', err.message);
+    return res.status(500).json({ valid: false, error: 'Server error — please try again' });
+  }
+});
+
+// GET /api/dashboard/transcript/:fileId — Fetch and parse a transcript from Google Drive
+app.get('/api/dashboard/transcript/:fileId', async (req, res) => {
+  const { fileId } = req.params;
+  if (!fileId || !driveClient) {
+    return res.status(400).json({ error: 'Missing file ID or Drive not configured' });
+  }
+
+  try {
+    const getRes = await driveClient.files.get({ fileId, alt: 'media' });
+    const content = typeof getRes.data === 'string' ? getRes.data : getRes.data.toString();
+
+    // Parse the transcript text
+    const lines = content.split('\n');
+
+    // Extract metadata (between first ═ line and first ─ line)
+    const meta = {};
+    let inMeta = false;
+    let inConversation = false;
+    let inFeedback = false;
+    const turns = [];
+    const feedback = [];
+
+    for (const line of lines) {
+      if (line.startsWith('═') && !inMeta && !inConversation) {
+        inMeta = true;
+        continue;
+      }
+      if (line.startsWith('─') && inMeta) {
+        inMeta = false;
+        inConversation = true;
+        continue;
+      }
+
+      if (inMeta) {
+        const match = line.match(/^(\w[\w\s]*?)\s*:\s*(.+)$/);
+        if (match) meta[match[1].trim().toLowerCase().replace(/\s+/g, '_')] = match[2].trim();
+      }
+
+      if (inConversation) {
+        // Look for FEEDBACK section
+        if (line.trim() === 'FEEDBACK') {
+          inConversation = false;
+          inFeedback = true;
+          continue;
+        }
+        // Look for expanded transcript (stop here)
+        if (line.includes('EXPANDED TRANSCRIPT')) {
+          inConversation = false;
+          inFeedback = false;
+          break;
+        }
+        if (line.startsWith('─')) {
+          if (inFeedback) break; // end of feedback section
+          continue;
+        }
+
+        // Parse turn: [timestamp] STUDENT: text  or  [timestamp]  BUDDY: text
+        const turnMatch = line.match(/^\[([^\]]+)\]\s*(STUDENT|BUDDY):\s*(.+)$/);
+        if (turnMatch) {
+          turns.push({
+            time: turnMatch[1],
+            role: turnMatch[2].toLowerCase(),
+            text: turnMatch[3],
+          });
+        }
+      }
+
+      if (inFeedback) {
+        if (line.startsWith('─') || line.startsWith('═') || line.includes('EXPANDED TRANSCRIPT')) break;
+        const trimmed = line.trim();
+        if (trimmed.startsWith('•') || trimmed.startsWith('-')) {
+          feedback.push(trimmed.replace(/^[•\-]\s*/, ''));
+        } else if (trimmed && !trimmed.startsWith('No feedback') && !trimmed.startsWith('Feedback:')) {
+          feedback.push(trimmed);
+        }
+      }
+    }
+
+    return res.json({ meta, turns, feedback });
+  } catch (err) {
+    console.error('[DASHBOARD] Transcript fetch error:', err.message);
+    return res.status(500).json({ error: 'Could not fetch transcript' });
+  }
+});
+
+// POST /api/dashboard/resend-codes — Resend invitation emails for selected codes
+app.post('/api/dashboard/resend-codes', async (req, res) => {
+  const { teacherCode, teacherEmail, codes } = req.body;
+  // codes = [{ name, email, code, codes?, conversations? }]
+  if (!teacherCode || !teacherEmail || !Array.isArray(codes) || codes.length === 0) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // Validate teacher first
+  try {
+    const sheets = await getSheetsClient();
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:K',
+    });
+    const allRows = result.data.values || [];
+    const codeLower = teacherCode.trim().toLowerCase();
+    const teacherRowIndex = allRows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+    if (teacherRowIndex === -1) return res.json({ error: 'Invalid teacher code' });
+
+    const teacherRow = allRows[teacherRowIndex];
+    const storedEmail = (teacherRow[7] || '').trim().toLowerCase();
+    if (!storedEmail || storedEmail !== teacherEmail.trim().toLowerCase()) {
+      return res.json({ error: 'Email mismatch' });
+    }
+
+    const teacherName = teacherRow[6] || 'Your teacher';
+
+    // Reuse the send-emails logic
+    const gmailUser = process.env.GMAIL_USER;
+    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    if (!gmailUser || !gmailPass) {
+      return res.status(500).json({ error: 'Email service is not configured' });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: gmailUser, pass: gmailPass },
+    });
+
+    let sent = 0, failed = 0;
+    const results = [];
+
+    for (const s of codes) {
+      if (!s.email || !s.email.includes('@')) {
+        results.push({ name: s.name, status: 'skipped', error: 'No email' });
+        continue;
+      }
+
+      try {
+        const isPreselected = Array.isArray(s.codes) && s.codes.length > 0;
+        let bodyHtml;
+
+        if (isPreselected) {
+          const codeRows = s.codes.map(c =>
+            `<tr>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-family: monospace; font-weight: bold; color: #008899; font-size: 14px;">${c.code}</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #334155;">Chapter ${c.chapter || ''}</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #475569;">${c.deadline || ''}</td>
+            </tr>`
+          ).join('');
+
+          bodyHtml = `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
+              <h2 style="color: #008899; margin-bottom: 4px;">Impuls Deutsch</h2>
+              <p style="color: #64748b; font-size: 14px; margin-top: 0;">Conversation Buddy — Reminder</p>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+              <p>Hi <strong>${s.name}</strong>,</p>
+              <p>This is a reminder from ${teacherName}. Here are your Conversation Buddy access codes:</p>
+              <table style="width: 100%; border-collapse: collapse; margin: 16px 0; border: 1px solid #e2e8f0;">
+                <thead><tr style="background: #f0fdfa;">
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Code</th>
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Chapter</th>
+                  <th style="padding: 8px 12px; text-align: left; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0;">Due</th>
+                </tr></thead>
+                <tbody>${codeRows}</tbody>
+              </table>
+              <p>Go to <a href="https://buddy.impulsdeutsch.com" style="color: #008899;">buddy.impulsdeutsch.com</a> to start.</p>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+              <p style="color: #94a3b8; font-size: 11px;">${EMAIL_DISCLAIMER}</p>
+            </div>`;
+        } else {
+          bodyHtml = `
+            <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px;">
+              <h2 style="color: #008899; margin-bottom: 4px;">Impuls Deutsch</h2>
+              <p style="color: #64748b; font-size: 14px; margin-top: 0;">Conversation Buddy — Reminder</p>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+              <p>Hi <strong>${s.name}</strong>,</p>
+              <p>This is a reminder from ${teacherName}. Here is your access code:</p>
+              <div style="background: #f0fdfa; border: 2px solid #008899; border-radius: 8px; padding: 16px; margin: 20px 0; text-align: center;">
+                <p style="color: #475569; margin: 0 0 4px 0; font-size: 13px;">Your Access Code</p>
+                <p style="color: #008899; font-size: 28px; font-weight: bold; margin: 0; letter-spacing: 2px;">${s.code}</p>
+              </div>
+              <p>Go to <a href="https://buddy.impulsdeutsch.com" style="color: #008899;">buddy.impulsdeutsch.com</a> to start.</p>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+              <p style="color: #94a3b8; font-size: 11px;">${EMAIL_DISCLAIMER}</p>
+            </div>`;
+        }
+
+        await transporter.sendMail({
+          from: `"Impuls Deutsch" <${gmailUser}>`,
+          to: s.email,
+          subject: 'Reminder: Your Impuls Deutsch Conversation Buddy Access Code',
+          html: bodyHtml,
+        });
+        sent++;
+        results.push({ name: s.name, email: s.email, status: 'sent' });
+      } catch (err) {
+        failed++;
+        results.push({ name: s.name, email: s.email, status: 'failed', error: err.message });
+      }
+    }
+
+    return res.json({ sent, failed, results });
+  } catch (err) {
+    console.error('[DASHBOARD] Resend error:', err.message);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});
+
 // Serve the built React frontend (must come AFTER all API routes)
 const distPath = path.join(__dirname, '../frontend/dist');
 const landingPath = path.join(__dirname, '../landing');
@@ -4024,6 +4364,16 @@ app.get('/invite', (req, res) => {
   res.sendFile(path.join(invitePath, 'index.html'));
 });
 app.use('/invite', express.static(invitePath));
+
+// Serve teacher dashboard at /dashboard (before React catch-all)
+const dashboardPath = path.join(__dirname, '../dashboard');
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(dashboardPath, 'index.html'));
+});
+app.get('/dashboard/transcript', (req, res) => {
+  res.sendFile(path.join(dashboardPath, 'transcript.html'));
+});
+app.use('/dashboard', express.static(dashboardPath));
 
 app.use(express.static(distPath));
 app.get('*', (req, res) => {

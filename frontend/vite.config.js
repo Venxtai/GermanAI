@@ -23,6 +23,7 @@ export default defineConfig({
         },
       },
       "/log-viewer": "http://localhost:3000",
+      "/dashboard": "http://localhost:3000",
     },
   },
 });
