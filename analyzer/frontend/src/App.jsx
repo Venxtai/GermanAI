@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useAnalyzerStore from './store/useAnalyzerStore';
 import AuthGate from './components/AuthGate';
 import Header from './components/Header';
@@ -39,6 +39,12 @@ export default function App() {
   // Auto-save adapted text PDF to Google Drive
   useAutoSave();
 
+  // Detect share URL synchronously so we can skip AuthGate immediately
+  const [loadingShare, setLoadingShare] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return !!params.get('share');
+  });
+
   // Check for ?share= parameter on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -56,6 +62,7 @@ export default function App() {
           loadSharedSession(state);
           // Mark as authenticated so the main UI renders (skip AuthGate)
           setAuthenticated(true);
+          setLoadingShare(false);
         })
         .catch(err => {
           console.error('Failed to load shared session:', err);
@@ -63,6 +70,7 @@ export default function App() {
           // Clear share state so user sees normal login
           setShareId(null);
           setReadOnly(false);
+          setLoadingShare(false);
         });
     }
   }, []);
@@ -77,8 +85,22 @@ export default function App() {
     }
   }, [chapters, setChapters]);
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && !loadingShare) {
     return <AuthGate />;
+  }
+
+  if (loadingShare) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-slate-50">
+        <div className="text-center space-y-3">
+          <svg className="animate-spin h-8 w-8 mx-auto" style={{ color: 'var(--brand)' }} viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          <p className="text-slate-500 text-sm">Loading shared session...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
