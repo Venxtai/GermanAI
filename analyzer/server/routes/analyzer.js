@@ -894,62 +894,143 @@ router.post('/analyzer/export', async (req, res) => {
       const pageBottom = doc.page.height - 60; // leave margin for footer
 
       for (let pi = 0; pi < maxParas; pi++) {
-        const paraStartY = doc.y;
+        // Pre-calculate paragraph height to prevent mid-paragraph page breaks
+        // that desynchronize the two columns
+        doc.fontSize(9).font('Helvetica');
+        const origPara = pi < origParagraphs.length ? origParagraphs[pi] : '';
+        const adaptedPara = pi < adaptedParagraphs.length ? adaptedParagraphs[pi] : '';
+        const origH = origPara ? doc.heightOfString(origPara, { width: CW }) : 0;
+        const adaptedH = adaptedPara ? doc.heightOfString(adaptedPara, { width: CW }) : 0;
+        const paraHeight = Math.max(origH, adaptedH);
 
-        // Check if we need a page break before this paragraph
-        if (paraStartY > pageBottom) {
+        // If paragraph won't fit on current page, start a new page
+        // (unless we're already at the top of a page)
+        if (doc.y + paraHeight > pageBottom && doc.y > 80) {
           doc.addPage();
           doc.y = 50;
         }
-        const rowY = doc.y;
 
-        // LEFT: Original paragraph
-        if (pi < origParagraphs.length) {
-          doc.y = rowY;
-          const origWords = origParagraphs[pi].split(/(\s+)/);
-          for (const word of origWords) {
-            const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-            if (forceRedOriginal.has(clean)) {
-              doc.fillColor('#ef4444');
-            } else {
-              doc.fillColor(origBaseColor(clean));
+        // For very long paragraphs that exceed a full page, split into chunks
+        // to keep columns synchronized across page breaks
+        const maxChunkLines = 40; // ~40 lines per page at font size 9
+        const origWords = origPara ? origPara.split(/(\s+)/) : [];
+        const adaptedWords = adaptedPara ? adaptedPara.split(/(\s+)/) : [];
+
+        // If paragraph fits on remaining page space (or a fresh page), render normally
+        if (paraHeight < pageBottom - 50) {
+          const rowY = doc.y;
+
+          // LEFT: Original paragraph
+          if (origWords.length > 0) {
+            doc.y = rowY;
+            for (const word of origWords) {
+              const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+              if (forceRedOriginal.has(clean)) {
+                doc.fillColor('#ef4444');
+              } else {
+                doc.fillColor(origBaseColor(clean));
+              }
+              const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
+              setPdfFont(doc, fmt, 9);
+              doc.text(word, L, doc.y, { continued: true, width: CW });
             }
-            const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
-            setPdfFont(doc, fmt, 9);
-            doc.text(word, L, doc.y, { continued: true, width: CW });
+            doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
           }
-          doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
-        }
-        const leftY = doc.y;
+          const leftY = doc.y;
 
-        // RIGHT: Adapted paragraph
-        if (pi < adaptedParagraphs.length) {
-          doc.y = rowY;
-          const adaptedWords = adaptedParagraphs[pi].split(/(\s+)/);
-          for (const word of adaptedWords) {
-            const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
-            const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
-            if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
-              footnoteNum++;
-              footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
-              setPdfFont(doc, fmt, 9);
-              doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
-              doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
-              doc.fontSize(9);
-            } else if (forceBlueAdapted.has(clean)) {
-              setPdfFont(doc, fmt, 9);
-              doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
-            } else {
-              setPdfFont(doc, fmt, 9);
-              doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+          // RIGHT: Adapted paragraph
+          if (adaptedWords.length > 0) {
+            doc.y = rowY;
+            for (const word of adaptedWords) {
+              const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+              const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+              if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+                footnoteNum++;
+                footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+                doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+                doc.fontSize(9);
+              } else if (forceBlueAdapted.has(clean)) {
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+              } else {
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+              }
             }
+            doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
           }
-          doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
-        }
-        const rightY = doc.y;
+          const rightY = doc.y;
+          doc.y = Math.max(leftY, rightY) + 2;
+        } else {
+          // Very long paragraph — render in synchronized chunks across pages
+          // Split words into chunks that fit on one page
+          const chunkSize = 200; // ~200 word tokens per page-chunk
+          const origChunks = [], adaptedChunks = [];
+          for (let i = 0; i < Math.max(origWords.length, adaptedWords.length); i += chunkSize) {
+            origChunks.push(origWords.slice(i, i + chunkSize));
+            adaptedChunks.push(adaptedWords.slice(i, i + chunkSize));
+          }
 
-        // Advance to the max Y of both columns + paragraph spacing
-        doc.y = Math.max(leftY, rightY) + 2;
+          for (let ci = 0; ci < origChunks.length; ci++) {
+            if (doc.y > pageBottom && doc.y > 80) {
+              doc.addPage();
+              doc.y = 50;
+            }
+            const rowY = doc.y;
+
+            // LEFT chunk
+            if (origChunks[ci] && origChunks[ci].length > 0) {
+              doc.y = rowY;
+              for (const word of origChunks[ci]) {
+                const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+                if (forceRedOriginal.has(clean)) doc.fillColor('#ef4444');
+                else doc.fillColor(origBaseColor(clean));
+                const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
+                setPdfFont(doc, fmt, 9);
+                doc.text(word, L, doc.y, { continued: true, width: CW });
+              }
+              // End chunk (only end paragraph on last chunk)
+              if (ci === origChunks.length - 1) {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
+              } else {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('', L, doc.y, { width: CW });
+              }
+            }
+            const leftY = doc.y;
+
+            // RIGHT chunk
+            if (adaptedChunks[ci] && adaptedChunks[ci].length > 0) {
+              doc.y = rowY;
+              for (const word of adaptedChunks[ci]) {
+                const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+                const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+                if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+                  footnoteNum++;
+                  footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+                  doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+                  doc.fontSize(9);
+                } else if (forceBlueAdapted.has(clean)) {
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+                } else {
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+                }
+              }
+              if (ci === adaptedChunks.length - 1) {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
+              } else {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('', R, doc.y, { width: CW });
+              }
+            }
+            const rightY = doc.y;
+            doc.y = Math.max(leftY, rightY) + 2;
+          }
+        }
       }
 
       const leftEndY = doc.y;
