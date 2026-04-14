@@ -10,10 +10,10 @@ try {
 const AI_AVAILABLE = !!process.env.ANTHROPIC_API_KEY;
 
 // ── Batching utilities ──────────────────────────────────────────────
-const LEMMA_BATCH_SIZE = 30;
-const GRAMMAR_BATCH_SIZE = 30;
-const LINKED_BATCH_SIZE = 50;
-const REFINE_BATCH_SIZE = 100;
+const LEMMA_BATCH_SIZE = 15;
+const GRAMMAR_BATCH_SIZE = 15;
+const LINKED_BATCH_SIZE = 30;
+const REFINE_BATCH_SIZE = 80;
 const AI_CONCURRENCY = 2;
 
 function chunkArray(arr, size) {
@@ -451,14 +451,19 @@ ONLY output the JSON array, nothing else.`;
   try {
     const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: Math.max(4096, sentences.length * 150),
+      max_tokens: Math.max(8192, sentences.length * 300),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch (parseErr) {
+        console.error(`[LEMMA] JSON parse error (offset ${startIndex}):`, parseErr.message?.substring(0, 80));
+        return sentences.map(() => ({}));
+      }
     }
     return sentences.map(() => ({}));
   } catch (err) {
@@ -776,14 +781,19 @@ Respond with a JSON array of ${sentences.length} objects, one per sentence. Only
   try {
     const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: Math.max(4096, sentences.length * 180),
+      max_tokens: Math.max(8192, sentences.length * 300),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch (parseErr) {
+        console.error(`[GRAMMAR] JSON parse error (offset ${startIndex}):`, parseErr.message?.substring(0, 80));
+        return sentences.map(() => ({ status: 'ok', structures: [], issues: [] }));
+      }
     }
     return sentences.map(() => ({ status: 'ok', structures: [], issues: [] }));
   } catch (err) {
@@ -856,14 +866,19 @@ Respond with a JSON array of group objects. If no linked groups found, return []
   try {
     const response = await callAnthropicWithRetry({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: Math.max(2048, sentences.length * 60),
+      max_tokens: Math.max(4096, sentences.length * 100),
       messages: [{ role: 'user', content: prompt }],
     });
 
     const text = response.content[0]?.text || '[]';
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch (parseErr) {
+        console.error(`[LINKED] JSON parse error (offset ${startIndex}):`, parseErr.message?.substring(0, 80));
+        return [];
+      }
     }
     return [];
   } catch (err) {
