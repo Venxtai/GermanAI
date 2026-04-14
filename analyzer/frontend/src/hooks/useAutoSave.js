@@ -88,10 +88,19 @@ export default function useAutoSave() {
       body: JSON.stringify(exportData),
     });
 
-    if (!res.ok) return;
+    if (!res.ok) {
+      console.warn('Auto-save export failed:', res.status);
+      return;
+    }
 
     const buf = await res.arrayBuffer();
-    const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+    // Safe base64 encoding (chunked to avoid call stack overflow for large PDFs)
+    const bytes = new Uint8Array(buf);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i += 8192) {
+      binary += String.fromCharCode(...bytes.slice(i, i + 8192));
+    }
+    const base64 = btoa(binary);
 
     await fetch('/api/session/upload-adapted', {
       method: 'POST',

@@ -37,9 +37,13 @@ async function getSheetsClient() {
 let driveClient = null;
 async function getDriveClient() {
   if (driveClient) return driveClient;
-  if (!googleCredentials) return null;
+  if (!googleCredentials) {
+    console.warn('[DRIVE] No Google credentials — Drive uploads disabled');
+    return null;
+  }
   const auth = createGoogleAuth(['https://www.googleapis.com/auth/drive']);
   driveClient = google.drive({ version: 'v3', auth });
+  console.log('[DRIVE] Google Drive client initialized');
   return driveClient;
 }
 

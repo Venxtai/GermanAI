@@ -235,15 +235,25 @@ export default function TextPanel() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: inputText.trim(), glossedWords: [], mode: 'student' }),
         })
-          .then(r => r.arrayBuffer())
+          .then(r => {
+            if (!r.ok) throw new Error(`Export failed: ${r.status}`);
+            return r.arrayBuffer();
+          })
           .then(buf => {
-            const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+            // Safe base64 encoding (chunked to avoid call stack overflow for large PDFs)
+            const bytes = new Uint8Array(buf);
+            let binary = '';
+            for (let i = 0; i < bytes.length; i += 8192) {
+              binary += String.fromCharCode(...bytes.slice(i, i + 8192));
+            }
+            const base64 = btoa(binary);
             return fetch('/api/session/upload-original', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ sessionId, pdfBase64: base64, filename: `original_${sessionId}.pdf` }),
             });
           })
+          .then(r => r?.json?.().then(d => { if (!d?.ok) console.warn('Original upload response:', d); }).catch(() => {}))
           .catch(err => console.warn('Original PDF upload failed:', err));
       }
     } catch (err) {

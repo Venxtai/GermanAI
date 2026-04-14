@@ -1290,23 +1290,32 @@ setInterval(() => {
 router.post('/session/upload-original', async (req, res) => {
   const { sessionId, pdfBase64, filename } = req.body;
   if (!sessionId || !pdfBase64) {
+    console.warn('[UPLOAD] Missing sessionId or pdfBase64 for upload-original');
     return res.status(400).json({ error: 'Missing sessionId or pdfBase64' });
   }
 
-  const pdfBuffer = Buffer.from(pdfBase64, 'base64');
-  const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `original_${sessionId}.pdf`);
+  try {
+    console.log(`[UPLOAD] Original PDF for session ${sessionId} (${Math.round(pdfBase64.length / 1024)}KB base64)`);
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+    const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `original_${sessionId}.pdf`);
 
-  if (result) {
-    // Track in session
-    if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
-    sessions.get(sessionId).originalFileId = result.fileId;
-    sessions.get(sessionId).lastActivity = Date.now();
+    if (result) {
+      // Track in session
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).originalFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
 
-    // Update Text Usage Log
-    await auth.updateTextUsageLog(sessionId, 'original', result.link);
-    res.json({ ok: true, link: result.link });
-  } else {
-    res.json({ ok: false, error: 'Upload failed' });
+      // Update Text Usage Log
+      await auth.updateTextUsageLog(sessionId, 'original', result.link);
+      console.log(`[UPLOAD] Original PDF saved: ${result.link}`);
+      res.json({ ok: true, link: result.link });
+    } else {
+      console.warn(`[UPLOAD] Original PDF upload returned null for session ${sessionId}`);
+      res.json({ ok: false, error: 'Upload failed — Drive returned null' });
+    }
+  } catch (err) {
+    console.error(`[UPLOAD] Original PDF error for session ${sessionId}:`, err.message);
+    res.status(500).json({ ok: false, error: err.message });
   }
 });
 
@@ -1314,32 +1323,42 @@ router.post('/session/upload-original', async (req, res) => {
 router.post('/session/upload-adapted', async (req, res) => {
   const { sessionId, pdfBase64, filename } = req.body;
   if (!sessionId || !pdfBase64) {
+    console.warn('[UPLOAD] Missing sessionId or pdfBase64 for upload-adapted');
     return res.status(400).json({ error: 'Missing sessionId or pdfBase64' });
   }
 
-  const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+  try {
+    console.log(`[UPLOAD] Adapted PDF for session ${sessionId} (${Math.round(pdfBase64.length / 1024)}KB base64)`);
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
 
-  // Check if we already have an adapted file for this session — update it
-  const session = sessions.get(sessionId);
-  if (session?.adaptedFileId) {
-    const updated = await auth.updatePdfOnDrive(session.adaptedFileId, pdfBuffer);
-    if (updated) {
-      session.lastActivity = Date.now();
-      return res.json({ ok: true, updated: true });
+    // Check if we already have an adapted file for this session — update it
+    const session = sessions.get(sessionId);
+    if (session?.adaptedFileId) {
+      const updated = await auth.updatePdfOnDrive(session.adaptedFileId, pdfBuffer);
+      if (updated) {
+        session.lastActivity = Date.now();
+        console.log(`[UPLOAD] Adapted PDF updated in-place for session ${sessionId}`);
+        return res.json({ ok: true, updated: true });
+      }
     }
-  }
 
-  // First upload (or update failed) — create new file
-  const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `adapted_${sessionId}.pdf`);
-  if (result) {
-    if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
-    sessions.get(sessionId).adaptedFileId = result.fileId;
-    sessions.get(sessionId).lastActivity = Date.now();
+    // First upload (or update failed) — create new file
+    const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `adapted_${sessionId}.pdf`);
+    if (result) {
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).adaptedFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
 
-    await auth.updateTextUsageLog(sessionId, 'adapted', result.link);
-    res.json({ ok: true, link: result.link });
-  } else {
-    res.json({ ok: false, error: 'Upload failed' });
+      await auth.updateTextUsageLog(sessionId, 'adapted', result.link);
+      console.log(`[UPLOAD] Adapted PDF saved: ${result.link}`);
+      res.json({ ok: true, link: result.link });
+    } else {
+      console.warn(`[UPLOAD] Adapted PDF upload returned null for session ${sessionId}`);
+      res.json({ ok: false, error: 'Upload failed — Drive returned null' });
+    }
+  } catch (err) {
+    console.error(`[UPLOAD] Adapted PDF error for session ${sessionId}:`, err.message);
+    res.status(500).json({ ok: false, error: err.message });
   }
 });
 
