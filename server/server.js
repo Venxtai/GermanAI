@@ -1695,12 +1695,18 @@ app.post('/api/log', (req, res) => {
         ? { fallback: true, reason: feedbackReason || 'unknown' }
         : { items: items || [] };
       console.log(`${DIM}[FEEDBACK] ${sessionId}: ${fallback ? `fallback (${feedbackReason || 'unknown'})` : `${(items || []).length} items`}${RESET}`);
-      // If transcript was already uploaded to Drive, update it with feedback
-      if (session.driveFileId) {
-        updateTranscriptWithFeedback(session.driveFileId, sessionId, session).catch(err => {
-          console.warn(`[FEEDBACK] Could not update Drive transcript:`, err.message);
-        });
-      }
+      // Wait for transcript save to finish (if still uploading), then update with feedback
+      const doUpdate = async () => {
+        if (session.savePromise) await session.savePromise.catch(() => {});
+        if (session.driveFileId) {
+          await updateTranscriptWithFeedback(session.driveFileId, sessionId, session);
+        } else {
+          console.warn(`[FEEDBACK] ${sessionId}: No driveFileId — transcript may not have been uploaded`);
+        }
+      };
+      doUpdate().catch(err => {
+        console.warn(`[FEEDBACK] Could not update Drive transcript:`, err.message);
+      });
     }
 
   } else if (type === 'abandon') {
@@ -1724,7 +1730,7 @@ app.post('/api/log', (req, res) => {
       const { endReason: reason } = req.body;
       session.endReason = reason || 'User ended conversation';
       session.ended = true; // Mark as ended so inactivity cleanup skips it
-      saveTranscriptFile(sessionId, session);
+      session.savePromise = saveTranscriptFile(sessionId, session);
       // Don't delete immediately — keep alive for feedback to arrive
       // Cleanup after 5 minutes (feedback generation + network latency)
       setTimeout(() => logSessions.delete(sessionId), 5 * 60 * 1000);
@@ -4108,8 +4114,11 @@ app.post('/api/dashboard/teacher-data', async (req, res) => {
         }
       }
 
-      const status = sc.used >= sc.maxUses ? 'completed'
+      const completedCount = sc.used || 0;
+      const totalRequired = sc.maxUses || 1;
+      const status = completedCount >= totalRequired ? 'completed'
         : sc.deadline && new Date(sc.deadline) < new Date() ? 'overdue'
+        : completedCount > 0 ? 'in_progress'
         : 'pending';
 
       return {
@@ -4118,6 +4127,8 @@ app.post('/api/dashboard/teacher-data', async (req, res) => {
         unitName: unitNames[sc.unit] || '',
         sessions,
         status,
+        completedCount,
+        totalRequired,
       };
     });
 
