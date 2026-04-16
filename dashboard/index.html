@@ -1276,7 +1276,15 @@ function showToast(msg) {
 function formatDate(dateStr) {
   if (!dateStr) return '';
   try {
-    const d = new Date(dateStr + 'T00:00:00');
+    let d;
+    // Try ISO format first (YYYY-MM-DD) — from date inputs
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+      d = new Date(dateStr + 'T00:00:00');
+    } else {
+      // Fallback: let Date parse native formats like MM/DD/YYYY (from Google Sheets)
+      d = new Date(dateStr);
+    }
+    if (isNaN(d.getTime())) return dateStr; // give back raw string rather than "Invalid Date"
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   } catch (e) { return dateStr; }
 }
