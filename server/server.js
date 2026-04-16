@@ -173,6 +173,41 @@ function resolveChapterToLastUnit(book, chapter) {
 
 const BOOK_SHORT_LABELS = { ID1: 'ID1', ID2B: 'ID2 BLAU', ID2O: 'ID2 ORANGE' };
 
+// Minimum student turns before a session "counts" against the code's usage.
+// Prevents burning a use when the session fails before the student speaks enough.
+const MIN_TURNS_TO_COUNT = 3;
+
+/**
+ * Increment the "Used" counter for an access code in the Access Codes sheet.
+ * Called AFTER a session completes with enough student turns (see MIN_TURNS_TO_COUNT).
+ * Failed / abandoned-too-early sessions are not counted so uses don't get wasted.
+ */
+async function incrementCodeUsage(code) {
+  if (!code) return;
+  try {
+    const sheets = await getSheetsClient();
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: 'Access Codes!A2:K',
+    });
+    const rows = result.data.values || [];
+    const codeLower = code.trim().toLowerCase();
+    const rowIndex = rows.findIndex(r => (r[0] || '').toLowerCase() === codeLower);
+    if (rowIndex === -1) return;
+    const used = parseInt(rows[rowIndex][4]) || 0;
+    const sheetRow = rowIndex + 2;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: ACCESS_SHEETS_ID,
+      range: `Access Codes!E${sheetRow}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[used + 1]] },
+    });
+    console.log(`${DIM}[USAGE] Incremented "Used" for code ${code}: ${used} → ${used + 1}${RESET}`);
+  } catch (err) {
+    console.warn(`[USAGE] Failed to increment usage for ${code}:`, err.message);
+  }
+}
+
 // POST /api/auth/validate — Check access code, return validity + remaining uses
 app.post('/api/auth/validate', async (req, res) => {
   const { code } = req.body;
@@ -214,22 +249,12 @@ app.post('/api/auth/validate', async (req, res) => {
       return res.json({ valid: false, error: 'Access code has expired (all uses consumed)', used, maxUses });
     }
 
-    // If unit is preselected, DON'T increment usage yet — wait for /api/auth/confirm
-    // If free choice, increment immediately (existing behavior)
+    // Usage is NOT incremented here anymore — it's deferred until the session
+    // completes with enough student turns (see MIN_TURNS_TO_COUNT). This prevents
+    // a failed/abandoned session from burning a use.
     const sheetRow = rowIndex + 2;
-    if (!preselectedUnit) {
-      await sheets.spreadsheets.values.update({
-        spreadsheetId: ACCESS_SHEETS_ID,
-        range: `Access Codes!E${sheetRow}`,
-        valueInputOption: 'RAW',
-        requestBody: { values: [[used + 1]] },
-      });
 
-      // Usage is logged later when the session completes (POST /api/auth/log-session)
-      // or when the session is abandoned — NOT here, to avoid duplicate empty rows.
-    }
-
-    console.log(`[AUTH] Code "${code}" validated — ${preselectedUnit ? 'preselected unit ' + preselectedUnit : (used + 1) + '/' + maxUses + ' uses'} (${type})`);
+    console.log(`[AUTH] Code "${code}" validated — ${preselectedUnit ? 'preselected unit ' + preselectedUnit : `${used}/${maxUses} uses consumed so far`} (${type})`);
 
     // If preselected, resolve the unit to book/chapter info for the student confirmation screen
     let preselectedInfo = null;
@@ -244,7 +269,9 @@ app.post('/api/auth/validate', async (req, res) => {
     return res.json({
       valid: true,
       type,
-      remainingUses: preselectedUnit ? 0 : maxUses - used - 1,
+      // No longer pre-deducts — uses are counted only after a session completes
+      // with enough student turns.
+      remainingUses: preselectedUnit ? 0 : maxUses - used,
       createdBy,
       assignedTo,
       preselectedUnit: preselectedInfo,
@@ -290,19 +317,10 @@ app.post('/api/auth/confirm', async (req, res) => {
       return res.json({ ok: false, error: 'Access code has expired' });
     }
 
-    // Increment usage count
-    const sheetRow = rowIndex + 2;
-    await sheets.spreadsheets.values.update({
-      spreadsheetId: ACCESS_SHEETS_ID,
-      range: `Access Codes!E${sheetRow}`,
-      valueInputOption: 'RAW',
-      requestBody: { values: [[used + 1]] },
-    });
-
-    // Usage is logged later when the session completes (POST /api/auth/log-session)
-    // or when the session is abandoned — NOT here, to avoid duplicate empty rows.
-
-    console.log(`[AUTH] Preselected code "${code}" confirmed — ${used + 1}/${maxUses} uses`);
+    // Usage is NOT incremented here anymore — it's deferred until the session
+    // completes with enough student turns (see MIN_TURNS_TO_COUNT). Prevents
+    // a failed/abandoned session from burning a use.
+    console.log(`[AUTH] Preselected code "${code}" confirmed — ${used}/${maxUses} uses consumed so far`);
     return res.json({ ok: true });
   } catch (err) {
     console.error('[AUTH] Confirm error:', err.message);
@@ -549,6 +567,18 @@ function logConversationEnd(sessionId, exchangeCount) {
  */
 async function saveTranscriptFile(sessionId, logSession) {
   try {
+    // Only count this session against the code's usage if the student actually
+    // participated (>= MIN_TURNS_TO_COUNT student turns). Prevents early failures
+    // from burning a use. Guarded by usageCounted flag to avoid double-increment.
+    const studentTurns = logSession.exchangeCount || 0;
+    const accessCode = logSession.meta?.accessCode || '';
+    if (!logSession.usageCounted && accessCode && studentTurns >= MIN_TURNS_TO_COUNT) {
+      logSession.usageCounted = true;
+      incrementCodeUsage(accessCode).catch(() => {});
+    } else if (!logSession.usageCounted && accessCode) {
+      console.log(`${DIM}[USAGE] Not counting session ${sessionId} against ${accessCode}: only ${studentTurns} student turn(s) (< ${MIN_TURNS_TO_COUNT})${RESET}`);
+    }
+
     const unit = logSession.unit || 'unknown';
     const unitTitle = logSession.unitTitle || '';
     const unitPadded = String(unit).padStart(3, '0');
