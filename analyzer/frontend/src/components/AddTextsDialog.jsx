@@ -73,8 +73,48 @@ export default function AddTextsDialog() {
             selectedUnits: Array.from(selectedUnits),
           }),
         });
-        const data = await res.json();
-        if (data.error) throw new Error(data.error);
+
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(errText || `Server error ${res.status}`);
+        }
+
+        // Endpoint streams SSE ("data: {...}\n\n") — read until we get a 'result' event.
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let data = null;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+
+          const lines = buffer.split('\n');
+          buffer = lines.pop(); // keep incomplete line for next read
+
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            const jsonStr = line.slice(6).trim();
+            if (!jsonStr) continue;
+            try {
+              const event = JSON.parse(jsonStr);
+              if (event.type === 'progress') {
+                const pct = typeof event.percent === 'number' ? ` ${Math.round(event.percent)}%` : '';
+                setProgress(`Analyzing text ${i + 1} of ${newTexts.length}: ${event.step || ''}${pct}`);
+              } else if (event.type === 'result') {
+                data = event.data;
+              } else if (event.type === 'error') {
+                throw new Error(event.error || 'Analysis failed on server');
+              }
+            } catch (parseErr) {
+              if (parseErr.message.includes('Analysis failed')) throw parseErr;
+              console.warn('SSE parse error:', parseErr, jsonStr.substring(0, 200));
+            }
+          }
+        }
+
+        if (!data) throw new Error('No analysis result received');
 
         compareItems.push({
           id: `text-${i + 2}`,
