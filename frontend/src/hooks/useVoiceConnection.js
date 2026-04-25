@@ -1,4 +1,5 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
+import { createWLipSyncNode } from "wlipsync";
 import useAIStore from "../store/useAIStore";
 import { generateUnitInstructions, getDurations, getBuddyFirstName } from "../utils/systemInstructions";
 import { ConversationManager } from "../utils/conversationManager";
@@ -53,52 +54,51 @@ function cleanTranscript(text) {
 }
 
 export function useVoiceConnection() {
-  const peerConnectionRef = useRef(null);
-  const dataChannelRef = useRef(null);
-  const audioElementRef = useRef(null);
+  // ── Mic & recording refs ──
+  const rawMicStreamRef = useRef(null);
   const microphoneTrackRef = useRef(null);
-  const waitingForResponseRef = useRef(false);
-  const lastTranscriptionIdRef = useRef(null);
-  const lastVisualQuestionRef = useRef(null);
-  const visualAnswerCheckedRef = useRef(false);
-  const audioContextRef = useRef(null);
-  const analyzerRef = useRef(null);       // mirror of analyzerNode for use in callbacks
-  const silenceTimerRef = useRef(null);   // setTimeout id for silence detection
-  const logSessionIdRef = useRef(null);   // correlates log entries on the backend
-  const studentSpokeRef = useRef(false);  // true after stopRecording until transcript logged
-  const recordStartRef = useRef(null);    // timestamp when recording started
-  const inaudibleTimerRef = useRef(null); // delayed fallback if Whisper never delivers
-  const mediaRecorderRef = useRef(null);  // captures mic audio for our own Whisper call
-  const audioChunksRef = useRef([]);      // collected MediaRecorder chunks
-  const rawMicStreamRef = useRef(null);   // the WebRTC getUserMedia stream (track is gated)
-  const recMicStreamRef = useRef(null);   // SEPARATE stream for recording — never muted
-  const isRecordingRef = useRef(false);   // true between startRecording() and stopRecording()
-  const committedTimeoutRef = useRef(null); // safety-net if committed event never arrives
-  const pendingStudentTurnIdRef = useRef(null); // id of the placeholder student row in the log
-  const pendingAILogRef = useRef(null);        // AI transcript held until after student update-turn
-  const logQueueRef = useRef(Promise.resolve()); // serializes POSTs so order is preserved
-  const systemInstructionsRef = useRef(null);     // saved so we can patch them with the student's real name
-  const studentNameRef = useRef(null);            // set once we detect the student's confirmed name
-  const pendingNameCorrectionRef = useRef(null);  // correct name to self-inject when AI used wrong name
-  const studentUtterancesRef = useRef([]);         // all Whisper transcripts this session (for feedback)
-  const unitDataRef = useRef(null);               // unit data for current session
-  const conversationStartRef = useRef(null);      // Date.now() when session opens
-  const conversationTimerRef = useRef(null);      // setInterval that enforces min/max durations
-  const silentStudentTimerRef = useRef(null);     // setTimeout — fires if student doesn't respond
-  const exchangeCountRef = useRef(0);             // incremented on each Whisper transcript
-  const topicsDiscussedRef = useRef(new Set());   // indices of unit topics covered so far
-  const minDurationFiredRef = useRef(false);      // ensures min-duration event only fires once
-  const maxDurationFiredRef = useRef(false);      // ensures max-duration event only fires once
-  const pendingEndAfterTurnRef = useRef(false);   // auto-end after current AI turn finishes speaking
-  const endConversationRef = useRef(null);        // ref to endConversation — avoids stale closures in callbacks
-  const managerRef = useRef(null);                // ConversationManager instance for this session
-  const typedNameRef = useRef(null);              // name entered on the welcome screen
-  const nameConfirmationPendingRef = useRef(null); // {typed, spoken} when typed≠spoken, awaiting student confirmation
-  const transcriptDoneForTurnRef = useRef(null); // turnId that's been transcribed — coordinates own Whisper vs built-in
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+  const isRecordingRef = useRef(false);
+  const recordStartRef = useRef(null);
 
-  // postLog is stored in a ref so useCallback closures never go stale.
-  // All calls are chained on logQueueRef so each fetch completes before the next one
-  // starts — this guarantees server-side broadcast order matches event order.
+  // ── Session refs ──
+  const sessionIdRef = useRef(null);
+  const playbackContextRef = useRef(null);
+  const currentAudioSourceRef = useRef(null);
+  const lipsyncProfileRef = useRef(null);
+  const lipsyncNodeRef = useRef(null);
+  const micAudioCtxRef = useRef(null);
+
+  // ── Logging refs ──
+  const logSessionIdRef = useRef(null);
+  const logQueueRef = useRef(Promise.resolve());
+
+  // ── Name handling refs ──
+  const studentNameRef = useRef(null);
+  const typedNameRef = useRef(null);
+  const nameConfirmationPendingRef = useRef(null);
+  const pendingNameCorrectionRef = useRef(null);
+  const expectingNameRef = useRef(false); // true after buddy asks "Wie heißt du?"
+
+  // ── Session state refs ──
+  const studentUtterancesRef = useRef([]);
+  const unitDataRef = useRef(null);
+  const conversationStartRef = useRef(null);
+  const conversationTimerRef = useRef(null);
+  const silentStudentTimerRef = useRef(null);
+  const exchangeCountRef = useRef(0);
+  const topicsDiscussedRef = useRef(new Set());
+  const minDurationFiredRef = useRef(false);
+  const maxDurationFiredRef = useRef(false);
+  const pendingEndAfterTurnRef = useRef(false);
+  const endReasonRef = useRef(null); // Tracks why conversation ended
+  const endConversationRef = useRef(null);
+  const managerRef = useRef(null);
+  const systemInstructionsRef = useRef(null);
+  const pendingDirectivesRef = useRef([]);
+
+  // ── Logging helper ──
   const postLogRef = useRef(null);
   postLogRef.current = (payload) => {
     if (!logSessionIdRef.current) return Promise.resolve();
@@ -118,602 +118,665 @@ export function useVoiceConnection() {
     setStatus,
     setSessionActive,
     addMessage,
-    updateLastAIMessage,
     finalizeAIMessage,
-    prepareNewAIMessage,
     clearMessages,
     currentUnit,
     setAnalyzerNode,
+    setTranscriptForDownload,
     setMicError,
     setFeedback,
+    setLipsyncNode,
+    clearLipsyncNode,
+    setCurrentEmotion,
+    setEmotionTimeline,
+    clearEmotionTimeline,
+    setSessionTiming,
+    setMicAnalyser,
   } = useAIStore();
 
-  const sendRealtimeEvent = useCallback((event) => {
-    const dc = dataChannelRef.current;
-    if (dc && dc.readyState === "open") {
-      dc.send(JSON.stringify(event));
+  // ── Audio playback helper (legacy — for non-streaming fallback) ──
+  async function playAudio(audioBase64, mimeType = 'audio/wav', emotionTimeline = null) {
+    if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
+      playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
     }
-  }, []);
+    const ctx = playbackContextRef.current;
+    await ctx.resume();
 
-  const handleRealtimeEvent = useCallback(
-    (event) => {
-      switch (event.type) {
-        // After commit(), wait for this event before calling response.create.
-        // Calling response.create in the same tick as commit() is a race condition
-        // — the server hasn't finished ingesting the buffer yet.
-        case 'input_audio_buffer.committed': {
-          clearTimeout(committedTimeoutRef.current);
-          committedTimeoutRef.current = null;
-          console.log('[Realtime] input_audio_buffer.committed — waitingForResponse:', waitingForResponseRef.current);
-          // If Whisper for the PREVIOUS turn never arrived and we already have
-          // its AI response saved, flush it now before this new student placeholder
-          // so the log stays in order across rapid exchanges.
-          if (pendingAILogRef.current) {
-            postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
-            pendingAILogRef.current = null;
-          }
-          // Post a placeholder student row IMMEDIATELY so it appears before
-          // the next AI response in the log.
-          const turnId = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-          pendingStudentTurnIdRef.current = turnId;
-          postLog({ type: 'turn', role: 'student', text: '…', id: turnId, pending: true });
-          if (waitingForResponseRef.current) {
-            waitingForResponseRef.current = false;
-            console.log('[Realtime] Sending response.create');
-            sendRealtimeEvent({ type: 'response.create' });
-          }
-          // Own Whisper transcription — primary fallback since built-in event is unreliable in WebRTC mode
-          {
-            const localTurnId = turnId;
-            const chunks = audioChunksRef.current.splice(0); // capture and clear atomically
-            console.log('[Whisper] committed — chunks captured:', chunks.length, chunks.map(c => c.size + 'B').join(', '));
-            if (chunks.length > 0) {
-              const blob = new Blob(chunks, { type: chunks[0]?.type || 'audio/webm' });
-              console.log('[Whisper] sending blob to /api/transcribe, size:', blob.size, 'type:', blob.type);
-              const fd = new FormData();
-              fd.append('audio', blob, 'audio.webm');
-              fetch('/api/transcribe', { method: 'POST', body: fd })
-                .then(r => { console.log('[Whisper] HTTP status:', r.status); return r.json(); })
-                .then(({ text }) => {
-                  console.log('[Whisper] response text:', JSON.stringify(text));
-                  if (!text?.trim()) return;
-                  if (transcriptDoneForTurnRef.current === localTurnId) return; // built-in already handled this turn
-                  transcriptDoneForTurnRef.current = localTurnId;
-                  const cleaned = cleanTranscript(text.trim()) || '(inaudible)';
-                  if (cleaned !== '(inaudible)') studentUtterancesRef.current.push(cleaned);
-                  postLog({ type: 'update-turn', id: localTurnId, text: cleaned });
-                  if (pendingAILogRef.current) {
-                    postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
-                    pendingAILogRef.current = null;
-                  }
-                })
-                .catch(err => console.error('[Whisper] fetch error:', err));
-            } else {
-              console.warn('[Whisper] no chunks — MediaRecorder did not capture audio');
-            }
-          }
-          break;
-        }
+    // Decode base64 to ArrayBuffer
+    const binaryStr = atob(audioBase64);
+    const bytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
 
-        case 'conversation.item.input_audio_transcription.completed': {
-          const raw = event.transcript?.trim();
-          const cleaned = cleanTranscript(raw);
-          const turnId = pendingStudentTurnIdRef.current;
-          pendingStudentTurnIdRef.current = null;
-          const finalText = cleaned || '(inaudible)';
-          if (cleaned) studentUtterancesRef.current.push(cleaned); // for post-session feedback
+    const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+    const source = ctx.createBufferSource();
+    source.buffer = audioBuffer;
 
-          // Farewell detection (spec 2.7) — check if student is saying goodbye
-          if (cleaned) {
-            const isFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|goodbye|auf wiederschauen|macht's gut|bis dann|bis später)\b/i.test(cleaned);
-            if (isFarewell) {
-              if (managerRef.current?.isMinDurationReached()) {
-                // Min duration reached — allow the AI to say goodbye, then auto-end
-                pendingEndAfterTurnRef.current = true;
-                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student said goodbye and the minimum conversation time has been reached. Say your natural closing farewell NOW in one sentence, then the session will end automatically.]' }] } });
-              } else {
-                // Too early — AI must decline and continue
-                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student tried to say goodbye but the minimum conversation time has NOT been reached. You MUST respond with the early-goodbye response (e.g. "Schon? Wir können noch ein bisschen reden!") and then continue the conversation.]' }] } });
-              }
-            }
-          }
+    // Analyser for amplitude (used by Character.jsx as a speaking gate)
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.5;
 
-          // Increment exchange count for logging
-          exchangeCountRef.current += 1;
-
-          // Capture AI text now so we can compare it against the detected name below.
-          const aiText = pendingAILogRef.current;
-          pendingAILogRef.current = null;
-
-          // ── Name confirmation flow ──
-          // Step 1: If awaiting name confirmation (mismatch was detected), parse
-          // the student's response for either name and finalize.
-          if (nameConfirmationPendingRef.current && cleaned) {
-            const { typed, spoken } = nameConfirmationPendingRef.current;
-            nameConfirmationPendingRef.current = null;
-            const mentionsTyped  = cleaned.toLowerCase().includes(typed.toLowerCase());
-            const mentionsSpoken = cleaned.toLowerCase().includes(spoken.toLowerCase());
-            const confirmedName  = mentionsSpoken && !mentionsTyped ? spoken
-              : mentionsTyped ? typed
-              : typed; // fallback
-            studentNameRef.current = confirmedName;
-            if (systemInstructionsRef.current) {
-              sendRealtimeEvent({
-                type: 'session.update',
-                session: {
-                  instructions:
-                    `CRITICAL — The student's confirmed name is "${confirmedName}". ` +
-                    `You MUST use ONLY this exact spelling for the rest of the session. ` +
-                    `Never use any other name or spelling.\n\n` +
-                    systemInstructionsRef.current,
-                },
-              });
-            }
-          }
-
-          // Step 2: First time the student introduces themselves
-          if (!studentNameRef.current && !nameConfirmationPendingRef.current && cleaned) {
-            const nameMatch =
-              cleaned.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
-              cleaned.match(/mein name ist\s+([^\s.,!?]+)/i);
-            if (nameMatch) {
-              const spokenName = nameMatch[1];
-              const typedName  = typedNameRef.current;
-              if (typedName && spokenName.charAt(0).toLowerCase() !== typedName.charAt(0).toLowerCase()) {
-                // Names start with different letters → genuinely different name → ask for clarification
-                nameConfirmationPendingRef.current = { typed: typedName, spoken: spokenName };
-                sendRealtimeEvent({
-                  type: 'conversation.item.create',
-                  item: { type: 'message', role: 'user', content: [{ type: 'input_text',
-                    text: `[SYSTEM: The student typed "${typedName}" on the welcome screen but just said "${spokenName}". ` +
-                      `You MUST ask for clarification in German: "Interessant. Dein Name ist nicht ${typedName}? ` +
-                      `Heißt du ${typedName} oder heißt du ${spokenName}?" Then wait for the student to confirm.]` }] },
-                });
-              } else {
-                // Same first letter or no typed name → use the typed spelling (handles Niko/Nico etc.)
-                const finalName = typedName || spokenName;
-                studentNameRef.current = finalName;
-                if (systemInstructionsRef.current) {
-                  sendRealtimeEvent({
-                    type: 'session.update',
-                    session: {
-                      instructions:
-                        `CRITICAL — The student's confirmed name is "${finalName}". ` +
-                        `You MUST use ONLY this exact spelling for the rest of the session. ` +
-                        `Never use any other name or spelling.\n\n` +
-                        systemInstructionsRef.current,
-                    },
-                  });
-                }
-                if (aiText && !aiText.includes(finalName)) {
-                  pendingNameCorrectionRef.current = finalName;
-                }
-              }
-            }
-          }
-          if (turnId) {
-            // Guard: skip if own Whisper already updated this turn
-            const alreadyDone = transcriptDoneForTurnRef.current === turnId;
-            if (!alreadyDone) {
-              transcriptDoneForTurnRef.current = turnId;
-              postLog({ type: 'update-turn', id: turnId, text: finalText });
-            }
-          } else {
-            postLog({ type: 'turn', role: 'student', text: finalText });
-          }
-          if (aiText) {
-            postLog({ type: 'turn', role: 'ai', text: aiText });
-          }
-          break;
-        }
-
-        // Transcription failed — resolve the hanging placeholder so it doesn't stay as '…'
-        case 'conversation.item.input_audio_transcription.failed': {
-          const turnId = pendingStudentTurnIdRef.current;
-          pendingStudentTurnIdRef.current = null;
-          if (turnId) postLog({ type: 'update-turn', id: turnId, text: '(inaudible)' });
-          else postLog({ type: 'turn', role: 'student', text: '(inaudible)' });
-          break;
-        }
-
-        case "input_audio_buffer.speech_started":
-          console.log('[Realtime] speech_started (server VAD)');
-          setStatus("listening");
-          break;
-
-        // NOTE: speech_stopped only fires with server VAD (turn_detection != null).
-        // With turn_detection: null (manual push-to-talk) it never fires.
-        // studentSpokeRef is armed in stopRecording() instead.
-
-        case "response.audio_transcript.delta":
-          updateLastAIMessage(event.delta);
-          setStatus("speaking");
-          break;
-
-        case "response.audio_transcript.done":
-          finalizeAIMessage(event.transcript);
-          if (event.transcript?.trim()) {
-            pendingAILogRef.current = event.transcript.trim();
-
-            // Conversation Manager: process AI turn (phase transitions, timing, starters)
-            const mgr = managerRef.current;
-            if (mgr) {
-              const directives = mgr.processAITurn(event.transcript.trim());
-              for (const d of directives) {
-                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
-              }
-            }
-
-            // Async semantic topic classification via GPT-4o-mini
-            if (mgr) {
-              const { currentTopics, reviewTopics } = mgr.getTopicsForClassification();
-              if (currentTopics.length > 0 || reviewTopics.length > 0) {
-                fetch('/api/classify-topic', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ text: event.transcript.trim(), currentTopics, reviewTopics }),
-                })
-                  .then(r => r.json())
-                  .then(result => {
-                    const balanceDirectives = mgr.updateTopicClassification(result);
-                    for (const d of balanceDirectives) {
-                      sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
-                    }
-                  })
-                  .catch(() => {});
-              }
-            }
-          }
-          break;
-
-        case "response.done":
-          prepareNewAIMessage();
-          // Keep status as "speaking" until audio truly finishes.
-          // Poll the analyzer: only go idle after 1500ms of continuous near-silence.
-          // MAX_WAIT 30s covers long AI responses.
-          (function waitForSilence() {
-            clearTimeout(silenceTimerRef.current);
-            clearTimeout(silentStudentTimerRef.current); // AI is speaking — cancel any pending student-silence prompt
-            const analyzer = analyzerRef.current;
-            if (!analyzer) {
-              setStatus("idle");
-              if (pendingEndAfterTurnRef.current) {
-                pendingEndAfterTurnRef.current = false;
-                endConversationRef.current?.();
-                return;
-              }
-              const corrName = pendingNameCorrectionRef.current;
-              if (corrName) {
-                pendingNameCorrectionRef.current = null;
-                sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
-                sendRealtimeEvent({ type: 'response.create' });
-              } else {
-                // Start student-silence timer — prompt if no mic press within 30s
-                silentStudentTimerRef.current = setTimeout(() => {
-                  if (!isRecordingRef.current && !waitingForResponseRef.current) {
-                    sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
-                    sendRealtimeEvent({ type: 'response.create' });
-                  }
-                }, 30000);
-              }
-              return;
-            }
-            const buf = new Uint8Array(analyzer.frequencyBinCount);
-            let silentMs = 0;
-            const POLL_MS = 80;
-            const SILENT_NEEDED = 1500; // must be quiet for 1.5s before going idle
-            const MAX_WAIT = 30000;     // max 30s for very long responses
-            let elapsed = 0;
-            const poll = () => {
-              analyzer.getByteFrequencyData(buf);
-              const energy = buf.slice(2, 14).reduce((a, b) => a + b, 0) / 12;
-              if (energy < 3) {
-                silentMs += POLL_MS;
-              } else {
-                silentMs = 0; // reset on any audio activity
-              }
-              elapsed += POLL_MS;
-              if (silentMs >= SILENT_NEEDED || elapsed >= MAX_WAIT) {
-                setStatus("idle");
-                if (pendingEndAfterTurnRef.current) {
-                  pendingEndAfterTurnRef.current = false;
-                  endConversationRef.current?.();
-                  return;
-                }
-                // Name correction takes priority — fires its own response.create
-                const corrName = pendingNameCorrectionRef.current;
-                if (corrName) {
-                  pendingNameCorrectionRef.current = null;
-                  sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: `[SYSTEM: The speech-to-text transcription confirms the student's name is "${corrName}". Please immediately correct yourself naturally in German, e.g. "Oh, Entschuldigung — ${corrName}! Schön, dich kennenzulernen!"]` }] } });
-                  sendRealtimeEvent({ type: 'response.create' });
-                } else {
-                  // Start student-silence timer — prompt if no mic press within 30s
-                  silentStudentTimerRef.current = setTimeout(() => {
-                    if (!isRecordingRef.current && !waitingForResponseRef.current) {
-                      sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]' }] } });
-                      sendRealtimeEvent({ type: 'response.create' });
-                    }
-                  }, 30000);
-                }
-              } else {
-                silenceTimerRef.current = setTimeout(poll, POLL_MS);
-              }
-            };
-            silenceTimerRef.current = setTimeout(poll, POLL_MS);
-          })();
-          break;
-
-        case "error":
-          console.error("[Realtime] API error:", event.error);
-          // If we were waiting for a committed event, clear the safety-net timeout
-          clearTimeout(committedTimeoutRef.current);
-          committedTimeoutRef.current = null;
-          waitingForResponseRef.current = false;
-          setStatus("idle");
-          break;
-
-        default:
-          break;
+    // Create wLipSync node for real-time phoneme detection
+    try {
+      if (!lipsyncProfileRef.current) {
+        lipsyncProfileRef.current = await fetch('/profile.json').then(r => r.json());
       }
-    },
-    [sendRealtimeEvent, setStatus, updateLastAIMessage, finalizeAIMessage, prepareNewAIMessage]
-  );
+      if (lipsyncNodeRef.current) {
+        try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      }
+      const lipsyncNode = await createWLipSyncNode(ctx, lipsyncProfileRef.current);
+      lipsyncNodeRef.current = lipsyncNode;
+      setLipsyncNode(lipsyncNode);
 
+      const delayNode = ctx.createDelay(0.1);
+      delayNode.delayTime.value = 0.05;
+      source.connect(analyser);
+      analyser.connect(delayNode);
+      delayNode.connect(ctx.destination);
+      source.connect(lipsyncNode);
+    } catch (err) {
+      console.warn('[wLipSync] Failed to create node, falling back to amplitude-only:', err);
+      const delayNode = ctx.createDelay(0.1);
+      delayNode.delayTime.value = 0.05;
+      source.connect(analyser);
+      analyser.connect(delayNode);
+      delayNode.connect(ctx.destination);
+    }
+
+    setAnalyzerNode(analyser);
+    currentAudioSourceRef.current = source;
+
+    if (emotionTimeline && emotionTimeline.length > 0) {
+      setEmotionTimeline(emotionTimeline, audioBuffer.duration);
+    }
+
+    return new Promise((resolve) => {
+      source.onended = () => {
+        currentAudioSourceRef.current = null;
+        setAnalyzerNode(null);
+        clearLipsyncNode();
+        clearEmotionTimeline();
+        resolve();
+      };
+      source.start();
+      setStatus('speaking');
+    });
+  }
+
+  // ── Streaming TTS playback ──
+  // Fetches /api/tts-stream, receives raw PCM16 chunks, and schedules them
+  // as AudioBufferSourceNodes through the analyser + lipsync chain.
+  // Playback starts on the first chunk (~200-500ms TTFB) while the rest streams in.
+  async function playStreamingAudio(text, emotionTimeline = null) {
+    if (!playbackContextRef.current || playbackContextRef.current.state === 'closed') {
+      playbackContextRef.current = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
+    }
+    const ctx = playbackContextRef.current;
+    await ctx.resume();
+
+    const t0 = performance.now();
+
+    // Set up the audio graph: analyser → delay → destination, + lipsync branch
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.5;
+
+    const delayNode = ctx.createDelay(0.1);
+    delayNode.delayTime.value = 0.05; // 50ms look-ahead for lip sync
+
+    analyser.connect(delayNode);
+    delayNode.connect(ctx.destination);
+
+    let lipsyncNode = null;
+    try {
+      if (!lipsyncProfileRef.current) {
+        lipsyncProfileRef.current = await fetch('/profile.json').then(r => r.json());
+      }
+      if (lipsyncNodeRef.current) {
+        try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      }
+      lipsyncNode = await createWLipSyncNode(ctx, lipsyncProfileRef.current);
+      lipsyncNodeRef.current = lipsyncNode;
+      setLipsyncNode(lipsyncNode);
+    } catch (err) {
+      console.warn('[wLipSync] Streaming: failed to create node:', err);
+    }
+
+    setAnalyzerNode(analyser);
+    setStatus('speaking');
+
+    // Fetch the streaming TTS endpoint
+    const resp = await fetch('/api/tts-stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!resp.ok) {
+      console.error('[TTS-STREAM] HTTP error:', resp.status);
+      setStatus('idle');
+      throw new Error(`TTS stream failed: ${resp.status}`);
+    }
+
+    const sampleRate = parseInt(resp.headers.get('X-Sample-Rate') || '24000', 10);
+    const reader = resp.body.getReader();
+
+    // Scheduling state
+    const CHUNK_SAMPLES = Math.floor(sampleRate * 0.25); // 250ms scheduling chunks
+    const CHUNK_BYTES = CHUNK_SAMPLES * 2; // 16-bit = 2 bytes per sample
+    let pendingBytes = new Uint8Array(0);
+    let nextTime = ctx.currentTime + 0.08; // small initial buffer (80ms)
+    let firstChunkLogged = false;
+    let lastSource = null;
+    let totalSamples = 0;
+
+    // Helper: schedule a PCM chunk as an AudioBufferSourceNode
+    function scheduleChunk(int16Data) {
+      const audioBuffer = ctx.createBuffer(1, int16Data.length, sampleRate);
+      const channelData = audioBuffer.getChannelData(0);
+      for (let i = 0; i < int16Data.length; i++) {
+        channelData[i] = int16Data[i] / 32768.0;
+      }
+
+      const source = ctx.createBufferSource();
+      source.buffer = audioBuffer;
+      // Connect to shared analyser (which feeds delay → destination)
+      source.connect(analyser);
+      // Also connect to lipsync node if available
+      if (lipsyncNode) source.connect(lipsyncNode);
+
+      source.start(nextTime);
+      nextTime += audioBuffer.duration;
+      totalSamples += int16Data.length;
+      lastSource = source;
+
+      if (!firstChunkLogged) {
+        firstChunkLogged = true;
+        console.log(`[TTS-STREAM] First audio chunk playing at ${Math.round(performance.now() - t0)}ms TTFB`);
+      }
+    }
+
+    // Read stream and schedule chunks
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (value) {
+        // Append new bytes to pending buffer
+        const merged = new Uint8Array(pendingBytes.length + value.length);
+        merged.set(pendingBytes);
+        merged.set(value, pendingBytes.length);
+        pendingBytes = merged;
+
+        // Schedule complete 250ms chunks
+        while (pendingBytes.length >= CHUNK_BYTES) {
+          const chunkBytes = pendingBytes.slice(0, CHUNK_BYTES);
+          pendingBytes = pendingBytes.slice(CHUNK_BYTES);
+          const int16 = new Int16Array(chunkBytes.buffer, chunkBytes.byteOffset, chunkBytes.length / 2);
+          scheduleChunk(int16);
+        }
+      }
+
+      if (done) break;
+    }
+
+    // Schedule remaining samples
+    if (pendingBytes.length >= 2) {
+      const remaining = new Int16Array(
+        pendingBytes.buffer, pendingBytes.byteOffset,
+        Math.floor(pendingBytes.length / 2)
+      );
+      if (remaining.length > 0) scheduleChunk(remaining);
+    }
+
+    const totalDuration = totalSamples / sampleRate;
+    console.log(`[TTS-STREAM] All chunks scheduled: ${totalSamples} samples (${totalDuration.toFixed(1)}s) in ${Math.round(performance.now() - t0)}ms`);
+
+    // Set emotion timeline now that we know total duration
+    if (emotionTimeline && emotionTimeline.length > 0) {
+      setEmotionTimeline(emotionTimeline, totalDuration);
+    }
+
+    // Store a reference so stop works
+    currentAudioSourceRef.current = lastSource;
+
+    // Wait for the last scheduled chunk to finish playing
+    return new Promise((resolve) => {
+      if (!lastSource) {
+        setAnalyzerNode(null);
+        clearLipsyncNode();
+        clearEmotionTimeline();
+        setStatus('idle');
+        resolve();
+        return;
+      }
+      lastSource.onended = () => {
+        currentAudioSourceRef.current = null;
+        setAnalyzerNode(null);
+        clearLipsyncNode();
+        clearEmotionTimeline();
+        resolve();
+      };
+    });
+  }
+
+  // ── Directive-only prompt (no student audio) ──
+  async function sendPromptTurn(directives) {
+    const sid = sessionIdRef.current;
+    if (!sid) return;
+
+    try {
+      const resp = await fetch('/api/session/prompt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: sid, directives }),
+      });
+      if (!resp.ok) return;
+      const data = await resp.json();
+      if (data.response) {
+        addMessage('assistant', data.response);
+        setCurrentEmotion(data.emotion);
+        postLog({ type: 'turn', role: 'ai', text: data.response });
+        await playStreamingAudio(data.response, data.emotionTimeline);
+        setStatus('idle');
+
+        // Handle pending auto-end after AI speaks — delay so student can read farewell
+        if (pendingEndAfterTurnRef.current) {
+          pendingEndAfterTurnRef.current = false;
+          await new Promise(r => setTimeout(r, 2000));
+          endConversationRef.current?.();
+          return;
+        }
+        // Start silent-student timer
+        startSilentStudentTimer();
+      }
+    } catch (err) {
+      console.error('[Prompt Turn] Error:', err);
+      setStatus('idle');
+    }
+  }
+
+  function startSilentStudentTimer() {
+    clearTimeout(silentStudentTimerRef.current);
+    silentStudentTimerRef.current = setTimeout(() => {
+      if (!isRecordingRef.current && sessionIdRef.current) {
+        sendPromptTurn([
+          '[SYSTEM: The student has been silent for a while. Prompt them gently with a simple, encouraging question using vocabulary from the current unit.]',
+        ]);
+      }
+    }, 30000);
+  }
+
+  // ── Name detection helper ──
+  // ANTICIPATION-BASED: After the buddy asks "Wie heißt du?", we set
+  // expectingNameRef=true. The NEXT student turn is expected to contain their
+  // name. We extract the name using multiple strategies (grammar patterns,
+  // last capitalized word, etc.) rather than relying on Whisper getting
+  // "heiße" right (it often transcribes it as "hasse", "heise", etc.).
+
+  // Detect if the buddy just asked for the student's name
+  function checkBuddyAskedName(aiText) {
+    if (!aiText || studentNameRef.current) return;
+    const t = aiText.toLowerCase();
+    if (/wie hei[sß](t|en) (du|sie)/i.test(t) || /dein(en?)?\s*name/i.test(t)) {
+      expectingNameRef.current = true;
+    }
+  }
+
+  function handleNameDetection(transcript, aiText) {
+    // Step 1: If awaiting name confirmation (completely different names), parse response
+    if (nameConfirmationPendingRef.current && transcript) {
+      const { typed, spoken } = nameConfirmationPendingRef.current;
+      nameConfirmationPendingRef.current = null;
+      const mentionsTyped = transcript.toLowerCase().includes(typed.toLowerCase());
+      const confirmedName = mentionsTyped ? typed : spoken;
+      studentNameRef.current = confirmedName;
+      expectingNameRef.current = false;
+      fetch('/api/session/update-prompt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: sessionIdRef.current,
+          promptAddition: `CRITICAL — The student's confirmed name is "${confirmedName}". You MUST use ONLY this exact spelling for the rest of the session.`,
+        }),
+      }).catch(() => {});
+      return;
+    }
+
+    // Step 2: Extract name from student's response
+    if (!studentNameRef.current && transcript) {
+      let spokenName = null;
+
+      // Strategy A: Classic grammar patterns (works when Whisper gets it right)
+      const grammarMatch =
+        transcript.match(/ich hei[sß]e\s+([^\s.,!?]+)/i) ||
+        transcript.match(/mein name ist\s+([^\s.,!?]+)/i) ||
+        transcript.match(/ich bin\s+([^\s.,!?]+)/i);
+      if (grammarMatch) {
+        spokenName = grammarMatch[1];
+      }
+
+      // Strategy B: Anticipation — only fire when the utterance looks like a
+      // name introduction (short and name-shaped). Avoids the trap where a
+      // long, off-topic German sentence ("Vertraue und glaube, ... Kraft!")
+      // gets a random capitalized noun lifted as the student's name.
+      if (!spokenName && expectingNameRef.current) {
+        const wordCount = transcript.trim().split(/\s+/).length;
+        // Cap at 5 words — anything longer is almost certainly not a bare name
+        if (wordCount <= 5) {
+          // Try: "ich [anything] [Name]" — last capitalized word after "ich"
+          const afterIch = transcript.match(/ich\s+\S+\s+([A-Z][a-zA-ZäöüÄÖÜß]+)/);
+          if (afterIch) {
+            spokenName = afterIch[1];
+          }
+          // Try: just a standalone name (1-2 capitalized words, no "Ich")
+          if (!spokenName) {
+            const words = transcript.split(/\s+/).filter(w => /^[A-Z]/.test(w) && w.toLowerCase() !== 'ich');
+            if (words.length === 1) {
+              spokenName = words[0];
+            }
+            // Two capitalized words = ambiguous (could be "Sankt Paul" etc.); skip
+          }
+        }
+        // (Removed: "last word of any utterance" fallback — too aggressive,
+        // misclassified random nouns as names when students said off-topic
+        // sentences on the first turn.)
+      }
+
+      // Reject obvious non-names: common German nouns that get capitalized
+      // by Whisper but aren't first names. Mostly things students actually
+      // said when going off-script. Trim trailing punctuation first.
+      if (spokenName) {
+        spokenName = spokenName.replace(/[.,!?;:]+$/, '');
+        const NON_NAME_WORDS = new Set([
+          'kraft', 'hilfe', 'gott', 'liebe', 'angst', 'glück', 'glueck',
+          'leben', 'tod', 'welt', 'haus', 'tag', 'zeit', 'jahr', 'mann',
+          'frau', 'kind', 'mutter', 'vater', 'freund', 'freundin',
+          'student', 'studentin', 'lehrer', 'lehrerin', 'university',
+          'sorry', 'okay', 'cool', 'thanks', 'hallo', 'guten', 'morgen',
+          'abend', 'nacht', 'super', 'prima', 'gut', 'schlecht', 'ja', 'nein',
+        ]);
+        if (NON_NAME_WORDS.has(spokenName.toLowerCase())) {
+          spokenName = null;
+        }
+      }
+
+      if (!spokenName) return;
+      expectingNameRef.current = false;
+
+      const typedName = typedNameRef.current;
+
+      if (typedName && spokenName.charAt(0).toLowerCase() !== typedName.charAt(0).toLowerCase()) {
+        // Completely different first letters → ask for clarification
+        nameConfirmationPendingRef.current = { typed: typedName, spoken: spokenName };
+        pendingDirectivesRef.current.push(
+          `[SYSTEM: The student typed "${typedName}" on the welcome screen but just said "${spokenName}". ` +
+          `You MUST ask for clarification in German: "Interessant — heißt du ${typedName} oder ${spokenName}?" Then wait for confirmation.]`
+        );
+      } else {
+        // Approximate match or no typed name → lock in typed spelling
+        const finalName = typedName || spokenName;
+        studentNameRef.current = finalName;
+        fetch('/api/session/update-prompt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: sessionIdRef.current,
+            promptAddition: `CRITICAL — The student's confirmed name is "${finalName}". You MUST use ONLY this exact spelling for the rest of the session.`,
+          }),
+        }).catch(() => {});
+      }
+    }
+  }
+
+  // ── Start conversation ──
   const startConversation = useCallback(
     async (unitData, studentName = '') => {
       setStatus("loading");
       clearMessages();
 
       try {
-        // Get ephemeral token
-        const tokenResponse = await fetch("/token");
-        if (!tokenResponse.ok) throw new Error("Token request failed");
-        const data = await tokenResponse.json();
-        const EPHEMERAL_KEY = data.value;
-
-        // Create peer connection
-        const pc = new RTCPeerConnection();
-        peerConnectionRef.current = pc;
-
-        // Set up audio element for AI voice output
-        const audioEl = document.createElement("audio");
-        audioEl.autoplay = true;
-        audioEl.volume = 1.0;
-        audioElementRef.current = audioEl;
-
-        pc.ontrack = (e) => {
-          audioEl.srcObject = e.streams[0];
-
-          // Set up AudioContext analyzer for lipsync.
-          // Use createMediaStreamSource (not createMediaElementSource) so the
-          // analyzer taps directly into the raw WebRTC stream — much more reliable.
-          try {
-            const audioCtx = new (window.AudioContext ||
-              window.webkitAudioContext)();
-            audioContextRef.current = audioCtx;
-            audioCtx.resume().catch(() => {});
-
-            // Direct stream source — audio element plays independently
-            const streamSource = audioCtx.createMediaStreamSource(e.streams[0]);
-            const analyzer = audioCtx.createAnalyser();
-            analyzer.fftSize = 256;
-            analyzer.smoothingTimeConstant = 0.5;
-            streamSource.connect(analyzer);
-            // NOTE: do NOT connect streamSource to destination — audioEl handles playback
-            analyzerRef.current = analyzer;
-            setAnalyzerNode(analyzer);
-          } catch (err) {
-            console.warn("AudioContext setup failed:", err);
-          }
-        };
-
-        // Add microphone track — keep it ALWAYS enabled.
-        // Using track.enabled = false to mute between turns silences the hardware
-        // source on some browsers (Chrome), making even separate getUserMedia streams
-        // record silence. Instead we gate via input_audio_buffer.clear/commit.
-        const ms = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // 1. Microphone access
+        // Read mic selection fresh from store (not stale closure)
+        const micId = useAIStore.getState().selectedMicId;
+        const audioConstraints = micId
+          ? { deviceId: { exact: micId } }
+          : true;
+        const ms = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
         rawMicStreamRef.current = ms;
         microphoneTrackRef.current = ms.getTracks()[0];
-        // Do NOT disable the track — it must stay enabled at all times.
-        pc.addTrack(microphoneTrackRef.current);
 
-        // Log ICE / connection state changes to help debug audio path issues
-        pc.oniceconnectionstatechange = () => {
-          console.log('[WebRTC] ICE connection state:', pc.iceConnectionState);
-        };
-        pc.onconnectionstatechange = () => {
-          console.log('[WebRTC] Connection state:', pc.connectionState);
-          if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected') {
-            console.warn('[WebRTC] Connection lost — mic audio may not reach OpenAI');
-          }
-        };
+        // Set up mic volume analyser for real-time volume meter in UI
+        try {
+          const micCtx = new (window.AudioContext || window.webkitAudioContext)();
+          micAudioCtxRef.current = micCtx;
+          const micSource = micCtx.createMediaStreamSource(ms);
+          const micAnalyser = micCtx.createAnalyser();
+          micAnalyser.fftSize = 256;
+          micAnalyser.smoothingTimeConstant = 0.3;
+          micSource.connect(micAnalyser);
+          // Don't connect to destination — we only need to read levels, not play back
+          setMicAnalyser(micAnalyser);
+        } catch (err) {
+          console.warn('[MicMeter] Failed to create analyser:', err);
+        }
 
-        // Create data channel
-        const dc = pc.createDataChannel("oai-events");
-        dataChannelRef.current = dc;
-
-        // SDP exchange
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-
-        const baseUrl = "https://api.openai.com/v1/realtime";
-        const model = "gpt-4o-realtime-preview-2024-12-17";
-
-        const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
-          method: "POST",
-          body: offer.sdp,
-          headers: {
-            Authorization: `Bearer ${EPHEMERAL_KEY}`,
-            "Content-Type": "application/sdp",
-          },
-        });
-
-        if (!sdpResponse.ok)
-          throw new Error(`SDP failed: ${sdpResponse.status}`);
-
-        await pc.setRemoteDescription({
-          type: "answer",
-          sdp: await sdpResponse.text(),
-        });
-
-        // Wire up data channel events
-        dc.addEventListener("open", async () => {
-          // Immediately disable server VAD so it doesn't auto-commit mic audio
-          // while we await the async persona fetch below.
-          sendRealtimeEvent({
-            type: "session.update",
-            session: { turn_detection: null },
+        // 2. Fetch persona
+        let persona = null;
+        try {
+          const book = unitData._book || 'ID1';
+          const chapter = unitData._chapter || 1;
+          const pr = await fetch('/api/persona', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ book, chapter }),
           });
+          if (pr.ok) persona = (await pr.json()).persona || null;
+        } catch (e) {
+          console.warn('[Persona] Failed:', e.message);
+        }
 
-          // Fetch a freshly-generated persona for this chapter before building instructions
-          let persona = null;
-          try {
-            const book = unitData._book || 'ID1';
-            const chapter = unitData._chapter || 1;
-            const pr = await fetch('/api/persona', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ book, chapter }),
-            });
-            if (pr.ok) {
-              const pd = await pr.json();
-              persona = pd.persona || null;
-            }
-          } catch (e) {
-            console.warn('[Persona] Failed to fetch persona, using default:', e.message);
+        // 3. Generate system instructions
+        const systemInstructions = generateUnitInstructions(unitData, persona, studentName);
+        systemInstructionsRef.current = systemInstructions;
+        const buddyName = getBuddyFirstName(persona);
+
+        // 4. Reset refs
+        studentNameRef.current = null;
+        typedNameRef.current = studentName || null;
+        nameConfirmationPendingRef.current = null;
+        pendingNameCorrectionRef.current = null;
+        expectingNameRef.current = false;
+        unitDataRef.current = unitData;
+        exchangeCountRef.current = 0;
+        topicsDiscussedRef.current = new Set();
+        minDurationFiredRef.current = false;
+        maxDurationFiredRef.current = false;
+        conversationStartRef.current = null; // Set later at step 10 when conversation actually begins
+        pendingEndAfterTurnRef.current = false;
+        endReasonRef.current = null;
+        pendingDirectivesRef.current = [];
+
+        // 5. Initialize ConversationManager (5-phase system)
+        const { minMs, maxMs } = getDurations(unitData._book || 'ID1', unitData._chapter || 1);
+        const chapterNumber = unitData._cumulative?.chapterNumber || unitData._chapter || 1;
+
+        // Phase data from server-side compilation
+        const phase2Data = unitData._cumulative?.phase2 || { topics: [], communicativeFunctions: [], newRules: [], modelSentences: [] };
+        const phase3Data = unitData._cumulative?.phase3 || { topics: [], communicativeFunctions: [], newRules: [], modelSentences: [] };
+        const phase4Enabled = unitData._cumulative?.phase4?.enabled || false;
+
+        managerRef.current = new ConversationManager({
+          phase2: phase2Data,
+          phase3: phase3Data,
+          phase4Enabled,
+          minMs,
+          maxMs,
+          chapterNumber,
+        });
+        managerRef.current.start();
+
+        // 6. Timer: delegates to ConversationManager every 10s
+        conversationTimerRef.current = setInterval(() => {
+          const mgr = managerRef.current;
+          if (!mgr) return;
+          const directives = mgr.checkTiming();
+          if (directives.length > 0) {
+            pendingDirectivesRef.current.push(...directives);
           }
-
-          const systemInstructions = generateUnitInstructions(unitData, persona, studentName);
-          systemInstructionsRef.current = systemInstructions;
-          const buddyName = getBuddyFirstName(persona);
-          studentNameRef.current = null;
-          typedNameRef.current = studentName || null;
-          nameConfirmationPendingRef.current = null;
-          unitDataRef.current = unitData;
-          exchangeCountRef.current = 0;
-          topicsDiscussedRef.current = new Set();
-          minDurationFiredRef.current = false;
-          maxDurationFiredRef.current = false;
-          conversationStartRef.current = Date.now();
-
-          // ── Initialize Conversation Manager ──
-          const { minMs: MIN_MS, maxMs: MAX_MS } = getDurations(
-            unitData._book || 'ID1',
-            unitData._chapter || 1
-          );
-          const currentTopics = unitData.conversation_topics?.topics || [];
-          const reviewTopicData = unitData._cumulative?.reviewTopics || [];
-          managerRef.current = new ConversationManager({
-            currentTopics,
-            reviewTopics: reviewTopicData,
-            minMs: MIN_MS,
-            maxMs: MAX_MS,
-            studentNameKnown: !!studentName,
-          });
-          managerRef.current.start();
-
-          // ── Timer: delegates to ConversationManager ──
-          conversationTimerRef.current = setInterval(() => {
-            const mgr = managerRef.current;
-            if (!mgr) return;
-            const directives = mgr.checkTiming();
-            for (const d of directives) {
-              sendRealtimeEvent({ type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text: d }] } });
+          // End conversation only when max time reached AND all phases have naturally completed.
+          // Max time is a guideline — all phases (including Phase 4 student questions and
+          // Phase 5 farewell) must complete before the session ends.
+          if (mgr.maxReached && mgr.allPhasesComplete() && !pendingEndAfterTurnRef.current) {
+            pendingEndAfterTurnRef.current = true;
+            endReasonRef.current = 'Maximum conversation time reached';
+            clearInterval(conversationTimerRef.current);
+            // Phase 5 farewell directive should already be pending from processAITurn.
+            // If not, add one as safety net.
+            const farewellAlreadyQueued = pendingDirectivesRef.current.some(d => d.includes('Phase 5') || d.includes('farewell') || d.includes('say goodbye'));
+            if (!farewellAlreadyQueued) {
+              sendPromptTurn([
+                '[SYSTEM: The conversation is ending. Say exactly one farewell sentence that includes "Tschüss" or "Auf Wiedersehen". Example: "Es war toll, mit dir zu reden! Tschüss!" Do NOT ask any questions. Just say goodbye.]',
+              ]);
             }
-            // Hard max: auto-end after AI delivers closing line
-            if (mgr.maxReached && !pendingEndAfterTurnRef.current) {
-              pendingEndAfterTurnRef.current = true;
-              clearInterval(conversationTimerRef.current);
-              if (!waitingForResponseRef.current && !isRecordingRef.current) {
-                sendRealtimeEvent({ type: 'response.create' });
-              }
-            }
-          }, 10000);
+          }
+        }, 10000);
 
-          // Start log session
-          logSessionIdRef.current = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        // 7. Start session on server — ALWAYS ask name as part of warm-up ritual
+        const openingText = `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. Say: "Hallo! Ich bin ${buddyName} — wie heißt du?" ALWAYS ask the student's name even if you have a spelling reference. Do NOT ask about the unit topic yet. Speak only in German.]`;
+
+        // Send cumulative data for server-side vocabulary validation
+        const cumulativeData = unitData._cumulative ? {
+          activeVocabulary: unitData._cumulative.activeVocabulary,
+          passiveVocabulary: unitData._cumulative.passiveVocabulary,
+          verbForms: unitData._cumulative.verbForms,
+        } : null;
+
+        const sessionResp = await fetch('/api/session/start', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemPrompt: systemInstructions,
+            openingInstruction: openingText,
+            typedStudentName: studentName || null,
+            cumulativeData,
+            grammarConstraints: unitData.grammar_constraints || null,
+            universalFillers: unitData.universal_fillers || null,
+          }),
+        });
+        if (!sessionResp.ok) throw new Error('Session start failed');
+        const { sessionId, response: aiGreeting, emotion: greetingEmotion, emotionTimeline: greetingTimeline } = await sessionResp.json();
+        sessionIdRef.current = sessionId;
+
+        // 8. Start log session (pass metadata for server-side transcript rescue)
+        logSessionIdRef.current = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        {
+          const storeSnap = useAIStore.getState();
           postLog({
             type: 'start',
             unit: unitData?.unit,
-            unitTitle: (unitData?.communicative_functions?.goals || [])[0]
+            unitTitle: unitData?._unitName
                     || (unitData?.conversation_topics?.topics || [])[0]
                     || '',
+            accessCode: storeSnap.accessCode || '',
+            accessType: storeSnap.accessType || '',
+            createdBy: storeSnap.createdBy || '',
+            assignedTo: storeSnap.assignedTo || '',
+            studentName: studentName || '',
+            book: unitData?._book || 'ID1',
+            chapter: unitData?._chapter || 1,
           });
+        }
 
-          sendRealtimeEvent({
-            type: "session.update",
-            session: {
-              modalities: ["text", "audio"],
-              instructions: systemInstructions,
-              voice: "verse",
-              input_audio_format: "pcm16",
-              output_audio_format: "pcm16",
-              // Re-enable built-in transcription so the AI can hear the audio.
-              // We also run our own MediaRecorder path for the chat log.
-              input_audio_transcription: {
-                model: 'whisper-1',
-                language: 'de',
-              },
-              turn_detection: null,
-              temperature: 0.55,
-              max_response_output_tokens: 300,
-            },
-          });
+        // 9. Add AI greeting to messages and process through manager
+        addMessage('assistant', aiGreeting);
+        setCurrentEmotion(greetingEmotion);
+        postLog({ type: 'turn', role: 'ai', text: aiGreeting });
+        checkBuddyAskedName(aiGreeting); // Track if buddy asked "Wie heißt du?"
 
-          // Seed an opening turn aligned with Phase 1 warm-up starters
-          sendRealtimeEvent({
-            type: "conversation.item.create",
-            item: {
-              type: "message",
-              role: "user",
-              content: [{ type: "input_text", text: studentName
-                ? `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. The student's name is "${studentName}". Do NOT ask "Wie heißt du?". Say: "Hallo, ${studentName}! Ich bin ${buddyName}." then ask: "Woher kommst du?" Do NOT ask about the unit topic yet. Speak only in German.]`
-                : `[Session started. This is Phase 1 (warm-up). Your name is ${buddyName}. Say: "Hallo! Ich bin ${buddyName}." then ask the student: "Wie heißt du?" Do NOT ask about the unit topic yet. Speak only in German.]` }],
-            },
-          });
-          sendRealtimeEvent({ type: "response.create" });
-          setSessionActive(true);
-          setStatus("idle");
-        });
+        const mgr = managerRef.current;
+        if (mgr) {
+          const directives = mgr.processAITurn(aiGreeting);
+          if (directives.length > 0) pendingDirectivesRef.current.push(...directives);
+          // Skip topic classification during Phase 1 — warm-up doesn't count
+        }
 
-        dc.addEventListener("message", (e) => {
-          handleRealtimeEvent(JSON.parse(e.data));
-        });
+        // 10. Play greeting audio and go live
+        const sessionStartTime = Date.now();
+        conversationStartRef.current = sessionStartTime; // Same timestamp for both ref and store
+        setSessionTiming(sessionStartTime, minMs, maxMs);
+        setSessionActive(true);
+        try {
+          await playStreamingAudio(aiGreeting, greetingTimeline);
+        } catch (audioErr) {
+          console.error("Audio playback failed (non-fatal):", audioErr);
+          // Session still works — student can speak even if greeting audio failed
+        }
+        setStatus('idle');
+        startSilentStudentTimer();
+
       } catch (err) {
         console.error("Error starting conversation:", err);
+        setSessionActive(false);
         setStatus("idle");
         throw err;
       }
     },
-    [
-      currentUnit,
-      sendRealtimeEvent,
-      handleRealtimeEvent,
-      setStatus,
-      setSessionActive,
-      clearMessages,
-      setAnalyzerNode,
-    ]
+    [currentUnit, setStatus, setSessionActive, clearMessages, setAnalyzerNode, addMessage]
   );
 
+  // ── End conversation ──
   const endConversation = useCallback(() => {
-    pendingEndAfterTurnRef.current = false; // clear in case end was triggered manually
-    // Snapshot session data for feedback BEFORE any refs are cleared
+    pendingEndAfterTurnRef.current = false;
+    // Snapshot for feedback
     const utterancesSnapshot = [...studentUtterancesRef.current];
     const sessionDurationMs = conversationStartRef.current ? Date.now() - conversationStartRef.current : 0;
     const unitNumber = unitDataRef.current?.unit ?? null;
-    const { minMs: minDurationMs } = getDurations(unitDataRef.current?._book || 'ID1', unitDataRef.current?._chapter || 1);
+    const unitBook = unitDataRef.current?._book || 'ID1';
+    const { minMs: minDurationMs } = getDurations(unitBook, unitDataRef.current?._chapter || 1);
     studentUtterancesRef.current = [];
     setFeedback('loading');
 
-    // Log session end
-    postLog({ type: 'end' });
-    logSessionIdRef.current = null;
+    // Save sessionId before clearing — postLog is async and needs it
+    const endLogSessionId = logSessionIdRef.current;
+    const endSessionId = sessionIdRef.current;
+    const storeState = useAIStore.getState();
+    const accessCode = storeState.accessCode || '';
+    const accessType = storeState.accessType || '';
+    const assignedTo = storeState.assignedTo || '';
+    const createdBy = storeState.createdBy || '';
+    const studentNameForLog = studentNameRef.current || typedNameRef.current || '';
+    const unitForLog = unitDataRef.current
+      ? `Unit ${unitDataRef.current.unit} — ${unitDataRef.current._unitName || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
+      : '';
+    const durationMin = conversationStartRef.current
+      ? Math.round((Date.now() - conversationStartRef.current) / 60000 * 10) / 10
+      : 0;
 
-    if (managerRef.current) {
-      managerRef.current.reset();
-      managerRef.current = null;
-    }
+    const endReason = endReasonRef.current || 'User ended conversation';
+    endReasonRef.current = null;
+    postLog({ type: 'end', endReason });
+
+    // Log session details to Usage Log (fills in Student Name, Unit, Duration columns)
+    fetch('/api/auth/log-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        code: accessCode,
+        type: accessType,
+        unit: unitForLog,
+        sessionId: endLogSessionId || endSessionId || '',
+        durationMin,
+        studentName: studentNameForLog,
+        createdBy,
+        assignedTo,
+      }),
+    }).catch(() => {});
+
+    // Delay clearing logSessionId so the queued postLog can fire
+    setTimeout(() => { logSessionIdRef.current = null; }, 2000);
+
+    // Reset manager and timers
+    if (managerRef.current) { managerRef.current.reset(); managerRef.current = null; }
     clearInterval(conversationTimerRef.current);
     conversationTimerRef.current = null;
     clearTimeout(silentStudentTimerRef.current);
@@ -724,148 +787,376 @@ export function useVoiceConnection() {
     topicsDiscussedRef.current = new Set();
     minDurationFiredRef.current = false;
     maxDurationFiredRef.current = false;
-    clearTimeout(inaudibleTimerRef.current);
-    clearTimeout(committedTimeoutRef.current);
-    committedTimeoutRef.current = null;
-    isRecordingRef.current = false;
-    waitingForResponseRef.current = false;
-    pendingStudentTurnIdRef.current = null;
-    // Flush any AI log entry that was held waiting for Whisper
-    if (pendingAILogRef.current) {
-      postLog({ type: 'turn', role: 'ai', text: pendingAILogRef.current });
-      pendingAILogRef.current = null;
+    pendingDirectivesRef.current = [];
+
+    // Stop audio playback
+    if (currentAudioSourceRef.current) {
+      try { currentAudioSourceRef.current.stop(); } catch (_) {}
+      currentAudioSourceRef.current = null;
     }
-    logQueueRef.current = Promise.resolve(); // reset queue for next session
-    studentNameRef.current = null;
-    systemInstructionsRef.current = null;
-    pendingNameCorrectionRef.current = null;
-    typedNameRef.current = null;
-    nameConfirmationPendingRef.current = null;
-    transcriptDoneForTurnRef.current = null;
+    if (playbackContextRef.current) {
+      playbackContextRef.current.close().catch(() => {});
+      playbackContextRef.current = null;
+    }
+
+    // Stop recording
+    isRecordingRef.current = false;
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop();
     }
     mediaRecorderRef.current = null;
     audioChunksRef.current = [];
+
+    // Stop mic
+    if (microphoneTrackRef.current) {
+      microphoneTrackRef.current.stop();
+      microphoneTrackRef.current = null;
+    }
     rawMicStreamRef.current = null;
-    recMicStreamRef.current = null; // was removed; keeping ref null for safety
 
-    if (dataChannelRef.current) dataChannelRef.current.close();
-    if (peerConnectionRef.current) peerConnectionRef.current.close();
-    if (audioElementRef.current) audioElementRef.current.srcObject = null;
-    if (audioContextRef.current) audioContextRef.current.close();
+    // Clear session
+    sessionIdRef.current = null;
+    studentNameRef.current = null;
+    systemInstructionsRef.current = null;
+    pendingNameCorrectionRef.current = null;
+    typedNameRef.current = null;
+    nameConfirmationPendingRef.current = null;
+    logQueueRef.current = Promise.resolve();
 
-    dataChannelRef.current = null;
-    peerConnectionRef.current = null;
-    audioElementRef.current = null;
-    audioContextRef.current = null;
-    microphoneTrackRef.current = null;
+    // Clean up mic volume analyser
+    setMicAnalyser(null);
+    if (micAudioCtxRef.current) {
+      micAudioCtxRef.current.close().catch(() => {});
+      micAudioCtxRef.current = null;
+    }
 
     setAnalyzerNode(null);
+    if (lipsyncNodeRef.current) {
+      try { lipsyncNodeRef.current.disconnect(); } catch (_) {}
+      lipsyncNodeRef.current = null;
+    }
+    clearLipsyncNode();
     setSessionActive(false);
     setStatus("idle");
-    // Async: backend feedback generator; result updates the store when ready
+
+    // Async feedback — send results back to server for transcript enrichment
+    // Use captured sessionId directly (refs are cleared above, so postLog would fail)
+    const feedbackSessionId = endLogSessionId || endSessionId || '';
+    function postFeedbackLog(payload) {
+      if (!feedbackSessionId) return;
+      fetch('/api/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, sessionId: feedbackSessionId }),
+      }).catch(() => {});
+    }
+
     if (unitNumber && utterancesSnapshot.length > 0) {
       fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, sessionDurationMs, minDurationMs }),
+        body: JSON.stringify({ utterances: utterancesSnapshot, unit: unitNumber, book: unitBook, sessionDurationMs, minDurationMs, sessionId: endSessionId }),
       })
         .then(r => r.json())
-        .then(data => setFeedback(data))
-        .catch(() => setFeedback({ fallback: true }));
+        .then(data => {
+          setFeedback(data);
+          // Send feedback results to server so transcript can be updated
+          if (data.fallback) {
+            postFeedbackLog({ type: 'feedback', fallback: true, reason: 'Session too short for feedback' });
+          } else if (data.items) {
+            postFeedbackLog({ type: 'feedback', items: data.items });
+          }
+        })
+        .catch(() => {
+          setFeedback({ fallback: true });
+          postFeedbackLog({ type: 'feedback', fallback: true, reason: 'Feedback generation failed' });
+        });
     } else {
       setFeedback({ fallback: true });
+      postFeedbackLog({ type: 'feedback', fallback: true, reason: utterancesSnapshot.length === 0 ? 'No student utterances' : 'No unit data' });
     }
+    // Save transcript for download before clearing
+    const msgs = useAIStore.getState().messages;
+    const unitLabel = unitDataRef.current
+      ? `Unit ${unitDataRef.current.unit} — ${unitDataRef.current._unitName || (unitDataRef.current.conversation_topics?.topics || [])[0] || ''}`
+      : '';
+    setTranscriptForDownload({ messages: [...msgs], unitLabel, date: new Date().toLocaleString() });
     clearMessages();
-  }, [setSessionActive, setStatus, clearMessages, setAnalyzerNode, setFeedback]);
-  // Keep ref in sync so handleRealtimeEvent closure can call it without going stale
+  }, [setSessionActive, setStatus, clearMessages, setAnalyzerNode, setFeedback, setTranscriptForDownload]);
   endConversationRef.current = endConversation;
 
+  // ── Start recording ──
   const startRecording = useCallback(() => {
     const track = microphoneTrackRef.current;
-    if (!track) { console.warn('[Recording] startRecording: no mic track'); return; }
+    if (!track) { console.warn('[Recording] no mic track'); return; }
     isRecordingRef.current = true;
-    clearTimeout(silentStudentTimerRef.current); // student pressed the mic — cancel silence prompt
-    // Discard everything that accumulated in the buffer between turns.
-    // The track is always enabled, so the buffer constantly fills with live audio.
-    // clearing here means we only commit what the student says THIS press.
-    console.log('[Recording] Starting — clearing buffer');
-    sendRealtimeEvent({ type: 'input_audio_buffer.clear' });
+    clearTimeout(silentStudentTimerRef.current);
     recordStartRef.current = Date.now();
     audioChunksRef.current = [];
     setMicError(null);
 
-    // MediaRecorder from the same always-enabled stream — no gating issues.
     const stream = rawMicStreamRef.current;
     if (stream) {
-      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-        ? 'audio/webm;codecs=opus'
-        : 'audio/webm';
-      const mr = new MediaRecorder(stream, { mimeType });
-      mr.ondataavailable = (e) => {
-        if (e.data.size > 0) audioChunksRef.current.push(e.data);
-      };
+      // Detect best supported audio format — Safari doesn't support WebM
+      let mimeType;
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        mimeType = 'audio/webm;codecs=opus';
+      } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+        mimeType = 'audio/webm';
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        mimeType = 'audio/mp4';
+      } else if (MediaRecorder.isTypeSupported('audio/ogg;codecs=opus')) {
+        mimeType = 'audio/ogg;codecs=opus';
+      } else {
+        mimeType = ''; // let browser choose default
+      }
+      const mrOptions = mimeType ? { mimeType } : {};
+      const mr = new MediaRecorder(stream, mrOptions);
+      mr.ondataavailable = (e) => { if (e.data.size > 0) audioChunksRef.current.push(e.data); };
       mr.start(100);
       mediaRecorderRef.current = mr;
+      console.log(`[Recording] MediaRecorder using: ${mr.mimeType}`);
     }
-
     setStatus('listening');
-  }, [sendRealtimeEvent, setStatus, setMicError]);
+  }, [setStatus, setMicError]);
 
-  const stopRecording = useCallback(() => {
-    // Guard: only run if we are actually recording
-    if (!isRecordingRef.current) {
-      console.log('[Recording] stopRecording called but not recording — ignoring');
-      return;
-    }
+  // ── Stop recording & run pipeline ──
+  const stopRecording = useCallback(async () => {
+    if (!isRecordingRef.current) return;
     isRecordingRef.current = false;
-    const track = microphoneTrackRef.current;
-    if (!track) return;
-    // Do NOT set track.enabled = false here — that's what was silencing the mic.
-    clearTimeout(inaudibleTimerRef.current);
 
     const holdMs = Date.now() - (recordStartRef.current || 0);
     const mr = mediaRecorderRef.current;
 
-    // Accidental tap — too short for Whisper.
+    // Too-short hold
     if (holdMs < 500) {
       if (mr && mr.state !== 'inactive') mr.stop();
       audioChunksRef.current = [];
-      sendRealtimeEvent({ type: "input_audio_buffer.clear" });
-      studentSpokeRef.current = false;
       setMicError("Hold the button while you speak, then release.");
-      setStatus("idle");
+      setStatus('idle');
       return;
     }
 
-    // Commit the buffer and set the flag. response.create fires only after
-    // the server confirms via input_audio_buffer.committed — no race condition.
-    studentSpokeRef.current = true;
-    waitingForResponseRef.current = true;
-    console.log('[Recording] Committing buffer (holdMs:', holdMs, ')');
-    sendRealtimeEvent({ type: 'input_audio_buffer.commit' });
     setStatus('loading');
 
-    // Safety-net: if committed never arrives (e.g. empty buffer error from server),
-    // reset state after 5s so the UI isn't stuck on "Thinking…" forever.
-    committedTimeoutRef.current = setTimeout(() => {
-      if (waitingForResponseRef.current) {
-        console.warn('[Recording] committed event never arrived — resetting to idle');
-        waitingForResponseRef.current = false;
-        setStatus('idle');
-        setMicError('Audio not captured. Make sure microphone access is allowed.');
+    // Stop MediaRecorder and assemble blob with correct MIME type
+    const actualMime = mr?.mimeType || 'audio/webm';
+    const audioBlob = await new Promise((resolve) => {
+      if (!mr || mr.state === 'inactive') {
+        resolve(new Blob(audioChunksRef.current, { type: actualMime }));
+        return;
       }
-    }, 5000);
-
-    // Stop the MediaRecorder — chunks used only for future reference/debug.
-    if (mr && mr.state !== 'inactive') {
-      mr.onstop = () => { studentSpokeRef.current = false; };
+      mr.onstop = () => {
+        resolve(new Blob(audioChunksRef.current, { type: actualMime }));
+      };
       mr.stop();
-    } else {
-      studentSpokeRef.current = false;
+    });
+
+    // Map MIME type to correct file extension for Whisper
+    const extMap = { 'audio/webm': '.webm', 'audio/mp4': '.m4a', 'audio/ogg': '.ogg', 'audio/wav': '.wav', 'audio/mpeg': '.mp3' };
+    const ext = extMap[actualMime.split(';')[0]] || '.webm';
+
+    try {
+      // Build form data
+      const fd = new FormData();
+      fd.append('audio', audioBlob, `audio${ext}`);
+      fd.append('sessionId', sessionIdRef.current);
+
+      // Flush pending directives
+      const directives = pendingDirectivesRef.current.splice(0);
+      if (directives.length > 0) {
+        fd.append('directives', JSON.stringify(directives));
+      }
+
+      const resp = await fetch('/api/conversation-turn', { method: 'POST', body: fd });
+      if (!resp.ok) throw new Error(`Pipeline failed: ${resp.status}`);
+      const { transcript, response: aiText, emotion: turnEmotion, emotionTimeline: turnTimeline, endConversation: serverWantsEnd } = await resp.json();
+
+      // Server requested end-of-conversation (e.g. 4+ inaudible turns in a row).
+      // Let the AI's farewell play, then end the session gracefully.
+      if (serverWantsEnd) {
+        pendingEndAfterTurnRef.current = true;
+        if (!endReasonRef.current) endReasonRef.current = 'Microphone issue — conversation ended after repeated inaudible turns';
+      }
+
+      // ── Process transcript ──
+      const cleaned = cleanTranscript(transcript) || '(inaudible)';
+      if (cleaned !== '(inaudible)') {
+        studentUtterancesRef.current.push(cleaned);
+        // Feed to ConversationManager for bridge context
+        managerRef.current?.addStudentUtterance(cleaned);
+      }
+      exchangeCountRef.current += 1;
+
+      addMessage('user', cleaned);
+      postLog({ type: 'turn', role: 'student', text: cleaned });
+
+      // Name detection
+      if (cleaned !== '(inaudible)') {
+        // Farewell detection
+        const isFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|goodbye|auf wiederschauen|macht's gut|bis dann|bis später)\b/i.test(cleaned);
+        if (isFarewell) {
+          if (managerRef.current?.isMinDurationReached()) {
+            pendingEndAfterTurnRef.current = true;
+            if (!endReasonRef.current) endReasonRef.current = 'Student said goodbye';
+            // The AI's response (aiText) should already be the farewell
+          } else {
+            // Too early — directive already in response since server handles full history
+            // But add one for safety
+            pendingDirectivesRef.current.push(
+              '[SYSTEM: The student tried to say goodbye but the minimum conversation time has NOT been reached. You MUST continue the conversation.]'
+            );
+          }
+        }
+        handleNameDetection(cleaned, aiText);
+      }
+
+      // ── Process AI response ──
+      addMessage('assistant', aiText);
+      setCurrentEmotion(turnEmotion);
+      postLog({ type: 'turn', role: 'ai', text: aiText });
+      checkBuddyAskedName(aiText); // Track if buddy asked "Wie heißt du?"
+
+      // ConversationManager processing
+      const mgr = managerRef.current;
+      if (mgr && aiText) {
+        // Phase 4: detect if student asked a question (question mark or German question words)
+        // Phase 4: count how many questions the student asked (supports multiple in one turn)
+        if (mgr.getPhase() === 4 && cleaned !== '(inaudible)') {
+          // Count question marks
+          const qMarkCount = (cleaned.match(/\?/g) || []).length;
+          if (qMarkCount > 0) {
+            for (let i = 0; i < qMarkCount; i++) mgr.markPhase4Question();
+          } else {
+            // No question marks but might be a spoken question (German question words)
+            const isQuestion = /\b(was|wer|wie|wo|woher|wohin|wann|warum|welch|hast du|bist du|magst du|kannst du|willst du)\b/i.test(cleaned);
+            if (isQuestion) mgr.markPhase4Question();
+          }
+        }
+
+        mgr.addAIUtterance(aiText); // Track questions the buddy has asked
+        const mgrDirectives = mgr.processAITurn(aiText);
+        if (mgrDirectives.length > 0) pendingDirectivesRef.current.push(...mgrDirectives);
+
+        // Only classify topics during Phase 2+ (Phase 1 warm-up doesn't count)
+        if (mgr.getPhase() >= 2) {
+          const { currentTopics: ct, reviewTopics: rt } = mgr.getTopicsForClassification();
+          if (ct.length > 0 || rt.length > 0) {
+            console.log(`%c  🔍 Classifying AI text against ${ct.length} topics (Phase ${mgr.getPhase()})…`, 'color: #A78BFA;');
+            fetch('/api/classify-topic', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text: aiText, currentTopics: ct, reviewTopics: rt }),
+            }).then(r => r.json()).then(result => {
+              console.log(`%c  🔍 Classification result: ${JSON.stringify(result.matchedTopics || [])}`, 'color: #A78BFA;');
+              const bd = mgr.updateTopicClassification(result);
+              if (bd.length > 0) pendingDirectivesRef.current.push(...bd);
+            }).catch((err) => {
+              console.warn('[Classification] Failed:', err);
+            });
+          }
+        }
+      }
+
+      // Post debug snapshot for expanded transcript
+      {
+        const mgr2 = managerRef.current;
+        const snapshot = mgr2 ? mgr2.getDebugSnapshot() : {};
+        const pendingDirs = pendingDirectivesRef.current.slice(); // copy current pending
+        postLog({
+          type: 'debug',
+          turnIndex: exchangeCountRef.current,
+          directives: directives, // directives sent WITH this turn
+          pendingDirectives: pendingDirs, // directives queued for NEXT turn
+          managerState: snapshot,
+        });
+      }
+
+      // Play AI audio with streaming TTS
+      await playStreamingAudio(aiText, turnTimeline);
+      setStatus('idle');
+
+      // Handle pending auto-end (student said goodbye earlier) — delay so student can read farewell
+      if (pendingEndAfterTurnRef.current) {
+        pendingEndAfterTurnRef.current = false;
+        await new Promise(r => setTimeout(r, 2000));
+        endConversationRef.current?.();
+        return;
+      }
+
+      // Detect if the BUDDY just said goodbye (max-time triggered farewell)
+      if (aiText && managerRef.current?.isMinDurationReached()) {
+        const buddyFarewell = /\b(tsch[uü]ss|auf wiedersehen|tschau|ciao|bye|macht['']s gut|bis dann|bis bald|bis zum n[aä]chsten mal)\b/i.test(aiText);
+        if (buddyFarewell) {
+          // Auto-end after buddy farewell — delay so student can read it
+          await new Promise(r => setTimeout(r, 2000));
+          endConversationRef.current?.();
+          return;
+        }
+      }
+
+      // Start silent-student timer
+      startSilentStudentTimer();
+
+    } catch (err) {
+      console.error('[Pipeline] Error:', err);
+      postLog({ type: 'error', error: err.message || String(err), context: 'conversation-turn-frontend' });
+      setStatus('idle');
+      setMicError('Something went wrong. Try again.');
     }
-  }, [sendRealtimeEvent, setStatus, setMicError]);
+  }, [setStatus, setMicError, addMessage]);
+
+  // ── Switch mic mid-session ──
+  const switchMic = useCallback(async (deviceId) => {
+    // Only relevant if we have an active mic stream
+    if (!rawMicStreamRef.current) return;
+
+    try {
+      // Stop old mic tracks
+      rawMicStreamRef.current.getTracks().forEach(t => t.stop());
+
+      // Acquire new stream with selected device
+      const audioConstraints = deviceId
+        ? { deviceId: { exact: deviceId } }
+        : true;
+      const ms = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
+      rawMicStreamRef.current = ms;
+      microphoneTrackRef.current = ms.getTracks()[0];
+
+      // Rebuild mic volume analyser
+      if (micAudioCtxRef.current) {
+        micAudioCtxRef.current.close().catch(() => {});
+      }
+      const micCtx = new (window.AudioContext || window.webkitAudioContext)();
+      micAudioCtxRef.current = micCtx;
+      const micSource = micCtx.createMediaStreamSource(ms);
+      const micAnalyser = micCtx.createAnalyser();
+      micAnalyser.fftSize = 256;
+      micAnalyser.smoothingTimeConstant = 0.3;
+      micSource.connect(micAnalyser);
+      setMicAnalyser(micAnalyser);
+
+      console.log('[Mic] Switched to:', microphoneTrackRef.current.label || deviceId || 'default');
+    } catch (err) {
+      console.error('[Mic] Failed to switch:', err);
+      setMicError('Could not switch microphone');
+    }
+  }, [setMicAnalyser, setMicError]);
+
+  // ── Abandoned-session rescue via sendBeacon on page unload ──
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const logId = logSessionIdRef.current;
+      if (!logId) return; // No active session
+      const blob = new Blob(
+        [JSON.stringify({ type: 'abandon', sessionId: logId, reason: 'browser_closed' })],
+        { type: 'application/json' }
+      );
+      navigator.sendBeacon('/api/log', blob);
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
 
   return {
     startConversation,
@@ -873,5 +1164,6 @@ export function useVoiceConnection() {
     startRecording,
     stopRecording,
     isRecordingRef,
+    switchMic,
   };
 }

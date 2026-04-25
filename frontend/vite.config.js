@@ -4,6 +4,9 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+  },
   server: {
     port: 5173,
     proxy: {
@@ -20,6 +23,7 @@ export default defineConfig({
         },
       },
       "/log-viewer": "http://localhost:3000",
+      "/dashboard": "http://localhost:3000",
     },
   },
 });

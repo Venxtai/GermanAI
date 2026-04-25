@@ -1,0 +1,1487 @@
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const router = express.Router();
+
+const upload = multer({ dest: 'uploads/', limits: { fileSize: 10 * 1024 * 1024 } });
+
+// These get injected by server.js
+let unitMap, vocabData, auth, unitNames;
+
+function init(deps) {
+  unitMap = deps.unitMap;
+  vocabData = deps.vocabData;
+  auth = deps.auth;
+  unitNames = deps.unitNames || {};
+}
+
+/**
+ * Server-side HTML sanitization: keep only bold, italic, br, p, div structure.
+ * Strip colors, font-size, font-family, images, scripts, etc.
+ */
+function sanitizeHtmlServer(html) {
+  if (!html) return '';
+  // Strip tags we don't want (img, script, style, etc.)
+  let clean = html.replace(/<(img|script|link|style|meta|svg|canvas|video|audio|iframe|object|embed)[^>]*>/gi, '');
+  // Strip style attributes but preserve bold/italic via tags
+  // mammoth produces <strong>, <em>, <p> which is exactly what we want
+  // Remove style attributes, class, color etc.
+  clean = clean.replace(/\s+(style|class|color|bgcolor|face|size|align|valign|width|height)="[^"]*"/gi, '');
+  clean = clean.replace(/\s+(style|class|color|bgcolor|face|size|align|valign|width|height)='[^']*'/gi, '');
+  return clean;
+}
+
+// POST /api/auth/validate
+router.post('/auth/validate', async (req, res) => {
+  const result = await auth.validateCode(req.body.code);
+  res.json(result);
+});
+
+// GET /api/chapters — Returns chapter hierarchy for all books
+router.get('/chapters', (req, res) => {
+  const { ALL_CHAPTERS } = require('../services/vocabIndex');
+  const book = req.query.book;
+
+  if (book && ALL_CHAPTERS[book]) {
+    return res.json({ book, chapters: ALL_CHAPTERS[book] });
+  }
+
+  // Return all books with their chapters
+  const result = {};
+  for (const [bookId, chapters] of Object.entries(ALL_CHAPTERS)) {
+    result[bookId] = {
+      title: bookId === 'ID1' ? 'Impuls Deutsch 1' :
+             bookId === 'ID2B' ? 'Impuls Deutsch 2 BLAU' :
+             'Impuls Deutsch 2 ORANGE',
+      chapters: chapters.map(ch => ({
+        ...ch,
+        units: getChapterUnits(bookId, ch),
+      })),
+    };
+  }
+  res.json(result);
+});
+
+// GET /api/units — Returns all units with metadata
+router.get('/units', (req, res) => {
+  const units = Object.entries(unitMap).map(([id, unit]) => ({
+    id,
+    track: unit.sequence_info?.track || 'core',
+    position: unit.sequence_info?.position || 0,
+    isOptional: unit.is_optional || false,
+    topics: unit.conversation_topics?.topics || [],
+    goals: unit.communicative_functions?.goals || [],
+    vocabCount: (unit.active_vocabulary?.items || []).length,
+  }));
+
+  res.json(units);
+});
+
+// POST /api/analyzer/analyze — Full text analysis with streaming progress
+router.post('/analyzer/analyze', async (req, res) => {
+  const { text, selectedUnits } = req.body;
+
+  if (!text || !selectedUnits || !Array.isArray(selectedUnits)) {
+    return res.status(400).json({ error: 'Missing text or selectedUnits' });
+  }
+
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+
+  // Set up SSE-style streaming for progress updates
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  const sendProgress = (step, detail, percent) => {
+    try { res.write(`data: ${JSON.stringify({ type: 'progress', step, detail, percent })}\n\n`); } catch (e) {}
+  };
+
+  try {
+    const { analyzeText } = require('../services/textAnalysis');
+    const result = await analyzeText(text, selectedUnitIds, vocabData, unitMap, sendProgress);
+    res.write(`data: ${JSON.stringify({ type: 'result', data: result })}\n\n`);
+    res.end();
+  } catch (err) {
+    console.error('[ANALYZE] Error:', err);
+    res.write(`data: ${JSON.stringify({ type: 'error', error: 'Analysis failed', message: err.message })}\n\n`);
+    res.end();
+  }
+});
+
+// POST /api/analyzer/recheck — Lightweight re-check with different units (no AI calls)
+// Used by What If mode for real-time re-coloring
+router.post('/analyzer/recheck', (req, res) => {
+  const { words, selectedUnits } = req.body;
+  // words = array of { text, lemma } from the original analysis
+  // selectedUnits = new unit selection to check against
+
+  if (!words || !selectedUnits) {
+    return res.status(400).json({ error: 'Missing words or selectedUnits' });
+  }
+
+  const { isWordKnown, findReplacements, getWordUnitInfo, normalizeWord } = require('../services/vocabIndex');
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+
+  const results = words.map(w => {
+    // Try surface form first
+    let result = isWordKnown(
+      w.text,
+      selectedUnitIds,
+      vocabData.vocabIndex,
+      vocabData.verbFormIndex,
+      vocabData.universalFillers,
+    );
+
+    // Try lemma if surface form not found
+    if (!result.known && w.lemma && normalizeWord(w.lemma) !== normalizeWord(w.text)) {
+      const lemmaResult = isWordKnown(
+        w.lemma,
+        selectedUnitIds,
+        vocabData.vocabIndex,
+        vocabData.verbFormIndex,
+        vocabData.universalFillers,
+      );
+      if (lemmaResult.known) result = lemmaResult;
+    }
+
+    if (result.known) {
+      return { status: 'known', reason: result.reason };
+    }
+
+    // Unknown — get unit info and replacements
+    let unitInfo = getWordUnitInfo(w.text, Array.from(selectedUnitIds), Object.keys(unitMap), vocabData.vocabIndex);
+    if (!unitInfo.inCurriculum && w.lemma) {
+      unitInfo = getWordUnitInfo(w.lemma, Array.from(selectedUnitIds), Object.keys(unitMap), vocabData.vocabIndex);
+    }
+
+    const replacements = findReplacements(w.lemma || w.text, selectedUnitIds, vocabData.vocabIndex, vocabData.universalFillers);
+
+    return { status: 'unknown', unitInfo, replacements };
+  });
+
+  // Compute readability
+  const total = results.length;
+  const known = results.filter(r => r.status === 'known').length;
+
+  res.json({
+    wordStatuses: results,
+    readability: {
+      percent: total > 0 ? Math.round((known / total) * 100) : 100,
+      knownWords: known,
+      totalWords: total,
+    },
+  });
+});
+
+// POST /api/analyzer/rewrite — Rewrite a sentence
+router.post('/analyzer/rewrite', async (req, res) => {
+  const { sentence, targetStructure, issueDescription, selectedUnits, priorReplacements } = req.body;
+
+  if (!sentence || !targetStructure) {
+    return res.status(400).json({ error: 'Missing sentence or targetStructure' });
+  }
+
+  const selectedUnitIds = new Set((selectedUnits || []).map(String));
+
+  try {
+    const { rewriteSentence } = require('../services/textAnalysis');
+    const result = await rewriteSentence(sentence, targetStructure, issueDescription, selectedUnitIds, vocabData, priorReplacements);
+    res.json(result);
+  } catch (err) {
+    console.error('[REWRITE] Error:', err);
+    res.status(500).json({ error: 'Rewrite failed', message: err.message });
+  }
+});
+
+// POST /api/analyzer/suggest — Get word replacement suggestions
+router.post('/analyzer/suggest', (req, res) => {
+  const { word, selectedUnits } = req.body;
+
+  if (!word || !selectedUnits) {
+    return res.status(400).json({ error: 'Missing word or selectedUnits' });
+  }
+
+  const { findReplacements } = require('../services/vocabIndex');
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+  const suggestions = findReplacements(word, selectedUnitIds, vocabData.vocabIndex, vocabData.universalFillers);
+  res.json({ suggestions });
+});
+
+// POST /api/analyzer/alternatives — Suggest replacement words/phrases from known vocab
+router.post('/analyzer/alternatives', async (req, res) => {
+  const { sentence, unknownWord, unknownLemma, selectedUnits, tryHarder } = req.body;
+
+  if (!sentence || !unknownWord || !selectedUnits) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+
+  // Build list of known active vocabulary with translations and POS
+  const knownItems = [];
+  const knownWordsSet = new Set();
+  for (const uid of selectedUnitIds) {
+    const unit = unitMap[uid];
+    if (!unit?.active_vocabulary?.items) continue;
+    for (const item of unit.active_vocabulary.items) {
+      if (!knownWordsSet.has(item.word)) {
+        knownWordsSet.add(item.word);
+        knownItems.push({ word: item.word, pos: item.pos || '', translation: item.translation || '' });
+      }
+    }
+  }
+
+  // Look up the unknown word's translation and POS to help pre-filter
+  const { lookupWord, normalizeWord } = require('../services/vocabIndex');
+  const unknownLookup = lookupWord(unknownLemma || unknownWord, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+  const unknownPos = unknownLookup.entries[0]?.pos || '';
+  const unknownTranslation = unknownLookup.entries[0]?.translation || '';
+
+  try {
+    const { suggestWordAlternatives, lookupThesaurusAlternatives } = require('../services/textAnalysis');
+
+    // Build a lowercase set for thesaurus matching, preserving original casing
+    const knownWordsLowerSet = new Set(knownItems.map(i => i.word.toLowerCase()));
+    // Also add original forms so the thesaurus can return proper casing
+    for (const item of knownItems) knownWordsLowerSet.add(item.word);
+
+    // Run AI suggestions and thesaurus lookup in parallel
+    const [aiAlternatives, thesaurusAlternatives] = await Promise.all([
+      suggestWordAlternatives(sentence, unknownWord, unknownLemma, knownItems, tryHarder, unknownPos, unknownTranslation),
+      lookupThesaurusAlternatives(unknownLemma || unknownWord, knownWordsLowerSet),
+    ]);
+
+    // Merge and deduplicate: AI results first, then thesaurus results not already present
+    const seen = new Set(aiAlternatives.map(a => a.alternative.toLowerCase()));
+    const merged = [...aiAlternatives];
+    for (const ta of thesaurusAlternatives) {
+      if (!seen.has(ta.alternative.toLowerCase())) {
+        seen.add(ta.alternative.toLowerCase());
+        merged.push(ta);
+      }
+    }
+
+    res.json({ alternatives: merged });
+  } catch (err) {
+    console.error('[ALTERNATIVES] Error:', err);
+    res.status(500).json({ error: 'Failed', message: err.message });
+  }
+});
+
+// POST /api/analyzer/apply-replacement — Replace a word and fix grammar
+router.post('/analyzer/apply-replacement', async (req, res) => {
+  const { sentence, originalWord, replacement } = req.body;
+
+  if (!sentence || !originalWord || !replacement) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const { applyReplacementWithGrammar } = require('../services/textAnalysis');
+    const result = await applyReplacementWithGrammar(sentence, originalWord, replacement);
+    res.json(result);
+  } catch (err) {
+    console.error('[APPLY-REPLACE] Error:', err);
+    res.status(500).json({ error: 'Failed', message: err.message });
+  }
+});
+
+// POST /api/analyzer/auto-adapt — Automatically replace all unknown words with best alternatives
+router.post('/analyzer/auto-adapt', async (req, res) => {
+  const { sentences, selectedUnits } = req.body;
+  if (!sentences || !selectedUnits) {
+    return res.status(400).json({ error: 'Missing sentences or selectedUnits' });
+  }
+
+  const selectedUnitIds = new Set(selectedUnits.map(String));
+  const { suggestWordAlternatives, lookupThesaurusAlternatives, applyReplacementWithGrammar } = require('../services/textAnalysis');
+  const { lookupWord, normalizeWord } = require('../services/vocabIndex');
+
+  // Build known items list (same as /alternatives endpoint)
+  const knownItems = [];
+  const knownWordsSet = new Set();
+  for (const uid of selectedUnitIds) {
+    const unit = unitMap[uid];
+    if (!unit?.active_vocabulary?.items) continue;
+    for (const item of unit.active_vocabulary.items) {
+      if (!knownWordsSet.has(item.word)) {
+        knownWordsSet.add(item.word);
+        knownItems.push({ word: item.word, pos: item.pos || '', translation: item.translation || '' });
+      }
+    }
+  }
+  const knownWordsLowerSet = new Set(knownItems.map(i => i.word.toLowerCase()));
+  for (const item of knownItems) knownWordsLowerSet.add(item.word);
+
+  // Collect all unknown words across all sentences
+  // Use array index (wi) not word-only index, to match frontend's modKey format
+  const unknownWords = [];
+  for (let si = 0; si < sentences.length; si++) {
+    const sent = sentences[si];
+    const wordsArr = sent.words || [];
+    for (let wi = 0; wi < wordsArr.length; wi++) {
+      const word = wordsArr[wi];
+      if (word.status === 'unknown' && word.type === 'word') {
+        unknownWords.push({ si, wi, word: word.text, lemma: word.lemma || word.text, sentenceText: sent.text });
+      }
+    }
+  }
+
+  if (unknownWords.length === 0) {
+    return res.json({ wordModifications: {}, sentenceRewrites: {}, summary: { adapted: 0, noAlternative: 0, total: 0 } });
+  }
+
+  console.log(`[AUTO-ADAPT] Processing ${unknownWords.length} unknown words across ${sentences.length} sentences`);
+
+  try {
+    // Step 1: Fetch alternatives for all unknown words in parallel
+    const altPromises = unknownWords.map(async ({ si, wi, word, lemma, sentenceText }) => {
+      const unknownLookup = lookupWord(lemma, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+      const unknownPos = unknownLookup.entries[0]?.pos || '';
+      const unknownTranslation = unknownLookup.entries[0]?.translation || '';
+
+      const [aiAlts, thesaurusAlts] = await Promise.all([
+        suggestWordAlternatives(sentenceText, word, lemma, knownItems, false, unknownPos, unknownTranslation),
+        lookupThesaurusAlternatives(lemma, knownWordsLowerSet),
+      ]);
+
+      // Merge and deduplicate
+      const seen = new Set(aiAlts.map(a => a.alternative.toLowerCase()));
+      const merged = [...aiAlts];
+      for (const ta of thesaurusAlts) {
+        if (!seen.has(ta.alternative.toLowerCase())) {
+          seen.add(ta.alternative.toLowerCase());
+          merged.push(ta);
+        }
+      }
+
+      return { si, wi, word, alternatives: merged };
+    });
+
+    const allAlts = await Promise.all(altPromises);
+
+    // Step 2: Group by sentence and apply replacements sequentially per sentence
+    const bySentence = {};
+    for (const alt of allAlts) {
+      if (!bySentence[alt.si]) bySentence[alt.si] = [];
+      bySentence[alt.si].push(alt);
+    }
+
+    const wordModifications = {};
+    const sentenceRewrites = {};
+    let adapted = 0;
+    let noAlternative = 0;
+
+    for (const [siStr, wordAlts] of Object.entries(bySentence)) {
+      const si = parseInt(siStr);
+      let currentText = sentences[si].text;
+      const originalText = sentences[si].text;
+      const changes = [];
+
+      for (const { wi, word, alternatives } of wordAlts) {
+        if (!alternatives || alternatives.length === 0) {
+          noAlternative++;
+          continue;
+        }
+
+        const bestAlt = alternatives[0];
+        // Strip article for insertion (grammar fixer will add correct one)
+        const replacement = bestAlt.alternative.replace(/^(der|die|das|den|dem|des|ein|eine|einen|einem|einer)\s+/i, '');
+
+        try {
+          const result = await applyReplacementWithGrammar(currentText, word, replacement);
+          if (result?.result) {
+            currentText = result.result;
+          } else {
+            // Fallback: simple string replacement
+            currentText = currentText.replace(word, replacement);
+          }
+
+          wordModifications[`${si}_${wi}`] = {
+            type: 'replaced',
+            originalWord: word,
+            replacement: bestAlt.alternative,
+          };
+          changes.push({ original: word, replacement: bestAlt.alternative, explanation: bestAlt.explanation || '' });
+          adapted++;
+        } catch (err) {
+          console.error(`[AUTO-ADAPT] Failed to replace "${word}":`, err.message);
+          noAlternative++;
+        }
+      }
+
+      if (changes.length > 0) {
+        sentenceRewrites[si] = {
+          rewritten: currentText,
+          changes,
+          originalText,
+          targetStructure: 'word-replacement',
+          grammarFixed: false,
+        };
+      }
+    }
+
+    console.log(`[AUTO-ADAPT] Done: ${adapted} adapted, ${noAlternative} no alternative, ${unknownWords.length} total`);
+    res.json({ wordModifications, sentenceRewrites, summary: { adapted, noAlternative, total: unknownWords.length } });
+  } catch (err) {
+    console.error('[AUTO-ADAPT] Error:', err);
+    res.status(500).json({ error: 'Auto-adapt failed', message: err.message });
+  }
+});
+
+// GET /api/analyzer/example-sentences — Find all model sentences containing a word across ALL units
+router.get('/analyzer/example-sentences', (req, res) => {
+  const { word, pos } = req.query;
+  if (!word) return res.status(400).json({ error: 'Missing word parameter' });
+
+  const wordLower = word.toLowerCase();
+  const posUpper = (pos || '').toUpperCase(); // VERB, NOUN, ADJ, ADV, etc.
+
+  // Generate umlaut variants: a→ä, o→ö, u→ü, au→äu
+  function umlautVariants(w) {
+    const variants = [w];
+    if (w.includes('a') && !w.includes('ä')) variants.push(w.replace(/a/, 'ä'));
+    if (w.includes('o') && !w.includes('ö')) variants.push(w.replace(/o/, 'ö'));
+    if (w.includes('u') && !w.includes('ü') && !w.includes('au')) variants.push(w.replace(/u/, 'ü'));
+    if (w.includes('au')) variants.push(w.replace('au', 'äu'));
+    if (w.includes('ä')) variants.push(w.replace(/ä/, 'a'));
+    if (w.includes('ö')) variants.push(w.replace(/ö/, 'o'));
+    if (w.includes('ü')) variants.push(w.replace(/ü/, 'u'));
+    if (w.includes('äu')) variants.push(w.replace('äu', 'au'));
+    return [...new Set(variants)];
+  }
+
+  const allForms = umlautVariants(wordLower);
+  const escaped = allForms.map(f => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  // Capture the match and what's before it for POS filtering
+  const wordRegex = new RegExp(`(?:^|[\\s.,!?;:""„''()\\[\\]{}–—…/])(?:${escaped})(?:s|es|n|en|er|e|em|ern)?(?=[\\s.,!?;:""„''()\\[\\]{}–—…/]|$)`, 'i');
+
+  // Articles and determiners that indicate the next word is a noun
+  // Includes contracted prepositions (im=in dem, beim=bei dem, zum=zu dem, vom=von dem, ans=an das, ins=in das)
+  const articleSet = new Set(['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'kein', 'keine', 'keinen', 'keinem', 'mein', 'meine', 'meinen', 'dein', 'deine', 'sein', 'seine', 'ihr', 'ihre', 'unser', 'unsere', 'euer', 'eure', 'im', 'am', 'ans', 'ins', 'vom', 'zum', 'zur', 'beim', 'fürs', 'ums', 'aufs', 'durchs', 'übers', 'unters', 'vors', 'hinters']);
+
+  /**
+   * POS-based filter: check if the matched word in the sentence is used
+   * with the same POS as requested.
+   * - VERB: exclude if preceded by an article (that would make it a noun, e.g. "das Essen")
+   * - NOUN: exclude if NOT preceded by an article/adjective AND the word starts lowercase
+   *         (lowercase without article = likely verb usage)
+   */
+  function matchesPOS(sent, matchedWord) {
+    if (!posUpper) return true; // no POS filter
+
+    const words = sent.split(/\s+/);
+    for (let i = 0; i < words.length; i++) {
+      const clean = words[i].replace(/[.,!?;:""„''()\[\]{}–—…\/]/g, '');
+      if (clean.toLowerCase() === matchedWord.toLowerCase() ||
+          clean.toLowerCase().startsWith(matchedWord.toLowerCase())) {
+
+        const prevWord = i > 0 ? words[i - 1].replace(/[.,!?;:""„''()\[\]{}–—…\/]/g, '').toLowerCase() : '';
+        const isCapitalized = clean[0] === clean[0].toUpperCase();
+        const prevIsArticle = articleSet.has(prevWord);
+
+        if (posUpper === 'VERB') {
+          // Verb: reject if preceded by article (= noun usage like "das Essen")
+          if (prevIsArticle) return false;
+          // Capitalized mid-sentence = almost certainly a noun in German
+          // (verbs are only capitalized at sentence start)
+          if (isCapitalized && i > 0) return false;
+        }
+
+        if (posUpper === 'NOUN') {
+          // Noun: reject if lowercase and not after article (= likely verb usage)
+          if (!isCapitalized && !prevIsArticle && i > 0) return false;
+        }
+
+        return true; // default: accept
+      }
+    }
+    return true; // word not found in split (regex matched across boundaries) — accept
+  }
+
+  // Detect separable verb prefix for separated form matching
+  const separablePrefixes = ['ab', 'an', 'auf', 'aus', 'bei', 'ein', 'mit', 'nach', 'vor', 'zu', 'zurück', 'zusammen', 'her', 'hin', 'um', 'weg', 'fest', 'los', 'teil', 'statt', 'kennen', 'fern'];
+  let sepPrefix = null;
+  let sepStem = null;
+  if (posUpper === 'VERB') {
+    for (const pf of separablePrefixes) {
+      if (wordLower.startsWith(pf) && wordLower.length > pf.length + 2) {
+        sepPrefix = pf;
+        sepStem = wordLower.slice(pf.length); // e.g., "fernsehen" → "sehen"
+        break;
+      }
+    }
+  }
+
+  const sentences = [];
+  const seen = new Set();
+
+  for (const [uid, unit] of Object.entries(unitMap)) {
+    for (const sent of (unit.model_sentences?.literal || [])) {
+      let matched = false;
+
+      // Direct regex match
+      if (wordRegex.test(sent)) {
+        const match = sent.match(new RegExp(`(${escaped})`, 'i'));
+        const matchedWord = match ? match[1] : wordLower;
+        if (matchesPOS(sent, matchedWord)) {
+          matched = true;
+        }
+      }
+
+      // Separable verb: check for separated forms (e.g., "Ich sehe fern", "Ich sah fern")
+      if (!matched && sepPrefix && sepStem) {
+        const sentLower = sent.toLowerCase();
+        const words = sent.split(/\s+/).map(w => w.replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, ''));
+        const wordsLower = words.map(w => w.toLowerCase());
+        const prefixIdx = wordsLower.lastIndexOf(sepPrefix);
+        if (prefixIdx >= 0) {
+          for (let i = 0; i < prefixIdx; i++) {
+            const w = wordsLower[i];
+            // Simple stem match (handles regular conjugations)
+            if (w.startsWith(sepStem.slice(0, Math.min(sepStem.length - 2, 4))) && w.length <= sepStem.length + 3) {
+              matched = true;
+              break;
+            }
+            // Use verb form index for irregular forms (e.g., sah → sehen)
+            const { verbFormIndex } = vocabData;
+            const forms = verbFormIndex?.get(w);
+            if (forms?.some(f => f.lemma.toLowerCase() === sepStem || f.lemma.toLowerCase() === wordLower)) {
+              matched = true;
+              break;
+            }
+          }
+        }
+        // Perfekt: "habe ferngesehen", "hat eingekauft"
+        const perfektWeak = sepPrefix + 'ge' + sepStem.replace(/en$/, 't');
+        const perfektStrong = sepPrefix + 'ge' + sepStem;
+        if (sentLower.includes(perfektWeak) || sentLower.includes(perfektStrong)) {
+          matched = true;
+        }
+      }
+
+      if (matched) {
+        const key = sent + uid;
+        if (!seen.has(key)) {
+          seen.add(key);
+          sentences.push({ sentence: sent, unitId: uid });
+        }
+      }
+    }
+  }
+
+  res.json({ word, sentences });
+});
+
+// POST /api/analyzer/gloss — Generate contextual translation
+router.post('/analyzer/gloss', async (req, res) => {
+  const { word, sentenceContext } = req.body;
+
+  if (!word) {
+    return res.status(400).json({ error: 'Missing word' });
+  }
+
+  // Check if the word exists in the vocab index with a translation
+  const { lookupWord, normalizeWord } = require('../services/vocabIndex');
+  const lookup = lookupWord(word, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+  const existingTranslation = lookup.entries.find(e => e.translation)?.translation;
+
+  try {
+    const { generateGloss } = require('../services/textAnalysis');
+    const translation = await generateGloss(word, sentenceContext, existingTranslation);
+    res.json({ word, translation, source: existingTranslation ? 'curriculum' : 'ai' });
+  } catch (err) {
+    console.error('[GLOSS] Error:', err);
+    res.status(500).json({ error: 'Gloss generation failed', message: err.message });
+  }
+});
+
+// GET /api/analyzer/lookup — Vocabulary lookup
+router.get('/analyzer/lookup', (req, res) => {
+  const { word } = req.query;
+
+  if (!word) {
+    return res.status(400).json({ error: 'Missing word parameter' });
+  }
+
+  const { lookupWord, formatFrequencyBand, getUnitBookAndChapter, normalizeWord } = require('../services/vocabIndex');
+  const result = lookupWord(word, vocabData.vocabIndex, vocabData.verbFormIndex, vocabData.universalFillers);
+
+  // Enrich entries with book/chapter info and frequency bands
+  const enrichedEntries = result.entries.map(entry => ({
+    ...entry,
+    frequencyBand: formatFrequencyBand(entry.frequency),
+    bookChapter: getUnitBookAndChapter(entry.unitId),
+  }));
+
+  res.json({
+    word,
+    normalizedWord: normalizeWord(word),
+    isUniversalFiller: result.isUniversalFiller,
+    entries: enrichedEntries,
+    verbForms: result.verbForms,
+  });
+});
+
+// POST /api/analyzer/upload — Parse uploaded file to text
+router.post('/analyzer/upload', upload.single('file'), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
+  const ext = path.extname(req.file.originalname).toLowerCase();
+  let text = '';
+
+  try {
+    if (ext === '.txt') {
+      text = fs.readFileSync(req.file.path, 'utf8');
+    } else if (ext === '.pdf') {
+      const pdfParse = require('pdf-parse');
+      const buffer = fs.readFileSync(req.file.path);
+      const data = await pdfParse(buffer);
+      text = data.text;
+    } else if (ext === '.docx') {
+      const mammoth = require('mammoth');
+      const rawResult = await mammoth.extractRawText({ path: req.file.path });
+      text = rawResult.value;
+      // Also extract HTML for formatting preservation (bold, italic)
+      const htmlResult = await mammoth.convertToHtml({ path: req.file.path });
+      var docxHtml = sanitizeHtmlServer(htmlResult.value);
+    } else {
+      return res.status(400).json({ error: `Unsupported file type: ${ext}. Use .txt, .pdf, or .docx` });
+    }
+
+    // Clean up temp file
+    fs.unlinkSync(req.file.path);
+
+    const response = { text: text.trim(), filename: req.file.originalname };
+    if (docxHtml) response.html = docxHtml;
+    res.json(response);
+  } catch (err) {
+    // Clean up temp file on error
+    try { fs.unlinkSync(req.file.path); } catch (_) {}
+    console.error('[UPLOAD] Parse error:', err);
+    res.status(500).json({ error: 'File parsing failed', message: err.message });
+  }
+});
+
+/**
+ * Build a lookup that, given a character offset in the text, returns {bold, italic} if formatted.
+ * Uses binary search on sorted ranges for efficiency.
+ */
+/**
+ * Build a sequential word formatter from wordFormattingList.
+ * Each call to getNext(wordText) returns the formatting for that word
+ * by matching sequentially through the list.
+ */
+function buildSequentialFormatter(wordFormattingList) {
+  if (!wordFormattingList || wordFormattingList.length === 0) return null;
+  let idx = 0;
+  return {
+    getFormat(wordText) {
+      const clean = wordText.replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').toLowerCase();
+      if (!clean) return null;
+      // Find the next matching word in the list (allow small gaps for whitespace/punct differences)
+      for (let i = idx; i < Math.min(idx + 5, wordFormattingList.length); i++) {
+        if (wordFormattingList[i].text === clean) {
+          const fmt = wordFormattingList[i];
+          idx = i + 1; // advance past this word
+          if (fmt.bold || fmt.italic) return { bold: fmt.bold, italic: fmt.italic };
+          return null;
+        }
+      }
+      return null;
+    },
+    reset() { idx = 0; }
+  };
+}
+
+function buildFormatLookup(formattedRanges) {
+  if (!formattedRanges || formattedRanges.length === 0) return null;
+  // Sort by start position
+  const sorted = [...formattedRanges].sort((a, b) => a.start - b.start);
+  return {
+    /**
+     * Get formatting for a word at character offset `start` with length `len`.
+     * Returns {bold, italic} or null.
+     */
+    getFormat(start, len) {
+      const end = start + len;
+      for (const r of sorted) {
+        if (r.start >= end) break; // past our word
+        if (r.end <= start) continue; // before our word
+        // Overlapping range found
+        return { bold: r.bold || false, italic: r.italic || false };
+      }
+      return null;
+    }
+  };
+}
+
+/**
+ * Set PDFKit font based on formatting flags.
+ */
+function setPdfFont(doc, fmt, baseSize) {
+  if (fmt?.bold && fmt?.italic) doc.font('Helvetica-BoldOblique');
+  else if (fmt?.bold) doc.font('Helvetica-Bold');
+  else if (fmt?.italic) doc.font('Helvetica-Oblique');
+  else doc.font('Helvetica');
+  if (baseSize) doc.fontSize(baseSize);
+}
+
+// POST /api/analyzer/export — Generate PDF export (student or teacher version)
+router.post('/analyzer/export', async (req, res) => {
+  const { text, originalText, glossedWords, title, mode, annotations, formattedRanges, wordFormattingList } = req.body;
+
+  if (!text) {
+    return res.status(400).json({ error: 'Missing text' });
+  }
+  console.log('[EXPORT] formattedRanges:', formattedRanges?.length || 0, 'ranges', formattedRanges?.slice(0, 3));
+
+  const exportMode = mode || 'student';
+
+  try {
+    const PDFDocument = require('pdfkit');
+    const doc = new PDFDocument({ margin: 50, size: 'A4', margins: { top: 50, bottom: 50, left: 50, right: 50 }, bufferPages: true });
+
+    const chunks = [];
+    doc.on('data', chunk => chunks.push(chunk));
+    doc.on('end', () => {
+      const pdfBuffer = Buffer.concat(chunks);
+      res.setHeader('Content-Type', 'application/pdf');
+      const filename = exportMode === 'teacher'
+        ? `${title || 'text-analysis'}-teacher.pdf`
+        : `${title || 'text-analysis'}-student.pdf`;
+      res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+      res.send(pdfBuffer);
+    });
+
+    // Glossary map
+    const glossMap = new Map();
+    if (glossedWords && Array.isArray(glossedWords)) {
+      for (const gw of glossedWords) glossMap.set(gw.word.toLowerCase(), gw.translation);
+    }
+
+    // Track pages for footer rendering
+    let pageCount = 1;
+    doc.on('pageAdded', () => pageCount++);
+
+    // ─── HEADER ───
+    if (exportMode === 'teacher') {
+      doc.fontSize(16).font('Helvetica-Bold').fillColor('#000')
+        .text('Impuls Deutsch Text Analyser', { align: 'center' });
+      doc.fontSize(10).font('Helvetica').fillColor('#000')
+        .text('Teacher Version with Annotations', { align: 'center' });
+    } else {
+      doc.fontSize(16).font('Helvetica-Bold').fillColor('#000')
+        .text('Impuls Deutsch Text Analyser', { align: 'center' });
+      doc.fontSize(10).font('Helvetica').fillColor('#888')
+        .text('Student Version', { align: 'center' });
+    }
+    doc.fillColor('#000');
+
+    if (exportMode === 'teacher') {
+      // ═══════════════════════════════════════════════════
+      // TEACHER VERSION LAYOUT — Side-by-side table
+      // ═══════════════════════════════════════════════════
+
+      const L = 50;        // left margin
+      const CW = 237;      // column width
+      const G = 20;        // gutter
+      const R = L + CW + G; // right column start
+      const PR = 545;      // page right
+
+      // Base colors from analysis
+      const baseColors = annotations?.originalWordColors || {};
+      // Original text color: glossed words were unknown → show red in original
+      function origBaseColor(clean) {
+        const status = baseColors[clean];
+        if (status === 'unknown' || status === 'glossed') return '#ef4444';
+        if (status === 'cognate') return '#7c3aed'; // purple for cognates
+        return '#008899'; // known = teal
+      }
+      // Adapted text color: glossed → grey, unknown → red, cognate → purple, known → teal
+      function adaptedBaseColor(clean) {
+        const status = baseColors[clean];
+        if (status === 'glossed') return '#9ca3af';
+        if (status === 'unknown') return '#ef4444';
+        if (status === 'cognate') return '#7c3aed';
+        return '#008899';
+      }
+
+      // Override sets for grammar/vocab changes
+      // In ORIGINAL text: words from changes tables are forced red
+      const forceRedOriginal = new Set();
+      for (const gc of (annotations?.grammarChanges || [])) {
+        if (gc.original) for (const w of gc.original.toLowerCase().split(/\s+/)) forceRedOriginal.add(w);
+      }
+      for (const vc of (annotations?.vocabChanges || [])) {
+        if (vc.original && !vc.isGloss) for (const w of vc.original.toLowerCase().split(/\s+/)) forceRedOriginal.add(w);
+      }
+
+      // In ADAPTED text: replacement words from changes are forced blue
+      // Include both dictionary forms AND find words in adapted text not in original (inflected forms)
+      const forceBlueAdapted = new Set();
+      for (const gc of (annotations?.grammarChanges || [])) {
+        if (gc.replacement) for (const w of gc.replacement.toLowerCase().split(/\s+/)) forceBlueAdapted.add(w);
+      }
+      for (const vc of (annotations?.vocabChanges || [])) {
+        if (vc.replacement && !vc.isGloss) for (const w of vc.replacement.toLowerCase().split(/\s+/)) forceBlueAdapted.add(w);
+      }
+      // Also detect new words in adapted text that weren't in original (catches inflected replacements)
+      const origWordSet = new Set(
+        (originalText || '').toLowerCase().replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').split(/\s+/).filter(Boolean)
+      );
+      const adaptedWordList = text.toLowerCase().replace(/[.,!?;:"""„''()\[\]{}–—…/]/g, '').split(/\s+/).filter(Boolean);
+      for (const w of adaptedWordList) {
+        if (!origWordSet.has(w) && w.length > 1) {
+          forceBlueAdapted.add(w);
+        }
+      }
+
+      // Glossed words are grey in adapted text
+      const forceGreyAdapted = new Set();
+      for (const vc of (annotations?.vocabChanges || [])) {
+        if (vc.isGloss) forceGreyAdapted.add((vc.original || '').toLowerCase());
+      }
+
+      // Units selected (multi-line, grouped by book, numbers aligned)
+      if (annotations?.selectedUnits) {
+        doc.moveDown(0.5);
+        doc.fontSize(8).fillColor('#000');
+        const unitsLines = annotations.selectedUnits.split('\n');
+        const numCol = 195; // x position where numbers start (aligned across all lines)
+        for (const line of unitsLines) {
+          const colonIdx = line.indexOf(':');
+          if (colonIdx > -1) {
+            const label = line.substring(0, colonIdx + 1);
+            const numbers = line.substring(colonIdx + 1).trim();
+            const rowY = doc.y;
+            doc.font('Helvetica-Bold').text(label, 50, rowY, { width: 140, lineBreak: false });
+            doc.font('Helvetica').text(numbers, numCol, rowY, { width: PR - numCol });
+            // doc.y is now after the numbers (which may wrap)
+          } else {
+            doc.font('Helvetica').text(line, 50);
+          }
+        }
+        doc.fillColor('#000');
+        doc.moveDown(0.5);
+      }
+
+      // ─── ROW 1: Column headings ───
+      doc.moveDown(0.5);
+      doc.fontSize(11).font('Helvetica-Bold');
+      doc.text('Original Text', L, doc.y, { width: CW });
+      const headY = doc.y - doc.currentLineHeight();
+      doc.text('Adapted Text', R, headY, { width: CW });
+      const lineY = Math.max(doc.y, headY + doc.currentLineHeight()) + 2;
+      doc.moveTo(L, lineY).lineTo(L + CW, lineY).stroke('#008899');
+      doc.moveTo(R, lineY).lineTo(R + CW, lineY).stroke('#008899');
+      doc.y = lineY + 6;
+
+      // ─── ROW 2: Texts side by side (interleaved paragraph-by-paragraph) ───
+      const seqFmtOrig = buildSequentialFormatter(wordFormattingList);
+      const seqFmtAdapted = buildSequentialFormatter(wordFormattingList);
+      doc.fontSize(9).font('Helvetica');
+
+      const origParagraphs = (originalText || text).split(/\n+/).filter(p => p.trim());
+      const adaptedParagraphs = text.split(/\n+/).filter(p => p.trim());
+      const maxParas = Math.max(origParagraphs.length, adaptedParagraphs.length);
+      const footnotes = [];
+      let footnoteNum = 0;
+      const pageBottom = doc.page.height - 60; // leave margin for footer
+
+      for (let pi = 0; pi < maxParas; pi++) {
+        // Pre-calculate paragraph height to prevent mid-paragraph page breaks
+        // that desynchronize the two columns
+        doc.fontSize(9).font('Helvetica');
+        const origPara = pi < origParagraphs.length ? origParagraphs[pi] : '';
+        const adaptedPara = pi < adaptedParagraphs.length ? adaptedParagraphs[pi] : '';
+        const origH = origPara ? doc.heightOfString(origPara, { width: CW }) : 0;
+        const adaptedH = adaptedPara ? doc.heightOfString(adaptedPara, { width: CW }) : 0;
+        const paraHeight = Math.max(origH, adaptedH);
+
+        // If paragraph won't fit on current page, start a new page
+        // (unless we're already at the top of a page)
+        if (doc.y + paraHeight > pageBottom && doc.y > 80) {
+          doc.addPage();
+          doc.y = 50;
+        }
+
+        // For very long paragraphs that exceed a full page, split into chunks
+        // to keep columns synchronized across page breaks
+        const maxChunkLines = 40; // ~40 lines per page at font size 9
+        const origWords = origPara ? origPara.split(/(\s+)/) : [];
+        const adaptedWords = adaptedPara ? adaptedPara.split(/(\s+)/) : [];
+
+        // If paragraph fits on remaining page space (or a fresh page), render normally
+        if (paraHeight < pageBottom - 50) {
+          const rowY = doc.y;
+
+          // LEFT: Original paragraph
+          if (origWords.length > 0) {
+            doc.y = rowY;
+            for (const word of origWords) {
+              const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+              if (forceRedOriginal.has(clean)) {
+                doc.fillColor('#ef4444');
+              } else {
+                doc.fillColor(origBaseColor(clean));
+              }
+              const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
+              setPdfFont(doc, fmt, 9);
+              doc.text(word, L, doc.y, { continued: true, width: CW });
+            }
+            doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
+          }
+          const leftY = doc.y;
+
+          // RIGHT: Adapted paragraph
+          if (adaptedWords.length > 0) {
+            doc.y = rowY;
+            for (const word of adaptedWords) {
+              const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+              const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+              if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+                footnoteNum++;
+                footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+                doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+                doc.fontSize(9);
+              } else if (forceBlueAdapted.has(clean)) {
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+              } else {
+                setPdfFont(doc, fmt, 9);
+                doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+              }
+            }
+            doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
+          }
+          const rightY = doc.y;
+          doc.y = Math.max(leftY, rightY) + 2;
+        } else {
+          // Very long paragraph — render in synchronized chunks across pages
+          // Split words into chunks that fit on one page
+          const chunkSize = 200; // ~200 word tokens per page-chunk
+          const origChunks = [], adaptedChunks = [];
+          for (let i = 0; i < Math.max(origWords.length, adaptedWords.length); i += chunkSize) {
+            origChunks.push(origWords.slice(i, i + chunkSize));
+            adaptedChunks.push(adaptedWords.slice(i, i + chunkSize));
+          }
+
+          for (let ci = 0; ci < origChunks.length; ci++) {
+            if (doc.y > pageBottom && doc.y > 80) {
+              doc.addPage();
+              doc.y = 50;
+            }
+            const rowY = doc.y;
+
+            // LEFT chunk
+            if (origChunks[ci] && origChunks[ci].length > 0) {
+              doc.y = rowY;
+              for (const word of origChunks[ci]) {
+                const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+                if (forceRedOriginal.has(clean)) doc.fillColor('#ef4444');
+                else doc.fillColor(origBaseColor(clean));
+                const fmt = seqFmtOrig ? seqFmtOrig.getFormat(word) : null;
+                setPdfFont(doc, fmt, 9);
+                doc.text(word, L, doc.y, { continued: true, width: CW });
+              }
+              // End chunk (only end paragraph on last chunk)
+              if (ci === origChunks.length - 1) {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', L, doc.y, { width: CW });
+              } else {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('', L, doc.y, { width: CW });
+              }
+            }
+            const leftY = doc.y;
+
+            // RIGHT chunk
+            if (adaptedChunks[ci] && adaptedChunks[ci].length > 0) {
+              doc.y = rowY;
+              for (const word of adaptedChunks[ci]) {
+                const clean = word.replace(/[.,!?;:"""'\u201C\u201D\u201E\u2018\u2019()\[\]{}–\u2014…\/]/g, '').toLowerCase();
+                const fmt = seqFmtAdapted ? seqFmtAdapted.getFormat(word) : null;
+                if (forceGreyAdapted.has(clean) && glossMap.has(clean)) {
+                  footnoteNum++;
+                  footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor('#9ca3af').text(word, R, doc.y, { continued: true, width: CW });
+                  doc.font('Helvetica').fontSize(7).fillColor('#666').text(`${footnoteNum}`, { continued: true, rise: 3 });
+                  doc.fontSize(9);
+                } else if (forceBlueAdapted.has(clean)) {
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor('#3b82f6').text(word, R, doc.y, { continued: true, width: CW });
+                } else {
+                  setPdfFont(doc, fmt, 9);
+                  doc.fillColor(adaptedBaseColor(clean)).text(word, R, doc.y, { continued: true, width: CW });
+                }
+              }
+              if (ci === adaptedChunks.length - 1) {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('\u200B', R, doc.y, { width: CW });
+              } else {
+                doc.font('Helvetica').fillColor('#000').fontSize(9).text('', R, doc.y, { width: CW });
+              }
+            }
+            const rightY = doc.y;
+            doc.y = Math.max(leftY, rightY) + 2;
+          }
+        }
+      }
+
+      const leftEndY = doc.y;
+      const rightEndY = doc.y;
+
+      // Glossary under adapted text (empty line, superscript numbers, no title)
+      let glossEndY = rightEndY;
+      if (footnotes.length > 0) {
+        doc.y = rightEndY + 16; // empty line
+        doc.fontSize(7).font('Helvetica').fillColor('#666');
+        for (const fn of footnotes) {
+          // Superscript number then word - translation
+          doc.fontSize(6).text(`${fn.num}`, R, doc.y, { continued: true, rise: 3 });
+          doc.fontSize(7).text(` ${fn.word} - ${fn.translation}`, { continued: false });
+        }
+        doc.fillColor('#000');
+        glossEndY = doc.y;
+      }
+
+      doc.y = Math.max(leftEndY, glossEndY) + 10;
+
+      // ─── ROW 3: Readability side by side ───
+      doc.moveTo(L, doc.y).lineTo(L + CW, doc.y).stroke('#ddd');
+      doc.moveTo(R, doc.y).lineTo(R + CW, doc.y).stroke('#ddd');
+      doc.y += 6;
+      const readY = doc.y;
+      doc.fontSize(8).font('Helvetica');
+
+      if (annotations?.readability) {
+        const r = annotations.readability;
+        const unknown = r.totalWords - r.knownWords;
+        doc.font('Helvetica-Bold').text(`Original Readability: ${r.percent}%`, L, readY, { width: CW });
+        const parts = [];
+        if (r.knownWords > 0) parts.push(`${r.knownWords} known`);
+        if (unknown > 0) parts.push(`${unknown} unknown`);
+        doc.font('Helvetica').text(`${r.totalWords} words: ${parts.join(', ')}`, L, doc.y, { width: CW });
+      }
+      const leftReadEnd = doc.y;
+
+      if (annotations?.newReadability) {
+        const nr = annotations.newReadability;
+        const translated = nr.translatedWords || 0;
+        const knownOnly = nr.knownWords;
+        const unknown = nr.totalWords - knownOnly - translated;
+        doc.font('Helvetica-Bold').text(`Adapted Readability: ${nr.percent}%`, R, readY, { width: CW });
+        const parts = [];
+        if (knownOnly > 0) parts.push(`${knownOnly} known`);
+        if (translated > 0) parts.push(`${translated} translated`);
+        if (unknown > 0) parts.push(`${unknown} unknown`);
+        doc.font('Helvetica').text(`${nr.totalWords} words: ${parts.join(', ')}`, R, doc.y, { width: CW });
+      }
+      doc.y = Math.max(leftReadEnd, doc.y) + 16;
+
+      // ─── GRAMMAR CHANGES (3 cols: narrow | narrow | wide) ───
+      const c1 = L, c1w = 90, c2 = L + 95, c2w = 90, c3 = L + 190, c3w = 305;
+      if (annotations?.grammarChanges?.length > 0) {
+        doc.moveTo(L, doc.y).lineTo(PR, doc.y).stroke('#ddd');
+        doc.y += 8;
+        doc.fontSize(10).font('Helvetica-Bold').text('Grammar Changes', L, doc.y);
+        doc.moveDown(0.3);
+        doc.fontSize(8).font('Helvetica');
+        for (const gc of annotations.grammarChanges) {
+          if (doc.y > doc.page.height - 60) {
+            doc.addPage();
+            doc.y = 50;
+          }
+          const rowY = doc.y;
+          doc.fillColor('#ef4444').text(gc.original || '', c1, rowY, { width: c1w });
+          const afterOrigY = doc.y;
+          doc.fillColor('#3b82f6').text(gc.replacement || '', c2, rowY, { width: c2w });
+          const afterReplY = doc.y;
+          doc.fillColor('#888').text(gc.explanation || '', c3, rowY, { width: c3w });
+          const afterExplY = doc.y;
+          doc.y = Math.max(afterOrigY, afterReplY, afterExplY) + 4;
+          doc.fillColor('#000');
+        }
+      }
+
+      // ─── VOCABULARY CHANGES (3 cols: narrow | narrow | wide) ───
+      if (annotations?.vocabChanges?.length > 0) {
+        doc.y += 6;
+        doc.moveTo(L, doc.y).lineTo(PR, doc.y).stroke('#ddd');
+        doc.y += 8;
+        doc.fontSize(10).font('Helvetica-Bold').text('Vocabulary Changes', L, doc.y);
+        doc.moveDown(0.3);
+        doc.fontSize(8).font('Helvetica');
+        for (const vc of annotations.vocabChanges) {
+          // Check if we need a page break (leave 30px margin at bottom)
+          if (doc.y > doc.page.height - 60) {
+            doc.addPage();
+            doc.y = 50;
+          }
+          const rowY = doc.y;
+          // Render all three columns at the same Y position
+          // Use height: false to prevent automatic page breaks within a column
+          doc.fillColor(vc.isGloss ? '#ef4444' : '#ef4444');
+          doc.text(vc.original || '', c1, rowY, { width: c1w, lineBreak: true });
+          const afterOrigY = doc.y;
+
+          doc.fillColor(vc.isGloss ? '#9ca3af' : '#3b82f6');
+          doc.text(vc.replacement || '', c2, rowY, { width: c2w, lineBreak: true });
+          const afterReplY = doc.y;
+
+          doc.fillColor('#888');
+          doc.text(vc.explanation || '', c3, rowY, { width: c3w, lineBreak: true });
+          const afterExplY = doc.y;
+
+          doc.y = Math.max(afterOrigY, afterReplY, afterExplY) + 4;
+          doc.fillColor('#000');
+        }
+      }
+
+      // Footer is handled automatically on every page
+
+    } else {
+      // ═══════════════════════════════════════════════════
+      // STUDENT VERSION LAYOUT
+      // ═══════════════════════════════════════════════════
+      doc.moveDown(1);
+      doc.fontSize(12).font('Helvetica');
+
+      const seqFmt = buildSequentialFormatter(wordFormattingList);
+      const footnotes = [];
+      let footnoteNum = 0;
+      const studentMargin = 50;
+      const studentWidth = doc.page.width - 100; // 50px margins each side
+
+      // Render text paragraph by paragraph, each as a self-contained text block
+      const paragraphs = text.split(/\n+/).filter(p => p.trim());
+
+      for (let pi = 0; pi < paragraphs.length; pi++) {
+        const para = paragraphs[pi];
+
+        // Each paragraph rendered as its own text block (no cross-paragraph continued:true)
+        const words = para.split(/(\s+)/);
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          const clean = word.replace(/[.,!?;:"""„''()\[\]{}–—…]/g, '').toLowerCase();
+          const isFirst = i === 0;
+
+          // Look up formatting for this word (sequential matching)
+          const fmt = seqFmt ? seqFmt.getFormat(word) : null;
+
+          if (glossMap.has(clean)) {
+            footnoteNum++;
+            footnotes.push({ num: footnoteNum, word: word.replace(/[.,!?;:]/g, ''), translation: glossMap.get(clean) });
+            setPdfFont(doc, fmt, 12);
+            if (isFirst) {
+              doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+            } else {
+              doc.text(word, { continued: true });
+            }
+            doc.font('Helvetica').fontSize(8).text(`${footnoteNum}`, { continued: true, rise: 4 });
+            doc.fontSize(12);
+          } else {
+            setPdfFont(doc, fmt, 12);
+            if (isFirst) {
+              doc.text(word, studentMargin, doc.y, { continued: true, width: studentWidth });
+            } else {
+              doc.text(word, { continued: true });
+            }
+          }
+        }
+        // End this paragraph's continued text — use a zero-width space to force line termination
+        doc.font('Helvetica').fontSize(12).text('\u200B', studentMargin, doc.y, { width: studentWidth, lineBreak: true });
+        if (pi < paragraphs.length - 1) doc.moveDown(0.3);
+      }
+
+      if (footnotes.length > 0) {
+        doc.moveDown(1.5);
+        doc.moveTo(50, doc.y).lineTo(545, doc.y).stroke('#ddd');
+        doc.moveDown(0.5);
+        doc.fontSize(10).font('Helvetica');
+        for (const fn of footnotes) {
+          doc.text(`${fn.num}. ${fn.word} — ${fn.translation}`);
+        }
+      }
+
+      // Footer is handled automatically on every page
+    }
+
+    // Add color legend footer to every page (using buffered pages)
+    const footerY = doc.page.height - 35;
+    const pages = doc.bufferedPageRange();
+    for (let i = pages.start; i < pages.start + pages.count; i++) {
+      doc.switchToPage(i);
+      if (exportMode === 'teacher') {
+        doc.fontSize(7).font('Helvetica');
+        let xPos = 50;
+        doc.fillColor('#008899').text('Known', xPos, footerY, { lineBreak: false }); xPos += 34;
+        doc.fillColor('#7c3aed').text('Cognate', xPos, footerY, { lineBreak: false }); xPos += 46;
+        doc.fillColor('#ef4444').text('Unknown', xPos, footerY, { lineBreak: false }); xPos += 44;
+        doc.fillColor('#3b82f6').text('Replaced', xPos, footerY, { lineBreak: false }); xPos += 48;
+        doc.fillColor('#9ca3af').text('Translated', xPos, footerY, { lineBreak: false });
+      }
+      doc.fillColor('#000');
+    }
+
+    doc.flushPages();
+    doc.end();
+  } catch (err) {
+    console.error('[EXPORT] Error:', err);
+    res.status(500).json({ error: 'Export failed', message: err.message });
+  }
+});
+
+/**
+ * Helper: get units belonging to a chapter in a specific book.
+ */
+function getChapterUnits(bookId, chapter) {
+  const units = [];
+  for (let pos = chapter.unitStart; pos <= chapter.unitEnd; pos++) {
+    // Try both padded and unpadded IDs since JSON files may use either format
+    let candidates;
+    if (bookId === 'ID1') candidates = [String(pos)];
+    else if (bookId === 'ID2B') candidates = [`B${pos}`, `B${String(pos).padStart(2, '0')}`];
+    else if (bookId === 'ID2O') candidates = [`O${pos}`, `O${String(pos).padStart(2, '0')}`];
+    else candidates = [String(pos)];
+
+    const uid = candidates.find(c => unitMap[c]) || candidates[0];
+    const unit = unitMap[uid];
+    if (unit) {
+      units.push({
+        id: uid,
+        position: pos,
+        name: unitNames[uid] || unitNames[uid.replace(/^([BO])0*/, '$1')] || '',
+        isOptional: unit.is_optional || false,
+        topics: (unit.conversation_topics?.topics || []).slice(0, 2),
+        vocabCount: (unit.active_vocabulary?.items || []).length,
+      });
+    }
+  }
+  return units;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SESSION TRACKING — Drive uploads for original + adapted PDFs
+// ═══════════════════════════════════════════════════════════════════
+
+// In-memory session store: sessionId -> { originalFileId, adaptedFileId, lastActivity }
+const sessions = new Map();
+const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+
+// Clean up expired sessions periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [sid, session] of sessions) {
+    if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
+      console.log(`[SESSION] Timeout for ${sid} — auto-saving`);
+      // The adapted PDF should already be uploaded (frontend sends it on changes)
+      sessions.delete(sid);
+    }
+  }
+}, 60 * 1000); // check every minute
+
+// POST /api/session/upload-original — Upload original text as PDF when Analyze is clicked
+router.post('/session/upload-original', async (req, res) => {
+  const { sessionId, pdfBase64, filename } = req.body;
+  if (!sessionId || !pdfBase64) {
+    console.warn('[UPLOAD] Missing sessionId or pdfBase64 for upload-original');
+    return res.status(400).json({ error: 'Missing sessionId or pdfBase64' });
+  }
+
+  try {
+    console.log(`[UPLOAD] Original PDF for session ${sessionId} (${Math.round(pdfBase64.length / 1024)}KB base64)`);
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+    const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `original_${sessionId}.pdf`);
+
+    if (result) {
+      // Track in session
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).originalFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
+
+      // Update Text Usage Log
+      await auth.updateTextUsageLog(sessionId, 'original', result.link);
+      console.log(`[UPLOAD] Original PDF saved: ${result.link}`);
+      res.json({ ok: true, link: result.link });
+    } else {
+      console.warn(`[UPLOAD] Original PDF upload returned null for session ${sessionId}`);
+      res.json({ ok: false, error: 'Upload failed — Drive returned null' });
+    }
+  } catch (err) {
+    console.error(`[UPLOAD] Original PDF error for session ${sessionId}:`, err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// POST /api/session/upload-adapted — Upload/update adapted text PDF
+router.post('/session/upload-adapted', async (req, res) => {
+  const { sessionId, pdfBase64, filename } = req.body;
+  if (!sessionId || !pdfBase64) {
+    console.warn('[UPLOAD] Missing sessionId or pdfBase64 for upload-adapted');
+    return res.status(400).json({ error: 'Missing sessionId or pdfBase64' });
+  }
+
+  try {
+    console.log(`[UPLOAD] Adapted PDF for session ${sessionId} (${Math.round(pdfBase64.length / 1024)}KB base64)`);
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+
+    // Check if we already have an adapted file for this session — update it
+    const session = sessions.get(sessionId);
+    if (session?.adaptedFileId) {
+      const updated = await auth.updatePdfOnDrive(session.adaptedFileId, pdfBuffer);
+      if (updated) {
+        session.lastActivity = Date.now();
+        console.log(`[UPLOAD] Adapted PDF updated in-place for session ${sessionId}`);
+        return res.json({ ok: true, updated: true });
+      }
+    }
+
+    // First upload (or update failed) — create new file
+    const result = await auth.uploadPdfToDrive(pdfBuffer, filename || `adapted_${sessionId}.pdf`);
+    if (result) {
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).adaptedFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
+
+      await auth.updateTextUsageLog(sessionId, 'adapted', result.link);
+      console.log(`[UPLOAD] Adapted PDF saved: ${result.link}`);
+      res.json({ ok: true, link: result.link });
+    } else {
+      console.warn(`[UPLOAD] Adapted PDF upload returned null for session ${sessionId}`);
+      res.json({ ok: false, error: 'Upload failed — Drive returned null' });
+    }
+  } catch (err) {
+    console.error(`[UPLOAD] Adapted PDF error for session ${sessionId}:`, err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// POST /api/session/heartbeat — Keep session alive
+router.post('/session/heartbeat', (req, res) => {
+  const { sessionId } = req.body;
+  if (sessionId && sessions.has(sessionId)) {
+    sessions.get(sessionId).lastActivity = Date.now();
+  }
+  res.json({ ok: true });
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// SHAREABLE READ-ONLY SESSIONS
+// ═══════════════════════════════════════════════════════════════════
+
+// POST /api/session/share — Upload session state to Drive for sharing
+router.post('/session/share', async (req, res) => {
+  const { sessionId, sessionState } = req.body;
+  if (!sessionId || !sessionState) {
+    return res.status(400).json({ error: 'Missing sessionId or sessionState' });
+  }
+
+  try {
+    const filename = `session_${sessionId}.json`;
+    const result = await auth.uploadJsonToDrive(sessionState, filename);
+
+    if (result) {
+      // Store the Drive file ID in the sessions map for quick lookup
+      if (!sessions.has(sessionId)) sessions.set(sessionId, { lastActivity: Date.now() });
+      sessions.get(sessionId).shareFileId = result.fileId;
+      sessions.get(sessionId).lastActivity = Date.now();
+
+      // Build share URL from request origin
+      const protocol = req.get('x-forwarded-proto') || req.protocol;
+      const host = req.get('host');
+      const shareUrl = `${protocol}://${host}?share=${sessionId}`;
+
+      console.log(`[SHARE] Session ${sessionId} shared: ${shareUrl}`);
+      res.json({ shareId: sessionId, shareUrl });
+    } else {
+      res.status(500).json({ error: 'Failed to upload session to Drive' });
+    }
+  } catch (err) {
+    console.error('[SHARE] Error:', err.message);
+    res.status(500).json({ error: 'Share failed', message: err.message });
+  }
+});
+
+// GET /api/session/shared/:shareId — Retrieve shared session state (no auth required)
+router.get('/session/shared/:shareId', async (req, res) => {
+  const { shareId } = req.params;
+
+  try {
+    // First check in-memory session store for the Drive file ID
+    const session = sessions.get(shareId);
+    let fileId = session?.shareFileId;
+
+    // If not in memory, search Drive by filename
+    if (!fileId) {
+      const filename = `session_${shareId}.json`;
+      fileId = await auth.findDriveFileByName(filename);
+    }
+
+    if (!fileId) {
+      return res.status(404).json({ error: 'Shared session not found' });
+    }
+
+    // Download and return the JSON
+    const sessionState = await auth.downloadJsonFromDrive(fileId);
+    if (!sessionState) {
+      return res.status(500).json({ error: 'Failed to download session data' });
+    }
+
+    res.json(sessionState);
+  } catch (err) {
+    console.error('[SHARE] Retrieve error:', err.message);
+    res.status(500).json({ error: 'Failed to retrieve shared session', message: err.message });
+  }
+});
+
+// POST /api/session/clone — Clone a shared session into a new editable session
+router.post('/session/clone', async (req, res) => {
+  const { shareId, code } = req.body;
+  if (!shareId || !code) {
+    return res.status(400).json({ error: 'Missing shareId or code' });
+  }
+
+  // Validate the access code (uses a credit)
+  const authResult = await auth.validateCode(code);
+  if (!authResult.valid) {
+    return res.json(authResult);
+  }
+
+  try {
+    // Load the shared session state
+    const session = sessions.get(shareId);
+    let fileId = session?.shareFileId;
+
+    if (!fileId) {
+      const filename = `session_${shareId}.json`;
+      fileId = await auth.findDriveFileByName(filename);
+    }
+
+    if (!fileId) {
+      return res.status(404).json({ valid: false, error: 'Shared session not found' });
+    }
+
+    const sessionState = await auth.downloadJsonFromDrive(fileId);
+    if (!sessionState) {
+      return res.status(500).json({ valid: false, error: 'Failed to load session data' });
+    }
+
+    res.json({
+      valid: true,
+      sessionId: authResult.sessionId,
+      remainingUses: authResult.remainingUses,
+      sessionState,
+    });
+  } catch (err) {
+    console.error('[CLONE] Error:', err.message);
+    res.status(500).json({ valid: false, error: 'Clone failed', message: err.message });
+  }
+});
+
+module.exports = { router, init };

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversation Transcript | Impuls Deutsch</title>
+  <link rel="icon" type="image/svg+xml" href="/dashboard/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #008899;
+      color: white;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 1.25rem; font-weight: 700; }
+    .header .subtitle { font-size: 0.85rem; opacity: 0.85; font-weight: 400; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 1.5rem; }
+
+    /* Meta card */
+    .meta-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    .meta-item label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.15rem;
+    }
+    .meta-item span {
+      font-size: 0.9rem;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    /* Chat bubbles */
+    .chat-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .chat-container h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #008899;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Conversation table */
+    .conv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .conv-table td {
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
+    }
+    .conv-table .speaker-cell {
+      white-space: nowrap;
+      width: 1%;
+      padding-right: 1rem;
+    }
+    .conv-table .speaker-cell.buddy { color: #1e293b; font-weight: 400; }
+    .conv-table .speaker-cell.student { color: #1e293b; font-weight: 700; }
+
+    /* Feedback section */
+    .feedback-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.88rem;
+      color: #334155;
+    }
+    .feedback-item:last-child { border-bottom: none; }
+    .feedback-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #008899;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.55rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-primary { background: #008899; color: white; }
+    .btn-primary:hover { background: #006d7a; }
+    .btn-outline { background: white; color: #008899; border: 1.5px solid #008899; }
+    .btn-outline:hover { background: #f0fdfa; }
+
+    .actions { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      color: #94a3b8;
+    }
+    .spinner {
+      display: inline-block;
+      width: 24px; height: 24px;
+      border: 3px solid #e2e8f0;
+      border-top-color: #008899;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-state {
+      text-align: center;
+      padding: 4rem;
+      color: #ef4444;
+    }
+
+    /* Print styles */
+    @media print {
+      .header, .actions, .btn { display: none !important; }
+      body { background: white; font-size: 11pt; }
+      .container { max-width: 100%; padding: 0; margin: 0; }
+      .meta-card, .chat-container {
+        box-shadow: none;
+        border: 1px solid #d1d5db;
+        page-break-inside: auto;
+        margin-bottom: 1rem;
+      }
+      .conv-table { font-size: 10pt; }
+      .conv-table .speaker-cell.buddy { color: #1e293b !important; font-weight: 400 !important; }
+      .conv-table .speaker-cell.student { color: #1e293b !important; font-weight: 700 !important; }
+      .conv-table td[style*="font-weight"] { font-weight: 600 !important; }
+      .conv-table tr { page-break-inside: avoid; }
+      .feedback-item { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Impuls Deutsch Conversation Buddy <span class="subtitle">| Transcript</span></h1>
+  </div>
+</div>
+
+<div class="container">
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading transcript...</p>
+  </div>
+
+  <div id="error" class="error-state" style="display:none;"></div>
+
+  <div id="content" style="display:none;">
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn btn-primary" onclick="window.print()">Download / Print PDF</button>
+      <button class="btn btn-outline" onclick="window.close()">Close</button>
+    </div>
+
+    <!-- Meta -->
+    <div class="meta-card">
+      <div class="meta-grid" id="meta-grid"></div>
+    </div>
+
+    <!-- Conversation -->
+    <div class="chat-container">
+      <h2>Conversation</h2>
+      <div id="chat-turns"></div>
+    </div>
+
+    <!-- Feedback -->
+    <div class="chat-container" id="feedback-section" style="display:none;">
+      <h2>Feedback</h2>
+      <div id="feedback-items"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function() {
+  const params = new URLSearchParams(window.location.search);
+  const fileId = params.get('id');
+
+  if (!fileId) {
+    showError('No transcript ID provided. Please open this page from the Teacher Dashboard.');
+    return;
+  }
+
+  try {
+    const resp = await fetch(`/api/dashboard/transcript/${fileId}`);
+    if (!resp.ok) throw new Error(`Server error: ${resp.status}`);
+    const data = await resp.json();
+
+    if (data.error) throw new Error(data.error);
+
+    renderTranscript(data);
+  } catch (err) {
+    showError('Could not load transcript: ' + err.message);
+  }
+})();
+
+function renderTranscript(data) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+
+  // Meta
+  const meta = data.meta || {};
+  const metaGrid = document.getElementById('meta-grid');
+  const metaFields = [
+    { label: 'Student', value: meta.student },
+    { label: 'University', value: meta.university },
+    { label: 'Access Code', value: meta.access_code },
+    { label: 'Completed', value: meta.date },
+    { label: 'Duration', value: meta.duration },
+    { label: 'Turns', value: meta.turns },
+    { label: 'Book', value: meta.book },
+    { label: 'Unit', value: meta.unit_formatted || meta.unit, span: 2 },
+  ];
+  metaGrid.innerHTML = metaFields
+    .filter(f => f.value)
+    .map(f => {
+      const span = f.span ? ` style="grid-column: span ${f.span};"` : '';
+      return `<div class="meta-item"${span}><label>${esc(f.label)}</label><span>${esc(f.value)}</span></div>`;
+    })
+    .join('');
+
+  // Update page title
+  const unitDisplay = meta.unit_formatted || meta.unit || '';
+  if (meta.student) {
+    document.title = `${meta.student} - ${unitDisplay} | Transcript`;
+  }
+
+  // Conversation table
+  const studentName = (meta.student || 'Student').toUpperCase();
+  const turnsEl = document.getElementById('chat-turns');
+  if (!data.turns || data.turns.length === 0) {
+    turnsEl.innerHTML = '<p style="color:#94a3b8; text-align:center; padding: 2rem;">No conversation turns recorded.</p>';
+  } else {
+    turnsEl.innerHTML = `<table class="conv-table"><tbody>${data.turns.map(t => {
+      const isBuddy = t.role !== 'student';
+      const speaker = isBuddy ? 'BUDDY' : studentName;
+      const cls = isBuddy ? 'buddy' : 'student';
+      const time = t.time ? ` (${to12h(t.time)})` : '';
+      const bold = !isBuddy ? ' style="font-weight:600;"' : '';
+      return `<tr><td class="speaker-cell ${cls}">${esc(speaker)}${time}</td><td${bold}>${esc(t.text)}</td></tr>`;
+    }).join('')}</tbody></table>`;
+  }
+
+  // Feedback
+  if (data.feedback && data.feedback.length > 0) {
+    document.getElementById('feedback-section').style.display = 'block';
+    document.getElementById('feedback-items').innerHTML = data.feedback
+      .map(f => `<div class="feedback-item">${esc(f)}</div>`)
+      .join('');
+  }
+}
+
+function showError(msg) {
+  document.getElementById('loading').style.display = 'none';
+  const el = document.getElementById('error');
+  el.style.display = 'block';
+  el.innerHTML = `<p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Could not load transcript</p><p style="font-size: 0.85rem; color: #64748b;">${esc(msg)}</p>`;
+}
+
+function esc(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+
+function to12h(time) {
+  if (!time) return '';
+  const m = time.match(/^(\d{1,2}):(\d{2}):?(\d{2})?$/);
+  if (!m) return time;
+  let h = parseInt(m[1]);
+  const min = m[2];
+  const sec = m[3] || '';
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return `${h}:${min}${sec ? ':' + sec : ''} ${ampm}`;
+}
+</script>
+</body>
+</html>
