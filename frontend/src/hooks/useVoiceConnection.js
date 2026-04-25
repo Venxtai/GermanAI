@@ -455,30 +455,48 @@ export function useVoiceConnection() {
         spokenName = grammarMatch[1];
       }
 
-      // Strategy B: Anticipation — if we're expecting a name, extract it
-      // even from garbled transcriptions like "Ich hasse Nico" or just "Nico"
+      // Strategy B: Anticipation — only fire when the utterance looks like a
+      // name introduction (short and name-shaped). Avoids the trap where a
+      // long, off-topic German sentence ("Vertraue und glaube, ... Kraft!")
+      // gets a random capitalized noun lifted as the student's name.
       if (!spokenName && expectingNameRef.current) {
-        // Try: "ich [anything] [Name]" — last capitalized word after "ich"
-        const afterIch = transcript.match(/ich\s+\S+\s+([A-Z][a-zA-ZäöüÄÖÜß]+)/);
-        if (afterIch) {
-          spokenName = afterIch[1];
-        }
-        // Try: just a standalone name (capitalized word, not "Ich")
-        if (!spokenName) {
-          const words = transcript.split(/\s+/).filter(w => /^[A-Z]/.test(w) && w.toLowerCase() !== 'ich');
-          if (words.length === 1) {
-            spokenName = words[0];
-          } else if (words.length > 1) {
-            // Take the last capitalized word (most likely the name)
-            spokenName = words[words.length - 1];
+        const wordCount = transcript.trim().split(/\s+/).length;
+        // Cap at 5 words — anything longer is almost certainly not a bare name
+        if (wordCount <= 5) {
+          // Try: "ich [anything] [Name]" — last capitalized word after "ich"
+          const afterIch = transcript.match(/ich\s+\S+\s+([A-Z][a-zA-ZäöüÄÖÜß]+)/);
+          if (afterIch) {
+            spokenName = afterIch[1];
+          }
+          // Try: just a standalone name (1-2 capitalized words, no "Ich")
+          if (!spokenName) {
+            const words = transcript.split(/\s+/).filter(w => /^[A-Z]/.test(w) && w.toLowerCase() !== 'ich');
+            if (words.length === 1) {
+              spokenName = words[0];
+            }
+            // Two capitalized words = ambiguous (could be "Sankt Paul" etc.); skip
           }
         }
-        // Last resort: take the last word of the whole response
-        if (!spokenName) {
-          const lastWord = transcript.trim().split(/\s+/).pop();
-          if (lastWord && lastWord.length >= 2 && !/^(ja|nein|gut|und|oder|nicht|das|die|der)$/i.test(lastWord)) {
-            spokenName = lastWord.charAt(0).toUpperCase() + lastWord.slice(1);
-          }
+        // (Removed: "last word of any utterance" fallback — too aggressive,
+        // misclassified random nouns as names when students said off-topic
+        // sentences on the first turn.)
+      }
+
+      // Reject obvious non-names: common German nouns that get capitalized
+      // by Whisper but aren't first names. Mostly things students actually
+      // said when going off-script. Trim trailing punctuation first.
+      if (spokenName) {
+        spokenName = spokenName.replace(/[.,!?;:]+$/, '');
+        const NON_NAME_WORDS = new Set([
+          'kraft', 'hilfe', 'gott', 'liebe', 'angst', 'glück', 'glueck',
+          'leben', 'tod', 'welt', 'haus', 'tag', 'zeit', 'jahr', 'mann',
+          'frau', 'kind', 'mutter', 'vater', 'freund', 'freundin',
+          'student', 'studentin', 'lehrer', 'lehrerin', 'university',
+          'sorry', 'okay', 'cool', 'thanks', 'hallo', 'guten', 'morgen',
+          'abend', 'nacht', 'super', 'prima', 'gut', 'schlecht', 'ja', 'nein',
+        ]);
+        if (NON_NAME_WORDS.has(spokenName.toLowerCase())) {
+          spokenName = null;
         }
       }
 

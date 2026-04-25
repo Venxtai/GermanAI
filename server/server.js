@@ -910,6 +910,150 @@ async function generateAndSaveFeedback(sessionId, logSession) {
   }
 }
 
+/**
+ * Parse a Drive transcript .txt file and reconstruct the inputs needed by
+ * generateFeedbackItems. Returns null if the file isn't parseable.
+ */
+function parseTranscriptForBackfill(content) {
+  const unitMatch = content.match(/Unit\s+:\s+Unit\s+(\S+)/);
+  if (!unitMatch) return null;
+  const unitId = unitMatch[1];
+  const book = /^O/i.test(unitId) ? 'ID2O' : /^B/i.test(unitId) ? 'ID2B' : 'ID1';
+
+  // Parse duration ("6m 28s" or "59s")
+  let sessionDurationMs = 0;
+  const durMatch = content.match(/Duration\s+:\s+(?:(\d+)m\s+)?(\d+)s/);
+  if (durMatch) {
+    const m = parseInt(durMatch[1] || '0', 10);
+    const s = parseInt(durMatch[2] || '0', 10);
+    sessionDurationMs = (m * 60 + s) * 1000;
+  }
+
+  // Parse turns "[HH:MM:SS] BUDDY: text" / "[HH:MM:SS] STUDENT: text".
+  // Stop at the conversation-ended separator so we don't grab feedback lines.
+  const transcriptSection = content.split(/\nCONVERSATION ENDED/)[0];
+  const turnRe = /\[\d{2}:\d{2}:\d{2}\]\s+(BUDDY|STUDENT):\s*(.+)/g;
+  const fullTranscript = [];
+  const utterances = [];
+  let m;
+  while ((m = turnRe.exec(transcriptSection)) !== null) {
+    const role = m[1] === 'STUDENT' ? 'student' : 'buddy';
+    const text = m[2].trim();
+    fullTranscript.push({ role, text });
+    if (role === 'student' && text !== '(inaudible)') utterances.push(text);
+  }
+
+  return { unit: unitId, book, sessionDurationMs, utterances, fullTranscript };
+}
+
+/**
+ * One-shot admin endpoint: scan the Drive folder for transcripts that still
+ * say "Feedback: Pending", regenerate feedback from the transcript content,
+ * and update the file in place. Protected by ADMIN_TOKEN env var.
+ *
+ * Usage:
+ *   curl -X POST https://<host>/api/admin/backfill-feedback \
+ *     -H 'X-Admin-Token: <token>' \
+ *     -H 'Content-Type: application/json' \
+ *     -d '{"dryRun": false}'
+ */
+app.post('/api/admin/backfill-feedback', async (req, res) => {
+  const expected = process.env.ADMIN_TOKEN;
+  const provided = req.get('X-Admin-Token') || req.body?.token;
+  if (!expected || provided !== expected) {
+    return res.status(401).json({ error: 'Missing or invalid admin token' });
+  }
+  if (!driveClient) return res.status(503).json({ error: 'Drive client not initialized' });
+
+  const dryRun = !!req.body?.dryRun;
+  const limit = Math.min(parseInt(req.body?.limit || '0', 10) || 200, 500);
+  const results = { scanned: 0, pending: 0, updated: 0, failed: 0, skipped: 0, items: [] };
+
+  try {
+    // List .txt files in the transcript folder
+    let pageToken = undefined;
+    const files = [];
+    do {
+      const list = await driveClient.files.list({
+        q: `'${DRIVE_FOLDER_ID}' in parents and mimeType = 'text/plain' and trashed = false`,
+        fields: 'nextPageToken, files(id, name, modifiedTime)',
+        pageSize: 100,
+        pageToken,
+      });
+      files.push(...(list.data.files || []));
+      pageToken = list.data.nextPageToken;
+    } while (pageToken && files.length < limit);
+
+    // Most recent first
+    files.sort((a, b) => (b.modifiedTime || '').localeCompare(a.modifiedTime || ''));
+
+    for (const file of files.slice(0, limit)) {
+      results.scanned++;
+      try {
+        const getRes = await driveClient.files.get({ fileId: file.id, alt: 'media' });
+        const content = typeof getRes.data === 'string' ? getRes.data : getRes.data.toString();
+        if (!content.includes('Feedback: Pending')) {
+          results.skipped++;
+          continue;
+        }
+        results.pending++;
+
+        const parsed = parseTranscriptForBackfill(content);
+        if (!parsed) {
+          results.failed++;
+          results.items.push({ name: file.name, status: 'parse-failed' });
+          continue;
+        }
+
+        if (dryRun) {
+          results.items.push({ name: file.name, status: 'would-update', unit: parsed.unit, turns: parsed.fullTranscript.length });
+          continue;
+        }
+
+        const result = await generateFeedbackItems({
+          unit: parsed.unit,
+          book: parsed.book,
+          utterances: parsed.utterances,
+          fullTranscript: parsed.fullTranscript,
+          sessionDurationMs: parsed.sessionDurationMs,
+          // Use a low minDurationMs so 3-minute conversations still get feedback
+          minDurationMs: 60 * 1000,
+        });
+
+        // Splice the new feedback section into the file (mirrors updateTranscriptWithFeedback)
+        const fbHeader = '─'.repeat(60) + '\nFEEDBACK\n' + '─'.repeat(60);
+        const fbIdx = content.indexOf('FEEDBACK');
+        const sectionStart = content.lastIndexOf('─'.repeat(60), fbIdx);
+        const afterAlt = content.indexOf('\n═', fbIdx + 10);
+        const sectionEnd = afterAlt > 0 ? afterAlt : content.length;
+        const fbLines = [fbHeader];
+        if (result.fallback) fbLines.push(`No feedback generated: ${result.reason || 'unknown reason'}`);
+        else if (result.items?.length > 0) for (const item of result.items) fbLines.push(`  • ${item}`);
+        else fbLines.push('No feedback items returned.');
+        const newContent = content.substring(0, sectionStart) + fbLines.join('\n') + content.substring(sectionEnd);
+
+        const { Readable } = require('stream');
+        await driveClient.files.update({
+          fileId: file.id,
+          media: { mimeType: 'text/plain', body: Readable.from([newContent]) },
+        });
+        results.updated++;
+        results.items.push({ name: file.name, status: 'updated', unit: parsed.unit, items: result.items?.length || 0, fallback: !!result.fallback });
+        console.log(`[BACKFILL] Updated ${file.name}`);
+      } catch (err) {
+        results.failed++;
+        results.items.push({ name: file.name, status: 'error', error: err.message });
+        console.warn(`[BACKFILL] Failed ${file.name}:`, err.message);
+      }
+    }
+
+    res.json({ ok: true, dryRun, ...results });
+  } catch (err) {
+    console.error('[BACKFILL] Fatal error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
