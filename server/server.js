@@ -2796,7 +2796,7 @@ const EMOTION_TAG_ALL_RE = /\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL
 
 async function callClaude(systemPrompt, messages) {
   // Append emotion tagging instruction to the system prompt
-  const emotionInstruction = `\n\nEMOTION TAGGING (mandatory): Tag EACH sentence with an emotion in brackets. Available: [HAPPY], [EXCITED], [CURIOUS], [EMPATHETIC], [THINKING], [NEUTRAL], [CONCERNED], [SURPRISED]. Tags are stripped before speaking — the student never sees them.
+  const emotionInstruction = `\n\nEMOTION TAGGING (mandatory): Tag EACH sentence with an emotion in brackets. Available: [HAPPY], [EXCITED], [CURIOUS], [EMPATHETIC], [THINKING], [NEUTRAL], [CONCERNED], [SURPRISED]. Use ONLY these eight tags — do NOT invent new ones like [WARM] or [FRIENDLY]. Tags are stripped before speaking — the student never sees them.
 
 Guidelines:
 - [CURIOUS] when asking a follow-up or the student says something interesting.
@@ -2810,11 +2810,18 @@ Guidelines:
 
 Example: "[EXCITED] Oh, cool! [HAPPY] Du magst also Musik! [CURIOUS] Spielst du ein Instrument?"`;
 
+  // STT-correction instruction: speech-to-text often garbles unit-specific
+  // German words (e.g. "Aktorbahn" instead of "Achterbahn", "Aschienstein"
+  // instead of "Schnitzel"). When the student's transcript contains a word
+  // that sounds similar to a vocabulary word from this unit, treat it as
+  // that vocabulary word — don't ask "Was ist Aschienstein?".
+  const sttCorrectionInstruction = `\n\nSTT GUARD: The student's words come from speech-to-text and unit-specific German words are sometimes garbled. If the student says a word that doesn't make sense but sounds phonetically similar to a word from THIS unit's vocabulary list (above), assume they meant the vocabulary word and respond accordingly. Examples: "Aktorbahn"/"Ackerbahn" → "Achterbahn"; "Aschienstein" → "Schnitzel"; "Streitart"/"Stratart" → "Street Art". Only do this for plausible phonetic matches — if the word is clearly unrelated, just continue the conversation naturally without commenting on the misheard word.`;
+
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 150,
     temperature: 0.55,
-    system: systemPrompt + emotionInstruction,
+    system: systemPrompt + emotionInstruction + sttCorrectionInstruction,
     messages,
   });
   return response.content[0].text;
@@ -2829,44 +2836,49 @@ Example: "[EXCITED] Oh, cool! [HAPPY] Du magst also Musik! [CURIOUS] Spielst du 
  *   - emotionTimeline: [{ start: 0.0-1.0, emotion }] proportional segments
  */
 function parseEmotion(responseText) {
-  // Match all emotion tags with their positions
-  const tagPattern = /\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL|CONCERNED|SURPRISED)\]\s*/gi;
+  // First, extract known-emotion segments to build the timeline.
+  const knownTagPattern = /\[(HAPPY|EXCITED|CURIOUS|EMPATHETIC|THINKING|NEUTRAL|CONCERNED|SURPRISED)\]\s*/gi;
   const segments = [];
   let lastIdx = 0;
   let lastEmotion = 'neutral';
   let match;
 
-  while ((match = tagPattern.exec(responseText)) !== null) {
-    // Text before this tag belongs to the previous emotion
+  while ((match = knownTagPattern.exec(responseText)) !== null) {
     const textBefore = responseText.slice(lastIdx, match.index);
-    if (textBefore.trim()) {
-      segments.push({ text: textBefore.trim(), emotion: lastEmotion });
-    }
+    if (textBefore.trim()) segments.push({ text: textBefore.trim(), emotion: lastEmotion });
     lastEmotion = match[1].toLowerCase();
     lastIdx = match.index + match[0].length;
   }
-  // Remaining text after last tag
   const remaining = responseText.slice(lastIdx);
-  if (remaining.trim()) {
-    segments.push({ text: remaining.trim(), emotion: lastEmotion });
-  }
+  if (remaining.trim()) segments.push({ text: remaining.trim(), emotion: lastEmotion });
 
-  // If no tags found at all, return as neutral
+  // Strip ANY remaining [BRACKETED] tag from the segment text.
+  // Catches invented tags like [WARM] or [FRIENDLY] that Claude sometimes emits
+  // outside the canonical emotion list — those would otherwise leak to TTS/UI.
+  const stripAnyTag = s => s.replace(/\[[A-Z][A-Z_ -]{0,24}\]\s*/g, '').replace(/\s+/g, ' ').trim();
+  for (const seg of segments) seg.text = stripAnyTag(seg.text);
+
+  // If no tags found at all, still strip any stray brackets and return as neutral
   if (segments.length === 0) {
-    return { text: responseText, emotion: 'neutral', emotionTimeline: [{ start: 0, emotion: 'neutral' }] };
+    return { text: stripAnyTag(responseText), emotion: 'neutral', emotionTimeline: [{ start: 0, emotion: 'neutral' }] };
   }
 
-  // Build clean text and proportional timeline
-  const cleanText = segments.map(s => s.text).join(' ');
-  const totalLen = segments.reduce((sum, s) => sum + s.text.length, 0);
+  // Drop empty segments after stripping
+  const filtered = segments.filter(s => s.text);
+  if (filtered.length === 0) {
+    return { text: stripAnyTag(responseText), emotion: 'neutral', emotionTimeline: [{ start: 0, emotion: 'neutral' }] };
+  }
+
+  const cleanText = filtered.map(s => s.text).join(' ');
+  const totalLen = filtered.reduce((sum, s) => sum + s.text.length, 0);
   const emotionTimeline = [];
   let charPos = 0;
-  for (const seg of segments) {
+  for (const seg of filtered) {
     emotionTimeline.push({ start: totalLen > 0 ? charPos / totalLen : 0, emotion: seg.emotion });
     charPos += seg.text.length;
   }
 
-  return { text: cleanText, emotion: segments[0].emotion, emotionTimeline };
+  return { text: cleanText, emotion: filtered[0].emotion, emotionTimeline };
 }
 
 /**
@@ -2927,6 +2939,23 @@ app.post('/api/session/start', async (req, res) => {
       }
     }
 
+    // Build a vocabulary hint string for Whisper STT to bias toward this unit's
+    // words (helps with things like "Aktorbahn"→"Achterbahn"). Whisper's prompt
+    // has a ~244-token cap, so we cherry-pick the most distinctive content
+    // words: longer, less generic German nouns/verbs from the active vocab.
+    let whisperVocabHint = '';
+    {
+      const cumulativeData = req.body.cumulativeData;
+      const items = cumulativeData?.activeVocabulary || [];
+      const words = items
+        .map(i => (typeof i === 'object' ? (i.word || '') : i))
+        .filter(w => typeof w === 'string' && w.length >= 5) // skip "ich", "du", short words
+        .slice(0, 40);
+      if (words.length > 0) {
+        whisperVocabHint = ` Wichtige Wörter aus der Lektion: ${words.join(', ')}.`;
+      }
+    }
+
     voiceSessions.set(sessionId, {
       systemPrompt, history, startTime: Date.now(),
       typedStudentName: typedStudentName || null,
@@ -2934,6 +2963,9 @@ app.post('/api/session/start', async (req, res) => {
       fullTranscript: [],
       allowedWordSet,
       grammarConstraints,
+      whisperVocabHint,
+      // Track consecutive inaudible turns for repair-phrase variation/escalation
+      inaudibleStreak: 0,
     });
 
     // Validate with tags intact (validator ignores [BRACKETED] content)
@@ -2982,11 +3014,15 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
     const t0 = Date.now();
     fs.renameSync(req.file.path, renamedPath);
     console.log(`[STT] Audio file: ${renamedPath}, size: ${fs.statSync(renamedPath).size} bytes, mime: ${req.file.mimetype}, ext: ${ext}`);
+    // Append the unit's vocabulary hint so Whisper biases toward unit-specific
+    // words (e.g. "Achterbahn" instead of "Aktorbahn", "Schnitzel" not "Aschienstein").
+    const whisperPrompt = 'Dies ist ein Gespräch auf Deutsch mit einem Studenten, der manchmal englische Wörter benutzt wie University, Football, Basketball, Volleyball, okay, cool, sorry. Eigennamen und Städte wie Chicago, New York, St. Paul, St. Thomas kommen auch vor.'
+      + (session.whisperVocabHint || '');
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(renamedPath),
       model: 'whisper-1',
       language: 'de',
-      prompt: 'Dies ist ein Gespräch auf Deutsch mit einem Studenten, der manchmal englische Wörter benutzt wie University, Football, Basketball, Volleyball, okay, cool, sorry. Eigennamen und Städte wie Chicago, New York, St. Paul, St. Thomas kommen auch vor.',
+      prompt: whisperPrompt,
     });
     let transcript = transcription.text?.trim() || '';
     const t1 = Date.now();
@@ -3018,15 +3054,56 @@ app.post('/api/conversation-turn', upload.single('audio'), async (req, res) => {
       }
     }
 
-    // 2. Handle inaudible input — return text only, frontend will stream TTS
+    // 2. Handle inaudible input — vary the repair phrase, escalate after
+    // repeated failures, and signal end-of-conversation after the 4th try
+    // so the student isn't stuck in a loop of identical "Kannst du das
+    // nochmal sagen?" messages.
     if (!transcript) {
-      const fallbackText = 'Ich höre dich nicht gut. Kannst du das nochmal sagen?';
+      session.inaudibleStreak = (session.inaudibleStreak || 0) + 1;
+      const streak = session.inaudibleStreak;
+
+      // Tier 1 (1st miss): friendly repair, 4 random variants
+      const tier1 = [
+        'Ich höre dich nicht gut. Kannst du das nochmal sagen?',
+        'Entschuldigung — kannst du das wiederholen?',
+        'Sorry, ich habe das nicht verstanden. Sag das bitte noch einmal!',
+        'Hmm, ich höre dich kaum. Kannst du lauter sprechen?',
+      ];
+      // Tier 2 (2nd miss): suggest mic check
+      const tier2 = [
+        'Ich höre dich immer noch nicht. Ist dein Mikrofon an? Sprich bitte direkt ins Mikro.',
+        'Hmm, das hat nicht geklappt. Bitte prüf dein Mikrofon und versuch es noch einmal.',
+      ];
+      // Tier 3 (3rd miss): one last attempt
+      const tier3 = [
+        'Letzter Versuch — sprich bitte laut und langsam ins Mikrofon.',
+      ];
+      // Tier 4 (4th miss): bail out — frontend uses endConversation flag
+      const tier4 = [
+        'Ich kann dich leider nicht hören. Wir beenden das Gespräch — bitte versuche es später noch einmal, wenn dein Mikrofon funktioniert.',
+      ];
+
+      let phrases, endConversation = false;
+      if (streak === 1) phrases = tier1;
+      else if (streak === 2) phrases = tier2;
+      else if (streak === 3) phrases = tier3;
+      else { phrases = tier4; endConversation = true; }
+      const fallbackText = phrases[Math.floor(Math.random() * phrases.length)];
+
       session.history.push({ role: 'user', content: '(inaudible)' });
       session.history.push({ role: 'assistant', content: fallbackText });
       session.fullTranscript?.push({ role: 'student', text: '(inaudible)' });
       session.fullTranscript?.push({ role: 'buddy', text: fallbackText });
-      return res.json({ transcript: '', response: fallbackText, emotion: 'empathetic', emotionTimeline: [{ start: 0, emotion: 'empathetic' }] });
+      return res.json({
+        transcript: '',
+        response: fallbackText,
+        emotion: 'empathetic',
+        emotionTimeline: [{ start: 0, emotion: 'empathetic' }],
+        endConversation,
+      });
     }
+    // Reset streak as soon as we get a real transcription back
+    session.inaudibleStreak = 0;
 
     // 3. Build user message with optional directives
     let userContent = transcript;

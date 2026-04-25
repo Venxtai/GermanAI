@@ -952,7 +952,14 @@ export function useVoiceConnection() {
 
       const resp = await fetch('/api/conversation-turn', { method: 'POST', body: fd });
       if (!resp.ok) throw new Error(`Pipeline failed: ${resp.status}`);
-      const { transcript, response: aiText, emotion: turnEmotion, emotionTimeline: turnTimeline } = await resp.json();
+      const { transcript, response: aiText, emotion: turnEmotion, emotionTimeline: turnTimeline, endConversation: serverWantsEnd } = await resp.json();
+
+      // Server requested end-of-conversation (e.g. 4+ inaudible turns in a row).
+      // Let the AI's farewell play, then end the session gracefully.
+      if (serverWantsEnd) {
+        pendingEndAfterTurnRef.current = true;
+        if (!endReasonRef.current) endReasonRef.current = 'Microphone issue — conversation ended after repeated inaudible turns';
+      }
 
       // ── Process transcript ──
       const cleaned = cleanTranscript(transcript) || '(inaudible)';
