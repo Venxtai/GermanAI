@@ -860,6 +860,56 @@ async function updateTranscriptWithFeedback(driveFileId, sessionId, logSession) 
   }
 }
 
+/**
+ * Server-side feedback generation. Triggered when the 'end' event arrives so
+ * feedback gets saved to the Drive transcript even if the student closes the
+ * browser before the Claude API call returns. Browser-side /api/feedback is a
+ * parallel path used only for live in-page display.
+ *
+ * Sets logSession.feedbackItems and updates the Drive transcript when both
+ * the save and feedback generation are complete.
+ */
+async function generateAndSaveFeedback(sessionId, logSession) {
+  if (logSession.feedbackTriggered) return; // already running
+  logSession.feedbackTriggered = true;
+  try {
+    // Wait for the transcript save to finish so we have a driveFileId
+    if (logSession.savePromise) await logSession.savePromise.catch(() => {});
+
+    // Build the inputs from session state
+    const unit = logSession.unit || 1;
+    const book = logSession.meta?.book || null;
+    const studentTurns = (logSession.turns || [])
+      .filter(t => t.role === 'student')
+      .map(t => t.text);
+    const fullTranscript = (logSession.turns || [])
+      .map(t => ({ role: t.role, text: t.text }));
+    const sessionDurationMs = logSession.createdAt ? Date.now() - logSession.createdAt : 0;
+
+    const result = await generateFeedbackItems({
+      unit,
+      book,
+      utterances: studentTurns,
+      fullTranscript,
+      sessionDurationMs,
+    });
+
+    logSession.feedbackItems = result;
+    console.log(`${DIM}[FEEDBACK-SERVER] ${sessionId}: ${result.fallback ? `fallback (${result.reason || 'unknown'})` : `${(result.items || []).length} items`}${RESET}`);
+
+    if (logSession.driveFileId) {
+      await updateTranscriptWithFeedback(logSession.driveFileId, sessionId, logSession);
+    } else {
+      console.warn(`[FEEDBACK-SERVER] ${sessionId}: No driveFileId — transcript may not have uploaded`);
+    }
+  } catch (err) {
+    console.warn(`[FEEDBACK-SERVER] ${sessionId}: generation failed:`, err.message);
+    if (!logSession.feedbackItems) {
+      logSession.feedbackItems = { fallback: true, reason: 'Feedback generation failed' };
+    }
+  }
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -1717,26 +1767,34 @@ app.post('/api/log', (req, res) => {
     }
 
   } else if (type === 'feedback') {
-    // Feedback results arrived — update transcript on Drive if already saved
+    // Browser-side feedback path. The server-side trigger (in 'end') is the
+    // primary route — this handler only updates the transcript if the server
+    // path hasn't already done so. Treated as a redundant best-effort backup.
     const session = logSessions.get(sessionId);
     if (session) {
-      const { items, fallback, reason: feedbackReason } = req.body;
-      session.feedbackItems = fallback
-        ? { fallback: true, reason: feedbackReason || 'unknown' }
-        : { items: items || [] };
-      console.log(`${DIM}[FEEDBACK] ${sessionId}: ${fallback ? `fallback (${feedbackReason || 'unknown'})` : `${(items || []).length} items`}${RESET}`);
-      // Wait for transcript save to finish (if still uploading), then update with feedback
-      const doUpdate = async () => {
-        if (session.savePromise) await session.savePromise.catch(() => {});
-        if (session.driveFileId) {
-          await updateTranscriptWithFeedback(session.driveFileId, sessionId, session);
-        } else {
-          console.warn(`[FEEDBACK] ${sessionId}: No driveFileId — transcript may not have been uploaded`);
-        }
-      };
-      doUpdate().catch(err => {
-        console.warn(`[FEEDBACK] Could not update Drive transcript:`, err.message);
-      });
+      if (session.feedbackTriggered) {
+        // Server-side path is handling it; ignore browser results to avoid
+        // double-writing the Drive file.
+        console.log(`${DIM}[FEEDBACK] ${sessionId}: ignored browser path (server-side already running)${RESET}`);
+      } else {
+        const { items, fallback, reason: feedbackReason } = req.body;
+        session.feedbackItems = fallback
+          ? { fallback: true, reason: feedbackReason || 'unknown' }
+          : { items: items || [] };
+        session.feedbackTriggered = true;
+        console.log(`${DIM}[FEEDBACK] ${sessionId}: ${fallback ? `fallback (${feedbackReason || 'unknown'})` : `${(items || []).length} items`} (browser path)${RESET}`);
+        const doUpdate = async () => {
+          if (session.savePromise) await session.savePromise.catch(() => {});
+          if (session.driveFileId) {
+            await updateTranscriptWithFeedback(session.driveFileId, sessionId, session);
+          } else {
+            console.warn(`[FEEDBACK] ${sessionId}: No driveFileId — transcript may not have been uploaded`);
+          }
+        };
+        doUpdate().catch(err => {
+          console.warn(`[FEEDBACK] Could not update Drive transcript:`, err.message);
+        });
+      }
     }
 
   } else if (type === 'abandon') {
@@ -1761,6 +1819,11 @@ app.post('/api/log', (req, res) => {
       session.endReason = reason || 'User ended conversation';
       session.ended = true; // Mark as ended so inactivity cleanup skips it
       session.savePromise = saveTranscriptFile(sessionId, session);
+      // Generate feedback server-side so it gets saved even if the student
+      // closes the browser before the Claude API call returns.
+      generateAndSaveFeedback(sessionId, session).catch(err => {
+        console.warn(`[FEEDBACK-SERVER] ${sessionId}: trigger failed:`, err.message);
+      });
       // Don't delete immediately — keep alive for feedback to arrive
       // Cleanup after 5 minutes (feedback generation + network latency)
       setTimeout(() => logSessions.delete(sessionId), 5 * 60 * 1000);
@@ -3228,77 +3291,72 @@ function buildPersona(traits) {
 // (Removed: /api/transcribe — replaced by /api/conversation-turn pipeline)
 
 /**
- * Route: Feedback Generator (Component 8)
- * Analyzes student utterances against communicative goals from all loaded units
- * up to the current one and returns English-language feedback sentences.
+ * Core feedback generation. Called from /api/feedback (browser path) and from
+ * the 'end' handler (server-side path that runs even if the student closes
+ * their browser before feedback is ready).
+ *
+ * Returns { items: [...] } on success, or { fallback: true, reason } otherwise.
  */
-app.post('/api/feedback', async (req, res) => {
-  try {
-    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000, sessionId, book } = req.body;
-    const MIN_THRESHOLD_MS = 0.6 * minDurationMs;
-    if (sessionDurationMs < MIN_THRESHOLD_MS) {
-      return res.json({ fallback: true });
-    }
+async function generateFeedbackItems({ unit, book, utterances = [], fullTranscript = [], sessionDurationMs = 0, minDurationMs = 3*60*1000 }) {
+  const MIN_THRESHOLD_MS = 0.6 * minDurationMs;
+  if (sessionDurationMs < MIN_THRESHOLD_MS) {
+    return { fallback: true, reason: 'Session too short for feedback' };
+  }
 
-    // Collect goals from all prerequisite units up to the target, most recent first
-    // Handles both numeric (ID1) and prefixed (O5, B3) unit IDs
-    const goalsByUnit = [];
-    const unitIdStr = String(unit);
-    const detectedBook = book || (unitIdStr.match(/^O/i) ? 'ID2O' : unitIdStr.match(/^B/i) ? 'ID2B' : 'ID1');
-    const prerequisiteIds = [];
-    if (detectedBook === 'ID1') {
-      const targetNum = parseInt(unitIdStr);
-      if (!isNaN(targetNum)) {
-        for (let i = 1; i <= targetNum; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
-      }
-    } else if (detectedBook === 'ID2B') {
-      // All of ID1 first, then ID2B units
-      for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
-      const targetNum = parseInt(unitIdStr.replace(/^B/i, ''));
-      if (!isNaN(targetNum)) {
-        for (let i = 1; i <= targetNum; i++) {
-          const bid = unitMap[`B${String(i).padStart(2,'0')}`] ? `B${String(i).padStart(2,'0')}` : `B${i}`;
-          if (unitMap[bid]) prerequisiteIds.push(bid);
-        }
-      }
-    } else if (detectedBook === 'ID2O') {
-      for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
-      const targetNum = parseInt(unitIdStr.replace(/^O/i, ''));
-      if (!isNaN(targetNum)) {
-        for (let i = 1; i <= targetNum; i++) {
-          const oid = unitMap[`O${String(i).padStart(2,'0')}`] ? `O${String(i).padStart(2,'0')}` : `O${i}`;
-          if (unitMap[oid]) prerequisiteIds.push(oid);
-        }
+  // Collect goals from prerequisite units up to the target, most recent first.
+  // Handles numeric (ID1) and prefixed (O5, B3) unit IDs.
+  const goalsByUnit = [];
+  const unitIdStr = String(unit);
+  const detectedBook = book || (unitIdStr.match(/^O/i) ? 'ID2O' : unitIdStr.match(/^B/i) ? 'ID2B' : 'ID1');
+  const prerequisiteIds = [];
+  if (detectedBook === 'ID1') {
+    const targetNum = parseInt(unitIdStr);
+    if (!isNaN(targetNum)) {
+      for (let i = 1; i <= targetNum; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+    }
+  } else if (detectedBook === 'ID2B') {
+    for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+    const targetNum = parseInt(unitIdStr.replace(/^B/i, ''));
+    if (!isNaN(targetNum)) {
+      for (let i = 1; i <= targetNum; i++) {
+        const bid = unitMap[`B${String(i).padStart(2,'0')}`] ? `B${String(i).padStart(2,'0')}` : `B${i}`;
+        if (unitMap[bid]) prerequisiteIds.push(bid);
       }
     }
-    // Collect goals from most recent first
-    for (let i = prerequisiteIds.length - 1; i >= 0; i--) {
-      const ud = unitMap[prerequisiteIds[i]];
-      const goals = ud?.communicative_functions?.goals || [];
-      if (goals.length > 0) goalsByUnit.push({ unit: prerequisiteIds[i], goals });
+  } else if (detectedBook === 'ID2O') {
+    for (let i = 1; i <= 104; i++) { if (unitMap[String(i)]) prerequisiteIds.push(String(i)); }
+    const targetNum = parseInt(unitIdStr.replace(/^O/i, ''));
+    if (!isNaN(targetNum)) {
+      for (let i = 1; i <= targetNum; i++) {
+        const oid = unitMap[`O${String(i).padStart(2,'0')}`] ? `O${String(i).padStart(2,'0')}` : `O${i}`;
+        if (unitMap[oid]) prerequisiteIds.push(oid);
+      }
     }
+  }
+  for (let i = prerequisiteIds.length - 1; i >= 0; i--) {
+    const ud = unitMap[prerequisiteIds[i]];
+    const goals = ud?.communicative_functions?.goals || [];
+    if (goals.length > 0) goalsByUnit.push({ unit: prerequisiteIds[i], goals });
+  }
 
-    if (goalsByUnit.length === 0 || utterances.length === 0) {
-      return res.json({ fallback: true });
-    }
+  if (goalsByUnit.length === 0 || (utterances.length === 0 && fullTranscript.length === 0)) {
+    return { fallback: true, reason: 'No goals or no utterances' };
+  }
 
-    // Use full transcript (both student AND buddy turns) if available
-    const session = sessionId ? voiceSessions.get(sessionId) : null;
-    const fullTranscript = session?.fullTranscript || [];
-    let conversationText;
-    if (fullTranscript.length > 0) {
-      conversationText = fullTranscript
-        .map(t => `${t.role === 'student' ? 'STUDENT' : 'BUDDY'}: ${t.text}`)
-        .join('\n');
-    } else {
-      conversationText = utterances.filter(Boolean).map(u => `STUDENT: ${u}`).join('\n');
-    }
-
-    const goalsText = goalsByUnit
-      .map(({ unit: u, goals }) => `Unit ${u}: ${goals.join('; ')}`)
+  let conversationText;
+  if (fullTranscript.length > 0) {
+    conversationText = fullTranscript
+      .map(t => `${t.role === 'student' ? 'STUDENT' : 'BUDDY'}: ${t.text}`)
       .join('\n');
+  } else {
+    conversationText = utterances.filter(Boolean).map(u => `STUDENT: ${u}`).join('\n');
+  }
 
-    const prompt = `You are evaluating a German language conversation between a student and a buddy.
+  const goalsText = goalsByUnit
+    .map(({ unit: u, goals }) => `Unit ${u}: ${goals.join('; ')}`)
+    .join('\n');
+
+  const prompt = `You are evaluating a German language conversation between a student and a buddy.
 The student is at Unit ${unit}. Communicative goals from Units 1–${unit} (most recent first):
 ${goalsText}
 
@@ -3314,27 +3372,43 @@ Identify 2–8 communicative goals the student clearly demonstrated. Translate e
 Respond ONLY with a valid JSON object:
 { "items": ["You were able to ...", "You were able to ..."] }`;
 
-    const response = await anthropic.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 400,
-      messages: [{ role: 'user', content: prompt }],
-    });
+  const response = await anthropic.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 400,
+    messages: [{ role: 'user', content: prompt }],
+  });
 
-    let items = [];
+  let items = [];
+  try {
+    const text = response.content?.[0]?.text || '';
+    const cleaned = text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+    items = Array.isArray(parsed.items) ? parsed.items : [];
+  } catch {
     try {
       const text = response.content?.[0]?.text || '';
-      const cleaned = text.replace(/```json|```/g, '').trim();
-      const parsed = JSON.parse(cleaned);
-      items = Array.isArray(parsed.items) ? parsed.items : [];
-    } catch {
-      try {
-        const text = response.content?.[0]?.text || '';
-        const m = text.match(/\[[\s\S]*?\]/);
-        if (m) items = JSON.parse(m[0]);
-      } catch { /* fallback */ }
-    }
-    items = items.filter(s => typeof s === 'string' && s.trim()).slice(0, 8);
-    res.json({ items });
+      const m = text.match(/\[[\s\S]*?\]/);
+      if (m) items = JSON.parse(m[0]);
+    } catch { /* fallback */ }
+  }
+  items = items.filter(s => typeof s === 'string' && s.trim()).slice(0, 8);
+  return { items };
+}
+
+/**
+ * Route: Feedback Generator (Component 8) — browser-facing endpoint.
+ * The browser uses this to display feedback in real-time after a session ends.
+ * The transcript-saving path is handled separately on the server side, so even
+ * if the browser closes before the response arrives, feedback still gets saved.
+ */
+app.post('/api/feedback', async (req, res) => {
+  try {
+    const { utterances = [], unit = 1, sessionDurationMs = 0, minDurationMs = 3*60*1000, sessionId, book } = req.body;
+    // Use the voice session's fullTranscript if available
+    const voiceSession = sessionId ? voiceSessions.get(sessionId) : null;
+    const fullTranscript = voiceSession?.fullTranscript || [];
+    const result = await generateFeedbackItems({ unit, book, utterances, fullTranscript, sessionDurationMs, minDurationMs });
+    res.json(result);
   } catch (err) {
     console.error('[Feedback] Error:', err.message);
     res.json({ fallback: true });
